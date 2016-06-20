@@ -1,0 +1,344 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.wells_criteria_pulmonary_embolism.v1
+
+concept
+	[at0000]	-- Wells’ Criteria for Pulmonary Embolism
+language
+	original_language = <[ISO_639-1::sv]>
+	translations = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			author = <
+				["name"] = <"Oskar Nielsen">
+				["email"] = <"oskar.nielsen@mail.com">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Oskar Nielsen">
+		["email"] = <"oskar.nielsen@mail.com">
+		["date"] = <"2016-06-20">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The Wells’ Criteria risk stratifies patients for pulmonary embolism (PE), and has been validated in both inpatient and emergency department settings.">
+			use = <"There must first be a clinical suspicion for PE in the patient before attempting to apply the Wells criteria. Thorough history and physical examination should be performed prior to diagnostic testing.
+
+Well's Score predicts the pre-test probability of PE and helps guide to the appropriate tests to rule out the diagnosis. Its score is often used in conjunction with d-dimer testing to evaluate for PE. 
+
+Wells' Score can be used with either 3 tiers (low, moderate, high) or 2 tiers (unlikely, likely) to stratify the risk of PE of a patient. 
+">
+			keywords = <"risk", "PE", "pulmonary embolism", "wells", "criteria", "score">
+			misuse = <"Should not be used to diagnose PE.">
+			copyright = <"">
+		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Wells riskkriterier stratifierar patienter för lungembolism och används i både slutenvård och i akutvården.">
+			use = <"Det måste först finnas en klinisk misstanke för lungemboli hos patienten före Wells kriterier ska tillämpas. Grundlig historia och fysisk undersökning ska utföras före diagnostiska tester.
+
+Wells kriterier hjälper förutsäga sannolikheten för PE vid förtesterna, samt hänvisar till lämpliga tester för att utesluta diagnosen. Dess totala poäng används ofta i kombination med D-dimer-testning för att utvärdera diagnosen.
+
+Poängen kan användas enligt två modeller, antingen i 3 nivåer för risk (låg, medel, och hög) eller 2 nivåer (sannolikt och osannolikt), för att avgöra risken för lungembolism hos en patient.">
+			keywords = <"lungemboli", "Wells", "risk", "lung">
+			misuse = <"Får inte användas för att diagnostisera PE.">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"Initial">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"BE6675EDE3E64ABE2EDA82E7B0412281">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Wells’ Criteria for Pulmonary Embolism
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- vilken händelse som helst
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Träd
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Kliniska tecken och symtom av djup ventrombos
+										value matches {
+											0|[local::at0005], 	-- Frånvarande
+											3|[local::at0006]  	-- Föreligger
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Lungemboli är #1 diagnos, eller lika troligt
+										value matches {
+											0|[local::at0008], 	-- Frånvarande
+											3|[local::at0009]  	-- Föreligger
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Puls >100
+										value matches {
+											0|[local::at0011], 	-- Frånvarande
+											1|[local::at0012]  	-- Föreligger
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Orörlig minst tre dagar, eller kirurgi inom de senaste 4 veckorna
+										value matches {
+											0|[local::at0014], 	-- Frånvarande
+											1|[local::at0015]  	-- Föreligger
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Föregående objektivt diagnostiserad lungemboli eller djup ventrombos
+										value matches {
+											0|[local::at0019], 	-- Frånvarande
+											1|[local::at0020]  	-- Föreligger
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Hemoptys
+										value matches {
+											0|[local::at0021], 	-- Frånvarande
+											1|[local::at0023]  	-- Föreligger
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Malignitet med behandling inom sex månader, eller palliativ
+										value matches {
+											0|[local::at0022], 	-- Frånvarande
+											1|[local::at0024]  	-- Föreligger
+										}
+									}
+									ELEMENT[at0025] occurrences matches {0..1} matches {	-- Total poäng
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|>=0|}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Wells’ Criteria for Pulmonary Embolism">
+					description = <"Riskstratifiering av lungemboli.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"vilken händelse som helst">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Träd">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Kliniska tecken och symtom av djup ventrombos">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Frånvarande">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Föreligger">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Lungemboli är #1 diagnos, eller lika troligt">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Frånvarande">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Föreligger">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Puls >100">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Frånvarande">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Föreligger">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Orörlig minst tre dagar, eller kirurgi inom de senaste 4 veckorna">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Frånvarande">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Föreligger">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Föregående objektivt diagnostiserad lungemboli eller djup ventrombos">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Hemoptys">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Malignitet med behandling inom sex månader, eller palliativ">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Frånvarande">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Föreligger">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Frånvarande">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Frånvarande">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Föreligger">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Föreligger">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Total poäng">
+					description = <"*">
+				>
+			>
+		>
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Wells’ Criteria for Pulmonary Embolism">
+					description = <"Risk stratification of pulmonary embolism.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Clinical Signs and Symptoms of DVT">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Absent">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Present">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"PE Is #1 Diagnosis, or Equally Likely">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Absent">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Present">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Heart Rate >100">
+					description = <"*">
+					comment = <"Present = 1.5 points. However, cannot use decimals here.">
+				>
+				["at0011"] = <
+					text = <"Absent">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Present">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Immobilization at least 3 days, or Surgery in the Previous 4 weeks">
+					description = <"*">
+					comment = <"Present = 1.5 points. However, cannot use decimals here.">
+				>
+				["at0014"] = <
+					text = <"Absent">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Present">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Previous, objectively diagnosed PE or DVT">
+					description = <"*">
+					comment = <"Present = 1.5 points. However, cannot use decimals here.">
+				>
+				["at0017"] = <
+					text = <"Hemoptysis">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Malignancy w/ Treatment within 6 mo, or palliative">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Absent">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Present">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Absent">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Absent">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Present">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Present">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Total score">
+					description = <"*">
+				>
+			>
+		>
+	>
