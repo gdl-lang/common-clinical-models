@@ -21,17 +21,6 @@ description
 		["date"] = <"2016-06-17">
 	>
 	details = <
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"För att förutsäga sannolikheten av ett förtest för djup ventrombos (DVT). Användningen av Wells DVT kriterier kan avgöra de patienter som är övergripande osannolika att ha en DVT.">
-			use = <"Wells DVT kriterier kan användas i öppenvården och på akutmottagningar. För patienter med låg risk (Wells Score <2) och en negativ D-dimer kan man utesluta behovet av ultraljud för att utesluta DVT.
-
-Wells DVT kriterier bör endast användas efter en noggrann historie- och fysisk kontroll utförts. Dessutom bör den endast användas till de patienter som har bedömts i riskzonen för DVT. Om det inte finns någon oro för DVT finns det inget behov för riskstratifiering.
-
-Observera att kalkyleringen av Wells Score är mindre användbar för inlagda patienter.">
-			misuse = <"Får inte användas med någon annan formel eller andra kriterier för DVT riskstratifiering.">
-			copyright = <"">
-		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"For predicting pre-test probability for deep vein thrombosis (DVT). Utilization of the Wells’ DVT criteria can determine those patients who are overall unlikely to have a DVT. ">
@@ -43,6 +32,17 @@ Note that the Wells Score is less useful in hospitalized patients.">
 			misuse = <"Not to be used with any other formula or criteria for DVT risk stratification.">
 			copyright = <"">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"För att förutsäga sannolikheten av ett förtest för djup ventrombos (DVT). Användningen av Wells DVT kriterier kan avgöra de patienter som är övergripande osannolika att ha en DVT.">
+			use = <"Wells DVT kriterier kan användas i öppenvården och på akutmottagningar. För patienter med låg risk (Wells Score <2) och en negativ D-dimer kan man utesluta behovet av ultraljud för att utesluta DVT.
+
+Wells DVT kriterier bör endast användas efter en noggrann historie- och fysisk kontroll utförts. Dessutom bör den endast användas till de patienter som har bedömts i riskzonen för DVT. Om det inte finns någon oro för DVT finns det inget behov för riskstratifiering.
+
+Observera att kalkyleringen av Wells Score är mindre användbar för inlagda patienter.">
+			misuse = <"Får inte användas med någon annan formel eller andra kriterier för DVT riskstratifiering.">
+			copyright = <"">
+		>
 	>
 	lifecycle_state = <"Initial">
 	other_contributors = <>
@@ -50,7 +50,7 @@ Note that the Wells Score is less useful in hospitalized patients.">
 		["references"] = <"Tovey C, Wyatt S. Diagnosis, investigation, and management of deep vein thrombosis. BMJ : British Medical Journal. 2003;326(7400):1180-1184.
 
 Wells PS, Anderson DR, Rodger M, Forgie M, Kearon C, Dreyer J, Kovacs G, Mitchell M, Lewandowski B, Kovacs MJ. Evaluation of D-dimer in the diagnosis of suspected deep-vein thrombosis. N Engl J Med. 2003 Sep 25;349(13):1227-35.">
-		["MD5-CAM-1.0.1"] = <"4D64C0D3D2AAB9ECE0ACA46BF524121C">
+		["MD5-CAM-1.0.1"] = <"D03622F5D4003B4C4930F1EC53C97658">
 	>
 
 definition
@@ -62,7 +62,7 @@ definition
 						data matches {
 							ITEM_TREE[at0003] matches {	-- *Träd(sv)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Aktiv cancer (behandling pågår eller inom senaste 6 månaderna eller palliativ)
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Aktiv cancer
 										value matches {
 											0|[local::at0005], 	-- Frånvarande
 											1|[local::at0006]  	-- Föreligger
@@ -74,13 +74,13 @@ definition
 											1|[local::at0009]  	-- Föreligger
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Nyligen sängliggande i mer än 3 dagar eller större operation inom 4 veckor
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Sängliggande nyligen i ≥3 dagar eller större operation inom 12 veckor
 										value matches {
 											0|[local::at0011], 	-- Frånvarande
 											1|[local::at0012]  	-- Föreligger
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Lokaliserad ömhet längs fördelningen av det djupa vensystemet
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Lokaliserad ömhet längs det djupa vensystemet
 										value matches {
 											0|[local::at0014], 	-- Frånvarande
 											1|[local::at0015]  	-- Föreligger
@@ -92,7 +92,7 @@ definition
 											1|[local::at0018]  	-- Föreligger
 										}
 									}
-									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Vad svullen mer än 3 cm jämfört med det asymtomatiska benet
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Svullen vad >3 cm jämfört med det andra benet
 										value matches {
 											0|[local::at0020], 	-- Frånvarande
 											1|[local::at0021]  	-- Föreligger
@@ -110,7 +110,7 @@ definition
 											1|[local::at0027]  	-- Föreligger
 										}
 									}
-									ELEMENT[at0028] occurrences matches {0..1} matches {	-- Alternativ diagnos lika sannolik eller mer omfattande än djup ventrombos
+									ELEMENT[at0028] occurrences matches {0..1} matches {	-- Alternativ diagnos till DVT minst lika sannolikt
 										value matches {
 											-2|[local::at0031], 	-- Föreligger
 											0|[local::at0030]  	-- Frånvarande
@@ -119,7 +119,7 @@ definition
 									ELEMENT[at0029] occurrences matches {0..1} matches {	-- Total poäng
 										value matches {
 											DV_COUNT matches {
-												magnitude matches {|0..8|}
+												magnitude matches {|-2..8|}
 											}
 										}
 									}
@@ -153,8 +153,8 @@ ontology
 					description = <"*@ internal @(sv)">
 				>
 				["at0004"] = <
-					text = <"Aktiv cancer (behandling pågår eller inom senaste 6 månaderna eller palliativ)">
-					description = <"*">
+					text = <"Aktiv cancer">
+					description = <"Behandling eller palliativ vård pågår eller inom de senaste 6 månaderna.">
 				>
 				["at0005"] = <
 					text = <"Frånvarande">
@@ -177,7 +177,7 @@ ontology
 					description = <"*">
 				>
 				["at0010"] = <
-					text = <"Nyligen sängliggande i mer än 3 dagar eller större operation inom 4 veckor">
+					text = <"Sängliggande nyligen i ≥3 dagar eller större operation inom 12 veckor">
 					description = <"*">
 				>
 				["at0011"] = <
@@ -189,7 +189,7 @@ ontology
 					description = <"*">
 				>
 				["at0013"] = <
-					text = <"Lokaliserad ömhet längs fördelningen av det djupa vensystemet">
+					text = <"Lokaliserad ömhet längs det djupa vensystemet">
 					description = <"*">
 				>
 				["at0014"] = <
@@ -213,8 +213,8 @@ ontology
 					description = <"*">
 				>
 				["at0019"] = <
-					text = <"Vad svullen mer än 3 cm jämfört med det asymtomatiska benet">
-					description = <"Measured 10 cm below the tibial tuberosity.">
+					text = <"Svullen vad >3 cm jämfört med det andra benet">
+					description = <"Mäter 10 cm under tibiala tuberositeten.">
 				>
 				["at0020"] = <
 					text = <"Frånvarande">
@@ -226,7 +226,7 @@ ontology
 				>
 				["at0022"] = <
 					text = <"Pittingödem">
-					description = <"Större i den symptomatiska benet.">
+					description = <"Större i det symptomatiska benet.">
 				>
 				["at0023"] = <
 					text = <"Frånvarande">
@@ -249,7 +249,7 @@ ontology
 					description = <"*">
 				>
 				["at0028"] = <
-					text = <"Alternativ diagnos lika sannolik eller mer omfattande än djup ventrombos">
+					text = <"Alternativ diagnos till DVT minst lika sannolikt">
 					description = <"*">
 				>
 				["at0029"] = <
@@ -285,8 +285,8 @@ ontology
 					description = <"@ internal @">
 				>
 				["at0004"] = <
-					text = <"Active cancer (treatment ongoing or within previous 6 months or palliative)">
-					description = <"*">
+					text = <"Active cancer">
+					description = <"Treatment or palliation within 6 months.">
 				>
 				["at0005"] = <
 					text = <"Absent">
@@ -309,7 +309,7 @@ ontology
 					description = <"*">
 				>
 				["at0010"] = <
-					text = <"Recently bedridden for more than 3 days or major surgery within 4 weeks">
+					text = <"Bedridden recently ≥3 days or major surgery within 12 weeks">
 					description = <"*">
 				>
 				["at0011"] = <
@@ -321,7 +321,7 @@ ontology
 					description = <"*">
 				>
 				["at0013"] = <
-					text = <"Localised tenderness along the distribution of the deep venous system">
+					text = <"Localized tenderness along the deep venous system">
 					description = <"*">
 				>
 				["at0014"] = <
@@ -345,7 +345,7 @@ ontology
 					description = <"*">
 				>
 				["at0019"] = <
-					text = <"Calf swelling by more than 3 cm compared with the asymptomatic leg">
+					text = <"Calf swelling >3 cm compared to the other leg">
 					description = <"Measured 10 cm below the tibial tuberosity.">
 				>
 				["at0020"] = <
@@ -369,7 +369,7 @@ ontology
 					description = <"*">
 				>
 				["at0025"] = <
-					text = <"Collateral superficial veins (non-varicose)">
+					text = <"Collateral (nonvaricose) superficial veins">
 					description = <"*">
 				>
 				["at0026"] = <
@@ -381,7 +381,7 @@ ontology
 					description = <"*">
 				>
 				["at0028"] = <
-					text = <"Alternative diagnosis as likely or wider than that of deep vein thrombosis">
+					text = <"Alternative diagnosis to DVT at least as likely">
 					description = <"*">
 				>
 				["at0029"] = <
