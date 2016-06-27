@@ -10,17 +10,18 @@
 			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
 				keywords = <"dubois", "bsa", "body", "surface">
 				misuse = <"Do not use for calculating BSA based on other formulas.">
-				purpose = <"To calculate the body surface area based on the DuBois and DuBois formula.">
-				use = <"Use for calculating the BSA based on the DuBois and DuBois formula.">
+				purpose = <"To approximate the BSA based on the DuBois and DuBois formula.">
+				use = <"Use for calculating the BSA in m2 based on the DuBois and DuBois formula.">
 			>
 			["se"] = (RESOURCE_DESCRIPTION_ITEM) <
 				keywords = <"kroppsyta", "area", "yta", "BSA", "body">
-				misuse = <"Använd inte för berkäkning med någon annan formel.">
-				use = <"Använd för beräkning av kroppytan enligt formeln av DuBois och DuBois.">
+				misuse = <"Använd inte för beräkning med någon annan formel.">
+				purpose = <"För att approximera BSA baserat på DuBois och DuBois formel.">
+				use = <"Använd för beräkna en uppskattning av BSA i m2 enligt formeln av DuBois och DuBois.">
 			>
 		>
 		original_author = <
-			["date"] = <"2016-06-27">
+			["date"] = <"2016-06-21">
 			["email"] = <"oskar.nielsen@mail.com">
 			["name"] = <"Oskar Nielsen">
 			["organisation"] = <"Cambio Healthcare Systems">
@@ -51,7 +52,7 @@
 						path = <"/data[at0002]/events[at0003]/data[at0001]/items[at0004]">
 					>
 				>
-				predicates = <"max(/data[at0002]/events[at0003]/data[at0001]/items[at0004])",...>
+				predicates = <"max(/data/events/time)",...>
 			>
 			["gt0004"] = (ARCHETYPE_BINDING) <
 				archetype_id = <"openEHR-EHR-OBSERVATION.height.v1">
@@ -61,13 +62,13 @@
 						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
 					>
 				>
-				predicates = <"max(/data[at0001]/events[at0002]/data[at0003]/items[at0004])",...>
+				predicates = <"max(/data/events/time)",...>
 			>
 		>
 		rules = <
 			["gt0009"] = (RULE) <
 				when = <"$gt0006.units=='kg'", "$gt0005.units=='cm'">
-				then = <"$gt0007.precision=2", "$gt0007.units='m2'", "$gt0008='Dubois'", "$gt0007.magnitude=((($gt0006.magnitude^0.425)*($gt0005.magnitude^0.725))*0.007184)">
+				then = <"$gt0007.precision=2", "$gt0007.units='m2'", "$gt0008='DuBois & DuBois'", "$gt0007.magnitude=((($gt0006.magnitude^0.425)*($gt0005.magnitude^0.725))*0.007184)">
 				priority = <1>
 			>
 		>
@@ -78,7 +79,7 @@
 				terms = <
 					["gt0001"] = (TERM) <
 						text = <"BSA Calculation">
-						description = <"Body surface area approximation estimation according to DuBois and DuBois' formula.">
+						description = <"Body surface area (BSA) approximation calculation according to DuBois and DuBois' formula. The formula expresses BSA in squared meters (m2) and uses a person's weight in kilograms (kg) and height/length in centimeters (cm).">
 					>
 					["gt0005"] = (TERM) <
 						text = <"Height/Length">
@@ -104,12 +105,12 @@
 			["se"] = (TERM_DEFINITION) <
 				terms = <
 					["gt0001"] = (TERM) <
-						text = <"BSA Beräkning">
-						description = <"Beräkning av kroppsytan enligt DuBois och DuBois formel.">
+						text = <"Beräkning av BSA">
+						description = <"Uppskattning av Body Surface Area (BSA) för en människokropp med hjälp av formeln av DuBois och DuBois. Formeln uttrycker BSA i kvadratmeter (m2) och använder en persons vikt i kilogram (kg) och höjd / längd i centimeter (cm).">
 					>
 					["gt0005"] = (TERM) <
 						text = <"Höjd / Längd">
-						description = <"Längden av kroppen från kronan av huvudet till sulan på foten.">
+						description = <"Kroppens längd från toppen av huvudet till sulan på foten.">
 					>
 					["gt0006"] = (TERM) <
 						text = <"Vikt">
