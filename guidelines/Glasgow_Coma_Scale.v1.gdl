@@ -8,7 +8,7 @@
 	description = (RESOURCE_DESCRIPTION) <
 		details = <
 			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
-				keywords = <"Glasgow Coma Scale",...>
+				keywords = <"Glasgow Coma Scale", "GCS", "consciousness", "assessment">
 				misuse = <"Not to be used for assessing infants and young children - an archetype for Paediatric Glasgow Coma Scale will be required to ensure that the eye, motor and verbal response choices are appropriate for the age and ability of the child.
 ">
 				purpose = <"To record clinical responses of the subject of care to defined stimuli as an objective assessment of the level of consciousness.">
@@ -23,8 +23,9 @@ The minimum possible 'Total score' value is 3 (equivalent to E1 V1 M1) and the m
 In practical use, Glasgow coma scale is recorded as one component of clinical monitoring, using sequential and repeated point-in-time measurements. Date and time should be recorded for each measurement, as well as any factors that may influence interpretation of changes. Changes in 'Total score' or any E, V or M values may have as much clinical significance as the value recorded initially.">
 			>
 			["se"] = (RESOURCE_DESCRIPTION_ITEM) <
+				keywords = <"Glasgow Coma Scale", "GCS", "medvetande", "bedömning">
 				misuse = <"Skall inte användas på spädbarn eller småbarn - en arketyp för pediatrisk glasgow coma scale krävs i sådana fall för att säkerställa att valen av ögonrespons, motorisk respons och verbal respons är anpassade till barnets ålder och förmåga. ">
-				purpose = <"Att dokumentera resultaten av de olika kliniska testerna som ingår i glasgow coma scale för att möjliggöra bedömning av medvetandegraden hos patienten. 
+				purpose = <"Att dokumentera resultaten av de olika kliniska testerna som ingår i Glasgow Coma Scale för att möjliggöra bedömning av medvetandegraden hos patienten. 
 
 ">
 				use = <"Använd för att dokumentera de kliniska responserna hos en vuxen patient när denne utsätts för stimulin. Skalan används vanligen för att etablera ett basvärde för medvetandegraden samt neurologisk funktion och/eller för att detektera patienter som kan behöva akut handläggning.
@@ -80,7 +81,6 @@ V3 DCModels R1 I1 2010 Sep - Glasgow Coma Scale v0.75 [Internet]. Health Level S
 						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0007]">
 					>
 				>
-				predicates = <"max(/data/events/time)",...>
 			>
 			["gt0009"] = (ARCHETYPE_BINDING) <
 				archetype_id = <"openEHR-EHR-OBSERVATION.glasgow_coma_scale.v1">
@@ -97,6 +97,9 @@ V3 DCModels R1 I1 2010 Sep - Glasgow Coma Scale v0.75 [Internet]. Health Level S
 					>
 					["gt0013"] = (ELEMENT_BINDING) <
 						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0026]">
+					>
+					["gt0030"] = (ELEMENT_BINDING) <
+						path = <"/data/events/time">
 					>
 				>
 			>
@@ -179,7 +182,7 @@ V3 DCModels R1 I1 2010 Sep - Glasgow Coma Scale v0.75 [Internet]. Health Level S
 			>
 			["gt0029"] = (RULE) <
 				when = <"$gt0013==null",...>
-				then = <"$gt0013.magnitude=(($gt0010.value+$gt0011.value)+$gt0012.value)",...>
+				then = <"$gt0030.value=$currentDateTime.value", "$gt0013.magnitude=(($gt0010.value+$gt0011.value)+$gt0012.value)">
 				priority = <1>
 			>
 		>
@@ -205,15 +208,15 @@ V3 DCModels R1 I1 2010 Sep - Glasgow Coma Scale v0.75 [Internet]. Health Level S
 						description = <"Best verbal response to test stimulus.">
 					>
 					["gt0010"] = (TERM) <
-						text = <"-Best eye response (E)">
+						text = <"Best eye response (E)">
 						description = <"Best response of eyes to test stimulus.">
 					>
 					["gt0011"] = (TERM) <
-						text = <"-Best motor response (M)">
+						text = <"Best motor response (M)">
 						description = <"Best motor response to test stimulus.">
 					>
 					["gt0012"] = (TERM) <
-						text = <"-Best verbal response (V)">
+						text = <"Best verbal response (V)">
 						description = <"Best verbal response to test stimulus.">
 					>
 					["gt0013"] = (TERM) <
@@ -268,13 +271,17 @@ V3 DCModels R1 I1 2010 Sep - Glasgow Coma Scale v0.75 [Internet]. Health Level S
 					["gt0029"] = (TERM) <
 						text = <"Calculate total score">
 					>
+					["gt0030"] = (TERM) <
+						text = <"GCS Time">
+						description = <"The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event.">
+					>
 				>
 			>
 			["se"] = (TERM_DEFINITION) <
 				terms = <
 					["gt0001"] = (TERM) <
 						text = <"Glasgow Coma Scale">
-						description = <"Glasgow coma scale är en skala som används för att bedöma medvetandegraden. Skalan består av tre tester: ögonöppning, verbalt svar och motoriskt svar. Maximal poäng är 15. ">
+						description = <"Glasgow Coma Scale är en skala som används för att bedöma en persons medvetandegrad. Skalan består av tre tester: ögonöppning, verbalt svar och motoriskt svar. Resultatet av varje test adderas till en total poängmängd. Den minimala totalpoängen är 3 och maximalt poäng är 15.">
 					>
 					["gt0003"] = (TERM) <
 						text = <"Ögonöppning (E)">
@@ -289,20 +296,20 @@ V3 DCModels R1 I1 2010 Sep - Glasgow Coma Scale v0.75 [Internet]. Health Level S
 						description = <"Bästa verbala responsen till teststimuli. ">
 					>
 					["gt0010"] = (TERM) <
-						text = <"- Bästa ögonrespons">
+						text = <"Bästa ögonrespons">
 						description = <"Bästa ögonresponsen till teststimuli.">
 					>
 					["gt0011"] = (TERM) <
-						text = <"- Bästa motorisk respons">
+						text = <"Bästa motorisk respons">
 						description = <"Bästa motoriska responsen till teststimuli.">
 					>
 					["gt0012"] = (TERM) <
-						text = <"- Bästa verbala respons">
+						text = <"Bästa verbala respons">
 						description = <"Bästa verbala responsen till teststimuli. ">
 					>
 					["gt0013"] = (TERM) <
-						text = <"Glasgow coma scale">
-						description = <"Summan av ordinalpiängen som registrerats för varje enskild subkomponent.">
+						text = <"GCS Poäng">
+						description = <"Summan av poängen som registrerats för varje enskilt test.">
 					>
 					["gt0014"] = (TERM) <
 						text = <"Sätt bästa ögonrespons till 4">
@@ -351,6 +358,10 @@ V3 DCModels R1 I1 2010 Sep - Glasgow Coma Scale v0.75 [Internet]. Health Level S
 					>
 					["gt0029"] = (TERM) <
 						text = <"Beräkna totalpoängen">
+					>
+					["gt0030"] = (TERM) <
+						text = <"GCS Tid">
+						description = <"Den exakta tidpunkten för en enda tidsinställd händelse under en observation. Kan representera antingen en specifik tidpunkt eller ett tidsintervall.">
 					>
 				>
 			>
