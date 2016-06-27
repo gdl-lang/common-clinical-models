@@ -19,9 +19,9 @@
 			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
 				copyright = <"Cambio Healthcare Systems">
 				keywords = <"body surface area", "BSA", "Mosteller formula">
-				misuse = <"Do not use for calculating  BSA based on other formulas.">
-				purpose = <"To calculate the body surface area based on the Mosteller formula.">
-				use = <"Use for calculating the BSA based on the Mosteller formula ( Height(cm) x Weight(kg) / 3600 )½">
+				misuse = <"Do not use for calculating BSA based on other formulas.">
+				purpose = <"To calculate the estimated body surface area based on the Mosteller formula.">
+				use = <"Use for calculating the BSA based on the Mosteller formula ( Height(cm) x Weight(kg) / 3600 ) ^½.">
 			>
 			["es"] = (RESOURCE_DESCRIPTION_ITEM) <
 				copyright = <"Cambio Healthcare Systems">
@@ -31,6 +31,10 @@
 			>
 			["sv"] = (RESOURCE_DESCRIPTION_ITEM) <
 				copyright = <"Cambio Healthcare Systems">
+				keywords = <"Mosteller", "BSA", "kroppsyta">
+				misuse = <"Använd inte för beräkning med någon annan formel.">
+				purpose = <"För att approximera BSA baserat på Mostellers formel.">
+				use = <"Används för att beräkna BSA baserat på Mostellers formel (Höjd (cm) x vikt (kg) / 3600) ^ ½.">
 			>
 		>
 		lifecycle_state = <"Author draft">
@@ -42,7 +46,7 @@
 		>
 		other_contributors = <"Konstantinos Kalliamvakos", "Iago Corbal", "Oskar Nielsen">
 		other_details = <
-			["references"] = <"1. Mosteller R. Simplified Calculation of Body-Surface Area. N Engl J Med. 1987;317(17):1098. ">
+			["references"] = <"Mosteller R. Simplified Calculation of Body-Surface Area. N Engl J Med. 1987;317(17):1098. ">
 		>
 	>
 	definition = (GUIDE_DEFINITION) <
@@ -74,13 +78,16 @@
 					["gt0013"] = (ELEMENT_BINDING) <
 						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
 					>
+					["gt0020"] = (ELEMENT_BINDING) <
+						path = <"/protocol[at0005]/items[at0006]">
+					>
 				>
 			>
 		>
 		rules = <
 			["gt0009"] = (RULE) <
 				when = <"$gt0005.units=='kg'", "$gt0006.units=='cm'">
-				then = <"$gt0013.magnitude=((($gt0005.magnitude*$gt0006.magnitude)/3600)^0.5)", "$gt0013.precision=2", "$gt0013.units='m2'">
+				then = <"$gt0020='Mosteller'", "$gt0013.magnitude=((($gt0005.magnitude*$gt0006.magnitude)/3600)^0.5)", "$gt0013.precision=2", "$gt0013.units='m2'">
 				priority = <1>
 			>
 		>
@@ -112,6 +119,8 @@
 						text = <"Overflade beregning">
 						description = <"*Body surface area is the measured or calculated surface area of a human body, expressed in square meters. (en)">
 					>
+					["gt0020"] = (TERM) <
+					>
 				>
 			>
 			["el"] = (TERM_DEFINITION) <
@@ -139,6 +148,8 @@
 						text = <"Επιφάνεια σώματος">
 						description = <"Η επιφάνεια σώματος είναι η μετρήσιμη ή υπολογιζόμενη επιφάνεια ενός ανθρώπινου σώματος, εκφραζόμενη σε τετραγωνικά μέτρα.">
 					>
+					["gt0020"] = (TERM) <
+					>
 				>
 			>
 			["en"] = (TERM_DEFINITION) <
@@ -152,7 +163,7 @@
 						description = <"The length of the body from crown of head to sole of foot.">
 					>
 					["gt0009"] = (TERM) <
-						text = <"BSA calculation (Mosteller)">
+						text = <"BSA Calculation">
 					>
 					["gt0011"] = (TERM) <
 						text = <"Formula name">
@@ -164,7 +175,11 @@
 					>
 					["gt0015"] = (TERM) <
 						text = <"BSA Calculation">
-						description = <"Body surface area is the measured or calculated surface area of a human body, expressed in square meters.">
+						description = <"Body surface area (BSA) approximation of the surface area of a human body using the Mosteller formula. The  formula expresses BSA in squared meters (m2) and uses a person's weight in kilograms (kg) and height/length in centimeters (cm).">
+					>
+					["gt0020"] = (TERM) <
+						text = <"Formula">
+						description = <"Formula used to calculate the BSA.">
 					>
 				>
 			>
@@ -231,7 +246,7 @@
 						description = <"Längden av kroppen från kronan av huvudet till sulan på foten.">
 					>
 					["gt0009"] = (TERM) <
-						text = <"BSA beräkning (Mosteller)">
+						text = <"BSA Beräkning">
 						description = <"Approximering av kroppsytan enligt Mostellers formel.">
 					>
 					["gt0011"] = (TERM) <
@@ -243,8 +258,12 @@
 						description = <"Den uppmätta eller beräknade kroppsytan för en människokropp.">
 					>
 					["gt0015"] = (TERM) <
-						text = <"BSA beräkning">
-						description = <"BSA uträkning enligt Mostellers formel uttryckt i kvadratmeter.">
+						text = <"Beräkning av BSA">
+						description = <"Uppskattning av Body Surface Area (BSA) för en människokropp med hjälp av Mostellers formel. Formeln uttrycker BSA i kvadratmeter (m2) och använder en persons vikt i kilogram (kg) och höjd / längd i centimeter (cm).">
+					>
+					["gt0020"] = (TERM) <
+						text = <"Formel">
+						description = <"Formel som används för att beräkna BSA.">
 					>
 				>
 			>
