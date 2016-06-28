@@ -169,12 +169,10 @@ Em crianças e adolescentes, o IMC deve ser avaliada por meio de tabelas de refe
 		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
-			purpose = <"För att registera Body Mass Index (BMI) hos en individ.
-Body Mass Index är ett beräknat förhållande som beskriver hur en individs kroppsvikt förhåller sig till det som betraktas som normalt, eller önskvärt, baserat på individens höjd.
-">
+			purpose = <"För att registera Body Mass Index (BMI) hos en individ. Body Mass Index är ett beräknat förhållande som beskriver hur en individs kroppsvikt förhåller sig till det som betraktas som normalt, eller önskvärt, baserat på individens höjd.">
 			use = <"Används för att registera Body Mass Index (BMI) hos både vuxna och barn.
 
-Används för att mata in Body Mass Index antingen manuellt (dvs beräknas och matas in direkt av läkaren), eller automatiskt (dvs. beräkning och inträde sker automatiskt genom ett program som bygger på separata höjd och viktmätningar ).
+Används för att mata in Body Mass Index antingen manuellt (dvs. beräknas och matas in direkt av läkaren), eller automatiskt (dvs. beräkning och inträde sker automatiskt genom ett program som bygger på separata höjd och viktmätningar ).
 
 Formler: Body Mass Index är vanligtvis beräknad som vikt (kg) / [längd (m) i kvadrat]. Detta är den antagna formeln om inte annat anges i 'Formel' elementet i protokollet. Alternativt uppskattas Body Mass Index genom användandet av pounds och inches: Vikt (lb) / [höjd (i) i kvadrat] x 703 (med uns (oz) och fraktioner ändras till decimala värden).
 
@@ -202,7 +200,7 @@ openEHR-EHR-OBSERVATION.height-adjusted  وopenEHR-EHR-OBSERVATION.body_weight-a
 			copyright = <"© openEHR Foundation">
 		>
 	>
-	lifecycle_state = <"Initial">
+	lifecycle_state = <"AuthorDraft">
 	other_contributors = <"Marja Buur, Medisch Centrum Alkmaar, Netherlands", "Rong Chen, Cambio Healthcare Systems, Sweden", "Angela de Zwart, Orion Health, New Zealand", "Paul Donaldson, Nursing Informatics Australia, Australia", "Sebastian Garde, Ocean Informatics, Germany", "Heather Grain, Llewelyn Grain Informatics, Australia", "Anne Harbison, CPCER, Australia", "Sam Heard, Ocean Informatics, Australia", "Andrew James, University of Toronto, Canada", "Shinji Kobayashi, Ehime University, Japan", "Heather Leslie, Ocean Informatics, Australia (Editor)", "Rikard Lovstrom, Swedish Medical Association, Sweden", "Ian McNicoll, Ocean Informatics, United Kingdom", "Jeroen Meintjens, Medisch Centrum Alkmaar, Netherlands", "Arturo Romero, SESCAM, Spain", "Soon Ghee Yap, Singapore Health Services Pte Ltd, Singapore">
 	other_details = <
 		["references"] = <"Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults: The Evidence Report [Internet]. Bethesda (MD): National Heart, Lung, and Blood Institute; NIH Publication No. 98-4083, Sep 1998, [cited 2009 July 02]. Available from: http://www.nhlbi.nih.gov/guidelines/obesity/
@@ -220,11 +218,11 @@ Tzamaloukas AH, Patron A, Malhotra D. Body Mass Index in Amputees. Journal of Pa
 definition
 	OBSERVATION[at0000] matches {	-- Body mass index
 		data matches {
-			HISTORY[at0001] matches {	-- Historia
+			HISTORY[at0001] matches {	-- history
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {1..*} matches {	-- Vilken händelse som helst
+					EVENT[at0002] occurrences matches {1..*} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Träd
+							ITEM_TREE[at0003] matches {	-- Single
 								items cardinality matches {1..*; unordered} matches {
 									ELEMENT[at0004] matches {	-- Body Mass Index
 										value matches {
@@ -253,25 +251,25 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_LIST[at0005] matches {	-- Lista
+			ITEM_LIST[at0005] matches {	-- List
 				items cardinality matches {0..*; ordered} matches {
-					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Metod
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Method
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
-									at0007, 	-- Automatisk inmatning
-									at0008]	-- Direkt inmatning
+									at0007, 	-- Automatic entry
+									at0008]	-- Direct entry
 								}
 							}
 						}
 					}
-					ELEMENT[at0010] occurrences matches {0..1} matches {	-- Formel
+					ELEMENT[at0010] occurrences matches {0..1} matches {	-- Formula
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					ELEMENT[at0011] occurrences matches {0..1} matches {	-- Kommentar
+					ELEMENT[at0011] occurrences matches {0..1} matches {	-- Comment
 						value matches {
 							DV_TEXT matches {*}
 						}
