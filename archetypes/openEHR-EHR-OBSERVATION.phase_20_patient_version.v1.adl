@@ -23,16 +23,6 @@ description
 		["date"] = <"2016-06-23">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To assess experencied symptoms that may be related to your medications. Your health practitioner greatly appreciates your assistance by providing this information.">
-			use = <"Assign the option that best describes the symptoms you have had over the last two weeks.
-
-This version of PHASE-20 is intended for use in outpatient care. ">
-			keywords = <"symptom", "drugs", "pharma", "elderly", "phase-20", "patient", "open care", "openpatient">
-			misuse = <"Do not use outside of the openpatient care setting. Its use outside Sweden should happen only after direct consultation with Mariann Hedström, RN, PhD, Department of Public Health and Caring Sciences, Uppsala University, Sweden, e-mail: mariann.hedstrom@pubcare.uu.se.">
-			copyright = <"Patent- och Registreringsverket (PRV) registration #0403318 and #519267.">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Denna skattningsskala är till för att uppmärksamma om du upplever besvär som möjligen kan bero på din läkemedelsbehandling. Dina svar kan vara av stort värde för att din läkare ska få en så bra helhetsbild som möjligt.">
@@ -40,6 +30,16 @@ This version of PHASE-20 is intended for use in outpatient care. ">
 			keywords = <"phase-20", "phase", "symptom", "läkemedel", "äldre", "öppenvård">
 			misuse = <"Denna version av PHASE-20 får inte användas utanför öppenvården. Dess användning utanför Sverige ska ske först efter direkt samråd med Mariann Hedström, leg. ssk., PhD, Institutionen för folkhälso- och vårdvetenskap , Uppsala universitet, e-post: mariann.hedstrom@pubcare.uu.se.">
 			copyright = <"Patent- och Registreringsverket (PRV) reg nr 0403318 och nr 519267.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess experencied symptoms that may be related to your medications. Your health practitioner greatly appreciates your assistance by providing this information.">
+			use = <"Assign the option that best describes the symptoms you have had over the last two weeks.
+
+This version of PHASE-20 is intended for use in outpatient care.">
+			keywords = <"symptom", "drugs", "pharma", "elderly", "phase-20", "patient", "open care", "openpatient">
+			misuse = <"Do not use outside of the openpatient care setting. Its use outside Sweden should happen only after direct consultation with Mariann Hedström, RN, PhD, Department of Public Health and Caring Sciences, Uppsala University, Sweden, e-mail: mariann.hedstrom@pubcare.uu.se.">
+			copyright = <"Patent- och Registreringsverket (PRV) registration #0403318 and #519267.">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
@@ -52,25 +52,25 @@ This version of PHASE-20 is intended for use in outpatient care. ">
 definition
 	OBSERVATION[at0000] matches {	-- PHASE-20 Patient Version
 		data matches {
-			HISTORY[at0001] matches {	-- Händelseförlopp
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Vilken händelse som helst
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Träd
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Fyller i enkäten
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Document completed:
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0005, 	-- Självständigt
-													at0006, 	-- Med stöd av närstående
-													at0007]	-- Med stöd av vårdpersonal
+													at0005, 	-- Independently
+													at0006, 	-- With support of relativ/next of kin/P.O.A
+													at0007]	-- With support of health professional
 												}
 											}
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..*} matches {	-- Namn på vårdpersonal
+									ELEMENT[at0008] occurrences matches {0..*} matches {	-- Name:
 										value matches {
 											DV_TEXT matches {*}
 										}

@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.phase_20_nursing_home_version.v1
 
 concept
-	[at0000]	-- PHASE-20 Nursing Home Version
+	[at0000]	-- PHASE-20 för Särskilt boende/med hemsjukvård
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -23,26 +23,23 @@ description
 		["date"] = <"2016-06-23">
 	>
 	details = <
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"PHASE-20 är en skattningsskala som används för att systematiskt identifiera läkemedelsrelaterade symptom hos äldre människor. Detta ger en viktigt grund för att ta ställning till personens läkemedelsbehandling.">
-			use = <"Ange det alternativ som bäst motsvarar besvärsnivån under de senaste två veckorna.
-
-Denna version av PHASE-20 är avsedd att användas på särskilt boende/med hemsjukvård. PHASE-20 används för personer som har möjlighet att delta i åtminstone delvis i bedömningen. Om personen inte kan delta alls bör PHASE-Proxy användas.
-">
-			misuse = <"*Do not use outside of the nursing home or home care setting. Its use outside Sweden should happen only after direct consultation with Mariann Hedström, RN, PhD, Department of Public Health and Caring Sciences, Uppsala University, Sweden, e-mail: mariann.hedstrom@pubcare.uu.se.(en)">
-			copyright = <"Patent- och Registreringsverket (PRV) registreringsnummer 0403318 och 519267.">
-		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"PHASE-20 is a rating scale used to identify symptoms related to the medical treatment among the elderly. For example side effects, interactions and inappropriate dosage.">
 			use = <"Assign the option that best describes the patients symptoms during the last two weeks.
 
-This version of PHASE-20 is intended for use in nursing homes. PHASE-20 is used for persons who are able to participate at least partly in the assessment. If the person is not able to participate at all, PHASE-Proxy should be used.
-
-">
+This version of PHASE-20 is intended for use in nursing homes. PHASE-20 is used for persons who are able to participate at least partly in the assessment. If the person is not able to participate at all, PHASE-Proxy should be used.">
 			misuse = <"Do not use outside of the nursing home or home care setting. Its use outside Sweden should happen only after direct consultation with Mariann Hedström, RN, PhD, Department of Public Health and Caring Sciences, Uppsala University, Sweden, e-mail: mariann.hedstrom@pubcare.uu.se.">
 			copyright = <"Patent- och Registreringsverket (PRV) registration #0403318 and #519267.">
+		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"PHASE-20 är en skattningsskala som används för att systematiskt identifiera läkemedelsrelaterade symptom hos äldre människor. Detta ger en viktigt grund för att ta ställning till personens läkemedelsbehandling.">
+			use = <"Ange det alternativ som bäst motsvarar besvärsnivån under de senaste två veckorna.
+
+Denna version av PHASE-20 är avsedd att användas på särskilt boende/med hemsjukvård. PHASE-20 används för personer som har möjlighet att delta i åtminstone delvis i bedömningen. Om personen inte kan delta alls bör PHASE-Proxy användas.">
+			misuse = <"Denna version av PHASE-20 får inte användas utanför vård på särskilt boende/med hemsjukvård. Dess användning utanför Sverige ska ske först efter direkt samråd med Mariann Hedström, leg. ssk., PhD, Institutionen för folkhälso- och vårdvetenskap , Uppsala universitet, e-post: mariann.hedstrom@pubcare.uu.se.">
+			copyright = <"Patent- och Registreringsverket (PRV) registreringsnummer 0403318 och 519267.">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
@@ -53,33 +50,33 @@ This version of PHASE-20 is intended for use in nursing homes. PHASE-20 is used 
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- PHASE-20 Nursing Home Version
+	OBSERVATION[at0000] matches {	-- PHASE-20 för Särskilt boende/med hemsjukvård
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- Händelseförlopp
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Vilken händelse som helst
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- Träd
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- The patient has completed the document:
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Hur mycket har patienten kunnat delta i bedömningen?
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0005, 	-- Independently
-													at0006]	-- With some support
+													at0005, 	-- Helt
+													at0006]	-- Delvis
 												}
 											}
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- The patient is:
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Är patienten
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0009, 	-- Mobile
-													at0010, 	-- Chairbound
-													at0011]	-- Bedbound
+													at0009, 	-- Uppegående
+													at0010, 	-- Rullstolsburen
+													at0011]	-- Sängbunden
 												}
 											}
 										}
