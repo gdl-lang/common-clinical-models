@@ -1,0 +1,113 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"unknown">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+			>
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.qsofa.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0004"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0005]">
+					>
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0006]">
+					>
+				>
+			>
+			["gt0007"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.qsofa.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0008]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0009"] = (RULE) <
+				when = <"$gt0008==null",...>
+				then = <"$gt0008=local::at0009|Not high risk. Continue to monitor if sepsis is still suspected.|",...>
+				priority = <5>
+			>
+			["gt0010"] = (RULE) <
+				when = <"$gt0005==false", "$gt0003==true", "$gt0004==true">
+				then = <"$gt0008=local::at0010|High risk of poor outcome due to infection.|",...>
+				priority = <4>
+			>
+			["gt0011"] = (RULE) <
+				when = <"$gt0004==false", "$gt0005==true", "$gt0003==true">
+				then = <"$gt0008=local::at0010|High risk of poor outcome due to infection.|",...>
+				priority = <3>
+			>
+			["gt0012"] = (RULE) <
+				when = <"$gt0003==false", "$gt0005==true", "$gt0004==true">
+				then = <"$gt0008=local::at0010|High risk of poor outcome due to infection.|",...>
+				priority = <2>
+			>
+			["gt0013"] = (RULE) <
+				when = <"$gt0005==true", "$gt0004==true", "$gt0003==true">
+				then = <"$gt0008=local::at0010|High risk of poor outcome due to infection.|",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"qSOFA">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Altered Mentation">
+						description = <"*">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Respiration Rate ≥ 22 /min ">
+						description = <"*">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Systolic Blood Pressure ≤100 mm Hg">
+						description = <"*">
+					>
+					["gt0006"] = (TERM) <
+					>
+					["gt0008"] = (TERM) <
+						text = <"Risk Level">
+						description = <"*">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Set default">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Set risk level to high risk - 1">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Set risk level to high risk - 2">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Set risk level to high risk - 3">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Set risk level to high risk - 4">
+					>
+				>
+			>
+		>
+	>
+>
