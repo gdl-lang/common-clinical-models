@@ -7,7 +7,9 @@ language
 	original_language = <[ISO_639-1::en]>
 description
 	original_author = <
-		["name"] = <"">
+		["name"] = <"Jimmy Axelsson">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2016-07-06">
 	>
 	details = <
 		["en"] = <
@@ -15,13 +17,18 @@ description
 			purpose = <"">
 			use = <"">
 			misuse = <"">
-			copyright = <"">
+			copyright = <"Cambio Healthcare Systems">
 		>
 	>
-	lifecycle_state = <"0">
+	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"9822074C12D778A49AC9E042393F9D57">
+		["references"] = <"Singer M, Deutschman CS, Seymour C, et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):801-810. doi:10.1001/jama.2016.0287.
+
+Shankar-Hari M, Phillips GS, Levy ML, et al. Developing a New Definition and Assessing New Clinical Criteria for Septic Shock: For the Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):775-787. doi:10.1001/jama.2016.0289.
+
+Seymour CW, Liu VX, Iwashyna TJ, et al. Assessment of Clinical Criteria for Sepsis: For the Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):762-774. doi:10.1001/jama.2016.02">
+		["MD5-CAM-1.0.1"] = <"7B7739FF75A8BE3DE0E3D0269837AC93">
 	>
 
 definition
@@ -34,38 +41,26 @@ definition
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
 									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Altered Mentation
-										name matches {
-											DV_TEXT matches {*}
-										}
 										value matches {
-											DV_BOOLEAN matches {
-												value matches {True, False; False}
-											}
+											0|[local::at0008], 	-- Absent
+											1|[local::at0009]  	-- Present
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Respiration Rate ≥ 22 /min 
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Respiration Rate ≥22 /min 
 										value matches {
-											DV_BOOLEAN matches {
-												value matches {True, False; False}
-											}
+											0|[local::at0010], 	-- Absent
+											1|[local::at0011]  	-- Present
 										}
 									}
 									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Systolic Blood Pressure ≤100 mm Hg
 										value matches {
-											DV_BOOLEAN matches {
-												value matches {True, False; False}
-											}
+											0|[local::at0012], 	-- Absent
+											1|[local::at0013]  	-- Present
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Risk Level
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Total Score
 										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0009, 	-- Not high risk. Continue to monitor if sepsis is still suspected.
-													at0010]	-- High risk of poor outcome due to infection.
-												}
-											}
+											DV_COUNT matches {*}
 										}
 									}
 								}
@@ -83,7 +78,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"qSOFA">
-					description = <"unknown">
+					description = <"quck SOFA.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -102,23 +97,39 @@ ontology
 					description = <"*">
 				>
 				["at0005"] = <
-					text = <"Respiration Rate ≥ 22 /min ">
+					text = <"Respiration Rate ≥22 /min ">
 					description = <"*">
 				>
 				["at0006"] = <
 					text = <"Systolic Blood Pressure ≤100 mm Hg">
 					description = <"*">
 				>
+				["at0007"] = <
+					text = <"Total Score">
+					description = <"*">
+				>
 				["at0008"] = <
-					text = <"Risk Level">
+					text = <"Absent">
 					description = <"*">
 				>
 				["at0009"] = <
-					text = <"Not high risk. Continue to monitor if sepsis is still suspected.">
+					text = <"Present">
 					description = <"*">
 				>
 				["at0010"] = <
-					text = <"High risk of poor outcome due to infection.">
+					text = <"Absent">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Present">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Absent">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Present">
 					description = <"*">
 				>
 			>
