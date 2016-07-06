@@ -1,0 +1,76 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.qsofa_assessment.v1
+
+concept
+	[at0000]	-- qSOFA assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Jimmy Axelsson">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2016-07-06">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Singer M, Deutschman CS, Seymour C, et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):801-810. doi:10.1001/jama.2016.0287.
+
+Shankar-Hari M, Phillips GS, Levy ML, et al. Developing a New Definition and Assessing New Clinical Criteria for Septic Shock: For the Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):775-787. doi:10.1001/jama.2016.0289.
+
+Seymour CW, Liu VX, Iwashyna TJ, et al. Assessment of Clinical Criteria for Sepsis: For the Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):762-774. doi:10.1001/jama.2016.02">
+		["MD5-CAM-1.0.1"] = <"CA4B894E59AE1FDC5AF2CE3AE5F0EF4A">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- qSOFA assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Risk Assessment
+						value matches {
+							0|[local::at0004], 	-- Not high risk.
+							1|[local::at0005]  	-- High risk.
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"qSOFA assessment">
+					description = <"quick SOFA">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"Risk Assessment">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Not high risk.">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"High risk.">
+					description = <"*">
+				>
+			>
+		>
+	>
