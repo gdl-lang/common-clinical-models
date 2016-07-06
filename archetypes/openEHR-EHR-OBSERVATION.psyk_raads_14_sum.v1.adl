@@ -1,0 +1,169 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.psyk_raads_14_sum.v1
+
+concept
+	[at0000]	-- Psyk raads 14 sum
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["organisation"] = <"Cambio Healthcare Systems">
+		["name"] = <"Joana Vicente">
+		["email"] = <"joana.vicente@cambio.se">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To register the total sum for the  Ritvo Autism and Asperger Diagnostic Scale-14 (RAADS-14) screening tool for autism spectrum disorder in an adult psychiatric population.">
+			use = <"To register the total sum for the RAADS-14 scale and to attribute the respective result class.">
+			keywords = <"RAADS-14 total sum", "autism found", "autism likely", "autism">
+			misuse = <"Do not use this to register the results of the RAADS-80 scale.">
+			copyright = <"Cambio Helathcare Systems">
+		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Registrera totalsumma för  Ritvo Autism and Asperger Diagnostic Scale-14 (RAADS-14) självskattningsformulär för  för autismspektrumstörning och diagnostisering av autism hos vuxna.">
+			use = <"Registrera totalsumma för RAADS-14 självskattningsformulär och ange resultatklass.">
+			keywords = <"RAADS-14 totalsumma", "autism", "möjligt autism", "inga autism symptom">
+			misuse = <"Används inte för att registrera resultater för RAADS-80 skala.">
+			copyright = <"Cambio Helathcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"1-Eriksson JM, Andersen MJ, Bejerot S. RAADS-14 Screen: validity of a screening tool for Autism Spectrum Disorder in an adult psychiatric population. Molecular Autism 2013; 4:49.
+2-Ritvo RA, Ritvo ER, Guthrie D, Yuwiler A, Ritvo MJ, Weisbender L: A scale to assist the diagnosis of autism and Asperger’s disorder in adults (RAADS): a pilot study. J Autism Dev Disord. 2008, 38: 213-223. 10.1007/s10803-007-0380-6.
+3-Andersen LMJ, Näswall K, Manouilenko I, Nylander L, Edgar J, Ritvo RA, Ritvo E, Bejerot S: The Swedish version of the Ritvo Autism and Asperger Diagnostic Scale: revised (RAADS-R). A validation study of a rating scale for adults. J Autism Dev Disord. 2011, 41: 1635-1645. 10.1007/s10803-011-1191-3.
+4-Hoekstra RA, Vinkhuyzen AAE, Wheelwright S, Bartels M, Boomsma DI, Baron-Cohen S, Posthuma D, van der Sluis S: The construction and validation of an abridged version of the Autism-Spectrum Quotient (AQ-Short). J Autism Dev Disord. 2011, 41: 589-596. 10.1007/s10803-010-1073-0.">
+		["MD5-CAM-1.0.1"] = <"BE5982BEC1A4876387F398E32783688C">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Psyk raads 14 sum
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- RAADS-14 total score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..42|}
+											}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- RAADS-14 results
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0006, 	-- No autism symptoms
+													at0007, 	-- Autism likely
+													at0008]	-- Autism found
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Psyk raads 14 sum">
+					description = <"RAADS-14 screening scale results and classes.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"RAADS-14 total score">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"RAADS-14 results">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"No autism symptoms">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Autism likely">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Autism found">
+					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Psyk raads 14 summa">
+					description = <"RAADS-14 självskattning enkät total summa och resultat">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"RAADS-14 totalsumma">
+					description = <"**(en)">
+				>
+				["at0005"] = <
+					text = <"RAADS-14 resultat">
+					description = <"**(en)">
+				>
+				["at0006"] = <
+					text = <"Inga sutism symptom">
+					description = <"**(en)">
+				>
+				["at0007"] = <
+					text = <"Möjligt autism">
+					description = <"**(en)">
+				>
+				["at0008"] = <
+					text = <"Autism">
+					description = <"**(en)">
+				>
+			>
+		>
+	>
