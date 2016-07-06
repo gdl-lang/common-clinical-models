@@ -1,0 +1,185 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.nihss_stroke_sum.v1
+
+concept
+	[at0000]	-- Nihss stroke sum
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["organisation"] = <"Cambio Healthcare Systems">
+		["name"] = <"Joana Vicente">
+		["email"] = <"joana.vicente@cambio.se">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To register and attribute the NIHSS stroke scale total sum to different classes.">
+			use = <"To register the NIHSS 42 points based stroke scale total sum and attribute the sum to different categories.">
+			keywords = <"NIHSS", "stroke", "neurological accessment">
+			misuse = <"Do not use to register other than total sum for the 42 points based NIHSS stroke scale.">
+			copyright = <"Cambio Healthcare Systems">
+		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"För att registrera NIHSS skala totalsumma och ange resultat till olika klasser.">
+			use = <"För att registrera den 42 poäng baserad NIHSS skalan och ange totalsumma till olika klasser.">
+			keywords = <"NIHSS", "stroke", "neurologisk undersökning">
+			misuse = <"Används inte för att registrera annat än totalsumma för 42 poäng baserad NIHSS stroke skalan.">
+			copyright = <"Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"1-Brott T, Adams HP Jr, Olinger CP, Marler JR, Barsan WG, Biller J, Spilker J,Holleran R, Eberle R, Hertzberg V, et al. Measurements of acute cerebral infarction: a clinical examination scale. Stroke. 1989 Jul;20(7):864-70. PubMed PMID: 2749846.
+2-Adams HP Jr, Davis PH, Leira EC, Chang KC, Bendixen BH, Clarke WR, Woolson RF, Hansen MD.Baseline NIH Stroke Scale score strongly predicts outcome after stroke: A report of the Trial of Org 10172 in Acute Stroke Treatment (TOAST).Neurology. 1999 Jul 13;53(1):126-31.">
+		["MD5-CAM-1.0.1"] = <"3E42C93CCAA45C108FB02F88FEA879CE">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Nihss stroke sum
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- NIHSS-total score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..42|}
+											}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- NIHSS
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0006, 	-- Normal exam
+													at0007, 	-- Mild impairment
+													at0008, 	-- Moderately severe impairment
+													at0009, 	-- Severe impairment
+													at0010]	-- Very severe neurological impairment
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Nihss stroke sum">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"NIHSS-total score">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"NIHSS">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Normal exam">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Mild impairment">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Moderately severe impairment">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Severe impairment">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Very severe neurological impairment">
+					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Nihss summa">
+					description = <"Registrera och ange rätt klass för NIHSS stroke skalan totalsumma.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"NIHSS-totalsumma">
+					description = <"**(en)">
+				>
+				["at0005"] = <
+					text = <"NIHSS">
+					description = <"**(en)">
+				>
+				["at0006"] = <
+					text = <"Normal undersökning">
+					description = <"**(en)">
+				>
+				["at0007"] = <
+					text = <"Lätt neurologisk påverkan">
+					description = <"**(en)">
+				>
+				["at0008"] = <
+					text = <"Mellan svår neurologisk påverkan">
+					description = <"**(en)">
+				>
+				["at0009"] = <
+					text = <"Svår neurologisk påverkan ">
+					description = <"**(en)">
+				>
+				["at0010"] = <
+					text = <"Mycket svår neurologisk påverkan">
+					description = <"**(en)">
+				>
+			>
+		>
+	>
