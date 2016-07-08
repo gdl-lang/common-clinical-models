@@ -1,0 +1,230 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.crb_65_questionnaire.v1
+
+concept
+	[at0000]	-- CRB-65
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Dennis Forslund">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2016-07-07">
+	>
+	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att utvärdera svårighetsgraden, angiven i mortalitet inom 30 dagar, av samhällsförvärvad pneumoni och underlätta beslutsfattande gällande vårdnivå.">
+			use = <"Används till att utvärdera förekomst av faktorer av prognostisk betydelse hos patienter som söker med misstänkt samhällsförvärvad pneumoni.
+
+CRB-65 är en akronym för Confusion, Respiratory rate (≥30/min), Blood pressure (Systolic BP <90mmHg or diastolic BP ≤60mmHg) och age (over or equal to) 65.
+">
+			misuse = <"*(en)">
+			copyright = <"*(en)">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess severity of community-acquired pneumonia measured in 30-day mortality, and aid in determining care level. ">
+			use = <"Use to evaluate the presence of key factors determining severity of illness in patients presenting with suspected community-acquired pneumonia.
+
+CRB-65 is a clinical scoring system using various key elements to predict severity of illness in patients presenting with suspected community-acquired pneumonia. CRB-65 is an acronym for Confusion, Respiratory rate (≥30/min), Blood pressure (Systolic BP <90mmHg or diastolic BP ≤60mmHg) and age (over or equal to) 65.">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"McNally M, Curtain J, O'Brien K, Dimitrov B, Fahey T. \"Validity of British Thoracic Society guidance (the CRB-65 rule) for predicting the severity of pneumonia in general practice: systematic review and meta-analysis\". Br J Gen Pract. 2010 Oct;60(579):e423-33.">
+		["MD5-CAM-1.0.1"] = <"4063D6A89506EEC108AE842CF1C4657B">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- CRB-65
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Confusion?
+										value matches {
+											0|[local::at0007], 	-- No
+											1|[local::at0008]  	-- Yes
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Respiratory rate ≥30/min?
+										value matches {
+											0|[local::at0009], 	-- No
+											1|[local::at0010]  	-- Yes
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Systolic BP <90mmHg or diastolic BP ≤60mmHg?
+										value matches {
+											0|[local::at0011], 	-- No
+											1|[local::at0012]  	-- Yes
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Age ≥ 65 years?
+										value matches {
+											0|[local::at0014], 	-- No
+											1|[local::at0015]  	-- Yes
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"CRB-65">
+					description = <"Contains the questions needed to predict the severity of community-acquired pneumonia in accordance with CRB-65.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Confusion?">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Respiratory rate ≥30/min?">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Systolic BP <90mmHg or diastolic BP ≤60mmHg?">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Age ≥ 65 years?">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"CRB-65">
+					description = <"Innehåller de frågor som krävs för prognostisk bedömning av svårighetsgrad hos patienter med misstänkt samhällsförvärvad pneumoni i enlighet med CRB-65.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Konfusion?">
+					description = <"**(en)">
+				>
+				["at0005"] = <
+					text = <"Andningsfrekvens ≥30/min?">
+					description = <"**(en)">
+				>
+				["at0006"] = <
+					text = <"Systoliskt <90mmHg eller diastoliskt ≤60mmHg?">
+					description = <"**(en)">
+				>
+				["at0007"] = <
+					text = <"Nej">
+					description = <"**(en)">
+				>
+				["at0008"] = <
+					text = <"Ja">
+					description = <"**(en)">
+				>
+				["at0009"] = <
+					text = <"Nej">
+					description = <"**(en)">
+				>
+				["at0010"] = <
+					text = <"Ja">
+					description = <"**(en)">
+				>
+				["at0011"] = <
+					text = <"Nej">
+					description = <"**(en)">
+				>
+				["at0012"] = <
+					text = <"Ja">
+					description = <"**(en)">
+				>
+				["at0013"] = <
+					text = <"Ålder ≥ 65 år?)">
+					description = <"**(en)">
+				>
+				["at0014"] = <
+					text = <"Nej">
+					description = <"**(en)">
+				>
+				["at0015"] = <
+					text = <"Ja">
+					description = <"**(en)">
+				>
+			>
+		>
+	>
