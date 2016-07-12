@@ -1,4 +1,18 @@
-<html><head><script id="decision-support-view" type="application/json">{
+<!DOCTYPE html><html ng-app="cds_app">
+<head>
+<title>{{def.concept.name}}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
+<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
+<script type="text/javascript" src="wro/angular.js"></script>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
+<script type="text/javascript" src="wro/moment.js"></script>
+<script type="text/javascript" src="wro/date-picker.js"></script>
+<script type="text/javascript" src="wro/app_lib.js"></script>
+<script id="decision-support-view" type="application/json">{
   "dsViewId": "qSofa.v1",
   "language": {
     "originalLanguage": {
@@ -14,7 +28,7 @@
       "name": "quick Sepsis Related Organ Failure Assessment",
       "description": "qSOFA is an acronym for quick Sepsis Related Organ Failure Assessment. It is used to identify patients with suspected infection who have a greater risk of poor outcome outside of the intensive care unit. qSOFA consists of three criteria: altered mental state (GCS\u003c15), fast respiratory rate (≥22 breaths per min), and low blood pressure (SBP≤100 mmHg). Each criteria is worth one point."
     },
-    "se": {
+    "sv": {
       "name": "qSOFA"
     }
   },
@@ -41,7 +55,7 @@
         "misuse": "Do not use to rule out sepsis. If sepsis is still suspected when the qSOFA score is \u003c2, continue monitoration and evaluation of the patient. Initiate standard treatment if needed. Conduct qSOFA assessments regularly in order to detect changes in prognosis.",
         "copyright": "Cambio Healthcare Systems"
       },
-      "se": {
+      "sv": {
         "purpose": "*(en) To identify patients with confirmed or suspected infection with high risk for poor outcome outside of the intensive care unit.",
         "keywords": [
           "*(en) qSOFA",
@@ -71,9 +85,122 @@
       "id": "en",
       "terms": {}
     },
-    "se": {
-      "id": "se",
+    "sv": {
+      "id": "sv",
       "terms": {}
     }
   }
-}</script></head><body></body></html>
+}</script>
+</head>
+<body ng-controller="cds_controller">
+<#assign qsofa_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.qsofa.v1']">
+<#assign qsofa_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.qsofa.v1']">
+<#assign qsofa_entry_def = "def.entries['openEHR-EHR-OBSERVATION.qsofa.v1']">
+<#assign altered_mentation_def = qsofa_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign respiration_rate__22__min__def = qsofa_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign event_time_def = qsofa_entry_def + ".elements['/data/events/time']">
+<#assign total_score_def = qsofa_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign systolic_blood_pressure__100_mm_hg_def = qsofa_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign altered_mentation_ehr_data = qsofa_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign respiration_rate__22__min__ehr_data = qsofa_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign event_time_ehr_data = qsofa_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign total_score_ehr_data = qsofa_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign systolic_blood_pressure__100_mm_hg_ehr_data = qsofa_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign altered_mentation_cds_data = qsofa_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign respiration_rate__22__min__cds_data = qsofa_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign event_time_cds_data = qsofa_entry_cds_data + "[0].elements['/data/events/time']">
+<#assign total_score_cds_data = qsofa_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign systolic_blood_pressure__100_mm_hg_cds_data = qsofa_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign qsofa_assessment_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.qsofa_assessment.v1']">
+<#assign qsofa_assessment_entry_def = "def.entries['openEHR-EHR-EVALUATION.qsofa_assessment.v1']">
+<#assign risk_assessment_def = qsofa_assessment_entry_def + ".elements['/data{at0001}/items{at0003}']">
+<#assign risk_assessment_cds_data = qsofa_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0003}']">
+
+<script>
+  angular.module('cds_app').controller('qSOFA_Controller', function($scope, $window){
+    $scope.$on('json_loaded', function(){
+      $scope.${event_time_ehr_data}.value.value = $window.getCurrentDate();
+    });
+      $scope.$on('executeEnd', function() {
+      $scope.qsofaNotHighRisk=false;
+      $scope.qsofaHighRisk=false;
+      if ($scope.${total_score_cds_data}.value.magnitude < 2) {
+        $scope.qsofaNotHighRisk=true;
+      }
+      if ($scope.${total_score_cds_data}.value.magnitude >= 2) {
+        $scope.qsofaHighRisk=true;
+      }
+    });
+  });
+  </script>
+
+
+<div ng-show="ready" ng-controller="qSOFA_Controller">
+<div class="row">
+<div class="medium-offset-3 medium-6 column">
+<h1>{{${qsofa_entry_def}.name}}</h1>
+</div>
+</div>
+<div class="row">
+<div class="medium-offset-3 medium-6 column">
+<form name="form">
+<fieldset>
+<legend>{{${qsofa_entry_def}.name}}</legend>
+<label>{{${altered_mentation_def}.name}}</label>
+<div class="row collapse" title="{{${altered_mentation_def}.description}}">
+<div class="medium-12 columns">
+<select ng-model="${altered_mentation_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${altered_mentation_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+</div>
+</div>
+<label>{{${respiration_rate__22__min__def}.name}}</label>
+<div class="row collapse" title="{{${respiration_rate__22__min__def}.description}}">
+<div class="medium-12 columns">
+<select ng-model="${respiration_rate__22__min__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${respiration_rate__22__min__def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+</div>
+</div>
+<label>{{${systolic_blood_pressure__100_mm_hg_def}.name}}</label>
+<div class="row collapse" title="{{${systolic_blood_pressure__100_mm_hg_def}.description}}">
+<div class="medium-12 columns">
+<select ng-model="${systolic_blood_pressure__100_mm_hg_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${systolic_blood_pressure__100_mm_hg_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+</div>
+</div>
+</form>
+</fieldset>
+<fieldset>
+<legend>{{${total_score_def}.name}}</legend>
+<div class="medium-6 column">
+<div class="row">
+<div class="medium-12 columns">
+<b>{{${total_score_def}.name}}: </b>{{${total_score_cds_data}.value.magnitude}}</div>
+</div>
+</div>
+</fieldset>
+<fieldset>
+<legend>{{${risk_assessment_def}.name}}</legend>
+<p class="guideline-recommendation" ng-class="{'qsofanothighrisk' : qsofaNotHighRisk,'qsofahighrisk' : qsofaHighRisk}">{{${risk_assessment_cds_data}.value.symbol.value}}</p>
+</div>
+</fieldset>
+<style>
+    body{background-color: #e7efff;}
+    h1{text-align: center;}
+    fieldset legend{background-color: transparent;}
+    .guideline-recommendation {
+      border-radius: 0px;
+      border: 1px dotted #000;
+      padding: 0px 5px;
+      line-height: 32px;
+      height: 32px;
+    }
+    .qsofanothighrisk {
+      background-color: #e6ffcc;
+      border-color: #BB0;
+      color: #000;
+    } 
+    .qsofahighrisk {
+      background-color: #ffe6cc;
+      border-color: #BB0;
+      color: #000;
+    } 
+  </style>
+</body>
+</html>
