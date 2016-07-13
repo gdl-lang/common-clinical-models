@@ -1,18 +1,5 @@
-<!DOCTYPE html><html ng-app="cds_app"><head>
-<title>{{def.concept.name}}</title>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" type="text/css" href="wro/foundation.css" />
-<link rel="stylesheet" type="text/css" href="wro/date-picker.css" />
-<link rel="stylesheet" type="text/css" href="wro/angular.css" />
-<script type="text/javascript" src="wro/angular.js"></script>
-<link rel="text/javascript" type="text/css" href="wro/foundation.js" />
-<script type="text/javascript" src="wro/moment.js"></script>
-<script type="text/javascript" src="wro/date-picker.js"></script>
-<script type="text/javascript" src="wro/app_lib.js"></script>
-<script id="decision-support-view" type="application/json">{
-  "dsViewId": "CURB-65.v1",
+<html><head><script id="decision-support-view" type="application/json">{
+  "dsViewId": "curb-65.v1",
   "language": {
     "originalLanguage": {
       "terminologyId": {
@@ -26,10 +13,6 @@
     "en": {
       "name": "CURB-65",
       "description": "Scoring system used to predict severity of community-acquired pneumonia, measured in 30-day mortality. CRB-65 is an acronym for Confusion, blood Urea nitrogen level, Respiratory rate, Blood pressure and age (over or equal to) 65. "
-    },
-    "sv": {
-      "name": "CURB-65",
-      "description": "Kliniskt poängsystem för prognostisk bedömning av svårighetsgrad hos patienter med misstänkt samhällsförvärvad pneumoni, angivet i mortalitet inom 30 dagar.\n"
     }
   },
   "resourceDescription": {
@@ -44,12 +27,6 @@
         "purpose": "To assess severity of community-acquired pneumonia measured in 30-day mortality, and aid in determining care level. \n",
         "keywords": [],
         "use": "Use to evaluate the presence of key factors determining severity of illness in patients presenting with suspected community-acquired pneumonia.\n\nCURB-65 is an acronym for Confusion, blood Urea nitrogen level, Respiratory rate, Blood pressure and age (over or equal to) 65. When present each factor contributes one (1) additional point to the total score.\n\nTotal score ranges from 0-5 and is associated with a risk level, which is in turn associated with certain care level recommendations.\n* 0-1 points, low risk group. Consider home treatment. 30-day mortality: \u003c3 %.\n* 2 points, moderate risk group. Consider hospital admission. 30-day mortality: 9 %.\n* 3 points, severe risk group. Urgent hospital admission. 30-day mortality: 15-40 %.\n* 4-5 points, highest risk group. Urgent hospital admission, consider ICU admission. 30-day mortality: 15-40 %\n\n",
-        "copyright": "Cambio Healthcare Systems"
-      },
-      "sv": {
-        "purpose": "Att utvärdera svårighetsgraden, angiven i mortalitet inom 30 dagar, av samhällsförvärvad pneumoni och underlätta beslutsfattande gällande vårdnivå.\n\n",
-        "keywords": [],
-        "use": "Används till att utvärdera förekomst av faktorer av prognostisk betydelse hos patienter som söker med misstänkt samhällsförvärvad pneumoni.\n\nCURB-65 är en akronym for Confusion, blood Urea nitrogen level, Respiratory rate, Blood pressure och age (over or equal to) 65. When present each factor contributes one (1) additional point to the total score.\n\nTotala poängen har ett spann mellan 0-5 och är beroende på resultat associerad med en viss risknivå, vilken i sin tur är associerad med rekommendationer kring åtgärd och vårdnivå. \n\n* 0-1 poäng, låg risk. Överväg hembehandling. 30-dagars mortalitet: \u003c3 %.\n* 2 poäng, måttlig risk. Överväg sjukhusvård. 30-dagars mortalitet: 9 %.\n* 3 poäng, hög risk. Skyndsam inläggning. 30-dagars mortalitet: 15-40 %.\n* 4-5 poäng, högst risk. Skyndsam inläggning, överväg IVA-vård. 30-dagars mortalitet: 15-40 %\n",
         "copyright": "Cambio Healthcare Systems"
       }
     },
@@ -66,165 +43,6 @@
     "en": {
       "id": "en",
       "terms": {}
-    },
-    "sv": {
-      "id": "sv"
     }
   }
-}</script>
-</head>
-<body ng-controller="cds_controller">
-<#assign curb_65_questionnaire_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.curb_65_questionnaire.v1']">
-<#assign curb_65_questionnaire_entry_def = "def.entries['openEHR-EHR-OBSERVATION.curb_65_questionnaire.v1']">
-<#assign confusion__def = curb_65_questionnaire_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign respiratory_rate__30_min__def = curb_65_questionnaire_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign blood_urea_nitrogen_level__19_mg_dl___7_mmol_l___def = curb_65_questionnaire_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
-<#assign event_time_def = curb_65_questionnaire_entry_def + ".elements['/data/events/time']">
-<#assign age___65_years__def = curb_65_questionnaire_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign systolic_bp__90mmhg_or_diastolic_bp__60mmhg__def = curb_65_questionnaire_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
-<#assign confusion__ehr_data = curb_65_questionnaire_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign respiratory_rate__30_min__ehr_data = curb_65_questionnaire_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign blood_urea_nitrogen_level__19_mg_dl___7_mmol_l___ehr_data = curb_65_questionnaire_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
-<#assign event_time_ehr_data = curb_65_questionnaire_entry_ehr_data + "[0].elements['/data/events/time']">
-<#assign age___65_years__ehr_data = curb_65_questionnaire_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign systolic_bp__90mmhg_or_diastolic_bp__60mmhg__ehr_data = curb_65_questionnaire_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
-<#assign curb_65_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.curb_65.v1']">
-<#assign curb_65_entry_def = "def.entries['openEHR-EHR-OBSERVATION.curb_65.v1']">
-<#assign confusion_def = curb_65_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign hypotension_def = curb_65_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign blood_urea_nitrogen_level_def = curb_65_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
-<#assign total_score_def = curb_65_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
-<#assign respiratory_rate_def = curb_65_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign age_def = curb_65_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
-<#assign confusion_cds_data = curb_65_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign hypotension_cds_data = curb_65_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign blood_urea_nitrogen_level_cds_data = curb_65_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
-<#assign total_score_cds_data = curb_65_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
-<#assign respiratory_rate_cds_data = curb_65_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign age_cds_data = curb_65_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
-<#assign curb_65_assessment_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.curb_65_assessment.v1']">
-<#assign curb_65_assessment_entry_def = "def.entries['openEHR-EHR-EVALUATION.curb_65_assessment.v1']">
-<#assign recommendation_def = curb_65_assessment_entry_def + ".elements['/data{at0001}/items{at0003}']">
-<#assign _30_day_mortality_def = curb_65_assessment_entry_def + ".elements['/data{at0001}/items{at0004}']">
-<#assign risk_assessment_def = curb_65_assessment_entry_def + ".elements['/data{at0001}/items{at0002}']">
-<#assign recommendation_cds_data = curb_65_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0003}']">
-<#assign _30_day_mortality_cds_data = curb_65_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0004}']">
-<#assign risk_assessment_cds_data = curb_65_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
-
-<script>
-  angular.module('cds_app').controller('CURB-65_Controller', function($scope, $window){
-    $scope.$on('json_loaded', function(){
-      $scope.${event_time_ehr_data}.value.value = $window.getCurrentDate();
-    });
-  });
-</script>
-
-
-
-
-<div ng-show="ready" ng-controller="CURB-65_Controller">
-<div class="row">
-<div class="medium-12 column">
-<h1>{{def.concept.name}}</h1>
-</div>
-</div>
-<div class="row">
-<div class="medium-6 column">
-<form name="form">
-<fieldset>
-<legend>{{${curb_65_questionnaire_entry_def}.name}}</legend>
-<label>{{${confusion__def}.name}}</label>
-<div class="row collapse" title="{{${confusion__def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${confusion__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${confusion__def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${respiratory_rate__30_min__def}.name}}</label>
-<div class="row collapse" title="{{${respiratory_rate__30_min__def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${respiratory_rate__30_min__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${respiratory_rate__30_min__def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${blood_urea_nitrogen_level__19_mg_dl___7_mmol_l___def}.name}}</label>
-<div class="row collapse" title="{{${blood_urea_nitrogen_level__19_mg_dl___7_mmol_l___def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${blood_urea_nitrogen_level__19_mg_dl___7_mmol_l___ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${blood_urea_nitrogen_level__19_mg_dl___7_mmol_l___def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${event_time_def}.name}}</label>
-<div class="row collapse" title="{{${event_time_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time_ehr_data}.value.value" type="text" pikaday="date" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
-</div>
-</div>
-<label>{{${age___65_years__def}.name}}</label>
-<div class="row collapse" title="{{${age___65_years__def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${age___65_years__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${age___65_years__def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${systolic_bp__90mmhg_or_diastolic_bp__60mmhg__def}.name}}</label>
-<div class="row collapse" title="{{${systolic_bp__90mmhg_or_diastolic_bp__60mmhg__def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${systolic_bp__90mmhg_or_diastolic_bp__60mmhg__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${systolic_bp__90mmhg_or_diastolic_bp__60mmhg__def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-</fieldset>
-</form>
-</div>
-<div class="medium-6 column">
-<fieldset>
-<legend>{{${curb_65_entry_def}.name}}</legend>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${confusion_def}.name}}: </b>{{${confusion_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${hypotension_def}.name}}: </b>{{${hypotension_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${blood_urea_nitrogen_level_def}.name}}: </b>{{${blood_urea_nitrogen_level_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${total_score_def}.name}}: </b>{{${total_score_cds_data}.value.magnitude}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${respiratory_rate_def}.name}}: </b>{{${respiratory_rate_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${age_def}.name}}: </b>{{${age_cds_data}.value.symbol.value}}</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${curb_65_assessment_entry_def}.name}}</legend>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${recommendation_def}.name}}: </b>{{${recommendation_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${_30_day_mortality_def}.name}}: </b>{{${_30_day_mortality_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${risk_assessment_def}.name}}: </b>{{${risk_assessment_cds_data}.value.symbol.value}}</div>
-</div>
-</fieldset>
-<div class="row">
-    <div class="medium-12 columns">
-        <h6>Fired rules: <b>{{firedRulesSize}}</b></h6>
-        <label ng-repeat="firedRule in firedRules">{{firedRule.name}}</label>
-    </div>
-</div>
-</div>
-</div>
-<div class="row"><div class="medium-12 columns"><h7>{autogenerated}</h7></div></div>
-</div>
-
-
-</body></html>
+}</script></head><body></body></html>
