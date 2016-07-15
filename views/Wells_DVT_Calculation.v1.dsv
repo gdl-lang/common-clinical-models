@@ -1,4 +1,18 @@
-<html><head><script id="decision-support-view" type="application/json">{
+<!DOCTYPE html><html ng-app="cds_app">
+<head>
+<title>{{def.concept.name}}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
+<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
+<script type="text/javascript" src="wro/angular.js"></script>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
+<script type="text/javascript" src="wro/moment.js"></script>
+<script type="text/javascript" src="wro/date-picker.js"></script>
+<script type="text/javascript" src="wro/app_lib.js"></script>
+<script id="decision-support-view" type="application/json">{
   "dsViewId": "Wells_DVT_Calculation.v1",
   "language": {
     "originalLanguage": {
@@ -53,4 +67,263 @@
       "terms": {}
     }
   }
-}</script></head><body></body></html>
+}</script>
+</head>
+<body ng-controller="cds_controller">
+<#assign app_help_tag = "def.guides['Wells_Criteria_DVT_Calculation.v1'].concept">
+<#assign wells__criteria_for_dvt_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.wells_criteria_dvt.v1']">
+<#assign wells__criteria_for_dvt_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.wells_criteria_dvt.v1']">
+<#assign wells__criteria_for_dvt_entry_def = "def.entries['openEHR-EHR-OBSERVATION.wells_criteria_dvt.v1']">
+<#assign total_score_def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0029}']">
+<#assign active_cancer_def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign alternative_diagnosis_to_dvt_at_least_as_likely_def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0028}']">
+<#assign localized_tenderness_along_the_deep_venous_system_def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign entire_leg_swollen_def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0016}']">
+<#assign event_time_def = wells__criteria_for_dvt_entry_def + ".elements['/data/events/time']">
+<#assign pitting_oedema__def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0022}']">
+<#assign calf_swelling__3_cm_compared_to_the_other_leg_def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}']">
+<#assign bedridden_recently__3_days_or_major_surgery_within_12_weeks_def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
+<#assign paralysis__paresis__or_recent_plaster_immobilisation_of_the_legs_def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign collateral__nonvaricose__superficial_veins_def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0025}']">
+<#assign total_score_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0029}']">
+<#assign active_cancer_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign alternative_diagnosis_to_dvt_at_least_as_likely_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0028}']">
+<#assign localized_tenderness_along_the_deep_venous_system_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign entire_leg_swollen_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0016}']">
+<#assign event_time_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign pitting_oedema__ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0022}']">
+<#assign calf_swelling__3_cm_compared_to_the_other_leg_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}']">
+<#assign bedridden_recently__3_days_or_major_surgery_within_12_weeks_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
+<#assign paralysis__paresis__or_recent_plaster_immobilisation_of_the_legs_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign collateral__nonvaricose__superficial_veins_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0025}']">
+<#assign total_score_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0029}']">
+<#assign active_cancer_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign alternative_diagnosis_to_dvt_at_least_as_likely_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0028}']">
+<#assign localized_tenderness_along_the_deep_venous_system_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign entire_leg_swollen_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0016}']">
+<#assign event_time_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data/events/time']">
+<#assign pitting_oedema__cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0022}']">
+<#assign calf_swelling__3_cm_compared_to_the_other_leg_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}']">
+<#assign bedridden_recently__3_days_or_major_surgery_within_12_weeks_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
+<#assign paralysis__paresis__or_recent_plaster_immobilisation_of_the_legs_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign collateral__nonvaricose__superficial_veins_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0025}']">
+<script> 
+angular.module('cds_app').controller('DVT_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    
+  });
+});
+</script>
+<div ng-show="ready" ng-controller="DVT_Ctrl">
+<div class="header">
+  <h1>{{def.concept.name}}</h1>
+  <h2>{{def.concept.description}}</h2>
+  <div class="help-tip">
+	<p>{{${app_help_tag}.description}}</p>
+  </div>
+</div>
+<div class="card">
+  <div class="row collapse" title="{{${active_cancer_def}.description}}">
+      <div class="medium-8 columns">
+        <label>{{${active_cancer_def}.name}}</label>
+      </div>
+      <label class="medium-2 column" ng-repeat="(key, desc) in ${active_cancer_def}.selections">
+        <input type="radio" value="{{key}}" ng-model="${active_cancer_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      </label>
+  </div>
+  <div class="row collapse" title="{{${alternative_diagnosis_to_dvt_at_least_as_likely_def}.description}}">
+      <div class="medium-8 columns">
+        <label>{{${alternative_diagnosis_to_dvt_at_least_as_likely_def}.name}}</label>
+      </div>
+      <label class="medium-2 column" ng-repeat="(key, desc) in ${alternative_diagnosis_to_dvt_at_least_as_likely_def}.selections">
+        <input type="radio" value="{{key}}" ng-model="${alternative_diagnosis_to_dvt_at_least_as_likely_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      </label>
+  </div>
+  <div class="row collapse" title="{{${localized_tenderness_along_the_deep_venous_system_def}.description}}">
+      <div class="medium-8 columns">
+        <label>{{${localized_tenderness_along_the_deep_venous_system_def}.name}}</label>
+      </div>
+      <label class="medium-2 column" ng-repeat="(key, desc) in ${localized_tenderness_along_the_deep_venous_system_def}.selections">
+        <input type="radio" value="{{key}}" ng-model="${localized_tenderness_along_the_deep_venous_system_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      </label>
+  </div>
+  <div class="row collapse" title="{{${entire_leg_swollen_def}.description}}">
+      <div class="medium-8 columns">
+        <label>{{${entire_leg_swollen_def}.name}}</label>
+      </div>
+      <label class="medium-2 column" ng-repeat="(key, desc) in ${entire_leg_swollen_def}.selections">
+        <input type="radio" value="{{key}}" ng-model="${entire_leg_swollen_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      </label>
+  </div>
+  <div class="row collapse" title="{{${pitting_oedema__def}.description}}">
+      <div class="medium-8 columns">
+        <label>{{${pitting_oedema__def}.name}}</label>
+      </div>
+      <label class="medium-2 column" ng-repeat="(key, desc) in ${pitting_oedema__def}.selections">
+        <input type="radio" value="{{key}}" ng-model="${pitting_oedema__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      </label>
+  </div>
+  <div class="row collapse" title="{{${calf_swelling__3_cm_compared_to_the_other_leg_def}.description}}">
+      <div class="medium-8 columns">
+        <label>{{${calf_swelling__3_cm_compared_to_the_other_leg_def}.name}}</label>
+      </div>
+      <label class="medium-2 column" ng-repeat="(key, desc) in ${calf_swelling__3_cm_compared_to_the_other_leg_def}.selections">
+        <input type="radio" value="{{key}}" ng-model="${calf_swelling__3_cm_compared_to_the_other_leg_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      </label>
+  </div>
+  <div class="row collapse" title="{{${bedridden_recently__3_days_or_major_surgery_within_12_weeks_def}.description}}">
+      <div class="medium-8 columns">
+        <label>{{${bedridden_recently__3_days_or_major_surgery_within_12_weeks_def}.name}}</label>
+      </div>
+      <label class="medium-2 column" ng-repeat="(key, desc) in ${bedridden_recently__3_days_or_major_surgery_within_12_weeks_def}.selections">
+        <input type="radio" value="{{key}}" ng-model="${bedridden_recently__3_days_or_major_surgery_within_12_weeks_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      </label>
+  </div>
+  <div class="row collapse" title="{{${paralysis__paresis__or_recent_plaster_immobilisation_of_the_legs_def}.description}}">
+      <div class="medium-8 columns">
+        <label>{{${paralysis__paresis__or_recent_plaster_immobilisation_of_the_legs_def}.name}}</label>
+      </div>
+      <label class="medium-2 column" ng-repeat="(key, desc) in ${bedridden_recently__3_days_or_major_surgery_within_12_weeks_def}.selections">
+        <input type="radio" value="{{key}}" ng-model="${paralysis__paresis__or_recent_plaster_immobilisation_of_the_legs_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      </label>
+  </div>
+  <div class="row collapse" title="{{${collateral__nonvaricose__superficial_veins_def}.description}}">
+      <div class="medium-8 columns">
+        <label>{{${collateral__nonvaricose__superficial_veins_def}.name}}</label>
+      </div>
+      <label class="medium-2 column" ng-repeat="(key, desc) in ${collateral__nonvaricose__superficial_veins_def}.selections">
+        <input type="radio" value="{{key}}" ng-model="${collateral__nonvaricose__superficial_veins_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      </label>
+  </div>
+
+  <div class="row collapse" title="{{${total_score_def}.description}}" id="score">
+    <div class="small-2 columns">
+      <label><b>{{${total_score_def}.name}}</b></label>
+    </div>
+    <div class="small-10 columns">
+      <span>{{${total_score_cds_data}.value.magnitude}}</span>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+<style>
+  html, body {
+    height:100%;
+    width: 100%;
+  }
+  body {
+    font-family: sans-serif;
+    font-weight: 300;
+    color: #333;
+    background: #ecf0f9;
+    padding: 1em;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 {
+    font-weight: 600;
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 22px;
+    font-style: italic;
+  }
+  h3 {
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .header {
+    margin-bottom: 2em;
+  }
+  .card {
+    background-color: #fdfdfd;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 10px auto 0 auto;
+    padding: 1em;
+    width: 50%;
+    overflow: hidden;
+  }
+  select {
+    margin: 0 10px 0 10px;
+    
+  }
+  .help-tip{
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      text-align: center;
+      background-color: #BCDBEA;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      line-height: 26px;
+      cursor: default;
+  }
+  .help-tip:before{
+      content:'?';
+      font-weight: bold;
+      color:#fff;
+  }
+  .help-tip:hover p{
+      display:block;
+      transform-origin: 100% 0%;
+      -webkit-animation: fadeIn 0.3s ease-in-out;
+      animation: fadeIn 0.3s ease-in-out;
+  }
+  .help-tip p{	/* The tooltip */
+      display: none;
+      text-align: left;
+      background-color: #1E2021;
+      padding: 20px;
+      width: 300px;
+      position: absolute;
+      border-radius: 3px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+      right: -4px;
+      color: #FFF;
+      font-size: 13px;
+      line-height: 1.4;
+      z-index: 9999;
+  }
+  .help-tip p:before{ /* The pointer of the tooltip */
+      position: absolute;
+      content: '';
+      width:0;
+      height: 0;
+      border:6px solid transparent;
+      border-bottom-color:#1E2021;
+      right:10px;
+      top:-12px;
+  }
+  .help-tip p:after{ /* Prevents the tooltip from being hidden */
+      width:100%;
+      height:40px;
+      content:'';
+      position: absolute;
+      top:-40px;
+      left:0;
+  }
+  /* CSS animation */
+  @-webkit-keyframes fadeIn {
+      0% { 
+          opacity:0; 
+          transform: scale(0.6);
+      }
+
+      100% {
+          opacity:100%;
+          transform: scale(1);
+      }
+  }
+  @keyframes fadeIn {
+      0% { opacity:0; }
+      100% { opacity:100%; }
+  }
+  #score {
+    background-color: #e6e6e6;
+  }
+</style>
+</html>
