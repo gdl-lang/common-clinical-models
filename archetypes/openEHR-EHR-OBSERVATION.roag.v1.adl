@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.roag.v1
 
 concept
-	[at0000]	-- *ROAG(en)
+	[at0000]	-- ROAG
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -15,16 +15,11 @@ language
 	>
 description
 	original_author = <
-		["name"] = <"">
+		["name"] = <"Jimmy Axelsson">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2016-07-16">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"">
-			use = <"">
-			misuse = <"">
-			copyright = <"">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"*(en)">
@@ -32,88 +27,97 @@ description
 			misuse = <"*(en)">
 			copyright = <"*(en)">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess oral health status by evaluating nine different different areas: voice, lips, oral mucosa, tongue, gums, teeth, saliva, swallowing, and presence of any prostheses or implants.">
+			use = <"">
+			misuse = <"">
+			copyright = <"Cambio Healthcare Systems">
+		>
 	>
-	lifecycle_state = <"0">
+	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"DE3AE38AEBE2D49391C6DC628675C0C4">
+		["MD5-CAM-1.0.1"] = <"EBBB248596BB4E29678EDAE1F9A084A8">
+		["references"] = <"Eilers J, Berger AM, Petersen, MC. Development, testing and application of the oral
+assessment guide. Oncol Nurs Forum 1988; 15: 325-330. ">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- *ROAG(en)
+	OBSERVATION[at0000] matches {	-- ROAG
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Röst
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Voice
 										value matches {
-											0|[local::at0013], 	-- Ej aktuellt at bedöma
-											1|[local::at0014], 	-- Normal röst
-											2|[local::at0015], 	-- Torr, hes, smackande
-											3|[local::at0016]  	-- Svårt att tala
+											0|[local::at0013], 	-- Not relevant for assessment
+											1|[local::at0014], 	-- Normal
+											2|[local::at0015], 	-- Deep or rasping
+											3|[local::at0016]  	-- Difficulty talking or painful
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Läppar
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Lips
 										value matches {
-											1|[local::at0017], 	-- Lena, ljusröda, fuktiga
-											2|[local::at0018], 	-- Torra, spruckna, sår i mungiporna
-											3|[local::at0019]  	-- Såriga, blödande
+											1|[local::at0017], 	-- Smooth and pink
+											2|[local::at0018], 	-- Dry or cracked, and/or angular cheilitis
+											3|[local::at0019]  	-- Ulcerated or bleeding
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Munslemhinnor
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Mucous Membrane
 										value matches {
-											1|[local::at0020], 	-- Ljusröda, fuktiga
-											2|[local::at0021], 	-- Röda, torra eller områden med färgförändring eller beläggning
-											3|[local::at0022]  	-- Sår, med eller utan blödning, blåsor
+											1|[local::at0020], 	-- Pink and moist
+											2|[local::at0021], 	-- Dry and/or change in colour, red, blue-red or white
+											3|[local::at0022]  	-- Very red, or thick, white coating or blisters /ulceration with or without bleeding
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Tunga
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Tongue
 										value matches {
-											1|[local::at0023], 	-- Ljusröd, fuktig med papiller
-											2|[local::at0024], 	-- Inga papiller, röd torr, beläggning
-											3|[local::at0025]  	-- Sår med eller utan blödning, blåsor
+											1|[local::at0023], 	-- Pink, moist,  papillae present
+											2|[local::at0024], 	-- Dry, no papillae present or change in colour (red or white)
+											3|[local::at0025]  	-- Very thick white coating; blisters or ulceration
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Tandkött
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Gums
 										value matches {
-											0|[local::at0026], 	-- Har inget tandkött, har endast munslemhinna
-											1|[local::at0027], 	-- Ljusrött och fast
-											2|[local::at0028], 	-- Svullet, rodnat
-											3|[local::at0029]  	-- Spontan blödning
+											0|[local::at0026], 	-- No gums present, only mucous membrane
+											1|[local::at0027], 	-- Pink and firm
+											2|[local::at0028], 	-- Oedematous and/or red
+											3|[local::at0029]  	-- Bleeding easily under finger pressure
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Tänder
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Teeth/dentures
 										value matches {
-											0|[local::at0030], 	-- Har inga egna tänder
-											1|[local::at0031], 	-- Rena, ingen synlig beläggning eller matrester
-											2|[local::at0032], 	-- Beläggning eller matrester lokalt
-											3|[local::at0033]  	-- Beläggning, matrester generellt eller trasiga tänder
+											0|[local::at0030], 	-- No teeth
+											1|[local::at0031], 	-- Clean, no debris
+											2|[local::at0032], 	-- Plaque or debris in local areas
+											3|[local::at0033]  	-- Plaque or debris generalised
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Protes
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Prosthesis
 										value matches {
-											0|[local::at0034], 	-- Har ingen protes
-											1|[local::at0035], 	-- Ren och fungerar
-											2|[local::at0036], 	-- Beläggning eller matrester
-											3|[local::at0037]  	-- Används ej eller dåligt fungerande
+											0|[local::at0034], 	-- Has no prosthesis
+											1|[local::at0035], 	-- Clean and functions properly
+											2|[local::at0036], 	-- Plaque or debris
+											3|[local::at0037]  	-- Not used or malfunctioning
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Saliv
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Saliva
 										value matches {
-											1|[local::at0038], 	-- Glider lätt
-											2|[local::at0039], 	-- Glider trögt
-											3|[local::at0040]  	-- Glider inte alls
+											1|[local::at0038], 	-- No friction
+											2|[local::at0039], 	-- Slightly increased friction
+											3|[local::at0040]  	-- Significantly increased friction
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Sväljning
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Swallowing
 										value matches {
-											0|[local::at0041], 	-- Ej aktuellt att bedöma
-											1|[local::at0042], 	-- Obehindrad sväljning
-											2|[local::at0043], 	-- Obetydliga sväljproblem
-											3|[local::at0044]  	-- Uttalade sväljproblem
+											0|[local::at0041], 	-- Not relevant for assessment
+											1|[local::at0042], 	-- Normal swallow
+											2|[local::at0043], 	-- Some pain or difficulty on swallowing
+											3|[local::at0044]  	-- Unable to swallow
 										}
 									}
 								}
@@ -131,7 +135,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"ROAG">
-					description = <"Revised Oral Assessment Guide">
+					description = <"ROAG is an acronym for Revised Oral Assessment Guide assessments. ROAG is used to document oral health in nine areas: voice, lips, oral mucosa, tongue, gums, teeth, saliva, swallowing, and presence of any prostheses or implants">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -315,7 +319,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"*ROAG(en)">
-					description = <"*Revised Oral Assessment Guide(en)">
+					description = <"*ROAG is an acronym for Revised Oral Assessment Guide assessments. ROAG is used to document oral health in nine areas: voice, lips, oral mucosa, tongue, gums, teeth, saliva, swallowing, and presence of any prostheses or implants(en)">
 				>
 				["at0001"] = <
 					text = <"*Event Series(en)">
