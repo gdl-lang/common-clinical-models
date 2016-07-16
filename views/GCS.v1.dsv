@@ -74,8 +74,6 @@
 }</script>
 </head>
 <body ng-controller="cds_controller">
-
-
 <#assign glasgow_coma_scale_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.glasgow_coma_scale.v1']">
 <#assign glasgow_coma_scale_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.glasgow_coma_scale.v1']">
 <#assign glasgow_coma_scale_entry_def = "def.entries['openEHR-EHR-OBSERVATION.glasgow_coma_scale.v1']">
@@ -100,29 +98,14 @@
 <#assign severity_of_brain_injury_cds_data = glasgow_coma_scale_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0003}']">
 
 <script>
-  angular.module('cds_app').controller('GCS_Controller', function($scope, $window){
+  angular.module('cds_app').controller('GCS_Ctrl', function($scope, $window){
     $scope.$on('json_loaded', function(){
       $scope.${event_time_ehr_data}.value.value = $window.getCurrentDate();
-    });
-    $scope.$on('executeEnd', function() {
-      $scope.severeBrainInjury=false;
-      $scope.moderateBrainInjury=false;
-      $scope.mildBrainInjury=false;
-      if ($scope.${total_score_cds_data}.value.magnitude < 9) {
-        $scope.severeBrainInjury=true;
-      }
-      if ($scope.${total_score_cds_data}.value.magnitude >= 9 && $scope.${total_score_cds_data}.value.magnitude < 13) {
-        $scope.moderateBrainInjury=true;
-      }
-      if ($scope.${total_score_cds_data}.value.magnitude >=13) {
-        $scope.mildBrainInjury=true;
-      }
     });
   });
   </script>
 
-
-<div ng-show="ready" ng-controller="GCS_Controller"> 
+<div ng-show="ready" ng-controller="GCS_Ctrl"> 
 <div class="row">
 <div class="medium-offset-3 medium-6 column">
 <h1>{{def.concept.name}}</h1>
@@ -167,10 +150,6 @@
 </div>
 </div>
 </fieldset>
-<fieldset>
-<legend>{{${severity_of_brain_injury_def}.name}}</legend>
-<p class="guideline-recommendation" ng-class="{'mildbraininjury' : mildBrainInjury,'moderatebraininjury' : moderateBrainInjury,'severebraininjury': severeBrainInjury}">{{${severity_of_brain_injury_cds_data}.value.value}}</p>
-</fieldset>
 </div>
 </div>
 </div>
@@ -179,29 +158,6 @@
     body{background-color: #e7efff;}
     h1{text-align: center;}
     fieldset legend{background-color: transparent;}
-    .guideline-recommendation {
-      border-radius: 0px;
-      border: 1px dotted #000;
-      padding: 0px 5px;
-      line-height: 32px;
-      height: 32px;
-    }
-    .mildbraininjury {
-      background-color: #e6ffcc;
-      border-color: #BB0;
-      color: #000;
-    } 
-    .moderatebraininjury {
-      background-color: #ffffcc;
-      border-color: #BB0;
-      color: #000;
-    } 
-    .severebraininjury {
-      background-color: #ffe6cc;
-      border-color: #BB0;
-      color: #000;
-    } 
-
   </style>
 </body>
 </html>
