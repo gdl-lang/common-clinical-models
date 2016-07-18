@@ -1,14 +1,13 @@
-<!DOCTYPE html><html ng-app="cds_app">
-<head>
+<!DOCTYPE html><html ng-app="cds_app"><head>
 <title>{{def.concept.name}}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
-<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
-<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
+<link rel="stylesheet" type="text/css" href="wro/foundation.css" />
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css" />
+<link rel="stylesheet" type="text/css" href="wro/angular.css" />
 <script type="text/javascript" src="wro/angular.js"></script>
-<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js" />
 <script type="text/javascript" src="wro/moment.js"></script>
 <script type="text/javascript" src="wro/date-picker.js"></script>
 <script type="text/javascript" src="wro/app_lib.js"></script>
@@ -26,7 +25,11 @@
   "decisionSupportViewDefinitions": {
     "en": {
       "name": "Apgar Score",
-      "description": "Calculation of the Apgar score"
+      "description": "Calculation of the Apgar score, used to assess and document the physical condition of newborn infants. Apgar is an acronym for Appearance, Pulse, Grimace, Activity, Respiration."
+    },
+    "sv": {
+      "name": "Apgar Score",
+      "description": "Klinisk värdering av fysiska tillståndet hos nyfödda barn baserat på bedömning av andning, hjärtfrekvens, reflexer, muskeltonus och hudfärg. Apgar är en akronym för Appearance (hudfärg), Pulse (hjärtfrekvens), Grimace (retbarhet, reflexer), Activity (muskeltonus), Respiration (andningsfrekvens)."
     }
   },
   "resourceDescription": {
@@ -39,14 +42,28 @@
     "otherContributors": [],
     "details": {
       "en": {
-        "purpose": "Calculation of the Apgar score as a simple, repeatable method to document the state of the newborn infant immediately after birth. The clinical score is derived from assessment of respiratory effort, heart rate, reflex irritability, muscle tone and skin colour.",
+        "purpose": "Calculation of the Apgar score as a simple, repeatable method to document the physical state of the newborn infant immediately after birth. The clinical score is derived from assessment of respiratory effort, heart rate, reflex irritability, muscle tone and skin colour.",
         "keywords": [
           "APGAR",
           "Neonate",
           "Assessment",
           "Score"
         ],
-        "use": "Allows the assessment of the state of a neonate after birth."
+        "use": "Allows the assessment of the physical state of a neonate immediately after birth. \n\nEvaluation and documentation can be performed one, two, three, five and/or ten minutes after birth. The usual practice is to document the Apgar score at one and five minutes, with additional occurences if clinically indicated.\n\nThe calculator requires all five values be recorded in order to generate a total score. The total score is the sum of the five ordinal values, each contributing 0-2 points (min 0, max 10).\n",
+        "misuse": "Partially complete score and add the 5 to give the total values​​.\n",
+        "copyright": "Cambio Healthcare Systems"
+      },
+      "sv": {
+        "purpose": "Att utvärdera det fysiska tillståndet hos nyfödda barn.",
+        "keywords": [
+          "*(en) APGAR",
+          "*(en) Neonate",
+          "*(en) Assessment",
+          "*(en) Score"
+        ],
+        "use": "Används för utvärdering av ett nyfött barns fysiska tillstånd.\n\nBedömning och registrering en, två, tre, fem och/eller tio minuter efter födsel. Sker i regel en minut efter födsel med kontroll efter fem minuter, plus ytterligare om kliniskt motiverat. \n\nOm det totala värdet ska beräknas är det nödvändigt att svar för alla 5 parametrar anges. Totalen är summan av de fem parametrarna, som vardera bidrar med 0-2 poäng (min 0, max 10).\n",
+        "misuse": "Delvis fullständig poäng och lägg till 5 för att ge det totala värdet.",
+        "copyright": "Cambio Healthcare Systems"
       }
     },
     "otherDetails": {
@@ -62,6 +79,9 @@
     "en": {
       "id": "en",
       "terms": {}
+    },
+    "sv": {
+      "id": "sv"
     }
   }
 }</script>
@@ -113,7 +133,7 @@ angular.module('cds_app').controller('Apgar_Ctrl', function($scope, $window){
         <label>{{${reflex_irritability_def}.name}}</label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${reflex_irritability_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${reflex_irritability_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${reflex_irritability_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${reflex_irritability_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
       </div>
   </div>
   <div class="row collapse" title="{{${skin_colour_def}.description}}">
@@ -121,7 +141,7 @@ angular.module('cds_app').controller('Apgar_Ctrl', function($scope, $window){
         <label>{{${skin_colour_def}.name}}</label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${skin_colour_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${skin_colour_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${skin_colour_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${skin_colour_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
       </div>
   </div>
   <div class="row collapse" title="{{${respiratory_effort_def}.description}}">
@@ -129,7 +149,7 @@ angular.module('cds_app').controller('Apgar_Ctrl', function($scope, $window){
         <label>{{${respiratory_effort_def}.name}}</label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${respiratory_effort_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${respiratory_effort_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${respiratory_effort_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${respiratory_effort_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
       </div>
   </div>
   <div class="row collapse" title="{{${muscle_tone_def}.description}}">
@@ -137,7 +157,7 @@ angular.module('cds_app').controller('Apgar_Ctrl', function($scope, $window){
         <label>{{${muscle_tone_def}.name}}</label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${muscle_tone_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${muscle_tone_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${muscle_tone_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${muscle_tone_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
       </div>
   </div>
   <div class="row collapse" title="{{${heart_rate_def}.description}}">
@@ -145,7 +165,7 @@ angular.module('cds_app').controller('Apgar_Ctrl', function($scope, $window){
         <label>{{${heart_rate_def}.name}}</label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${heart_rate_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${heart_rate_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${heart_rate_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${heart_rate_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
       </div>
   </div>
   <div class="row collapse" title="{{${total_def}.description}}">
@@ -158,7 +178,7 @@ angular.module('cds_app').controller('Apgar_Ctrl', function($scope, $window){
   </div>
 </div>
 </div>
-</body>
+
 <style>
   html, body {
     height:100%;
@@ -278,4 +298,4 @@ angular.module('cds_app').controller('Apgar_Ctrl', function($scope, $window){
     margin-bottom: 10px;
   }
 </style>
-</html>
+</body></html>
