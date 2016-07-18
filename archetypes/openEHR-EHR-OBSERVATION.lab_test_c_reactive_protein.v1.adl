@@ -1,0 +1,92 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.lab_test_c_reactive_protein.v1
+
+concept
+	[at0000]	-- Lab test C-reactive protein
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"to record lab test result of C-reactive protein">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"5E0C66EDBB251432862F2E84EB5406C2">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Lab test C-reactive protein
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- 
+						data matches {
+							ITEM_TREE[at0003] matches {	-- 
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Test name
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Result
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::384]>
+												list = <
+													["1"] = <
+														units = <"mg/L">
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Lab test C-reactive protein">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Test name">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Result">
+					description = <"*">
+				>
+			>
+		>
+	>
