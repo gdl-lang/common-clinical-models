@@ -1,4 +1,5 @@
-<!DOCTYPE html><html ng-app="cds_app"><head>
+<!DOCTYPE html><html ng-app="cds_app">
+<head>
 <title>{{def.concept.name}}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
@@ -93,6 +94,7 @@
 }</script>
 </head>
 <body ng-controller="cds_controller">
+<#assign app_help_tag = "def.guides['qSOFA.v1'].concept">
 <#assign qsofa_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.qsofa.v1']">
 <#assign qsofa_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.qsofa.v1']">
 <#assign qsofa_entry_def = "def.entries['openEHR-EHR-OBSERVATION.qsofa.v1']">
@@ -117,7 +119,7 @@
 <#assign risk_assessment_cds_data = qsofa_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0003}']">
 
 <script>
-  angular.module('cds_app').controller('qSOFA_Controller', function($scope, $window){
+  angular.module('cds_app').controller('qSOFA_Ctrl', function($scope, $window){
     $scope.$on('json_loaded', function(){
       $scope.${event_time_ehr_data}.value.value = $window.getCurrentDate();
     });
@@ -132,76 +134,183 @@
       }
     });
   });
-  </script>
+</script>
 
-
-<div ng-show="ready" ng-controller="qSOFA_Controller">
-<div class="row">
-<div class="medium-offset-3 medium-6 column">
-<h1>{{${qsofa_entry_def}.name}}</h1>
+<div ng-show="ready" ng-controller="qSOFA_Ctrl">
+<div class="header">
+  <h1>{{${qsofa_entry_def}.name}}</h1>
+  <h2>{{def.concept.description}}</h2>
+  <div class="help-tip">
+  <p>{{${app_help_tag}.description}}</p>
+  </div>
+</div>
+<div class="card">
+  <div class="row collapse" title="{{${altered_mentation_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${altered_mentation_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${altered_mentation_def}.selections">
+      <input type="radio" value="{{key}}" ng-model= "${altered_mentation_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+  <div class="row collapse" title="{{${respiration_rate__22__min__def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${respiration_rate__22__min__def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${respiration_rate__22__min__def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${respiration_rate__22__min__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+  <div class="row collapse" title="{{${systolic_blood_pressure__100_mm_hg_def}.description}}">
+  <div class="medium-6 columns">
+    <label>{{${systolic_blood_pressure__100_mm_hg_def}.name}}</label>
+  </div>
+  <label class="medium-3 columns" ng-repeat="(key, desc) in ${systolic_blood_pressure__100_mm_hg_def}.selections">
+    <input type="radio" value="{{key}}" ng-model="${systolic_blood_pressure__100_mm_hg_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+  </label>
+</div>
+<div class="row collapse" title="{{${total_score_def}.description}}" id="score">
+  <div class="medium-3 columns">
+    <label><b>{{${total_score_def}.name}}: </b></label>
+  </div>
+  <div class="medium-3 columns">
+    <label>{{${total_score_cds_data}.value.magnitude}}</label>
+  </div>
+  <div class="medium-6 columns">
+    <label class="guideline-recommendation" ng-class="{'qsofanothighrisk' : qsofaNotHighRisk,'qsofahighrisk' : qsofaHighRisk}">{{${risk_assessment_cds_data}.value.symbol.value}}</label>
+  </div>
 </div>
 </div>
-<div class="row">
-<div class="medium-offset-3 medium-6 column">
-<form name="form">
-<fieldset>
-<legend>{{${qsofa_entry_def}.name}}</legend>
-<label>{{${altered_mentation_def}.name}}</label>
-<div class="row collapse" title="{{${altered_mentation_def}.description}}">
-<div class="medium-12 columns">
-<select ng-model="${altered_mentation_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${altered_mentation_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
 </div>
-</div>
-<label>{{${respiration_rate__22__min__def}.name}}</label>
-<div class="row collapse" title="{{${respiration_rate__22__min__def}.description}}">
-<div class="medium-12 columns">
-<select ng-model="${respiration_rate__22__min__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${respiration_rate__22__min__def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${systolic_blood_pressure__100_mm_hg_def}.name}}</label>
-<div class="row collapse" title="{{${systolic_blood_pressure__100_mm_hg_def}.description}}">
-<div class="medium-12 columns">
-<select ng-model="${systolic_blood_pressure__100_mm_hg_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${systolic_blood_pressure__100_mm_hg_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-
-</fieldset></form>
-<fieldset>
-<legend>{{${total_score_def}.name}}</legend>
-<div class="medium-6 column">
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${total_score_def}.name}}: </b>{{${total_score_cds_data}.value.magnitude}}</div>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${risk_assessment_def}.name}}</legend>
-<p class="guideline-recommendation" ng-class="{'qsofanothighrisk' : qsofaNotHighRisk,'qsofahighrisk' : qsofaHighRisk}">{{${risk_assessment_cds_data}.value.symbol.value}}</p>
-</fieldset></div>
-
+</body>
 <style>
-    body{background-color: #e7efff;}
-    h1{text-align: center;}
-    fieldset legend{background-color: transparent;}
-    .guideline-recommendation {
+html, body {
+    height:100%;
+    width: 100%;
+  }
+  body {
+    font-family: sans-serif;
+    font-weight: 300;
+    color: #333;
+    background: #ecf0f9;
+    padding: 1em;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 {
+    font-weight: 600;
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 22px;
+    font-style: italic;
+  }
+  .guideline-recommendation {
+      text-align: center;
       border-radius: 0px;
-      border: 1px dotted #000;
+      border: 1px #000;
       padding: 0px 5px;
-      line-height: 32px;
-      height: 32px;
-    }
-    .qsofanothighrisk {
+      line-height: 30px;
+      height: 30px;
+  }
+  .qsofanothighrisk {
       background-color: #e6ffcc;
       border-color: #BB0;
       color: #000;
-    } 
-    .qsofahighrisk {
+  } 
+  .qsofahighrisk {
       background-color: #ffe6cc;
       border-color: #BB0;
       color: #000;
-    } 
-  </style>
+  } 
+  .header {
+    margin-bottom: 2em;
+  }
+  .card {
+    background-color: #fdfdfd;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 10px auto 0 auto;
+    padding: 1em;
+    width: 50%;
+    overflow: hidden;
+  }
+  .help-tip{
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      text-align: center;
+      background-color: #BCDBEA;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      line-height: 26px;
+      cursor: default;
+  }
+  .help-tip:before{
+      content:'?';
+      font-weight: bold;
+      color:#fff;
+  }
+  .help-tip:hover p{
+      display:block;
+      transform-origin: 100% 0%;
+      -webkit-animation: fadeIn 0.3s ease-in-out;
+      animation: fadeIn 0.3s ease-in-out;
+  }
+  .help-tip p{  /* The tooltip */
+      display: none;
+      text-align: left;
+      background-color: #1E2021;
+      padding: 20px;
+      width: 300px;
+      position: absolute;
+      border-radius: 3px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+      right: -4px;
+      color: #FFF;
+      font-size: 13px;
+      line-height: 1.4;
+      z-index: 9999;
+  }
+  .help-tip p:before{ /* The pointer of the tooltip */
+      position: absolute;
+      content: '';
+      width:0;
+      height: 0;
+      border:6px solid transparent;
+      border-bottom-color:#1E2021;
+      right:10px;
+      top:-12px;
+  }
+  .help-tip p:after{ /* Prevents the tooltip from being hidden */
+      width:100%;
+      height:40px;
+      content:'';
+      position: absolute;
+      top:-40px;
+      left:0;
+  }
+  /* CSS animation */
+  @-webkit-keyframes fadeIn {
+      0% { 
+          opacity:0; 
+          transform: scale(0.6);
+      }
 
-
-</div></div></body></html>
+      100% {
+          opacity:100%;
+          transform: scale(1);
+      }
+  }
+  @keyframes fadeIn {
+      0% { opacity:0; }
+      100% { opacity:100%; }
+  }
+  #score {
+    background-color: #e6e6e6;
+  }
+</style>
+</body>
+</html>
