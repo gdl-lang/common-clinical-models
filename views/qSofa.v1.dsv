@@ -26,11 +26,11 @@
   "decisionSupportViewDefinitions": {
     "en": {
       "name": "quick Sepsis Related Organ Failure Assessment",
-      "description": "qSOFA is an acronym for quick Sepsis Related Organ Failure Assessment. It is used to identify patients with suspected infection who have a greater risk of poor outcome outside of the intensive care unit. qSOFA consists of three criteria: altered mental state (GCS\u003c15), fast respiratory rate (≥22 breaths per min), and low blood pressure (SBP≤100 mmHg). Each criteria is worth one point."
+      "description": "Calculation of the qSOFA score."
     },
     "sv": {
       "name": "quick Sepsis Related Organ Failure Assessment",
-      "description": "qSOFA är en akronym för quick Sepsis Related Organ Failure Assessment. Poängsystemet används för att bland icke intensivvårdade patienter med förmodad infektionssjukdom identifiera de med hög risk för negativt utfall, mätt i mortalitet och IVA-vård ≥3 dagar. qSOFA utgörs av tre komponenter; förändrad medvetandegrad (GCS\u003c15), förhöjd andningsfrekvens (≥22/min) och systoliskt blodtryck≤100 mmHg. Varje enskild faktor bidrar med en poäng. "
+      "description": "Beräkning av qSOFA-poängen."
     }
   },
   "resourceDescription": {
@@ -84,17 +84,28 @@
   "termDefinitions": {
     "en": {
       "id": "en",
-      "terms": {}
+      "terms": {
+        "vt0001":{
+          "id": "vt0001",
+          "text": "References"
+        }
+      }
     },
     "sv": {
       "id": "sv",
-      "terms": {}
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "Referenser"
+        }
+      }
     }
   }
 }</script>
 </head>
 <body ng-controller="cds_controller">
 <#assign app_help_tag = "def.guides['qSOFA.v1'].concept">
+<#assign references = "def.terms['vt0001']"/>
 <#assign qsofa_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.qsofa.v1']">
 <#assign qsofa_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.qsofa.v1']">
 <#assign qsofa_entry_def = "def.entries['openEHR-EHR-OBSERVATION.qsofa.v1']">
@@ -176,11 +187,22 @@
   <div class="medium-3 columns">
     <label>{{${total_score_cds_data}.value.magnitude}}</label>
   </div>
-  <div class="medium-6 columns">
+  <div class="medium-6 columns" id="risk">
     <label class="guideline-recommendation" ng-class="{'qsofanothighrisk' : qsofaNotHighRisk,'qsofahighrisk' : qsofaHighRisk}">{{${risk_assessment_cds_data}.value.symbol.value}}</label>
   </div>
 </div>
 </div>
+<br></br>
+  <div class="row collapse" title="{{${references}.text}}">
+    <div class="medium-10 medium-offset-2 columns">
+      <label>{{${references}.text}}</label>
+    </div>
+  </div>
+  <div class="row collapse" id="reference">
+    <div class="medium-10 medium-offset-2 columns">
+      <li><a href="https://jama.jamanetwork.com/article.aspx?articleid=2492881">Singer M, Deutschman CS, Seymour C, et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):801-810. doi:10.1001/jama.2016.0287.</a></li>
+    </div>
+  </div>
 </div>
 </body>
 <style>
@@ -211,8 +233,6 @@ html, body {
       border-radius: 0px;
       border: 1px #000;
       padding: 0px 5px;
-      line-height: 30px;
-      height: 30px;
   }
   .qsofanothighrisk {
       background-color: #e6ffcc;
@@ -310,6 +330,12 @@ html, body {
   }
   #score {
     background-color: #e6e6e6;
+  }
+  #risk {
+    background-color: #e6ffcc;
+  }
+  #reference {
+    font-size: 80%;
   }
 </style>
 </body>
