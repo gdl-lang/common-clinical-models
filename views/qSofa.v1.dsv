@@ -26,11 +26,11 @@
   "decisionSupportViewDefinitions": {
     "en": {
       "name": "quick Sepsis Related Organ Failure Assessment",
-      "description": "Calculation of the qSOFA score."
+      "description": "Initial identification of patients at high risk of poor outcome with an infection."
     },
     "sv": {
       "name": "quick Sepsis Related Organ Failure Assessment",
-      "description": "Beräkning av qSOFA-poängen."
+      "description": "Identifiering av patienter med hög risk för negativt utfall vid infektion."
     }
   },
   "resourceDescription": {
@@ -39,7 +39,9 @@
       "name": "Jimmy Axelsson",
       "date": "2016-07-06"
     },
-    "otherContributors": [],
+    "otherContributors": [
+    "Dennis Forslund",
+    "Oskar Nielsen"],
     "details": {
       "en": {
         "purpose": "To identify patients with confirmed or suspected infection with high risk for poor outcome outside of the intensive care unit.",
@@ -133,10 +135,12 @@
   angular.module('cds_app').controller('qSOFA_Ctrl', function($scope, $window){
     $scope.$on('json_loaded', function(){
       $scope.${event_time_ehr_data}.value.value = $window.getCurrentDate();
+      $scope.qsofaNotHighRisk=true;
     });
       $scope.$on('executeEnd', function() {
-      $scope.qsofaNotHighRisk=false;
-      $scope.qsofaHighRisk=false;
+        $scope.qsofaNotHighRisk=false;
+        $scope.qsofaHighRisk=false;
+
       if ($scope.${total_score_cds_data}.value.magnitude < 2) {
         $scope.qsofaNotHighRisk=true;
       }
@@ -180,27 +184,50 @@
     <input type="radio" value="{{key}}" ng-model="${systolic_blood_pressure__100_mm_hg_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
   </label>
 </div>
-<div class="row collapse" title="{{${total_score_def}.description}}" id="score">
-  <div class="medium-3 columns">
+<div class="row collapse" title="{{${total_score_def}.description}}" style="background-color: #e6e6e6;">
+  <div class="medium-6 columns">
     <label><b>{{${total_score_def}.name}}: </b></label>
   </div>
-  <div class="medium-3 columns">
+  <div class="medium-4 columns end" style="text-align: center;">
     <label>{{${total_score_cds_data}.value.magnitude}}</label>
   </div>
-  <div class="medium-6 columns" id="risk">
-    <label class="guideline-recommendation" ng-class="{'qsofanothighrisk' : qsofaNotHighRisk,'qsofahighrisk' : qsofaHighRisk}">{{${risk_assessment_cds_data}.value.symbol.value}}</label>
+</div>
+<div class="row collapse" ng-class="{'qsofanothighrisk' : qsofaNotHighRisk,'qsofahighrisk' : qsofaHighRisk}" title="{{${risk_assessment_def}.description}}">
+  <div class="medium-6 columns">
+    <label><b>{{${risk_assessment_def}.name}}:</b></label>
+  </div>
+  <div class="medium-4 columns end" style="text-align: center;">
+    <label>{{${risk_assessment_cds_data}.value.symbol.value}}</label>
   </div>
 </div>
 </div>
 <br></br>
-  <div class="row collapse" title="{{${references}.text}}">
-    <div class="medium-10 medium-offset-2 columns">
-      <label>{{${references}.text}}</label>
-    </div>
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
   </div>
-  <div class="row collapse" id="reference">
-    <div class="medium-10 medium-offset-2 columns">
-      <li><a href="https://jama.jamanetwork.com/article.aspx?articleid=2492881">Singer M, Deutschman CS, Seymour C, et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):801-810. doi:10.1001/jama.2016.0287.</a></li>
+</div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://jama.jamanetwork.com/article.aspx?articleid=2492881">Singer M, Deutschman CS, Seymour C, et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):801-810. doi:10.1001/jama.2016.0287.</a></i>
+        </li>
+      </div>
+    </div>
+    <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://jama.jamanetwork.com/article.aspx?articleid=2492876">Shankar-Hari M, Phillips GS, Levy ML, et al. Developing a New Definition and Assessing New Clinical Criteria for Septic Shock: For the Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):775-787. doi:10.1001/jama.2016.0289.</a></i>
+        </li>
+      </div>
+    </div>
+    <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://jama.jamanetwork.com/article.aspx?articleid=2492875">Seymour CW, Liu VX, Iwashyna TJ, et al. Assessment of Clinical Criteria for Sepsis: For the Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):762-774. doi:10.1001/jama.2016.02.</a></i>
+        </li>
+      </div>
     </div>
   </div>
 </div>
@@ -227,12 +254,6 @@ html, body {
     font-weight: 300;
     font-size: 22px;
     font-style: italic;
-  }
-  .guideline-recommendation {
-      text-align: center;
-      border-radius: 0px;
-      border: 1px #000;
-      padding: 0px 5px;
   }
   .qsofanothighrisk {
       background-color: #e6ffcc;
@@ -312,6 +333,9 @@ html, body {
       top:-40px;
       left:0;
   }
+  .references1{
+    font-size: 70%;
+  }
   /* CSS animation */
   @-webkit-keyframes fadeIn {
       0% { 
@@ -327,15 +351,6 @@ html, body {
   @keyframes fadeIn {
       0% { opacity:0; }
       100% { opacity:100%; }
-  }
-  #score {
-    background-color: #e6e6e6;
-  }
-  #risk {
-    background-color: #e6ffcc;
-  }
-  #reference {
-    font-size: 80%;
   }
 </style>
 </body>
