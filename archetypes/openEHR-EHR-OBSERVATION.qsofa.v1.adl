@@ -21,28 +21,6 @@ description
 		["date"] = <"2016-07-06">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To identify patients with confirmed or suspected infection with high risk for poor outcome outside of the intensive care unit.">
-			use = <"Use to evaluate the risk of poor outcome in patients with confirmed or suspected infection outside of the intensive care unit (ICU).
-
-qSOFA is an acronym for quick Sepsis Related Organ Failure Assessment. It is can be used bedside to assess the risk of a poor outcome in patients with suspected or confirmed infection outside the ICU. qSOFA consists of three criteria: altered mental state (GCS<15), fast respiratory rate (≥22 breaths per min), and low blood pressure (SBP≤100 mmHg). Each criteria is worth one point, thus the maximum qSOFA Score is 3. 
-
-The qSOFA protocol is a markedly simplified version of the SOFA protocol. qSOFA uses only its three clinical criteria and uses \"altered mental status\" instead of GCS≤13.
-
-A qSOFA score of ≥2 is considered indicates a high risk of poor prognosis (mortality or ICU stay of ≥3 days). Patients with qSOFA score of ≥2 should be assessed for organ dysfunction (this includes lactate levels). Furthermore, the SOFA Score should be calculated for these patients and the standard interventions for sepsis should be used as treatment. 
-
-A qSOFA score of <2 is not associated with a high risk of poor prognosis, but it does not suggest that the subject of care is not a high risk patient. If sepsis is still suspected when the qSOFA score is <2, continue monitoration and evaluation of the patient. Initiate standard treatment if needed.
-
-Serial qSOFA assessments can be performed to detect changes in prognosis.
-
-
-
-">
-			keywords = <"Sepsis", "SOFA", "Infection", "Mental state", "Blood pressure", "Respiratory rate">
-			misuse = <"Do not use to rule out sepsis. If sepsis is still suspected when the qSOFA score is <2, continue monitoration and evaluation of the patient. Initiate standard treatment if needed. Conduct qSOFA assessments regularly in order to detect changes in prognosis.">
-			copyright = <"Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att bland icke intensivvårdade patienter med förmodad infektionssjukdom identifiera de med hög risk för negativt utfall.">
@@ -62,26 +40,48 @@ Kontinuerlig utvärdering med hjälp av qSOFA kan utföras för att detektera f�
 			misuse = <"Använd ej för att utesluta sepsis. Total poäng <2 associeras inte med hög risk för negativt utfall, men kan inte användas för uteslutning. Om klinisk misstanke om sepsis föreligger, bör patienter i denna kategori monitoreras och utvärderas kontinuerligt. Klinisk bedömning avgör eventuell behandling. Kontinuerlig utvärdering med hjälp av qSOFA kan detektera förändringar av prognostiskt värde.">
 			copyright = <"Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To identify patients with confirmed or suspected infection with high risk for poor outcome outside of the intensive care unit.">
+			use = <"Use to evaluate the risk of poor outcome in patients with confirmed or suspected infection outside of the intensive care unit (ICU).
+
+qSOFA is an acronym for quick Sepsis Related Organ Failure Assessment. It is can be used bedside to assess the risk of a poor outcome in patients with suspected or confirmed infection outside the ICU. qSOFA consists of three criteria: altered mental state (GCS<15), fast respiratory rate (≥22 breaths per min), and low blood pressure (SBP≤100 mmHg). Each criteria is worth one point, thus the maximum qSOFA Score is 3. 
+
+The qSOFA protocol is a markedly simplified version of the SOFA protocol. qSOFA uses only its three clinical criteria and uses \"altered mental status\" instead of GCS≤13.
+
+A qSOFA score of ≥2 is indicative of a high risk of poor prognosis (mortality or ICU stay of ≥3 days). Patients with qSOFA score of ≥2 should be assessed for organ dysfunction (this includes lactate levels). Furthermore, the SOFA Score should be calculated for these patients and the standard interventions for sepsis should be used as treatment. 
+
+A qSOFA score of <2 is not associated with a high risk of poor prognosis, but it does not suggest that the subject of care is not a high risk patient. If sepsis is still suspected when the qSOFA score is <2, continue monitoration and evaluation of the patient. Initiate standard treatment if needed.
+
+Serial qSOFA assessments can be performed to detect changes in prognosis.
+
+
+
+">
+			keywords = <"Sepsis", "SOFA", "Infection", "Mental state", "Blood pressure", "Respiratory rate">
+			misuse = <"Do not use to rule out sepsis. If sepsis is still suspected when the qSOFA score is <2, continue monitoration and evaluation of the patient. Initiate standard treatment if needed. Conduct qSOFA assessments regularly in order to detect changes in prognosis.">
+			copyright = <"Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
-	other_contributors = <>
+	other_contributors = <"Dennis Forslund", ...>
 	other_details = <
 		["references"] = <"Singer M, Deutschman CS, Seymour C, et al. The Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):801-810. doi:10.1001/jama.2016.0287.
 
 Shankar-Hari M, Phillips GS, Levy ML, et al. Developing a New Definition and Assessing New Clinical Criteria for Septic Shock: For the Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):775-787. doi:10.1001/jama.2016.0289.
 
 Seymour CW, Liu VX, Iwashyna TJ, et al. Assessment of Clinical Criteria for Sepsis: For the Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):762-774. doi:10.1001/jama.2016.02">
-		["MD5-CAM-1.0.1"] = <"EAC7D98C25770FD6F035FC81B3DEAAFA">
+		["MD5-CAM-1.0.1"] = <"9B4823DC1CD8A841184D454F1E70BDC4">
 	>
 
 definition
 	OBSERVATION[at0000] matches {	-- qSOFA
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Händelseförlopp
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Vilken händelse som helst
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Träd
 								items cardinality matches {0..*; unordered} matches {
 									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Förändrad medvetandegrad
 										value matches {
@@ -137,43 +137,43 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Altered Mentation">
-					description = <"*">
+					description = <"Glasgow coma scale <15.">
 				>
 				["at0005"] = <
-					text = <"Respiration Rate ≥22 /min ">
-					description = <"*">
+					text = <"Respiratory Rate ≥22 /min ">
+					description = <"Elevated respiratory rate.">
 				>
 				["at0006"] = <
 					text = <"Systolic Blood Pressure ≤100 mm Hg">
-					description = <"*">
+					description = <"Low systolic blood pressure.">
 				>
 				["at0007"] = <
 					text = <"Total Score">
-					description = <"*">
+					description = <"Sum of altered mentation, respiratory rate, and blood pressure.">
 				>
 				["at0008"] = <
 					text = <"Absent">
-					description = <"*">
+					description = <"Glasgow coma scale =15.">
 				>
 				["at0009"] = <
 					text = <"Present">
-					description = <"*">
+					description = <"Glasgow coma scale <15.">
 				>
 				["at0010"] = <
 					text = <"Absent">
-					description = <"*">
+					description = <"Respiratory Rate <22 /min ">
 				>
 				["at0011"] = <
 					text = <"Present">
-					description = <"*">
+					description = <"Respiratory Rate ≥22 /min ">
 				>
 				["at0012"] = <
 					text = <"Absent">
-					description = <"*">
+					description = <"Systolic blood pressure >100 mm Hg.">
 				>
 				["at0013"] = <
 					text = <"Present">
-					description = <"*">
+					description = <"Systolic Blood Pressure ≤100 mm Hg.">
 				>
 			>
 		>
@@ -184,56 +184,56 @@ ontology
 					description = <"qSOFA är en akronym för quick Sepsis Related Organ Failure Assessment. Poängsystemet används för att bland icke intensivvårdade patienter med förmodad infektionssjukdom identifiera de med hög risk för negativt utfall. qSOFA utgörs av tre komponenter; förändrad medvetandegrad (GCS<15), förhöjd andningsfrekvens (≥22/min) och systoliskt blodtryck≤100 mmHg. Varje enskild faktor bidrar med en poäng. ">
 				>
 				["at0001"] = <
-					text = <"*Event Series(en)">
-					description = <"*@ internal @(en)">
+					text = <"Händelseförlopp">
+					description = <"@ internal @">
 				>
 				["at0002"] = <
-					text = <"*Any event(en)">
-					description = <"**(en)">
+					text = <"Vilken händelse som helst">
+					description = <"">
 				>
 				["at0003"] = <
-					text = <"*Tree(en)">
-					description = <"*@ internal @(en)">
+					text = <"Träd">
+					description = <"@ internal @">
 				>
 				["at0004"] = <
 					text = <"Förändrad medvetandegrad">
-					description = <"**(en)">
+					description = <"Glasgow coma scale <15.">
 				>
 				["at0005"] = <
 					text = <"Andningsfrekvens ≥22 /min">
-					description = <"**(en)">
+					description = <"Hög andningsfrekvens.">
 				>
 				["at0006"] = <
 					text = <"Systoliskt blodtryck ≤100 mmHg">
-					description = <"**(en)">
+					description = <"Lågt systoliskt blodtryck.">
 				>
 				["at0007"] = <
 					text = <"Total poäng">
-					description = <"**(en)">
+					description = <"Summan av förändrad medvetandegrad, andningsfrekvens och systoliskt blodtryck.">
 				>
 				["at0008"] = <
 					text = <"Frånvarande">
-					description = <"**(en)">
+					description = <"Glasgow coma scale =15.">
 				>
 				["at0009"] = <
 					text = <"Föreligger">
-					description = <"**(en)">
+					description = <"Glasgow coma scale <15.">
 				>
 				["at0010"] = <
 					text = <"Frånvarande">
-					description = <"**(en)">
+					description = <"Andningsfrekvens <22 /min.">
 				>
 				["at0011"] = <
 					text = <"Föreligger">
-					description = <"**(en)">
+					description = <"Andningsfrekvens ≥22 /min.">
 				>
 				["at0012"] = <
 					text = <"Frånvarande">
-					description = <"**(en)">
+					description = <"Systoliskt blodtryck >100 mmHg.">
 				>
 				["at0013"] = <
 					text = <"Föreligger">
-					description = <"**(en)">
+					description = <"Systoliskt blodtryck ≤100 mmHg.">
 				>
 			>
 		>
