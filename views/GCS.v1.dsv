@@ -64,16 +64,29 @@
   "termDefinitions": {
     "en": {
       "id": "en",
-      "terms": {}
+      "terms": {
+        "vt0001":{
+          "id": "vt0001",
+          "text": "References"
+        }
+      }
     },
     "sv": {
       "id": "sv",
-      "terms": {}
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "Referenser"
+        }
+      }
     }
   }
-}</script>
+}
+</script>
 </head>
 <body ng-controller="cds_controller">
+<#assign app_help_tag = "def.guides['GCS.v1'].concept">
+<#assign references = "def.terms['vt0001']"/>
 <#assign glasgow_coma_scale_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.glasgow_coma_scale.v1']">
 <#assign glasgow_coma_scale_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.glasgow_coma_scale.v1']">
 <#assign glasgow_coma_scale_entry_def = "def.entries['openEHR-EHR-OBSERVATION.glasgow_coma_scale.v1']">
@@ -94,66 +107,200 @@
 <#assign best_verbal_response__v__cds_data = glasgow_coma_scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
 <#assign glasgow_coma_scale_assessment_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.glasgow_coma_scale_assessment.v1']">
 <#assign glasgow_coma_scale_assessment_entry_def = "def.entries['openEHR-EHR-EVALUATION.glasgow_coma_scale_assessment.v1']">
-<#assign severity_of_brain_injury_def = glasgow_coma_scale_assessment_entry_def + ".elements['/data{at0001}/items{at0003}']">
-<#assign severity_of_brain_injury_cds_data = glasgow_coma_scale_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0003}']">
-
 <script>
   angular.module('cds_app').controller('GCS_Ctrl', function($scope, $window){
     $scope.$on('json_loaded', function(){
       $scope.${event_time_ehr_data}.value.value = $window.getCurrentDate();
     });
   });
-  </script>
-
-<div ng-show="ready" ng-controller="GCS_Ctrl"> 
-<div class="row">
-<div class="medium-offset-3 medium-6 column">
-<h1>{{def.concept.name}}</h1>
+</script>
+<div ng-show="ready" ng-controller="GCS_Ctrl">
+  <div class="header">
+    <h1>GCS</h1>
+    <h2>{{def.concept.description}}</h2>
+    <div class="help-tip">
+      <p>{{${app_help_tag}.description}}</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="row collapse" title="{{${best_eye_response__e__def}.description}}">
+      <div class="medium-5 columns">
+        <label>{{${best_eye_response__e__def}.name}}</label>
+      </div>
+      <label class="medium-7 columns">
+        <select ng-model="${best_eye_response__e__ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${best_eye_response__e__def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+    <div class="row collapse" title="{{${best_verbal_response__v__def}.description}}">
+      <div class="medium-5 columns">
+        <label>{{${best_verbal_response__v__def}.name}}</label>
+    </div>
+    <label class="medium-7 columns">
+      <select ng-model="${best_verbal_response__v__ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${best_verbal_response__v__def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+      </select>
+    </label>
+  </div>
+  <div class="row collapse" title="{{${best_motor_response__m__def}.description}}">
+  <div class="medium-5 columns">
+    <label>{{${best_motor_response__m__def}.name}}</label>
+  </div>
+  <label class="medium-7 columns">
+    <select ng-model="${best_motor_response__m__ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${best_motor_response__m__def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+    </select>
+  </label>
+</div>
+<div class="row collapse" title="{{${total_score_def}.description}}" style="background-color: #d5dce2;">
+  <div class="medium-5 columns">
+    <label><b>{{${total_score_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{(${best_eye_response__e__ehr_data}.value.selection | limitTo:1) -- (${best_verbal_response__v__ehr_data}.value.selection | limitTo:1) -- (${best_motor_response__m__ehr_data}.value.selection | limitTo:1)}}</label>
+  </div>
+</div>
+<div class="row collapse" style="background-color: #e6e6e6;">
+  <div class="medium-5 columns">
+    <label><b>EVM:</b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{"E" + (${best_eye_response__e__ehr_data}.value.selection | limitTo:1) + "V" + (${best_verbal_response__v__ehr_data}.value.selection | limitTo:1) + "M" + (${best_motor_response__m__ehr_data}.value.selection | limitTo:1)}}</label>
+  </div>
 </div>
 </div>
-<div class="row">
-<div class="medium-offset-3 medium-6 column">
-<form name="form">
-<fieldset>
-<legend>{{${glasgow_coma_scale_entry_def}.name}}</legend>
-<label>{{${best_eye_response__e__def}.name}}</label>
-<div class="row collapse" title="{{${best_eye_response__e__def}.description}}">
-<div class="medium-12 columns">
-<select ng-model="${best_eye_response__e__ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${best_eye_response__e__def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+<br></br>
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
 </div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="http://www.ncbi.nlm.nih.gov/pubmed/4136544">Teasdale G, Jennett B.Assessment of coma and impaired consciousness. A practical scale. Lancet. 1974 Jul 13;2(7872):81-4.</a></i>
+        </li>
+      </div>
+    </div>
+    <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="http://www.ncbi.nlm.nih.gov/pubmed/16766966">Moore L, Lavoie A, Camden S, Le Sage N, Sampalis JS, Bergeron E, Abdous B. Statistical validation of the Glasgow Coma Score.J Trauma. 2006 Jun;60(6):1238-43; discussion 1243-4.</a></i>
+        </li>
+      </div>
+    </div>
+  </div>
 </div>
-<label>{{${best_verbal_response__v__def}.name}}</label>
-<div class="row collapse" title="{{${best_verbal_response__v__def}.description}}">
-<div class="medium-12 columns">
-<select ng-model="${best_verbal_response__v__ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${best_verbal_response__v__def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${best_motor_response__m__def}.name}}</label>
-<div class="row collapse" title="{{${best_motor_response__m__def}.description}}">
-<div class="medium-12 columns">
-<select ng-model="${best_motor_response__m__ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${best_motor_response__m__def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-</form>
-</fieldset>
-<fieldset>
-<legend>{{${total_score_def}.name}}</legend>
-<div class="medium-6 column">
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${total_score_def}.name}}: {{(${best_eye_response__e__ehr_data}.value.selection | limitTo:1) -- (${best_verbal_response__v__ehr_data}.value.selection | limitTo:1) -- (${best_motor_response__m__ehr_data}.value.selection | limitTo:1)}} </b>
-<p> {{"E" + (${best_eye_response__e__ehr_data}.value.selection | limitTo:1) + "V" + (${best_verbal_response__v__ehr_data}.value.selection | limitTo:1) + "M" + (${best_motor_response__m__ehr_data}.value.selection | limitTo:1)}}</p>
-</div>
-</div>
-</fieldset>
-</div>
-</div>
-</div>
-</div>
+</body>
 <style>
-    body{background-color: #e7efff;}
-    h1{text-align: center;}
-    fieldset legend{background-color: transparent;}
-  </style>
+html, body {
+    height:100%;
+    width: 100%;
+  }
+  body {
+    font-family: sans-serif;
+    font-weight: 300;
+    color: #333;
+    background: #ecf0f9;
+    padding: 1em;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 {
+    font-weight: 600;
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 22px;
+    font-style: italic;
+  } 
+  .header {
+    margin-bottom: 2em;
+  }
+  .card {
+    background-color: #fdfdfd;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 10px auto 0 auto;
+    padding: 1em;
+    width: 50%;
+    overflow: hidden;
+  }
+  .help-tip{
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      text-align: center;
+      background-color: #BCDBEA;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      line-height: 26px;
+      cursor: default;
+  }
+  .help-tip:before{
+      content:'?';
+      font-weight: bold;
+      color:#fff;
+  }
+  .help-tip:hover p{
+      display:block;
+      transform-origin: 100% 0%;
+      -webkit-animation: fadeIn 0.3s ease-in-out;
+      animation: fadeIn 0.3s ease-in-out;
+  }
+  .help-tip p{  /* The tooltip */
+      display: none;
+      text-align: left;
+      background-color: #1E2021;
+      padding: 20px;
+      width: 300px;
+      position: absolute;
+      border-radius: 3px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+      right: -4px;
+      color: #FFF;
+      font-size: 13px;
+      line-height: 1.4;
+      z-index: 9999;
+  }
+  .help-tip p:before{ /* The pointer of the tooltip */
+      position: absolute;
+      content: '';
+      width:0;
+      height: 0;
+      border:6px solid transparent;
+      border-bottom-color:#1E2021;
+      right:10px;
+      top:-12px;
+  }
+  .help-tip p:after{ /* Prevents the tooltip from being hidden */
+      width:100%;
+      height:40px;
+      content:'';
+      position: absolute;
+      top:-40px;
+      left:0;
+  }
+  .references1{
+    font-size: 70%;
+  }
+  /* CSS animation */
+  @-webkit-keyframes fadeIn {
+      0% { 
+          opacity:0; 
+          transform: scale(0.6);
+      }
+
+      100% {
+          opacity:100%;
+          transform: scale(1);
+      }
+  }
+  @keyframes fadeIn {
+      0% { opacity:0; }
+      100% { opacity:100%; }
+  }
+</style>
 </body>
 </html>
