@@ -26,30 +26,33 @@
   "decisionSupportViewDefinitions": {
     "en": {
       "name": "Glasgow Coma Scale",
-      "description": "Fifteen point scale used to assess impairment of consciousness in response to defined stimuli."
+      "description": "Fifteen point scale used to assess impairment of consciousness"
     },
     "sv": {
       "name": "Glasgow coma scale",
-      "description": "Glasgow Coma Scale är en skala som används för att bedöma medvetandegraden. Skalan består av tre tester: ögonöppning, verbalt svar och motoriskt svar. Maximal poäng är 15. "
+      "description": "En 15-gradig skala som används för att bedöma medvetandegraden"
     }
   },
   "resourceDescription": {
     "originalAuthor": {
-      "name": "Jimmy Axelsson"
+      "organisation": "Cambio Healthcare Systems",
+      "name": "Jimmy Axelsson",
+      "date": "2016-06-17"
     },
-    "otherContributors": [],
+    "otherContributors": [
+    "Oskar Nielsen"],
     "details": {
       "en": {
-        "purpose": "",
-        "keywords": [],
-        "use": "",
-        "misuse": ""
+        "purpose": "To record clinical responses of the subject of care to defined stimuli as an objective assessment of the level of consciousness.",
+        "keywords": ["response", "motor", "verbal", "eye", "stimulus", "glasgow", "coma", "scale", "neurological", "responsiveness", "EMV", "conscious", "GCS", "trauma", "central nervous system", "consciousness"],
+        "use": "Use to record clinical responses of an adult subject of care to stimuli. It is commonly used to establish a baseline conscious state and neurological function assessment and/or to detect patients who may require immediate medical intervention. The Glasgow coma scale has three subscales E (eye), V (verbal) and M (motor). In clinical practice all three subscales are reported individually plus the 'Total score', if applicable. A recorded response for each of E, V and M is mandatory. If a response cannot be tested, then the 'Not Applicable' null flavour should be recorded; do not use the 'None' ordinal value to record a missing component. Details about the reason for not being able to test a response can be recorded in the 'Confounding factors' data element. The 'Total score' can be derived as the sum of the recorded eye, motor and verbal response scores. It is not appropriate to report a 'Total score' when one or more components are not testable because the score will be artificially low - in this situation record the EVM profile instead.The three response values are considered separately as well as their sum. The 'EVM profile' can be derived as a concatenation of each of the recorded eye, motor and verbal response scores. For example, E3 V4 M2 represents the conscious state of a subject who opens eyes to speech, utters incomprehensible sounds and has an extensor response to stimulation.",
+        "misuse": "Not to be used for assessing infants and young children - an archetype for Paediatric Glasgow Coma Scale will be required to ensure that the eye, motor and verbal response choices are appropriate for the age and ability of the child."
       },
-      "se": {
-        "purpose": "",
-        "keywords": [],
-        "use": "",
-        "misuse": ""
+      "sv": {
+        "purpose": "Att dokumentera resultaten av de olika kliniska testerna som ingår i glasgow coma scale för att möjliggöra bedömning av medvetandegraden hos patienten. ",
+        "keywords": ["respons", "motor", "verbal", "öga", "stimuli", "glasgow", "coma", "scale", "EMV", "GCS"],
+        "use": "Använd för att dokumentera de kliniska responserna hos en vuxen patient när denne utsätts för stimulin. Skalan används vanligen för att etablera ett basvärde för medvetandegraden samt neurologisk funktion och/eller för att detektera patienter som kan behöva akut handläggning. Glasgow coma scale har tre subskalor: E (öga), V (verbal) och M (motor). I kliniken rapporteras dessa tre subskalor var för sig och tillsammans med totalpoängen, om möjligt. Ett värde måste anges för respektive subskala E, V och M. Om en respons inte kan testas ska 'Not Applicable' null flavour väljas - använd inte 'None' ordinalen för att rapportera att ett värde saknas. Detaljer kring anledningen för att testet inte kunde genomföras kan dokumenteras under dataelementet 'Förväxlingsfaktorer'. Den totala poängen är summan av de dokumenterade värdena för ögonrespons, verbal respons och motorisk respons. Det är inte lämpligt att rapportera en totalpoäng när en eller flera komponenter inte kan testas eftersom poängen blir artificiellt låg - i en sådan situation bör EVM-profilen användas istället. De tre subskalorna betraktas både var för sig och tillsammans (totalpoängen). EVM-profilen är en sammanslagning av poängen som registrerats för ögonrespons, verbal respons och motorisk respons. Exempelvis representerar E3 V4 M2 medvetandegraden hos en individ som öppnar ögonen vid tilltal, yttrar oförståeliga läten och har en extensorrespons vid stimulering. Den minimala totalpoängen är 3 (motsvarande E1 V1 M1) och den maximala poängen är 15 (motsvarande E4 V5 M6). I kliniken är glasgow coma scale ofta en delkomponent i patientövervakningen som sker regelbundet under vårdtiden. Datum och tid ska dokumenteras vid varje testtillfälle och även faktorer som kan ha påverkat tolkningen av resultaten. Förändringar av totalpoängen alternativt E, V eller M kan ha en lika stor kliniska signifikans som vid det ursprungliga mättillfället.",
+        "misuse": "Skall inte användas på spädbarn eller småbarn - en arketyp för pediatrisk glasgow coma scale krävs i sådana fall för att säkerställa att valen av ögonrespons, motorisk respons och verbal respons är anpassade till barnets ålder och förmåga. "
       }
     },
     "otherDetails": {
@@ -68,6 +71,10 @@
         "vt0001":{
           "id": "vt0001",
           "text": "References"
+        },
+        "vt0002":{
+          "id": "vt0002",
+          "text": "Alternative assessment to 'Total Score' where  the Eye Verbal Motor profile is expressed as three discrete components."
         }
       }
     },
@@ -77,6 +84,10 @@
         "vt0001": {
           "id": "vt0001",
           "text": "Referenser"
+        },
+        "vt0002":{
+          "id": "vt0002",
+          "text": "Alternativ till 'Total poäng' där ögon-, verbal- och motorikprofilerna är sammanskrivna vilket gör att poängen för varje enskild komponent presenteras."
         }
       }
     }
@@ -87,6 +98,7 @@
 <body ng-controller="cds_controller">
 <#assign app_help_tag = "def.guides['GCS.v1'].concept">
 <#assign references = "def.terms['vt0001']"/>
+<#assign evm_description_tag = "def.terms['vt0002']"/>
 <#assign glasgow_coma_scale_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.glasgow_coma_scale.v1']">
 <#assign glasgow_coma_scale_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.glasgow_coma_scale.v1']">
 <#assign glasgow_coma_scale_entry_def = "def.entries['openEHR-EHR-OBSERVATION.glasgow_coma_scale.v1']">
@@ -158,7 +170,7 @@
     <label>{{(${best_eye_response__e__ehr_data}.value.selection | limitTo:1) -- (${best_verbal_response__v__ehr_data}.value.selection | limitTo:1) -- (${best_motor_response__m__ehr_data}.value.selection | limitTo:1)}}</label>
   </div>
 </div>
-<div class="row collapse" style="background-color: #e6e6e6;">
+<div class="row collapse" title="{{${evm_description_tag}.text}}" style="background-color: #e6e6e6;">
   <div class="medium-5 columns">
     <label><b>EVM:</b></label>
   </div>
