@@ -95,6 +95,9 @@
 <#assign q2_cds_data = copd_assessment_test_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0023}/items{at0011}']">
 <script> 
 angular.module('cds_app').controller('COPD_Ctrl', function($scope){
+$scope.$on('json_loaded', function(){
+  //$scope.${event_time_ehr_data}.value.value = "2016-06-30T00:06:00";
+});
 $scope.question = {};
 $scope.select = function (element, param, val, questionId) {
   element.value.selection = param;
@@ -104,6 +107,7 @@ $scope.select = function (element, param, val, questionId) {
 });
 </script>
   <div ng-show="ready" ng-controller="COPD_Ctrl">
+    <div class="content">
     <h1>{{def.concept.name}}</h1>
     <div class="row">
       <div class="medium-12 column"><h3>{{${copd_assessment_test_entry_def}.description}}</h3></div>
@@ -170,9 +174,14 @@ $scope.select = function (element, param, val, questionId) {
         <td class="wideFix"><h2>{{${total_score_def}.name}}:<div class="tab">{{${total_score_cds_data}.value.magnitude}}</div></h2></td>
       </tr>
     </table>
+    </div>
 </div>
 </body>
 <style>
+  html, body {
+    height: 100%;
+    width: 100%;
+  }
   body {
     font: 18px/18px 400;
     font-family: sans-serif;
@@ -250,6 +259,9 @@ $scope.select = function (element, param, val, questionId) {
   .border {
     border-top: 2px solid grey;
     margin-bottom: 0.5em;
+  }
+  .content {
+    padding-bottom: 1em;
   }
 </style>
 </html>

@@ -25,8 +25,12 @@
   },
   "decisionSupportViewDefinitions": {
     "en": {
-      "name": "Wells’ Criteria for DVT",
+      "name": "Wells Criteria for DVT",
       "description": "Calculation of the score for the Well\u0027s Criteria for deep vein thrombosis (DVT)."
+    },
+    "sv": {
+      "name": "Wells kriterier för DVT",
+      "description": "Beräkning av Wells poäng för djup ventrombos (DVT)."
     }
   },
   "resourceDescription": {
@@ -111,7 +115,32 @@
 angular.module('cds_app').controller('DVT_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
     $scope.${event_time_ehr_data}.value.value = $window.getCurrentDate();
+    $scope.${active_cancer_ehr_data}.value.selection = $scope.findMin($scope.${active_cancer_def});
+    $scope.${alternative_diagnosis_to_dvt_at_least_as_likely_ehr_data}.value.selection = $scope.findMin($scope.${alternative_diagnosis_to_dvt_at_least_as_likely_def});
+    $scope.${localized_tenderness_along_the_deep_venous_system_ehr_data}.value.selection = $scope.findMin($scope.${localized_tenderness_along_the_deep_venous_system_def});
+    $scope.${entire_leg_swollen_ehr_data}.value.selection = $scope.findMin($scope.${entire_leg_swollen_def});
+    $scope.${pitting_oedema__ehr_data}.value.selection = $scope.findMin($scope.${pitting_oedema__def});
+    $scope.${calf_swelling__3_cm_compared_to_the_other_leg_ehr_data}.value.selection = $scope.findMin($scope.${calf_swelling__3_cm_compared_to_the_other_leg_def});
+    $scope.${paralysis__paresis__or_recent_plaster_immobilisation_of_the_legs_ehr_data}.value.selection = $scope.findMin($scope.${paralysis__paresis__or_recent_plaster_immobilisation_of_the_legs_def});
+    $scope.${collateral__nonvaricose__superficial_veins_ehr_data}.value.selection = $scope.findMin($scope.${collateral__nonvaricose__superficial_veins_def});
+    $scope.${bedridden_recently__3_days_or_major_surgery_within_12_weeks_ehr_data}.value.selection = $scope.findMin($scope.${bedridden_recently__3_days_or_major_surgery_within_12_weeks_def});
   });
+  $scope.findMin = function (element) {
+    var array = []
+    for  (selection in element.selections) {
+      array.push(selection);
+    }
+    return (function() {
+      var min = 0;
+      var result;
+      for (i=0; i<array.length; i++) {
+        if (array[i].charAt(0) <= min && array[i].charAt(0) >= 0) { //catch exception of -2
+          result = array[i];
+        }
+      }
+      return result;
+    })(array);
+  };
 });
 </script>
 <div ng-show="ready" ng-controller="DVT_Ctrl">
@@ -183,7 +212,7 @@ angular.module('cds_app').controller('DVT_Ctrl', function($scope, $window){
       <div class="medium-8 columns">
         <label>{{${paralysis__paresis__or_recent_plaster_immobilisation_of_the_legs_def}.name}}</label>
       </div>
-      <label class="medium-2 column" ng-repeat="(key, desc) in ${bedridden_recently__3_days_or_major_surgery_within_12_weeks_def}.selections">
+      <label class="medium-2 column" ng-repeat="(key, desc) in ${paralysis__paresis__or_recent_plaster_immobilisation_of_the_legs_def}.selections">
         <input type="radio" value="{{key}}" ng-model="${paralysis__paresis__or_recent_plaster_immobilisation_of_the_legs_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
       </label>
   </div>
@@ -197,11 +226,11 @@ angular.module('cds_app').controller('DVT_Ctrl', function($scope, $window){
   </div>
 
   <div class="row collapse" title="{{${total_score_def}.description}}" id="score">
-    <div class="small-2 columns">
-      <label><b>{{${total_score_def}.name}}</b></label>
+    <div class="small-3 columns">
+      <h5 id="fix"><b>{{${total_score_def}.name}}:</b></h5>
     </div>
-    <div class="small-10 columns">
-      <span>{{${total_score_cds_data}.value.magnitude}}</span>
+    <div class="small-9 columns">
+      <h5>{{${total_score_cds_data}.value.magnitude}}</h5>
     </div>
   </div>
 </div>
@@ -242,7 +271,7 @@ angular.module('cds_app').controller('DVT_Ctrl', function($scope, $window){
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     margin: 10px auto 0 auto;
     padding: 1em;
-    width: 50%;
+    width: 60%;
     overflow: hidden;
   }
   select {
@@ -324,6 +353,9 @@ angular.module('cds_app').controller('DVT_Ctrl', function($scope, $window){
   }
   #score {
     background-color: #e6e6e6;
+  }
+  #fix {
+    margin-left: 5px;
   }
 </style>
 </html>
