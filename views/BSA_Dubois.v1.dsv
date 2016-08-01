@@ -25,7 +25,7 @@
   },
   "decisionSupportViewDefinitions": {
     "en": {
-      "name": "Body Surface Area (Dubois)",
+      "name": "BSA Calculation",
       "description": "Body surface area approximation estimation according to DuBois and DuBois\u0027 formula."
     },
     "sv": {
@@ -61,7 +61,7 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
-    "BSA_Dubois.v1"
+    "BSA_Calculation_Dubois.v1"
   ],
   "alertBindings": {},
   "termDefinitions": {
@@ -87,7 +87,7 @@
 }</script>
 </head>
 <body ng-controller="cds_controller">
-<#assign app_help_tag = "def.guides['BSA_Dubois.v1'].concept">
+<#assign app_help_tag = "def.guides['BSA_Calculation_Dubois.v1'].concept">
 <#assign height = "def.terms['vt0001']"/>
 
 <#assign height_length_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.height.v1']">
@@ -111,8 +111,8 @@
 <script> 
 angular.module('cds_app').controller('Dubois_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
-    $scope.${event_time1_ehr_data}.value.value = "2016-06-30T00:06:00";
-    $scope.${event_time_ehr_data}.value.value = "2016-06-30T00:06:00";
+    $scope.${event_time1_ehr_data}.value.value = $window.getCurrentDate();
+    $scope.${event_time_ehr_data}.value.value = $window.getCurrentDate();
     $scope.${height_length_ehr_data}.value.units = $scope.${height_length_def}.units[0];
     $scope.${weight_ehr_data}.value.units = $scope.${weight_def}.units[0];
   });
