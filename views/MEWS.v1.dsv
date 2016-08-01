@@ -155,6 +155,8 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
     $scope.${respiration_rate_ehr_data}.value.units = $scope.${respiration_rate_def}.units[0];
     $scope.${total_urine_output_24_hr_ehr_data}.value.units = $scope.${total_urine_output_24_hr_def}.units[0];
     $scope.${temperature1_ehr_data}.value.units = $scope.${temperature1_def}.units[0];
+    $scope.${new_confusion_ehr_data}.value.selection = $scope.findItem($scope.${new_confusion_def}.selections, 'at0010').itemId;
+    $scope.${avpu_observation_ehr_data}.value.selection = $scope.findItem($scope.${avpu_observation_def}.selections, 'at0005').itemId;
   });
   $scope.findItem = function (selections, atCode) {
     var itemVal, itemId;
@@ -184,6 +186,7 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
 });
 </script>
 <div ng-show="ready" ng-controller="MEWS_Ctrl">
+<div class="content">
 <div class="header">
   <h1>{{def.concept.name}}</h1>
   <h2>{{def.concept.description}}</h2>
@@ -192,7 +195,7 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
   </div>
 </div>
 <div class="card" id="card1">
-  <div class="row">
+<div class="row">
     <div class="medium-6 column">
       <div class="row collapse" title="{{${respiration_rate_def}.description}}">
           <div class="medium-5 columns">
@@ -259,9 +262,17 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
             <select ng-model="${avpu_observation_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${avpu_observation_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
           </div>
       </div>
+      <div class="row collapse" title="{{${new_confusion_def}.description}}">
+          <div class="medium-5 columns">
+            <label class="fix">{{${new_confusion_def}.name}}</label>
+          </div>
+          <div class="medium-7 columns">
+            <select class="fix" ng-model="${new_confusion_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${new_confusion_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+          </div>
+      </div>
     </div>
-    </div>
-  </div>
+</div>
+</div>
 <div class="card" id="card2">
   <table id="combo-chart">
     <tr class="hrow centered">
@@ -303,11 +314,12 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
       <td></td>
     </tr>
     <tr class="centered">
-      <th class="hfix">{{${urine_output_def}.name}}</th>
+      <th>{{${urine_output_def}.name}}</th>
       <td ng-repeat="(key, desc) in ${urine_output_def}.selections" ng-click="select(${urine_output_ehr_data}, key, $index, 6)" ng-class="{'active' : question[6].item === $index}">{{filterItem(desc)}}</td>
       <td ng-repeat="i in [1,2,3,4]"></td>
     </tr>
   </table>
+</div>
 </div>
 </div>
 <style>
@@ -400,8 +412,11 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
     background-color: #42a5f5;
     cursor: pointer;
   }
-  tr.centered .active {
-    border: 1px solid black;
+  .content {
+    padding-bottom: 1em;
+  }
+  .fix {
+    margin: 10px 0 10px 0;
   }
   .help-tip{
       position: absolute;
