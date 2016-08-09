@@ -1,0 +1,119 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.raps_scale_assessment.v1
+
+concept
+	[at0000]	-- Raps Scale Assessment
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Oskar Nielsen">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Oskar Nielsen">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2016-08-09">
+	>
+	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"För att bedöma en patients risk för trycksår.">
+			use = <"Använd med RAPS-skalan för att få ut poängsumman. RAPS skalans totalpoäng kommer att användas för att bedöma förekomsten av trycksår hos en patient.">
+			keywords = <"Senior alert", "Trycksår", "Riskbedömning", "RAPS">
+			misuse = <"*">
+			copyright = <"">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess a patient's risk of pressure sores.">
+			use = <"Use with RAPS Scale to get the total score. The RAPS Scale's total score will be used here to assess the existence of pressure sores in a patient.">
+			keywords = <"Senior alert", "Pressure sores", "RAPS", "Risk Assessment">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Lindgren M, Unosson M, Krantz AM, Ek AC. A risk assessment scale for the prediction of pressure sore development: reliability and validity. Journal of advanced nursing. 2002 Apr 1;38(2):190-9.">
+		["MD5-CAM-1.0.1"] = <"29C7F20D658722AC383F7CDEFB5A6F85">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Raps Scale Assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Träd
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Riskgrupp
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0003, 	-- Låg risk
+									at0004]	-- Hög risk
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Raps Scale Assessment">
+					description = <"The RAPS scale is an assessment scale for predicting pressure sore development. The RAPS scale may be useful in clinical practice for patients undergoing treatment in medical wards and wards for infectious diseases. The maximum score of the tool is 39, and the lower the score, the greater the risk of pressure sore development.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Risk Group">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Low risk">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"High risk">
+					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Raps Scale Assessment">
+					description = <"RAPS skalan är en riskbedömningsskala för att förutsäga utvecklingen av trycksår. RAPS skala kan vara användbar i klinisk praxis för patienter som genomgår behandling i medicinska avdelningar och avdelningar för infektionssjukdomar.">
+				>
+				["at0001"] = <
+					text = <"Träd">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Riskgrupp">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Låg risk">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Hög risk">
+					description = <"*">
+				>
+			>
+		>
+	>

@@ -1,0 +1,116 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"RAPS_Scale_Assessment.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				keywords = <"Senior Alert", "RAPS", "Pressure sores">
+				purpose = <"To evaluate a patient's risk of pressure sores.">
+				use = <"Use to assess the risk group a patient is in for pressure ulcers.">
+			>
+			["sv"] = (RESOURCE_DESCRIPTION_ITEM) <
+				keywords = <"Senior alert", "RAPS", "Trycksår">
+				purpose = <"För att utvärdera en patients risk för trycksår.">
+				use = <"Använd för att utvärdera i vilken riskgrupp en patient befinner sig i för trycksår.">
+			>
+		>
+		original_author = <
+			["date"] = <"2016-08-09">
+			["name"] = <"Oskar Nielsen">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"Lindgren M, Unosson M, Krantz AM, Ek AC. A risk assessment scale for the prediction of pressure sore development: reliability and validity. Journal of advanced nursing. 2002 Apr 1;38(2):190-9.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0005"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.raps_scale_assessment.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002]">
+					>
+				>
+			>
+			["gt0006"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.raps_scale.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0007"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0054]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0004"] = (RULE) <
+				when = <"$gt0007<=29",...>
+				then = <"$gt0008=local::at0004|High risk|",...>
+				priority = <2>
+			>
+			["gt0009"] = (RULE) <
+				when = <"$gt0007>29",...>
+				then = <"$gt0008=local::at0003|Low risk|",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"RAPS Scale Assessment ">
+						description = <"The RAPS scale is an assessment scale for predicting pressure sore development. The RAPS scale may be useful in clinical practice for patients undergoing treatment in medical wards and wards for infectious diseases. The maximum score of the tool is 39, and the lower the score, the greater the risk of pressure sore development.">
+					>
+					["gt0003"] = (TERM) <
+					>
+					["gt0004"] = (TERM) <
+						text = <"Set the significance of risk to high">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Total score">
+						description = <"*">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Risk Group">
+						description = <"*">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Set the significance of risk to low">
+					>
+				>
+			>
+			["sv"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Riskbedömning av RAPS-Skalan">
+						description = <"RAPS skalan är en riskbedömningsskala för att förutsäga utvecklingen av trycksår. RAPS skala kan vara användbar i klinisk praxis för patienter som genomgår behandling i medicinska avdelningar och avdelningar för infektionssjukdomar.">
+					>
+					["gt0003"] = (TERM) <
+					>
+					["gt0004"] = (TERM) <
+						text = <"Sätt risk till hög">
+					>
+					["gt0007"] = (TERM) <
+						text = <"*Total score (en)">
+						description = <"** (en)">
+					>
+					["gt0008"] = (TERM) <
+						text = <"*Risk Group (en)">
+						description = <"** (en)">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Sätt risk till låg">
+					>
+				>
+			>
+		>
+	>
+>
