@@ -72,15 +72,27 @@
   "termDefinitions": {
     "en": {
       "id": "en",
-      "terms": {}
+      "terms": {
+          "vt0001": {
+            "id": "vt0001",
+            "text": "EHR Data"
+            }
+      }
     },
-    "se": {
-      "id": "se"
+    "sv": {
+      "id": "sv",
+        "terms": {
+          "vt0001": {
+            "id": "vt0001",
+            "text": "Journaldata"
+          }
+        }
     }
   }
 }</script>
 </head>
 <body ng-controller="cds_controller">
+<#assign ehr_data = "def.terms['vt0001']">
 <#assign app_help_tag = "def.guides['MEWS.v1'].concept">
 <#assign pulse_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.pulse.v1']">
 <#assign pulse_entry_def = "def.entries['openEHR-EHR-OBSERVATION.pulse.v1']">
@@ -104,8 +116,10 @@
 <#assign avpu_entry_def = "def.entries['openEHR-EHR-OBSERVATION.avpu.v1']">
 <#assign avpu_observation_def = avpu_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 <#assign new_confusion_def = avpu_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign event_time3_def = avpu_entry_def + ".elements['/data/events/time']">
 <#assign avpu_observation_ehr_data = avpu_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 <#assign new_confusion_ehr_data = avpu_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign event_time3_ehr_data = avpu_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign modified_early_warning_score__mews__entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.mews.v1']">
 <#assign modified_early_warning_score__mews__entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.mews.v1']">
 <#assign modified_early_warning_score__mews__entry_def = "def.entries['openEHR-EHR-OBSERVATION.mews.v1']">
@@ -114,6 +128,7 @@
 <#assign urine_output_def = modified_early_warning_score__mews__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0028}']">
 <#assign heart_rate_def = modified_early_warning_score__mews__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
 <#assign level_of_consciousness_def = modified_early_warning_score__mews__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0023}']">
+<#assign event_time4_def = modified_early_warning_score__mews__entry_def + ".elements['/data/events/time']">
 <#assign systolic_blood_pressure_def = modified_early_warning_score__mews__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
 <#assign temperature_def = modified_early_warning_score__mews__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}']">
 <#assign respiratory_rate_ehr_data = modified_early_warning_score__mews__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
@@ -121,6 +136,7 @@
 <#assign urine_output_ehr_data = modified_early_warning_score__mews__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0028}']">
 <#assign heart_rate_ehr_data = modified_early_warning_score__mews__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
 <#assign level_of_consciousness_ehr_data = modified_early_warning_score__mews__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0023}']">
+<#assign event_time4_ehr_data = modified_early_warning_score__mews__entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign systolic_blood_pressure_ehr_data = modified_early_warning_score__mews__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
 <#assign temperature_ehr_data = modified_early_warning_score__mews__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}']">
 <#assign respiratory_rate_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
@@ -128,28 +144,31 @@
 <#assign urine_output_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0028}']">
 <#assign heart_rate_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
 <#assign level_of_consciousness_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0023}']">
+<#assign event_time4_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data/events/time']">
 <#assign systolic_blood_pressure_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
 <#assign temperature_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}']">
 <#assign urine_output_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.urine_output.v1']">
 <#assign urine_output_entry_def = "def.entries['openEHR-EHR-OBSERVATION.urine_output.v1']">
 <#assign total_urine_output_24_hr_def = urine_output_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign event_time3_def = urine_output_entry_def + ".elements['/data/events/time']">
+<#assign event_time5_def = urine_output_entry_def + ".elements['/data/events/time']">
 <#assign total_urine_output_24_hr_ehr_data = urine_output_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign event_time3_ehr_data = urine_output_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign event_time5_ehr_data = urine_output_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign body_temperature_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.body_temperature.v1']">
 <#assign body_temperature_entry_def = "def.entries['openEHR-EHR-OBSERVATION.body_temperature.v1']">
 <#assign temperature1_def = body_temperature_entry_def + ".elements['/data{at0002}/events{at0003}/data{at0001}/items{at0004}']">
-<#assign event_time4_def = body_temperature_entry_def + ".elements['/data/events/time']">
+<#assign event_time6_def = body_temperature_entry_def + ".elements['/data/events/time']">
 <#assign temperature1_ehr_data = body_temperature_entry_ehr_data + "[0].elements['/data{at0002}/events{at0003}/data{at0001}/items{at0004}']">
-<#assign event_time4_ehr_data = body_temperature_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign event_time6_ehr_data = body_temperature_entry_ehr_data + "[0].elements['/data/events/time']">
 <script>
 angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
-   $scope.${event_time_ehr_data}.value.value = $window.getCurrentDate();
+    $scope.${event_time_ehr_data}.value.value = $window.getCurrentDate();
     $scope.${event_time1_ehr_data}.value.value = $window.getCurrentDate();
     $scope.${event_time2_ehr_data}.value.value = $window.getCurrentDate();
     $scope.${event_time3_ehr_data}.value.value = $window.getCurrentDate();
     $scope.${event_time4_ehr_data}.value.value = $window.getCurrentDate();
+    $scope.${event_time5_ehr_data}.value.value = $window.getCurrentDate();
+    $scope.${event_time6_ehr_data}.value.value = $window.getCurrentDate();
     $scope.${systolic_ehr_data}.value.units = $scope.${systolic_def}.units[0];
     $scope.${rate_ehr_data}.value.units = $scope.${rate_def}.units[0];
     $scope.${respiration_rate_ehr_data}.value.units = $scope.${respiration_rate_def}.units[0];
@@ -157,6 +176,9 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
     $scope.${temperature1_ehr_data}.value.units = $scope.${temperature1_def}.units[0];
     $scope.${new_confusion_ehr_data}.value.selection = $scope.findItem($scope.${new_confusion_def}.selections, 'at0010').itemId;
     $scope.${avpu_observation_ehr_data}.value.selection = $scope.findItem($scope.${avpu_observation_def}.selections, 'at0005').itemId;
+  });
+  $scope.$on('executeEnd', function() {
+    console.log($scope.${heart_rate_ehr_data});
   });
   $scope.findItem = function (selections, atCode) {
     var itemVal, itemId;
@@ -183,6 +205,12 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
     $scope.execute();
     $scope.question[questionId] = {item: parseInt(itemId)};
   };
+  var ehr_accordion = document.getElementById("ehr_accordion");
+  var ehr_panel = document.getElementById("ehr_panel");
+  ehr_accordion.onclick = function(){
+      ehr_accordion.classList.toggle("active");
+      ehr_panel.classList.toggle("show");
+  }
 });
 </script>
 <div ng-show="ready" ng-controller="MEWS_Ctrl">
@@ -194,8 +222,10 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
 	<p>{{${app_help_tag}.description}}</p>
   </div>
 </div>
-<div class="card" id="card1">
+<div class="card">
+  <h5 class="accordion" id="ehr_accordion"> {{${ehr_data}.text}}</h5>
 <div class="row">
+  <div class="panel" id="ehr_panel">
     <div class="medium-6 column">
       <div class="row collapse" title="{{${respiration_rate_def}.description}}">
           <div class="medium-5 columns">
@@ -259,7 +289,7 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
             <label>{{${level_of_consciousness_def}.name}}</label>
           </div>
           <div class="medium-7 columns">
-            <select ng-model="${avpu_observation_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${avpu_observation_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+            <select ng-model="${avpu_observation_def}.value.selection" ng-options="key as desc for (key, desc) in ${avpu_observation_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
           </div>
       </div>
       <div class="row collapse" title="{{${new_confusion_def}.description}}">
@@ -271,23 +301,19 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
           </div>
       </div>
     </div>
+  </div>
 </div>
 </div>
-<div class="card" id="card2">
+<div class="card">
   <table id="combo-chart">
+    <div class="combo-input">
     <tr class="hrow centered">
       <th><b>Score</b></th>
       <td ng-repeat="i in [3,2,1]">{{i}}</td>
       <td ng-repeat="i in [0,1,2,3]">{{i}}</td>
     </tr>
     <tr class="centered">
-      <th>{{${level_of_consciousness_def}.name}}</th>
-      <td ng-repeat="i in [1,2]"></td>
-      <td ng-click="select(${level_of_consciousness_ehr_data}, findItem(${level_of_consciousness_def}.selections, 'at0025').itemId, 4, 1)" ng-class="{'active' : question[1].item === 4}">{{filterItem(findItem(${level_of_consciousness_def}.selections, 'at0025').result, 'split first part')}}</td>
-      <td ng-repeat="(key, desc) in ${level_of_consciousness_def}.selections" ng-click="select(${level_of_consciousness_ehr_data}, key, $index, 1)" ng-class="{'active' : question[1].item === $index}">{{filterItem(desc)}}</td>
-    </tr>
-    <tr class="centered">
-      <th>{{${respiration_rate_def}.name}}</th>
+      <th>{{${respiration_rate_def}.name}}<small>, /min</small></th>
       <td></td>
       <td ng-click="select(${respiratory_rate_ehr_data}, findItem(${respiratory_rate_def}.selections, 'at0007').itemId, 5, 2)" ng-class="{'active' : question[2].item === 5}">{{filterItem(findItem(${respiratory_rate_def}.selections, 'at0007').result, 'split first part')}}</td>
       <td></td>
@@ -310,13 +336,24 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
       <th>{{${temperature_def}.name}}</th>
       <td></td>
       <td ng-repeat="i in [22,21]" ng-click="select(${temperature_ehr_data}, findItem(${temperature_def}.selections, 'at00'+i).itemId, i, 5)" ng-class="{'active' : question[5].item === i}">{{filterItem(findItem(${temperature_def}.selections, 'at00'+i).result, 'split first part')}}</td>
-      <td ng-repeat="(key, desc) in ${temperature_def}.selections" ng-click="select(${heart_rate_ehr_data}, key, $index, 5)" ng-class="{'active' : question[5].item === $index}">{{filterItem(desc)}}</td>
+      <td ng-repeat="(key, desc) in ${temperature_def}.selections" ng-click="select(${temperature_ehr_data}, key, $index, 5)" ng-class="{'active' : question[5].item === $index}">{{filterItem(desc)}}</td>
       <td></td>
+    </tr>
+    <tr class="centered">
+      <th>{{${level_of_consciousness_def}.name}}</th>
+      <td ng-repeat="i in [1,2]"></td>
+      <td ng-click="select(${level_of_consciousness_ehr_data}, findItem(${level_of_consciousness_def}.selections, 'at0025').itemId, 4, 1)" ng-class="{'active' : question[1].item === 4}">{{filterItem(findItem(${level_of_consciousness_def}.selections, 'at0025').result, 'split first part')}}</td>
+      <td ng-repeat="(key, desc) in ${level_of_consciousness_def}.selections" ng-click="select(${level_of_consciousness_ehr_data}, key, $index, 1)" ng-class="{'active' : question[1].item === $index}">{{filterItem(desc)}}</td>
     </tr>
     <tr class="centered">
       <th>{{${urine_output_def}.name}}</th>
       <td ng-repeat="(key, desc) in ${urine_output_def}.selections" ng-click="select(${urine_output_ehr_data}, key, $index, 6)" ng-class="{'active' : question[6].item === $index}">{{filterItem(desc)}}</td>
       <td ng-repeat="i in [1,2,3,4]"></td>
+    </tr>
+    </div>
+    <tr class="centered">
+      <th><h4>{{${total_score_def}.name}}:</h4></th>
+      <th><h4>{{${total_score_cds_data}.value.magnitude}}p</h4></th>
     </tr>
   </table>
 </div>
@@ -324,7 +361,7 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
 </div>
 <style>
   html, body {
-    height:100%;
+    height: 100%;
   }
   body {
     font-family: sans-serif;
@@ -405,9 +442,6 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
   td:nth-child(5){
     background-color: #5cb85c;
   }
-  table.ehr-input td {
-    background-color: #fdfdfd;
-  }
   tr.centered td:hover, tr.centered .active {
     background-color: #42a5f5;
     cursor: pointer;
@@ -416,7 +450,7 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
     padding-bottom: 1em;
   }
   .fix {
-    margin: 10px 0 10px 0;
+    margin: 15px 0 10px 0;
   }
   .help-tip{
       position: absolute;
@@ -490,6 +524,40 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
   @keyframes fadeIn {
       0% { opacity:0; }
       100% { opacity:100%; }
+  }
+  .accordion {
+    cursor: pointer;
+    border: none;
+  }
+  .accordion:after {
+    border: none;
+    content: '\02795';
+    font-size: 20px;
+    color: #777;
+    float: left;
+    margin-right: 5px;
+  }
+  .accordion.active:after {
+    content: "\2796";
+    border: none;
+  }
+  .panel {
+    border:none;
+    overflow: hidden;
+    transition: 0.6s ease-in-out;
+    display: none;
+    visibility: hidden;
+  }
+  .panel.show {
+    background-color: inherit;
+    display: block;
+    border: none;
+    visibility: visible;
+    height: auto;
+    margin: 0 auto -30px auto;
+  }
+  #card1 {
+    border: none;
   }
 </style>
 </body>
