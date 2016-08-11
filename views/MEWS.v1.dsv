@@ -177,9 +177,6 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
     $scope.${new_confusion_ehr_data}.value.selection = $scope.findItem($scope.${new_confusion_def}.selections, 'at0010').itemId;
     $scope.${avpu_observation_ehr_data}.value.selection = $scope.findItem($scope.${avpu_observation_def}.selections, 'at0005').itemId;
   });
-  $scope.$on('executeEnd', function() {
-    console.log($scope.${heart_rate_ehr_data});
-  });
   $scope.findItem = function (selections, atCode) {
     var itemVal, itemId;
     var regex = new RegExp(atCode + ".*");
@@ -207,7 +204,7 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
   };
   var ehr_accordion = document.getElementById("ehr_accordion");
   var ehr_panel = document.getElementById("ehr_panel");
-  ehr_accordion.onclick = function(){
+  ehr_accordion.onclick = function() {
       ehr_accordion.classList.toggle("active");
       ehr_panel.classList.toggle("show");
   }
@@ -327,7 +324,7 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
     </tr>
     <tr class="centered">
       <th>{{${systolic_blood_pressure_def}.name}}</th>
-      <td ng-repeat="(key, desc) in ${systolic_blood_pressure_def}.selections | orderBy:'+':true" ng-click="select(${systolic_blood_pressure_ehr_data}, key, $index, 4)" ng-class="{'active' : question[4].item === $index}">{{filterItem(desc)}}</td>
+      <td ng-repeat="(key, desc) in ${systolic_blood_pressure_def}.selections" ng-click="select(${systolic_blood_pressure_ehr_data}, key, $index, 4)" ng-class="{'active' : question[4].item === $index}">{{filterItem(desc)}}</td>
       <td></td>
       <td ng-click="select(${systolic_blood_pressure_ehr_data}, findItem(${systolic_blood_pressure_def}.selections, 'at0017').itemId, 4, 4)" ng-class="{'active' : question[4].item === 4}">{{filterItem(findItem(${systolic_blood_pressure_def}.selections, 'at0017').result, 'split first part')}}</td>
       <td></td>

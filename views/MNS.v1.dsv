@@ -1,4 +1,4 @@
-<html><head><script id="decision-support-view" type="application/json">{
+<html ng-app="cds_app"><head><script id="decision-support-view" type="application/json">{
   "dsViewId": "MNS.v1",
   "language": {
     "originalLanguage": {
@@ -12,30 +12,33 @@
   "decisionSupportViewDefinitions": {
     "en": {
       "name": "Modified Norton Scale",
-      "description": "Risk assessment tool for pressure ulcers"
+      "description": "Modified Norton Scale"
     }
   },
   "resourceDescription": {
     "originalAuthor": {
+      "email": "rong.chen@cambio.se",
       "organisation": "Cambio Healthcare Systems",
-      "name": "Oskar Nielsen",
-      "date": "2016-08-09"
+      "name": "Rong Chen",
+      "date": "2015-01-16"
     },
     "otherContributors": [],
     "details": {
       "en": {
         "keywords": [
-          "Pressure ulcer",
-          "Ulcer",
-          "Sore",
-          "Senior Alert",
-          "MNS"
+          "Modified Norton Scale",
+          "mNs",
+          "ulcer",
+          "pressure",
+          "wound",
+          "sore"
         ]
       }
     },
     "otherDetails": {}
   },
-  "alertGuideIds": [],
+  "alertGuideIds": [
+  ],
   "executionGuideIds": [
     "MNS_Score.v1"
   ],
@@ -46,4 +49,117 @@
       "terms": {}
     }
   }
-}</script></head><body></body></html>
+}</script></head><body ng-controller="cds_controller" ng-show="ready">
+
+<#assign modified_norton_scale_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.modified_norton_scale.v1']">
+<#assign modified_norton_scale_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.modified_norton_scale.v1']">
+<#assign modified_norton_scale_entry_def = "def.entries['openEHR-EHR-OBSERVATION.modified_norton_scale.v1']">
+<#assign incontinence_def = modified_norton_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0029}']">
+<#assign mental_condition_def = modified_norton_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign physical_condition_def = modified_norton_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0034}']">
+<#assign physical_activity_def = modified_norton_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign mobility_def = modified_norton_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
+<#assign event_time_def = modified_norton_scale_entry_def + ".elements['/data/events/time']">
+<#assign food_intake_def = modified_norton_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}']">
+<#assign total_score_def = modified_norton_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0039}']">
+<#assign fluid_intake_def = modified_norton_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0024}']">
+<#assign incontinence_ehr_data = modified_norton_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0029}']">
+<#assign mental_condition_ehr_data = modified_norton_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign physical_condition_ehr_data = modified_norton_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0034}']">
+<#assign physical_activity_ehr_data = modified_norton_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign mobility_ehr_data = modified_norton_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
+<#assign event_time_ehr_data = modified_norton_scale_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign food_intake_ehr_data = modified_norton_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}']">
+<#assign total_score_ehr_data = modified_norton_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0039}']">
+<#assign fluid_intake_ehr_data = modified_norton_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0024}']">
+<#assign incontinence_cds_data = modified_norton_scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0029}']">
+<#assign mental_condition_cds_data = modified_norton_scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign physical_condition_cds_data = modified_norton_scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0034}']">
+<#assign physical_activity_cds_data = modified_norton_scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign mobility_cds_data = modified_norton_scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
+<#assign event_time_cds_data = modified_norton_scale_entry_cds_data + "[0].elements['/data/events/time']">
+<#assign food_intake_cds_data = modified_norton_scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}']">
+<#assign total_score_cds_data = modified_norton_scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0039}']">
+<#assign fluid_intake_cds_data = modified_norton_scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0024}']">
+
+
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>{{def.concept.name}}</title>
+    <script type="text/javascript" src="wro/angular.js"></script>
+    <script type="text/javascript" src="wro/app_lib.js"></script>
+    <link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
+
+    <script>
+        angular.module('cds_app').controller("mNs_ctrl", function ($scope, $window) {
+            $scope.$on('json_loaded', function (event, data) {
+                $scope.${event_time_ehr_data}.value.value = $window.getCurrentDate();
+            });
+        });
+    </script>
+<div class="row" ng-controller="mNs_ctrl">
+    <div class="medium-12 column">
+      <table>
+          <tbody><tr>
+              <td align="left" valign="top" bgcolor="#ededed"> </td>
+              <td colspan="2" align="left" valign="top" bgcolor="#ededed">
+                  <strong>{{${modified_norton_scale_entry_def}.name}}</strong></td>
+          </tr>
+          <tr>
+              <td align="left" valign="top">A</td>
+              <td align="left" valign="top">{{${mental_condition_def}.name}}</td>
+              <td align="left" valign="top"><select ng-model="${mental_condition_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${mental_condition_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+              </td>
+          </tr>
+          <tr>
+              <td align="left" valign="top">B</td>
+              <td align="left" valign="top">{{${physical_condition_def}.name}}</td>
+              <td align="left" valign="top"><select ng-model="${physical_condition_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${physical_condition_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+              </td>
+          </tr>
+          <tr>
+              <td align="left" valign="top">C</td>
+              <td align="left" valign="top">{{${incontinence_def}.name}}</td>
+              <td align="left" valign="top"><select ng-model="${incontinence_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${incontinence_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+              </td>
+          </tr>
+          <tr>
+              <td align="left" valign="top">D</td>
+              <td align="left" valign="top">{{${food_intake_def}.name}}</td>
+              <td align="left" valign="top"><select ng-model="${food_intake_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${food_intake_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+              </td>
+          </tr>
+          <tr>
+              <td align="left" valign="top">E</td>
+              <td align="left" valign="top">{{${physical_activity_def}.name}}</td>
+              <td align="left" valign="top"><select ng-model="${physical_activity_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${physical_activity_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+              </td>
+          </tr>
+          <tr>
+              <td align="left" valign="top">F</td>
+              <td align="left" valign="top">{{${mobility_def}.name}}</td>
+              <td align="left" valign="top"><select ng-model="${mobility_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${mobility_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+              </td>
+          </tr>
+          <tr>
+              <td align="left" valign="top">G</td>
+              <td align="left" valign="top">{{${fluid_intake_def}.name}}</td>
+              <td align="left" valign="top"><select ng-model="${fluid_intake_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${fluid_intake_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+              </td>
+          </tr>
+          <tr>
+              <td></td>
+              <td align="left" valign="middle"><b>{{${total_score_def}.name}}: </b>{{${total_score_cds_data}.value.magnitude}}</td>
+              <td></td>
+          </tr>
+      </tbody>
+    </table>
+    </div>
+</div>
+</body>
+<style>
+
+</style>
+</html>
