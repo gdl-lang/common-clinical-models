@@ -55,7 +55,8 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
-    "GFR_Cockcroft-Gault.v1"
+    "GFR_Cockcroft-Gault.v1",
+    "CKD_Stage_Assessment.v1"
   ],
   "alertBindings": {},
   "termDefinitions": {
@@ -83,7 +84,6 @@
 <body ng-controller="cds_controller">
 <#assign height = "def.terms['vt0001']"/>
 <#assign app_help_tag = "def.guides['GFR_Cockcroft-Gault.v1'].concept">
-  
 <#assign estimated_glomerular_filtration_rate_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.estimated_glomerular_filtration_rate.v1']">
 <#assign estimated_glomerular_filtration_rate_entry_def = "def.entries['openEHR-EHR-OBSERVATION.estimated_glomerular_filtration_rate.v1']">
 <#assign estimated_glomerular_filtration_rate_def = estimated_glomerular_filtration_rate_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
@@ -114,7 +114,11 @@
 <#assign event_time3_def = urea_and_electrolytes_entry_def + ".elements['/data/events/time']">
 <#assign creatinine_ehr_data = urea_and_electrolytes_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078.7}']">
 <#assign event_time3_ehr_data = urea_and_electrolytes_entry_ehr_data + "[0].elements['/data/events/time']">
-<script> 
+<#assign ckd_stages_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.stages_chronic_kidney_disease.v1']">
+<#assign ckd_stages_entry_def = "def.entries['openEHR-EHR-EVALUATION.stages_chronic_kidney_disease.v1']">
+<#assign stage_def = ckd_stages_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign stage_cds_data = ckd_stages_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
+<script>
 angular.module('cds_app').controller('MAP_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
     $scope.${event_time_ehr_data}.value.value = $window.getCurrentDate();
@@ -197,6 +201,14 @@ angular.module('cds_app').controller('MAP_Ctrl', function($scope, $window){
     </div>
     <div class="medium-7 columns">
       <span>{{gfr_cds}} {{${estimated_glomerular_filtration_rate_cds_data}.value.units}}</span>
+    </div>
+  </div>
+  <div class="row collapse" title="{{${stage_def}.description}}">
+    <div class="medium-5 columns">
+      <label><b>{{${stage_def}.name}}</b></label>
+    </div>
+    <div class="medium-7 columns">
+      <span>{{${stage_cds_data}}}</span>
     </div>
   </div>
 </div>
