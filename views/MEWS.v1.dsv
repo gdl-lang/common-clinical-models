@@ -189,7 +189,7 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
     return {result: itemVal, itemId: itemId};;
   };
   $scope.filterItem = function (selection, split) {
-    var myRegexp = split ? /(^.*) or/ : /or (.*)/; // Split before or after 'or' in phrase
+    var myRegexp = split ? /(.*) or/ : /or (.*)/; // Split before or after 'or' in phrase
     if (myRegexp.test(selection)) {
       var match = myRegexp.exec(selection);
       return match[1];
@@ -235,7 +235,7 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
             <select ng-model="${respiration_rate_ehr_data}.value.units" ng-options="unit for unit in ${respiration_rate_def}.units" ng-change="execute()" disabled></select>
           </div>
       </div>
-      <div class="row collapse" title="{{${respiration_rate_def}.description}}">
+      <div class="row collapse" title="{{${rate_def}.description}}">
           <div class="medium-5 columns">
             <label>{{${rate_def}.name}}</label>
           </div>
@@ -286,7 +286,7 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
             <label>{{${level_of_consciousness_def}.name}}</label>
           </div>
           <div class="medium-7 columns">
-            <select ng-model="${avpu_observation_def}.value.selection" ng-options="key as desc for (key, desc) in ${avpu_observation_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+            <select ng-model="${avpu_observation_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${avpu_observation_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
           </div>
       </div>
       <div class="row collapse" title="{{${new_confusion_def}.description}}">
@@ -324,9 +324,12 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
     </tr>
     <tr class="centered">
       <th>{{${systolic_blood_pressure_def}.name}}</th>
-      <td ng-repeat="(key, desc) in ${systolic_blood_pressure_def}.selections" ng-click="select(${systolic_blood_pressure_ehr_data}, key, $index, 4)" ng-class="{'active' : question[4].item === $index}">{{filterItem(desc)}}</td>
+      <td ng-click="select(${systolic_blood_pressure_ehr_data}, findItem(${systolic_blood_pressure_def}.selections, 'at0018').itemId, 1, 4)" ng-class="{'active' : question[4].item === 1}">{{filterItem(findItem(${systolic_blood_pressure_def}.selections, 'at0018').result)}}</td>
+      <td ng-click="select(${systolic_blood_pressure_ehr_data}, findItem(${systolic_blood_pressure_def}.selections, 'at0017').itemId, 2, 4)" ng-class="{'active' : question[4].item === 2}">{{filterItem(findItem(${systolic_blood_pressure_def}.selections, 'at0017').result, 'split')}}</td>
+      <td ng-click="select(${systolic_blood_pressure_ehr_data}, findItem(${systolic_blood_pressure_def}.selections, 'at0016').itemId, 3, 4)" ng-class="{'active' : question[4].item === 3}">{{filterItem(findItem(${systolic_blood_pressure_def}.selections, 'at0016').result)}}</td>
+      <td ng-click="select(${systolic_blood_pressure_ehr_data}, findItem(${systolic_blood_pressure_def}.selections, 'at0015').itemId, 4, 4)" ng-class="{'active' : question[4].item === 4}">{{filterItem(findItem(${systolic_blood_pressure_def}.selections, 'at0015').result)}}</td>
       <td></td>
-      <td ng-click="select(${systolic_blood_pressure_ehr_data}, findItem(${systolic_blood_pressure_def}.selections, 'at0017').itemId, 4, 4)" ng-class="{'active' : question[4].item === 4}">{{filterItem(findItem(${systolic_blood_pressure_def}.selections, 'at0017').result, 'split first part')}}</td>
+      <td ng-click="select(${systolic_blood_pressure_ehr_data}, findItem(${systolic_blood_pressure_def}.selections, 'at0017').itemId, 6, 4)" ng-class="{'active' : question[4].item === 6}">{{filterItem(findItem(${systolic_blood_pressure_def}.selections, 'at0017').result)}}</td>
       <td></td>
     </tr>
     <tr class="centered">
@@ -344,13 +347,17 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
     </tr>
     <tr class="centered">
       <th>{{${urine_output_def}.name}}</th>
-      <td ng-repeat="(key, desc) in ${urine_output_def}.selections" ng-click="select(${urine_output_ehr_data}, key, $index, 6)" ng-class="{'active' : question[6].item === $index}">{{filterItem(desc)}}</td>
-      <td ng-repeat="i in [1,2,3,4]"></td>
+      <td ng-click="select(${urine_output_ehr_data}, findItem(${urine_output_def}.selections, 'at0033').itemId, 1, 6)" ng-class="{'active' : question[6].item === 1}">{{filterItem(findItem(${urine_output_def}.selections, 'at0033').result)}}</td>
+      <td ng-click="select(${urine_output_ehr_data}, findItem(${urine_output_def}.selections, 'at0031').itemId, 2, 6)" ng-class="{'active' : question[6].item === 2}">{{filterItem(findItem(${urine_output_def}.selections, 'at0031').result)}}</td>
+      <td ng-click="select(${urine_output_ehr_data}, findItem(${urine_output_def}.selections, 'at0030').itemId, 3, 6)" ng-class="{'active' : question[6].item === 3}">{{filterItem(findItem(${urine_output_def}.selections, 'at0030').result, 'split')}}</td>
+      <td ng-click="select(${urine_output_ehr_data}, findItem(${urine_output_def}.selections, 'at0029').itemId, 4, 6)" ng-class="{'active' : question[6].item === 4}">{{filterItem(findItem(${urine_output_def}.selections, 'at0029').result)}}</td>
+      <td ng-click="select(${urine_output_ehr_data}, findItem(${urine_output_def}.selections, 'at0030').itemId, 3, 6)" ng-class="{'active' : question[6].item === 3}">{{filterItem(findItem(${urine_output_def}.selections, 'at0030').result)}}</td>
+      <td ng-repeat="i in [1,2]"></td>
     </tr>
     </div>
     <tr class="centered">
       <th><h4>{{${total_score_def}.name}}:</h4></th>
-      <th><h4>{{${total_score_cds_data}.value.magnitude}}p</h4></th>
+      <th><h4>{{${total_score_cds_data}.value.magnitude}}</h4></th>
     </tr>
   </table>
 </div>
