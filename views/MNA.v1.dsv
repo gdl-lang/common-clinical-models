@@ -1,4 +1,18 @@
-<html><head><script id="decision-support-view" type="application/json">{
+<!DOCTYPE html><html ng-app="cds_app">
+<head>
+<title>{{def.concept.name}}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
+<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
+<script type="text/javascript" src="wro/angular.js"></script>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
+<script type="text/javascript" src="wro/moment.js"></script>
+<script type="text/javascript" src="wro/date-picker.js"></script>
+<script type="text/javascript" src="wro/app_lib.js"></script>
+<script id="decision-support-view" type="application/json">{
   "dsViewId": "MNA.v1",
   "language": {
     "originalLanguage": {
@@ -71,4 +85,193 @@
       "terms": {}
     }
   }
-}</script></head><body></body></html>
+}</script>
+</head>
+<body ng-controller="cds_controller">
+<#assign body_mass_index_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.body_mass_index.v1']">
+<#assign body_mass_index_entry_def = "def.entries['openEHR-EHR-OBSERVATION.body_mass_index.v1']">
+<#assign body_mass_index_def = body_mass_index_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign body_mass_index_cds_data = body_mass_index_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign mini_nutritional_assessment_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.mini_nutritional_assessment.v1']">
+<#assign mini_nutritional_assessment_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.mini_nutritional_assessment.v1']">
+<#assign mini_nutritional_assessment_entry_def = "def.entries['openEHR-EHR-OBSERVATION.mini_nutritional_assessment.v1']">
+<#assign total_score_def = mini_nutritional_assessment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0029}']">
+<#assign has_food_intake_declined_over_the_past_3_months_due_to_loss_of_appetite__digestive_problems__chewing_or_swallowing_difficulties__def = mini_nutritional_assessment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign weight_loss_during_the_last_3_months_def = mini_nutritional_assessment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign mobility_def = mini_nutritional_assessment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign calf_circumference__cc__def = mini_nutritional_assessment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0030}']">
+<#assign has_suffered_psychological_stress_or_acute_disease_in_the_past_3_months__def = mini_nutritional_assessment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0017}']">
+<#assign neuropsychological_problems_def = mini_nutritional_assessment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0020}']">
+<#assign event_time_def = mini_nutritional_assessment_entry_def + ".elements['/data/events/time']">
+<#assign cannot_calculate_bmi_def = mini_nutritional_assessment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0033}']">
+<#assign body_mass_index__kg_m2__def = mini_nutritional_assessment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0024}']">
+<#assign total_score_ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0029}']">
+<#assign has_food_intake_declined_over_the_past_3_months_due_to_loss_of_appetite__digestive_problems__chewing_or_swallowing_difficulties__ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign weight_loss_during_the_last_3_months_ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign mobility_ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign calf_circumference__cc__ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0030}']">
+<#assign has_suffered_psychological_stress_or_acute_disease_in_the_past_3_months__ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0017}']">
+<#assign neuropsychological_problems_ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0020}']">
+<#assign event_time_ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign cannot_calculate_bmi_ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0033}']">
+<#assign body_mass_index__kg_m2__ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0024}']">
+<#assign total_score_cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0029}']">
+<#assign has_food_intake_declined_over_the_past_3_months_due_to_loss_of_appetite__digestive_problems__chewing_or_swallowing_difficulties__cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign weight_loss_during_the_last_3_months_cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign mobility_cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign calf_circumference__cc__cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0030}']">
+<#assign has_suffered_psychological_stress_or_acute_disease_in_the_past_3_months__cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0017}']">
+<#assign neuropsychological_problems_cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0020}']">
+<#assign event_time_cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data/events/time']">
+<#assign cannot_calculate_bmi_cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0033}']">
+<#assign body_mass_index__kg_m2__cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0024}']">
+<div ng-show="ready">
+<div class="row">
+<div class="medium-12 column">
+<h1>{{def.concept.name}}</h1>
+</div>
+</div>
+<div class="row">
+  <div class="medium-7 column">
+    <table>
+      <thead>
+          <tr>
+              <th colspan="3">A. {{${has_food_intake_declined_over_the_past_3_months_due_to_loss_of_appetite__digestive_problems__chewing_or_swallowing_difficulties__def}.name}}</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>{{${has_food_intake_declined_over_the_past_3_months_due_to_loss_of_appetite__digestive_problems__chewing_or_swallowing_difficulties__def}.name}}</td>
+              <td valign="middle" align="left" colspan="2">
+                  <label ng-repeat="(key, desc) in ${has_food_intake_declined_over_the_past_3_months_due_to_loss_of_appetite__digestive_problems__chewing_or_swallowing_difficulties__def}.selections">
+                    <input type="radio" value="{{key}}" ng-model="${has_food_intake_declined_over_the_past_3_months_due_to_loss_of_appetite__digestive_problems__chewing_or_swallowing_difficulties__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}</label>
+              </td>
+          </tr>
+      </tbody>
+
+      <thead>
+          <tr>
+              <th colspan="3">B. {{${weight_loss_during_the_last_3_months_def}.name}}</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>{{${weight_loss_during_the_last_3_months_def}.name}}</td>
+              <td valign="middle" align="left" colspan="2">
+                  <label ng-repeat="(key, desc) in ${weight_loss_during_the_last_3_months_def}.selections">
+                  <input type="radio" value="{{key}}" ng-model="${weight_loss_during_the_last_3_months_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}</label>
+              </td>
+          </tr>
+      </tbody>		
+
+      <thead>
+          <tr>
+              <th colspan="3">C. {{${mobility_def}.name}}</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>{{${mobility_def}.name}}</td>
+              <td valign="middle" align="left" colspan="2">
+                  <label ng-repeat="(key, desc) in ${mobility_def}.selections">
+                  <input type="radio" value="{{key}}" ng-model="${mobility_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}</label>
+              </td>
+          </tr>
+      </tbody>	
+
+      <thead>
+          <tr>
+              <th colspan="3">D. {{${has_suffered_psychological_stress_or_acute_disease_in_the_past_3_months__def}.name}}</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>{{${psychological_stress}.text}}</td>
+              <td valign="middle" align="left" colspan="2">
+                  <label ng-repeat="(key, desc) in ${has_suffered_psychological_stress_or_acute_disease_in_the_past_3_months__def}.selections">
+                  <input type="radio" value="{{key}}" ng-model="${has_suffered_psychological_stress_or_acute_disease_in_the_past_3_months__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}</label>
+              </td>
+          </tr>
+      </tbody>	
+
+      <thead>
+          <tr>
+              <th colspan="3">E. {{${neuropsychological_problems_def}.name}}</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>{{${neuropsychological_problems_def}.name}}</td>
+              <td valign="middle" align="left" colspan="2">
+                  <label ng-repeat="(key, desc) in ${neuropsychological_problems_def}.selections">
+                  <input type="radio" value="{{key}}" ng-model="${neuropsychological_problems_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}</label>
+              </td>
+          </tr>
+      </tbody>	
+
+      <thead>
+          <tr>
+              <th ng-class="{'disabled': checked}" colspan="3">F1. {{${body_mass_index_def}.name}}</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td colspan="3" valign="middle">
+                  <label><i>{{${cannot_calculate_bmi_def}.name}}</i><input id="cbox" type="checkbox" ng-model="${cannot_calculate_bmi_ehr_data}.value.value" ng-change="updateCC()"></label>
+              </td>
+          </tr>
+         <!-- <tr>
+              <td ng-class="{'disabled': checked}" valign="middle">{{${height_length_def}.name}} in {{${height_length_def}.units[0]}}</td>
+              <td valign="bottom" align="left" colspan="2">
+              <input ng-model="${height_length_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-disabled="checked"></input>
+              </td>
+          </tr>
+          <tr>
+              <td ng-class="{'disabled': checked}" valign="middle">{{${weight_def}.name}} in {{${weight_def}.units[0]}}</td>
+              <td valign="bottom" align="left" colspan="2">
+              <input ng-model="${weight_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-disabled="checked"></input>
+              </td>
+          </tr>-->
+          <tr>
+          <td colspan="3"><b>BMI: </b>{{BMI_CDS}} {{${body_mass_index_def}.units[0]}}</td>
+          </tr>
+      </tbody>			
+
+      <thead>
+          <tr>
+              <th ng-class="{'disabled': !checked}" colspan="3">F2. {{${calf_circumference__cc__def}.name}}</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td ng-class="{'disabled': !checked}">{{${calf_circumference__cc__def}.name}}</td>
+              <td valign="bottom" align="left" colspan="2">
+                  <label ng-class="{'disabled': !checked}" ng-repeat="(key, desc) in ${calf_circumference__cc__def}.selections">
+                  <input type="radio" value="{{key}}" ng-model="${calf_circumference__cc__ehr_data}.value.selection" ng-disabled="!checked" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}</label>
+              </td>
+          </tr>
+      </tbody>	
+    </table>
+  </div>
+</div>
+
+</div>
+</body>
+<style>
+  html, body {
+    height:100%;
+    width: 100%;
+  }
+  body {
+    font-family: sans-serif;
+    font-weight: 300;
+    color: #333;
+    background: #ecf0f9;
+    padding: 1em;
+    -webkit-font-smoothing: antialiased;
+  }  
+  h1 {
+    
+  }
+</style>
+</html>
