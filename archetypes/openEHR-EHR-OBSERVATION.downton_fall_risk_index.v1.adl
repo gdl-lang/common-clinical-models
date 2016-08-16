@@ -1,0 +1,428 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.downton_fall_risk_index.v1
+
+concept
+	[at0000]	-- Downton fall risk index
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Oskar Nielsen">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Konstantinos Kalliamvakos">
+		["email"] = <"Konstantinos.Kalliamvakos@cambio.se">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2015-01-15">
+	>
+	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"För att bedöma och registrera fallrisk hos äldre med hjälp av riskbedömningsverktyg DFRI.">
+			use = <"*">
+			keywords = <"Downton Fall Risk Index", "DFRI", "Geriatrik", "Äldrevård", "Risk", "Fall", "Senior Alert">
+			misuse = <"*">
+			copyright = <"*">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess and record the risk of falling in elderly using the DFRI risk assessment tool.">
+			use = <"">
+			keywords = <"Downton Fall Risk Index", "DFRI", "elderly", "fall", "risk", "Senior Alert">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <"Oskar Nielsen", ...>
+	other_details = <
+		["references"] = <"Downton JH. Falls in the Elderly. London: Edward Arnold; 1993. p. 128-30.">
+		["current_contact"] = <"Konstantinos Kalliamvakos, Cambio Healthcare Systems, Konstantinos.Kalliamvakos@cambio.se">
+		["MD5-CAM-1.0.1"] = <"FFF39A3227219B542299079615EA273E">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Downton fall risk index
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Known previous falls
+										value matches {
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Medications
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0008, 	-- None
+													at0009, 	-- Present
+													at0010]	-- Other medications
+												}
+											}
+										}
+									}
+									CLUSTER[at0011] occurrences matches {0..1} matches {	-- Risk medications
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0012] occurrences matches {0..1} matches {	-- Tranquilizers/sedatives
+												value matches {
+													0|[local::at0013], 	-- Absent
+													1|[local::at0014]  	-- Present
+												}
+											}
+											ELEMENT[at0015] occurrences matches {0..1} matches {	-- Diuretics
+												value matches {
+													0|[local::at0013], 	-- Absent
+													1|[local::at0014]  	-- Present
+												}
+											}
+											ELEMENT[at0016] occurrences matches {0..1} matches {	-- Antihypertensives (other than diuretics)
+												value matches {
+													0|[local::at0013], 	-- Absent
+													1|[local::at0014]  	-- Present
+												}
+											}
+											ELEMENT[at0017] occurrences matches {0..1} matches {	-- Antiparkinsonian drugs
+												value matches {
+													0|[local::at0013], 	-- Absent
+													1|[local::at0014]  	-- Present
+												}
+											}
+											ELEMENT[at0018] occurrences matches {0..1} matches {	-- Antidepressants
+												value matches {
+													0|[local::at0013], 	-- Absent
+													1|[local::at0014]  	-- Present
+												}
+											}
+										}
+									}
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Sensory deficits
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0008, 	-- None
+													at0009]	-- Present
+												}
+											}
+										}
+									}
+									CLUSTER[at0020] occurrences matches {0..1} matches {	-- Risk sensory deficits
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0021] occurrences matches {0..1} matches {	-- Visual impairment
+												value matches {
+													0|[local::at0013], 	-- Absent
+													1|[local::at0014]  	-- Present
+												}
+											}
+											ELEMENT[at0022] occurrences matches {0..1} matches {	-- Hearing impairment
+												value matches {
+													0|[local::at0013], 	-- Absent
+													1|[local::at0014]  	-- Present
+												}
+											}
+											ELEMENT[at0023] occurrences matches {0..1} matches {	-- Motor impairment
+												value matches {
+													0|[local::at0013], 	-- Absent
+													1|[local::at0014]  	-- Present
+												}
+											}
+										}
+									}
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Mental state
+										value matches {
+											0|[local::at0025], 	-- Oriented
+											1|[local::at0026]  	-- Confused
+										}
+									}
+									ELEMENT[at0027] occurrences matches {0..1} matches {	-- Ability to walk
+										value matches {
+											0|[local::at0028], 	-- Safe with or without walking aids
+											1|[local::at0029]  	-- Unsafe
+										}
+									}
+									ELEMENT[at0031] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Downton fall risk index">
+					description = <"Downton Fall Risk Index is an established instrument that has been used for a long time and in different types of care. It is important to not only focus on the total score. Points in different areas provide important information about risk areas where appropriate actions should be taken. The risk factors are added together for a total of 0-11, where three or more points indicate a high risk of falling.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Known previous falls">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Medications">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"None">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Present">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Other medications">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Risk medications">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Tranquilizers/sedatives">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Absent">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Present">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Diuretics">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Antihypertensives (other than diuretics)">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Antiparkinsonian drugs">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Antidepressants">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Sensory deficits">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Risk sensory deficits">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Visual impairment">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Hearing impairment">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Motor impairment">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Mental state">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Oriented">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Confused">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Ability to walk">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Safe with or without walking aids">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Unsafe">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Total score">
+					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Downton fall risk index">
+					description = <"Downton Fall Risk Index är ett beprövat instrument som använts under lång tid och i olika vårdformer. I det nationella kvalitetsregistret Senior Alert ingår också detta bedömningsinstrument vilket gör att detta förordas som förstahandsval. Genom att nationellt använda ett och samma instrument kan viktig information samlas till grund för åtgärdsförslag. Det är viktigt att inte bara fokusera på totalsumman. Poängen inom de olika delområdena ger viktig information om riskområden där åtgärder ska sättas in. Det finns även olika funktionsbedömningstest som kan användas för komplettering.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"*Known previous falls(en)">
+					description = <"**(en)">
+				>
+				["at0005"] = <
+					text = <"*No(en)">
+					description = <"**(en)">
+				>
+				["at0006"] = <
+					text = <"*Yes(en)">
+					description = <"**(en)">
+				>
+				["at0007"] = <
+					text = <"*Medications(en)">
+					description = <"**(en)">
+				>
+				["at0008"] = <
+					text = <"*None(en)">
+					description = <"**(en)">
+				>
+				["at0009"] = <
+					text = <"*Present(en)">
+					description = <"**(en)">
+				>
+				["at0010"] = <
+					text = <"*Other medications(en)">
+					description = <"**(en)">
+				>
+				["at0011"] = <
+					text = <"*Risk medications(en)">
+					description = <"**(en)">
+				>
+				["at0012"] = <
+					text = <"*Tranquilizers/sedatives(en)">
+					description = <"**(en)">
+				>
+				["at0013"] = <
+					text = <"*Absent(en)">
+					description = <"**(en)">
+				>
+				["at0014"] = <
+					text = <"*Present(en)">
+					description = <"**(en)">
+				>
+				["at0015"] = <
+					text = <"*Diuretics(en)">
+					description = <"**(en)">
+				>
+				["at0016"] = <
+					text = <"*Antihypertensives (other than diuretics)(en)">
+					description = <"**(en)">
+				>
+				["at0017"] = <
+					text = <"*Antiparkinsonian drugs(en)">
+					description = <"**(en)">
+				>
+				["at0018"] = <
+					text = <"*Antidepressants(en)">
+					description = <"**(en)">
+				>
+				["at0019"] = <
+					text = <"*Sensory deficits(en)">
+					description = <"**(en)">
+				>
+				["at0020"] = <
+					text = <"*Risk sensory deficits(en)">
+					description = <"**(en)">
+				>
+				["at0021"] = <
+					text = <"*Visual impairment(en)">
+					description = <"**(en)">
+				>
+				["at0022"] = <
+					text = <"*Hearing impairment(en)">
+					description = <"**(en)">
+				>
+				["at0023"] = <
+					text = <"*Motor impairment(en)">
+					description = <"**(en)">
+				>
+				["at0024"] = <
+					text = <"*Mental state(en)">
+					description = <"**(en)">
+				>
+				["at0025"] = <
+					text = <"*Oriented(en)">
+					description = <"**(en)">
+				>
+				["at0026"] = <
+					text = <"*Confused(en)">
+					description = <"**(en)">
+				>
+				["at0027"] = <
+					text = <"*Ability to walk(en)">
+					description = <"**(en)">
+				>
+				["at0028"] = <
+					text = <"*Safe with or without walking aids(en)">
+					description = <"**(en)">
+				>
+				["at0029"] = <
+					text = <"*Unsafe(en)">
+					description = <"**(en)">
+				>
+				["at0031"] = <
+					text = <"*Total score(en)">
+					description = <"**(en)">
+				>
+			>
+		>
+	>
