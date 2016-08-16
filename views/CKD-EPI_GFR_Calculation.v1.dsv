@@ -25,8 +25,12 @@
   },
   "decisionSupportViewDefinitions": {
     "en": {
-      "name": "CKD-EPI GFR Calculation",
-      "description": "Calculation of glomerular filtration rate (GFR) to asssess renal function using the CKD-EPI equation."
+      "name": "CKD-EPI Creatinine Clearance",
+      "description": "Calculation of glomerular filtration rate (GFR)"
+    },
+    "sv": {
+      "name": "CKD-EPI Kreatininclearance",
+      "description": "Estimering av glomerulär filtrationshastighet"
     }
   },
   "resourceDescription": {
@@ -56,33 +60,14 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
-    "CKD-EPI_equation.v1"
+    "CKD-EPI_equation.v1",
+    "CKD_Stage_Assessment.v1"
   ],
   "alertBindings": {},
-  "termDefinitions": {
-    "en": {
-      "id": "en",
-      "terms": {
-        "vt0001": {
-          "id": "vt0001",
-          "text": "Height"
-        }
-      }
-    },
-    "sv": {
-      "id": "sv",
-      "terms": {
-        "vt0001": {
-          "id": "vt0001",
-          "text": "Höjd"
-        }
-      }
-    }
-  }
+  "termDefinitions": {}
 }</script>
 </head>
 <body ng-controller="cds_controller">
-<#assign height = "def.terms['vt0001']"/>
 <#assign app_help_tag = "def.guides['CKD-EPI_equation.v1'].concept">
 <#assign estimated_glomerular_filtration_rate_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.estimated_glomerular_filtration_rate.v1']">
 <#assign estimated_glomerular_filtration_rate_entry_def = "def.entries['openEHR-EHR-OBSERVATION.estimated_glomerular_filtration_rate.v1']">
@@ -104,25 +89,27 @@
 <#assign event_time1_def = urea_and_electrolytes_entry_def + ".elements['/data/events/time']">
 <#assign creatinine_ehr_data = urea_and_electrolytes_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078.7}']">
 <#assign event_time1_ehr_data = urea_and_electrolytes_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign ckd_stages_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.stages_chronic_kidney_disease.v1']">
+<#assign ckd_stages_entry_def = "def.entries['openEHR-EHR-EVALUATION.stages_chronic_kidney_disease.v1']">
+<#assign stage_def = ckd_stages_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign stage_cds_data = ckd_stages_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
 <script>
-angular.module('cds_app').controller('MAP_Ctrl', function($scope, $window){
+angular.module('cds_app').controller('Gfr_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
     $scope.${event_time_ehr_data}.value.value = $window.getCurrentDate();
     $scope.${event_time1_ehr_data}.value.value = $window.getCurrentDate();
-    $scope.${height_length_ehr_data}.value.units = $scope.${height_length_def}.units[0];
-    $scope.${weight_ehr_data}.value.units = $scope.${weight_def}.units[0];
     $scope.${creatinine_ehr_data}.value.units = $scope.${creatinine_def}.units[0];
   });
   $scope.$on('executeEnd', function() {
     $scope.firedRules.filter(function(rule) {
-      if (rule.gtCode === 'gt0014') {
+      if (rule.gtCode === 'gt0001' || rule.gtCode === 'gt0004' || rule.gtCode === 'gt0005' || rule.gtCode === 'gt0006') {
         $scope.gfr_cds = Math.round($scope.${estimated_glomerular_filtration_rate_cds_data}.value.magnitude);
       }
     });
   });
 });
 </script>
-<div ng-show="ready" ng-controller="MAP_Ctrl">
+<div ng-show="ready" ng-controller="Gfr_Ctrl">
 <div class="header">
   <h1>{{def.concept.name}}</h1>
   <h2>{{def.concept.description}}</h2>
@@ -146,28 +133,6 @@ angular.module('cds_app').controller('MAP_Ctrl', function($scope, $window){
       <label class="medium-3 columns end" ng-repeat="(key, desc) in ${gender_def}.selections">
       <input type="radio" value="{{key}}" ng-model="${gender_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}</label>
   </div>
-  <div class="row collapse" title="{{${weight_def}.description}}">
-      <div class="medium-5 columns">
-        <label>{{${weight_def}.name}}</label>
-      </div>
-      <div class="medium-5 columns">
-        <input ng-model="${weight_ehr_data}.value.magnitude" type="number" step='any' min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-      </div>
-      <div class="medium-2 columns">
-        <select ng-model="${weight_ehr_data}.value.units" ng-options="unit for unit in ${weight_def}.units" ng-change="execute()" disabled></select>
-      </div>
-  </div>
-  <div class="row collapse" title="{{${height_length_def}.description}}">
-    <div class="medium-5 columns">
-      <label>{{${height}.text}}</label>
-    </div>
-    <div class="medium-5 columns">
-      <input ng-model="${height_length_ehr_data}.value.magnitude" type="number" step='any' min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-    </div>
-    <div class="medium-2 columns">
-      <select ng-model="${height_length_ehr_data}.value.units" ng-options="unit for unit in ${height_length_def}.units" ng-change="execute()" disabled></select>
-    </div>
-  </div>
   <div class="row collapse" title="{{${creatinine_def}.description}}">
   <div class="medium-5 columns">
     <label>{{${creatinine_def}.name}}</label>
@@ -188,17 +153,20 @@ angular.module('cds_app').controller('MAP_Ctrl', function($scope, $window){
     </div>
   </div>
   <div class="row collapse" title="{{${stage_def}.description}}">
-    <div class="medium-5 columns">
-      <label><b>{{${stage_def}.name}}</b></label>
-    </div>
-    <div class="medium-7 columns">
-      <span>{{${stage_cds_data}}}</span>
-    </div>
+      <div class="medium-5 columns">
+        <label class="hfix"><b>{{${stage_def}.name}}</b></label>
+      </div>
+      <div class="medium-7 columns">
+        <span class="hfix">{{${stage_cds_data}}}</span>
+      </div>
   </div>
 </div>
 </div>
 </body>
 <style>
+  .hfix {
+    margin-top: 10px;
+  }
   html, body {
     height:100%;
     width: 100%;
