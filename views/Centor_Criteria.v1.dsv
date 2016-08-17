@@ -25,23 +25,33 @@
   "decisionSupportViewDefinitions": {
     "en": {
       "name": "Centor Criteria",
-      "description": "Aid in determining value of testing and treatment in patients presenting with a sore throat."
+      "description": "Aid in determining value of testing and treatment in patients presenting with a sore throat"
+    },
+    "sv": {
+      "name": "Centorkriterierna",
+      "description": ""
     }
   },
   "resourceDescription": {
     "originalAuthor": {
-      "date": "2016-07-22",
+      "organisation": "Cambio Healthcare Systems",
       "name": "Dennis Forslund",
-      "organisation": "Cambio Healthcare Systems"
+      "date": "2016-07-22"
     },
-    "otherContributors": [],
+    "otherContributors": [
+    "Jimmy Axelsson"],
+    "lifecycleState": "Author draft",
     "details": {
       "en": {
         "purpose": "To aid clinical assessment in determining value of testing and treatment in patients presenting with a sore throat.",
         "keywords": [],
         "use": "Use to evaluate value of testing and treatment in patients presenting with a sore throat. \n\nThe modified Centor Criteria scoring system consists of several factors, each contributing points to the total score; \n- (Absence of) Cough 0-1\n- Swollen/tender anterior cervical nodes 0-1\n- Temperature \u003e38° C 0-1\n- Tonsillar exudate or swelling 0-1\n- Age range, 45+ (-1), 15-44 (0), 3-14 (1)\n\nThe total score results in a recommendation. Throat culture or rapid antigen detection testing (RADT) is indicated for a score of two or more. As a rule, empiric antibiotic treatment should be preceded by testing. \n",
-        "misuse": "The Centor Criteria is to be used primarily on patients without severe underlying disease, in primary care setting. Should only be used to support clinical assessment. As a rule, empiric antibiotic treatment should be preceded by RADT and/or throat culture.\n",
-        "copyright": "Cambio Healthcare Systems"
+        "misuse": "The Centor Criteria is to be used primarily on patients without severe underlying disease, in primary care setting. Should only be used to support clinical assessment. As a rule, empiric antibiotic treatment should be preceded by RADT and/or throat culture."
+      },
+      "sv": {
+        "purpose": "",
+        "keywords": [],
+        "use": ""
       }
     },
     "otherDetails": {
@@ -56,10 +66,25 @@
   "termDefinitions": {
     "en": {
       "id": "en",
-      "terms": {}
+      "terms": {
+        "vt0001":{
+          "id": "vt0001",
+          "text": "References"
+        }
+      }
+    },
+    "sv": {
+      "id": "sv",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "Referenser"
+        }
+      }
     }
   }
-}</script>
+}
+</script>
 </head>
 <body ng-controller="cds_controller">
 <#assign app_help_tag = "def.guides['Centor_Criteria.v1'].concept">
@@ -100,8 +125,6 @@
     });
   });
 </script>
-
-
 <div ng-show="ready" ng-controller="Centor_Criteria_Ctrl">
 <div class="header">
   <h1>Centor Criteria</h1>
@@ -111,6 +134,15 @@
   </div>
 </div>
 <div class="card">
+  <div class="row collapse" title="{{${age__def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${age__def}.name}}</label>
+      </div>
+      <label class="medium-6 columns">
+        <select ng-model="${age__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${age__def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
 <div class="row collapse" title="{{${cough__def}.description}}">
     <div class="medium-6 columns">
       <label>{{${cough__def}.name}}</label>
@@ -143,13 +175,7 @@
       <input type="radio" value="{{key}}" ng-model="${temperature__38__c__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
-<label>{{${age__def}.name}}</label>
-<div class="row collapse" title="{{${age__def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${age__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${age__def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<div class="row collapse" title="{{${total_score_def}.description}}" style="background-color: #e6e6e6;">
+<div class="row collapse" title="{{${total_score_def}.description}}" style="background-color: #d5dce2;">
   <div class="medium-4 columns">
     <label><b>{{${total_score_def}.name}}: </b></label>
   </div>
@@ -196,7 +222,6 @@
     </div>
   </div>
   </div>
-
 <style>
 html, body {
     height:100%;
@@ -220,16 +245,6 @@ html, body {
     font-size: 22px;
     font-style: italic;
   }
-  .qsofanothighrisk {
-      background-color: #e6ffcc;
-      border-color: #BB0;
-      color: #000;
-  } 
-  .qsofahighrisk {
-      background-color: #ffe6cc;
-      border-color: #BB0;
-      color: #000;
-  } 
   .header {
     margin-bottom: 2em;
   }
@@ -318,13 +333,4 @@ html, body {
       100% { opacity:100%; }
   }
 </style>
-
-
-
-
-
-
-
-
-
 </body></html>
