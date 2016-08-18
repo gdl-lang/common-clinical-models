@@ -134,6 +134,11 @@
     $scope.$on('json_loaded', function(){
       $scope.${event_time_ehr_data}.value.value = $window.getCurrentDate();
       $scope.CURBLowRisk=true;
+      $scope.${confusion__ehr_data}.value.selection = $scope.findMin($scope.${confusion__def});
+      $scope.${respiratory_rate__30_min__ehr_data}.value.selection = $scope.findMin($scope.${respiratory_rate__30_min__def});
+      $scope.${age___65_years__ehr_data}.value.selection = $scope.findMin($scope.${age___65_years__def});
+      $scope.${systolic_bp__90mmhg_or_diastolic_bp__60mmhg__ehr_data}.value.selection = $scope.findMin($scope.${systolic_bp__90mmhg_or_diastolic_bp__60mmhg__def});
+      $scope.${blood_urea_nitrogen_level__19_mg_dl___7_mmol_l___ehr_data}.value.selection = $scope.findMin($scope.${blood_urea_nitrogen_level__19_mg_dl___7_mmol_l___def});
     });
     $scope.$on('executeEnd', function() {
         $scope.CURBLowRisk=false;
@@ -154,6 +159,22 @@
         $scope.CURBHighestRisk=true;
       }
     });
+      $scope.findMin = function (element) {
+        var array = []
+        for  (selection in element.selections) {
+          array.push(selection);
+        }
+        return (function() {
+          var min = 0;
+          var result;
+          for (i=0; i<array.length; i++) {
+            if (array[i].charAt(0) <= min) {
+              result = array[i];
+            }
+          }
+          return result;
+        })(array);
+      };
   });
 </script>
 
