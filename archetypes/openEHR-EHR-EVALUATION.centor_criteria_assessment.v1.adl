@@ -2,13 +2,22 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.centor_criteria_assessment.v1
 
 concept
-	[at0000]	-- Centor Criteria Assessment
+	[at0000]	-- Centorkriterierna Utvärdering
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Dennis Forslund">
 		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2016-08-19">
 	>
 	details = <
 		["en"] = <
@@ -28,29 +37,45 @@ The total score results in a recommendation. Throat culture or rapid antigen det
 			misuse = <"The Centor Criteria is to be used primarily on patients without severe underlying disease, in primary care setting. Should only be used to support clinical assessment. As a rule, empiric antibiotic treatment should be preceded by RADT and/or throat culture.">
 			copyright = <"Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Utvärdering av poäng genererad i enlighet med Centorkriterierna.">
+			use = <"Använd som stöd för att värdera nytta av provtagning och behandling av patienter med halsont.
+
+De modifierade Centorkriterierna består av flertalet faktorer som vardera bidrar till totala poängen enligt;
+- (avsaknad av) Hosta (0-1)
+- Svullna/ömma anteriora cervikala adeniter (0-1), 
+- Temperatur >38° (0-1), 
+- Beläggning på/svullen tonsill (0-1)
+- Åldersintervall 45+ (-1), 15-44 (0), 3-14 (1).
+
+Totala poängen genererar en rekommendation. Snabbtest för GAS eller svalgodling rekommenderas vid två eller fler poäng. Som regel bör empirisk antibiotikabehandling alltid föregås av utredning.">
+			misuse = <"Centorkriterierna är primärt avsedd att inom primärvården användas på patienter utan allvarlig underliggande sjukdom. Används endast som stöd till klinisk utvärdering. Som regel bör empirisk antibiotikabehandling alltid föregås av snabbtest för GAS och/eller svalgodling.">
+			copyright = <"Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"0">
 	other_contributors = <>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"1DB49BECC8353CC3A86C4C34F5CDB029">
 		["references"] = <"Fine AM, Nizet V, Mandl KD. Large-scale validation of the centor and McIsaac scores to predict group a streptococcal pharyngitis. Arch Intern Med. 2012;172(11):847–52
 
 Chiappini E, Regoli M, Bonsignori F, et al. Analysis of different recommendations from international guidelines for the management of acute pharyngitis in adults and children. Clin Ther. 2011;33:48-58.
 
 Handläggning av faryngotonsilliter i öppen vård – ny rekommendation. Information från Läkemedelsverket. 2012;6:18-25
 (https://lakemedelsverket.se/malgrupp/Halso---sjukvard/Behandlingsrekommendationer-arkiv/Behandlingsrekommendation---arkivlista/Faryngotonsilliter/)">
+		["MD5-CAM-1.0.1"] = <"3D9EC8B3688C6D2E8AF31CA57CDE2970">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Centor Criteria Assessment
+	EVALUATION[at0000] matches {	-- Centorkriterierna Utvärdering
 		data matches {
-			ITEM_TREE[at0001] matches {	-- Tree
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Recommendation
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Rekommendation
 						value matches {
-							0|[local::at0003], 	-- No further testing or treatment indicated
-							1|[local::at0004], 	-- Perform throat culture or RADT
-							2|[local::at0005]  	-- 
+							0|[local::at0003], 	-- Ingen provtagning eller behandling 
+							1|[local::at0004], 	-- Snabbtest för GAS och/eller svalgodling 
+							2|[local::at0005]  	-- *
 						}
 					}
 				}
@@ -64,8 +89,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Centor Criteria Assessment">
-					description = <"The Centor Criteria is a scoring system used to aid clinical assessment in determining value of testing and treatment in patients presenting with a sore throat. It consists of several factors, each contributing points to the total score generating a recommendation; (absence of) Cough (0-1), Swollen/tender anterior cervical nodes (0-1), Temperature >38° (0-1), Tonsillar exudate or swelling and  Age range (0-1), 45+ (-1), 15-44 (0), 3-14 (1)
-">
+					description = <"Evaluation of score generated in accordance with the Centor Criteria.">
 				>
 				["at0001"] = <
 					text = <"Tree">
@@ -84,7 +108,35 @@ ontology
 					description = <"*">
 				>
 				["at0005"] = <
-					text = <"">
+					text = <"*">
+					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Centorkriterierna Utvärdering">
+					description = <"Utvärdering av poäng genererad i enlighet med Centorkriterierna.">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Rekommendation">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"Ingen provtagning eller behandling ">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Snabbtest för GAS och/eller svalgodling ">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"*">
 					description = <"*">
 				>
 			>
