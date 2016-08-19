@@ -122,7 +122,38 @@
   angular.module('cds_app').controller('Centor_Criteria_Ctrl', function($scope, $window){
     $scope.$on('json_loaded', function(){
       $scope.${event_time_ehr_data}.value.value = $window.getCurrentDate();
+      $scope.noThroatCulture=true;
+      $scope.${swollen_tender_anterior_cervical_nodes__ehr_data}.value.selection = $scope.findMin($scope.${swollen_tender_anterior_cervical_nodes__def});
+      $scope.${tonsillar_exudate_or_swelling__ehr_data}.value.selection = $scope.findMin($scope.${tonsillar_exudate_or_swelling__def});
+      $scope.${temperature__38__c__ehr_data}.value.selection = $scope.findMin($scope.${temperature__38__c__def});
     });
+    $scope.$on('executeEnd', function() {
+        $scope.noThroatCulture=false;
+        $scope.takeThroatCulture=false;
+
+      if ($scope.${total_score_cds_data}.value.magnitude < 2) {
+        $scope.noThroatCulture=true;
+      }
+      if ($scope.${total_score_cds_data}.value.magnitude >= 2) {
+        $scope.takeThroatCulture=true;
+      }
+    });
+    $scope.findMin = function (element) {
+        var array = []
+        for  (selection in element.selections) {
+          array.push(selection);
+        }
+        return (function() {
+          var min = 0;
+          var result;
+          for (i=0; i<array.length; i++) {
+            if (array[i].charAt(0) <= min) {
+              result = array[i];
+            }
+          }
+          return result;
+        })(array);
+      };
   });
 </script>
 <div ng-show="ready" ng-controller="Centor_Criteria_Ctrl">
@@ -143,15 +174,16 @@
         </select>
       </label>
     </div>
-<div class="row collapse" title="{{${cough__def}.description}}">
+    <div class="row collapse" title="{{${cough__def}.description}}">
     <div class="medium-6 columns">
       <label>{{${cough__def}.name}}</label>
+      </div>
+      <label class="medium-6 columns">
+        <select ng-model="${cough__ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${cough__def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
     </div>
-    <label class="medium-3 columns" ng-repeat="(key, desc) in ${cough__def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${cough__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
-    </label>
-  </div>
-<div class="row collapse" title="{{${swollen_tender_anterior_cervical_nodes__def}.description}}">
+    <div class="row collapse" title="{{${swollen_tender_anterior_cervical_nodes__def}.description}}">
     <div class="medium-6 columns">
       <label>{{${swollen_tender_anterior_cervical_nodes__def}.name}}</label>
     </div>
@@ -183,11 +215,11 @@
     <label>{{${total_score_cds_data}.value.magnitude}}</label>
   </div>
 </div>
-<div class="row collapse" title="{{${recommendation_def}.description}}" style="background-color: #e6e6e6;">
-  <div class="medium-4 columns">
-    <label><b>{{${recommendation_def}.name}}: </b></label>
+<div class="row collapse" ng-class="{'nothroatculture' : noThroatCulture,'takethroatculture' : takeThroatCulture}" title="{{${recommendation_def}.description}}">
+  <div class="medium-6 columns">
+    <label><b>{{${recommendation_def}.name}}:</b></label>
   </div>
-  <div class="medium-6 columns end" style="text-align: center;">
+  <div class="medium-4 columns end" style="text-align: center;">
     <label>{{${recommendation_cds_data}.value.symbol.value}}</label>
   </div>
 </div>
@@ -244,6 +276,16 @@ html, body {
     font-weight: 300;
     font-size: 22px;
     font-style: italic;
+  }
+  .nothroatculture {
+      background-color: #e6e6e6;
+      border-color: #BB0;
+      color: #000;
+  } 
+  .takethroatculture {
+      background-color: #ffffb3;
+      border-color: #BB0;
+      color: #000;
   }
   .header {
     margin-bottom: 2em;
