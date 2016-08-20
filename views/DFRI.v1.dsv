@@ -1,4 +1,18 @@
-<html><head><script id="decision-support-view" type="application/json">{
+<!DOCTYPE html><html ng-app="cds_app">
+<head>
+<title>{{def.concept.name}}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
+<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
+<script type="text/javascript" src="wro/angular.js"></script>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
+<script type="text/javascript" src="wro/moment.js"></script>
+<script type="text/javascript" src="wro/date-picker.js"></script>
+<script type="text/javascript" src="wro/app_lib.js"></script>
+<script id="decision-support-view" type="application/json">{
   "dsViewId": "DFRI.v1",
   "language": {
     "originalLanguage": {
@@ -14,9 +28,9 @@
       "name": "DFRI",
       "description": "Downton Fall Risk Index"
     },
-	"sv": {
-	  "name": "DFRI",
-	  "description": "Downton Fall Risk Index"
+    "sv": {
+      "name": "DFRI",
+      "description": "Downton Fall Risk Index"
     }
   },
   "resourceDescription": {
@@ -39,8 +53,7 @@
     },
     "otherDetails": {}
   },
-  "alertGuideIds": [
-  ],
+  "alertGuideIds": [],
   "executionGuideIds": [
     "DFRI.v1"
   ],
@@ -49,10 +62,348 @@
     "en": {
       "id": "en",
       "terms": {}
-    },
-	"en": {
-	  "id": "en",
-	  terms": {}
     }
   }
-}</script></head><body></body></html>
+}</script>
+</head>
+<body ng-controller="cds_controller">
+<#assign app_help_tag = "def.guides['DFRI.v1'].concept">
+<#assign downton_fall_risk_index_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.downton_fall_risk_index.v1']">
+<#assign downton_fall_risk_index_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.downton_fall_risk_index.v1']">
+<#assign downton_fall_risk_index_entry_def = "def.entries['openEHR-EHR-OBSERVATION.downton_fall_risk_index.v1']">
+<#assign tranquilizers_sedatives_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}/items{at0012}']">
+<#assign ability_to_walk_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0027}']">
+<#assign event_time_def = downton_fall_risk_index_entry_def + ".elements['/data/events/time']">
+<#assign known_previous_falls_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign antidepressants_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}/items{at0018}']">
+<#assign antiparkinsonian_drugs_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}/items{at0017}']">
+<#assign diuretics_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}/items{at0015}']">
+<#assign visual_impairment_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0020}/items{at0021}']">
+<#assign total_score_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0031}']">
+<#assign antihypertensives__other_than_diuretics__def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}/items{at0016}']">
+<#assign hearing_impairment_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0020}/items{at0022}']">
+<#assign motor_impairment_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0020}/items{at0023}']">
+<#assign sensory_deficits_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}']">
+<#assign mental_state_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0024}']">
+<#assign medications_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign tranquilizers_sedatives_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}/items{at0012}']">
+<#assign ability_to_walk_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0027}']">
+<#assign event_time_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign known_previous_falls_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign antidepressants_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}/items{at0018}']">
+<#assign antiparkinsonian_drugs_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}/items{at0017}']">
+<#assign diuretics_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}/items{at0015}']">
+<#assign visual_impairment_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0020}/items{at0021}']">
+<#assign total_score_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0031}']">
+<#assign antihypertensives__other_than_diuretics__ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}/items{at0016}']">
+<#assign hearing_impairment_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0020}/items{at0022}']">
+<#assign motor_impairment_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0020}/items{at0023}']">
+<#assign sensory_deficits_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}']">
+<#assign mental_state_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0024}']">
+<#assign medications_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign tranquilizers_sedatives_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}/items{at0012}']">
+<#assign ability_to_walk_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0027}']">
+<#assign event_time_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data/events/time']">
+<#assign known_previous_falls_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign antidepressants_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}/items{at0018}']">
+<#assign antiparkinsonian_drugs_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}/items{at0017}']">
+<#assign diuretics_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}/items{at0015}']">
+<#assign visual_impairment_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0020}/items{at0021}']">
+<#assign total_score_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0031}']">
+<#assign antihypertensives__other_than_diuretics__cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}/items{at0016}']">
+<#assign hearing_impairment_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0020}/items{at0022}']">
+<#assign motor_impairment_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0020}/items{at0023}']">
+<#assign sensory_deficits_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}']">
+<#assign mental_state_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0024}']">
+<#assign medications_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<script> 
+angular.module('cds_app').controller('DFRI_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = $window.getCurrentDate();
+    $scope.${mental_state_ehr_data}.value.selection = $scope.findMin($scope.${mental_state_def});
+    $scope.${ability_to_walk_ehr_data}.value.selection = $scope.findMin($scope.${ability_to_walk_def});
+    $scope.${known_previous_falls_ehr_data}.value.selection = $scope.findMin($scope.${known_previous_falls_def});
+    $scope.${mental_state_ehr_data}.value.selection = $scope.findMin($scope.${mental_state_def});
+    $scope.${tranquilizers_sedatives_ehr_data}.value.selection = $scope.findMin($scope.${tranquilizers_sedatives_def});
+    $scope.${antiparkinsonian_drugs_ehr_data}.value.selection = $scope.findMin($scope.${antiparkinsonian_drugs_def});
+    $scope.${antidepressants_ehr_data}.value.selection = $scope.findMin($scope.${antidepressants_def});
+    $scope.${diuretics_ehr_data}.value.selection = $scope.findMin($scope.${diuretics_def});
+    $scope.${visual_impairment_ehr_data}.value.selection = $scope.findMin($scope.${visual_impairment_def});
+    $scope.${antihypertensives__other_than_diuretics__ehr_data}.value.selection = $scope.findMin($scope.${antihypertensives__other_than_diuretics__def});
+    $scope.${motor_impairment_ehr_data}.value.selection = $scope.findMin($scope.${motor_impairment_def});
+    $scope.${hearing_impairment_ehr_data}.value.selection = $scope.findMin($scope.${hearing_impairment_def});
+    $scope.execute();
+  });
+  $scope.findMin = function (element) {
+    var array = []
+    for  (selection in element.selections) {
+      if (element.selections.hasOwnProperty(selection)) { 
+        array.push(selection);
+      }
+    }
+    return (function() {
+      var min = 999;
+      var result;
+      for (i=0; i<array.length; i++) {
+        if (array[i].charAt(0) < min) {
+          min = array[i];
+          result = array[i];
+        }
+      }
+      return result;
+    })(array);
+  };
+});
+</script>
+<div ng-show="ready" ng-controller="DFRI_Ctrl">
+<div class="header">
+  <h1>{{def.concept.name}}</h1>
+  <h2>{{def.concept.description}}</h2>
+  <div class="help-tip">
+	<p>{{${app_help_tag}.description}}</p>
+  </div>
+</div>
+<div class="card">
+  <div class="row" title="{{${mental_state_def}.description}}">
+      <div class="medium-5 columns">
+        <label>{{${mental_state_def}.name}}</label>
+      </div>
+      <div class="medium-7 columns">
+        <select ng-model="${mental_state_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${mental_state_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+      </div>
+  </div>
+  <div class="row subtopic" title="{{${ability_to_walk_def}.description}}">
+      <div class="medium-5 columns">
+        <label><b>{{${ability_to_walk_def}.name}}</b></label>
+      </div>
+      <div class="medium-7 columns">
+        <select ng-model="${ability_to_walk_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${ability_to_walk_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+      </div>
+  </div>
+  <div class="row" title="{{${known_previous_falls_def}.description}}">
+      <div class="medium-5 columns">
+        <label>{{${known_previous_falls_def}.name}}</label>
+      </div>
+      <div class="medium-7 columns">
+        <select ng-model="${known_previous_falls_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${known_previous_falls_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+      </div>
+  </div>
+  <div class="row subtopic" title="{{${medications_def}.description}}">
+      <div class="medium-5 columns">
+        <label><b>{{${medications_def}.name}}</b></label>
+      </div>
+      <div class="medium-7 columns">
+        <select ng-model="${medications_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${medications_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+      </div>
+  </div>
+  <div class="row" title="{{${diuretics_def}.description}}">
+      <div class="medium-5 columns">
+        <label>{{${diuretics_def}.name}}</label>
+      </div>
+      <div class="medium-7 columns">
+        <select ng-model="${diuretics_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${diuretics_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+      </div>
+  </div>
+  <div class="row" title="{{${antidepressants_def}.description}}">
+      <div class="medium-5 columns">
+        <label>{{${antidepressants_def}.name}}</label>
+      </div>
+      <div class="medium-7 columns">
+        <select ng-model="${antidepressants_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${antidepressants_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+      </div>
+  </div>
+  <div class="row" title="{{${antiparkinsonian_drugs_def}.description}}">
+      <div class="medium-5 columns">
+        <label>{{${antiparkinsonian_drugs_def}.name}}</label>
+      </div>
+      <div class="medium-7 columns">
+        <select ng-model="${antiparkinsonian_drugs_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${antiparkinsonian_drugs_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+      </div>
+  </div>
+  <div class="row" title="{{${tranquilizers_sedatives_def}.description}}">
+      <div class="medium-5 columns">
+        <label>{{${tranquilizers_sedatives_def}.name}}</label>
+      </div>
+      <div class="medium-7 columns">
+        <select ng-model="${tranquilizers_sedatives_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${tranquilizers_sedatives_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+      </div>
+  </div>
+  <div class="row" title="{{${antihypertensives__other_than_diuretics__def}.description}}">
+      <div class="medium-5 columns">
+        <label>{{${antihypertensives__other_than_diuretics__def}.name}}</label>
+      </div>
+      <div class="medium-7 columns">
+        <select ng-model="${antihypertensives__other_than_diuretics__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${antihypertensives__other_than_diuretics__def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+      </div>
+  </div>
+  <div class="row subtopic" title="{{${sensory_deficits_def}.description}}">
+      <div class="medium-5 columns">
+        <label><b>{{${sensory_deficits_def}.name}}</b></label>
+      </div>
+      <div class="medium-7 columns">
+        <select ng-model="${sensory_deficits_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${sensory_deficits_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+      </div>
+  </div>
+  <div class="row" title="{{${visual_impairment_def}.description}}">
+      <div class="medium-5 columns">
+        <label>{{${visual_impairment_def}.name}}</label>
+      </div>
+      <div class="medium-7 columns">
+        <select ng-model="${visual_impairment_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${visual_impairment_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+      </div>
+  </div>
+  <div class="row" title="{{${hearing_impairment_def}.description}}">
+      <div class="medium-5 columns">
+        <label>{{${hearing_impairment_def}.name}}</label>
+      </div>
+      <div class="medium-7 columns">
+        <select ng-model="${hearing_impairment_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${hearing_impairment_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+      </div>
+  </div>
+  <div class="row" title="{{${motor_impairment_def}.description}}">
+      <div class="medium-5 columns">
+        <label>{{${motor_impairment_def}.name}}</label>
+      </div>
+      <div class="medium-7 columns">
+        <select ng-model="${motor_impairment_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${motor_impairment_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+      </div>
+  </div>
+  <div class="row" title="{{${total_score_def}.description}}" id="score">
+    <div class="medium-5 columns">
+      <h5><b>{{${total_score_def}.name}}</b></h5>
+    </div>
+    <div class="medium-7 columns">
+      <h5 id="fix">{{${total_score_cds_data}.value.magnitude}}</h5>
+    </div>
+  </div>
+</div>
+</div>
+<style>
+  html, body {
+    height:100%;
+    width: 100%;
+  }
+  body {
+    font-family: sans-serif;
+    font-weight: 300;
+    color: #333;
+    background: #ecf0f9;
+    padding: 1em;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 {
+    font-weight: 600;
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 22px;
+    font-style: italic;
+  }
+  h3 {
+    font-weight: 600;
+    font-size: 18px;
+  }
+  .header {
+    margin-bottom: 2em;
+  }
+  .card {
+    background-color: #fdfdfd;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 10px auto 20px auto;
+    padding: 1em;
+    width: 60%;
+    overflow: hidden;
+  }
+  select {
+    margin: 0 10px 0 10px;
+    
+  }
+  .help-tip{
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      text-align: center;
+      background-color: #BCDBEA;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      line-height: 26px;
+      cursor: default;
+  }
+  .help-tip:before{
+      content:'?';
+      font-weight: bold;
+      color:#fff;
+  }
+  .help-tip:hover p{
+      display:block;
+      transform-origin: 100% 0%;
+      -webkit-animation: fadeIn 0.3s ease-in-out;
+      animation: fadeIn 0.3s ease-in-out;
+  }
+  .help-tip p{	/* The tooltip */
+      display: none;
+      text-align: left;
+      background-color: #1E2021;
+      padding: 20px;
+      width: 300px;
+      position: absolute;
+      border-radius: 3px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+      right: -4px;
+      color: #FFF;
+      font-size: 13px;
+      line-height: 1.4;
+      z-index: 9999;
+  }
+  .help-tip p:before{ /* The pointer of the tooltip */
+      position: absolute;
+      content: '';
+      width:0;
+      height: 0;
+      border:6px solid transparent;
+      border-bottom-color:#1E2021;
+      right:10px;
+      top:-12px;
+  }
+  .help-tip p:after{ /* Prevents the tooltip from being hidden */
+      width:100%;
+      height:40px;
+      content:'';
+      position: absolute;
+      top:-40px;
+      left:0;
+  }
+  /* CSS animation */
+  @-webkit-keyframes fadeIn {
+      0% { 
+          opacity:0; 
+          transform: scale(0.6);
+      }
+
+      100% {
+          opacity:100%;
+          transform: scale(1);
+      }
+  }
+  @keyframes fadeIn {
+      0% { opacity:0; }
+      100% { opacity:100%; }
+  }
+  select, label:not(#h-fix) {
+    margin-bottom: 10px;
+  }
+  #score {
+    background-color: #e6e6e6;
+  }
+  #fix {
+    margin-left: 10px;
+  }
+  .subtopic {
+    margin-top: 20px;
+  } 
+</style>
+</body></html>
