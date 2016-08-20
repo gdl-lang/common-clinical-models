@@ -136,6 +136,9 @@
     $scope.$on('json_loaded', function(){
       $scope.${event_time_ehr_data}.value.value = $window.getCurrentDate();
       $scope.qsofaNotHighRisk=true;
+      $scope.${altered_mentation_ehr_data}.value.selection = $scope.findMin($scope.${altered_mentation_def});
+      $scope.${respiration_rate__22__min__ehr_data}.value.selection = $scope.findMin($scope.${respiration_rate__22__min__def});
+      $scope.${systolic_blood_pressure__100_mm_hg_ehr_data}.value.selection = $scope.findMin($scope.${systolic_blood_pressure__100_mm_hg_def});
     });
       $scope.$on('executeEnd', function() {
         $scope.qsofaNotHighRisk=false;
@@ -148,7 +151,23 @@
         $scope.qsofaHighRisk=true;
       }
     });
-  });
+      $scope.findMin = function (element) {
+        var array = []
+        for  (selection in element.selections) {
+          array.push(selection);
+        }
+        return (function() {
+          var min = 0;
+          var result;
+          for (i=0; i<array.length; i++) {
+            if (array[i].charAt(0) <= min) {
+              result = array[i];
+            }
+          }
+          return result;
+        })(array);
+      };
+});
 </script>
 
 <div ng-show="ready" ng-controller="qSOFA_Ctrl">
@@ -165,7 +184,12 @@
       <label>{{${altered_mentation_def}.name}}</label>
     </div>
     <label class="medium-3 columns" ng-repeat="(key, desc) in ${altered_mentation_def}.selections">
-      <input type="radio" value="{{key}}" ng-model= "${altered_mentation_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      <input 
+      type="radio" 
+      value="{{key}}" 
+      ng-model= "${altered_mentation_ehr_data}.value.selection" 
+      ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" 
+      ng-change="execute()" /> {{desc}}
     </label>
   </div>
   <div class="row collapse" title="{{${respiration_rate__22__min__def}.description}}">
@@ -173,7 +197,11 @@
       <label>{{${respiration_rate__22__min__def}.name}}</label>
     </div>
     <label class="medium-3 columns" ng-repeat="(key, desc) in ${respiration_rate__22__min__def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${respiration_rate__22__min__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      <input 
+      type="radio" value="{{key}}" 
+      ng-model="${respiration_rate__22__min__ehr_data}.value.selection" 
+      ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" 
+      ng-change="execute()" /> {{desc}}
     </label>
   </div>
   <div class="row collapse" title="{{${systolic_blood_pressure__100_mm_hg_def}.description}}">
@@ -181,7 +209,12 @@
     <label>{{${systolic_blood_pressure__100_mm_hg_def}.name}}</label>
   </div>
   <label class="medium-3 columns" ng-repeat="(key, desc) in ${systolic_blood_pressure__100_mm_hg_def}.selections">
-    <input type="radio" value="{{key}}" ng-model="${systolic_blood_pressure__100_mm_hg_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    <input 
+    type="radio" 
+    value="{{key}}" 
+    ng-model="${systolic_blood_pressure__100_mm_hg_ehr_data}.value.selection" 
+    ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" 
+    ng-change="execute()" /> {{desc}}
   </label>
 </div>
 <div class="row collapse" title="{{${total_score_def}.description}}" style="background-color: #e6e6e6;">
