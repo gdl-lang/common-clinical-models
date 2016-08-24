@@ -132,10 +132,15 @@ angular.module('cds_app').controller('DFRI_Ctrl', function($scope, $window){
     $scope.${antihypertensives__other_than_diuretics__ehr_data}.value.selection = $scope.findMin($scope.${antihypertensives__other_than_diuretics__def});
     $scope.${motor_impairment_ehr_data}.value.selection = $scope.findMin($scope.${motor_impairment_def});
     $scope.${hearing_impairment_ehr_data}.value.selection = $scope.findMin($scope.${hearing_impairment_def});
-    $scope.execute();
+    $scope.${medications_ehr_data}.value.selection = 
+    $scope.findItem($scope.${medications_def}.selections, 'at0008');
+    $scope.${sensory_deficits_ehr_data}.value.selection =
+    $scope.findItem($scope.${sensory_deficits_def}.selections, 'at0008');
+    $scope.disableMeds = true;
+    $scope.disableDefs = true;
   });
   $scope.findMin = function (element) {
-    var array = []
+    var array = [];
     for  (selection in element.selections) {
       if (element.selections.hasOwnProperty(selection)) { 
         array.push(selection);
@@ -152,6 +157,23 @@ angular.module('cds_app').controller('DFRI_Ctrl', function($scope, $window){
       }
       return result;
     })(array);
+  };
+  $scope.findItem = function (selections, atCode) {
+    var itemId;
+    var regex = new RegExp(atCode + ".*");
+    angular.forEach(selections, function(value, key) {
+      if (regex.test(key))
+        itemId = key;
+    });
+    return itemId;
+  };
+  $scope.updateMeds = function () {
+    $scope.disableMeds = (/at00(08|10).*/.test($scope.${medications_ehr_data}.value.selection)) ? true : false;
+    $scope.execute();
+  };
+  $scope.updateDefs = function () {
+    $scope.disableDefs = (/at0009.*/.test($scope.${medications_ehr_data}.value.selection)) ? true : false;
+    $scope.execute();
   };
 });
 </script>
@@ -193,47 +215,47 @@ angular.module('cds_app').controller('DFRI_Ctrl', function($scope, $window){
         <label><b>{{${medications_def}.name}}</b></label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${medications_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${medications_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${medications_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${medications_def}.selections" ng-change="updateMeds()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
       </div>
   </div>
   <div class="row" title="{{${diuretics_def}.description}}">
       <div class="medium-5 columns">
-        <label>{{${diuretics_def}.name}}</label>
+        <label ng-class="{'disabled': disableMeds}">{{${diuretics_def}.name}}</label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${diuretics_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${diuretics_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${diuretics_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${diuretics_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-class="{'disabled': disableMeds}"></select>
       </div>
   </div>
   <div class="row" title="{{${antidepressants_def}.description}}">
       <div class="medium-5 columns">
-        <label>{{${antidepressants_def}.name}}</label>
+        <label ng-class="{'disabled': disableMeds}">{{${antidepressants_def}.name}}</label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${antidepressants_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${antidepressants_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${antidepressants_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${antidepressants_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-class="{'disabled': disableMeds}"></select>
       </div>
   </div>
   <div class="row" title="{{${antiparkinsonian_drugs_def}.description}}">
       <div class="medium-5 columns">
-        <label>{{${antiparkinsonian_drugs_def}.name}}</label>
+        <label ng-class="{'disabled': disableMeds}">{{${antiparkinsonian_drugs_def}.name}}</label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${antiparkinsonian_drugs_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${antiparkinsonian_drugs_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${antiparkinsonian_drugs_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${antiparkinsonian_drugs_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-class="{'disabled': disableMeds}"></select>
       </div>
   </div>
   <div class="row" title="{{${tranquilizers_sedatives_def}.description}}">
       <div class="medium-5 columns">
-        <label>{{${tranquilizers_sedatives_def}.name}}</label>
+        <label ng-class="{'disabled': disabled}">{{${tranquilizers_sedatives_def}.name}}</label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${tranquilizers_sedatives_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${tranquilizers_sedatives_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${tranquilizers_sedatives_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${tranquilizers_sedatives_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-class="{'disabled': disableMeds}"></select>
       </div>
   </div>
   <div class="row" title="{{${antihypertensives__other_than_diuretics__def}.description}}">
       <div class="medium-5 columns">
-        <label>{{${antihypertensives__other_than_diuretics__def}.name}}</label>
+        <label ng-class="{'disabled': disabled}">{{${antihypertensives__other_than_diuretics__def}.name}}</label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${antihypertensives__other_than_diuretics__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${antihypertensives__other_than_diuretics__def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${antihypertensives__other_than_diuretics__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${antihypertensives__other_than_diuretics__def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-class="{'disabled': disableMeds}"></select>
       </div>
   </div>
   <div class="row subtopic" title="{{${sensory_deficits_def}.description}}">
@@ -241,31 +263,31 @@ angular.module('cds_app').controller('DFRI_Ctrl', function($scope, $window){
         <label><b>{{${sensory_deficits_def}.name}}</b></label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${sensory_deficits_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${sensory_deficits_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${sensory_deficits_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${sensory_deficits_def}.selections" ng-change="updateDefs()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
       </div>
   </div>
   <div class="row" title="{{${visual_impairment_def}.description}}">
       <div class="medium-5 columns">
-        <label>{{${visual_impairment_def}.name}}</label>
+        <label ng-class="{'disabled': disableDefs}">{{${visual_impairment_def}.name}}</label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${visual_impairment_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${visual_impairment_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${visual_impairment_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${visual_impairment_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-class="{'disabled': disableDefs}"></select>
       </div>
   </div>
   <div class="row" title="{{${hearing_impairment_def}.description}}">
       <div class="medium-5 columns">
-        <label>{{${hearing_impairment_def}.name}}</label>
+        <label ng-class="{'disabled': disableDefs}">{{${hearing_impairment_def}.name}}</label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${hearing_impairment_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${hearing_impairment_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${hearing_impairment_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${hearing_impairment_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-class="{'disabled': disableDefs}"></select>
       </div>
   </div>
   <div class="row" title="{{${motor_impairment_def}.description}}">
       <div class="medium-5 columns">
-        <label>{{${motor_impairment_def}.name}}</label>
+        <label ng-class="{'disabled': disableDefs}">{{${motor_impairment_def}.name}}</label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${motor_impairment_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${motor_impairment_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${motor_impairment_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${motor_impairment_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-class="{'disabled': disableDefs}"></select>
       </div>
   </div>
   <div class="row" title="{{${total_score_def}.description}}" id="score">
@@ -318,7 +340,6 @@ angular.module('cds_app').controller('DFRI_Ctrl', function($scope, $window){
   }
   select {
     margin: 0 10px 0 10px;
-    
   }
   .help-tip{
       position: absolute;
@@ -405,5 +426,8 @@ angular.module('cds_app').controller('DFRI_Ctrl', function($scope, $window){
   .subtopic {
     margin-top: 20px;
   } 
+  .disabled {
+   opacity: 0.5; 
+  }
 </style>
 </body></html>
