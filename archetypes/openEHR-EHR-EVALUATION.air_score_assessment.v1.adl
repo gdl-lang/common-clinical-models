@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.air_score_assessment.v1
 
 concept
-	[at0000]	-- Air score assessment
+	[at0000]	-- AIR Score Utvärdering
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Dennis Forslund">
@@ -14,36 +23,72 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"">
-			use = <"">
+			purpose = <"Evaluation of score generated in accordance with AIR Score.
+">
+			use = <"Use to determine prognosis and appropriate care level in patients presenting with suspected acute appendicitis.
+
+AIR is an acronym for Appendicitis Inflammatory Response and consists of seven components, each contributing points to the total score determining probability and suggested action; 
+- Vomiting 0-1
+- Pain in right inferior fossa 0-1
+- Rebound tenderness or muscular defense 0-3
+- Body temperature ≥38.5 0-1
+- Neutrophils 0-2
+- White blood cell count 0-2
+- CRP 0-2
+
+Total score has a maximum of 12 points, and the result is associated with one of three categories determining probability and suggested action;
+Sum 0-4 - low probability. Consider outpatient follow-up if unaltered general condition.
+Sum 5-8 - indeterminate group. Consider in-hospital active observation with rescoring and/or further examination in accordance with local tradition.
+Sum 9-12 - high probability. Consider surgical exploration.">
 			misuse = <"">
+			copyright = <"Cambio Healthcare Systems">
+		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Utvärdering av poäng genererad i enlighet med AIR Score.">
+			use = <"Använd som objektivt kliniskt understöd i bedömning av prognos och lämplig vårdnivå hos patienter med misstänkt akut appendicit.
+
+AIR är en akronym för Appendicitis Inflammatory Response och består av sju faktorer som vardera bidrar till totala poängen (max.12) enligt; 
+- Förekomst av kräkning 0-1
+- Smärta i höger fossa 0-1
+- Släppömhet eller muskelförsvar 0-3
+- Kroppstemperatur ≥38,5 0-1
+- Leukocyter 0-2
+- Andel neutrofiler 0-2 
+- CRP 0-2
+
+Resultatet genererar en översiktlig prognos samt en rekommendation kring vidare åtgärd;
+0-4 poäng - låg sannolikhet. Överväg uppföljning polikliniskt om ej påverkat allmäntillstånd.
+5-8 poäng - intermediär sannolikhet. Överväg aktiv observation med upprepad testning och/eller vidare undersökning i enlighet med lokal tradition.
+9-12 poäng - hög sannolikhet. Överväg kirurgisk exploration.">
+			misuse = <"*(en)">
 			copyright = <"Cambio Healthcare Systems">
 		>
 	>
 	lifecycle_state = <"0">
 	other_contributors = <>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"2FF52F76AB440515369C05424BE6118E">
 		["references"] = <"Andersson M, Andersson RE. The appendicitis inflammatory response score: a tool for the diagnosis of acute appendicitis that outperforms the Alvarado score. World journal of surgery. 2008 Aug;32(8):1843–9.">
+		["MD5-CAM-1.0.1"] = <"3EAE04F375F7113BF1DB5AFB38AA2E13">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Air score assessment
+	EVALUATION[at0000] matches {	-- AIR Score Utvärdering
 		data matches {
-			ITEM_TREE[at0001] matches {	-- Tree
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Probability
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Sannolikhet
 						value matches {
-							0|[local::at0004], 	-- Low probability
-							1|[local::at0005], 	-- Indeterminate group
-							2|[local::at0006]  	-- High probability
+							0|[local::at0004], 	-- Låg sannolikhet
+							1|[local::at0005], 	-- Intermediär sannolikhet
+							2|[local::at0006]  	-- Hög sannolikhet
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Recommendation
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Rekommendation
 						value matches {
-							0|[local::at0007], 	-- Consider outpatient follow-up if unaltered general condition
-							1|[local::at0008], 	-- In-hospital active observation
-							2|[local::at0009]  	-- Consider surgical exploration
+							0|[local::at0007], 	-- Överväg poliklinisk uppföljning om ej påverkat allmäntillstånd
+							1|[local::at0008], 	-- Överväg aktiv observation med upprepad testning och/eller vidare undersökning i enligt lokal tradition
+							2|[local::at0009]  	-- Överväg kirurgisk exploration
 						}
 					}
 				}
@@ -56,8 +101,8 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Air score assessment">
-					description = <"unknown">
+					text = <"AIR Score Assessment">
+					description = <"Evaluation of score generated in accordance with the AIR Score.">
 				>
 				["at0001"] = <
 					text = <"Tree">
@@ -94,6 +139,50 @@ ontology
 				["at0009"] = <
 					text = <"Consider surgical exploration">
 					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"AIR Score Utvärdering">
+					description = <"Utvärdering av poäng genererad i enlighet med AIR Score.">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Sannolikhet">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"Rekommendation">
+					description = <"**(en)">
+				>
+				["at0004"] = <
+					text = <"Låg sannolikhet">
+					description = <"**(en)">
+				>
+				["at0005"] = <
+					text = <"Intermediär sannolikhet">
+					description = <"**(en)">
+				>
+				["at0006"] = <
+					text = <"Hög sannolikhet">
+					description = <"**(en)">
+				>
+				["at0007"] = <
+					text = <"Överväg poliklinisk uppföljning om ej påverkat allmäntillstånd">
+					description = <"**(en)">
+				>
+				["at0008"] = <
+					text = <"Överväg aktiv observation med upprepad testning och/eller vidare undersökning i enligt lokal tradition">
+					description = <"**(en)">
+				>
+				["at0009"] = <
+					text = <"Överväg kirurgisk exploration">
+					description = <"**(en)">
 				>
 			>
 		>
