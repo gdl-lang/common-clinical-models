@@ -110,35 +110,15 @@
 <#assign respiratory_effort_cds_data = apgar_score_entry_cds_data + "[0].elements['/data{at0002}/events{at0003}/data{at0001}/items{at0009}']">
 <#assign muscle_tone_cds_data = apgar_score_entry_cds_data + "[0].elements['/data{at0002}/events{at0003}/data{at0001}/items{at0013}']">
 <#assign heart_rate_cds_data = apgar_score_entry_cds_data + "[0].elements['/data{at0002}/events{at0003}/data{at0001}/items{at0005}']">
+
 <script> 
 angular.module('cds_app').controller('Apgar_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
     $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
-    $scope.${reflex_irritability_ehr_data}.value.selection = $scope.findMax($scope.${reflex_irritability_def}).result;
-    $scope.${skin_colour_ehr_data}.value.selection = $scope.findMax($scope.${skin_colour_def}).result;
-    $scope.${respiratory_effort_ehr_data}.value.selection = $scope.findMax($scope.${respiratory_effort_def}).result;
-    $scope.${muscle_tone_ehr_data}.value.selection = $scope.findMax($scope.${muscle_tone_def}).result;
-    $scope.${heart_rate_ehr_data}.value.selection = $scope.findMax($scope.${heart_rate_def}).result;
   });
-  $scope.findMax = function (element) {
-    var array = []
-    for  (selection in element.selections) {
-      array.push(selection);
-    }
-    return (function() {
-      var max = 0;
-      var result;
-      for (i=0; i<array.length; i++) {
-        if (array[i].charAt(0) > max) {
-          max = array[i].charAt(0);
-          result = array[i];
-        }
-      }
-      return {result: result, itemId: max};
-    })(array);
-  };
 });
 </script>
+
 <div ng-show="ready" ng-controller="Apgar_Ctrl">
 <div class="header">
   <h1>{{def.concept.name}}</h1>
@@ -153,7 +133,7 @@ angular.module('cds_app').controller('Apgar_Ctrl', function($scope, $window){
         <label>{{${reflex_irritability_def}.name}}</label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${reflex_irritability_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${reflex_irritability_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${reflex_irritability_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${reflex_irritability_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
       </div>
   </div>
   <div class="row" title="{{${skin_colour_def}.description}}">
@@ -161,7 +141,7 @@ angular.module('cds_app').controller('Apgar_Ctrl', function($scope, $window){
         <label>{{${skin_colour_def}.name}}</label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${skin_colour_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${skin_colour_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${skin_colour_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${skin_colour_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
       </div>
   </div>
   <div class="row" title="{{${respiratory_effort_def}.description}}">
@@ -169,7 +149,7 @@ angular.module('cds_app').controller('Apgar_Ctrl', function($scope, $window){
         <label>{{${respiratory_effort_def}.name}}</label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${respiratory_effort_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${respiratory_effort_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${respiratory_effort_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${respiratory_effort_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
       </div>
   </div>
   <div class="row" title="{{${muscle_tone_def}.description}}">
@@ -177,7 +157,7 @@ angular.module('cds_app').controller('Apgar_Ctrl', function($scope, $window){
         <label>{{${muscle_tone_def}.name}}</label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${muscle_tone_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${muscle_tone_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${muscle_tone_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${muscle_tone_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
       </div>
   </div>
   <div class="row" title="{{${heart_rate_def}.description}}">
@@ -185,7 +165,7 @@ angular.module('cds_app').controller('Apgar_Ctrl', function($scope, $window){
         <label>{{${heart_rate_def}.name}}</label>
       </div>
       <div class="medium-7 columns">
-        <select ng-model="${heart_rate_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${heart_rate_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+        <select ng-model="${heart_rate_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${heart_rate_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
       </div>
   </div>
   <div class="row" title="{{${total_def}.description}}" id="score">
