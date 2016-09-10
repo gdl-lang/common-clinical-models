@@ -21,6 +21,20 @@ description
 		["date"] = <"2016-07-11">
 	>
 	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess severity of community-acquired pneumonia measured in 30-day mortality, and aid in determining care level. ">
+			use = <"Use to evaluate the presence of key factors determining severity of illness in patients presenting with suspected community-acquired pneumonia.
+
+CRB-65 is an acronym for Confusion, Respiratory rate, Blood pressure and age (over or equal to) 65. When present each factor contributes one (1) additional point to the total score.
+
+Total score ranges from 0-4 and is associated with a risk level, which is in turn associated with certain care level recommendations.
+* 0 points, low risk group. Consider home treatment. 30-day mortality: 1,2 %.
+* 1-2 points, moderate risk group. Consider hospital admission. 30-day mortality: 8,2 %.
+* 3-4 points, severe risk group. Urgent hospital admission, consider ICU admission. 30-day mortality: 31,3 %.">
+			misuse = <"Use with caution in community setting as most validation studies are hospital based. Study results show accurate performance in hospital settings and suggest a possible over-prediction in community settings.">
+			copyright = <"Cambio Healthcare Systems">
+		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att utvärdera svårighetsgraden, angiven i mortalitet inom 30 dagar, av samhällsförvärvad pneumoni och underlätta beslutsfattande gällande vårdnivå.">
@@ -36,62 +50,48 @@ Totala poängen har ett spann mellan 0-4 och är beroende på resultat associera
 			misuse = <"Använd med försiktighet i primärvårdsmiljö då majoriteten av validitetsstudierna är genomförda på sjukhus. Studieresultat visar hög tillförlitlighet i sjukhusmiljö men indikerar även en potentiell över-(något) i primärvårdsmiljö. ">
 			copyright = <"Cambio Healthcare Systems">
 		>
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To assess severity of community-acquired pneumonia measured in 30-day mortality, and aid in determining care level. ">
-			use = <"Use to evaluate the presence of key factors determining severity of illness in patients presenting with suspected community-acquired pneumonia.
-
-CRB-65 is an acronym for Confusion, Respiratory rate, Blood pressure and age (over or equal to) 65. When present each factor contributes one (1) additional point to the total score.
-
-Total score ranges from 0-4 and is associated with a risk level, which is in turn associated with certain care level recommendations.
-* 0 points, low risk group. Consider home treatment. 30-day mortality: 1,2 %.
-* 1-2 points, moderate risk group. Consider hospital admission. 30-day mortality: 8,2 %.
-* 3-4 points, severe risk group. Urgent hospital admission, consider ICU admission. 30-day mortality: 31,3 %.">
-			misuse = <"Use with caution in community setting as most validation studies are hospital based. Study results show accurate performance in hospital settings and suggest a possible over-prediction in community settings.">
-			copyright = <"Cambio Healthcare Systems">
-		>
 	>
 	lifecycle_state = <"0">
 	other_contributors = <>
 	other_details = <
 		["references"] = <"McNally M, Curtain J, O'Brien K, Dimitrov B, Fahey T. \"Validity of British Thoracic Society guidance (the CRB-65 rule) for predicting the severity of pneumonia in general practice: systematic review and meta-analysis\". Br J Gen Pract. 2010 Oct;60(579):e423-33.">
-		["MD5-CAM-1.0.1"] = <"B1DB26C6EB523592AB12554F002F6D72">
+		["MD5-CAM-1.0.1"] = <"F70B6E7162A006B498B85FF3D6CD741D">
 	>
 
 definition
 	OBSERVATION[at0000] matches {	-- CRB-65
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Confusion
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Konfusion
 										value matches {
-											0|[local::at0011], 	-- Absent
-											1|[local::at0012]  	-- Present
+											0|[local::at0011], 	-- Frånvarande
+											1|[local::at0012]  	-- Föreligger
 										}
 									}
 									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Hypotension
 										value matches {
-											0|[local::at0017], 	-- Absent
-											1|[local::at0018]  	-- Present
+											0|[local::at0017], 	-- Frånvarande
+											1|[local::at0018]  	-- Föreligger
 										}
 									}
-									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Age
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Ålder
 										value matches {
-											0|[local::at0019], 	-- Absent
-											1|[local::at0020]  	-- Present
+											0|[local::at0019], 	-- Frånvarande
+											1|[local::at0020]  	-- Föreligger
 										}
 									}
-									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Respiratory rate
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Andningsfrekvens
 										value matches {
-											0|[local::at0021], 	-- Absent
-											1|[local::at0022]  	-- Present
+											0|[local::at0021], 	-- Frånvarande
+											1|[local::at0022]  	-- Föreligger
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Total poäng
 										value matches {
 											DV_COUNT matches {*}
 										}
@@ -131,15 +131,15 @@ ontology
 				>
 				["at0011"] = <
 					text = <"Absent">
-					description = <"">
+					description = <"*">
 				>
 				["at0012"] = <
 					text = <"Present">
-					description = <"">
+					description = <"*">
 				>
 				["at0013"] = <
 					text = <"Total score">
-					description = <"">
+					description = <"*">
 				>
 				["at0014"] = <
 					text = <"Hypotension">
@@ -147,7 +147,7 @@ ontology
 				>
 				["at0015"] = <
 					text = <"Age">
-					description = <"Age ≥ 65 years?">
+					description = <"Age ≥ 65 years">
 				>
 				["at0016"] = <
 					text = <"Respiratory rate">
@@ -155,27 +155,27 @@ ontology
 				>
 				["at0017"] = <
 					text = <"Absent">
-					description = <"">
+					description = <"*">
 				>
 				["at0018"] = <
 					text = <"Present">
-					description = <"">
+					description = <"*">
 				>
 				["at0019"] = <
 					text = <"Absent">
-					description = <"">
+					description = <"*">
 				>
 				["at0020"] = <
 					text = <"Present">
-					description = <"">
+					description = <"*">
 				>
 				["at0021"] = <
 					text = <"Absent">
-					description = <"">
+					description = <"*">
 				>
 				["at0022"] = <
 					text = <"Present">
-					description = <"">
+					description = <"*">
 				>
 			>
 		>
@@ -203,15 +203,15 @@ ontology
 				>
 				["at0011"] = <
 					text = <"Frånvarande">
-					description = <"">
+					description = <"**(en)">
 				>
 				["at0012"] = <
 					text = <"Föreligger">
-					description = <"">
+					description = <"**(en)">
 				>
 				["at0013"] = <
 					text = <"Total poäng">
-					description = <"">
+					description = <"**(en)">
 				>
 				["at0014"] = <
 					text = <"Hypotension">
@@ -223,31 +223,31 @@ ontology
 				>
 				["at0016"] = <
 					text = <"Andningsfrekvens">
-					description = <"Andningsfrekvens ≥30/min?">
+					description = <"Andningsfrekvens ≥30/min">
 				>
 				["at0017"] = <
 					text = <"Frånvarande">
-					description = <"">
+					description = <"**(en)">
 				>
 				["at0018"] = <
 					text = <"Föreligger">
-					description = <"">
+					description = <"**(en)">
 				>
 				["at0019"] = <
 					text = <"Frånvarande">
-					description = <"">
+					description = <"**(en)">
 				>
 				["at0020"] = <
 					text = <"Föreligger">
-					description = <"">
+					description = <"**(en)">
 				>
 				["at0021"] = <
 					text = <"Frånvarande">
-					description = <"">
+					description = <"**(en)">
 				>
 				["at0022"] = <
 					text = <"Föreligger">
-					description = <"">
+					description = <"**(en)">
 				>
 			>
 		>
