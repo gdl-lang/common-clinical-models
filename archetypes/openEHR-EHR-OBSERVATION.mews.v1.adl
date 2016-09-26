@@ -42,66 +42,65 @@ description
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Modified Early Warning Scale, MEWS. Capio S:t Görans Sjukhus. Version 4.0. 2011-09-05">
-		["MD5-CAM-1.0.1"] = <"587BD5C00379B5F60D4B76572BF7E244">
+		["MD5-CAM-1.0.1"] = <"67E0D00B2E1D7AC9B94FA586822CF7AA">
 	>
 
 definition
 	OBSERVATION[at0000] matches {	-- Modified Early Warning Score (MEWS)
 		data matches {
-			HISTORY[at0001] matches {	-- Händelseförlopp
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Vilken händelse som helst
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Träd
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Andningsfrekvens, af/min
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Respiratory Rate
 										value matches {
-											0|[local::at0005], 	-- 9 - 14
-											1|[local::at0006], 	-- 15 - 20
-											2|[local::at0007], 	-- <9 eller 21 - 29
-											3|[local::at0008]  	-- >= 30
+											0|[local::at0005], 	-- 9 - 14 bpm
+											1|[local::at0006], 	-- 15 - 20 bpm
+											2|[local::at0007], 	-- < 9 or 21 - 29 bpm
+											3|[local::at0008]  	-- >= 30 bpm
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Hjärtfrekvens, puls/min
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Heart Rate
 										value matches {
-											0|[local::at0010], 	-- 51 - 100
-											1|[local::at0011], 	-- 41 - 50 eller 101 - 110
-											2|[local::at0012], 	-- <= 40 eller 111 - 129
-											3|[local::at0013]  	-- >= 130
+											0|[local::at0010], 	-- 51 - 100 bpm
+											1|[local::at0011], 	-- 41 - 50 or 101 - 110 bpm
+											2|[local::at0012], 	-- <= 40 or 111 - 129 bpm
+											3|[local::at0013]  	-- >= 130 bpm
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Systoliskt blodtryck, mmHg
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Systolic Blood Pressure
 										value matches {
-											0|[local::at0015], 	-- 101 - 199
-											1|[local::at0016], 	-- 81 - 100
-											2|[local::at0017], 	-- 71 - 80 eller >= 200
-											3|[local::at0018]  	-- <= 70
+											0|[local::at0015], 	-- 101 - 199 mmHg
+											1|[local::at0016], 	-- 81 - 100 mmHg
+											2|[local::at0017], 	-- 71 - 80 or >= 200 mmHg
+											3|[local::at0018]  	-- <= 70 mmHg
 										}
 									}
-									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Kroppstemperatur, °C
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Temperature
 										value matches {
-											0|[local::at0020], 	-- 36.1 - 38
-											1|[local::at0021], 	-- 35.1 - 36 eller 38.1 - 38.5
-											2|[local::at0022]  	-- <= 35 eller > 38.5
+											0|[local::at0020], 	-- 35 - 38.4 °C
+											2|[local::at0022]  	-- < 35 or >= 38.5 °C
 										}
 									}
-									ELEMENT[at0023] occurrences matches {0..1} matches {	-- Vakenhet
+									ELEMENT[at0023] occurrences matches {0..1} matches {	-- Level of consciousness
 										value matches {
-											0|[local::at0024], 	-- Adekvat
-											1|[local::at0025], 	-- Nytillkommen förvirring eller Slö, svarar på tilltal
-											2|[local::at0026], 	-- Reagerar endast på smärtstimulering
-											3|[local::at0027]  	-- Reagerar ej
+											0|[local::at0024], 	-- Alert
+											1|[local::at0025], 	-- New confusion or Voice
+											2|[local::at0026], 	-- Pain
+											3|[local::at0027]  	-- Unresponsive
 										}
 									}
-									ELEMENT[at0028] occurrences matches {0..1} matches {	-- Urinproduktion/24h
+									ELEMENT[at0028] occurrences matches {0..1} matches {	-- Urine output/24 hr
 										value matches {
-											0|[local::at0029], 	-- Ca 1 500 ml
-											1|[local::at0030], 	-- Ca 1 000 ml eller > 2 500 ml
-											2|[local::at0031], 	-- Ca 500 ml
-											3|[local::at0033]  	-- Ingen dures
+											0|[local::at0029], 	-- Approx. 1 500 ml
+											1|[local::at0030], 	-- Approx. 1 000 ml or > 2 500 ml
+											2|[local::at0031], 	-- Approx. 500 ml
+											3|[local::at0033]  	-- No diuresis
 										}
 									}
-									ELEMENT[at0032] occurrences matches {0..1} matches {	-- Total poäng
+									ELEMENT[at0032] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..17|}
@@ -142,19 +141,19 @@ ontology
 					description = <"*">
 				>
 				["at0005"] = <
-					text = <"9 - 14">
+					text = <"9 - 14 bpm">
 					description = <"*">
 				>
 				["at0006"] = <
-					text = <"15 - 20">
+					text = <"15 - 20 bpm">
 					description = <"*">
 				>
 				["at0007"] = <
-					text = <"<9 or 21 - 29">
+					text = <"< 9 or 21 - 29 bpm">
 					description = <"*">
 				>
 				["at0008"] = <
-					text = <">= 30">
+					text = <">= 30 bpm">
 					description = <"*">
 				>
 				["at0009"] = <
@@ -162,19 +161,19 @@ ontology
 					description = <"*">
 				>
 				["at0010"] = <
-					text = <"51 - 100">
+					text = <"51 - 100 bpm">
 					description = <"*">
 				>
 				["at0011"] = <
-					text = <"41 - 50 or 101 - 110">
+					text = <"41 - 50 or 101 - 110 bpm">
 					description = <"*">
 				>
 				["at0012"] = <
-					text = <"<= 40 or 111 - 129">
+					text = <"<= 40 or 111 - 129 bpm">
 					description = <"*">
 				>
 				["at0013"] = <
-					text = <">= 130">
+					text = <">= 130 bpm">
 					description = <"*">
 				>
 				["at0014"] = <
@@ -182,19 +181,19 @@ ontology
 					description = <"*">
 				>
 				["at0015"] = <
-					text = <"101 - 199">
+					text = <"101 - 199 mmHg">
 					description = <"*">
 				>
 				["at0016"] = <
-					text = <"81 - 100">
+					text = <"81 - 100 mmHg">
 					description = <"*">
 				>
 				["at0017"] = <
-					text = <"71 - 80 or >= 200">
+					text = <"71 - 80 or >= 200 mmHg">
 					description = <"*">
 				>
 				["at0018"] = <
-					text = <"<= 70">
+					text = <"<= 70 mmHg">
 					description = <"*">
 				>
 				["at0019"] = <
@@ -202,15 +201,11 @@ ontology
 					description = <"*">
 				>
 				["at0020"] = <
-					text = <"36.1 - 38">
-					description = <"*">
-				>
-				["at0021"] = <
-					text = <"35.1 - 36 or 38.1 - 38.5">
+					text = <"35 - 38.4 °C">
 					description = <"*">
 				>
 				["at0022"] = <
-					text = <"<= 35 or > 38.5">
+					text = <"< 35 or >= 38.5 °C">
 					description = <"*">
 				>
 				["at0023"] = <
@@ -234,7 +229,7 @@ ontology
 					description = <"*">
 				>
 				["at0028"] = <
-					text = <"Urine output">
+					text = <"Urine output/24 hr">
 					description = <"*">
 				>
 				["at0029"] = <
@@ -282,19 +277,19 @@ ontology
 					description = <"*">
 				>
 				["at0005"] = <
-					text = <"9 - 14">
+					text = <"9 - 14 bpm">
 					description = <"*">
 				>
 				["at0006"] = <
-					text = <"15 - 20">
+					text = <"15 - 20 bpm">
 					description = <"*">
 				>
 				["at0007"] = <
-					text = <"<9 eller 21 - 29">
+					text = <"< 9 eller 21 - 29 bpm">
 					description = <"*">
 				>
 				["at0008"] = <
-					text = <">= 30">
+					text = <">= 30 bpm">
 					description = <"*">
 				>
 				["at0009"] = <
@@ -302,19 +297,19 @@ ontology
 					description = <"*">
 				>
 				["at0010"] = <
-					text = <"51 - 100">
+					text = <"51 - 100 bpm">
 					description = <"*">
 				>
 				["at0011"] = <
-					text = <"41 - 50 eller 101 - 110">
+					text = <"41 - 50 eller 101 - 110 bpm">
 					description = <"*">
 				>
 				["at0012"] = <
-					text = <"<= 40 eller 111 - 129">
+					text = <"<= 40 eller 111 - 129 bpm">
 					description = <"*">
 				>
 				["at0013"] = <
-					text = <">= 130">
+					text = <">= 130 bpm">
 					description = <"*">
 				>
 				["at0014"] = <
@@ -322,19 +317,19 @@ ontology
 					description = <"*">
 				>
 				["at0015"] = <
-					text = <"101 - 199">
+					text = <"101 - 199 mmHg">
 					description = <"*">
 				>
 				["at0016"] = <
-					text = <"81 - 100">
+					text = <"81 - 100 mmHg">
 					description = <"*">
 				>
 				["at0017"] = <
-					text = <"71 - 80 eller >= 200">
+					text = <"71 - 80 eller >= 200 mmHg">
 					description = <"*">
 				>
 				["at0018"] = <
-					text = <"<= 70">
+					text = <"<= 70 mmHg">
 					description = <"*">
 				>
 				["at0019"] = <
@@ -342,15 +337,11 @@ ontology
 					description = <"*">
 				>
 				["at0020"] = <
-					text = <"36.1 - 38">
-					description = <"*">
-				>
-				["at0021"] = <
-					text = <"35.1 - 36 eller 38.1 - 38.5">
+					text = <"35 - 38.4 °C">
 					description = <"*">
 				>
 				["at0022"] = <
-					text = <"<= 35 eller > 38.5">
+					text = <"< 35 eller >= 38.5 °C">
 					description = <"*">
 				>
 				["at0023"] = <
@@ -374,7 +365,7 @@ ontology
 					description = <"*">
 				>
 				["at0028"] = <
-					text = <"Urinproduktion/24h">
+					text = <"Urinproduktion/24 h">
 					description = <"*">
 				>
 				["at0029"] = <
