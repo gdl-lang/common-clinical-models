@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.centor_criteria_assessment.v1
 
 concept
-	[at0000]	-- Centorkriterierna Utvärdering
+	[at0000]	-- Centor Criteria Assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -20,6 +20,22 @@ description
 		["date"] = <"2016-08-19">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Utvärdering av poäng genererad i enlighet med Centorkriterierna.">
+			use = <"Använd som stöd för att värdera nytta av provtagning och behandling av patienter med halsont.
+
+De modifierade Centorkriterierna består av flertalet faktorer som vardera bidrar till totala poängen enligt;
+- (avsaknad av) Hosta (0-1)
+- Svullna/ömma anteriora cervikala adeniter (0-1), 
+- Temperatur >38° (0-1), 
+- Beläggning på/svullen tonsill (0-1)
+- Åldersintervall 45+ (-1), 15-44 (0), 3-14 (1).
+
+Totala poängen genererar en rekommendation. Snabbtest för GAS eller svalgodling rekommenderas vid två eller fler poäng. Som regel bör empirisk antibiotikabehandling alltid föregås av utredning.">
+			misuse = <"Centorkriterierna är primärt avsedd att inom primärvården användas på patienter utan allvarlig underliggande sjukdom. Används endast som stöd till klinisk utvärdering. Som regel bör empirisk antibiotikabehandling alltid föregås av snabbtest för GAS och/eller svalgodling.">
+			copyright = <"Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"Evaluation of score generated in accordance with Centor Criteria.">
@@ -37,22 +53,6 @@ The total score results in a recommendation. Throat culture or rapid antigen det
 			misuse = <"The Centor Criteria is to be used primarily on patients without severe underlying disease, in primary care setting. Should only be used to support clinical assessment. As a rule, empiric antibiotic treatment should be preceded by RADT and/or throat culture.">
 			copyright = <"Cambio Healthcare Systems">
 		>
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"Utvärdering av poäng genererad i enlighet med Centorkriterierna.">
-			use = <"Använd som stöd för att värdera nytta av provtagning och behandling av patienter med halsont.
-
-De modifierade Centorkriterierna består av flertalet faktorer som vardera bidrar till totala poängen enligt;
-- (avsaknad av) Hosta (0-1)
-- Svullna/ömma anteriora cervikala adeniter (0-1), 
-- Temperatur >38° (0-1), 
-- Beläggning på/svullen tonsill (0-1)
-- Åldersintervall 45+ (-1), 15-44 (0), 3-14 (1).
-
-Totala poängen genererar en rekommendation. Snabbtest för GAS eller svalgodling rekommenderas vid två eller fler poäng. Som regel bör empirisk antibiotikabehandling alltid föregås av utredning.">
-			misuse = <"Centorkriterierna är primärt avsedd att inom primärvården användas på patienter utan allvarlig underliggande sjukdom. Används endast som stöd till klinisk utvärdering. Som regel bör empirisk antibiotikabehandling alltid föregås av snabbtest för GAS och/eller svalgodling.">
-			copyright = <"Cambio Healthcare Systems">
-		>
 	>
 	lifecycle_state = <"0">
 	other_contributors = <>
@@ -63,19 +63,18 @@ Chiappini E, Regoli M, Bonsignori F, et al. Analysis of different recommendation
 
 Handläggning av faryngotonsilliter i öppen vård – ny rekommendation. Information från Läkemedelsverket. 2012;6:18-25
 (https://lakemedelsverket.se/malgrupp/Halso---sjukvard/Behandlingsrekommendationer-arkiv/Behandlingsrekommendation---arkivlista/Faryngotonsilliter/)">
-		["MD5-CAM-1.0.1"] = <"3D9EC8B3688C6D2E8AF31CA57CDE2970">
+		["MD5-CAM-1.0.1"] = <"23273513441E502A37BB8CA162E3C23C">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Centorkriterierna Utvärdering
+	EVALUATION[at0000] matches {	-- Centor Criteria Assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Rekommendation
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Recommendation
 						value matches {
-							0|[local::at0003], 	-- Ingen provtagning eller behandling 
-							1|[local::at0004], 	-- Snabbtest för GAS och/eller svalgodling 
-							2|[local::at0005]  	-- *
+							0|[local::at0003], 	-- No further testing or treatment indicated
+							1|[local::at0004]  	-- Perform throat culture or RADT
 						}
 					}
 				}
@@ -107,10 +106,6 @@ ontology
 					text = <"Perform throat culture or RADT">
 					description = <"*">
 				>
-				["at0005"] = <
-					text = <"*">
-					description = <"*">
-				>
 			>
 		>
 		["sv"] = <
@@ -133,10 +128,6 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Snabbtest för GAS och/eller svalgodling ">
-					description = <"*">
-				>
-				["at0005"] = <
-					text = <"*">
 					description = <"*">
 				>
 			>
