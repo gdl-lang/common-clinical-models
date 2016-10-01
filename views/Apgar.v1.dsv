@@ -29,7 +29,7 @@
     },
     "sv": {
       "name": "Apgar Score",
-      "description": "Skala som används för att dokumentera hälsotillståndet hos det nyfödda barnet efter förlossningen"
+      "description": "Skala som används för att dokumentera hälsotillståndet hos det nyfödda barnet direkt efter förlossningen"
     }
   },
   "resourceDescription": {
@@ -78,10 +78,6 @@
       "terms": {
         "vt0001": {
           "id": "vt0001",
-          "text": "Apgar Score"
-        },
-        "vt0002": {
-          "id": "vt0002",
           "text": "References"
         }
       }
@@ -91,10 +87,6 @@
       "terms": {
         "vt0001": {
           "id": "vt0001",
-          "text": "Apgar"
-        },
-        "vt0002": {
-          "id": "vt0002",
           "text": "Referenser"
         }
       }
@@ -105,8 +97,7 @@
 </head>
 <body ng-controller="cds_controller">
 <#assign app_help_tag = "def.guides['Apgar.v1'].concept">
-<#assign apgar_title = "def.terms['vt0001']"/>
-<#assign references = "def.terms['vt0002']"/>
+<#assign references = "def.terms['vt0001']"/>
 <#assign apgar_score_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.apgar.v1']">
 <#assign apgar_score_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.apgar.v1']">
 <#assign apgar_score_entry_def = "def.entries['openEHR-EHR-OBSERVATION.apgar.v1']">
@@ -141,7 +132,7 @@ angular.module('cds_app').controller('Apgar_Ctrl', function($scope, $window){
 </script>
 <div ng-show="ready" ng-controller="Apgar_Ctrl">
 <div class="header">
-  <h1>{{apgar_title}}</h1>
+  <h1>{{${apgar_score_entry_def}.name}}</h1>
   <h2>{{def.concept.description}}</h2>
   <div class="help-tip">
 	<p>{{${app_help_tag}.description}}</p>
@@ -352,7 +343,7 @@ angular.module('cds_app').controller('Apgar_Ctrl', function($scope, $window){
     background-color: #e6e6e6;
   }
   #fix {
-    margin-left: 10px; 
+    text-align: center; 
   }
 </style>
 </body></html>
