@@ -1,0 +1,391 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.patient_health_questionnaire_9.v1
+
+concept
+	[at0000]	-- Patient health questionnaire - 9
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2016-10-09">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The PHQ-9 relates to the 9 MDD (Major Depressive Disorder) module of the full PHQ (Patient Health Questionnaire) and helps to assess the patient's degree of depression in both general medical and mental health cases.
+">
+			use = <"Used as a screening tool:
+To help clinicians when making a diagnosis of depression
+To rate the severity and grade of depressive symptoms
+
+Useful to assess changes in symptoms/benefits of treatment over time. \"PHQ-9 score of ≥10 has a sensitivity of 88% and a specificity of 88% in detecting MDD.\"
+
+Scores range from “0” (not at all) to “3” (nearly every day) with a calculated overall score ranging from 0-27 related to severity. A 10th question (which does not contribute to the score) explores the general state of the patient's well-being and ability to interact with others, thus providing a measure of perceived benefit and monitoring.
+Score interpretation:
+
+Score 	Symptom Severity 	                 Comments
+0-4 	Minimal or no depression 	                 Monitor the patient. They may not require treatment
+5-9 	Mild depression 	                 Use clinical judgment (symptom duration, functional impairment)
+                                                                                                      to determine necessity of treatment
+10-14 	Moderate depression                         Same as above
+15-19 	Moderately severe depression 	      Warrants active treatment with psychotherapy, medications, or                            combination
+20-27 	Severe depression                             Same as above">
+			keywords = <"PHQ-9", "Patient Health Questionnaire", "Depression", "MDD", "DSM">
+			misuse = <"A final definitive diagnosis should not be made until after a proper clinical and mental state assessment including aspects of the patient's distress level and any impairment to function.
+
+Not to be used with bipolar patients, those in mourning or those suffering from depression-producing medical disorders. Suicide risk assessment should be made for patients scoring over \"0\" for question 9.">
+			copyright = <"Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Kroenke K, Spitzer RL, Williams JB. The PHQ-9: validity of a brief depression severity measure. J Gen Intern Med. 2001 Sep;16(9):606-13. PubMed PMID: 11556941; PubMed Central PMCID: PMC1495268.
+
+Ref. 2: Arroll B, Goodyear-Smith F, Crengle S, Gunn J, Kerse N, Fishman T, Falloon K, Hatcher S. Validation of PHQ-2 and PHQ-9 to screen for major depression in the primary care population. Ann Fam Med. 2010 Jul-Aug;8(4):348-53. doi: 10.1370/afm.1139. PubMed PMID: 20644190; PubMed Central PMCID: PMC2906530.">
+		["MD5-CAM-1.0.1"] = <"7912ED280325B1004B4AEED7357BB8F3">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Patient health questionnaire - 9
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Little pleasure doing things
+										value matches {
+											0|[local::at0019], 	-- Not at all
+											1|[local::at0020], 	-- Several days
+											2|[local::at0021], 	-- More than half the days
+											3|[local::at0022]  	-- Nearly every day
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Feeling hopeless
+										value matches {
+											0|[local::at0051], 	-- Not at all
+											1|[local::at0052], 	-- Several days
+											2|[local::at0053], 	-- More than half the days
+											3|[local::at0054]  	-- Nearly every day
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Trouble with sleeping
+										value matches {
+											0|[local::at0047], 	-- Not at all
+											1|[local::at0048], 	-- Several days
+											2|[local::at0049], 	-- More than half the days
+											3|[local::at0050]  	-- Nearly every day
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Feeling tired
+										value matches {
+											0|[local::at0043], 	-- Not at all
+											1|[local::at0044], 	-- Several days
+											2|[local::at0045], 	-- More than half the days
+											3|[local::at0046]  	-- Nearly every day
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Disturbed appetite
+										value matches {
+											0|[local::at0039], 	-- Not at all
+											1|[local::at0040], 	-- Several days
+											2|[local::at0041], 	-- More than half the days
+											3|[local::at0042]  	-- Nearly every day
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Feeling like a failure
+										value matches {
+											0|[local::at0035], 	-- Not at all
+											1|[local::at0036], 	-- Several days
+											2|[local::at0037], 	-- More than half the days
+											3|[local::at0038]  	-- Nearly every day
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Trouble concentrating
+										value matches {
+											0|[local::at0031], 	-- Not at all
+											1|[local::at0032], 	-- Several days
+											2|[local::at0033], 	-- More than half the days
+											3|[local::at0034]  	-- Nearly every day
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Disturbed speech and/or movement
+										value matches {
+											0|[local::at0027], 	-- Not at all
+											1|[local::at0028], 	-- Several days
+											2|[local::at0029], 	-- More than half the days
+											3|[local::at0030]  	-- Nearly every day
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Suicidal thoughts
+										value matches {
+											0|[local::at0023], 	-- Not at all
+											1|[local::at0024], 	-- Several days
+											2|[local::at0025], 	-- More than half the days
+											3|[local::at0026]  	-- Nearly every day
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..27|}
+											}
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- If > 0: What impact on your life?
+										value matches {
+											0|[local::at0015], 	-- Not at all
+											1|[local::at0016], 	-- Somewhat difficult
+											2|[local::at0017], 	-- Very difficult
+											3|[local::at0018]  	-- Extremely difficult
+										}
+									}
+									ELEMENT[at0055] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Patient health questionnaire - 9">
+					description = <"The PHQ-9 relates to the 9 MDD (Major Depressive Disorder) module of the full PHQ and helps to assess the patient's degree of depression. The tool has an additional question which is not scored, but which helps the clinician get a sense of how impactful these symptoms are on their patient's life.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Little pleasure doing things">
+					description = <"Little interest or pleasure in doing things">
+				>
+				["at0005"] = <
+					text = <"Feeling hopeless">
+					description = <"Feeling down, depressed, or hopeless">
+				>
+				["at0006"] = <
+					text = <"Trouble with sleeping">
+					description = <"Trouble falling or staying asleep, or sleeping too much">
+				>
+				["at0007"] = <
+					text = <"Feeling tired">
+					description = <"Feeling tired or having little energy">
+				>
+				["at0008"] = <
+					text = <"Disturbed appetite">
+					description = <"Poor appetite or overeating ">
+				>
+				["at0009"] = <
+					text = <"Feeling like a failure">
+					description = <"Feeling bad about yourself — or that you are a failure or have let yourself or your family down ">
+				>
+				["at0010"] = <
+					text = <"Trouble concentrating">
+					description = <"Trouble concentrating on things, such as reading the newspaper or watching television">
+				>
+				["at0011"] = <
+					text = <"Disturbed speech and/or movement">
+					description = <"Moving or speaking so slowly that other people could have noticed? Or the opposite — being so fidgety or restless that you have been moving around a lot more than usual ">
+				>
+				["at0012"] = <
+					text = <"Suicidal thoughts">
+					description = <"Thoughts that you would be better off dead, or thoughts of hurting yourself in some way ">
+				>
+				["at0013"] = <
+					text = <"If > 0: What impact on your life?">
+					description = <"How difficult have these problems made it for you to do your work, take care of things at home, or get along with other people? ">
+				>
+				["at0014"] = <
+					text = <"Total score">
+					description = <"Total score = sum of all 9 MDD sections">
+				>
+				["at0015"] = <
+					text = <"Not at all">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Somewhat difficult">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Very difficult">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Extremely difficult">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Not at all">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Several days">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"More than half the days">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Nearly every day">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Not at all">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Several days">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"More than half the days">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Nearly every day">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Not at all">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Several days">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"More than half the days">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Nearly every day">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Not at all">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Several days">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"More than half the days">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"Nearly every day">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Not at all">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Several days">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"More than half the days">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"Nearly every day">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Not at all">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"Several days">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"More than half the days">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"Nearly every day">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"Not at all">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Several days">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"More than half the days">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"Nearly every day">
+					description = <"*">
+				>
+				["at0047"] = <
+					text = <"Not at all">
+					description = <"*">
+				>
+				["at0048"] = <
+					text = <"Several days">
+					description = <"*">
+				>
+				["at0049"] = <
+					text = <"More than half the days">
+					description = <"*">
+				>
+				["at0050"] = <
+					text = <"Nearly every day">
+					description = <"*">
+				>
+				["at0051"] = <
+					text = <"Not at all">
+					description = <"*">
+				>
+				["at0052"] = <
+					text = <"Several days">
+					description = <"*">
+				>
+				["at0053"] = <
+					text = <"More than half the days">
+					description = <"*">
+				>
+				["at0054"] = <
+					text = <"Nearly every day">
+					description = <"*">
+				>
+				["at0055"] = <
+					text = <"Comment">
+					description = <"Should the clinician need to make a comment or note about the patient">
+				>
+			>
+		>
+	>
