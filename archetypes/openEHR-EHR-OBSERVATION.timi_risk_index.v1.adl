@@ -5,13 +5,43 @@ concept
 	[at0000]	-- Timi risk index
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
-		["organisation"] = <"Cambio Healthcare Services">
+		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2016-09-28">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"TIMI Risk Index är en klinisk skala för uppskattning av 30-dagars mortalitet hos patienter med STEMI (Akut ST-höjningsinfarkt).">
+			use = <"TIMI Risk Index (TRI) baseras på patientens pulsfrekvens, systoliskt blodtryck och ålder. Resultatet beräknas med följande formel: (pulsfrekvens × [ålder/10]2/systoliskt blodtryck)
+
+Riskgrupperna uttrycks i kvintiler enligt:
+
+                                                           30-dagarsmortalitet (%)
+Grupp 1: Risk index 12.5                              [0.8%]
+Grupp 2: Risk Index >12.5-17.5                    [1.9%]
+Grupp 3: Risk Index >17.5-22.5                    [3.3%] 
+Grupp 4: Risk Index >22.5-30                       [7.3%]
+Grupp 5: Risk Index >30                                [17.4%]
+
+TRI anses vara av värde vid uppskattning av 30-dagarsmortalitet i sjukhusmiljö hos patienter som i samband med STEMI genomgår reperfusionsbehandling (trombolys/PCI). 
+
+Uppskattningen av mortalitet ger vägledning i val av vårdnivå och behandling. Måttet 30-dagarsmortalitet är validerat gentemot mot ett register bestående av 150,000 STEMI- och 300,000 NSTEMI-patienter.">
+			keywords = <"STEMI", "Trombolys", "Pulsfrekvens", "Reperfusion", "PCI">
+			misuse = <"TIMI Risk Index är endast avsedd att användas för STEMI-patienter som genomgår reperfusionsbehandling och EJ för annan behandling eller riskuppskattning för uppkomst av ny infarkt.">
+			copyright = <"Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"TIMI Risk Index (TRI) is a fairly basic score that quantifies risk of STEMI (ST elevation myocardial infarct) patients on fibrinolytics, in order to predict 30-day mortality.">
@@ -26,7 +56,7 @@ Group 1: Risk index 12.5                              [0.8%]
 Group 2: Risk Index >12.5-17.5                    [1.9%]
 Group 3: Risk Index >17.5-22.5                    [3.3%] 
 Group 4: Risk Index >22.5-30                       [7.3%]
-Goup 5: Risk Index >30                                [17.4%]
+Group 5: Risk Index >30                                [17.4%]
 
 The TRI is said to have an improved usage when predicting mortality rates in-hospital as well as long-term, for the general population of STEMI patients who have been treated with reperfusion therapy, as well as fibrinolytics or primary percutaneous coronary intervetion (PCI). 
 
@@ -54,17 +84,17 @@ Ref. 3: Wiviott SD, Morrow DA, Frederick PD, Antman EM, Braunwald E; National Re
 
 Ref. 4: Méndez-Eirín, Flores-Ríos, García-López, Pérez-Pérez, Estévez-Loureiro, Piñón-Esteban, et. al. (2012). Comparison of the Prognostic Predictive Value of the TIMI, PAMI, CADILLAC, and GRACE Risk Scores in STEACS Undergoing Primary or Rescue PCI. Revista Española De Cardiología (English Edition), 65(3), 227-233.
 ">
-		["MD5-CAM-1.0.1"] = <"52680463CFE8A8578FE88671BEBDB398">
+		["MD5-CAM-1.0.1"] = <"E632A044F5F751103AB206CF49665301">
 	>
 
 definition
 	OBSERVATION[at0000] matches {	-- Timi risk index
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {1..*; unordered} matches {
 									ELEMENT[at0005] occurrences matches {0..1} matches {	-- TIMI Risk Index
 										value matches {
@@ -105,6 +135,30 @@ ontology
 				["at0005"] = <
 					text = <"TIMI Risk Index">
 					description = <"TRI is made up of (HR * [(age/10)^2/systolic BP])  and has no units but relates to the AUC (area Under ROC curve) it therefore is a number from 0 to 100">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Timi risk index">
+					description = <"TIMI Risk Index (Thrombolysis In Myocardial Infarction) är en enkel skala för uppskattning av 30-dagarsmortalitet hos patienter med akut ST-höjningsinfarkt (STEMI), baserat på faktorerna blodtryck, pulsfrekvens och ålder.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0005"] = <
+					text = <"TIMI Risk Index">
+					description = <"TRI: (Puls * [(ålder/10)^2/systoliskt BT]). 0-100.">
 				>
 			>
 		>
