@@ -1,0 +1,127 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"Albumin-Creatinine_ratio.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"albuminuria", "albumin excretion rate", "chronic kidney disease", "CKD", "albumin:creatinine ratio", "ACR", "KDIGO", "CKD classification", "AER">
+				misuse = <"">
+				purpose = <"This guide calculates and categorizes urinary albumin:creatinine ratio (ACR) based on the Kidney Disease: Improving Global Outcomes (KDIGO) Chronic Kidney Disease Work Group.">
+				use = <"Use to calculate urinary albumin:creatinine ratio (mg/g) from given values of urinary albumin (mg/L) and urinary creatinine (mg/L).
+Use to categorize urinary albumin:creatinine ratio based on KDIGO ACR categories. KDIGO A1 is normal to moderately increased ACR (less than 30 mg/g), KDIGO A2 is moderately increased ACR (30 - 300 mg/g) and KDIGO A3 is severely increased ACR (more than 300 mg/g).
+Use to calculate albumin excretion rate (mg/24hrs), which is an approximation of the albumin:creatinine ratio.
+Use in concert with GFR categories to stage and evaluate as well as prognosticate the progression of chronic kidney disease (CKD).">
+			>
+		>
+		lifecycle_state = <"Author draft">
+		original_author = <
+			["date"] = <"2016-10-13">
+			["email"] = <"info@cambio.se">
+			["name"] = <"Eneimi Allwell-Brown">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"Eknoyan G, Lameire N, Eckardt KU, Kasiske BL, Wheeler DC, Levin A, Stevens PE, Bilous RW, Lamb EJ, Coresh J, Levey AS. KDIGO 2012 clinical practice guideline for the evaluation and management of chronic kidney disease. Kidney Int. 2013;3:5-14.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0003"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-microalbumin.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0004"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.3]">
+					>
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.2]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0006"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-microalbumin.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0007"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.1]">
+					>
+					["gt0009"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0057]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0002"] = (RULE) <
+				when = <"$gt0005.units=='mg/l'", "$gt0004.units=='mg/l'">
+				then = <"$gt0007.precision=0", "$gt0007.units='mg/gm'", "$gt0007.magnitude=(($gt0004.magnitude/$gt0005.magnitude)*1000)">
+				priority = <4>
+			>
+			["gt0008"] = (RULE) <
+				when = <"$gt0007<30,mg/gm",...>
+				then = <"$gt0009='KDIGO A1: Normal to mildly increased ACR'",...>
+				priority = <3>
+			>
+			["gt0010"] = (RULE) <
+				when = <"$gt0007<=300,mg/gm", "$gt0007>=30,mg/gm">
+				then = <"$gt0009='KDIGO A2: Moderately increased ACR'",...>
+				priority = <2>
+			>
+			["gt0011"] = (RULE) <
+				when = <"$gt0007>300,mg/gm",...>
+				then = <"$gt0009='KDIGO A3: Severely increased ACR'",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Urinary albumin:creatinine ratio (ACR)">
+						description = <"Calculates and categorizes urinary albumin:creatinine ratio (ACR).">
+					>
+					["gt0002"] = (TERM) <
+						text = <"Calculate urinary ACR">
+						description = <"Contains the expression logic for calculating and categorizing ACR.">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Urine microalbumin">
+						description = <"Microalbumin level in this specimen.">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Urine creatinine">
+						description = <"Creatinine level in this urine specimen.">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Urine albumin:creatinine ratio">
+						description = <"Ratio of albumin and creatinine in this specimen.">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Assign Albuminuria category A1">
+						description = <"Contains the expression logic for categorizing albumin:creatinine ratio A1.">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Overall interpretation">
+						description = <"An overall interpretative comment on this test.">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Assign Albuminuria category A2">
+						description = <"Contains the expression logic for categorizing albumin:creatinine ratio A2.">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Assign Albuminuria category A3">
+						description = <"Contains the expression logic for categorizing albumin:creatinine ratio A3.">
+					>
+				>
+			>
+		>
+	>
+>
