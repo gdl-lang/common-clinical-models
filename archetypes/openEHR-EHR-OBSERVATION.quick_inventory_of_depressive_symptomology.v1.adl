@@ -1,0 +1,554 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.quick_inventory_of_depressive_symptomology.v1
+
+concept
+	[at0000]	-- Quick inventory of depressive symptomology
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2016-10-09">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"A self-reported method to quantify depressive symptoms from patients across 16 multiple choice questions, which relate to 9 depression symptoms. ">
+			use = <"The QIDS (Quick Inventory of Depressive Symptomology) helps those patients whom either see themselves or whom may be seen by others as being depressed using a self-assessment method of scoring, mapping the extent of their feelings of depression over a 4 point scale and across 16 questions. 
+
+These questions relate to 9 depression symptoms regarding sleep patterns, mood, appetite, weight fluctuations, worth, decision-making, suicidal thoughts, speed of thinking/gesturing/speaking, interest in other people and energy level.
+
+The scoring system works, for the most part, in the usual way: by adding the individual scores as recorded by the patient for each question who fills it in as normal. However, for questions 1-4, 6-9, 15 and 16, only the highest score is recorded and added to the running total. Thus creating only 1 score for each of the 9 depression symptoms as described above. 
+
+The score values span from 0 to 3 at each response, giving a max total score of 27 (3 multiplied by 9).
+
+Score Interpretation is based on 5 grades of severity:
+
+    ≤5 indicate no depression.
+    6-10 indicate mild depression.
+    11-15 indicate moderate depression.
+    16-20 indicate severe depression">
+			keywords = <"Quick inventory of depressive symptomology", "QIDS", "Self-reported", "Depression", "Severity", "Trends">
+			misuse = <"Do not use in isolation of supporting psychiatric assessment and without the provision of other supporting resources as needed.">
+			copyright = <"Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Rush AJ, Giles DE, Schlesser MA, Fulton CL, Weissenburger JE, Burns CT. The Inventory of Depressive Symptomatology (IDS): Preliminary findings. Psychiatry Research. 1986; 18:65-87. 
+
+Ref. 2: Rush AJ, Trivedi MH, Ibrahim HM, Carmody TJ, Arnow B, Klein DN, Markowitz JC, Ninan PT, Kornstein S, Manber R, Thase ME, Kocsis JH, Keller MB. The 16-item Quick Inventory of Depressive Symptomatology (QIDS) Clinician Rating (QIDS-C) and Self-Report (QIDS-SR): A psychometric evaluation in patients with chronic major depression. Biological Psychiatry. 2003; 54:573-583.">
+		["MD5-CAM-1.0.1"] = <"7376982549197610680A7F642EF8CE81">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Quick inventory of depressive symptomology
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- 1. Sleep Onset Insomnia
+										value matches {
+											0|[local::at0020], 	-- Never takes longer than 30 minutes to fall asleep
+											1|[local::at0021], 	-- Takes at least 30 minutes to fall asleep, less than half the time
+											2|[local::at0022], 	-- Takes at least 30 minutes to fall asleep, more than half the time
+											3|[local::at0023]  	-- Takes more than 60 minutes to fall asleep, more than half the time
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- 2. Mid-Nocturnal Insomnia
+										value matches {
+											0|[local::at0024], 	-- Does not wake up at night
+											1|[local::at0025], 	-- Restless, light sleep with few awakenings
+											2|[local::at0026], 	-- Wakes up at least once a night, but goes back to sleep easily.
+											3|[local::at0027]  	-- Awakens more than once a night and stays awake for 20 minutes or more, more than half the time.
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- 3. Early Morning Insomnia
+										value matches {
+											0|[local::at0028], 	-- Less than half the time, awakens no more than 30 minutes before necessary
+											1|[local::at0029], 	-- More than half the time, awakens more than 30 minutes before need be
+											2|[local::at0030], 	-- Awakens at least one hour before need be, more than half the time.
+											3|[local::at0031]  	-- Awakens at least two hours before need be, more than half the time.
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- 4. Hypersomnia
+										value matches {
+											0|[local::at0032], 	-- Sleeps no longer than 7-8 hours/night, without naps
+											1|[local::at0033], 	-- Sleeps no longer than 10 hours in a 24 hour period (including naps)
+											2|[local::at0034], 	-- Sleeps no longer than 12 hours in a 24 hour period (including naps).
+											3|[local::at0035]  	-- Sleeps longer than 12 hours in a 24 hour period (including naps).
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- 5. Mood (Sad)
+										value matches {
+											0|[local::at0036], 	-- Does not feel sad.
+											1|[local::at0037], 	-- Feels sad less than half the time.
+											2|[local::at0038], 	-- Feels sad more than half the time.
+											3|[local::at0039]  	-- Feels intensely sad virtually all the time.
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- 6. Appetite (Decreased)
+										value matches {
+											0|[local::at0040], 	-- No change from usual appetite.
+											1|[local::at0041], 	-- Eats somewhat less often and/or lesser amounts than usual.
+											2|[local::at0042], 	-- Eats much less than usual and only with personal effort.
+											3|[local::at0043]  	-- Eats rarely within a 24-hour period, and only with extreme personal effort or with persuasion by others.
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- 7. Appetite (Increased)
+										value matches {
+											0|[local::at0044], 	-- No change from usual appetite.
+											1|[local::at0045], 	-- More frequently feels a need to eat than usual.
+											2|[local::at0046], 	-- Regularly eats more often and/or greater amounts than usual.
+											3|[local::at0047]  	-- Feels driven to overeat at and between meals.
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- 8. Weight (Decrease) Within The Last Two Weeks
+										value matches {
+											0|[local::at0048], 	-- Has experienced no weight change.
+											1|[local::at0049], 	-- Feels as if some slight weight loss occurred.
+											2|[local::at0050], 	-- Has lost 2 pounds or more.
+											3|[local::at0051]  	-- Has lost 5 pounds or more.
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- 9. Weight (Increase) Within The Last Two Weeks
+										value matches {
+											0|[local::at0052], 	-- Has experienced no weight change.
+											1|[local::at0053], 	-- Feels as if some slight weight gain has occurred
+											2|[local::at0054], 	-- Has gained 2 pounds or more.
+											3|[local::at0055]  	-- Has gained 5 pounds or more.
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- 10. Concentration/Decision making
+										value matches {
+											0|[local::at0056], 	-- No change in usual capacity to concentrate and decide
+											1|[local::at0057], 	-- Occasionally feels indecisive or notes that attention often wanders.
+											2|[local::at0058], 	-- Most of the time struggles to focus attention or make decisions.
+											3|[local::at0059]  	-- Cannot concentrate well enough to read or cannot make even minor decisions.
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- 11. Outlook (Self)
+										value matches {
+											0|[local::at0060], 	-- Sees self as equally worthwhile and deserving as others.
+											1|[local::at0061], 	-- Is more self-blaming than usual.
+											2|[local::at0062], 	-- Largely believes that he/she causes problems for others.
+											3|[local::at0063]  	-- Ruminates over major and minor defects in self.
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- 12. Suicidal Ideation
+										value matches {
+											0|[local::at0064], 	-- Does not think of suicide or death.
+											1|[local::at0065], 	-- Feels life is empty or is not worth living.
+											2|[local::at0066], 	-- Thinks of suicide/death several times a week for several minutes
+											3|[local::at0067]  	-- Thinks of suicide/death several times a day in depth, or has made specific plans to commit or attempted suicide.
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- 13. Involvement
+										value matches {
+											0|[local::at0068], 	-- No change from usual level of interest in other people and activities.
+											1|[local::at0069], 	-- Notices a reduction in former interests/activities.
+											2|[local::at0070], 	-- Finds only one or two former interests remain.
+											3|[local::at0071]  	-- Has virtually no interest in formerly pursued activities.
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- 14. Energy/Fatiguability
+										value matches {
+											0|[local::at0072], 	-- No change in usual level of energy.
+											1|[local::at0073], 	-- Tires more easily than usual.
+											2|[local::at0074], 	-- Makes significant personal effort to initiate or maintain usual daily activities.
+											3|[local::at0075]  	-- Unable to carry out most of usual daily activities due to lack of energy.
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- 15. Psychomotor Slowing
+										value matches {
+											0|[local::at0076], 	-- Normal speed of thinking, gesturing, and speaking.
+											1|[local::at0077], 	-- Notes slowed thinking, and voice modulation is reduced.
+											2|[local::at0078], 	-- Takes several seconds to respond to most questions; reports slowed thinking.
+											3|[local::at0079]  	-- Is largely unresponsive to most questions without strong encouragement.
+										}
+									}
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- 16. Psychomotor Agitation
+										value matches {
+											0|[local::at0080], 	-- No increased speed or disorganization in thinking or gesturing.
+											1|[local::at0081], 	-- Fidgets, wrings hands, and shifts positions often.
+											2|[local::at0082], 	-- Describes impulse to move about and displays motor restlessness.
+											3|[local::at0083]  	-- Unable to stay seated; paces about with or without permission.
+										}
+									}
+									ELEMENT[at0084] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..27|}
+											}
+										}
+									}
+									ELEMENT[at0085] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Quick inventory of depressive symptomology">
+					description = <"A self-reporting method to quantify depressive symptoms from patients across 16 multiple choice questions which relate to 9 depression symptoms. This assessment can aid patients and providers to measure depressive symptoms over time for monitoring purposes.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"1. Sleep Onset Insomnia">
+					description = <"Time taken to fall asleep">
+				>
+				["at0005"] = <
+					text = <"2. Mid-Nocturnal Insomnia">
+					description = <"Waking up in the middle of the night">
+				>
+				["at0006"] = <
+					text = <"3. Early Morning Insomnia">
+					description = <"Early morning wakening">
+				>
+				["at0007"] = <
+					text = <"4. Hypersomnia">
+					description = <"Over sleeping">
+				>
+				["at0008"] = <
+					text = <"5. Mood (Sad)">
+					description = <"Feelings of sadness">
+				>
+				["at0009"] = <
+					text = <"6. Appetite (Decreased)">
+					description = <"Decreased appetite">
+				>
+				["at0010"] = <
+					text = <"7. Appetite (Increased)">
+					description = <"Increased appetite">
+				>
+				["at0011"] = <
+					text = <"8. Weight (Decrease) Within The Last Two Weeks">
+					description = <"Weight decrease over last 2 weeks">
+				>
+				["at0012"] = <
+					text = <"9. Weight (Increase) Within The Last Two Weeks">
+					description = <"Weight increase over last 2 weeks">
+				>
+				["at0013"] = <
+					text = <"10. Concentration/Decision making">
+					description = <"Ability to concentrate and make decisions">
+				>
+				["at0014"] = <
+					text = <"11. Outlook (Self)">
+					description = <"Outlook towards self and sense of self worth">
+				>
+				["at0015"] = <
+					text = <"12. Suicidal Ideation">
+					description = <"Suicidal thoughts and ideas">
+				>
+				["at0016"] = <
+					text = <"13. Involvement">
+					description = <"Interest in others and in activities">
+				>
+				["at0017"] = <
+					text = <"14. Energy/Fatiguability">
+					description = <"Tendency to tire and energy level.">
+				>
+				["at0018"] = <
+					text = <"15. Psychomotor Slowing">
+					description = <"Speed of thinking, gesturing and speaking">
+				>
+				["at0019"] = <
+					text = <"16. Psychomotor Agitation">
+					description = <"Disorganisation of thinking or gesturing">
+				>
+				["at0020"] = <
+					text = <"Never takes longer than 30 minutes to fall asleep">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Takes at least 30 minutes to fall asleep, less than half the time">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Takes at least 30 minutes to fall asleep, more than half the time">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Takes more than 60 minutes to fall asleep, more than half the time">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Does not wake up at night">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Restless, light sleep with few awakenings">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Wakes up at least once a night, but goes back to sleep easily.">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Awakens more than once a night and stays awake for 20 minutes or more, more than half the time.">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Less than half the time, awakens no more than 30 minutes before necessary">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"More than half the time, awakens more than 30 minutes before need be">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Awakens at least one hour before need be, more than half the time.">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Awakens at least two hours before need be, more than half the time.">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Sleeps no longer than 7-8 hours/night, without naps">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Sleeps no longer than 10 hours in a 24 hour period (including naps)">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"Sleeps no longer than 12 hours in a 24 hour period (including naps).">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Sleeps longer than 12 hours in a 24 hour period (including naps).">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Does not feel sad.">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Feels sad less than half the time.">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"Feels sad more than half the time.">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Feels intensely sad virtually all the time.">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"No change from usual appetite.">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"Eats somewhat less often and/or lesser amounts than usual.">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"Eats much less than usual and only with personal effort.">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"Eats rarely within a 24-hour period, and only with extreme personal effort or with persuasion by others.">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"No change from usual appetite.">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"More frequently feels a need to eat than usual.">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"Regularly eats more often and/or greater amounts than usual.">
+					description = <"*">
+				>
+				["at0047"] = <
+					text = <"Feels driven to overeat at and between meals.">
+					description = <"*">
+				>
+				["at0048"] = <
+					text = <"Has experienced no weight change.">
+					description = <"*">
+				>
+				["at0049"] = <
+					text = <"Feels as if some slight weight loss occurred.">
+					description = <"*">
+				>
+				["at0050"] = <
+					text = <"Has lost 2 pounds or more.">
+					description = <"*">
+				>
+				["at0051"] = <
+					text = <"Has lost 5 pounds or more.">
+					description = <"*">
+				>
+				["at0052"] = <
+					text = <"Has experienced no weight change.">
+					description = <"*">
+				>
+				["at0053"] = <
+					text = <"Feels as if some slight weight gain has occurred">
+					description = <"*">
+				>
+				["at0054"] = <
+					text = <"Has gained 2 pounds or more.">
+					description = <"*">
+				>
+				["at0055"] = <
+					text = <"Has gained 5 pounds or more.">
+					description = <"*">
+				>
+				["at0056"] = <
+					text = <"No change in usual capacity to concentrate and decide">
+					description = <"*">
+				>
+				["at0057"] = <
+					text = <"Occasionally feels indecisive or notes that attention often wanders.">
+					description = <"*">
+				>
+				["at0058"] = <
+					text = <"Most of the time struggles to focus attention or make decisions.">
+					description = <"*">
+				>
+				["at0059"] = <
+					text = <"Cannot concentrate well enough to read or cannot make even minor decisions.">
+					description = <"*">
+				>
+				["at0060"] = <
+					text = <"Sees self as equally worthwhile and deserving as others.">
+					description = <"*">
+				>
+				["at0061"] = <
+					text = <"Is more self-blaming than usual.">
+					description = <"*">
+				>
+				["at0062"] = <
+					text = <"Largely believes that he/she causes problems for others.">
+					description = <"*">
+				>
+				["at0063"] = <
+					text = <"Ruminates over major and minor defects in self.">
+					description = <"*">
+				>
+				["at0064"] = <
+					text = <"Does not think of suicide or death.">
+					description = <"*">
+				>
+				["at0065"] = <
+					text = <"Feels life is empty or is not worth living.">
+					description = <"*">
+				>
+				["at0066"] = <
+					text = <"Thinks of suicide/death several times a week for several minutes">
+					description = <"*">
+				>
+				["at0067"] = <
+					text = <"Thinks of suicide/death several times a day in depth, or has made specific plans to commit or attempted suicide.">
+					description = <"*">
+				>
+				["at0068"] = <
+					text = <"No change from usual level of interest in other people and activities.">
+					description = <"*">
+				>
+				["at0069"] = <
+					text = <"Notices a reduction in former interests/activities.">
+					description = <"*">
+				>
+				["at0070"] = <
+					text = <"Finds only one or two former interests remain.">
+					description = <"*">
+				>
+				["at0071"] = <
+					text = <"Has virtually no interest in formerly pursued activities.">
+					description = <"*">
+				>
+				["at0072"] = <
+					text = <"No change in usual level of energy.">
+					description = <"*">
+				>
+				["at0073"] = <
+					text = <"Tires more easily than usual.">
+					description = <"*">
+				>
+				["at0074"] = <
+					text = <"Makes significant personal effort to initiate or maintain usual daily activities.">
+					description = <"*">
+				>
+				["at0075"] = <
+					text = <"Unable to carry out most of usual daily activities due to lack of energy.">
+					description = <"*">
+				>
+				["at0076"] = <
+					text = <"Normal speed of thinking, gesturing, and speaking.">
+					description = <"*">
+				>
+				["at0077"] = <
+					text = <"Notes slowed thinking, and voice modulation is reduced.">
+					description = <"*">
+				>
+				["at0078"] = <
+					text = <"Takes several seconds to respond to most questions; reports slowed thinking.">
+					description = <"*">
+				>
+				["at0079"] = <
+					text = <"Is largely unresponsive to most questions without strong encouragement.">
+					description = <"*">
+				>
+				["at0080"] = <
+					text = <"No increased speed or disorganization in thinking or gesturing.">
+					description = <"*">
+				>
+				["at0081"] = <
+					text = <"Fidgets, wrings hands, and shifts positions often.">
+					description = <"*">
+				>
+				["at0082"] = <
+					text = <"Describes impulse to move about and displays motor restlessness.">
+					description = <"*">
+				>
+				["at0083"] = <
+					text = <"Unable to stay seated; paces about with or without permission.">
+					description = <"*">
+				>
+				["at0084"] = <
+					text = <"Total score">
+					description = <"Add up scores for questions 5 and 10-14 as per responses but add only the HIGHEST score for question groups: 1-4, 6-9 and between 15 and 16">
+				>
+				["at0085"] = <
+					text = <"Comment">
+					description = <"*">
+				>
+			>
+		>
+	>
