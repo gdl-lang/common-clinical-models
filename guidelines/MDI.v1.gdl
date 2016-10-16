@@ -37,13 +37,43 @@ Score interpretations:
     Scores ≥30 indicate severe depression.
 ">
 			>
+			["sv"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"Cambio Healthcare Systems">
+				keywords = <"depression", "självskattning", "major depression inventory", "DSM-IV">
+				misuse = <"Bör ej användas isolerat utan är avsedd att användas i kombination med psykiatrisk bedömning och övriga adekvata resurser.
+">
+				purpose = <"Att genom ett självskattningsformulär uppskatta och beskriva grad av depression hos en patient.">
+				use = <"Använd för att över en tid om två veckor uppskatta och beskriva grad av depression hos en patient med hjälp av ett självskattningsformulär.
+
+Kan användas som del av DSM-IV (Diagnostic and Statistical Manual of Mental Disorders). Formuläret inkluderar nio av de diagnostiska kriterierna för Major Depression.
+
+Utfallsmått utgörs av allvarlighetsgrad. Total poängsumma uppgår till 0-50 poäng då samtliga tio frågor kan generera 0-5 poäng vardera. Fråga 8 och 10 är uppdelade i a) och b), där endast den subfråga med högst poäng tas med i beräkningen av totala summan. Alternativen på varje fråga och dess resulterande poäng visas enligt:
+
+Poäng (använd benämningar från PHQ-9?)
+
++5 = alltid
++4 = Mestadels
++3 = Något mer än hälften av tiden
++2 = Något mindre än hälften av tiden
++1 = Ibland
+0 = aldrig
+
+Tolkning av resultat:
+
+20-24p indikerar mild depression
+25-29 indikerar måttlig depression
+30 eller mer indikerar svår depression
+
+Medan skalan är användbar för en objektiv uppskattning av depressionsgrad måste samtliga patienter givetvis få tillgång till extra stöd och resurser om behov finns. Bedömning av suicidalrisk och eventuell förekomst av psykos bör som brukligt bedömas och remitteras enligt praxis.
+">
+			>
 		>
 		original_author = <
 			["date"] = <"2016-10-09">
 			["name"] = <"Syeeda S Farruque">
 			["organisation"] = <"Cambio Healthcare Systems">
 		>
-		other_contributors = <"Jimmy Axelsson",...>
+		other_contributors = <"Jimmy Axelsson", "Dennis Forslund">
 		other_details = <
 			["references"] = <"Ref.1: Bech P, Rasmussen NA, Olsen LR, Noerholm V, Abildgaard W. The sensitivity and specificity of the Major Depression Inventory, using the Present State Examination as the index of diagnostic validity. J Affect Disord 2001; 66: 159-164.
 
@@ -144,7 +174,7 @@ Ref.2: Olsen LR, Jensen DV, Noerholm V, Martiny K, Bech P. The internal and exte
 		rules = <
 			["gt0032"] = (RULE) <
 				when = <"$gt0030==null",...>
-				then = <"$gt0030.magnitude=((((((((((($gt0028.value+$gt0009.value)+$gt0007.value)+$gt0008.value)+$gt0024.value)+$gt0005.value)+$gt0025.value)+$gt0006.value)+$gt0012.value)+$gt0003.value)+$gt0027.value)+$gt0004.value)",...>
+				then = <"$gt0030.magnitude=((((((((((($gt0020.value+$gt0023.value)+$gt0024.value)+$gt0021.value)+$gt0022.value)+$gt0028.value)+$gt0027.value)+$gt0017.value)+$gt0026.value)+$gt0025.value)+$gt0019.value)+$gt0018.value)",...>
 				priority = <1>
 			>
 			["gt0040"] = (RULE) <
@@ -160,56 +190,76 @@ Ref.2: Olsen LR, Jensen DV, Noerholm V, Martiny K, Bech P. The internal and exte
 			["gt0042"] = (RULE) <
 				when = <"$gt0010.value>=$gt0011.value",...>
 				then = <"$gt0025=0|local::at0065|At no time|", "$gt0024=$gt0010">
-				priority = <6>
+				priority = <8>
 			>
 			["gt0043"] = (RULE) <
 				when = <"$gt0010.value<$gt0011.value",...>
 				then = <"$gt0024=0|local::at0059|At no time|", "$gt0025=$gt0011">
-				priority = <5>
+				priority = <7>
 			>
 			["gt0048"] = (RULE) <
 				when = <"$gt0017==null", "$gt0026==null", "$gt0025==null", "$gt0019==null", "$gt0024==null", "$gt0021==null", "$gt0022==null", "$gt0028==null", "$gt0018==null", "$gt0027==null", "$gt0023==null", "$gt0020==null">
-				then = <"$gt0018=0|local::at0023|At no time|", "$gt0019=0|local::at0029|At no time|", "$gt0025=0|local::at0065|At no time|", "$gt0026=0|local::at0071|At no time|", "$gt0017=0|local::at0017|At no time|", "$gt0027=0|local::at0077|At no time|", "$gt0028=0|local::at0083|At no time|", "$gt0022=0|local::at0047|At no time|", "$gt0021=0|local::at0041|At no time|", "$gt0024=0|local::at0059|At no time|", "$gt0023=0|local::at0053|At no time|", "$gt0020=0|local::at0035|At no time|">
-				priority = <14>
+				then = <"$gt0020=0|local::at0035|At no time|", "$gt0018=0|local::at0023|At no time|", "$gt0019=0|local::at0029|At no time|", "$gt0025=0|local::at0065|At no time|", "$gt0026=0|local::at0071|At no time|", "$gt0017=0|local::at0017|At no time|", "$gt0027=0|local::at0077|At no time|", "$gt0028=0|local::at0083|At no time|", "$gt0022=0|local::at0047|At no time|", "$gt0021=0|local::at0041|At no time|", "$gt0024=0|local::at0059|At no time|", "$gt0023=0|local::at0053|At no time|">
+				priority = <18>
 			>
 			["gt0049"] = (RULE) <
 				when = <"$gt0003!=null",...>
 				then = <"$gt0017=$gt0003",...>
-				priority = <13>
+				priority = <17>
 			>
 			["gt0050"] = (RULE) <
 				when = <"$gt0004!=null",...>
 				then = <"$gt0018=$gt0004",...>
-				priority = <12>
+				priority = <16>
 			>
 			["gt0051"] = (RULE) <
 				when = <"$gt0005!=null",...>
 				then = <"$gt0019=$gt0005",...>
-				priority = <11>
+				priority = <15>
 			>
 			["gt0052"] = (RULE) <
-				when = <"$gt0020!=null",...>
+				when = <"$gt0006!=null",...>
 				then = <"$gt0020=$gt0006",...>
-				priority = <10>
+				priority = <14>
 			>
 			["gt0053"] = (RULE) <
 				when = <"$gt0007!=null",...>
 				then = <"$gt0021=$gt0007",...>
-				priority = <9>
+				priority = <13>
 			>
 			["gt0054"] = (RULE) <
 				when = <"$gt0008!=null",...>
 				then = <"$gt0022=$gt0008",...>
-				priority = <8>
+				priority = <12>
 			>
 			["gt0055"] = (RULE) <
 				when = <"$gt0009!=null",...>
 				then = <"$gt0023=$gt0009",...>
-				priority = <7>
+				priority = <11>
 			>
 			["gt0056"] = (RULE) <
 				when = <"$gt0012!=null",...>
 				then = <"$gt0026=$gt0012",...>
+				priority = <6>
+			>
+			["gt0058"] = (RULE) <
+				when = <"$gt0011==null", "$gt0010!=null">
+				then = <"$gt0024=$gt0010",...>
+				priority = <10>
+			>
+			["gt0059"] = (RULE) <
+				when = <"$gt0010==null", "$gt0011!=null">
+				then = <"$gt0025=$gt0011",...>
+				priority = <9>
+			>
+			["gt0060"] = (RULE) <
+				when = <"$gt0013!=null", "$gt0014==null">
+				then = <"$gt0027=$gt0013",...>
+				priority = <5>
+			>
+			["gt0061"] = (RULE) <
+				when = <"$gt0013==null", "$gt0014!=null">
+				then = <"$gt0028=$gt0014",...>
 				priority = <4>
 			>
 		>
@@ -407,6 +457,225 @@ Ref.2: Olsen LR, Jensen DV, Noerholm V, Martiny K, Bech P. The internal and exte
 					>
 					["gt0056"] = (TERM) <
 						text = <"Set CDS Q9 to EHR Q9">
+					>
+					["gt0057"] = (TERM) <
+						text = <"Set CDS Q8 to EHR Q8a">
+					>
+					["gt0058"] = (TERM) <
+						text = <"Set CDS Q8 to EHR Q8a">
+					>
+					["gt0059"] = (TERM) <
+						text = <"Set CDS Q8 to EHR Q8b">
+					>
+					["gt0060"] = (TERM) <
+						text = <"Set CDS Q10 to EHR Q10a">
+					>
+					["gt0061"] = (TERM) <
+						text = <"Set CDS Q10 to EHR Q10b">
+					>
+				>
+			>
+			["sv"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Major depression inventory">
+						description = <"Major Depression Inventory är ett system utvecklat av WHO och används för att beskriva en patients grad av depression med hjälp av ett självskattningsformulär.">
+					>
+					["gt0003"] = (TERM) <
+						text = <"1. Har du känt dig ledsen och nere?">
+						description = <"*(en) Overall mood">
+					>
+					["gt0004"] = (TERM) <
+						text = <"2. Har du saknat intresse för dina dagliga sysslor?">
+						description = <"*(en) Motivation and interest">
+					>
+					["gt0005"] = (TERM) <
+						text = <"3. Har du saknat kraft och energi?">
+						description = <"*(en) Energy and strength">
+					>
+					["gt0006"] = (TERM) <
+						text = <"4. Har du känt minskat självförtroende?">
+						description = <"*(en) Confidence level">
+					>
+					["gt0007"] = (TERM) <
+						text = <"5. Har du haft dåligt samvete eller skuldkänslor?">
+						description = <"*(en) Feelings of guilt">
+					>
+					["gt0008"] = (TERM) <
+						text = <"6. Har du känt att livet inte är värt att leva?">
+						description = <"*(en) Sense of worth">
+					>
+					["gt0009"] = (TERM) <
+						text = <"7. Har du haft besvär att koncentrera dig, t.ex. när du läst en bok?">
+						description = <"*(en) Sense of worth">
+					>
+					["gt0010"] = (TERM) <
+						text = <"8a. Har du känt dig rastlös?">
+						description = <"*(en) Feelings of restlessness">
+					>
+					["gt0011"] = (TERM) <
+						text = <"8b.Har du känt dig mer tyst eller långsam?">
+						description = <"*(en) Lethargy">
+					>
+					["gt0012"] = (TERM) <
+						text = <"9. Har du haft sömnbesvär?">
+						description = <"*(en) Sleep disturbances">
+					>
+					["gt0013"] = (TERM) <
+						text = <"10a. Har du haft nedsatt aptit?">
+						description = <"*(en) Lack of Appetite">
+					>
+					["gt0014"] = (TERM) <
+						text = <"10b. Har du haft ökad aptit?">
+						description = <"*(en) Increased appetite">
+					>
+					["gt0015"] = (TERM) <
+						text = <"*(en) Total score">
+						description = <"*(en) Sum of all the scores across the 12 questions">
+					>
+					["gt0017"] = (TERM) <
+						text = <"1. Har du känt dig ledsen och nere?">
+						description = <"*(en) Overall mood">
+					>
+					["gt0018"] = (TERM) <
+						text = <"2. Har du saknat intresse för dina dagliga sysslor?">
+						description = <"*(en) Motivation and interest">
+					>
+					["gt0019"] = (TERM) <
+						text = <"3. Har du saknat kraft och energi?">
+						description = <"*(en) Energy and strength">
+					>
+					["gt0020"] = (TERM) <
+						text = <"4. Har du känt minskat självförtroende?">
+						description = <"*(en) Confidence level">
+					>
+					["gt0021"] = (TERM) <
+						text = <"5. Har du haft dåligt samvete eller skuldkänslor?">
+						description = <"*(en) Feelings of guilt">
+					>
+					["gt0022"] = (TERM) <
+						text = <"6. Har du känt att livet inte är värt att leva?">
+						description = <"*(en) Sense of worth">
+					>
+					["gt0023"] = (TERM) <
+						text = <"7. Har du haft besvär att koncentrera dig, t.ex. när du läst en bok?">
+						description = <"*(en) Ability to concentrate">
+					>
+					["gt0024"] = (TERM) <
+						text = <"8a. Har du känt dig rastlös?">
+						description = <"*(en) Feelings of restlessness">
+					>
+					["gt0025"] = (TERM) <
+						text = <"8b.Har du känt dig mer tyst eller långsam?">
+						description = <"*(en) Lethargy">
+					>
+					["gt0026"] = (TERM) <
+						text = <"9. Har du haft sömnbesvär?">
+						description = <"*(en) Sleep disturbances">
+					>
+					["gt0027"] = (TERM) <
+						text = <"10a. Har du haft nedsatt aptit?">
+						description = <"*(en) Lack of Appetite">
+					>
+					["gt0028"] = (TERM) <
+						text = <"10b. Har du haft ökad aptit?">
+						description = <"*(en) Increased appetite">
+					>
+					["gt0029"] = (TERM) <
+						text = <"Event time">
+						description = <"*(en) The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event.">
+					>
+					["gt0030"] = (TERM) <
+						text = <"Total poäng">
+						description = <"*(en) Sum of all the scores across the 12 questions">
+					>
+					["gt0031"] = (TERM) <
+						text = <"*(en) Set CDS">
+					>
+					["gt0032"] = (TERM) <
+						text = <"Beräkna total poäng">
+					>
+					["gt0033"] = (TERM) <
+						text = <"*(en) Calculate sub-part scores">
+					>
+					["gt0034"] = (TERM) <
+						text = <"*(en) Set score Q8a">
+					>
+					["gt0035"] = (TERM) <
+						text = <"*(en) Set score Q10b">
+					>
+					["gt0036"] = (TERM) <
+						text = <"*(en) Calculate score Q8b">
+					>
+					["gt0037"] = (TERM) <
+						text = <"*(en) Calculate score Q10b">
+					>
+					["gt0038"] = (TERM) <
+						text = <"*(en) Set score Q8b">
+					>
+					["gt0039"] = (TERM) <
+						text = <"*(en) Set score Q10a">
+					>
+					["gt0040"] = (TERM) <
+						text = <"Sätt CDS Q10 till EHR Q10b om Q10a<Q10b: ökad aptit">
+					>
+					["gt0041"] = (TERM) <
+						text = <"Sätt CDS Q10 till EHR Q10a om Q10a>=Q10b: nedsatt aptit">
+					>
+					["gt0042"] = (TERM) <
+						text = <"Sätt CDS Q8 till EHR Q8a om Q8a>=Q8b: rastlös">
+					>
+					["gt0043"] = (TERM) <
+						text = <"Sätt CDS Q8 till EHR Q8b om Q8a < Q8b: tyst/långsam">
+					>
+					["gt0044"] = (TERM) <
+						text = <"*(en) Set equals">
+					>
+					["gt0045"] = (TERM) <
+						text = <"*(en) Set equals 8">
+					>
+					["gt0046"] = (TERM) <
+						text = <"*(en) Set equals Q8">
+					>
+					["gt0047"] = (TERM) <
+						text = <"*(en) Set equals Q10">
+					>
+					["gt0048"] = (TERM) <
+						text = <"Sätt standard">
+					>
+					["gt0049"] = (TERM) <
+						text = <"Sätt CDS Q1 till EHR Q1">
+					>
+					["gt0050"] = (TERM) <
+						text = <"Sätt CDS Q2 till EHR Q2">
+					>
+					["gt0051"] = (TERM) <
+						text = <"Sätt CDS Q3 till EHR Q3">
+					>
+					["gt0052"] = (TERM) <
+						text = <"Sätt CDS Q4 till EHR Q4">
+					>
+					["gt0053"] = (TERM) <
+						text = <"Sätt CDS Q5 till EHR Q5">
+					>
+					["gt0054"] = (TERM) <
+						text = <"Sätt CDS Q6 till EHR Q6">
+					>
+					["gt0055"] = (TERM) <
+						text = <"Sätt CDS Q7 till EHR Q7">
+					>
+					["gt0056"] = (TERM) <
+						text = <"Sätt CDS Q9 till EHR Q9">
+					>
+					["gt0057"] = (TERM) <
+					>
+					["gt0058"] = (TERM) <
+					>
+					["gt0059"] = (TERM) <
+					>
+					["gt0060"] = (TERM) <
+					>
+					["gt0061"] = (TERM) <
 					>
 				>
 			>
