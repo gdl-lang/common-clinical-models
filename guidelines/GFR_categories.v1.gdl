@@ -1,0 +1,135 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"GFR_categories.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"GFR", "eGFR", "chronic kidney disease", "CKD", "kidney failure", "KDIGO", "CKD classification">
+				purpose = <"This guide categorizes glomerular filtration rate (GFR) based on the Kidney Disease: Improving Global Outcomes (KDIGO) Chronic Kidney Disease Work Group.">
+				use = <"Use to categorize glomerular filtration rate based on KDIGO GFR categories. 
+
+KDIGO G1 is normal to high GFR (more than 90 ml/min/1.73m2), 
+KDIGO G2 is mildly decreased GFR (60 - 89 ml/min/1.73m2), 
+KDIGO G3a is mildly to moderately decreased GFR (45 - 59 ml/min/1.73m2), 
+KDIGO G3b is moderately to severely decreased GFR (30 - 44 ml/min/1.73m2), 
+KDIGO G4 is severely decreased GFR (15 - 29 ml/min/1.73m2), and 
+KDIGO G5 is kidney failure (less than 15 ml/min/1.73m2).
+
+May be used in concert with urinary albumin:creatinine ratio (ACR) categories to stage and evaluate, as well as prognosticate the progression of chronic kidney disease (CKD).">
+			>
+		>
+		lifecycle_state = <"Author draft">
+		original_author = <
+			["date"] = <"2016-10-15">
+			["email"] = <"info@cambio.se">
+			["name"] = <"Eneimi Allwell-Brown">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"Eknoyan G, Lameire N, Eckardt KU, Kasiske BL, Wheeler DC, Levin A, Stevens PE, Bilous RW, Lamb EJ, Coresh J, Levey AS. KDIGO 2012 clinical practice guideline for the evaluation and management of chronic kidney disease. Kidney Int. 2013;3:5-14.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0009"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.estimated_glomerular_filtration_rate.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0010"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+				>
+			>
+			["gt0011"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.estimated_glomerular_filtration_rate.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0012"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0018]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0002"] = (RULE) <
+				when = <"$gt0010>=90,ml/min",...>
+				then = <"$gt0012='KDIGO G1: Normal or high GFR'",...>
+				priority = <6>
+			>
+			["gt0013"] = (RULE) <
+				when = <"$gt0010<90,ml/min", "$gt0010>=60,ml/min">
+				then = <"$gt0012='KDIGO G2: Mildly decreased GFR'",...>
+				priority = <5>
+			>
+			["gt0014"] = (RULE) <
+				when = <"$gt0010<60,ml/min", "$gt0010>=45,ml/min">
+				then = <"$gt0012='KDIGO G3a: Mildly to moderately decreased GFR'",...>
+				priority = <4>
+			>
+			["gt0015"] = (RULE) <
+				when = <"$gt0010<45,ml/min", "$gt0010>=30,ml/min">
+				then = <"$gt0012='KDIGO G3b: Moderately to severely decreased GFR'",...>
+				priority = <3>
+			>
+			["gt0016"] = (RULE) <
+				when = <"$gt0010<30,ml/min", "$gt0010>=15,ml/min">
+				then = <"$gt0012='KDIGO G4: Severely decreased GFR'",...>
+				priority = <2>
+			>
+			["gt0017"] = (RULE) <
+				when = <"$gt0010<15,ml/min",...>
+				then = <"$gt0012='KDIGO G5: Kidney failure'",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"KDIGO-GFR Categorization">
+						description = <"Categorizes glomerular filtration rate (GFR).">
+					>
+					["gt0002"] = (TERM) <
+						text = <"Assign GFR category G1">
+						description = <"Contains the expression logic to assign an individual to KDIGO G1 category.">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Estimated Glomerular Filtration Rate">
+						description = <"Value describing estimation of glomerular filtration rate adjusted by body-surface area (mL/min/1.73m²).">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Comment">
+						description = <"Element insantiation.">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Assign GFR category G2">
+						description = <"Contains the expression logic to assign an individual to KDIGO G2 category.">
+					>
+					["gt0014"] = (TERM) <
+						text = <"Assign GFR category G3a">
+						description = <"Contains the expression logic to assign an individual to KDIGO G3a category.">
+					>
+					["gt0015"] = (TERM) <
+						text = <"Assign GFR category G3b">
+						description = <"Contains the expression logic to assign an individual to KDIGO G3b category.">
+					>
+					["gt0016"] = (TERM) <
+						text = <"Assign GFR category G4">
+						description = <"Contains the expression logic to assign an individual to KDIGO G4 category.">
+					>
+					["gt0017"] = (TERM) <
+						text = <"Assign GFR category G5">
+						description = <"Contains the expression logic to assign an individual to KDIGO G5 category.">
+					>
+				>
+			>
+		>
+	>
+>
