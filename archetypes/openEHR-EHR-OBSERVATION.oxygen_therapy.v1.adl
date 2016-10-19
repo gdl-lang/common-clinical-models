@@ -1,0 +1,87 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.oxygen_therapy.v1
+
+concept
+	[at0000]	-- Oxygen therapy
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Dennis Forslund">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2016-10-19">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To register use of oxygen therapy.">
+			use = <"Use to register use of oxygen therapy.">
+			misuse = <"Not intended to record other information than use of oxygen therapy.">
+			copyright = <"Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"AEBCBB39E13D62A9A59C1634BDE45F85">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Oxygen therapy
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Oxygen therapy
+										value matches {
+											0|[local::at0006], 	-- Absent
+											1|[local::at0007]  	-- Present
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Oxygen therapy">
+					description = <"*">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0005"] = <
+					text = <"Oxygen therapy">
+					description = <"The patient is receiving oxygen therapy by mask or nasal cannulae.">
+				>
+				["at0006"] = <
+					text = <"Absent">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Present">
+					description = <"*">
+				>
+			>
+		>
+	>
