@@ -1,0 +1,116 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"Calcium_corrected.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"clinical chemistry", "extracellular calcium", "protein-bound calcium", "ionized (free) calcium", "chelated (complexed) calcium">
+				misuse = <"Not to be used to calculate corrected calcium in individuals with hyperalbuminaemia.
+Do not enter serum albumin as g/dl.">
+				purpose = <"To calculate the corrected calcium level in a sample, commonly serum or plasma, in individuals with hypoalbuminaemia.">
+				use = <"Use to calculate \"corrected calcium\" in individuals with known albumin and calcium levels.
+The formula used arises from work done by Payne et al and is given as; corrected calcium = serum calcium  + 0.8 * [(40 - serum albumin) / 10], where calcium measurements are in mg/dl, measured serum albumin is in g/L and 40 (g/L) is the assumed population normal for albumin. 
+This guide only accepts input albumin measurements as g/L. 
+To convert from g/dl to g/L, multiply by ten (10).">
+			>
+		>
+		original_author = <
+			["date"] = <"2016-10-06">
+			["email"] = <"info@cambio.se">
+			["name"] = <"Eneimi Allwell-Brown">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"Payne RB, Little AJ, Williams RB, Milner JR. Interpretation of serum calcium in patients with abnormal serum proteins. Br Med J. 1973 Dec 15;4(5893):643-6.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0003"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-liver_function.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0004"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.7]">
+					>
+				>
+			>
+			["gt0005"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-calcium_phosphate.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078]">
+					>
+				>
+			>
+			["gt0007"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-calcium_phosphate.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0092]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0002"] = (RULE) <
+				when = <"$gt0006.units=='mg/dl'", "$gt0004.units=='gm/l'">
+				then = <"$gt0008.units='mg/dl'", "$gt0008.precision=2", "$gt0008.magnitude=((((40-$gt0004.magnitude)/10)*0.8)+$gt0006.magnitude)">
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_bindings = <
+			["SNOMEDCT"] = (TERM_BINDING) <
+				bindings = <
+					["gt0004"] = (BINDING) <
+						codes = <[SNOMEDCT::104485008],...>
+						uri = <"http://snomed.info/id/">
+					>
+					["gt0006"] = (BINDING) <
+						codes = <[SNOMEDCT::271240001],...>
+						uri = <"http://snomed.info/id/">
+					>
+					["gt0008"] = (BINDING) <
+						codes = <[SNOMEDCT::166708003],...>
+						uri = <"http://snomed.info/id/">
+					>
+				>
+			>
+		>
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Calcium Corrected">
+						description = <"This guide calculates the corrected calcium level in individuals with hypoalbuminaemia.">
+					>
+					["gt0002"] = (TERM) <
+						text = <"Calculate corrected calcium">
+						description = <"This rule contains the expression logic for calculating corrected calcium level.">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Albumin">
+						description = <"Albumin level in the sample.">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Calcium">
+						description = <"The calcium level in the sample.">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Calcium_corrected">
+						description = <"The calculated corrected-calcium level in the sample.">
+					>
+				>
+			>
+		>
+	>
+>
