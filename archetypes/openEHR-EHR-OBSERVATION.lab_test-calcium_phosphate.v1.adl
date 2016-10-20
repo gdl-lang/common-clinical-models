@@ -2,7 +2,7 @@
 	openEHR-EHR-OBSERVATION.lab_test-calcium_phosphate.v1
 
 concept
-	[at0000]	-- Calcium and phosphate
+	[at0000]	-- Kalcium och fosfat
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -25,6 +25,13 @@ language
 			author = <
 				["name"] = <"Vyacheslav Mavrin">
 				["organisation"] = <"JSC Comsoft">
+			>
+		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
 			>
 		>
 	>
@@ -78,6 +85,14 @@ May be used to record both calcium and \"corrected\" calcium.">
 			misuse = <"">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att registrera resultat från kalcium- och fosfatprover, vanligtvis från serum eller plasma.">
+			use = <"Använd för att registrera resultat från kalcium- och fosfatprover, inklusive joniserat- och icke-joniserat kalcium, fosfat samt eventuella ytterligare förekommande former. Kan användas för att registrera såväl kalcium som albuminkorrigerat kalcium.">
+			keywords = <"Klinisk kemi", "Lab", "Fosfat", "Kalcium", "Ca">
+			misuse = <"">
+			copyright = <"*© Cambio Healthcare Systems(en)">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <"Koray Atalag, University of Auckland, New Zealand", "Heath Frankel, Ocean Informatics, Australia", "Sam Heard, Ocean Informatics, Australia (Editor)", "Heather Leslie, Ocean Informatics, Australia", "Ian McNicoll, Ocean Informatics, United Kingdom (Editor)", "David Rowed, VAMC Clinic, Australia (Editor)", "Mona Saleh (Translator)">
@@ -85,50 +100,50 @@ May be used to record both calcium and \"corrected\" calcium.">
 		["references"] = <"Goldstein DA. Serum Calcium. In: Walker HK, Hall WD, Hurst JW, editors. Clinical Methods: The History, Physical, and Laboratory Examinations. 3rd edition. Boston: Butterworths; 1990. Chapter 143.
 
 Bansal VK. Serum Inorganic Phosphorus. In: Walker HK, Hall WD, Hurst JW, editors. Clinical Methods: The History, Physical, and Laboratory Examinations. 3rd edition. Boston: Butterworths; 1990. Chapter 198.">
-		["MD5-CAM-1.0.1"] = <"80300558496815CFCA935E5BF067E1A2">
+		["MD5-CAM-1.0.1"] = <"B03E66D4B0880C4BBE359F8ECDADC814">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Calcium and phosphate
+	OBSERVATION[at0000] matches {	-- Kalcium och fosfat
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Test name
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Testnamn
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0077] occurrences matches {0..1} matches {	-- Diagnostic service
+									ELEMENT[at0077] occurrences matches {0..1} matches {	-- Diagnostisk metod
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0073] occurrences matches {0..1} matches {	-- Test status
+									ELEMENT[at0073] occurrences matches {0..1} matches {	-- Teststatus
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0037, 	-- Interim
-													at0038, 	-- Final
-													at0039, 	-- Supplementary
-													at0040, 	-- Corrected (amended)
-													at0074, 	-- Aborted
-													at0079]	-- Never performed
+													at0037, 	-- Delresultat
+													at0038, 	-- Slutgiltigt
+													at0039, 	-- Kompletterande
+													at0040, 	-- Korrigerat
+													at0074, 	-- Avbrutet
+													at0079]	-- Aldrig utfört
 												}
 											}
 										}
 									}
-									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- Specimen detail
+									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- Provdetaljer
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.specimen\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
-									ELEMENT[at0078] occurrences matches {0..1} matches {	-- Calcium
+									ELEMENT[at0078] occurrences matches {0..1} matches {	-- Kalcium
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -145,7 +160,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0092] occurrences matches {0..1} matches {	-- Calcium_corrected
+									ELEMENT[at0092] occurrences matches {0..1} matches {	-- Korrigerat kalcium
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -162,7 +177,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0091] occurrences matches {0..1} matches {	-- Phosphate
+									ELEMENT[at0091] occurrences matches {0..1} matches {	-- Fosfat
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -179,18 +194,18 @@ definition
 											>
 										}
 									}
-									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- Per-result annotation
+									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- Kommentar om provresultatet
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.lab_result_annotation(-[a-zA-Z0-9_]+)*\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
-									ELEMENT[at0057] occurrences matches {0..1} matches {	-- Overall interpretation
+									ELEMENT[at0057] occurrences matches {0..1} matches {	-- Övergripande tolkning
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..*} matches {	-- Multimedia representation
+									ELEMENT[at0010] occurrences matches {0..*} matches {	-- Multimedia
 										value matches {
 											DV_MULTIMEDIA matches {
 												media_type matches {[openEHR::]}
@@ -205,34 +220,34 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0004] matches {	-- Tree
+			ITEM_TREE[at0004] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0062] occurrences matches {0..1} matches {	-- Requestor order identifier
+					ELEMENT[at0062] occurrences matches {0..1} matches {	-- *Requestor order identifier(en)
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					allow_archetype CLUSTER[at0090] occurrences matches {0..*} matches {	-- Requestor
+					allow_archetype CLUSTER[at0090] occurrences matches {0..*} matches {	-- *Requestor(en)
 						include
 							archetype_id/value matches {/.*/}
 					}
-					ELEMENT[at0063] occurrences matches {0..1} matches {	-- Receiver order Identifier
+					ELEMENT[at0063] occurrences matches {0..1} matches {	-- *Receiver order Identifier(en)
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- Receiving laboratory
+					allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- *Receiving laboratory(en)
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.organisation\.v1/}
 						exclude
 							archetype_id/value matches {/.*/}
 					}
-					ELEMENT[at0068] occurrences matches {0..1} matches {	-- Laboratory test result identifier
+					ELEMENT[at0068] occurrences matches {0..1} matches {	-- *Laboratory test result identifier(en)
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					ELEMENT[at0075] occurrences matches {0..1} matches {	-- Datetime result issued
+					ELEMENT[at0075] occurrences matches {0..1} matches {	-- *Datetime result issued(en)
 						value matches {
 							DV_DATE_TIME matches {*}
 						}
@@ -693,6 +708,119 @@ ontology
 				["at0092"] = <
 					text = <"*Calcium_corrected(en)">
 					description = <"*The calculated corrected-calcium level in the sample.(en)">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Kalcium och fosfat">
+					description = <"För registrering av resultat från kalcium- och fosfatprover.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"*Any event.(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0005"] = <
+					text = <"Testnamn">
+					description = <"Specifikt namn för detta laboratorietest, Exempelvis generell blodpanel, B-glukos eller mikrobiologi urinodling. Kan vara namnet för det enskilda provet. Vanligen en kodad term från exempelvis LOINC eller SNOMED-CT.">
+				>
+				["at0010"] = <
+					text = <"Multimedia">
+					description = <"Presentera relevant provresultat med adekvat multimedia">
+				>
+				["at0017"] = <
+					text = <"*Receiving laboratory(en)">
+					description = <"*Demographic details of the laboratory with responsibility for the test. Details of secondary laboratories may also be included.(en)">
+				>
+				["at0037"] = <
+					text = <"Delresultat">
+					description = <"Detta är ett initialt resultat alternativt ett delresultat där framtida uppdatering förväntas">
+				>
+				["at0038"] = <
+					text = <"Slutgiltigt">
+					description = <"Detta är ett slutgiltigt provsvar - inga framtida uppdateringar förväntas.">
+				>
+				["at0039"] = <
+					text = <"Kompletterande">
+					description = <"Detta är ett kompletterande svar till ett tidigare provresultat">
+				>
+				["at0040"] = <
+					text = <"Korrigerat">
+					description = <"Detta är ett korrigerat resultat som ersätter tidigare svar.">
+				>
+				["at0057"] = <
+					text = <"Övergripande tolkning">
+					description = <"Övergripande tolkning i kommentar av provresultat">
+				>
+				["at0062"] = <
+					text = <"*Requestor order identifier(en)">
+					description = <"*The local ID assigned to the order by the order requester. Equivalent to the Placer Order Identifier.(en)">
+				>
+				["at0063"] = <
+					text = <"*Receiver order Identifier(en)">
+					description = <"*The local ID assigned to the test order by the order filler, usually by the (LIS) Laboratory Information System. Equivalent to the DICOM Accession Number and the Filler Order Identifier.(en)">
+				>
+				["at0065"] = <
+					text = <"Provdetaljer">
+					description = <"Detaljer rörande det aktuella provexemplaret som skickats där alla individuella resultat härstammar från samma provmaterial.">
+				>
+				["at0068"] = <
+					text = <"*Laboratory test result identifier(en)">
+					description = <"*The identifier given to the laboratory test result of a pathology investigation.(en)">
+				>
+				["at0073"] = <
+					text = <"Teststatus">
+					description = <"Status för laboratorietestet.">
+				>
+				["at0074"] = <
+					text = <"Avbrutet">
+					description = <"Detta test avbröts och slutfördes aldrig.">
+				>
+				["at0075"] = <
+					text = <"*Datetime result issued(en)">
+					description = <"*The date and/or time that the result was issued for the recorded ‘test status’.(en)">
+					comment = <"*The date and time related to the results status is useful for version control and cumulative results for the report.(en)">
+				>
+				["at0077"] = <
+					text = <"Diagnostisk metod">
+					description = <"Typen av diagnostik t.ex. hematologi, mikrobiologi etc.">
+				>
+				["at0078"] = <
+					text = <"Kalcium">
+					description = <"Kalciumkoncentration.">
+				>
+				["at0079"] = <
+					text = <"Aldrig utfört">
+					description = <"Detta test har aldrig utförts.">
+				>
+				["at0089"] = <
+					text = <"Kommentar om provresultatet">
+					description = <"Särskilt utrymme avsatt för att möjliggöra kommentering av provet och kan skrivas in under körtiden.">
+				>
+				["at0090"] = <
+					text = <"*Requestor(en)">
+					description = <"*Details of the clinician or organisation requesting the laboratory test.(en)">
+				>
+				["at0091"] = <
+					text = <"Fosfat">
+					description = <"Fosfatkoncentration.">
+				>
+				["at0092"] = <
+					text = <"Korrigerat kalcium">
+					description = <"Beräknat albuminkorrigerat kalcium.">
 				>
 			>
 		>
