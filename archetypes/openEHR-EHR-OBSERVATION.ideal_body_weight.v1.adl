@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.ideal_body_weight.v1
 
 concept
-	[at0000]	-- Ideal body weight
+	[at0000]	-- Ideal Body Weight
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -12,6 +21,23 @@ description
 		["date"] = <"2016-10-01">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att beräkna ideal kroppsvikt (IBW) för män och kvinnor i syfte att ordinera adekvat dosering av läkemedel i situationer då den aktuella kroppsvikten ej ska användas.">
+			use = <"Använd för att beräkna ideal kroppsvikt (IBW) för män och kvinnor i syfte att ordinera adekvat dosering av läkemedel i situationer då den aktuella kroppsvikten ej ska användas.
+
+Denna beräkning genomförs med hjälp av Devine-formeln enligt:
+▪ Ideal Body Weight (män) = [50kg + 2.3kg * ( längd(tum) - 60 tum )]
+▪ Ideal Body Weight (kvinnor) = [45.5kg + 2.3kg *( längd(tum) - 60 tum )]
+
+Formeln genererar ett uppskattat värde som kan användas på personer som är 152 centimeter (60 tum) långa eller mer, då formeln beräknas på allt över 152 centimeter.
+">
+			keywords = <"Ideal Body Weight", "IBW", "längd", "vikt", "Devine", "Devineformeln">
+			misuse = <"I första hand bör lokala protokoll följas med rekommenderad formel för beräkning i syfte att ordinera adekvat dosering. Kontrollera att dosering för specifikt läkemedel är avsett att användas i enlighet med Ideal Body Weight och inte patientens aktuella kroppsvikt.
+
+Ej avsedd för personer med längd under 152 centimeter (60 inches).">
+			copyright = <"Cambio Healthcare Services">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To calculate idea body weight of men and woman for the purposes of correctly prescribing doses of certain medications.">
@@ -40,17 +66,17 @@ Do not use on people under 5 foot tall.
 
 Ref. 2: Pai MP, Paloucek FP. The origin of the \"ideal\" body weight equations. Ann Pharmacother. 2000;34(9):1066-9. PMID 10981254.
 ">
-		["MD5-CAM-1.0.1"] = <"0DBA19DFD98844CC4F8BD8C1771F8603">
+		["MD5-CAM-1.0.1"] = <"1DDB6C9A79C195EB8015D1F4AA605B6C">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Ideal body weight
+	OBSERVATION[at0000] matches {	-- Ideal Body Weight
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
 									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Ideal Body Weight
 										value matches {
@@ -101,6 +127,30 @@ ontology
 					text = <"Ideal Body Weight">
 					description = <"The Devine formula for calculating ideal body weight is: Ideal Body Weight (men) = 50kg + 2.3kg * (Height(in) - 60 inches) and Ideal Body Weight (women) = 45.5kg + 2.3kg *( Height(in) - 60 inches). This is the weight adjusted for their height for every inch that the person is above 60 inches (5 feet).
 ">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Ideal Body Weight">
+					description = <"Ideal Body Weight (IBW) kan beräknas på flera sätt och med olika syften. Med hjälp av Devine-formeln kan läkemedelsordination anpassas till adekvat nivå i situationer då den aktuella kroppsvikten ej ska användas. Beräkningen baseras på längd och vikt med separata formler för män och kvinnor.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Ideal Body Weight">
+					description = <"Beräkning av Ideal Body Weight i enlighet med Devine-formeln: Ideal Body Weight (män) = 50kg + 2.3kg * (längd(tum) - 60 tum) och Ideal Body Weight (kvinnor) = 45.5kg + 2.3kg *( längd(tum) - 60 tum). ">
 				>
 			>
 		>
