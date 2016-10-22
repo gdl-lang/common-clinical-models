@@ -2,7 +2,7 @@
 	openEHR-EHR-OBSERVATION.blood_pressure.v1
 
 concept
-	[at0000]	-- Blood Pressure
+	[at0000]	-- Blodtryck
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -318,19 +318,19 @@ Usen Observación.presión_intravascular y especializaciones relacionadas para e
 		["references"] = <"O'Brien E, Asmar R, Beilin L, et al. European Society of Hypertension recommendations for conventional, ambulatory and home blood pressure measurement. Journal of Hypertension [Internet]. 2003 [cited 2009 Jul 30] ; 21(5):821-848. Available from http://www.bhsoc.org/bp_monitors/ESH_BP_rec.pdf
 
 Perloff D, Grim C, Flack J, Frohlich ED, Hill M, McDonald M, Morgenstern BZ. Human blood pressure determination by sphygmomanometry. Circulation [Internet]. 1993 [cited 2009 Jul 29] 88 (5): 2460.  Available from: http://circ.ahajournals.org/cgi/reprint/88/5/2460">
-		["MD5-CAM-1.0.1"] = <"9D15F3911C26B351F45634C0D13FEDF5">
+		["MD5-CAM-1.0.1"] = <"8CFC5D6C2EFD8F882D57A5E2FB727A80">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Blood Pressure
+	OBSERVATION[at0000] matches {	-- Blodtryck
 		data matches {
-			HISTORY[at0001] matches {	-- History
+			HISTORY[at0001] matches {	-- Historia
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0006] occurrences matches {0..*} matches {	-- Any event
+					EVENT[at0006] occurrences matches {0..*} matches {	-- Vilken händelse som helst
 						data matches {
-							ITEM_TREE[at0003] matches {	-- blood pressure
+							ITEM_TREE[at0003] matches {	-- Träd
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Systolic
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Systoliskt blodtryck
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::125]>
@@ -344,7 +344,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Diastolic
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Diastoliskt blodtryck
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::125]>
@@ -358,7 +358,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at1006] occurrences matches {0..1} matches {	-- Mean arterial pressure
+									ELEMENT[at1006] occurrences matches {0..1} matches {	-- Medelartärtryck
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::125]>
@@ -372,7 +372,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at1007] occurrences matches {0..1} matches {	-- Pulse pressure
+									ELEMENT[at1007] occurrences matches {0..1} matches {	-- Pulstryck
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::125]>
@@ -386,7 +386,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0033] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0033] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -395,45 +395,45 @@ definition
 							}
 						}
 						state matches {
-							ITEM_TREE[at0007] matches {	-- state structure
+							ITEM_TREE[at0007] matches {	-- Träd
 								items cardinality matches {0..*; unordered} matches {
 									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Position
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at1000, 	-- Standing
-													at1001, 	-- Sitting
-													at1002, 	-- Reclining
-													at1003, 	-- Lying
-													at1014; 	-- Lying with tilt to left
+													at1000, 	-- Stående
+													at1001, 	-- Sittande
+													at1002, 	-- Bakåtlutande
+													at1003, 	-- Liggande
+													at1014; 	-- Ligger med lutning åt vänster
 													at1001]	-- assumed value
 												}
 											}
 										}
 									}
-									ELEMENT[at1052] occurrences matches {0..1} matches {	-- Confounding factors
+									ELEMENT[at1052] occurrences matches {0..1} matches {	-- Andra påverkande faktorer
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									allow_archetype CLUSTER[at1030] occurrences matches {0..1} matches {	-- Exertion
+									allow_archetype CLUSTER[at1030] occurrences matches {0..1} matches {	-- Ansträngning
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.level_of_exertion(-[a-zA-Z0-9_]+)*\.v1/}
 									}
-									ELEMENT[at1043] occurrences matches {0..1} matches {	-- Sleep status
+									ELEMENT[at1043] occurrences matches {0..1} matches {	-- Sömnstatus
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at1044, 	-- Alert & awake
-													at1045; 	-- Sleeping
+													at1044, 	-- Alert och vaken
+													at1045; 	-- Sovande
 													at1044]	-- assumed value
 												}
 											}
 										}
 									}
-									ELEMENT[at1005] occurrences matches {0..1} matches {	-- Tilt
+									ELEMENT[at1005] occurrences matches {0..1} matches {	-- Tiltande
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::497]>
@@ -461,7 +461,7 @@ definition
 							}
 						}
 					}
-					INTERVAL_EVENT[at1042] occurrences matches {0..1} matches {	-- 24 hour average
+					INTERVAL_EVENT[at1042] occurrences matches {0..1} matches {	-- 24h genomsnitt
 						math_function matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {[openehr::146]}
@@ -473,112 +473,112 @@ definition
 							}
 						}
 						data matches {
-							use_node ITEM_TREE /data[at0001]/events[at0006]/data[at0003]	-- /data[History]/events[Any event]/data[blood pressure]
+							use_node ITEM_TREE /data[at0001]/events[at0006]/data[at0003]	-- /data[Historia]/events[Vilken händelse som helst]/data[Träd]
 						}
 						state matches {
-							use_node ITEM_TREE /data[at0001]/events[at0006]/state[at0007]	-- /data[History]/events[Any event]/state[state structure]
+							use_node ITEM_TREE /data[at0001]/events[at0006]/state[at0007]	-- /data[Historia]/events[Vilken händelse som helst]/state[Träd]
 						}
 					}
 				}
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0011] matches {	-- Tree
+			ITEM_TREE[at0011] matches {	-- Träd
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0013] occurrences matches {0..1} matches {	-- Cuff size
+					ELEMENT[at0013] occurrences matches {0..1} matches {	-- Blodtrycksmanschett
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
-									at0015, 	-- Adult Thigh
-									at0016, 	-- Large Adult
-									at0017, 	-- Adult
-									at1008, 	-- Small Adult
-									at1009, 	-- Paediatric/Child
-									at1018, 	-- Infant
-									at1019]	-- Neonatal
+									at0015, 	-- Lår vuxen
+									at0016, 	-- Stor vuxen
+									at0017, 	-- Vuxen
+									at1008, 	-- Liten vuxen
+									at1009, 	-- Pediatrisk / barn
+									at1018, 	-- Spädbarn
+									at1019]	-- Nyfödd
 								}
 							}
 						}
 					}
-					CLUSTER[at1033] occurrences matches {0..1} matches {	-- Location
+					CLUSTER[at1033] occurrences matches {0..1} matches {	-- Mätplats
 						items cardinality matches {1..*; unordered} matches {
-							ELEMENT[at0014] occurrences matches {0..1} matches {	-- Location of measurement
+							ELEMENT[at0014] occurrences matches {0..1} matches {	-- Platsen för mätningen
 								value matches {
 									DV_CODED_TEXT matches {
 										defining_code matches {
 											[local::
-											at0025, 	-- Right arm
-											at0026, 	-- Left arm
-											at0027, 	-- Right thigh
-											at0028, 	-- Left thigh
-											at1020, 	-- Right wrist
-											at1021, 	-- Left wrist
-											at1026, 	-- Right ankle
-											at1031, 	-- Left ankle
+											at0025, 	-- Höger arm
+											at0026, 	-- Vänster arm
+											at0027, 	-- Höger lår
+											at0028, 	-- Vänster lår
+											at1020, 	-- Höger handled
+											at1021, 	-- Vänster handled
+											at1026, 	-- Höger fotled
+											at1031, 	-- Höger fotled
 											at1032, 	-- Finger
-											at1051, 	-- Toe
-											at1053]	-- Intra-arterial
+											at1051, 	-- Tå
+											at1053]	-- Intra-arteriell
 										}
 									}
 									DV_TEXT matches {*}
 								}
 							}
-							ELEMENT[at1034] occurrences matches {0..1} matches {	-- X - Specific location
+							ELEMENT[at1034] occurrences matches {0..1} matches {	-- X - angiven plats
 								value matches {
 									DV_TEXT matches {*}
 								}
 							}
 						}
 					}
-					allow_archetype CLUSTER[at1057] occurrences matches {0..*} matches {	-- Structured measurement location
+					allow_archetype CLUSTER[at1057] occurrences matches {0..*} matches {	-- Strukturerad mätplats
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.anatomical_location(-[a-zA-Z0-9_]+)*\.v1/}
 					}
-					ELEMENT[at1035] occurrences matches {0..1} matches {	-- Method
+					ELEMENT[at1035] occurrences matches {0..1} matches {	-- Metod
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
-									at1036, 	-- Auscultation
+									at1036, 	-- Auskultation
 									at1037, 	-- Palpation
-									at1039, 	-- Machine
-									at1040]	-- Invasive
+									at1039, 	-- Blodtrycksmätare
+									at1040]	-- Invasiv
 								}
 							}
 						}
 					}
-					ELEMENT[at1038] occurrences matches {0..1} matches {	-- Mean arterial pressure formula
+					ELEMENT[at1038] occurrences matches {0..1} matches {	-- Formel för medelartärtryck
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					ELEMENT[at1054] occurrences matches {0..1} matches {	-- Systolic pressure formula
+					ELEMENT[at1054] occurrences matches {0..1} matches {	-- Formel för det systoliska trycket
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					ELEMENT[at1055] occurrences matches {0..1} matches {	-- Diastolic pressure formula
+					ELEMENT[at1055] occurrences matches {0..1} matches {	-- Formel för det diastoliska trycket
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					ELEMENT[at1010] occurrences matches {0..1} matches {	-- Diastolic endpoint
+					ELEMENT[at1010] occurrences matches {0..1} matches {	-- Diastolisk slutpunkt
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
-									at1011, 	-- Phase IV
-									at1012]	-- Phase V
+									at1011, 	-- Fas IV
+									at1012]	-- Fas V
 								}
 							}
 						}
 					}
-					allow_archetype CLUSTER[at1025] occurrences matches {0..1} matches {	-- Device
+					allow_archetype CLUSTER[at1025] occurrences matches {0..1} matches {	-- Enhet
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.device(-[a-zA-Z0-9_]+)*\.v1/}
 					}
-					allow_archetype CLUSTER[at1058] occurrences matches {0..*} matches {	-- Extension
+					allow_archetype CLUSTER[at1058] occurrences matches {0..*} matches {	-- Ytterligare kommentar
 						include
 							archetype_id/value matches {/.*/}
 					}
@@ -2836,11 +2836,11 @@ ontology
 					description = <"@ internal @">
 				>
 				["at0004"] = <
-					text = <"Systoliskt tryck">
+					text = <"Systoliskt blodtryck">
 					description = <"Högsta systemiska arteriella blodtrycket - mätt i systoliskt eller i kontraktionsfasen av hjärtcykeln.">
 				>
 				["at0005"] = <
-					text = <"Diastoliskt tryck">
+					text = <"Diastoliskt blodtryck">
 					description = <"Minsta systemiska arteriella blodtrycket - mätt i det diastoliska eller i avkopplingsfasen av hjärtcykeln.">
 				>
 				["at0006"] = <
