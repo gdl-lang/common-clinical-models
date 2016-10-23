@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.oxygen_therapy.v1
 
 concept
-	[at0000]	-- Oxygen therapy
+	[at0000]	-- Syrgasbehandling
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Dennis Forslund">
@@ -19,26 +28,33 @@ description
 			misuse = <"Not intended to record other information than use of oxygen therapy.">
 			copyright = <"Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att registrera användning av syrgasbehandling.">
+			use = <"Använd för att registrera användning av syrgasbehandling.">
+			misuse = <"Ej avsedd för att registrera annan information än förekomst av syrgasbehandling.">
+			copyright = <"Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"0">
 	other_contributors = <>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"AEBCBB39E13D62A9A59C1634BDE45F85">
+		["MD5-CAM-1.0.1"] = <"5C1655EBA973205BD0BFADD82661A105">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Oxygen therapy
+	OBSERVATION[at0000] matches {	-- Syrgasbehandling
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Oxygen therapy
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Syrgasbehandling
 										value matches {
-											0|[local::at0006], 	-- Absent
-											1|[local::at0007]  	-- Present
+											0|[local::at0006], 	-- Frånvarande
+											1|[local::at0007]  	-- Föreligger
 										}
 									}
 								}
@@ -56,7 +72,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Oxygen therapy">
-					description = <"*">
+					description = <"Register use of oxygen therapy.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -81,6 +97,39 @@ ontology
 				["at0007"] = <
 					text = <"Present">
 					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Syrgasbehandling">
+					description = <"Registrera användning av syrgasbehandling.
+">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0005"] = <
+					text = <"Syrgasbehandling">
+					description = <"Patienten får syrgastillförsel via mask eller grimma.">
+				>
+				["at0006"] = <
+					text = <"Frånvarande">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Föreligger">
+					description = <"">
 				>
 			>
 		>
