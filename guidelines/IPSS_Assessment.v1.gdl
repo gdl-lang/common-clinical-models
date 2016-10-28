@@ -1,0 +1,88 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"IPSS_Assessment.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+			>
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0003"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.ipss_assessment.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0004"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002]">
+					>
+				>
+			>
+			["gt0007"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.ipss_questionnaire.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0048]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0009"] = (RULE) <
+				when = <"$gt0008.magnitude>=0", "$gt0008.magnitude<=7">
+				then = <"$gt0004=0|local::at0003|Mild|",...>
+				priority = <3>
+			>
+			["gt0010"] = (RULE) <
+				when = <"$gt0008.magnitude>=8", "$gt0008.magnitude<=19">
+				then = <"$gt0004=1|local::at0004|Moderate|",...>
+				priority = <2>
+			>
+			["gt0011"] = (RULE) <
+				when = <"$gt0008.magnitude>=20",...>
+				then = <"$gt0004=2|local::at0005|Severe|",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+					>
+					["gt0004"] = (TERM) <
+						text = <"IPSS Assessment">
+						description = <"Severity of condition.">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Quality of life due to urinary symptoms">
+						description = <"Assessment of question 8.">
+					>
+					["gt0006"] = (TERM) <
+						text = <"If you were to spend the rest of your life with your urinary condition just the way it is not, how would you feel about that?">
+						description = <"Additional question, not included in total score.">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Total score">
+						description = <"Sum of all factors. Last question not included.">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Set IPSS Assessment to mild">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Set IPSS Assessment to moderate">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Set IPSS Assessment to severe">
+					>
+				>
+			>
+		>
+	>
+>
