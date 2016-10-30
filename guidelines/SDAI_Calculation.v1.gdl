@@ -1,0 +1,134 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"SDAI_Calculation.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"rheumatoid arthritis", "simplified disease activity index", "tender joint count", "swollen joint count", "PaGDA", "PrGDA">
+				misuse = <"Do not use to calculate clinical disease activity index (CDAI).">
+				purpose = <"This guide calculates the simplified disesase activity index (SDAI) which is a measure of disease activity and treatment response in individuals with rheumatoid arthritis.">
+				use = <"Use to calculate SDAI, based on five input parameters: tender joint count (TJC), swollen joint count (SJC), patient global assessment of disease activity (PtGDA), provider global assessment of disease activity (PrGDA), and level of C-reactive protein (in mg/dl).
+SDAI = TJC + SJC + PtGDA + PrGDA + CRP">
+			>
+		>
+		original_author = <
+			["date"] = <"2016-10-30">
+			["email"] = <"info@cambio.se">
+			["name"] = <"Eneimi Allwell-Brown">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"Anderson J, Caplan L, Yazdany J, Robbins ML, Neogi T, Michaud K, Saag KG, O'dell JR, Kazi S. Rheumatoid arthritis disease activity measures: American College of Rheumatology recommendations for use in clinical practice. Arthritis care & research. 2012 May 1;64(5):640-7.
+
+Aletaha D, Smolen JS. The simplified disease activity index (SDAI) and clinical disease activity index (CDAI) to monitor patients in standard clinical care. Best practice & research Clinical rheumatology. 2007 Aug 31;21(4):663-75.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.disease_activity_index_joint_score.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0043]">
+					>
+					["gt0004"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0044]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0005"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.patient_global_assessment_arthritis_activity.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0007"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.provider_global_assessment_arthritis_activity.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0009"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-crp.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0010"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0005.1]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0011"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.simplified_disease_activity_index.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0012"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0013"] = (RULE) <
+				when = <"$gt0010.units=='mg/dl'",...>
+				then = <"$gt0012.precision=2", "$gt0012.magnitude=(((($gt0003.magnitude+$gt0004.magnitude)+$gt0006.magnitude)+$gt0008.magnitude)+$gt0010.magnitude)">
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"SDAI Calculator for Rheumatoid Arthritis">
+						description = <"Simplified disease activity index (SDAI) is a composite score for assessing disease activity in individuals with rheumatoid arthritis (RA). It is the numerical sum of five parameters: the number of tender (0 - 28) and swollen (0 - 28) joints the patient has, the visual analogue scale scores for patient (0 - 10) and physician (0 - 10) global assessments of the level of disease activity [0.0 = low disease activity/patient doing very well; 10.0 = high disease activity/patient doing very poor], and the patient's circulating level of the inflammatory biomarker C-reactive protein (CRP).">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Tender joint count (TJC)">
+						description = <"Total number of tender joints of the possible 28 (on the left side and right side).">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Swollen joint count (SJC)">
+						description = <"Total number of swollen joints of the possible 28 (on the left side and right side).">
+					>
+					["gt0006"] = (TERM) <
+						text = <"PtGDA score">
+						description = <"Considering all the ways arthritis affects you, how well are you doing? (0.0 = very well; 10.0 = very poor)">
+					>
+					["gt0008"] = (TERM) <
+						text = <"PrGDA score ">
+						description = <"Considering all the ways arthritis affects the patient, how well are they doing? (0.0 = very well; 10.0 = very poor)">
+					>
+					["gt0010"] = (TERM) <
+						text = <"C-reactive protein concentration">
+						description = <"Concentration of C-reactive protein in this sample.">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Simplified disease activity index (SDAI) score">
+						description = <"The linear sum of tender joint count (TJC) + swollen joint count (SJC) + patient assessment of global disease activity (PtGDA) + provider assessment of global disease activity (PrGDA) + C-reactive protein (CRP).">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Calculate SDAI score">
+						description = <"Contains the expression logic for calcuating simplified disease activity score (SDAI).">
+					>
+				>
+			>
+		>
+	>
+>
