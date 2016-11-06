@@ -1,0 +1,315 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"ASSIGN.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"ASSIGN", "SIGN", "cardiovascular risk">
+				misuse = <"As it is an estimate of risk and should not be used alone or an absolute indicator of risk without further investigation using adddtional information and tools. Readings of blood pressure and cholesterol must not be input without due attention to the medication used (if any) to reduce blood pressure and/or cholesterol.
+Only for individuals in Scotland (unless postcode mapping is also adjusted to the new region - or SIGN is used instead)">
+				purpose = <"ASSIGN is a 10 year cardiovascular risk score which was developed to identify and prioritise disease-free individuals who have been assessed to be of high risk of developing cardiovascular disease in a ten-year period. ">
+				use = <"The score is based on historical data and is a number between 0 and 99 which represents a percentage at 10-years of developing a cardiovascular disease (including coronary heart disease, cerebrovascular disease (inc. transient ischemic attacks)) in individuals who are currently disease-free.
+
+The ASSIGN score extends on the SIGN score by taking into account the individual's postcode (an approximation of the social economic status of the person) into account - mapped to the SIMD (Scottish Index of Multiple Deprivation 2012) and is thus related to the Scottish population [a similar mapping to other regions can be done in order to use ASSIGN elsewhere.]
+
+The ASSIGN score risk factors are:
+
+    older age group
+    men > women
+    poorer neighbourhoods
+    family history (coronary disease or stroke)
+    diabetes mellitus of target
+    rheumatoid arthritis of target
+    tobacco smoking (cigarettes, pipe tobacco, or cigars)
+    the blood pressure reading
+    the blood total cholesterol reading
+    the blood HDL-cholesterol reading
+
+All the risk factors are combined to give a score between 1 and 99. The calculation used is based on a rather long formula involving many different coefficients related to risk. The calculation is based on [4]. The higher the score, the higher the risk of cardiovascular disease.
+An ASSIGN score of > 20 is high and identifies individuals of high risk of cardiovascular disease allowing for timely intervention.
+">
+			>
+		>
+		original_author = <
+			["date"] = <"20016-11-06">
+			["name"] = <"Syeeda S Farruque">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"Ref. 1: Tunstall-Pedoe H, Woodward M, Tavendale R, A'Brook R, McCluskey MK. Comparison of the prediction by 27 different factors of coronary heart disease and death in men and women of the Scottish Heart Health Study: cohort study. BMJ 1997; 315: 722-729. 
+
+Ref. 2: Tunstall-Pedoe H, Woodward M, for the SIGN group on risk estimation. By neglecting deprivation, cardiovascular risk scoring will exacerbate social gradients in disease. Heart 2006; 92 (3): 307-10. Epub 2005 Sep15. 
+
+Ref. 3: Woodward M, Brindle P, Tunstall-Pedoe H, for the SIGN group on risk estimation. Adding social deprivation and family history to cardiovascular risk assessment: the ASSIGN score from the Scottish Heart Health Extended Cohort (SHHEC). Heart 2007: 93(2):172-6.
+
+Ref. 4: Risk calculator excel. Written by Dr Rupert Payne, The University of Edinburgh, May 2010. Further advice on the appropriate use of the risk equations can be found at http://cvrisk.mvm.ed.ac.uk/help.htm">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-lipids.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0018"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.5]">
+					>
+					["gt0019"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.3]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0003"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.blood_pressure.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0017"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0006]/data[at0003]/items[at0004]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0005"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.assign_questionnaire.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0006]">
+					>
+					["gt0007"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0007]">
+					>
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0008]">
+					>
+					["gt0010"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0016]">
+					>
+					["gt0011"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0018]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0020"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.basic_demographic.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0021"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0022"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0013]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0029"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.assign_score.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0030"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+				>
+			>
+			["gt0031"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.assign_questionnaire.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0032"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0006]">
+					>
+					["gt0033"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0007]">
+					>
+					["gt0034"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0008]">
+					>
+					["gt0035"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0016]">
+					>
+					["gt0036"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0018]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0023"] = (RULE) <
+				when = <"$gt0032==null", "$gt0033==null", "$gt0034==null", "$gt0035==null", "$gt0036==null">
+				then = <"$gt0036=0,1", "$gt0035=0,1/d", "$gt0032=0|local::at0010|No|", "$gt0033=0|local::at0012|No|", "$gt0034=0|local::at0014|No|">
+				priority = <8>
+			>
+			["gt0024"] = (RULE) <
+				when = <"$gt0006!=null",...>
+				then = <"$gt0032=$gt0006",...>
+				priority = <7>
+			>
+			["gt0025"] = (RULE) <
+				when = <"$gt0007!=null",...>
+				then = <"$gt0033=$gt0007",...>
+				priority = <6>
+			>
+			["gt0026"] = (RULE) <
+				when = <"$gt0008!=null",...>
+				then = <"$gt0034=$gt0008",...>
+				priority = <5>
+			>
+			["gt0027"] = (RULE) <
+				when = <"$gt0011!=null",...>
+				then = <"$gt0036=$gt0011",...>
+				priority = <4>
+			>
+			["gt0028"] = (RULE) <
+				when = <"$gt0010!=null",...>
+				then = <"$gt0035=$gt0010",...>
+				priority = <3>
+			>
+			["gt0037"] = (RULE) <
+				when = <"$gt0030==null", "$gt0019.units=='mmol/l'", "$gt0018.units=='mmol/l'", "$gt0017.units=='mm[Hg]'", "$gt0011.units=='1'", "$gt0010.units=='1/d'", "$gt0022.units=='a'", "$gt0021==local::at0005|Male|">
+				then = <"$gt0030.magnitude=(100*(1-(0.8831^(2.718281828^((((((((((0.01183*$gt0017.magnitude)+(0.05698*$gt0022.magnitude))+(0.2005*$gt0008.value))+(0.22286*$gt0018.magnitude))-(0.53684*$gt0019.magnitude))+(0.81558*$gt0007.value))+(0.275*$gt0006.value))+(0.02005*$gt0010.magnitude))+(0.1*(0.06296*$gt0011.magnitude)))-5.447113)))))",...>
+				priority = <2>
+			>
+			["gt0039"] = (RULE) <
+				when = <"$gt0019.units=='mmol/l'", "$gt0018.units=='mmol/l'", "$gt0017.units=='mm[Hg]'", "$gt0011.units=='1'", "$gt0010.units=='1/d'", "$gt0022.units=='a'", "$gt0021==local::at0006|Female|", "$gt0030==null">
+				then = <"$gt0030.magnitude=(100*(1-(0.9365^(2.718281828^((((((((((0.01064*$gt0017.magnitude)+(0.07203*$gt0022.magnitude))+(0.2724*$gt0008.value))+(0.1272*$gt0018.magnitude))-(0.55836*$gt0019.magnitude))+(0.97727*$gt0007.value))+(0.49159*$gt0006.value))+(0.02724*$gt0010.magnitude))+(0.1*(0.09386*$gt0011.magnitude)))-5.418379)))))",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"ASSIGN">
+						description = <"The ASSIGN score was developed in 2006 at the University of Dundee, Scotland based on the SIGN (Scottish Intercollegiate Guidelines Network) method of ascertaining cardiovascular risk estimation. The term ASSIGN is derived from \"ASSessing cardiovascular risk using SIGN\" guidelines.">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Is there a family history of stroke/CHD?">
+						description = <"FH of CHD/stroke increases the risk">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Is the subject diabetic?">
+						description = <"Diabetes in the subject increases the risk">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Does the subject have rheumatoid arthritis?">
+						description = <"Rheumatoid arthritis in the subject increases the risk">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Is there a family history of stroke/CHD?">
+						description = <"FH of CHD/stroke increases the risk">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Number of cigarettes smoked daily">
+						description = <"Number of cigarettes smoked daily or equivalent ">
+					>
+					["gt0011"] = (TERM) <
+						text = <"SIMD">
+						description = <"Scottish Index of Multiple Deprivation 2012 related to mapping postcodes in Scotland to codes that indicate degrees of deprivation.">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Is the subject diabetic?">
+						description = <"Diabetes in the subject increases the risk">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Does the subject have rheumatoid arthritis?">
+						description = <"Rheumatoid arthritis in the subject increases the risk">
+					>
+					["gt0014"] = (TERM) <
+						text = <"Number of cigarettes smoked daily">
+						description = <"Number of cigarettes smoked daily or equivalent ">
+					>
+					["gt0015"] = (TERM) <
+						text = <"SIMD">
+						description = <"Scottish Index of Multiple Deprivation 2012 related to mapping postcodes in Scotland to codes that indicate degrees of deprivation.">
+					>
+					["gt0016"] = (TERM) <
+						text = <"ASSIGN score">
+						description = <"A score of cardiovascular risk which is a number between 1 and 99 (roughly representing percentage risk). The score is based on many factors">
+					>
+					["gt0017"] = (TERM) <
+						text = <"Systolic">
+						description = <"Peak systemic arterial blood pressure  - measured in systolic or contraction phase of the heart cycle.">
+					>
+					["gt0018"] = (TERM) <
+						text = <"Total Cholesterol">
+						description = <"The total cholesterol concentration in the sample.">
+					>
+					["gt0019"] = (TERM) <
+						text = <"HDL Cholesterol">
+						description = <"HDL-Cholesterol level in the sample.">
+					>
+					["gt0021"] = (TERM) <
+						text = <"Gender">
+						description = <"*">
+					>
+					["gt0022"] = (TERM) <
+						text = <"Age">
+						description = <"Age in years, and for babies: months, weeks or days">
+					>
+					["gt0023"] = (TERM) <
+						text = <"Set Default">
+					>
+					["gt0024"] = (TERM) <
+						text = <"Set FHx CHD/stroke">
+					>
+					["gt0025"] = (TERM) <
+						text = <"Set diabetes">
+					>
+					["gt0026"] = (TERM) <
+						text = <"Set RA">
+					>
+					["gt0027"] = (TERM) <
+						text = <"Set SIMD">
+					>
+					["gt0028"] = (TERM) <
+						text = <"Set cpd">
+					>
+					["gt0030"] = (TERM) <
+						text = <"ASSIGN score">
+						description = <"A score of cardiovascular risk which is a number between 1 and 99 (roughly representing percentage risk). The score is based on many factors">
+					>
+					["gt0032"] = (TERM) <
+						text = <"Is there a family history of stroke/CHD?">
+						description = <"FH of CHD/stroke increases the risk">
+					>
+					["gt0033"] = (TERM) <
+						text = <"Is the subject diabetic?">
+						description = <"Diabetes in the subject increases the risk">
+					>
+					["gt0034"] = (TERM) <
+						text = <"Does the subject have rheumatoid arthritis?">
+						description = <"Rheumatoid arthritis in the subject increases the risk">
+					>
+					["gt0035"] = (TERM) <
+						text = <"Number of cigarettes smoked daily">
+						description = <"Number of cigarettes smoked daily or equivalent ">
+					>
+					["gt0036"] = (TERM) <
+						text = <"SIMD">
+						description = <"Scottish Index of Multiple Deprivation 2012 related to mapping postcodes in Scotland to codes that indicate degrees of deprivation.">
+					>
+					["gt0037"] = (TERM) <
+						text = <"Calculate score for men">
+					>
+					["gt0038"] = (TERM) <
+						text = <"ASSIGN score">
+						description = <"A score of cardiovascular risk which is a number between 1 and 99 (roughly representing percentage risk). The score is based on many factors">
+					>
+					["gt0039"] = (TERM) <
+						text = <"Calculate score for women">
+					>
+				>
+			>
+		>
+	>
+>

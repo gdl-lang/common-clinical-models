@@ -1,0 +1,116 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.assign_score.v1
+
+concept
+	[at0000]	-- Assign score
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2016-10-30">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"ASSIGN is a 10 year cardiovascular risk score which was developed to identify and prioritise disease-free individuals who have been assessed to be of high risk of developing cardiovascular disease in a ten-year period. ">
+			use = <"The score is based on historical data and is a number between 0 and 99 which represents a percentage at 10-years of developing a cardiovascular disease (including coronary heart disease, cerebrovascular disease (inc. transient ischemic attacks)) in individuals who are currently disease-free.
+
+The ASSIGN score extends on the SIGN score by taking into account the individual's postcode (an approximation of the social economic status of the person) into account - mapped to the SIMD (Scottish Index of Multiple Deprivation 2012) and is thus related to the Scottish population [a similar mapping to other regions can be done in order to use ASSIGN elsewhere.]
+
+The ASSIGN score risk factors are:
+
+    older age group
+    men > women
+    poorer neighbourhoods
+    family history (coronary disease or stroke)
+    diabetes mellitus of target
+    rheumatoid arthritis of target
+    tobacco smoking (cigarettes, pipe tobacco, or cigars)
+    the blood pressure reading
+    the blood total cholesterol reading
+    the blood HDL-cholesterol reading
+
+All the risk factors are combined to give a score between 1 and 99. The calculation used is based on a rather long formula involving many different coefficients related to risk. The calculation is based on [4]. The higher the score, the higher the risk of cardiovascular disease.
+An ASSIGN score of > 20 is high and identifies individuals of high risk of cardiovascular disease allowing for timely intervention.">
+			keywords = <"ASSIGN", "SIGN", "Cardiovascular risk score">
+			misuse = <"As it is an estimate of risk and should not be used alone or an absolute indicator of risk without further investigation using adddtional information and tools. Readings of blood pressure and cholesterol must not be input without due attention to the medication used (if any) to reduce blood pressure and/or cholesterol.
+Only for individuals in Scotland (unless postcode mapping is also adjusted to the new region - or SIGN is used instead)">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Tunstall-Pedoe H, Woodward M, Tavendale R, A'Brook R, McCluskey MK. Comparison of the prediction by 27 different factors of coronary heart disease and death in men and women of the Scottish Heart Health Study: cohort study. BMJ 1997; 315: 722-729. 
+
+Ref. 2: Tunstall-Pedoe H, Woodward M, for the SIGN group on risk estimation. By neglecting deprivation, cardiovascular risk scoring will exacerbate social gradients in disease. Heart 2006; 92 (3): 307-10. Epub 2005 Sep15. 
+
+Ref. 3: Woodward M, Brindle P, Tunstall-Pedoe H, for the SIGN group on risk estimation. Adding social deprivation and family history to cardiovascular risk assessment: the ASSIGN score from the Scottish Heart Health Extended Cohort (SHHEC). Heart 2007: 93(2):172-6.
+
+Ref. 4: Risk calculator excel. Written by Dr Rupert Payne, The University of Edinburgh, May 2010. Further advice on the appropriate use of the risk equations can be found at http://cvrisk.mvm.ed.ac.uk/help.htm">
+		["MD5-CAM-1.0.1"] = <"269359AB3122A6143B132101CD3B1333">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Assign score
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- ASSIGN score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..100|}
+											}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Assign score">
+					description = <"The ASSIGN score was developed in 2006 at the University of Dundee, Scotland based on the SIGN (Scottish Intercollegiate Guidelines Network) method of ascertaining cardiovascular risk estimation. The term ASSIGN is derived from \"ASSessing cardiovascular risk using SIGN\" guidelines.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"ASSIGN score">
+					description = <"A score of cardiovascular risk which is a number between 1 and 99 (roughly representing percentage risk). The score is based on many factors">
+				>
+				["at0009"] = <
+					text = <"Comment">
+					description = <"Any specific comments regarding the factors">
+				>
+			>
+		>
+	>
