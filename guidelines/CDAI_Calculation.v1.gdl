@@ -72,11 +72,24 @@ Aletaha D, Smolen JS. The simplified disease activity index (SDAI) and clinical 
 					>
 				>
 			>
+			["gt0026"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.clinical_disease_activity_index.v1">
+				domain = <"EHR">
+			>
+			["gt0028"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.clinical_disease_activity_index.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0029"] = (ELEMENT_BINDING) <
+						path = <"/data/events/time">
+					>
+				>
+			>
 		>
 		rules = <
 			["gt0013"] = (RULE) <
 				when = <"$gt0017==null",...>
-				then = <"$gt0017.precision=2", "$gt0017.magnitude=((($gt0003.magnitude+$gt0004.magnitude)+$gt0008.magnitude)+$gt0006.magnitude)">
+				then = <"$gt0029.value=$currentDateTime.value", "$gt0017.precision=2", "$gt0017.magnitude=((($gt0003.magnitude+$gt0004.magnitude)+$gt0008.magnitude)+$gt0006.magnitude)">
 				priority = <1>
 			>
 		>
@@ -128,6 +141,12 @@ Aletaha D, Smolen JS. The simplified disease activity index (SDAI) and clinical 
 					["gt0025"] = (TERM) <
 						text = <"Provider global assessment of disease activity (PrGDA) score ">
 						description = <"Considering all the ways arthritis affects the patient, how well are they doing? (0.0 = very well; 10.0 = very poor)">
+					>
+					["gt0027"] = (TERM) <
+					>
+					["gt0029"] = (TERM) <
+						text = <"Event time">
+						description = <"The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event.">
 					>
 				>
 			>
