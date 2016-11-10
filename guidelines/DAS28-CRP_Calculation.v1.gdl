@@ -11,11 +11,9 @@
 				copyright = <"© Cambio Healthcare Systems">
 				keywords = <"rheumatoid arthritis", "PaGDA", "tender joint count", "swollen joint count", "DAS28-CRP">
 				purpose = <"This guide calculates the disesase activity score 28-CRP (DAS28-CRP) which is a measure of disease activity and treatment response in individuals with rheumatoid arthritis.">
-				use = <"Use to calculate DAS28-CRP, based on four input parameters: tender joint count (TJC), swollen joint count (SJC), patient global assessment of disease activity (PtGDA), and level of C-reactive protein (in mg/dl).
+				use = <"Use to calculate DAS28-CRP, based on four input parameters: tender joint count (TJC), swollen joint count (SJC), patient global assessment of disease activity (PtGDA), and level of C-reactive protein (in mg/dl). PtGDA uses the unit 'mm'.
 
-DAS28-CRP = (0.56*√(TJC)+0.28*√(SJC)+0.36*ln(CRP + 1)+0.014*PtGDA +0.96)
-
-DAS28-CRP is sometimes calculated using a PtGDA visual analogue scale of 0-100 (mm). This guide however uses a PtGDA visual analogue scale of 0-10 (cm). The necessary factoring has been incorporated in the application.">
+DAS28-CRP = (0.56*√(TJC)+0.28*√(SJC)+0.36*ln(CRP + 1)+0.014*PtGDA +0.96)">
 			>
 		>
 		original_author = <
@@ -80,8 +78,8 @@ Wells G, Becker JC, Teng J, Dougados M, Schiff M, Smolen J, Aletaha D, Van Riel 
 		>
 		rules = <
 			["gt0002"] = (RULE) <
-				when = <"$gt0012<=10", "$gt0009.units=='mg/dl'", "$gt0004==null">
-				then = <"$gt0010.value=$currentDateTime.value", "$gt0004.precision=2", "$gt0004.magnitude=(((((($gt0006.magnitude^0.5)*0.56)+(($gt0007.magnitude^0.5)*0.28))+(0.36*($gt0009.magnitude+1)))+(0.14*$gt0012.magnitude))+0.96)">
+				when = <"$gt0012.units=='mm'", "$gt0009.units=='mg/dl'", "$gt0004==null">
+				then = <"$gt0010.value=$currentDateTime.value", "$gt0004.precision=2", "$gt0004.magnitude=(((((($gt0006.magnitude^0.5)*0.56)+(($gt0007.magnitude^0.5)*0.28))+(0.36*($gt0009.magnitude+1)))+(0.014*$gt0012.magnitude))+0.96)">
 				priority = <1>
 			>
 		>
@@ -120,7 +118,7 @@ Wells G, Becker JC, Teng J, Dougados M, Schiff M, Smolen J, Aletaha D, Van Riel 
 					>
 					["gt0012"] = (TERM) <
 						text = <"PtGDA score">
-						description = <"Considering all the ways arthritis affects you, how well are you doing? (0.0 = very well; 10.0 = very poor)">
+						description = <"Considering all the ways arthritis affects you, how well are you doing? (0.0 = very well; 100.0 = very poor)">
 					>
 				>
 			>

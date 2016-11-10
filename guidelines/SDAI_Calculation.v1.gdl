@@ -12,7 +12,7 @@
 				keywords = <"rheumatoid arthritis", "simplified disease activity index", "tender joint count", "swollen joint count", "PaGDA", "PrGDA">
 				misuse = <"Do not use to calculate clinical disease activity index (CDAI).">
 				purpose = <"This guide calculates the simplified disesase activity index (SDAI) which is a measure of disease activity and treatment response in individuals with rheumatoid arthritis.">
-				use = <"Use to calculate SDAI, based on five input parameters: tender joint count (TJC), swollen joint count (SJC), patient global assessment of disease activity (PtGDA), provider global assessment of disease activity (PrGDA), and level of C-reactive protein (in mg/dl).
+				use = <"Use to calculate SDAI, based on five input parameters: tender joint count (TJC), swollen joint count (SJC), patient global assessment of disease activity (PtGDA), provider global assessment of disease activity (PrGDA), and level of C-reactive protein (in mg/dl). PtGDA and PrGDA use the unit 'cm'.
 SDAI = TJC + SJC + PtGDA + PrGDA + CRP">
 			>
 		>
@@ -94,7 +94,7 @@ Aletaha D, Smolen JS. The simplified disease activity index (SDAI) and clinical 
 		>
 		rules = <
 			["gt0013"] = (RULE) <
-				when = <"$gt0014.units=='mg/dl'", "$gt0012==null">
+				when = <"$gt0006.units=='cm'", "$gt0014.units=='mg/dl'", "$gt0012==null">
 				then = <"$gt0029.value=$currentDateTime.value", "$gt0012.precision=2", "$gt0012.magnitude=(((($gt0003.magnitude+$gt0004.magnitude)+$gt0008.magnitude)+$gt0006.magnitude)+$gt0014.magnitude)">
 				priority = <1>
 			>
