@@ -11,11 +11,9 @@
 				copyright = <"© Cambio Healthcare Systems">
 				keywords = <"rheumatoid arthritis", "PaGDA", "tender joint count", "swollen joint count", "DAS28-ESR">
 				purpose = <"This guide calculates the disesase activity score 28-ESR (DAS28-ESR) which is a measure of disease activity and treatment response in individuals with rheumatoid arthritis.">
-				use = <"Use to calculate DAS28-ESR, based on four input parameters: tender joint count (TJC), swollen joint count (SJC), patient global assessment of disease activity (PtGDA), and erythrocyte sedimentation rate (in mm/hr).
+				use = <"Use to calculate DAS28-ESR, based on four input parameters: tender joint count (TJC), swollen joint count (SJC), patient global assessment of disease activity (PtGDA), and erythrocyte sedimentation rate (in mm/hr). PtGDA uses the unit 'mm'.
 
-DAS28-ESR = (0.56*√(TJC)+0.28*√(SJC)+0.7*ln(ESR)+0.014*(PtGDA))
-
-DAS28-ESR is sometimes calculated using a PtGDA visual analogue scale of 0-100 (mm). This guide however uses a PtGDA visual analogue scale of 0-10 (cm). The necessary factoring has been incorporated in the application.">
+DAS28-ESR = (0.56*√(TJC)+0.28*√(SJC)+0.7*ln(ESR)+0.014*(PtGDA))">
 			>
 		>
 		original_author = <
@@ -80,8 +78,8 @@ Wells G, Becker JC, Teng J, Dougados M, Schiff M, Smolen J, Aletaha D, Van Riel 
 		>
 		rules = <
 			["gt0012"] = (RULE) <
-				when = <"$gt0003==null", "$gt0011.units=='mm/h'", "$gt0009<=10">
-				then = <"$gt0004.value=$currentDateTime.value", "$gt0003.precision=2", "$gt0003.magnitude=((((($gt0006.magnitude^0.5)*0.56)+(($gt0007.magnitude^0.5)*0.28))+(0.7*$gt0011.magnitude))+(0.14*$gt0009.magnitude))">
+				when = <"$gt0009.units=='mm'", "$gt0003==null", "$gt0011.units=='mm/h'">
+				then = <"$gt0004.value=$currentDateTime.value", "$gt0003.precision=2", "$gt0003.magnitude=((((($gt0006.magnitude^0.5)*0.56)+(($gt0007.magnitude^0.5)*0.28))+(0.7*$gt0011.magnitude))+(0.014*$gt0009.magnitude))">
 				priority = <1>
 			>
 		>
@@ -112,7 +110,7 @@ Wells G, Becker JC, Teng J, Dougados M, Schiff M, Smolen J, Aletaha D, Van Riel 
 					>
 					["gt0009"] = (TERM) <
 						text = <"PtGDA score">
-						description = <"Considering all the ways arthritis affects you, how well are you doing? (0.0 = very well; 10.0 = very poor)">
+						description = <"Considering all the ways arthritis affects you, how well are you doing? (0.0 = very well; 100.0 = very poor)">
 					>
 					["gt0011"] = (TERM) <
 						text = <"Erythrocyte sedimentation rate (ESR)">
