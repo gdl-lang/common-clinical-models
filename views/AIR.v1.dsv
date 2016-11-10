@@ -138,18 +138,18 @@
 <#assign neutrophils1_cds_data = air_score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0025}']">
 
 <script>
-  angular.module('cds_app').controller('AIR_Controller', function($scope, $window){
+  angular.module('cds_app').controller('AIR_Ctrl', function($scope, $window){
     $scope.$on('json_loaded', function(){
       $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
       $scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
       $scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
-      $scope.lowAppProbability=true;
       $scope.${white_cell_count_ehr_data}.value.units = $scope.${white_cell_count_def}.units[0];
       $scope.${neutrophils_ehr_data}.value.units = $scope.${neutrophils_def}.units[0];
       $scope.${result_ehr_data}.value.units = $scope.${result_def}.units[0];
       $scope.${vomiting_ehr_data}.value.selection = $scope.findMin($scope.${vomiting_def});
       $scope.${pain_in_right_inferior_fossa_ehr_data}.value.selection = $scope.findMin($scope.${pain_in_right_inferior_fossa_def});
       $scope.${body_temperature__38_5_ehr_data}.value.selection = $scope.findMin($scope.${body_temperature__38_5_def});
+      $scope.lowAppProbability=true;
     });
  $scope.$on('executeEnd', function() {
         $scope.lowAppProbability=false;
@@ -185,7 +185,7 @@
   });
 </script>
 
-<div ng-show="ready" ng-controller="AIR_Controller">
+<div ng-show="ready" ng-controller="AIR_Ctrl">
 <div class="header">
   <h1>AIR Score</h1>
   <h2>{{def.concept.description}}</h2>

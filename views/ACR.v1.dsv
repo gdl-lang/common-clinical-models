@@ -26,7 +26,7 @@
   "decisionSupportViewDefinitions": {
     "en": {
       "name": "Albumin:Creatinine Ratio",
-      "description": "Calculates urinary albumin:creatinine ratio (ACR)."
+      "description": "Calculates urinary albumin:creatinine ratio (ACR)"
     }
   },
   "resourceDescription": {
@@ -37,7 +37,8 @@
       "date": "Cambio Healthcare Systems"
     },
     "otherContributors": [
-      "Jimmy Axelsson, Cambio Healthcare Systems"
+      "Jimmy Axelsson, Cambio Healthcare Systems",
+      "Dennis Forslund, Cambio Healthcare Systems"
     ],
     "details": {
       "en": {
@@ -97,19 +98,12 @@ angular.module('cds_app').controller('ACR_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
     $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
     $scope.${urine_microalbumin_ehr_data}.value.units = $scope.${urine_microalbumin_def}.units[0];
-	$scope.${urine_creatinine_ehr_data}.value.units = $scope.${urine_creatinine_def}.units[0];
-  });
-  $scope.$on('executeEnd', function() {
-    $scope.firedRules.filter(function(rule) {
-      if (rule.gtCode === 'gt0006') {
-        $scope.acr_cds = Math.round($scope.${urine_albumin_creatinine_ratio_cds_data}.value.magnitude * 10)/10;
-      }  
-    });
+    $scope.${urine_creatinine_ehr_data}.value.units = $scope.${urine_creatinine_def}.units[0];
   });
 });
 </script>
 
-<div ng-show="ready">
+<div ng-show="ready" ng-controller="ACR_Ctrl">
 <div class="header">
   <h1>{{def.concept.name}}</h1>
   <h2>{{def.concept.description}}</h2>
@@ -145,7 +139,7 @@ angular.module('cds_app').controller('ACR_Ctrl', function($scope, $window){
       <b>{{${urine_albumin_creatinine_ratio_def}.name}}:</b>
     </div>
     <div class="medium-7 columns">
-      <span>{{eag_cds}} {{${urine_albumin_creatinine_ratio_cds_data}.value.units}}</span>
+      <span>{{${urine_albumin_creatinine_ratio_cds_data}.value.magnitude}} {{${urine_albumin_creatinine_ratio_cds_data}.value.units}}</span>
     </div>
   </div>
   <div class="row collapse" title="{{${acr_assessment_kdigo_entry_def}.description}}" id="displayresult">
@@ -153,7 +147,7 @@ angular.module('cds_app').controller('ACR_Ctrl', function($scope, $window){
       <b>{{${acr_assessment_kdigo_entry_def}.name}}:</b>
     </div>
     <div class="medium-7 columns">
-      <span>{{eag_cds}} {{${kdigo_acr_category_cds_data}.value.units}}</span>
+      <span>{{${kdigo_acr_category_cds_data}.value.value}}</span>
     </div>
   </div>
   <div class="row collapse" title="{{${acr_value_def}.description}}" id="displayresult">
@@ -161,7 +155,7 @@ angular.module('cds_app').controller('ACR_Ctrl', function($scope, $window){
       <b>{{${acr_value_def}.name}}:</b>
     </div>
     <div class="medium-7 columns">
-      <span>{{eag_cds}} {{${acr_value_cds_data}.value.units}}</span>
+      <span>{{${acr_value_cds_data}.value.symbol.value}}</span>
     </div>
   </div>
    <div class="row collapse" title="{{${kdigo_acr_description_def}.description}}" id="displayresult">
@@ -169,7 +163,7 @@ angular.module('cds_app').controller('ACR_Ctrl', function($scope, $window){
       <b>{{${kdigo_acr_description_def}.name}}:</b>
     </div>
     <div class="medium-7 columns">
-      <span>{{eag_cds}} {{${kdigo_acr_description_cds_data}.value.units}}</span>
+      <span>{{${kdigo_acr_description_cds_data}.value.value}}</span>
     </div>
   </div>
 </fieldset>
@@ -201,7 +195,6 @@ angular.module('cds_app').controller('ACR_Ctrl', function($scope, $window){
     </div>
   </div>
 </div>
-</body>
 <style>
   html, body {
     height:100%;
@@ -318,5 +311,8 @@ angular.module('cds_app').controller('ACR_Ctrl', function($scope, $window){
     padding-top: 3px;
     padding-bottom: 3px;
   }
+  select, label:not(#h-fix) {
+    margin-bottom: 10px;
 </style>
+</body>
 </html>
