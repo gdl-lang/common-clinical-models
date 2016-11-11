@@ -1,4 +1,18 @@
-<html><head><script id="decision-support-view" type="application/json">{
+<!DOCTYPE html><html ng-app="cds_app">
+<head>
+<title>{{def.concept.name}}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
+<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
+<script type="text/javascript" src="wro/angular.js"></script>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
+<script type="text/javascript" src="wro/moment.js"></script>
+<script type="text/javascript" src="wro/date-picker.js"></script>
+<script type="text/javascript" src="wro/app_lib.js"></script>
+<script id="decision-support-view" type="application/json">{
   "dsViewId": "IBW.v1",
   "language": {
     "originalLanguage": {
@@ -12,11 +26,11 @@
   "decisionSupportViewDefinitions": {
     "sv": {
       "name": "Ideal Kroppsvikt",
-      "description": "Ideal Body Weight (IBW) kan beräknas på flera sätt och med olika syften. Med hjälp av Devine-formeln kan läkemedelsordination anpassas till adekvat nivå i situationer då den aktuella kroppsvikten ej ska användas. Beräkningen baseras på längd och vikt med separata formler för män och kvinnor."
+      "description": "Beräkning av ideala kroppsvikten"
     },
     "en": {
       "name": "Ideal Body Weight",
-      "description": "Ideal Body Weight (IBW) can be calculated in many ways and for varying purposes. This guideline relates to the Devine formula for calculating IBW as would be needed in order to assess medication doses appropriately and in cases when actual body weight must not be used. It is calculated from the height and weight with separate formulas for men and women."
+      "description": "Calculation of the ideal body weight"
     }
   },
   "resourceDescription": {
@@ -26,7 +40,7 @@
       "date": "2016-10-05"
     },
     "otherContributors": [
-      "Dennis Forslund"
+      "Dennis Forslund","Jimmy Axelsson"
     ],
     "details": {
       "sv": {
@@ -64,22 +78,236 @@
   ],
   "alertBindings": {},
   "termDefinitions": {
-    "sv": {
-      "id": "sv",
-      "terms": {
-        "vt0001": {
-          "id": "vt0001"
-        }
-      }
-    },
     "en": {
       "id": "en",
       "terms": {
         "vt0001": {
           "id": "vt0001",
+          "text": "Height"
+        },
+        "vt0002":{
+          "id": "vt0002",
           "text": "References"
+        }
+      }
+    },
+    "sv": {
+      "id": "sv",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "Höjd"
+        },
+        "vt0002":{
+          "id": "vt0002",
+          "text": "Referenser"
         }
       }
     }
   }
-}</script></head><body></body></html>
+}
+</script>
+</head>
+<body ng-controller="cds_controller">
+<#assign app_help_tag = "def.guides['IBW.v1'].concept">
+<#assign height = "def.terms['vt0001']"/>
+<#assign references = "def.terms['vt0002']"/>
+<#assign ideal_body_weight_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.ideal_body_weight.v1']">
+<#assign ideal_body_weight_entry_def = "def.entries['openEHR-EHR-OBSERVATION.ideal_body_weight.v1']">
+<#assign ideal_body_weight_def = ideal_body_weight_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign ideal_body_weight_cds_data = ideal_body_weight_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign height_length_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.height.v1']">
+<#assign height_length_entry_def = "def.entries['openEHR-EHR-OBSERVATION.height.v1']">
+<#assign height_length_def = height_length_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign event_time_def = height_length_entry_def + ".elements['/data/events/time']">
+<#assign height_length_ehr_data = height_length_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign event_time_ehr_data = height_length_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign basic_demographic_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
+<#assign basic_demographic_entry_def = "def.entries['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
+<#assign gender_def = basic_demographic_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign event_time1_def = basic_demographic_entry_def + ".elements['/data/events/time']">
+<#assign gender_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign event_time1_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data/events/time']">
+<script> 
+angular.module('cds_app').controller('IBW_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+    $scope.${height_length_ehr_data}.value.units = $scope.${height_length_def}.units[1];
+  });
+});
+</script>
+<div ng-show="ready" ng-controller="IBW_Ctrl">
+<div class="header">
+  <h1>{{def.concept.name}}</h1>
+  <h2>{{def.concept.description}}</h2>
+  <div class="help-tip">
+	<p>{{${app_help_tag}.description}}</p>
+  </div>
+</div>
+<div class="card" id="card1">
+  <div class="row collapse" title="{{${gender_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${gender_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${gender_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${gender_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+  <div class="row collapse" title="{{${height_length_def}.description}}">
+      <div class="medium-6 columns">
+        <label>{{${height}.text}}</label>
+      </div>
+      <div class="medium-4 columns">
+        <input ng-model="${height_length_ehr_data}.value.magnitude" type="number" step='any' min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+      </div>
+      <div class="medium-2 columns">
+        <select ng-model="${height_length_ehr_data}.value.units" ng-options="unit for unit in ${height_length_def}.units" ng-change="execute()" disabled></select>
+      </div>
+  </div>
+  <div class="row collapse" title="{{${ideal_body_weight_entry_def}.description}}" id="displayresult">
+    <div class="medium-6 columns">
+      <b>{{${ideal_body_weight_entry_def}.name}}:</b>
+    </div>
+    <div class="medium-6 columns">
+      <span>{{${ideal_body_weight_cds_data}.value.magnitude}} {{${ideal_body_weight_cds_data}.value.units}}</span>
+    </div>
+  </div>
+</div>
+<br /><br />
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
+</div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/10981254">Pai MP, Paloucek FP. The origin of the "ideal" body weight equations. Ann Pharmacother. 2000;34(9):1066-9. PMID 10981254.</a></i>
+        </li>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<style>
+  html, body {
+    height:100%;
+    width: 100%;
+  }
+  body {
+    font-family: sans-serif;
+    font-weight: 300;
+    color: #333;
+    background: #ecf0f9;
+    padding: 1em;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 {
+    font-weight: 600;
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 22px;
+    font-style: italic;
+  }
+  .header {
+    margin-bottom: 2em;
+  }
+  .card {
+    background-color: #fdfdfd;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 10px auto 0 auto;
+    padding: 1em;
+    width: 50%;
+    overflow: hidden;
+  }
+  .help-tip{
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      text-align: center;
+      background-color: #BCDBEA;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      line-height: 26px;
+      cursor: default;
+  }
+  .help-tip:before{
+      content:'?';
+      font-weight: bold;
+      color:#fff;
+  }
+  .help-tip:hover p{
+      display:block;
+      transform-origin: 100% 0%;
+      -webkit-animation: fadeIn 0.3s ease-in-out;
+      animation: fadeIn 0.3s ease-in-out;
+  }
+  .help-tip p{	/* The tooltip */
+      display: none;
+      text-align: left;
+      background-color: #1E2021;
+      padding: 20px;
+      width: 300px;
+      position: absolute;
+      border-radius: 3px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+      right: -4px;
+      color: #FFF;
+      font-size: 13px;
+      line-height: 1.4;
+      z-index: 9999;
+  }
+  .help-tip p:before{ /* The pointer of the tooltip */
+      position: absolute;
+      content: '';
+      width:0;
+      height: 0;
+      border:6px solid transparent;
+      border-bottom-color:#1E2021;
+      right:10px;
+      top:-12px;
+  }
+  .help-tip p:after{ /* Prevents the tooltip from being hidden */
+      width:100%;
+      height:40px;
+      content:'';
+      position: absolute;
+      top:-40px;
+      left:0;
+  }
+  .references1{
+  font-size: 70%;
+  }
+  /* CSS animation */
+  @-webkit-keyframes fadeIn {
+      0% { 
+          opacity:0; 
+          transform: scale(0.6);
+      }
+
+      100% {
+          opacity:100%;
+          transform: scale(1);
+      }
+  }
+  @keyframes fadeIn {
+      0% { opacity:0; }
+      100% { opacity:100%; }
+  }
+  #displayresult {
+    background-color: #e6e6e6; 
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+  }
+  select, label:not(#h-fix) {
+    margin-bottom: 10px;
+</style>
+</html>
