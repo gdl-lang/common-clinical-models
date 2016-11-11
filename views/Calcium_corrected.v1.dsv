@@ -41,7 +41,8 @@
       "date": "2016-10-06"
     },
     "otherContributors": [
-      "Dennis Forslund"
+      "Dennis Forslund",
+      "Jimmy Axelsson"
     ],
     "details": {
       "sv": {
@@ -128,6 +129,7 @@
 angular.module('cds_app').controller('CC_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
     $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
     $scope.${albumin_ehr_data}.value.units = $scope.${albumin_def}.units[0];
     $scope.${calcium_ehr_data}.value.units = $scope.${calcium_def}.units[0];
   });
@@ -152,7 +154,7 @@ angular.module('cds_app').controller('CC_Ctrl', function($scope, $window){
         <input ng-model="${albumin_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
 	  <div class="medium-2 columns">
-        <select ng-model="${albumin_ehr_data}.value.units" ng-options="unit for unit in ${liver_function_tests_entry_def}.units" ng-change="execute()" disabled=""></select>
+        <select ng-model="${albumin_ehr_data}.value.units" ng-options="unit for unit in ${albumin_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
 <div class="row collapse" title="{{${calcium_and_phosphate_entry_def}.description}}">
@@ -163,7 +165,7 @@ angular.module('cds_app').controller('CC_Ctrl', function($scope, $window){
         <input ng-model="${calcium_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
 	  <div class="medium-2 columns">
-        <select ng-model="${calcium_ehr_data}.value.units" ng-options="unit for unit in ${calcium_and_phosphate_entry_def}.units" ng-change="execute()" disabled=""></select>
+        <select ng-model="${calcium_ehr_data}.value.units" ng-options="unit for unit in ${calcium_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
 <div class="row collapse" title="{{${calcium_and_phosphate_entry_def}.description}}" id="displayresult1">
