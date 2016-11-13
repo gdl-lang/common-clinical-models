@@ -139,8 +139,22 @@
 <#assign not_being_able_to_stop_or_control_worrying_cds_data = generalized_anxiety_disorder__gad__scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
 <#assign worrying_too_much_about_different_things_cds_data = generalized_anxiety_disorder__gad__scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0015}']">
 
+<script> 
+angular.module('cds_app').controller('GAD-7_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+    $scope.${feeling_nervous__anxious_or_on_edge_ehr_data}.value.selection = $scope.findMin($scope.${feeling_nervous__anxious_or_on_edge_def});
+	$scope.${feeling_afraid_as_if_something_awful_might_happen_ehr_data}.value.selection = $scope.findMin($scope.${feeling_afraid_as_if_something_awful_might_happen_def});
+	$scope.${being_so_restless_that_it_is_hard_to_sit_still_ehr_data}.value.selection = $scope.findMin($scope.${being_so_restless_that_it_is_hard_to_sit_still_def});
+	$scope.${becoming_easily_annoyed_or_irritable_ehr_data}.value.selection = $scope.findMin($scope.${becoming_easily_annoyed_or_irritable_def});
+	$scope.${trouble_relaxing_ehr_data}.value.selection = $scope.findMin($scope.${trouble_relaxing_def});
+	$scope.${not_being_able_to_stop_or_control_worrying_ehr_data}.value.selection = $scope.findMin($scope.${not_being_able_to_stop_or_control_worrying_def});
+	$scope.${worrying_too_much_about_different_things_ehr_data}.value.selection = $scope.findMin($scope.${worrying_too_much_about_different_things_def});
+  });
+});
+</script>
 
-<div ng-show="ready">
+<div ng-show="ready" ng-controller="GAD-7_Ctrl">
 <div class="header">
   <h1>{{def.concept.name}}</h1>
   <h2>{{def.concept.description}}</h2>
