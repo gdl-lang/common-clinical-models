@@ -1,0 +1,1498 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.whodas_2_0.v1
+
+concept
+	[at0000]	-- Whodas 2 0
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2016-11-11">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The WHODAS 2.0 questionnaire is used to enquire about difficulties a patient may experience due to health/mental health issues. There are 6 domains of: understanding and communicating, getting around, self-care, getting along with people, life activities (i.e., household, work, and/or school activities), and participation in society.">
+			use = <"The 36 item full version WHODAS 2.0 questionnaire can be used by way of a self-report, proxy-form or interview-lead process and is used to enquire about difficulties a patient may experience due to health/mental health issues over a 30 day period. 
+The health issues can include a variety of illnesses, diseases, drug and alcohol and mental/emotional problems of acute or chronic in nature.
+
+There is a 12-item short version whcih contains 81% of the variance of the full version and can be used as a way to screen for further investigation due to receiving positive responses during the 12-item version - starting with completing the subsequent 24 items to make up the full 36 version. However, the 12-24 version can not be completed via a self-reported method as the results must be calculated in between the 12 and 24 items.
+
+The scoring for each item ranges from 0 to 4 related to the following:
+
+0 = No Difficulty
+1 = Mild Difficulty
+2 = Moderate Difficulty
+3 = Severe Difficulty
+4 = Extreme Difficulty or Cannot Do
+
+There are 2 scoring systems for the 36-item version: Simple (aggregate count of all the questions as a percentage) and Complex (based on IRT - \"item response theory\" which uses a form of weighting based on the severity of the item in question- again represented as a percentage). More details on this complex scoring can be found on the WHO website. In addition complex score for the 6 domains can also be derived.
+
+Score interpretation should follow the domain-specific scores to indicate those aspects of the patient's symptoms and issues that are most problematic and can be classified alongside the 0-4 scale as shown above to relate to the level of difficulty experienced. In addition to the scored questions, there are 3 general questions which relate to the number of days with a 30 day period that the patient experienced the difficulties and whether the reduced or totally stopped them living a normal life, which can be used to elaborate for each item that is positively scored.
+
+
+">
+			keywords = <"WHODAS 2.0", "disability assessment schedule", "WHO">
+			misuse = <"The WHODAS 2.0 questionnaire results should not be used in isolation of further assessment or to be used solely for the purposes of making a diagnosis without supporting evidence. If the score is high, the patient should be referred to an appropriate counsellor/practitioner.
+
+The WHO recommends interviewer users to read through their user manual before taking the patient through questionnaire.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"99776359752D14AE0DD64E53B84BD33B">
+		["references"] = <"Ref. 1: World Health Organization. International classification of functioning, disability and health (ICF). Geneva, World Health Organization, 2001.
+
+Ref. 2: Üstün TB et al. World Health Organization Disability Assessment Schedule II (WHO DAS II): development, psychometric testing and applications. 
+Bulletin of the World Health Organization, 2010, In press">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Whodas 2 0
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- D1.1: Concentrating on doing something for ten minutes? 
+										value matches {
+											0|[local::at0054], 	-- No difficulty
+											1|[local::at0055], 	-- Mild difficulty
+											2|[local::at0056], 	-- Moderate difficulty
+											3|[local::at0057], 	-- Severe difficulty
+											4|[local::at0058]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- D1.2: Remembering to do important things?
+										value matches {
+											0|[local::at0059], 	-- No difficulty
+											1|[local::at0060], 	-- Mild difficulty
+											2|[local::at0061], 	-- Moderate difficulty
+											3|[local::at0062], 	-- Severe difficulty
+											4|[local::at0063]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- D1.3: Analysing and finding solutions to problems in day-to-day life?
+										value matches {
+											0|[local::at0064], 	-- No difficulty
+											1|[local::at0065], 	-- Mild difficulty
+											2|[local::at0066], 	-- Moderate difficulty
+											3|[local::at0067], 	-- Severe difficulty
+											4|[local::at0068]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- D1.4: Learning a new task, for example, learning how to get to a new place?
+										value matches {
+											0|[local::at0069], 	-- No difficulty
+											1|[local::at0070], 	-- Mild difficulty
+											2|[local::at0071], 	-- Moderate difficulty
+											3|[local::at0072], 	-- Severe difficulty
+											4|[local::at0073]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- D1.5: Generally understanding what people say?
+										value matches {
+											0|[local::at0074], 	-- No difficulty
+											1|[local::at0075], 	-- Mild difficulty
+											2|[local::at0076], 	-- Moderate difficulty
+											3|[local::at0077], 	-- Severe difficulty
+											4|[local::at0078]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- D1.6: Starting and maintaining a conversation?
+										value matches {
+											0|[local::at0079], 	-- No difficulty
+											1|[local::at0080], 	-- Mild difficulty
+											2|[local::at0081], 	-- Moderate difficulty
+											3|[local::at0082], 	-- Severe difficulty
+											4|[local::at0083]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- D2.1: Standing for long periods such as 30 minutes?
+										value matches {
+											0|[local::at0084], 	-- No difficulty
+											1|[local::at0085], 	-- Mild difficulty
+											2|[local::at0086], 	-- Moderate difficulty
+											3|[local::at0087], 	-- Severe difficulty
+											4|[local::at0088]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- D2.2: Standing up from sitting down?
+										value matches {
+											0|[local::at0089], 	-- No difficulty
+											1|[local::at0090], 	-- Mild difficulty
+											2|[local::at0091], 	-- Moderate difficulty
+											3|[local::at0092], 	-- Severe difficulty
+											4|[local::at0093]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- D2.3: Moving around inside your home?
+										value matches {
+											0|[local::at0094], 	-- No difficulty
+											1|[local::at0095], 	-- Mild difficulty
+											2|[local::at0096], 	-- Moderate difficulty
+											3|[local::at0097], 	-- Severe difficulty
+											4|[local::at0098]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- D2.4: Getting out of your home?
+										value matches {
+											0|[local::at0099], 	-- No difficulty
+											1|[local::at0100], 	-- Mild difficulty
+											2|[local::at0101], 	-- Moderate difficulty
+											3|[local::at0102], 	-- Severe difficulty
+											4|[local::at0103]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- D2.5: Walking a long distance such as a kilometre [or equivalent]?
+										value matches {
+											0|[local::at0104], 	-- No difficulty
+											1|[local::at0105], 	-- Mild difficulty
+											2|[local::at0106], 	-- Moderate difficulty
+											3|[local::at0107], 	-- Severe difficulty
+											4|[local::at0108]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- D3.1: Washing your whole body?
+										value matches {
+											0|[local::at0109], 	-- No difficulty
+											1|[local::at0110], 	-- Mild difficulty
+											2|[local::at0111], 	-- Moderate difficulty
+											3|[local::at0112], 	-- Severe difficulty
+											4|[local::at0113]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- D3.2: Getting dressed?
+										value matches {
+											0|[local::at0114], 	-- No difficulty
+											1|[local::at0115], 	-- Mild difficulty
+											2|[local::at0116], 	-- Moderate difficulty
+											3|[local::at0117], 	-- Severe difficulty
+											4|[local::at0118]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- D3.3: Eating?
+										value matches {
+											0|[local::at0119], 	-- No difficulty
+											1|[local::at0120], 	-- Mild difficulty
+											2|[local::at0121], 	-- Moderate difficulty
+											3|[local::at0122], 	-- Severe difficulty
+											4|[local::at0123]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- D3.4: Staying by yourself for a few days?
+										value matches {
+											0|[local::at0124], 	-- No difficulty
+											1|[local::at0125], 	-- Mild difficulty
+											2|[local::at0126], 	-- Moderate difficulty
+											3|[local::at0127], 	-- Severe difficulty
+											4|[local::at0128]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0033] occurrences matches {0..1} matches {	-- D4.1: Dealing with people you do not know?
+										value matches {
+											0|[local::at0129], 	-- No difficulty
+											1|[local::at0130], 	-- Mild difficulty
+											2|[local::at0131], 	-- Moderate difficulty
+											3|[local::at0132], 	-- Severe difficulty
+											4|[local::at0133]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0032] occurrences matches {0..1} matches {	-- D4.2: Maintaining a friendship?
+										value matches {
+											0|[local::at0134], 	-- No difficulty
+											1|[local::at0135], 	-- Mild difficulty
+											2|[local::at0136], 	-- Moderate difficulty
+											3|[local::at0137], 	-- Severe difficulty
+											4|[local::at0138]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0031] occurrences matches {0..1} matches {	-- D4.3: Getting along with people who are close to you?
+										value matches {
+											0|[local::at0139], 	-- No difficulty
+											1|[local::at0140], 	-- Mild difficulty
+											2|[local::at0141], 	-- Moderate difficulty
+											3|[local::at0142], 	-- Severe difficulty
+											4|[local::at0143]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0027] occurrences matches {0..1} matches {	-- D4.4: Making new friends?
+										value matches {
+											0|[local::at0144], 	-- No difficulty
+											1|[local::at0145], 	-- Mild difficulty
+											2|[local::at0146], 	-- Moderate difficulty
+											3|[local::at0147], 	-- Severe difficulty
+											4|[local::at0148]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0030] occurrences matches {0..1} matches {	-- D4.5: Sexual activities?
+										value matches {
+											0|[local::at0149], 	-- No difficulty
+											1|[local::at0150], 	-- Mild difficulty
+											2|[local::at0151], 	-- Moderate difficulty
+											3|[local::at0152], 	-- Severe difficulty
+											4|[local::at0153]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0029] occurrences matches {0..1} matches {	-- D5.1: Taking care of your household responsibilities?
+										value matches {
+											0|[local::at0154], 	-- No difficulty
+											1|[local::at0155], 	-- Mild difficulty
+											2|[local::at0156], 	-- Moderate difficulty
+											3|[local::at0157], 	-- Severe difficulty
+											4|[local::at0158]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0028] occurrences matches {0..1} matches {	-- D5.2: Doing most important household tasks well?
+										value matches {
+											0|[local::at0159], 	-- No difficulty
+											1|[local::at0160], 	-- Mild difficulty
+											2|[local::at0161], 	-- Moderate difficulty
+											3|[local::at0162], 	-- Severe difficulty
+											4|[local::at0163]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- D5.3: Getting all the household work done that you needed to do?
+										value matches {
+											0|[local::at0164], 	-- No difficulty
+											1|[local::at0165], 	-- Mild difficulty
+											2|[local::at0166], 	-- Moderate difficulty
+											3|[local::at0167], 	-- Severe difficulty
+											4|[local::at0168]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0020] occurrences matches {0..1} matches {	-- D5.4: Getting your household work done as quickly as needed?
+										value matches {
+											0|[local::at0169], 	-- No difficulty
+											1|[local::at0170], 	-- Mild difficulty
+											2|[local::at0171], 	-- Moderate difficulty
+											3|[local::at0172], 	-- Severe difficulty
+											4|[local::at0173]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0021] occurrences matches {0..1} matches {	-- D5.5: Your day-to-day work/school?
+										value matches {
+											0|[local::at0174], 	-- No difficulty
+											1|[local::at0175], 	-- Mild difficulty
+											2|[local::at0176], 	-- Moderate difficulty
+											3|[local::at0177], 	-- Severe difficulty
+											4|[local::at0178]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0026] occurrences matches {0..1} matches {	-- D5.6: Doing your most important work/school tasks well?
+										value matches {
+											0|[local::at0179], 	-- No difficulty
+											1|[local::at0180], 	-- Mild difficulty
+											2|[local::at0181], 	-- Moderate difficulty
+											3|[local::at0182], 	-- Severe difficulty
+											4|[local::at0183]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0022] occurrences matches {0..1} matches {	-- D5.7: Getting all the work done that you need to do?
+										value matches {
+											0|[local::at0184], 	-- No difficulty
+											1|[local::at0185], 	-- Mild difficulty
+											2|[local::at0186], 	-- Moderate difficulty
+											3|[local::at0187], 	-- Severe difficulty
+											4|[local::at0188]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0023] occurrences matches {0..1} matches {	-- D5.8: Getting your work done as quickly as needed?
+										value matches {
+											0|[local::at0189], 	-- No difficulty
+											1|[local::at0190], 	-- Mild difficulty
+											2|[local::at0191], 	-- Moderate difficulty
+											3|[local::at0192], 	-- Severe difficulty
+											4|[local::at0193]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- D6.1: How much of a problem did you have in joining in community activities (for example, festivities, religious or other activities) in the same way as anyone else can?
+										value matches {
+											0|[local::at0194], 	-- No difficulty
+											1|[local::at0195], 	-- Mild difficulty
+											2|[local::at0196], 	-- Moderate difficulty
+											3|[local::at0197], 	-- Severe difficulty
+											4|[local::at0198]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0025] occurrences matches {0..1} matches {	-- D6.2: How much of a problem did you have because of barriers or hindrances in the world around you?
+										value matches {
+											0|[local::at0199], 	-- No difficulty
+											1|[local::at0200], 	-- Mild difficulty
+											2|[local::at0201], 	-- Moderate difficulty
+											3|[local::at0202], 	-- Severe difficulty
+											4|[local::at0203]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0034] occurrences matches {0..1} matches {	-- D6.3: How much of a problem did you have living with dignity because of the attitudes and actions of others?
+										value matches {
+											0|[local::at0204], 	-- No difficulty
+											1|[local::at0205], 	-- Mild difficulty
+											2|[local::at0206], 	-- Moderate difficulty
+											3|[local::at0207], 	-- Severe difficulty
+											4|[local::at0208]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0035] occurrences matches {0..1} matches {	-- D6.4 How much time did you spend on your health condition, or its consequences?
+										value matches {
+											0|[local::at0209], 	-- No difficulty
+											1|[local::at0210], 	-- Mild difficulty
+											2|[local::at0211], 	-- Moderate difficulty
+											3|[local::at0212], 	-- Severe difficulty
+											4|[local::at0213]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0036] occurrences matches {0..1} matches {	-- D6.5 How much have you been emotionally affected by your health condition?
+										value matches {
+											0|[local::at0214], 	-- No difficulty
+											1|[local::at0215], 	-- Mild difficulty
+											2|[local::at0216], 	-- Moderate difficulty
+											3|[local::at0217], 	-- Severe difficulty
+											4|[local::at0218]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0037] occurrences matches {0..1} matches {	-- D6.6: How much has your health been a drain on the financial resources of you or your family?
+										value matches {
+											0|[local::at0219], 	-- No difficulty
+											1|[local::at0220], 	-- Mild difficulty
+											2|[local::at0221], 	-- Moderate difficulty
+											3|[local::at0222], 	-- Severe difficulty
+											4|[local::at0223]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0038] occurrences matches {0..1} matches {	-- D6.7: How much of a problem did your family have because of your health problems?
+										value matches {
+											0|[local::at0224], 	-- No difficulty
+											1|[local::at0225], 	-- Mild difficulty
+											2|[local::at0226], 	-- Moderate difficulty
+											3|[local::at0227], 	-- Severe difficulty
+											4|[local::at0228]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0039] occurrences matches {0..1} matches {	-- D6.8: How much of a problem did you have in doing things by yourself for relaxation or  pleasure?
+										value matches {
+											0|[local::at0229], 	-- No difficulty
+											1|[local::at0230], 	-- Mild difficulty
+											2|[local::at0231], 	-- Moderate difficulty
+											3|[local::at0232], 	-- Severe difficulty
+											4|[local::at0233]  	-- Extremely difficult or cannot do
+										}
+									}
+									ELEMENT[at0040] occurrences matches {0..1} matches {	-- 12 item raw score
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0041] occurrences matches {0..1} matches {	-- Additional 24 ques score
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0042] occurrences matches {0..1} matches {	-- 36 item raw score
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0044] occurrences matches {0..1} matches {	-- D1 Understanding and communicating domain score
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0045] occurrences matches {0..1} matches {	-- D2 Getting around domain score
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0046] occurrences matches {0..1} matches {	-- D3 Self-care domain score
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0050] occurrences matches {0..1} matches {	-- D4 Getting along with people domain score
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0049] occurrences matches {0..1} matches {	-- D5 Life activities domain score
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0048] occurrences matches {0..1} matches {	-- D6 Participation in society domain score
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0047] occurrences matches {0..1} matches {	-- 36 item complex score
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0051] occurrences matches {0..1} matches {	-- H1: Overall, in the past 30 days, how many days were these difficulties present?
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0053] occurrences matches {0..1} matches {	-- H2: In the past 30 days, for how many days were you totally  unable to carry out your usual activities or work because of any health condition?
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0052] occurrences matches {0..1} matches {	-- H3: In the past 30 days, not counting the days that you were totally unable, for how many days did you cut back or reduce your usual activities or work because of any health condition?
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0043] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Whodas 2 0">
+					description = <"World Health Organization Disability Assessment Schedule 2.0 enquires about difficulties or disabilities a patient may experience due to health/mental health issues in adults over 18 yrs">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"D1.1: Concentrating on doing something for ten minutes? ">
+					description = <"Understanding and communicating">
+				>
+				["at0005"] = <
+					text = <"D1.2: Remembering to do important things?">
+					description = <"Understanding and communicating">
+				>
+				["at0006"] = <
+					text = <"D1.3: Analysing and finding solutions to problems in day-to-day life?">
+					description = <"Understanding and communicating">
+				>
+				["at0007"] = <
+					text = <"D1.4: Learning a new task, for example, learning how to get to a new place?">
+					description = <"Understanding and communicating">
+				>
+				["at0008"] = <
+					text = <"D1.5: Generally understanding what people say?">
+					description = <"Understanding and communicating">
+				>
+				["at0009"] = <
+					text = <"D1.6: Starting and maintaining a conversation?">
+					description = <"Understanding and communicating">
+				>
+				["at0010"] = <
+					text = <"D2.1: Standing for long periods such as 30 minutes?">
+					description = <"Getting around">
+				>
+				["at0011"] = <
+					text = <"D2.2: Standing up from sitting down?">
+					description = <"Getting around">
+				>
+				["at0012"] = <
+					text = <"D2.3: Moving around inside your home?">
+					description = <"Getting around">
+				>
+				["at0013"] = <
+					text = <"D2.4: Getting out of your home?">
+					description = <"Getting around">
+				>
+				["at0014"] = <
+					text = <"D2.5: Walking a long distance such as a kilometre [or equivalent]?">
+					description = <"Getting around">
+				>
+				["at0015"] = <
+					text = <"D3.1: Washing your whole body?">
+					description = <"Self-care">
+				>
+				["at0016"] = <
+					text = <"D3.2: Getting dressed?">
+					description = <"Self-care">
+				>
+				["at0017"] = <
+					text = <"D3.3: Eating?">
+					description = <"Self-care">
+				>
+				["at0018"] = <
+					text = <"D3.4: Staying by yourself for a few days?">
+					description = <"Self-care">
+				>
+				["at0019"] = <
+					text = <"D5.3: Getting all the household work done that you needed to do?">
+					description = <"Life-activities household">
+				>
+				["at0020"] = <
+					text = <"D5.4: Getting your household work done as quickly as needed?">
+					description = <"Life-activities household">
+				>
+				["at0021"] = <
+					text = <"D5.5: Your day-to-day work/school?">
+					description = <"Life activities—School or Work">
+				>
+				["at0022"] = <
+					text = <"D5.7: Getting all the work done that you need to do?">
+					description = <"Life activities—School or Work">
+				>
+				["at0023"] = <
+					text = <"D5.8: Getting your work done as quickly as needed?">
+					description = <"Life activities—School or Work">
+				>
+				["at0024"] = <
+					text = <"D6.1: How much of a problem did you have in joining in community activities (for example, festivities, religious or other activities) in the same way as anyone else can?">
+					description = <"Participation in society">
+				>
+				["at0025"] = <
+					text = <"D6.2: How much of a problem did you have because of barriers or hindrances in the world around you?">
+					description = <"Participation in society">
+				>
+				["at0026"] = <
+					text = <"D5.6: Doing your most important work/school tasks well?">
+					description = <"Life activities—School or Work">
+				>
+				["at0027"] = <
+					text = <"D4.4: Making new friends?">
+					description = <"Getting along with people">
+				>
+				["at0028"] = <
+					text = <"D5.2: Doing most important household tasks well?">
+					description = <"Life-activities household">
+				>
+				["at0029"] = <
+					text = <"D5.1: Taking care of your household responsibilities?">
+					description = <"Life-activities household">
+				>
+				["at0030"] = <
+					text = <"D4.5: Sexual activities?">
+					description = <"Getting along with people">
+				>
+				["at0031"] = <
+					text = <"D4.3: Getting along with people who are close to you?">
+					description = <"Getting along with people">
+				>
+				["at0032"] = <
+					text = <"D4.2: Maintaining a friendship?">
+					description = <"Getting along with people">
+				>
+				["at0033"] = <
+					text = <"D4.1: Dealing with people you do not know?">
+					description = <"Getting along with people">
+				>
+				["at0034"] = <
+					text = <"D6.3: How much of a problem did you have living with dignity because of the attitudes and actions of others?">
+					description = <"Participation in society">
+				>
+				["at0035"] = <
+					text = <"D6.4 How much time did you spend on your health condition, or its consequences?">
+					description = <"Participation in society">
+				>
+				["at0036"] = <
+					text = <"D6.5 How much have you been emotionally affected by your health condition?">
+					description = <"Participation in society">
+				>
+				["at0037"] = <
+					text = <"D6.6: How much has your health been a drain on the financial resources of you or your family?">
+					description = <"Participation in society">
+				>
+				["at0038"] = <
+					text = <"D6.7: How much of a problem did your family have because of your health problems?">
+					description = <"Participation in society">
+				>
+				["at0039"] = <
+					text = <"D6.8: How much of a problem did you have in doing things by yourself for relaxation or  pleasure?">
+					description = <"Participation in society">
+				>
+				["at0040"] = <
+					text = <"12 item raw score">
+					description = <"Simple raw score as a percentage of the 12 most important questions creating a quick score to assess overall functioning. explains 81% of the variance of the 36 item version.">
+				>
+				["at0041"] = <
+					text = <"Additional 24 ques score">
+					description = <"The additional 24 items if the previous 12 were positive and further investigation needed">
+				>
+				["at0042"] = <
+					text = <"36 item raw score">
+					description = <"All 36 items summed for the raw score as a percentage">
+				>
+				["at0043"] = <
+					text = <"Comment">
+					description = <"Comments regarding the score">
+				>
+				["at0044"] = <
+					text = <"D1 Understanding and communicating domain score">
+					description = <"Understanding and communicating complex domain score as a percentage of the total score within D1 divided by 24">
+				>
+				["at0045"] = <
+					text = <"D2 Getting around domain score">
+					description = <"Getting around complex domain score as a percentage of the total score within D2 divided by 20">
+				>
+				["at0046"] = <
+					text = <"D3 Self-care domain score">
+					description = <"Self-care complex domain score as a percentage of the total score within D3 divided by 16">
+				>
+				["at0047"] = <
+					text = <"36 item complex score">
+					description = <"Complex score based n IRT - item-response theory which takes into account the weighted scoring per type of response and is a percentage">
+				>
+				["at0048"] = <
+					text = <"D6 Participation in society domain score">
+					description = <"Participation in society complex domain score as a percentage of the total score within D6 divided by 32">
+				>
+				["at0049"] = <
+					text = <"D5 Life activities domain score">
+					description = <"Life activities complex domain score as a percentage of the total score within D5 divided by 32">
+				>
+				["at0050"] = <
+					text = <"D4 Getting along with people domain score">
+					description = <"Getting along with people complex domain score as a percentage of the total score within D4 divided by 20">
+				>
+				["at0051"] = <
+					text = <"H1: Overall, in the past 30 days, how many days were these difficulties present?">
+					description = <"Unscored section: count of number of days within 30 days that the patient felt their difficulties were present">
+				>
+				["at0052"] = <
+					text = <"H3: In the past 30 days, not counting the days that you were totally unable, for how many days did you cut back or reduce your usual activities or work because of any health condition?">
+					description = <"Unscored section: count of number of days within 30 days that the patient felt they had to cut back or reduce their usual activities or work due to any health condition">
+				>
+				["at0053"] = <
+					text = <"H2: In the past 30 days, for how many days were you totally  unable to carry out your usual activities or work because of any health condition?">
+					description = <"Unscored section: count of number of days within 30 days that the patient felt they were totally unable to carry out their usual activities">
+				>
+				["at0054"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0055"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0056"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0057"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0058"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0059"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0060"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0061"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0062"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0063"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0064"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0065"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0066"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0067"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0068"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0069"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0070"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0071"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0072"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0073"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0074"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0075"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0076"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0077"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0078"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0079"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0080"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0081"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0082"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0083"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0084"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0085"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0086"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0087"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0088"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0089"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0090"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0091"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0092"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0093"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0094"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0095"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0096"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0097"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0098"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0099"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0100"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0101"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0102"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0103"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0104"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0105"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0106"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0107"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0108"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0109"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0110"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0111"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0112"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0113"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0114"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0115"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0116"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0117"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0118"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0119"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0120"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0121"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0122"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0123"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0124"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0125"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0126"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0127"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0128"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0129"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0130"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0131"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0132"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0133"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0134"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0135"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0136"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0137"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0138"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0139"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0140"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0141"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0142"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0143"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0144"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0145"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0146"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0147"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0148"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0149"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0150"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0151"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0152"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0153"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0154"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0155"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0156"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0157"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0158"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0159"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0160"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0161"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0162"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0163"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0164"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0165"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0166"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0167"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0168"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0169"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0170"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0171"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0172"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0173"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0174"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0175"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0176"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0177"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0178"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0179"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0180"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0181"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0182"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0183"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0184"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0185"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0186"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0187"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0188"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0189"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0190"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0191"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0192"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0193"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0194"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0195"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0196"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0197"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0198"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0199"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0200"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0201"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0202"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0203"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0204"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0205"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0206"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0207"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0208"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0209"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0210"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0211"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0212"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0213"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0214"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0215"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0216"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0217"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0218"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0219"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0220"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0221"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0222"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0223"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0224"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0225"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0226"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0227"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0228"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+				["at0229"] = <
+					text = <"No difficulty">
+					description = <"*">
+				>
+				["at0230"] = <
+					text = <"Mild difficulty">
+					description = <"*">
+				>
+				["at0231"] = <
+					text = <"Moderate difficulty">
+					description = <"*">
+				>
+				["at0232"] = <
+					text = <"Severe difficulty">
+					description = <"*">
+				>
+				["at0233"] = <
+					text = <"Extremely difficult or cannot do">
+					description = <"*">
+				>
+			>
+		>
+	>
