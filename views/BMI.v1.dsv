@@ -35,12 +35,11 @@
   },
   "resourceDescription": {
     "originalAuthor": {
-      "email": "oskar.nielsen@mail.com",
       "organisation": "Cambio Healthcare Systems",
-      "name": "Oskar Nielsen",
+      "name": "Rong Chen",
       "date": "2016-06-27"
     },
-    "otherContributors": [],
+    "otherContributors": ["Jimmy Axelsson", "Oskar Nielsen", "Iago Corbal", "Konstantinos Kalliamvakos"],
     "details": {
       "en": {
         "keywords": [
@@ -65,6 +64,10 @@
         "vt0001": {
           "id": "vt0001",
           "text": "Height"
+        },
+        "vt0002":{
+          "id": "vt0002",
+          "text": "References"
         }
       }
     },
@@ -74,15 +77,21 @@
         "vt0001": {
           "id": "vt0001",
           "text": "Höjd"
+        },
+        "vt0002":{
+          "id": "vt0002",
+          "text": "Referenser"
         }
       }
     }
   }
-}</script>
+}
+</script>
 </head>
 <body ng-controller="cds_controller">
 <#assign app_help_tag = "def.guides['BMI.v1'].concept">
 <#assign height = "def.terms['vt0001']"/>
+<#assign references = "def.terms['vt0002']"/>
 <#assign body_mass_index_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.body_mass_index.v1']">
 <#assign body_mass_index_entry_def = "def.entries['openEHR-EHR-OBSERVATION.body_mass_index.v1']">
 <#assign body_mass_index_def = body_mass_index_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
@@ -99,6 +108,7 @@
 <#assign event_time1_def = body_weight_entry_def + ".elements['/data/events/time']">
 <#assign weight_ehr_data = body_weight_entry_ehr_data + "[0].elements['/data{at0002}/events{at0003}/data{at0001}/items{at0004}']">
 <#assign event_time1_ehr_data = body_weight_entry_ehr_data + "[0].elements['/data/events/time']">
+
 <script> 
 angular.module('cds_app').controller('BMI_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
@@ -110,7 +120,7 @@ angular.module('cds_app').controller('BMI_Ctrl', function($scope, $window){
   $scope.$on('executeEnd', function() {
     $scope.firedRules.filter(function(rule) {
       if (rule.gtCode === 'gt0001') {
-        $scope.bmi_cds = Math.round($scope.${body_mass_index_cds_data}.value.magnitude * 10)/10;
+        $scope.bmi_cds = Math.round($scope.${body_mass_index_cds_data}.value.magnitude * 100)/100;
       }  
     });
   });
@@ -156,8 +166,22 @@ angular.module('cds_app').controller('BMI_Ctrl', function($scope, $window){
     </div>
   </div>
 </div>
+<br /><br />
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
 </div>
-</body>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/books/NBK2003/">Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults: The Evidence Report [Internet]. Bethesda (MD): National Heart, Lung, and Blood Institute; NIH Publication No. 98-4083, Sep 1998, [cited 2009 July 02].</a></i>
+        </li>
+      </div>
+    </div>
+  </div>
+</div>
 <style>
   html, body {
     height:100%;
@@ -216,7 +240,7 @@ angular.module('cds_app').controller('BMI_Ctrl', function($scope, $window){
       -webkit-animation: fadeIn 0.3s ease-in-out;
       animation: fadeIn 0.3s ease-in-out;
   }
-  .help-tip p{	/* The tooltip */
+  .help-tip p{  /* The tooltip */
       display: none;
       text-align: left;
       background-color: #1E2021;
@@ -249,6 +273,9 @@ angular.module('cds_app').controller('BMI_Ctrl', function($scope, $window){
       top:-40px;
       left:0;
   }
+  .references1{
+  font-size: 70%;
+  }
   /* CSS animation */
   @-webkit-keyframes fadeIn {
       0% { 
@@ -267,9 +294,12 @@ angular.module('cds_app').controller('BMI_Ctrl', function($scope, $window){
   }
   #displayresult {
     background-color: #e6e6e6; 
-    font-size: 110%;
     padding-top: 3px;
     padding-bottom: 3px;
+    padding-left: 3px;
   }
+  select, label:not(#h-fix) {
+    margin-bottom: 10px;
 </style>
+</body>
 </html>

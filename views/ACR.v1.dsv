@@ -1,14 +1,13 @@
-<!DOCTYPE html><html ng-app="cds_app">
-<head>
+<!DOCTYPE html><html ng-app="cds_app"><head>
 <title>{{def.concept.name}}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
-<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
-<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
+<link rel="stylesheet" type="text/css" href="wro/foundation.css" />
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css" />
+<link rel="stylesheet" type="text/css" href="wro/angular.css" />
 <script type="text/javascript" src="wro/angular.js"></script>
-<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js" />
 <script type="text/javascript" src="wro/moment.js"></script>
 <script type="text/javascript" src="wro/date-picker.js"></script>
 <script type="text/javascript" src="wro/app_lib.js"></script>
@@ -26,7 +25,11 @@
   "decisionSupportViewDefinitions": {
     "en": {
       "name": "Albumin:Creatinine Ratio",
-      "description": "Calculates urinary albumin:creatinine ratio (ACR)."
+      "description": "Calculates urinary albumin:creatinine ratio (ACR)"
+    },
+    "sv": {
+      "name": "Albumin/kreatinin-kvot",
+      "description": "Beräkning av U-albumin/kreatinin-kvot"
     }
   },
   "resourceDescription": {
@@ -37,13 +40,27 @@
       "date": "Cambio Healthcare Systems"
     },
     "otherContributors": [
-      "Jimmy Axelsson, Cambio Healthcare Systems"
+      "Jimmy Axelsson, Cambio Healthcare Systems",
+      "Dennis Forslund, Cambio Healthcare Systems"
     ],
     "details": {
       "en": {
         "purpose": "This guide calculates urinary albumin:creatinine ratio (ACR).",
         "keywords": [],
         "use": "Use to calculate urinary albumin:creatinine ratio (measured in mg/g) from given values of urinary albumin (measured in mg/L) and urinary creatinine (measured in mg/L). Also for use to calculate albumin excretion rate (AER) which is approximately equal to the albumin:creatinine ratio, but with unit: mg/24hrs.\nTo obtain ACR in mg/mmol, divide ACR in mg/g by 10.\n\nFor use in concert with glomerular filtration rate (GFR) to stage and evaluate the risk of progression of chronic kidney disease (CKD).",
+        "copyright": "© Cambio Healthcare Systems"
+      },
+      "sv": {
+        "purpose": "Att beräkna U-albumin/kreatinin-kvot (ACR).",
+        "keywords": [
+          "albuminuri",
+          "albumin",
+          "kronisk njursvikt",
+          "albumin/kreatinin-kvot",
+          "kreatinin",
+          "ACR"
+        ],
+        "use": "Använd för att beräkna urin-albumin/kreatinin-kvot (angiven i mg/g) från givna värden av u-albumin (angivet i mg/L) och kreatinin (angivet i mg/L). Kan även användas för att beräkna utsöndring av albumin via urinen, då värdet på denna motsvarar albumin/kreatinin-kvoten, men angivet i mg/dygn.\n\nFör att omvandla albumin/kreatinin-kvoten från mg/g till mg/mmol, dividera med 10.\n\nKan med fördel sammanvägas tillsammans med glomerulär filtrationshastighet (GFR) för gradering och utvärdering av progressionsrisk av kronisk njursvikt.",
         "copyright": "© Cambio Healthcare Systems"
       }
     },
@@ -60,7 +77,21 @@
   "termDefinitions": {
     "en": {
       "id": "en",
-      "terms": {}
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "References"
+        }
+      }
+    },
+    "sv": {
+      "id": "sv",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "Referenser"
+        }
+      }
     }
   }
 }</script>
@@ -97,19 +128,12 @@ angular.module('cds_app').controller('ACR_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
     $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
     $scope.${urine_microalbumin_ehr_data}.value.units = $scope.${urine_microalbumin_def}.units[0];
-	$scope.${urine_creatinine_ehr_data}.value.units = $scope.${urine_creatinine_def}.units[0];
-  });
-  $scope.$on('executeEnd', function() {
-    $scope.firedRules.filter(function(rule) {
-      if (rule.gtCode === 'gt0006') {
-        $scope.acr_cds = Math.round($scope.${urine_albumin_creatinine_ratio_cds_data}.value.magnitude * 10)/10;
-      }  
-    });
+    $scope.${urine_creatinine_ehr_data}.value.units = $scope.${urine_creatinine_def}.units[0];
   });
 });
 </script>
 
-<div ng-show="ready">
+<div ng-show="ready" ng-controller="ACR_Ctrl">
 <div class="header">
   <h1>{{def.concept.name}}</h1>
   <h2>{{def.concept.description}}</h2>
@@ -123,10 +147,10 @@ angular.module('cds_app').controller('ACR_Ctrl', function($scope, $window){
 <label>{{${urine_microalbumin_def}.name}}</label>
 </div>
 <div class="medium-5 columns">
-        <input ng-model="${urine_microalbumin_ehr_data}.value.magnitude" type="number" step='any' min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+        <input ng-model="${urine_microalbumin_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
 	  <div class="medium-2 columns">
-        <select ng-model="${urine_microalbumin_ehr_data}.value.units" ng-options="unit for unit in ${urine_microalbumin_def}.units" ng-change="execute()" disabled></select>
+        <select ng-model="${urine_microalbumin_ehr_data}.value.units" ng-options="unit for unit in ${urine_microalbumin_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
 <div class="row collapse" title="{{${urine_creatinine_def}.description}}">
@@ -134,50 +158,50 @@ angular.module('cds_app').controller('ACR_Ctrl', function($scope, $window){
 <label>{{${urine_creatinine_def}.name}}</label>
 </div>
 <div class="medium-5 columns">
-        <input ng-model="${urine_creatinine_ehr_data}.value.magnitude" type="number" step='any' min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+        <input ng-model="${urine_creatinine_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
 	  <div class="medium-2 columns">
-        <select ng-model="${urine_creatinine_ehr_data}.value.units" ng-options="unit for unit in ${urine_creatinine_def}.units" ng-change="execute()" disabled></select>
+        <select ng-model="${urine_creatinine_ehr_data}.value.units" ng-options="unit for unit in ${urine_creatinine_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
- <div class="row collapse" title="{{${urine_albumin_creatinine_ratio_def}.description}}" id="displayresult">
+ <div class="row collapse" title="{{${urine_albumin_creatinine_ratio_def}.description}}" id="displayresult1">
     <div class="medium-5 columns">
-      <b>{{${urine_albumin_creatinine_ratio_def}.name}}:</b>
+      <span><b>{{${urine_albumin_creatinine_ratio_def}.name}}:</b></span>
     </div>
     <div class="medium-7 columns">
-      <span>{{eag_cds}} {{${urine_albumin_creatinine_ratio_cds_data}.value.units}}</span>
+      <span>{{${urine_albumin_creatinine_ratio_cds_data}.value.magnitude}} {{${urine_albumin_creatinine_ratio_cds_data}.value.units}}</span>
     </div>
   </div>
-  <div class="row collapse" title="{{${acr_assessment_kdigo_entry_def}.description}}" id="displayresult">
+  <div class="row collapse" title="{{${acr_assessment_kdigo_entry_def}.description}}" id="displayresult2">
     <div class="medium-5 columns">
-      <b>{{${acr_assessment_kdigo_entry_def}.name}}:</b>
+      <span><b>{{${acr_assessment_kdigo_entry_def}.name}}:</b></span>
     </div>
     <div class="medium-7 columns">
-      <span>{{eag_cds}} {{${kdigo_acr_category_cds_data}.value.units}}</span>
+      <span>{{${kdigo_acr_category_cds_data}.value.value}}</span>
     </div>
   </div>
-  <div class="row collapse" title="{{${acr_value_def}.description}}" id="displayresult">
+  <div class="row collapse" title="{{${acr_value_def}.description}}" id="displayresult1">
     <div class="medium-5 columns">
-      <b>{{${acr_value_def}.name}}:</b>
+      <span><b>{{${acr_value_def}.name}}:</b></span>
     </div>
     <div class="medium-7 columns">
-      <span>{{eag_cds}} {{${acr_value_cds_data}.value.units}}</span>
+      <span>{{${acr_value_cds_data}.value.symbol.value}}</span>
     </div>
   </div>
-   <div class="row collapse" title="{{${kdigo_acr_description_def}.description}}" id="displayresult">
+   <div class="row collapse" title="{{${kdigo_acr_description_def}.description}}" id="displayresult2">
     <div class="medium-5 columns">
-      <b>{{${kdigo_acr_description_def}.name}}:</b>
+      <span><b>{{${kdigo_acr_description_def}.name}}:</b></span>
     </div>
     <div class="medium-7 columns">
-      <span>{{eag_cds}} {{${kdigo_acr_description_cds_data}.value.units}}</span>
+      <span>{{${kdigo_acr_description_cds_data}.value.value}}</span>
     </div>
   </div>
-</fieldset>
-</form>
+
+
 </div>
 </div>
-</div>
-<div class='row'><div class='medium-12 columns'></div></div>
+
+<div class="row"><div class="medium-12 columns"></div></div>
 <br /><br />
 <div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
   <div class="medium-11 medium-offset-1 column">
@@ -188,20 +212,12 @@ angular.module('cds_app').controller('ACR_Ctrl', function($scope, $window){
   <div class="row collapse">
       <div class="medium-11 medium-offset-1 column">
         <li>
-          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/18553045">Andersson M, Andersson RE. The appendicitis inflammatory response score: a tool for the diagnosis of acute appendicitis that outperforms the Alvarado score. World journal of surgery. 2008 Aug;32(8):1843–9.</a></i>
-        </li>
-      </div>
-    </div>
-     <div class="row collapse">
-      <div class="medium-11 medium-offset-1 column">
-        <li>
-          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/18553045">Andersson M, Andersson RE. The appendicitis inflammatory response score: a tool for the diagnosis of acute appendicitis that outperforms the Alvarado score. World journal of surgery. 2008 Aug;32(8):1843–9.</a></i>
+          <i><a href="http://www.kdigo.org/clinical_practice_guidelines/pdf/CKD/KDIGO_2012_CKD_GL.pdf">Eknoyan G, Lameire N, Eckardt KU, Kasiske BL, Wheeler DC, Levin A, Stevens PE, Bilous RW, Lamb EJ, Coresh J, Levey AS. KDIGO 2012 clinical practice guideline for the evaluation and management of chronic kidney disease. Kidney Int. 2013;3:5-14.</a></i>
         </li>
       </div>
     </div>
   </div>
-</div>
-</body>
+
 <style>
   html, body {
     height:100%;
@@ -312,11 +328,20 @@ angular.module('cds_app').controller('ACR_Ctrl', function($scope, $window){
       0% { opacity:0; }
       100% { opacity:100%; }
   }
-  #displayresult {
+  #displayresult1 {
     background-color: #e6e6e6; 
-    font-size: 110%;
     padding-top: 3px;
     padding-bottom: 3px;
+    font-size: 90%;
   }
+  #displayresult2 {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 90%;
+  }
+  select, label:not(#h-fix) {
+    margin-bottom: 10px;
 </style>
-</html>
+
+
+</body></html>

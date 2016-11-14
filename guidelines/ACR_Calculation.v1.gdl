@@ -12,7 +12,7 @@
 				keywords = <"albuminuria", "albumin excretion rate", "chronic kidney disease", "CKD", "albumin:creatinine ratio", "ACR", "KDIGO", "CKD classification", "AER">
 				misuse = <"">
 				purpose = <"This guide calculates urinary albumin:creatinine ratio (ACR).">
-				use = <"Use to calculate urinary albumin:creatinine ratio (measured in mg/g) from given values of urinary albumin (measured in mg/L) and urinary creatinine (measured in mg/L). Also for use to calculate albumin excretion rate (AER) which is approximately equal to the albumin:creatinine ratio, but with unit: mg/24hrs.
+				use = <"Use to calculate urinary albumin:creatinine ratio (measured in mg/g) from given values of urinary albumin (measured in mg/dl) and urinary creatinine (measured in mg/dl). Also for use to calculate albumin excretion rate (AER) which is approximately equal to the albumin:creatinine ratio, but with unit: mg/24hrs.
 To obtain ACR in mg/mmol, divide ACR in mg/g by 10.
 
 For use in concert with glomerular filtration rate (GFR) to stage and evaluate the risk of progression of chronic kidney disease (CKD).">
@@ -24,9 +24,9 @@ For use in concert with glomerular filtration rate (GFR) to stage and evaluate t
 				purpose = <"Att beräkna urin-albumin/kreatinin-kvot.">
 				use = <"Använd för att beräkna urin-albumin/kreatinin-kvot (angiven i mg/g) från givna värden av u-albumin (angivet i mg/L) och kreatinin (angivet i mg/L). Kan även användas för att beräkna utsöndring av albumin via urinen, då värdet på denna motsvarar albumin/kreatinin-kvoten, men angivet i mg/dygn.
 
-För att omvandla albumin-kreatinin-kvoten från mg/g till mg/mmol, dividera med 10.
+För att omvandla albumin/kreatinin-kvoten från mg/g till mg/mmol, dividera med 10.
 
-Kan användas i samverkan med GFR (glomerulär filtrationshastighet) för att gradera och utvärdera progressionsrisk av kronisk njursvikt.">
+Kan med fördel sammanvägas tillsammans med glomerulär filtrationshastighet (GFR) för gradering och utvärdering av progressionsrisk av kronisk njursvikt.">
 			>
 		>
 		lifecycle_state = <"Author draft">
@@ -65,11 +65,20 @@ Kan användas i samverkan med GFR (glomerulär filtrationshastighet) för att gr
 					>
 				>
 			>
+			["gt0008"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-microalbumin.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0009"] = (ELEMENT_BINDING) <
+						path = <"/data/events/time">
+					>
+				>
+			>
 		>
 		rules = <
 			["gt0002"] = (RULE) <
-				when = <"$gt0005.units=='mg/l'", "$gt0004.units=='mg/l'">
-				then = <"$gt0007.precision=0", "$gt0007.units='mg/gm'", "$gt0007.magnitude=(($gt0004.magnitude/$gt0005.magnitude)*1000)">
+				when = <"$gt0005.units=='mg/dl'", "$gt0004.units=='mg/dl'">
+				then = <"$gt0009.value=$currentDateTime.value", "$gt0007.precision=0", "$gt0007.units='mg/gm'", "$gt0007.magnitude=(($gt0004.magnitude/$gt0005.magnitude)*1000)">
 				priority = <1>
 			>
 		>
@@ -98,6 +107,10 @@ Kan användas i samverkan med GFR (glomerulär filtrationshastighet) för att gr
 						text = <"Urine albumin:creatinine ratio">
 						description = <"Ratio of albumin and creatinine in this specimen.">
 					>
+					["gt0009"] = (TERM) <
+						text = <"Event time">
+						description = <"The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event.">
+					>
 				>
 			>
 			["sv"] = (TERM_DEFINITION) <
@@ -121,6 +134,10 @@ Kan användas i samverkan med GFR (glomerulär filtrationshastighet) för att gr
 					["gt0007"] = (TERM) <
 						text = <"U-albumin/kreatinin-kvot">
 						description = <"*(en) Ratio of albumin and creatinine in this specimen.">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Event time">
+						description = <"*(en) The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event.">
 					>
 				>
 			>

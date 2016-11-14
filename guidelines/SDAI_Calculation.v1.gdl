@@ -12,7 +12,7 @@
 				keywords = <"rheumatoid arthritis", "simplified disease activity index", "tender joint count", "swollen joint count", "PaGDA", "PrGDA">
 				misuse = <"Do not use to calculate clinical disease activity index (CDAI).">
 				purpose = <"This guide calculates the simplified disesase activity index (SDAI) which is a measure of disease activity and treatment response in individuals with rheumatoid arthritis.">
-				use = <"Use to calculate SDAI, based on five input parameters: tender joint count (TJC), swollen joint count (SJC), patient global assessment of disease activity (PtGDA), provider global assessment of disease activity (PrGDA), and level of C-reactive protein (in mg/dl).
+				use = <"Use to calculate SDAI, based on five input parameters: tender joint count (TJC), swollen joint count (SJC), patient global assessment of disease activity (PtGDA), provider global assessment of disease activity (PrGDA), and level of C-reactive protein (in mg/dl). PtGDA and PrGDA use the unit 'cm'.
 SDAI = TJC + SJC + PtGDA + PrGDA + CRP">
 			>
 		>
@@ -64,11 +64,11 @@ Aletaha D, Smolen JS. The simplified disease activity index (SDAI) and clinical 
 				predicates = <"max(/data/events/time)",...>
 			>
 			["gt0009"] = (ARCHETYPE_BINDING) <
-				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-crp.v1">
+				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test_c_reactive_protein.v1">
 				domain = <"EHR">
 				elements = <
-					["gt0010"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0005.1]">
+					["gt0014"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0006]">
 					>
 				>
 				predicates = <"max(/data/events/time)",...>
@@ -82,11 +82,20 @@ Aletaha D, Smolen JS. The simplified disease activity index (SDAI) and clinical 
 					>
 				>
 			>
+			["gt0028"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.simplified_disease_activity_index.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0029"] = (ELEMENT_BINDING) <
+						path = <"/data/events/time">
+					>
+				>
+			>
 		>
 		rules = <
 			["gt0013"] = (RULE) <
-				when = <"$gt0010.units=='mg/dl'",...>
-				then = <"$gt0012.precision=2", "$gt0012.magnitude=(((($gt0003.magnitude+$gt0004.magnitude)+$gt0006.magnitude)+$gt0008.magnitude)+$gt0010.magnitude)">
+				when = <"$gt0006.units=='cm'", "$gt0014.units=='mg/dl'", "$gt0012==null">
+				then = <"$gt0029.value=$currentDateTime.value", "$gt0012.precision=2", "$gt0012.magnitude=(((($gt0003.magnitude+$gt0004.magnitude)+$gt0008.magnitude)+$gt0006.magnitude)+$gt0014.magnitude)">
 				priority = <1>
 			>
 		>
@@ -115,10 +124,6 @@ Aletaha D, Smolen JS. The simplified disease activity index (SDAI) and clinical 
 						text = <"PrGDA score ">
 						description = <"Considering all the ways arthritis affects the patient, how well are they doing? (0.0 = very well; 10.0 = very poor)">
 					>
-					["gt0010"] = (TERM) <
-						text = <"C-reactive protein concentration">
-						description = <"Concentration of C-reactive protein in this sample.">
-					>
 					["gt0012"] = (TERM) <
 						text = <"Simplified disease activity index (SDAI) score">
 						description = <"The linear sum of tender joint count (TJC) + swollen joint count (SJC) + patient assessment of global disease activity (PtGDA) + provider assessment of global disease activity (PrGDA) + C-reactive protein (CRP).">
@@ -126,6 +131,14 @@ Aletaha D, Smolen JS. The simplified disease activity index (SDAI) and clinical 
 					["gt0013"] = (TERM) <
 						text = <"Calculate SDAI score">
 						description = <"Contains the expression logic for calcuating simplified disease activity score (SDAI).">
+					>
+					["gt0014"] = (TERM) <
+						text = <"C-reactive protein concentration">
+						description = <"Test result - C-reactive protein">
+					>
+					["gt0029"] = (TERM) <
+						text = <"Event time">
+						description = <"The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event.">
 					>
 				>
 			>

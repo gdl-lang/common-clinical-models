@@ -1,4 +1,17 @@
-<html><head><script id="decision-support-view" type="application/json">{
+<!DOCTYPE html><html ng-app="cds_app"><head>
+<title>{{def.concept.name}}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="wro/foundation.css" />
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css" />
+<link rel="stylesheet" type="text/css" href="wro/angular.css" />
+<script type="text/javascript" src="wro/angular.js"></script>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js" />
+<script type="text/javascript" src="wro/moment.js"></script>
+<script type="text/javascript" src="wro/date-picker.js"></script>
+<script type="text/javascript" src="wro/app_lib.js"></script>
+<script id="decision-support-view" type="application/json">{
   "dsViewId": "TRI.v1",
   "language": {
     "originalLanguage": {
@@ -12,7 +25,7 @@
   "decisionSupportViewDefinitions": {
     "en": {
       "name": "Timi Risk Index",
-      "description": "The thrombolysis in myocardial infarction risk index: TIMI Risk Index (TRI) is a simple bedside score that predicts 30-day mortality in ST-elevation myocardial infarction (STEMI) patients. The index provides a mortality estimate in patients with ACS (Acute Coronary Syndrome) using only blood pressure, heart rate, and age."
+      "description": "For prediction of 30-day mortality in ST-elevation myocardial infarction (STEMI) patients. "
     },
     "sv": {
       "name": "Timi Risk Index",
@@ -70,7 +83,8 @@
       "id": "en",
       "terms": {
         "vt0001": {
-          "id": "vt0001"
+          "id": "vt0001",
+          "text": "References"
         }
       }
     },
@@ -84,4 +98,264 @@
       }
     }
   }
-}</script></head><body></body></html>
+}</script>
+</head>
+<body ng-controller="cds_controller">
+<#assign app_help_tag = "def.guides['TRI.v1'].concept">
+<#assign references = "def.terms['vt0001']"/>
+<#assign blood_pressure_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.blood_pressure.v1']">
+<#assign blood_pressure_entry_def = "def.entries['openEHR-EHR-OBSERVATION.blood_pressure.v1']">
+<#assign systolic_def = blood_pressure_entry_def + ".elements['/data{at0001}/events{at0006}/data{at0003}/items{at0004}']">
+<#assign event_time_def = blood_pressure_entry_def + ".elements['/data/events/time']">
+<#assign systolic_ehr_data = blood_pressure_entry_ehr_data + "[0].elements['/data{at0001}/events{at0006}/data{at0003}/items{at0004}']">
+<#assign event_time_ehr_data = blood_pressure_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign pulse_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.pulse.v1']">
+<#assign pulse_entry_def = "def.entries['openEHR-EHR-OBSERVATION.pulse.v1']">
+<#assign rate_def = pulse_entry_def + ".elements['/data{at0002}/events{at0003}/data{at0001}/items{at0004}']">
+<#assign event_time1_def = pulse_entry_def + ".elements['/data/events/time']">
+<#assign rate_ehr_data = pulse_entry_ehr_data + "[0].elements['/data{at0002}/events{at0003}/data{at0001}/items{at0004}']">
+<#assign event_time1_ehr_data = pulse_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign timi_risk_index_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.timi_risk_index.v1']">
+<#assign timi_risk_index_entry_def = "def.entries['openEHR-EHR-OBSERVATION.timi_risk_index.v1']">
+<#assign timi_risk_index_def = timi_risk_index_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign timi_risk_index_cds_data = timi_risk_index_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign basic_demographic_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
+<#assign basic_demographic_entry_def = "def.entries['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
+<#assign birthdate_def = basic_demographic_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign event_time2_def = basic_demographic_entry_def + ".elements['/data/events/time']">
+<#assign birthdate_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign event_time2_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data/events/time']">
+
+<script> 
+angular.module('cds_app').controller('LDL_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
+    $scope.${systolic_ehr_data}.value.units = $scope.${systolic_def}.units[0];
+    $scope.${rate_ehr_data}.value.units = $scope.${rate_def}.units[0];
+  });
+});
+</script>
+
+
+<div ng-show="ready" ng-controller="LDL_Ctrl">
+<div class="header">
+  <h1>{{def.concept.name}}</h1>
+  <h2>{{def.concept.description}}</h2>
+  <div class="help-tip">
+	<p>{{${app_help_tag}.description}}</p>
+  </div>
+</div>
+
+<div class="card">
+<div class="row collapse" title="{{${systolic_def}.description}}">
+<div class="medium-5 columns">
+<label>{{${systolic_def}.name}}</label>
+</div>
+<div class="medium-5 columns">
+        <input ng-model="${systolic_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${systolic_ehr_data}.value.units" ng-options="unit for unit in ${systolic_def}.units" ng-change="execute()" disabled=""></select>
+      </div>
+</div>
+<div class="row collapse" title="{{${rate_def}.description}}">
+<div class="medium-5 columns">
+<label>{{${rate_def}.name}}</label>
+</div>
+<div class="medium-5 columns">
+        <input ng-model="${rate_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${rate_ehr_data}.value.units" ng-options="unit for unit in ${rate_def}.units" ng-change="execute()" disabled=""></select>
+      </div>
+</div>
+<div class="row collapse" title="{{${birthdate_def}.description}}">
+    <div class="medium-5 columns">
+      <label>{{${birthdate_def}.name}}</label>
+    </div>
+    <div class="medium-7 columns">
+      <input ng-model="${birthdate_ehr_data}.value.value" type="text" pikaday="date" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+    </div>
+  </div>
+<div class="row collapse" title="{{${timi_risk_index_def}.description}}" id="displayresult1">
+    <div class="medium-5 columns">
+      <span><b>{{${timi_risk_index_def}.name}}:</b></span>
+    </div>
+    <div class="medium-7 columns">
+      <span>{{${timi_risk_index_cds_data}.value.magnitude}} {{${timi_risk_index_cds_data}.value.units}}</span>
+    </div>
+  </div>
+  
+  </div>
+
+</div>
+
+
+<div class="row"><div class="medium-12 columns"></div></div>
+<br /><br />
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
+</div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/11716882">A simple risk index for rapid initial triage of patients with ST-elevation myocardial infarction: an InTIME II substudy. Morrow DA, Antman EM, Giugliano RP, Cairns R, Charlesworth A, Murphy SA, de Lemos JA, McCabe CH, Braunwald E Lancet. 2001 Nov 10; 358(9293):1571-5.</a></i>
+        </li>
+      </div>
+    </div>
+	<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="http://content.onlinejacc.org/article.aspx?articleid=1135886">Performance of the thrombolysis in myocardial infarction risk index in the National Registry of Myocardial Infarction-3 and -4: a simple index that predicts mortality in ST-segment elevation myocardial infarction. Wiviott SD, Morrow DA, Frederick PD, Giugliano RP, Gibson CM, McCabe CH, Cannon CP, Antman EM, Braunwald E J Am Coll Cardiol. 2004 Aug 18; 44(4):783-9</a></i>
+        </li>
+      </div>
+    </div>
+	<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/16630990">Wiviott SD, Morrow DA, Frederick PD, Antman EM, Braunwald E; National Registry of Myocardial Infarction. Application of the Thrombolysis in Myocardial Infarction risk index in non-ST-segment elevation myocardial infarction: evaluation of patients in the National Registry of Myocardial Infarction. J Am Coll Cardiol. 2006 Apr 18;47(8):1553-8. Epub 2006 Mar 29. PubMed PMID: 16630990.</a></i>
+        </li>
+      </div>
+    </div>
+	<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/22281285">Méndez-Eirín, Flores-Ríos, García-López, Pérez-Pérez, Estévez-Loureiro, Piñón-Esteban, et. al. (2012). Comparison of the Prognostic Predictive Value of the TIMI, PAMI, CADILLAC, and GRACE Risk Scores in STEACS Undergoing Primary or Rescue PCI. Revista Española De Cardiología (English Edition), 65(3), 227-233.</a></i>
+        </li>
+      </div>
+    </div>
+  </div>
+
+<style>
+  html, body {
+    height:100%;
+    width: 100%;
+  }
+  body {
+    font-family: sans-serif;
+    font-weight: 300;
+    color: #333;
+    background: #ecf0f9;
+    padding: 1em;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 {
+    font-weight: 600;
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 22px;
+    font-style: italic;
+  }
+  .header {
+    margin-bottom: 2em;
+  }
+  .card {
+    background-color: #fdfdfd;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 10px auto 0 auto;
+    padding: 1em;
+    width: 50%;
+    overflow: hidden;
+  }
+  .help-tip{
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      text-align: center;
+      background-color: #BCDBEA;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      line-height: 26px;
+      cursor: default;
+  }
+  .help-tip:before{
+      content:'?';
+      font-weight: bold;
+      color:#fff;
+  }
+  .help-tip:hover p{
+      display:block;
+      transform-origin: 100% 0%;
+      -webkit-animation: fadeIn 0.3s ease-in-out;
+      animation: fadeIn 0.3s ease-in-out;
+  }
+  .help-tip p{	/* The tooltip */
+      display: none;
+      text-align: left;
+      background-color: #1E2021;
+      padding: 20px;
+      width: 300px;
+      position: absolute;
+      border-radius: 3px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+      right: -4px;
+      color: #FFF;
+      font-size: 13px;
+      line-height: 1.4;
+      z-index: 9999;
+  }
+  .help-tip p:before{ /* The pointer of the tooltip */
+      position: absolute;
+      content: '';
+      width:0;
+      height: 0;
+      border:6px solid transparent;
+      border-bottom-color:#1E2021;
+      right:10px;
+      top:-12px;
+  }
+  .help-tip p:after{ /* Prevents the tooltip from being hidden */
+      width:100%;
+      height:40px;
+      content:'';
+      position: absolute;
+      top:-40px;
+      left:0;
+  }
+  .references1{
+    font-size: 70%;
+  }
+  /* CSS animation */
+  @-webkit-keyframes fadeIn {
+      0% { 
+          opacity:0; 
+          transform: scale(0.6);
+      }
+
+      100% {
+          opacity:100%;
+          transform: scale(1);
+      }
+  }
+  @keyframes fadeIn {
+      0% { opacity:0; }
+      100% { opacity:100%; }
+  }
+  #displayresult1 {
+    background-color: #e6e6e6; 
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 90%;
+  }
+  select, label:not(#h-fix) {
+    margin-bottom: 10px;
+</style>
+
+
+
+</body></html>

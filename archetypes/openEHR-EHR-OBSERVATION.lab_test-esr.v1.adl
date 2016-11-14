@@ -1,31 +1,32 @@
 ﻿archetype (adl_version=1.4)
-	openEHR-EHR-OBSERVATION.lab_test-microalbumin.v1
-specialize
+	openEHR-EHR-OBSERVATION.lab_test-esr.v1
+specialise
 	openEHR-EHR-OBSERVATION.lab_test.v1
 
 concept
-	[at0000.1]	-- Urine microalbumin
+	[at0000.1]	-- Erythroctye sedimentation rate
 language
 	original_language = <[ISO_639-1::en]>
 description
 	original_author = <
-		["name"] = <"D B Hutchinson">
-		["organisation"] = <"NHS CfH, United Kingdom">
-		["date"] = <"17/09/2008">
+		["name"] = <"Dr Ian McNicoll">
+		["organisation"] = <"Ocean Informatics, United Kingdom">
+		["email"] = <"ian.mcnicoll@oceaninformatics.com">
+		["date"] = <"07/11/2009">
 	>
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record the results of microalbumin investigation.">
+			purpose = <"To record an erythrocyte sedimentation rate (ESR).">
 			use = <"Will normally be reported back to the requesting clinician within the context of an overall Composition-based laboratory report.
 ">
-			keywords = <"lab", "pathology", "biochemistry", "laboratory">
-			misuse = <"Specialisations may be more appropriate for specific structured reports such as for microbiology or histopathology.">
-			copyright = <"copyright (c) 2009 openEHR Foundation">
+			keywords = <"lab", "pathology", "biochemistry", "haematology", "microbiology", "immunology", "laboratory", "eryrthrocyte", "esr", "sedimentation">
+			misuse = <"This archetype is not a full laboratory report and requires diagnosis and other assessments to be recorded using other archetypes.">
+			copyright = <"copyright (c) 2010 openEHR foundation">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
-	other_contributors = <"Ian McNicoll, Ocean Informatics, United Kingdom", ...>
+	other_contributors = <"Sam Heard, Ocean Informatics, Australia", "Heather Leslie, Ocean Informatics, Australia", "Heath Frankel, Ocean Informatics, Australia", "Koray Atalag, University of Auckland, New Zealand">
 	other_details = <
 		["references"] = <"NEHTA, Australia. Pathology Episode v1.0 - Data Group library [Internet]. 2009;[cited 2009 Dec 8 ] Available from: http://www.nehta.gov.au/data-group-library/data-specifications/dgl-pathology
 
@@ -35,11 +36,11 @@ IHE. IHE, Laboratory Technical Framework, Volume 3 Content [Internet]. 2008;Avai
 
 
 ">
-		["MD5-CAM-1.0.1"] = <"FEDA742D02E3D5D7B5E77ED66A960243">
+		["MD5-CAM-1.0.1"] = <"25F3993EF2409A6B94A556ACE921657F">
 	>
 
 definition
-	OBSERVATION[at0000.1] matches {	-- Urine microalbumin
+	OBSERVATION[at0000.1] matches {	-- Erythroctye sedimentation rate
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
@@ -78,51 +79,15 @@ definition
 										exclude
 											archetype_id/value matches {/.*/}
 									}
-									ELEMENT[at0078.3] occurrences matches {0..1} matches {	-- Urine microalbumin
+									ELEMENT[at0078.1] occurrences matches {0..1} matches {	-- Erythrocyte sedimentation rate (ESR)
 										value matches {
 											C_DV_QUANTITY <
-												property = <[openehr::119]>
+												property = <[openehr::338]>
 												list = <
 													["1"] = <
-														units = <"mg/l">
-														magnitude = <|>=0.0|>
-														precision = <|1|>
-													>
-													["2"] = <
-														units = <"mg/dl">
-														magnitude = <|>=0.0|>
-													>
-												>
-											>
-										}
-									}
-									ELEMENT[at0078.2] occurrences matches {0..1} matches {	-- Urine creatinine
-										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::119]>
-												list = <
-													["1"] = <
-														units = <"mg/l">
-														magnitude = <|>=0.0|>
-														precision = <|1|>
-													>
-													["2"] = <
-														units = <"mg/dl">
-														magnitude = <|>=0.0|>
-													>
-												>
-											>
-										}
-									}
-									ELEMENT[at0078.1] occurrences matches {0..1} matches {	-- Urine albumin:creatinine ratio
-										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::119]>
-												list = <
-													["1"] = <
-														units = <"mg/gm">
-														magnitude = <|>=0.0|>
-														precision = <|1|>
+														units = <"mm/h">
+														magnitude = <|0.0..500.0|>
+														precision = <|0|>
 													>
 												>
 											>
@@ -149,21 +114,6 @@ definition
 									}
 								}
 							}
-						}
-					}
-					INTERVAL_EVENT[at0.90] occurrences matches {0..1} matches {	-- 24 hr collection
-						math_function matches {
-							DV_CODED_TEXT matches {
-								defining_code matches {[openehr::148]}
-							}
-						}
-						width matches {
-							DV_DURATION matches {
-								value matches {|P1D|}
-							}
-						}
-						data matches {
-							use_node ITEM_TREE /data[at0001]/events[at0002]/data[at0003]	-- /data[Event Series]/events[Any event]/data[Tree]
 						}
 					}
 				}
@@ -207,22 +157,19 @@ definition
 		}
 	}
 
+
 ontology
 	term_definitions = <
 		["en"] = <
 			items = <
-				["at0.90"] = <
-					text = <"24 hr collection">
-					description = <"Total measurement over a 24 hour period.">
-				>
 				["at0000"] = <
 					text = <"Laboratory test">
 					description = <"To record the result of a laboratory test which may be used to record a single valued test but will often be specialised or templated to represent multiple value or 'panel' tests.
 This archetype also acts as the parent for specialisations appropriate for more specific laboratory tests microbiology, histopathology.">
 				>
 				["at0000.1"] = <
-					text = <"Urine microalbumin">
-					description = <"To record the results of microalbumin investigations.">
+					text = <"Erythroctye sedimentation rate">
+					description = <"To record an erythrocyte sedimentation rate (ESR).">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -317,16 +264,8 @@ useful for version control and cumulative results for the report.">
 					description = <"The result of the test.">
 				>
 				["at0078.1"] = <
-					text = <"Urine albumin:creatinine ratio">
-					description = <"Ratio of albumin and creatinine in this specimen.">
-				>
-				["at0078.2"] = <
-					text = <"Urine creatinine">
-					description = <"Creatinine level in this urine specimen.">
-				>
-				["at0078.3"] = <
-					text = <"Urine microalbumin">
-					description = <"Microalbumin level in this specimen.">
+					text = <"Erythrocyte sedimentation rate (ESR)">
+					description = <"The velocity of sedimentation of red cells in the first hour.">
 				>
 				["at0079"] = <
 					text = <"Never performed">
