@@ -1,4 +1,18 @@
-<html><head><script id="decision-support-view" type="application/json">{
+<!DOCTYPE html><html ng-app="cds_app">
+<head>
+<title>{{def.concept.name}}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
+<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
+<script type="text/javascript" src="wro/angular.js"></script>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
+<script type="text/javascript" src="wro/moment.js"></script>
+<script type="text/javascript" src="wro/date-picker.js"></script>
+<script type="text/javascript" src="wro/app_lib.js"></script>
+<script id="decision-support-view" type="application/json">{
   "dsViewId": "PHQ-9.v1",
   "language": {
     "originalLanguage": {
@@ -85,4 +99,328 @@
       }
     }
   }
-}</script></head><body></body></html>
+}</script>
+</head>
+<body ng-controller="cds_controller">
+<#assign app_help_tag = "def.guides['PHQ9.v1'].concept">
+<#assign references = "def.terms['vt0001']"/>
+<#assign patient_health_questionnaire___9_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.patient_health_questionnaire_9.v1']">
+<#assign patient_health_questionnaire___9_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.patient_health_questionnaire_9.v1']">
+<#assign patient_health_questionnaire___9_entry_def = "def.entries['openEHR-EHR-OBSERVATION.patient_health_questionnaire_9.v1']">
+<#assign disturbed_speech_and_or_movement_def = patient_health_questionnaire___9_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
+<#assign little_pleasure_doing_things_def = patient_health_questionnaire___9_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign feeling_hopeless_def = patient_health_questionnaire___9_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign disturbed_appetite_def = patient_health_questionnaire___9_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign feeling_like_a_failure_def = patient_health_questionnaire___9_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign if___0__what_impact_on_your_life__def = patient_health_questionnaire___9_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign suicidal_thoughts_def = patient_health_questionnaire___9_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
+<#assign total_score_def = patient_health_questionnaire___9_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
+<#assign event_time_def = patient_health_questionnaire___9_entry_def + ".elements['/data/events/time']">
+<#assign feeling_tired_def = patient_health_questionnaire___9_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign trouble_concentrating_def = patient_health_questionnaire___9_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
+<#assign trouble_with_sleeping_def = patient_health_questionnaire___9_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign disturbed_speech_and_or_movement_ehr_data = patient_health_questionnaire___9_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
+<#assign little_pleasure_doing_things_ehr_data = patient_health_questionnaire___9_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign feeling_hopeless_ehr_data = patient_health_questionnaire___9_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign disturbed_appetite_ehr_data = patient_health_questionnaire___9_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign feeling_like_a_failure_ehr_data = patient_health_questionnaire___9_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign if___0__what_impact_on_your_life__ehr_data = patient_health_questionnaire___9_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign suicidal_thoughts_ehr_data = patient_health_questionnaire___9_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
+<#assign total_score_ehr_data = patient_health_questionnaire___9_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
+<#assign event_time_ehr_data = patient_health_questionnaire___9_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign feeling_tired_ehr_data = patient_health_questionnaire___9_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign trouble_concentrating_ehr_data = patient_health_questionnaire___9_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
+<#assign trouble_with_sleeping_ehr_data = patient_health_questionnaire___9_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign disturbed_speech_and_or_movement_cds_data = patient_health_questionnaire___9_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
+<#assign little_pleasure_doing_things_cds_data = patient_health_questionnaire___9_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign feeling_hopeless_cds_data = patient_health_questionnaire___9_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign disturbed_appetite_cds_data = patient_health_questionnaire___9_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign feeling_like_a_failure_cds_data = patient_health_questionnaire___9_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign if___0__what_impact_on_your_life__cds_data = patient_health_questionnaire___9_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign suicidal_thoughts_cds_data = patient_health_questionnaire___9_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
+<#assign total_score_cds_data = patient_health_questionnaire___9_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
+<#assign event_time_cds_data = patient_health_questionnaire___9_entry_cds_data + "[0].elements['/data/events/time']">
+<#assign feeling_tired_cds_data = patient_health_questionnaire___9_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign trouble_concentrating_cds_data = patient_health_questionnaire___9_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
+<#assign trouble_with_sleeping_cds_data = patient_health_questionnaire___9_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+
+<script> 
+angular.module('cds_app').controller('PHQ9_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+    $scope.${disturbed_speech_and_or_movement_ehr_data}.value.selection = $scope.findMin($scope.${disturbed_speech_and_or_movement_def});
+	$scope.${little_pleasure_doing_things_ehr_data}.value.selection = $scope.findMin($scope.${little_pleasure_doing_things_def});
+	$scope.${feeling_hopeless_ehr_data}.value.selection = $scope.findMin($scope.${feeling_hopeless_def});
+	$scope.${disturbed_appetite_ehr_data}.value.selection = $scope.findMin($scope.${disturbed_appetite_def});
+	$scope.${feeling_like_a_failure_ehr_data}.value.selection = $scope.findMin($scope.${feeling_like_a_failure_def});
+	$scope.${suicidal_thoughts_ehr_data}.value.selection = $scope.findMin($scope.${suicidal_thoughts_def});
+	$scope.${feeling_tired_ehr_data}.value.selection = $scope.findMin($scope.${feeling_tired_def});
+	scope.${trouble_concentrating_ehr_data}.value.selection = $scope.findMin($scope.${trouble_concentrating_def});
+	$scope.${trouble_with_sleeping_ehr_data}.value.selection = $scope.findMin($scope.${trouble_with_sleeping_def});
+	$scope.${if___0__what_impact_on_your_life__ehr_data}.value.selection = $scope.findMin($scope.${if___0__what_impact_on_your_life__def});
+  });
+});
+</script>
+
+<div ng-show="ready" ng-controller="PHQ9_Ctrl">
+<div class="header">
+  <h1>{{def.concept.name}}</h1>
+  <h2>{{def.concept.description}}</h2>
+  <div class="help-tip">
+	<p>{{${app_help_tag}.description}}</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="row collapse" title="{{${disturbed_speech_and_or_movement_def}.description}}">
+    <div class="medium-5 columns">
+      <label>{{${disturbed_speech_and_or_movement_def}.name}}</label>
+      </div>
+      <label class="medium-7 columns">
+        <select ng-model="${disturbed_speech_and_or_movement_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${disturbed_speech_and_or_movement_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${little_pleasure_doing_things_def}.description}}">
+    <div class="medium-5 columns">
+      <label>{{${little_pleasure_doing_things_def}.name}}</label>
+      </div>
+      <label class="medium-7 columns">
+        <select ng-model="${little_pleasure_doing_things_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${little_pleasure_doing_things_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${feeling_hopeless_def}.description}}">
+    <div class="medium-5 columns">
+      <label>{{${feeling_hopeless_def}.name}}</label>
+      </div>
+      <label class="medium-7 columns">
+        <select ng-model="${feeling_hopeless_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${feeling_hopeless_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${disturbed_appetite_def}.description}}">
+    <div class="medium-5 columns">
+      <label>{{${disturbed_appetite_def}.name}}</label>
+      </div>
+      <label class="medium-7 columns">
+        <select ng-model="${disturbed_appetite_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${disturbed_appetite_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${feeling_like_a_failure_def}.description}}">
+    <div class="medium-5 columns">
+      <label>{{${feeling_like_a_failure_def}.name}}</label>
+      </div>
+      <label class="medium-7 columns">
+        <select ng-model="${feeling_like_a_failure_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${feeling_like_a_failure_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${suicidal_thoughts_def}.description}}">
+    <div class="medium-5 columns">
+      <label>{{${suicidal_thoughts_def}.name}}</label>
+      </div>
+      <label class="medium-7 columns">
+        <select ng-model="${suicidal_thoughts_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${suicidal_thoughts_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${feeling_tired_def}.description}}">
+    <div class="medium-5 columns">
+      <label>{{${feeling_tired_def}.name}}</label>
+      </div>
+      <label class="medium-7 columns">
+        <select ng-model="${feeling_tired_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${feeling_tired_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${trouble_concentrating_def}.description}}">
+    <div class="medium-5 columns">
+      <label>{{${trouble_concentrating_def}.name}}</label>
+      </div>
+      <label class="medium-7 columns">
+        <select ng-model="${trouble_concentrating_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${trouble_concentrating_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${trouble_with_sleeping_def}.description}}">
+    <div class="medium-5 columns">
+      <label>{{${trouble_with_sleeping_def}.name}}</label>
+      </div>
+      <label class="medium-7 columns">
+        <select ng-model="${trouble_with_sleeping_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${trouble_with_sleeping_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+<div class="row collapse" title="{{${total_score_def}.description}}" style="background-color: #d5dce2;">
+  <div class="medium-5 columns">
+    <label><b>{{${total_score_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${total_score_cds_data}.value.magnitude}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${if___0__what_impact_on_your_life__def}.description}}">
+    <div class="medium-5 columns">
+      <label>{{${if___0__what_impact_on_your_life__def}.name}}</label>
+      </div>
+      <label class="medium-7 columns">
+        <select ng-model="${if___0__what_impact_on_your_life__ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${if___0__what_impact_on_your_life__def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+</div>
+</div>
+
+<div class="row"><div class="medium-12 columns"></div></div>
+<br /><br />
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
+</div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/11556941">Kroenke K, Spitzer RL, Williams JB. The PHQ-9: validity of a brief depression severity measure. J Gen Intern Med. 2001 Sep;16(9):606-13. PubMed PMID: 11556941; PubMed Central PMCID: PMC1495268.</a></i>
+        </li>
+      </div>
+    </div>
+	<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/20644190">Arroll B, Goodyear-Smith F, Crengle S, Gunn J, Kerse N, Fishman T, Falloon K, Hatcher S. Validation of PHQ-2 and PHQ-9 to screen for major depression in the primary care population. Ann Fam Med. 2010 Jul-Aug;8(4):348-53. doi: 10.1370/afm.1139. PubMed PMID: 20644190; PubMed Central PMCID: PMC2906530.</a></i>
+        </li>
+      </div>
+    </div>
+  </div>
+
+<style>
+  html, body {
+    height:100%;
+    width: 100%;
+  }
+  body {
+    font-family: sans-serif;
+    font-weight: 300;
+    color: #333;
+    background: #ecf0f9;
+    padding: 1em;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 {
+    font-weight: 600;
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 22px;
+    font-style: italic;
+  }
+  .header {
+    margin-bottom: 2em;
+  }
+  .card {
+    background-color: #fdfdfd;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 10px auto 0 auto;
+    padding: 1em;
+    width: 50%;
+    overflow: hidden;
+  }
+  .help-tip{
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      text-align: center;
+      background-color: #BCDBEA;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      line-height: 26px;
+      cursor: default;
+  }
+  .help-tip:before{
+      content:'?';
+      font-weight: bold;
+      color:#fff;
+  }
+  .help-tip:hover p{
+      display:block;
+      transform-origin: 100% 0%;
+      -webkit-animation: fadeIn 0.3s ease-in-out;
+      animation: fadeIn 0.3s ease-in-out;
+  }
+  .help-tip p{	/* The tooltip */
+      display: none;
+      text-align: left;
+      background-color: #1E2021;
+      padding: 20px;
+      width: 300px;
+      position: absolute;
+      border-radius: 3px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+      right: -4px;
+      color: #FFF;
+      font-size: 13px;
+      line-height: 1.4;
+      z-index: 9999;
+  }
+  .help-tip p:before{ /* The pointer of the tooltip */
+      position: absolute;
+      content: '';
+      width:0;
+      height: 0;
+      border:6px solid transparent;
+      border-bottom-color:#1E2021;
+      right:10px;
+      top:-12px;
+  }
+  .help-tip p:after{ /* Prevents the tooltip from being hidden */
+      width:100%;
+      height:40px;
+      content:'';
+      position: absolute;
+      top:-40px;
+      left:0;
+  }
+  .references1{
+    font-size: 70%;
+  }
+  /* CSS animation */
+  @-webkit-keyframes fadeIn {
+      0% { 
+          opacity:0; 
+          transform: scale(0.6);
+      }
+
+      100% {
+          opacity:100%;
+          transform: scale(1);
+      }
+  }
+  @keyframes fadeIn {
+      0% { opacity:0; }
+      100% { opacity:100%; }
+  }
+  #displayresult1 {
+    background-color: #e6e6e6; 
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 90%;
+  }
+  select, label:not(#h-fix) {
+    margin-bottom: 10px;
+</style>
+
+
+</body></html>
