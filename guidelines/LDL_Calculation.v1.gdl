@@ -1,0 +1,122 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"LDL_Calculation.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"Friedewald formula", "LDL cholesterol", "Lipid profile", "Coronary disease risk">
+				misuse = <"If Triglyceride concentration in the sample is greater than 400mg/dl, this is not a reliable method for calculating LDL cholesterol.">
+				purpose = <"Calculated LDL cholesterol concentration is used for risk stratification of coronary heart disease (CHD) events.
+Calculated LDL is also used to set goals for therapy (reduction of LDL cholesterol levels), to determine need for therapeutic lifestyle changes (TLC) and to determine whether cholesterol lowering drug therapy should be considered.">
+				use = <"Use to calculate the LDL cholesterol level from given levels of Total cholesterol (TC), HDL cholesterol (HDL) and Triglycerides (TG).
+This guide calculates LDL cholesterol using the Friedewald formula: (Total cholesterol - HDL cholesterol - [Triglycerides/5]). All analytes are given with the unit: mg/dl. In an adult, values less than 100 mg/dl are regarded as optimal; 100-129 mg/dl — near optimal, above optimal; 130-159 mg/dl — borderline high; 160-189 mg/dl — high; and greater than 189 mg/dl — very high.">
+			>
+		>
+		lifecycle_state = <"Author draft">
+		original_author = <
+			["date"] = <"2016-09-29">
+			["email"] = <"info@cambio.se">
+			["name"] = <"Eneimi Allwell-Brown">
+			["organisation"] = <"Cambio+ Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"1. Friedewald WT, Levy RI, Fredrickson DS. Estimation of the concentration of low-density lipoprotein cholesterol in plasma, without use of the preparative ultracentrifuge. Clinical chemistry. 1972 Jun 1;18(6):499-502.
+2. McNamara JR, Cohn JS, Wilson PW, Schaefer EJ. Calculated values for low-density lipoprotein cholesterol in the assessment of lipid abnormalities and coronary disease risk. Clinical chemistry. 1990 Jan 1;36(1):36-42.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0003"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-lipids.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0004"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.5]">
+					>
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.3]">
+					>
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.4]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0008"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-lipids.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0009"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.2]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0002"] = (RULE) <
+				when = <"$gt0004.units=='mg/dl'", "$gt0006.units=='mg/dl'", "$gt0005.units=='mg/dl'">
+				then = <"$gt0009.magnitude=(($gt0004.magnitude-$gt0005.magnitude)-($gt0006.magnitude/5))", "$gt0009.precision=2", "$gt0009.units='mg/dl'">
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_bindings = <
+			["SNOMEDCT"] = (TERM_BINDING) <
+				bindings = <
+					["gt0004"] = (BINDING) <
+						codes = <[SNOMEDCT::121868005],...>
+						uri = <"http://snomed.info/id/">
+					>
+					["gt0005"] = (BINDING) <
+						codes = <[SNOMEDCT::28036006],...>
+						uri = <"http://snomed.info/id/">
+					>
+					["gt0006"] = (BINDING) <
+						codes = <[SNOMEDCT::14740000],...>
+						uri = <"http://snomed.info/id/">
+					>
+					["gt0009"] = (BINDING) <
+						codes = <[SNOMEDCT::395065005],...>
+						uri = <"http://snomed.info/id/">
+					>
+				>
+			>
+		>
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"LDL Calculated">
+						description = <"Calculated LDL is the derived value of low-density lipoprotein (LDL cholesterol) in an individual's blood, serum or plasma, using the Friedewald formula (Total cholesterol - HDL cholesterol - [Triglycerides/5]). LDL cholesterol is regarded as the most important form of cholesterol in determining heart disease risk and is part of a full lipid profile which is extremely useful in determining an individual's cardiovascular risk level, what treatment may be required and to monitor the effectiveness of treatment. In an adult, values less than 100 mg/dL (2.59 mmol/L) are regarded as optimal; 100-129 mg/dL (2.59-3.34 mmol/L) — near optimal, above optimal; 130-159 mg/dL (3.37-4.12 mmol/L) — borderline high; 160-189 mg/dL (4.15-4.90 mmol/L) — high; and greater than 189 mg/dL (4.90 mmol/L) — very high.">
+					>
+					["gt0002"] = (TERM) <
+						text = <"Calculate LDL cholesterol">
+						description = <"This rule sets the conditions and provides the expression logic for calculating LDL cholesterol.">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Total Cholesterol">
+						description = <"The total cholesterol concentration in the sample.">
+					>
+					["gt0005"] = (TERM) <
+						text = <"HDL Cholesterol">
+						description = <"HDL cholesterol level in the sample.">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Triglycerides">
+						description = <"The triglyceride concentration in the sample.">
+					>
+					["gt0009"] = (TERM) <
+						text = <"LDL Cholesterol">
+						description = <"LDL cholesterol level in the sample.">
+					>
+				>
+			>
+		>
+	>
+>
