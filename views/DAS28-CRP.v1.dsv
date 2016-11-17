@@ -120,8 +120,21 @@
 <#assign patient_global_assessment_of_disease_activity__ptgda__score_ehr_data = patient_global_assessment_of_disease_activity__ptgda__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 <#assign event_time3_ehr_data = patient_global_assessment_of_disease_activity__ptgda__entry_ehr_data + "[0].elements['/data/events/time']">
 
+<script> 
+angular.module('cds_app').controller('DAS28-CRP_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
+    $scope.${swollen_joint_count__sjc__ehr_data}.value.magnitude = $scope.findMin($scope.${swollen_joint_count__sjc__def});
+	$scope.${tender_joint_count__tjc__ehr_data}.value.magnitude = $scope.findMin($scope.${tender_joint_count__tjc__def});
+	$scope.${patient_global_assessment_of_disease_activity__ptgda__score_ehr_data}.value.units = $scope.${patient_global_assessment_of_disease_activity__ptgda__score_def}.units[1];
+    $scope.${result_ehr_data}.value.units = $scope.${result_def}.units[0];
+  });
+});
+</script>
 
-<div ng-show="ready">
+<div ng-show="ready" ng-controller="DAS28-CRP_Ctrl">
 <div class="header">
   <h1>{{def.concept.name}}</h1>
   <h2>{{def.concept.description}}</h2>
@@ -146,15 +159,15 @@
         <input ng-model="${tender_joint_count__tjc__ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
 </div>
-<div class="row collapse" title="{{${patient_global_assessment_of_disease_activity__ptgda__entry_def}.description}}">
+<div class="row collapse" title="{{${patient_global_assessment_of_disease_activity__ptgda__score_def}.description}}">
 <div class="medium-5 columns">
-<label>{{${patient_global_assessment_of_disease_activity__ptgda__entry_def}.name}}</label>
+<label>{{${patient_global_assessment_of_disease_activity__ptgda__score_def}.name}}</label>
 </div>
 <div class="medium-5 columns">
-        <input ng-model="${patient_global_assessment_of_disease_activity__ptgda__entry_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+        <input ng-model="${patient_global_assessment_of_disease_activity__ptgda__score_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
 	  <div class="medium-2 columns">
-        <select ng-model="${patient_global_assessment_of_disease_activity__ptgda__entry_ehr_data}.value.units" ng-options="unit for unit in ${patient_global_assessment_of_disease_activity__ptgda__entry_def}.units" ng-change="execute()"=""></select>
+        <select ng-model="${patient_global_assessment_of_disease_activity__ptgda__score_ehr_data}.value.units" ng-options="unit for unit in ${patient_global_assessment_of_disease_activity__ptgda__score_def}.units" ng-change="execute()"=""></select>
       </div>
 </div>
   <div class="row collapse" title="{{${lab_test_c_reactive_protein_entry_def}.description}}">
