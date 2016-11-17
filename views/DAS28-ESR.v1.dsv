@@ -40,7 +40,7 @@
       "email": "info@cambio.se"
     },
     "otherContributors": [
-      "Dennis Forslund, Cambio Healthcare Systems"
+      "Dennis Forslund, Cambio Healthcare Systems","Jimmy Axelsson, Cambio Healthcare Systems"
     ],
     "details": {
       "sv": {
@@ -52,7 +52,7 @@
           "DAS28",
           "DAS28-ESR"
         ],
-        "use": "Använd för att beräkna värdet av DAS28-ESR baserat på fyra parametrar: antal ömma (TJC) och svullna (SJC) leder, sjukdomskänsla enligt VAS (PtGDA - Patient Global Assessment of Disease Activity), provresultat för sänkningsreaktion (SR/ESR - angivet i mm/h). Dessa parametrar återfinns samtliga i separata arketyper. (PtGDA anges i \\\"mm\\\")\n\n\nFormel: DAS28-ESR \u003d (0.56*√(TJC)+0.28*√(SJC)+0.7*ln(ESR)+0.014*(PtGDA))\n",
+        "use": "Använd för att beräkna värdet av DAS28-ESR baserat på fyra parametrar: antal ömma (TJC) och svullna (SJC) leder, sjukdomskänsla enligt VAS (PtGDA - Patient Global Assessment of Disease Activity), provresultat för sänkningsreaktion (SR/ESR - angivet i mm/h). Dessa parametrar återfinns samtliga i separata arketyper. (PtGDA anges i mm)\n\n\n",
         "copyright": "© Cambio Healthcare Systems"
       },
       "en": {
@@ -64,7 +64,7 @@
           "swollen joint count",
           "DAS28-ESR"
         ],
-        "use": "Use to calculate DAS28-ESR, based on four input parameters: tender joint count (TJC), swollen joint count (SJC), patient global assessment of disease activity (PtGDA), and erythrocyte sedimentation rate (in mm/hr). PtGDA uses the unit \u0027mm\u0027.\n\nDAS28-ESR \u003d (0.56*√(TJC)+0.28*√(SJC)+0.7*ln(ESR)+0.014*(PtGDA))",
+        "use": "Use to calculate DAS28-ESR, based on four input parameters: tender joint count (TJC), swollen joint count (SJC), patient global assessment of disease activity (PtGDA), and erythrocyte sedimentation rate (in mm/hr). PtGDA uses the unit mm.\n\nDAS28-ESR",
         "copyright": "© Cambio Healthcare Systems"
       }
     },
@@ -128,87 +128,75 @@
 <#assign event_time3_def = patient_global_assessment_of_disease_activity__ptgda__entry_def + ".elements['/data/events/time']">
 <#assign patient_global_assessment_of_disease_activity__ptgda__score_ehr_data = patient_global_assessment_of_disease_activity__ptgda__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 <#assign event_time3_ehr_data = patient_global_assessment_of_disease_activity__ptgda__entry_ehr_data + "[0].elements['/data/events/time']">
-<div ng-show="ready">
-<div class="row">
-<div class="medium-12 column">
-<h1>{{def.concept.name}}</h1>
+
+<script> 
+angular.module('cds_app').controller('DAS28-ESR_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time3_ehr_data}.value.value = new Date().toISOString();
+    $scope.${patient_global_assessment_of_disease_activity__ptgda__score_ehr_data}.value.units = $scope.${patient_global_assessment_of_disease_activity__ptgda__score_def}.units[1];
+    $scope.${erythrocyte_sedimentation_rate__esr__ehr_data}.value.units = $scope.${erythrocyte_sedimentation_rate__esr__def}.units[0];
+  });
+});
+</script>
+
+<div ng-show="ready" ng-controller="DAS28-ESR_Ctrl">
+<div class="header">
+  <h1>{{def.concept.name}}</h1>
+  <h2>{{def.concept.description}}</h2>
+  <div class="help-tip">
+  <p>{{${app_help_tag}.description}}</p>
+  </div>
 </div>
-</div>
-<div class="row">
-<div class="medium-6 column">
-<form name="form">
-<fieldset>
-<legend>{{${erythroctye_sedimentation_rate_entry_def}.name}}</legend>
-<label>{{${event_time_def}.name}}</label>
-<div class="row collapse" title="{{${event_time_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time_ehr_data}.value.value" type="text" pikaday="date" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
-</div>
-</div>
-<label>{{${erythrocyte_sedimentation_rate__esr__def}.name}}</label>
-<div class="row collapse" title="{{${erythrocyte_sedimentation_rate__esr__def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${erythrocyte_sedimentation_rate__esr__ehr_data}.value.magnitude" type="number" step="any" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
-</div>
-<div class="medium-3 columns">
-<select ng-model="${erythrocyte_sedimentation_rate__esr__ehr_data}.value.units" id="erythrocyte_sedimentation_rate__esr__ehr_units" ng-options="unit for unit in ${erythrocyte_sedimentation_rate__esr__def}.units" ng-change="execute()"></select>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${disease_activity_index___joint_score_entry_def}.name}}</legend>
-<label>{{${swollen_joint_count__sjc__def}.name}}</label>
+<div class="card">
 <div class="row collapse" title="{{${swollen_joint_count__sjc__def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${swollen_joint_count__sjc__ehr_data}.value.magnitude" type="number" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+<div class="medium-5 columns">
+<label>{{${swollen_joint_count__sjc__def}.name}}</label>
 </div>
+<div class="medium-7 columns">
+        <input ng-model="${swollen_joint_count__sjc__ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
 </div>
-<label>{{${event_time2_def}.name}}</label>
-<div class="row collapse" title="{{${event_time2_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time2_ehr_data}.value.value" type="text" pikaday="date" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
-</div>
-</div>
-<label>{{${tender_joint_count__tjc__def}.name}}</label>
 <div class="row collapse" title="{{${tender_joint_count__tjc__def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${tender_joint_count__tjc__ehr_data}.value.magnitude" type="number" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+<div class="medium-5 columns">
+<label>{{${tender_joint_count__tjc__def}.name}}</label>
 </div>
+<div class="medium-7 columns">
+        <input ng-model="${tender_joint_count__tjc__ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
 </div>
-</fieldset>
-<fieldset>
-<legend>{{${patient_global_assessment_of_disease_activity__ptgda__entry_def}.name}}</legend>
-<label>{{${patient_global_assessment_of_disease_activity__ptgda__score_def}.name}}</label>
 <div class="row collapse" title="{{${patient_global_assessment_of_disease_activity__ptgda__score_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${patient_global_assessment_of_disease_activity__ptgda__score_ehr_data}.value.magnitude" type="number" step="any" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+<div class="medium-5 columns">
+<label>{{${patient_global_assessment_of_disease_activity__ptgda__score_def}.name}}</label>
 </div>
-<div class="medium-3 columns">
-<select ng-model="${patient_global_assessment_of_disease_activity__ptgda__score_ehr_data}.value.units" id="patient_global_assessment_of_disease_activity__ptgda__score_ehr_units" ng-options="unit for unit in ${patient_global_assessment_of_disease_activity__ptgda__score_def}.units" ng-change="execute()"></select>
+<div class="medium-5 columns">
+        <input ng-model="${patient_global_assessment_of_disease_activity__ptgda__score_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+    <div class="medium-2 columns">
+        <select ng-model="${patient_global_assessment_of_disease_activity__ptgda__score_ehr_data}.value.units" ng-options="unit for unit in ${patient_global_assessment_of_disease_activity__ptgda__score_def}.units" ng-change="execute()" disabled></select>
+      </div>
 </div>
-</div>
-<label>{{${event_time3_def}.name}}</label>
-<div class="row collapse" title="{{${event_time3_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time3_ehr_data}.value.value" type="text" pikaday="date" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
-</div>
-</div>
-</fieldset>
-</form>
-</div>
-<div class="medium-6 column">
-<fieldset>
-<legend>{{${disease_activity_score_28_esr_entry_def}.name}}</legend>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${das28_esr_def}.name}}: </b>{{${das28_esr_cds_data}.value.magnitude}} {{${das28_esr_cds_data}.value.units}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${event_time1_def}.name}}: </b>{{${event_time1_cds_data}.value.value}}</div>
-</div>
-</fieldset>
-</div>
+  <div class="row collapse" title="{{${erythrocyte_sedimentation_rate__esr__def}.description}}">
+      <div class="medium-5 columns">
+        <label>{{${erythrocyte_sedimentation_rate__esr__def}.name}}</label>
+      </div>
+      <div class="medium-5 columns">
+        <input ng-model="${erythrocyte_sedimentation_rate__esr__ehr_data}.value.magnitude" type="number" step="any" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+      <div class="medium-2 columns">
+        <select ng-model="${erythrocyte_sedimentation_rate__esr__ehr_data}.value.units" ng-options="unit for unit in ${erythrocyte_sedimentation_rate__esr__def}.units" ng-change="execute()" disabled></select>
+      </div>
+    </div>
+ <div class="row collapse" title="{{${das28_esr_def}.description}}" id="displayresult1">
+    <div class="medium-5 columns">
+      <span><b>{{${das28_esr_def}.name}}:</b></span>
+    </div>
+    <div class="medium-7 columns">
+      <span>{{${das28_esr_cds_data}.value.magnitude}} {{${das28_esr_cds_data}.value.units}}</span>
+    </div>
+  </div>
+  
 </div>
 </div>
 
@@ -270,7 +258,7 @@
       -webkit-animation: fadeIn 0.3s ease-in-out;
       animation: fadeIn 0.3s ease-in-out;
   }
-  .help-tip p{	/* The tooltip */
+  .help-tip p{  /* The tooltip */
       display: none;
       text-align: left;
       background-color: #1E2021;
@@ -336,7 +324,5 @@
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
-
-
-
-</body></html>
+</body>
+</html>
