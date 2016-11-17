@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.assign_score.v1
 
 concept
-	[at0000]	-- Assign score
+	[at0000]	-- ASSIGN score
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -39,6 +48,36 @@ An ASSIGN score of > 20 is high and identifies individuals of high risk of cardi
 Only for individuals in Scotland (unless postcode mapping is also adjusted to the new region - or SIGN is used instead)">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"ASSIGN utvecklades för att identifiera och kategorisera sedan tidigare friska individer med förhöjd risk för insjuknande i hjärt-kärlsjukdom under kommande tio åren.
+">
+			use = <"Poängsystemet baseras på historiska data och resultatet anges mellan 0-99 vilket representerar den procentuella risken för utveckling av kardiovaskulär sjukdom under kommande tio åren (inklusive kranskärlssjukdom, cerebrovaskulär sjukdom inklusive transitorisk ischemisk attack) hos friska individer.
+
+ASSIGN score baseras på SIGN score, med tillägg av individens postnummer (representativt för socioekonomisk status). Denna utvärderas med hjälp av SIMD (Scottish Index of Multiple Deprivation 2012), varför ASSIGN för närvarande endast kan relateras till Skottland. Tillgång till liknande material möjliggör givetvis användning av poängsystemet i andra regioner.
+
+Faktorer som tas med i beräkningen av risk:
+
+Hög ålder
+Kön (manligt kön > kvinnligt kön)
+Låg socioekonomisk status 
+Familjehistorik med avseende på kardiovaskulär sjukdom
+Diagnostiserad diabetes mellitus
+Diagnostiserad reumatoid artrit
+Rökning (cigaretter, pipa, cigarrer)
+Blodtryck
+Totalt kolesterol
+HDL-kolesterol
+
+Samtliga faktorer ovan sammanvägs för ett resultat 0-99. Beräkningen baseras på en lång formel [4]inkluderande flertalet koefficienter relaterade till risk. Poängen representerar den procentuella risken för utveckling av kardiovaskulär sjukdom under kommande tio åren. Poäng >20 räknas som hög risk och bör leda till övervägande av preventiva åtgärder.
+">
+			keywords = <"ASSIGN", "SIGN">
+			misuse = <"Då ASSIGN endast är en uppskattning bör resultatet ej ses som en absolut indikator på risk. Vidare utredning bör vid lämpliga fall tillämpas. Blodtryck och kolesterolvärden bör ej användas utan noga kontroll av eventuellt föreliggande behandling. 
+
+I nuläget endast applicerbar på skotska befolkningen.
+">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -50,17 +89,17 @@ Ref. 2: Tunstall-Pedoe H, Woodward M, for the SIGN group on risk estimation. By 
 Ref. 3: Woodward M, Brindle P, Tunstall-Pedoe H, for the SIGN group on risk estimation. Adding social deprivation and family history to cardiovascular risk assessment: the ASSIGN score from the Scottish Heart Health Extended Cohort (SHHEC). Heart 2007: 93(2):172-6.
 
 Ref. 4: Risk calculator excel. Written by Dr Rupert Payne, The University of Edinburgh, May 2010. Further advice on the appropriate use of the risk equations can be found at http://cvrisk.mvm.ed.ac.uk/help.htm">
-		["MD5-CAM-1.0.1"] = <"269359AB3122A6143B132101CD3B1333">
+		["MD5-CAM-1.0.1"] = <"DA8EA31552F886AC7D9A5EEEC439C17C">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Assign score
+	OBSERVATION[at0000] matches {	-- ASSIGN score
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
 									ELEMENT[at0004] occurrences matches {0..1} matches {	-- ASSIGN score
 										value matches {
@@ -69,7 +108,7 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -110,6 +149,34 @@ ontology
 				["at0009"] = <
 					text = <"Comment">
 					description = <"Any specific comments regarding the factors">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"ASSIGN score">
+					description = <"ASSIGN Score utvecklades 2006 av University of Dundee i Skottland i enlighet med riktlinjer baserade på SIGN (Scottish Intercollegiate Guidelines Network), i syfte att skapa en objektiv metod för uppskattning av risk för kardiovaskulär sjukdom. ">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"ASSIGN score">
+					description = <"Uppskattning av risk för insjuknande i kardiovaskulär sjukdom, 0-99">
+				>
+				["at0009"] = <
+					text = <"Kommentar">
+					description = <"Ev tillägg kring inkluderade faktorerna">
 				>
 			>
 		>
