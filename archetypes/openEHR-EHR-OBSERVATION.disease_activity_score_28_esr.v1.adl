@@ -1,0 +1,95 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.disease_activity_score_28_esr.v1
+
+concept
+	[at0000]	-- Disease activity score 28-ESR
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Eneimi Allwell-Brown">
+		["email"] = <"info@cambio.se">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2016-11-07">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"This archetype stores the value of the disease activity score 28-ESR (DAS28-ESR) which is a measure of disease activity and treatment response in individuals with rheumatoid arthritis.">
+			use = <"Use to store calculated DAS28-ESR which is based on 4 (four) input parameters: tender joint count (TJC), swollen joint count (SJC), patient global assessment of disease activity (PtGDA) and erythrodyte sedimentation rate (in mm/hr). These 4 parameters exist in separate archetypes.
+
+DAS28-ESR = (0.56*√(TJC)+0.28*√(SJC)+0.7*ln(ESR)+0.014*(PtGDA))">
+			keywords = <"rheumatoid arthritis", "PaGDA", "tender joint count", "swollen joint count", "DAS28-ESR">
+			misuse = <"">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Anderson J, Caplan L, Yazdany J, Robbins ML, Neogi T, Michaud K, Saag KG, O'dell JR, Kazi S. Rheumatoid arthritis disease activity measures: American College of Rheumatology recommendations for use in clinical practice. Arthritis care & research. 2012 May 1;64(5):640-7.
+
+Wells G, Becker JC, Teng J, Dougados M, Schiff M, Smolen J, Aletaha D, Van Riel PL. Validation of the 28-joint Disease Activity Score (DAS28) and European League Against Rheumatism response criteria based on C-reactive protein against disease progression in patients with rheumatoid arthritis, and comparison with the DAS28 based on erythrocyte sedimentation rate. Annals of the rheumatic diseases. 2009 Jun 1;68(6):954-60.">
+		["MD5-CAM-1.0.1"] = <"6BA3D8948640A1B5886025D4A7BDD8E6">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Disease activity score 28-ESR
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- DAS28-ESR
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Disease activity score 28-ESR">
+					description = <"Disease activity score 28-ESR (DAS28-ESR) is a calculated score for assessing disease activity in individuals with rheumatoid arthritis (RA). It is calculated from a formula using four parameters: the number of tender (0 - 28) and swollen (0 - 28) joints the patient has, the patient global assessment of disease activity (on a visual analogue scale 0.0 -10.0), and the patient's erythrocyte sedimentation rate (ESR).">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"DAS28-ESR">
+					description = <"Disease activity score 28 (ESR) is calculated from a formula that includes tender joint count (TJC), swollen joint count (SJC), patient assessment of global disease activity (PtGDA) and erythrocyte sedimentation rate (ESR).">
+				>
+				["at0005"] = <
+					text = <"Comment">
+					description = <"*">
+				>
+			>
+		>
+	>
