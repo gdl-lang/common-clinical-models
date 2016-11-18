@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.disease_activity_index_joint_score.v1
 
 concept
-	[at0000]	-- Disease activity index - joint score
+	[at0000]	-- Index för sjukdomsaktivitet - leder
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
@@ -13,6 +22,19 @@ description
 		["date"] = <"2016-10-29">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att identifiera antalet ömma och svullna leder i syfte att skapa ett index för sjukdomsaktivitet relaterat till reumatisk sjukdom. Sjukdomsbilden vid reumatoid artrit innehåller typiskt förekomst av ömhet och svullnad i flertalet såväl små som stora leder, och denna metod medger effektiv utvärdering av behandling.">
+			use = <"Använd för att registrera antalet ömma (TJC) och svullna (SJC) leder. Totalt 28 leder utvärderas för ömhet och svullnad enligt: axelled, armbågsled, handled, 1a-5e metakarpofalangeallederna, 1a-5e proximala interphalangeallederna samt knäled. Samtliga leder undersöks bilateralt.
+
+Förekomst av ömhet i en led genererar en poäng medan avsaknad av ömhet ger noll poäng. Detsamma gäller för svullnad. Då 28 leder ingår uppgår maximala poängsumman för såväl ömhet som svullnad till 28 poäng. 
+
+Används med fördel som del i att beräkna Simple Disease Activity Index (SDAI), Clinical Disease Activity Index (CDAI), Disease Activity Score with ESR (DAS28) och Disease Activity Score with CRP (DAS28-CRP).
+">
+			keywords = <"SDAI", "CDAI", "DAS28", "reumatoid artrit", "RA">
+			misuse = <"">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To identify the count of tender and swollen body joints as an index of rheumatic disease activity. Rheumatoid arthritis (RA) typically produces tenderness and swelling in multiple small and large joints and a count of joints so affected is a viable tool for day-to-day clinical assessment of RA treatment.">
@@ -35,393 +57,393 @@ Use as a component measure in calculating simplified disease activity index (SDA
 Smolen JS, Breedveld FC, Schiff MH, Kalden JR, Emery P, Eberl G, Van Riel PL, Tugwell P. A simplified disease activity index for rheumatoid arthritis for use in clinical practice. Rheumatology. 2003 Feb 1;42(2):244-57.
 
 van Gestel AM, Haagsma CJ, van Riel PL. Validation of rheumatoid arthritis improvement criteria that include simplified joint counts. Arthritis & Rheumatism. 1998 Oct 1;41(10):1845-50.">
-		["MD5-CAM-1.0.1"] = <"89B5D35C06A327BC72E44566DF06E0F4">
+		["MD5-CAM-1.0.1"] = <"86DB2772B22B3088BAC682609C9BF6DE">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Disease activity index - joint score
+	OBSERVATION[at0000] matches {	-- Index för sjukdomsaktivitet - leder
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									CLUSTER[at0004] occurrences matches {0..1} matches {	-- Tender joints
+									CLUSTER[at0004] occurrences matches {0..1} matches {	-- Ömma leder
 										items cardinality matches {1..*; ordered} matches {
-											CLUSTER[at0127] occurrences matches {0..1} matches {	-- Left side
+											CLUSTER[at0127] occurrences matches {0..1} matches {	-- Vänster sida
 												items cardinality matches {1..*; ordered} matches {
-													ELEMENT[at0026] occurrences matches {0..1} matches {	-- Left Shoulder joint
+													ELEMENT[at0026] occurrences matches {0..1} matches {	-- Vänster axelled
 														value matches {
-															0|[local::at0073], 	-- No tenderness
-															1|[local::at0074]  	-- Tenderness present
+															0|[local::at0073], 	-- Avsaknad av ömhet
+															1|[local::at0074]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0027] occurrences matches {0..1} matches {	-- Left Elbow joint
+													ELEMENT[at0027] occurrences matches {0..1} matches {	-- Vänster armbågsled
 														value matches {
-															0|[local::at0076], 	-- No tenderness
-															1|[local::at0077]  	-- Tenderness present
+															0|[local::at0076], 	-- Avsaknad av ömhet
+															1|[local::at0077]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0028] occurrences matches {0..1} matches {	-- Left Wrist joint
+													ELEMENT[at0028] occurrences matches {0..1} matches {	-- Vänster handled
 														value matches {
-															0|[local::at0079], 	-- No tenderness
-															1|[local::at0080]  	-- Tenderness present
+															0|[local::at0079], 	-- Avsaknad av ömhet
+															1|[local::at0080]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0029] occurrences matches {0..1} matches {	-- Left MCP 1 joint
+													ELEMENT[at0029] occurrences matches {0..1} matches {	-- Vänster MCP 1-led
 														value matches {
-															0|[local::at0082], 	-- No tenderness
-															1|[local::at0083]  	-- Tenderness present
+															0|[local::at0082], 	-- Avsaknad av ömhet
+															1|[local::at0083]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0030] occurrences matches {0..1} matches {	-- Left MCP 2 joint
+													ELEMENT[at0030] occurrences matches {0..1} matches {	-- Vänster MCP 2-led
 														value matches {
-															0|[local::at0085], 	-- No tenderness
-															1|[local::at0086]  	-- Tenderness present
+															0|[local::at0085], 	-- Avsaknad av ömhet
+															1|[local::at0086]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0031] occurrences matches {0..1} matches {	-- Left MCP 3 joint
+													ELEMENT[at0031] occurrences matches {0..1} matches {	-- Vänster MCP 3-led
 														value matches {
-															0|[local::at0088], 	-- No tenderness
-															1|[local::at0089]  	-- Tenderness present
+															0|[local::at0088], 	-- Avsaknad av ömhet
+															1|[local::at0089]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0032] occurrences matches {0..1} matches {	-- Left MCP 4 joint
+													ELEMENT[at0032] occurrences matches {0..1} matches {	-- Vänster MCP 4-led
 														value matches {
-															0|[local::at0091], 	-- No tenderness
-															1|[local::at0092]  	-- Tenderness present
+															0|[local::at0091], 	-- Avsaknad av ömhet
+															1|[local::at0092]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0033] occurrences matches {0..1} matches {	-- Left MCP 5 joint
+													ELEMENT[at0033] occurrences matches {0..1} matches {	-- Vänster MCP 5-led
 														value matches {
-															0|[local::at0094], 	-- No tenderness
-															1|[local::at0095]  	-- Tenderness present
+															0|[local::at0094], 	-- Avsaknad av ömhet
+															1|[local::at0095]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0034] occurrences matches {0..1} matches {	-- Left PIP 1 joint
+													ELEMENT[at0034] occurrences matches {0..1} matches {	-- Vänster PIP 1-led
 														value matches {
-															0|[local::at0097], 	-- No tenderness
-															1|[local::at0098]  	-- Tenderness present
+															0|[local::at0097], 	-- Avsaknad av ömhet
+															1|[local::at0098]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0035] occurrences matches {0..1} matches {	-- Left PIP 2 joint
+													ELEMENT[at0035] occurrences matches {0..1} matches {	-- Vänster PIP 2-led
 														value matches {
-															0|[local::at0100], 	-- No tenderness
-															1|[local::at0101]  	-- Tenderness present
+															0|[local::at0100], 	-- Avsaknad av ömhet
+															1|[local::at0101]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0036] occurrences matches {0..1} matches {	-- Left PIP 3 joint
+													ELEMENT[at0036] occurrences matches {0..1} matches {	-- Vänster PIP 3-led
 														value matches {
-															0|[local::at0103], 	-- No tenderness
-															1|[local::at0104]  	-- Tenderness present
+															0|[local::at0103], 	-- Avsaknad av ömhet
+															1|[local::at0104]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0037] occurrences matches {0..1} matches {	-- Left PIP 4 joint
+													ELEMENT[at0037] occurrences matches {0..1} matches {	-- Vänster PIP 4-led
 														value matches {
-															0|[local::at0106], 	-- No tenderness
-															1|[local::at0107]  	-- Tenderness present
+															0|[local::at0106], 	-- Avsaknad av ömhet
+															1|[local::at0107]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0038] occurrences matches {0..1} matches {	-- Left PIP 5 joint
+													ELEMENT[at0038] occurrences matches {0..1} matches {	-- Vänster PIP 5-led
 														value matches {
-															0|[local::at0109], 	-- No tenderness
-															1|[local::at0110]  	-- Tenderness present
+															0|[local::at0109], 	-- Avsaknad av ömhet
+															1|[local::at0110]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0039] occurrences matches {0..1} matches {	-- Left Knee joint
+													ELEMENT[at0039] occurrences matches {0..1} matches {	-- Vänster knäled
 														value matches {
-															0|[local::at0112], 	-- No tenderness
-															1|[local::at0113]  	-- Tenderness present
+															0|[local::at0112], 	-- Avsaknad av ömhet
+															1|[local::at0113]  	-- Förekomst av ömhet
 														}
 													}
 												}
 											}
-											CLUSTER[at0128] occurrences matches {0..1} matches {	-- Right side
+											CLUSTER[at0128] occurrences matches {0..1} matches {	-- Höger sida
 												items cardinality matches {1..*; ordered} matches {
-													ELEMENT[at0131] occurrences matches {0..1} matches {	-- Right Shoulder joint
+													ELEMENT[at0131] occurrences matches {0..1} matches {	-- Höger axelled
 														value matches {
-															0|[local::at0159], 	-- No tenderness
-															1|[local::at0160]  	-- Tenderness present
+															0|[local::at0159], 	-- Avsaknad av ömhet
+															1|[local::at0160]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0132] occurrences matches {0..1} matches {	-- Right Elbow joint
+													ELEMENT[at0132] occurrences matches {0..1} matches {	-- Höger armbågsled
 														value matches {
-															0|[local::at0161], 	-- No tenderness
-															1|[local::at0162]  	-- Tenderness present
+															0|[local::at0161], 	-- Avsaknad av ömhet
+															1|[local::at0162]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0133] occurrences matches {0..1} matches {	-- Right Wrist joint
+													ELEMENT[at0133] occurrences matches {0..1} matches {	-- Höger handled
 														value matches {
-															0|[local::at0163], 	-- No tenderness
-															1|[local::at0164]  	-- Tenderness present
+															0|[local::at0163], 	-- Avsaknad av ömhet
+															1|[local::at0164]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0134] occurrences matches {0..1} matches {	-- Right MCP 1 joint
+													ELEMENT[at0134] occurrences matches {0..1} matches {	-- Höger MCP 1-led
 														value matches {
-															0|[local::at0165], 	-- No tenderness
-															1|[local::at0166]  	-- Tenderness present
+															0|[local::at0165], 	-- Avsaknad av ömhet
+															1|[local::at0166]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0135] occurrences matches {0..1} matches {	-- Right MCP 2 joint
+													ELEMENT[at0135] occurrences matches {0..1} matches {	-- Höger MCP 2-led
 														value matches {
-															0|[local::at0167], 	-- No tenderness
-															1|[local::at0168]  	-- Tenderness present
+															0|[local::at0167], 	-- Avsaknad av ömhet
+															1|[local::at0168]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0136] occurrences matches {0..1} matches {	-- Right MCP 3 joint
+													ELEMENT[at0136] occurrences matches {0..1} matches {	-- Höger MCP 3-led
 														value matches {
-															0|[local::at0169], 	-- No tenderness
-															1|[local::at0170]  	-- Tenderness present
+															0|[local::at0169], 	-- Avsaknad av ömhet
+															1|[local::at0170]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0137] occurrences matches {0..1} matches {	-- Right MCP 4 joint
+													ELEMENT[at0137] occurrences matches {0..1} matches {	-- Höger MCP 4-led
 														value matches {
-															0|[local::at0171], 	-- No tenderness
-															1|[local::at0172]  	-- Tenderness present
+															0|[local::at0171], 	-- Avsaknad av ömhet
+															1|[local::at0172]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0138] occurrences matches {0..1} matches {	-- Right MCP 5 joint
+													ELEMENT[at0138] occurrences matches {0..1} matches {	-- Höger MCP 5-led
 														value matches {
-															0|[local::at0173], 	-- No tenderness
-															1|[local::at0174]  	-- Tenderness present
+															0|[local::at0173], 	-- Avsaknad av ömhet
+															1|[local::at0174]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0139] occurrences matches {0..1} matches {	-- Right PIP 1 joint
+													ELEMENT[at0139] occurrences matches {0..1} matches {	-- Höger PIP 1-led
 														value matches {
-															0|[local::at0175], 	-- No tenderness
-															1|[local::at0176]  	-- Tenderness present
+															0|[local::at0175], 	-- Avsaknad av ömhet
+															1|[local::at0176]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0140] occurrences matches {0..1} matches {	-- Right PIP 2 joint
+													ELEMENT[at0140] occurrences matches {0..1} matches {	-- Höger PIP 2-led
 														value matches {
-															0|[local::at0177], 	-- No tenderness
-															1|[local::at0178]  	-- Tenderness present
+															0|[local::at0177], 	-- Avsaknad av ömhet
+															1|[local::at0178]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0141] occurrences matches {0..1} matches {	-- Right PIP 3 joint
+													ELEMENT[at0141] occurrences matches {0..1} matches {	-- Höger PIP 3-led
 														value matches {
-															0|[local::at0179], 	-- No tenderness
-															1|[local::at0180]  	-- Tenderness present
+															0|[local::at0179], 	-- Avsaknad av ömhet
+															1|[local::at0180]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0142] occurrences matches {0..1} matches {	-- Right PIP 4 joint
+													ELEMENT[at0142] occurrences matches {0..1} matches {	-- Höger PIP 4-led
 														value matches {
-															0|[local::at0181], 	-- No tenderness
-															1|[local::at0182]  	-- Tenderness present
+															0|[local::at0181], 	-- Avsaknad av ömhet
+															1|[local::at0182]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0143] occurrences matches {0..1} matches {	-- Right PIP 5 joint
+													ELEMENT[at0143] occurrences matches {0..1} matches {	-- Höger PIP 5-led
 														value matches {
-															0|[local::at0183], 	-- No tenderness
-															1|[local::at0184]  	-- Tenderness present
+															0|[local::at0183], 	-- Avsaknad av ömhet
+															1|[local::at0184]  	-- Förekomst av ömhet
 														}
 													}
-													ELEMENT[at0144] occurrences matches {0..1} matches {	-- Right Knee joint
+													ELEMENT[at0144] occurrences matches {0..1} matches {	-- Höger knäled
 														value matches {
-															0|[local::at0185], 	-- No tenderness
-															1|[local::at0186]  	-- Tenderness present
+															0|[local::at0185], 	-- Avsaknad av ömhet
+															1|[local::at0186]  	-- Förekomst av ömhet
 														}
 													}
 												}
 											}
 										}
 									}
-									CLUSTER[at0040] occurrences matches {0..1} matches {	-- Swollen joints
+									CLUSTER[at0040] occurrences matches {0..1} matches {	-- Svullna leder
 										items cardinality matches {1..*; ordered} matches {
-											CLUSTER[at0129] occurrences matches {0..1} matches {	-- Left side
+											CLUSTER[at0129] occurrences matches {0..1} matches {	-- Vänster sida
 												items cardinality matches {1..*; ordered} matches {
-													ELEMENT[at0059] occurrences matches {0..1} matches {	-- Left Shoulder joint
+													ELEMENT[at0059] occurrences matches {0..1} matches {	-- Vänster axelled
 														value matches {
-															0|[local::at0115], 	-- No swelling
-															1|[local::at0116]  	-- Swelling present
+															0|[local::at0115], 	-- Avsaknad av svullnad
+															1|[local::at0116]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0060] occurrences matches {0..1} matches {	-- Left Elbow joint
+													ELEMENT[at0060] occurrences matches {0..1} matches {	-- Vänster armbågsled
 														value matches {
-															0|[local::at0118], 	-- No swelling
-															1|[local::at0119]  	-- Swelling present
+															0|[local::at0118], 	-- Avsaknad av svullnad
+															1|[local::at0119]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0061] occurrences matches {0..1} matches {	-- Left Wrist joint
+													ELEMENT[at0061] occurrences matches {0..1} matches {	-- Vänster handled
 														value matches {
-															0|[local::at0121], 	-- No swelling
-															1|[local::at0122]  	-- Swelling present
+															0|[local::at0121], 	-- Avsaknad av svullnad
+															1|[local::at0122]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0062] occurrences matches {0..1} matches {	-- Left MCP 1 joint
+													ELEMENT[at0062] occurrences matches {0..1} matches {	-- Vänster MCP 1-led
 														value matches {
-															0|[local::at0124], 	-- No swelling
-															1|[local::at0125]  	-- Swelling present
+															0|[local::at0124], 	-- Avsaknad av svullnad
+															1|[local::at0125]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0063] occurrences matches {0..1} matches {	-- Left MCP 2 joint
+													ELEMENT[at0063] occurrences matches {0..1} matches {	-- Vänster MCP 2-led
 														value matches {
-															0|[local::at0187], 	-- No swelling
-															1|[local::at0188]  	-- Swelling present
+															0|[local::at0187], 	-- Avsaknad av svullnad
+															1|[local::at0188]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0064] occurrences matches {0..1} matches {	-- Left MCP 3 joint
+													ELEMENT[at0064] occurrences matches {0..1} matches {	-- Vänster MCP 3-led
 														value matches {
-															0|[local::at0189], 	-- No swelling
-															1|[local::at0190]  	-- Swelling present
+															0|[local::at0189], 	-- Avsaknad av svullnad
+															1|[local::at0190]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0065] occurrences matches {0..1} matches {	-- Left MCP 4 joint
+													ELEMENT[at0065] occurrences matches {0..1} matches {	-- Vänster MCP 4-led
 														value matches {
-															0|[local::at0191], 	-- No swelling
-															1|[local::at0192]  	-- Swelling present
+															0|[local::at0191], 	-- Avsaknad av svullnad
+															1|[local::at0192]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0066] occurrences matches {0..1} matches {	-- Left MCP 5 joint
+													ELEMENT[at0066] occurrences matches {0..1} matches {	-- Vänster MCP 5-led
 														value matches {
-															0|[local::at0193], 	-- No swelling
-															1|[local::at0194]  	-- Swelling present
+															0|[local::at0193], 	-- Avsaknad av svullnad
+															1|[local::at0194]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0067] occurrences matches {0..1} matches {	-- Left PIP 1 joint
+													ELEMENT[at0067] occurrences matches {0..1} matches {	-- Vänster PIP 1-led
 														value matches {
-															0|[local::at0234], 	-- No swelling
-															1|[local::at0235]  	-- Swelling present
+															0|[local::at0234], 	-- Avsaknad av svullnad
+															1|[local::at0235]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0068] occurrences matches {0..1} matches {	-- Left PIP 2 joint
+													ELEMENT[at0068] occurrences matches {0..1} matches {	-- Vänster PIP 2-led
 														value matches {
-															0|[local::at0195], 	-- No swelling
-															1|[local::at0196]  	-- Swelling present
+															0|[local::at0195], 	-- Avsaknad av svullnad
+															1|[local::at0196]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0069] occurrences matches {0..1} matches {	-- Left PIP 3 joint
+													ELEMENT[at0069] occurrences matches {0..1} matches {	-- Vänster PIP 3-led
 														value matches {
-															0|[local::at0197], 	-- No swelling
-															1|[local::at0198]  	-- Swelling present
+															0|[local::at0197], 	-- Avsaknad av svullnad
+															1|[local::at0198]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0070] occurrences matches {0..1} matches {	-- Left PIP 4 joint
+													ELEMENT[at0070] occurrences matches {0..1} matches {	-- Vänster PIP 4-led
 														value matches {
-															0|[local::at0199], 	-- No swelling
-															1|[local::at0200]  	-- Swelling present
+															0|[local::at0199], 	-- Avsaknad av svullnad
+															1|[local::at0200]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0071] occurrences matches {0..1} matches {	-- Left PIP 5 joint
+													ELEMENT[at0071] occurrences matches {0..1} matches {	-- Vänster PIP 5-led
 														value matches {
-															0|[local::at0201], 	-- No swelling
-															1|[local::at0202]  	-- Swelling present
+															0|[local::at0201], 	-- Avsaknad av svullnad
+															1|[local::at0202]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0072] occurrences matches {0..1} matches {	-- Left Knee joint
+													ELEMENT[at0072] occurrences matches {0..1} matches {	-- Vänster knäled
 														value matches {
-															0|[local::at0203], 	-- No swelling
-															1|[local::at0204]  	-- Swelling present
+															0|[local::at0203], 	-- Avsaknad av svullnad
+															1|[local::at0204]  	-- Förekomst av svullnad
 														}
 													}
 												}
 											}
-											CLUSTER[at0130] occurrences matches {0..1} matches {	-- Right side
+											CLUSTER[at0130] occurrences matches {0..1} matches {	-- Höger sida
 												items cardinality matches {1..*; ordered} matches {
-													ELEMENT[at0145] occurrences matches {0..1} matches {	-- Right Shoulder joint
+													ELEMENT[at0145] occurrences matches {0..1} matches {	-- Höger axelled
 														value matches {
-															0|[local::at0205], 	-- No swelling
-															1|[local::at0206]  	-- Swelling present
+															0|[local::at0205], 	-- Avsaknad av svullnad
+															1|[local::at0206]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0146] occurrences matches {0..1} matches {	-- Right Elbow joint
+													ELEMENT[at0146] occurrences matches {0..1} matches {	-- Höger armbågsled
 														value matches {
-															0|[local::at0207], 	-- No swelling
-															1|[local::at0208]  	-- Swelling present
+															0|[local::at0207], 	-- Avsaknad av svullnad
+															1|[local::at0208]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0147] occurrences matches {0..1} matches {	-- Right Wrist joint
+													ELEMENT[at0147] occurrences matches {0..1} matches {	-- Höger handled
 														value matches {
-															0|[local::at0209], 	-- No swelling
-															1|[local::at0210]  	-- Swelling present
+															0|[local::at0209], 	-- Avsaknad av svullnad
+															1|[local::at0210]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0148] occurrences matches {0..1} matches {	-- Right MCP 1 joint
+													ELEMENT[at0148] occurrences matches {0..1} matches {	-- Höger MCP 1-led
 														value matches {
-															0|[local::at0211], 	-- No swelling
-															1|[local::at0212]  	-- Swelling present
+															0|[local::at0211], 	-- Avsaknad av svullnad
+															1|[local::at0212]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0149] occurrences matches {0..1} matches {	-- Right MCP 2 joint
+													ELEMENT[at0149] occurrences matches {0..1} matches {	-- Höger MCP 2-led
 														value matches {
-															0|[local::at0213], 	-- No swelling
-															1|[local::at0214]  	-- Swelling present
+															0|[local::at0213], 	-- Avsaknad av svullnad
+															1|[local::at0214]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0150] occurrences matches {0..1} matches {	-- Right MCP 3 joint
+													ELEMENT[at0150] occurrences matches {0..1} matches {	-- Höger MCP 3-led
 														value matches {
-															0|[local::at0215], 	-- No swelling
-															1|[local::at0216]  	-- Swelling present
+															0|[local::at0215], 	-- Avsaknad av svullnad
+															1|[local::at0216]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0151] occurrences matches {0..1} matches {	-- Right MCP 4 joint
+													ELEMENT[at0151] occurrences matches {0..1} matches {	-- Höger MCP 4-led
 														value matches {
-															0|[local::at0217], 	-- No swelling
-															1|[local::at0218]  	-- Swelling present
+															0|[local::at0217], 	-- Avsaknad av svullnad
+															1|[local::at0218]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0152] occurrences matches {0..1} matches {	-- Right MCP 5 joint
+													ELEMENT[at0152] occurrences matches {0..1} matches {	-- Höger MCP 5-led
 														value matches {
-															0|[local::at0219], 	-- No swelling
-															1|[local::at0220]  	-- Swelling present
+															0|[local::at0219], 	-- Avsaknad av svullnad
+															1|[local::at0220]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0153] occurrences matches {0..1} matches {	-- Right PIP 1 joint
+													ELEMENT[at0153] occurrences matches {0..1} matches {	-- Höger PIP 1-led
 														value matches {
-															0|[local::at0221], 	-- No swelling
-															1|[local::at0222]  	-- Swelling present
+															0|[local::at0221], 	-- Avsaknad av svullnad
+															1|[local::at0222]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0154] occurrences matches {0..1} matches {	-- Right PIP 2 joint
+													ELEMENT[at0154] occurrences matches {0..1} matches {	-- Höger PIP 2-led
 														value matches {
-															0|[local::at0223], 	-- No swelling
-															1|[local::at0224]  	-- Swelling present
+															0|[local::at0223], 	-- Avsaknad av svullnad
+															1|[local::at0224]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0155] occurrences matches {0..1} matches {	-- Right PIP 3 joint
+													ELEMENT[at0155] occurrences matches {0..1} matches {	-- Höger PIP 3-led
 														value matches {
-															0|[local::at0225], 	-- No swelling
-															1|[local::at0226]  	-- Swelling present
+															0|[local::at0225], 	-- Avsaknad av svullnad
+															1|[local::at0226]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0156] occurrences matches {0..1} matches {	-- Right PIP 4 joint
+													ELEMENT[at0156] occurrences matches {0..1} matches {	-- Höger PIP 4-led
 														value matches {
-															0|[local::at0227], 	-- No swelling
-															1|[local::at0228]  	-- Swelling present
+															0|[local::at0227], 	-- Avsaknad av svullnad
+															1|[local::at0228]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0157] occurrences matches {0..1} matches {	-- Right PIP 5 joint
+													ELEMENT[at0157] occurrences matches {0..1} matches {	-- Höger PIP 5-led
 														value matches {
-															0|[local::at0229], 	-- No swelling
-															1|[local::at0230]  	-- Swelling present
+															0|[local::at0229], 	-- Avsaknad av svullnad
+															1|[local::at0230]  	-- Förekomst av svullnad
 														}
 													}
-													ELEMENT[at0158] occurrences matches {0..1} matches {	-- Right Knee joint
+													ELEMENT[at0158] occurrences matches {0..1} matches {	-- Höger knäled
 														value matches {
-															0|[local::at0231], 	-- No swelling
-															1|[local::at0232]  	-- Swelling present
+															0|[local::at0231], 	-- Avsaknad av svullnad
+															1|[local::at0232]  	-- Förekomst av svullnad
 														}
 													}
 												}
 											}
 										}
 									}
-									ELEMENT[at0043] occurrences matches {0..1} matches {	-- Tender joint count (TJC)
+									ELEMENT[at0043] occurrences matches {0..1} matches {	-- Antal ömma leder (TJC)
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..28|}
 											}
 										}
 									}
-									ELEMENT[at0044] occurrences matches {0..1} matches {	-- Swollen joint count (SJC)
+									ELEMENT[at0044] occurrences matches {0..1} matches {	-- Antal svullna leder (SJC)
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..28|}
 											}
 										}
 									}
-									ELEMENT[at0236] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0236] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -1162,6 +1184,734 @@ ontology
 				["at0236"] = <
 					text = <"Comment">
 					description = <"Comment on the TJC and SJC.">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Index för sjukdomsaktivitet - leder">
+					description = <"För registrering av antalet ömma och svullna extremitetsleder, i syfte att skapa ett index för sjukdomsaktivitet relaterat till reumatisk sjukdom.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Ömma leder">
+					description = <"Utvärdering av förekomst av ömma leder. Totalt 28 leder undersöks (14 bilateralt).">
+				>
+				["at0026"] = <
+					text = <"Vänster axelled">
+					description = <"Utvärdering av ömhet i vänster axelled">
+				>
+				["at0027"] = <
+					text = <"Vänster armbågsled">
+					description = <"Utvärdering av ömhet i vänster armbågsled">
+				>
+				["at0028"] = <
+					text = <"Vänster handled">
+					description = <"Utvärdering av ömhet i vänster handled">
+				>
+				["at0029"] = <
+					text = <"Vänster MCP 1-led">
+					description = <"Utvärdering av ömhet i vänster metakarpofalangealled 1">
+				>
+				["at0030"] = <
+					text = <"Vänster MCP 2-led">
+					description = <"Utvärdering av ömhet i vänster metakarpofalangealled 2">
+				>
+				["at0031"] = <
+					text = <"Vänster MCP 3-led">
+					description = <"Utvärdering av ömhet i vänster metakarpofalangealled 3">
+				>
+				["at0032"] = <
+					text = <"Vänster MCP 4-led">
+					description = <"Utvärdering av ömhet i vänster metakarpofalangealled 4">
+				>
+				["at0033"] = <
+					text = <"Vänster MCP 5-led">
+					description = <"Utvärdering av ömhet i vänster metakarpofalangealled 5">
+				>
+				["at0034"] = <
+					text = <"Vänster PIP 1-led">
+					description = <"Utvärdering av ömhet i vänster proximal interfalangealled 1">
+				>
+				["at0035"] = <
+					text = <"Vänster PIP 2-led">
+					description = <"Utvärdering av ömhet i vänster proximal interfalangealled 2">
+				>
+				["at0036"] = <
+					text = <"Vänster PIP 3-led">
+					description = <"Utvärdering av ömhet i vänster proximal interfalangealled 3">
+				>
+				["at0037"] = <
+					text = <"Vänster PIP 4-led">
+					description = <"Utvärdering av ömhet i vänster proximal interfalangealled 4">
+				>
+				["at0038"] = <
+					text = <"Vänster PIP 5-led">
+					description = <"Utvärdering av ömhet i vänster proximal interfalangealled 5">
+				>
+				["at0039"] = <
+					text = <"Vänster knäled">
+					description = <"Utvärdering av ömhet i vänster knäled">
+				>
+				["at0040"] = <
+					text = <"Svullna leder">
+					description = <"Utvärdering av förekomst av svullna leder. Totalt 28 leder undersöks (14 bilateralt).">
+				>
+				["at0043"] = <
+					text = <"Antal ömma leder (TJC)">
+					description = <"Antalet ömma leder, av potentiellt 28st.">
+				>
+				["at0044"] = <
+					text = <"Antal svullna leder (SJC)">
+					description = <"Antalet svullna leder, av potentiellt 28st.">
+				>
+				["at0059"] = <
+					text = <"Vänster axelled">
+					description = <"Utvärdering av svullnad i vänster axelled">
+				>
+				["at0060"] = <
+					text = <"Vänster armbågsled">
+					description = <"Utvärdering av svullnad i vänster armbågsled">
+				>
+				["at0061"] = <
+					text = <"Vänster handled">
+					description = <"Utvärdering av svullnad i vänster handled">
+				>
+				["at0062"] = <
+					text = <"Vänster MCP 1-led">
+					description = <"Utvärdering av svullnad i vänster metakarpofalangealled 1">
+				>
+				["at0063"] = <
+					text = <"Vänster MCP 2-led">
+					description = <"Utvärdering av svullnad i vänster metakarpofalangealled 2">
+				>
+				["at0064"] = <
+					text = <"Vänster MCP 3-led">
+					description = <"Utvärdering av svullnad i vänster metakarpofalangealled 3">
+				>
+				["at0065"] = <
+					text = <"Vänster MCP 4-led">
+					description = <"Utvärdering av svullnad i vänster metakarpofalangealled 4">
+				>
+				["at0066"] = <
+					text = <"Vänster MCP 5-led">
+					description = <"Utvärdering av svullnad i vänster metakarpofalangealled 5">
+				>
+				["at0067"] = <
+					text = <"Vänster PIP 1-led">
+					description = <"Utvärdering av svullnad i vänster proximal interfalangealled 1">
+				>
+				["at0068"] = <
+					text = <"Vänster PIP 2-led">
+					description = <"Utvärdering av svullnad i vänster proximal interfalangealled">
+				>
+				["at0069"] = <
+					text = <"Vänster PIP 3-led">
+					description = <"Utvärdering av svullnad i vänster proximal interfalangealled">
+				>
+				["at0070"] = <
+					text = <"Vänster PIP 4-led">
+					description = <"Utvärdering av svullnad i vänster proximal interfalangealled">
+				>
+				["at0071"] = <
+					text = <"Vänster PIP 5-led">
+					description = <"Utvärdering av svullnad i vänster proximal interfalangealled">
+				>
+				["at0072"] = <
+					text = <"Vänster knäled">
+					description = <"Utvärdering av svullnad i vänster knäled">
+				>
+				["at0073"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i vänster axelled">
+				>
+				["at0074"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i vänster axelled">
+				>
+				["at0076"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i vänster armbågsled">
+				>
+				["at0077"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i vänster armbågsled">
+				>
+				["at0079"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i vänster handled">
+				>
+				["at0080"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i vänster handled">
+				>
+				["at0082"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i vänster metakarpofalangealled 1">
+				>
+				["at0083"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i vänstermetakarpofalangealled 1">
+				>
+				["at0085"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i vänstermetakarpofalangealled 2">
+				>
+				["at0086"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i vänster metakarpofalangealled 2">
+				>
+				["at0088"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i vänster metakarpofalangealled 3">
+				>
+				["at0089"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i vänster metakarpofalangealled 3">
+				>
+				["at0091"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i vänster metakarpofalangealled 4">
+				>
+				["at0092"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i vänster metakarpofalangealled 4">
+				>
+				["at0094"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i vänster metakarpofalangealled 5">
+				>
+				["at0095"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i vänster metakarpofalangealled 5">
+				>
+				["at0097"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i vänster proximal interfalangealled 1">
+				>
+				["at0098"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i vänster proximal interfalangealled 1">
+				>
+				["at0100"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i vänster proximal interfalangealled 2">
+				>
+				["at0101"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i vänster proximal interfalangealled 2">
+				>
+				["at0103"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i vänster proximal interfalangealled 3">
+				>
+				["at0104"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i vänster proximal interfalangealled 3">
+				>
+				["at0106"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i vänster proximal interfalangealled 4">
+				>
+				["at0107"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i vänster proximal interfalangealled 4">
+				>
+				["at0109"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i vänster proximal interfalangealled 5">
+				>
+				["at0110"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i vänster proximal interfalangealled 5">
+				>
+				["at0112"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i vänster knäled">
+				>
+				["at0113"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i vänster knäled">
+				>
+				["at0115"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i vänster axelled">
+				>
+				["at0116"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i vänster axelled">
+				>
+				["at0118"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i vänster armbågsled">
+				>
+				["at0119"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i vänster armbågsled">
+				>
+				["at0121"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i vänster handled">
+				>
+				["at0122"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i vänster handled">
+				>
+				["at0124"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i vänster metakarpofalangealled 1">
+				>
+				["at0125"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i vänster metakarpofalangealled 1">
+				>
+				["at0127"] = <
+					text = <"Vänster sida">
+					description = <"Utvärdering av totalt 14 leder på vänster sida.">
+				>
+				["at0128"] = <
+					text = <"Höger sida">
+					description = <"Utvärdering av totalt 14 leder på höger sida.">
+				>
+				["at0129"] = <
+					text = <"Vänster sida">
+					description = <"Utvärdering av totalt 14 leder på vänster sida.">
+				>
+				["at0130"] = <
+					text = <"Höger sida">
+					description = <"Utvärdering av totalt 14 leder på vänster sida.">
+				>
+				["at0131"] = <
+					text = <"Höger axelled">
+					description = <"Utvärdering av ömhet i höger axelled">
+				>
+				["at0132"] = <
+					text = <"Höger armbågsled">
+					description = <"Utvärdering av ömhet i höger armbågsled">
+				>
+				["at0133"] = <
+					text = <"Höger handled">
+					description = <"Utvärdering av ömhet i höger handled">
+				>
+				["at0134"] = <
+					text = <"Höger MCP 1-led">
+					description = <"Utvärdering av ömhet i höger metakarpofalangealled 1">
+				>
+				["at0135"] = <
+					text = <"Höger MCP 2-led">
+					description = <"Utvärdering av ömhet i höger metakarpofalangealled 2">
+				>
+				["at0136"] = <
+					text = <"Höger MCP 3-led">
+					description = <"Utvärdering av ömhet i höger metakarpofalangealled 3">
+				>
+				["at0137"] = <
+					text = <"Höger MCP 4-led">
+					description = <"Utvärdering av ömhet i höger metakarpofalangealled 4">
+				>
+				["at0138"] = <
+					text = <"Höger MCP 5-led">
+					description = <"Utvärdering av ömhet i höger metakarpofalangealled 5">
+				>
+				["at0139"] = <
+					text = <"Höger PIP 1-led">
+					description = <"Utvärdering av ömhet i höger proximal interfalangealled 1">
+				>
+				["at0140"] = <
+					text = <"Höger PIP 2-led">
+					description = <"Utvärdering av ömhet i höger proximal interfalangealled 2">
+				>
+				["at0141"] = <
+					text = <"Höger PIP 3-led">
+					description = <"Utvärdering av ömhet i höger proximal interfalangealled 3">
+				>
+				["at0142"] = <
+					text = <"Höger PIP 4-led">
+					description = <"Utvärdering av ömhet i höger proximal interfalangealled 4">
+				>
+				["at0143"] = <
+					text = <"Höger PIP 5-led">
+					description = <"Utvärdering av ömhet i höger proximal interfalangealled 5">
+				>
+				["at0144"] = <
+					text = <"Höger knäled">
+					description = <"Utvärdering av ömhet i höger knäled">
+				>
+				["at0145"] = <
+					text = <"Höger axelled">
+					description = <"Utvärdering av svullnad i höger axelled">
+				>
+				["at0146"] = <
+					text = <"Höger armbågsled">
+					description = <"Utvärdering av svullnad i höger armbågsled">
+				>
+				["at0147"] = <
+					text = <"Höger handled">
+					description = <"Utvärdering av svullnad i höger handled">
+				>
+				["at0148"] = <
+					text = <"Höger MCP 1-led">
+					description = <"Utvärdering av svullnad i höger metakarpofalangealled 1">
+				>
+				["at0149"] = <
+					text = <"Höger MCP 2-led">
+					description = <"Utvärdering av svullnad i höger metakarpofalangealled 2">
+				>
+				["at0150"] = <
+					text = <"Höger MCP 3-led">
+					description = <"Utvärdering av svullnad i höger metakarpofalangealled 3">
+				>
+				["at0151"] = <
+					text = <"Höger MCP 4-led">
+					description = <"Utvärdering av svullnad i höger metakarpofalangealled 4">
+				>
+				["at0152"] = <
+					text = <"Höger MCP 5-led">
+					description = <"Utvärdering av svullnad i höger metakarpofalangealled 5">
+				>
+				["at0153"] = <
+					text = <"Höger PIP 1-led">
+					description = <"Utvärdering av svullnad i höger proximal interfalangealled 1">
+				>
+				["at0154"] = <
+					text = <"Höger PIP 2-led">
+					description = <"Utvärdering av svullnad i höger proximal interfalangealled 2">
+				>
+				["at0155"] = <
+					text = <"Höger PIP 3-led">
+					description = <"Utvärdering av svullnad i höger proximal interfalangealled 3">
+				>
+				["at0156"] = <
+					text = <"Höger PIP 4-led">
+					description = <"Utvärdering av svullnad i höger proximal interfalangealled 4">
+				>
+				["at0157"] = <
+					text = <"Höger PIP 5-led">
+					description = <"Utvärdering av svullnad i höger proximal interfalangealled 5">
+				>
+				["at0158"] = <
+					text = <"Höger knäled">
+					description = <"Utvärdering av svullnad i höger knäled">
+				>
+				["at0159"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i höger axelled">
+				>
+				["at0160"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i höger axelled">
+				>
+				["at0161"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i höger armbågsled">
+				>
+				["at0162"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i höger armbågsled">
+				>
+				["at0163"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i höger handled">
+				>
+				["at0164"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i höger handled">
+				>
+				["at0165"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i höger metakarpofalangealled 1">
+				>
+				["at0166"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i höger metakarpofalangealled 1">
+				>
+				["at0167"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i höger metakarpofalangealled 2">
+				>
+				["at0168"] = <
+					text = <"Förekomst av ömhet">
+					description = <"metakarpofalangealled 2">
+				>
+				["at0169"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i höger metakarpofalangealled 3">
+				>
+				["at0170"] = <
+					text = <"Förekomst av ömhet">
+					description = <"metakarpofalangealled 3">
+				>
+				["at0171"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i höger metakarpofalangealled 4">
+				>
+				["at0172"] = <
+					text = <"Förekomst av ömhet">
+					description = <"metakarpofalangealled 4">
+				>
+				["at0173"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i höger metakarpofalangealled 5">
+				>
+				["at0174"] = <
+					text = <"Förekomst av ömhet">
+					description = <"metakarpofalangealled 5">
+				>
+				["at0175"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i höger proximal interfalangealled 1">
+				>
+				["at0176"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i höger proximal interfalangealled 1">
+				>
+				["at0177"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i höger proximal interfalangealled 2">
+				>
+				["at0178"] = <
+					text = <"Förekomst av ömhet">
+					description = <"proximal interfalangealled 2">
+				>
+				["at0179"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i höger proximal interfalangealled 3">
+				>
+				["at0180"] = <
+					text = <"Förekomst av ömhet">
+					description = <"proximal interfalangealled 3">
+				>
+				["at0181"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i höger proximal interfalangealled 4">
+				>
+				["at0182"] = <
+					text = <"Förekomst av ömhet">
+					description = <"proximal interfalangealled 4">
+				>
+				["at0183"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i höger proximal interfalangealled 5">
+				>
+				["at0184"] = <
+					text = <"Förekomst av ömhet">
+					description = <"proximal interfalangealled 5">
+				>
+				["at0185"] = <
+					text = <"Avsaknad av ömhet">
+					description = <"Ingen ömhet i höger knäled">
+				>
+				["at0186"] = <
+					text = <"Förekomst av ömhet">
+					description = <"Förekomst av ömhet i höger knäled">
+				>
+				["at0187"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i vänster metakarpofalangealled 2">
+				>
+				["at0188"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i vänster metakarpofalangealled 2">
+				>
+				["at0189"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i vänster metakarpofalangealled 3">
+				>
+				["at0190"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i vänster metakarpofalangealled 3">
+				>
+				["at0191"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i vänster metakarpofalangealled 4">
+				>
+				["at0192"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i vänster metakarpofalangealled 4">
+				>
+				["at0193"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i vänster metakarpofalangealled 5">
+				>
+				["at0194"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i vänster metakarpofalangealled 5">
+				>
+				["at0195"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i vänster proximal interfalangealled 2">
+				>
+				["at0196"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i vänster proximal interfalangealled 2">
+				>
+				["at0197"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i vänster proximal interfalangealled 3">
+				>
+				["at0198"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i vänster proximal interfalangealled 3">
+				>
+				["at0199"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i vänster proximal interfalangealled 4">
+				>
+				["at0200"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i vänster proximal interfalangealled 4">
+				>
+				["at0201"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i vänster proximal interfalangealled 5">
+				>
+				["at0202"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i vänster proximal interfalangealled 5">
+				>
+				["at0203"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i vänster knäled">
+				>
+				["at0204"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i vänster knäled">
+				>
+				["at0205"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i höger axelled">
+				>
+				["at0206"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i höger axelled">
+				>
+				["at0207"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i höger armbågsled">
+				>
+				["at0208"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i höger armbågsled">
+				>
+				["at0209"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i höger handled">
+				>
+				["at0210"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i höger handled">
+				>
+				["at0211"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i höger metakarpofalangealled 1">
+				>
+				["at0212"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i höger metakarpofalangealled 1">
+				>
+				["at0213"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i höger metakarpofalangealled 2">
+				>
+				["at0214"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i höger metakarpofalangealled 2">
+				>
+				["at0215"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i höger metakarpofalangealled 3">
+				>
+				["at0216"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i höger metakarpofalangealled 3">
+				>
+				["at0217"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i höger metakarpofalangealled 4">
+				>
+				["at0218"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i höger metakarpofalangealled 4">
+				>
+				["at0219"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i höger metakarpofalangealled 5">
+				>
+				["at0220"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i höger metakarpofalangealled 5">
+				>
+				["at0221"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i höger proximal interfalangealled 1">
+				>
+				["at0222"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i höger proximal interfalangealled 1">
+				>
+				["at0223"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i höger proximal interfalangealled 2">
+				>
+				["at0224"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i höger proximal interfalangealled 2">
+				>
+				["at0225"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i höger proximal interfalangealled 3">
+				>
+				["at0226"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i höger proximal interfalangealled 3 ">
+				>
+				["at0227"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i höger proximal interfalangealled 4">
+				>
+				["at0228"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i höger proximal interfalangealled 4">
+				>
+				["at0229"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i höger proximal interfalangealled 5">
+				>
+				["at0230"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i höger proximal interfalangealled 5">
+				>
+				["at0231"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i höger knäled">
+				>
+				["at0232"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i höger knäled">
+				>
+				["at0234"] = <
+					text = <"Avsaknad av svullnad">
+					description = <"Ingen svullnad i vänster proximal interfalangealled 1">
+				>
+				["at0235"] = <
+					text = <"Förekomst av svullnad">
+					description = <"Förekomst av svullnad i vänster proximal interfalangealled 1">
+				>
+				["at0236"] = <
+					text = <"Kommentar">
+					description = <"Eventuellt tillägg kring TJC/SJC.">
 				>
 			>
 		>

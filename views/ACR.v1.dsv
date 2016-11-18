@@ -24,7 +24,7 @@
   },
   "decisionSupportViewDefinitions": {
     "en": {
-      "name": "Albumin:Creatinine Ratio",
+      "name": "Albumin/Creatinine Ratio",
       "description": "Calculates urinary albumin:creatinine ratio (ACR)"
     },
     "sv": {
@@ -47,7 +47,7 @@
       "en": {
         "purpose": "This guide calculates urinary albumin:creatinine ratio (ACR).",
         "keywords": [],
-        "use": "Use to calculate urinary albumin:creatinine ratio (measured in mg/g) from given values of urinary albumin (measured in mg/L) and urinary creatinine (measured in mg/L). Also for use to calculate albumin excretion rate (AER) which is approximately equal to the albumin:creatinine ratio, but with unit: mg/24hrs.\nTo obtain ACR in mg/mmol, divide ACR in mg/g by 10.\n\nFor use in concert with glomerular filtration rate (GFR) to stage and evaluate the risk of progression of chronic kidney disease (CKD).",
+        "use": "Use to calculate urinary albumin/creatinine ratio (measured in mg/g) from given values of urinary albumin (measured in mg/L) and urinary creatinine (measured in mg/L). Also for use to calculate albumin excretion rate (AER) which is approximately equal to the albumin/creatinine ratio, but with unit: mg/24hrs.\nTo obtain ACR in mg/mmol, divide ACR in mg/g by 10.\n\nFor use in concert with glomerular filtration rate (GFR) to stage and evaluate the risk of progression of chronic kidney disease (CKD).",
         "copyright": "© Cambio Healthcare Systems"
       },
       "sv": {
@@ -127,8 +127,8 @@
 angular.module('cds_app').controller('ACR_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
     $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
-    $scope.${urine_microalbumin_ehr_data}.value.units = $scope.${urine_microalbumin_def}.units[0];
-    $scope.${urine_creatinine_ehr_data}.value.units = $scope.${urine_creatinine_def}.units[0];
+    $scope.${urine_microalbumin_ehr_data}.value.units = $scope.${urine_microalbumin_def}.units[1];
+    $scope.${urine_creatinine_ehr_data}.value.units = $scope.${urine_creatinine_def}.units[1];
   });
 });
 </script>
@@ -150,7 +150,7 @@ angular.module('cds_app').controller('ACR_Ctrl', function($scope, $window){
         <input ng-model="${urine_microalbumin_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
 	  <div class="medium-2 columns">
-        <select ng-model="${urine_microalbumin_ehr_data}.value.units" ng-options="unit for unit in ${urine_microalbumin_def}.units" ng-change="execute()" disabled=""></select>
+        <select ng-model="${urine_microalbumin_ehr_data}.value.units" ng-options="unit for unit in ${urine_microalbumin_def}.units" ng-change="execute()"disabled=""></select>
       </div>
 </div>
 <div class="row collapse" title="{{${urine_creatinine_def}.description}}">
@@ -161,7 +161,7 @@ angular.module('cds_app').controller('ACR_Ctrl', function($scope, $window){
         <input ng-model="${urine_creatinine_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
 	  <div class="medium-2 columns">
-        <select ng-model="${urine_creatinine_ehr_data}.value.units" ng-options="unit for unit in ${urine_creatinine_def}.units" ng-change="execute()" disabled=""></select>
+        <select ng-model="${urine_creatinine_ehr_data}.value.units" ng-options="unit for unit in ${urine_creatinine_def}.units" ng-change="execute()"disabled=""></select>
       </div>
 </div>
  <div class="row collapse" title="{{${urine_albumin_creatinine_ratio_def}.description}}" id="displayresult1">

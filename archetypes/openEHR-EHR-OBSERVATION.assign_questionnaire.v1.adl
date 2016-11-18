@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.assign_questionnaire.v1
 
 concept
-	[at0000]	-- Assign questionnaire
+	[at0000]	-- ASSIGN frågeformulär
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -39,6 +48,33 @@ An ASSIGN score of > 20 is high and identifies individuals of high risk of cardi
 Only for individuals in Scotland (unless postcode mapping is also adjusted to the new region - or SIGN is used instead)">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"ASSIGN utvecklades för att identifiera och kategorisera sedan tidigare friska individer med förhöjd risk för insjuknande i hjärt-kärlsjukdom under kommande tio åren.">
+			use = <"Poängsystemet baseras på historiska data och resultatet anges mellan 0-99 vilket representerar den procentuella risken för utveckling av kardiovaskulär sjukdom under kommande tio åren (inklusive kranskärlssjukdom, cerebrovaskulär sjukdom inklusive transitorisk ischemisk attack) hos friska individer.
+
+ASSIGN score baseras på SIGN score, med tillägg av individens postnummer (representativt för socioekonomisk status). Denna utvärderas med hjälp av SIMD (Scottish Index of Multiple Deprivation 2012), varför ASSIGN för närvarande endast kan relateras till Skottland. Tillgång till liknande material möjliggör givetvis användning av poängsystemet i andra regioner.
+
+Faktorer som tas med i beräkningen av risk:
+
+Hög ålder
+Kön (manligt kön > kvinnligt kön)
+Låg socioekonomisk status 
+Familjehistorik med avseende på kardiovaskulär sjukdom
+Diagnostiserad diabetes mellitus
+Diagnostiserad reumatoid artrit
+Rökning (cigaretter, pipa, cigarrer)
+Blodtryck
+Totalt kolesterol
+HDL-kolesterol
+
+Samtliga faktorer ovan sammanvägs för ett resultat 0-99. Beräkningen baseras på en lång formel [4]inkluderande flertalet koefficienter relaterade till risk. Poängen representerar den procentuella risken för utveckling av kardiovaskulär sjukdom under kommande tio åren. Poäng >20 räknas som hög risk och bör leda till övervägande av preventiva åtgärder.">
+			keywords = <"ASSIGN", "SIGN">
+			misuse = <"Då ASSIGN endast är en uppskattning bör resultatet ej ses som en absolut indikator på risk. Vidare utredning bör vid lämpliga fall tillämpas. Blodtryck och kolesterolvärden bör ej användas utan noga kontroll av eventuellt föreliggande behandling. 
+
+I nuläget endast applicerbar på skotska befolkningen.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -50,37 +86,37 @@ Ref. 2: Tunstall-Pedoe H, Woodward M, for the SIGN group on risk estimation. By 
 Ref. 3: Woodward M, Brindle P, Tunstall-Pedoe H, for the SIGN group on risk estimation. Adding social deprivation and family history to cardiovascular risk assessment: the ASSIGN score from the Scottish Heart Health Extended Cohort (SHHEC). Heart 2007: 93(2):172-6.
 
 Ref. 4: Risk calculator excel. Written by Dr Rupert Payne, The University of Edinburgh, May 2010. Further advice on the appropriate use of the risk equations can be found at http://cvrisk.mvm.ed.ac.uk/help.htm">
-		["MD5-CAM-1.0.1"] = <"984ED434142A040BACAB4FEFB7BF722F">
+		["MD5-CAM-1.0.1"] = <"65D0FCFFB92A0570B50FA98581D7FB92">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Assign questionnaire
+	OBSERVATION[at0000] matches {	-- ASSIGN frågeformulär
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Is there a family history of stroke/CHD?
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Hereditet för kardiovaskulära sjukdomar?
 										value matches {
-											0|[local::at0010], 	-- No
-											1|[local::at0011]  	-- Yes
+											0|[local::at0010], 	-- *No(en)
+											1|[local::at0011]  	-- *Yes(en)
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Is the subject diabetic?
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Har patienten diagnostiserad diabetes mellitus?
 										value matches {
-											0|[local::at0012], 	-- No
-											1|[local::at0013]  	-- Yes
+											0|[local::at0012], 	-- *No(en)
+											1|[local::at0013]  	-- *Yes(en)
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Does the subject have rheumatoid arthritis?
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Har patienten diagnostiserad reumatoid artrit?
 										value matches {
-											0|[local::at0014], 	-- No
-											1|[local::at0015]  	-- Yes
+											0|[local::at0014], 	-- *No(en)
+											1|[local::at0015]  	-- *Yes(en)
 										}
 									}
-									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Number of cigarettes smoked daily
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Antal cigaretter per dag
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::382]>
@@ -108,14 +144,14 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- ASSIGN score
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- ASSIGN
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..100|}
 											}
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -200,6 +236,79 @@ ontology
 				["at0018"] = <
 					text = <"SIMD">
 					description = <"Scottish Index of Multiple Deprivation 2012 related to mapping postcodes in Scotland to codes that indicate degrees of deprivation.">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"ASSIGN frågeformulär">
+					description = <"
+ASSIGN Score utvecklades 2006 av University of Dundee i Skottland i enlighet med riktlinjer baserade på SIGN (Scottish Intercollegiate Guidelines Network), i syfte att skapa en objektiv metod för uppskattning av risk för kardiovaskulär sjukdom. Denna arketyp innehåller frågeformuläret.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"ASSIGN">
+					description = <"Uppskattning av risk för insjuknande i kardiovaskulär sjukdom, 0-99">
+				>
+				["at0006"] = <
+					text = <"Hereditet för kardiovaskulära sjukdomar?">
+					description = <"Hereditet för kardiovaskulära sjukdomar inklusive kranskärlssjukdom, stroke mm.">
+				>
+				["at0007"] = <
+					text = <"Har patienten diagnostiserad diabetes mellitus?">
+					description = <"Diagnostiserad diabetes mellitus ger förhöjd risk">
+				>
+				["at0008"] = <
+					text = <"Har patienten diagnostiserad reumatoid artrit?">
+					description = <"Diagnostiserad reumatoid artrit ger förhöjd risk">
+				>
+				["at0009"] = <
+					text = <"Kommentar">
+					description = <"Ev tillägg kring faktorerna ovan">
+				>
+				["at0010"] = <
+					text = <"*No(en)">
+					description = <"**(en)">
+				>
+				["at0011"] = <
+					text = <"*Yes(en)">
+					description = <"**(en)">
+				>
+				["at0012"] = <
+					text = <"*No(en)">
+					description = <"**(en)">
+				>
+				["at0013"] = <
+					text = <"*Yes(en)">
+					description = <"**(en)">
+				>
+				["at0014"] = <
+					text = <"*No(en)">
+					description = <"**(en)">
+				>
+				["at0015"] = <
+					text = <"*Yes(en)">
+					description = <"**(en)">
+				>
+				["at0016"] = <
+					text = <"Antal cigaretter per dag">
+					description = <"Antal cigaretter, eller motsvarande, per dag">
+				>
+				["at0018"] = <
+					text = <"SIMD">
+					description = <"Scottish Index of Multiple Deprivation 2012 för socioekonomisk status">
 				>
 			>
 		>
