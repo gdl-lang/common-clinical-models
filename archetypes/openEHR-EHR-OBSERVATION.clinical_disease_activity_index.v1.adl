@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.clinical_disease_activity_index.v1
 
 concept
-	[at0000]	-- Clinical disease activity index (CDAI)
+	[at0000]	-- Clinical Disease Activity Index (CDAI)
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
@@ -13,6 +22,16 @@ description
 		["date"] = <"2016-10-30">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att registrera värden i enlighet med Clinical Disease Activity Index (CDAI), vilket är ett validerat instrument för utvärdering av sjukdomsaktivitet och behandlingseffekt hos patienter med reumatoid artrit (RA).">
+			use = <"Använd till att registrera värden i enlighet med Clinical Disease Activity Index (CDAI). Resultatet baseras på fyra parametrar; antal ömma (0 - 28) och svullna (0 - 28) leder, tillsammans med patientens (PtGDA - Patient) och klinikerns (PrGDA - Provider) bedömning i enlighet med Global Assessment of Disease Activity (Visuell Analog Skala 0.0-10.0). Samtliga av dessa återfinns i separata arketyper.
+
+Formel för beräkning: CDAI = TJC + SJC + PtGDA + PrGDA">
+			keywords = <"reumatoid artrit", "RA", "CDAI", "Clinical Disease Activity Index", "PtGDA", "PrGDA">
+			misuse = <"Denna arketyp är ej avsedd att användas för registrering av Simplified Disease Activity Index (SDAI). För denna återfinns separat arketyp.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"This archetype stores the value of the clinical disesase activity index (CDAI) which is a measure of disease activity and treatment response in individuals with rheumatoid arthritis.">
@@ -29,25 +48,25 @@ CDAI = TJC + SJC + PtGDA + PrGDA">
 		["references"] = <"Anderson J, Caplan L, Yazdany J, Robbins ML, Neogi T, Michaud K, Saag KG, O'dell JR, Kazi S. Rheumatoid arthritis disease activity measures: American College of Rheumatology recommendations for use in clinical practice. Arthritis care & research. 2012 May 1;64(5):640-7.
 
 Aletaha D, Smolen JS. The simplified disease activity index (SDAI) and clinical disease activity index (CDAI) to monitor patients in standard clinical care. Best practice & research Clinical rheumatology. 2007 Aug 31;21(4):663-75.">
-		["MD5-CAM-1.0.1"] = <"4C3F1DC456CBB691DFBE436DCF4CC0E3">
+		["MD5-CAM-1.0.1"] = <"F15EF1D8B48F705F517070733F372633">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Clinical disease activity index (CDAI)
+	OBSERVATION[at0000] matches {	-- Clinical Disease Activity Index (CDAI)
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Clinical disease activity index (CDAI) score
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Clinical Disease Activity Index (CDAI) poäng
 										value matches {
 											C_DV_QUANTITY <
 											>
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -88,6 +107,34 @@ ontology
 				["at0005"] = <
 					text = <"Comment">
 					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Clinical Disease Activity Index (CDAI)">
+					description = <"Clinical Disease Activity Index (CDAI) är ett validerat instrument för utvärdering av sjukdomsaktivitet hos patienter med reumatoid artrit (RA). Resultatet baseras på fyra parametrar: antal ömma (0 - 28) och svullna (0 - 28) leder, tillsammans med patientens och klinikerns bedömning i enlighet med Global Assessment of Disease Activity (Visuell Analog Skala 0.0-10.0)">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Clinical Disease Activity Index (CDAI) poäng">
+					description = <"CDAI = TJC + SJC + PtGDA + PrGDA">
+				>
+				["at0005"] = <
+					text = <"Kommentar">
+					description = <"Ev tillägg">
 				>
 			>
 		>
