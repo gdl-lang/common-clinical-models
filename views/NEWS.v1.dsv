@@ -1,14 +1,13 @@
-<!DOCTYPE html><html ng-app="cds_app">
-<head>
+<!DOCTYPE html><html ng-app="cds_app"><head>
 <title>{{def.concept.name}}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
-<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
-<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
+<link rel="stylesheet" type="text/css" href="wro/foundation.css" />
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css" />
+<link rel="stylesheet" type="text/css" href="wro/angular.css" />
 <script type="text/javascript" src="wro/angular.js"></script>
-<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js" />
 <script type="text/javascript" src="wro/moment.js"></script>
 <script type="text/javascript" src="wro/date-picker.js"></script>
 <script type="text/javascript" src="wro/app_lib.js"></script>
@@ -63,7 +62,7 @@
       }
     },
     "otherDetails": {
-      "references": "Williams B, Alberti G, Ball C, Bell D, Binks R, Durham L, et al. National Early Warning Score (NEWS): Standardising the Assessment of Acute-Illness Severity in the NHS. London: The Royal College of Physicians, 2012.  https://www.rcplondon.ac.uk/file/32/download?token\u003dvfwDKQVS\n\nNational Early Warning Score (NEWS). [Internet]. London, UK: Royal College of Physicians; 2015 May. Available from: https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news. Suggested RCP UI layouts: https://www.rcplondon.ac.uk/file/38/download?token\u003dVCIPyVbz or https://www.rcplondon.ac.uk/file/36/download?token\u003dN11hBvdx.\n"
+      "references": "Williams B, Alberti G, Ball C, Bell D, Binks R, Durham L, et al. National Early Warning Score (NEWS): Standardising the Assessment of Acute-Illness Severity in the NHS. London: The Royal College of Physicians, 2012. \n\nNational Early Warning Score (NEWS). [Internet]. London, UK: Royal College of Physicians; 2015 May. Available from: https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news."
     }
   },
   "alertGuideIds": [],
@@ -164,9 +163,29 @@
 <#assign temperature_ehr_data = body_temperature_entry_ehr_data + "[0].elements['/data{at0002}/events{at0003}/data{at0001}/items{at0004}']">
 <#assign event_time6_ehr_data = body_temperature_entry_ehr_data + "[0].elements['/data/events/time']">
 
+<script> 
+angular.module('cds_app').controller('NEWS_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time3_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time4_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time5_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time6_ehr_data}.value.value = new Date().toISOString();
+    $scope.${respiration_rate_ehr_data}.value.units = $scope.${respiration_rate_def}.units[0];
+    $scope.${sao2_ehr_data}.value.units = $scope.${sao2_def}.units[0];
+	$scope.${oxygen_therapy_ehr_data}.value.selection = $scope.findMin($scope.${oxygen_therapy_def});
+	$scope.${temperature_ehr_data}.value.units = $scope.${temperature_def}.units[0];
+    $scope.${systolic_ehr_data}.value.units = $scope.${systolic_def}.units[0];
+	$scope.${rate_ehr_data}.value.units = $scope.${rate_def}.units[0];
+	$scope.${avpu_observation_ehr_data}.value.selection = $scope.findMin($scope.${avpu_observation_def});
 
+  });
+});
+</script>
 
-<div ng-show="ready">
+<div ng-show="ready" ng-controller="NEWS_Ctrl">
 <div class="header">
   <h1>{{def.concept.name}}</h1>
   <h2>{{def.concept.description}}</h2>
@@ -184,7 +203,7 @@
         <input ng-model="${respiration_rate_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
 	  <div class="medium-2 columns">
-        <select ng-model="${respiration_rate_ehr_data}.value.units" ng-options="unit for unit in ${respiration_rate_def}.units" ng-change="execute()"disabled=""></select>
+        <select ng-model="${respiration_rate_ehr_data}.value.units" ng-options="unit for unit in ${respiration_rate_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
 <div class="row collapse" title="{{${sao2_def}.description}}">
@@ -195,19 +214,17 @@
         <input ng-model="${sao2_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
 	  <div class="medium-2 columns">
-        <select ng-model="${sao2_ehr_data}.value.units" ng-options="unit for unit in ${sao2_def}.units" ng-change="execute()"disabled=""></select>
+        <select ng-model="${sao2_ehr_data}.value.units" ng-options="unit for unit in ${sao2_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
 <div class="row collapse" title="{{${oxygen_therapy_def}.description}}">
-    <div class="medium-5 columns">
+    <div class="medium-6 columns">
       <label>{{${oxygen_therapy_def}.name}}</label>
-      </div>
-      <label class="medium-7 columns">
-        <select ng-model="${oxygen_therapy_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${oxygen_therapy_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
-        </select>
-      </label>
     </div>
-<br /><br />
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${oxygen_therapy_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${oxygen_therapy_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
 <div class="row collapse" title="{{${temperature_def}.description}}">
 <div class="medium-5 columns">
 <label>{{${temperature_def}.name}}</label>
@@ -216,7 +233,7 @@
         <input ng-model="${temperature_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
 	  <div class="medium-2 columns">
-        <select ng-model="${temperature_ehr_data}.value.units" ng-options="unit for unit in ${temperature_def}.units" ng-change="execute()"disabled=""></select>
+        <select ng-model="${temperature_ehr_data}.value.units" ng-options="unit for unit in ${temperature_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
 <div class="row collapse" title="{{${systolic_def}.description}}">
@@ -227,7 +244,7 @@
         <input ng-model="${systolic_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
 	  <div class="medium-2 columns">
-        <select ng-model="${systolic_ehr_data}.value.units" ng-options="unit for unit in ${systolic_def}.units" ng-change="execute()"disabled=""></select>
+        <select ng-model="${systolic_ehr_data}.value.units" ng-options="unit for unit in ${systolic_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
 <div class="row collapse" title="{{${rate_def}.description}}">
@@ -238,7 +255,7 @@
         <input ng-model="${rate_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
 	  <div class="medium-2 columns">
-        <select ng-model="${rate_ehr_data}.value.units" ng-options="unit for unit in ${rate_def}.units" ng-change="execute()"disabled=""></select>
+        <select ng-model="${rate_ehr_data}.value.units" ng-options="unit for unit in ${rate_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
 <div class="row collapse" title="{{${avpu_observation_def}.description}}">
@@ -279,6 +296,30 @@
 </div>
 </div>
 
+<div class="row"><div class="medium-12 columns"></div></div>
+<br /><br />
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
+</div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news">Williams B, Alberti G, Ball C, Bell D, Binks R, Durham L, et al. National Early Warning Score (NEWS): Standardising the Assessment of Acute-Illness Severity in the NHS. London: The Royal College of Physicians, 2012.</a></i>
+        </li>
+      </div>
+    </div>
+	<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news">National Early Warning Score (NEWS). [Internet]. London, UK: Royal College of Physicians; 2015 May.</a></i>
+        </li>
+      </div>
+    </div>
+  </div>
+  
 <style>
   html, body {
     height:100%;
@@ -396,4 +437,5 @@
     padding-left: 3px;
   }
 </style>
-</html>
+
+</body></html>
