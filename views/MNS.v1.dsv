@@ -1,14 +1,13 @@
-<!DOCTYPE html><html ng-app="cds_app">
-<head>
+<!DOCTYPE html><html ng-app="cds_app"><head>
 <title>{{def.concept.name}}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
-<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
-<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
+<link rel="stylesheet" type="text/css" href="wro/foundation.css" />
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css" />
+<link rel="stylesheet" type="text/css" href="wro/angular.css" />
 <script type="text/javascript" src="wro/angular.js"></script>
-<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js" />
 <script type="text/javascript" src="wro/moment.js"></script>
 <script type="text/javascript" src="wro/date-picker.js"></script>
 <script type="text/javascript" src="wro/app_lib.js"></script>
@@ -27,7 +26,7 @@
     "en": {
       "name": "Modified Norton Scale",
       "description": "Risk assessment tool to evaluate if a person is at risk for developing pressure ulcers."
-    },     
+    },
     "sv": {
       "name": "Modified Norton Scale",
       "description": "Ett verktyg för att bedöma om en patient ligger i riskzonen för att utveckla trycksår."
@@ -68,18 +67,29 @@
   "alertBindings": {},
   "termDefinitions": {
     "sv": {
-      "id": "sv"
+      "id": "sv",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "Referenser"
+        }
+      }
     },
     "en": {
       "id": "en",
-      "terms": {}
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "References"
+        }
+      }
     }
   }
-}
-</script>
+}</script>
 </head>
 <body ng-controller="cds_controller">
 <#assign app_help_tag = "def.guides['MNS.v1'].concept">
+<#assign references = "def.terms['vt0001']"/>
 <#assign modified_norton_scale_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.modified_norton_scale.v1']">
 <#assign modified_norton_scale_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.modified_norton_scale.v1']">
 <#assign modified_norton_scale_entry_def = "def.entries['openEHR-EHR-OBSERVATION.modified_norton_scale.v1']">
@@ -194,6 +204,25 @@ angular.module('cds_app').controller('MNS_Ctrl', function($scope, $window){
   </div>
 </div>
 </div>
+
+<div class="row"><div class="medium-12 columns"></div></div>
+<br /><br />
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
+</div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/2602728">Ek AC, Unosson M, Bjurulf P. The modified Norton scale and the nutritional state. Scandinavian Journal of Caring Sciences. 1989 Dec 1;3(4):183-7.
+</a></i>
+        </li>
+      </div>
+    </div>
+  </div>
+  
 <style>
   html, body {
     height:100%;
@@ -319,5 +348,5 @@ angular.module('cds_app').controller('MNS_Ctrl', function($scope, $window){
     margin-left: 10px;
   }
 </style>
-</body>
-</html>
+
+</body></html>
