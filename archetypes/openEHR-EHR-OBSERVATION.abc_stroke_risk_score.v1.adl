@@ -1,0 +1,134 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.abc_stroke_risk_score.v1
+
+concept
+	[at0000]	-- ABC-stroke risk score
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Eneimi Allwell-Brown">
+		["email"] = <"info@cambio.se">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2016-11-13">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record data values for ABC stroke risk score as well as the points assigned for each of the four predictor variables: prior stroke or TIA, age, plasma cTnT-hs (cardiac troponin-T high-sensitivity) concentration, and plasma NT-proBNP (N-terminal fragment B-type natriuretic peptide) concentration. In contrast with CHA2DS2-VASc score that uses categorical irreversible risk factors, the ABC-stroke score includes specific cardiac-derived biomarkers that make it a more dynamic entity with continuous risk variables, more accurate, and providing more information about subclinical cardiovascular dysfunction and vascular vulnerability.">
+			use = <"Use to record points assigned for the presence or absence of a history of stroke or TIA (nomogram scale 0.0 - 5.5), the individual's age (nomogram scale 0.0 - 3.125), the plasma concentration of cTnT-hs (nomogram scale 0.0 - 5.75) and the plasma concentration of NT-proBNP (nomogram scale 0.0 - 10.0). Also use to record the ABC stroke risk score measured on a nomogram scale of 0.0 - 30.0.
+The actual 'raw values' for clinical history of stroke or TIA (yes/no), age (years) and plasma concentration of the two biomarkers (ng/L) are all stored in separate observation archetypes.
+The ABC stroke risk score is further used in prediction models to determine the 1-year and 3-year risk of stroke/systemic embolism, and these are stored in a separate evaluation archetype: openEHR-EHR-EVALUATION.abc_stroke_risk.v1.">
+			keywords = <"atrial fibrillation", "stroke risk", "systemic embolism risk">
+			misuse = <"Do not use to record 'raw' values for age, plasma biomarker concentration or history of stroke/TIA - these are done in separate archetypes.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Hijazi Z, Lindbäck J, Alexander JH, Hanna M, Held C, Hylek EM, Lopes RD, Oldgren J, Siegbahn A, Stewart RA, White HD. The ABC (age, biomarkers, clinical history) stroke risk score: a biomarker-based risk score for predicting stroke in atrial fibrillation. European heart journal. 2016 May 21;37(20):1582-90.">
+		["MD5-CAM-1.0.1"] = <"827BFBEF6D0FA92F1522A5B726B57D28">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- ABC-stroke risk score
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Prior stroke or transient ischaemic attack points
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Age points
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- cTnT-hs points
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- NT-proBNP points
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- ABC stroke risk score
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"ABC-stroke risk score">
+					description = <"ABC stroke risk score is a biomarker-based risk score for predicting stroke in individuals with atrial fibrillation. Points between 0.0 - 10.0 plotted on a nomogram are assigned to the individual based on each of A = the age (years), B = the plasma concentration of two biomarkers: cTnT-hs (cardiac troponin-T high-sensitivity) and NT-proBNP (N-terminal fragment B-type natriuretic peptide) both in mg/dl, and C = a clinical history of prior stroke or transient ischaemic attack (TIA) answered as yes or no. The sum of the points assigned for the four predictors is the ABC stroke risk score and takes a value minimum = 0.0 and maximum = 30.0, and this score is used in predicting the 1-year and 3-year risk of stroke or systemic embolism in individuals with atrial fibrillation.">
+					comment = <"ABC stroke risk score = ABC stroke score">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0005"] = <
+					text = <"Prior stroke or transient ischaemic attack points">
+					description = <"Points assigned based on the presence or absence of a prior history of stroke or TIA in the individual.">
+				>
+				["at0006"] = <
+					text = <"Age points">
+					description = <"Points assigned based on the individual's age.">
+				>
+				["at0007"] = <
+					text = <"cTnT-hs points">
+					description = <"Points assigned based on the individual's plasma concentration of cardiac troponin-T high-sensitivity (or cardiac troponin-I high sensitivity).">
+				>
+				["at0008"] = <
+					text = <"NT-proBNP points">
+					description = <"Points assigned based on the individual's plasma concentration of N-terminal fragment B-type natriuretic peptide.">
+				>
+				["at0009"] = <
+					text = <"ABC stroke risk score">
+					description = <"Sum total of points assigned based on the 4 (four) ABC stroke risk criteria.">
+				>
+				["at0012"] = <
+					text = <"Comment">
+					description = <"Additional information about this score and/or any of its components.">
+				>
+			>
+		>
+	>
