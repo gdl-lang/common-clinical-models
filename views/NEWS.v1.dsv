@@ -175,10 +175,10 @@ angular.module('cds_app').controller('NEWS_Ctrl', function($scope, $window){
 	$scope.${event_time6_ehr_data}.value.value = new Date().toISOString();
     $scope.${respiration_rate_ehr_data}.value.units = $scope.${respiration_rate_def}.units[0];
     $scope.${sao2_ehr_data}.value.units = $scope.${sao2_def}.units[0];
-	$scope.${oxygen_therapy_ehr_data}.value.selection = $scope.findMin($scope.${oxygen_therapy_def});
 	$scope.${temperature_ehr_data}.value.units = $scope.${temperature_def}.units[0];
     $scope.${systolic_ehr_data}.value.units = $scope.${systolic_def}.units[0];
 	$scope.${rate_ehr_data}.value.units = $scope.${rate_def}.units[0];
+	$scope.${oxygen_therapy_ehr_data}.value.selection = $scope.findMin($scope.${oxygen_therapy_def});
 	$scope.${avpu_observation_ehr_data}.value.selection = $scope.findMin($scope.${avpu_observation_def});
 
   });
@@ -225,17 +225,6 @@ angular.module('cds_app').controller('NEWS_Ctrl', function($scope, $window){
       <input type="radio" value="{{key}}" ng-model="${oxygen_therapy_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
-<div class="row collapse" title="{{${temperature_def}.description}}">
-<div class="medium-5 columns">
-<label>{{${temperature_def}.name}}</label>
-</div>
-<div class="medium-5 columns">
-        <input ng-model="${temperature_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
-      </div>
-	  <div class="medium-2 columns">
-        <select ng-model="${temperature_ehr_data}.value.units" ng-options="unit for unit in ${temperature_def}.units" ng-change="execute()" disabled=""></select>
-      </div>
-</div>
 <div class="row collapse" title="{{${systolic_def}.description}}">
 <div class="medium-5 columns">
 <label>{{${systolic_def}.name}}</label>
@@ -256,6 +245,17 @@ angular.module('cds_app').controller('NEWS_Ctrl', function($scope, $window){
       </div>
 	  <div class="medium-2 columns">
         <select ng-model="${rate_ehr_data}.value.units" ng-options="unit for unit in ${rate_def}.units" ng-change="execute()" disabled=""></select>
+      </div>
+</div>
+<div class="row collapse" title="{{${temperature_def}.description}}">
+<div class="medium-5 columns">
+<label>{{${temperature_def}.name}}</label>
+</div>
+<div class="medium-5 columns">
+        <input ng-model="${temperature_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${temperature_ehr_data}.value.units" ng-options="unit for unit in ${temperature_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
 <div class="row collapse" title="{{${avpu_observation_def}.description}}">

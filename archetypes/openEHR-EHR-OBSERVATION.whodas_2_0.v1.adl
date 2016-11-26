@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.whodas_2_0.v1
 
 concept
-	[at0000]	-- Whodas 2 0
+	[at0000]	-- Whodas 2.0
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -12,6 +21,32 @@ description
 		["date"] = <"2016-11-11">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"WHODAS 2.0 frågeformulär används för att utreda vilka svårigheter en patient upplever till följd av fysiskt eller psykiskt sjukdomstillstånd. Formuläret är uppdelat i sex domäner: Kognition, Förflyttning, Personlig vård, Relationer, Dagliga aktiviteter och delaktighet.">
+			use = <"WHODAS 2.0-formuläret består av 36 frågor och kan användas som självadministrerad, intervjuadministrerad samt som administrerad av ombud. Frågorna ställs med hänsyn till de senaste 30 dagarna. Används för att utreda vilka svårigheter en patient upplever till följd av fysiskt eller psykiskt sjukdomstillstånd. Dessa tillstånd kan inkludera somatisk sjukdom, psykisk sjukdom och missbruk av olika slag.
+
+En kort version av formuläret finns tillgänglig och består av 12 frågor vilka förklarar 81% av variansen i den fullständiga versionen. Denna kan med fördel användas för screening.
+
+Det finns även en hybridversion, den sk 12-24-versionen. Denna kan ej självadministreras. 
+
+Poängen baseras på svarsalternativen enligt:
+
+0 = Inga svårigheter
+1 = Lite svårigheter
+2 = Måttliga svårigheter
+3 = Stora svårigheter
+4 = Extrema svårigheter/kan inte
+
+Resultatet för det fullständiga formuläret bearbetas på två sätt: Enkel (summan av samtliga frågor angiven som procent), och Komplex (baserad på IRT - Item Response Theory, med viktning av resultatet). För vidare detaljer, vänligen besök WHO:s officiella hemsida.
+
+Tolkning av resultat bör göras med beaktande av domänspecifika resultat för att kunna identifiera områden som av patienten upplevs som särskilt problematiska. Som tillägg finns tre övergripande frågor för att kartlägga frekvens och påverkan på dagliga livet under senaste 30 dagarna.">
+			keywords = <"WHODAS 2.0", "WHO">
+			misuse = <"WHODAS 2.0 bör ej användas isolerat utan är avsett att understödja klinisk misstanke och stärka indikation för vidare utredning. Hög poäng bör föranleda remiss till adekvat klinik.
+
+WHO rekommenderar klinikerna att på förhand läsa igenom manualen innan intervjun genomförs.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"The WHODAS 2.0 questionnaire is used to enquire about difficulties a patient may experience due to health/mental health issues. There are 6 domains of: understanding and communicating, getting around, self-care, getting along with people, life activities (i.e., household, work, and/or school activities), and participation in society.">
@@ -48,526 +83,526 @@ The WHO recommends interviewer users to read through their user manual before ta
 
 Ref. 2: Üstün TB et al. World Health Organization Disability Assessment Schedule II (WHO DAS II): development, psychometric testing and applications. 
 Bulletin of the World Health Organization, 2010, In press">
-		["MD5-CAM-1.0.1"] = <"CAF3DE28A505E3DC5843822401060EB9">
+		["MD5-CAM-1.0.1"] = <"386CC2CB34C7CA424BDF49500B017DED">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Whodas 2 0
+	OBSERVATION[at0000] matches {	-- Whodas 2.0
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; ordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- D1.1 S6: Concentrating on doing something for ten minutes? 
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- D1.1 S6: Att koncentrera dig på att göra något under tio minuter?
 										value matches {
-											0|[local::at0054], 	-- No difficulty
-											1|[local::at0055], 	-- Mild difficulty
-											2|[local::at0056], 	-- Moderate difficulty
-											3|[local::at0057], 	-- Severe difficulty
-											4|[local::at0058]  	-- Extremely difficult or cannot do
+											0|[local::at0054], 	-- *No difficulty(en)
+											1|[local::at0055], 	-- *Mild difficulty(en)
+											2|[local::at0056], 	-- *Moderate difficulty(en)
+											3|[local::at0057], 	-- *Severe difficulty(en)
+											4|[local::at0058]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- D1.2: Remembering to do important things?
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- D1.2: Komma ihåg att göra viktiga saker?
 										value matches {
-											0|[local::at0059], 	-- No difficulty
-											1|[local::at0060], 	-- Mild difficulty
-											2|[local::at0061], 	-- Moderate difficulty
-											3|[local::at0062], 	-- Severe difficulty
-											4|[local::at0063]  	-- Extremely difficult or cannot do
+											0|[local::at0059], 	-- *No difficulty(en)
+											1|[local::at0060], 	-- *Mild difficulty(en)
+											2|[local::at0061], 	-- *Moderate difficulty(en)
+											3|[local::at0062], 	-- *Severe difficulty(en)
+											4|[local::at0063]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- D1.3: Analysing and finding solutions to problems in day-to-day life?
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- D1.3: Analysera och finna lösningar på problem i det dagliga livet?
 										value matches {
-											0|[local::at0064], 	-- No difficulty
-											1|[local::at0065], 	-- Mild difficulty
-											2|[local::at0066], 	-- Moderate difficulty
-											3|[local::at0067], 	-- Severe difficulty
-											4|[local::at0068]  	-- Extremely difficult or cannot do
+											0|[local::at0064], 	-- *No difficulty(en)
+											1|[local::at0065], 	-- *Mild difficulty(en)
+											2|[local::at0066], 	-- *Moderate difficulty(en)
+											3|[local::at0067], 	-- *Severe difficulty(en)
+											4|[local::at0068]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- D1.4 S3: Learning a new task, for example, learning how to get to a new place?
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- D1.4 S3: Att lära dig en ny uppgift, t.ex. hur man tar sig till en ny plats?
 										value matches {
-											0|[local::at0069], 	-- No difficulty
-											1|[local::at0070], 	-- Mild difficulty
-											2|[local::at0071], 	-- Moderate difficulty
-											3|[local::at0072], 	-- Severe difficulty
-											4|[local::at0073]  	-- Extremely difficult or cannot do
+											0|[local::at0069], 	-- *No difficulty(en)
+											1|[local::at0070], 	-- *Mild difficulty(en)
+											2|[local::at0071], 	-- *Moderate difficulty(en)
+											3|[local::at0072], 	-- *Severe difficulty(en)
+											4|[local::at0073]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- D1.5: Generally understanding what people say?
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- D1.5: För det mesta förstå vad människor säger?
 										value matches {
-											0|[local::at0074], 	-- No difficulty
-											1|[local::at0075], 	-- Mild difficulty
-											2|[local::at0076], 	-- Moderate difficulty
-											3|[local::at0077], 	-- Severe difficulty
-											4|[local::at0078]  	-- Extremely difficult or cannot do
+											0|[local::at0074], 	-- *No difficulty(en)
+											1|[local::at0075], 	-- *Mild difficulty(en)
+											2|[local::at0076], 	-- *Moderate difficulty(en)
+											3|[local::at0077], 	-- *Severe difficulty(en)
+											4|[local::at0078]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- D1.6: Starting and maintaining a conversation?
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- D1.6: Påbörja och hålla igång ett samtal?
 										value matches {
-											0|[local::at0079], 	-- No difficulty
-											1|[local::at0080], 	-- Mild difficulty
-											2|[local::at0081], 	-- Moderate difficulty
-											3|[local::at0082], 	-- Severe difficulty
-											4|[local::at0083]  	-- Extremely difficult or cannot do
+											0|[local::at0079], 	-- *No difficulty(en)
+											1|[local::at0080], 	-- *Mild difficulty(en)
+											2|[local::at0081], 	-- *Moderate difficulty(en)
+											3|[local::at0082], 	-- *Severe difficulty(en)
+											4|[local::at0083]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- D2.1 S1: Standing for long periods such as 30 minutes?
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- D2.1 S1: Att stå under längre perioder såsom 30 minuter?
 										value matches {
-											0|[local::at0084], 	-- No difficulty
-											1|[local::at0085], 	-- Mild difficulty
-											2|[local::at0086], 	-- Moderate difficulty
-											3|[local::at0087], 	-- Severe difficulty
-											4|[local::at0088]  	-- Extremely difficult or cannot do
+											0|[local::at0084], 	-- *No difficulty(en)
+											1|[local::at0085], 	-- *Mild difficulty(en)
+											2|[local::at0086], 	-- *Moderate difficulty(en)
+											3|[local::at0087], 	-- *Severe difficulty(en)
+											4|[local::at0088]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- D2.2: Standing up from sitting down?
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- D2.2: Resa dig från sittande ställning?
 										value matches {
-											0|[local::at0089], 	-- No difficulty
-											1|[local::at0090], 	-- Mild difficulty
-											2|[local::at0091], 	-- Moderate difficulty
-											3|[local::at0092], 	-- Severe difficulty
-											4|[local::at0093]  	-- Extremely difficult or cannot do
+											0|[local::at0089], 	-- *No difficulty(en)
+											1|[local::at0090], 	-- *Mild difficulty(en)
+											2|[local::at0091], 	-- *Moderate difficulty(en)
+											3|[local::at0092], 	-- *Severe difficulty(en)
+											4|[local::at0093]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- D2.3: Moving around inside your home?
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- D2.3: Röra dig i ditt hem?
 										value matches {
-											0|[local::at0094], 	-- No difficulty
-											1|[local::at0095], 	-- Mild difficulty
-											2|[local::at0096], 	-- Moderate difficulty
-											3|[local::at0097], 	-- Severe difficulty
-											4|[local::at0098]  	-- Extremely difficult or cannot do
+											0|[local::at0094], 	-- *No difficulty(en)
+											1|[local::at0095], 	-- *Mild difficulty(en)
+											2|[local::at0096], 	-- *Moderate difficulty(en)
+											3|[local::at0097], 	-- *Severe difficulty(en)
+											4|[local::at0098]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- D2.4: Getting out of your home?
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- D2.4: Ta dig ut från ditt hem?
 										value matches {
-											0|[local::at0099], 	-- No difficulty
-											1|[local::at0100], 	-- Mild difficulty
-											2|[local::at0101], 	-- Moderate difficulty
-											3|[local::at0102], 	-- Severe difficulty
-											4|[local::at0103]  	-- Extremely difficult or cannot do
+											0|[local::at0099], 	-- *No difficulty(en)
+											1|[local::at0100], 	-- *Mild difficulty(en)
+											2|[local::at0101], 	-- *Moderate difficulty(en)
+											3|[local::at0102], 	-- *Severe difficulty(en)
+											4|[local::at0103]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- D2.5 S7: Walking a long distance such as a kilometre [or equivalent]?
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- D2.5 S7: Att gå en längre sträcka såsom en kilometer?
 										value matches {
-											0|[local::at0104], 	-- No difficulty
-											1|[local::at0105], 	-- Mild difficulty
-											2|[local::at0106], 	-- Moderate difficulty
-											3|[local::at0107], 	-- Severe difficulty
-											4|[local::at0108]  	-- Extremely difficult or cannot do
+											0|[local::at0104], 	-- *No difficulty(en)
+											1|[local::at0105], 	-- *Mild difficulty(en)
+											2|[local::at0106], 	-- *Moderate difficulty(en)
+											3|[local::at0107], 	-- *Severe difficulty(en)
+											4|[local::at0108]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0015] occurrences matches {0..1} matches {	-- D3.1 S8: Washing your whole body?
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- D3.1 S8: Att tvätta hela kroppen?
 										value matches {
-											0|[local::at0109], 	-- No difficulty
-											1|[local::at0110], 	-- Mild difficulty
-											2|[local::at0111], 	-- Moderate difficulty
-											3|[local::at0112], 	-- Severe difficulty
-											4|[local::at0113]  	-- Extremely difficult or cannot do
+											0|[local::at0109], 	-- *No difficulty(en)
+											1|[local::at0110], 	-- *Mild difficulty(en)
+											2|[local::at0111], 	-- *Moderate difficulty(en)
+											3|[local::at0112], 	-- *Severe difficulty(en)
+											4|[local::at0113]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0016] occurrences matches {0..1} matches {	-- D3.2 S9: Getting dressed?
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- D3.2 S9: Att klä dig?
 										value matches {
-											0|[local::at0114], 	-- No difficulty
-											1|[local::at0115], 	-- Mild difficulty
-											2|[local::at0116], 	-- Moderate difficulty
-											3|[local::at0117], 	-- Severe difficulty
-											4|[local::at0118]  	-- Extremely difficult or cannot do
+											0|[local::at0114], 	-- *No difficulty(en)
+											1|[local::at0115], 	-- *Mild difficulty(en)
+											2|[local::at0116], 	-- *Moderate difficulty(en)
+											3|[local::at0117], 	-- *Severe difficulty(en)
+											4|[local::at0118]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0017] occurrences matches {0..1} matches {	-- D3.3: Eating?
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- D3.3: Äta?
 										value matches {
-											0|[local::at0119], 	-- No difficulty
-											1|[local::at0120], 	-- Mild difficulty
-											2|[local::at0121], 	-- Moderate difficulty
-											3|[local::at0122], 	-- Severe difficulty
-											4|[local::at0123]  	-- Extremely difficult or cannot do
+											0|[local::at0119], 	-- *No difficulty(en)
+											1|[local::at0120], 	-- *Mild difficulty(en)
+											2|[local::at0121], 	-- *Moderate difficulty(en)
+											3|[local::at0122], 	-- *Severe difficulty(en)
+											4|[local::at0123]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0018] occurrences matches {0..1} matches {	-- D3.4: Staying by yourself for a few days?
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- D3.4: Vara ensam under några dagar?
 										value matches {
-											0|[local::at0124], 	-- No difficulty
-											1|[local::at0125], 	-- Mild difficulty
-											2|[local::at0126], 	-- Moderate difficulty
-											3|[local::at0127], 	-- Severe difficulty
-											4|[local::at0128]  	-- Extremely difficult or cannot do
+											0|[local::at0124], 	-- *No difficulty(en)
+											1|[local::at0125], 	-- *Mild difficulty(en)
+											2|[local::at0126], 	-- *Moderate difficulty(en)
+											3|[local::at0127], 	-- *Severe difficulty(en)
+											4|[local::at0128]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0033] occurrences matches {0..1} matches {	-- D4.1 S10: Dealing with people you do not know?
+									ELEMENT[at0033] occurrences matches {0..1} matches {	-- D4.1 S10: Att bemöta människor som du inte känner?
 										value matches {
-											0|[local::at0129], 	-- No difficulty
-											1|[local::at0130], 	-- Mild difficulty
-											2|[local::at0131], 	-- Moderate difficulty
-											3|[local::at0132], 	-- Severe difficulty
-											4|[local::at0133]  	-- Extremely difficult or cannot do
+											0|[local::at0129], 	-- *No difficulty(en)
+											1|[local::at0130], 	-- *Mild difficulty(en)
+											2|[local::at0131], 	-- *Moderate difficulty(en)
+											3|[local::at0132], 	-- *Severe difficulty(en)
+											4|[local::at0133]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0032] occurrences matches {0..1} matches {	-- D4.2 S11: Maintaining a friendship?
+									ELEMENT[at0032] occurrences matches {0..1} matches {	-- D4.2 S11: Att bibehålla en vänskapsrelation?
 										value matches {
-											0|[local::at0134], 	-- No difficulty
-											1|[local::at0135], 	-- Mild difficulty
-											2|[local::at0136], 	-- Moderate difficulty
-											3|[local::at0137], 	-- Severe difficulty
-											4|[local::at0138]  	-- Extremely difficult or cannot do
+											0|[local::at0134], 	-- *No difficulty(en)
+											1|[local::at0135], 	-- *Mild difficulty(en)
+											2|[local::at0136], 	-- *Moderate difficulty(en)
+											3|[local::at0137], 	-- *Severe difficulty(en)
+											4|[local::at0138]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0031] occurrences matches {0..1} matches {	-- D4.3: Getting along with people who are close to you?
+									ELEMENT[at0031] occurrences matches {0..1} matches {	-- D4.3: Komma överens med människor som står dig nära?
 										value matches {
-											0|[local::at0139], 	-- No difficulty
-											1|[local::at0140], 	-- Mild difficulty
-											2|[local::at0141], 	-- Moderate difficulty
-											3|[local::at0142], 	-- Severe difficulty
-											4|[local::at0143]  	-- Extremely difficult or cannot do
+											0|[local::at0139], 	-- *No difficulty(en)
+											1|[local::at0140], 	-- *Mild difficulty(en)
+											2|[local::at0141], 	-- *Moderate difficulty(en)
+											3|[local::at0142], 	-- *Severe difficulty(en)
+											4|[local::at0143]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0027] occurrences matches {0..1} matches {	-- D4.4: Making new friends?
+									ELEMENT[at0027] occurrences matches {0..1} matches {	-- D4.4: Skaffa nya vänner?
 										value matches {
-											0|[local::at0144], 	-- No difficulty
-											1|[local::at0145], 	-- Mild difficulty
-											2|[local::at0146], 	-- Moderate difficulty
-											3|[local::at0147], 	-- Severe difficulty
-											4|[local::at0148]  	-- Extremely difficult or cannot do
+											0|[local::at0144], 	-- *No difficulty(en)
+											1|[local::at0145], 	-- *Mild difficulty(en)
+											2|[local::at0146], 	-- *Moderate difficulty(en)
+											3|[local::at0147], 	-- *Severe difficulty(en)
+											4|[local::at0148]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0030] occurrences matches {0..1} matches {	-- D4.5: Sexual activities?
+									ELEMENT[at0030] occurrences matches {0..1} matches {	-- D4.5: Vara nära sexuellt?
 										value matches {
-											0|[local::at0149], 	-- No difficulty
-											1|[local::at0150], 	-- Mild difficulty
-											2|[local::at0151], 	-- Moderate difficulty
-											3|[local::at0152], 	-- Severe difficulty
-											4|[local::at0153]  	-- Extremely difficult or cannot do
+											0|[local::at0149], 	-- *No difficulty(en)
+											1|[local::at0150], 	-- *Mild difficulty(en)
+											2|[local::at0151], 	-- *Moderate difficulty(en)
+											3|[local::at0152], 	-- *Severe difficulty(en)
+											4|[local::at0153]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0029] occurrences matches {0..1} matches {	-- D5.1 S2: Taking care of your household responsibilities?
+									ELEMENT[at0029] occurrences matches {0..1} matches {	-- D5.1 S2: Att sköta dina hushållsuppgifter?
 										value matches {
-											0|[local::at0154], 	-- No difficulty
-											1|[local::at0155], 	-- Mild difficulty
-											2|[local::at0156], 	-- Moderate difficulty
-											3|[local::at0157], 	-- Severe difficulty
-											4|[local::at0158]  	-- Extremely difficult or cannot do
+											0|[local::at0154], 	-- *No difficulty(en)
+											1|[local::at0155], 	-- *Mild difficulty(en)
+											2|[local::at0156], 	-- *Moderate difficulty(en)
+											3|[local::at0157], 	-- *Severe difficulty(en)
+											4|[local::at0158]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0028] occurrences matches {0..1} matches {	-- D5.2: Doing most important household tasks well?
+									ELEMENT[at0028] occurrences matches {0..1} matches {	-- D5.2: Göra det viktigaste hushållsarbetet på ett bra sätt?
 										value matches {
-											0|[local::at0159], 	-- No difficulty
-											1|[local::at0160], 	-- Mild difficulty
-											2|[local::at0161], 	-- Moderate difficulty
-											3|[local::at0162], 	-- Severe difficulty
-											4|[local::at0163]  	-- Extremely difficult or cannot do
+											0|[local::at0159], 	-- *No difficulty(en)
+											1|[local::at0160], 	-- *Mild difficulty(en)
+											2|[local::at0161], 	-- *Moderate difficulty(en)
+											3|[local::at0162], 	-- *Severe difficulty(en)
+											4|[local::at0163]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0019] occurrences matches {0..1} matches {	-- D5.3: Getting all the household work done that you needed to do?
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- D5.3: Få allt det hushållsarbete gjort som du behövde göra?
 										value matches {
-											0|[local::at0164], 	-- No difficulty
-											1|[local::at0165], 	-- Mild difficulty
-											2|[local::at0166], 	-- Moderate difficulty
-											3|[local::at0167], 	-- Severe difficulty
-											4|[local::at0168]  	-- Extremely difficult or cannot do
+											0|[local::at0164], 	-- *No difficulty(en)
+											1|[local::at0165], 	-- *Mild difficulty(en)
+											2|[local::at0166], 	-- *Moderate difficulty(en)
+											3|[local::at0167], 	-- *Severe difficulty(en)
+											4|[local::at0168]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0020] occurrences matches {0..1} matches {	-- D5.4: Getting your household work done as quickly as needed?
+									ELEMENT[at0020] occurrences matches {0..1} matches {	-- D5.4: Få ditt hushållsarbete gjort så fort som det behövdes?
 										value matches {
-											0|[local::at0169], 	-- No difficulty
-											1|[local::at0170], 	-- Mild difficulty
-											2|[local::at0171], 	-- Moderate difficulty
-											3|[local::at0172], 	-- Severe difficulty
-											4|[local::at0173]  	-- Extremely difficult or cannot do
+											0|[local::at0169], 	-- *No difficulty(en)
+											1|[local::at0170], 	-- *Mild difficulty(en)
+											2|[local::at0171], 	-- *Moderate difficulty(en)
+											3|[local::at0172], 	-- *Severe difficulty(en)
+											4|[local::at0173]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0234] occurrences matches {0..1} matches {	-- Does the patient work or go to school?
+									ELEMENT[at0234] occurrences matches {0..1} matches {	-- Har patienten en huvudsysselsättning såsom arbete eller studier?
 										value matches {
-											0|[local::at0235], 	-- No
-											1|[local::at0236]  	-- Yes
+											0|[local::at0235], 	-- *No(en)
+											1|[local::at0236]  	-- *Yes(en)
 										}
 									}
-									ELEMENT[at0021] occurrences matches {0..1} matches {	-- D5.5 S12: Your day-to-day work/school?
+									ELEMENT[at0021] occurrences matches {0..1} matches {	-- D5.5 S12: Dina vardagliga arbets- eller studieuppgifter?
 										value matches {
-											0|[local::at0174], 	-- No difficulty
-											1|[local::at0175], 	-- Mild difficulty
-											2|[local::at0176], 	-- Moderate difficulty
-											3|[local::at0177], 	-- Severe difficulty
-											4|[local::at0178]  	-- Extremely difficult or cannot do
+											0|[local::at0174], 	-- *No difficulty(en)
+											1|[local::at0175], 	-- *Mild difficulty(en)
+											2|[local::at0176], 	-- *Moderate difficulty(en)
+											3|[local::at0177], 	-- *Severe difficulty(en)
+											4|[local::at0178]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0238] occurrences matches {0..1} matches {	-- In the past 30 days, on how many days did you reduce or completely miss household work because of your health condition?
-										value matches {
-											DV_TEXT matches {*}
-										}
-									}
-									ELEMENT[at0026] occurrences matches {0..1} matches {	-- D5.6: Doing your most important work/school tasks well?
-										value matches {
-											0|[local::at0179], 	-- No difficulty
-											1|[local::at0180], 	-- Mild difficulty
-											2|[local::at0181], 	-- Moderate difficulty
-											3|[local::at0182], 	-- Severe difficulty
-											4|[local::at0183]  	-- Extremely difficult or cannot do
-										}
-									}
-									ELEMENT[at0022] occurrences matches {0..1} matches {	-- D5.7: Getting all the work done that you need to do?
-										value matches {
-											0|[local::at0184], 	-- No difficulty
-											1|[local::at0185], 	-- Mild difficulty
-											2|[local::at0186], 	-- Moderate difficulty
-											3|[local::at0187], 	-- Severe difficulty
-											4|[local::at0188]  	-- Extremely difficult or cannot do
-										}
-									}
-									ELEMENT[at0023] occurrences matches {0..1} matches {	-- D5.8: Getting your work done as quickly as needed?
-										value matches {
-											0|[local::at0189], 	-- No difficulty
-											1|[local::at0190], 	-- Mild difficulty
-											2|[local::at0191], 	-- Moderate difficulty
-											3|[local::at0192], 	-- Severe difficulty
-											4|[local::at0193]  	-- Extremely difficult or cannot do
-										}
-									}
-									ELEMENT[at0239] occurrences matches {0..1} matches {	-- D5.9 Interview only: Have you had to work at a lower level because of a health condition?
-										value matches {
-											0|[local::at0240], 	-- No
-											1|[local::at0241]  	-- Yes
-										}
-									}
-									ELEMENT[at0242] occurrences matches {0..1} matches {	-- D5.10 Interview only: Did you earn less money as the result of a health condition?
-										value matches {
-											0|[local::at0243], 	-- No
-											1|[local::at0244]  	-- Yes
-										}
-									}
-									ELEMENT[at0245] occurrences matches {0..1} matches {	-- D5.02: Interview only: In the past 30 days, on how many days did you miss work for half a day or more because of your health condition?
+									ELEMENT[at0238] occurrences matches {0..1} matches {	-- Under hur många av de senaste 30 dagarna minskade du eller helt försummade du ditt hushållsarbete pga ditt hälsotillstånd?
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0024] occurrences matches {0..1} matches {	-- D6.1 S4: How much of a problem did you have in joining in community activities (for example, festivities, religious or other activities) in the same way as anyone else can?
+									ELEMENT[at0026] occurrences matches {0..1} matches {	-- D5.6: Att göra dina viktigaste arbets- eller studieuppgifter bra?
 										value matches {
-											0|[local::at0194], 	-- No difficulty
-											1|[local::at0195], 	-- Mild difficulty
-											2|[local::at0196], 	-- Moderate difficulty
-											3|[local::at0197], 	-- Severe difficulty
-											4|[local::at0198]  	-- Extremely difficult or cannot do
+											0|[local::at0179], 	-- *No difficulty(en)
+											1|[local::at0180], 	-- *Mild difficulty(en)
+											2|[local::at0181], 	-- *Moderate difficulty(en)
+											3|[local::at0182], 	-- *Severe difficulty(en)
+											4|[local::at0183]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0025] occurrences matches {0..1} matches {	-- D6.2: How much of a problem did you have because of barriers or hindrances in the world around you?
+									ELEMENT[at0022] occurrences matches {0..1} matches {	-- D5.7: Att få allt arbete gjort som du behövde göra?
 										value matches {
-											0|[local::at0199], 	-- No difficulty
-											1|[local::at0200], 	-- Mild difficulty
-											2|[local::at0201], 	-- Moderate difficulty
-											3|[local::at0202], 	-- Severe difficulty
-											4|[local::at0203]  	-- Extremely difficult or cannot do
+											0|[local::at0184], 	-- *No difficulty(en)
+											1|[local::at0185], 	-- *Mild difficulty(en)
+											2|[local::at0186], 	-- *Moderate difficulty(en)
+											3|[local::at0187], 	-- *Severe difficulty(en)
+											4|[local::at0188]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0034] occurrences matches {0..1} matches {	-- D6.3: How much of a problem did you have living with dignity because of the attitudes and actions of others?
+									ELEMENT[at0023] occurrences matches {0..1} matches {	-- D5.8: Att få ditt arbete gjort så fort som det behövdes?
 										value matches {
-											0|[local::at0204], 	-- No difficulty
-											1|[local::at0205], 	-- Mild difficulty
-											2|[local::at0206], 	-- Moderate difficulty
-											3|[local::at0207], 	-- Severe difficulty
-											4|[local::at0208]  	-- Extremely difficult or cannot do
+											0|[local::at0189], 	-- *No difficulty(en)
+											1|[local::at0190], 	-- *Mild difficulty(en)
+											2|[local::at0191], 	-- *Moderate difficulty(en)
+											3|[local::at0192], 	-- *Severe difficulty(en)
+											4|[local::at0193]  	-- *Extremely difficult or cannot do(en)
 										}
 									}
-									ELEMENT[at0035] occurrences matches {0..1} matches {	-- D6.4 How much time did you spend on your health condition, or its consequences?
+									ELEMENT[at0239] occurrences matches {0..1} matches {	-- D5.9 Intervjuadministrerad: Har du tvingats arbeta på en lägre nivå pga ditt hälsotillstånd?
 										value matches {
-											0|[local::at0209], 	-- No difficulty
-											1|[local::at0210], 	-- Mild difficulty
-											2|[local::at0211], 	-- Moderate difficulty
-											3|[local::at0212], 	-- Severe difficulty
-											4|[local::at0213]  	-- Extremely difficult or cannot do
+											0|[local::at0240], 	-- *No(en)
+											1|[local::at0241]  	-- *Yes(en)
 										}
 									}
-									ELEMENT[at0036] occurrences matches {0..1} matches {	-- D6.5 S5: How much have you been emotionally affected by your health condition?
+									ELEMENT[at0242] occurrences matches {0..1} matches {	-- D5.10 Intervjuadministrerad: Tjänade du mindre pengar till följd av ditt hälsotillstånd?
 										value matches {
-											0|[local::at0214], 	-- No difficulty
-											1|[local::at0215], 	-- Mild difficulty
-											2|[local::at0216], 	-- Moderate difficulty
-											3|[local::at0217], 	-- Severe difficulty
-											4|[local::at0218]  	-- Extremely difficult or cannot do
+											0|[local::at0243], 	-- *No(en)
+											1|[local::at0244]  	-- *Yes(en)
 										}
 									}
-									ELEMENT[at0037] occurrences matches {0..1} matches {	-- D6.6: How much has your health been a drain on the financial resources of you or your family?
-										value matches {
-											0|[local::at0219], 	-- No difficulty
-											1|[local::at0220], 	-- Mild difficulty
-											2|[local::at0221], 	-- Moderate difficulty
-											3|[local::at0222], 	-- Severe difficulty
-											4|[local::at0223]  	-- Extremely difficult or cannot do
-										}
-									}
-									ELEMENT[at0038] occurrences matches {0..1} matches {	-- D6.7: How much of a problem did your family have because of your health problems?
-										value matches {
-											0|[local::at0224], 	-- No difficulty
-											1|[local::at0225], 	-- Mild difficulty
-											2|[local::at0226], 	-- Moderate difficulty
-											3|[local::at0227], 	-- Severe difficulty
-											4|[local::at0228]  	-- Extremely difficult or cannot do
-										}
-									}
-									ELEMENT[at0039] occurrences matches {0..1} matches {	-- D6.8: How much of a problem did you have in doing things by yourself for relaxation or  pleasure?
-										value matches {
-											0|[local::at0229], 	-- No difficulty
-											1|[local::at0230], 	-- Mild difficulty
-											2|[local::at0231], 	-- Moderate difficulty
-											3|[local::at0232], 	-- Severe difficulty
-											4|[local::at0233]  	-- Extremely difficult or cannot do
-										}
-									}
-									ELEMENT[at0040] occurrences matches {0..1} matches {	-- 12 item raw score
-										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::380]>
-												list = <
-													["1"] = <
-														units = <"%">
-														magnitude = <|0.0..100.0|>
-														precision = <|2|>
-													>
-												>
-											>
-										}
-									}
-									ELEMENT[at0041] occurrences matches {0..1} matches {	-- 12 - 24 ques score Hybrid version
-										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::380]>
-												list = <
-													["1"] = <
-														units = <"%">
-														magnitude = <|0.0..100.0|>
-														precision = <|2|>
-													>
-												>
-											>
-										}
-									}
-									ELEMENT[at0042] occurrences matches {0..1} matches {	-- 36 item raw score
-										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::380]>
-												list = <
-													["1"] = <
-														units = <"%">
-														magnitude = <|0.0..100.0|>
-														precision = <|2|>
-													>
-												>
-											>
-										}
-									}
-									ELEMENT[at0044] occurrences matches {0..1} matches {	-- D1 Understanding and communicating domain score
-										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::380]>
-												list = <
-													["1"] = <
-														units = <"%">
-														magnitude = <|0.0..100.0|>
-														precision = <|2|>
-													>
-												>
-											>
-										}
-									}
-									ELEMENT[at0045] occurrences matches {0..1} matches {	-- D2 Getting around domain score
-										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::380]>
-												list = <
-													["1"] = <
-														units = <"%">
-														magnitude = <|0.0..100.0|>
-														precision = <|2|>
-													>
-												>
-											>
-										}
-									}
-									ELEMENT[at0046] occurrences matches {0..1} matches {	-- D3 Self-care domain score
-										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::380]>
-												list = <
-													["1"] = <
-														units = <"%">
-														magnitude = <|0.0..100.0|>
-														precision = <|2|>
-													>
-												>
-											>
-										}
-									}
-									ELEMENT[at0050] occurrences matches {0..1} matches {	-- D4 Getting along with people domain score
-										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::380]>
-												list = <
-													["1"] = <
-														units = <"%">
-														magnitude = <|0.0..100.0|>
-														precision = <|2|>
-													>
-												>
-											>
-										}
-									}
-									ELEMENT[at0049] occurrences matches {0..1} matches {	-- D5 Life activities domain score
-										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::380]>
-												list = <
-													["1"] = <
-														units = <"%">
-														magnitude = <|0.0..100.0|>
-														precision = <|2|>
-													>
-												>
-											>
-										}
-									}
-									ELEMENT[at0048] occurrences matches {0..1} matches {	-- D6 Participation in society domain score
-										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::380]>
-												list = <
-													["1"] = <
-														units = <"%">
-														magnitude = <|0.0..100.0|>
-														precision = <|2|>
-													>
-												>
-											>
-										}
-									}
-									ELEMENT[at0047] occurrences matches {0..1} matches {	-- 36 item complex score
-										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::380]>
-												list = <
-													["1"] = <
-														units = <"%">
-														magnitude = <|0.0..100.0|>
-														precision = <|2|>
-													>
-												>
-											>
-										}
-									}
-									ELEMENT[at0051] occurrences matches {0..1} matches {	-- H1: Overall, in the past 30 days, how many days were these difficulties present?
+									ELEMENT[at0245] occurrences matches {0..1} matches {	-- D5.02: Intervjuadministrerad: Under hur många av de senaste 30 dagarna har du uteblivit från ditt arbete under en halv dag eller mer pga ditt hälsotillstånd?
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0053] occurrences matches {0..1} matches {	-- H2: In the past 30 days, for how many days were you totally  unable to carry out your usual activities or work because of any health condition?
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- D6.1 S4: Hur stort problem har du haft med att delta i aktiviteter i samhället (till exempel festligheter, religiösa eller andra aktiviteter) på samma sätt som andra? 
+										value matches {
+											0|[local::at0194], 	-- *No difficulty(en)
+											1|[local::at0195], 	-- *Mild difficulty(en)
+											2|[local::at0196], 	-- *Moderate difficulty(en)
+											3|[local::at0197], 	-- *Severe difficulty(en)
+											4|[local::at0198]  	-- *Extremely difficult or cannot do(en)
+										}
+									}
+									ELEMENT[at0025] occurrences matches {0..1} matches {	-- D6.2: Hur stort problem har du haft pga hinder i din omgivning?
+										value matches {
+											0|[local::at0199], 	-- *No difficulty(en)
+											1|[local::at0200], 	-- *Mild difficulty(en)
+											2|[local::at0201], 	-- *Moderate difficulty(en)
+											3|[local::at0202], 	-- *Severe difficulty(en)
+											4|[local::at0203]  	-- *Extremely difficult or cannot do(en)
+										}
+									}
+									ELEMENT[at0034] occurrences matches {0..1} matches {	-- D6.3: Hur stort problem har du haft att leva med värdighet pga andras attityder och handlingar?
+										value matches {
+											0|[local::at0204], 	-- *No difficulty(en)
+											1|[local::at0205], 	-- *Mild difficulty(en)
+											2|[local::at0206], 	-- *Moderate difficulty(en)
+											3|[local::at0207], 	-- *Severe difficulty(en)
+											4|[local::at0208]  	-- *Extremely difficult or cannot do(en)
+										}
+									}
+									ELEMENT[at0035] occurrences matches {0..1} matches {	-- D6.4 Hur mycket tid har du lagt ner på ditt hälsotillstånd eller dess konsekvenser?
+										value matches {
+											0|[local::at0209], 	-- *No difficulty(en)
+											1|[local::at0210], 	-- *Mild difficulty(en)
+											2|[local::at0211], 	-- *Moderate difficulty(en)
+											3|[local::at0212], 	-- *Severe difficulty(en)
+											4|[local::at0213]  	-- *Extremely difficult or cannot do(en)
+										}
+									}
+									ELEMENT[at0036] occurrences matches {0..1} matches {	-- D6.5 S5: Hur mycket har du påverkats känslomässigt av ditt hälsotillstånd?
+										value matches {
+											0|[local::at0214], 	-- *No difficulty(en)
+											1|[local::at0215], 	-- *Mild difficulty(en)
+											2|[local::at0216], 	-- *Moderate difficulty(en)
+											3|[local::at0217], 	-- *Severe difficulty(en)
+											4|[local::at0218]  	-- *Extremely difficult or cannot do(en)
+										}
+									}
+									ELEMENT[at0037] occurrences matches {0..1} matches {	-- D6.6: Hur mycket har din hälsa belastat din eller din familjs ekonomi?
+										value matches {
+											0|[local::at0219], 	-- *No difficulty(en)
+											1|[local::at0220], 	-- *Mild difficulty(en)
+											2|[local::at0221], 	-- *Moderate difficulty(en)
+											3|[local::at0222], 	-- *Severe difficulty(en)
+											4|[local::at0223]  	-- *Extremely difficult or cannot do(en)
+										}
+									}
+									ELEMENT[at0038] occurrences matches {0..1} matches {	-- D6.7: Hur stort problem har din familj haft pga dina hälsoproblem?
+										value matches {
+											0|[local::at0224], 	-- *No difficulty(en)
+											1|[local::at0225], 	-- *Mild difficulty(en)
+											2|[local::at0226], 	-- *Moderate difficulty(en)
+											3|[local::at0227], 	-- *Severe difficulty(en)
+											4|[local::at0228]  	-- *Extremely difficult or cannot do(en)
+										}
+									}
+									ELEMENT[at0039] occurrences matches {0..1} matches {	-- D6.8: Hur stort problem har du haft med att göra saker på egen hand för avkoppling och nöje?
+										value matches {
+											0|[local::at0229], 	-- *No difficulty(en)
+											1|[local::at0230], 	-- *Mild difficulty(en)
+											2|[local::at0231], 	-- *Moderate difficulty(en)
+											3|[local::at0232], 	-- *Severe difficulty(en)
+											4|[local::at0233]  	-- *Extremely difficult or cannot do(en)
+										}
+									}
+									ELEMENT[at0040] occurrences matches {0..1} matches {	-- 12-frågeversion poäng
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0041] occurrences matches {0..1} matches {	-- 12-24-frågeversion poäng hybrid
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0042] occurrences matches {0..1} matches {	-- 36-frågeversion poäng - Enkel
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0044] occurrences matches {0..1} matches {	-- D1 Förståelse och kommunikation poäng
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0045] occurrences matches {0..1} matches {	-- D2 Förflyttningsförmåga poäng
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0046] occurrences matches {0..1} matches {	-- D3 Personlig vård poäng
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0050] occurrences matches {0..1} matches {	-- D4 Relationer poäng
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0049] occurrences matches {0..1} matches {	-- D5 Dagliga aktiviteter poäng
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0048] occurrences matches {0..1} matches {	-- D6 Delaktighet i samhället poäng
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0047] occurrences matches {0..1} matches {	-- 36-frågeversion poäng - Komplex
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0051] occurrences matches {0..1} matches {	-- H1: Allt sammantaget, hur många av de senaste 30 dagarna har du haft dessa svårigheter?
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0052] occurrences matches {0..1} matches {	-- H3: In the past 30 days, not counting the days that you were totally unable, for how many days did you cut back or reduce your usual activities or work because of any health condition?
+									ELEMENT[at0053] occurrences matches {0..1} matches {	-- H2: Under hur många av de senaste 30 dagarna var du helt oförmögen att genomföra dina vanliga aktiviteter eller arbeta pga något hälsotillstånd?
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0043] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0052] occurrences matches {0..1} matches {	-- H3: Borträknat de dagar du var helt oförmögen, hur många av de senaste 30 dagarna skar du ned eller minskade dina vanliga aktiviteter eller arbete pga något hälsotillstånd?
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0043] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -1564,6 +1599,991 @@ ontology
 				["at0245"] = <
 					text = <"D5.02: Interview only: In the past 30 days, on how many days did you miss work for half a day or more because of your health condition?">
 					description = <"The number of days is filled in if any of the questions D5.5 to D5.8 were positive.">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Whodas 2.0">
+					description = <"World Health Organization Disability Assessment Schedule 2.0 är en mätning av hälsa och funktionshinder, och utförs på vuxna patienter för att kartlägga vilka svårigheter ett sjukdomstillstånd åsamkar på allmän livsföring.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"D1.1 S6: Att koncentrera dig på att göra något under tio minuter?">
+					description = <"Kognition">
+				>
+				["at0005"] = <
+					text = <"D1.2: Komma ihåg att göra viktiga saker?">
+					description = <"Kognition">
+				>
+				["at0006"] = <
+					text = <"D1.3: Analysera och finna lösningar på problem i det dagliga livet?">
+					description = <"Kognition">
+				>
+				["at0007"] = <
+					text = <"D1.4 S3: Att lära dig en ny uppgift, t.ex. hur man tar sig till en ny plats?">
+					description = <"Kognition">
+				>
+				["at0008"] = <
+					text = <"D1.5: För det mesta förstå vad människor säger?">
+					description = <"Kognition">
+				>
+				["at0009"] = <
+					text = <"D1.6: Påbörja och hålla igång ett samtal?">
+					description = <"Kognition">
+				>
+				["at0010"] = <
+					text = <"D2.1 S1: Att stå under längre perioder såsom 30 minuter?">
+					description = <"Förflyttning">
+				>
+				["at0011"] = <
+					text = <"D2.2: Resa dig från sittande ställning?">
+					description = <"Förflyttning">
+				>
+				["at0012"] = <
+					text = <"D2.3: Röra dig i ditt hem?">
+					description = <"Förflyttning">
+				>
+				["at0013"] = <
+					text = <"D2.4: Ta dig ut från ditt hem?">
+					description = <"Förflyttning">
+				>
+				["at0014"] = <
+					text = <"D2.5 S7: Att gå en längre sträcka såsom en kilometer?">
+					description = <"Förflyttning">
+				>
+				["at0015"] = <
+					text = <"D3.1 S8: Att tvätta hela kroppen?">
+					description = <"Personlig vård">
+				>
+				["at0016"] = <
+					text = <"D3.2 S9: Att klä dig?">
+					description = <"Personlig vård">
+				>
+				["at0017"] = <
+					text = <"D3.3: Äta?">
+					description = <"Personlig vård">
+				>
+				["at0018"] = <
+					text = <"D3.4: Vara ensam under några dagar?">
+					description = <"Personlig vård">
+				>
+				["at0019"] = <
+					text = <"D5.3: Få allt det hushållsarbete gjort som du behövde göra?">
+					description = <"Dagliga aktiviteter">
+				>
+				["at0020"] = <
+					text = <"D5.4: Få ditt hushållsarbete gjort så fort som det behövdes?">
+					description = <"Dagliga aktiviteter">
+				>
+				["at0021"] = <
+					text = <"D5.5 S12: Dina vardagliga arbets- eller studieuppgifter?">
+					description = <"Dagliga aktiviteter - arbete eller skola">
+				>
+				["at0022"] = <
+					text = <"D5.7: Att få allt arbete gjort som du behövde göra?">
+					description = <"Dagliga aktiviteter - arbete eller skola">
+				>
+				["at0023"] = <
+					text = <"D5.8: Att få ditt arbete gjort så fort som det behövdes?">
+					description = <"Dagliga aktiviteter - arbete eller skola">
+				>
+				["at0024"] = <
+					text = <"D6.1 S4: Hur stort problem har du haft med att delta i aktiviteter i samhället (till exempel festligheter, religiösa eller andra aktiviteter) på samma sätt som andra? ">
+					description = <"Delaktighet">
+				>
+				["at0025"] = <
+					text = <"D6.2: Hur stort problem har du haft pga hinder i din omgivning?">
+					description = <"Delaktighet">
+				>
+				["at0026"] = <
+					text = <"D5.6: Att göra dina viktigaste arbets- eller studieuppgifter bra?">
+					description = <"Dagliga aktiviteter - arbete eller skola">
+				>
+				["at0027"] = <
+					text = <"D4.4: Skaffa nya vänner?">
+					description = <"Relationer">
+				>
+				["at0028"] = <
+					text = <"D5.2: Göra det viktigaste hushållsarbetet på ett bra sätt?">
+					description = <"Dagliga aktiviteter">
+				>
+				["at0029"] = <
+					text = <"D5.1 S2: Att sköta dina hushållsuppgifter?">
+					description = <"Dagliga aktiviteter">
+				>
+				["at0030"] = <
+					text = <"D4.5: Vara nära sexuellt?">
+					description = <"Relationer">
+				>
+				["at0031"] = <
+					text = <"D4.3: Komma överens med människor som står dig nära?">
+					description = <"Relationer">
+				>
+				["at0032"] = <
+					text = <"D4.2 S11: Att bibehålla en vänskapsrelation?">
+					description = <"Relationer">
+				>
+				["at0033"] = <
+					text = <"D4.1 S10: Att bemöta människor som du inte känner?">
+					description = <"Relationer">
+				>
+				["at0034"] = <
+					text = <"D6.3: Hur stort problem har du haft att leva med värdighet pga andras attityder och handlingar?">
+					description = <"Delaktighet">
+				>
+				["at0035"] = <
+					text = <"D6.4 Hur mycket tid har du lagt ner på ditt hälsotillstånd eller dess konsekvenser?">
+					description = <"Delaktighet">
+				>
+				["at0036"] = <
+					text = <"D6.5 S5: Hur mycket har du påverkats känslomässigt av ditt hälsotillstånd?">
+					description = <"Delaktighet">
+				>
+				["at0037"] = <
+					text = <"D6.6: Hur mycket har din hälsa belastat din eller din familjs ekonomi?">
+					description = <"Delaktighet">
+				>
+				["at0038"] = <
+					text = <"D6.7: Hur stort problem har din familj haft pga dina hälsoproblem?">
+					description = <"Delaktighet">
+				>
+				["at0039"] = <
+					text = <"D6.8: Hur stort problem har du haft med att göra saker på egen hand för avkoppling och nöje?">
+					description = <"Delaktighet">
+				>
+				["at0040"] = <
+					text = <"12-frågeversion poäng">
+					description = <"Poäng angiven som procent av de tolv viktigaste frågorna, i syfte att utvärdera generell funktionsnivå. 12-frågeversionen förklarar 81 % av variansen i den mer detaljerade 36-frågeversionen. De tolv frågorna baseras på ordinaler och är markerade med \"S\" och en siffra bredvid \"D\". Summan av de tolv frågorna divideras med 
+48.">
+				>
+				["at0041"] = <
+					text = <"12-24-frågeversion poäng hybrid">
+					description = <"Tillägg av 24 frågor om någon av de fem första frågorna i 12-frågeformuläret gav utslag. ">
+				>
+				["at0042"] = <
+					text = <"36-frågeversion poäng - Enkel">
+					description = <"Poäng framställd genom summan av samtliga 36 frågor dividerat med 144,">
+				>
+				["at0043"] = <
+					text = <"Kommentar">
+					description = <"Ev kommentar kring resultat">
+				>
+				["at0044"] = <
+					text = <"D1 Förståelse och kommunikation poäng">
+					description = <"Poäng baserad på summan av frågorna från domänen Kognition, dividerat med 24">
+				>
+				["at0045"] = <
+					text = <"D2 Förflyttningsförmåga poäng">
+					description = <"*Poäng baserad på summan av frågorna från domänen Förflyttning, dividerat med 20">
+				>
+				["at0046"] = <
+					text = <"D3 Personlig vård poäng">
+					description = <"Poäng baserad på summan av frågorna från domänen Personlig vård, dividerat med 16">
+				>
+				["at0047"] = <
+					text = <"36-frågeversion poäng - Komplex">
+					description = <"Poäng baserad på IRT (Item-Response Theory) vilken tar hänsyn till viktade resultat och beräknas som ett genomsnitt av de sex domänerna">
+				>
+				["at0048"] = <
+					text = <"D6 Delaktighet i samhället poäng">
+					description = <"Poäng baserad på summan av frågorna från domänen Delaktighet, dividerat med 32">
+				>
+				["at0049"] = <
+					text = <"D5 Dagliga aktiviteter poäng">
+					description = <"Poäng baserad på summan av frågorna från domänen Dagliga aktiviteter, dividerat med 32">
+				>
+				["at0050"] = <
+					text = <"D4 Relationer poäng">
+					description = <"Poäng baserad på summan av frågorna från domänen Relationer, dividerat med 20">
+				>
+				["at0051"] = <
+					text = <"H1: Allt sammantaget, hur många av de senaste 30 dagarna har du haft dessa svårigheter?">
+					description = <"Icke poänggivande">
+				>
+				["at0052"] = <
+					text = <"H3: Borträknat de dagar du var helt oförmögen, hur många av de senaste 30 dagarna skar du ned eller minskade dina vanliga aktiviteter eller arbete pga något hälsotillstånd?">
+					description = <"Icke poänggivande">
+				>
+				["at0053"] = <
+					text = <"H2: Under hur många av de senaste 30 dagarna var du helt oförmögen att genomföra dina vanliga aktiviteter eller arbeta pga något hälsotillstånd?">
+					description = <"Icke poänggivande">
+				>
+				["at0054"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0055"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0056"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0057"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0058"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0059"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0060"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0061"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0062"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0063"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0064"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0065"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0066"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0067"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0068"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0069"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0070"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0071"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0072"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0073"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0074"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0075"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0076"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0077"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0078"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0079"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0080"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0081"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0082"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0083"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0084"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0085"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0086"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0087"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0088"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0089"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0090"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0091"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0092"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0093"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0094"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0095"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0096"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0097"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0098"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0099"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0100"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0101"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0102"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0103"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0104"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0105"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0106"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0107"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0108"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0109"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0110"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0111"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0112"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0113"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0114"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0115"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0116"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0117"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0118"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0119"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0120"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0121"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0122"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0123"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0124"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0125"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0126"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0127"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0128"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0129"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0130"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0131"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0132"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0133"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0134"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0135"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0136"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0137"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0138"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0139"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0140"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0141"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0142"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0143"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0144"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0145"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0146"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0147"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0148"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0149"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0150"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0151"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0152"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0153"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0154"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0155"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0156"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0157"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0158"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0159"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0160"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0161"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0162"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0163"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0164"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0165"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0166"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0167"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0168"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0169"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0170"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0171"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0172"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0173"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0174"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0175"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0176"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0177"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0178"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0179"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0180"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0181"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0182"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0183"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0184"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0185"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0186"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0187"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0188"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0189"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0190"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0191"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0192"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0193"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0194"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0195"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0196"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0197"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0198"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0199"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0200"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0201"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0202"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0203"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0204"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0205"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0206"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0207"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0208"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0209"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0210"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0211"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0212"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0213"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0214"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0215"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0216"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0217"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0218"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0219"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0220"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0221"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0222"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0223"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0224"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0225"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0226"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0227"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0228"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0229"] = <
+					text = <"*No difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0230"] = <
+					text = <"*Mild difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0231"] = <
+					text = <"*Moderate difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0232"] = <
+					text = <"*Severe difficulty(en)">
+					description = <"**(en)">
+				>
+				["at0233"] = <
+					text = <"*Extremely difficult or cannot do(en)">
+					description = <"**(en)">
+				>
+				["at0234"] = <
+					text = <"Har patienten en huvudsysselsättning såsom arbete eller studier?">
+					description = <"Denna fråga ställs endast i intervjuadministrerade formuläret. Om patienten arbetar eller studerar, gå vidare med frågorna 5.5-5.10. I annat fall, gå direkt vidare till domän 6.">
+				>
+				["at0235"] = <
+					text = <"*No(en)">
+					description = <"**(en)">
+				>
+				["at0236"] = <
+					text = <"*Yes(en)">
+					description = <"**(en)">
+				>
+				["at0238"] = <
+					text = <"Under hur många av de senaste 30 dagarna minskade du eller helt försummade du ditt hushållsarbete pga ditt hälsotillstånd?">
+					description = <"Endast i intervjuadministrerade formuläret. Om någon av frågorna D5.2-D5.5 gav utslag, ställs denna extra fråga.">
+				>
+				["at0239"] = <
+					text = <"D5.9 Intervjuadministrerad: Har du tvingats arbeta på en lägre nivå pga ditt hälsotillstånd?">
+					description = <"Endast i intervjuadministrerade formuläret">
+				>
+				["at0240"] = <
+					text = <"*No(en)">
+					description = <"**(en)">
+				>
+				["at0241"] = <
+					text = <"*Yes(en)">
+					description = <"**(en)">
+				>
+				["at0242"] = <
+					text = <"D5.10 Intervjuadministrerad: Tjänade du mindre pengar till följd av ditt hälsotillstånd?">
+					description = <"Endast i intervjuadministrerade formuläret">
+				>
+				["at0243"] = <
+					text = <"*No(en)">
+					description = <"**(en)">
+				>
+				["at0244"] = <
+					text = <"*Yes(en)">
+					description = <"**(en)">
+				>
+				["at0245"] = <
+					text = <"D5.02: Intervjuadministrerad: Under hur många av de senaste 30 dagarna har du uteblivit från ditt arbete under en halv dag eller mer pga ditt hälsotillstånd?">
+					description = <"Antalet dagar fylls i om någon av frågorna D5.5-D5.8 gav utslag">
 				>
 			>
 		>
