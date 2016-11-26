@@ -2,7 +2,7 @@
 	openEHR-EHR-OBSERVATION.ipss_questionnaire.v1
 
 concept
-	[at0000]	-- IPSS frågeformulär
+	[at0000]	-- IPSS questionnaire
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -15,16 +15,11 @@ language
 	>
 description
 	original_author = <
-		["name"] = <"">
+		["name"] = <"Dennis Forslund">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2016-10-27">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"">
-			use = <"">
-			misuse = <"">
-			copyright = <"">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"*(en)">
@@ -32,106 +27,138 @@ description
 			misuse = <"*(en)">
 			copyright = <"*(en)">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The International Prostate Symptom Score (IPSS) relates to 7 questions that concern urinary symptoms and an additional question that concerns quality of life and is used to assist in the rapid diagnosis of BPH (Benign Prostatic Hyperplasia).
+">
+			use = <"Each urinary-system related question is scored from 0 to 5 representing increasing severity of the outlined symptoms.
+
+The total score ranges from 0 to 35 which interpret as asymptomatic to symptomatic
+
+The 7 questions are:
+
+1 Incomplete emptying
+2 Frequency
+3 Intermittency
+4 Urgency
+5 Weak Stream
+6 Straining
+7 Nocturia
+and the 8th question is about the patient's perceived quality of life and though it is scored on a 0 to 6 scale, does not contribute to the overall score.
+
+The interpretation of the scores are:
+
+Mild : <=7
+Moderate: 8-19
+Severe: 20-35
+">
+			keywords = <"BPH", "urinary symptoms", "prostate assessment", "IPSS">
+			misuse = <"The score should not be used in isolation of a full work-up to diagnose problems with the prostate, unless specifically declared as confirmation of already strong diagnostic evidence.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
-	lifecycle_state = <"0">
-	other_contributors = <>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <"Syeeda S Farruque", ...>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"49CBA1A18599FDDF302C00971F9283C9">
+		["references"] = <"Ref.1: Barry MJ, Fowler FJ Jr, O'Leary MP,et. al. The American Urological Association symptom index for benign prostatic hyperplasia. The Measurement Committee of the American Urological Association. J Urol. 1992 Nov;148(5):1549-57.">
+		["MD5-CAM-1.0.1"] = <"CFE4EC32B85364474A2BDC20D9ED43A2">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- IPSS frågeformulär
+	OBSERVATION[at0000] matches {	-- IPSS questionnaire
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	--  Hur ofta har du haft en känsla av att blåsan inte tömts helt och hållet vid vattenkastning?
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- How often have you had the sensation of not emptying your bladder?
 										value matches {
-											0|[local::at0012], 	-- Inte alls
-											1|[local::at0013], 	-- Mindre än 1 gång av 5
-											2|[local::at0014], 	-- Mindre än hälften av gångerna
-											3|[local::at0015], 	-- Hälften av gångerna
-											4|[local::at0016], 	-- Mer än hälften av gångerna
-											5|[local::at0017]  	-- Nästan alltid
+											0|[local::at0012], 	-- Not at all
+											1|[local::at0013], 	-- Less than 1 in 5 times
+											2|[local::at0014], 	-- Less than half the time
+											3|[local::at0015], 	-- About half the time
+											4|[local::at0016], 	-- More than half the time
+											5|[local::at0017]  	-- Almost always
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Hur ofta har du varit tvungen att kasta vatten oftare än varannan timme?
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- How often have you had to urinate less than every two hours?
 										value matches {
-											0|[local::at0049], 	-- Inte alls
-											1|[local::at0050], 	-- Mindre än 1 gång av 5
-											2|[local::at0051], 	-- Mindre än hälften av gångerna
-											3|[local::at0052], 	-- Hälften av gångerna
-											4|[local::at0053], 	-- Mer än hälften av gångerna
-											5|[local::at0054]  	-- Nästan alltid
+											0|[local::at0049], 	-- Not at all
+											1|[local::at0050], 	-- Less than 1 in 5 times
+											2|[local::at0051], 	-- Less than half the time
+											3|[local::at0052], 	-- About half the time
+											4|[local::at0053], 	-- More than half the time
+											5|[local::at0054]  	-- Almost always
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Hur ofta har du haft ett avbrott i urinflödet, dvs urinflödet satte igång, stannade upp och satte igång igen?
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- How often have you found you stopped and started again several times when urinating?
 										value matches {
-											0|[local::at0018], 	-- Inte alls
-											1|[local::at0019], 	-- Mindre än 1 gång av 5
-											2|[local::at0020], 	-- Mindre än hälften av gångerna
-											3|[local::at0021], 	-- Hälften av gångerna
-											4|[local::at0022], 	-- Mer än hälften av gångerna
-											5|[local::at0023]  	-- Nästan alltid
+											0|[local::at0018], 	-- Not at all
+											1|[local::at0019], 	-- Less than 1 in 5 times
+											2|[local::at0020], 	-- Less than half the time
+											3|[local::at0021], 	-- About half the time
+											4|[local::at0022], 	-- More than half the time
+											5|[local::at0023]  	-- Almost always
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Hur ofta har du haft svårt att vänta med att kasta vatten efter att du känt behov att göra det?
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- How often have you found it difficult to postpone urination?
 										value matches {
-											0|[local::at0024], 	-- Inte alls
-											1|[local::at0025], 	-- Mindre än 1 gång av 5
-											2|[local::at0026], 	-- Mindre än hälften av gångerna
-											3|[local::at0027], 	-- Hälften av gångarna
-											4|[local::at0028], 	-- Mer än hälften av gångerna
-											5|[local::at0029]  	-- Nästan alltid
+											0|[local::at0024], 	-- Not at all
+											1|[local::at0025], 	-- Less than 1 in 5 times
+											2|[local::at0026], 	-- Less than half the time
+											3|[local::at0027], 	-- About half the time
+											4|[local::at0028], 	-- More than half the time
+											5|[local::at0029]  	-- Almost always
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Hur ofta har du upplevt att strålen varit svag?
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- How often have you had a weak urinary stream?
 										value matches {
-											0|[local::at0030], 	-- Inte alls
-											1|[local::at0031], 	-- Mindre än 1 gång av 5
-											2|[local::at0032], 	-- Mindre än hälften av gångerna
-											3|[local::at0033], 	-- Hälften av gångerna
-											4|[local::at0034], 	-- Mer än hälften av gångerna
-											5|[local::at0035]  	-- Nästan alltid
+											0|[local::at0030], 	-- Not at all
+											1|[local::at0031], 	-- Less than 1 in 5 times
+											2|[local::at0032], 	-- Less than half the time
+											3|[local::at0033], 	-- About half the time
+											4|[local::at0034], 	-- More than half the time
+											5|[local::at0035]  	-- Almost always
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Hur ofta har du haft behov av att krysta eller ta i för att komma igång med vattenkastningen?
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- How often have you had to strain to start urination?
 										value matches {
-											0|[local::at0036], 	-- Inte alls
-											1|[local::at0037], 	-- Mindre än 1 gång av 5
-											2|[local::at0038], 	-- Mindre än hälften av gångerna
-											3|[local::at0039], 	-- Hälften av gångerna
-											4|[local::at0040], 	-- Mer än hälften av gångerna
-											5|[local::at0041]  	-- Nästan alltid
+											0|[local::at0036], 	-- Not at all
+											1|[local::at0037], 	-- Less than 1 in 5 times
+											2|[local::at0038], 	-- Less than half the time
+											3|[local::at0039], 	-- About half the time
+											4|[local::at0040], 	-- More than half the time
+											5|[local::at0041]  	-- Almost always
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Hur ofta har du vanligtvis behövt gå upp för att kasta vatten från att du lägger dig på kvällen tills du stiger upp på morgonen?
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- How many times did you typically get up at night to urinate?
 										value matches {
-											0|[local::at0042], 	-- Aldrig
-											1|[local::at0043], 	-- En gång per natt
-											2|[local::at0044], 	-- Två gånger per natt
-											3|[local::at0045], 	-- Tre gånger per natt
-											4|[local::at0046], 	-- Fyra gånger per natt
-											5|[local::at0047]  	-- Fem eller fler gånger per natt
+											0|[local::at0042], 	-- None
+											1|[local::at0043], 	-- One time
+											2|[local::at0044], 	-- Two times
+											3|[local::at0045], 	-- Three times
+											4|[local::at0046], 	-- Four times
+											5|[local::at0047]  	-- Five times or more
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Om dina nuvarande vattenkastningsbesvär skulle vara oförändrade under resten av ditt liv, hur skulle du uppleva det?
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- If you were to spend the rest of your life with your urinary condition just the way it is not, how would you feel about that?
 										value matches {
-											0|[local::at0055], 	-- Mycket nöjd
-											1|[local::at0056], 	-- Nöjd
-											2|[local::at0057], 	-- Ganska nöjd
-											3|[local::at0058], 	-- Blandade känslor
-											4|[local::at0059], 	-- Ganska missbelåten
-											5|[local::at0060], 	-- Olycklig
-											6|[local::at0061]  	-- Fruktansvärt
+											0|[local::at0055], 	-- Delighted
+											1|[local::at0056], 	-- Pleased
+											2|[local::at0057], 	-- Mostly satisfied
+											3|[local::at0058], 	-- Mixed
+											4|[local::at0059], 	-- Mostly dissatisfied
+											5|[local::at0060], 	-- Unhappy
+											6|[local::at0061]  	-- Terrible
 										}
 									}
-									ELEMENT[at0048] occurrences matches {0..1} matches {	-- Total poäng
+									ELEMENT[at0048] occurrences matches {0..1} matches {	-- Total score
 										value matches {
-											DV_COUNT matches {*}
+											DV_COUNT matches {
+												magnitude matches {|0..35|}
+											}
 										}
 									}
 								}
@@ -152,7 +179,8 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"IPSS questionnaire">
-					description = <"unknown">
+					description = <"The International Prostate Symptom Score (IPSS) is used to assist in the rapid diagnosis of BPH (Benign Prostatic Hyperplasia).
+">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -456,147 +484,147 @@ ontology
 				>
 				["at0012"] = <
 					text = <"Inte alls">
-					description = <"">
+					description = <"*">
 				>
 				["at0013"] = <
 					text = <"Mindre än 1 gång av 5">
-					description = <"">
+					description = <"*">
 				>
 				["at0014"] = <
 					text = <"Mindre än hälften av gångerna">
-					description = <"">
+					description = <"*">
 				>
 				["at0015"] = <
 					text = <"Hälften av gångerna">
-					description = <"">
+					description = <"*">
 				>
 				["at0016"] = <
 					text = <"Mer än hälften av gångerna">
-					description = <"">
+					description = <"*">
 				>
 				["at0017"] = <
 					text = <"Nästan alltid">
-					description = <"">
+					description = <"*">
 				>
 				["at0018"] = <
 					text = <"Inte alls">
-					description = <"">
+					description = <"*">
 				>
 				["at0019"] = <
 					text = <"Mindre än 1 gång av 5">
-					description = <"">
+					description = <"*">
 				>
 				["at0020"] = <
 					text = <"Mindre än hälften av gångerna">
-					description = <"">
+					description = <"*">
 				>
 				["at0021"] = <
 					text = <"Hälften av gångerna">
-					description = <"">
+					description = <"*">
 				>
 				["at0022"] = <
 					text = <"Mer än hälften av gångerna">
-					description = <"">
+					description = <"*">
 				>
 				["at0023"] = <
 					text = <"Nästan alltid">
-					description = <"">
+					description = <"*">
 				>
 				["at0024"] = <
 					text = <"Inte alls">
-					description = <"">
+					description = <"*">
 				>
 				["at0025"] = <
 					text = <"Mindre än 1 gång av 5">
-					description = <"">
+					description = <"*">
 				>
 				["at0026"] = <
 					text = <"Mindre än hälften av gångerna">
-					description = <"">
+					description = <"*">
 				>
 				["at0027"] = <
 					text = <"Hälften av gångarna">
-					description = <"">
+					description = <"*">
 				>
 				["at0028"] = <
 					text = <"Mer än hälften av gångerna">
-					description = <"">
+					description = <"*">
 				>
 				["at0029"] = <
 					text = <"Nästan alltid">
-					description = <"">
+					description = <"*">
 				>
 				["at0030"] = <
 					text = <"Inte alls">
-					description = <"">
+					description = <"*">
 				>
 				["at0031"] = <
 					text = <"Mindre än 1 gång av 5">
-					description = <"">
+					description = <"*">
 				>
 				["at0032"] = <
 					text = <"Mindre än hälften av gångerna">
-					description = <"">
+					description = <"*">
 				>
 				["at0033"] = <
 					text = <"Hälften av gångerna">
-					description = <"">
+					description = <"*">
 				>
 				["at0034"] = <
 					text = <"Mer än hälften av gångerna">
-					description = <"">
+					description = <"*">
 				>
 				["at0035"] = <
 					text = <"Nästan alltid">
-					description = <"">
+					description = <"*">
 				>
 				["at0036"] = <
 					text = <"Inte alls">
-					description = <"">
+					description = <"*">
 				>
 				["at0037"] = <
 					text = <"Mindre än 1 gång av 5">
-					description = <"">
+					description = <"*">
 				>
 				["at0038"] = <
 					text = <"Mindre än hälften av gångerna">
-					description = <"">
+					description = <"*">
 				>
 				["at0039"] = <
 					text = <"Hälften av gångerna">
-					description = <"">
+					description = <"*">
 				>
 				["at0040"] = <
 					text = <"Mer än hälften av gångerna">
-					description = <"">
+					description = <"*">
 				>
 				["at0041"] = <
 					text = <"Nästan alltid">
-					description = <"">
+					description = <"*">
 				>
 				["at0042"] = <
 					text = <"Aldrig">
-					description = <"">
+					description = <"*">
 				>
 				["at0043"] = <
 					text = <"En gång per natt">
-					description = <"">
+					description = <"*">
 				>
 				["at0044"] = <
 					text = <"Två gånger per natt">
-					description = <"">
+					description = <"*">
 				>
 				["at0045"] = <
 					text = <"Tre gånger per natt">
-					description = <"">
+					description = <"*">
 				>
 				["at0046"] = <
 					text = <"Fyra gånger per natt">
-					description = <"">
+					description = <"*">
 				>
 				["at0047"] = <
 					text = <"Fem eller fler gånger per natt">
-					description = <"">
+					description = <"*">
 				>
 				["at0048"] = <
 					text = <"Total poäng">
@@ -604,27 +632,27 @@ ontology
 				>
 				["at0049"] = <
 					text = <"Inte alls">
-					description = <"">
+					description = <"*">
 				>
 				["at0050"] = <
 					text = <"Mindre än 1 gång av 5">
-					description = <"">
+					description = <"*">
 				>
 				["at0051"] = <
 					text = <"Mindre än hälften av gångerna">
-					description = <"">
+					description = <"*">
 				>
 				["at0052"] = <
 					text = <"Hälften av gångerna">
-					description = <"">
+					description = <"*">
 				>
 				["at0053"] = <
 					text = <"Mer än hälften av gångerna">
-					description = <"">
+					description = <"*">
 				>
 				["at0054"] = <
 					text = <"Nästan alltid">
-					description = <"">
+					description = <"*">
 				>
 				["at0055"] = <
 					text = <"Mycket nöjd">
