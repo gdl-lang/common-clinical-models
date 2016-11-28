@@ -2,14 +2,15 @@
 	openEHR-EHR-EVALUATION.ipss_assessment.v1
 
 concept
-	[at0000]	-- IPSS Assessment
+	[at0000]	-- IPSS Utvärdering
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			author = <
-				["name"] = <"?">
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
 			>
 		>
 	>
@@ -20,48 +21,88 @@ description
 		["date"] = <"2016-10-27">
 	>
 	details = <
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"*(en)">
-			use = <"*(en)">
-			misuse = <"*(en)">
-			copyright = <"*(en)">
-		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"">
-			use = <"">
-			misuse = <"">
-			copyright = <"">
+			purpose = <"The International Prostate Symptom Score (IPSS) relates to 7 questions that concern urinary symptoms and an additional question that concerns quality of life and is used to assist in the rapid diagnosis of BPH (Benign Prostatic Hyperplasia).">
+			use = <"This assessment archetype is used to allocate the scoring interpretation which is outlined below:
+
+Each urinary-system related question is scored from 0 to 5 representing increasing severity of the outlined symptoms.
+
+The total score ranges from 0 to 35 which interpret as asymptomatic to symptomatic
+
+The 7 questions are:
+
+1 Incomplete emptying
+2 Frequency
+3 Intermittency
+4 Urgency
+5 Weak Stream
+6 Straining
+7 Nocturia
+and the 8th question is about the patient's perceived quality of life and though it is scored on a 0 to 6 scale, does not contribute to the overall score.
+
+The interpretation of the scores are:
+
+Mild : <=7
+Moderate: 8-19
+Severe: 20-35
+">
+			keywords = <"urinary symptoms", "IPSS score", "BPH", "prostate assessment">
+			misuse = <"The score and its assessment should not be used in isolation of a full work-up to diagnose problems with the prostate unless specifically declared as confirmation of already strong diagnostic evidence.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"International Prostate Symptom Score (IPSS) är en metod för utvärdering av urinvägsbesvär och dess påverkan på livskvaliteten, samt för diagnosticeringsstöd av benign prostatahyperplasi.">
+			use = <"IPSS består av sju frågor vilka besvaras på en skala 0-5. Totala poängen uppgår till maximalt 35p. Frågorna berör flera olika urinvägsbesvär enligt:
+
+- Ofullständig tömning
+- Ökad miktionsfrekvens
+- Start/stopp-svårigheter
+- Inkontinens
+- Svag stråle
+- Krystning
+- Nokturi
+
+Formuläret avslutas sedan med en övergripande fråga kring påverkan på livskvalitet. Denna fråga bidrar ej till slutgiltiga poängsumman. Resultatet tolkas enligt:
+
+<=7p : Lindriga besvär
+8-19p : måttliga besvär
+20-35p : svåra besvär
+">
+			misuse = <"IPSS är endast avsedd att användas som stöd och är ej i sig diagnostisk.
+">
+			copyright = <"© Cambio Healthcare Systems">
 		>
 	>
-	lifecycle_state = <"0">
-	other_contributors = <>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <"Syeeda S Farruque", ...>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"12814CD42DF111AB8FACA1DE4927F810">
+		["references"] = <"Ref.1: Barry MJ, Fowler FJ Jr, O'Leary MP,et. al. The American Urological Association symptom index for benign prostatic hyperplasia. The Measurement Committee of the American Urological Association. J Urol. 1992 Nov;148(5):1549-57.">
+		["MD5-CAM-1.0.1"] = <"69FBD5AAE24C3625C8D099ABC2FCC892">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- IPSS Assessment
+	EVALUATION[at0000] matches {	-- IPSS Utvärdering
 		data matches {
-			ITEM_TREE[at0001] matches {	-- Tree
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- IPSS Assessment
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- IPSS
 						value matches {
-							0|[local::at0003], 	-- Mild
-							1|[local::at0004], 	-- Moderate
-							2|[local::at0005]  	-- Severe
+							0|[local::at0003], 	-- Lindriga besvär
+							1|[local::at0004], 	-- Måttliga besvär
+							2|[local::at0005]  	-- Svåra besvär
 						}
 					}
-					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Quality of life due to urinary symptoms
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Livskvalitet till följd av nuvarande vattenkastningsbesvär
 						value matches {
-							0|[local::at0007], 	-- Delighted
-							1|[local::at0008], 	-- Pleased
-							2|[local::at0009], 	-- Mostly satisfied
-							3|[local::at0010], 	-- Mixed
-							4|[local::at0011], 	-- Mostly dissatisfied
-							5|[local::at0012], 	-- Unhappy
-							6|[local::at0013]  	-- Terrible
+							0|[local::at0007], 	-- Mycket nöjd
+							1|[local::at0008], 	-- Nöjd
+							2|[local::at0009], 	-- Ganska nöjd
+							3|[local::at0010], 	-- Blandade känslor
+							4|[local::at0011], 	-- Ganska missbelåten
+							5|[local::at0012], 	-- Olycklig
+							6|[local::at0013]  	-- Fruktansvärt
 						}
 					}
 				}
@@ -75,7 +116,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"IPSS Assessment">
-					description = <"Evaluation of score generated in accordance with IPSS.">
+					description = <"Evaluation of the score generated in accordance with IPSS.">
 				>
 				["at0001"] = <
 					text = <"Tree">
@@ -87,19 +128,19 @@ ontology
 				>
 				["at0003"] = <
 					text = <"Mild">
-					description = <"*">
+					description = <"<= 7">
 				>
 				["at0004"] = <
 					text = <"Moderate">
-					description = <"*">
+					description = <"8-19">
 				>
 				["at0005"] = <
 					text = <"Severe">
-					description = <"*">
+					description = <"20-35">
 				>
 				["at0006"] = <
 					text = <"Quality of life due to urinary symptoms">
-					description = <"Assessment of question 8.">
+					description = <"Assessment of question 8 which stands alone on a 0-6 point scale and is reported on its own.">
 				>
 				["at0007"] = <
 					text = <"Delighted">
@@ -142,7 +183,7 @@ ontology
 					description = <"*@ internal @(en)">
 				>
 				["at0002"] = <
-					text = <"Utvärdering">
+					text = <"IPSS">
 					description = <"Tolkning av resultat i enlighet med IPSS.">
 				>
 				["at0003"] = <

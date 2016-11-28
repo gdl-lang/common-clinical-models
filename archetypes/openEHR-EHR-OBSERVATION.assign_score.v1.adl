@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.assign_score.v1
 
 concept
-	[at0000]	-- ASSIGN score
+	[at0000]	-- Assign score
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -21,33 +21,6 @@ description
 		["date"] = <"2016-10-30">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"ASSIGN is a 10 year cardiovascular risk score which was developed to identify and prioritise disease-free individuals who have been assessed to be of high risk of developing cardiovascular disease in a ten-year period. ">
-			use = <"The score is based on historical data and is a number between 0 and 99 which represents a percentage at 10-years of developing a cardiovascular disease (including coronary heart disease, cerebrovascular disease (inc. transient ischemic attacks)) in individuals who are currently disease-free.
-
-The ASSIGN score extends on the SIGN score by taking into account the individual's postcode (an approximation of the social economic status of the person) into account - mapped to the SIMD (Scottish Index of Multiple Deprivation 2012) and is thus related to the Scottish population [a similar mapping to other regions can be done in order to use ASSIGN elsewhere.]
-
-The ASSIGN score risk factors are:
-
-    older age group
-    men > women
-    poorer neighbourhoods
-    family history (coronary disease or stroke)
-    diabetes mellitus of target
-    rheumatoid arthritis of target
-    tobacco smoking (cigarettes, pipe tobacco, or cigars)
-    the blood pressure reading
-    the blood total cholesterol reading
-    the blood HDL-cholesterol reading
-
-All the risk factors are combined to give a score between 1 and 99. The calculation used is based on a rather long formula involving many different coefficients related to risk. The calculation is based on [4]. The higher the score, the higher the risk of cardiovascular disease.
-An ASSIGN score of > 20 is high and identifies individuals of high risk of cardiovascular disease allowing for timely intervention.">
-			keywords = <"ASSIGN", "SIGN", "Cardiovascular risk score">
-			misuse = <"As it is an estimate of risk and should not be used alone or an absolute indicator of risk without further investigation using adddtional information and tools. Readings of blood pressure and cholesterol must not be input without due attention to the medication used (if any) to reduce blood pressure and/or cholesterol.
-Only for individuals in Scotland (unless postcode mapping is also adjusted to the new region - or SIGN is used instead)">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"ASSIGN utvecklades för att identifiera och kategorisera sedan tidigare friska individer med förhöjd risk för insjuknande i hjärt-kärlsjukdom under kommande tio åren.
@@ -78,6 +51,33 @@ I nuläget endast applicerbar på skotska befolkningen.
 ">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"ASSIGN is a 10 year cardiovascular risk score which was developed to identify and prioritise disease-free individuals who have been assessed to be of high risk of developing cardiovascular disease in a ten-year period. ">
+			use = <"The score is based on historical data and is a number between 0 and 99 which represents a percentage at 10-years of developing a cardiovascular disease (including coronary heart disease, cerebrovascular disease (inc. transient ischemic attacks)) in individuals who are currently disease-free.
+
+The ASSIGN score extends on the SIGN score by taking into account the individual's postcode (an approximation of the social economic status of the person) into account - mapped to the SIMD (Scottish Index of Multiple Deprivation 2012) and is thus related to the Scottish population [a similar mapping to other regions can be done in order to use ASSIGN elsewhere.]
+
+The ASSIGN score risk factors are:
+
+    older age group
+    men > women
+    poorer neighbourhoods
+    family history (coronary disease or stroke)
+    diabetes mellitus of target
+    rheumatoid arthritis of target
+    tobacco smoking (cigarettes, pipe tobacco, or cigars)
+    the blood pressure reading
+    the blood total cholesterol reading
+    the blood HDL-cholesterol reading
+
+All the risk factors are combined to give a score between 1 and 99. The calculation used is based on a rather long formula involving many different coefficients related to risk. The calculation is based on [4]. The higher the score, the higher the risk of cardiovascular disease.
+An ASSIGN score of > 20 is high and identifies individuals of high risk of cardiovascular disease allowing for timely intervention.">
+			keywords = <"ASSIGN", "SIGN", "Cardiovascular risk score">
+			misuse = <"As it is an estimate of risk and should not be used alone or an absolute indicator of risk without further investigation using adddtional information and tools. Readings of blood pressure and cholesterol must not be input without due attention to the medication used (if any) to reduce blood pressure and/or cholesterol.
+Only for individuals in Scotland (unless postcode mapping is also adjusted to the new region - or SIGN is used instead)">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -89,18 +89,63 @@ Ref. 2: Tunstall-Pedoe H, Woodward M, for the SIGN group on risk estimation. By 
 Ref. 3: Woodward M, Brindle P, Tunstall-Pedoe H, for the SIGN group on risk estimation. Adding social deprivation and family history to cardiovascular risk assessment: the ASSIGN score from the Scottish Heart Health Extended Cohort (SHHEC). Heart 2007: 93(2):172-6.
 
 Ref. 4: Risk calculator excel. Written by Dr Rupert Payne, The University of Edinburgh, May 2010. Further advice on the appropriate use of the risk equations can be found at http://cvrisk.mvm.ed.ac.uk/help.htm">
-		["MD5-CAM-1.0.1"] = <"DA8EA31552F886AC7D9A5EEEC439C17C">
+		["MD5-CAM-1.0.1"] = <"CDA2D405E03CF3FA77BC0DA7D384D0DF">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- ASSIGN score
+	OBSERVATION[at0000] matches {	-- Assign score
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Family history of CHD/Stroke
+										value matches {
+											0|[local::at0015], 	-- No
+											1|[local::at0016]  	-- Yes
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Is the subject diabetic?
+										value matches {
+											0|[local::at0017], 	-- No
+											1|[local::at0018]  	-- Yes
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Rheumatoid arthritis?
+										value matches {
+											0|[local::at0019], 	-- No
+											1|[local::at0020]  	-- Yes
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Cigarettes smoked daily or equivalent
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::382]>
+												list = <
+													["1"] = <
+														units = <"1/d">
+														precision = <|0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- SIMD
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+														magnitude = <|0.0..99.0|>
+														precision = <|2|>
+													>
+												>
+											>
+										}
+									}
 									ELEMENT[at0004] occurrences matches {0..1} matches {	-- ASSIGN score
 										value matches {
 											DV_COUNT matches {
@@ -108,7 +153,7 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -150,6 +195,50 @@ ontology
 					text = <"Comment">
 					description = <"Any specific comments regarding the factors">
 				>
+				["at0010"] = <
+					text = <"Family history of CHD/Stroke">
+					description = <"FH of CHD/stroke increases the risk">
+				>
+				["at0011"] = <
+					text = <"Is the subject diabetic?">
+					description = <"Diabetes in the subject increases the risk">
+				>
+				["at0012"] = <
+					text = <"Rheumatoid arthritis?">
+					description = <"Rheumatoid arthritis in the subject increases the risk by approximately 10 cigrattes daily">
+				>
+				["at0013"] = <
+					text = <"Cigarettes smoked daily or equivalent">
+					description = <"Number of cigarettes smoked daily or equivalent ">
+				>
+				["at0014"] = <
+					text = <"SIMD">
+					description = <"Scottish Index of Multiple Deprivation 2012 related to mapping postcodes in Scotland to codes that indicate degrees of deprivation.">
+				>
+				["at0015"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Yes">
+					description = <"*">
+				>
 			>
 		>
 		["sv"] = <
@@ -177,6 +266,50 @@ ontology
 				["at0009"] = <
 					text = <"Kommentar">
 					description = <"Ev tillägg kring inkluderade faktorerna">
+				>
+				["at0010"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0011"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0012"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0013"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0014"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0015"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0016"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0017"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0018"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0019"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0020"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
 				>
 			>
 		>
