@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.raps_scale.v1
 
 concept
-	[at0000]	-- RAPS-skalan
+	[at0000]	-- RAPS Scale
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -21,29 +21,6 @@ description
 		["date"] = <"2016-08-09">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To assess the risk of pressure ulcer development in a patient.">
-			use = <"Use to assess the risk of pressure ulcer development in a patient. 
-
-RAPS is an acronym for Risk Assessment Pressure Sore, and is included in the Senior Alert registry. It consists of ten variables, most of which has been used in previous scales such as the modified Norton and Braden scales. The maximum score is 39 and each factor contribute points as follows:
-
-- General physical condition (1-4)
-- Physical activity (1-4)
-- Mobility (1-4)
-- (Skin) Moisture (1-4)
-- Food intake (1-4)
-- Fluid intake (1-4)
-- Sensory perception (1-4)
-- Friction and shear (1-3)
-- Body temperature (1-4)
-- s-Albumin (1-4)
-
-The cut-off point indicating high risk is a score of 31 or less. Predictive validity is highest for patients undergoing treatment in medical and infectious disease wards. ">
-			keywords = <"Senior Alert", "RAPS", "Pressure sore", "Risk Assessment Pressure Sore">
-			misuse = <"Do not use outside of context of risk assessment of pressure ulcers. Use with caution on patients undergoing treatment in other wards than medical or infectious disease wards (ie. surgical/orthopaedic) as predictive validity suggests the RAPS scale does not cover all factors of importance in these circumstances. Individual assessment should as a rule be applied as predisposed patients might be high risk despite a score above 31. ">
-			copyright = <"Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att värdera risk för utveckling av trycksår hos en patient.">
@@ -71,106 +48,139 @@ Används med försiktighet på patienter som genomgår behandling på annan än 
 Individuell bedömning bör alltid tillämpas då predisponerade individer kan ha hög risk trots en total poäng över 31.">
 			copyright = <"Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess the risk of pressure ulcer development in a patient.">
+			use = <"Use to assess the risk of pressure ulcer development in a patient. 
+
+RAPS is an acronym for Risk Assessment Pressure Sore, and is included in the Senior Alert registry. It consists of ten variables, most of which has been used in previous scales such as the modified Norton and Braden scales. The maximum score is 39 and each factor contribute points as follows:
+
+- General physical condition (1-4)
+- Physical activity (1-4)
+- Mobility (1-4)
+- (Skin) Moisture (1-4)
+- Food intake (1-4)
+- Fluid intake (1-4)
+- Sensory perception (1-4)
+- Friction and shear (1-3)
+- Body temperature (1-4)
+- s-Albumin (1-4)
+
+The cut-off point indicating high risk is a score of 31 or less. Predictive validity is highest for patients undergoing treatment in medical and infectious disease wards. ">
+			keywords = <"Senior Alert", "RAPS", "Pressure sore", "Risk Assessment Pressure Sore">
+			misuse = <"Do not use outside of context of risk assessment of pressure ulcers. Use with caution on patients undergoing treatment in other wards than medical or infectious disease wards (ie. surgical/orthopaedic) as predictive validity suggests the RAPS scale does not cover all factors of importance in these circumstances. Individual assessment should as a rule be applied as predisposed patients might be high risk despite a score above 31. ">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
-	other_contributors = <"Dennis Forslund, Cambio Healthcare Systems", ...>
+	other_contributors = <"Dennis Forslund, Cambio Healthcare Systems", "Syeeda S Farruque">
 	other_details = <
 		["references"] = <"Lindgren M, Unosson M, Krantz AM, Ek AC. A risk assessment scale for the prediction of pressure sore development: reliability and validity. Journal of advanced nursing. 2002 Apr 1;38(2):190-9.">
-		["MD5-CAM-1.0.1"] = <"922551615E0C2625F0505C9F9FF2006D">
+		["MD5-CAM-1.0.1"] = <"0F36D6B590268FC665A39CAA966386FD">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- RAPS-skalan
+	OBSERVATION[at0000] matches {	-- RAPS Scale
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- vilken händelse som helst
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Träd
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Allmäntillstånd
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- General condition
 										value matches {
-											1|[local::at0006], 	-- Mycket dåligt
-											2|[local::at0007], 	-- Dåligt
-											3|[local::at0008], 	-- Ganska gott
-											4|[local::at0009]  	-- Gott
+											0|[local::at0055], 	-- NA
+											1|[local::at0006], 	-- Very poor
+											2|[local::at0007], 	-- Poor
+											3|[local::at0008], 	-- Quite well
+											4|[local::at0009]  	-- Well
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Fysisk aktivitet
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Physical activity
 										value matches {
-											1|[local::at0011], 	-- Sängliggande
-											2|[local::at0012], 	-- Rullstolsburen
-											3|[local::at0013], 	-- Går med hjälp av annan person
-											4|[local::at0014]  	-- Går själv med eller utan hjälpmedel
+											0|[local::at0056], 	-- NA
+											1|[local::at0011], 	-- Bedridden
+											2|[local::at0012], 	-- Bound to wheel chair
+											3|[local::at0013], 	-- Walks with the aid of another person
+											4|[local::at0014]  	-- Walks with or without aids
 										}
 									}
-									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Rörelseförmåga
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Mobility
 										value matches {
-											1|[local::at0016], 	-- Orörlig
-											2|[local::at0017], 	-- Mycket begränsad
-											3|[local::at0018], 	-- Något begränsad
-											4|[local::at0019]  	-- Fullgod
+											0|[local::at0057], 	-- NA
+											1|[local::at0016], 	-- Immobile
+											2|[local::at0017], 	-- Very limited
+											3|[local::at0018], 	-- Slightly limited
+											4|[local::at0019]  	-- Adequate
 										}
 									}
-									ELEMENT[at0020] occurrences matches {0..1} matches {	-- I vilken grad huden utsätts för fukt
+									ELEMENT[at0020] occurrences matches {0..1} matches {	-- The degree to which the skin is exposed to moisture
 										value matches {
-											1|[local::at0021], 	-- Alltid fuktig
-											2|[local::at0022], 	-- Ofta fuktig
-											3|[local::at0023], 	-- Ibland fuktig
-											4|[local::at0024]  	-- Torr eller normal fuktighet
+											0|[local::at0058], 	-- NA
+											1|[local::at0021], 	-- Constantly damp
+											2|[local::at0022], 	-- Often damp
+											3|[local::at0023], 	-- Slightly damp
+											4|[local::at0024]  	-- Dry or normal dampness
 										}
 									}
-									ELEMENT[at0025] occurrences matches {0..1} matches {	-- Födointag
+									ELEMENT[at0025] occurrences matches {0..1} matches {	-- Food intake
 										value matches {
-											1|[local::at0026], 	-- Mindre än en halv portion
-											2|[local::at0027], 	-- Halv portion
+											0|[local::at0059], 	-- NA
+											1|[local::at0026], 	-- Less than 1/2 portion
+											2|[local::at0027], 	-- 1/2 portion
 											3|[local::at0028], 	-- 3/4 portion
 											4|[local::at0029]  	-- Normal portion
 										}
 									}
-									ELEMENT[at0030] occurrences matches {0..1} matches {	-- Vätskeintag
+									ELEMENT[at0030] occurrences matches {0..1} matches {	-- Fluid intake
 										value matches {
-											1|[local::at0031], 	-- 500 ml/dag
-											2|[local::at0032], 	-- 500 - 700 ml/dag
-											3|[local::at0033], 	-- 700 - 1000 ml/dag
-											4|[local::at0034]  	-- 1000 ml/dag
+											0|[local::at0060], 	-- NA
+											1|[local::at0031], 	-- 500 ml/day
+											2|[local::at0032], 	-- 500-700 ml/day
+											3|[local::at0033], 	-- 700-1000 ml/day
+											4|[local::at0034]  	-- 1000 ml/day
 										}
 									}
-									ELEMENT[at0035] occurrences matches {0..1} matches {	-- Känsel
+									ELEMENT[at0035] occurrences matches {0..1} matches {	-- Sensory ability
 										value matches {
-											1|[local::at0036], 	-- Saknas känsel
-											2|[local::at0037], 	-- Mycket nedsatt
-											3|[local::at0038], 	-- Något nedsatt
-											4|[local::at0039]  	-- Fullgod
+											0|[local::at0061], 	-- NA
+											1|[local::at0036], 	-- No feeling
+											2|[local::at0037], 	-- Impaired
+											3|[local::at0038], 	-- Slightly impaired
+											4|[local::at0039]  	-- Adequate
 										}
 									}
-									ELEMENT[at0040] occurrences matches {0..1} matches {	-- Friktion och skjuvning
+									ELEMENT[at0040] occurrences matches {0..1} matches {	-- Friction and shear
 										value matches {
-											1|[local::at0041], 	-- Stora problem
-											2|[local::at0042], 	-- Vissa problem
-											3|[local::at0043]  	-- Inga problem
+											0|[local::at0062], 	-- NA
+											1|[local::at0041], 	-- Large problems
+											2|[local::at0042], 	-- Some problems
+											3|[local::at0043]  	-- No problems
 										}
 									}
-									ELEMENT[at0044] occurrences matches {0..1} matches {	-- Kroppstemperatur
+									ELEMENT[at0044] occurrences matches {0..1} matches {	-- Body temperature
 										value matches {
-											1|[local::at0045], 	-- Låg temperatur
-											2|[local::at0046], 	-- Febril
-											3|[local::at0047], 	-- Subfebril
-											4|[local::at0048]  	-- Afebril
+											0|[local::at0063], 	-- NA
+											1|[local::at0045], 	-- Low temperature
+											2|[local::at0046], 	-- Febrile
+											3|[local::at0047], 	-- Subfebrile
+											4|[local::at0048]  	-- Afebrile
 										}
 									}
 									ELEMENT[at0049] occurrences matches {0..1} matches {	-- S-albumin
 										value matches {
+											0|[local::at0064], 	-- NA
 											1|[local::at0050], 	-- >25 g/l
 											2|[local::at0051], 	-- 26-61 g/l
 											3|[local::at0052], 	-- 32-35 g/l
 											4|[local::at0053]  	-- 36-42 g/l
 										}
 									}
-									ELEMENT[at0054] occurrences matches {0..1} matches {	-- Total poäng
+									ELEMENT[at0054] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											DV_COUNT matches {
-												magnitude matches {|10..39|}
+												magnitude matches {|0..39|}
 											}
 										}
 									}
@@ -403,6 +413,46 @@ ontology
 					text = <"Total score">
 					description = <"Sum of all factors">
 				>
+				["at0055"] = <
+					text = <"NA">
+					description = <"Not assessed">
+				>
+				["at0056"] = <
+					text = <"NA">
+					description = <"Not assessed">
+				>
+				["at0057"] = <
+					text = <"NA">
+					description = <"Not assessed">
+				>
+				["at0058"] = <
+					text = <"NA">
+					description = <"Not assessed">
+				>
+				["at0059"] = <
+					text = <"NA">
+					description = <"Not assessed">
+				>
+				["at0060"] = <
+					text = <"NA">
+					description = <"Not assessed">
+				>
+				["at0061"] = <
+					text = <"NA">
+					description = <"Not assessed">
+				>
+				["at0062"] = <
+					text = <"NA">
+					description = <"Not assessed">
+				>
+				["at0063"] = <
+					text = <"NA">
+					description = <"Not assessed">
+				>
+				["at0064"] = <
+					text = <"NA">
+					description = <"Not assessed">
+				>
 			>
 		>
 		["sv"] = <
@@ -622,6 +672,46 @@ ontology
 				["at0054"] = <
 					text = <"Total poäng">
 					description = <"Summan av samtliga faktorer">
+				>
+				["at0055"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0056"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0057"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0058"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0059"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0060"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0061"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0062"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0063"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
+				>
+				["at0064"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
 				>
 			>
 		>
