@@ -22,6 +22,18 @@ description
 		["date"] = <"2016-10-02">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att registrera resultat genererade i enlighet med Injury Severity Score, vilken beskriver svårighetsgrad vid multipla skador.">
+			use = <"Använd för att registrera resultat genererade i enlighet med Injury Severity Score (ISS), vilken tar hänsyn till de tre mest skadade områdena på kroppen. ISS summerar svårighetsgraden av skadorna, och bygger på en formel enligt:
+
+ISS = A*A + B*B + C*C, där samtliga faktorer hämtas från Abbreviated Injury Scale (AIS) vilken delar upp kroppen i nio områden och graderar aktuella skadorna på en skala 0-6. Endast de tre mest skadade områdena graderas, från 0 = ingen skada till 6 = skada ej förenlig med överlevnad. Detta genererar en ISS-poäng om 0-75p. ISS har visats ha linjär korrelation med vårdtid, morbiditet och mortalitet hos traumapatienter.
+
+En AIS-gradering om 6 genererar automatiskt en ISS-poäng om 75p, vilket innebär att skadorna är icke förenliga med liv. Mer information kring AIS återfinns i separat arketyp.">
+			keywords = <"ISS", "injury severity score", "injury severity", "AIS", "trauma">
+			misuse = <"Ej avsedd att användas för triage. ">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"Records the Injury Severity Score which describes severity of injury in persons with multiple trauma.">
@@ -33,18 +45,6 @@ More detail about scoring of the AIS is provided in the openEHR-EHR-OBSERVATION.
 			misuse = <"Do not use for triage.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"Att registrera resultat genererade i enlighet med Injury Severity Score, vilken beskriver svårighetsgrad vid multipla skador.">
-			use = <"Använd för att registrera resultat genererade i enlighet med Injury Severity Score (ISS), vilken tar hänsyn till de tre mest skadade områdena på kroppen. ISS summerar svårighetsgraden av skadorna, och bygger på en formel enligt:
-
-ISS = A*A + B*B + C*C, där samtliga faktorer hämtas från Abbreviated Injury Scale (AIS) vilken delar upp kroppen i nio områden och graderar aktuella skadorna på en skala 0-6. Endast de tre mest skadade områdena graderas, från 0 = ingen skada till 6 = inte förenlig med liv. Detta genererar en ISS-poäng om 0-75p. ISS har visats ha linjär korrelation med vårdtid, morbiditet och mortalitet hos traumapatienter.
-
-En AIS-gradering om 6 genererar automatiskt en ISS-poäng om 75p, vilket innebär att skadorna är icke förenliga med liv. Mer information kring AIS återfinns i separat arketyp.">
-			keywords = <"ISS", "injury severity score", "injury severity", "AIS", "trauma">
-			misuse = <"Ej avsedd att användas för triage. ">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -54,7 +54,7 @@ En AIS-gradering om 6 genererar automatiskt en ISS-poäng om 75p, vilket innebä
 Copes WS, Champion HR, Sacco WJ, Lawnick MM, Keast SL, Bain LW. The injury severity score revisited. Journal of Trauma and Acute Care Surgery. 1988 Jan 1;28(1):69-77.
 
 Baker SP, o'Neill B, Haddon Jr W, Long WB. The injury severity score: a method for describing patients with multiple injuries and evaluating emergency care. Journal of Trauma and Acute Care Surgery. 1974 Mar 1;14(3):187-96.">
-		["MD5-CAM-1.0.1"] = <"40456607D10988386704E49E3E4EED72">
+		["MD5-CAM-1.0.1"] = <"9B99BAC567FA2C8F9898DE31FD6B0B0C">
 	>
 
 definition
@@ -68,35 +68,35 @@ definition
 								items cardinality matches {0..*; unordered} matches {
 									ELEMENT[at0006] occurrences matches {0..1} matches {	-- AIS första region
 										value matches {
-											0|[local::at0009], 	-- *No injury(en)
-											1|[local::at0010], 	-- *Minor injury(en)
-											2|[local::at0011], 	-- *Moderate injury(en)
-											3|[local::at0012], 	-- *Serious injury(en)
-											4|[local::at0013], 	-- *Severe injury(en)
-											5|[local::at0014], 	-- *Critical injury(en)
-											6|[local::at0015]  	-- *Unsurvivable injury(en)
+											0|[local::at0009], 	-- Ingen skada
+											1|[local::at0010], 	-- Lindrig skada
+											2|[local::at0011], 	-- Måttlig skada
+											3|[local::at0012], 	-- Omfattande skada
+											4|[local::at0013], 	-- Svår skada
+											5|[local::at0014], 	-- Kritisk skada
+											6|[local::at0015]  	-- Skada ej förenlig med överlevnad
 										}
 									}
 									ELEMENT[at0007] occurrences matches {0..1} matches {	-- AIS andra region
 										value matches {
-											0|[local::at0016], 	-- *No injury(en)
-											1|[local::at0017], 	-- *Mild injury(en)
-											2|[local::at0018], 	-- *Moderate injury(en)
-											3|[local::at0019], 	-- *Serious injury(en)
-											4|[local::at0020], 	-- *Severe injury(en)
-											5|[local::at0021], 	-- *Critical injury(en)
-											6|[local::at0022]  	-- *Unsurvivable injury(en)
+											0|[local::at0016], 	-- Ingen skada
+											1|[local::at0017], 	-- Lindrig skada
+											2|[local::at0018], 	-- Måttlig skada
+											3|[local::at0019], 	-- Omfattande skada
+											4|[local::at0020], 	-- Svår skada
+											5|[local::at0021], 	-- Kritisk skada
+											6|[local::at0022]  	-- Skada ej förenlig med överlevnad
 										}
 									}
 									ELEMENT[at0008] occurrences matches {0..1} matches {	-- AIS tredje region
 										value matches {
-											0|[local::at0023], 	-- *No injury(en)
-											1|[local::at0024], 	-- *Mild injury(en)
-											2|[local::at0025], 	-- *Moderate injury(en)
-											3|[local::at0026], 	-- *Serious injury(en)
-											4|[local::at0027], 	-- *Severe injury(en)
-											5|[local::at0028], 	-- *Critical injury(en)
-											6|[local::at0029]  	-- *Unsurvivable injury(en)
+											0|[local::at0023], 	-- Ingen skada
+											1|[local::at0024], 	-- Lindrig skada
+											2|[local::at0025], 	-- Måttlig skada
+											3|[local::at0026], 	-- Omfattande skada
+											4|[local::at0027], 	-- Svår skada
+											5|[local::at0028], 	-- Kritisk skada
+											6|[local::at0029]  	-- Skada ej förenlig med överlevnad
 										}
 									}
 									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Injury Severity Score
@@ -250,7 +250,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Injury Severity Score">
-					description = <"Injury Severity Score (ISS) är ett anatomiskt baserat klassifikationssystem som används för att beskriva svårighetsgrad vid multipla skador.  ISS = A*A + B*B + C*C, där samtliga faktorer hämtas från Abbreviated Injury Scale (AIS) vilken delar upp kroppen i nio områden och graderar aktuella skadorna på en skala 0-6. Endast de tre mest skadade områdena graderas, från 0 = ingen skada till 6 = inte förenlig med liv. Detta genererar en ISS-poäng om 0-75p. ISS har visats ha linjär korrelation med vårdtid, morbiditet och mortalitet hos traumapatienter.">
+					description = <"Injury Severity Score (ISS) är ett anatomiskt baserat klassifikationssystem som används för att beskriva svårighetsgrad vid multipla skador.  ISS = A*A + B*B + C*C, där samtliga faktorer hämtas från Abbreviated Injury Scale (AIS) vilken delar upp kroppen i nio områden och graderar aktuella skadorna på en skala 0-6. Endast de tre mest skadade områdena graderas, från 0 = ingen skada till 6 = skada ej förenlig med överlevnad. Detta genererar en ISS-poäng om 0-75p. ISS har visats ha linjär korrelation med vårdtid, morbiditet och mortalitet hos traumapatienter.">
 				>
 				["at0001"] = <
 					text = <"*Event Series(en)">
@@ -285,88 +285,88 @@ ontology
 					description = <"Abbreviated Injury Scale-gradering av tredje mest allvarligt skadade området.">
 				>
 				["at0009"] = <
-					text = <"*No injury(en)">
-					description = <"**(en)">
+					text = <"Ingen skada">
+					description = <"">
 				>
 				["at0010"] = <
-					text = <"*Minor injury(en)">
-					description = <"**(en)">
+					text = <"Lindrig skada">
+					description = <"">
 				>
 				["at0011"] = <
-					text = <"*Moderate injury(en)">
-					description = <"**(en)">
+					text = <"Måttlig skada">
+					description = <"">
 				>
 				["at0012"] = <
-					text = <"*Serious injury(en)">
-					description = <"**(en)">
+					text = <"Omfattande skada">
+					description = <"">
 				>
 				["at0013"] = <
-					text = <"*Severe injury(en)">
-					description = <"**(en)">
+					text = <"Svår skada">
+					description = <"">
 				>
 				["at0014"] = <
-					text = <"*Critical injury(en)">
-					description = <"**(en)">
+					text = <"Kritisk skada">
+					description = <"">
 				>
 				["at0015"] = <
-					text = <"*Unsurvivable injury(en)">
-					description = <"**(en)">
+					text = <"Skada ej förenlig med överlevnad">
+					description = <"">
 				>
 				["at0016"] = <
-					text = <"*No injury(en)">
-					description = <"**(en)">
+					text = <"Ingen skada">
+					description = <"">
 				>
 				["at0017"] = <
-					text = <"*Mild injury(en)">
-					description = <"**(en)">
+					text = <"Lindrig skada">
+					description = <"">
 				>
 				["at0018"] = <
-					text = <"*Moderate injury(en)">
-					description = <"**(en)">
+					text = <"Måttlig skada">
+					description = <"">
 				>
 				["at0019"] = <
-					text = <"*Serious injury(en)">
-					description = <"**(en)">
+					text = <"Omfattande skada">
+					description = <"">
 				>
 				["at0020"] = <
-					text = <"*Severe injury(en)">
-					description = <"**(en)">
+					text = <"Svår skada">
+					description = <"">
 				>
 				["at0021"] = <
-					text = <"*Critical injury(en)">
-					description = <"**(en)">
+					text = <"Kritisk skada">
+					description = <"">
 				>
 				["at0022"] = <
-					text = <"*Unsurvivable injury(en)">
-					description = <"**(en)">
+					text = <"Skada ej förenlig med överlevnad">
+					description = <"">
 				>
 				["at0023"] = <
-					text = <"*No injury(en)">
-					description = <"**(en)">
+					text = <"Ingen skada">
+					description = <"">
 				>
 				["at0024"] = <
-					text = <"*Mild injury(en)">
-					description = <"**(en)">
+					text = <"Lindrig skada">
+					description = <"">
 				>
 				["at0025"] = <
-					text = <"*Moderate injury(en)">
-					description = <"**(en)">
+					text = <"Måttlig skada">
+					description = <"">
 				>
 				["at0026"] = <
-					text = <"*Serious injury(en)">
-					description = <"**(en)">
+					text = <"Omfattande skada">
+					description = <"">
 				>
 				["at0027"] = <
-					text = <"*Severe injury(en)">
-					description = <"**(en)">
+					text = <"Svår skada">
+					description = <"">
 				>
 				["at0028"] = <
-					text = <"*Critical injury(en)">
-					description = <"**(en)">
+					text = <"Kritisk skada">
+					description = <"">
 				>
 				["at0029"] = <
-					text = <"*Unsurvivable injury(en)">
-					description = <"**(en)">
+					text = <"Skada ej förenlig med överlevnad">
+					description = <"">
 				>
 			>
 		>
