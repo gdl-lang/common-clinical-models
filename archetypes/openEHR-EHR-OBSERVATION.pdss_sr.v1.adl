@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.pdss_sr.v1
 
 concept
-	[at0000]	-- Panic disorder severity scale sr
+	[at0000]	-- PDSS-SR
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque, Cambio Healthcare Systems">
@@ -12,6 +21,36 @@ description
 		["date"] = <"2016-11-08">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att vid paniksyndrom utvärdera den senaste veckans symtomnivå. Detta görs med hjälp av ett frågeformulär bestående av sju frågor relaterade till panikattacker.">
+			use = <"Använd för att utvärdera symtomnivå vid paniksyndrom. För att uppnå definitionen för panikattack krävs att patienten upplevt minst fyra av följande kriterier samt att deras kulmen uppnåtts inom tio minuter:
+
+- Snabba eller bultande hjärtslag
+- Bröstsmärta/obehag
+- Domningar eller stickningar
+- Svettning
+- Illamående
+- Frossa eller värmevallningar
+- Darrningar eller skakningar
+- Yrsel eller svimningskänsla
+- Rädsla för att tappa kontrollen eller \"bli tokig\"
+- Andnöd
+- Overklighetskänsla
+- Dödsångest
+- Kvävningskänsla
+
+Om färre än fyra men fler än 0, räknas dessa som \"begränsade symtomattacker\".
+
+Varje svar genererar 0-4 poäng vilket gör att totala poängsumman uppgår till maximalt 28p. Resultatet tolkas med hänsyn till förekomst av agorafobi enligt:
+
+Utan agorafobi, 0-1p normalt, 2-5p gränsfall, 6-9p lätt-milt paniksyndrom, 10-13 måttligt paniksyndrom, >= 14p svårt paniksyndrom
+
+Med agorafobi, 0-2p normalt, 3-7p gränsfall, 8-10p lätt-milt paniksyndrom, 11-15p måttligt paniksyndrom, >= 16p svårt paniksyndrom">
+			keywords = <"PDSS", "PDSS-SR", "Paniksyndrom">
+			misuse = <"PDSS-SR är avsedd att användas för att påvisa indikation för vidare utredning, och är därmed ej i sig att betrakta som diagnostisk.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"The PDSS-SR helps to gather an assessment from the patient of the severity of their panic disorder during the previous week.
@@ -46,96 +85,96 @@ Normal: 0-2 ; Bordeline: 3-7 ; Slightly ill: 8-10 ; Moderately ill: 11-15 ; Mark
 		["references"] = <"Ref. 1: Shear MK, Brown TA, Barlow DH, Money R, Sholomskas DE, Woods SW, Gorman JM, Papp LA.  Multicenter collaborative Panic Disorder Severity Scale.  American Journal of Psychiatry 1997;154:1571-1575 
 
 Ref. 2: Furukawa, T. A., M. Katherine Shear, et al. (2009). \"Evidence-based guidelines for interpretation of the Panic Disorder Severity Scale.\" Depress Anxiety 26(10): 922-9.">
-		["MD5-CAM-1.0.1"] = <"0A38EFC2CC86D6E6F8906E0CCC4AC14A">
+		["MD5-CAM-1.0.1"] = <"08AF32198A1D2573AE3DFC497D346C63">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Panic disorder severity scale sr
+	OBSERVATION[at0000] matches {	-- PDSS-SR
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Q1. No of attacks
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- 1. Antal attacker under senaste veckan
 										value matches {
-											0|[local::at0014], 	-- No panic or limited symptom episodes
-											1|[local::at0015], 	-- Mild
-											2|[local::at0016], 	-- Moderate
-											3|[local::at0017], 	-- Severe 
-											4|[local::at0018]  	-- Extreme
+											0|[local::at0014], 	-- Inga panikattacker eller begränsade symtomattacker 
+											1|[local::at0015], 	-- Lindrigt 
+											2|[local::at0016], 	-- Måttligt 
+											3|[local::at0017], 	-- Svårt
+											4|[local::at0018]  	-- Extremt 
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Q2. Degree of distress
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- 2. Påfrestning av attacker
 										value matches {
-											0|[local::at0019], 	-- Not at all distressing
-											1|[local::at0020], 	-- Mildly distressing 
-											2|[local::at0021], 	-- Moderately distressing
-											3|[local::at0022], 	-- Severely distressing 
-											4|[local::at0023]  	-- Extremely distressing
+											0|[local::at0019], 	-- Inte alls påfrestande
+											1|[local::at0020], 	-- Milt påfrestande
+											2|[local::at0021], 	-- Måttligt påfrestande
+											3|[local::at0022], 	-- Svårt påfrestande
+											4|[local::at0023]  	-- Extremt påfrestande
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Q3. Fear of another attack
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- 3. Oro för ytterligare attack
 										value matches {
-											0|[local::at0024], 	-- Not at all
-											1|[local::at0025], 	-- Occasionally or only mildly
-											2|[local::at0026], 	-- Frequently or moderately
-											3|[local::at0027], 	-- Very often or to a very disturbing degree
-											4|[local::at0028]  	-- Nearly constantly and to a disabling extent
+											0|[local::at0024], 	-- Inte alls
+											1|[local::at0025], 	-- Ibland eller endast mild oro
+											2|[local::at0026], 	-- Ofta eller måttlig oro
+											3|[local::at0027], 	-- Mycket ofta eller i väldigt besvärande omfattning
+											4|[local::at0028]  	-- Näst intill konstant och i väldigt funktionsnedsättande omfattning
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Q4. Phyiscal avoidance due to fear of another attack
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- 4. Beteendeförändring platser och situationer
 										value matches {
-											0|[local::at0029], 	-- None
-											1|[local::at0030], 	-- Mild
-											2|[local::at0031], 	-- Moderate
-											3|[local::at0032], 	-- Severe
-											4|[local::at0033]  	-- Extreme
+											0|[local::at0029], 	-- Inga alls
+											1|[local::at0030], 	-- Mild rädsla och/eller undvikande
+											2|[local::at0031], 	-- Måttlig rädsla och/eller undvikande
+											3|[local::at0032], 	-- Svår rädsla och omfattande undvikande
+											4|[local::at0033]  	-- Extrem rädsla med omfattande funktionsnedsättande rädsla och/eller undvikande
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Q5. Other avoidance
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- 5. Beteendeförändring aktiviteter
 										value matches {
-											0|[local::at0034], 	-- No fear or avoidance
-											1|[local::at0035], 	-- Mild
-											2|[local::at0036], 	-- Moderate
-											3|[local::at0037], 	-- Severe
-											4|[local::at0038]  	-- Extreme
+											0|[local::at0034], 	-- Ingen rädsla eller undvikande
+											1|[local::at0035], 	-- Mild rädsla och/eller undvikande
+											2|[local::at0036], 	-- Måttlig rädsla och/eller undvikande
+											3|[local::at0037], 	-- Svår rädsla och omfattande undvikande
+											4|[local::at0038]  	-- Extrem rädsla med omfattande funktionsnedsättande rädsla och/eller undvikande
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Q6. Interference with personal life
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- 6. Påverkan på dagliga livet
 										value matches {
-											0|[local::at0039], 	-- No interference
-											1|[local::at0040], 	-- Slight
-											2|[local::at0041], 	-- Significant
-											3|[local::at0042], 	-- Substantial
-											4|[local::at0043]  	-- Extreme
+											0|[local::at0039], 	-- Inte alls
+											1|[local::at0040], 	-- Något
+											2|[local::at0041], 	-- Betydligt
+											3|[local::at0042], 	-- Omfattande
+											4|[local::at0043]  	-- Extremt
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Q7. Interference with social life
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- 7. Påverkan på socialt liv
 										value matches {
-											0|[local::at0044], 	-- No interference
-											1|[local::at0045], 	-- Slight
-											2|[local::at0046], 	-- Significant
-											3|[local::at0047], 	-- Substantial
-											4|[local::at0048]  	-- Extreme
+											0|[local::at0044], 	-- Inte alls
+											1|[local::at0045], 	-- Något
+											2|[local::at0046], 	-- Betydligt
+											3|[local::at0047], 	-- Omfattande
+											4|[local::at0048]  	-- Extremt
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Total raw score
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Total poäng
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..28|}
 											}
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Total composite score
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Genomsnittlig poäng
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..4|}
 											}
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -229,7 +268,7 @@ to socialize this past week, answer how you think you would have done if you did
 				>
 				["at0014"] = <
 					text = <"No panic or limited symptom episodes">
-					description = <"">
+					description = <"*">
 				>
 				["at0015"] = <
 					text = <"Mild">
@@ -269,23 +308,23 @@ to socialize this past week, answer how you think you would have done if you did
 				>
 				["at0024"] = <
 					text = <"Not at all">
-					description = <"">
+					description = <"*">
 				>
 				["at0025"] = <
 					text = <"Occasionally or only mildly">
-					description = <"">
+					description = <"*">
 				>
 				["at0026"] = <
 					text = <"Frequently or moderately">
-					description = <"">
+					description = <"*">
 				>
 				["at0027"] = <
 					text = <"Very often or to a very disturbing degree">
-					description = <"">
+					description = <"*">
 				>
 				["at0028"] = <
 					text = <"Nearly constantly and to a disabling extent">
-					description = <"">
+					description = <"*">
 				>
 				["at0029"] = <
 					text = <"None">
@@ -362,7 +401,7 @@ responsibilities.">
 				>
 				["at0044"] = <
 					text = <"No interference">
-					description = <"">
+					description = <"*">
 				>
 				["at0045"] = <
 					text = <"Slight">
@@ -381,6 +420,206 @@ problems.">
 				["at0048"] = <
 					text = <"Extreme">
 					description = <"incapacitating impairment, such that there was hardly anything social I could do.">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"PDSS-SR">
+					description = <"Panic Disorder Severity Scale Self-Rated (PDSS-SR) är ett självskattningsformulär utvecklat från PDSS, och används för att vid paniksyndrom utvärdera den senaste veckans symtomnivå.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"1. Antal attacker under senaste veckan">
+					description = <"Hur många panikattacker och begränsade symtomattacker har du haft under den senaste veckan?">
+				>
+				["at0005"] = <
+					text = <"2. Påfrestning av attacker">
+					description = <"Om du hade panikattacker under senaste veckan, hur påfrestande (obehagliga, skrämmande) var dessa medan de pågick? (om du hade fler än en attack, ange en genomsnittsskattning. Om du inte hade panikattacker men däremot begränsade symtomattacker, svara för dessa)">
+				>
+				["at0006"] = <
+					text = <"3. Oro för ytterligare attack">
+					description = <"Under den senaste veckan, hur mycket har du oroat dig eller känt ångest inför när din nästa panikattack skulle komma, eller för rädslor relaterade till dessa? Till exempel, att attackerna skulle kunna betyda att du har fysiska eller mentala problem eller att de skulle kunna orsaka social genans?">
+				>
+				["at0007"] = <
+					text = <"4. Beteendeförändring platser och situationer">
+					description = <"Under senaste veckan, fanns det några platser eller situationer som du undvek eller kände dig rädd för på grund av rädsla att få en panikattack? T.ex. kommunala transportmedel, biografer, folksamlingar, broar, tunnlar, köpcentra, att vara ensam etc. Finns det några andra situationer du skulle ha undvikit eller känt rädsla inför om de uppkommit under veckan, av samma anledning? Om ja, vänligen skatta din grad av rädsla och undvikande för senaste veckan.">
+				>
+				["at0008"] = <
+					text = <"5. Beteendeförändring aktiviteter">
+					description = <"Under senaste veckan, fanns det några aktiviteter (såsom fysisk ansträngning, sexuellt umgänge, varm dusch/bad, fika, se en skrämmande/spännande film etc) som du undvek eller kände rädsla inför pga att de orsakade fysiska upplevelser liknande dem du känner under en panikattack eller som du var rädd skulle utlösa en panikattack? Finns det andra aktiviteter du skulle ha undivikit eller känt rädsla inför under senaste veckan, av samma anledning? Om ja, vänligen skatta din grad av rädsla och undvikande för senaste veckan.">
+				>
+				["at0009"] = <
+					text = <"6. Påverkan på dagliga livet">
+					description = <"Under senaste veckan, hur mycket störde ovanstående symtom som helhet (panikattacker och begränsade symtomattacker, oro för attacker samt rädsla för situationer och aktiviteter pga attacker) din förmåga att arbeta eller att fullgöra ansvarstaganden hemma? (Om ditt arbete eller ansvarstaganden hemma var mindre omfattande än vanligt senaste veckan, vänligen ange ditt svar efter hur du tror du skulle ha gjort om dina åtaganden hade varit som vanligt)">
+				>
+				["at0010"] = <
+					text = <"7. Påverkan på socialt liv">
+					description = <"Under senaste veckan, hur mycket störde panikattacker och begränsade symtomattacker, oro för attacker samt rädsla för situationer och aktiviteter pga attacker, ditt sociala liv? (Om du hade färre möjligheter till sociala kontakter än vanligt under senaste veckan, vänligen svara då utifrån hur du tror du skulle påverkats om du haft fler sådana möjligheter)">
+				>
+				["at0011"] = <
+					text = <"Total poäng">
+					description = <"Summan av samtliga faktorer">
+				>
+				["at0012"] = <
+					text = <"Kommentar">
+					description = <"Ev tillägg">
+				>
+				["at0013"] = <
+					text = <"Genomsnittlig poäng">
+					description = <"Genomsnittlig poäng för de sju frågorna.">
+				>
+				["at0014"] = <
+					text = <"Inga panikattacker eller begränsade symtomattacker ">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"Lindrigt ">
+					description = <"Mindre än en fullständig panikattack och inte mer än en begränsad symtomattack/dag">
+				>
+				["at0016"] = <
+					text = <"Måttligt ">
+					description = <"En eller två fullständiga panikattacker och/eller flera begränsade symtomattacker/dag">
+				>
+				["at0017"] = <
+					text = <"Svårt">
+					description = <"Fler än två fullständiga panikattacker men inte fler än en per dag i genomsnitt">
+				>
+				["at0018"] = <
+					text = <"Extremt ">
+					description = <"Fullständiga panikattacker uppkom fler än en gång per dag, majoriteten av dagarna ">
+				>
+				["at0019"] = <
+					text = <"Inte alls påfrestande">
+					description = <"Alt inga panikattacker eller begränsade symtomattacker under senaste veckan">
+				>
+				["at0020"] = <
+					text = <"Milt påfrestande">
+					description = <"Inte alltför intensiva">
+				>
+				["at0021"] = <
+					text = <"Måttligt påfrestande">
+					description = <"Intensiva men hanterbara">
+				>
+				["at0022"] = <
+					text = <"Svårt påfrestande">
+					description = <"Mycket intensiva">
+				>
+				["at0023"] = <
+					text = <"Extremt påfrestande">
+					description = <"Extrem påfrestning under samtliga attacker">
+				>
+				["at0024"] = <
+					text = <"Inte alls">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <"Ibland eller endast mild oro">
+					description = <"">
+				>
+				["at0026"] = <
+					text = <"Ofta eller måttlig oro">
+					description = <"">
+				>
+				["at0027"] = <
+					text = <"Mycket ofta eller i väldigt besvärande omfattning">
+					description = <"">
+				>
+				["at0028"] = <
+					text = <"Näst intill konstant och i väldigt funktionsnedsättande omfattning">
+					description = <"">
+				>
+				["at0029"] = <
+					text = <"Inga alls">
+					description = <"Ingen rädsla eller undvikande">
+				>
+				["at0030"] = <
+					text = <"Mild rädsla och/eller undvikande">
+					description = <"Rädsla och/eller undvikande då och då men hanterbart. Detta ändrade endast något eller inte alls min livsföring.">
+				>
+				["at0031"] = <
+					text = <"Måttlig rädsla och/eller undvikande">
+					description = <"Påtaglig rädsla och/eller undvikande men fortfarande hanterbar. Jag undvek några situationer men kunde uthärdera dessa i sällskap med någon. Jag förändrade min livsföring i viss utsträckning pga detta men min funktionsnivå i helhet var inte nedsatt.">
+				>
+				["at0032"] = <
+					text = <"Svår rädsla och omfattande undvikande">
+					description = <"Omfattande undvikande som påtagligt förändrade min livsföring i syfte att anpassa mig till undvikandet. Detta medförde svårigheter i att hantera vanliga aktiviteter">
+				>
+				["at0033"] = <
+					text = <"Extrem rädsla med omfattande funktionsnedsättande rädsla och/eller undvikande">
+					description = <"Omfattande funktionsnedsättande rädsla och/eller undvikande resulterande i påtaglig förändring av livsföring. Detta medförde att jag ej kunde genomföra viktiga uppgifter.">
+				>
+				["at0034"] = <
+					text = <"Ingen rädsla eller undvikande">
+					description = <"...av situationer eller aktiviteter pga påfrestande fysiska upplevelser. ">
+				>
+				["at0035"] = <
+					text = <"Mild rädsla och/eller undvikande">
+					description = <"...vanligtvis hanterbar med liten påfrestning och endast viss påverkan på livsföring">
+				>
+				["at0036"] = <
+					text = <"Måttlig rädsla och/eller undvikande">
+					description = <"...med märkbart undvikande, men hanterbart. Tydlig men begränsad påverkan på livsföring, utan att funktionsnivån i helhet blev nedsatt.">
+				>
+				["at0037"] = <
+					text = <"Svår rädsla och omfattande undvikande">
+					description = <"...med påtaglig påverkan på livsföring eller funktionsnivå.">
+				>
+				["at0038"] = <
+					text = <"Extrem rädsla med omfattande funktionsnedsättande rädsla och/eller undvikande">
+					description = <"...resultarande i omfattande påverkan på livsföring, till den grad att jag inte kunde genomföra viktiga uppgifter eller aktiviteter.">
+				>
+				["at0039"] = <
+					text = <"Inte alls">
+					description = <"Arbete eller ansvarstaganden hemma stördes inte alls">
+				>
+				["at0040"] = <
+					text = <"Något">
+					description = <"Arbete eller ansvarstaganden hemma stördes till viss del, men kunde göra nästan allt jag hade kunnat utan dessa problem">
+				>
+				["at0041"] = <
+					text = <"Betydligt">
+					description = <"Arbete eller ansvarstaganden hemma stördes påtagligt, men klarade det som var nödvändigt">
+				>
+				["at0042"] = <
+					text = <"Omfattande">
+					description = <"Arbete eller ansvarstaganden hemma stördes med omfattande försämring vilket resulterade i att många viktiga saker inte gjordes">
+				>
+				["at0043"] = <
+					text = <"Extremt">
+					description = <"Extremt, funktionsnedsättande försämring vilket resulterade i oförmögenhet att klara av arbete eller ansvarstaganden hemma">
+				>
+				["at0044"] = <
+					text = <"Inte alls">
+					description = <"">
+				>
+				["at0045"] = <
+					text = <"Något">
+					description = <"Sociala aktiviteter stördes något men Arbete eller ansvarstaganden hemma stördes till viss del, men kunde göra nästan allt jag hade kunnat utan dessa problem">
+				>
+				["at0046"] = <
+					text = <"Betydligt">
+					description = <"Sociala aktiviteter stördes påtagligt men kunde med ansträngning klara av att göra de flesta sakerna ">
+				>
+				["at0047"] = <
+					text = <"Omfattande">
+					description = <"Omfattande försämring med avseende på sociala aktiviteter. Flertalet sociala aktiviteter kunde ej genomföras.">
+				>
+				["at0048"] = <
+					text = <"Extremt">
+					description = <"Funktionsnedsättande påverkan vilken resulterade i att ingen social aktivitet kunde genomföras">
 				>
 			>
 		>
