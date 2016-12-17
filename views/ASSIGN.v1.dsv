@@ -29,7 +29,7 @@
     },
     "en": {
       "name": "ASSIGN Score",
-      "description": "Assessing cardiovascular risk using the Scottish Intercollegiate Guidelines Network"
+      "description": "Assessing cardiovascular risk using guidelines developed by SIGN"
     }
   },
   "resourceDescription": {
@@ -58,7 +58,8 @@
           "SIGN"
         ],
         "use": "The score is based on historical data and is a number between 0 and 99 which represents a percentage at 10-years of developing a cardiovascular disease (including coronary heart disease, cerebrovascular disease (inc. transient ischemic attacks)) in individuals who are currently disease-free.\n\nThe ASSIGN score extends on the SIGN score by taking into account the individual\u0027s postcode (an approximation of the social economic status of the person) into account - mapped to the SIMD (Scottish Index of Multiple Deprivation 2012) and is thus related to the Scottish population [a similar mapping to other regions can be done in order to use ASSIGN elsewhere.]\n\nThe ASSIGN score risk factors are:\n\n    older age group\n    men \u003e women\n    poorer neighbourhoods\n    family history (coronary disease or stroke)\n    diabetes mellitus of target\n    rheumatoid arthritis of target\n    tobacco smoking (cigarettes, pipe tobacco, or cigars)\n    the blood pressure reading\n    the blood total cholesterol reading\n    the blood HDL-cholesterol reading\n\nAll the risk factors are combined to give a score between 1 and 99. The calculation used is based on a rather long formula involving many different coefficients related to risk. The calculation is based on [4]. The higher the score, the higher the risk of cardiovascular disease.\nAn ASSIGN score of \u003e 20 is high and identifies individuals of high risk of cardiovascular disease allowing for timely intervention.",
-        "misuse": "As it is an estimate of risk and should not be used alone or an absolute indicator of risk without further investigation using adddtional information and tools. Readings of blood pressure and cholesterol must not be input without due attention to the medication used (if any) to reduce blood pressure and/or cholesterol.\nOnly for individuals in Scotland (unless postcode mapping is also adjusted to the new region - or SIGN is used instead)"
+        "misuse": "As it is an estimate of risk and should not be used alone or an absolute indicator of risk without further investigation using adddtional information and tools. Readings of blood pressure and cholesterol must not be input without due attention to the medication used (if any) to reduce blood pressure and/or cholesterol.\nOnly for individuals in Scotland (unless postcode mapping is also adjusted to the new region - or SIGN is used instead)",
+        "copyright": ""
       }
     },
     "otherDetails": {
@@ -272,7 +273,7 @@ angular.module('cds_app').controller('ASSIGN_Ctrl', function($scope, $window){
         <select ng-model="${hdl_cholesterol_ehr_data}.value.units" ng-options="unit for unit in ${hdl_cholesterol_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
-<div class="row collapse" title="{{${assign_score_def}.description}}" style="background-color: #d5dce2;">
+<div class="row collapse" title="{{${assign_score_def}.description}}" id="displayresult" "="">
   <div class="medium-5 columns">
     <label><b>{{${assign_score_def}.name}}: </b></label>
   </div>
@@ -381,7 +382,7 @@ angular.module('cds_app').controller('ASSIGN_Ctrl', function($scope, $window){
       -webkit-animation: fadeIn 0.3s ease-in-out;
       animation: fadeIn 0.3s ease-in-out;
   }
-  .help-tip p{	/* The tooltip */
+  .help-tip p{  /* The tooltip */
       display: none;
       text-align: left;
       background-color: #1E2021;
@@ -415,7 +416,7 @@ angular.module('cds_app').controller('ASSIGN_Ctrl', function($scope, $window){
       left:0;
   }
   .references1{
-    font-size: 70%;
+  font-size: 70%;
   }
   /* CSS animation */
   @-webkit-keyframes fadeIn {
@@ -433,21 +434,14 @@ angular.module('cds_app').controller('ASSIGN_Ctrl', function($scope, $window){
       0% { opacity:0; }
       100% { opacity:100%; }
   }
-  #displayresult1 {
+  #displayresult {
     background-color: #e6e6e6; 
     padding-top: 3px;
     padding-bottom: 3px;
-    font-size: 90%;
-  }
-  #displayresult2 {
-    padding-top: 3px;
-    padding-bottom: 3px;
-    font-size: 90%;
+    padding-left: 3px;
   }
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
-
-
 
 </body></html>
