@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.assign_score.v1
 
 concept
-	[at0000]	-- ASSIGN score
+	[at0000]	-- Assign score
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -89,37 +89,37 @@ Ref. 2: Tunstall-Pedoe H, Woodward M, for the SIGN group on risk estimation. By 
 Ref. 3: Woodward M, Brindle P, Tunstall-Pedoe H, for the SIGN group on risk estimation. Adding social deprivation and family history to cardiovascular risk assessment: the ASSIGN score from the Scottish Heart Health Extended Cohort (SHHEC). Heart 2007: 93(2):172-6.
 
 Ref. 4: Risk calculator excel. Written by Dr Rupert Payne, The University of Edinburgh, May 2010. Further advice on the appropriate use of the risk equations can be found at http://cvrisk.mvm.ed.ac.uk/help.htm">
-		["MD5-CAM-1.0.1"] = <"C4390F9879E30B82A640E6E4D4058944">
+		["MD5-CAM-1.0.1"] = <"204CD639801929625765AB14A19872CB">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- ASSIGN score
+	OBSERVATION[at0000] matches {	-- Assign score
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Hereditet för kardiovaskulär sjukdom?
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Family history of CHD/Stroke
 										value matches {
-											0|[local::at0015], 	-- Nej
-											1|[local::at0016]  	-- Ja
+											0|[local::at0015], 	-- No
+											1|[local::at0016]  	-- Yes
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Diabetes mellitus?
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Is the subject diabetic?
 										value matches {
-											0|[local::at0017], 	-- Nej
-											1|[local::at0018]  	-- Ja
+											0|[local::at0017], 	-- No
+											1|[local::at0018]  	-- Yes
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Reumatoid artrit?
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Rheumatoid arthritis?
 										value matches {
-											0|[local::at0019], 	-- Nej
-											1|[local::at0020]  	-- Ja
+											0|[local::at0019], 	-- No
+											1|[local::at0020]  	-- Yes
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Daglig rökning, antal cigaretter eller dylikt
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Cigarettes smoked daily or equivalent
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::382]>
@@ -148,12 +148,19 @@ definition
 									}
 									ELEMENT[at0004] occurrences matches {0..1} matches {	-- ASSIGN score
 										value matches {
-											DV_COUNT matches {
-												magnitude matches {|0..100|}
-											}
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+														magnitude = <|0.0..100.0|>
+														precision = <|0|>
+													>
+												>
+											>
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -213,7 +220,7 @@ ontology
 				>
 				["at0014"] = <
 					text = <"SIMD">
-					description = <"Scottish Index of Multiple Deprivation 2012 related to mapping postcodes in Scotland to codes that indicate degrees of deprivation.">
+					description = <"Scottish Index of Multiple Deprivation 2012 related to mapping postcodes in Scotland to codes that indicate degrees of deprivation. (0.94 - 89.89)">
 				>
 				["at0015"] = <
 					text = <"No">
@@ -305,11 +312,11 @@ ontology
 				>
 				["at0019"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0020"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 			>
 		>
