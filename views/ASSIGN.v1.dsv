@@ -161,6 +161,17 @@ angular.module('cds_app').controller('ASSIGN_Ctrl', function($scope, $window){
 	$scope.${is_the_subject_diabetic__ehr_data}.value.selection = $scope.findMin($scope.${is_the_subject_diabetic__def});
 	$scope.${rheumatoid_arthritis__ehr_data}.value.selection = $scope.findMin($scope.${rheumatoid_arthritis__def});
  });
+$scope.$on('executeEnd', function() {
+    $scope.firedRules.filter(function(rule) {
+      if (rule.gtCode === 'gt0021') {
+        $scope.assign_cds = Math.round($scope.${assign_score_cds_data}.value.magnitude);
+      }
+      if (rule.gtCode === 'gt0031') {
+        $scope.assign_cds = Math.round($scope.${assign_score_cds_data}.value.magnitude);
+      }    
+    });
+  });
+  
 });
 </script>
 
@@ -273,12 +284,12 @@ angular.module('cds_app').controller('ASSIGN_Ctrl', function($scope, $window){
         <select ng-model="${hdl_cholesterol_ehr_data}.value.units" ng-options="unit for unit in ${hdl_cholesterol_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
-<div class="row collapse" title="{{${assign_score_def}.description}}" id="displayresult" "="">
+<div class="row collapse" title="{{${assign_score_def}.description}}" id="displayresult">
   <div class="medium-5 columns">
     <label><b>{{${assign_score_def}.name}}: </b></label>
   </div>
   <div class="medium-7 columns" style="text-align: center;">
-    <label>{{${assign_score_cds_data}.value.magnitude}}</label>
+    <label>{{assign_cds}}</label>
   </div>
 </div>
 
