@@ -130,10 +130,17 @@
 angular.module('cds_app').controller('TRI_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
     $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
-	$scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
     $scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
     $scope.${systolic_ehr_data}.value.units = $scope.${systolic_def}.units[0];
     $scope.${rate_ehr_data}.value.units = $scope.${rate_def}.units[0];
+  });
+  $scope.$on('executeEnd', function() {
+    $scope.firedRules.filter(function(rule) {
+      if (rule.gtCode === 'gt0012') {
+        $scope.tri_cds = Math.round($scope.${timi_risk_index_cds_data}.value.magnitude);
+      } 
+    });
   });
 });
 </script>
@@ -184,7 +191,7 @@ angular.module('cds_app').controller('TRI_Ctrl', function($scope, $window){
       <span><b>{{${timi_risk_index_def}.name}}:</b></span>
     </div>
     <div class="medium-7 columns">
-      <span>{{${timi_risk_index_cds_data}.value.magnitude}} {{${timi_risk_index_cds_data}.value.units}}</span>
+      <span>{{tri_cds}} {{${timi_risk_index_cds_data}.value.units}}</span>
     </div>
   </div>
   
