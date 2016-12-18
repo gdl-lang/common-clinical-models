@@ -1,6 +1,6 @@
 (GUIDE) <
 	gdl_version = <"0.1">
-	id = <"MADRS_Calculation.v1">
+	id = <"MADRS.v1">
 	concept = <"gt0001">
 	language = (LANGUAGE) <
 		original_language = <[ISO_639-1::en]>
@@ -8,7 +8,9 @@
 	description = (RESOURCE_DESCRIPTION) <
 		details = <
 			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
 				keywords = <"MADRS", "Montgomery", "Scale", "Depression">
+				misuse = <"Should not be used alone to make a definitive assessment but strongly positive results must be investigated further expeditiously.">
 				purpose = <"Calculation of the MADRS score.
 
 To assess severity of depression in patients with mood disorders.">
@@ -57,6 +59,7 @@ Värderingen ska ske baserat på en klinisk intervju där den som utför testet 
 			["name"] = <"Oskar Nielsen">
 			["organisation"] = <"Cambio Healthcare Systems">
 		>
+		other_contributors = <"Syeeda S Farruque",...>
 		other_details = <
 			["references"] = <"Svanborg P, Asberg M: A comparison between the Beck Depression Inventory (BDI) and the self-rated version of the Montgomery-Asberg Depression Rating Scale (MADRS). J Affect Dis 2001, 64(2-3):203-16.
 
@@ -156,14 +159,64 @@ Williams JBW, Kobak KA. Development and reliability of a structured interview gu
 		>
 		rules = <
 			["gt0026"] = (RULE) <
-				when = <"$gt0013!=null", "$gt0012!=null", "$gt0011!=null", "$gt0010!=null", "$gt0009!=null", "$gt0008!=null", "$gt0007!=null", "$gt0006!=null", "$gt0005!=null", "$gt0004!=null">
-				then = <"$gt0014=$gt0004", "$gt0015=$gt0005", "$gt0016=$gt0006", "$gt0017=$gt0007", "$gt0018=$gt0008", "$gt0019=$gt0009", "$gt0020=$gt0010", "$gt0021=$gt0011", "$gt0022=$gt0012", "$gt0023=$gt0013">
-				priority = <2>
+				when = <"$gt0004!=null",...>
+				then = <"$gt0014=$gt0004",...>
+				priority = <11>
 			>
 			["gt0027"] = (RULE) <
 				when = <"$gt0024==null",...>
-				then = <"$gt0025.value=$currentDateTime.value", "$gt0024.magnitude=((((((((($gt0004.value+$gt0005.value)+$gt0006.value)+$gt0007.value)+$gt0008.value)+$gt0009.value)+$gt0010.value)+$gt0011.value)+$gt0012.value)+$gt0013.value)">
+				then = <"$gt0024.magnitude=((((((((($gt0014.value+$gt0015.value)+$gt0016.value)+$gt0017.value)+$gt0018.value)+$gt0019.value)+$gt0020.value)+$gt0021.value)+$gt0022.value)+$gt0023.value)",...>
 				priority = <1>
+			>
+			["gt0028"] = (RULE) <
+				when = <"$gt0023==null", "$gt0022==null", "$gt0021==null", "$gt0020==null", "$gt0019==null", "$gt0018==null", "$gt0014==null", "$gt0015==null", "$gt0016==null", "$gt0017==null">
+				then = <"$gt0023=0|local::at0081|Enjoys life or takes it as it comes.|", "$gt0022=0|local::at0070|No pessimistic thoughts.|", "$gt0021=0|local::at0062|Normal interest in the surroundings and in other people.|", "$gt0020=0|local::at0054|Hardly no difficulty in getting started. No sluggishness.|", "$gt0019=0|local::at0046|No difficulties in concentrating.|", "$gt0018=0|local::at0038|Normal or increased appetite.|", "$gt0017=0|local::at0030|Sleeps as usual. |", "$gt0016=0|local::at0022|Placid. Only reflecting inner tension. |", "$gt0015=0|local::at0014|Occasional sadness in keeping with the circumstances.|", "$gt0014=0|local::at0006|No sadness.|">
+				priority = <12>
+			>
+			["gt0029"] = (RULE) <
+				when = <"$gt0005!=null",...>
+				then = <"$gt0015=$gt0005",...>
+				priority = <10>
+			>
+			["gt0030"] = (RULE) <
+				when = <"$gt0006!=null",...>
+				then = <"$gt0016=$gt0006",...>
+				priority = <9>
+			>
+			["gt0031"] = (RULE) <
+				when = <"$gt0007!=null",...>
+				then = <"$gt0017=$gt0007",...>
+				priority = <8>
+			>
+			["gt0032"] = (RULE) <
+				when = <"$gt0008!=null",...>
+				then = <"$gt0018=$gt0008",...>
+				priority = <7>
+			>
+			["gt0033"] = (RULE) <
+				when = <"$gt0009!=null",...>
+				then = <"$gt0019=$gt0009",...>
+				priority = <6>
+			>
+			["gt0034"] = (RULE) <
+				when = <"$gt0010!=null",...>
+				then = <"$gt0020=$gt0010",...>
+				priority = <5>
+			>
+			["gt0035"] = (RULE) <
+				when = <"$gt0011!=null",...>
+				then = <"$gt0021=$gt0011",...>
+				priority = <4>
+			>
+			["gt0036"] = (RULE) <
+				when = <"$gt0012!=null",...>
+				then = <"$gt0022=$gt0012",...>
+				priority = <3>
+			>
+			["gt0037"] = (RULE) <
+				when = <"$gt0013!=null",...>
+				then = <"$gt0023=$gt0013",...>
+				priority = <2>
 			>
 		>
 	>
@@ -172,7 +225,7 @@ Williams JBW, Kobak KA. Development and reliability of a structured interview gu
 			["en"] = (TERM_DEFINITION) <
 				terms = <
 					["gt0001"] = (TERM) <
-						text = <"MADRS Calculation">
+						text = <"MADRS">
 						description = <"The purpose of the test is to give a detailed assessment of a patients current state of mind, that can be used as a tool to evaluate depression and suicidal tendencies. The rating should be based on a clinical interview moving from broadly phrased questions about symptoms to more detailed ones which allow a precise rating of severity. The interviewer must decide whether the rating lies on the defined scale steps (0, 2, 4, 6) or between them (1, 3, 5) and then report the appropriate number. The items should be rated with regards to how the patient has done over the past week.">
 					>
 					["gt0004"] = (TERM) <
@@ -264,10 +317,40 @@ Williams JBW, Kobak KA. Development and reliability of a structured interview gu
 						description = <"The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event.">
 					>
 					["gt0026"] = (TERM) <
-						text = <"Set CDS">
+						text = <"Set Q1">
 					>
 					["gt0027"] = (TERM) <
 						text = <"Calculate score">
+					>
+					["gt0028"] = (TERM) <
+						text = <"Set default">
+					>
+					["gt0029"] = (TERM) <
+						text = <"Set Q2">
+					>
+					["gt0030"] = (TERM) <
+						text = <"Set Q3">
+					>
+					["gt0031"] = (TERM) <
+						text = <"Set Q4">
+					>
+					["gt0032"] = (TERM) <
+						text = <"Set Q5">
+					>
+					["gt0033"] = (TERM) <
+						text = <"Set Q6">
+					>
+					["gt0034"] = (TERM) <
+						text = <"Set Q7">
+					>
+					["gt0035"] = (TERM) <
+						text = <"Set Q8">
+					>
+					["gt0036"] = (TERM) <
+						text = <"Set Q9">
+					>
+					["gt0037"] = (TERM) <
+						text = <"Set Q10">
 					>
 				>
 			>
@@ -370,6 +453,26 @@ Williams JBW, Kobak KA. Development and reliability of a structured interview gu
 					>
 					["gt0027"] = (TERM) <
 						text = <"Beräkna total poäng">
+					>
+					["gt0028"] = (TERM) <
+					>
+					["gt0029"] = (TERM) <
+					>
+					["gt0030"] = (TERM) <
+					>
+					["gt0031"] = (TERM) <
+					>
+					["gt0032"] = (TERM) <
+					>
+					["gt0033"] = (TERM) <
+					>
+					["gt0034"] = (TERM) <
+					>
+					["gt0035"] = (TERM) <
+					>
+					["gt0036"] = (TERM) <
+					>
+					["gt0037"] = (TERM) <
 					>
 				>
 			>
