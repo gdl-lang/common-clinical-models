@@ -26,6 +26,7 @@ Formel: DAS28-CRP = (0.56*√(TJC)+0.28*√(SJC)+0.36*ln(CRP + 1)+0.014*PtGDA +0
 ">
 			>
 		>
+		lifecycle_state = <"Author draft">
 		original_author = <
 			["date"] = <"2016-11-07">
 			["email"] = <"info@cambio.se">
@@ -47,9 +48,6 @@ Wells G, Becker JC, Teng J, Dougados M, Schiff M, Smolen J, Aletaha D, Van Riel 
 				elements = <
 					["gt0004"] = (ELEMENT_BINDING) <
 						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
-					>
-					["gt0010"] = (ELEMENT_BINDING) <
-						path = <"/data/events/time">
 					>
 				>
 			>
@@ -89,8 +87,8 @@ Wells G, Becker JC, Teng J, Dougados M, Schiff M, Smolen J, Aletaha D, Van Riel 
 		>
 		rules = <
 			["gt0002"] = (RULE) <
-				when = <"$gt0012.units=='mm'", "$gt0009.units=='mg/dl'", "$gt0004==null">
-				then = <"$gt0004.precision=2", "$gt0004.magnitude=(((((($gt0006.magnitude^0.5)*0.56)+(($gt0007.magnitude^0.5)*0.28))+(0.36*((log(($gt0009.magnitude+1))))))+(0.014*$gt0012.magnitude))+0.96)">
+				when = <"$gt0012.units=='mm'", "$gt0009.units=='mg/dl'">
+				then = <"$gt0004.precision=2", "$gt0004.magnitude=(((((($gt0006.magnitude^0.5)*0.56)+(($gt0007.magnitude^0.5)*0.28))+((log((($gt0009.magnitude*10)+1)))*0.36))+($gt0012.magnitude*0.014))+0.96)">
 				priority = <1>
 			>
 		>
