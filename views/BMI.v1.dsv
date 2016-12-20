@@ -1,14 +1,13 @@
-<!DOCTYPE html><html ng-app="cds_app">
-<head>
+<!DOCTYPE html><html ng-app="cds_app"><head>
 <title>{{def.concept.name}}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
-<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
-<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
+<link rel="stylesheet" type="text/css" href="wro/foundation.css" />
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css" />
+<link rel="stylesheet" type="text/css" href="wro/angular.css" />
 <script type="text/javascript" src="wro/angular.js"></script>
-<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js" />
 <script type="text/javascript" src="wro/moment.js"></script>
 <script type="text/javascript" src="wro/date-picker.js"></script>
 <script type="text/javascript" src="wro/app_lib.js"></script>
@@ -39,18 +38,40 @@
       "name": "Rong Chen",
       "date": "2016-06-27"
     },
-    "otherContributors": ["Jimmy Axelsson", "Oskar Nielsen", "Iago Corbal", "Konstantinos Kalliamvakos"],
+    "otherContributors": [
+      "Jimmy Axelsson",
+      "Oskar Nielsen",
+      "Iago Corbal",
+      "Konstantinos Kalliamvakos",
+      "Dennis Forslund, Cambio Healthcare Systems"
+    ],
     "details": {
       "en": {
+        "purpose": "To calculate the body mass index in kg/m2  from the weight (kg) and height (cm) of an individual.",
         "keywords": [
           "BMI",
           "body",
           "mass",
           "index"
-        ]
+        ],
+        "use": "Use for calculating the BMI in adults and children.\n\nBody mass index (BMI) is a simple index of weight-for-height that is commonly used to classify overweight and obesity in adults. It is defined as a person\u0027s weight in kilograms divided by the square of his height in meters (kg/m2).\n\nFrame of reference as defined by the World Health Organization (WHO):\nBelow 18,5 - underweight,\n18,5-24,9 - normal weight,\n25,0-29,9 - pre-obesity,\n30,0-34,9 - obesity class I,\n35,0 - 39,9 - obesity class II,\nAbove 40,0 - obesity class III",
+        "misuse": "Do not use for classifying the BMI into categories of weight such as obesity. This must be done in a different guideline that will use the result of this guideline as input for BMI classification."
+      },
+      "sv": {
+        "purpose": "För att beräkna Body Mass Index (BMI) i kg/m2 med hjälp av vikten (i kg) och höjden (i cm) för en individ.",
+        "keywords": [
+          "*(en) BMI",
+          "*(en) body",
+          "*(en) mass",
+          "*(en) index"
+        ],
+        "use": "Används för att beräkna BMI hos vuxna och barn.\n\nBody mass index (BMI) är ett enkelt index för vikt-för-höjd som ofta används för att klassificera övervikt och fetma hos vuxna. BMI uttrycks i km/m2, d.v.s. som en persons vikt i kilo dividerat med individens höjd i kvadratmeter.\n\nGränsvärden definierade av World Health Organization (WHO):\nUnder 18,5 - undervikt,\n18,5-24,9 - normal vikt,\n25,0-29,9 - övervikt,\n30,0-34,9 - fetma grad I,\n35,0 - 39,9 - fetma grad II,\nÖver 40,0 - fetma grad III",
+        "misuse": "Används inte för klassificering av BMI i viktkategorier som t.ex. fetma. Detta skall göras i en annan arketyp som kommer att använda resultatet av denna arketyp som indata för BMI klassificering."
       }
     },
-    "otherDetails": {}
+    "otherDetails": {
+      "references": "Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults: The Evidence Report [Internet]. Bethesda (MD): National Heart, Lung, and Blood Institute; NIH Publication No. 98-4083, Sep 1998, [cited 2009 July 02]."
+    }
   },
   "alertGuideIds": [],
   "executionGuideIds": [
@@ -65,7 +86,7 @@
           "id": "vt0001",
           "text": "Height"
         },
-        "vt0002":{
+        "vt0002": {
           "id": "vt0002",
           "text": "References"
         }
@@ -78,15 +99,14 @@
           "id": "vt0001",
           "text": "Höjd"
         },
-        "vt0002":{
+        "vt0002": {
           "id": "vt0002",
           "text": "Referenser"
         }
       }
     }
   }
-}
-</script>
+}</script>
 </head>
 <body ng-controller="cds_controller">
 <#assign app_help_tag = "def.guides['BMI.v1'].concept">
@@ -140,10 +160,10 @@ angular.module('cds_app').controller('BMI_Ctrl', function($scope, $window){
         <label>{{${height}.text}}</label>
       </div>
       <div class="medium-5 columns">
-        <input ng-model="${height_length_ehr_data}.value.magnitude" type="number" step='any' min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+        <input ng-model="${height_length_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
       <div class="medium-2 columns">
-        <select ng-model="${height_length_ehr_data}.value.units" ng-options="unit for unit in ${height_length_def}.units" ng-change="execute()" disabled></select>
+        <select ng-model="${height_length_ehr_data}.value.units" ng-options="unit for unit in ${height_length_def}.units" ng-change="execute()" disabled=""></select>
       </div>
   </div>
   <div class="row collapse" title="{{${weight_def}.description}}">
@@ -151,10 +171,10 @@ angular.module('cds_app').controller('BMI_Ctrl', function($scope, $window){
       <label>{{${weight_def}.name}}</label>
     </div>
     <div class="medium-5 columns">
-      <input ng-model="${weight_ehr_data}.value.magnitude" type="number" step='any' min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+      <input ng-model="${weight_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
     </div>
     <div class="medium-2 columns">
-      <select ng-model="${weight_ehr_data}.value.units" ng-options="unit for unit in ${weight_def}.units" ng-change="execute()" disabled></select>
+      <select ng-model="${weight_ehr_data}.value.units" ng-options="unit for unit in ${weight_def}.units" ng-change="execute()" disabled=""></select>
     </div>
   </div>
   <div class="row collapse" title="{{${body_mass_index_def}.description}}" id="displayresult">
@@ -301,5 +321,5 @@ angular.module('cds_app').controller('BMI_Ctrl', function($scope, $window){
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
-</body>
-</html>
+
+</body></html>
