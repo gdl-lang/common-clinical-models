@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.asrs_for_adhd.v1
 
 concept
-	[at0000]	-- Asrs for adhd
+	[at0000]	-- ASRS for ADHD
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -12,10 +21,33 @@ description
 		["date"] = <"2016-12-12">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"*The DSM criteria for ADHD requires the presence of current symptoms of inattention, impulsivity, and/or hyperactivity in the past 6 months.
+Thus this 18 part questionnaire is divded into groups that relate to these aspects.(en)">
+			use = <"*The first part consisting of 6 questions - Part A - acts as a screening tool with the remaining 12 questions in Part B helping to explore the issues deeper. 
+
+The detection of adult ADHD is notoriously difficult and often based on whether the individual had childhood symptoms. This tool is able to assess the possibility regardless of a previous history. This tool may, however, alert the clinician to asking for a possible past history as the patient may have been undiagnosed as having ADHD as a child.
+
+Part A is marked out of 6 and starts at 0. Some marking systems separate out the selections among the five possibilities of response:
+
+Never Rarely Sometimes Often Very often
+
+But in this archetype, depending on the question, the weighting for some of the selections are the same as others and thus there is actually a binary separation - those in one group and those in the other with only the response type being used to guide the division. 
+
+For example, the question: \"How often do you have trouble wrapping up the final details of a project, once the challenging parts have been done?\" has the same score weight for Never and Rarely, and so the respondent can reply to this part if they feel the response is either of those. Similarly, the weighted scores for responding as Sometimes, Often, Very Often is also the same for each of those responses and so the respondent can pick this alternative if any of those responses apply.
+
+A similar convention is used in Part B over the 12 questions, with overall score range of between 0 and 12.
+
+A score of >= 4 is indicative of ADHD warranting further investigation and this is across both parts, A and B. However, a score >= 4 in Part A on it's own is able to trigger the need to run further tests on its own.(en)">
+			keywords = <"*ASRS-version1.1(en)", "*ADHD(en)", "*DSM-IV(en)", "*Adult(en)">
+			misuse = <"*As with all tools of this nature, it should not be used as sole evidence to make a diagnosis of ADHD without also being accompanied by results to back this up derived by further investigation.(en)">
+			copyright = <"*© Cambio Healthcare Systems(en)">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"The DSM criteria for ADHD requires the presence of current symptoms of inattention, impulsivity, and/or hyperactivity in the past 6 months.
-Thus this 18 part questionnaire is divded into groups that relate to these aspects.">
+Thus this 18 part questionnaire is divided into groups that relate to these aspects.">
 			use = <"The first part consisting of 6 questions - Part A - acts as a screening tool with the remaining 12 questions in Part B helping to explore the issues deeper. 
 
 The detection of adult ADHD is notoriously difficult and often based on whether the individual had childhood symptoms. This tool is able to assess the possibility regardless of a previous history. This tool may, however, alert the clinician to asking for a possible past history as the patient may have been undiagnosed as having ADHD as a child.
@@ -39,144 +71,144 @@ A score of >= 4 is indicative of ADHD warranting further investigation and this 
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"FD3D07C956408AABF705AC33D545985F">
 		["references"] = <"Ref.1: Schweitzer JB, et al. Med Clin North Am. 2001;85(3):10-11, 757-777.
 
 Ref.2: Barkley RA. Attention Deficit Hyperactivity Disorder: A Handbook for Diagnosis and Treatment. 2nd ed. 1998.">
+		["MD5-CAM-1.0.1"] = <"1627FE0041DAF9B3DBC077EC8C7C32C2">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Asrs for adhd
+	OBSERVATION[at0000] matches {	-- ASRS for ADHD
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- 1.Trouble wrapping up fine details
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- 1. Hur ofta har du svårigheter med att avsluta de sista detaljerna i en uppgift/ett projekt när de mer krävande momenten har avklarats?
 										value matches {
-											0|[local::at0047], 	-- Never or rarely 
-											1|[local::at0048]  	-- Sometimes, often or very often
+											0|[local::at0047], 	-- *Never or rarely (en)
+											1|[local::at0048]  	-- *Sometimes, often or very often(en)
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- 2.Trouble getting things in order
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- 2. Hur ofta har du svårigheter med att få ordning på saker och ting när du ska utföra en uppgift som kräver organisation?
 										value matches {
-											0|[local::at0049], 	-- Never or rarely 
-											1|[local::at0050]  	-- Sometimes, often or very often
+											0|[local::at0049], 	-- *Never or rarely (en)
+											1|[local::at0050]  	-- *Sometimes, often or very often(en)
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- 3.Trouble remembering appointments
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- 3. Hur ofta har du problem att komma ihåg avtalade möten?
 										value matches {
-											0|[local::at0057], 	-- Never or rarely 
-											1|[local::at0058]  	-- Sometimes, often or very often
+											0|[local::at0057], 	-- *Never or rarely (en)
+											1|[local::at0058]  	-- *Sometimes, often or very often(en)
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- 4.Trouble starting things that need a lot of thought
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- 4. Hur ofta skjuter du upp eller undviker att sätta igång med en uppgift som kräver mycket tankemöda?
 										value matches {
-											0|[local::at0051], 	-- Never, rarely or sometimes
-											1|[local::at0052]  	-- Often or very often
+											0|[local::at0051], 	-- *Never, rarely or sometimes(en)
+											1|[local::at0052]  	-- *Often or very often(en)
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- 5.Trouble with fidgeting when sitting
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- 5. Hur ofta händer det att du skruvar på dig eller rör händer och fötter när du är tvungen att sitta en längre stund?
 										value matches {
-											0|[local::at0053], 	-- Never, rarely or sometimes
-											1|[local::at0054]  	-- Often or very often
+											0|[local::at0053], 	-- *Never, rarely or sometimes(en)
+											1|[local::at0054]  	-- *Often or very often(en)
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- 6.Trouble with feeling overly active or compelled
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- 6. Hur ofta känner du dig överaktiv och tvungen att göra saker, som att du går på högvarv?
 										value matches {
-											0|[local::at0055], 	-- Never, rarely or sometimes
-											1|[local::at0056]  	-- Often or very often
+											0|[local::at0055], 	-- *Never, rarely or sometimes(en)
+											1|[local::at0056]  	-- *Often or very often(en)
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- 7. Careless mistakes
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- 7. Hur ofta gör du slarvfel när du arbetar med en tråkig eller svår uppgift?
 										value matches {
-											0|[local::at0059], 	-- Never, rarely or sometimes
-											1|[local::at0060]  	-- Often or very often
+											0|[local::at0059], 	-- *Never, rarely or sometimes(en)
+											1|[local::at0060]  	-- *Often or very often(en)
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- 8. Difficult with attention
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- 8. Hur ofta har du svårt att fokusera när du utför en tråkig eller monoton uppgift?
 										value matches {
-											0|[local::at0061], 	-- Never, rarely or sometimes
-											1|[local::at0062]  	-- Often or very often
+											0|[local::at0061], 	-- *Never, rarely or sometimes(en)
+											1|[local::at0062]  	-- *Often or very often(en)
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- 9. Difficulty concentrating
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- 9. Hur ofta har du svårt att koncentrera dig på vad folk säger, även när de talar direkt till dig?
 										value matches {
-											0|[local::at0075], 	-- Never or rarely 
-											1|[local::at0076]  	-- Sometimes, often or very often
+											0|[local::at0075], 	-- *Never or rarely (en)
+											1|[local::at0076]  	-- *Sometimes, often or very often(en)
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- 10. Difficulty finding things
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- 10. Hur ofta händer det att du förlägger eller har svårt att hitta saker hemma eller på arbetet? 
 										value matches {
-											0|[local::at0063], 	-- Never, rarely or sometimes
-											1|[local::at0064]  	-- Often or very often
+											0|[local::at0063], 	-- *Never, rarely or sometimes(en)
+											1|[local::at0064]  	-- *Often or very often(en)
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- 11. Easily distracted
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- 11. Hur ofta distraheras du av ljud eller händelser i din omgivning?
 										value matches {
-											0|[local::at0065], 	-- Never, rarely or sometimes
-											1|[local::at0066]  	-- Often or very often
+											0|[local::at0065], 	-- *Never, rarely or sometimes(en)
+											1|[local::at0066]  	-- *Often or very often(en)
 										}
 									}
-									ELEMENT[at0015] occurrences matches {0..1} matches {	-- 12. Leave your seat
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- 12. Hur ofta händer det att du lämnar din plats under möter eller i andra situationer där du förväntas sitta kvar?
 										value matches {
-											0|[local::at0077], 	-- Never or rarely 
-											1|[local::at0078]  	-- Sometimes, often or very often
+											0|[local::at0077], 	-- *Never or rarely (en)
+											1|[local::at0078]  	-- *Sometimes, often or very often(en)
 										}
 									}
-									ELEMENT[at0016] occurrences matches {0..1} matches {	-- 13. Restless or fidgety
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- 13. Hur ofta känner du dig rastlös eller har svårt att sitta still?
 										value matches {
-											0|[local::at0067], 	-- Never, rarely or sometimes
-											1|[local::at0068]  	-- Often or very often
+											0|[local::at0067], 	-- *Never, rarely or sometimes(en)
+											1|[local::at0068]  	-- *Often or very often(en)
 										}
 									}
-									ELEMENT[at0017] occurrences matches {0..1} matches {	-- 14. Difficulty relaxing 
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- 14. Hur ofta har du svårt att gå ner i varv och koppla av när du har en stund över?
 										value matches {
-											0|[local::at0069], 	-- Never, rarely or sometimes
-											1|[local::at0070]  	-- Often or very often
+											0|[local::at0069], 	-- *Never, rarely or sometimes(en)
+											1|[local::at0070]  	-- *Often or very often(en)
 										}
 									}
-									ELEMENT[at0018] occurrences matches {0..1} matches {	-- 15. Talking too much
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- 15. Hur ofta kommer du på dig själv med att prata för mycket i sociala sammanhang?
 										value matches {
-											0|[local::at0071], 	-- Never, rarely or sometimes
-											1|[local::at0072]  	-- Often or very often
+											0|[local::at0071], 	-- *Never, rarely or sometimes(en)
+											1|[local::at0072]  	-- *Often or very often(en)
 										}
 									}
-									ELEMENT[at0019] occurrences matches {0..1} matches {	-- 16. Finishing other's sentences
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- 16. Hur ofta händer det att du avslutar meningar åt dem du talar med, innan de själva hinner avsluta dem?
 										value matches {
-											0|[local::at0079], 	-- Never or rarely 
-											1|[local::at0080]  	-- Sometimes, often or very often
+											0|[local::at0079], 	-- *Never or rarely (en)
+											1|[local::at0080]  	-- *Sometimes, often or very often(en)
 										}
 									}
-									ELEMENT[at0020] occurrences matches {0..1} matches {	-- 17. Difficulty waiting your turn
+									ELEMENT[at0020] occurrences matches {0..1} matches {	-- 17. Hur ofta har du svårt att vänta på din tur i situationer då det krävs?
 										value matches {
-											0|[local::at0073], 	-- Never, rarely or sometimes
-											1|[local::at0074]  	-- Often or very often
+											0|[local::at0073], 	-- *Never, rarely or sometimes(en)
+											1|[local::at0074]  	-- *Often or very often(en)
 										}
 									}
-									ELEMENT[at0021] occurrences matches {0..1} matches {	-- 18. Tendency to interrupt others
+									ELEMENT[at0021] occurrences matches {0..1} matches {	-- 18. Hur ofta händer det att du avbryter eller stör andra när de är upptagna?
 										value matches {
-											0|[local::at0081], 	-- Never or rarely 
-											1|[local::at0082]  	-- Sometimes, often or very often
+											0|[local::at0081], 	-- *Never or rarely (en)
+											1|[local::at0082]  	-- *Sometimes, often or very often(en)
 										}
 									}
-									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Part A: 6 question screening score
+									ELEMENT[at0022] occurrences matches {0..1} matches {	-- *Part A: 6 question screening score(en)
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..6|}
 											}
 										}
 									}
-									ELEMENT[at0023] occurrences matches {0..1} matches {	-- Part B: 12 additional questions score
+									ELEMENT[at0023] occurrences matches {0..1} matches {	-- *Part B: 12 additional questions score(en)
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..12|}
 											}
 										}
 									}
-									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Part A and B total score
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- *Part A and B total score(en)
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..18|}
@@ -197,7 +229,7 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Asrs for adhd">
+					text = <"ASRS for ADHD">
 					description = <"The ASRS - adult ADHD Self-reporting scale (v1.1) has been adopted by the World Health Organization, and is also used in the large National Comorbidity Survey-Replication study (NCS-R). The scale is based on the DSM-IV current symptom traits and used to help differentiate individuals with and without ADHD.">
 				>
 				["at0001"] = <
@@ -443,6 +475,258 @@ turn taking is required?">
 				["at0082"] = <
 					text = <"Sometimes, often or very often">
 					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"ASRS for ADHD">
+					description = <"*The ASRS - adult ADHD Self-reporting scale (v1.1) has been adopted by the World Health Organization, and is also used in the large National Comorbidity Survey-Replication study (NCS-R). The scale is based on the DSM-IV current symptom traits and used to help differentiate individuals with and without ADHD.(en)">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"1. Hur ofta har du svårigheter med att avsluta de sista detaljerna i en uppgift/ett projekt när de mer krävande momenten har avklarats?">
+					description = <"*How often do you have trouble wrapping up the final details of a project, once the challenging parts have been done?(en)">
+				>
+				["at0005"] = <
+					text = <"2. Hur ofta har du svårigheter med att få ordning på saker och ting när du ska utföra en uppgift som kräver organisation?">
+					description = <"*How often do you have difficulty getting things in order when you have to do a task that requires organization?(en)">
+				>
+				["at0006"] = <
+					text = <"3. Hur ofta har du problem att komma ihåg avtalade möten?">
+					description = <"*How often do you have problems remembering appointments or obligations?(en)">
+				>
+				["at0007"] = <
+					text = <"4. Hur ofta skjuter du upp eller undviker att sätta igång med en uppgift som kräver mycket tankemöda?">
+					description = <"*When you have a task that requires a lot of thought, how often do you avoid or delay getting started?(en)">
+				>
+				["at0008"] = <
+					text = <"5. Hur ofta händer det att du skruvar på dig eller rör händer och fötter när du är tvungen att sitta en längre stund?">
+					description = <"*How often do you fidget or squirm with your hands or feet when you have to sit down for a long time?(en)">
+				>
+				["at0009"] = <
+					text = <"6. Hur ofta känner du dig överaktiv och tvungen att göra saker, som att du går på högvarv?">
+					description = <"*How often do you feel overly active and compelled to do things, like you
+were driven by a motor?(en)">
+				>
+				["at0010"] = <
+					text = <"7. Hur ofta gör du slarvfel när du arbetar med en tråkig eller svår uppgift?">
+					description = <"*How often do you make careless mistakes when you have to work on a boring or difficult project?(en)">
+				>
+				["at0011"] = <
+					text = <"8. Hur ofta har du svårt att fokusera när du utför en tråkig eller monoton uppgift?">
+					description = <"*How often do you have difficulty keeping your attention when you are doing boring or repetitive work?(en)">
+				>
+				["at0012"] = <
+					text = <"9. Hur ofta har du svårt att koncentrera dig på vad folk säger, även när de talar direkt till dig?">
+					description = <"*How often do you have difficulty concentrating on what people say to you, even when they are speaking to you directly?(en)">
+				>
+				["at0013"] = <
+					text = <"10. Hur ofta händer det att du förlägger eller har svårt att hitta saker hemma eller på arbetet? ">
+					description = <"*How often do you misplace or have difficulty finding things at home or at work?(en)">
+				>
+				["at0014"] = <
+					text = <"11. Hur ofta distraheras du av ljud eller händelser i din omgivning?">
+					description = <"*How often are you distracted by activity or noise around you?(en)">
+				>
+				["at0015"] = <
+					text = <"12. Hur ofta händer det att du lämnar din plats under möter eller i andra situationer där du förväntas sitta kvar?">
+					description = <"*How often do you leave your seat in meetings or other situations in which you are expected to remain seated?(en)">
+				>
+				["at0016"] = <
+					text = <"13. Hur ofta känner du dig rastlös eller har svårt att sitta still?">
+					description = <"*How often do you feel restless or fidgety?(en)">
+				>
+				["at0017"] = <
+					text = <"14. Hur ofta har du svårt att gå ner i varv och koppla av när du har en stund över?">
+					description = <"*How often do you have difficulty unwinding and relaxing when you have time to yourself?(en)">
+				>
+				["at0018"] = <
+					text = <"15. Hur ofta kommer du på dig själv med att prata för mycket i sociala sammanhang?">
+					description = <"*How often do you find yourself talking too much when you are in social situations?(en)">
+				>
+				["at0019"] = <
+					text = <"16. Hur ofta händer det att du avslutar meningar åt dem du talar med, innan de själva hinner avsluta dem?">
+					description = <"*When you’re in a conversation, how often do you find yourself finishing
+the sentences of the people you are talking to, before they can finish
+them themselves?(en)">
+				>
+				["at0020"] = <
+					text = <"17. Hur ofta har du svårt att vänta på din tur i situationer då det krävs?">
+					description = <"*How often do you have difficulty waiting your turn in situations when
+turn taking is required?(en)">
+				>
+				["at0021"] = <
+					text = <"18. Hur ofta händer det att du avbryter eller stör andra när de är upptagna?">
+					description = <"*How often do you interrupt others when they are busy?(en)">
+				>
+				["at0022"] = <
+					text = <"*Part A: 6 question screening score(en)">
+					description = <"**(en)">
+				>
+				["at0023"] = <
+					text = <"*Part B: 12 additional questions score(en)">
+					description = <"**(en)">
+				>
+				["at0024"] = <
+					text = <"*Part A and B total score(en)">
+					description = <"**(en)">
+				>
+				["at0047"] = <
+					text = <"*Never or rarely (en)">
+					description = <"**(en)">
+				>
+				["at0048"] = <
+					text = <"*Sometimes, often or very often(en)">
+					description = <"**(en)">
+				>
+				["at0049"] = <
+					text = <"*Never or rarely (en)">
+					description = <"**(en)">
+				>
+				["at0050"] = <
+					text = <"*Sometimes, often or very often(en)">
+					description = <"**(en)">
+				>
+				["at0051"] = <
+					text = <"*Never, rarely or sometimes(en)">
+					description = <"**(en)">
+				>
+				["at0052"] = <
+					text = <"*Often or very often(en)">
+					description = <"**(en)">
+				>
+				["at0053"] = <
+					text = <"*Never, rarely or sometimes(en)">
+					description = <"**(en)">
+				>
+				["at0054"] = <
+					text = <"*Often or very often(en)">
+					description = <"**(en)">
+				>
+				["at0055"] = <
+					text = <"*Never, rarely or sometimes(en)">
+					description = <"**(en)">
+				>
+				["at0056"] = <
+					text = <"*Often or very often(en)">
+					description = <"**(en)">
+				>
+				["at0057"] = <
+					text = <"*Never or rarely (en)">
+					description = <"**(en)">
+				>
+				["at0058"] = <
+					text = <"*Sometimes, often or very often(en)">
+					description = <"**(en)">
+				>
+				["at0059"] = <
+					text = <"*Never, rarely or sometimes(en)">
+					description = <"**(en)">
+				>
+				["at0060"] = <
+					text = <"*Often or very often(en)">
+					description = <"**(en)">
+				>
+				["at0061"] = <
+					text = <"*Never, rarely or sometimes(en)">
+					description = <"**(en)">
+				>
+				["at0062"] = <
+					text = <"*Often or very often(en)">
+					description = <"**(en)">
+				>
+				["at0063"] = <
+					text = <"*Never, rarely or sometimes(en)">
+					description = <"**(en)">
+				>
+				["at0064"] = <
+					text = <"*Often or very often(en)">
+					description = <"**(en)">
+				>
+				["at0065"] = <
+					text = <"*Never, rarely or sometimes(en)">
+					description = <"**(en)">
+				>
+				["at0066"] = <
+					text = <"*Often or very often(en)">
+					description = <"**(en)">
+				>
+				["at0067"] = <
+					text = <"*Never, rarely or sometimes(en)">
+					description = <"**(en)">
+				>
+				["at0068"] = <
+					text = <"*Often or very often(en)">
+					description = <"**(en)">
+				>
+				["at0069"] = <
+					text = <"*Never, rarely or sometimes(en)">
+					description = <"**(en)">
+				>
+				["at0070"] = <
+					text = <"*Often or very often(en)">
+					description = <"**(en)">
+				>
+				["at0071"] = <
+					text = <"*Never, rarely or sometimes(en)">
+					description = <"**(en)">
+				>
+				["at0072"] = <
+					text = <"*Often or very often(en)">
+					description = <"**(en)">
+				>
+				["at0073"] = <
+					text = <"*Never, rarely or sometimes(en)">
+					description = <"**(en)">
+				>
+				["at0074"] = <
+					text = <"*Often or very often(en)">
+					description = <"**(en)">
+				>
+				["at0075"] = <
+					text = <"*Never or rarely (en)">
+					description = <"**(en)">
+				>
+				["at0076"] = <
+					text = <"*Sometimes, often or very often(en)">
+					description = <"**(en)">
+				>
+				["at0077"] = <
+					text = <"*Never or rarely (en)">
+					description = <"**(en)">
+				>
+				["at0078"] = <
+					text = <"*Sometimes, often or very often(en)">
+					description = <"**(en)">
+				>
+				["at0079"] = <
+					text = <"*Never or rarely (en)">
+					description = <"**(en)">
+				>
+				["at0080"] = <
+					text = <"*Sometimes, often or very often(en)">
+					description = <"**(en)">
+				>
+				["at0081"] = <
+					text = <"*Never or rarely (en)">
+					description = <"**(en)">
+				>
+				["at0082"] = <
+					text = <"*Sometimes, often or very often(en)">
+					description = <"**(en)">
 				>
 			>
 		>
