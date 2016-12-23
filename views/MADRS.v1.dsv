@@ -157,7 +157,26 @@
 <#assign _10__suicidal_thoughts_cds_data = montgomery_åsberg_depression_rating_scale__madrs__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0080}']">
 <#assign _3__inner_tension_cds_data = montgomery_åsberg_depression_rating_scale__madrs__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0021}']">
 <#assign total_score_cds_data = montgomery_åsberg_depression_rating_scale__madrs__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0077}']">
-<div ng-show="ready">
+
+<script> 
+angular.module('cds_app').controller('MADRS_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+    $scope.${_1__apparent_sadness_ehr_data}.value.selection = $scope.findMin($scope.${_1__apparent_sadness_def});
+	$scope.${_2__reported_sadness_ehr_data}.value.selection = $scope.findMin($scope.${_2__reported_sadness_def});
+	$scope.${_3__inner_tension_ehr_data}.value.selection = $scope.findMin($scope.${_3__inner_tension_def});
+	$scope.${_4__reduced_sleep_ehr_data}.value.selection = $scope.findMin($scope.${_4__reduced_sleep_def});
+	$scope.${_5__reduced_appetite_ehr_data}.value.selection = $scope.findMin($scope.${_5__reduced_appetite_def});
+	$scope.${_6__concentration_difficulties_ehr_data}.value.selection = $scope.findMin($scope.${_6__concentration_difficulties_def});
+	$scope.${_7__lassitude_ehr_data}.value.selection = $scope.findMin($scope.${_7__lassitude_def});
+	$scope.${_8__inability_to_feel_ehr_data}.value.selection = $scope.findMin($scope.${_8__inability_to_feel_def});
+	$scope.${__9__pessimistic_thoughts_ehr_data}.value.selection = $scope.findMin($scope.${__9__pessimistic_thoughts_def});
+	$scope.${_10__suicidal_thoughts_ehr_data}.value.selection = $scope.findMin($scope.${_10__suicidal_thoughts_def});
+  });
+});
+</script>
+
+<div ng-show="ready" ng-controller="MADRS_Ctrl">
 <div class="row" id="test">
 	<div class="medium-12 column">
 	<h1>{{${montgomery_åsberg_depression_rating_scale__madrs__entry_def}.name}}</h1>

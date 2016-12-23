@@ -145,7 +145,25 @@
 <#assign madrs_depression_assessment_entry_def = "def.entries['openEHR-EHR-EVALUATION.madrs_s_depression_assessment.v1']">
 <#assign grade_of_depression_def = madrs_depression_assessment_entry_def + ".elements['/data{at0001}/items{at0006}']">
 <#assign grade_of_depression_cds_data = madrs_depression_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0006}']">
-<div ng-show="ready">
+
+<script> 
+angular.module('cds_app').controller('MADRS-S_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+    $scope.${_1__mood_ehr_data}.value.selection = $scope.findMin($scope.${_1__mood_def});
+	$scope.${_2__feelings_of_unease_ehr_data}.value.selection = $scope.findMin($scope.${_2__feelings_of_unease_def});
+	$scope.${_3__sleep_ehr_data}.value.selection = $scope.findMin($scope.${_3__sleep_def});
+	$scope.${_4__appetite_ehr_data}.value.selection = $scope.findMin($scope.${_4__appetite_def});
+	$scope.${_5__ability_to_concentrate_ehr_data}.value.selection = $scope.findMin($scope.${_5__ability_to_concentrate_def});
+	$scope.${_6__initiative_ehr_data}.value.selection = $scope.findMin($scope.${_6__initiative_def});
+	$scope.${_7__emotional_involvement_ehr_data}.value.selection = $scope.findMin($scope.${_7__emotional_involvement_def});
+	$scope.${_8__pessimism_ehr_data}.value.selection = $scope.findMin($scope.${_8__pessimism_def});
+	$scope.${_9__zest_for_life_ehr_data}.value.selection = $scope.findMin($scope.${_9__zest_for_life_def});
+  });
+});
+</script>
+
+<div ng-show="ready" ng-controller="MADRS-S_Ctrl">
 <div class="row" id="test">
 	<div class="medium-12 column">
 	<h1>{{${montgomery_åsberg_depression_rating_scale__madrs_s__entry_def}.name}}</h1>
