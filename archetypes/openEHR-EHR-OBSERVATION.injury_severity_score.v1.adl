@@ -22,6 +22,17 @@ description
 		["date"] = <"2016-10-02">
 	>
 	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Records the Injury Severity Score which describes severity of injury in persons with multiple trauma.">
+			use = <"Use to record the injury severity score (ISS) which is the sum of the squares of the highest abbreviated injury scale (AIS) score in each of the three most severely injured body regions. Injury severity score (ISS) summarizes injury severity and correlates well with survival following multiple injury. It also demonstrates the effects of additional injuries on mortality.
+
+ISS = A*A + B*B + C*C, where A, B and C are the AIS scores assigned to the most severe injuries in the three most severely injured body regions. Possible AIS scores range from 0 = no injury to 5 = critical injury, while possible ISS ranges from 0 - 75. An unsurvivable injury (AIS score of 6) in any body region results in the individual automatically assigned the maximum ISS of 75, as further medical care is thought to be futile in such cases.
+More detail about scoring of the AIS is provided in the openEHR-EHR-OBSERVATION.abbreviated_injury_scale.v1 archetype.">
+			keywords = <"injury severity", "ISS", "anatomical scoring system", "multiple injury assessment", "AIS score", "NISS">
+			misuse = <"Do not use for triage.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att registrera resultat genererade i enlighet med Injury Severity Score, vilken beskriver svårighetsgrad vid multipla skador.">
@@ -34,17 +45,6 @@ En AIS-gradering om 6 genererar automatiskt en ISS-poäng om 75p, vilket innebä
 			misuse = <"Ej avsedd att användas för triage. ">
 			copyright = <"© Cambio Healthcare Systems">
 		>
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"Records the Injury Severity Score which describes severity of injury in persons with multiple trauma.">
-			use = <"Use to record the injury severity score (ISS) which is the sum of the squares of the highest abbreviated injury scale (AIS) score in each of the three most severely injured body regions. Injury severity score (ISS) summarizes injury severity and correlates well with survival following multiple injury. It also demonstrates the effects of additional injuries on mortality.
-
-ISS = A*A + B*B + C*C, where A, B and C are the AIS scores assigned to the most severe injuries in the three most severely injured body regions. Possible AIS scores range from 0 = no injury to 5 = critical injury, while possible ISS ranges from 0 - 75. An unsurvivable injury (AIS score of 6) in any body region results in the individual automatically assigned the maximum ISS of 75, as further medical care is thought to be futile in such cases.
-More detail about scoring of the AIS is provided in the openEHR-EHR-OBSERVATION.abbreviated_injury_scale.v1 archetype.">
-			keywords = <"injury severity", "ISS", "anatomical scoring system", "multiple injury assessment", "AIS score", "NISS">
-			misuse = <"Do not use for triage.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -54,7 +54,7 @@ More detail about scoring of the AIS is provided in the openEHR-EHR-OBSERVATION.
 Copes WS, Champion HR, Sacco WJ, Lawnick MM, Keast SL, Bain LW. The injury severity score revisited. Journal of Trauma and Acute Care Surgery. 1988 Jan 1;28(1):69-77.
 
 Baker SP, o'Neill B, Haddon Jr W, Long WB. The injury severity score: a method for describing patients with multiple injuries and evaluating emergency care. Journal of Trauma and Acute Care Surgery. 1974 Mar 1;14(3):187-96.">
-		["MD5-CAM-1.0.1"] = <"9B99BAC567FA2C8F9898DE31FD6B0B0C">
+		["MD5-CAM-1.0.1"] = <"89BCD494CD2F2F3491773B7155F686AE">
 	>
 
 definition
@@ -66,7 +66,7 @@ definition
 						data matches {
 							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- AIS första region
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- AIS region - mest omfattande skada
 										value matches {
 											0|[local::at0009], 	-- Ingen skada
 											1|[local::at0010], 	-- Lindrig skada
@@ -77,7 +77,7 @@ definition
 											6|[local::at0015]  	-- Skada ej förenlig med överlevnad
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- AIS andra region
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- AIS region - näst mest omfattande skada
 										value matches {
 											0|[local::at0016], 	-- Ingen skada
 											1|[local::at0017], 	-- Lindrig skada
@@ -88,7 +88,7 @@ definition
 											6|[local::at0022]  	-- Skada ej förenlig med överlevnad
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- AIS tredje region
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- AIS region - tredje mest omfattande skada
 										value matches {
 											0|[local::at0023], 	-- Ingen skada
 											1|[local::at0024], 	-- Lindrig skada
@@ -273,100 +273,100 @@ ontology
 					description = <"Ev tillägg">
 				>
 				["at0006"] = <
-					text = <"AIS första region">
+					text = <"AIS region - mest omfattande skada">
 					description = <"Abbreviated Injury Scale-gradering av mest allvarligt skadade området.">
 				>
 				["at0007"] = <
-					text = <"AIS andra region">
+					text = <"AIS region - näst mest omfattande skada">
 					description = <"Abbreviated Injury Scale-gradering av näst mest allvarligt skadade området.">
 				>
 				["at0008"] = <
-					text = <"AIS tredje region">
+					text = <"AIS region - tredje mest omfattande skada">
 					description = <"Abbreviated Injury Scale-gradering av tredje mest allvarligt skadade området.">
 				>
 				["at0009"] = <
 					text = <"Ingen skada">
-					description = <"">
+					description = <"*">
 				>
 				["at0010"] = <
 					text = <"Lindrig skada">
-					description = <"">
+					description = <"*">
 				>
 				["at0011"] = <
 					text = <"Måttlig skada">
-					description = <"">
+					description = <"*">
 				>
 				["at0012"] = <
 					text = <"Omfattande skada">
-					description = <"">
+					description = <"*">
 				>
 				["at0013"] = <
 					text = <"Svår skada">
-					description = <"">
+					description = <"*">
 				>
 				["at0014"] = <
 					text = <"Kritisk skada">
-					description = <"">
+					description = <"*">
 				>
 				["at0015"] = <
 					text = <"Skada ej förenlig med överlevnad">
-					description = <"">
+					description = <"*">
 				>
 				["at0016"] = <
 					text = <"Ingen skada">
-					description = <"">
+					description = <"*">
 				>
 				["at0017"] = <
 					text = <"Lindrig skada">
-					description = <"">
+					description = <"*">
 				>
 				["at0018"] = <
 					text = <"Måttlig skada">
-					description = <"">
+					description = <"*">
 				>
 				["at0019"] = <
 					text = <"Omfattande skada">
-					description = <"">
+					description = <"*">
 				>
 				["at0020"] = <
 					text = <"Svår skada">
-					description = <"">
+					description = <"*">
 				>
 				["at0021"] = <
 					text = <"Kritisk skada">
-					description = <"">
+					description = <"*">
 				>
 				["at0022"] = <
 					text = <"Skada ej förenlig med överlevnad">
-					description = <"">
+					description = <"*">
 				>
 				["at0023"] = <
 					text = <"Ingen skada">
-					description = <"">
+					description = <"*">
 				>
 				["at0024"] = <
 					text = <"Lindrig skada">
-					description = <"">
+					description = <"*">
 				>
 				["at0025"] = <
 					text = <"Måttlig skada">
-					description = <"">
+					description = <"*">
 				>
 				["at0026"] = <
 					text = <"Omfattande skada">
-					description = <"">
+					description = <"*">
 				>
 				["at0027"] = <
 					text = <"Svår skada">
-					description = <"">
+					description = <"*">
 				>
 				["at0028"] = <
 					text = <"Kritisk skada">
-					description = <"">
+					description = <"*">
 				>
 				["at0029"] = <
 					text = <"Skada ej förenlig med överlevnad">
-					description = <"">
+					description = <"*">
 				>
 			>
 		>

@@ -1,6 +1,6 @@
 (GUIDE) <
 	gdl_version = <"0.1">
-	id = <"MADRS_S_Calculation.v1">
+	id = <"MADRS-S.v1">
 	concept = <"gt0001">
 	language = (LANGUAGE) <
 		original_language = <[ISO_639-1::en]>
@@ -8,7 +8,9 @@
 	description = (RESOURCE_DESCRIPTION) <
 		details = <
 			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"Â© Cambio Healthcare Systems">
 				keywords = <"MADRS", "Patient", "Depression", "Montgomery">
+				misuse = <"Although a strongly positive result for increased risk should not be ignored, the scoring tool should not be used alone as an assessment of risk but shoud indicate that expeditious further investigation is required.">
 				purpose = <"Calculation of the MADRS-S score.">
 				use = <"Let the patient answer the questions.">
 			>
@@ -23,6 +25,7 @@
 			["name"] = <"Oskar Nielsen">
 			["organisation"] = <"Cambio Healthcare Systems">
 		>
+		other_contributors = <"Syeeda S Farruque",...>
 		other_details = <
 			["references"] = <"Svanborg P, Asberg M: A comparison between the Beck Depression Inventory (BDI) and the self-rated version of the Montgomery-Asberg Depression Rating Scale (MADRS). J Affect Dis 2001, 64(2-3):203-16.
 Svanborg, P. & Ã…sberg, M. (1994). A new self-rating scale for depression and anxiety states based om the comprehensive psyckopathological rating scale. ACTA Psychiatrica Scandinavia, 89(1), 21â€“28
@@ -107,14 +110,59 @@ Snaith, R.P., Harrop, F.M., Newby, D.A. (1986). Grade scores of the Montgomery-Ã
 		>
 		rules = <
 			["gt0074"] = (RULE) <
-				when = <"$gt0053!=null", "$gt0054!=null", "$gt0055!=null", "$gt0056!=null", "$gt0057!=null", "$gt0058!=null", "$gt0059!=null", "$gt0060!=null", "$gt0061!=null">
-				then = <"$gt0063=$gt0053", "$gt0064=$gt0054", "$gt0065=$gt0055", "$gt0066=$gt0056", "$gt0067=$gt0057", "$gt0068=$gt0058", "$gt0069=$gt0059", "$gt0070=$gt0060", "$gt0071=$gt0061">
-				priority = <2>
+				when = <"$gt0053!=null",...>
+				then = <"$gt0063=$gt0053",...>
+				priority = <10>
 			>
 			["gt0075"] = (RULE) <
 				when = <"$gt0072==null",...>
-				then = <"$gt0073.value=$currentDateTime.value", "$gt0072.magnitude=(((((((($gt0053.value+$gt0054.value)+$gt0055.value)+$gt0056.value)+$gt0057.value)+$gt0058.value)+$gt0059.value)+$gt0060.value)+$gt0061.value)">
+				then = <"$gt0072.magnitude=(((((((($gt0063.value+$gt0064.value)+$gt0065.value)+$gt0066.value)+$gt0067.value)+$gt0068.value)+$gt0069.value)+$gt0070.value)+$gt0071.value)",...>
 				priority = <1>
+			>
+			["gt0077"] = (RULE) <
+				when = <"$gt0063==null", "$gt0064==null", "$gt0065==null", "$gt0066==null", "$gt0067==null", "$gt0068==null", "$gt0069==null", "$gt0070==null", "$gt0071==null">
+				then = <"$gt0063=0|local::at0005|I can be either cheerful or sad, depending on the circumstances.|", "$gt0064=0|local::at0013|I feel calm for the most part.|", "$gt0065=0|local::at0021|I have no sleeping problems, and get as much sleep as I need. I have no difficulty in falling asleep.|", "$gt0066=0|local::at0029|My appetite has been much the same as usual.|", "$gt0067=0|local::at0037|I have no difficulty in concentrating.|", "$gt0068=0|local::at0045|I have no difficulties starting new tasks.|", "$gt0069=0|local::at0053|I am interested and involved in my surroundings, and this gives me pleasure.|", "$gt0070=0|local::at0061|I view the future with confidence. On the whole I am quite satisfied with life.|", "$gt0071=0|local::at0069|My appetite for life is normal.|">
+				priority = <11>
+			>
+			["gt0078"] = (RULE) <
+				when = <"$gt0054!=null",...>
+				then = <"$gt0064=$gt0054",...>
+				priority = <9>
+			>
+			["gt0079"] = (RULE) <
+				when = <"$gt0055!=null",...>
+				then = <"$gt0065=$gt0055",...>
+				priority = <8>
+			>
+			["gt0080"] = (RULE) <
+				when = <"$gt0056!=null",...>
+				then = <"$gt0066=$gt0056",...>
+				priority = <7>
+			>
+			["gt0081"] = (RULE) <
+				when = <"$gt0057!=null",...>
+				then = <"$gt0067=$gt0057",...>
+				priority = <6>
+			>
+			["gt0082"] = (RULE) <
+				when = <"$gt0058!=null",...>
+				then = <"$gt0068=$gt0058",...>
+				priority = <5>
+			>
+			["gt0083"] = (RULE) <
+				when = <"$gt0059!=null",...>
+				then = <"$gt0069=$gt0059",...>
+				priority = <4>
+			>
+			["gt0084"] = (RULE) <
+				when = <"$gt0060!=null",...>
+				then = <"$gt0070=$gt0060",...>
+				priority = <3>
+			>
+			["gt0085"] = (RULE) <
+				when = <"$gt0061!=null",...>
+				then = <"$gt0071=$gt0061",...>
+				priority = <2>
 			>
 		>
 	>
@@ -123,7 +171,7 @@ Snaith, R.P., Harrop, F.M., Newby, D.A. (1986). Grade scores of the Montgomery-Ã
 			["en"] = (TERM_DEFINITION) <
 				terms = <
 					["gt0001"] = (TERM) <
-						text = <"MADRS-S Calculation">
+						text = <"MADRS-S">
 						description = <"The purpose of this form is to give a detailed picture of your current state of mind. You should try to rate how you felt during the past three days. The form contains a variety of statements about how you can feel in different respects. The statements expressing varying degrees of discomfort, from the absence of discomfort to a maximum expressed discomfort. Choose the answer that you think best describes how you felt during the past three days. Do not think too long, try to work quickly.">
 					>
 					["gt0003"] = (TERM) <
@@ -385,12 +433,39 @@ Snaith, R.P., Harrop, F.M., Newby, D.A. (1986). Grade scores of the Montgomery-Ã
 						description = <"The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event.">
 					>
 					["gt0074"] = (TERM) <
-						text = <"Set CDS">
+						text = <"Set Q1">
 					>
 					["gt0075"] = (TERM) <
 						text = <"Calculate score">
 					>
 					["gt0076"] = (TERM) <
+					>
+					["gt0077"] = (TERM) <
+						text = <"Set Default">
+					>
+					["gt0078"] = (TERM) <
+						text = <"Set Q2">
+					>
+					["gt0079"] = (TERM) <
+						text = <"Set Q3">
+					>
+					["gt0080"] = (TERM) <
+						text = <"Set Q4">
+					>
+					["gt0081"] = (TERM) <
+						text = <"Set Q5">
+					>
+					["gt0082"] = (TERM) <
+						text = <"Set Q6">
+					>
+					["gt0083"] = (TERM) <
+						text = <"Set Q7">
+					>
+					["gt0084"] = (TERM) <
+						text = <"Set Q8">
+					>
+					["gt0085"] = (TERM) <
+						text = <"Set Q9">
 					>
 				>
 			>

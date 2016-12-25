@@ -25,11 +25,11 @@
   "decisionSupportViewDefinitions": {
     "en": {
       "name": "Glomerular Filtration Rate (CKD-EPI)",
-      "description": "Calculation of glomerular filtration rate (GFR)"
+      "description": "Calculation of glomerular filtration rate (GFR) to assess renal function."
     },
     "sv": {
       "name": "CKD-EPI Kreatininclearance",
-      "description": "Estimering av glomerulär filtrationshastighet"
+      "description": "Uppskattning av glomerulär filtrationshastighet (GFR) för utvärdering av njurfunktion"
     }
   },
   "resourceDescription": {
@@ -173,7 +173,7 @@ angular.module('cds_app').controller('Gfr_Ctrl', function($scope, $window){
     <select ng-model="${creatinine_ehr_data}.value.units" ng-options="unit for unit in ${creatinine_def}.units" ng-change="execute()" disabled=""></select>
   </div>
 </div>
-  <div class="row collapse" title="{{${estimated_glomerular_filtration_rate_def}.description}}">
+<div class="row collapse" title="{{${estimated_glomerular_filtration_rate_def}.description}}" id="displayresult1" "="">
     <div class="medium-5 columns">
       <label><b>{{${estimated_glomerular_filtration_rate_def}.name}}</b></label>
     </div>
@@ -181,7 +181,7 @@ angular.module('cds_app').controller('Gfr_Ctrl', function($scope, $window){
       <span>{{gfr_cds}} {{${estimated_glomerular_filtration_rate_cds_data}.value.units}}</span>
     </div>
   </div>
-  <div class="row collapse" title="{{${stage_def}.description}}">
+  <div class="row collapse" title="{{${stage_def}.description}}" id="displayresult2" "="">
       <div class="medium-5 columns">
         <label class="hfix"><b>{{${stage_def}.name}}</b></label>
       </div>
@@ -210,9 +210,6 @@ angular.module('cds_app').controller('Gfr_Ctrl', function($scope, $window){
   </div>
   
 <style>
-  .hfix {
-    margin-top: 10px;
-  }
   html, body {
     height:100%;
     width: 100%;
@@ -235,26 +232,16 @@ angular.module('cds_app').controller('Gfr_Ctrl', function($scope, $window){
     font-size: 22px;
     font-style: italic;
   }
-  h3 {
-    font-weight: 600;
-    font-size: 18px;
-  }
   .header {
     margin-bottom: 2em;
-  }
-  .centered {
-    text-align: center;
   }
   .card {
     background-color: #fdfdfd;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     margin: 10px auto 0 auto;
     padding: 1em;
-    width: 60%;
+    width: 50%;
     overflow: hidden;
-  }
-  #gender {
-    margin: 0px 0 5px 0;
   }
   .help-tip{
       position: absolute;
@@ -313,6 +300,9 @@ angular.module('cds_app').controller('Gfr_Ctrl', function($scope, $window){
       top:-40px;
       left:0;
   }
+  .references1{
+    font-size: 70%;
+  }
   /* CSS animation */
   @-webkit-keyframes fadeIn {
       0% { 
@@ -329,6 +319,23 @@ angular.module('cds_app').controller('Gfr_Ctrl', function($scope, $window){
       0% { opacity:0; }
       100% { opacity:100%; }
   }
-
+  #displayresult1 {
+    background-color: #e6e6e6; 
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    background-color: #f2f2f2;
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  select, label:not(#h-fix) {
+    margin-bottom: 10px;
 </style>
+
+
 </body></html>
