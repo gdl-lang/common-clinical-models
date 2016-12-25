@@ -1,0 +1,260 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.atria_stroke_risk_score.v1
+
+concept
+	[at0000]	-- ATRIA stroke risk score
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Eneimi Allwell-Brown">
+		["email"] = <"info@cambio.se">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2016-11-30">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the ATRIA stroke risk score as well as the points assigned for each of the following 8 (eight) assessed variables: prior stroke, age, sex, comorbidities (diabetes mellitus, congestive heart failure, hypertension), proteinuria, and eGFR <45ml/min (or ESRD - end stage renal disease). ATRIA stroke risk score has been validated as performing better than the CHADS2 and CHA2DS2-VASc risk models and provides more accurate and reliable stroke risk/thromboembolism prediction, as well as guides optimal anticoagulation decision-making, in individuals with atrial fibrillation.
+">
+			use = <"Use to record the ATRIA stroke risk score, as well as the individual points assigned for the 8 (eight) ATRIA stroke risk factors: 
+ - presence of diabetes mellitus, congestive heart failure, hypertension, proteinuria (urinary albumin >=30 mg/dl OR urinary abumin:cratinine ratio >=30 mg/g), eGFR < 45ml/min (or ESRD) = 1 point each, and 0 if absent;
+ - female sex = 1 point, and 0 if male; 
+ - age <65 years (with no prior stroke = 0, with prior stroke = 8 points), 65-74 years (with no prior stroke = 3, with prior stroke = 7 points), 75-84 years (with no prior stroke = 5, with prior stroke = 7 points), >=85 years (with no prior stroke = 6, with prior stroke = 9 points).
+The actual 'raw values' for history/diagnosis of diabetes mellitus, congestive heart failure, hypertension and stroke, age (years), urinary albumin (mg/dl) and eGFR (ml/min) are all stored in separate observation archetypes.
+The ATRIA stroke risk score is further used in evaluating the 1-year risk of stroke or other thromboembolic event, and this is stored in a separate evaluation archetype: openEHR-EHR-EVALUATION.atria_stroke_risk.v1.">
+			keywords = <"atrial fibrillation", "stroke risk", "thromboembolism risk">
+			misuse = <"">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Singer DE, Chang Y, Borowsky LH, Fang MC, Pomernacki NK, Udaltsova N, Reynolds K, Go AS. A new risk scheme to predict ischemic stroke and other thromboembolism in atrial fibrillation: the ATRIA study stroke risk score. Journal of the American Heart Association. 2013 Jun 18;2(3):e000250.
+
+http://www.mdcalc.com/atria-stroke-risk-score/">
+		["MD5-CAM-1.0.1"] = <"C0839140072501315EE39D196041DCEA">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- ATRIA stroke risk score
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- History of stroke
+										value matches {
+											0|[local::at0032], 	-- No
+											1|[local::at0033]  	-- Yes
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Age
+										value matches {
+											0|[local::at0013], 	-- Age <65 years with no history of stroke.
+											3|[local::at0014], 	-- Age 65-74 years with no history of stroke.
+											5|[local::at0015], 	-- Age 75-84 years with no history of stroke.
+											6|[local::at0016], 	-- Age >=85 years with no history of stroke.
+											7|[local::at0017], 	-- Age 65-84 years with a history of stroke.
+											8|[local::at0018], 	-- Age <65 years with a history of stroke.
+											9|[local::at0019]  	-- Age >=85 years with a history of stroke.
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Sex
+										value matches {
+											0|[local::at0020], 	-- Male
+											1|[local::at0021]  	-- Female
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- History of diabetes mellitus
+										value matches {
+											0|[local::at0030], 	-- No
+											1|[local::at0031]  	-- Yes
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- History of congestive heart failure
+										value matches {
+											0|[local::at0028], 	-- No
+											1|[local::at0029]  	-- Yes
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- History of hypertension
+										value matches {
+											0|[local::at0026], 	-- No
+											1|[local::at0027]  	-- Yes
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Proteinuria
+										value matches {
+											0|[local::at0024], 	-- No
+											1|[local::at0025]  	-- Yes
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- eGFR
+										value matches {
+											0|[local::at0022], 	-- eGFR >=45
+											1|[local::at0023]  	-- eGFR <45
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- ATRIA stroke risk score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..15|}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"ATRIA stroke risk score">
+					description = <"ATRIA (anticoagulation and risk factors in atrial fibrillation) stroke risk score is used to determine the risk of stroke in patients with atrial fibrillation. It is the sum of points assigned for the presence (or absence) of certain risk factors: previous stroke, age, sex, comorbidities (diabetes, congestive heart failure, hypertension), proteinuria, and eGFR < 45ml/min (or end stage renal disease) in the patient. The ATRIA stroke risk score takes a value between 0 - 15, and it is from this score that ATRIA stroke risk is predicted. A score between 0 - 5 predicts a risk of ischaemic stroke/TE less than 1%; a score of 6 predicts 1 - <2% risk; and a score >6 predicts >=2% risk.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"History of stroke">
+					description = <"Does the individual have a history of cerebrovascular accident/stroke?">
+				>
+				["at0005"] = <
+					text = <"Age">
+					description = <"What is the age and has the individual ever had a prior stroke?">
+				>
+				["at0006"] = <
+					text = <"Sex">
+					description = <"Is the individual male or female?">
+				>
+				["at0007"] = <
+					text = <"History of diabetes mellitus">
+					description = <"Does the individual have a history of diabetes mellitus?">
+				>
+				["at0008"] = <
+					text = <"History of congestive heart failure">
+					description = <"Does the individual have a history of congestive heart failure?">
+				>
+				["at0009"] = <
+					text = <"History of hypertension">
+					description = <"Does the individual have a history of hypertension?">
+				>
+				["at0010"] = <
+					text = <"Proteinuria">
+					description = <"Does the individual have proteinuria?">
+				>
+				["at0011"] = <
+					text = <"eGFR">
+					description = <"The estimated glomerular filtration rate (based on MDRD equation) or presence of end-stage renal disease (ESRD).">
+				>
+				["at0012"] = <
+					text = <"ATRIA stroke risk score">
+					description = <"Total number of points assigned based on the presence or absence of the 8 predictor variables.">
+				>
+				["at0013"] = <
+					text = <"Age <65 years with no history of stroke.">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Age 65-74 years with no history of stroke.">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Age 75-84 years with no history of stroke.">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Age >=85 years with no history of stroke.">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Age 65-84 years with a history of stroke.">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Age <65 years with a history of stroke.">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Age >=85 years with a history of stroke.">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Male">
+					description = <"Individual is male.">
+				>
+				["at0021"] = <
+					text = <"Female">
+					description = <"Individual is female.">
+				>
+				["at0022"] = <
+					text = <"eGFR >=45">
+					description = <"Estimated GFR equal or greater than 45 ml/min/1.73m2">
+				>
+				["at0023"] = <
+					text = <"eGFR <45">
+					description = <"Estimated GFR less than 45 ml/min/1.73m2 or presence of end-stage renal disease (ESRD)">
+				>
+				["at0024"] = <
+					text = <"No">
+					description = <"Proteinuria absent.">
+				>
+				["at0025"] = <
+					text = <"Yes">
+					description = <"Proteinuria present.">
+				>
+				["at0026"] = <
+					text = <"No">
+					description = <"No history of hypertension.">
+				>
+				["at0027"] = <
+					text = <"Yes">
+					description = <"Positive history of hypertension.">
+				>
+				["at0028"] = <
+					text = <"No">
+					description = <"No history of congestive heart failure.">
+				>
+				["at0029"] = <
+					text = <"Yes">
+					description = <"Positive history of congestive heart failure.">
+				>
+				["at0030"] = <
+					text = <"No">
+					description = <"No history of diabetes mellitus.">
+				>
+				["at0031"] = <
+					text = <"Yes">
+					description = <"Positive history of diabetes mellitus.">
+				>
+				["at0032"] = <
+					text = <"No">
+					description = <"No history of stroke.">
+				>
+				["at0033"] = <
+					text = <"Yes">
+					description = <"Has a history of stroke.">
+				>
+			>
+		>
+	>
