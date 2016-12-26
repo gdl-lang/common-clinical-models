@@ -5,6 +5,15 @@ concept
 	[at0000]	-- Acute Gout Diagnosis Rule
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Dennis Forslund">
@@ -12,6 +21,21 @@ description
 		["date"] = <"2016-10-27">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att kliniskt utvärdera eventuell förekomst av gikt hos patient med ledbesvär, samt huruvida vidare utredning är indicerad.">
+			use = <"Använd för att registrera data i enlighet med Acute Gout Diagnosis Rule, och utvärdera huruvida vidare utredning med ledvätskeanalys är nödvändig. Instrumentet baseras på sju faktorer; kön (2p om man), tidigare artrit (2p om föreliggande), akut debut (0,5p om föreliggande), rodnad av led (1p om föreliggande), MTP1-engagemang (2,5p om föreliggande), hjärtkärlsjukdom (1,5p om föreliggande) och S-Urat (3,5p om >5.88 mg/dl eller >0.35 mmol/L eller >350 umol/L).
+
+En poäng om ≤4p indikerar att gikt ej föreligger, medan ≥8p indikerar att gikt sannolikt föreligger. 5-7p är en gråzon som bör utredas vidare med ledvätskeanalys. 
+
+Sannolikhet för gikt;
+Vid ≤4p - 2,2 %.
+Vid 5-7p - 31,2%.
+Vid ≥8p - 80,4%">
+			keywords = <"gikt", "monoartrit", "ledvätska", "ledvätskeanalys", "urat">
+			misuse = <"">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To clinically determine whether an individual's joint symptoms are due to acute gouty arthritis, and if there is need for further laboratory testing.">
@@ -31,109 +55,109 @@ Synovial fluid analysis of the affected joint for monosodium urate (MSU) crystal
 		["references"] = <"Janssens HJ, Fransen J, Van de Lisdonk EH, van Riel PL, van Weel C, Janssen M. A diagnostic rule for acute gouty arthritis in primary care without joint fluid analysis. Archives of internal medicine. 2010 Jul 12;170(13):1120-6.
 
 Kienhorst LB, Janssens HJ, Fransen J, Janssen M. The validation of a diagnostic rule for gout without joint fluid analysis: a prospective study. Rheumatology. 2014 Sep 16:keu378.">
-		["MD5-CAM-1.0.1"] = <"A21B825225888ECEB88189E2F331A26F">
+		["MD5-CAM-1.0.1"] = <"66AB022468039EB0EC91DD5B7505D87D">
 	>
 
 definition
 	OBSERVATION[at0000] matches {	-- Acute Gout Diagnosis Rule
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Male sex
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Manligt kön
 										value matches {
-											0|[local::at0026], 	-- Absent
-											1|[local::at0027]  	-- Present
+											0|[local::at0026], 	-- Frånvarande
+											1|[local::at0027]  	-- Föreligger
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Previous patient-reported arthritis attack
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Tidigare artrit
 										value matches {
-											0|[local::at0029], 	-- Absent
-											1|[local::at0030]  	-- Present
+											0|[local::at0029], 	-- Frånvarande
+											1|[local::at0030]  	-- Föreligger
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Onset within one day
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Akut debut
 										value matches {
-											0|[local::at0031], 	-- Absent
-											1|[local::at0032]  	-- Present
+											0|[local::at0031], 	-- Frånvarande
+											1|[local::at0032]  	-- Föreligger
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Joint redness
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Rodnad led
 										value matches {
-											0|[local::at0033], 	-- Absent
-											1|[local::at0034]  	-- Present
+											0|[local::at0033], 	-- Frånvarande
+											1|[local::at0034]  	-- Föreligger
 										}
 									}
-									ELEMENT[at0015] occurrences matches {0..1} matches {	-- 1st MTP joint involvement
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- MTP 1-engagemang
 										value matches {
-											0|[local::at0035], 	-- Absent
-											1|[local::at0036]  	-- Present
+											0|[local::at0035], 	-- Frånvarande
+											1|[local::at0036]  	-- Föreligger
 										}
 									}
-									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Hypertension or ≥ 1 cardiac diseases
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Hypertoni eller >1 hjärt-kärlsjukdom
 										value matches {
-											0|[local::at0037], 	-- Absent
-											1|[local::at0038]  	-- Present
+											0|[local::at0037], 	-- Frånvarande
+											1|[local::at0038]  	-- Föreligger
 										}
 									}
-									ELEMENT[at0020] occurrences matches {0..1} matches {	-- Serum uric acid > 350 µmol/l (> 5.88 mg/dl OR > 0.35 mmol/L)
+									ELEMENT[at0020] occurrences matches {0..1} matches {	-- S-urat > 350 µmol/l (> 5.88 mg/dl eller > 0.35 mmol/L)
 										value matches {
-											0|[local::at0039], 	-- Absent
-											1|[local::at0040]  	-- Present
+											0|[local::at0039], 	-- Frånvarande
+											1|[local::at0040]  	-- Föreligger
 										}
 									}
-									ELEMENT[at0042] occurrences matches {0..1} matches {	-- Male sex score
-										value matches {
-											C_DV_QUANTITY <
-											>
-										}
-									}
-									ELEMENT[at0043] occurrences matches {0..1} matches {	-- Previous arthritis score
+									ELEMENT[at0042] occurrences matches {0..1} matches {	-- Poäng manligt kön
 										value matches {
 											C_DV_QUANTITY <
 											>
 										}
 									}
-									ELEMENT[at0044] occurrences matches {0..1} matches {	-- Onset duration score
+									ELEMENT[at0043] occurrences matches {0..1} matches {	-- Poäng tidigare artrit
 										value matches {
 											C_DV_QUANTITY <
 											>
 										}
 									}
-									ELEMENT[at0045] occurrences matches {0..1} matches {	-- Joint redness score
+									ELEMENT[at0044] occurrences matches {0..1} matches {	-- Poäng akut debut
 										value matches {
 											C_DV_QUANTITY <
 											>
 										}
 									}
-									ELEMENT[at0046] occurrences matches {0..1} matches {	-- 1st MTP joint score
+									ELEMENT[at0045] occurrences matches {0..1} matches {	-- Poäng rodnad led
 										value matches {
 											C_DV_QUANTITY <
 											>
 										}
 									}
-									ELEMENT[at0047] occurrences matches {0..1} matches {	-- Cardiovascular disease score
+									ELEMENT[at0046] occurrences matches {0..1} matches {	-- Poäng MTP 1-engagemang
 										value matches {
 											C_DV_QUANTITY <
 											>
 										}
 									}
-									ELEMENT[at0048] occurrences matches {0..1} matches {	-- Serum uric acid score
+									ELEMENT[at0047] occurrences matches {0..1} matches {	-- Poäng hjärtkärlsjukdom
 										value matches {
 											C_DV_QUANTITY <
 											>
 										}
 									}
-									ELEMENT[at0049] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0048] occurrences matches {0..1} matches {	-- Poäng S-urat
 										value matches {
 											C_DV_QUANTITY <
 											>
 										}
 									}
-									ELEMENT[at0050] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0049] occurrences matches {0..1} matches {	-- Total poäng
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+									ELEMENT[at0050] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -153,7 +177,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Acute Gout Diagnosis Rule">
-					description = <"An easy to use diagnostic rule for determining whether a patient's symptoms are due to acute gouty arthritis, and if there is need for further laboratory testing. The assessment is a clinical one that is made without joint fluid analysis. Points are assigned for each of 7 variables: sex, previous report of arthritis, onset within 1 day, joint redness, involvement of 1st metatarsophalangeal joint, cardiovascular disease and serum uric acid level. A total score <=4 is unlikely to be gout (gout prevalence 2.2%), score >4 and <8 is indeterminate (gout prevalence 31.2%), and a score >=8 is likely to be gout (gout prevalence 80.4%). Synovial fluid analysis of the affected joint for monosodium urate (MSU) crystals is recommended in the indeterminate group.">
+					description = <"An easy to use diagnostic rule for determining whether a patient's symptoms are due to acute gouty arthritis, and if there is need for further laboratory testing. The assessment is a clinical one that is made without joint fluid analysis. Points are assigned for each of 7 variables: sex, previous report of arthritis, onset within 1 day, joint redness, involvement of 1st metatarsophalangeal joint, cardiovascular disease and serum uric acid level. A total score ≤4 is unlikely to be gout (gout prevalence 2.2%), score >4 and <8 is indeterminate (gout prevalence 31.2%), and a score ≥8 is likely to be gout (gout prevalence 80.4%). Synovial fluid analysis of the affected joint for monosodium urate (MSU) crystals is recommended in the indeterminate group.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -286,6 +310,147 @@ ontology
 				["at0050"] = <
 					text = <"Comment">
 					description = <"Additional information about this assessment.">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Acute Gout Diagnosis Rule">
+					description = <"Acute Gout Diagnosis Rule är ett instrument för utvärdering av eventuell förekomst av gikt, baserat på sju kliniska faktorer; kön, tidigare artrit, akut debut, rodnad av led, MTP1-engagemang, hjärtkärlsjukdom och S-Urat. En poäng om ≤4p indikerar att gikt ej föreligger, medan ≥8 indikerar att gikt sannolikt föreligger. 5-7p är en gråzon som bör utredas vidare med ledvätskeanalys. 
+">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Manligt kön">
+					description = <"Är patienten man?">
+				>
+				["at0006"] = <
+					text = <"Tidigare artrit">
+					description = <"Har patienten rapporterat tidigare förekomst av artrit?">
+				>
+				["at0010"] = <
+					text = <"Akut debut">
+					description = <"Uppstod symtom (svullnad, rodnad, värme) inom en dag?">
+				>
+				["at0013"] = <
+					text = <"Rodnad led">
+					description = <"Är den aktuella leden rodnad?">
+				>
+				["at0015"] = <
+					text = <"MTP 1-engagemang">
+					description = <"Är första metatarsofalangealleden (MTP) engagerad?">
+				>
+				["at0019"] = <
+					text = <"Hypertoni eller >1 hjärt-kärlsjukdom">
+					description = <"Har patienten hypertoni eller annan hjärtkärlsjukdom?">
+				>
+				["at0020"] = <
+					text = <"S-urat > 350 µmol/l (> 5.88 mg/dl eller > 0.35 mmol/L)">
+					description = <"Är S-Urat > 350 µmol/l (> 5.88 mg/dl eller > 0.35 mmol/L)?">
+				>
+				["at0026"] = <
+					text = <"Frånvarande">
+					description = <"*Individual is not male.(en)">
+				>
+				["at0027"] = <
+					text = <"Föreligger">
+					description = <"*Individual is male.(en)">
+				>
+				["at0029"] = <
+					text = <"Frånvarande">
+					description = <"*No previous report of arthritis attack.(en)">
+				>
+				["at0030"] = <
+					text = <"Föreligger">
+					description = <"*Patients has previous report of arthritis attack.(en)">
+				>
+				["at0031"] = <
+					text = <"Frånvarande">
+					description = <"*Arthritis develops over more than 1 day.(en)">
+				>
+				["at0032"] = <
+					text = <"Föreligger">
+					description = <"*Arthritis develops within  1 day.(en)">
+				>
+				["at0033"] = <
+					text = <"Frånvarande">
+					description = <"*No joint redness.(en)">
+				>
+				["at0034"] = <
+					text = <"Föreligger">
+					description = <"*Joint redness present.(en)">
+				>
+				["at0035"] = <
+					text = <"Frånvarande">
+					description = <"*The 1st MTP joint is not involved.(en)">
+				>
+				["at0036"] = <
+					text = <"Föreligger">
+					description = <"*The 1st MTP joint is involved.(en)">
+				>
+				["at0037"] = <
+					text = <"Frånvarande">
+					description = <"*There is at least one cardiovascular disorder present.(en)">
+				>
+				["at0038"] = <
+					text = <"Föreligger">
+					description = <"*No cardiac disease present.(en)">
+				>
+				["at0039"] = <
+					text = <"Frånvarande">
+					description = <"*Serum uric acid is <350umol (5.88 mg/dl OR 0.35 mmol/L)(en)">
+				>
+				["at0040"] = <
+					text = <"Föreligger">
+					description = <"*Serum uric acid is >350umol (5.88 mg/dl OR 0.35 mmol/L)(en)">
+				>
+				["at0042"] = <
+					text = <"Poäng manligt kön">
+					description = <"Poäng för manligt kön.">
+				>
+				["at0043"] = <
+					text = <"Poäng tidigare artrit">
+					description = <"Poäng för tidigare artrit.">
+				>
+				["at0044"] = <
+					text = <"Poäng akut debut">
+					description = <"Poäng för akut debut.">
+				>
+				["at0045"] = <
+					text = <"Poäng rodnad led">
+					description = <"Poäng för rodnad led.">
+				>
+				["at0046"] = <
+					text = <"Poäng MTP 1-engagemang">
+					description = <"Poäng för MTP 1-engagemang.">
+				>
+				["at0047"] = <
+					text = <"Poäng hjärtkärlsjukdom">
+					description = <"Poäng för hypertoni och/eller hjärtkärlsjukdom.">
+				>
+				["at0048"] = <
+					text = <"Poäng S-urat">
+					description = <"Poäng för S-Urat > 350 µmol/l (> 5.88 mg/dl eller > 0.35 mmol/L).">
+				>
+				["at0049"] = <
+					text = <"Total poäng">
+					description = <"Summan av samtliga faktorer.">
+				>
+				["at0050"] = <
+					text = <"Kommentar">
+					description = <"Ev tillägg">
 				>
 			>
 		>
