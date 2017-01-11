@@ -1,0 +1,271 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.tash.v1
+
+concept
+	[at0000]	-- Tash
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-01-10">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Trauma Associated Severe Hemorrhage (TASH) score is made up with weighted variables and is used in the management of severe haemorrhage and to predict the risk of needing to provide a massive transfusion for a trauma patient">
+			use = <"Seven independent variables were identified and used to build the TASH:
+
+SBP
+Hb 
+Intra-abdominal fluid
+Complex long bone and/or pelvic fractures
+HR
+Base excess
+Gender 
+
+The TASH score ranges from 0 to 28. Increasing TASH-score points are associated with increasing probability of MT.
+
+A TASH score ≥ 16 points (i.e.) means a probability of MT >50%.">
+			keywords = <"massive transfusion", "TASH", "Trauma Associated Severe Hemorrhage">
+			misuse = <"TASH Score does not indicate if trauma patients should receive blood, only if they should receive blood through a massive transfusion protocol.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Yücel N, Lefering R, Maegele M, Vorweg M, Tjardes T, Ruchholtz S, Neugebauer EA, Wappler F, Bouillon B, Rixen D; Polytrauma Study Group of the German Trauma Society. Trauma Associated Severe Hemorrhage (TASH)-Score: probability of mass transfusion as surrogate for life threatening hemorrhage after multiple trauma. J Trauma. 2006 Jun;60(6):1228-36; discussion 1236-7. PubMed PMID: 16766965.
+
+Ref. 2: Maegele M, Lefering R, Wafaisade A, Theodorou P, Wutzler S, Fischer P, Bouillon B, Paffrath T; Trauma Registry of Deutsche Gesellschaft für Unfallchirurgie (TR-DGU). Revalidation and update of the TASH-Score: a scoring system to predict the probability for massive transfusion as a surrogate for life-threatening haemorrhage after severe injury. Vox Sang. 2011 Feb;100(2):231-8. doi: 10.1111/j.1423-0410.2010.01387.x. Epub 2010 Aug 24. PubMed PMID: 20735809.">
+		["MD5-CAM-1.0.1"] = <"D9E9F4D00369F0CDFA10C3214AAC3394">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Tash
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Gender score
+										value matches {
+											0|[local::at0012], 	-- Female
+											1|[local::at0013]  	-- Male
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Hb score
+										value matches {
+											0|[local::at0014], 	-- >= 12
+											2|[local::at0015], 	-- <12
+											3|[local::at0016], 	-- <11
+											4|[local::at0017], 	-- <10
+											6|[local::at0018], 	-- <9
+											8|[local::at0019]  	-- <7
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- BE score
+										value matches {
+											0|[local::at0021], 	-- >= -2
+											1|[local::at0022], 	-- <-2
+											3|[local::at0023], 	-- <-6
+											4|[local::at0024]  	-- <-10
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Sys BP score
+										value matches {
+											0|[local::at0025], 	-- >= 120
+											1|[local::at0026], 	-- <120
+											4|[local::at0027]  	-- <100
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- HR score
+										value matches {
+											0|[local::at0028], 	-- <= 120
+											2|[local::at0029]  	-- >120
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Positive FAST for intra-abdo fluid
+										value matches {
+											0|[local::at0030], 	-- No
+											3|[local::at0031]  	-- Yes
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Fracture of trunk/leg
+										value matches {
+											0|[local::at0032], 	-- No
+											3|[local::at0038], 	-- Open or Dislocated Femur fracture
+											6|[local::at0033]  	-- Clinically unstable Pelvic fracture
+										}
+									}
+									ELEMENT[at0036] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..28|}
+											}
+										}
+									}
+									ELEMENT[at0037] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Tash">
+					description = <"Trauma Associated Severe Hemorrhage (TASH) score is used in the management of severe haemorrhage and to predict the risk of needing to provide a massive transfusion for a trauma patient">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Gender score">
+					description = <"Male or Female">
+				>
+				["at0005"] = <
+					text = <"Hb score">
+					description = <"Haemoglobin score">
+				>
+				["at0006"] = <
+					text = <"BE score">
+					description = <"Base Excess">
+				>
+				["at0007"] = <
+					text = <"Sys BP score">
+					description = <"Systolic Blood Pressure">
+				>
+				["at0008"] = <
+					text = <"HR score">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Positive FAST for intra-abdo fluid">
+					description = <"FAST (Focused assessment with sonography for trauma) - ultrasound to detect free fluid in the abdomen">
+				>
+				["at0010"] = <
+					text = <"Fracture of trunk/leg">
+					description = <"Fracture of the trunk/legs">
+				>
+				["at0012"] = <
+					text = <"Female">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Male">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <">= 12">
+					description = <"g/dl">
+				>
+				["at0015"] = <
+					text = <"<12">
+					description = <"g/dl">
+				>
+				["at0016"] = <
+					text = <"<11">
+					description = <"g/dl">
+				>
+				["at0017"] = <
+					text = <"<10">
+					description = <"g/dl">
+				>
+				["at0018"] = <
+					text = <"<9">
+					description = <"g/dl">
+				>
+				["at0019"] = <
+					text = <"<7">
+					description = <"g/dl">
+				>
+				["at0021"] = <
+					text = <">= -2">
+					description = <"mmol/L">
+				>
+				["at0022"] = <
+					text = <"<-2">
+					description = <"mmol/L">
+				>
+				["at0023"] = <
+					text = <"<-6">
+					description = <"mmol/L">
+				>
+				["at0024"] = <
+					text = <"<-10">
+					description = <"mmol/L">
+				>
+				["at0025"] = <
+					text = <">= 120">
+					description = <"mmHg">
+				>
+				["at0026"] = <
+					text = <"<120">
+					description = <"mmHg">
+				>
+				["at0027"] = <
+					text = <"<100">
+					description = <"mmHg">
+				>
+				["at0028"] = <
+					text = <"<= 120">
+					description = <"bpm">
+				>
+				["at0029"] = <
+					text = <">120">
+					description = <"bpm">
+				>
+				["at0030"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Clinically unstable Pelvic fracture">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Total score">
+					description = <"Sum of individual scores">
+				>
+				["at0037"] = <
+					text = <"Comment">
+					description = <"Comments regarding the tool">
+				>
+				["at0038"] = <
+					text = <"Open or Dislocated Femur fracture">
+					description = <"*">
+				>
+			>
+		>
+	>
