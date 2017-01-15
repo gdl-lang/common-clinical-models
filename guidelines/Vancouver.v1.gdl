@@ -1,0 +1,198 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"Vancouver.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"Vancouver chest pain rule", "Chest pain">
+				misuse = <"Not to be used as an absolute diagnostic tool in the absence of other supporting evidence.">
+				purpose = <"The Vancouver Chest Pain Rule (VCPR) is a quick assessment tool which presents a 3 step evaluation of chest pain patients to ascertain whether they are of low enough risk to be discharged or not.">
+				use = <"Step 1: If any of the below are answered \"yes\" - do not discharge:
+
+    Abnormal initial EKG?
+    Positive troponin at 2 hours?
+    Prior ACS or nitrate use?
+
+If all answered \"no\" go to step 2
+
+Step 2:  If the following question is answered \"yes\" - risk is low - discharge patient
+
+    Does palpation reproduce pain?
+
+If answer is \"no\" continue to Step 3
+
+Step 3: If any of the below are answered \"yes\" - do not discharge
+
+    Age ≥ 50?
+    Does pain radiate to neck, jaw, or left arm
+
+If all are \"no\"- it is safe to discharge the patient.">
+			>
+		>
+		original_author = <
+			["date"] = <"2016-12-27">
+			["name"] = <"Syeeda S Farruque">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"Ref.1: Xavier Scheuermeyer F, Wong H, Yu E, Boychuk B, Innes G, Grafstein E, Gin K, Christenson J. Development and validation of a prediction rule for early discharge of low-risk emergency department patients with potential ischemic chest pain. CJEM. 2013;15(0):1-14. PubMed PMID: 23816166.
+
+Ref.2: Cullen L, Greenslade JH, Than M, Brown AF, Hammett CJ, Lamanna A, Flaws DF, Chu K, Fowles LF, Parsonage WA. The new Vancouver Chest Pain Rule using troponin as the only biomarker: an external validation study. Am J Emerg Med. 2014 Feb;32(2):129-34. doi: 10.1016/j.ajem.2013.10.021. Epub 2013 Oct 14. PubMed PMID: 24238485.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.vancouver_cpr_score.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0004"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0005]">
+					>
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0006]">
+					>
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0007]">
+					>
+					["gt0007"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0008]">
+					>
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0009]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0009"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.vancouver_cpr_score.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0010"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0010]">
+					>
+					["gt0011"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0011]">
+					>
+					["gt0012"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0012]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0013"] = (RULE) <
+				when = <"(($gt0003==true)||($gt0004==true))||($gt0005==true)",...>
+				then = <"$gt0010=1|local::at0017|Not safe to disharge|",...>
+				priority = <6>
+			>
+			["gt0014"] = (RULE) <
+				when = <"$gt0005==false", "$gt0004==false", "$gt0003==false">
+				then = <"$gt0010=0|local::at0016|Safe to discharge|",...>
+				priority = <5>
+			>
+			["gt0015"] = (RULE) <
+				when = <"$gt0006==true",...>
+				then = <"$gt0011=0|local::at0018|Safe to discharge|",...>
+				priority = <4>
+			>
+			["gt0016"] = (RULE) <
+				when = <"$gt0006==false",...>
+				then = <"$gt0011=1|local::at0019|Go to 3|",...>
+				priority = <3>
+			>
+			["gt0017"] = (RULE) <
+				when = <"($gt0007==true)||($gt0008==true)",...>
+				then = <"$gt0012=1|local::at0015|Not safe to disharge|",...>
+				priority = <2>
+			>
+			["gt0018"] = (RULE) <
+				when = <"$gt0008==false", "$gt0007==false">
+				then = <"$gt0012=0|local::at0014|Safe to discharge|",...>
+				priority = <1>
+			>
+			["gt0019"] = (RULE) <
+				when = <"$gt0010==null", "$gt0011==null", "$gt0012==null">
+				then = <"$gt0012=0|local::at0014|Safe to discharge|", "$gt0011=0|local::at0018|Safe to discharge|", "$gt0010=0|local::at0016|Safe to discharge|">
+				priority = <7>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Vancouver CPR">
+						description = <"Vancouver Chest Pain Rule (VCPR) is a fast evaluation tool to ascertain those patients with chest pain who are at low enough risk to allow to be discharged">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Abnormal intial EKG?">
+						description = <"Step 1: do not disharge if this question is true.">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Positive troponin at 2 hours?">
+						description = <"Step 1: do not disharge if this question is true.">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Prior ACS or nitrate use?">
+						description = <"Step 1: do not disharge if this question is true.">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Does palpation reproduce pain?">
+						description = <"Step 2: do not disharge if this question is false but go to step 3">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Age ≥ 50?">
+						description = <"Step 3: do not disharge if this question is true.">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Does pain radiate to neck, jaw, or left arm">
+						description = <"Step 3: do not disharge if this question is true.">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Step 1 eval resultt">
+						description = <"If any of Step 1 are true: do not discharge, is all are false - go to step 2">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Step 2 eval result">
+						description = <"If Step 2 is true: discharge: if not go to Step 3">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Step 3 eval result">
+						description = <"If any is True - do not discharge otherwise it is safe to discharge.">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Step 1: if any true">
+					>
+					["gt0014"] = (TERM) <
+						text = <"Step 1: if all false">
+					>
+					["gt0015"] = (TERM) <
+						text = <"Step 2: if true">
+					>
+					["gt0016"] = (TERM) <
+						text = <"Step 2: if false">
+					>
+					["gt0017"] = (TERM) <
+						text = <"Step 3: if any true">
+					>
+					["gt0018"] = (TERM) <
+						text = <"Step 3: if all false">
+					>
+					["gt0019"] = (TERM) <
+						text = <"Set Default">
+					>
+				>
+			>
+		>
+	>
+>
