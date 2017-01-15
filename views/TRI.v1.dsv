@@ -29,7 +29,7 @@
     },
     "sv": {
       "name": "Timi Risk Index",
-      "description": "TIMI Risk Index (Thrombolysis In Myocardial Infarction) är en enkel skala för uppskattning av 30-dagarsmortalitet hos patienter med akut ST-höjningsinfarkt (STEMI), baserat på faktorerna blodtryck, pulsfrekvens och ålder."
+      "description": "Uppskattning av 30-dagarsmortalitet hos patienter med akut ST-höjningsinfarkt (STEMI)"
     }
   },
   "resourceDescription": {
@@ -130,10 +130,17 @@
 angular.module('cds_app').controller('TRI_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
     $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
-	$scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
     $scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
     $scope.${systolic_ehr_data}.value.units = $scope.${systolic_def}.units[0];
     $scope.${rate_ehr_data}.value.units = $scope.${rate_def}.units[0];
+  });
+  $scope.$on('executeEnd', function() {
+    $scope.firedRules.filter(function(rule) {
+      if (rule.gtCode === 'gt0012') {
+        $scope.tri_cds = Math.round($scope.${timi_risk_index_cds_data}.value.magnitude);
+      } 
+    });
   });
 });
 </script>
@@ -179,12 +186,12 @@ angular.module('cds_app').controller('TRI_Ctrl', function($scope, $window){
       <input ng-model="${birthdate_ehr_data}.value.value" type="text" pikaday="date" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
     </div>
   </div>
-<div class="row collapse" title="{{${timi_risk_index_def}.description}}" id="displayresult1">
+<div class="row collapse" title="{{${timi_risk_index_def}.description}}" id="displayresult">
     <div class="medium-5 columns">
       <span><b>{{${timi_risk_index_def}.name}}:</b></span>
     </div>
     <div class="medium-7 columns">
-      <span>{{${timi_risk_index_cds_data}.value.magnitude}} {{${timi_risk_index_cds_data}.value.units}}</span>
+      <span>{{tri_cds}} {{${timi_risk_index_cds_data}.value.units}}</span>
     </div>
   </div>
   
@@ -289,7 +296,7 @@ angular.module('cds_app').controller('TRI_Ctrl', function($scope, $window){
       -webkit-animation: fadeIn 0.3s ease-in-out;
       animation: fadeIn 0.3s ease-in-out;
   }
-  .help-tip p{	/* The tooltip */
+  .help-tip p{  /* The tooltip */
       display: none;
       text-align: left;
       background-color: #1E2021;
@@ -323,7 +330,7 @@ angular.module('cds_app').controller('TRI_Ctrl', function($scope, $window){
       left:0;
   }
   .references1{
-    font-size: 70%;
+  font-size: 70%;
   }
   /* CSS animation */
   @-webkit-keyframes fadeIn {
@@ -341,21 +348,15 @@ angular.module('cds_app').controller('TRI_Ctrl', function($scope, $window){
       0% { opacity:0; }
       100% { opacity:100%; }
   }
-  #displayresult1 {
+  #displayresult {
     background-color: #e6e6e6; 
     padding-top: 3px;
     padding-bottom: 3px;
-    font-size: 90%;
-  }
-  #displayresult2 {
-    padding-top: 3px;
-    padding-bottom: 3px;
-    font-size: 90%;
+    padding-left: 3px;
+	font-size: 90%;
   }
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
-
-
 
 </body></html>

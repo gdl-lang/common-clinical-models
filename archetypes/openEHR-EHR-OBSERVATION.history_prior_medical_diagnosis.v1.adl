@@ -1,0 +1,303 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.history_prior_medical_diagnosis.v1
+
+concept
+	[at0000]	-- History of prior medical diagnosis
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Eneimi Allwell-Brown">
+		["email"] = <"info@cambio.se">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2016-12-12">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record data about whether an individual has previously being diagnosed with any named medical condition(s).">
+			use = <"Use to record the presence or absence of a prior history of a named medical condition. If the individual has previously being diagnosed with... (named diagnosis), the ordinal 1 (Yes) is selected and if there has been no previous diagnosis of the named condition, the ordinal 0 (No) is selected.">
+			misuse = <"Not intended for use to record a clinical narrative about a named medical condition.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"E290A6C5E8C8689D2A4C409A90F018AD">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- History of prior medical diagnosis
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Cardiovascular disease
+										value matches {
+											0|[local::at0024], 	-- No
+											1|[local::at0025]  	-- Yes
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Lung disease
+										value matches {
+											0|[local::at0027], 	-- No
+											1|[local::at0028]  	-- Yes
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Rheumatic_autoimmune disease
+										value matches {
+											0|[local::at0029], 	-- No
+											1|[local::at0030]  	-- Yes
+										}
+									}
+									CLUSTER[at0019] occurrences matches {0..1} matches {	-- Named cardiovascular diagnosis
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0006] occurrences matches {0..1} matches {	-- Hypertension
+												value matches {
+													0|[local::at0011], 	-- No
+													1|[local::at0012]  	-- Yes
+												}
+											}
+											ELEMENT[at0031] occurrences matches {0..1} matches {	-- Stroke/cerebrovascular accident
+												value matches {
+													0|[local::at0035], 	-- No
+													1|[local::at0036]  	-- Yes
+												}
+											}
+											ELEMENT[at0032] occurrences matches {0..1} matches {	-- Transient ischaemic attack (TIA)
+												value matches {
+													0|[local::at0033], 	-- No
+													1|[local::at0034]  	-- Yes
+												}
+											}
+											ELEMENT[at0037] occurrences matches {0..1} matches {	-- Atrial fibrillation
+												value matches {
+													0|[local::at0038], 	-- No
+													1|[local::at0039]  	-- Yes
+												}
+											}
+											ELEMENT[at0043] occurrences matches {0..1} matches {	-- Heart failure (unspecified)
+												value matches {
+													0|[local::at0044], 	-- No
+													1|[local::at0045]  	-- Yes
+												}
+											}
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Congestive Heart Failure
+												value matches {
+													0|[local::at0009], 	-- No
+													1|[local::at0010]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0020] occurrences matches {0..1} matches {*}
+									CLUSTER[at0021] occurrences matches {0..1} matches {	-- Named endocrine_metabolic diagnosis
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0004] occurrences matches {0..1} matches {	-- Diabetes Mellitus
+												value matches {
+													0|[local::at0007], 	-- No
+													1|[local::at0008]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0023] occurrences matches {0..1} matches {*}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0040] occurrences matches {0..1} matches {	-- Liver disease
+										value matches {
+											0|[local::at0041], 	-- No
+											1|[local::at0042]  	-- Yes
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"History of prior medical diagnosis">
+					description = <"A structure to record the answer to a question regarding an individual's history of being diagnosed with a named medical condition. The question \"Has the individual ever being diagnosed with....(named diagnosis)?\" is answered with either 'No' (ordinal 0) or 'Yes' (ordinal 1). Ordinal 1 (Yes) implies the individual has previously being diagnosed with the condition in question.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Diabetes Mellitus">
+					description = <"Has the individual ever been diagnosed with Diabetes Mellitus?">
+				>
+				["at0005"] = <
+					text = <"Congestive Heart Failure">
+					description = <"Has the individual ever been diagnosed with congestive heart failure?">
+				>
+				["at0006"] = <
+					text = <"Hypertension">
+					description = <"Has the individual ever been diagnosed with Hypertension?">
+				>
+				["at0007"] = <
+					text = <"No">
+					description = <"No history of diabetes mellitus">
+				>
+				["at0008"] = <
+					text = <"Yes">
+					description = <"Positive history of diabetes mellitus">
+				>
+				["at0009"] = <
+					text = <"No">
+					description = <"No history of congestive heart failure">
+				>
+				["at0010"] = <
+					text = <"Yes">
+					description = <"Positive history of congestive heart failure">
+				>
+				["at0011"] = <
+					text = <"No">
+					description = <"No history of hypertension">
+				>
+				["at0012"] = <
+					text = <"Yes">
+					description = <"Positive history of hypertension">
+				>
+				["at0013"] = <
+					text = <"Comment">
+					description = <"Additional information about history of prior medical diagnosis.">
+				>
+				["at0016"] = <
+					text = <"Cardiovascular disease">
+					description = <"Has the individual ever been diagnosed with any kind of cardiovascular disease?">
+				>
+				["at0017"] = <
+					text = <"Lung disease">
+					description = <"Has the individual ever been diagnosed with any kind of lung disease?">
+				>
+				["at0018"] = <
+					text = <"Rheumatic_autoimmune disease">
+					description = <"Has the individual ever been diagnosed with any kind of rheumatic or autoimmune disorder?">
+				>
+				["at0019"] = <
+					text = <"Named cardiovascular diagnosis">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Named lung diagnosis">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Named endocrine_metabolic diagnosis">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Named rheumatic_autoimmune diagnosis">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"No">
+					description = <"No history of cardiovascula disease.">
+				>
+				["at0025"] = <
+					text = <"Yes">
+					description = <"Positive history of cardiovascular disease.">
+				>
+				["at0027"] = <
+					text = <"No">
+					description = <"No history of lung disease.">
+				>
+				["at0028"] = <
+					text = <"Yes">
+					description = <"Positive history of lung disease.">
+				>
+				["at0029"] = <
+					text = <"No">
+					description = <"No history of rheumatic or autoimmune disease.">
+				>
+				["at0030"] = <
+					text = <"Yes">
+					description = <"Positive history of rheumatic or autoimmune disease.">
+				>
+				["at0031"] = <
+					text = <"Stroke/cerebrovascular accident">
+					description = <"Has the individual ever been diagnosed with a stroke/cerebrovascular accident?">
+				>
+				["at0032"] = <
+					text = <"Transient ischaemic attack (TIA)">
+					description = <"Has the individual ever been diagnosed with a TIA?">
+				>
+				["at0033"] = <
+					text = <"No">
+					description = <"No history of TIA.">
+				>
+				["at0034"] = <
+					text = <"Yes">
+					description = <"Positive history of TIA.">
+				>
+				["at0035"] = <
+					text = <"No">
+					description = <"No history of stroke.">
+				>
+				["at0036"] = <
+					text = <"Yes">
+					description = <"Positive history of stroke.">
+				>
+				["at0037"] = <
+					text = <"Atrial fibrillation">
+					description = <"Has the individual ever been diagnosed with atrial fibrillation?">
+				>
+				["at0038"] = <
+					text = <"No">
+					description = <"No history of atrial fibrillation.">
+				>
+				["at0039"] = <
+					text = <"Yes">
+					description = <"Positive history of atrial fibrillation.">
+				>
+				["at0040"] = <
+					text = <"Liver disease">
+					description = <"Has the individual ever been diagnosed with any kind of liver disease?">
+				>
+				["at0041"] = <
+					text = <"No">
+					description = <"No history of liver disease.">
+				>
+				["at0042"] = <
+					text = <"Yes">
+					description = <"Positive history of liver disease.">
+				>
+				["at0043"] = <
+					text = <"Heart failure (unspecified)">
+					description = <"Has the individual ever been diagnosed with heart failure?">
+				>
+				["at0044"] = <
+					text = <"No">
+					description = <"No history of heart failure">
+				>
+				["at0045"] = <
+					text = <"Yes">
+					description = <"Positive history of heart failure">
+				>
+			>
+		>
+	>

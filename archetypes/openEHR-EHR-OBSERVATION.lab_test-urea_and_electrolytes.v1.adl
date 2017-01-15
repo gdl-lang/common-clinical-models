@@ -4,7 +4,7 @@ specialize
 	openEHR-EHR-OBSERVATION.lab_test.v1
 
 concept
-	[at0000.1]	-- Urea och elektrolyter
+	[at0000.1]	-- Urea and electrolytes
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -83,48 +83,48 @@ description
 			copyright = <"© openEHR Foundation">
 		>
 	>
-	lifecycle_state = <"AuthorDraft">
+	lifecycle_state = <"0">
 	other_contributors = <"Heather Leslie AEG / Ocean Infomatics", "Sam Heard Ocean Informatics">
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"292169DD65BB5B58090CB80FE1D4D127">
+		["MD5-CAM-1.0.1"] = <"C501BC7A34A70106F54BFF2CFD0672FB">
 	>
 
 definition
-	OBSERVATION[at0000.1] matches {	-- Urea och elektrolyter
+	OBSERVATION[at0000.1] matches {	-- Urea and electrolytes
 		data matches {
-			HISTORY[at0001] matches {	-- Händelseförlopp
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Händelse
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Träd
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Testnamn
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Test name
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0073] occurrences matches {0..1} matches {	-- Teststatus
+									ELEMENT[at0073] occurrences matches {0..1} matches {	-- Test status
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0037, 	-- Delresultat
-													at0038, 	-- Slutgiltigt
-													at0039, 	-- Kompletterande
-													at0040, 	-- Korrigerat
-													at0074, 	-- Avbrutet
-													at0079]	-- Aldrig utfört
+													at0037, 	-- Interim
+													at0038, 	-- Final
+													at0039, 	-- Supplementary
+													at0040, 	-- Corrected (amended)
+													at0074, 	-- Aborted
+													at0079]	-- Never performed
 												}
 											}
 										}
 									}
-									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- Provdetaljer
+									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- Specimen detail
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.specimen\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
-									ELEMENT[at0078.5] occurrences matches {0..1} matches {	-- Natrium
+									ELEMENT[at0078.5] occurrences matches {0..1} matches {	-- Sodium
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -137,7 +137,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.4] occurrences matches {0..1} matches {	-- Kalium
+									ELEMENT[at0078.4] occurrences matches {0..1} matches {	-- Potassium
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -150,7 +150,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.3] occurrences matches {0..1} matches {	-- Klorid
+									ELEMENT[at0078.3] occurrences matches {0..1} matches {	-- Chloride
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -163,7 +163,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.2] occurrences matches {0..1} matches {	-- Bikarbonat
+									ELEMENT[at0078.2] occurrences matches {0..1} matches {	-- Bicarbonate
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -185,11 +185,15 @@ definition
 														units = <"mmol/l">
 														magnitude = <|>=0.0|>
 													>
+													["2"] = <
+														units = <"mg/dl">
+														magnitude = <|>=0.0|>
+													>
 												>
 											>
 										}
 									}
-									ELEMENT[at0078.7] occurrences matches {0..1} matches {	-- Kreatinin
+									ELEMENT[at0078.7] occurrences matches {0..1} matches {	-- Creatinine
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -198,17 +202,21 @@ definition
 														units = <"umol/l">
 														magnitude = <|>=0.0|>
 													>
+													["2"] = <
+														units = <"mg/dl">
+														magnitude = <|>=0.0|>
+													>
 												>
 											>
 										}
 									}
-									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- Kommentar om provresultatet
+									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- Per-result annotation
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.lab_result_annotation(-[a-zA-Z0-9_]+)*\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
-									ELEMENT[at0057] occurrences matches {0..1} matches {	-- Allmän tolkning
+									ELEMENT[at0057] occurrences matches {0..1} matches {	-- Overall interpretation
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -221,26 +229,26 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0004] matches {	-- Träd
+			ITEM_TREE[at0004] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					CLUSTER[at0013] occurrences matches {0..1} matches {	-- Test ID
+					CLUSTER[at0013] occurrences matches {0..1} matches {	-- Test identification
 						items cardinality matches {1..*; unordered} matches {
-							ELEMENT[at0062] occurrences matches {0..1} matches {	-- Order ID beställare
+							ELEMENT[at0062] occurrences matches {0..1} matches {	-- Placer order identifier
 								value matches {
 									DV_TEXT matches {*}
 								}
 							}
-							ELEMENT[at0063] occurrences matches {0..1} matches {	-- Order ID mottagare
+							ELEMENT[at0063] occurrences matches {0..1} matches {	-- Filler order Identifier
 								value matches {
 									DV_TEXT matches {*}
 								}
 							}
-							ELEMENT[at0068] occurrences matches {0..1} matches {	-- Laboratorietest ID
+							ELEMENT[at0068] occurrences matches {0..1} matches {	-- Laboratory test result identifier
 								value matches {
 									DV_TEXT matches {*}
 								}
 							}
-							allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- Detaljer om laboratoriet
+							allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- Laboratory details  
 								include
 									archetype_id/value matches {/openEHR-EHR-CLUSTER\.organisation\.v1/}
 								exclude
@@ -248,7 +256,7 @@ definition
 							}
 						}
 					}
-					ELEMENT[at0075] occurrences matches {0..1} matches {	-- Datum och tid för provsvar 
+					ELEMENT[at0075] occurrences matches {0..1} matches {	-- Datetime result issued
 						value matches {
 							DV_DATE_TIME matches {*}
 						}
