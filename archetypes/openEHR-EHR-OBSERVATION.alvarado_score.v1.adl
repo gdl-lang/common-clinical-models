@@ -5,6 +5,15 @@ concept
 	[at0000]	-- Alvarado appendicitis score
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -33,6 +42,28 @@ description
 			misuse = <"This tool depends on a thorough clinical assessment made by the physician and care team and should only be used to assist diagnosis.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Alvarado score utvecklades för att understödja diagnostik vid misstänkt akut appendicit.">
+			use = <"Använd för att understödja diagnostik vid misstänkt akut appendicit. Totala poängen uppgår till maximalt 10p och utgörs av summan av följande faktorer:
+
++2 poäng - Ömhet höger fossa
++1 poäng - Förhöjd temperatur (>37.3°C eller 99.1°F)
++1 poäng - Släppömhet
++1 poäng - Smärtvandring till höger fossa
++1 poäng - Anorexi/aptitlöshet
++1 poäng - Illamående eller kräkning
++2 poäng - LPK > 10,000
++1 poäng - Vänsterförskjuten diff
+
+- Poäng om  ≤ 3p anses vara låg risk utan behov av vidare utredning med DT
+- DT rekommenderas om 4-6p
+- Poäng om  ≥ 7p bör föranleda kontakt med kirurg. 
+">
+			keywords = <"alvarado", "appendicit">
+			misuse = <"Ej att anse som diagnostisk utan är endast till för att understödja klinisk bedömning.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -40,74 +71,74 @@ description
 		["references"] = <"Ref. 1: Alvarado A. A practical score for the early diagnosis of acute appendicitis. Ann Emerg Med. 1986; 15(5): 557-64. 
 
 Ref. 2: McKay R, Shepherd J. The use of the clinical scoring system by Alvarado in the decision to perform computed tomography for acute appendicitis in the ED. Am J Emerg Med. 2007; 25(5): 489-93. ">
-		["MD5-CAM-1.0.1"] = <"BD9DF35AF9D18992D42A6551629BBA0B">
+		["MD5-CAM-1.0.1"] = <"ED5354D309AA9909C13FEEB9725043B2">
 	>
 
 definition
 	OBSERVATION[at0000] matches {	-- Alvarado appendicitis score
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Right Lower Quadrant Tenderness?
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Ömhet höger fossa?
 										value matches {
-											0|[local::at0014], 	-- No
-											2|[local::at0015]  	-- Yes
+											0|[local::at0014], 	-- Nej
+											2|[local::at0015]  	-- Ja
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Elevated Temperature (>37.3°C or 99.1°F)?
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Förhöjd temperatur (>37.3°C eller 99.1°F)?
 										value matches {
-											0|[local::at0016], 	-- No
-											1|[local::at0017]  	-- Yes
+											0|[local::at0016], 	-- Nej
+											1|[local::at0017]  	-- Ja
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Rebound Tenderness?
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Släppömhet?
 										value matches {
-											0|[local::at0018], 	-- No
-											1|[local::at0019]  	-- Yes
+											0|[local::at0018], 	-- Nej
+											1|[local::at0019]  	-- Ja
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Migration of Pain to the Right Lower Quadrant?
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Smärtvandring till höger fossa?
 										value matches {
-											0|[local::at0020], 	-- No
-											1|[local::at0021]  	-- Yes
+											0|[local::at0020], 	-- Nej
+											1|[local::at0021]  	-- Ja
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Anorexia?
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Anorexi eller aptitlöshet?
 										value matches {
-											0|[local::at0022], 	-- No
-											1|[local::at0023]  	-- Yes
+											0|[local::at0022], 	-- Nej
+											1|[local::at0023]  	-- Ja
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Nausea or Vomiting?
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Illamående eller kräkning?
 										value matches {
-											0|[local::at0024], 	-- No
-											1|[local::at0025]  	-- Yes
+											0|[local::at0024], 	-- Nej
+											1|[local::at0025]  	-- Ja
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Leukocytosis > 10,000?
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- LPK > 10,000?
 										value matches {
-											0|[local::at0026], 	-- No
-											2|[local::at0027]  	-- Yes
+											0|[local::at0026], 	-- Nej
+											2|[local::at0027]  	-- Ja
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Leukocyte Left Shift
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Vänsterförskjuten diff?
 										value matches {
-											0|[local::at0028], 	-- No
-											1|[local::at0029]  	-- Yes
+											0|[local::at0028], 	-- Nej
+											1|[local::at0029]  	-- Ja
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Total poäng
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..10|}
 											}
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -244,6 +275,130 @@ ontology
 				["at0029"] = <
 					text = <"Yes">
 					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Alvarado appendicitis score">
+					description = <"Alvarado score utvecklades för att understödja diagnostik vid misstänkt akut appendicit.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Ömhet höger fossa?">
+					description = <"2p om föreliggande.">
+				>
+				["at0005"] = <
+					text = <"Förhöjd temperatur (>37.3°C eller 99.1°F)?">
+					description = <"1p om föreliggande.">
+				>
+				["at0006"] = <
+					text = <"Släppömhet?">
+					description = <"1p om föreliggande.">
+				>
+				["at0007"] = <
+					text = <"Smärtvandring till höger fossa?">
+					description = <"1p om föreliggande.">
+				>
+				["at0008"] = <
+					text = <"Anorexi eller aptitlöshet?">
+					description = <"1p om föreliggande.">
+				>
+				["at0009"] = <
+					text = <"Illamående eller kräkning?">
+					description = <"1p om föreliggande.">
+				>
+				["at0010"] = <
+					text = <"LPK > 10,000?">
+					description = <"2p om föreliggande.">
+				>
+				["at0011"] = <
+					text = <"Vänsterförskjuten diff?">
+					description = <"1p om föreliggande.">
+				>
+				["at0012"] = <
+					text = <"Total poäng">
+					description = <"Summan av samtliga faktorer">
+				>
+				["at0013"] = <
+					text = <"Kommentar">
+					description = <"Ev tillägg">
+				>
+				["at0014"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0023"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0026"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0027"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0028"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0029"] = <
+					text = <"Ja">
+					description = <"">
 				>
 			>
 		>
