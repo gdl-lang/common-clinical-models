@@ -102,28 +102,40 @@
 }</script>
 </head>
 <body ng-controller="cds_controller">
+<#assign app_help_tag = "def.guides['Glasgow_Blatchford_score_Calculation.v1'].concept">
+<#assign references = "def.terms['vt0001']"/>
 <#assign full_blood_count_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.lab_test-full_blood_count.v1']">
 <#assign full_blood_count_entry_def = "def.entries['openEHR-EHR-OBSERVATION.lab_test-full_blood_count.v1']">
 <#assign haemoglobin_def = full_blood_count_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078.4}']">
+<#assign event_time_def = full_blood_count_entry_def + ".elements['/data/events/time']">
 <#assign haemoglobin_ehr_data = full_blood_count_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078.4}']">
+<#assign event_time_ehr_data = full_blood_count_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign history_of_prior_medical_diagnosis_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.history_prior_medical_diagnosis.v1']">
 <#assign history_of_prior_medical_diagnosis_entry_def = "def.entries['openEHR-EHR-OBSERVATION.history_prior_medical_diagnosis.v1']">
 <#assign liver_disease_def = history_of_prior_medical_diagnosis_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0040}']">
 <#assign heart_failure__unspecified__def = history_of_prior_medical_diagnosis_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}/items{at0043}']">
+<#assign event_time1_def = history_of_prior_medical_diagnosis_entry_def + ".elements['/data/events/time']">
 <#assign liver_disease_ehr_data = history_of_prior_medical_diagnosis_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0040}']">
 <#assign heart_failure__unspecified__ehr_data = history_of_prior_medical_diagnosis_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}/items{at0043}']">
+<#assign event_time1_ehr_data = history_of_prior_medical_diagnosis_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign pulse_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.pulse.v1']">
 <#assign pulse_entry_def = "def.entries['openEHR-EHR-OBSERVATION.pulse.v1']">
 <#assign rate_def = pulse_entry_def + ".elements['/data{at0002}/events{at0003}/data{at0001}/items{at0004}']">
+<#assign event_time2_def = pulse_entry_def + ".elements['/data/events/time']">
 <#assign rate_ehr_data = pulse_entry_ehr_data + "[0].elements['/data{at0002}/events{at0003}/data{at0001}/items{at0004}']">
+<#assign event_time2_ehr_data = pulse_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign blood_pressure_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.blood_pressure.v1']">
 <#assign blood_pressure_entry_def = "def.entries['openEHR-EHR-OBSERVATION.blood_pressure.v1']">
 <#assign systolic_def = blood_pressure_entry_def + ".elements['/data{at0001}/events{at0006}/data{at0003}/items{at0004}']">
+<#assign event_time3_def = blood_pressure_entry_def + ".elements['/data/events/time']">
 <#assign systolic_ehr_data = blood_pressure_entry_ehr_data + "[0].elements['/data{at0001}/events{at0006}/data{at0003}/items{at0004}']">
+<#assign event_time3_ehr_data = blood_pressure_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign basic_demographic_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
 <#assign basic_demographic_entry_def = "def.entries['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
 <#assign gender_def = basic_demographic_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign event_time4_def = basic_demographic_entry_def + ".elements['/data/events/time']">
 <#assign gender_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign event_time4_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign glasgow_blatchford_bleeding_score__gbs__entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.glasgow_blatchford_bleeding_score.v1']">
 <#assign glasgow_blatchford_bleeding_score__gbs__entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.glasgow_blatchford_bleeding_score.v1']">
 <#assign glasgow_blatchford_bleeding_score__gbs__entry_def = "def.entries['openEHR-EHR-OBSERVATION.glasgow_blatchford_bleeding_score.v1']">
@@ -136,6 +148,7 @@
 <#assign pulse_def = glasgow_blatchford_bleeding_score__gbs__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
 <#assign melaena_def = glasgow_blatchford_bleeding_score__gbs__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
 <#assign syncope_def = glasgow_blatchford_bleeding_score__gbs__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign event_time5_def = glasgow_blatchford_bleeding_score__gbs__entry_def + ".elements['/data/events/time']">
 <#assign liver_disease1_def = glasgow_blatchford_bleeding_score__gbs__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
 <#assign heart_failure_cds_data = glasgow_blatchford_bleeding_score__gbs__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
 <#assign total_score_cds_data = glasgow_blatchford_bleeding_score__gbs__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
@@ -146,6 +159,7 @@
 <#assign pulse_cds_data = glasgow_blatchford_bleeding_score__gbs__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
 <#assign melaena_cds_data = glasgow_blatchford_bleeding_score__gbs__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
 <#assign syncope_cds_data = glasgow_blatchford_bleeding_score__gbs__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign event_time5_cds_data = glasgow_blatchford_bleeding_score__gbs__entry_cds_data + "[0].elements['/data/events/time']">
 <#assign liver_disease1_cds_data = glasgow_blatchford_bleeding_score__gbs__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
 <#assign heart_failure_ehr_data = glasgow_blatchford_bleeding_score__gbs__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
 <#assign total_score_ehr_data = glasgow_blatchford_bleeding_score__gbs__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
@@ -156,156 +170,180 @@
 <#assign pulse_ehr_data = glasgow_blatchford_bleeding_score__gbs__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
 <#assign melaena_ehr_data = glasgow_blatchford_bleeding_score__gbs__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
 <#assign syncope_ehr_data = glasgow_blatchford_bleeding_score__gbs__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign event_time5_ehr_data = glasgow_blatchford_bleeding_score__gbs__entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign liver_disease1_ehr_data = glasgow_blatchford_bleeding_score__gbs__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
 <#assign urea_and_electrolytes_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.lab_test-urea_and_electrolytes.v1']">
 <#assign urea_and_electrolytes_entry_def = "def.entries['openEHR-EHR-OBSERVATION.lab_test-urea_and_electrolytes.v1']">
 <#assign urea_def = urea_and_electrolytes_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078.1}']">
+<#assign event_time6_def = urea_and_electrolytes_entry_def + ".elements['/data/events/time']">
 <#assign urea_ehr_data = urea_and_electrolytes_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078.1}']">
+<#assign event_time6_ehr_data = urea_and_electrolytes_entry_ehr_data + "[0].elements['/data/events/time']">
+
+<script> 
+angular.module('cds_app').controller('Glasgow-Blatchford_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time3_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time4_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time5_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time6_ehr_data}.value.value = new Date().toISOString();
+	$scope.${systolic_ehr_data}.value.units = $scope.${systolic_def}.units[0];
+	$scope.${rate_ehr_data}.value.units = $scope.${rate_def}.units[0];
+	$scope.${haemoglobin_ehr_data}.value.units = $scope.${haemoglobin_def}.units[1];
+    $scope.${urea_ehr_data}.value.units = $scope.${urea_def}.units[1];
+	$scope.${gender_ehr_data}.value.selection = $scope.findMin($scope.${gender_def});
+	$scope.${liver_disease_ehr_data}.value.selection = $scope.findMin($scope.${liver_disease_def});
+	$scope.${heart_failure__unspecified__ehr_data}.value.selection = $scope.findMin($scope.${heart_failure__unspecified__def});
+	$scope.${melaena_ehr_data}.value.selection = $scope.findMin($scope.${melaena_def});
+	$scope.${syncope_ehr_data}.value.selection = $scope.findMin($scope.${syncope_def});
+	$scope.${liver_disease_ehr_data}.value.selection = $scope.findMin($scope.${liver_disease_def});
+  });
+});
+</script>
+
+<div ng-show="ready" ng-controller="Glasgow-Blatchford_Ctrl">
 <div ng-show="ready">
-<div class="row">
-<div class="medium-12 column">
-<h1>{{def.concept.name}}</h1>
+<div class="header">
+  <h1>{{def.concept.name}}</h1>
+  <h2>{{def.concept.description}}</h2>
+  <div class="help-tip">
+	<p>{{${app_help_tag}.description}}</p>
+  </div>
 </div>
-</div>
-<div class="row">
-<div class="medium-6 column">
-<form name="form">
-<fieldset>
-<legend>{{${full_blood_count_entry_def}.name}}</legend>
-<label>{{${haemoglobin_def}.name}}</label>
-<div class="row collapse" title="{{${haemoglobin_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${haemoglobin_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-<div class="medium-3 columns">
-<select ng-model="${haemoglobin_ehr_data}.value.units" id="haemoglobin_ehr_units" ng-options="unit for unit in ${haemoglobin_def}.units" ng-change="execute()"></select>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${history_of_prior_medical_diagnosis_entry_def}.name}}</legend>
-<label>{{${liver_disease_def}.name}}</label>
-<div class="row collapse" title="{{${liver_disease_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${liver_disease_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${liver_disease_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${heart_failure__unspecified__def}.name}}</label>
-<div class="row collapse" title="{{${heart_failure__unspecified__def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${heart_failure__unspecified__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${heart_failure__unspecified__def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${pulse_entry_def}.name}}</legend>
-<label>{{${rate_def}.name}}</label>
-<div class="row collapse" title="{{${rate_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${rate_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-<div class="medium-3 columns">
-<select ng-model="${rate_ehr_data}.value.units" id="rate_ehr_units" ng-options="unit for unit in ${rate_def}.units" ng-change="execute()"></select>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${blood_pressure_entry_def}.name}}</legend>
-<label>{{${systolic_def}.name}}</label>
-<div class="row collapse" title="{{${systolic_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${systolic_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-<div class="medium-3 columns">
-<select ng-model="${systolic_ehr_data}.value.units" id="systolic_ehr_units" ng-options="unit for unit in ${systolic_def}.units" ng-change="execute()"></select>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${basic_demographic_entry_def}.name}}</legend>
-<label>{{${gender_def}.name}}</label>
+
+<div class="card">
 <div class="row collapse" title="{{${gender_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${gender_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${gender_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${glasgow_blatchford_bleeding_score__gbs__entry_def}.name}}</legend>
-<label>{{${melaena_def}.name}}</label>
+    <div class="medium-6 columns">
+      <label>{{${gender_def}.name}}</label>
+      </div>
+      <label class="medium-6 columns">
+        <select ng-model="${gender_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${gender_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+  <div class="row collapse" title="{{${liver_disease_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${liver_disease_def}.name}}</label>
+      </div>
+      <label class="medium-6 columns">
+        <select ng-model="${liver_disease_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${liver_disease_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${heart_failure__unspecified__def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${heart_failure__unspecified__def}.name}}</label>
+      </div>
+      <label class="medium-6 columns">
+        <select ng-model="${heart_failure__unspecified__ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${heart_failure__unspecified__def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
 <div class="row collapse" title="{{${melaena_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${melaena_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${melaena_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${syncope_def}.name}}</label>
+    <div class="medium-6 columns">
+      <label>{{${melaena_def}.name}}</label>
+      </div>
+      <label class="medium-6 columns">
+        <select ng-model="${melaena_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${melaena_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
 <div class="row collapse" title="{{${syncope_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${syncope_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${syncope_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+    <div class="medium-6 columns">
+      <label>{{${syncope_def}.name}}</label>
+      </div>
+      <label class="medium-6 columns">
+        <select ng-model="${syncope_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${syncope_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+<div class="row collapse" title="{{${systolic_def}.description}}">
+<div class="medium-5 columns">
+<label>{{${systolic_def}.name}}</label>
 </div>
+<div class="medium-5 columns">
+        <input ng-model="${systolic_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${systolic_ehr_data}.value.units" ng-options="unit for unit in ${systolic_def}.units" ng-change="execute()" disabled=""></select>
+      </div>
 </div>
-</fieldset>
-<fieldset>
-<legend>{{${urea_and_electrolytes_entry_def}.name}}</legend>
-<label>{{${urea_def}.name}}</label>
+<div class="row collapse" title="{{${rate_def}.description}}">
+<div class="medium-5 columns">
+<label>{{${rate_def}.name}}</label>
+</div>
+<div class="medium-5 columns">
+        <input ng-model="${rate_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${rate_ehr_data}.value.units" ng-options="unit for unit in ${rate_def}.units" ng-change="execute()" disabled=""></select>
+      </div>
+</div>
+<div class="row collapse" title="{{${haemoglobin_def}.description}}">
+<div class="medium-5 columns">
+<label>{{${haemoglobin_def}.name}}</label>
+</div>
+<div class="medium-5 columns">
+        <input ng-model="${haemoglobin_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${haemoglobin_ehr_data}.value.units" ng-options="unit for unit in ${haemoglobin_def}.units" ng-change="execute()" disabled=""></select>
+      </div>
+</div>
 <div class="row collapse" title="{{${urea_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${urea_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+<div class="medium-5 columns">
+<label>{{${urea_def}.name}}</label>
 </div>
-<div class="medium-3 columns">
-<select ng-model="${urea_ehr_data}.value.units" id="urea_ehr_units" ng-options="unit for unit in ${urea_def}.units" ng-change="execute()"></select>
+<div class="medium-5 columns">
+        <input ng-model="${urea_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${urea_ehr_data}.value.units" ng-options="unit for unit in ${urea_def}.units" ng-change="execute()" disabled=""></select>
+      </div>
 </div>
-</div>
-</fieldset>
-</form>
-</div>
-<div class="medium-6 column">
-<fieldset>
-<legend>{{${glasgow_blatchford_bleeding_score__gbs__entry_def}.name}}</legend>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${heart_failure_def}.name}}: </b>{{${heart_failure_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${total_score_def}.name}}: </b>{{${total_score_cds_data}.value.magnitude}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${sex_def}.name}}: </b>{{${sex_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${blood_urea_nitrogen__bun__def}.name}}: </b>{{${blood_urea_nitrogen__bun__cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${haemoglobin__hb__def}.name}}: </b>{{${haemoglobin__hb__cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${systolic_blood_pressure__sbp__def}.name}}: </b>{{${systolic_blood_pressure__sbp__cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${pulse_def}.name}}: </b>{{${pulse_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${melaena_def}.name}}: </b>{{${melaena_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${syncope_def}.name}}: </b>{{${syncope_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${liver_disease1_def}.name}}: </b>{{${liver_disease1_cds_data}.value.symbol.value}}</div>
-</div>
-</fieldset>
+<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult">
+  <div class="medium-5 columns">
+    <label><b>{{${total_score_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${total_score_cds_data}.value.magnitude}}</label>
+  </div>
 </div>
 </div>
 </div>
+
+<div class="row"><div class="medium-12 columns"></div></div>
+<br /><br />
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
+</div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/11073021">Blatchford O, Murray WR, Blatchford M. A risk score to predict need for treatment for uppergastrointestinal haemorrhage. The Lancet. 2000 Oct 14;356(9238):1318-21.</a></i>
+        </li>
+      </div>
+    </div>
+<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/17870480">Chen IC, Hung MS, Chiu TF, Chen JC, Hsiao CT. Risk scoring systems to predict need for clinical intervention for patients with nonvariceal upper gastrointestinal tract bleeding. The American journal of emergency medicine. 2007 Sep 30;25(7):774-9.</a></i>
+        </li>
+      </div>
+    </div>
+<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/20337750">Srirajaskanthan R, Conn R, Bulwer C, Irving P. The Glasgow Blatchford scoring system enables accurate risk stratification of patients with upper gastrointestinal haemorrhage. International journal of clinical practice. 2010 Jun 1;64(7):868-74.</a></i>
+        </li>
+      </div>
+    </div>
+  </div>
 
 <style>
   html, body {
