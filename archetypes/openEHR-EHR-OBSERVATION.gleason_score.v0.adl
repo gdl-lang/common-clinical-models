@@ -1,0 +1,89 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.gleason_score.v0
+
+concept
+	[at0000]	-- Gleason score
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record Gleason Score">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"068DCEF24B8ACEB37659252C8AAAE6CF">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Gleason score
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- vilken händelse som helst
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Träd
+								items cardinality matches {2..*; unordered} matches {
+									ELEMENT[at0004] matches {	-- Primary
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|3..5|}
+											}
+										}
+									}
+									ELEMENT[at0005] matches {	-- Secondary
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|3..5|}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Gleason score">
+					description = <"Gleason Score">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"vilken händelse som helst">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Träd">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Primary">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Secondary">
+					description = <"*">
+				>
+			>
+		>
+	>

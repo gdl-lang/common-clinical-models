@@ -1,0 +1,117 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.prostate_biopsy_findings.v0
+
+concept
+	[at0000]	-- Prostate biopsy findings
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record biopsy finds of prostate gland">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"AAA9553EA8F372A6E1F9F2B67FD8CD3F">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Prostate biopsy findings
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- vilken händelse som helst
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Träd
+								items cardinality matches {3..*; unordered} matches {
+									ELEMENT[at0004] matches {	-- Total number of biopsies
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|>=0|}
+											}
+										}
+									}
+									ELEMENT[at0005] matches {	-- Total number of positive biopsies
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|>=0|}
+											}
+										}
+									}
+									ELEMENT[at0006] matches {	-- Total length of cancer
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::122]>
+												list = <
+													["1"] = <
+														units = <"mm">
+														magnitude = <|>=0.0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Gleason 4 + 3 in more than half of the biopsies?
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Prostate biopsy findings">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"vilken händelse som helst">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Träd">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Total number of biopsies">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Total number of positive biopsies">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Total length of cancer">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Gleason 4 + 3 in more than half of the biopsies?">
+					description = <"*">
+				>
+			>
+		>
+	>

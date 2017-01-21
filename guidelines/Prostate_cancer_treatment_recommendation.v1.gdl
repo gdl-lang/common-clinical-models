@@ -1,0 +1,200 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"Prostate_cancer_treatment_recommendation.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+			>
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.prostate_cancer_risk_classification.v0">
+				domain = <"CDS">
+				elements = <
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+				>
+			>
+			["gt0004"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.estimated_survival_scb.v0">
+				domain = <"CDS">
+				elements = <
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002]">
+					>
+				>
+			>
+			["gt0006"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.prostate_cancer_treatment_recommendation.v0">
+				domain = <"CDS">
+				elements = <
+					["gt0007"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002]">
+					>
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0005]">
+					>
+				>
+			>
+			["gt0015"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.prostate_cancer_tnm_staging.v0">
+				domain = <"EHR">
+				elements = <
+					["gt0016"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0019"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0011]">
+					>
+					["gt0020"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0015]">
+					>
+				>
+			>
+			["gt0023"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test_psa.v0">
+				domain = <"EHR">
+				elements = <
+					["gt0024"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0009"] = (RULE) <
+				when = <"$gt0005>=10,a", "$gt0003==2|local::at0007|Intermediate risk|">
+				then = <"$gt0008.value='Radiotherapy or prostatectomy'", "$gt0007=local::at0003|Curative|">
+				priority = <10>
+			>
+			["gt0011"] = (RULE) <
+				when = <"$gt0005<8,a", "$gt0003==2|local::at0007|Intermediate risk|">
+				then = <"$gt0008.value='Expectancy'", "$gt0007=local::at0008|Follow-up|">
+				priority = <9>
+			>
+			["gt0012"] = (RULE) <
+				when = <"$gt0005>=8,a", "$gt0005<10,a", "$gt0003==2|local::at0007|Intermediate risk|">
+				then = <"$gt0008.value='Active monitoring'", "$gt0007=local::at0008|Follow-up|">
+				priority = <8>
+			>
+			["gt0013"] = (RULE) <
+				when = <"$gt0005>=10,a", "$gt0003==1|local::at0006|Low risk|">
+				then = <"$gt0008.value='Active monitoring'", "$gt0007=local::at0008|Follow-up|">
+				priority = <7>
+			>
+			["gt0014"] = (RULE) <
+				when = <"$gt0005<10,a", "$gt0003==1|local::at0006|Low risk|">
+				then = <"$gt0008.value='Expectancy'", "$gt0007=local::at0008|Follow-up|">
+				priority = <6>
+			>
+			["gt0017"] = (RULE) <
+				when = <"$gt0019==0|local::at0012|N0|", "$gt0020==0|local::at0016|M0|", "$gt0005>=5,a", "$gt0003==3|local::at0008|High risk|", "$gt0016!=5|local::at0009|T3|", "$gt0016!=6|local::at0010|T4|">
+				then = <"$gt0008.value='Prostatectomy or radiotherapy'", "$gt0007=local::at0003|Curative|">
+				priority = <5>
+			>
+			["gt0018"] = (RULE) <
+				when = <"$gt0019==0|local::at0012|N0|", "$gt0020==0|local::at0016|M0|", "$gt0016==5|local::at0009|T3|", "$gt0005>=5,a", "$gt0003==3|local::at0008|High risk|">
+				then = <"$gt0008.value='Radiotherapy'", "$gt0007=local::at0003|Curative|">
+				priority = <4>
+			>
+			["gt0021"] = (RULE) <
+				when = <"$gt0005>=10,a", "$gt0003==0|local::at0005|Very low risk|">
+				then = <"$gt0008.value='Active monitoring'", "$gt0007=local::at0008|Follow-up|">
+				priority = <3>
+			>
+			["gt0022"] = (RULE) <
+				when = <"$gt0003==0|local::at0005|Very low risk|", "$gt0005<10,a">
+				then = <"$gt0008.value='Expectancy'", "$gt0007=local::at0008|Follow-up|">
+				priority = <2>
+			>
+			["gt0025"] = (RULE) <
+				when = <"(($gt0020==2|local::at0018|M1|)||($gt0019==2|local::at0014|N1|))||(($gt0024>=100,ng/mL)||($gt0016==6|local::at0010|T4|))",...>
+				then = <"$gt0007=local::at0004|Palliative|",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Prostate cancer treatment recommendation">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Risk classification">
+						description = <"*">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Number of years">
+						description = <"*">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Treatment intent">
+						description = <"*">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Treatment recommendation">
+						description = <"*">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Intermediate risk category curative treatment">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Low risk category treatment recommendation">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Intermediate risk category expectancy">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Intermediate risk cateogry active monitoring">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Low risk category active monitoring">
+					>
+					["gt0014"] = (TERM) <
+						text = <"Low risk category expectancy">
+					>
+					["gt0016"] = (TERM) <
+						text = <"T stage">
+						description = <"*">
+					>
+					["gt0017"] = (TERM) <
+						text = <"High risk category curative prostatecmy or radiotherapy">
+					>
+					["gt0018"] = (TERM) <
+						text = <"High risk cateogry curative radiotherapy">
+					>
+					["gt0019"] = (TERM) <
+						text = <"N stage">
+						description = <"*">
+					>
+					["gt0020"] = (TERM) <
+						text = <"M stage">
+						description = <"*">
+					>
+					["gt0021"] = (TERM) <
+						text = <"Very low risk cateogry active monitoring">
+					>
+					["gt0022"] = (TERM) <
+						text = <"Very low risk category expectancy">
+					>
+					["gt0024"] = (TERM) <
+						text = <"PSA value">
+						description = <"*">
+					>
+					["gt0025"] = (TERM) <
+						text = <"Palliative treatment">
+					>
+				>
+			>
+		>
+	>
+>

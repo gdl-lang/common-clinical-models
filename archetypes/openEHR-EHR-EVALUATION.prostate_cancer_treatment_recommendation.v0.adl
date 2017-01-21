@@ -1,0 +1,88 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.prostate_cancer_treatment_recommendation.v0
+
+concept
+	[at0000]	-- Prostate cancer treatment recommendation
+language
+	original_language = <[ISO_639-1::sv]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"To record prostate cancer treatment recommendation">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"50FC9196B75BFC9BEE0879ABD7135D65">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Prostate cancer treatment recommendation
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Träd
+				items cardinality matches {2..*; unordered} matches {
+					ELEMENT[at0002] matches {	-- Treatment intent
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0003, 	-- Curative
+									at0004, 	-- Palliative
+									at0008]	-- Follow-up
+								}
+							}
+						}
+					}
+					ELEMENT[at0005] matches {	-- Treatment recommendation
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Prostate cancer treatment recommendation">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Träd">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Treatment intent">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Curative">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Palliative">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Treatment recommendation">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Follow-up">
+					description = <"*">
+				>
+			>
+		>
+	>
