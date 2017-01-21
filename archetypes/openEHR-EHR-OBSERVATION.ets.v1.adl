@@ -2,18 +2,9 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.ets.v1
 
 concept
-	[at0000]	-- Emergency Transfusion Score
+	[at0000]	-- Emergency transfusion score
 language
 	original_language = <[ISO_639-1::en]>
-	translations = <
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			author = <
-				["name"] = <"Dennis Forslund">
-				["organisation"] = <"Cambio Healthcare Systems">
-			>
-		>
-	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -21,25 +12,6 @@ description
 		["date"] = <"2017-01-09">
 	>
 	details = <
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"Att bland svårt skadade patienter identifiera vilka som har behov av blodprodukter och därigenom undvika överflödig provtagning och transport av produkter.">
-			use = <"En poäng om ≥3p indikerar ett möjligt behov (5% risk) av blodprodukter.
-
-ETS baseras på:
-
-Systoliskt blodtryck (<90mmHg) 
-Positiv FAST
-Kliniskt instabilt bäcken
-Ålder
-Direkt transport från skadeplats
-Skadeorsak (trafikolycka eller fall från >3m)
-
-Resultatet redovisas mellan 0-9,5. Vänligen se referenserna för detaljerad förklaring av poängsystemet.">
-			keywords = <"emergency transfusion score", "transfusion", "ETS", "trauma">
-			misuse = <"Endast avsedd att utgöra stöd i snabb bedömning av behov av blodtransfusion hos patienter som genomgått trauma.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"The ETS is a risk assessment tool to help identify severely injured patients in need of blood products with those that do not and helps to avoid unnecessary cross-matching and transport. 
@@ -71,57 +43,69 @@ The scores are a mixture of integers and decimals and have been doubled for the 
 		["references"] = <"Ref. 1: Chico-Fernández, M., García-Fuentes, C., Alonso-Fernández, M., Toral-Vázquez, D., Bermejo-Aznarez, S., & Alted-López, E. (2011). Massive transfusion predictive scores in trauma. Experience of a transfusion registry. Medicina Intensiva (English Edition), 35(9), 546-551.
 
 Ref. 2: Subramaniam A, Albert V, Sharma S, et al.: Assessing the efficiency of scoring systems for predicting the probability of massive transfusion in trauma patients. J Haematol Thrombo Dis 2014; 2:1000161">
-		["MD5-CAM-1.0.1"] = <"7F84AF0280175FF2A2A16E883FB55DD0">
+		["MD5-CAM-1.0.1"] = <"3305BD8A91E4819DE590B1BF42354BBC">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Emergency Transfusion Score
+	OBSERVATION[at0000] matches {	-- Emergency transfusion score
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Ålder
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Age
 										value matches {
-											0|[local::at0012], 	-- Under 20 år
-											1|[local::at0013], 	-- 20-60 år
-											3|[local::at0014]  	-- >60 år
+											0|[local::at0012], 	-- Below 20 yrs
+											1|[local::at0013], 	-- 20 - 60 yrs
+											3|[local::at0014]  	-- >60 yrs
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Direkt transport från skadeplats
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Admission from scene
 										value matches {
-											0|[local::at0015], 	-- Nej
-											2|[local::at0016]  	-- Ja
+											0|[local::at0015], 	-- No
+											2|[local::at0016]  	-- yes
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Trafikolycka eller fall från >3m
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Traffic accident or fall >3m
 										value matches {
-											0|[local::at0017], 	-- Nej
-											2|[local::at0018]  	-- Ja
+											0|[local::at0017], 	-- No
+											2|[local::at0018]  	-- Traffic accident or Fall >3m
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Systoliskt blodtryck
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Sys BP
 										value matches {
 											0|[local::at0021], 	-- >120 mmHg
-											3|[local::at0020], 	-- 90-120 mmHg
-											5|[local::at0019]  	-- 0-90 mmHg
+											3|[local::at0020], 	-- SBP 90 to 120 mmHg
+											5|[local::at0019]  	-- SBP 0 to 90 mmHg
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Bäckeninstabilitet
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Pelvic ring disruption
 										value matches {
-											0|[local::at0022], 	-- Nej
-											3|[local::at0023]  	-- Ja
+											0|[local::at0022], 	-- No
+											3|[local::at0023]  	-- Yes
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- FAST
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- FAST/abdominal free fluid
 										value matches {
-											0|[local::at0024], 	-- Negativ
-											4|[local::at0025]  	-- Positiv
+											0|[local::at0024], 	-- No
+											4|[local::at0025]  	-- Yes
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Total poäng
+									ELEMENT[at0027] occurrences matches {0..1} matches {	-- Age
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::128]>
+												list = <
+													["1"] = <
+														units = <"a">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::380]>
@@ -134,7 +118,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -153,9 +137,8 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"ETS">
-					description = <"Emergency Transfusion Score (ETS) helps towards the prediction of Massive Transfusion (MT) risk in emergency admission patients - those requring PRBC (Packed red blood cells) and helps to avoid unnecessary cross-matching and transport of those with a low associated risk. An ETS of ≥ 3 correlates to a 5% risk of needing to order blood products and is used as a cut-off point.
-">
+					text = <"Emergency transfusion score">
+					description = <"Emergency Transfusion Score (ETS) helps towards the prediction of Massive Transfusion (MT) risk in emergency admission patients - those requring PRBC (Packed red blood cells) and helps to avoid unnecessary cross-matching and transport of those with a low associated risk.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -257,113 +240,9 @@ ontology
 					text = <"Yes">
 					description = <"*">
 				>
-			>
-		>
-		["sv"] = <
-			items = <
-				["at0000"] = <
-					text = <"Emergency Transfusion Score">
-					description = <"Emergency Transfusion Score (ETS) används som stöd i bedömning av behov av massiv blodtransfusion bland patienter som anländer till akutmottagning. En poäng om ≥3p indikerar ett möjligt behov av blodprodukter.">
-				>
-				["at0001"] = <
-					text = <"*Event Series(en)">
-					description = <"*@ internal @(en)">
-				>
-				["at0002"] = <
-					text = <"*Any event(en)">
-					description = <"**(en)">
-				>
-				["at0003"] = <
-					text = <"*Tree(en)">
-					description = <"*@ internal @(en)">
-				>
-				["at0004"] = <
-					text = <"Ålder">
-					description = <"Patientens ålder">
-				>
-				["at0005"] = <
-					text = <"Direkt transport från skadeplats">
-					description = <"Direkt transport från skadeplats">
-				>
-				["at0006"] = <
-					text = <"Trafikolycka eller fall från >3m">
-					description = <"Trafikolycka eller fall från >3 meters höjd">
-				>
-				["at0007"] = <
-					text = <"Systoliskt blodtryck">
-					description = <"Patientens systoliska blodtryck">
-				>
-				["at0008"] = <
-					text = <"Total poäng">
-					description = <"Summan av samtliga faktorer">
-				>
-				["at0009"] = <
-					text = <"Kommentar">
-					description = <"Ev tillägg">
-				>
-				["at0010"] = <
-					text = <"Bäckeninstabilitet">
-					description = <"Kliniskt instabilt bäcken">
-				>
-				["at0011"] = <
-					text = <"FAST">
-					description = <"Resultat av FAST">
-				>
-				["at0012"] = <
-					text = <"Under 20 år">
-					description = <"">
-				>
-				["at0013"] = <
-					text = <"20-60 år">
-					description = <"">
-				>
-				["at0014"] = <
-					text = <">60 år">
-					description = <"">
-				>
-				["at0015"] = <
-					text = <"Nej">
-					description = <"">
-				>
-				["at0016"] = <
-					text = <"Ja">
-					description = <"">
-				>
-				["at0017"] = <
-					text = <"Nej">
-					description = <"">
-				>
-				["at0018"] = <
-					text = <"Ja">
-					description = <"">
-				>
-				["at0019"] = <
-					text = <"0-90 mmHg">
-					description = <"">
-				>
-				["at0020"] = <
-					text = <"90-120 mmHg">
-					description = <"">
-				>
-				["at0021"] = <
-					text = <">120 mmHg">
-					description = <"">
-				>
-				["at0022"] = <
-					text = <"Nej">
-					description = <"">
-				>
-				["at0023"] = <
-					text = <"Ja">
-					description = <"">
-				>
-				["at0024"] = <
-					text = <"Negativ">
-					description = <"">
-				>
-				["at0025"] = <
-					text = <"Positiv">
-					description = <"">
+				["at0027"] = <
+					text = <"Age">
+					description = <"Holder for calculated Age">
 				>
 			>
 		>
