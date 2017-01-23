@@ -40,21 +40,6 @@ Ref. 2: Birnbaum A, Esses D, Bijur P, Wollowitz A, Gallagher EJ. Failure to vali
 	>
 	definition = (GUIDE_DEFINITION) <
 		archetype_bindings = <
-			["gt0002"] = (ARCHETYPE_BINDING) <
-				archetype_id = <"openEHR-EHR-EVALUATION.san_francisco_syncope_rule.v1">
-				domain = <"EHR">
-				elements = <
-					["gt0003"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/items[at0002]">
-					>
-					["gt0004"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/items[at0004]">
-					>
-					["gt0005"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/items[at0005]">
-					>
-				>
-			>
 			["gt0009"] = (ARCHETYPE_BINDING) <
 				archetype_id = <"openEHR-EHR-OBSERVATION.blood_pressure.v1">
 				domain = <"EHR">
@@ -64,30 +49,6 @@ Ref. 2: Birnbaum A, Esses D, Bijur P, Wollowitz A, Gallagher EJ. Failure to vali
 					>
 				>
 				predicates = <"max(/data/events/time)",...>
-			>
-			["gt0011"] = (ARCHETYPE_BINDING) <
-				archetype_id = <"openEHR-EHR-EVALUATION.san_francisco_syncope_rule.v1">
-				domain = <"CDS">
-				elements = <
-					["gt0012"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/items[at0002]">
-					>
-					["gt0013"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/items[at0003]">
-					>
-					["gt0014"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/items[at0004]">
-					>
-					["gt0015"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/items[at0005]">
-					>
-					["gt0016"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/items[at0006]">
-					>
-					["gt0017"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/items[at0008]">
-					>
-				>
 			>
 			["gt0018"] = (ARCHETYPE_BINDING) <
 				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-full_blood_count.v1">
@@ -99,51 +60,96 @@ Ref. 2: Birnbaum A, Esses D, Bijur P, Wollowitz A, Gallagher EJ. Failure to vali
 				>
 				predicates = <"max(/data/events/time)",...>
 			>
+			["gt0030"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.san_francisco_syncope_rule.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0035"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0007]">
+					>
+					["gt0036"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0006]">
+					>
+					["gt0037"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0009]">
+					>
+					["gt0038"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0008]">
+					>
+					["gt0039"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0040"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0005]">
+					>
+				>
+			>
+			["gt0031"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.san_francisco_syncope_rule.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0032"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0007]">
+					>
+					["gt0033"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0034"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0006]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
 		>
 		rules = <
 			["gt0020"] = (RULE) <
-				when = <"$gt0003!=null",...>
-				then = <"$gt0012=$gt0003",...>
-				priority = <9>
-			>
-			["gt0021"] = (RULE) <
-				when = <"$gt0019.numerator<30", "$gt0019!=null">
-				then = <"$gt0013=true",...>
-				priority = <8>
-			>
-			["gt0022"] = (RULE) <
-				when = <"$gt0004!=null",...>
-				then = <"$gt0014=$gt0004",...>
-				priority = <6>
-			>
-			["gt0023"] = (RULE) <
-				when = <"$gt0005!=null",...>
-				then = <"$gt0015=$gt0005",...>
+				when = <"$gt0033!=null",...>
+				then = <"$gt0039=$gt0033",...>
 				priority = <5>
 			>
-			["gt0024"] = (RULE) <
-				when = <"$gt0010.magnitude<90", "$gt0010.units=='mm[Hg]'", "$gt0010!=null">
-				then = <"$gt0016=true",...>
-				priority = <4>
+			["gt0041"] = (RULE) <
+				when = <"$gt0035==null", "$gt0036==null", "$gt0038==null", "$gt0039==null", "$gt0040==null">
+				then = <"$gt0039=false", "$gt0035=false", "$gt0036=false", "$gt0038=false", "$gt0040=false">
+				priority = <10>
 			>
-			["gt0026"] = (RULE) <
+			["gt0042"] = (RULE) <
+				when = <"$gt0019.numerator<30", "$gt0019!=null">
+				then = <"$gt0040=true",...>
+				priority = <9>
+			>
+			["gt0043"] = (RULE) <
 				when = <"$gt0019.numerator>=30", "$gt0019!=null">
-				then = <"$gt0013=false",...>
+				then = <"$gt0040=false",...>
+				priority = <8>
+			>
+			["gt0044"] = (RULE) <
+				when = <"$gt0010.magnitude<90", "$gt0010.units=='mm[Hg]'", "$gt0010!=null">
+				then = <"$gt0038=true",...>
 				priority = <7>
 			>
-			["gt0027"] = (RULE) <
+			["gt0045"] = (RULE) <
 				when = <"$gt0010.magnitude>=90", "$gt0010.units=='mm[Hg]'", "$gt0010!=null">
-				then = <"$gt0016=false",...>
+				then = <"$gt0038=false",...>
+				priority = <6>
+			>
+			["gt0046"] = (RULE) <
+				when = <"$gt0034!=null",...>
+				then = <"$gt0036=$gt0034",...>
+				priority = <4>
+			>
+			["gt0047"] = (RULE) <
+				when = <"$gt0032!=null",...>
+				then = <"$gt0035=$gt0032",...>
 				priority = <3>
 			>
-			["gt0028"] = (RULE) <
-				when = <"((($gt0012==true)||($gt0013==true))||(($gt0016==true)||($gt0014==true)))||($gt0015==true)",...>
-				then = <"$gt0017=true",...>
+			["gt0048"] = (RULE) <
+				when = <"($gt0039==true)||((($gt0036==true)||($gt0038==true))||(($gt0035==true)||($gt0040==true)))",...>
+				then = <"$gt0037=true",...>
 				priority = <2>
 			>
-			["gt0029"] = (RULE) <
-				when = <"(((($gt0012==false)||($gt0013==false))||($gt0015==false))||($gt0014==false))||($gt0016==false)",...>
-				then = <"$gt0017=false",...>
+			["gt0049"] = (RULE) <
+				when = <"$gt0039==false", "$gt0036==false", "$gt0038==false", "$gt0035==false", "$gt0040==false">
+				then = <"$gt0037=false",...>
 				priority = <1>
 			>
 		>
@@ -208,7 +214,7 @@ Ref. 2: Birnbaum A, Esses D, Bijur P, Wollowitz A, Gallagher EJ. Failure to vali
 						text = <"Set CHF Hx">
 					>
 					["gt0021"] = (TERM) <
-						text = <"Set HCT <30%">
+						text = <"Set HCT <30">
 					>
 					["gt0022"] = (TERM) <
 						text = <"EKG abnormal">
@@ -223,7 +229,7 @@ Ref. 2: Birnbaum A, Esses D, Bijur P, Wollowitz A, Gallagher EJ. Failure to vali
 						text = <"Any resp positive?">
 					>
 					["gt0026"] = (TERM) <
-						text = <"Set HCT not < 30%">
+						text = <"Set HCT not < 30">
 					>
 					["gt0027"] = (TERM) <
 						text = <"Set sys BP <90: false">
@@ -233,6 +239,69 @@ Ref. 2: Birnbaum A, Esses D, Bijur P, Wollowitz A, Gallagher EJ. Failure to vali
 					>
 					["gt0029"] = (TERM) <
 						text = <"Is any response positive? No">
+					>
+					["gt0032"] = (TERM) <
+						text = <"Shortness of Breath">
+						description = <"*">
+					>
+					["gt0033"] = (TERM) <
+						text = <"CHF Hx">
+						description = <"Congestive Heart Failure history">
+					>
+					["gt0034"] = (TERM) <
+						text = <"EKG abnormal">
+						description = <"New EKG change from any source, any non-sinus rhythm on EKG or monitoring">
+					>
+					["gt0035"] = (TERM) <
+						text = <"Shortness of Breath">
+						description = <"*">
+					>
+					["gt0036"] = (TERM) <
+						text = <"EKG abnormal">
+						description = <"New EKG change from any source, any non-sinus rhythm on EKG or monitoring">
+					>
+					["gt0037"] = (TERM) <
+						text = <"Any response positive?">
+						description = <"If any of the answers were positive: Patient is NOT in the low-risk group for serious outcome.,  if negative: Patient IS in the low-risk group for serious outcome.">
+					>
+					["gt0038"] = (TERM) <
+						text = <"Systolic BP <90 mmHg at Triage">
+						description = <"">
+					>
+					["gt0039"] = (TERM) <
+						text = <"CHF Hx">
+						description = <"Congestive Heart Failure history">
+					>
+					["gt0040"] = (TERM) <
+						text = <"Hematocrit <30">
+						description = <"HCT/PCV (Hematocrit/packed cell volume) %">
+					>
+					["gt0041"] = (TERM) <
+						text = <"Default">
+					>
+					["gt0042"] = (TERM) <
+						text = <"Set HCT <30">
+					>
+					["gt0043"] = (TERM) <
+						text = <"Set HCT >30">
+					>
+					["gt0044"] = (TERM) <
+						text = <"Set SBP<90 True">
+					>
+					["gt0045"] = (TERM) <
+						text = <"Set SBP<90 False">
+					>
+					["gt0046"] = (TERM) <
+						text = <"Set EKG">
+					>
+					["gt0047"] = (TERM) <
+						text = <"Set SOB">
+					>
+					["gt0048"] = (TERM) <
+						text = <"Any resp positive - yes">
+					>
+					["gt0049"] = (TERM) <
+						text = <"Any resp positive - no">
 					>
 				>
 			>

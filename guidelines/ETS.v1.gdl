@@ -67,8 +67,8 @@ Ref. 2: Subramaniam A, Albert V, Sharma S, et al.: Assessing the efficiency of s
 				archetype_id = <"openEHR-EHR-OBSERVATION.basic_demographic.v1">
 				domain = <"EHR">
 				elements = <
-					["gt0003"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0013]">
+					["gt0034"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0008]">
 					>
 				>
 				predicates = <"max(/data/events/time)",...>
@@ -127,6 +127,9 @@ Ref. 2: Subramaniam A, Albert V, Sharma S, et al.: Assessing the efficiency of s
 					["gt0032"] = (ELEMENT_BINDING) <
 						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0008]">
 					>
+					["gt0035"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0027]">
+					>
 				>
 			>
 		>
@@ -134,35 +137,35 @@ Ref. 2: Subramaniam A, Albert V, Sharma S, et al.: Assessing the efficiency of s
 			["gt0021"] = (RULE) <
 				when = <"$gt0019==null", "$gt0018==null", "$gt0015==null", "$gt0016==null", "$gt0017==null", "$gt0014==null">
 				then = <"$gt0014=0|local::at0012|Below 20 yrs|", "$gt0015=0|local::at0015|No|", "$gt0016=0|local::at0017|No|", "$gt0017=0|local::at0021|>120 mmHg|", "$gt0018=0|local::at0022|No|", "$gt0019=0|local::at0024|No|">
-				priority = <12>
+				priority = <13>
 			>
 			["gt0022"] = (RULE) <
 				when = <"$gt0012.magnitude>120", "$gt0012.units=='mm[Hg]'", "$gt0012!=null">
 				then = <"$gt0017=0|local::at0021|>120 mmHg|",...>
-				priority = <11>
+				priority = <12>
 			>
 			["gt0023"] = (RULE) <
 				when = <"$gt0012.magnitude>90", "$gt0012.magnitude<=120", "$gt0012.units=='mm[Hg]'", "$gt0012!=null">
 				then = <"$gt0017=3|local::at0020|SBP 90 to 120 mmHg|",...>
-				priority = <10>
+				priority = <11>
 			>
 			["gt0024"] = (RULE) <
 				when = <"$gt0012.magnitude<=90", "$gt0012.units=='mm[Hg]'", "$gt0012!=null">
 				then = <"$gt0017=5|local::at0019|SBP 0 to 90 mmHg|",...>
-				priority = <9>
+				priority = <10>
 			>
 			["gt0025"] = (RULE) <
-				when = <"$gt0003.magnitude<20", "$gt0003.units=='a'", "$gt0003!=null">
+				when = <"$gt0035.magnitude<20",...>
 				then = <"$gt0014=0|local::at0012|Below 20 yrs|",...>
 				priority = <8>
 			>
 			["gt0026"] = (RULE) <
-				when = <"$gt0003.magnitude>=20", "$gt0003.magnitude<=60", "$gt0003.units=='a'", "$gt0003!=null">
+				when = <"$gt0035.magnitude>=20", "$gt0035.magnitude<60">
 				then = <"$gt0014=1|local::at0013|20 - 60 yrs|",...>
 				priority = <7>
 			>
 			["gt0027"] = (RULE) <
-				when = <"$gt0003.magnitude>60", "$gt0003.units=='a'", "$gt0003!=null">
+				when = <"$gt0035.magnitude>60",...>
 				then = <"$gt0014=3|local::at0014|>60 yrs|",...>
 				priority = <6>
 			>
@@ -189,6 +192,11 @@ Ref. 2: Subramaniam A, Albert V, Sharma S, et al.: Assessing the efficiency of s
 			["gt0033"] = (RULE) <
 				then = <"$gt0032.precision=1", "$gt0032.magnitude=(((((($gt0014.value+$gt0015.value)+$gt0016.value)+$gt0017.value)+$gt0018.value)+$gt0019.value)/2.0)">
 				priority = <1>
+			>
+			["gt0036"] = (RULE) <
+				when = <"$gt0034!=null",...>
+				then = <"$gt0035.units='a'", "$gt0035.magnitude=($currentDateTime.year-$gt0034.year)">
+				priority = <9>
 			>
 		>
 	>
@@ -300,6 +308,17 @@ Ref. 2: Subramaniam A, Albert V, Sharma S, et al.: Assessing the efficiency of s
 					["gt0033"] = (TERM) <
 						text = <"Total score">
 					>
+					["gt0034"] = (TERM) <
+						text = <"Birthdate">
+						description = <"*">
+					>
+					["gt0035"] = (TERM) <
+						text = <"Calc Age">
+						description = <"Holder for calculated Age">
+					>
+					["gt0036"] = (TERM) <
+						text = <"Calculate age">
+					>
 				>
 			>
 			["sv"] = (TERM_DEFINITION) <
@@ -407,6 +426,12 @@ Ref. 2: Subramaniam A, Albert V, Sharma S, et al.: Assessing the efficiency of s
 					>
 					["gt0033"] = (TERM) <
 						text = <"Total poäng">
+					>
+					["gt0034"] = (TERM) <
+					>
+					["gt0035"] = (TERM) <
+					>
+					["gt0036"] = (TERM) <
 					>
 				>
 			>
