@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.sequential_organ_failure_assessment.v1
 
 concept
-	[at0000]	-- Sequential organ failure assessment
+	[at0000]	-- Sequential Organ Failure Assessment
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -12,6 +21,37 @@ description
 		["date"] = <"2017-01-03">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att förutsäga mortalitet hos patient som vårdas på intensivvårdsavdelning. Poängen beräknas fortlöpande med 24h-intervall från initial bedömning till utskrivning. Registrering görs med hänsyn till det senaste dygnet.">
+			use = <"Varje individuell parameter poängsätts med 0-4p där 0 indikerar antingen normalvärde eller att aktuellt värde saknas eller av någon anledning ej är tillämpligt. 
+
+Systemet har flera möjliga tillämpningar:
+ - Parametrarna kan användas för utvärdering av respektive organsystem.
+ - Totala poängsumman kan användas för att uppskatta prognos för den specifika dagen
+ - Totala summan av de värst drabbade parametrarna kan användas för att utvärdera hela vårdtiden
+
+De sex parametrarna inkluderar:
+- Respiration
+- Koagulation
+- Lever
+- Neurologi
+- Hjärt-kärl
+- Njure 
+
+Total poäng uppgår till maximalt 24p och tolkas med avseende på mortalitet enligt:
+                                 
+0-6p = <10%
+7-9p =15-20%
+10-12p = 40-50%
+13-14p = 50-60%
+15p = >80%
+15-24p = >90%
+">
+			keywords = <"SOFA", "mortalitet", "organsvikt", "Sequential Organ Failure Assessment", "intensivvård", "IVA">
+			misuse = <"SOFA är endast en uppskattning och är ej avsedd för att påverka medicinsk handläggning eller utvärdera intervention.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"The SOFA helps to predict mortality across 6 organ systems which is calculated every 24 hrs from the initial assessment at admission until the patient is discharged. The worst results of each measured parameter is recorded during the previous 24 hrs.">
@@ -57,73 +97,73 @@ SOFA score     Mortality
 Ref. 2: Vincent JL, de Mendonça A, Cantraine F, et al. Use of the SOFA score to assess the incidence of organ dysfunction/failure in intensive care units: results of a multicenter, prospective study. Working group on \"sepsis-related problems\" of the European Society of Intensive Care Medicine. Crit Care Med. 1998;26(11):1793–1800.
 
 Ref. 3: Kratz A, Ferraro M, Sluss PM, et al: Case records of the Massachusetts General Hospital: laboratory values. N Engl J Med 2004; 351(15):1549-1563.">
-		["MD5-CAM-1.0.1"] = <"4982DD3EFA8C5AFB55B0D2AAA8FFE395">
+		["MD5-CAM-1.0.1"] = <"DCBCD3F65BFEE9E01D9CA3752F88B479">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Sequential organ failure assessment
+	OBSERVATION[at0000] matches {	-- Sequential Organ Failure Assessment
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- PF ratio/carrico index score
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Respiration - poäng
 										value matches {
-											0|[local::at0041], 	-- N/A
+											0|[local::at0041], 	-- Ej tillämpbar
 											1|[local::at0012], 	-- <400
 											2|[local::at0013], 	-- <300
-											3|[local::at0014], 	-- <200 and mechanically ventilated
-											4|[local::at0015]  	-- <100 and mechanically ventilated
+											3|[local::at0014], 	-- <200 och intuberad
+											4|[local::at0015]  	-- <100 och intuberad
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Platlets score
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Trombocyter - poäng
 										value matches {
-											0|[local::at0036], 	-- N/A
+											0|[local::at0036], 	-- Ej tillämpbar
 											1|[local::at0037], 	-- <150
 											2|[local::at0038], 	-- <100
 											3|[local::at0039], 	-- <50
 											4|[local::at0040]  	-- <20
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- GCS score
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- GCS - poäng
 										value matches {
-											0|[local::at0031], 	-- N/A
+											0|[local::at0031], 	-- Ej tillämpbar
 											1|[local::at0032], 	-- 13-14
 											2|[local::at0033], 	-- 10-12
 											3|[local::at0034], 	-- 6-9
 											4|[local::at0035]  	-- <6
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- BR score
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Bilirubin - poäng
 										value matches {
-											0|[local::at0026], 	-- N/A
+											0|[local::at0026], 	-- Ej tillämpbar
 											1|[local::at0027], 	-- 1.2–1.9 [>20-32]
 											2|[local::at0028], 	-- 2.0–5.9 [33-101]
 											3|[local::at0029], 	-- 6.0–11.9 [102-204]
 											4|[local::at0030]  	-- >12.0 [>204]
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- MAP or admin of vasopressors required
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Medelartärtryck (MAP) alt behov av vasopressor
 										value matches {
-											0|[local::at0016], 	-- No hypotension
+											0|[local::at0016], 	-- Ej hypotension
 											1|[local::at0017], 	-- MAP< 70 mmHg
-											2|[local::at0018], 	-- dop =< 5 or dob (any dose)
-											3|[local::at0019], 	-- dop >5 OR epi =< 0.1 ORnor <= 0.1
-											4|[local::at0020]  	-- dop >15 OR epi >0.1 OR nor >0.1
+											2|[local::at0018], 	-- Dopamin < 5 eller
+											3|[local::at0019], 	-- Dopamin > 5 eller
+											4|[local::at0020]  	-- Dopamin > 15 eller noradrenalin
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Creatinine or urine output
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Kreatinin eller dygnsdiures
 										value matches {
 											0|[local::at0021], 	-- <1.2 [<106]
 											1|[local::at0022], 	-- 1.2–1.9 [106-168]
 											2|[local::at0023], 	-- 2.0–3.4 [169-301]
-											3|[local::at0024], 	-- 3.5–4.9 [302-433] (or < 500 ml/d)
-											4|[local::at0025]  	-- >5.0 [>433] (or <200 ml/d)
+											3|[local::at0024], 	-- 3.5–4.9 [302-433] (eller dygnsdiures < 500 ml/dygn)
+											4|[local::at0025]  	-- >5.0 [>433] (eller dygnsdiures <200 ml/dag)
 										}
 									}
-									ELEMENT[at0042] occurrences matches {0..1} matches {	-- Carrico/PF
+									ELEMENT[at0042] occurrences matches {0..1} matches {	-- Respiration - PaO2/FiO2
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::125]>
@@ -137,14 +177,14 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Total poäng
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..24|}
 											}
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -333,6 +373,188 @@ ontology
 				["at0042"] = <
 					text = <"Carrico/PF">
 					description = <"Calculation value of the Carrico/PF ratio of PaO2/FiO2">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Sequential Organ Failure Assessment">
+					description = <"SOFA: Sequential Organ Failure Assessment - ett poängsystem utvecklat European Society of Intensive Care Medicine för uppskattning av mortalitet hos patienter som vårdas på intensivvårdsavdelning.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Respiration - poäng">
+					description = <"PaO2/FiO2 ">
+				>
+				["at0005"] = <
+					text = <"Trombocyter - poäng">
+					description = <"Trombocyter - x10^3/muL">
+				>
+				["at0006"] = <
+					text = <"GCS - poäng">
+					description = <"Glasgow Coma Scale">
+				>
+				["at0007"] = <
+					text = <"Bilirubin - poäng">
+					description = <"Totalt Bilirubin angett i mg/dl [μmol/L]">
+				>
+				["at0008"] = <
+					text = <"Medelartärtryck (MAP) alt behov av vasopressor">
+					description = <"Medelartärtryck (MAP) alt behov av vasopressor">
+				>
+				["at0009"] = <
+					text = <"Kreatinin eller dygnsdiures">
+					description = <"Kreatinin angett i mg/dl [μmol/L] (eller dygnsdiures angett i mL/dag. ">
+				>
+				["at0010"] = <
+					text = <"Total poäng">
+					description = <"Summan av samtliga faktorer">
+				>
+				["at0011"] = <
+					text = <"Kommentar">
+					description = <"Ev tillägg">
+				>
+				["at0012"] = <
+					text = <"<400">
+					description = <"mmHg">
+				>
+				["at0013"] = <
+					text = <"<300">
+					description = <"mmHg">
+				>
+				["at0014"] = <
+					text = <"<200 och intuberad">
+					description = <"mmHg">
+				>
+				["at0015"] = <
+					text = <"<100 och intuberad">
+					description = <"mmHg">
+				>
+				["at0016"] = <
+					text = <"Ej hypotension">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"MAP< 70 mmHg">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Dopamin < 5 eller
+dobutamin">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Dopamin > 5 eller
+noradrenalin < 0,1 eller
+adrenalin < 0,1">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Dopamin > 15 eller noradrenalin
+>0,1
+eller
+adrenalin >0,1">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"<1.2 [<106]">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"1.2–1.9 [106-168]">
+					description = <"">
+				>
+				["at0023"] = <
+					text = <"2.0–3.4 [169-301]">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"3.5–4.9 [302-433] (eller dygnsdiures < 500 ml/dygn)">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <">5.0 [>433] (eller dygnsdiures <200 ml/dag)">
+					description = <"">
+				>
+				["at0026"] = <
+					text = <"Ej tillämpbar">
+					description = <"(mg/dl) [μmol/L]">
+				>
+				["at0027"] = <
+					text = <"1.2–1.9 [>20-32]">
+					description = <"(mg/dl) [μmol/L]">
+				>
+				["at0028"] = <
+					text = <"2.0–5.9 [33-101]">
+					description = <"(mg/dl) [μmol/L]">
+				>
+				["at0029"] = <
+					text = <"6.0–11.9 [102-204]">
+					description = <"(mg/dl) [μmol/L]">
+				>
+				["at0030"] = <
+					text = <">12.0 [>204]">
+					description = <"(mg/dl) [μmol/L]">
+				>
+				["at0031"] = <
+					text = <"Ej tillämpbar">
+					description = <"">
+				>
+				["at0032"] = <
+					text = <"13-14">
+					description = <"">
+				>
+				["at0033"] = <
+					text = <"10-12">
+					description = <"">
+				>
+				["at0034"] = <
+					text = <"6-9">
+					description = <"">
+				>
+				["at0035"] = <
+					text = <"<6">
+					description = <"">
+				>
+				["at0036"] = <
+					text = <"Ej tillämpbar">
+					description = <"x10^3/muL">
+				>
+				["at0037"] = <
+					text = <"<150">
+					description = <"x10^3/muL">
+				>
+				["at0038"] = <
+					text = <"<100">
+					description = <"x10^3/muL">
+				>
+				["at0039"] = <
+					text = <"<50">
+					description = <"x10^3/muL">
+				>
+				["at0040"] = <
+					text = <"<20">
+					description = <"x10^3/muL">
+				>
+				["at0041"] = <
+					text = <"Ej tillämpbar">
+					description = <"">
+				>
+				["at0042"] = <
+					text = <"Respiration - PaO2/FiO2">
+					description = <"Carrico/PF-ratio av PaO2/FiO2">
 				>
 			>
 		>
