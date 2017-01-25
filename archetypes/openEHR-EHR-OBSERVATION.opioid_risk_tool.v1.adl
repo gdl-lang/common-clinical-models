@@ -1,0 +1,290 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.opioid_risk_tool.v1
+
+concept
+	[at0000]	-- Opiod risk tool
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2016-01-22">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The ORT (Opioid Risk Tool) is used on initial visit and prior to opioid therapy for chronic pain in order to provide the clinician so,e idea of potential risk of drug abuse including alcohol, illegal and prescription drub abuse.">
+			use = <"Variables include information of personal and family history of sexal abuse in the past (females), illegal or prescription drugs or alcohol in patients between the ages of 16 and 45 years and with or without psychological disturbances.
+
+The score ranges from 0 to 26 in both men and women but certain variables are scored differently for men and for women. Such as previous sexual abuse (only scored in women) and higher weights in the scores for men who had previous family histories of illegale drug abuse or alcohol abuse.
+
+The score interpretations are:
+
+<= 3: low risk
+4-7: moderate risk
+>= 8: high risk">
+			keywords = <"Opioid risk tool", "ORT", "drug abuse risk">
+			misuse = <"Patients in all cases should be watched when administrationg opioids for chronic pain management and so the score should only be used as a supporting piece of evidence only.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"80FCBCDEBDD9516BEAB62D2DE14FD646">
+		["references"] = <"Ref. 1: Webster LR, Webster RM. Predicting aberrant behaviors in opioid-treated patients: preliminary validation of the Opioid Risk Tool. Pain Med. 2005 Nov-Dec;6(6):432-42. PubMed PMID: 16336480.">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Opiod risk tool
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Age 16-45
+										value matches {
+											0|[local::at0017], 	-- No
+											1|[local::at0018]  	-- yes
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Hx of preadolescent sexual abuse
+										value matches {
+											0|[local::at0019], 	-- no
+											3|[local::at0020]  	-- yes
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Hx of depression
+										value matches {
+											0|[local::at0021], 	-- no
+											1|[local::at0022]  	-- yes
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Hx of ADD, OCD, Bipolar or Schizophrenia
+										value matches {
+											0|[local::at0023], 	-- no
+											2|[local::at0024]  	-- yes
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Hx of alcohol abuse
+										value matches {
+											0|[local::at0025], 	-- no
+											3|[local::at0026]  	-- yes
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Hx of illegal drug abuse
+										value matches {
+											0|[local::at0027], 	-- no
+											4|[local::at0028]  	-- yes
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Hx of prescription drug use
+										value matches {
+											0|[local::at0029], 	-- no
+											5|[local::at0030]  	-- yes
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- FHx alcohol abuse
+										value matches {
+											0|[local::at0039], 	-- no
+											1|[local::at0040]  	-- yes
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- FHx illegal drug abuse
+										value matches {
+											0|[local::at0041], 	-- no
+											1|[local::at0042]  	-- yes
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- FHx prescription drug abuse
+										value matches {
+											0|[local::at0037], 	-- no
+											4|[local::at0038]  	-- yes
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Calculate score men
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..26|}
+											}
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Calculate score women
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..26|}
+											}
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Opiod risk tool">
+					description = <"The Opiod Risk Tool (ORT) helps to ascertain the risk of abherant behaviour of patients who have issues of opioid use or misuse.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Age 16-45">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Hx of preadolescent sexual abuse">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Hx of depression">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Hx of ADD, OCD, Bipolar or Schizophrenia">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Hx of alcohol abuse">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Hx of illegal drug abuse">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Hx of prescription drug use">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"FHx alcohol abuse">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"FHx illegal drug abuse">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"FHx prescription drug abuse">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Calculate score men">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Comment">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Calculate score women">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"yes">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"no">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"yes">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"no">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"yes">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"no">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"yes">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"no">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"yes">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"no">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"yes">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"no">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"yes">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"no">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"yes">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"no">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"yes">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"no">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"yes">
+					description = <"*">
+				>
+			>
+		>
+	>
