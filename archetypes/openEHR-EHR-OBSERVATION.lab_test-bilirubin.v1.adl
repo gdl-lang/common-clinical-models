@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.lab_test-bilirubin.v1
 
 concept
-	[at0000]	-- Laboratory test - bilirubin
+	[at0000]	-- Provsvar - bilirubin
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -106,44 +106,44 @@ Rapporteras vanligen tillbaka till beställande kliniker som del i övergripande
 Ref. 2: NEHTA, Australia. Pathology Episode v1.0 - Data Group library [Internet]. 2009;[cited 2009 Dec 8 ] Available from: http://www.nehta.gov.au/data-group-library/data-specifications/dgl-pathology
 
 Ref. 3: IHE. IHE, Laboratory Technical Framework, Volume 3 Content [Internet]. 2008;Available from: http://www.ihe.net/Technical_Framework/upload/ihe_lab_TF_rel2_1-Vol-3_FT_2008-08-08.pdf.">
-		["MD5-CAM-1.0.1"] = <"AA85BD8C8877DE4DA1FA3D07B46942E2">
+		["MD5-CAM-1.0.1"] = <"5F8DE5945E21447CA26E35E59C23F1CE">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Laboratory test - bilirubin
+	OBSERVATION[at0000] matches {	-- Provsvar - bilirubin
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Test name
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- *Test name(en)
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0077] occurrences matches {0..1} matches {	-- Diagnostic service
+									ELEMENT[at0077] occurrences matches {0..1} matches {	-- *Diagnostic service(en)
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0073] occurrences matches {0..1} matches {	-- Test status
+									ELEMENT[at0073] occurrences matches {0..1} matches {	-- Teststatus
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0037, 	-- Interim
-													at0038, 	-- Final
-													at0039, 	-- Supplementary
-													at0040, 	-- Corrected (amended)
-													at0074, 	-- Aborted
-													at0079]	-- Never performed
+													at0037, 	-- Delresultat
+													at0038, 	-- Slutgiltigt
+													at0039, 	-- Kompletterande
+													at0040, 	-- Korrigerat
+													at0074, 	-- Avbrutet
+													at0079]	-- Aldrig utfört
 												}
 											}
 										}
 									}
-									ELEMENT[at0091] occurrences matches {0..1} matches {	-- Total Bilirubin
+									ELEMENT[at0091] occurrences matches {0..1} matches {	-- Bilirubin
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -160,7 +160,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0092] occurrences matches {0..1} matches {	-- Direct Bilirubin
+									ELEMENT[at0092] occurrences matches {0..1} matches {	-- Bilirubin, konjugerat
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -177,25 +177,25 @@ definition
 											>
 										}
 									}
-									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- Specimen detail
+									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- Provdetaljer
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.specimen\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
 									ELEMENT[at0078] occurrences matches {0..*} matches {*}
-									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- Per-result annotation
+									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- Kommentar om provresultatet
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.lab_result_annotation(-[a-zA-Z0-9_]+)*\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
-									ELEMENT[at0057] occurrences matches {0..1} matches {	-- Overall interpretation
+									ELEMENT[at0057] occurrences matches {0..1} matches {	-- Övergripande tolkning
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..*} matches {	-- Multimedia representation
+									ELEMENT[at0010] occurrences matches {0..*} matches {	-- Multimedia
 										value matches {
 											DV_MULTIMEDIA matches {
 												media_type matches {[openEHR::]}
@@ -210,34 +210,34 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0004] matches {	-- Tree
+			ITEM_TREE[at0004] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0062] occurrences matches {0..1} matches {	-- Requestor order identifier
+					ELEMENT[at0062] occurrences matches {0..1} matches {	-- *Requestor order identifier(en)
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					allow_archetype CLUSTER[at0090] occurrences matches {0..*} matches {	-- Requestor
+					allow_archetype CLUSTER[at0090] occurrences matches {0..*} matches {	-- *Requestor(en)
 						include
 							archetype_id/value matches {/.*/}
 					}
-					ELEMENT[at0063] occurrences matches {0..1} matches {	-- Receiver order Identifier
+					ELEMENT[at0063] occurrences matches {0..1} matches {	-- *Receiver order Identifier(en)
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- Receiving laboratory
+					allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- *Receiving laboratory(en)
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.organisation\.v1/}
 						exclude
 							archetype_id/value matches {/.*/}
 					}
-					ELEMENT[at0068] occurrences matches {0..1} matches {	-- Laboratory test result identifier
+					ELEMENT[at0068] occurrences matches {0..1} matches {	-- *Laboratory test result identifier(en)
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					ELEMENT[at0075] occurrences matches {0..1} matches {	-- Datetime result issued
+					ELEMENT[at0075] occurrences matches {0..1} matches {	-- *Datetime result issued(en)
 						value matches {
 							DV_DATE_TIME matches {*}
 						}
@@ -704,8 +704,8 @@ ontology
 		["sv"] = <
 			items = <
 				["at0000"] = <
-					text = <"*Laboratory test - bilirubin(en)">
-					description = <"*To record the Bilirubin (BR) level both total and direct from a haematological test(en)">
+					text = <"Provsvar - bilirubin">
+					description = <"Registrering av provsvar för bilirubin">
 				>
 				["at0001"] = <
 					text = <"*Event Series(en)">
@@ -805,12 +805,12 @@ ontology
 					description = <"*Details of the clinician or organisation requesting the laboratory test.(en)">
 				>
 				["at0091"] = <
-					text = <"*Total Bilirubin(en)">
-					description = <"*Total Bilirubin measures the sum of both unconjugated and conjugated Bilirubin.(en)">
+					text = <"Bilirubin">
+					description = <"Totalt bilirubin - summan av konjugerat och okonjugerat bilirubin">
 				>
 				["at0092"] = <
-					text = <"*Direct Bilirubin(en)">
-					description = <"*The separate test for Direct Bilirubin (BR) (conjugated) is useful to estimate the measure for unconjugated BR by taking it away from Total BR(en)">
+					text = <"Bilirubin, konjugerat">
+					description = <"Konjugerat bilirubin">
 				>
 			>
 		>

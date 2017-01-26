@@ -4,9 +4,18 @@ specialize
 	openEHR-EHR-OBSERVATION.lab_test.v1
 
 concept
-	[at0000.1]	-- Full blood count
+	[at0000.1]	-- Blodstatus och celler
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Dr Ian McNicoll">
@@ -27,6 +36,15 @@ description
 			misuse = <"This archetype is not a full laboratory report and requires diagnosis and other assessments to be recorded using other archetypes.">
 			copyright = <"© openEHR Foundation">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att registrera provresultat - blodstatus och celler inklusive fynd vid mikroskopi.">
+			use = <"Rapporteras vanligen tillbaka till beställande kliniker som del i övergripande rapport av provsvar.
+">
+			keywords = <"lab", "klinisk kemi", "hematologi", "patologi">
+			misuse = <"Denna arketyp motsvarar ej en fullständig lab-rapport. Används med fördel i kombination med andra arketyper.">
+			copyright = <"© openEHR Foundation">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <"Sam Heard, Ocean Informatics, Australia", "Heather Leslie, Ocean Informatics, Australia", "Heath Frankel, Ocean Informatics, Australia", "Koray Atalag, University of Auckland, New Zealand">
@@ -39,50 +57,50 @@ IHE. IHE, Laboratory Technical Framework, Volume 3 Content [Internet]. 2008;Avai
 
 
 ">
-		["MD5-CAM-1.0.1"] = <"FBC625BB2CD2EAD60DF5DAA3A8BDCBAE">
+		["MD5-CAM-1.0.1"] = <"0701353CAD35AA889CFAF9C295B4DE36">
 	>
 
 definition
-	OBSERVATION[at0000.1] matches {	-- Full blood count
+	OBSERVATION[at0000.1] matches {	-- Blodstatus och celler
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Test name
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- *Test name(en)
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0077] occurrences matches {0..1} matches {	-- Diagnostic service
+									ELEMENT[at0077] occurrences matches {0..1} matches {	-- *Diagnostic service(en)
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0073] occurrences matches {0..1} matches {	-- Test status
+									ELEMENT[at0073] occurrences matches {0..1} matches {	-- *Test status(en)
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0037, 	-- Interim
-													at0038, 	-- Final
-													at0039, 	-- Supplementary
-													at0040, 	-- Corrected (amended)
-													at0074, 	-- Aborted
-													at0079]	-- Never performed
+													at0037, 	-- *Interim(en)
+													at0038, 	-- *Final(en)
+													at0039, 	-- *Supplementary(en)
+													at0040, 	-- *Corrected (amended)(en)
+													at0074, 	-- *Aborted(en)
+													at0079]	-- *Never performed(en)
 												}
 											}
 										}
 									}
-									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- Specimen detail
+									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- *Specimen detail(en)
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.specimen\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
-									ELEMENT[at0078.4] occurrences matches {0..1} matches {	-- Haemoglobin
+									ELEMENT[at0078.4] occurrences matches {0..1} matches {	-- Hemoglobin (Hb)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -98,7 +116,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.5] occurrences matches {0..1} matches {	-- Red cell count (RCC)
+									ELEMENT[at0078.5] occurrences matches {0..1} matches {	-- Erytrocyter
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -115,7 +133,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.6] occurrences matches {0..1} matches {	-- Packed cell volume (PCV)
+									ELEMENT[at0078.6] occurrences matches {0..1} matches {	-- Erytrocytvolymfraktion (EVF)
 										value matches {
 											DV_PROPORTION matches {
 												numerator matches {|0.0..100.0|}
@@ -124,7 +142,7 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0078.7] occurrences matches {0..1} matches {	-- Mean cell haemaglobin concentration (MCHC)
+									ELEMENT[at0078.7] occurrences matches {0..1} matches {	-- Hemoglobinmassakoncentration (MCHC)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -137,7 +155,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.8] occurrences matches {0..1} matches {	-- Mean cell volume (MCV)
+									ELEMENT[at0078.8] occurrences matches {0..1} matches {	-- Medelcellvolym (MCV)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::129]>
@@ -150,7 +168,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.9] occurrences matches {0..1} matches {	-- Mean cell haemaglobin (MCH)
+									ELEMENT[at0078.9] occurrences matches {0..1} matches {	-- Hemoglobinmassa (MCH)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::124]>
@@ -171,7 +189,7 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0078.11] occurrences matches {0..1} matches {	-- Erythrocyte sedimentation rate (ESR)
+									ELEMENT[at0078.11] occurrences matches {0..1} matches {	-- Sänkningsreaktion (SR)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::338]>
@@ -184,7 +202,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.20] occurrences matches {0..1} matches {	-- Mean platelet volume (MPV)
+									ELEMENT[at0078.20] occurrences matches {0..1} matches {	-- Trombocyter medelcellvolym (MPV)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::129]>
@@ -197,7 +215,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.21] occurrences matches {0..1} matches {	-- Platelet distribution width
+									ELEMENT[at0078.21] occurrences matches {0..1} matches {	-- Trombocyter distributionsvidd (PDW)
 										value matches {
 											DV_PROPORTION matches {
 												numerator matches {|0.0..100.0|}
@@ -205,7 +223,7 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0078.12] occurrences matches {0..1} matches {	-- Platelet count
+									ELEMENT[at0078.12] occurrences matches {0..1} matches {	-- Trombocyter (TPK)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -218,7 +236,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.22] occurrences matches {0..1} matches {	-- Plateletcrit
+									ELEMENT[at0078.22] occurrences matches {0..1} matches {	-- *Plateletcrit(en)
 										value matches {
 											DV_PROPORTION matches {
 												numerator matches {|0.0..100.0|}
@@ -227,7 +245,7 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0078.13] occurrences matches {0..1} matches {	-- White cell count
+									ELEMENT[at0078.13] occurrences matches {0..1} matches {	-- Leukocyter (LPK)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -240,9 +258,9 @@ definition
 											>
 										}
 									}
-									CLUSTER[at0078.14] occurrences matches {0..1} matches {	-- White cell differential
+									CLUSTER[at0078.14] occurrences matches {0..1} matches {	-- B-celler
 										items cardinality matches {1..5; ordered} matches {
-											ELEMENT[at0078.15] occurrences matches {0..1} matches {	-- Neutrophils
+											ELEMENT[at0078.15] occurrences matches {0..1} matches {	-- Neutrofila granulocyter
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::119]>
@@ -256,7 +274,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0078.16] occurrences matches {0..1} matches {	-- Lymphocytes
+											ELEMENT[at0078.16] occurrences matches {0..1} matches {	-- Lymfocyter
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::119]>
@@ -269,7 +287,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0078.17] occurrences matches {0..1} matches {	-- Basophils
+											ELEMENT[at0078.17] occurrences matches {0..1} matches {	-- Basofila granulocyter
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::119]>
@@ -282,7 +300,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0078.18] occurrences matches {0..1} matches {	-- Monocytes
+											ELEMENT[at0078.18] occurrences matches {0..1} matches {	-- Monocyter
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::119]>
@@ -295,7 +313,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0078.19] occurrences matches {0..1} matches {	-- Eosinophils
+											ELEMENT[at0078.19] occurrences matches {0..1} matches {	-- Eosinofila granulocyter
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::119]>
@@ -308,7 +326,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0078.23] occurrences matches {0..1} matches {	-- Microscopic features
+											ELEMENT[at0078.23] occurrences matches {0..1} matches {	-- Mikroskopi
 												value matches {
 													DV_TEXT matches {*}
 												}
@@ -316,18 +334,18 @@ definition
 										}
 									}
 									ELEMENT[at0078] occurrences matches {0..*} matches {*}
-									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- Per-result annotation
+									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- *Per-result annotation(en)
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.lab_result_annotation(-[a-zA-Z0-9_]+)*\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
-									ELEMENT[at0057] occurrences matches {0..1} matches {	-- Overall interpretation
+									ELEMENT[at0057] occurrences matches {0..1} matches {	-- *Overall interpretation(en)
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..*} matches {	-- Multimedia representation
+									ELEMENT[at0010] occurrences matches {0..*} matches {	-- *Multimedia representation(en)
 										value matches {
 											DV_MULTIMEDIA matches {
 												media_type matches {[openEHR::]}
@@ -345,26 +363,26 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0004] matches {	-- Tree
+			ITEM_TREE[at0004] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					CLUSTER[at0013] occurrences matches {0..1} matches {	-- Test identification
+					CLUSTER[at0013] occurrences matches {0..1} matches {	-- *Test identification(en)
 						items cardinality matches {0..*; unordered} matches {
-							ELEMENT[at0062] occurrences matches {0..1} matches {	-- Placer order identifier
+							ELEMENT[at0062] occurrences matches {0..1} matches {	-- *Placer order identifier(en)
 								value matches {
 									DV_TEXT matches {*}
 								}
 							}
-							ELEMENT[at0063] occurrences matches {0..1} matches {	-- Filler order Identifier
+							ELEMENT[at0063] occurrences matches {0..1} matches {	-- *Filler order Identifier(en)
 								value matches {
 									DV_TEXT matches {*}
 								}
 							}
-							ELEMENT[at0068] occurrences matches {0..1} matches {	-- Laboratory test result identifier
+							ELEMENT[at0068] occurrences matches {0..1} matches {	-- *Laboratory test result identifier(en)
 								value matches {
 									DV_TEXT matches {*}
 								}
 							}
-							allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- Laboratory details  
+							allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- *Laboratory details  (en)
 								include
 									archetype_id/value matches {/openEHR-EHR-CLUSTER\.organisation\.v1/}
 								exclude
@@ -372,7 +390,7 @@ definition
 							}
 						}
 					}
-					ELEMENT[at0075] occurrences matches {0..1} matches {	-- Datetime result issued
+					ELEMENT[at0075] occurrences matches {0..1} matches {	-- *Datetime result issued(en)
 						value matches {
 							DV_DATE_TIME matches {*}
 						}
@@ -578,6 +596,203 @@ useful for version control and cumulative results for the report.">
 				["at0089"] = <
 					text = <"Per-result annotation">
 					description = <"Slot to allow an annotation to be added to a particular test result at run-time.">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0.24"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0000"] = <
+					text = <"*Laboratory test(en)">
+					description = <"*To record the result of a laboratory test which may be used to record a single valued test but will often be specialised or templated to represent multiple value or 'panel' tests.
+This archetype also acts as the parent for specialisations appropriate for more specific laboratory tests microbiology, histopathology.(en)">
+				>
+				["at0000.1"] = <
+					text = <"Blodstatus och celler">
+					description = <"Fullständigt blodstatus och celler i blod.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0005"] = <
+					text = <"*Test name(en)">
+					description = <"*Specific identifier for this lab test. e.g. Full blood count , blood glucose, urine microbiology.  May equate to the result name for a single value result. Commonly a coded term e.g from LOINC or SNOMED-CT.(en)">
+				>
+				["at0010"] = <
+					text = <"*Multimedia representation(en)">
+					description = <"*Representations of the whole test in mutlimedia e.g image, audio, video.(en)">
+				>
+				["at0013"] = <
+					text = <"*Test identification(en)">
+					description = <"*Unique identifiers used in delivery of the care process.(en)">
+				>
+				["at0017"] = <
+					text = <"*Laboratory details  (en)">
+					description = <"*Demographic details of the laboratory with responsibility for the test. Details of secondary laboratories may also be included.(en)">
+				>
+				["at0037"] = <
+					text = <"*Interim(en)">
+					description = <"*This is an initial or interim result - further updates are anticipated(en)">
+				>
+				["at0038"] = <
+					text = <"*Final(en)">
+					description = <"*This is the final result. No further alterations are anticipated(en)">
+				>
+				["at0039"] = <
+					text = <"*Supplementary(en)">
+					description = <"*This is a supplememtary result in addition to the Interim result(en)">
+				>
+				["at0040"] = <
+					text = <"*Corrected (amended)(en)">
+					description = <"*This is a Correction which should replace any previous results(en)">
+				>
+				["at0057"] = <
+					text = <"*Overall interpretation(en)">
+					description = <"*An overall interpretative comment on this test.(en)">
+				>
+				["at0062"] = <
+					text = <"*Placer order identifier(en)">
+					description = <"*The ID assigned to the order by the order requester. Equivalent to the NEHTA Requester Order Identifier.(en)">
+				>
+				["at0063"] = <
+					text = <"*Filler order Identifier(en)">
+					description = <"*The ID assigned to the test order by the order filler, usually by the (LIS) Laboratory Information System. Equivalent to the DICOM Accession Number and NEHTA Laboratory Request Identifier.(en)">
+				>
+				["at0065"] = <
+					text = <"*Specimen detail(en)">
+					description = <"*Details of the specimen being reported where all individual results are derived from the same specimen(en)">
+				>
+				["at0068"] = <
+					text = <"*Laboratory test result identifier(en)">
+					description = <"*The identifier given to the laboratory test result of a pathology 
+investigation.(en)">
+				>
+				["at0073"] = <
+					text = <"*Test status(en)">
+					description = <"*The status of the lab test as a whole.(en)">
+				>
+				["at0074"] = <
+					text = <"*Aborted(en)">
+					description = <"**(en)">
+				>
+				["at0075"] = <
+					text = <"*Datetime result issued(en)">
+					description = <"*The date and/or time that the result was issued for the recorded 
+‘test status’. (en)">
+					comment = <"*The date and time related to the results status is
+useful for version control and cumulative results for the report.(en)">
+				>
+				["at0077"] = <
+					text = <"*Diagnostic service(en)">
+					description = <"*The type of high-level diagnostic service e.g. biochemistry, haematology. (en)">
+				>
+				["at0078"] = <
+					text = <"*Result(en)">
+					description = <"*The result of the test.(en)">
+				>
+				["at0078.10"] = <
+					text = <"Red cell distribution width (RDW)">
+					description = <"Erytrocyternas storleksvariation">
+				>
+				["at0078.11"] = <
+					text = <"Sänkningsreaktion (SR)">
+					description = <"Erytrocyternas sedimentationshastighet mätt under första timmen">
+				>
+				["at0078.12"] = <
+					text = <"Trombocyter (TPK)">
+					description = <"Partikelkoncentration per liter">
+				>
+				["at0078.13"] = <
+					text = <"Leukocyter (LPK)">
+					description = <"Partikelkoncentration per liter">
+				>
+				["at0078.14"] = <
+					text = <"B-celler">
+					description = <"Celler, diff i blod">
+				>
+				["at0078.15"] = <
+					text = <"Neutrofila granulocyter">
+					description = <"Partikelkoncentration per liter">
+				>
+				["at0078.16"] = <
+					text = <"Lymfocyter">
+					description = <"Partikelkoncentration per liter">
+				>
+				["at0078.17"] = <
+					text = <"Basofila granulocyter">
+					description = <"Partikelkoncentration per liter">
+				>
+				["at0078.18"] = <
+					text = <"Monocyter">
+					description = <"Partikelkoncentration per liter">
+				>
+				["at0078.19"] = <
+					text = <"Eosinofila granulocyter">
+					description = <"Partikelkoncentration per liter">
+				>
+				["at0078.20"] = <
+					text = <"Trombocyter medelcellvolym (MPV)">
+					description = <"Trombocyternas genomsnittliga volym">
+				>
+				["at0078.21"] = <
+					text = <"Trombocyter distributionsvidd (PDW)">
+					description = <"Trombocyternas storleksvariation">
+				>
+				["at0078.22"] = <
+					text = <"*Plateletcrit(en)">
+					description = <"*The proportion of the volume of blood taken up by platelets(en)">
+				>
+				["at0078.23"] = <
+					text = <"Mikroskopi">
+					description = <"Mikroskopisk undersökning av blodutstryck">
+				>
+				["at0078.4"] = <
+					text = <"Hemoglobin (Hb)">
+					description = <"Koncentration hemoglobin">
+				>
+				["at0078.5"] = <
+					text = <"Erytrocyter">
+					description = <"Partikelkoncentration per liter">
+				>
+				["at0078.6"] = <
+					text = <"Erytrocytvolymfraktion (EVF)">
+					description = <"(Hematokrit) - andel av blodet som utgörs av erytrocyter">
+				>
+				["at0078.7"] = <
+					text = <"Hemoglobinmassakoncentration (MCHC)">
+					description = <"Hemoglobinkoncentration i erytrocyter">
+				>
+				["at0078.8"] = <
+					text = <"Medelcellvolym (MCV)">
+					description = <"Erytrocyternas genomsnittliga storlek">
+				>
+				["at0078.9"] = <
+					text = <"Hemoglobinmassa (MCH)">
+					description = <"Erytrocyternas genomsnittliga mängd hemoglobin">
+				>
+				["at0079"] = <
+					text = <"*Never performed(en)">
+					description = <"*The test was never performed.(en)">
+				>
+				["at0089"] = <
+					text = <"*Per-result annotation(en)">
+					description = <"*Slot to allow an annotation to be added to a particular test result at run-time.(en)">
 				>
 			>
 		>
