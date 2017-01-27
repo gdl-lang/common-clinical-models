@@ -5,6 +5,15 @@ concept
 	[at0000]	-- HAS-BLED
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Konstantinos Kalliamvakos">
@@ -13,6 +22,25 @@ description
 		["date"] = <"2014-05-16">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att registrera resultat i enlighet med HAS-BLED och därigenom få stöd i bedömning av blödningsrisk hos patienter med behandlat förmaksflimmer.">
+			use = <"Använd för registrering av resultat i enlighet med HAS-BLED och därigenom få stöd i bedömning av blödningsrisk hos patienter med behandlat (antikoagulantia) förmaksflimmer.
+
+Instrumentet baseras på nio faktorer:
+- Hypertoni: definieras i detta fall som systoliskt blodtryck >160 mmHg.
+- Njurpåverka: förekomst av kronisk dialys, njurtransplantation eller ett kreatininvärde om >200 umol/L.
+- Leverpåverkan: kronisk leversjukdom, bilirubin >2x övre referensvärde, ASAT/ALAT >3x övre referensvärde
+- Tidigare genomgången stroke
+- Tidigare blödning, anemi eller blödningsrisk
+- Riskvärde PK(INR): instabilt/högt värde, inom teurapeutiskt intervall <60% av tiden
+- Patienten är 65 år gammal eller äldre
+- Koagulationshämmande läkemedel: trombocythämmande läkemedel, NSAID
+- Bruk av alkohol: ≥ 8 glas alkohol per vecka">
+			keywords = <"HAS-BLED", "stroke", "förmaksflimmer", "antikoagulantia", "blödning">
+			misuse = <"Ej avsedd för att användas isolerat och är ej att betrakta som diagnostisk.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record HAS-BLED bleeding risk score">
@@ -31,80 +59,80 @@ INR ? international normalized ratio. Adapted from Pisters et al.60">
 Ref. 2: Lip GY, Frison L, Halperin JL, Lane DA. Comparative validation of a novel risk score for predicting bleeding risk in anticoagulated patients with atrial fibrillation: the HAS-BLED (Hypertension, Abnormal Renal/Liver Function, Stroke, Bleeding History or Predisposition, Labile INR, Elderly, Drugs/Alcohol Concomitantly) score. J Am Coll Cardiol. 2011 Jan 11;57(2):173-80. doi: 10.1016/j.jacc.2010.09.024. Epub 2010 Nov 24.
 ">
 		["current_contact"] = <"Konstantinos Kalliamvakos, Cambio Healthcare Systems, Konstantinos.Kalliamvakos@cambio.se">
-		["MD5-CAM-1.0.1"] = <"EEC2A4EEBF24D81602705BA466EF4333">
+		["MD5-CAM-1.0.1"] = <"E6E23572B6CC55187B79613266C7DF68">
 	>
 
 definition
 	OBSERVATION[at0000] matches {	-- HAS-BLED
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Hypertension
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Hypertoni
 										value matches {
-											0|[local::at0014], 	-- No
-											1|[local::at0015]  	-- Yes
+											0|[local::at0014], 	-- Nej
+											1|[local::at0015]  	-- Ja
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Abnormal renal function
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Njurpåverkan
 										value matches {
-											0|[local::at0014], 	-- No
-											1|[local::at0015]  	-- Yes
+											0|[local::at0014], 	-- Nej
+											1|[local::at0015]  	-- Ja
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Abnormal liver function
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Leverpåverkan
 										value matches {
-											0|[local::at0014], 	-- No
-											1|[local::at0015]  	-- Yes
+											0|[local::at0014], 	-- Nej
+											1|[local::at0015]  	-- Ja
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Stroke
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Tidigare stroke
 										value matches {
-											0|[local::at0014], 	-- No
-											1|[local::at0015]  	-- Yes
+											0|[local::at0014], 	-- Nej
+											1|[local::at0015]  	-- Ja
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Bleeding history or predisposition
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Tidigare blödning eller blödningsrisk
 										value matches {
-											0|[local::at0014], 	-- No
-											1|[local::at0015]  	-- Yes
+											0|[local::at0014], 	-- Nej
+											1|[local::at0015]  	-- Ja
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Labile INRs
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Riskvärde PK(INR)
 										value matches {
-											0|[local::at0014], 	-- No
-											1|[local::at0015]  	-- Yes
+											0|[local::at0014], 	-- Nej
+											1|[local::at0015]  	-- Ja
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Elderly
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Ålder ≥ 65 år
 										value matches {
-											0|[local::at0014], 	-- No
-											1|[local::at0015]  	-- Yes
+											0|[local::at0014], 	-- Nej
+											1|[local::at0015]  	-- Ja
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Drugs concomitantly
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Koagulationshämmande läkemedel
 										value matches {
-											0|[local::at0014], 	-- No
-											1|[local::at0015]  	-- Yes
+											0|[local::at0014], 	-- Nej
+											1|[local::at0015]  	-- Ja
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Alcohol concomitantly
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Bruk av alkohol
 										value matches {
-											0|[local::at0014], 	-- No
-											1|[local::at0015]  	-- Yes
+											0|[local::at0014], 	-- Nej
+											1|[local::at0015]  	-- Ja
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Resultat
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..9|}
 											}
 										}
 									}
-									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -189,6 +217,78 @@ ontology
 				["at0016"] = <
 					text = <"Comment">
 					description = <"Comments regarding the scoring">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"HAS-BLED">
+					description = <"HAS-BLED bleeding risk score - för uppskattning av blödningsrisk hos patienter som på grund av förmaksflimmer behandlas med antikoagulantia.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Hypertoni">
+					description = <"Systoliskt blodtryck >160 mmHg ">
+				>
+				["at0005"] = <
+					text = <"Njurpåverkan">
+					description = <"Dialys, transplantation, kreatinin >2.26 mg/dL eller >200 µmol/L">
+				>
+				["at0006"] = <
+					text = <"Leverpåverkan">
+					description = <"Kronisk leversjukdom, bilirubin >2x övre referensvärde, ASAT/ALAT >3x övre referensvärde">
+				>
+				["at0007"] = <
+					text = <"Tidigare stroke">
+					description = <"Tidigare genomgången stroke">
+				>
+				["at0008"] = <
+					text = <"Tidigare blödning eller blödningsrisk">
+					description = <"Tidigare blödning, anemi eller blödningsrisk">
+				>
+				["at0009"] = <
+					text = <"Riskvärde PK(INR)">
+					description = <"Instabilt/högt värde, inom teurapeutiskt intervall <60% av tiden">
+				>
+				["at0010"] = <
+					text = <"Ålder ≥ 65 år">
+					description = <"Patienten är 65 år gammal eller äldre">
+				>
+				["at0011"] = <
+					text = <"Koagulationshämmande läkemedel">
+					description = <"Trombocythämmande läkemedel, NSAID">
+				>
+				["at0012"] = <
+					text = <"Bruk av alkohol">
+					description = <"≥ 8 glas alkohol per vecka">
+				>
+				["at0013"] = <
+					text = <"Resultat">
+					description = <"Summan av samtliga faktorer">
+				>
+				["at0014"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"Kommentar">
+					description = <"Ev tillägg">
 				>
 			>
 		>

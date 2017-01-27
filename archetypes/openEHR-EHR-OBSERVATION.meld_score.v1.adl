@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.meld_score.v1
 
 concept
-	[at0000]	-- Model For End-Stage Liver Disease (MELD) score
+	[at0000]	-- Model For End-Stage Liver Disease (MELD) Score
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
@@ -27,11 +36,34 @@ The calculated MELD score is used to determine the 90-day mortality in patients 
 MELD score is not useful for predicting mortality following liver transplantation.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att registrera data i enlighet med såväl senaste som ursprungliga versionen av MELD Score, vilken används för att på kort sikt uppskatta mortalitet hos patienter med terminal leversjukdom och därigenom bedöma behov av levertransplantation.">
+			use = <"Att registrera data i enlighet med såväl senaste som ursprungliga versionen av MELD Score, baserat på ett antal parametrar:
+
+- Kreatinin (mg/dl eller umol/L)
+- Totalt bilirubin (mg/dl eller umol/L)
+- Natrum (mmol/L)
+- International Normalized Ratio for prothrombin time (INR)
+- Huruvida patienten under senaste veckan genomgått dialys vid åtminstone två tillfällen eller CVVHD under minst 24 timmar
+
+Formel för ursprungliga MELD Score = = 9.57 * ln(kreatinin, mg/dL) + 3.78 * ln(bilirubin, mg/dL) + 11.20 * ln(INR) + 6.43; har patienten genomgått dialys sätts kreatininvärdet automatiskt till 4 mg/dl. 
+
+Formel för senaste versionen av MELD score = oMELD + [1.32 * (137-Na)] – [0.033 * oMELD * (137-Na)]; (baserat på referensvärde för natrium = 125-137 mmol/L.)
+
+Resultatet används för att uppskatta 90-dagarsmortalitet hos patienter med terminal leversjukdom, och registreras med hjälp av en separat arketyp - openEHR-EHR-EVALUATION.meld_score.v1.
+
+MELD Score är även användbar för att uppskatta överlevnad hos patienter med varicerblödning, levercirros kombinerat med infektion, fulminant leversvikt, alkoholhepatit och andra former av kronisk leversjukdom, samt för att prioritera behov av levertransplantation.">
+			keywords = <"cirros", "levercirros", "alkoholhepatit", "leversvikt", "kronisk leversjukdom", "leversjukdom", "MELD", "MELD Score">
+			misuse = <"Endast avsedd för patienter över 12 års ålder. 
+
+MELD Score är ej avsedd för att uppskatta mortalitet efter levertransplantation.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"C0A84FA95F848921C83DBF72BE77E073">
 		["references"] = <"Kamath PS, Wiesner RH, Malinchoc M, Kremers W, Therneau TM, Kosberg CL, D'Amico G, Dickson ER, Kim W. A model to predict survival in patients with end‐stage liver disease. Hepatology. 2001 Feb 1;33(2):464-70.
 
 Wiesner R, Edwards E, Freeman R, Harper A, Kim R, Kamath P, Kremers W, Lake J, Howard T, Merion RM, Wolfe RA. Model for end-stage liver disease (MELD) and allocation of donor livers. Gastroenterology. 2003 Jan 31;124(1):91-6.
@@ -41,36 +73,37 @@ Said A, Williams J, Holden J, Remington P, Gangnon R, Musat A, Lucey MR. Model f
 Dunn W, Jamil LH, Brown LS, Wiesner RH, Kim W, Menon KV, Malinchoc M, Kamath PS, Shah V. MELD accurately predicts mortality in patients with alcoholic hepatitis. Hepatology. 2005 Feb 1;41(2):353-8.
 
 Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 2007 Mar 1;45(3):797-805.">
+		["MD5-CAM-1.0.1"] = <"FEABBCEDE681D09A3A5B0F95ADA47147">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Model For End-Stage Liver Disease (MELD) score
+	OBSERVATION[at0000] matches {	-- Model For End-Stage Liver Disease (MELD) Score
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Original MELD (oMELD) score
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Poäng ursprungliga MELD Score
 										value matches {
 											C_DV_QUANTITY <
 											>
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- MELD score
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- MELD Score
 										value matches {
 											C_DV_QUANTITY <
 											>
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Dialysis history
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Dialys
 										value matches {
-											0|[local::at0007], 	-- No
-											1|[local::at0008]  	-- Yes
+											0|[local::at0007], 	-- Nej
+											1|[local::at0008]  	-- Ja
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -127,6 +160,51 @@ ontology
 				["at0009"] = <
 					text = <"Comment">
 					description = <"Additional information about the recordings.">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Model For End-Stage Liver Disease (MELD) Score">
+					description = <"Model For End-Stage Liver Disease (MELD) Score används för att på kort sikt uppskatta mortalitet hos patienter med terminal leversjukdom och därigenom bedöma behov av levertransplantation.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Poäng ursprungliga MELD Score">
+					description = <"Beräknat värde från ursprungliga, pre-2016, versionen av Model For End-Stage Liver Disease (MELD)">
+				>
+				["at0005"] = <
+					text = <"MELD Score">
+					description = <"Beräknat värde av den senaste (2016) versionen av Model For End-Stage Liver Disease (MELD).">
+				>
+				["at0006"] = <
+					text = <"Dialys">
+					description = <"Har patienten under senaste veckan genomgått dialys vid åtminstone två tillfällen eller CVVHD under minst 24 timmar?
+">
+				>
+				["at0007"] = <
+					text = <"Nej">
+					description = <"*Has not had at least two dialysis session in the past one week.(en)">
+				>
+				["at0008"] = <
+					text = <"Ja">
+					description = <"*Has had at least two dialysis sessions in the past one week.(en)">
+				>
+				["at0009"] = <
+					text = <"Kommentar">
+					description = <"Ev tillägg">
 				>
 			>
 		>

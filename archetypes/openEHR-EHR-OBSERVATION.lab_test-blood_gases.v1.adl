@@ -4,9 +4,17 @@ specialize
 	openEHR-EHR-OBSERVATION.lab_test.v1
 
 concept
-	[at0000.1]	-- Blood gas assessment
+	[at0000.1]	-- Blodgas-analys
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Sam Heard">
@@ -15,6 +23,15 @@ description
 		["date"] = <"23/04/2006">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Registrering av provsvar för arteriell eller venös blodgas.
+">
+			use = <"">
+			keywords = <"lab", "blodgas", "pH", "PCO2", "BE", "base excess", "klinisk kemi">
+			misuse = <"">
+			copyright = <"� openEHR Foundation">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"For recording the arterial or venous blood gases and respiration products.">
@@ -32,44 +49,44 @@ Available from: http://www.nehta.gov.au/data-group-library/data-specifications/d
 
 IHE. IHE, Laboratory Technical Framework, Volume 3 Content [Internet]. 2008;
 Available from: http://www.ihe.net/Technical_Framework/upload/ihe_lab_TF_rel2_1-Vol-3_FT_2008-08-08.pdf">
-		["MD5-CAM-1.0.1"] = <"E110FBF9C5F1CDF79D945947BBA65926">
+		["MD5-CAM-1.0.1"] = <"630BA6E7C6E7FF30D4FAD0CE816412C3">
 	>
 
 definition
-	OBSERVATION[at0000.1] matches {	-- Blood gas assessment
+	OBSERVATION[at0000.1] matches {	-- Blodgas-analys
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Test name
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- *Test name(en)
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0077] occurrences matches {0..1} matches {	-- Diagnostic service
+									ELEMENT[at0077] occurrences matches {0..1} matches {	-- *Diagnostic service(en)
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0073] occurrences matches {0..1} matches {	-- Test status
+									ELEMENT[at0073] occurrences matches {0..1} matches {	-- *Test status(en)
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0037, 	-- Interim
-													at0038, 	-- Final
-													at0039, 	-- Supplementary
-													at0040, 	-- Corrected (amended)
-													at0074, 	-- Aborted
-													at0079]	-- Never performed
+													at0037, 	-- *Interim(en)
+													at0038, 	-- *Final(en)
+													at0039, 	-- *Supplementary(en)
+													at0040, 	-- *Corrected (amended)(en)
+													at0074, 	-- *Aborted(en)
+													at0079]	-- *Never performed(en)
 												}
 											}
 										}
 									}
-									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- Specimen detail
+									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- *Specimen detail(en)
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.specimen\.v1/}
 										exclude
@@ -108,7 +125,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.10] occurrences matches {0..1} matches {	-- Arterial pH
+									ELEMENT[at0078.10] occurrences matches {0..1} matches {	-- Arteriellt pH
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -156,7 +173,7 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0078.6] occurrences matches {0..1} matches {	-- CaO2
+									ELEMENT[at0078.6] occurrences matches {0..1} matches {	-- *CaO2(en)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -169,7 +186,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.5] occurrences matches {0..1} matches {	-- PvO2
+									ELEMENT[at0078.5] occurrences matches {0..1} matches {	-- *PvO2(en)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::125]>
@@ -182,7 +199,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.4] occurrences matches {0..1} matches {	-- PvCO2
+									ELEMENT[at0078.4] occurrences matches {0..1} matches {	-- *PvCO2(en)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::125]>
@@ -195,7 +212,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.3] occurrences matches {0..1} matches {	-- Venous pH
+									ELEMENT[at0078.3] occurrences matches {0..1} matches {	-- *Venous pH(en)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -208,7 +225,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.2] occurrences matches {0..1} matches {	-- Capillary PH
+									ELEMENT[at0078.2] occurrences matches {0..1} matches {	-- *Capillary PH(en)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -221,7 +238,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0.94] occurrences matches {0..1} matches {	-- FiO2
+									ELEMENT[at0.94] occurrences matches {0..1} matches {	-- *FiO2(en)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::507]>
@@ -236,18 +253,18 @@ definition
 										}
 									}
 									ELEMENT[at0078] occurrences matches {0..*} matches {*}
-									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- Per-result annotation
+									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- *Per-result annotation(en)
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.lab_result_annotation(-[a-zA-Z0-9_]+)*\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
-									ELEMENT[at0057] occurrences matches {0..1} matches {	-- Overall interpretation
+									ELEMENT[at0057] occurrences matches {0..1} matches {	-- *Overall interpretation(en)
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..*} matches {	-- Multimedia representation
+									ELEMENT[at0010] occurrences matches {0..*} matches {	-- *Multimedia representation(en)
 										value matches {
 											DV_MULTIMEDIA matches {
 												media_type matches {[openEHR::]}
@@ -258,13 +275,13 @@ definition
 							}
 						}
 						state matches {
-							ITEM_TREE[at0.91] matches {	-- Tree
+							ITEM_TREE[at0.91] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									allow_archetype CLUSTER[at0.92] occurrences matches {0..1} matches {	-- Ambient oxygen
+									allow_archetype CLUSTER[at0.92] occurrences matches {0..1} matches {	-- *Ambient oxygen(en)
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.ambient_oxygen(-[a-zA-Z0-9_]+)*\.v1/}
 									}
-									ELEMENT[at0.93] occurrences matches {0..1} matches {	-- Confounding factors
+									ELEMENT[at0.93] occurrences matches {0..1} matches {	-- *Confounding factors(en)
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -277,34 +294,34 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0004] matches {	-- Tree
+			ITEM_TREE[at0004] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0062] occurrences matches {0..1} matches {	-- Requestor order identifier
+					ELEMENT[at0062] occurrences matches {0..1} matches {	-- *Requestor order identifier(en)
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					allow_archetype CLUSTER[at0090] occurrences matches {0..*} matches {	-- Requestor
+					allow_archetype CLUSTER[at0090] occurrences matches {0..*} matches {	-- *Requestor(en)
 						include
 							archetype_id/value matches {/.*/}
 					}
-					ELEMENT[at0063] occurrences matches {0..1} matches {	-- Receiver order Identifier
+					ELEMENT[at0063] occurrences matches {0..1} matches {	-- *Receiver order Identifier(en)
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- Receiving laboratory
+					allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- *Receiving laboratory(en)
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.organisation\.v1/}
 						exclude
 							archetype_id/value matches {/.*/}
 					}
-					ELEMENT[at0068] occurrences matches {0..1} matches {	-- Laboratory test result identifier
+					ELEMENT[at0068] occurrences matches {0..1} matches {	-- *Laboratory test result identifier(en)
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					ELEMENT[at0075] occurrences matches {0..1} matches {	-- Datetime result issued
+					ELEMENT[at0075] occurrences matches {0..1} matches {	-- *Datetime result issued(en)
 						value matches {
 							DV_DATE_TIME matches {*}
 						}
@@ -478,6 +495,171 @@ ontology
 				["at0090"] = <
 					text = <"Requestor">
 					description = <"Details of the clinician or organisation requesting the laboratory test.">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0.91"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0.92"] = <
+					text = <"*Ambient oxygen(en)">
+					description = <"*The ambient oxygen level or delivery when the sample was taken.(en)">
+				>
+				["at0.93"] = <
+					text = <"*Confounding factors(en)">
+					description = <"*Other patient factors which may affect interpretation of the blood gas results.(en)">
+				>
+				["at0.94"] = <
+					text = <"*FiO2(en)">
+					description = <"*Fractionally inspired/inhaled Oxygen as a percentage. The percentage of O2 in the air breathed(en)">
+				>
+				["at0000.1"] = <
+					text = <"Blodgas-analys">
+					description = <"För registrering av provsvar för blodgas.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"*Any event.(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0005"] = <
+					text = <"*Test name(en)">
+					description = <"*Specific identifier for this lab test. e.g. Full blood count , blood glucose, urine microbiology.  May equate to the result name for a single value result. Commonly a coded term e.g from LOINC or SNOMED-CT.(en)">
+				>
+				["at0010"] = <
+					text = <"*Multimedia representation(en)">
+					description = <"*Representations of the whole test in mutlimedia e.g image, audio, video.(en)">
+				>
+				["at0017"] = <
+					text = <"*Receiving laboratory(en)">
+					description = <"*Demographic details of the laboratory with responsibility for the test. Details of secondary laboratories may also be included.(en)">
+				>
+				["at0037"] = <
+					text = <"*Interim(en)">
+					description = <"*This is an initial or interim result - further updates are anticipated.(en)">
+				>
+				["at0038"] = <
+					text = <"*Final(en)">
+					description = <"*This is the final result. No further alterations are anticipated.(en)">
+				>
+				["at0039"] = <
+					text = <"*Supplementary(en)">
+					description = <"*This is a supplementary result ehich should be appended to a previous result.(en)">
+				>
+				["at0040"] = <
+					text = <"*Corrected (amended)(en)">
+					description = <"*This is a correction which should completely replace any previous results.(en)">
+				>
+				["at0057"] = <
+					text = <"*Overall interpretation(en)">
+					description = <"*An overall interpretative comment on this test.(en)">
+				>
+				["at0062"] = <
+					text = <"*Requestor order identifier(en)">
+					description = <"*The local ID assigned to the order by the order requester. Equivalent to the Placer Order Identifier.(en)">
+				>
+				["at0063"] = <
+					text = <"*Receiver order Identifier(en)">
+					description = <"*The local ID assigned to the test order by the order filler, usually by the (LIS) Laboratory Information System. Equivalent to the DICOM Accession Number and the Filler Order Identifier.(en)">
+				>
+				["at0065"] = <
+					text = <"*Specimen detail(en)">
+					description = <"*Details of the specimen being reported where all individual results are derived from the same specimen.(en)">
+				>
+				["at0068"] = <
+					text = <"*Laboratory test result identifier(en)">
+					description = <"*The identifier given to the laboratory test result of a pathology investigation.(en)">
+				>
+				["at0073"] = <
+					text = <"*Test status(en)">
+					description = <"*The status of the lab test as a whole.(en)">
+				>
+				["at0074"] = <
+					text = <"*Aborted(en)">
+					description = <"*The test was aborted and never completed.(en)">
+				>
+				["at0075"] = <
+					text = <"*Datetime result issued(en)">
+					description = <"*The date and/or time that the result was issued for the recorded �test status�.(en)">
+					comment = <"*The date and time related to the results status is useful for version control and cumulative results for the report.(en)">
+				>
+				["at0077"] = <
+					text = <"*Diagnostic service(en)">
+					description = <"*The type of high-level diagnostic service e.g. biochemistry, haematology.(en)">
+				>
+				["at0078"] = <
+					text = <"*Result(en)">
+					description = <"*The result of the test.(en)">
+				>
+				["at0078.10"] = <
+					text = <"Arteriellt pH">
+					description = <"Negativ log av vätejonskoncentration i blod">
+				>
+				["at0078.11"] = <
+					text = <"PaO2">
+					description = <"Partialtryck syrgas">
+				>
+				["at0078.12"] = <
+					text = <"PaCO2">
+					description = <"Partialtryck koldioxid ">
+				>
+				["at0078.2"] = <
+					text = <"*Capillary PH(en)">
+					description = <"*The negative logarithm of the Hydrogen ion concentration in capillary blood.(en)">
+				>
+				["at0078.3"] = <
+					text = <"*Venous pH(en)">
+					description = <"*The negative logarithm of the Hydrogen ion concentration in venous blood.(en)">
+				>
+				["at0078.4"] = <
+					text = <"*PvCO2(en)">
+					description = <"*The carbon dioxide pressure in the venous blood.(en)">
+				>
+				["at0078.5"] = <
+					text = <"*PvO2(en)">
+					description = <"*The oxygen pressure in the venous blood.(en)">
+				>
+				["at0078.6"] = <
+					text = <"*CaO2(en)">
+					description = <"*The oxygen content of arterial blood.(en)">
+				>
+				["at0078.7"] = <
+					text = <"SaO2">
+					description = <"*The saturation of haem binding with oxygen.(en)">
+				>
+				["at0078.8"] = <
+					text = <"Alveolar-arterial pO2 difference">
+					description = <"*The difference between the pressure of oxygen in the alveolar and the artery.(en)">
+				>
+				["at0078.9"] = <
+					text = <"Base excess">
+					description = <"Basöverskott">
+				>
+				["at0079"] = <
+					text = <"*Never performed(en)">
+					description = <"*The test was never performed.(en)">
+				>
+				["at0089"] = <
+					text = <"*Per-result annotation(en)">
+					description = <"*Slot to allow an annotation to be added to a particular test result at run-time.(en)">
+				>
+				["at0090"] = <
+					text = <"*Requestor(en)">
+					description = <"*Details of the clinician or organisation requesting the laboratory test.(en)">
 				>
 			>
 		>

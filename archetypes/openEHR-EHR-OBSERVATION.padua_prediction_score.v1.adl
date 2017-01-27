@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.padua_prediction_score.v1
 
 concept
-	[at0000]	-- Padua prediction score
+	[at0000]	-- Padua Prediction Score
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -12,6 +21,19 @@ description
 		["date"] = <"2017-01-21">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att identifiera patienter med hög risk för venös tromboembolism.">
+			use = <"Instrumentet baseras på elva parametrar med viktad poängsättning baserat på risk; tidigare venös trombolism, aktiv cancer, tillstånd med trombofili och nedsatt mobilitet ger vardera 3p om föreliggande, 
+nyligen genomgånget trauma/kirurgi ger 2p, och övriga parametrar ger om föreliggande 1p. Maximal poäng uppgår till 20p, och resultatet tolkas enligt:
+
+Padua Score ≥ 4 poäng indikerar hög risk; medicinsk profylax rekommenderas 
+
+Padua Score < 4 poäng - mekanisk, ej medicinsk, profylax rekommenderas">
+			keywords = <"antikoagulantia", "trombosprofylax", "tromboembolism", "Padua">
+			misuse = <"Instrumentet är ej validerat och bör således användas med försiktighet.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"The Padua score allows the identification of patients at high risk of VTE (Venous Thrombotic Embolism) and whom might benefit from thromboprophylaxis">
@@ -34,85 +56,85 @@ Padua Score < 4 points - do not use medical prophylaxis - use mechanical prophyl
 		["references"] = <"Ref. 1: Barbar S, Noventa F, Rossetto V, Ferrari A, Brandolin B, Perlati M, De Bon E, Tormene D, Pagnan A, Prandoni P. A risk assessment model for the identification of hospitalized medical patients at risk for venous thromboembolism: the Padua Prediction Score. J Thromb Haemost. 2010 Nov;8(11):2450-7. doi: 10.1111/j.1538-7836.2010.04044.
 
 Ref. 2: Nendaz M, Spirk D, Kucher N, Aujesky D, Hayoz D, Beer JH, Husmann M, Frauchiger B, Korte W, Wuillemin WA, Jäger K, Righini M, Bounameaux H. Multicentre validation of the Geneva Risk Score for hospitalised medical patients at risk of venous thromboembolism. Explicit ASsessment of Thromboembolic RIsk and Prophylaxis for Medical PATients in SwitzErland (ESTIMATE).Thromb Haemost. 2014 Mar 3;111(3):531-8. doi: 10.1160/TH13-05-0427. Epub 2013 Nov 14.">
-		["MD5-CAM-1.0.1"] = <"A3009DD046137E1D33329CD9A25A6167">
+		["MD5-CAM-1.0.1"] = <"9E6B671AA3D455BD61C7BE790B20BC8B">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Padua prediction score
+	OBSERVATION[at0000] matches {	-- Padua Prediction Score
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Active cancer
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Aktiv cancer
 										value matches {
-											0|[local::at0015], 	-- No
-											3|[local::at0016]  	-- Yes
+											0|[local::at0015], 	-- Nej
+											3|[local::at0016]  	-- Ja
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Previous VTE
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Tidigare tromboembolism
 										value matches {
-											0|[local::at0017], 	-- No
-											3|[local::at0018]  	-- Yes
+											0|[local::at0017], 	-- Nej
+											3|[local::at0018]  	-- Ja
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Reduced mobility
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Nedsatt mobilitet
 										value matches {
-											0|[local::at0019], 	-- No
-											3|[local::at0020]  	-- Yes
+											0|[local::at0019], 	-- Nej
+											3|[local::at0020]  	-- Ja
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Known thrombophilic condition
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Känd trombofili
 										value matches {
-											0|[local::at0021], 	-- No
-											3|[local::at0022]  	-- Yes
+											0|[local::at0021], 	-- Nej
+											3|[local::at0022]  	-- Ja
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Recent (<= 1 month trauma +/- surgery)
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Nyligen (1 månad) genomgånget trauma och/eller kirurgi
 										value matches {
-											0|[local::at0023], 	-- No
-											2|[local::at0024]  	-- Yes
+											0|[local::at0023], 	-- Nej
+											2|[local::at0024]  	-- Ja
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Elderly (>= 70 yrs)
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Ålder ≥ 70år 
 										value matches {
-											0|[local::at0025], 	-- No
-											1|[local::at0026]  	-- Yes
+											0|[local::at0025], 	-- Nej
+											1|[local::at0026]  	-- Ja
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Heart +/- respiratory failure
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Hjärtsvikt +/-respirationssvikt
 										value matches {
-											0|[local::at0027], 	-- No
-											1|[local::at0028]  	-- Yes
+											0|[local::at0027], 	-- Nej
+											1|[local::at0028]  	-- Ja
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Acute MI +/- stroke
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Hjärtinfarkt +/- stroke
 										value matches {
-											0|[local::at0029], 	-- No
-											1|[local::at0030]  	-- Yes
+											0|[local::at0029], 	-- Nej
+											1|[local::at0030]  	-- Ja
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Acute infection +/- rheumatological disorder
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Akut infektion +/- rheumatisk sjukdom
 										value matches {
-											0|[local::at0031], 	-- No
-											1|[local::at0032]  	-- Yes
+											0|[local::at0031], 	-- Nej
+											1|[local::at0032]  	-- Ja
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Obesity (BMI>= 30)
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- BMI ≥30
 										value matches {
-											0|[local::at0033], 	-- No
-											1|[local::at0034]  	-- Yes
+											0|[local::at0033], 	-- Nej
+											1|[local::at0034]  	-- Ja
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Ongoing hormonal treatment
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Pågående hormonell behandling
 										value matches {
-											0|[local::at0035], 	-- No
-											1|[local::at0036]  	-- Yes
+											0|[local::at0035], 	-- Nej
+											1|[local::at0036]  	-- Ja
 										}
 									}
-									ELEMENT[at0039] occurrences matches {0..1} matches {	-- Age
+									ELEMENT[at0039] occurrences matches {0..1} matches {	-- Ålder
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::128]>
@@ -124,14 +146,14 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0037] occurrences matches {0..1} matches {	-- Total Score
+									ELEMENT[at0037] occurrences matches {0..1} matches {	-- Resultat
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..20|}
 											}
 										}
 									}
-									ELEMENT[at0038] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0038] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -150,7 +172,7 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Padua prediction score">
+					text = <"Padua Prediction Score">
 					description = <"Determines anticoagulation need in hospitalized patients by risk of VTE.">
 				>
 				["at0001"] = <
@@ -308,6 +330,170 @@ ontology
 				["at0039"] = <
 					text = <"Age">
 					description = <"Placeholder for calculated age">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Padua Prediction Score">
+					description = <"Padua Prediction Score används för att bedöma behov av antikoagulantia hos sjukhusvårdade patienter, baserat på risk för venös tromboembolism.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Aktiv cancer">
+					description = <"Förekomst av aktiv cancer">
+				>
+				["at0005"] = <
+					text = <"Tidigare tromboembolism">
+					description = <"Exklusive ytlig ventrombos">
+				>
+				["at0006"] = <
+					text = <"Nedsatt mobilitet">
+					description = <"Bedömning av patientens rörelseförmåga">
+				>
+				["at0007"] = <
+					text = <"Känd trombofili">
+					description = <"Förekomst av känd trombofili">
+				>
+				["at0008"] = <
+					text = <"Nyligen (1 månad) genomgånget trauma och/eller kirurgi">
+					description = <"Har patienten under senaste månaden genomgått trauma och/eller kirurgi?">
+				>
+				["at0009"] = <
+					text = <"Ålder ≥ 70år ">
+					description = <"Är patienten 70 år eller äldre?">
+				>
+				["at0010"] = <
+					text = <"Hjärtsvikt +/-respirationssvikt">
+					description = <"Lider patienten av hjärt- eller respirationssvikt">
+				>
+				["at0011"] = <
+					text = <"Hjärtinfarkt +/- stroke">
+					description = <"**(en)">
+				>
+				["at0012"] = <
+					text = <"Akut infektion +/- rheumatisk sjukdom">
+					description = <"**(en)">
+				>
+				["at0013"] = <
+					text = <"BMI ≥30">
+					description = <"Är patientens BMI 30 eller högre?">
+				>
+				["at0014"] = <
+					text = <"Pågående hormonell behandling">
+					description = <"Genomgår patienten hormonell behandling?">
+				>
+				["at0015"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0023"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0026"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0027"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0028"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0029"] = <
+					text = <"Nej">
+					description = <"**(en)">
+				>
+				["at0030"] = <
+					text = <"Ja">
+					description = <"**(en)">
+				>
+				["at0031"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0032"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0033"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0034"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0035"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0036"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0037"] = <
+					text = <"Resultat">
+					description = <"Summan av samtliga faktorer">
+				>
+				["at0038"] = <
+					text = <"Kommentar">
+					description = <"Ev tillägg">
+				>
+				["at0039"] = <
+					text = <"Ålder">
+					description = <"">
 				>
 			>
 		>
