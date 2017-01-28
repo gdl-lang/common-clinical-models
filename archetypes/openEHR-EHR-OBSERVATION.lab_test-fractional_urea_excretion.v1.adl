@@ -4,7 +4,7 @@ specialize
 	openEHR-EHR-OBSERVATION.lab_test-urea_and_electrolytes.v1
 
 concept
-	[at0000.1.1]	-- Fractional excretion of urea (FEUrea)
+	[at0000.1.1]	-- Urea-utsöndring (Fractional excretion of urea- FEUrea)
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -30,7 +30,7 @@ language
 			language = <[ISO_639-1::sv]>
 			author = <
 				["organisation"] = <"Cambio Healthcare Systems">
-				["name"] = <"Jimmy Axelsson">
+				["name"] = <"Dennis Forslund">
 			>
 		>
 	>
@@ -78,7 +78,7 @@ description
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att registrera en typisk provsvarspanel innehållande urea och elektrolyter. ">
 			use = <"Använd för att registrera provsvar för elektrolyter och urea. ">
-			keywords = <"lab", "pathology", "biochemistry", "laboratory", "metabolic", "U & E">
+			keywords = <"klinisk kemi", "lab", "urea", "utsöndring">
 			misuse = <"Inte avsedd för att registrera information om andra provsvar. ">
 			copyright = <"© openEHR Foundation">
 		>
@@ -87,19 +87,19 @@ description
 	other_contributors = <"Heather Leslie AEG / Ocean Infomatics", "Sam Heard Ocean Informatics", "Dr Ian McNicoll openEHR Archetype Editorial Group / Ocean Informatics">
 	other_details = <
 		["references"] = <"Carvounis CP, Nisar S, Guro-Razuman S. Significance of the fractional excretion of urea in the differential diagnosis of acute renal failure. Kidney international. 2002 Dec 31;62(6):2223-9.">
-		["MD5-CAM-1.0.1"] = <"6F913E969B0E53944B3494A47234E574">
+		["MD5-CAM-1.0.1"] = <"3A8BC1D6270BD48578B70A9B4CE78DA9">
 	>
 
 definition
-	OBSERVATION[at0000.1.1] matches {	-- Fractional excretion of urea (FEUrea)
+	OBSERVATION[at0000.1.1] matches {	-- Urea-utsöndring (Fractional excretion of urea- FEUrea)
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- Händelseförlopp
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Händelse
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- Träd
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0.0.14] occurrences matches {0..1} matches {	-- Blood urea nitrogen (BUN)
+									ELEMENT[at0.0.14] occurrences matches {0..1} matches {	-- B-Urea
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -116,7 +116,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0.0.15] occurrences matches {0..1} matches {	-- urine Urea (uUrea)
+									ELEMENT[at0.0.15] occurrences matches {0..1} matches {	-- U-Urea
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -133,7 +133,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0.0.16] occurrences matches {0..1} matches {	-- serum Creatinine (sCr)
+									ELEMENT[at0.0.16] occurrences matches {0..1} matches {	-- S-Kreatinin
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -150,7 +150,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0.0.17] occurrences matches {0..1} matches {	-- urine Creatinine (uCr)
+									ELEMENT[at0.0.17] occurrences matches {0..1} matches {	-- U-Kreatinin
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -167,7 +167,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0.0.18] occurrences matches {0..1} matches {	-- Fractional excretion of urea (FEUrea)
+									ELEMENT[at0.0.18] occurrences matches {0..1} matches {	-- Urea-utsöndring (FEUrea) 
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::507]>
@@ -180,7 +180,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0.0.19] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0.0.19] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -199,28 +199,28 @@ ontology
 		["da"] = <
 			items = <
 				["at0.0.14"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"*Blood urea nitrogen (BUN) (en)">
+					description = <"*Urea level in this specimen.(en)">
 				>
 				["at0.0.15"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"*urine Urea (uUrea) (en)">
+					description = <"*Urea level in this specimen.(en)">
 				>
 				["at0.0.16"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"*serum Creatinine (sCr) (en)">
+					description = <"*Creatinine level in this specimen.(en)">
 				>
 				["at0.0.17"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"*urine Creatinine (uCr) (en)">
+					description = <"*Creatinine level in this specimen.(en)">
 				>
 				["at0.0.18"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"*Fractional excretion of urea (FEUrea) (en)">
+					description = <"*Percentage of filtered urea that is excreted in the urine.(en)">
 				>
 				["at0.0.19"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"*Comment (en)">
+					description = <"*Additional information about this recording.(en)">
 				>
 				["at0000"] = <
 					text = <"*Laboratory test(en)">
@@ -364,28 +364,28 @@ useful for version control and cumulative results for the report.(en)">
 		["el"] = <
 			items = <
 				["at0.0.14"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"*Blood urea nitrogen (BUN) (en)">
+					description = <"*Urea level in this specimen.(en)">
 				>
 				["at0.0.15"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"*urine Urea (uUrea) (en)">
+					description = <"*Urea level in this specimen.(en)">
 				>
 				["at0.0.16"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"*serum Creatinine (sCr) (en)">
+					description = <"*Creatinine level in this specimen.(en)">
 				>
 				["at0.0.17"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"*urine Creatinine (uCr) (en)">
+					description = <"*Creatinine level in this specimen.(en)">
 				>
 				["at0.0.18"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"*Fractional excretion of urea (FEUrea) (en)">
+					description = <"*Percentage of filtered urea that is excreted in the urine.(en)">
 				>
 				["at0.0.19"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"*Comment (en)">
+					description = <"*Additional information about this recording.(en)">
 				>
 				["at0000"] = <
 					text = <"Εργαστηριακή εξέταση">
@@ -529,27 +529,27 @@ useful for version control and cumulative results for the report.(en)">
 		["en"] = <
 			items = <
 				["at0.0.14"] = <
-					text = <"Blood urea nitrogen (BUN)">
+					text = <"Blood urea nitrogen (BUN) ">
 					description = <"Urea level in this specimen.">
 				>
 				["at0.0.15"] = <
-					text = <"urine Urea (uUrea)">
+					text = <"urine Urea (uUrea) ">
 					description = <"Urea level in this specimen.">
 				>
 				["at0.0.16"] = <
-					text = <"serum Creatinine (sCr)">
+					text = <"serum Creatinine (sCr) ">
 					description = <"Creatinine level in this specimen.">
 				>
 				["at0.0.17"] = <
-					text = <"urine Creatinine (uCr)">
+					text = <"urine Creatinine (uCr) ">
 					description = <"Creatinine level in this specimen.">
 				>
 				["at0.0.18"] = <
-					text = <"Fractional excretion of urea (FEUrea)">
+					text = <"Fractional excretion of urea (FEUrea) ">
 					description = <"Percentage of filtered urea that is excreted in the urine.">
 				>
 				["at0.0.19"] = <
-					text = <"Comment">
+					text = <"Comment ">
 					description = <"Additional information about this recording.">
 				>
 				["at0000"] = <
@@ -694,28 +694,28 @@ useful for version control and cumulative results for the report.">
 		["sv"] = <
 			items = <
 				["at0.0.14"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"B-Urea">
+					description = <"Koncentration urea, mätt i blod">
 				>
 				["at0.0.15"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"U-Urea">
+					description = <"Koncentration urea, mätt i urin">
 				>
 				["at0.0.16"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"S-Kreatinin">
+					description = <"Creatinine level in this specimen.">
 				>
 				["at0.0.17"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"U-Kreatinin">
+					description = <"Creatinine level in this specimen.">
 				>
 				["at0.0.18"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"Urea-utsöndring (FEUrea) ">
+					description = <"Percentage of filtered urea that is excreted in the urine.">
 				>
 				["at0.0.19"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"Kommentar">
+					description = <"Ev tillägg">
 				>
 				["at0000"] = <
 					text = <"Laboratorietest">
@@ -726,8 +726,8 @@ useful for version control and cumulative results for the report.">
 					description = <"För registrering av en typisk provsvarspanel innehållande urea och elektrolyter. ">
 				>
 				["at0000.1.1"] = <
-					text = <"*Fractional excretion of urea (FEUrea)(en)">
-					description = <"*Fractional excretion of urea (FEUrea) is the percentage of blood urea nitrogen filtered by the kidney which is excreted in the urine. FEUrea helps distinguish between prerenal and intrinsic renal causes of acute renal failure, specifically prerenal azotemia and acute tubular nerosis (ATN). Though less common than fractional excretion of sodium (FENa), it is more specific and sensitive and potentially more useful because urea excretion (unlike sodium) is not significantly affected by diuretics. The calculation requires blood urea nitrogen (BUN) and urine urea (uUrea) concentrations (mmol/L or mg/dl), and serum (sCr) and urine (uCr) creatinine concentrations (umol/L or mg/dl). FEUrea <= 35% suggests kidney injury of prerenal etiology while FEUrea > 50% suggests an intrinsic renal etiology.(en)">
+					text = <"Urea-utsöndring (Fractional excretion of urea- FEUrea)">
+					description = <"Urea-utsöndring (FEUrea) är den andel urea i blodet som utsöndras i urinen efter filtrering i njurarna. Värdet kan användas för att differentiera mellan prerenal och renal orsak till akut njursvikt, med specifikt avseende på prerenal azotemi och akut tubulär nekros. Dess bruk är idag mindre omfattande än natriumutsöndring men har högre specificitet och sensitivitet, och har ett potentiellt högre värde i utredning då utsöndring av urea till skillnad från natrium inte påverkas av diuretika i signifikant utsträckning. För beräkningen krävs kända värden av koncentration urea och kreatinin i såväl blod som urin. FEUrea ≤ 35% indikerar prerenal orsak till njurskada medan >50% indikerar renal etiologi.">
 				>
 				["at0001"] = <
 					text = <"Händelseförlopp">
@@ -856,28 +856,28 @@ useful for version control and cumulative results for the report.(en)">
 		["si"] = <
 			items = <
 				["at0.0.14"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"*Blood urea nitrogen (BUN) (en)">
+					description = <"*Urea level in this specimen.(en)">
 				>
 				["at0.0.15"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"*urine Urea (uUrea) (en)">
+					description = <"*Urea level in this specimen.(en)">
 				>
 				["at0.0.16"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"*serum Creatinine (sCr) (en)">
+					description = <"*Creatinine level in this specimen.(en)">
 				>
 				["at0.0.17"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"*urine Creatinine (uCr) (en)">
+					description = <"*Creatinine level in this specimen.(en)">
 				>
 				["at0.0.18"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"*Fractional excretion of urea (FEUrea) (en)">
+					description = <"*Percentage of filtered urea that is excreted in the urine.(en)">
 				>
 				["at0.0.19"] = <
-					text = <"*New element(en)">
-					description = <"**(en)">
+					text = <"*Comment (en)">
+					description = <"*Additional information about this recording.(en)">
 				>
 				["at0000"] = <
 					text = <"Laboratory test">
