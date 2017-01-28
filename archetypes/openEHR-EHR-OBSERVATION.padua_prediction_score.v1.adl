@@ -21,19 +21,6 @@ description
 		["date"] = <"2017-01-21">
 	>
 	details = <
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"Att identifiera patienter med hög risk för venös tromboembolism.">
-			use = <"Instrumentet baseras på elva parametrar med viktad poängsättning baserat på risk; tidigare venös trombolism, aktiv cancer, tillstånd med trombofili och nedsatt mobilitet ger vardera 3p om föreliggande, 
-nyligen genomgånget trauma/kirurgi ger 2p, och övriga parametrar ger om föreliggande 1p. Maximal poäng uppgår till 20p, och resultatet tolkas enligt:
-
-Padua Score ≥ 4 poäng indikerar hög risk; medicinsk profylax rekommenderas 
-
-Padua Score < 4 poäng - mekanisk, ej medicinsk, profylax rekommenderas">
-			keywords = <"antikoagulantia", "trombosprofylax", "tromboembolism", "Padua">
-			misuse = <"Instrumentet är ej validerat och bör således användas med försiktighet.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"The Padua score allows the identification of patients at high risk of VTE (Venous Thrombotic Embolism) and whom might benefit from thromboprophylaxis">
@@ -49,6 +36,19 @@ Padua Score < 4 points - do not use medical prophylaxis - use mechanical prophyl
 			misuse = <"The Padua score has not fully been validated and should be used with caution and with supporting information">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att identifiera patienter med hög risk för venös tromboembolism.">
+			use = <"Instrumentet baseras på elva parametrar med viktad poängsättning baserat på risk; tidigare venös trombolism, aktiv cancer, tillstånd med trombofili och nedsatt mobilitet ger vardera 3p om föreliggande, 
+nyligen genomgånget trauma/kirurgi ger 2p, och övriga parametrar ger om föreliggande 1p. Maximal poäng uppgår till 20p, och resultatet tolkas enligt:
+
+Padua Score ≥ 4 poäng indikerar hög risk; medicinsk profylax rekommenderas 
+
+Padua Score < 4 poäng - mekanisk, ej medicinsk, profylax rekommenderas">
+			keywords = <"antikoagulantia", "trombosprofylax", "tromboembolism", "Padua">
+			misuse = <"Instrumentet är ej validerat och bör således användas med försiktighet.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -56,85 +56,85 @@ Padua Score < 4 points - do not use medical prophylaxis - use mechanical prophyl
 		["references"] = <"Ref. 1: Barbar S, Noventa F, Rossetto V, Ferrari A, Brandolin B, Perlati M, De Bon E, Tormene D, Pagnan A, Prandoni P. A risk assessment model for the identification of hospitalized medical patients at risk for venous thromboembolism: the Padua Prediction Score. J Thromb Haemost. 2010 Nov;8(11):2450-7. doi: 10.1111/j.1538-7836.2010.04044.
 
 Ref. 2: Nendaz M, Spirk D, Kucher N, Aujesky D, Hayoz D, Beer JH, Husmann M, Frauchiger B, Korte W, Wuillemin WA, Jäger K, Righini M, Bounameaux H. Multicentre validation of the Geneva Risk Score for hospitalised medical patients at risk of venous thromboembolism. Explicit ASsessment of Thromboembolic RIsk and Prophylaxis for Medical PATients in SwitzErland (ESTIMATE).Thromb Haemost. 2014 Mar 3;111(3):531-8. doi: 10.1160/TH13-05-0427. Epub 2013 Nov 14.">
-		["MD5-CAM-1.0.1"] = <"9E6B671AA3D455BD61C7BE790B20BC8B">
+		["MD5-CAM-1.0.1"] = <"1D80234347CE16C96149AD22C2E99427">
 	>
 
 definition
 	OBSERVATION[at0000] matches {	-- Padua Prediction Score
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Aktiv cancer
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Active cancer
 										value matches {
-											0|[local::at0015], 	-- Nej
-											3|[local::at0016]  	-- Ja
+											0|[local::at0015], 	-- No
+											3|[local::at0016]  	-- Yes
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Tidigare tromboembolism
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Previous VTE
 										value matches {
-											0|[local::at0017], 	-- Nej
-											3|[local::at0018]  	-- Ja
+											0|[local::at0017], 	-- No
+											3|[local::at0018]  	-- Yes
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Nedsatt mobilitet
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Reduced mobility
 										value matches {
-											0|[local::at0019], 	-- Nej
-											3|[local::at0020]  	-- Ja
+											0|[local::at0019], 	-- No
+											3|[local::at0020]  	-- Yes
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Känd trombofili
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Known thrombophilic condition
 										value matches {
-											0|[local::at0021], 	-- Nej
-											3|[local::at0022]  	-- Ja
+											0|[local::at0021], 	-- No
+											3|[local::at0022]  	-- Yes
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Nyligen (1 månad) genomgånget trauma och/eller kirurgi
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Recent (≤ 1 month trauma +/- surgery)
 										value matches {
-											0|[local::at0023], 	-- Nej
-											2|[local::at0024]  	-- Ja
+											0|[local::at0023], 	-- No
+											2|[local::at0024]  	-- Yes
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Ålder ≥ 70år 
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Elderly (≥ 70 yrs)
 										value matches {
-											0|[local::at0025], 	-- Nej
-											1|[local::at0026]  	-- Ja
+											0|[local::at0025], 	-- No
+											1|[local::at0026]  	-- Yes
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Hjärtsvikt +/-respirationssvikt
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Heart +/- respiratory failure
 										value matches {
-											0|[local::at0027], 	-- Nej
-											1|[local::at0028]  	-- Ja
+											0|[local::at0027], 	-- No
+											1|[local::at0028]  	-- Yes
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Hjärtinfarkt +/- stroke
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Acute MI +/- stroke
 										value matches {
-											0|[local::at0029], 	-- Nej
-											1|[local::at0030]  	-- Ja
+											0|[local::at0029], 	-- No
+											1|[local::at0030]  	-- Yes
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Akut infektion +/- rheumatisk sjukdom
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Acute infection +/- rheumatological disorder
 										value matches {
-											0|[local::at0031], 	-- Nej
-											1|[local::at0032]  	-- Ja
+											0|[local::at0031], 	-- No
+											1|[local::at0032]  	-- Yes
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- BMI ≥30
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Obesity (BMI≥ 30)
 										value matches {
-											0|[local::at0033], 	-- Nej
-											1|[local::at0034]  	-- Ja
+											0|[local::at0033], 	-- No
+											1|[local::at0034]  	-- Yes
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Pågående hormonell behandling
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Ongoing hormonal treatment
 										value matches {
-											0|[local::at0035], 	-- Nej
-											1|[local::at0036]  	-- Ja
+											0|[local::at0035], 	-- No
+											1|[local::at0036]  	-- Yes
 										}
 									}
-									ELEMENT[at0039] occurrences matches {0..1} matches {	-- Ålder
+									ELEMENT[at0039] occurrences matches {0..1} matches {	-- Age
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::128]>
@@ -146,14 +146,14 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0037] occurrences matches {0..1} matches {	-- Resultat
+									ELEMENT[at0037] occurrences matches {0..1} matches {	-- Total Score
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..20|}
 											}
 										}
 									}
-									ELEMENT[at0038] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0038] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -204,11 +204,11 @@ ontology
 					description = <"*">
 				>
 				["at0008"] = <
-					text = <"Recent (<= 1 month trauma +/- surgery)">
+					text = <"Recent (≤ 1 month trauma +/- surgery)">
 					description = <"*">
 				>
 				["at0009"] = <
-					text = <"Elderly (>= 70 yrs)">
+					text = <"Elderly (≥ 70 yrs)">
 					description = <"*">
 				>
 				["at0010"] = <
@@ -224,7 +224,7 @@ ontology
 					description = <"*">
 				>
 				["at0013"] = <
-					text = <"Obesity (BMI>= 30)">
+					text = <"Obesity (BMI≥ 30)">
 					description = <"*">
 				>
 				["at0014"] = <
@@ -397,59 +397,59 @@ ontology
 				>
 				["at0015"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0016"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0017"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0018"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0019"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0020"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0021"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0022"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0023"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0024"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0025"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0026"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0027"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0028"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0029"] = <
 					text = <"Nej">
@@ -461,27 +461,27 @@ ontology
 				>
 				["at0031"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0032"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0033"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0034"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0035"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0036"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0037"] = <
 					text = <"Resultat">
@@ -493,7 +493,7 @@ ontology
 				>
 				["at0039"] = <
 					text = <"Ålder">
-					description = <"">
+					description = <"*">
 				>
 			>
 		>
