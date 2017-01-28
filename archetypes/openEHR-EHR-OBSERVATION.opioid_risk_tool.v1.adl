@@ -21,6 +21,20 @@ description
 		["date"] = <"2016-01-22">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att användas vid första möte och inför behandling med opioider, för att ge klinikern en uppfattning kring beroendepotential med avseende på alkohol och droger, såväl ordinerade som icke.">
+			use = <"Instrumentet inkluderar utöver ålder ett antal parametrar gällande patientens historik, inklusive sexuella övergrepp, psykisk sjukdom och missbruk av alkohol och droger. Det tar även hänsyn till eventuell förekomst inom familjen. 
+
+Resultatet beräknas till följd av olika viktning separat för män och kvinnor. Maximal poäng uppgår till 26p och resultatet tolkas enligt:
+
+≤ 3p: låg risk
+4-7p: måttlig risk
+≥ 8p: hög risk">
+			keywords = <"opioid risk tool", "ORT", "drogberoende", "beroende", "opioider">
+			misuse = <"Patienter som med opioider behandlas för kroniska smärtsyndrom bör noga övervakas, Instrumentet är endast avsett att understödja klinisk bedömning.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"The ORT (Opioid Risk Tool) is used on initial visit and prior to opioid therapy for chronic pain in order to provide the clinician so,e idea of potential risk of drug abuse including alcohol, illegal and prescription drub abuse.">
@@ -37,112 +51,98 @@ The score interpretations are:
 			misuse = <"Patients in all cases should be watched when administrationg opioids for chronic pain management and so the score should only be used as a supporting piece of evidence only.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"Att användas vid första möte och inför behandling med opioider, för att ge klinikern en uppfattning kring beroendepotential med avseende på alkohol och droger, såväl ordinerade som icke.">
-			use = <"Instrumentet inkluderar utöver ålder ett antal parametrar gällande patientens historik, inklusive sexuella övergrepp, psykisk sjukdom och missbruk av alkohol och droger. Det tar även hänsyn till eventuell förekomst inom familjen. 
-
-Resultatet beräknas till följd av olika viktning separat för män och kvinnor. Maximal poäng uppgår till 26p och resultatet tolkas enligt:
-
-≤ 3p: låg risk
-4-7p: måttlig risk
-≥ 8p: hög risk">
-			keywords = <"opioid risk tool", "ORT", "drogberoende", "beroende", "opioider">
-			misuse = <"Patienter som med opioider behandlas för kroniska smärtsyndrom bör noga övervakas, Instrumentet är endast avsett att understödja klinisk bedömning.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Ref. 1: Webster LR, Webster RM. Predicting aberrant behaviors in opioid-treated patients: preliminary validation of the Opioid Risk Tool. Pain Med. 2005 Nov-Dec;6(6):432-42. PubMed PMID: 16336480.">
-		["MD5-CAM-1.0.1"] = <"03CC8F7A5FB48ADCCB2A9558FDF765E8">
+		["MD5-CAM-1.0.1"] = <"5BB45BF1B9510B667257482E830F7408">
 	>
 
 definition
 	OBSERVATION[at0000] matches {	-- Opioid Risk Tool
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Ålder16-45
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Age 16-45
 										value matches {
-											0|[local::at0017], 	-- Nej
-											1|[local::at0018]  	-- Ja
+											0|[local::at0017], 	-- No
+											1|[local::at0018]  	-- yes
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Historik av sexuella övergrepp prepubertalt
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Hx of preadolescent sexual abuse
 										value matches {
-											0|[local::at0019], 	-- Nej
-											3|[local::at0020]  	-- Ja
+											0|[local::at0019], 	-- no
+											3|[local::at0020]  	-- yes
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Historik av depression
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Hx of depression
 										value matches {
-											0|[local::at0021], 	-- Nej
-											1|[local::at0022]  	-- Ja
+											0|[local::at0021], 	-- no
+											1|[local::at0022]  	-- yes
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Historik av ADD, OCD, bipolär sjukdom eller schizofreni
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Hx of ADD, OCD, Bipolar or Schizophrenia
 										value matches {
-											0|[local::at0023], 	-- Nej
-											2|[local::at0024]  	-- Ja
+											0|[local::at0023], 	-- no
+											2|[local::at0024]  	-- yes
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Historik av alkoholmissbruk
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Hx of alcohol abuse
 										value matches {
-											0|[local::at0025], 	-- Nej
-											3|[local::at0026]  	-- Ja
+											0|[local::at0025], 	-- no
+											3|[local::at0026]  	-- yes
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Historik av drogmissbruk (olagliga droger)
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Hx of illegal drug abuse
 										value matches {
-											0|[local::at0027], 	-- Nej
-											4|[local::at0028]  	-- Ja
+											0|[local::at0027], 	-- no
+											4|[local::at0028]  	-- yes
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Historik av drogmissbruk (ordinerade läkemedel)
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Hx of prescription drug use
 										value matches {
-											0|[local::at0029], 	-- Nej
-											5|[local::at0030]  	-- Ja
+											0|[local::at0029], 	-- no
+											5|[local::at0030]  	-- yes
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Familjehistorik - alkoholmissbruk
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- FHx alcohol abuse
 										value matches {
-											0|[local::at0039], 	-- Nej
-											1|[local::at0040]  	-- Ja
+											0|[local::at0039], 	-- no
+											1|[local::at0040]  	-- yes
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Familjehistorik - drogmissbruk (olagliga droger)
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- FHx illegal drug abuse
 										value matches {
-											0|[local::at0041], 	-- Nej
-											1|[local::at0042]  	-- Ja
+											0|[local::at0041], 	-- no
+											1|[local::at0042]  	-- yes
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Familjehistorik - drogmissbruk (ordinerade läkemedel)
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- FHx prescription drug abuse
 										value matches {
-											0|[local::at0037], 	-- Nej
-											4|[local::at0038]  	-- Ja
+											0|[local::at0037], 	-- no
+											4|[local::at0038]  	-- yes
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Resultat - man
-										value matches {
-											DV_COUNT matches {
-												magnitude matches {|0..26|}
-											}
-										}
-									}
-									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Resultat - kvinna
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Total Score (m)
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..26|}
 											}
 										}
 									}
-									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Total Score (f)
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..26|}
+											}
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -217,16 +217,16 @@ ontology
 					description = <"*">
 				>
 				["at0014"] = <
-					text = <"Calculate score men">
-					description = <"*">
+					text = <"Total Score (m)">
+					description = <"Total score - male">
 				>
 				["at0015"] = <
 					text = <"Comment">
 					description = <"*">
 				>
 				["at0016"] = <
-					text = <"Calculate score women">
-					description = <"*">
+					text = <"Total Score (f)">
+					description = <"Total score  - female">
 				>
 				["at0017"] = <
 					text = <"No">
