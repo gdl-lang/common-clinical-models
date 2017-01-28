@@ -105,6 +105,8 @@
 }</script>
 </head>
 <body ng-controller="cds_controller">
+<#assign app_help_tag = "def.guides['MELD_score_Calculation.v1'].concept">
+<#assign references = "def.terms['vt0001']"/>
 <#assign liver_function_tests_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.lab_test-liver_function.v1']">
 <#assign liver_function_tests_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.lab_test-liver_function.v1']">
 <#assign liver_function_tests_entry_def = "def.entries['openEHR-EHR-OBSERVATION.lab_test-liver_function.v1']">
@@ -132,11 +134,11 @@
 <#assign coagulation_profile_tests_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.lab_test-coagulation_profile.v1']">
 <#assign coagulation_profile_tests_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.lab_test-coagulation_profile.v1']">
 <#assign coagulation_profile_tests_entry_def = "def.entries['openEHR-EHR-OBSERVATION.lab_test-coagulation_profile.v1']">
-<#assign inr_def = coagulation_profile_tests_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0.94}']">
+<#assign inr_def = coagulation_profile_tests_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0.101}']">
 <#assign event_time2_def = coagulation_profile_tests_entry_def + ".elements['/data/events/time']">
-<#assign inr_cds_data = coagulation_profile_tests_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0.94}']">
+<#assign inr_cds_data = coagulation_profile_tests_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0.101}']">
 <#assign event_time2_cds_data = coagulation_profile_tests_entry_cds_data + "[0].elements['/data/events/time']">
-<#assign inr_ehr_data = coagulation_profile_tests_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0.94}']">
+<#assign inr_ehr_data = coagulation_profile_tests_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0.101}']">
 <#assign event_time2_ehr_data = coagulation_profile_tests_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign urea_and_electrolytes_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.lab_test-urea_and_electrolytes.v1']">
 <#assign urea_and_electrolytes_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.lab_test-urea_and_electrolytes.v1']">
@@ -150,139 +152,146 @@
 <#assign sodium_ehr_data = urea_and_electrolytes_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078.5}']">
 <#assign creatinine_ehr_data = urea_and_electrolytes_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078.7}']">
 <#assign event_time3_ehr_data = urea_and_electrolytes_entry_ehr_data + "[0].elements['/data/events/time']">
-<div ng-show="ready">
-<div class="row">
-<div class="medium-12 column">
-<h1>{{def.concept.name}}</h1>
+
+<script> 
+angular.module('cds_app').controller('MELD_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time3_ehr_data}.value.value = new Date().toISOString();
+	$scope.${creatinine_ehr_data}.value.units = $scope.${creatinine_def}.units[1];
+    $scope.${total_bilirubin_ehr_data}.value.units = $scope.${total_bilirubin_def}.units[1];
+	$scope.${sodium_ehr_data}.value.units = $scope.${sodium_def}.units[0];
+	$scope.${inr_ehr_data}.value.magnitude = $scope.findMin($scope.${inr_def});
+	$scope.${dialysis_history_ehr_data}.value.selection = $scope.findMin($scope.${dialysis_history_def});
+  });
+});
+</script>
+
+<div ng-show="ready" ng-controller="MELD_Ctrl">
+<div class="header">
+  <h1>{{def.concept.name}}</h1>
+  <h2>{{def.concept.description}}</h2>
+  <div class="help-tip">
+	<p>{{${app_help_tag}.description}}</p>
+  </div>
 </div>
-</div>
-<div class="row">
-<div class="medium-6 column">
-<form name="form">
-<fieldset>
-<legend>{{${liver_function_tests_entry_def}.name}}</legend>
-<label>{{${total_bilirubin_def}.name}}</label>
-<div class="row collapse" title="{{${total_bilirubin_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${total_bilirubin_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-<div class="medium-3 columns">
-<select ng-model="${total_bilirubin_ehr_data}.value.units" id="total_bilirubin_ehr_units" ng-options="unit for unit in ${total_bilirubin_def}.units" ng-change="execute()"></select>
-</div>
-</div>
-<label>{{${event_time_def}.name}}</label>
-<div class="row collapse" title="{{${event_time_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${model_for_end_stage_liver_disease__meld__score_entry_def}.name}}</legend>
-<label>{{${dialysis_history_def}.name}}</label>
+
+<div class="card">
 <div class="row collapse" title="{{${dialysis_history_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${dialysis_history_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${dialysis_history_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${event_time1_def}.name}}</label>
-<div class="row collapse" title="{{${event_time1_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time1_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${coagulation_profile_tests_entry_def}.name}}</legend>
-<label>{{${inr_def}.name}}</label>
-<div class="row collapse" title="{{${inr_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${inr_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-<div class="medium-3 columns">
-<select ng-model="${inr_ehr_data}.value.units" id="inr_ehr_units" ng-options="unit for unit in ${inr_def}.units" ng-change="execute()"></select>
-</div>
-</div>
-<label>{{${event_time2_def}.name}}</label>
-<div class="row collapse" title="{{${event_time2_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time2_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${urea_and_electrolytes_entry_def}.name}}</legend>
-<label>{{${sodium_def}.name}}</label>
-<div class="row collapse" title="{{${sodium_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${sodium_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-<div class="medium-3 columns">
-<select ng-model="${sodium_ehr_data}.value.units" id="sodium_ehr_units" ng-options="unit for unit in ${sodium_def}.units" ng-change="execute()"></select>
-</div>
-</div>
-<label>{{${creatinine_def}.name}}</label>
+    <div class="medium-6 columns">
+      <label>{{${dialysis_history_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${dialysis_history_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${dialysis_history_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
 <div class="row collapse" title="{{${creatinine_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${creatinine_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+<div class="medium-5 columns">
+<label>{{${creatinine_def}.name}}</label>
 </div>
-<div class="medium-3 columns">
-<select ng-model="${creatinine_ehr_data}.value.units" id="creatinine_ehr_units" ng-options="unit for unit in ${creatinine_def}.units" ng-change="execute()"></select>
+<div class="medium-5 columns">
+        <input ng-model="${creatinine_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${creatinine_ehr_data}.value.units" ng-options="unit for unit in ${creatinine_def}.units" ng-change="execute()"disabled=""></select>
+      </div>
+</div>
+<div class="row collapse" title="{{${total_bilirubin_def}.description}}">
+<div class="medium-5 columns">
+<label>{{${total_bilirubin_def}.name}}</label>
+</div>
+<div class="medium-5 columns">
+        <input ng-model="${total_bilirubin_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${total_bilirubin_ehr_data}.value.units" ng-options="unit for unit in ${total_bilirubin_def}.units" ng-change="execute()"disabled=""></select>
+      </div>
+</div>
+<div class="row collapse" title="{{${sodium_def}.description}}">
+<div class="medium-5 columns">
+<label>{{${sodium_def}.name}}</label>
+</div>
+<div class="medium-5 columns">
+        <input ng-model="${sodium_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${sodium_ehr_data}.value.units" ng-options="unit for unit in ${sodium_def}.units" ng-change="execute()"disabled=""></select>
+      </div>
+</div>
+<div class="row collapse" title="{{${inr_def}.description}}">
+<div class="medium-5 columns">
+<label>{{${inr_def}.name}}</label>
+</div>
+<div class="medium-7 columns">
+        <input ng-model="${inr_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+</div>
+ <div class="row collapse" title="{{${original_meld__omeld__score_def}.description}}" id="displayresult1">
+    <div class="medium-5 columns">
+      <span><b>{{${original_meld__omeld__score_def}.name}}:</b></span>
+    </div>
+    <div class="medium-7 columns">
+      <span>{{${original_meld__omeld__score_cds_data}.value.magnitude}}</span>
+    </div>
+  </div>
+   <div class="row collapse" title="{{${meld_score_def}.description}}" id="displayresult2">
+    <div class="medium-5 columns">
+      <span><b>{{${meld_score_def}.name}}:</b></span>
+    </div>
+    <div class="medium-7 columns">
+      <span>{{${meld_score_cds_data}.value.magnitude}}</span>
+    </div>
+  </div>
+  
 </div>
 </div>
-<label>{{${event_time3_def}.name}}</label>
-<div class="row collapse" title="{{${event_time3_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time3_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+
+<div class="row"><div class="medium-12 columns"></div></div>
+<br /><br />
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
 </div>
-</div>
-</fieldset>
-</form>
-</div>
-<div class="medium-6 column">
-<fieldset>
-<legend>{{${liver_function_tests_entry_def}.name}}</legend>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${total_bilirubin_def}.name}}: </b>{{${total_bilirubin_cds_data}.value.magnitude}} {{${total_bilirubin_cds_data}.value.units}}</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${model_for_end_stage_liver_disease__meld__score_entry_def}.name}}</legend>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${original_meld__omeld__score_def}.name}}: </b>{{${original_meld__omeld__score_cds_data}.value.magnitude}} {{${original_meld__omeld__score_cds_data}.value.units}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${meld_score_def}.name}}: </b>{{${meld_score_cds_data}.value.magnitude}} {{${meld_score_cds_data}.value.units}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${dialysis_history_def}.name}}: </b>{{${dialysis_history_cds_data}.value.symbol.value}}</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${coagulation_profile_tests_entry_def}.name}}</legend>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${inr_def}.name}}: </b>{{${inr_cds_data}.value.magnitude}} {{${inr_cds_data}.value.units}}</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${urea_and_electrolytes_entry_def}.name}}</legend>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${sodium_def}.name}}: </b>{{${sodium_cds_data}.value.magnitude}} {{${sodium_cds_data}.value.units}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${creatinine_def}.name}}: </b>{{${creatinine_cds_data}.value.magnitude}} {{${creatinine_cds_data}.value.units}}</div>
-</div>
-</fieldset>
-</div>
-</div>
-</div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/11172350">Kamath PS, Wiesner RH, Malinchoc M, Kremers W, Therneau TM, Kosberg CL, D'Amico G, Dickson ER, Kim W. A model to predict survival in patients with end‐stage liver disease. Hepatology. 2001 Feb 1;33(2):464-70.</a></i>
+        </li>
+      </div>
+    </div>
+<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/12512033">Wiesner R, Edwards E, Freeman R, Harper A, Kim R, Kamath P, Kremers W, Lake J, Howard T, Merion RM, Wolfe RA. Model for end-stage liver disease (MELD) and allocation of donor livers. Gastroenterology. 2003 Jan 31;124(1):91-6.</a></i>
+        </li>
+      </div>
+    </div>
+<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/15158328">Said A, Williams J, Holden J, Remington P, Gangnon R, Musat A, Lucey MR. Model for end stage liver disease score predicts mortality across a broad spectrum of liver disease. Journal of hepatology. 2004 Jun 30;40(6):897-903.</a></i>
+        </li>
+      </div>
+    </div>
+<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/15660383">Dunn W, Jamil LH, Brown LS, Wiesner RH, Kim W, Menon KV, Malinchoc M, Kamath PS, Shah V. MELD accurately predicts mortality in patients with alcoholic hepatitis. Hepatology. 2005 Feb 1;41(2):353-8.</a></i>
+        </li>
+      </div>
+    </div>
+<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/17326206">Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 2007 Mar 1;45(3):797-805.</a></i>
+        </li>
+      </div>
+    </div>
+  </div>
 
 <style>
   html, body {
