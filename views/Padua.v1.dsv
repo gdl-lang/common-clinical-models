@@ -100,6 +100,8 @@
 }</script>
 </head>
 <body ng-controller="cds_controller">
+<#assign app_help_tag = "def.guides['Padua_prediction.V1'].concept">
+<#assign references = "def.terms['vt0001']"/>
 <#assign padua_prediction_score_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.padua_prediction_score.v1']">
 <#assign padua_prediction_score_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.padua_prediction_score.v1']">
 <#assign padua_prediction_score_entry_def = "def.entries['openEHR-EHR-OBSERVATION.padua_prediction_score.v1']">
@@ -157,172 +159,163 @@
 <#assign event_time2_def = basic_demographic_entry_def + ".elements['/data/events/time']">
 <#assign birthdate_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
 <#assign event_time2_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data/events/time']">
-<div ng-show="ready">
-<div class="row">
-<div class="medium-12 column">
-<h1>{{def.concept.name}}</h1>
+
+<script> 
+angular.module('cds_app').controller('Padua_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
+	$scope.${body_mass_index_ehr_data}.value.units = $scope.${body_mass_index_def}.units[0];
+	$scope.${birthdate_ehr_data}.value.selection = $scope.findMin($scope.${birthdate_def});
+	$scope.${active_cancer_ehr_data}.value.selection = $scope.findMin($scope.${active_cancer_def});
+	$scope.${previous_vte_ehr_data}.value.selection = $scope.findMin($scope.${previous_vte_def});
+	$scope.${reduced_mobility_ehr_data}.value.selection = $scope.findMin($scope.${reduced_mobility_def});
+	$scope.${known_thrombophilic_condition_ehr_data}.value.selection = $scope.findMin($scope.${known_thrombophilic_condition_def});
+	$scope.${recent_____1_month_trauma_____surgery__ehr_data}.value.selection = $scope.findMin($scope.${recent_____1_month_trauma_____surgery__def});
+	$scope.${heart_____respiratory_failure_ehr_data}.value.selection = $scope.findMin($scope.${heart_____respiratory_failure_def});
+	$scope.${acute_mi_____stroke_ehr_data}.value.selection = $scope.findMin($scope.${acute_mi_____stroke_def});
+	$scope.${acute_infection_____rheumatological_disorder_ehr_data}.value.selection = $scope.findMin($scope.${acute_infection_____rheumatological_disorder_def});
+	$scope.${ongoing_hormonal_treatment_ehr_data}.value.selection = $scope.findMin($scope.${ongoing_hormonal_treatment_def});
+  });
+});
+</script>
+
+<div ng-show="ready" ng-controller="Padua_Ctrl">
+<div class="header">
+  <h1>{{def.concept.name}}</h1>
+  <h2>{{def.concept.description}}</h2>
+  <div class="help-tip">
+	<p>{{${app_help_tag}.description}}</p>
+  </div>
 </div>
-</div>
-<div class="row">
-<div class="medium-6 column">
-<form name="form">
-<fieldset>
-<legend>{{${padua_prediction_score_entry_def}.name}}</legend>
-<label>{{${recent_____1_month_trauma_____surgery__def}.name}}</label>
-<div class="row collapse" title="{{${recent_____1_month_trauma_____surgery__def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${recent_____1_month_trauma_____surgery__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${recent_____1_month_trauma_____surgery__def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${event_time_def}.name}}</label>
-<div class="row collapse" title="{{${event_time_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-</div>
-<label>{{${acute_mi_____stroke_def}.name}}</label>
-<div class="row collapse" title="{{${acute_mi_____stroke_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${acute_mi_____stroke_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${acute_mi_____stroke_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${acute_infection_____rheumatological_disorder_def}.name}}</label>
-<div class="row collapse" title="{{${acute_infection_____rheumatological_disorder_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${acute_infection_____rheumatological_disorder_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${acute_infection_____rheumatological_disorder_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${ongoing_hormonal_treatment_def}.name}}</label>
-<div class="row collapse" title="{{${ongoing_hormonal_treatment_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${ongoing_hormonal_treatment_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${ongoing_hormonal_treatment_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${active_cancer_def}.name}}</label>
-<div class="row collapse" title="{{${active_cancer_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${active_cancer_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${active_cancer_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${previous_vte_def}.name}}</label>
-<div class="row collapse" title="{{${previous_vte_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${previous_vte_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${previous_vte_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${reduced_mobility_def}.name}}</label>
-<div class="row collapse" title="{{${reduced_mobility_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${reduced_mobility_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${reduced_mobility_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${known_thrombophilic_condition_def}.name}}</label>
-<div class="row collapse" title="{{${known_thrombophilic_condition_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${known_thrombophilic_condition_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${known_thrombophilic_condition_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${heart_____respiratory_failure_def}.name}}</label>
-<div class="row collapse" title="{{${heart_____respiratory_failure_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${heart_____respiratory_failure_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${heart_____respiratory_failure_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${body_mass_index_entry_def}.name}}</legend>
-<label>{{${body_mass_index_def}.name}}</label>
-<div class="row collapse" title="{{${body_mass_index_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${body_mass_index_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-<div class="medium-3 columns">
-<select ng-model="${body_mass_index_ehr_data}.value.units" id="body_mass_index_ehr_units" ng-options="unit for unit in ${body_mass_index_def}.units" ng-change="execute()"></select>
-</div>
-</div>
-<label>{{${event_time1_def}.name}}</label>
-<div class="row collapse" title="{{${event_time1_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time1_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${basic_demographic_entry_def}.name}}</legend>
-<label>{{${birthdate_def}.name}}</label>
+
+<div class="card">
 <div class="row collapse" title="{{${birthdate_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${birthdate_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+    <div class="medium-5 columns">
+      <label>{{${birthdate_def}.name}}</label>
+    </div>
+    <div class="medium-7 columns">
+      <input ng-model="${birthdate_ehr_data}.value.value" type="text" pikaday="date" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+    </div>
+  </div>
+<div class="row collapse" title="{{${body_mass_index_def}.description}}">
+<div class="medium-5 columns">
+<label>{{${body_mass_index_def}.name}}</label>
+</div>
+<div class="medium-5 columns">
+        <input ng-model="${body_mass_index_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${body_mass_index_ehr_data}.value.units" ng-options="unit for unit in ${body_mass_index_def}.units" ng-change="execute()" disabled=""></select>
+      </div>
+</div>
+<div class="row collapse" title="{{${active_cancer_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${active_cancer_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${active_cancer_def}.selections">
+      <input type="radio" value="{{key}}" ng-model= "${active_cancer_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${previous_vte_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${previous_vte_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${previous_vte_def}.selections">
+      <input type="radio" value="{{key}}" ng-model= "${previous_vte_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${reduced_mobility_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${reduced_mobility_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${reduced_mobility_def}.selections">
+      <input type="radio" value="{{key}}" ng-model= "${reduced_mobility_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${known_thrombophilic_condition_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${known_thrombophilic_condition_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${known_thrombophilic_condition_def}.selections">
+      <input type="radio" value="{{key}}" ng-model= "${known_thrombophilic_condition_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${recent_____1_month_trauma_____surgery__def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${recent_____1_month_trauma_____surgery__def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${recent_____1_month_trauma_____surgery__def}.selections">
+      <input type="radio" value="{{key}}" ng-model= "${recent_____1_month_trauma_____surgery__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${heart_____respiratory_failure_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${heart_____respiratory_failure_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${heart_____respiratory_failure_def}.selections">
+      <input type="radio" value="{{key}}" ng-model= "${heart_____respiratory_failure_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${acute_mi_____stroke_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${acute_mi_____stroke_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${acute_mi_____stroke_def}.selections">
+      <input type="radio" value="{{key}}" ng-model= "${acute_mi_____stroke_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${acute_infection_____rheumatological_disorder_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${acute_infection_____rheumatological_disorder_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${acute_infection_____rheumatological_disorder_def}.selections">
+      <input type="radio" value="{{key}}" ng-model= "${acute_infection_____rheumatological_disorder_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${ongoing_hormonal_treatment_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${ongoing_hormonal_treatment_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${ongoing_hormonal_treatment_def}.selections">
+      <input type="radio" value="{{key}}" ng-model= "${ongoing_hormonal_treatment_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+	<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult">
+  <div class="medium-5 columns">
+    <label><b>{{${total_score_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${total_score_cds_data}.value.magnitude}}</label>
+  </div>
 </div>
 </div>
-<label>{{${event_time2_def}.name}}</label>
-<div class="row collapse" title="{{${event_time2_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time2_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
 </div>
+
+<div class="row"><div class="medium-12 columns"></div></div>
+<br /><br />
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
 </div>
-</fieldset>
-</form>
-</div>
-<div class="medium-6 column">
-<fieldset>
-<legend>{{${padua_prediction_score_entry_def}.name}}</legend>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${recent_____1_month_trauma_____surgery__def}.name}}: </b>{{${recent_____1_month_trauma_____surgery__cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${elderly_____70_yrs__def}.name}}: </b>{{${elderly_____70_yrs__cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${acute_mi_____stroke_def}.name}}: </b>{{${acute_mi_____stroke_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${acute_infection_____rheumatological_disorder_def}.name}}: </b>{{${acute_infection_____rheumatological_disorder_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${obesity__bmi___30__def}.name}}: </b>{{${obesity__bmi___30__cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${ongoing_hormonal_treatment_def}.name}}: </b>{{${ongoing_hormonal_treatment_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${active_cancer_def}.name}}: </b>{{${active_cancer_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${previous_vte_def}.name}}: </b>{{${previous_vte_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${reduced_mobility_def}.name}}: </b>{{${reduced_mobility_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${known_thrombophilic_condition_def}.name}}: </b>{{${known_thrombophilic_condition_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${age_def}.name}}: </b>{{${age_cds_data}.value.magnitude}} {{${age_cds_data}.value.units}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${total_score_def}.name}}: </b>{{${total_score_cds_data}.value.magnitude}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${heart_____respiratory_failure_def}.name}}: </b>{{${heart_____respiratory_failure_cds_data}.value.symbol.value}}</div>
-</div>
-</fieldset>
-</div>
-</div>
-</div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/20738765">Barbar S, Noventa F, Rossetto V, Ferrari A, Brandolin B, Perlati M, De Bon E, Tormene D, Pagnan A, Prandoni P. A risk assessment model for the identification of hospitalized medical patients at risk for venous thromboembolism: the Padua Prediction Score. J Thromb Haemost. 2010 Nov;8(11):2450-7. doi: 10.1111/j.1538-7836.2010.04044.</a></i>
+        </li>
+      </div>
+    </div>
+	<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/24226257">Nendaz M, Spirk D, Kucher N, Aujesky D, Hayoz D, Beer JH, Husmann M, Frauchiger B, Korte W, Wuillemin WA, Jäger K, Righini M, Bounameaux H. Multicentre validation of the Geneva Risk Score for hospitalised medical patients at risk of venous thromboembolism. Explicit ASsessment of Thromboembolic RIsk and Prophylaxis for Medical PATients in SwitzErland (ESTIMATE).Thromb Haemost. 2014 Mar 3;111(3):531-8. doi: 10.1160/TH13-05-0427. Epub 2013 Nov 14.</a></i>
+        </li>
+      </div>
+    </div>
+  </div>
 
 <style>
   html, body {
@@ -382,7 +375,7 @@
       -webkit-animation: fadeIn 0.3s ease-in-out;
       animation: fadeIn 0.3s ease-in-out;
   }
-  .help-tip p{	/* The tooltip */
+  .help-tip p{  /* The tooltip */
       display: none;
       text-align: left;
       background-color: #1E2021;
@@ -416,7 +409,7 @@
       left:0;
   }
   .references1{
-    font-size: 70%;
+  font-size: 70%;
   }
   /* CSS animation */
   @-webkit-keyframes fadeIn {
@@ -434,21 +427,16 @@
       0% { opacity:0; }
       100% { opacity:100%; }
   }
-  #displayresult1 {
+  #displayresult {
     background-color: #e6e6e6; 
     padding-top: 3px;
     padding-bottom: 3px;
-	padding-left: 3px;
-    font-size: 90%;
-  }
-  #displayresult2 {
-    background-color: #f2f2f2;
-    padding-top: 3px;
-    padding-bottom: 3px;
-	padding-left: 3px;
-    font-size: 90%;
+    padding-left: 3px;
+	font-size: 90%;
   }
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
+
+
 </body></html>
