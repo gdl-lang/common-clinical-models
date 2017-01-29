@@ -49,7 +49,7 @@ Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 20
 					["gt0003"] = (ELEMENT_BINDING) <
 						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.5]">
 					>
-					["gt0004"] = (ELEMENT_BINDING) <
+					["gt0041"] = (ELEMENT_BINDING) <
 						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.7]">
 					>
 				>
@@ -70,7 +70,7 @@ Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 20
 				domain = <"EHR">
 				elements = <
 					["gt0008"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0.94]">
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0.101]">
 					>
 				>
 				predicates = <"max(/data/events/time)",...>
@@ -105,7 +105,7 @@ Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 20
 				domain = <"CDS">
 				elements = <
 					["gt0016"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0.94]">
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0.101]">
 					>
 				>
 			>
@@ -135,61 +135,81 @@ Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 20
 			["gt0023"] = (RULE) <
 				when = <"$gt0003<=137,mmol/l", "$gt0003>=125,mmol/l">
 				then = <"$gt0020=$gt0003",...>
-				priority = <8>
+				priority = <10>
 			>
 			["gt0024"] = (RULE) <
-				when = <"$gt0004.units=='mg/dl'",...>
-				then = <"$gt0021=$gt0004",...>
-				priority = <11>
+				when = <"$gt0041.units=='mg/dl'",...>
+				then = <"$gt0021=$gt0041",...>
+				priority = <15>
 			>
 			["gt0025"] = (RULE) <
-				when = <"$gt0008!=null",...>
+				when = <"$gt0008>1",...>
 				then = <"$gt0016=$gt0008",...>
-				priority = <5>
+				priority = <7>
 			>
 			["gt0026"] = (RULE) <
-				when = <"$gt0006.units=='mg/dl'",...>
+				when = <"$gt0006>1,mg/dl", "$gt0006.units=='mg/dl'">
 				then = <"$gt0018=$gt0006",...>
-				priority = <9>
+				priority = <13>
 			>
 			["gt0027"] = (RULE) <
 				when = <"$gt0010!=null",...>
 				then = <"$gt0014=$gt0010",...>
-				priority = <4>
+				priority = <5>
 			>
 			["gt0028"] = (RULE) <
-				when = <"$gt0006.units=='µmol/l'",...>
-				then = <"$gt0018.units='mg/dl'", "$gt0018.magnitude=($gt0006.magnitude/17.1)">
-				priority = <10>
+				when = <"$gt0006>17.1,µmol/l", "$gt0006.units=='µmol/l'">
+				then = <"$gt0018.precision=2", "$gt0018.units='mg/dl'", "$gt0018.magnitude=($gt0006.magnitude/17.1)">
+				priority = <14>
 			>
 			["gt0029"] = (RULE) <
-				when = <"$gt0014==0|local::at0007|No|", "$gt0021<4,mg/dl">
-				then = <"$gt0012.precision=2", "$gt0012.magnitude=((((9.57*(log($gt0021.magnitude)))+(3.78*(log($gt0018.magnitude))))+(11.20*(log($gt0016.magnitude))))+6.43)">
-				priority = <3>
+				when = <"$gt0014==0|local::at0007|No|", "$gt0021>=1,mg/dl", "$gt0021<4,mg/dl">
+				then = <"$gt0012.magnitude=((((9.57*(log($gt0021.magnitude)))+(3.78*(log($gt0018.magnitude))))+(11.20*(log($gt0016.magnitude))))+6.43)",...>
+				priority = <4>
 			>
 			["gt0030"] = (RULE) <
 				then = <"$gt0013.magnitude=(((1.32*(137-$gt0020.magnitude))-((0.033*$gt0012.magnitude)*(137-$gt0020.magnitude)))+$gt0012.magnitude)",...>
 				priority = <1>
 			>
 			["gt0031"] = (RULE) <
-				when = <"$gt0004.units=='umol/l'",...>
-				then = <"$gt0021.units='mg/dl'", "$gt0021.magnitude=($gt0004.magnitude/88.42)">
-				priority = <12>
+				when = <"$gt0041.units=='umol/l'",...>
+				then = <"$gt0021.precision=2", "$gt0021.units='mg/dl'", "$gt0021.magnitude=($gt0041.magnitude/88.42)">
+				priority = <16>
 			>
 			["gt0033"] = (RULE) <
 				when = <"($gt0014==1|local::at0008|Yes|)||($gt0021>=4,mg/dl)",...>
-				then = <"$gt0012.precision=2", "$gt0012.magnitude=((((9.57*(log(4)))+(3.78*(log($gt0018.magnitude))))+(11.20*(log($gt0016.magnitude))))+6.43)">
+				then = <"$gt0012.magnitude=((((9.57*(log(4)))+(3.78*(log($gt0018.magnitude))))+(11.20*(log($gt0016.magnitude))))+6.43)",...>
 				priority = <2>
 			>
 			["gt0034"] = (RULE) <
 				when = <"$gt0003<125,mmol/l",...>
 				then = <"$gt0020=125,mmol/l",...>
-				priority = <7>
+				priority = <9>
 			>
 			["gt0035"] = (RULE) <
 				when = <"$gt0003>137,mmol/l",...>
 				then = <"$gt0020=137,mmol/l",...>
+				priority = <8>
+			>
+			["gt0038"] = (RULE) <
+				when = <"$gt0006.units=='µmol/l'", "$gt0006<=17.1,µmol/l">
+				then = <"$gt0018=1,mg/dl",...>
+				priority = <12>
+			>
+			["gt0039"] = (RULE) <
+				when = <"$gt0006.units=='mg/dl'", "$gt0006<=1,mg/dl">
+				then = <"$gt0018=1,mg/dl",...>
+				priority = <11>
+			>
+			["gt0040"] = (RULE) <
+				when = <"$gt0008<=1",...>
+				then = <"$gt0016=1",...>
 				priority = <6>
+			>
+			["gt0043"] = (RULE) <
+				when = <"$gt0021<1,mg/dl", "$gt0014==0|local::at0007|No|">
+				then = <"$gt0012.magnitude=((((9.57*(log(1)))+(3.78*(log($gt0018.magnitude))))+(11.20*(log($gt0016.magnitude))))+6.43)",...>
+				priority = <3>
 			>
 		>
 	>
@@ -204,10 +224,6 @@ Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 20
 					["gt0003"] = (TERM) <
 						text = <"Sodium">
 						description = <"Sodium level in this specimen.">
-					>
-					["gt0004"] = (TERM) <
-						text = <"Creatinine">
-						description = <"Creatinine level in this specimen">
 					>
 					["gt0006"] = (TERM) <
 						text = <"Total bilirubin">
@@ -284,6 +300,28 @@ Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 20
 					>
 					["gt0035"] = (TERM) <
 						text = <"Set serum sodium to high normal">
+					>
+					["gt0036"] = (TERM) <
+						text = <"Set serum creatinine <1 umol/L">
+					>
+					["gt0037"] = (TERM) <
+						text = <"Set serum creatinine <1 mg/dl">
+					>
+					["gt0038"] = (TERM) <
+						text = <"Set serum bilirubin <1 umol/L">
+					>
+					["gt0039"] = (TERM) <
+						text = <"Set serum bilirubin <1 mg/dl">
+					>
+					["gt0040"] = (TERM) <
+						text = <"Set INR <1">
+					>
+					["gt0041"] = (TERM) <
+						text = <"Creatinine">
+						description = <"Creatinine level in this specimen">
+					>
+					["gt0043"] = (TERM) <
+						text = <"Calculate original MELD score with no dialysis and serum creatinine < 1 mg/dl">
 					>
 				>
 			>
