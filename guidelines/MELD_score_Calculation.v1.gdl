@@ -20,30 +20,6 @@ MELD score = oMELD + [1.32 * (137-Na)] – [0.033 * oMELD * (137-Na)]; based on 
 
 The calculated MELD score is used to determine the 90-day mortality in patients with end-stage liver disease, and that evaluation is done by the MELD_score_Assessment guide. MELD score is also accurate in predicting survival in patients with variceal bleeding, determining mortality in patients with cirrhosis who develop infections, predicting mortality in patients with fulminant hepatic failure, alcoholic hepatitis and other forms of chronic liver disease, as well as in prioritizing recipients of liver transplantation.">
 			>
-			["sv"] = (RESOURCE_DESCRIPTION_ITEM) <
-				copyright = <"© Cambio Healthcare Systems">
-				keywords = <"cirros", "levercirros", "alkoholhepatit", "leversvikt", "kronisk leversjukdom", "leversjukdom", "MELD", "MELD Score">
-				misuse = <"Endast avsedd för patienter över 12 års ålder. 
-
-MELD Score är ej avsedd för att uppskatta mortalitet efter levertransplantation.
-">
-				purpose = <"Att registrera data i enlighet med såväl senaste som ursprungliga versionen av MELD Score, vilken används för att på kort sikt uppskatta mortalitet hos patienter med terminal leversjukdom och därigenom bedöma behov av levertransplantation.">
-				use = <"Att registrera data i enlighet med såväl senaste som ursprungliga versionen av MELD Score, baserat på ett antal parametrar:
-
-- Kreatinin (mg/dl eller umol/L)
-- Totalt bilirubin (mg/dl eller umol/L)
-- Natrum (mmol/L)
-- International Normalized Ratio for prothrombin time (INR)
-- Huruvida patienten under senaste veckan genomgått dialys vid åtminstone två tillfällen eller CVVHD under minst 24 timmar
-
-Formel för ursprungliga MELD Score = = 9.57 * ln(kreatinin, mg/dL) + 3.78 * ln(bilirubin, mg/dL) + 11.20 * ln(INR) + 6.43; har patienten genomgått dialys sätts kreatininvärdet automatiskt till 4 mg/dl. 
-
-Formel för senaste versionen av MELD score = oMELD + [1.32 * (137-Na)] – [0.033 * oMELD * (137-Na)]; (baserat på referensvärde för natrium = 125-137 mmol/L.)
-
-Resultatet används för att uppskatta 90-dagarsmortalitet hos patienter med terminal leversjukdom, och registreras med hjälp av en separat arketyp - openEHR-EHR-EVALUATION.meld_score.v1.
-
-MELD Score är även användbar för att uppskatta överlevnad hos patienter med varicerblödning, levercirros kombinerat med infektion, fulminant leversvikt, alkoholhepatit och andra former av kronisk leversjukdom, samt för att prioritera behov av levertransplantation.">
-			>
 		>
 		lifecycle_state = <"Author draft">
 		original_author = <
@@ -52,7 +28,6 @@ MELD Score är även användbar för att uppskatta överlevnad hos patienter med
 			["name"] = <"Eneimi Allwell-Brown">
 			["organisation"] = <"Cambio Healthcare Systems">
 		>
-		other_contributors = <"Dennis Forslund, Cambio Healthcare Systems",...>
 		other_details = <
 			["references"] = <"Kamath PS, Wiesner RH, Malinchoc M, Kremers W, Therneau TM, Kosberg CL, D'Amico G, Dickson ER, Kim W. A model to predict survival in patients with end‐stage liver disease. Hepatology. 2001 Feb 1;33(2):464-70.
 
@@ -74,7 +49,7 @@ Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 20
 					["gt0003"] = (ELEMENT_BINDING) <
 						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.5]">
 					>
-					["gt0004"] = (ELEMENT_BINDING) <
+					["gt0041"] = (ELEMENT_BINDING) <
 						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.7]">
 					>
 				>
@@ -94,7 +69,7 @@ Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 20
 				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-coagulation_profile.v1">
 				domain = <"EHR">
 				elements = <
-					["gt0036"] = (ELEMENT_BINDING) <
+					["gt0008"] = (ELEMENT_BINDING) <
 						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0.101]">
 					>
 				>
@@ -129,7 +104,7 @@ Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 20
 				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-coagulation_profile.v1">
 				domain = <"CDS">
 				elements = <
-					["gt0037"] = (ELEMENT_BINDING) <
+					["gt0016"] = (ELEMENT_BINDING) <
 						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0.101]">
 					>
 				>
@@ -160,61 +135,81 @@ Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 20
 			["gt0023"] = (RULE) <
 				when = <"$gt0003<=137,mmol/l", "$gt0003>=125,mmol/l">
 				then = <"$gt0020=$gt0003",...>
-				priority = <8>
+				priority = <10>
 			>
 			["gt0024"] = (RULE) <
-				when = <"$gt0004.units=='mg/dl'",...>
-				then = <"$gt0021=$gt0004",...>
-				priority = <11>
+				when = <"$gt0041.units=='mg/dl'",...>
+				then = <"$gt0021=$gt0041",...>
+				priority = <15>
 			>
 			["gt0025"] = (RULE) <
-				when = <"$gt0036!=null",...>
-				then = <"$gt0037=$gt0036",...>
-				priority = <5>
+				when = <"$gt0008>1",...>
+				then = <"$gt0016=$gt0008",...>
+				priority = <7>
 			>
 			["gt0026"] = (RULE) <
-				when = <"$gt0006.units=='mg/dl'",...>
+				when = <"$gt0006>1,mg/dl", "$gt0006.units=='mg/dl'">
 				then = <"$gt0018=$gt0006",...>
-				priority = <9>
+				priority = <13>
 			>
 			["gt0027"] = (RULE) <
 				when = <"$gt0010!=null",...>
 				then = <"$gt0014=$gt0010",...>
-				priority = <4>
+				priority = <5>
 			>
 			["gt0028"] = (RULE) <
-				when = <"$gt0006.units=='µmol/l'",...>
-				then = <"$gt0018.units='mg/dl'", "$gt0018.magnitude=($gt0006.magnitude/17.1)">
-				priority = <10>
+				when = <"$gt0006>17.1,µmol/l", "$gt0006.units=='µmol/l'">
+				then = <"$gt0018.precision=2", "$gt0018.units='mg/dl'", "$gt0018.magnitude=($gt0006.magnitude/17.1)">
+				priority = <14>
 			>
 			["gt0029"] = (RULE) <
-				when = <"$gt0014==0|local::at0007|No|", "$gt0021<4,mg/dl">
-				then = <"$gt0012.precision=2", "$gt0012.magnitude=((((9.57*(log($gt0021.magnitude)))+(3.78*(log($gt0018.magnitude))))+(11.20*(log($gt0037.magnitude))))+6.43)">
-				priority = <3>
+				when = <"$gt0014==0|local::at0007|No|", "$gt0021>=1,mg/dl", "$gt0021<4,mg/dl">
+				then = <"$gt0012.magnitude=((((9.57*(log($gt0021.magnitude)))+(3.78*(log($gt0018.magnitude))))+(11.20*(log($gt0016.magnitude))))+6.43)",...>
+				priority = <4>
 			>
 			["gt0030"] = (RULE) <
 				then = <"$gt0013.magnitude=(((1.32*(137-$gt0020.magnitude))-((0.033*$gt0012.magnitude)*(137-$gt0020.magnitude)))+$gt0012.magnitude)",...>
 				priority = <1>
 			>
 			["gt0031"] = (RULE) <
-				when = <"$gt0004.units=='umol/l'",...>
-				then = <"$gt0021.units='mg/dl'", "$gt0021.magnitude=($gt0004.magnitude/88.42)">
-				priority = <12>
+				when = <"$gt0041.units=='umol/l'",...>
+				then = <"$gt0021.precision=2", "$gt0021.units='mg/dl'", "$gt0021.magnitude=($gt0041.magnitude/88.42)">
+				priority = <16>
 			>
 			["gt0033"] = (RULE) <
 				when = <"($gt0014==1|local::at0008|Yes|)||($gt0021>=4,mg/dl)",...>
-				then = <"$gt0012.precision=2", "$gt0012.magnitude=((((9.57*(log(4)))+(3.78*(log($gt0018.magnitude))))+(11.20*(log($gt0037.magnitude))))+6.43)">
+				then = <"$gt0012.magnitude=((((9.57*(log(4)))+(3.78*(log($gt0018.magnitude))))+(11.20*(log($gt0016.magnitude))))+6.43)",...>
 				priority = <2>
 			>
 			["gt0034"] = (RULE) <
 				when = <"$gt0003<125,mmol/l",...>
 				then = <"$gt0020=125,mmol/l",...>
-				priority = <7>
+				priority = <9>
 			>
 			["gt0035"] = (RULE) <
 				when = <"$gt0003>137,mmol/l",...>
 				then = <"$gt0020=137,mmol/l",...>
+				priority = <8>
+			>
+			["gt0038"] = (RULE) <
+				when = <"$gt0006.units=='µmol/l'", "$gt0006<=17.1,µmol/l">
+				then = <"$gt0018=1,mg/dl",...>
+				priority = <12>
+			>
+			["gt0039"] = (RULE) <
+				when = <"$gt0006.units=='mg/dl'", "$gt0006<=1,mg/dl">
+				then = <"$gt0018=1,mg/dl",...>
+				priority = <11>
+			>
+			["gt0040"] = (RULE) <
+				when = <"$gt0008<=1",...>
+				then = <"$gt0016=1",...>
 				priority = <6>
+			>
+			["gt0043"] = (RULE) <
+				when = <"$gt0021<1,mg/dl", "$gt0014==0|local::at0007|No|">
+				then = <"$gt0012.magnitude=((((9.57*(log(1)))+(3.78*(log($gt0018.magnitude))))+(11.20*(log($gt0016.magnitude))))+6.43)",...>
+				priority = <3>
 			>
 		>
 	>
@@ -229,10 +224,6 @@ Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 20
 					["gt0003"] = (TERM) <
 						text = <"Sodium">
 						description = <"Sodium level in this specimen.">
-					>
-					["gt0004"] = (TERM) <
-						text = <"Creatinine">
-						description = <"Creatinine level in this specimen">
 					>
 					["gt0006"] = (TERM) <
 						text = <"Total bilirubin">
@@ -311,108 +302,26 @@ Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 20
 						text = <"Set serum sodium to high normal">
 					>
 					["gt0036"] = (TERM) <
-						text = <"PK (INR)">
-						description = <"*">
+						text = <"Set serum creatinine <1 umol/L">
 					>
 					["gt0037"] = (TERM) <
-						text = <"PK (INR)">
-						description = <"*">
+						text = <"Set serum creatinine <1 mg/dl">
 					>
-				>
-			>
-			["sv"] = (TERM_DEFINITION) <
-				terms = <
-					["gt0001"] = (TERM) <
-						text = <"Model For End-Stage Liver Disease (MELD) Score Calculator">
-						description = <"Model For End-Stage Liver Disease (MELD) Score används för att på kort sikt uppskatta mortalitet hos patienter med terminal leversjukdom och därigenom bedöma behov av levertransplantation.">
+					["gt0038"] = (TERM) <
+						text = <"Set serum bilirubin <1 umol/L">
 					>
-					["gt0003"] = (TERM) <
-						text = <"Natrium">
-						description = <"*(en) Sodium level in this specimen.">
+					["gt0039"] = (TERM) <
+						text = <"Set serum bilirubin <1 mg/dl">
 					>
-					["gt0004"] = (TERM) <
-						text = <"Kreatinin">
-						description = <"*(en) Creatinine level in this specimen">
+					["gt0040"] = (TERM) <
+						text = <"Set INR <1">
 					>
-					["gt0006"] = (TERM) <
-						text = <"Totalt bilirubin">
-						description = <"*(en) Concentration of bilirubin (conjugated and unconjugated) in the serum.">
+					["gt0041"] = (TERM) <
+						text = <"Creatinine">
+						description = <"Creatinine level in this specimen">
 					>
-					["gt0008"] = (TERM) <
-						text = <"INR">
-						description = <"*(en) International Normalized Ratio.">
-					>
-					["gt0010"] = (TERM) <
-						text = <"Dialys">
-						description = <"*(en) Has the patient had dialysis at least twice, or 24hrs of continuous venovenous hemodialysis (CVVHD), in the past week?">
-					>
-					["gt0012"] = (TERM) <
-						text = <"Poäng ursprungliga MELD Score">
-						description = <"*(en) Calculated value of the Original, Pre-2016, Model for End-Stage Liver Disease (oMELD).">
-					>
-					["gt0013"] = (TERM) <
-						text = <"MELD score">
-						description = <"*(en) Calculated value of the 2016 Model For End-Stage Liver Disease (MELD).">
-					>
-					["gt0014"] = (TERM) <
-						text = <"Dialys">
-						description = <"*(en) Has the patient had dialysis at least twice, or 24hrs of continuous venovenous hemodialysis (CVVHD), in the past week?">
-					>
-					["gt0016"] = (TERM) <
-						text = <"INR">
-						description = <"*(en) International Normalized Ratio.">
-					>
-					["gt0018"] = (TERM) <
-						text = <"Totalt bilirubin">
-						description = <"*(en) Concentration of bilirubin (conjugated and unconjugated) in the serum.">
-					>
-					["gt0020"] = (TERM) <
-						text = <"Natrium">
-						description = <"*(en) Sodium level in this specimen.">
-					>
-					["gt0021"] = (TERM) <
-						text = <"Kreatinin">
-						description = <"*(en) Creatinine level in this specimen">
-					>
-					["gt0023"] = (TERM) <
-						text = <"CDS natrium">
-					>
-					["gt0024"] = (TERM) <
-						text = <"CDS kreatinin">
-					>
-					["gt0025"] = (TERM) <
-						text = <"CDS INR">
-					>
-					["gt0026"] = (TERM) <
-						text = <"CDS totalt bilirubin">
-					>
-					["gt0027"] = (TERM) <
-						text = <"CDS dialys">
-					>
-					["gt0028"] = (TERM) <
-						text = <"Omvandla bilirubin till mg/dl">
-					>
-					["gt0029"] = (TERM) <
-						text = <"Beräkna ursprunglig MELD score utan dialys">
-					>
-					["gt0030"] = (TERM) <
-						text = <"Beräkna MELD score">
-					>
-					["gt0031"] = (TERM) <
-						text = <"Omvandla kreatinin till mg/dl">
-					>
-					["gt0033"] = (TERM) <
-						text = <"Beräkna ursprunglig MELD score med dialys">
-					>
-					["gt0034"] = (TERM) <
-						text = <"*(en) Set serum sodium to low normal">
-					>
-					["gt0035"] = (TERM) <
-						text = <"*(en) Set serum sodium to high normal">
-					>
-					["gt0036"] = (TERM) <
-					>
-					["gt0037"] = (TERM) <
+					["gt0043"] = (TERM) <
+						text = <"Calculate original MELD score with no dialysis and serum creatinine < 1 mg/dl">
 					>
 				>
 			>
