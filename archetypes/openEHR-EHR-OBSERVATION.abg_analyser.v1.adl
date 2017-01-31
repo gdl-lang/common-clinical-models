@@ -21,6 +21,27 @@ description
 		["date"] = <"2017-01-12">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Instrumentet beräknar anjongap, korrigerat anjongap, metabol rubbning samt, om föreliggande, kompensatorisk reaktion.">
+			use = <"Med hjälp av instrumentet bedöms patientens blodgas med avseende på eventuell förekomst av metabol eller respiratorisk acidos eller alkalos samt eventuell kompensatorisk reaktion.
+
+1 - är pH inom normalintervall?
+2 - är  PaCO2 inom normalintervall?
+3 - är HCO3 inom normalintervall?
+4 - information från 1-3 bearbetas
+5 - bedömning av PaCO2 och HCO3 
+
+Normalintervall:
+PH: 7.35-7.45
+PaCO2: 35-45mmHg (4.7-KPa)
+HCO3-: 22-29mmol/l
+Na: 135-145mmol/l
+Cl: 95-105mmol/l">
+			keywords = <"blodgas", "arteriell blodgas", "anjongap", "pH", "ABG analyser", "pH", "anjongap", "arterial blood gas analyzer">
+			misuse = <"Ej avsedd att användas isolerat utan endast för att stödja klinisk bedömning.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"This tool calculates the AG (Anion gap) the corrected Anion Gap (cAG), the primary acid/base disturbance of blood PH and the compensatory - if any - reaction by utilising the various blood gas/electrolytes values found in a patient's record.
@@ -45,27 +66,6 @@ Cl: 95-105mmol/L">
 			misuse = <"Do not use in isolation of a thorough clinical evaluation of the patient's state">
 			copyright = <"© Cambio Healthcare Systems">
 		>
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"Instrumentet beräknar anjongap, korrigerat anjongap, metabol rubbning samt, om föreliggande, kompensatorisk reaktion.">
-			use = <"Med hjälp av instrumentet bedöms patientens blodgas med avseende på eventuell förekomst av metabol eller respiratorisk acidos eller alkalos samt eventuell kompensatorisk reaktion.
-
-1 - är pH inom normalintervall?
-2 - är  PaCO2 inom normalintervall?
-3 - är HCO3 inom normalintervall?
-4 - information från 1-3 bearbetas
-5 - bedömning av PaCO2 och HCO3 
-
-Normalintervall:
-PH: 7.35-7.45
-PaCO2: 35-45mmHg (4.7-KPa)
-HCO3-: 22-29mmol/l
-Na: 135-145mmol/l
-Cl: 95-105mmol/l">
-			keywords = <"*ABG analyser(en)", "*ph(en)", "*anion gap(en)", "*arterial blood gas analyser(en)", "blodgas", "arteriell blodgas", "anjongap", "pH">
-			misuse = <"Ej avsedd att användas isolerat utan endast för att stödja klinisk bedömning.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -73,7 +73,7 @@ Cl: 95-105mmol/l">
 		["references"] = <"Ref. 1: Baillie JK. Simple, easily memorised 'rules of thumb' for the rapid assessment of physiological compensation for respiratory acid-base disorders. Thorax 2008;63:289-290 doi:10.1136/thx.2007.091223
 
 Ref. 2: Kaufman DA. Interpretation of Arterial Blood Gases (ABGs). Written for Thoracic.org. Retrieved 12/9/2014.">
-		["MD5-CAM-1.0.1"] = <"4D8A53F3F2703BEA2B1BF7AFF51AF1AF">
+		["MD5-CAM-1.0.1"] = <"36B14E2273CCD521A3BEBC9AC6E59CAB">
 	>
 
 definition
@@ -187,7 +187,7 @@ definition
 											1|[local::at0047]  	-- *AG present(en)
 										}
 									}
-									ELEMENT[at0049] occurrences matches {0..1} matches {	-- *Delta gap if AG present(en)
+									ELEMENT[at0049] occurrences matches {0..1} matches {	-- Delta om föreliggande anjongap
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::380]>
@@ -199,7 +199,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0050] occurrences matches {0..1} matches {	-- *Delta ratio assessment(en)
+									ELEMENT[at0050] occurrences matches {0..1} matches {	-- Delta ratio
 										value matches {
 											0|[local::at0051], 	-- NA
 											1|[local::at0052], 	-- <0.4
@@ -567,12 +567,12 @@ or a pre-existing compensated respiratory acidosis ">
 					description = <"*">
 				>
 				["at0049"] = <
-					text = <"*Delta gap if AG present(en)">
-					description = <"*If an AG is present,the delta ratio is used to determine if a mixed acid base disorder is present. (en)">
+					text = <"Delta om föreliggande anjongap">
+					description = <"Blandad bild av acidos">
 				>
 				["at0050"] = <
-					text = <"*Delta ratio assessment(en)">
-					description = <"*Delta ratio assessment(en)">
+					text = <"Delta ratio">
+					description = <"Delta ratio">
 				>
 				["at0051"] = <
 					text = <"NA">
