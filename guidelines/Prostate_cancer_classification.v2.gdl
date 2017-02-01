@@ -111,7 +111,7 @@
 			["gt0017"] = (RULE) <
 				when = <"$gt0007.units=='ml'", "$gt0009.units=='ng/mL'">
 				then = <"$gt0019.units='ng/mL2'", "$gt0019.precision=2", "$gt0019.magnitude=($gt0009.magnitude/$gt0007.magnitude)">
-				priority = <9>
+				priority = <10>
 			>
 			["gt0022"] = (RULE) <
 				when = <"$gt0021==null",...>
@@ -119,39 +119,44 @@
 				priority = <1>
 			>
 			["gt0023"] = (RULE) <
-				when = <"$gt0019<0.15,ng/mL2", "$gt0021==null", "$gt0009<10,ng/mL", "$gt0003>=8", "$gt0005<=8,mm", "$gt0011==1|local::at0005|T1c|">
+				when = <"$gt0004<=4", "$gt0021==null", "$gt0019<0.15,ng/mL2", "$gt0009<10,ng/mL", "$gt0003>=8", "$gt0005<=8,mm", "$gt0011==1|local::at0005|T1c|">
 				then = <"$gt0021=0|local::at0005|Very low risk|",...>
-				priority = <8>
+				priority = <3>
 			>
 			["gt0024"] = (RULE) <
-				when = <"$gt0021==null", "$gt0009<10,ng/mL", "$gt0016==3", "$gt0015==3", "($gt0011==2|local::at0006|T2a|)||($gt0011==1|local::at0005|T1c|)">
+				when = <"$gt0021==null", "$gt0009<10,ng/mL", "$gt0016==3", "$gt0015==3", "($gt0011==2|local::at0006|T2a|)||(($gt0011==1|local::at0005|T1c|)||($gt0019>=0.15,ng/mL2))">
 				then = <"$gt0021=1|local::at0006|Low risk|",...>
-				priority = <7>
+				priority = <2>
 			>
 			["gt0025"] = (RULE) <
 				when = <"$gt0021==null", "(($gt0015.magnitude==(7-$gt0016.magnitude))||($gt0011==3|local::at0007|T2b|))||(($gt0009>=10,ng/mL)&&($gt0009<20,ng/mL))">
 				then = <"$gt0021=2|local::at0007|Intermediate risk|",...>
-				priority = <6>
+				priority = <4>
 			>
 			["gt0026"] = (RULE) <
-				when = <"($gt0011==4|local::at0008|T2c|)||($gt0011==5|local::at0009|T3|)",...>
+				when = <"$gt0021==null", "($gt0011==4|local::at0008|T2c|)||($gt0011==5|local::at0009|T3|)">
+				then = <"$gt0021=3|local::at0008|High risk|",...>
+				priority = <8>
+			>
+			["gt0028"] = (RULE) <
+				when = <"$gt0021==null", "$gt0027==true">
+				then = <"$gt0021=3|local::at0008|High risk|",...>
+				priority = <7>
+			>
+			["gt0029"] = (RULE) <
+				when = <"$gt0021==null", "$gt0015.magnitude<=(10-$gt0016.magnitude)", "$gt0015.magnitude>=(8-$gt0016.magnitude)">
+				then = <"$gt0021=3|local::at0008|High risk|",...>
+				priority = <6>
+			>
+			["gt0030"] = (RULE) <
+				when = <"$gt0021==null", "$gt0009>=20,ng/mL">
 				then = <"$gt0021=3|local::at0008|High risk|",...>
 				priority = <5>
 			>
-			["gt0028"] = (RULE) <
-				when = <"$gt0027==true",...>
-				then = <"$gt0021=3|local::at0008|High risk|",...>
-				priority = <4>
-			>
-			["gt0029"] = (RULE) <
-				when = <"$gt0015.magnitude<=(10-$gt0016.magnitude)", "$gt0015.magnitude>=(8-$gt0016.magnitude)">
-				then = <"$gt0021=3|local::at0008|High risk|",...>
-				priority = <3>
-			>
-			["gt0030"] = (RULE) <
-				when = <"$gt0009>=20,ng/mL",...>
-				then = <"$gt0021=3|local::at0008|High risk|",...>
-				priority = <2>
+			["gt0037"] = (RULE) <
+				when = <"$gt0021==null", "(($gt0012==2|local::at0014|N1|)||($gt0013==2|local::at0018|M1|))||(($gt0009>100,ng/mL)||($gt0011==6|local::at0010|T4|))">
+				then = <"$gt0021=5|local::at0010|Advanced|",...>
+				priority = <9>
 			>
 		>
 	>
@@ -258,6 +263,9 @@
 					["gt0036"] = (TERM) <
 						text = <"Prostate volume event time">
 						description = <"The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event.">
+					>
+					["gt0037"] = (TERM) <
+						text = <"Set advanced category">
 					>
 				>
 			>
