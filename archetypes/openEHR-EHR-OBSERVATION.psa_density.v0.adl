@@ -2,38 +2,63 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.psa_density.v0
 
 concept
-	[at0000]	-- Psa density
+	[at0000]	-- PSA-densitet
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
-		["name"] = <"">
+		["name"] = <"Rong Chen">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-01-24">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att registrerera PSA-densitet.">
+			use = <"Använd för registrering av PSA-densitet.
+
+PSA-densitet = prostata-specifikt antigen (PSA) dividerat med prostatavolym (kubikcentimeter).
+">
+			keywords = <"PSA", "prostata", "PSA-densitet">
+			misuse = <"">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record PSA density">
-			use = <"">
+			purpose = <"To record density of prostate-specific antigen (PSA)">
+			use = <"Use to record density of prostate-specific antigen (PSA).
+
+PSA density equals the PSA value divided by the prostate volume (cubic centimeter).">
+			keywords = <"PSA", "PSA density">
 			misuse = <"">
-			copyright = <"">
+			copyright = <"© Cambio Healthcare Systems">
 		>
 	>
 	lifecycle_state = <"0">
-	other_contributors = <>
+	other_contributors = <"Dennis Forslund, Cambio Healthcare Systems", ...>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"B0DFE0B261EEFFB366E9368D9508AF47">
+		["MD5-CAM-1.0.1"] = <"FCC64D6AFCA4C9F2E72F5F3B6C4DD69F">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Psa density
+	OBSERVATION[at0000] matches {	-- PSA-densitet
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- vilken händelse som helst
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *vilken händelse som helst(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Träd
+							ITEM_TREE[at0003] matches {	-- *Träd(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- PSA density
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- PSA-densitet
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::350]>
@@ -61,8 +86,8 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Psa density">
-					description = <"unknown">
+					text = <"PSA density">
+					description = <"To record density of prostate-specific antigen (PSA)">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -78,7 +103,31 @@ ontology
 				>
 				["at0004"] = <
 					text = <"PSA density">
-					description = <"*">
+					description = <"PSA density equals the PSA value divided by the prostate volume (cubic centimeter).">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"PSA-densitet">
+					description = <"För registrering av PSA-densitet.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*vilken händelse som helst(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Träd(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"PSA-densitet">
+					description = <"PSA-densitet = prostata-specifikt antigen (PSA) dividerat med prostatavolym (kubikcentimeter).">
 				>
 			>
 		>

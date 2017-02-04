@@ -2,52 +2,70 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.prostate_biopsy_findings.v0
 
 concept
-	[at0000]	-- Prostate biopsy findings
+	[at0000]	-- Prostatabiopsi - fynd
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
-		["name"] = <"">
+		["name"] = <"Rong Chen">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-01-24">
 	>
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record biopsy finds of prostate gland">
-			use = <"">
+			purpose = <"To record biopsy findings of prostate gland.">
+			use = <"Use to record biopsy findings of prostate gland.">
 			misuse = <"">
-			copyright = <"">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Registrering av fynd funna vid biopsi av prostata.">
+			use = <"Använd för registrering av fynd funna vid biopsi av prostata.">
+			misuse = <"">
+			copyright = <"© Cambio Healthcare Systems">
 		>
 	>
 	lifecycle_state = <"0">
-	other_contributors = <>
+	other_contributors = <"Dennis Forslund, Cambio Healthcare Systems", ...>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"07D036F45F21A74F994274C4460DD52E">
+		["MD5-CAM-1.0.1"] = <"71918DCEC9CFE9EEEFEB072DE69CB6E5">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Prostate biopsy findings
+	OBSERVATION[at0000] matches {	-- Prostatabiopsi - fynd
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- vilken händelse som helst
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *vilken händelse som helst(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Träd
+							ITEM_TREE[at0003] matches {	-- *Träd(en)
 								items cardinality matches {3..*; unordered} matches {
-									ELEMENT[at0004] matches {	-- Total number of biopsies
+									ELEMENT[at0004] matches {	-- Totalt antal biopsier
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|>=0|}
 											}
 										}
 									}
-									ELEMENT[at0005] matches {	-- Total number of positive biopsies
+									ELEMENT[at0005] matches {	-- Antal positiva biopsier
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|>=0|}
 											}
 										}
 									}
-									ELEMENT[at0006] matches {	-- Total length of cancer
+									ELEMENT[at0006] matches {	-- Total längd av cancer
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::122]>
@@ -60,17 +78,17 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Gleason 4 + 3 in more than half of the biopsies?
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Gleason 4 + 3 i >50% av biopsierna?
 										value matches {
 											DV_BOOLEAN matches {
 												value matches {True, False}
 											}
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Gleason 4 + 3 in >50% of biopsies?
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Gleason 4 + 3 i >50% av biopsierna?
 										value matches {
-											0|[local::at0009], 	-- False
-											1|[local::at0010]  	-- True
+											0|[local::at0009], 	-- Nej
+											1|[local::at0010]  	-- Ja
 										}
 									}
 								}
@@ -88,7 +106,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Prostate biopsy findings">
-					description = <"unknown">
+					description = <"To record biopsy findings of prostate gland">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -129,6 +147,54 @@ ontology
 				["at0010"] = <
 					text = <"True">
 					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Prostatabiopsi - fynd">
+					description = <"Registrering av fynd funna vid biopsi av prostata.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*vilken händelse som helst(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Träd(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Totalt antal biopsier">
+					description = <"Totalt antal biopsier tagna från prostata">
+				>
+				["at0005"] = <
+					text = <"Antal positiva biopsier">
+					description = <"Antal biopsier med fynd förenliga med cancer">
+				>
+				["at0006"] = <
+					text = <"Total längd av cancer">
+					description = <"Cancerns totala längd">
+				>
+				["at0007"] = <
+					text = <"Gleason 4 + 3 i >50% av biopsierna?">
+					description = <"**(en)">
+				>
+				["at0008"] = <
+					text = <"Gleason 4 + 3 i >50% av biopsierna?">
+					description = <"Förekommer Gleasongrad 4+3 (Gleasonsumma 7) i mer än hälften av biopsikolvarna?">
+				>
+				["at0009"] = <
+					text = <"Nej">
+					description = <"**(en)">
+				>
+				["at0010"] = <
+					text = <"Ja">
+					description = <"**(en)">
 				>
 			>
 		>
