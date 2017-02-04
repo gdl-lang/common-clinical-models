@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.gleason_score.v0
 
 concept
-	[at0000]	-- Gleasongradering
+	[at0000]	-- Gleason grading system
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -21,6 +21,17 @@ description
 		["date"] = <"2017-01-24">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"För registrering av Gleasongradering i samband med utredning av prostatacancer.">
+			use = <"Använd för registrering av Gleasongradering i samband med utredning av prostatacancer.
+
+Med preparat från biopsi av prostata kan malignitetsgrad bedömas i enlighet med Gleason. Summan baseras på cancercellernas mikroskopiska utseende, och tar hänsyn till de två i preparatet mest förekommande typerna av cellavvikelser. Dessa graderas i den ursprungliga versionen mellan 1-5 baserat på hur mycket de avviker från normal vävnad, men i enlighet med rådande rekommendationer bör Gleasongrad 1 ej längre användas.
+
+Om det i preparatet återfinns cellavvikelser av högre grad än den vanligast förekommande, bör denna oberoende av omfattning i enlighet med ISUP-revisionen ersätta den näst vanligaste avvikande morfologin vid beräkning av Gleasonsumma.">
+			misuse = <"">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record results in accordance with the Gleason grading system.">
@@ -34,17 +45,6 @@ Also of interest is the ISUP revision stating the Gleason score should be based 
 			misuse = <"">
 			copyright = <"© Cambio Healthcare Systems">
 		>
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"För registrering av Gleasongradering i samband med utredning av prostatacancer.">
-			use = <"Använd för registrering av Gleasongradering i samband med utredning av prostatacancer.
-
-Med preparat från biopsi av prostata kan malignitetsgrad bedömas i enlighet med Gleason. Summan baseras på cancercellernas mikroskopiska utseende, och tar hänsyn till de två i preparatet mest förekommande typerna av cellavvikelser. Dessa graderas i den ursprungliga versionen mellan 1-5 baserat på hur mycket de avviker från normal vävnad, men i enlighet med rådande rekommendationer bör Gleasongrad 1 ej längre användas.
-
-Om det i preparatet återfinns cellavvikelser av högre grad än den vanligast förekommande, bör denna oberoende av omfattning i enlighet med ISUP-revisionen ersätta den näst vanligaste avvikande morfologin vid beräkning av Gleasonsumma.">
-			misuse = <"">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 	>
 	lifecycle_state = <"0">
 	other_contributors = <"Dennis Forslund, Cambio Healthcare Systems", ...>
@@ -55,26 +55,26 @@ Pathology consensus conference. Am J Surg Pathol, 2014. 38(8): p. e6-e19.
 Epstein JI, Allsbrook WC Jr, Amin MB, Egevad L. Update on the Gleason grading system for prostate cancer: results of an international consensus conference of urologic pathologists. Adv Anat Pathol. 2006 Jan;13(1):57-9.
 
 Nationellt vårdprogram för prostatacancer - available from: http://www.cancercentrum.se/globalassets/cancerdiagnoser/prostatacancer/vardprogram/natvp_prostatacancer_v.1.1_20150429_final.pdf">
-		["MD5-CAM-1.0.1"] = <"8EAE19FA03D13B6EE38895FB49C6A60D">
+		["MD5-CAM-1.0.1"] = <"E7ECAA3063B276B4A8CD8939E315A057">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Gleasongradering
+	OBSERVATION[at0000] matches {	-- Gleason grading system
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *vilken händelse som helst(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- vilken händelse som helst
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Träd(en)
+							ITEM_TREE[at0003] matches {	-- Träd
 								items cardinality matches {2..*; unordered} matches {
-									ELEMENT[at0004] matches {	-- Gleasongradering - primär
+									ELEMENT[at0004] matches {	-- Gleason score - primary
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|3..5|}
 											}
 										}
 									}
-									ELEMENT[at0005] matches {	-- Gleasongradering - sekundär
+									ELEMENT[at0005] matches {	-- Gleason score - secondary
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|3..5|}
@@ -116,7 +116,7 @@ ontology
 				>
 				["at0005"] = <
 					text = <"Gleason score - secondary">
-					description = <"Gleason grade of second most common morphology in the sample">
+					description = <"Gleason grade of the second most common morphology in the sample">
 				>
 			>
 		>

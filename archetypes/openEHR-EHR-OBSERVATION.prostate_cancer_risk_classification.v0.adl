@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.prostate_cancer_risk_classification.v0
 
 concept
-	[at0000]	-- Prostatacancer - riskgruppsindelning
+	[at0000]	-- Prostate cancer risk classification
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -21,21 +21,6 @@ description
 		["date"] = <"2017-01-24">
 	>
 	details = <
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"Att dokumentera riskgruppsindelning av prostatacancer.">
-			use = <"Använd för att dokumentera riskgruppsindelning av prostatacancer. Klassificeringen baseras på flertalet faktorer vilka i enlighet med lokala riktlinjer kan hittas i separata arketyper.
-
-Riskklassificering i denna arketyp:
-0 - Mycket låg
-1 - Låg
-2 - Mellanrisk
-3 - Hög 
-4 - Oklassificerad
-5 - Avancerad">
-			misuse = <"">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To document the risk classification of prostate cancer.">
@@ -51,30 +36,45 @@ The risk classification:
 			misuse = <"">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att dokumentera riskgruppsindelning av prostatacancer.">
+			use = <"Använd för att dokumentera riskgruppsindelning av prostatacancer. Klassificeringen baseras på flertalet faktorer vilka i enlighet med lokala riktlinjer kan hittas i separata arketyper.
+
+Riskklassificering i denna arketyp:
+0 - Mycket låg
+1 - Låg
+2 - Mellanrisk
+3 - Hög 
+4 - Oklassificerad
+5 - Avancerad">
+			misuse = <"">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"0">
 	other_contributors = <"Dennis Forslund, Cambio Healthcare Systems", ...>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"CF7B18403783707A6B36718AAC3058FB">
+		["MD5-CAM-1.0.1"] = <"B3F99B60A094163C3CE30A38DC0E68B2">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Prostatacancer - riskgruppsindelning
+	OBSERVATION[at0000] matches {	-- Prostate cancer risk classification
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *vilken händelse som helst(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- vilken händelse som helst
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Träd(en)
+							ITEM_TREE[at0003] matches {	-- Träd
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Riskgruppsindelning
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Risk classification
 										value matches {
-											0|[local::at0005], 	-- Mycket låg risk
-											1|[local::at0006], 	-- Låg risk
-											2|[local::at0007], 	-- Mellanrisk
-											3|[local::at0008], 	-- Hög risk
-											4|[local::at0009], 	-- Oklassificerad
-											5|[local::at0010]  	-- Avancerad
+											0|[local::at0005], 	-- Very low risk
+											1|[local::at0006], 	-- Low risk
+											2|[local::at0007], 	-- Intermediate risk
+											3|[local::at0008], 	-- High risk
+											4|[local::at0009], 	-- Unclassified
+											5|[local::at0010]  	-- Advanced
 										}
 									}
 								}
@@ -108,7 +108,7 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Risk classification">
-					description = <"The risk classification of prostate cancer ">
+					description = <"Prostate cancer risk assessment">
 				>
 				["at0005"] = <
 					text = <"Very low risk">
@@ -160,27 +160,27 @@ ontology
 				>
 				["at0005"] = <
 					text = <"Mycket låg risk">
-					description = <"">
+					description = <"*">
 				>
 				["at0006"] = <
 					text = <"Låg risk">
-					description = <"">
+					description = <"*">
 				>
 				["at0007"] = <
 					text = <"Mellanrisk">
-					description = <"">
+					description = <"*">
 				>
 				["at0008"] = <
 					text = <"Hög risk">
-					description = <"">
+					description = <"*">
 				>
 				["at0009"] = <
 					text = <"Oklassificerad">
-					description = <"">
+					description = <"*">
 				>
 				["at0010"] = <
 					text = <"Avancerad">
-					description = <"">
+					description = <"*">
 				>
 			>
 		>
