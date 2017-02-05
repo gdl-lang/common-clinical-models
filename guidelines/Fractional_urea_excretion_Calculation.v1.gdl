@@ -71,11 +71,6 @@ Etiology of acute kidney injury (AKI) should be based upon the totality of the p
 			>
 		>
 		rules = <
-			["gt0013"] = (RULE) <
-				when = <"$gt0027==null", "$gt0028==null", "$gt0029==null", "$gt0030==null">
-				then = <"$gt0027=0,mmol/l", "$gt0028=0,mmol/l", "$gt0029=0,umol/l", "$gt0030=0,umol/l">
-				priority = <10>
-			>
 			["gt0014"] = (RULE) <
 				when = <"$gt0022.units=='mmol/l'", "$gt0022!=null">
 				then = <"$gt0027.units='mmol/l'", "$gt0027.precision=2", "$gt0027=$gt0022">
@@ -107,6 +102,7 @@ Etiology of acute kidney injury (AKI) should be based upon the totality of the p
 				priority = <2>
 			>
 			["gt0020"] = (RULE) <
+				when = <"$gt0028>0,mmol/l", "$gt0027>0,mmol/l", "$gt0029>0,umol/l", "$gt0030>0,umol/l">
 				then = <"$gt0031.units='%'", "$gt0031.precision=2", "$gt0031.magnitude=((($gt0029.magnitude*$gt0028.magnitude)/($gt0027.magnitude*$gt0030.magnitude))*100)">
 				priority = <1>
 			>
@@ -129,9 +125,6 @@ Etiology of acute kidney injury (AKI) should be based upon the totality of the p
 					["gt0001"] = (TERM) <
 						text = <"Fractional Excretion of Urea (FEUrea) Calculator">
 						description = <"Fractional excretion of urea (FEUrea) is the percentage of blood urea nitrogen filtered by the kidney which is excreted in the urine. FEUrea helps distinguish between prerenal and intrinsic renal causes of acute renal failure, specifically prerenal azotemia and acute tubular nerosis (ATN). Though less common than fractional excretion of sodium (FENa), it is more specific and sensitive and potentially more useful because urea excretion (unlike sodium) is not significantly affected by diuretics. The calculation requires blood urea nitrogen (BUN) and urine urea (uUrea) concentrations (mmol/L or mg/dl), and serum (sCr) and urine (uCr) creatinine concentrations (umol/L or mg/dl). FEUrea <= 35% suggests kidney injury of prerenal etiology while FEUrea > 50% suggests an intrinsic renal etiology.">
-					>
-					["gt0013"] = (TERM) <
-						text = <"Set defaults">
 					>
 					["gt0014"] = (TERM) <
 						text = <"Set BUN without unit conversion">
