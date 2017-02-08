@@ -168,51 +168,49 @@ angular.module('cds_app').controller('ABC_massive_transfusion_Ctrl', function($s
 </div>
 
 <div class="card">
-  <div class="row collapse" title="{{${penetrating_trauma_def}.description}}">
-    <div class="medium-7 columns">
+<div class="row collapse" title="{{${penetrating_trauma_def}.description}}">
+    <div class="medium-6 columns">
       <label>{{${penetrating_trauma_def}.name}}</label>
-      </div>
-      <label class="medium-5 columns">
-        <select ng-model="${penetrating_trauma_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${penetrating_trauma_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
-        </select>
-      </label>
     </div>
-<div class="row collapse" title="{{${result_value_def}.description}}">
-    <div class="medium-7 columns">
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${penetrating_trauma_def}.selections">
+      <input type="radio" value="{{key}}" ng-model= "${penetrating_trauma_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+  <div class="row collapse" title="{{${result_value_def}.description}}">
+    <div class="medium-6 columns">
       <label>{{${result_value_def}.name}}</label>
-      </div>
-      <label class="medium-5 columns">
-        <select ng-model="${result_value_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${result_value_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
-        </select>
-      </label>
     </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${result_value_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${result_value_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
 <div class="row collapse" title="{{${systolic_def}.description}}">
-<div class="medium-7 columns">
+<div class="medium-5 columns">
 <label>{{${systolic_def}.name}}</label>
 </div>
-<div class="medium-4 columns">
+<div class="medium-5 columns">
         <input ng-model="${systolic_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
-	  <div class="medium-1 columns">
+	  <div class="medium-2 columns">
         <select ng-model="${systolic_ehr_data}.value.units" ng-options="unit for unit in ${systolic_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
 <div class="row collapse" title="{{${rate_def}.description}}">
-<div class="medium-7 columns">
+<div class="medium-5 columns">
 <label>{{${rate_def}.name}}</label>
 </div>
-<div class="medium-4 columns">
+<div class="medium-5 columns">
         <input ng-model="${rate_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
-	  <div class="medium-1 columns">
+	  <div class="medium-2 columns">
         <select ng-model="${rate_ehr_data}.value.units" ng-options="unit for unit in ${rate_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
 <div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult">
-  <div class="medium-7 columns">
+  <div class="medium-6 columns">
     <label><b>{{${total_score_def}.name}}: </b></label>
   </div>
-  <div class="medium-5 columns" style="text-align: center;">
+  <div class="medium-6 columns" style="text-align: center;">
     <label>{{${total_score_cds_data}.value.magnitude}}</label>
   </div>
 </div>
