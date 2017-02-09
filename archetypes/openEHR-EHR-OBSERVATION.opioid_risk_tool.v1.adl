@@ -5,6 +5,15 @@ concept
 	[at0000]	-- Opioid risk tool
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -12,6 +21,20 @@ description
 		["date"] = <"2016-01-22">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att användas vid första möte och inför behandling med opioider, för att ge klinikern en uppfattning kring beroendepotential med avseende på alkohol och droger, såväl ordinerade som icke.">
+			use = <"Instrumentet inkluderar utöver ålder ett antal parametrar gällande patientens historik, inklusive sexuella övergrepp, psykisk sjukdom och missbruk av alkohol och droger. Det tar även hänsyn till eventuell förekomst inom familjen. 
+
+Resultatet beräknas till följd av olika viktning separat för män och kvinnor. Maximal poäng uppgår till 26p och resultatet tolkas enligt:
+
+≤ 3p: låg risk
+4-7p: måttlig risk
+≥ 8p: hög risk">
+			keywords = <"opioid risk tool", "ORT", "drogberoende", "beroende", "opioider">
+			misuse = <"Patienter som med opioider behandlas för kroniska smärtsyndrom bör noga övervakas, Instrumentet är endast avsett att understödja klinisk bedömning.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"The ORT (Opioid Risk Tool) is used on initial visit and prior to opioid therapy for chronic pain in order to provide the clinician some idea of potential risk of drug abuse including alcohol, illegal and prescription drug abuse.">
@@ -33,93 +56,93 @@ The score interpretations are:
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Ref. 1: Webster LR, Webster RM. Predicting aberrant behaviors in opioid-treated patients: preliminary validation of the Opioid Risk Tool. Pain Med. 2005 Nov-Dec;6(6):432-42. PubMed PMID: 16336480.">
-		["MD5-CAM-1.0.1"] = <"50754E2FD7082D270BFEAFEA0EC05E41">
+		["MD5-CAM-1.0.1"] = <"BC62381BA89F9E7AB538AC96D88D2B0A">
 	>
 
 definition
 	OBSERVATION[at0000] matches {	-- Opioid risk tool
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Age 16-45
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Ålder 16-45
 										value matches {
-											0|[local::at0017], 	-- No
-											1|[local::at0018]  	-- Yes
+											0|[local::at0017], 	-- Nej
+											1|[local::at0018]  	-- Ja
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- History of preadolescent sexual abuse
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Historik av sexuella övergrepp prepubertalt
 										value matches {
-											0|[local::at0019], 	-- No
-											3|[local::at0020]  	-- Yes
+											0|[local::at0019], 	-- Nej
+											3|[local::at0020]  	-- Ja
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- History of depression
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Historik av depression
 										value matches {
-											0|[local::at0021], 	-- No
-											1|[local::at0022]  	-- Yes
+											0|[local::at0021], 	-- Nej
+											1|[local::at0022]  	-- Ja
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- History of ADD, OCD, Bipolar disorder or Schizophrenia
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Historik av ADD, OCD, bipolär sjukdom eller schizofreni
 										value matches {
-											0|[local::at0023], 	-- No
-											2|[local::at0024]  	-- Yes
+											0|[local::at0023], 	-- Nej
+											2|[local::at0024]  	-- Ja
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- History of alcohol abuse
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Historik av alkoholmissbruk
 										value matches {
-											0|[local::at0025], 	-- No
-											3|[local::at0026]  	-- Yes
+											0|[local::at0025], 	-- Nej
+											3|[local::at0026]  	-- Ja
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- History of illegal drug abuse
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Historik av drogmissbruk (olagliga droger)
 										value matches {
-											0|[local::at0027], 	-- No
-											4|[local::at0028]  	-- Yes
+											0|[local::at0027], 	-- Nej
+											4|[local::at0028]  	-- Ja
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- History of prescription drug use
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Historik av drogmissbruk (ordinerade läkemedel)
 										value matches {
-											0|[local::at0029], 	-- No
-											5|[local::at0030]  	-- Yes
+											0|[local::at0029], 	-- Nej
+											5|[local::at0030]  	-- Ja
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Family History of alcohol abuse
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Familjehistorik - alkoholmissbruk
 										value matches {
-											0|[local::at0039], 	-- No
-											1|[local::at0040]  	-- Yes
+											0|[local::at0039], 	-- Nej
+											1|[local::at0040]  	-- Ja
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Family History of illegal drug abuse
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Familjehistorik - drogmissbruk (olagliga droger)
 										value matches {
-											0|[local::at0041], 	-- No
-											1|[local::at0042]  	-- Yes
+											0|[local::at0041], 	-- Nej
+											1|[local::at0042]  	-- Ja
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Family History of prescription drug abuse
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Familjehistorik - drogmissbruk (ordinerade läkemedel)
 										value matches {
-											0|[local::at0037], 	-- No
-											4|[local::at0038]  	-- Yes
+											0|[local::at0037], 	-- Nej
+											4|[local::at0038]  	-- Ja
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Result - male
-										value matches {
-											DV_COUNT matches {
-												magnitude matches {|0..26|}
-											}
-										}
-									}
-									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Result - female
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Resultat - man
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..26|}
 											}
 										}
 									}
-									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Resultat - kvinna
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..26|}
+											}
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -284,6 +307,158 @@ ontology
 				["at0042"] = <
 					text = <"Yes">
 					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Opioid risk tool">
+					description = <"Opioid Risk Tool (ORT) används för att värdera risken för beroende vid bruk av opioider.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Ålder 16-45">
+					description = <"*Yes if within the 16-45 yr age range.(en)">
+				>
+				["at0005"] = <
+					text = <"Historik av sexuella övergrepp prepubertalt">
+					description = <"Endast applicerbar på kvinnor - har patienten utsatts för sexuella övergrepp förpubertalt?">
+				>
+				["at0006"] = <
+					text = <"Historik av depression">
+					description = <"Har patienten diagnosticerats med depression?">
+				>
+				["at0007"] = <
+					text = <"Historik av ADD, OCD, bipolär sjukdom eller schizofreni">
+					description = <"Har patienten diagnosticerats med ADD, OCD, bipolär sjukdom eller schizofreni?">
+				>
+				["at0008"] = <
+					text = <"Historik av alkoholmissbruk">
+					description = <"Har patienten en historik av alkoholmissbruk?">
+				>
+				["at0009"] = <
+					text = <"Historik av drogmissbruk (olagliga droger)">
+					description = <"Har patienten en historik av drogmissbruk, med avseende på olagliga droger?">
+				>
+				["at0010"] = <
+					text = <"Historik av drogmissbruk (ordinerade läkemedel)">
+					description = <"Har patienten en historik av drogmissbruk, med avseende på ordinerade läkemedel?">
+				>
+				["at0011"] = <
+					text = <"Familjehistorik - alkoholmissbruk">
+					description = <"Finns det historik av alkoholmissbruk inom patientens familj?">
+				>
+				["at0012"] = <
+					text = <"Familjehistorik - drogmissbruk (olagliga droger)">
+					description = <"Finns det historik av drogmissbruk (olagliga droger) inom patientens familj?">
+				>
+				["at0013"] = <
+					text = <"Familjehistorik - drogmissbruk (ordinerade läkemedel)">
+					description = <"Finns det historik av drogmissbruk (ordinerade läkemedel) inom patientens familj?">
+				>
+				["at0014"] = <
+					text = <"Resultat - man">
+					description = <"Summan av samtliga faktorer - man">
+				>
+				["at0015"] = <
+					text = <"Kommentar">
+					description = <"Ev tillägg">
+				>
+				["at0016"] = <
+					text = <"Resultat - kvinna">
+					description = <"Summan av samtliga faktorer - kvinna">
+				>
+				["at0017"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0023"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0026"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0027"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0028"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0029"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0030"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0037"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0038"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0039"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0040"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0041"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0042"] = <
+					text = <"Ja">
+					description = <"">
 				>
 			>
 		>
