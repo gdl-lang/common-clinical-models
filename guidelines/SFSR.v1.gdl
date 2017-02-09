@@ -1,0 +1,346 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"SFSR.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"syncope", "san francisco syncope rule">
+				misuse = <"Should not be used on its own for diagnostic purposes.">
+				purpose = <"Risk stratification of syncope among patients via 5 True/False questions.">
+				use = <"Risk stratification of syncope among patients via 5 True/False questions regarding:
+
+Congestive Heart Failure history
+Hematocrit (PCV) <30%
+EKG Abnormal (New ECG change from any source, any non-sinus rhythm on EKG or monitoring)
+Shortness of Breath symptoms
+Systolic BP < 90mmHg at Triage.
+
+If any of the above questions are true, the risk is not low and further investigation is warranted in case of serious outcomes.">
+			>
+		>
+		original_author = <
+			["date"] = <"2016-01-05">
+			["name"] = <"Syeeda S Farruque">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"Ref. 1: Quinn J, McDermott D, Stiell I, Kohn M, Wells G. Prospective validation of the San Francisco Syncope Rule to predict patients with serious outcomes. Ann Emerg Med. 2006 May;47(5):448-54. Epub 2006 Jan 18. PubMed PMID: 16631985.
+
+Ref. 2: Birnbaum A, Esses D, Bijur P, Wollowitz A, Gallagher EJ. Failure to validate the San Francisco Syncope Rule in an independent emergency department population. Ann Emerg Med. 2008 Aug;52(2):151-9. Epub 2008 Feb 20. PubMed PMID: 18282636.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0009"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.blood_pressure.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0010"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0006]/data[at0003]/items[at0004]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0018"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-full_blood_count.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0019"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.6]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0052"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.san_francisco_syncope_rule.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0053"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0054"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0006]">
+					>
+					["gt0055"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0007]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0057"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.san_francisco_syncope_rule.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0058"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0059"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0005]">
+					>
+					["gt0060"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0006]">
+					>
+					["gt0061"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0007]">
+					>
+					["gt0062"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0008]">
+					>
+					["gt0063"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0009]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0020"] = (RULE) <
+				when = <"$gt0053!=null",...>
+				then = <"$gt0058=$gt0053",...>
+				priority = <5>
+			>
+			["gt0041"] = (RULE) <
+				when = <"$gt0061==null", "$gt0062==null", "$gt0058==null", "$gt0059==null", "$gt0060==null">
+				then = <"$gt0058=false", "$gt0059=false", "$gt0060=false", "$gt0061=false", "$gt0062=false">
+				priority = <10>
+			>
+			["gt0042"] = (RULE) <
+				when = <"$gt0019.numerator<30", "$gt0019!=null">
+				then = <"$gt0059=false",...>
+				priority = <9>
+			>
+			["gt0043"] = (RULE) <
+				when = <"$gt0019.numerator>=30", "$gt0019!=null">
+				then = <"$gt0059=false",...>
+				priority = <8>
+			>
+			["gt0044"] = (RULE) <
+				when = <"$gt0010.magnitude<90", "$gt0010.units=='mm[Hg]'", "$gt0010!=null">
+				then = <"$gt0062=false",...>
+				priority = <7>
+			>
+			["gt0045"] = (RULE) <
+				when = <"$gt0010.magnitude>=90", "$gt0010.units=='mm[Hg]'", "$gt0010!=null">
+				then = <"$gt0062=false",...>
+				priority = <6>
+			>
+			["gt0046"] = (RULE) <
+				when = <"$gt0054!=null",...>
+				then = <"$gt0060=$gt0054",...>
+				priority = <4>
+			>
+			["gt0047"] = (RULE) <
+				when = <"$gt0055!=null",...>
+				then = <"$gt0061=$gt0055",...>
+				priority = <3>
+			>
+			["gt0048"] = (RULE) <
+				when = <"(((($gt0058==false)||($gt0059==false))||($gt0060==false))||($gt0061==false))||($gt0062==false)",...>
+				then = <"$gt0063=false",...>
+				priority = <2>
+			>
+			["gt0049"] = (RULE) <
+				when = <"$gt0062==false", "$gt0061==false", "$gt0058==false", "$gt0059==false", "$gt0060==false">
+				then = <"$gt0063=false",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"SFSR">
+						description = <"The SFSR (San Francisco Syncope Rule) identifies patients with high-risk of syncope">
+					>
+					["gt0003"] = (TERM) <
+						text = <"CHF Hx">
+						description = <"*">
+					>
+					["gt0004"] = (TERM) <
+						text = <"EKG abnormal">
+						description = <"New EKG change from any source, any non-sinus rhythm on EKG or monitoring">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Shortness of Breath">
+						description = <"*">
+					>
+					["gt0007"] = (TERM) <
+					>
+					["gt0008"] = (TERM) <
+					>
+					["gt0010"] = (TERM) <
+						text = <"Systolic">
+						description = <"Peak systemic arterial blood pressure  - measured in systolic or contraction phase of the heart cycle.">
+					>
+					["gt0012"] = (TERM) <
+						text = <"CHF Hx">
+						description = <"*">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Hematocrit <30%">
+						description = <"*">
+					>
+					["gt0014"] = (TERM) <
+						text = <"EKG abnormal">
+						description = <"New EKG change from any source, any non-sinus rhythm on EKG or monitoring">
+					>
+					["gt0015"] = (TERM) <
+						text = <"Shortness of Breath">
+						description = <"*">
+					>
+					["gt0016"] = (TERM) <
+						text = <"Systolic BP <90 mmHg at Triage">
+						description = <"*">
+					>
+					["gt0017"] = (TERM) <
+						text = <"Any response positive?">
+						description = <"If any of the answers were positive: Patient is NOT in the low-risk group for serious outcome.,  if negative: Patient IS in the low-risk group for serious outcome.">
+					>
+					["gt0019"] = (TERM) <
+						text = <"Hematocrit">
+						description = <"(Haematocrit) The proportion of the volume of blood taken up by red blood cells">
+					>
+					["gt0020"] = (TERM) <
+						text = <"Set CHF History">
+					>
+					["gt0021"] = (TERM) <
+						text = <"Set HCT <30">
+					>
+					["gt0022"] = (TERM) <
+						text = <"EKG abnormal">
+					>
+					["gt0023"] = (TERM) <
+						text = <"SOB">
+					>
+					["gt0024"] = (TERM) <
+						text = <"Set Sys BP <90mmHg: true">
+					>
+					["gt0025"] = (TERM) <
+						text = <"Any resp positive?">
+					>
+					["gt0026"] = (TERM) <
+						text = <"Set HCT not < 30">
+					>
+					["gt0027"] = (TERM) <
+						text = <"Set sys BP <90: false">
+					>
+					["gt0028"] = (TERM) <
+						text = <"Is any response positive? Yes">
+					>
+					["gt0029"] = (TERM) <
+						text = <"Is any response positive? No">
+					>
+					["gt0032"] = (TERM) <
+						text = <"Shortness of Breath">
+						description = <"*">
+					>
+					["gt0033"] = (TERM) <
+						text = <"CHF Hx">
+						description = <"Congestive Heart Failure history">
+					>
+					["gt0034"] = (TERM) <
+						text = <"EKG abnormal">
+						description = <"New EKG change from any source, any non-sinus rhythm on EKG or monitoring">
+					>
+					["gt0035"] = (TERM) <
+						text = <"Shortness of Breath">
+						description = <"*">
+					>
+					["gt0036"] = (TERM) <
+						text = <"EKG abnormal">
+						description = <"New EKG change from any source, any non-sinus rhythm on EKG or monitoring">
+					>
+					["gt0037"] = (TERM) <
+						text = <"Any response positive?">
+						description = <"If any of the answers were positive: Patient is NOT in the low-risk group for serious outcome.,  if negative: Patient IS in the low-risk group for serious outcome.">
+					>
+					["gt0038"] = (TERM) <
+						text = <"Systolic BP <90 mmHg at Triage">
+						description = <"">
+					>
+					["gt0039"] = (TERM) <
+						text = <"CHF Hx">
+						description = <"Congestive Heart Failure history">
+					>
+					["gt0040"] = (TERM) <
+						text = <"Hematocrit <30">
+						description = <"HCT/PCV (Hematocrit/packed cell volume) %">
+					>
+					["gt0041"] = (TERM) <
+						text = <"Default">
+					>
+					["gt0042"] = (TERM) <
+						text = <"Set HCT <30">
+					>
+					["gt0043"] = (TERM) <
+						text = <"Set HCT !<30">
+					>
+					["gt0044"] = (TERM) <
+						text = <"Set SBP<90 True">
+					>
+					["gt0045"] = (TERM) <
+						text = <"Set SBP<90 False">
+					>
+					["gt0046"] = (TERM) <
+						text = <"Set EKG">
+					>
+					["gt0047"] = (TERM) <
+						text = <"Set SOB">
+					>
+					["gt0048"] = (TERM) <
+						text = <"Any resp positive - yes">
+					>
+					["gt0049"] = (TERM) <
+						text = <"Any resp positive - no">
+					>
+					["gt0051"] = (TERM) <
+					>
+					["gt0053"] = (TERM) <
+						text = <"CHF History">
+						description = <"Congestive Heart Failure history">
+					>
+					["gt0054"] = (TERM) <
+						text = <"EKG abnormal">
+						description = <"New EKG change from any source, any non-sinus rhythm on EKG or monitoring">
+					>
+					["gt0055"] = (TERM) <
+						text = <"Shortness of Breath">
+						description = <"*">
+					>
+					["gt0056"] = (TERM) <
+					>
+					["gt0058"] = (TERM) <
+						text = <"CHF History">
+						description = <"Congestive Heart Failure history">
+					>
+					["gt0059"] = (TERM) <
+						text = <"Hematocrit <30%">
+						description = <"HCT/PCV (Hematocrit/packed cell volume) %">
+					>
+					["gt0060"] = (TERM) <
+						text = <"EKG abnormal">
+						description = <"New EKG change from any source, any non-sinus rhythm on EKG or monitoring">
+					>
+					["gt0061"] = (TERM) <
+						text = <"Shortness of Breath">
+						description = <"*">
+					>
+					["gt0062"] = (TERM) <
+						text = <"Systolic BP <90 mmHg at Triage">
+						description = <"*">
+					>
+					["gt0063"] = (TERM) <
+						text = <"Any response positive?">
+						description = <"If any of the answers were positive: Patient is NOT in the low-risk group for serious outcomes.  If negative: Patient IS in the low-risk group for serious outcomes.">
+					>
+				>
+			>
+		>
+	>
+>

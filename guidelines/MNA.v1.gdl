@@ -10,6 +10,7 @@
 			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
 				copyright = <"Société des Produits Nestlé S.A">
 				keywords = <"Mini Nutritional Assessment", "MNA", "elderly", "nutrition", "malnutrition">
+				misuse = <"Do not use on patients under the age of 65 unless specifically indicated">
 				purpose = <"To calculate the Mini Nutritional Assessment total score.">
 				use = <"Use on geriatric patients age 65 or above.">
 			>
@@ -25,9 +26,15 @@
 			["name"] = <"Konstantinos Kalliamvakos">
 			["organisation"] = <"Cambio Healthcare Systems">
 		>
-		other_contributors = <"Oskar Nielsen",...>
+		other_contributors = <"Oskar Nielsen", "Syeeda S Farruque">
 		other_details = <
-			["references"] = <"Vellas B, Villars H, Abellan G, et al. Overview of the MNA® - Its History and Challenges. J Nutr Health Aging 2006;10:456-465. Rubenstein LZ, Harker JO, Salva A, Guigoz Y, Vellas B. Screening for Undernutrition in Geriatric Practice: Developing the Short-Form Mini Nutritional Assessment (MNA-SF). J. Geront 2001;56A: M366-377. Guigoz Y. The Mini-Nutritional Assessment (MNA®) Review of the Literature - What does it tell us? J Nutr Health Aging 2006; 10:466-487. Kaiser MJ, Bauer JM, Ramsch C, et al.  Validation of the Mini Nutritional Assessment Short-Form (MNA®-SF): A practical tool for identification  of nutritional status.  J Nutr Health Aging 2009; 13:782-788.">
+			["references"] = <"Ref.1: Vellas B, Villars H, Abellan G, et al. Overview of the MNA® - Its History and Challenges. J Nutr Health Aging 2006;10:456-465. 
+
+Ref.2: Rubenstein LZ, Harker JO, Salva A, Guigoz Y, Vellas B. Screening for Undernutrition in Geriatric Practice: Developing the Short-Form Mini Nutritional Assessment (MNA-SF). J. Geront 2001;56A: M366-377. 
+
+Ref.3: Guigoz Y. The Mini-Nutritional Assessment (MNA®) Review of the Literature - What does it tell us? J Nutr Health Aging 2006; 10:466-487. 
+
+Ref.4: Kaiser MJ, Bauer JM, Ramsch C, et al.  Validation of the Mini Nutritional Assessment Short-Form (MNA®-SF): A practical tool for identification  of nutritional status.  J Nutr Health Aging 2009; 13:782-788.">
 		>
 	>
 	definition = (GUIDE_DEFINITION) <
@@ -105,11 +112,21 @@
 					>
 				>
 			>
+			["gt0060"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.body_mass_index.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0061"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
 		>
 		rules = <
 			["gt0033"] = (RULE) <
 				when = <"$gt0017==null", "($gt0037==false)||($gt0037==null)">
-				then = <"$gt0017.magnitude=((((($gt0015.value+$gt0014.value)+$gt0016.value)+$gt0011.value)+$gt0012.value)+$gt0013.value)", "$gt0018.value=$currentDateTime.value">
+				then = <"$gt0017.magnitude=((((($gt0015.value+$gt0014.value)+$gt0016.value)+$gt0011.value)+$gt0012.value)+$gt0013.value)",...>
 				priority = <2>
 			>
 			["gt0038"] = (RULE) <
@@ -138,28 +155,28 @@
 				priority = <9>
 			>
 			["gt0043"] = (RULE) <
-				when = <"$gt0009<19,kg/m2",...>
+				when = <"$gt0061.units=='kg/m2'", "$gt0061<19,kg/m2">
 				then = <"$gt0016=0|local::at0025|BMI less than 19|",...>
 				priority = <8>
 			>
 			["gt0044"] = (RULE) <
-				when = <"$gt0009>=19,kg/m2", "$gt0009<21,kg/m2">
+				when = <"$gt0061.units=='kg/m2'", "$gt0061>=19,kg/m2", "$gt0061<21,kg/m2">
 				then = <"$gt0016=1|local::at0026|BMI 19 to less than 21|",...>
 				priority = <7>
 			>
 			["gt0045"] = (RULE) <
-				when = <"$gt0009>=21,kg/m2", "$gt0009<23,kg/m2">
+				when = <"$gt0061.units=='kg/m2'", "$gt0061>=21,kg/m2", "$gt0061<23,kg/m2">
 				then = <"$gt0016=2|local::at0027|BMI 21 to less than 23|",...>
 				priority = <6>
 			>
 			["gt0046"] = (RULE) <
-				when = <"$gt0009>=23,kg/m2",...>
+				when = <"$gt0061.units=='kg/m2'", "$gt0061>=23,kg/m2">
 				then = <"$gt0016=3|local::at0028|BMI 23 or greater |",...>
 				priority = <5>
 			>
 			["gt0047"] = (RULE) <
 				when = <"$gt0037==true", "$gt0017==null">
-				then = <"$gt0017.magnitude=((((($gt0015.value+$gt0014.value)+$gt0036.value)+$gt0011.value)+$gt0012.value)+$gt0013.value)", "$gt0018.value=$currentDateTime.value">
+				then = <"$gt0017.magnitude=((((($gt0015.value+$gt0014.value)+$gt0036.value)+$gt0011.value)+$gt0012.value)+$gt0013.value)",...>
 				priority = <1>
 			>
 			["gt0048"] = (RULE) <
@@ -173,8 +190,8 @@
 				priority = <3>
 			>
 			["gt0053"] = (RULE) <
-				when = <"$gt0011==null", "$gt0012==null", "$gt0013==null", "$gt0014==null", "$gt0015==null">
-				then = <"$gt0011=2|local::at0007|No decrease in food intake|", "$gt0012=3|local::at0012|No weight loss|", "$gt0013=2|local::at0016|Goes out|", "$gt0014=2|local::at0019|No|", "$gt0015=2|local::at0023|No psychological problems|", "$gt0016=3|local::at0028|BMI 23 or greater |">
+				when = <"$gt0036==null", "$gt0016==null", "$gt0011==null", "$gt0012==null", "$gt0013==null", "$gt0014==null", "$gt0015==null">
+				then = <"$gt0036=0|local::at0031|CC less than 31 cm|", "$gt0011=0|local::at0005|Severe decrease in food intake|", "$gt0012=0|local::at0009|Weight loss greater than 3kg|", "$gt0013=0|local::at0014|Bed or chair bound|", "$gt0014=0|local::at0018|Yes|", "$gt0015=0|local::at0021|Severe dementia or depression|", "$gt0016=0|local::at0025|BMI less than 19|">
 				priority = <14>
 			>
 		>
@@ -353,6 +370,21 @@
 					["gt0054"] = (TERM) <
 						text = <"Set cannot calulate BMI to false">
 					>
+					["gt0056"] = (TERM) <
+						text = <"Has food intake declined over the past 3 months due to loss of appetite, digestive problems, chewing or swallowing difficulties?">
+						description = <"*">
+					>
+					["gt0057"] = (TERM) <
+						text = <"Test">
+					>
+					["gt0059"] = (TERM) <
+						text = <"Has food intake declined over the past 3 months due to loss of appetite, digestive problems, chewing or swallowing difficulties?">
+						description = <"*">
+					>
+					["gt0061"] = (TERM) <
+						text = <"Body Mass Index">
+						description = <"Index describing ratio of weight to height.">
+					>
 				>
 			>
 			["sv"] = (TERM_DEFINITION) <
@@ -526,6 +558,14 @@
 					>
 					["gt0054"] = (TERM) <
 						text = <"*Set cannot calulate BMI to false (en)">
+					>
+					["gt0056"] = (TERM) <
+					>
+					["gt0057"] = (TERM) <
+					>
+					["gt0059"] = (TERM) <
+					>
+					["gt0061"] = (TERM) <
 					>
 				>
 			>

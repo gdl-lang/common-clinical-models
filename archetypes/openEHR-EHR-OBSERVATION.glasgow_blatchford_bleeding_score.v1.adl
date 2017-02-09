@@ -5,6 +5,15 @@ concept
 	[at0000]	-- Glasgow-Blatchford bleeding score (GBS)
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
@@ -13,6 +22,27 @@ description
 		["date"] = <"2017-01-02">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att uppskatta risk med avseende på behandlingsbehov, re-blödning och mortalitet hos patienter med övre GI-blödning.">
+			use = <"Att registrera data och resultat i enlighet med Glasgow-Blatchford bleeding score i syfte att uppskatta risk med avseende på behandlingsbehov (blodtransfusion, endoskopi, kirurgi), re-blödning och mortalitet hos patienter med övre GI-blödning.
+
+Instrumentet baseras på följande faktorer, registrerade vid ankomst:
+
+- Urea (0-6p)
+- Hemoglobin (0-6p)
+- Hjärtfrekvens (0-1p)
+- Systoliskt blodtryck (0-3p)
+- Synkope vid ankomst (0-2p)
+- Melena (0-1p)
+- Tecken på leversjukdom (0-2p)
+- Tecken på hjärtsjukdom (0-2p)
+
+Maximal poäng uppgår till 23p. 0p indikerar låg komplikationsrisk (0,5%). Ju högre poäng, desto högre risk. ">
+			keywords = <"GI-blödning", "blödning", "Rockall">
+			misuse = <"Endast avsedd för bruk vid initial bedömning.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To stratify patients with acute UGIB into low or high risk groups for needing treatment, rebleeding or mortality.">
@@ -30,87 +60,87 @@ description
 Chen IC, Hung MS, Chiu TF, Chen JC, Hsiao CT. Risk scoring systems to predict need for clinical intervention for patients with nonvariceal upper gastrointestinal tract bleeding. The American journal of emergency medicine. 2007 Sep 30;25(7):774-9.
 
 Srirajaskanthan R, Conn R, Bulwer C, Irving P. The Glasgow Blatchford scoring system enables accurate risk stratification of patients with upper gastrointestinal haemorrhage. International journal of clinical practice. 2010 Jun 1;64(7):868-74.">
-		["MD5-CAM-1.0.1"] = <"26ED600F1D777DF013F78E5D4FF53CAF">
+		["MD5-CAM-1.0.1"] = <"6C19683057A25A7A95FEB514B4A21CD6">
 	>
 
 definition
 	OBSERVATION[at0000] matches {	-- Glasgow-Blatchford bleeding score (GBS)
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Blood Urea Nitrogen (BUN)
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Urea
 										value matches {
-											0|[local::at0031], 	-- BUN <18.2 mg/dl
-											2|[local::at0032], 	-- BUN = 18.2 - <22.4 mg/dl
-											3|[local::at0033], 	-- BUN = 22.4 - <28 mg/dl
-											4|[local::at0034], 	-- BUN = 28 - <70.01 mg/dl
-											6|[local::at0035]  	-- BUN >=70.01 mg/dl
+											0|[local::at0031], 	-- P-Urea <18.2 mg/dl
+											2|[local::at0032], 	-- P-Urea 18.2 - <22.4 mg/dl
+											3|[local::at0033], 	-- P-Urea 22.4 - <28 mg/dl
+											4|[local::at0034], 	-- P-Urea 28 - <70.01 mg/dl
+											6|[local::at0035]  	-- P-Urea ≥70.01 mg/dl
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Haemoglobin (Hb)
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Hemoglobin (Hb)
 										value matches {
-											0|[local::at0036], 	-- Hb >13 g/dl in men (or >12 g/dl in women)
-											1|[local::at0037], 	-- Hb 12 - 13 g/dl in men (or 10 - 12 g/dl in women)
-											3|[local::at0038], 	-- Hb 10 - 12 g/dl in men
-											6|[local::at0039]  	-- Hb <10 g/dl in men or women
+											0|[local::at0036], 	-- Hb >13 g/dl (man) eller >12 g/dl (kvinna)
+											1|[local::at0037], 	-- Hb 12 - 13 g/dl (man) eller 10-12 g/dl (kvinna)
+											3|[local::at0038], 	-- Hb 10 - 12 g/dl (man)
+											6|[local::at0039]  	-- Hb <10 g/dl (oavsett kön)
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Sex
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Kön
 										value matches {
-											0|[local::at0015], 	-- Female
-											1|[local::at0016]  	-- Male
+											0|[local::at0015], 	-- Kvinna
+											1|[local::at0016]  	-- Man
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Systolic blood pressure (SBP)
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Systoliskt blodtryck
 										value matches {
-											0|[local::at0027], 	-- SBP >=110 mmHg
-											1|[local::at0028], 	-- SBP = 100 - 109 mmHg
-											2|[local::at0029], 	-- SBP = 90 - 99 mmHg
-											3|[local::at0030]  	-- SBP <90 mmHg
+											0|[local::at0027], 	-- ≥110 mmHg
+											1|[local::at0028], 	-- 100 - 109 mmHg
+											2|[local::at0029], 	-- 90 - 99 mmHg
+											3|[local::at0030]  	-- <90 mmHg
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Pulse
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Hjärtfrekvens
 										value matches {
-											0|[local::at0025], 	-- Pulse <100 /min
-											1|[local::at0026]  	-- Pulse >=100 /min
+											0|[local::at0025], 	-- <100 /min
+											1|[local::at0026]  	-- ≥100 /min
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Melaena
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Melena
 										value matches {
-											0|[local::at0017], 	-- No
-											1|[local::at0018]  	-- Yes
+											0|[local::at0017], 	-- Nej
+											1|[local::at0018]  	-- Ja
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Syncope
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Synkope
 										value matches {
-											0|[local::at0019], 	-- No
-											2|[local::at0020]  	-- Yes
+											0|[local::at0019], 	-- Nej
+											2|[local::at0020]  	-- Ja
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Liver disease
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Leversjukdom
 										value matches {
-											0|[local::at0021], 	-- No
-											2|[local::at0022]  	-- Yes
+											0|[local::at0021], 	-- Nej
+											2|[local::at0022]  	-- Ja
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Heart failure
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Hjärtsvikt
 										value matches {
-											0|[local::at0023], 	-- No
-											2|[local::at0024]  	-- Yes
+											0|[local::at0023], 	-- Nej
+											2|[local::at0024]  	-- Ja
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Total poäng
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..23|}
 											}
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -287,6 +317,170 @@ ontology
 				["at0039"] = <
 					text = <"Hb <10 g/dl in men or women">
 					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Glasgow-Blatchford bleeding score (GBS)">
+					description = <"Glasgow-Blatchford bleeding score används för att i initialt skede uppskatta risk med avseende på behandlingsbehov, re-blödning och mortalitet hos patienter med övre GI-blödning. Instrumentet baseras på åtta faktorer, och maximal poäng uppgår till 23p. Noll poäng indikerar låg komplikationsrisk (0,5%). Ju högre poäng, desto högre risk. Instrumentet har visats ha högre sensitivitet än Rockall score, och korrelerar väl med vårdtid och behov av blodtransfusion.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Urea">
+					description = <"Poäng ges baserat på värde av ankomstprover - Urea">
+				>
+				["at0005"] = <
+					text = <"Hemoglobin (Hb)">
+					description = <"Poäng ges baserat på värde av ankomstprover - hemoglobin (Hb)">
+				>
+				["at0006"] = <
+					text = <"Systoliskt blodtryck">
+					description = <"Poäng ges baserat på värde vid ankomst - systoliskt blodtryck">
+				>
+				["at0007"] = <
+					text = <"Hjärtfrekvens">
+					description = <"Poäng ges baserat på värde vid ankomst - hjärtfrekvens">
+				>
+				["at0008"] = <
+					text = <"Melena">
+					description = <"Poäng ges baserat på förekomst vid ankomst - melena">
+				>
+				["at0009"] = <
+					text = <"Synkope">
+					description = <"Poäng ges baserat på förekomst vid ankomst - synkope">
+				>
+				["at0010"] = <
+					text = <"Leversjukdom">
+					description = <"Poäng ges baserat på förekomst av tecken på leversjukdom">
+				>
+				["at0011"] = <
+					text = <"Hjärtsvikt">
+					description = <"Poäng ges baserat på förekomst av tecken på hjärtsvikt">
+				>
+				["at0012"] = <
+					text = <"Total poäng">
+					description = <"Summan av samtliga faktorer">
+				>
+				["at0013"] = <
+					text = <"Kommentar">
+					description = <"Ev tillägg">
+				>
+				["at0014"] = <
+					text = <"Kön">
+					description = <"Patientens kön.">
+				>
+				["at0015"] = <
+					text = <"Kvinna">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"Man">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0023"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <"<100 /min">
+					description = <"">
+				>
+				["at0026"] = <
+					text = <"≥100 /min">
+					description = <"">
+				>
+				["at0027"] = <
+					text = <"≥110 mmHg">
+					description = <"">
+				>
+				["at0028"] = <
+					text = <"100 - 109 mmHg">
+					description = <"">
+				>
+				["at0029"] = <
+					text = <"90 - 99 mmHg">
+					description = <"">
+				>
+				["at0030"] = <
+					text = <"<90 mmHg">
+					description = <"">
+				>
+				["at0031"] = <
+					text = <"P-Urea <18.2 mg/dl">
+					description = <"">
+				>
+				["at0032"] = <
+					text = <"P-Urea 18.2 - <22.4 mg/dl">
+					description = <"">
+				>
+				["at0033"] = <
+					text = <"P-Urea 22.4 - <28 mg/dl">
+					description = <"">
+				>
+				["at0034"] = <
+					text = <"P-Urea 28 - <70.01 mg/dl">
+					description = <"">
+				>
+				["at0035"] = <
+					text = <"P-Urea ≥70.01 mg/dl">
+					description = <"">
+				>
+				["at0036"] = <
+					text = <"Hb >13 g/dl (man) eller >12 g/dl (kvinna)">
+					description = <"">
+				>
+				["at0037"] = <
+					text = <"Hb 12 - 13 g/dl (man) eller 10-12 g/dl (kvinna)">
+					description = <"">
+				>
+				["at0038"] = <
+					text = <"Hb 10 - 12 g/dl (man)">
+					description = <"">
+				>
+				["at0039"] = <
+					text = <"Hb <10 g/dl (oavsett kön)">
+					description = <"">
 				>
 			>
 		>

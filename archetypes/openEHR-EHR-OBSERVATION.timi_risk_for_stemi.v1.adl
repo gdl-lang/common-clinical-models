@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.timi_risk_for_stemi.v1
 
 concept
-	[at0000]	-- Timi risk for stemi
+	[at0000]	-- TIMI-Score för ST-höjningsinfarkt
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -32,6 +41,24 @@ Score ranges from 0 to a total score of 14 but anything above 8 would be conside
 			misuse = <"The tool should not include patients with cardiogenic shock, patients undergoing percutaneous coronary intervention (PCI) as this tool is inferior to that, nor those suffering from severe hypertension (> 180/>110)">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att utvärdera 30-dagarsmortalitet hos patienter med trombolysbehandlad ST-höjningsinfarkt. ">
+			use = <"Instrumentet inkluderar utöver patienter med trombolysbehandlad ST-höjningsinfarkt även patienter med LBBB (vänstersidigt skänkelblock), vilket i detta sammanhang jämställs med STEMI.
+
+Ålderskategori poängsätts enligt; <65 = 0p, 65-74 = 2p, >75 = 3p. 
+
+Förekomst av diabetes mellitus, hypertoni eller angina pectoris ger 1p. Övriga faktorer som vid förekomst bidrar med en poäng är ST-höjningsinfarkt eller LBBB, behandling inom 4h och vikt under 67kg.
+
+En hjärtfrekvens mätt över 100 slag/min eller en Killip-klass mellan II-IV genererar 2p till totala summan. 
+
+Systoliskt blodtryck <100mmHg ger 3p.
+
+Total poäng uppgår till maximalt 14p. Poäng om >8p tolkas som förhöjd risk.">
+			keywords = <"30-dagarsmortalitet", "mortalitet", "TIMI", "STEMI", "ST-höjning", "trombolys", "ST-höjningsinfarkt", "LBBB">
+			misuse = <"Ej avsedd för patienter med kardiogen chock eller svår hypertension (>180/>110) eller patienter som genomgår PCI-behandling.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -39,65 +66,65 @@ Score ranges from 0 to a total score of 14 but anything above 8 would be conside
 		["references"] = <"Ref.1: David A. Morrow, et. al. TIMI Risk Score for ST-Elevation Myocardial Infarction: A Convenient, Bedside, Clinical Score for Risk Assessment at Presentation: An Intravenous nPA for Treatment of Infarcting Myocardium Early II Trial Substudy Circulation.2000; 102: 2031-2037 doi: 10.1161/01.CIR.102.17.2031
 
 ">
-		["MD5-CAM-1.0.1"] = <"F9C9C6058692BAC7D41EDF7049072CDB">
+		["MD5-CAM-1.0.1"] = <"45B65818361DF4FCF6CDACF015289F1C">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Timi risk for stemi
+	OBSERVATION[at0000] matches {	-- TIMI-Score för ST-höjningsinfarkt
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- DM/HyperT/Angina history?
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- DM, hypertoni eller angina pectoris?
 										value matches {
-											0|[local::at0005], 	-- No
-											1|[local::at0006]  	-- Yes
+											0|[local::at0005], 	-- Nej
+											1|[local::at0006]  	-- Ja
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Anterior ST elevation or LBBB?
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Anterior ST-höjning eller LBBB?
 										value matches {
-											0|[local::at0008], 	-- No
-											1|[local::at0009]  	-- Yes
+											0|[local::at0008], 	-- Nej
+											1|[local::at0009]  	-- Ja
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Time to treatment > 4hrs?
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Behandling inom 4 timmar?
 										value matches {
-											0|[local::at0011], 	-- No
-											1|[local::at0012]  	-- Yes
+											0|[local::at0011], 	-- Nej
+											1|[local::at0012]  	-- Ja
 										}
 									}
-									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Age category
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Ålder
 										value matches {
-											0|[local::at0019], 	-- Age < 65
-											2|[local::at0020], 	-- Age between 65-74
-											3|[local::at0021]  	-- Age >= 75
+											0|[local::at0019], 	-- Ålder < 65
+											2|[local::at0020], 	-- Ålder 65-74
+											3|[local::at0021]  	-- Ålder >= 75
 										}
 									}
-									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Weight below 67kg?
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Vikt under 67kg?
 										value matches {
-											0|[local::at0016], 	-- No
-											1|[local::at0017]  	-- Yes
+											0|[local::at0016], 	-- Nej
+											1|[local::at0017]  	-- Ja
 										}
 									}
-									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Killip Class II-IV?
+									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Killip-klass II-IV?
 										value matches {
-											0|[local::at0023], 	-- No
-											2|[local::at0024]  	-- Yes
+											0|[local::at0023], 	-- Nej
+											2|[local::at0024]  	-- Ja
 										}
 									}
-									ELEMENT[at0025] occurrences matches {0..1} matches {	-- Sys BP < 100mmhg?
+									ELEMENT[at0025] occurrences matches {0..1} matches {	-- Systoliskt blodtryck < 100mmHg?
 										value matches {
-											0|[local::at0027], 	-- No
-											3|[local::at0028]  	-- Yes
+											0|[local::at0027], 	-- Nej
+											3|[local::at0028]  	-- Ja
 										}
 									}
-									ELEMENT[at0026] occurrences matches {0..1} matches {	-- HR > 100 bpm?
+									ELEMENT[at0026] occurrences matches {0..1} matches {	-- Hjärtfrekvens > 100/min?
 										value matches {
-											0|[local::at0029], 	-- No
-											2|[local::at0030]  	-- Yes
+											0|[local::at0029], 	-- Nej
+											2|[local::at0030]  	-- Ja
 										}
 									}
 									ELEMENT[at0014] occurrences matches {0..1} matches {	-- TIMI for STEMI score
@@ -107,7 +134,7 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -248,6 +275,134 @@ ontology
 				["at0030"] = <
 					text = <"Yes">
 					description = <"HR > 100">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"TIMI-Score för ST-höjningsinfarkt">
+					description = <"TIMI-score för ST-höjningsfarkt är baserad på en studie inkluderandes 15000 STEMI-patienter som genomgick trombolysbehanding. TIMI står för Thrombolysis In Myocardial Infarction risk score for STEMI.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"DM, hypertoni eller angina pectoris?">
+					description = <"Förekomst av diabetes mellitus, hypertoni eller angina pectoris">
+				>
+				["at0005"] = <
+					text = <"Nej">
+					description = <"*No angina/DM/hyperT(en)">
+				>
+				["at0006"] = <
+					text = <"Ja">
+					description = <"*Angina/hyperT/DM was present(en)">
+				>
+				["at0007"] = <
+					text = <"Anterior ST-höjning eller LBBB?">
+					description = <"Förekomst av anterior ST-höjning eller LBBB.">
+				>
+				["at0008"] = <
+					text = <"Nej">
+					description = <"*No ant STE/LBBB(en)">
+				>
+				["at0009"] = <
+					text = <"Ja">
+					description = <"*Ant STE/LBBB present(en)">
+				>
+				["at0010"] = <
+					text = <"Behandling inom 4 timmar?">
+					description = <"Initieras behandling inom 4h?">
+				>
+				["at0011"] = <
+					text = <"Nej">
+					description = <"*Time to treatment < 4hrs.(en)">
+				>
+				["at0012"] = <
+					text = <"Ja">
+					description = <"*Time to treatment >4hrs.(en)">
+				>
+				["at0013"] = <
+					text = <"Kommentar">
+					description = <"Ev tillägg">
+				>
+				["at0014"] = <
+					text = <"TIMI for STEMI score">
+					description = <"Summan av samtliga faktorer.">
+				>
+				["at0015"] = <
+					text = <"Vikt under 67kg?">
+					description = <"Patientens vikt.">
+				>
+				["at0016"] = <
+					text = <"Nej">
+					description = <"*> 67kg(en)">
+				>
+				["at0017"] = <
+					text = <"Ja">
+					description = <"*< 67kg (147.7lbs)(en)">
+				>
+				["at0018"] = <
+					text = <"Ålder">
+					description = <"Patientens ålder.">
+				>
+				["at0019"] = <
+					text = <"Ålder < 65">
+					description = <"**(en)">
+				>
+				["at0020"] = <
+					text = <"Ålder 65-74">
+					description = <"**(en)">
+				>
+				["at0021"] = <
+					text = <"Ålder >= 75">
+					description = <"**(en)">
+				>
+				["at0022"] = <
+					text = <"Killip-klass II-IV?">
+					description = <"Killip-klassificering.">
+				>
+				["at0023"] = <
+					text = <"Nej">
+					description = <"*Killip is only class I(en)">
+				>
+				["at0024"] = <
+					text = <"Ja">
+					description = <"*Killip is between classes II and IV(en)">
+				>
+				["at0025"] = <
+					text = <"Systoliskt blodtryck < 100mmHg?">
+					description = <"Systoliskt blodtryck under 100 mmHg?">
+				>
+				["at0026"] = <
+					text = <"Hjärtfrekvens > 100/min?">
+					description = <"Hjärtfrekvens > 100 min?">
+				>
+				["at0027"] = <
+					text = <"Nej">
+					description = <"*> 100mmHg(en)">
+				>
+				["at0028"] = <
+					text = <"Ja">
+					description = <"*< 100mmHg(en)">
+				>
+				["at0029"] = <
+					text = <"Nej">
+					description = <"*HR < 100(en)">
+				>
+				["at0030"] = <
+					text = <"Ja">
+					description = <"*HR > 100(en)">
 				>
 			>
 		>

@@ -1,0 +1,144 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.san_francisco_syncope_rule.v1
+
+concept
+	[at0000]	-- San francisco syncope rule
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-01-05">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Risk stratification of syncope among patients via 5 yes/no questions.">
+			use = <"Risk stratification of syncope among patients via 5 yes/no questions regarding:
+
+Congestive Heart Failure history
+
+Hematocrit (PCV) <30%
+
+EKG Abnormal (New ECG change from any source, any non-sinus rhythm on EKG or monitoring)
+
+Shortness of Breath symptoms
+
+Systolic BO < 90mmHg at Triage.
+
+If any of the questions are true/yes, the risk is not low and further investigation in case of serioud outcomes.">
+			keywords = <"Syncope", "san francisco syncope rule">
+			misuse = <"Should not be used on its own for diagnostic purposes.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"B5245E6A5DC7D70E6D69C785C835145C">
+		["references"] = <"Ref. 1: Quinn J, McDermott D, Stiell I, Kohn M, Wells G. Prospective validation of the San Francisco Syncope Rule to predict patients with serious outcomes. Ann Emerg Med. 2006 May;47(5):448-54. Epub 2006 Jan 18. PubMed PMID: 16631985.
+
+Ref. 2: Birnbaum A, Esses D, Bijur P, Wollowitz A, Gallagher EJ. Failure to validate the San Francisco Syncope Rule in an independent emergency department population. Ann Emerg Med. 2008 Aug;52(2):151-9. Epub 2008 Feb 20. PubMed PMID: 18282636.">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- San francisco syncope rule
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- CHF Hx
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Hematocrit <30%
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- EKG abnormal
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Shortness of Breath
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Systolic BP <90 mmHg at Triage
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Any response positive?
+						value matches {
+							DV_BOOLEAN matches {
+								value matches {True, False}
+							}
+						}
+					}
+					ELEMENT[at0007] occurrences matches {0..1} matches {	-- Comment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"San francisco syncope rule">
+					description = <"Identifies patients with high-risk of syncope">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"CHF Hx">
+					description = <"Congestive Heart Failure history">
+				>
+				["at0003"] = <
+					text = <"Hematocrit <30%">
+					description = <"HCT/PCV %">
+				>
+				["at0004"] = <
+					text = <"EKG abnormal">
+					description = <"New EKG change from any source, any non-sinus rhythm on EKG or monitoring">
+				>
+				["at0005"] = <
+					text = <"Shortness of Breath">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Systolic BP <90 mmHg at Triage">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Comment">
+					description = <"Any comments about the tool.">
+				>
+				["at0008"] = <
+					text = <"Any response positive?">
+					description = <"If any of the answers were positive: Patient is NOT in the low-risk group for serious outcome.,  if negative: Patient IS in the low-risk group for serious outcome.">
+				>
+			>
+		>
+	>
