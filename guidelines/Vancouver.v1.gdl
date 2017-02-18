@@ -33,12 +33,41 @@ Step 3: If any of the below are answered \"True\" - do not discharge
 
 If all are \"False\"- it is safe to discharge the patient.">
 			>
+			["sv"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"Vancouver Chest Pain Rule", "bröstsmärta">
+				misuse = <"Endast avsedd att användas som stöd till klinisk bedömning, och bör ej enskilt utgöra beslutsunderlag.">
+				purpose = <"Vancouver Chest Pain Rule (VCPR) är ett enkelt instrument för utvärdering av patienter med bröstsmärta, i syfte att utesluta förekomst av allvarligt tillstånd.">
+				use = <"Vancouver Chest Pain Rule (VCPR) baseras på tre steg enligt:
+
+Steg 1: om någon av dessa faktorer föreligger, bör patienten inte lämna mottagningen utan vidare utredning:
+
+    Patologiskt EKG vid ankomst
+    Positivt troponin efter 2 timmar
+    Tidigare akut kranskärlssjukdom eller ordinerat nitrat
+
+Om ingen av faktorerna ovan föreligger, fortsätt till steg två
+
+Steg 2:  om följande faktor bedöms föreligga bedöms risken för allvarligt tillstånd som lågt
+
+    Smärtan kan reproduceras/provoceras genom palpation
+
+Om ovan inte föreligger, fortsätt till steg tre
+
+Steg 3: om någon av dessa faktorer föreligger, bör patienten ej skrivas ut utan vidare utredning:
+
+    Ålder ≥ 50
+    Smärtan strålar ut i nacke, käke eller vänster arm
+
+Föreligger inte heller dessa faktorer, bedöms det säkert för patienten att lämna mottagningen.">
+			>
 		>
 		original_author = <
 			["date"] = <"2016-12-27">
 			["name"] = <"Syeeda S Farruque">
 			["organisation"] = <"Cambio Healthcare Systems">
 		>
+		other_contributors = <"Dennis Forslund, Cambio Healthcare Systems",...>
 		other_details = <
 			["references"] = <"Ref.1: Xavier Scheuermeyer F, Wong H, Yu E, Boychuk B, Innes G, Grafstein E, Gin K, Christenson J. Development and validation of a prediction rule for early discharge of low-risk emergency department patients with potential ischemic chest pain. CJEM. 2013;15(0):1-14. PubMed PMID: 23816166.
 
@@ -124,38 +153,38 @@ Ref.2: Cullen L, Greenslade JH, Than M, Brown AF, Hammett CJ, Lamanna A, Flaws D
 		>
 		rules = <
 			["gt0009"] = (RULE) <
-				when = <"((($gt0030!=null)&&($gt0030==1|local::at0021|True|))||(($gt0031!=null)&&($gt0031==1|local::at0023|True|)))||(($gt0032!=null)&&($gt0032==1|local::at0025|True|))",...>
+				when = <"((($gt0030!=null)&&($gt0030==false))||(($gt0031!=null)&&($gt0031==false)))||(($gt0032!=null)&&($gt0032==false))",...>
 				then = <"$gt0039=$gt0032", "$gt0038=$gt0031", "$gt0037=$gt0030", "$gt0043=1|local::at0017|Not safe to disharge|">
 				priority = <6>
 			>
 			["gt0014"] = (RULE) <
-				when = <"$gt0030!=null", "$gt0032!=null", "$gt0031!=null", "$gt0030==0|local::at0020|False|", "$gt0031==0|local::at0022|False|", "$gt0032==0|local::at0024|False|">
-				then = <"$gt0043=0|local::at0016|Go to step 2|",...>
+				when = <"$gt0030!=null", "$gt0032!=null", "$gt0031!=null", "$gt0030==false", "$gt0031==false", "$gt0032==false">
+				then = <"$gt0043=0|local::at0016|Safe to discharge|",...>
 				priority = <5>
 			>
 			["gt0015"] = (RULE) <
-				when = <"$gt0033!=null", "$gt0033==1|local::at0027|True|">
+				when = <"$gt0033!=null", "$gt0033==false">
 				then = <"$gt0044=0|local::at0018|Safe to discharge|",...>
 				priority = <4>
 			>
 			["gt0016"] = (RULE) <
-				when = <"$gt0033!=null", "$gt0033==0|local::at0026|False|">
+				when = <"$gt0033!=null", "$gt0033==false">
 				then = <"$gt0044=1|local::at0019|Go to 3|",...>
 				priority = <3>
 			>
 			["gt0017"] = (RULE) <
-				when = <"(($gt0050.magnitude>=50)&&($gt0050!=null))||(($gt0034!=null)&&($gt0034==1|local::at0031|True|))",...>
-				then = <"$gt0042=$gt0034", "$gt0041=1|local::at0029|True|", "$gt0045=1|local::at0015|Not safe to disharge|">
+				when = <"(($gt0050.magnitude>=50)&&($gt0050!=null))||(($gt0034!=null)&&($gt0034==false))",...>
+				then = <"$gt0042=$gt0034", "$gt0041=false", "$gt0045=1|local::at0015|Not safe to disharge|">
 				priority = <2>
 			>
 			["gt0018"] = (RULE) <
-				when = <"$gt0034!=null", "$gt0050!=null", "$gt0034==0|local::at0030|False|", "$gt0050.magnitude<50">
-				then = <"$gt0041=0|local::at0028|False|", "$gt0045=0|local::at0014|Safe to discharge|">
+				when = <"$gt0034!=null", "$gt0050!=null", "$gt0034==false", "$gt0050.magnitude<50">
+				then = <"$gt0041=false", "$gt0045=0|local::at0014|Safe to discharge|">
 				priority = <1>
 			>
 			["gt0051"] = (RULE) <
 				when = <"$gt0041==null", "$gt0037==null", "$gt0039==null", "$gt0038==null", "$gt0042==null", "$gt0040==null">
-				then = <"$gt0037=0|local::at0020|False|", "$gt0039=0|local::at0024|False|", "$gt0038=0|local::at0022|False|", "$gt0041=0|local::at0028|False|", "$gt0042=0|local::at0030|False|", "$gt0040=0|local::at0026|False|">
+				then = <"$gt0037=false", "$gt0039=false", "$gt0038=false", "$gt0041=false", "$gt0042=false", "$gt0040=false">
 				priority = <8>
 			>
 			["gt0052"] = (RULE) <
@@ -335,6 +364,178 @@ Ref.2: Cullen L, Greenslade JH, Than M, Brown AF, Hammett CJ, Lamanna A, Flaws D
 					>
 					["gt0052"] = (TERM) <
 						text = <"Set age">
+					>
+				>
+			>
+			["sv"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Vancouver CPR">
+						description = <"Vancouver Chest Pain Rule (VCPR) är ett enkelt instrument för utvärdering av patienter med bröstsmärta, i syfte att utesluta förekomst av allvarligt tillstånd.">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Patologiskt EKG vid ankomst?">
+						description = <"*(en) Step 1: do not disharge if this question is true.">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Positivt troponin efter 2 timmar?">
+						description = <"*(en) Step 1: do not disharge if this question is true.">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Tidigare akut kranskärlssjukdom eller ordinerat nitrat?">
+						description = <"*(en) Step 1: do not disharge if this question is true.">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Kan smärtan reproduceras genom palpation?">
+						description = <"*(en) Step 2: do not disharge if this question is false but go to step 3">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Ålder ≥ 50?">
+						description = <"*(en) Step 3: do not disharge if this question is true.">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Strålar smärtan ut i nacke, käke eller vänster arm?">
+						description = <"*(en) Step 3: do not disharge if this question is true.">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Steg 1 - om föreliggande">
+					>
+					["gt0010"] = (TERM) <
+					>
+					["gt0011"] = (TERM) <
+						text = <"Steg 1 - resultat">
+						description = <"*(en) If any of Step 1 are true: do not discharge, is all are false - go to step 2">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Steg 2 - resultat">
+						description = <"*(en) If Step 2 is true: discharge: if not go to Step 3">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Steg 3 - resultat">
+						description = <"*(en) If any is True - do not discharge otherwise it is safe to discharge.">
+					>
+					["gt0014"] = (TERM) <
+						text = <"Steg 1 - om samtliga frånvarande">
+					>
+					["gt0015"] = (TERM) <
+						text = <"Steg 2 - om föreliggande">
+					>
+					["gt0016"] = (TERM) <
+						text = <"Steg 2 - om frånvarande">
+					>
+					["gt0017"] = (TERM) <
+						text = <"Steg 3 - om föreliggande">
+					>
+					["gt0018"] = (TERM) <
+						text = <"Steg 3 - om frånvarande">
+					>
+					["gt0020"] = (TERM) <
+						text = <"Patologiskt EKG vid ankomst?">
+						description = <"*(en) Step 1: do not disharge if this question is true.">
+					>
+					["gt0021"] = (TERM) <
+						text = <"Positivt troponin efter 2 timmar?">
+						description = <"*(en) Step 1: do not disharge if this question is true.">
+					>
+					["gt0022"] = (TERM) <
+						text = <"Tidigare akut kranskärlssjukdom eller ordinerat nitrat?">
+						description = <"*(en) Step 1: do not disharge if this question is true.">
+					>
+					["gt0023"] = (TERM) <
+						text = <"Kan smärtan reproduceras genom palpation?">
+						description = <"*(en) Step 2: do not disharge if this question is false but go to step 3">
+					>
+					["gt0024"] = (TERM) <
+						text = <"Ålder ≥ 50?">
+						description = <"*(en) Step 3: do not disharge if this question is true.">
+					>
+					["gt0025"] = (TERM) <
+						text = <"Strålar smärtan ut i nacke, käke eller vänster arm?">
+						description = <"*(en) Step 3: do not disharge if this question is true.">
+					>
+					["gt0026"] = (TERM) <
+						text = <"Om steg 1 negativ - fortsätt till steg 2">
+					>
+					["gt0027"] = (TERM) <
+						text = <"*(en) Set chain">
+					>
+					["gt0028"] = (TERM) <
+						text = <"*(en) set chain 2">
+					>
+					["gt0030"] = (TERM) <
+						text = <"Patologiskt EKG vid ankomst?">
+						description = <"*(en) Step 1: do not disharge if this question is true.">
+					>
+					["gt0031"] = (TERM) <
+						text = <"Positivt troponin efter 2 timmar?">
+						description = <"*(en) Step 1: do not disharge if this question is true.">
+					>
+					["gt0032"] = (TERM) <
+						text = <"Tidigare akut kranskärlssjukdom eller ordinerat nitrat?">
+						description = <"*(en) Step 1: do not disharge if this question is true.">
+					>
+					["gt0033"] = (TERM) <
+						text = <"Kan smärtan reproduceras genom palpation?">
+						description = <"*(en) Step 2: do not disharge if this question is false but go to step 3">
+					>
+					["gt0034"] = (TERM) <
+						text = <"Strålar smärtan ut i nacke, käke eller vänster arm?">
+						description = <"*(en) Step 3: do not disharge if this question is true.">
+					>
+					["gt0035"] = (TERM) <
+						text = <"">
+					>
+					["gt0037"] = (TERM) <
+						text = <"Patologiskt EKG vid ankomst?">
+						description = <"*(en) Step 1: do not disharge if this question is true.">
+					>
+					["gt0038"] = (TERM) <
+						text = <"Positivt troponin efter 2 timmar?">
+						description = <"*(en) Step 1: do not disharge if this question is true.">
+					>
+					["gt0039"] = (TERM) <
+						text = <"Tidigare akut kranskärlssjukdom eller ordinerat nitrat?">
+						description = <"*(en) Step 1: do not disharge if this question is true.">
+					>
+					["gt0040"] = (TERM) <
+						text = <"Kan smärtan reproduceras genom palpation?">
+						description = <"*(en) Step 2: do not disharge if this question is false but go to step 3">
+					>
+					["gt0041"] = (TERM) <
+						text = <"Ålder ≥ 50?">
+						description = <"*(en) Step 3: do not disharge if this question is true.">
+					>
+					["gt0042"] = (TERM) <
+						text = <"Strålar smärtan ut i nacke, käke eller vänster arm?">
+						description = <"*(en) Step 3: do not disharge if this question is true.">
+					>
+					["gt0043"] = (TERM) <
+						text = <"Steg 1 - resultat">
+						description = <"*(en) If any of Step 1 are true: do not discharge, is all are false - go to step 2">
+					>
+					["gt0044"] = (TERM) <
+						text = <"Steg 2 - resultat">
+						description = <"*(en) If Step 2 is true: discharge: if not go to Step 3">
+					>
+					["gt0045"] = (TERM) <
+						text = <"Steg 3 - resultat">
+						description = <"*(en) If any is True - do not discharge otherwise it is safe to discharge.">
+					>
+					["gt0047"] = (TERM) <
+						text = <"Födelsedatum">
+						description = <"*(en) *">
+					>
+					["gt0048"] = (TERM) <
+					>
+					["gt0050"] = (TERM) <
+						text = <"Ålder">
+						description = <"*(en) Age in years, and for babies: months, weeks or days">
+					>
+					["gt0051"] = (TERM) <
+						text = <"CDS standard">
+					>
+					["gt0052"] = (TERM) <
+						text = <"CDS ålder">
 					>
 				>
 			>
