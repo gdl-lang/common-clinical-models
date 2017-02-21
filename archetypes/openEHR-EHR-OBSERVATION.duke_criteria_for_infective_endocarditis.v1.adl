@@ -1,0 +1,304 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.duke_criteria_for_infective_endocarditis.v1
+
+concept
+	[at0000]	-- Duke criteria for infective endocarditis
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-02-16">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"This tool allows high predictive detection of Infective Endocarditis (IE) for patients with widely disparate clinical features that make it harder to diagnose.
+
+">
+			use = <"The Duke Criteria tool should be considered in patients with suspected IE under the following criteria:
+
+    Prolonged Fever of Unknown Origin.
+    Fever and vascular phenomena (stroke, limb ischemia, physical findings of septic emboli)
+    Persistently positive blood cultures (2 or more).
+    Patients with prosthetic valves who are febrile.
+    Injection drug users who are febrile.
+    Patients with a pre-disposing heart condition who are febrile.
+    Fever with a recent history of hospitalization.
+
+The classification groups are: Definite, Possible and Rejected:
+
+Definite:
+
+    One or more Pathologic criteria, or
+    2 major criteria, or
+    1 major and 3 minor criteria, or
+    5 minor criteria
+
+Possible:
+
+    1 major criterion and 1 minor criterion, or
+    3 minor criterion
+
+Rejected:
+
+    Does not meet criteria of Possible, as above. [There are also several clinical presentations that influence the choice to reject a diagnosis of IE, which can be read in (1).]
+
+
+">
+			keywords = <"Duke criteria for infective endocarditis", "infective endocarditis">
+			misuse = <"As indicated in the Use section, this tool should not be use din isolation of clinical presentations that assist to classify IE in patients suspected of suffering from the disease and it should not be used in those who have had previous treatment with antibiotics.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Durack DT, Lukes AS, Bright DK. New criteria for diagnosis of infective endocarditis: utilization of specific echocardiographic findings. Duke Endocarditis Service. Am J Med. 1994 Mar;96(3):200-9. PubMed PMID: 8154507.
+
+Ref. 2: Li JS, Sexton DJ, Mick N, Nettles R, Fowler VG Jr, Ryan T, Bashore T, Corey GR. Proposed modifications to the Duke criteria for the diagnosis of infective endocarditis. Clin Infect Dis. 2000 Apr;30(4):633-8. Epub 2000 Apr 3. PubMed PMID: 10770721.">
+		["MD5-CAM-1.0.1"] = <"6927D904311990248F5C779EA95596F5">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Duke criteria for infective endocarditis
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Pathological Lesions
+										value matches {
+											0|[local::at0015], 	-- No
+											1|[local::at0016]  	-- Yes
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Micro-organisms in a vegetation
+										value matches {
+											0|[local::at0017], 	-- No
+											1|[local::at0018]  	-- Yes
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Blood cultures positive for endocarditis
+										value matches {
+											0|[local::at0019], 	-- No
+											1|[local::at0020]  	-- Yes
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Evidence of endocardial involvement
+										value matches {
+											0|[local::at0021], 	-- No
+											1|[local::at0022]  	-- Yes
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Predisposing heart condition
+										value matches {
+											0|[local::at0023], 	-- No
+											1|[local::at0024]  	-- Yes
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Fever
+										value matches {
+											0|[local::at0025], 	-- No
+											1|[local::at0026]  	-- Yes
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Vascular Phenomena
+										value matches {
+											0|[local::at0027], 	-- No
+											1|[local::at0028]  	-- Yes
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Immunologic phenomena
+										value matches {
+											0|[local::at0029], 	-- No
+											1|[local::at0030]  	-- Yes
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Microbiological evidence
+										value matches {
+											0|[local::at0031], 	-- No
+											1|[local::at0032]  	-- Yes
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Overall
+										value matches {
+											0|[local::at0033], 	-- Reject
+											1|[local::at0034], 	-- Possible
+											2|[local::at0035]  	-- Definite
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Duke criteria for infective endocarditis">
+					description = <"Diagnostic criteria for classifying endocarditis.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Pathological Lesions">
+					description = <"Vegetation or intracardiac abscess confirmed by histologic examination showing active endocarditis">
+				>
+				["at0005"] = <
+					text = <"Micro-organisms in a vegetation">
+					description = <"Demonstrated by culture or histologic examination of a vegetation, a vegetation that has embolized, or an intracardiac abscess specimen">
+				>
+				["at0006"] = <
+					text = <"Blood cultures positive for endocarditis">
+					description = <"Typical microorganisms consistent with IE from 2 separate blood cultures? 
+Microorganisms consistent with IE from persistently positive blood cultures? 
+Single positive blood culture for Coxiella burnetii or antiphase I IgG antibody titer >1:800">
+				>
+				["at0007"] = <
+					text = <"Evidence of endocardial involvement">
+					description = <"Echocardiogram positive for IE
+Abscess. 
+New partial dehiscence of prosthetic valve. 
+New valvular regurgitation. 
+Note: Worsening or changing of pre-existing murmur NOT sufficient">
+				>
+				["at0008"] = <
+					text = <"Predisposing heart condition">
+					description = <"Predisposing heart condition or injection drug use">
+				>
+				["at0009"] = <
+					text = <"Fever">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Vascular Phenomena">
+					description = <"Major arterial emboli, septic pulmonary infarcts, mycotic aneurysm, intracranial hemorrhage, conjunctival hemorrhages, and Janeway’s lesions">
+				>
+				["at0011"] = <
+					text = <"Immunologic phenomena">
+					description = <"Glomerulonephritis, Osler’s nodes, Roth’s spots, and rheumatoid factor">
+				>
+				["at0012"] = <
+					text = <"Microbiological evidence">
+					description = <"Positive blood culture but which does not meet a major criterion as noted above or serological evidence of active infection with organism consistent with IE">
+				>
+				["at0013"] = <
+					text = <"Overall">
+					description = <"Overall classification likelihood of IE">
+				>
+				["at0014"] = <
+					text = <"Comment">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Reject">
+					description = <" Does not meet criteria of Possible">
+				>
+				["at0034"] = <
+					text = <"Possible">
+					description = <"1 major criterion and 1 minor criterion, or 3 minor criterion">
+				>
+				["at0035"] = <
+					text = <"Definite">
+					description = <"One or more Pathologic criteria, or 2 major criteria, or 1 major and 3 minor criteria, or 5 minor criteria">
+				>
+			>
+		>
+	>

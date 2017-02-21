@@ -103,6 +103,8 @@
 }</script>
 </head>
 <body ng-controller="cds_controller">
+<#assign app_help_tag = "def.guides['HAS-BLED.v1'].concept">
+<#assign references = "def.terms['vt0001']"/>
 <#assign has_bled_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.has_bled.v1']">
 <#assign has_bled_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.has_bled.v1']">
 <#assign has_bled_entry_def = "def.entries['openEHR-EHR-OBSERVATION.has_bled.v1']">
@@ -141,9 +143,9 @@
 <#assign event_time_ehr_data = has_bled_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign lab_test_creatinine_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.lab_test_creatinine.v1']">
 <#assign lab_test_creatinine_entry_def = "def.entries['openEHR-EHR-OBSERVATION.lab_test_creatinine.v1']">
-<#assign result_def = lab_test_creatinine_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign creatinine_def = lab_test_creatinine_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
 <#assign event_time1_def = lab_test_creatinine_entry_def + ".elements['/data/events/time']">
-<#assign result_ehr_data = lab_test_creatinine_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign creatinine_ehr_data = lab_test_creatinine_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
 <#assign event_time1_ehr_data = lab_test_creatinine_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign alcohol_use_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.alcohol_use.v1']">
 <#assign alcohol_use_entry_def = "def.entries['openEHR-EHR-OBSERVATION.alcohol_use.v1']">
@@ -153,9 +155,9 @@
 <#assign event_time2_ehr_data = alcohol_use_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign laboratory_test_ast_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.lab_test-ast.v1']">
 <#assign laboratory_test_ast_entry_def = "def.entries['openEHR-EHR-OBSERVATION.lab_test-ast.v1']">
-<#assign result1_def = laboratory_test_ast_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078}']">
+<#assign ast_def = laboratory_test_ast_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078}']">
 <#assign event_time3_def = laboratory_test_ast_entry_def + ".elements['/data/events/time']">
-<#assign result1_ehr_data = laboratory_test_ast_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078}']">
+<#assign ast_ehr_data = laboratory_test_ast_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078}']">
 <#assign event_time3_ehr_data = laboratory_test_ast_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign blood_pressure_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.blood_pressure.v1']">
 <#assign blood_pressure_entry_def = "def.entries['openEHR-EHR-OBSERVATION.blood_pressure.v1']">
@@ -163,11 +165,17 @@
 <#assign event_time4_def = blood_pressure_entry_def + ".elements['/data/events/time']">
 <#assign systolic_ehr_data = blood_pressure_entry_ehr_data + "[0].elements['/data{at0001}/events{at0006}/data{at0003}/items{at0004}']">
 <#assign event_time4_ehr_data = blood_pressure_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign basic_demographic_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
 <#assign basic_demographic_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
 <#assign basic_demographic_entry_def = "def.entries['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
 <#assign age_def = basic_demographic_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign birthdate_def = basic_demographic_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
 <#assign event_time5_def = basic_demographic_entry_def + ".elements['/data/events/time']">
+<#assign age_cds_data = basic_demographic_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign birthdate_cds_data = basic_demographic_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign event_time5_cds_data = basic_demographic_entry_cds_data + "[0].elements['/data/events/time']">
 <#assign age_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign birthdate_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
 <#assign event_time5_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign laboratory_test___bilirubin_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.lab_test-bilirubin.v1']">
 <#assign laboratory_test___bilirubin_entry_def = "def.entries['openEHR-EHR-OBSERVATION.lab_test-bilirubin.v1']">
@@ -177,287 +185,244 @@
 <#assign event_time6_ehr_data = laboratory_test___bilirubin_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign laboratory_test_alt_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.lab_test-alt.v1']">
 <#assign laboratory_test_alt_entry_def = "def.entries['openEHR-EHR-OBSERVATION.lab_test-alt.v1']">
-<#assign result2_def = laboratory_test_alt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078}']">
+<#assign alt_def = laboratory_test_alt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078}']">
 <#assign event_time7_def = laboratory_test_alt_entry_def + ".elements['/data/events/time']">
-<#assign result2_ehr_data = laboratory_test_alt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078}']">
+<#assign alt_ehr_data = laboratory_test_alt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078}']">
 <#assign event_time7_ehr_data = laboratory_test_alt_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign laboratory_test_alp_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.lab_test-alp.v1']">
 <#assign laboratory_test_alp_entry_def = "def.entries['openEHR-EHR-OBSERVATION.lab_test-alp.v1']">
-<#assign result3_def = laboratory_test_alp_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078}']">
+<#assign alp_def = laboratory_test_alp_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078}']">
 <#assign event_time8_def = laboratory_test_alp_entry_def + ".elements['/data/events/time']">
-<#assign result3_ehr_data = laboratory_test_alp_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078}']">
+<#assign alp_ehr_data = laboratory_test_alp_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078}']">
 <#assign event_time8_ehr_data = laboratory_test_alp_entry_ehr_data + "[0].elements['/data/events/time']">
 
+<script> 
+angular.module('cds_app').controller('HAS-BLED_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time3_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time4_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time5_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time6_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time7_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time8_ehr_data}.value.value = new Date().toISOString();
+	$scope.${systolic_ehr_data}.value.units = $scope.${systolic_def}.units[0];
+	$scope.${creatinine_ehr_data}.value.units = $scope.${creatinine_def}.units[0];
+    $scope.${ast_ehr_data}.value.units = $scope.${ast_def}.units[0];
+	$scope.${alt_ehr_data}.value.units = $scope.${alt_def}.units[0];
+	$scope.${alp_ehr_data}.value.units = $scope.${alp_def}.units[0];
+    $scope.${total_bilirubin_ehr_data}.value.units = $scope.${total_bilirubin_def}.units[0];
+	$scope.${standard_drinks_ehr_data}.value.units = $scope.${standard_drinks_def}.units[0];
+	$scope.${birthdate_ehr_data}.value.selection = $scope.findMin($scope.${birthdate_def});
+	$scope.${drugs_concomitantly_ehr_data}.value.selection = $scope.findMin($scope.${drugs_concomitantly_def});
+	$scope.${alcohol_concomitantly_ehr_data}.value.selection = $scope.findMin($scope.${alcohol_concomitantly_def});
+	$scope.${hypertension_ehr_data}.value.selection = $scope.findMin($scope.${hypertension_def});
+	$scope.${abnormal_renal_function_ehr_data}.value.selection = $scope.findMin($scope.${abnormal_renal_function_def});
+	$scope.${abnormal_liver_function_ehr_data}.value.selection = $scope.findMin($scope.${abnormal_liver_function_def});
+	$scope.${stroke_ehr_data}.value.selection = $scope.findMin($scope.${stroke_def});
+	$scope.${bleeding_history_or_predisposition_ehr_data}.value.selection = $scope.findMin($scope.${bleeding_history_or_predisposition_def});
+	$scope.${labile_inrs_ehr_data}.value.selection = $scope.findMin($scope.${labile_inrs_def});
+  });
+});
+</script>
 
+<div ng-show="ready" ng-controller="HAS-BLED_Ctrl">
+<div class="header">
+  <h1>{{def.concept.name}}</h1>
+  <h2>{{def.concept.description}}</h2>
+  <div class="help-tip">
+	<p>{{${app_help_tag}.description}}</p>
+  </div>
+</div>
 
-<div ng-show="ready">
-
-
-
-<div class="row">
-<div class="medium-12 column">
-<h1>{{def.concept.name}}</h1>
-</div>
-</div>
-<div class="row">
-<div class="medium-6 column">
-<form name="form">
-<fieldset>
-<legend>{{${has_bled_entry_def}.name}}</legend>
-<label>{{${drugs_concomitantly_def}.name}}</label>
-<div class="row collapse" title="{{${drugs_concomitantly_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${drugs_concomitantly_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${drugs_concomitantly_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${alcohol_concomitantly_def}.name}}</label>
-<div class="row collapse" title="{{${alcohol_concomitantly_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${alcohol_concomitantly_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${alcohol_concomitantly_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${hypertension_def}.name}}</label>
-<div class="row collapse" title="{{${hypertension_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${hypertension_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${hypertension_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${abnormal_renal_function_def}.name}}</label>
-<div class="row collapse" title="{{${abnormal_renal_function_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${abnormal_renal_function_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${abnormal_renal_function_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${abnormal_liver_function_def}.name}}</label>
-<div class="row collapse" title="{{${abnormal_liver_function_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${abnormal_liver_function_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${abnormal_liver_function_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${stroke_def}.name}}</label>
-<div class="row collapse" title="{{${stroke_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${stroke_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${stroke_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${bleeding_history_or_predisposition_def}.name}}</label>
-<div class="row collapse" title="{{${bleeding_history_or_predisposition_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${bleeding_history_or_predisposition_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${bleeding_history_or_predisposition_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${labile_inrs_def}.name}}</label>
-<div class="row collapse" title="{{${labile_inrs_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${labile_inrs_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${labile_inrs_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${elderly_def}.name}}</label>
-<div class="row collapse" title="{{${elderly_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${elderly_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${elderly_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${event_time_def}.name}}</label>
-<div class="row collapse" title="{{${event_time_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${lab_test_creatinine_entry_def}.name}}</legend>
-<label>{{${result_def}.name}}</label>
-<div class="row collapse" title="{{${result_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${result_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-<div class="medium-3 columns">
-<select ng-model="${result_ehr_data}.value.units" id="result_ehr_units" ng-options="unit for unit in ${result_def}.units" ng-change="execute()"></select>
-</div>
-</div>
-<label>{{${event_time1_def}.name}}</label>
-<div class="row collapse" title="{{${event_time1_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time1_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${alcohol_use_entry_def}.name}}</legend>
-<label>{{${standard_drinks_def}.name}}</label>
-<div class="row collapse" title="{{${standard_drinks_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${standard_drinks_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-<div class="medium-3 columns">
-<select ng-model="${standard_drinks_ehr_data}.value.units" id="standard_drinks_ehr_units" ng-options="unit for unit in ${standard_drinks_def}.units" ng-change="execute()"></select>
-</div>
-</div>
-<label>{{${event_time2_def}.name}}</label>
-<div class="row collapse" title="{{${event_time2_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time2_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${laboratory_test_ast_entry_def}.name}}</legend>
-<label>{{${result1_def}.name}}</label>
-<div class="row collapse" title="{{${result1_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${result1_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-<div class="medium-3 columns">
-<select ng-model="${result1_ehr_data}.value.units" id="result1_ehr_units" ng-options="unit for unit in ${result1_def}.units" ng-change="execute()"></select>
-</div>
-</div>
-<label>{{${event_time3_def}.name}}</label>
-<div class="row collapse" title="{{${event_time3_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time3_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${blood_pressure_entry_def}.name}}</legend>
-<label>{{${systolic_def}.name}}</label>
+<div class="card">
+<div class="row collapse" title="{{${birthdate_def}.description}}">
+    <div class="medium-5 columns">
+      <label>{{${birthdate_def}.name}}</label>
+    </div>
+    <div class="medium-7 columns">
+      <input ng-model="${birthdate_ehr_data}.value.value" type="text" pikaday="date" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+    </div>
+  </div>
 <div class="row collapse" title="{{${systolic_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${systolic_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+<div class="medium-5 columns">
+<label>{{${systolic_def}.name}}</label>
 </div>
-<div class="medium-3 columns">
-<select ng-model="${systolic_ehr_data}.value.units" id="systolic_ehr_units" ng-options="unit for unit in ${systolic_def}.units" ng-change="execute()"></select>
+<div class="medium-5 columns">
+        <input ng-model="${systolic_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${systolic_ehr_data}.value.units" ng-options="unit for unit in ${systolic_def}.units" ng-change="execute()" disabled=""></select>
+      </div>
 </div>
+<div class="row collapse" title="{{${creatinine_def}.description}}">
+<div class="medium-5 columns">
+<label>{{${creatinine_def}.name}}</label>
 </div>
-<label>{{${event_time4_def}.name}}</label>
-<div class="row collapse" title="{{${event_time4_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time4_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+<div class="medium-5 columns">
+        <input ng-model="${creatinine_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${creatinine_ehr_data}.value.units" ng-options="unit for unit in ${creatinine_def}.units" ng-change="execute()" disabled=""></select>
+      </div>
 </div>
+<div class="row collapse" title="{{${ast_def}.description}}">
+<div class="medium-5 columns">
+<label>{{${ast_def}.name}}</label>
 </div>
-</fieldset>
-<fieldset>
-<legend>{{${basic_demographic_entry_def}.name}}</legend>
-<label>{{${age_def}.name}}</label>
-<div class="row collapse" title="{{${age_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${age_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+<div class="medium-5 columns">
+        <input ng-model="${ast_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${ast_ehr_data}.value.units" ng-options="unit for unit in ${ast_def}.units" ng-change="execute()" disabled=""></select>
+      </div>
 </div>
-<div class="medium-3 columns">
-<select ng-model="${age_ehr_data}.value.units" id="age_ehr_units" ng-options="unit for unit in ${age_def}.units" ng-change="execute()"></select>
+<div class="row collapse" title="{{${alt_def}.description}}">
+<div class="medium-5 columns">
+<label>{{${alt_def}.name}}</label>
 </div>
+<div class="medium-5 columns">
+        <input ng-model="${alt_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${alt_ehr_data}.value.units" ng-options="unit for unit in ${alt_def}.units" ng-change="execute()" disabled=""></select>
+      </div>
 </div>
-<label>{{${event_time5_def}.name}}</label>
-<div class="row collapse" title="{{${event_time5_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time5_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+<div class="row collapse" title="{{${alp_def}.description}}">
+<div class="medium-5 columns">
+<label>{{${alp_def}.name}}</label>
 </div>
+<div class="medium-5 columns">
+        <input ng-model="${alp_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${alp_ehr_data}.value.units" ng-options="unit for unit in ${alp_def}.units" ng-change="execute()" disabled=""></select>
+      </div>
 </div>
-</fieldset>
-<fieldset>
-<legend>{{${laboratory_test___bilirubin_entry_def}.name}}</legend>
-<label>{{${total_bilirubin_def}.name}}</label>
 <div class="row collapse" title="{{${total_bilirubin_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${total_bilirubin_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+<div class="medium-5 columns">
+<label>{{${total_bilirubin_def}.name}}</label>
 </div>
-<div class="medium-3 columns">
-<select ng-model="${total_bilirubin_ehr_data}.value.units" id="total_bilirubin_ehr_units" ng-options="unit for unit in ${total_bilirubin_def}.units" ng-change="execute()"></select>
+<div class="medium-5 columns">
+        <input ng-model="${total_bilirubin_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${total_bilirubin_ehr_data}.value.units" ng-options="unit for unit in ${total_bilirubin_def}.units" ng-change="execute()" disabled=""></select>
+      </div>
 </div>
+<div class="row collapse" title="{{${standard_drinks_def}.description}}">
+<div class="medium-5 columns">
+<label>{{${standard_drinks_def}.name}}</label>
 </div>
-<label>{{${event_time6_def}.name}}</label>
-<div class="row collapse" title="{{${event_time6_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time6_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+<div class="medium-5 columns">
+        <input ng-model="${standard_drinks_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${standard_drinks_ehr_data}.value.units" ng-options="unit for unit in ${standard_drinks_def}.units" ng-change="execute()" disabled=""></select>
+      </div>
 </div>
+<div class="row collapse" title="{{${drugs_concomitantly_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${drugs_concomitantly_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${drugs_concomitantly_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${drugs_concomitantly_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${alcohol_concomitantly_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${alcohol_concomitantly_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${alcohol_concomitantly_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${alcohol_concomitantly_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${hypertension_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${hypertension_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${hypertension_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${hypertension_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${abnormal_renal_function_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${abnormal_renal_function_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${abnormal_renal_function_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${abnormal_renal_function_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${abnormal_liver_function_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${abnormal_liver_function_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${abnormal_liver_function_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${abnormal_liver_function_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${stroke_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${stroke_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${stroke_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${stroke_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${bleeding_history_or_predisposition_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${bleeding_history_or_predisposition_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${bleeding_history_or_predisposition_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${bleeding_history_or_predisposition_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${labile_inrs_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${labile_inrs_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${labile_inrs_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${labile_inrs_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult">
+  <div class="medium-5 columns">
+    <label><b>{{${total_score_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${total_score_cds_data}.value.magnitude}}</label>
+  </div>
 </div>
-</fieldset>
-<fieldset>
-<legend>{{${laboratory_test_alt_entry_def}.name}}</legend>
-<label>{{${result2_def}.name}}</label>
-<div class="row collapse" title="{{${result2_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${result2_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-<div class="medium-3 columns">
-<select ng-model="${result2_ehr_data}.value.units" id="result2_ehr_units" ng-options="unit for unit in ${result2_def}.units" ng-change="execute()"></select>
-</div>
-</div>
-<label>{{${event_time7_def}.name}}</label>
-<div class="row collapse" title="{{${event_time7_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time7_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${laboratory_test_alp_entry_def}.name}}</legend>
-<label>{{${result3_def}.name}}</label>
-<div class="row collapse" title="{{${result3_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${result3_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-<div class="medium-3 columns">
-<select ng-model="${result3_ehr_data}.value.units" id="result3_ehr_units" ng-options="unit for unit in ${result3_def}.units" ng-change="execute()"></select>
-</div>
-</div>
-<label>{{${event_time8_def}.name}}</label>
-<div class="row collapse" title="{{${event_time8_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time8_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-</div>
-</fieldset>
-</form>
-</div>
-<div class="medium-6 column">
-<fieldset>
-<legend>{{${has_bled_entry_def}.name}}</legend>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${drugs_concomitantly_def}.name}}: </b>{{${drugs_concomitantly_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${alcohol_concomitantly_def}.name}}: </b>{{${alcohol_concomitantly_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${total_score_def}.name}}: </b>{{${total_score_cds_data}.value.magnitude}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${hypertension_def}.name}}: </b>{{${hypertension_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${abnormal_renal_function_def}.name}}: </b>{{${abnormal_renal_function_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${abnormal_liver_function_def}.name}}: </b>{{${abnormal_liver_function_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${stroke_def}.name}}: </b>{{${stroke_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${bleeding_history_or_predisposition_def}.name}}: </b>{{${bleeding_history_or_predisposition_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${labile_inrs_def}.name}}: </b>{{${labile_inrs_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${elderly_def}.name}}: </b>{{${elderly_cds_data}.value.symbol.value}}</div>
-</div>
-</fieldset>
+
 </div>
 </div>
+
+<div class="row"><div class="medium-12 columns"></div></div>
+<br /><br />
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
 </div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news">Williams B, Alberti G, Ball C, Bell D, Binks R, Durham L, et al. National Early Warning Score (NEWS): Standardising the Assessment of Acute-Illness Severity in the NHS. London: The Royal College of Physicians, 2012.</a></i>
+        </li>
+      </div>
+    </div>
+	<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news">National Early Warning Score (NEWS). [Internet]. London, UK: Royal College of Physicians; 2015 May.</a></i>
+        </li>
+      </div>
+    </div>
+  </div>
+
 
 <style>
   html, body {
@@ -579,3 +544,5 @@
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
+
+</body></html>

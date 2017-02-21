@@ -1,14 +1,13 @@
-<!DOCTYPE html><html ng-app="cds_app">
-<head>
+<!DOCTYPE html><html ng-app="cds_app"><head>
 <title>{{def.concept.name}}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
-<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
-<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
+<link rel="stylesheet" type="text/css" href="wro/foundation.css" />
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css" />
+<link rel="stylesheet" type="text/css" href="wro/angular.css" />
 <script type="text/javascript" src="wro/angular.js"></script>
-<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js" />
 <script type="text/javascript" src="wro/moment.js"></script>
 <script type="text/javascript" src="wro/date-picker.js"></script>
 <script type="text/javascript" src="wro/app_lib.js"></script>
@@ -85,7 +84,7 @@
       "terms": {
         "vt0001": {
           "id": "vt0001",
-          "text": "*(en) References"
+          "text": "Referenser"
         }
       }
     },
@@ -175,8 +174,11 @@
 angular.module('cds_app').controller('ABG_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
     $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time3_ehr_data}.value.value = new Date().toISOString();
     $scope.${arterial_ph_ehr_data}.value.units = $scope.${arterial_ph_def}.units[0];
-    $scope.${paco2_ehr_data}.value.units = $scope.${paco2_def}.units[0];
+    $scope.${paco2_ehr_data}.value.units = $scope.${paco2_def}.units[1];
 	$scope.${bicarbonate_ehr_data}.value.units = $scope.${bicarbonate_def}.units[0];
 	$scope.${sodium_ehr_data}.value.units = $scope.${sodium_def}.units[0];
     $scope.${chloride_ehr_data}.value.units = $scope.${chloride_def}.units[0];
@@ -267,7 +269,7 @@ angular.module('cds_app').controller('ABG_Ctrl', function($scope, $window){
       <label>{{${acute_chronic_def}.name}}</label>
     </div>
     <label class="medium-3 columns" ng-repeat="(key, desc) in ${acute_chronic_def}.selections">
-      <input type="radio" value="{{key}}" ng-model= "${acute_chronic_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      <input type="radio" value="{{key}}" ng-model="${acute_chronic_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
   <div class="row collapse" title="{{${final_analysis_def}.description}}" id="displayresult1">
@@ -287,10 +289,10 @@ angular.module('cds_app').controller('ABG_Ctrl', function($scope, $window){
   </div>
 </div>
 <div class="row collapse" title="{{${delta_gap_if_ag_present_def}.description}}" id="displayresult1">
-    <div class="medium-5 columns">
+    <div class="medium-7 columns">
       <span><b>{{${delta_gap_if_ag_present_def}.name}}:</b></span>
     </div>
-    <div class="medium-7 columns">
+    <div class="medium-5 columns">
       <span>{{${delta_gap_if_ag_present_cds_data}.value.magnitude}} {{${delta_gap_if_ag_present_cds_data}.value.units}}</span>
     </div>
   </div>
@@ -457,6 +459,7 @@ angular.module('cds_app').controller('ABG_Ctrl', function($scope, $window){
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
+
 
 
 </body></html>

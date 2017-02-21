@@ -39,27 +39,32 @@
       "name": "Oskar Nielsen",
       "date": "2016-06-27"
     },
-    "otherContributors": [],
+    "otherContributors": [
+      "Dennis Forslund, Cambio Healthcare Systems"
+    ],
     "details": {
       "en": {
-        "purpose": "To calculate estimated glomerular filtration rate based on serum creatine lab test result according to the Cockcroft-Gault formula , in males, females and children.",
+        "purpose": "To calculate estimated glomerular filtration rate in males, females and children in accordance with the Cockcroft-Gault formula.",
         "keywords": [
           "GFR",
           "egfr",
           "renal function"
         ],
-        "use": "Use for calculating eGFR based on Cockcroft-Gault formula.",
+        "use": "Use for calculating eGFR based on the Cockcroft-Gault formula.\n\nMales (≥ 20 years of age): eGFR \u003d (1.23 * (140 - age) * weight) / creatinine\n\nFemales (≥ 20 years of age): eGFR \u003d (1.04 * (140 - age) * weight) / creatinine\n\nChildren (\u003c20 years of age: eGFR \u003d ((42.5 * height) / creatinine) * (weight / 70)^0.7 \n\nWeight is entered in kilograms (kg) and height in centimeters (cm).",
         "misuse": "Do not use for calculating eGFR based on other formulas."
       },
       "sv": {
-        "purpose": "*(en) To calculate estimated glomerular filtration rate based on serum creatine lab test result according to the Cockcroft-Gault formula , in males, females and children.",
+        "purpose": "För att möjliggöra bedömning av njurfunktion hos personer genom att beräkna den glomerulära filtrationshastigheten med labbvärdet serumkreatinin i enlighet med Cockcroft-Gault formeln hos män och kvinnor.",
         "keywords": [
-          "*(en) GFR",
-          "*(en) egfr",
-          "*(en) renal function"
+          "GFR",
+          "egfr",
+          "glomerulär filtrationshastighet",
+          "njurfunktion",
+          "nefrologi"
         ],
-        "use": "*(en) Use for calculating eGFR based on Cockcroft-Gault formula.",
-        "misuse": "*(en) Do not use for calculating eGFR based on other formulas."
+        "use": "Använd för att beräkna eGFR baserat på Cockcroft-Gault formeln hos män, kvinnor och barn.\n\nAnvänd för att beräkna eGFR baserat på Cockcroft-Gault formeln hos män, kvinnor och barn.\n\nMän (≥20 års ålder): eGFR \u003d (1.23 * (140 - ålder) * vikt) / kreatinin \n\nKvinnor (≥20 års ålder): eGFR \u003d (1.04 * (140 - ålder) * vikt) / kreatinin \n\nBarn (\u003c20 års ålder): Kreatininclearance \u003d ((42.5 * längd) / kreatinin) * (vikt / 70) ^ 0.7 \n\nVikt anges i kg och längd i cm.",
+        "misuse": "Använd inte för att beräkna eGFR med andra formler än Cockcroft-Gault.",
+        "copyright": "Cambio Healthcare Systems"
       }
     },
     "otherDetails": {
@@ -105,7 +110,7 @@
 <body ng-controller="cds_controller">
 <#assign height = "def.terms['vt0001']"/>
 <#assign references = "def.terms['vt0002']"/>
-<#assign app_help_tag = "def.guides['GFR_Cockcroft-Gault.v1'].concept">
+<#assign app_help_tag = "def.guides['Estimated_GFR_Cockcroft_Gault.v1'].concept">
 <#assign estimated_glomerular_filtration_rate_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.estimated_glomerular_filtration_rate.v1']">
 <#assign estimated_glomerular_filtration_rate_entry_def = "def.entries['openEHR-EHR-OBSERVATION.estimated_glomerular_filtration_rate.v1']">
 <#assign estimated_glomerular_filtration_rate_def = estimated_glomerular_filtration_rate_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
@@ -147,9 +152,9 @@ angular.module('cds_app').controller('MAP_Ctrl', function($scope, $window){
     $scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
     $scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
     $scope.${event_time3_ehr_data}.value.value = new Date().toISOString();
-    $scope.${height_length_ehr_data}.value.units = $scope.${height_length_def}.units[0];
-    $scope.${weight_ehr_data}.value.units = $scope.${weight_def}.units[0];
-    $scope.${creatinine_ehr_data}.value.units = $scope.${creatinine_def}.units[0];
+    $scope.${height_length_ehr_data}.value.units = $scope.${height_length_def}.units[1];
+    $scope.${weight_ehr_data}.value.units = $scope.${weight_def}.units[1];
+    $scope.${creatinine_ehr_data}.value.units = $scope.${creatinine_def}.units[1];
   });
   $scope.$on('executeEnd', function() {
     $scope.firedRules.filter(function(rule) {
@@ -217,22 +222,22 @@ angular.module('cds_app').controller('MAP_Ctrl', function($scope, $window){
     <select ng-model="${creatinine_ehr_data}.value.units" ng-options="unit for unit in ${creatinine_def}.units" ng-change="execute()" disabled=""></select>
   </div>
 </div>
-<div class="row collapse" title="{{${estimated_glomerular_filtration_rate_def}.description}}" id="displayresult1" "="">
-    <div class="medium-5 columns">
-      <label><b>{{${estimated_glomerular_filtration_rate_def}.name}}</b></label>
-    </div>
-    <div class="medium-7 columns">
-      <span>{{gfr_cds}} {{${estimated_glomerular_filtration_rate_cds_data}.value.units}}</span>
-    </div>
+<div class="row collapse" title="{{${estimated_glomerular_filtration_rate_def}.description}}" id="displayresult1">
+  <div class="medium-5 columns">
+    <label><b>{{${estimated_glomerular_filtration_rate_def}.name}}: </b></label>
   </div>
-  <div class="row collapse" title="{{${stage_def}.description}}" id="displayresult2" "="">
-    <div class="medium-5 columns">
-      <label class="hfix"><b>{{${stage_def}.name}}</b></label>
-    </div>
-    <div class="medium-7 columns">
-      <span class="hfix">{{${stage_cds_data}.value.value}}</span>
-    </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${estimated_glomerular_filtration_rate_cds_data}.value.magnitude}} {{${estimated_glomerular_filtration_rate_cds_data}.value.units}}</label>
   </div>
+</div>
+<div class="row collapse" title="{{${stage_def}.description}}" id="displayresult2">
+  <div class="medium-5 columns">
+    <label><b>{{${stage_def}.name}}:</b></label>
+  </div>
+  <div class="medium-7 columns end" style="text-align: center;">
+    <label>{{${stage_cds_data}.value.value}}</label>
+  </div>
+</div>
 </div>
 </div>
 
