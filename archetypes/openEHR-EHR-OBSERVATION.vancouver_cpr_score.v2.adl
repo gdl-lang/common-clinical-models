@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.vancouver_cpr_score.v1
 
 concept
-	[at0000]	-- Vancouver CPR Score
+	[at0000]	-- Vancouver cpr score
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -46,7 +46,7 @@ Steg 3: om någon av dessa faktorer föreligger, bör patienten ej skrivas ut ut
     Smärtan strålar ut i nacke, käke eller vänster arm
 
 Föreligger inte heller dessa faktorer, bedöms det säkert för patienten att lämna mottagningen.">
-			keywords = <"vancouver chest pain rule", "bröstsmärta", "kardiologi">
+			keywords = <"vancouver chest pain rule", "bröstsmärta">
 			misuse = <"Endast avsedd att användas som stöd till klinisk bedömning, och bör ej enskilt utgöra beslutsunderlag.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
@@ -73,7 +73,7 @@ Step 3: If any of the below are answered \"True\" - do not discharge
     Does pain radiate to neck, jaw, or left arm?
 
 If all are \"False\"- it is safe to discharge the patient.">
-			keywords = <"vancouver chest pain rule", "chest pain", "cardiology">
+			keywords = <"vancouver chest pain rule", "chest pain">
 			misuse = <"Not to be used as an absolute diagnostic tool in the absence of other supporting evidence.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
@@ -84,73 +84,73 @@ If all are \"False\"- it is safe to discharge the patient.">
 		["references"] = <"Ref.1: Xavier Scheuermeyer F, Wong H, Yu E, Boychuk B, Innes G, Grafstein E, Gin K, Christenson J. Development and validation of a prediction rule for early discharge of low-risk emergency department patients with potential ischemic chest pain. CJEM. 2013;15(0):1-14. PubMed PMID: 23816166.
 
 Ref.2: Cullen L, Greenslade JH, Than M, Brown AF, Hammett CJ, Lamanna A, Flaws DF, Chu K, Fowles LF, Parsonage WA. The new Vancouver Chest Pain Rule using troponin as the only biomarker: an external validation study. Am J Emerg Med. 2014 Feb;32(2):129-34. doi: 10.1016/j.ajem.2013.10.021. Epub 2013 Oct 14. PubMed PMID: 24238485.">
-		["MD5-CAM-1.0.1"] = <"BED6F169F61F38D58AA1F21CB3AD06C7">
+		["MD5-CAM-1.0.1"] = <"3840FBDDF7D831DF9F4D4DE4496AE083">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Vancouver CPR Score
+	OBSERVATION[at0000] matches {	-- Vancouver cpr score
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Patologiskt EKG vid ankomst?
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Abnormal intial EKG?
 										value matches {
-											0|[local::at0020], 	-- Falskt
-											1|[local::at0021]  	-- Sant
+											0|[local::at0020], 	-- False
+											1|[local::at0021]  	-- True
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Positivt troponin efter 2 timmar?
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Positive troponin at 2 hours?
 										value matches {
-											0|[local::at0022], 	-- Falskt 
-											1|[local::at0023]  	-- Sant
+											0|[local::at0022], 	-- False
+											1|[local::at0023]  	-- True
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Tidigare akut kranskärlssjukdom eller ordinerat nitrat?
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Prior ACS (Acute Coronary Syndrome) or nitrate use?
 										value matches {
-											0|[local::at0024], 	-- Falskt
-											1|[local::at0025]  	-- Sant
+											0|[local::at0024], 	-- False
+											1|[local::at0025]  	-- True
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Kan smärtan reproduceras genom palpation?
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Does palpation reproduce pain?
 										value matches {
-											0|[local::at0026], 	-- Falskt
-											1|[local::at0027]  	-- Sant
+											0|[local::at0026], 	-- False
+											1|[local::at0027]  	-- True
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Ålder ≥ 50?
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Age ≥ 50?
 										value matches {
-											0|[local::at0028], 	-- Falskt
-											1|[local::at0029]  	-- Sant
+											0|[local::at0028], 	-- False
+											1|[local::at0029]  	-- True
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Strålar smärtan ut i nacke, käke eller vänster arm?
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Does pain radiate to neck, jaw, or left arm?
 										value matches {
-											0|[local::at0030], 	-- Falskt
-											1|[local::at0031]  	-- Sant
+											0|[local::at0030], 	-- False
+											1|[local::at0031]  	-- True
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Steg 1 - resultat
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Step 1 result
 										value matches {
-											0|[local::at0016], 	-- Fortsätt till steg 2
-											1|[local::at0017]  	-- Patienten bör inte lämna mottagningen utan vidare utredning
+											0|[local::at0016], 	-- Go to step 2
+											1|[local::at0017]  	-- Not safe to disharge
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Steg 2 - resultat
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Step 2 result
 										value matches {
-											0|[local::at0018], 	-- Säkert för patienten att lämna mottagningen
-											1|[local::at0019]  	-- Fortsätt till steg 3
+											0|[local::at0018], 	-- Safe to discharge
+											1|[local::at0019]  	-- Go to 3
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Steg 3 - resultat
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Step 3 result
 										value matches {
-											0|[local::at0014], 	-- Säkert för patienten att lämna mottagningen
-											1|[local::at0015]  	-- Patienten bör inte lämna mottagningen utan vidare utredning
+											0|[local::at0014], 	-- Safe to discharge
+											1|[local::at0015]  	-- Not safe to disharge
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -205,7 +205,7 @@ ontology
 					description = <"Step 3: do not disharge if this question is true.">
 				>
 				["at0009"] = <
-					text = <"Does pain radiate to neck, jaw, or left arm">
+					text = <"Does pain radiate to neck, jaw, or left arm?">
 					description = <"Step 3: do not disharge if this question is true.">
 				>
 				["at0010"] = <
@@ -361,7 +361,7 @@ ontology
 					description = <"">
 				>
 				["at0015"] = <
-					text = <"Patienten bör inte lämna mottagningen utan vidare utredning">
+					text = <"Patienten bör inte lämna mottagningen utan vidare utredningen">
 					description = <"">
 				>
 				["at0016"] = <
@@ -369,7 +369,7 @@ ontology
 					description = <"">
 				>
 				["at0017"] = <
-					text = <"Patienten bör inte lämna mottagningen utan vidare utredning">
+					text = <"Patienten bör inte lämna mottagningen utan vidare utredningen">
 					description = <"">
 				>
 				["at0018"] = <
@@ -389,7 +389,7 @@ ontology
 					description = <"">
 				>
 				["at0022"] = <
-					text = <"Falskt ">
+					text = <"Falskt">
 					description = <"">
 				>
 				["at0023"] = <
