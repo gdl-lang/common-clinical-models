@@ -1,0 +1,81 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"CAGE_assessment.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+			>
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.cage.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0008]">
+					>
+				>
+			>
+			["gt0004"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.cage_assessment.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0006"] = (RULE) <
+				when = <"$gt0005==null",...>
+				then = <"$gt0005=0|local::at0003|Screening negative|",...>
+				priority = <3>
+			>
+			["gt0007"] = (RULE) <
+				when = <"$gt0003.magnitude>1",...>
+				then = <"$gt0005=1|local::at0004|Possible misuse - further evaluation required|",...>
+				priority = <1>
+			>
+			["gt0008"] = (RULE) <
+				when = <"$gt0003.magnitude<=1",...>
+				then = <"$gt0005=0|local::at0003|Screening negative|",...>
+				priority = <2>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"CAGE Assessment">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Total score">
+						description = <"Sum of all factors">
+					>
+					["gt0005"] = (TERM) <
+						text = <"CAGE assessment">
+						description = <"Evaluation of score generated in accordance with the CAGE questionnaire.">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Default">
+					>
+					["gt0007"] = (TERM) <
+						text = <"CDS screening positive">
+					>
+					["gt0008"] = (TERM) <
+						text = <"CDS screening negative">
+					>
+				>
+			>
+		>
+	>
+>
