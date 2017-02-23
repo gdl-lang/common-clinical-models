@@ -1,0 +1,107 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.dutch_lipid_clinic_network_score.v1
+
+concept
+	[at0000]	-- Dutch lipid clinic network (DLCN) score
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Eneimi Allwell-Brown">
+		["email"] = <"info@cambio.se">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-02-23">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess the DLCN score and aid diagnosis of heterozygous Familial Hypercholesterolaemia (FH) in adults.">
+			use = <"To record the assessment of DLCN score and aid diagnosis of FH.
+DLCN score > 8 = definite FH
+DLCN score 6-8 = probable FH
+DLCN score 3-5 = possible FH
+DLCN score < 3 = unlikely FH.
+Molecular genetic testing and referral to a lipid specialist is strongly recommended in individuals with DLCN score > 5 and particularly those with xanthoma and/or high cholesterol plus a family history of premature coronary heart disease. Molecular genetic testing should also be offered to all first degree relatives of individuals with a confirmed causative mutation. 
+
+DLCN score data is recorded in a separate observation archetype: openEHR-EHR-OBSERVATION.dutch_lipid_clinic_network_score.v1">
+			keywords = <"familial hypercholesterolemia", "FH", "xanthoma", "arcus", "LDL-cholesterol", "genetic testing", "coronary heart disease">
+			misuse = <"">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"DF431C8BB9B391368BB146302166D540">
+		["references"] = <"Nordestgaard BG, Chapman MJ, Humphries SE, Ginsberg HN, Masana L, Descamps OS, Wiklund O, Hegele RA, Raal FJ, Defesche JC, Wiegman A. Familial hypercholesterolaemia is underdiagnosed and undertreated in the general population: guidance for clinicians to prevent coronary heart disease. European heart journal. 2013 Dec 1;34(45):3478-90.
+
+Law MR, Wald NJ, Rudnicka AR. Quantifying effect of statins on low density lipoprotein cholesterol, ischaemic heart disease, and stroke: systematic review and meta-analysis. Bmj. 2003 Jun 26;326(7404):1423.">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Dutch lipid clinic network (DLCN) score
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- DLCN score assessment
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0003, 	-- Definite familial hypercholesterolemia (FH)
+									at0004, 	-- Probable familial hypercholesterolemia (FH)
+									at0005, 	-- Possible familial hypercholesterolemia (FH)
+									at0006]	-- Unlikely familial hypercholesterolemia (FH)
+								}
+							}
+						}
+					}
+					ELEMENT[at0007] occurrences matches {0..1} matches {	-- Comment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Dutch lipid clinic network (DLCN) score">
+					description = <"The Dutch Lipid Clinic Network (DLCN) score is derived from the responses to a set of 10 clinical and laboratory-based questions recommended by the European Atherosclerosis Society (EAS) for aiding the diagnosis of heterozygous Familial Hypercholesterolaemia (FH) in adults. The criteria fall into five categories: family history (2 points), clinical history (2 points), physical examination findings (6 points), pre-treatment LDL cholesterol level (8 points) and presence of causative mutation on DNA analysis (8 points); minimum score = 0 and maximum score = 26. DLCN score >8 is ‘definite FH’, score 6 - 8 is ‘probable FH', score 3 - 5 is ‘possible FH’ and score <3 is ‘unlikely FH’.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"DLCN score assessment">
+					description = <"Assessment of the DLCN score and probability of a diagnosis of familial hypercholesterolemia.">
+				>
+				["at0003"] = <
+					text = <"Definite familial hypercholesterolemia (FH)">
+					description = <"DLCN score > 8">
+				>
+				["at0004"] = <
+					text = <"Probable familial hypercholesterolemia (FH)">
+					description = <"DLCN score 6-8">
+				>
+				["at0005"] = <
+					text = <"Possible familial hypercholesterolemia (FH)">
+					description = <"DLCN score 3-5">
+				>
+				["at0006"] = <
+					text = <"Unlikely familial hypercholesterolemia (FH)">
+					description = <"DLCN score < 3">
+				>
+				["at0007"] = <
+					text = <"Comment">
+					description = <"Any additional information about this recording.">
+				>
+			>
+		>
+	>
