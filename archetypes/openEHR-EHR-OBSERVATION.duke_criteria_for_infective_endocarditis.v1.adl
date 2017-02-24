@@ -2,9 +2,17 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.duke_criteria_for_infective_endocarditis.v1
 
 concept
-	[at0000]	-- Duke criteria for infective endocarditis
+	[at0000]	-- Duke-kriterierna
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -12,6 +20,36 @@ description
 		["date"] = <"2017-02-16">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att identifiera infektiös endokardit, vilken diagnostiskt baseras på Duke-kriterierna.">
+			use = <"Duke-kriterierna bör tillämpas på patienter med misstänkt infektiös endokardit. Faktorer förenliga med misstanke:
+
+- Långdragen feber av okänd orsak
+- Feber och vaskulär sjukdom (stroke, tecken på septisk emboli)
+- Två eller fler blododlingar med patologiskt fynd
+- Febril patient med protesklaff
+- Intravenöst drogmissbruk och feber
+- Febril patient med predisponerande hjärttillstånd
+- Feber efter att nyligen varit inlagd på sjukhus
+
+Klassificering enligt; definitiv, möjlig och exklusion.
+
+Definitiv:
+- 2 major-kriterier, eller
+- 1 major-och 3 minor-kriterier, eller
+- 5 minor-kriterier 
+
+Möjlig:
+- 1 major-kriterium och 1 minor-kriterium, eller 
+- 3 minor-kriterier
+
+Exklusion:
+- Möter ej kriterierna i enlighet med ovan (för mer specifik definition av exklusion, se (1))">
+			keywords = <"duke", "duke-kriterierna", "infektiös endokardit", "endokardit">
+			misuse = <" Kriterierna är endast avsedda för kliniskt bruk och ej för patienter som genomgått behandling med antibiotika.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"This tool allows high predictive detection of Infective Endocarditis (IE) for patients with widely disparate clinical features that make it harder to diagnose.
@@ -48,7 +86,7 @@ Rejected:
 
 ">
 			keywords = <"Duke criteria for infective endocarditis", "infective endocarditis">
-			misuse = <"As indicated in the Use section, this tool should not be use din isolation of clinical presentations that assist to classify IE in patients suspected of suffering from the disease and it should not be used in those who have had previous treatment with antibiotics.">
+			misuse = <"As indicated in the Use section, this tool should not be used in isolation of clinical presentations that assist to classify IE in patients suspected of suffering from the disease and it should not be used in those who have had previous treatment with antibiotics.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
 	>
@@ -58,80 +96,80 @@ Rejected:
 		["references"] = <"Ref. 1: Durack DT, Lukes AS, Bright DK. New criteria for diagnosis of infective endocarditis: utilization of specific echocardiographic findings. Duke Endocarditis Service. Am J Med. 1994 Mar;96(3):200-9. PubMed PMID: 8154507.
 
 Ref. 2: Li JS, Sexton DJ, Mick N, Nettles R, Fowler VG Jr, Ryan T, Bashore T, Corey GR. Proposed modifications to the Duke criteria for the diagnosis of infective endocarditis. Clin Infect Dis. 2000 Apr;30(4):633-8. Epub 2000 Apr 3. PubMed PMID: 10770721.">
-		["MD5-CAM-1.0.1"] = <"6927D904311990248F5C779EA95596F5">
+		["MD5-CAM-1.0.1"] = <"943DEC7200EC853DA2462E2671EBEE91">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Duke criteria for infective endocarditis
+	OBSERVATION[at0000] matches {	-- Duke-kriterierna
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Pathological Lesions
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Patologiska lesioner
 										value matches {
-											0|[local::at0015], 	-- No
-											1|[local::at0016]  	-- Yes
+											0|[local::at0015], 	-- Nej
+											1|[local::at0016]  	-- Ja
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Micro-organisms in a vegetation
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Mikroorganism i vegetation
 										value matches {
-											0|[local::at0017], 	-- No
-											1|[local::at0018]  	-- Yes
+											0|[local::at0017], 	-- Nej
+											1|[local::at0018]  	-- Ja
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Blood cultures positive for endocarditis
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Blododlingar förenliga med endokardit
 										value matches {
-											0|[local::at0019], 	-- No
-											1|[local::at0020]  	-- Yes
+											0|[local::at0019], 	-- Nej
+											1|[local::at0020]  	-- Ja
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Evidence of endocardial involvement
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Bevis på endokardiellt engagemang
 										value matches {
-											0|[local::at0021], 	-- No
-											1|[local::at0022]  	-- Yes
+											0|[local::at0021], 	-- Nej
+											1|[local::at0022]  	-- Ja
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Predisposing heart condition
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Predisponerande hjärtsjukdom
 										value matches {
-											0|[local::at0023], 	-- No
-											1|[local::at0024]  	-- Yes
+											0|[local::at0023], 	-- Nej
+											1|[local::at0024]  	-- Ja
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Fever
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Feber
 										value matches {
-											0|[local::at0025], 	-- No
-											1|[local::at0026]  	-- Yes
+											0|[local::at0025], 	-- Nej
+											1|[local::at0026]  	-- Ja
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Vascular Phenomena
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Vaskulär sjukdom
 										value matches {
-											0|[local::at0027], 	-- No
-											1|[local::at0028]  	-- Yes
+											0|[local::at0027], 	-- Nej
+											1|[local::at0028]  	-- Ja
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Immunologic phenomena
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Immunologiska reaktioner
 										value matches {
-											0|[local::at0029], 	-- No
-											1|[local::at0030]  	-- Yes
+											0|[local::at0029], 	-- Nej
+											1|[local::at0030]  	-- Ja
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Microbiological evidence
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Mikrobiologiska bevis
 										value matches {
-											0|[local::at0031], 	-- No
-											1|[local::at0032]  	-- Yes
+											0|[local::at0031], 	-- Nej
+											1|[local::at0032]  	-- Ja
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Overall
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Resultat
 										value matches {
-											0|[local::at0033], 	-- Reject
-											1|[local::at0034], 	-- Possible
-											2|[local::at0035]  	-- Definite
+											0|[local::at0033], 	-- Exklusion
+											1|[local::at0034], 	-- Möjlig endokardit
+											2|[local::at0035]  	-- Definitiv endokardit
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -298,6 +336,155 @@ Note: Worsening or changing of pre-existing murmur NOT sufficient">
 				["at0035"] = <
 					text = <"Definite">
 					description = <"One or more Pathologic criteria, or 2 major criteria, or 1 major and 3 minor criteria, or 5 minor criteria">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Duke-kriterierna">
+					description = <"Diagnostiska kriterier för infektiös endokardit.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Patologiska lesioner">
+					description = <"Vegetation eller intrakardiell abscess bekräftad av histologisk utredning som tecken på aktiv endokardit. ">
+				>
+				["at0005"] = <
+					text = <"Mikroorganism i vegetation">
+					description = <"Bekräftad av odling eller histologisk undersökning av vegetation.">
+				>
+				["at0006"] = <
+					text = <"Blododlingar förenliga med endokardit">
+					description = <"Minst två positive blododlingar med typiska IE-mikroorganismer. Upprepade positiva odlingar.">
+				>
+				["at0007"] = <
+					text = <"Bevis på endokardiellt engagemang">
+					description = <"Ekokardiogram förenligt med endokardit – abscess, intrakardiell förändring på klaff, stödjevävnad eller implanterat material, nytillkommen partiell avlossning av protesklaff eller nytt blåsljud.">
+				>
+				["at0008"] = <
+					text = <"Predisponerande hjärtsjukdom">
+					description = <"Predisponerande hjärtsjukdom eller intravenöst missbruk">
+				>
+				["at0009"] = <
+					text = <"Feber">
+					description = <"Har patienten feber?">
+				>
+				["at0010"] = <
+					text = <"Vaskulär sjukdom">
+					description = <"Artäremboli, septisk lunginfarkt, mykotiskt aneurysm, intrakraniell blödning, konjunktival blödning, och Janeways lesioner">
+				>
+				["at0011"] = <
+					text = <"Immunologiska reaktioner">
+					description = <"Glomerulonefrit, Oslerknutor, Roth's spots, reumatoid faktor ">
+				>
+				["at0012"] = <
+					text = <"Mikrobiologiska bevis">
+					description = <"Positiv blododling, som ej uppfyller major-kriterier eller serologiska tecken på
+pågående aktiv infektion med mikroorganism som kan orsaka IE ">
+				>
+				["at0013"] = <
+					text = <"Resultat">
+					description = <"Resultat av samtliga faktorer">
+				>
+				["at0014"] = <
+					text = <"Kommentar">
+					description = <"Ev tillägg">
+				>
+				["at0015"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0023"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0026"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0027"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0028"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0029"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0030"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0031"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0032"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0033"] = <
+					text = <"Exklusion">
+					description = <"* Does not meet criteria of Possible(en)">
+				>
+				["at0034"] = <
+					text = <"Möjlig endokardit">
+					description = <"*1 major criterion and 1 minor criterion, or 3 minor criterion(en)">
+				>
+				["at0035"] = <
+					text = <"Definitiv endokardit">
+					description = <"*One or more Pathologic criteria, or 2 major criteria, or 1 major and 3 minor criteria, or 5 minor criteria(en)">
 				>
 			>
 		>
