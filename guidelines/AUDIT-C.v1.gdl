@@ -9,7 +9,7 @@
 		details = <
 			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
 				copyright = <"Cambio Healthcare Systems">
-				keywords = <"AUDIT-C", "AUDIT", "alcohol misuse", "alcohol abuse">
+				keywords = <"AUDIT-C", "AUDIT", "alcohol misuse", "alcohol abuse", "alcohol use disorder", "psychiatry", "primary care", "screening">
 				misuse = <"Only intended for AUDIT-C, not the full version.
 ">
 				purpose = <"To screen for alcohol abuse.
@@ -29,7 +29,7 @@ A score of 5p or more is consistent with alcohol abuse and possible liver damage
 			>
 			["sv"] = (RESOURCE_DESCRIPTION_ITEM) <
 				copyright = <"Cambio Healthcare Systems">
-				keywords = <"AUDIT-C", "AUDIT", "alkoholmissbruk", "riskbruk">
+				keywords = <"AUDIT-C", "AUDIT", "alkoholmissbruk", "riskbruk", "missbruk", "beroende", "psykiatri", "primärvård", "screening">
 				misuse = <"Endast avsedd för registrering av AUDIT-C och ej fullständiga AUDIT.
 
 ">
@@ -96,12 +96,30 @@ Bradley KA, et. al. AUDIT-C as a brief screen for alcohol misuse in primary care
 					>
 				>
 			>
+			["gt0016"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.basic_demographic.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0017"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+				>
+			>
+			["gt0021"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.basic_demographic.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0022"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+				>
+			>
 		>
 		rules = <
 			["gt0011"] = (RULE) <
 				when = <"$gt0007==null", "$gt0008==null", "$gt0009==null">
 				then = <"$gt0007=0|local::at0008|Never|", "$gt0008=0|local::at0013|1 or 2|", "$gt0009=0|local::at0018|Never|">
-				priority = <5>
+				priority = <7>
 			>
 			["gt0012"] = (RULE) <
 				when = <"$gt0003!=null",...>
@@ -121,6 +139,16 @@ Bradley KA, et. al. AUDIT-C as a brief screen for alcohol misuse in primary care
 			["gt0015"] = (RULE) <
 				then = <"$gt0010.magnitude=(($gt0007.value+$gt0008.value)+$gt0009.value)",...>
 				priority = <1>
+			>
+			["gt0018"] = (RULE) <
+				when = <"$gt0017==local::at0005|Male|",...>
+				then = <"$gt0022=local::at0005|Male|",...>
+				priority = <5>
+			>
+			["gt0019"] = (RULE) <
+				when = <"$gt0017==local::at0006|Female|",...>
+				then = <"$gt0022=local::at0006|Female|",...>
+				priority = <6>
 			>
 		>
 	>
@@ -175,6 +203,22 @@ Bradley KA, et. al. AUDIT-C as a brief screen for alcohol misuse in primary care
 					["gt0015"] = (TERM) <
 						text = <"Calculate total score">
 					>
+					["gt0017"] = (TERM) <
+						text = <"Gender">
+						description = <"The patient's gender.">
+					>
+					["gt0018"] = (TERM) <
+						text = <"Set male">
+					>
+					["gt0019"] = (TERM) <
+						text = <"Set female">
+					>
+					["gt0020"] = (TERM) <
+					>
+					["gt0022"] = (TERM) <
+						text = <"Gender">
+						description = <"The patient's gender.">
+					>
 				>
 			>
 			["sv"] = (TERM_DEFINITION) <
@@ -225,6 +269,22 @@ Bradley KA, et. al. AUDIT-C as a brief screen for alcohol misuse in primary care
 					>
 					["gt0015"] = (TERM) <
 						text = <"Beräkna total poäng">
+					>
+					["gt0017"] = (TERM) <
+						text = <"*(en) Gender">
+						description = <"*(en) The patient's gender.">
+					>
+					["gt0018"] = (TERM) <
+						text = <"*(en) Set male">
+					>
+					["gt0019"] = (TERM) <
+						text = <"*(en) Set female">
+					>
+					["gt0020"] = (TERM) <
+					>
+					["gt0022"] = (TERM) <
+						text = <"*(en) Gender">
+						description = <"*(en) The patient's gender.">
 					>
 				>
 			>

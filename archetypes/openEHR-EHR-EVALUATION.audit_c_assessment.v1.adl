@@ -1,0 +1,191 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.audit_c_assessment.v1
+
+concept
+	[at0000]	-- AUDIT-C utvärdering
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Dennis Forslund">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-02-27">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess score generated in accordance with AUDIT-C, which is used to screen for alcohol abuse.">
+			use = <"Use to assess score generated in accordance with AUDIT-C, which is used to screen for alcohol abuse.
+
+The AUDIT-C contains the first three questions from the full Alcohol Use Disorders Identification Test (AUDIT) which was a World Health Organization-sponsored project. 
+
+- How often do you have a drink containing alcohol?
+- How many drinks containing alcohol do you have on a typical day when you are drinking?
+- How often do you have six or more drinks on one occasion?
+
+The questions each contribute points to the total score which ranges from 0-12.  The total score is interpreted as follows:
+
+Female - ≥3p indicates alcohol misuse
+Male - ≥4p indicates alcohol misuse
+A score of 5p or more is consistent with alcohol abuse and possible liver damage
+">
+			keywords = <"AUDIT", "AUDIT-C", "alcohol misuse", "alcohol abuse", "alcohol use disorder", "psychiatry", "primary care", "screening", "DSM">
+			misuse = <"This archetype is only intended for the AUDIT-C, not the full version.
+">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att utvärdera poäng genererad i enlighet med AUDIT-C, vilken används som screening för alkoholmissbruk.">
+			use = <"Använd för att  utvärdera poäng genererad i enlighet med AUDIT-C, vilken används som screening för alkoholmissbruk.
+
+AUDIT-C innehåller de tre första frågorna från det fullständiga formuläret Alcohol Use Disorders Identification Test (AUDIT) vilket är ett WHO-finansierat projekt.
+
+- Hur ofta dricker du alkohol?
+- Hur många glas dricker du en typisk dag då du dricker alkohol?
+- Hur ofta dricker du (kvinna) 4 eller (man) 5 glas eller mer vid samma tillfälle?
+
+Vardera fråga bidrar med poäng till totalsumman vilken uppgår till maximalt 12p. Resultatet tolkas enligt:
+
+Kvinna - ≥3p indikerar riskbruk av alkohol
+Man - ≥4p  indikerar riskbruk av alkohol
+5p eller mer är förenligt med alkoholmissbruk och potentiell leverskada.">
+			keywords = <"AUDIT", "AUDIT-C", "alkoholmissbruk", "beroende", "missbruk", "psykiatri", "primärvård", "screening", "riskbruk">
+			misuse = <"Denna arketyp är endast avsedd för registrering av AUDIT-C och ej fullständiga AUDIT.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Bush K, Kivlahan DR, McDonell MB, Fihn SD, Bradley KA. The AUDIT alcohol consumption questions (AUDIT-C): an effective brief screening test for problem drinking. Ambulatory Care Quality Improvement Project (ACQUIP). Alcohol Use Disorders Identification Test. Arch Intern Med. 1998 Sep 14;158(16):1789-95.
+
+Bradley KA, et. al. AUDIT-C as a brief screen for alcohol misuse in primary care. Alcohol Clin Exp Res. 2007 Jul;31(7):1208-17. Epub 2007 Apr 19.">
+		["MD5-CAM-1.0.1"] = <"1C896FFEB798586EC73554E892A7B971">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- AUDIT-C utvärdering
+		data matches {
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- AUDIT-C kvinna
+						value matches {
+							0|[local::at0003], 	-- Förenligt med normal konsumption
+							1|[local::at0004], 	-- Förenligt med riskbruk
+							2|[local::at0005]  	-- Förenligt med missbruk och potentiell leverskada
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- AUDIT-C man
+						value matches {
+							0|[local::at0007], 	-- Förenligt med normal konsumption
+							1|[local::at0008], 	-- Förenligt med riskbruk
+							2|[local::at0009]  	-- Förenligt med missbruk och potentiell leverskada
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"AUDIT-C assessment">
+					description = <"Assessment of score generated in accordance with AUDIT-C, which is used to screen for alcohol abuse.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"AUDIT-C female">
+					description = <"Female patient - assessment of score generated in accordance with AUDIT-C.">
+				>
+				["at0003"] = <
+					text = <"Consistent with normal consumption">
+					description = <"<3p">
+				>
+				["at0004"] = <
+					text = <"Consistent with alcohol misuse">
+					description = <"3-4p">
+				>
+				["at0005"] = <
+					text = <"Consistent with alcohol abuse and possible liver damage">
+					description = <"5p or more">
+				>
+				["at0006"] = <
+					text = <"AUDIT-C male">
+					description = <"Male patient - assessment of score generated in accordance with AUDIT-C. ">
+				>
+				["at0007"] = <
+					text = <"Consistent with normal consumption">
+					description = <"<4p">
+				>
+				["at0008"] = <
+					text = <"Consistent with alcohol misuse">
+					description = <"4p">
+				>
+				["at0009"] = <
+					text = <"Consistent with alcohol abuse and possible liver damage">
+					description = <"5p or more">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"AUDIT-C utvärdering">
+					description = <"Utvärdering av poäng genererad i enlighet med AUDIT-C, vilken används som screening för alkoholmissbruk.
+">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"AUDIT-C kvinna">
+					description = <"Kvinnlig patient - utvärdering av poäng genererad i enlighet med AUDIT-C.">
+				>
+				["at0003"] = <
+					text = <"Förenligt med normal konsumption">
+					description = <"<3p">
+				>
+				["at0004"] = <
+					text = <"Förenligt med riskbruk">
+					description = <"3-4p">
+				>
+				["at0005"] = <
+					text = <"Förenligt med missbruk och potentiell leverskada">
+					description = <"5p eller mer">
+				>
+				["at0006"] = <
+					text = <"AUDIT-C man">
+					description = <"Manlig patient - utvärdering av poäng genererad i enlighet med AUDIT-C.">
+				>
+				["at0007"] = <
+					text = <"Förenligt med normal konsumption">
+					description = <"<4p">
+				>
+				["at0008"] = <
+					text = <"Förenligt med riskbruk">
+					description = <"4p">
+				>
+				["at0009"] = <
+					text = <"Förenligt med missbruk och potentiell leverskada">
+					description = <"5p eller mer">
+				>
+			>
+		>
+	>
