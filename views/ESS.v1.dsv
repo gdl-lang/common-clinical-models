@@ -1,13 +1,14 @@
-<!DOCTYPE html><html ng-app="cds_app"><head>
+<!DOCTYPE html><html ng-app="cds_app">
+<head>
 <title>{{def.concept.name}}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" type="text/css" href="wro/foundation.css" />
-<link rel="stylesheet" type="text/css" href="wro/date-picker.css" />
-<link rel="stylesheet" type="text/css" href="wro/angular.css" />
+<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
+<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
 <script type="text/javascript" src="wro/angular.js"></script>
-<link rel="text/javascript" type="text/css" href="wro/foundation.js" />
+<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
 <script type="text/javascript" src="wro/moment.js"></script>
 <script type="text/javascript" src="wro/date-picker.js"></script>
 <script type="text/javascript" src="wro/app_lib.js"></script>
@@ -45,10 +46,10 @@
         "keywords": [
           "Epworth",
           "ESS",
-          "Sömnapne",
-          "Narkolepsi",
-          "Sömnstörning",
-          "Sömnrubbning"
+          "narkolepsi",
+          "sömnapne",
+          "sömnstörning",
+          "sömnrubbning"
         ],
         "use": "Använd för att identifiera potentiella sömnstörningar hos patienter med hjälp av ett självskattningsformulär innehållandes åtta frågor relaterade till sannolikhet att somna i diverse i situationer. Varje svar genererar 0-3 poäng. Maximal poäng uppgår således till 24p, och resultatet tolkas enligt:\n\n0-9p - normalt\n10-15 - indikerar sannolik förekomst av lindrig sömnapné eller narkolepsi\n16 or more - indikerar sannolik förekomst av svår sömnapné eller narkolepsi\n\nEn poäng om 10 eller mer bör föranleda vidare utredning.\n",
         "misuse": "Formuläret är i sig ej diagnostiskt och är endast avsett att användas som stöd för vidare utredning.",
@@ -59,9 +60,9 @@
         "keywords": [
           "Epworth",
           "ESS",
-          "Narcolepsy",
-          "Sleep apnea",
-          "Sleeping disorder"
+          "narcolepsy",
+          "sleep apnea",
+          "sleeping disorder"
         ],
         "use": "Use to identify possible sleeping disorders using a self-administered questionnaire containing eight questions regarding probability of falling asleep in various situations. Each answer generates 0-3 points, thus making the maximum potential score 24 points. The score is interpreted as follows:\n\n0-9p - normal\n10-15 - indicate possibility of mild sleep apnea or narcolepsy\n16 or more - indicate possibility of severe sleep apnea or narcolepsy\n\nA score of 10 or more should result in further medical examination and evaluation. ",
         "misuse": "The questionnaire is not in itself diagnostic and should only be used to support further examination and clinical assessment.",
@@ -74,6 +75,7 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
+    "ESS.assessment.v1",
     "ESS.v1"
   ],
   "alertBindings": {},
@@ -102,39 +104,43 @@
 <body ng-controller="cds_controller">
 <#assign app_help_tag = "def.guides['ESS.v1'].concept">
 <#assign references = "def.terms['vt0001']"/>
-<#assign epworth_sleepiness_scale_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.epworth_sleepiness_scale.v1']">
-<#assign epworth_sleepiness_scale_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.epworth_sleepiness_scale.v1']">
-<#assign epworth_sleepiness_scale_entry_def = "def.entries['openEHR-EHR-OBSERVATION.epworth_sleepiness_scale.v1']">
-<#assign in_a_car__while_stopped_for_a_few_minutes_in_traffic_def = epworth_sleepiness_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
-<#assign sitting_and_reading_def = epworth_sleepiness_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign watching_tv_def = epworth_sleepiness_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign total_score_def = epworth_sleepiness_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0045}']">
-<#assign lying_down_to_rest_in_the_afternoon_when_circumstances_permit_def = epworth_sleepiness_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
-<#assign sitting_and_talking_to_someone_def = epworth_sleepiness_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
-<#assign event_time_def = epworth_sleepiness_scale_entry_def + ".elements['/data/events/time']">
-<#assign sitting_quietly_after_a_lunch_without_alcohol_def = epworth_sleepiness_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
-<#assign as_a_passenger_in_a_car_for_an_hour_without_a_break_def = epworth_sleepiness_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign sitting__inactive_in_a_public_place__e_g__a_theater_or_meeting__def = epworth_sleepiness_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
-<#assign in_a_car__while_stopped_for_a_few_minutes_in_traffic_ehr_data = epworth_sleepiness_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
-<#assign sitting_and_reading_ehr_data = epworth_sleepiness_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign watching_tv_ehr_data = epworth_sleepiness_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign total_score_ehr_data = epworth_sleepiness_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0045}']">
-<#assign lying_down_to_rest_in_the_afternoon_when_circumstances_permit_ehr_data = epworth_sleepiness_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
-<#assign sitting_and_talking_to_someone_ehr_data = epworth_sleepiness_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
-<#assign event_time_ehr_data = epworth_sleepiness_scale_entry_ehr_data + "[0].elements['/data/events/time']">
-<#assign sitting_quietly_after_a_lunch_without_alcohol_ehr_data = epworth_sleepiness_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
-<#assign as_a_passenger_in_a_car_for_an_hour_without_a_break_ehr_data = epworth_sleepiness_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign sitting__inactive_in_a_public_place__e_g__a_theater_or_meeting__ehr_data = epworth_sleepiness_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
-<#assign in_a_car__while_stopped_for_a_few_minutes_in_traffic_cds_data = epworth_sleepiness_scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
-<#assign sitting_and_reading_cds_data = epworth_sleepiness_scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign watching_tv_cds_data = epworth_sleepiness_scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign total_score_cds_data = epworth_sleepiness_scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0045}']">
-<#assign lying_down_to_rest_in_the_afternoon_when_circumstances_permit_cds_data = epworth_sleepiness_scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
-<#assign sitting_and_talking_to_someone_cds_data = epworth_sleepiness_scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
-<#assign event_time_cds_data = epworth_sleepiness_scale_entry_cds_data + "[0].elements['/data/events/time']">
-<#assign sitting_quietly_after_a_lunch_without_alcohol_cds_data = epworth_sleepiness_scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
-<#assign as_a_passenger_in_a_car_for_an_hour_without_a_break_cds_data = epworth_sleepiness_scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign sitting__inactive_in_a_public_place__e_g__a_theater_or_meeting__cds_data = epworth_sleepiness_scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign ess_questionnaire_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.epworth_sleepiness_scale.v1']">
+<#assign ess_questionnaire_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.epworth_sleepiness_scale.v1']">
+<#assign ess_questionnaire_entry_def = "def.entries['openEHR-EHR-OBSERVATION.epworth_sleepiness_scale.v1']">
+<#assign in_a_car__while_stopped_for_a_few_minutes_in_traffic_def = ess_questionnaire_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
+<#assign sitting_and_reading_def = ess_questionnaire_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign watching_tv_def = ess_questionnaire_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign sitting__inactive_in_a_public_place__e_g__a_theater_or_meeting__def = ess_questionnaire_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign as_a_passenger_in_a_car_for_an_hour_without_a_break_def = ess_questionnaire_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign lying_down_to_rest_in_the_afternoon_when_circumstances_permit_def = ess_questionnaire_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign sitting_and_talking_to_someone_def = ess_questionnaire_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign total_score_def = ess_questionnaire_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0045}']">
+<#assign sitting_quietly_after_a_lunch_without_alcohol_def = ess_questionnaire_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
+<#assign event_time_def = ess_questionnaire_entry_def + ".elements['/data/events/time']">
+<#assign in_a_car__while_stopped_for_a_few_minutes_in_traffic_cds_data = ess_questionnaire_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
+<#assign sitting_and_reading_cds_data = ess_questionnaire_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign watching_tv_cds_data = ess_questionnaire_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign sitting__inactive_in_a_public_place__e_g__a_theater_or_meeting__cds_data = ess_questionnaire_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign as_a_passenger_in_a_car_for_an_hour_without_a_break_cds_data = ess_questionnaire_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign lying_down_to_rest_in_the_afternoon_when_circumstances_permit_cds_data = ess_questionnaire_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign sitting_and_talking_to_someone_cds_data = ess_questionnaire_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign total_score_cds_data = ess_questionnaire_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0045}']">
+<#assign sitting_quietly_after_a_lunch_without_alcohol_cds_data = ess_questionnaire_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
+<#assign event_time_cds_data = ess_questionnaire_entry_cds_data + "[0].elements['/data/events/time']">
+<#assign in_a_car__while_stopped_for_a_few_minutes_in_traffic_ehr_data = ess_questionnaire_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
+<#assign sitting_and_reading_ehr_data = ess_questionnaire_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign watching_tv_ehr_data = ess_questionnaire_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign sitting__inactive_in_a_public_place__e_g__a_theater_or_meeting__ehr_data = ess_questionnaire_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign as_a_passenger_in_a_car_for_an_hour_without_a_break_ehr_data = ess_questionnaire_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign lying_down_to_rest_in_the_afternoon_when_circumstances_permit_ehr_data = ess_questionnaire_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign sitting_and_talking_to_someone_ehr_data = ess_questionnaire_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign total_score_ehr_data = ess_questionnaire_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0045}']">
+<#assign sitting_quietly_after_a_lunch_without_alcohol_ehr_data = ess_questionnaire_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
+<#assign event_time_ehr_data = ess_questionnaire_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign epworth_sleepiness_scale_assessment_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.epworth_sleepiness_scale_assessment.v1']">
+<#assign epworth_sleepiness_scale_assessment_entry_def = "def.entries['openEHR-EHR-EVALUATION.epworth_sleepiness_scale_assessment.v1']">
+<#assign epworth_assessment_def = epworth_sleepiness_scale_assessment_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign epworth_assessment_cds_data = epworth_sleepiness_scale_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
 
 <script> 
 angular.module('cds_app').controller('ESS_Ctrl', function($scope, $window){
@@ -235,16 +241,41 @@ angular.module('cds_app').controller('ESS_Ctrl', function($scope, $window){
         </select>
       </label>
     </div>
-<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult">
-  <div class="medium-5 columns">
+<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult1">
+  <div class="medium-6 columns">
     <label><b>{{${total_score_def}.name}}: </b></label>
   </div>
-  <div class="medium-7 columns" style="text-align: center;">
+  <div class="medium-6 columns" style="text-align: center;">
     <label>{{${total_score_cds_data}.value.magnitude}}</label>
   </div>
 </div>
+<div class="row collapse" title="{{${epworth_assessment_def}.description}}" id="displayresult2">
+  <div class="medium-6 columns">
+    <label><b>{{${epworth_assessment_def}.name}}: </b></label>
+  </div>
+  <div class="medium-6 columns" style="text-align: center;">
+    <label>{{${epworth_assessment_cds_data}.value.symbol.value}}</label>
+  </div>
 </div>
 </div>
+</div>
+
+<div class="row"><div class="medium-12 columns"></div></div>
+<br /><br />
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
+</div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/1798888">Johns MW. 1991. A new method for measuring daytime sleepiness: the Epworth sleepiness scale. Sleep 14, 540–545.</a></i>
+        </li>
+      </div>
+    </div>
+  </div>
 
 <style>
   html, body {
@@ -304,7 +335,7 @@ angular.module('cds_app').controller('ESS_Ctrl', function($scope, $window){
       -webkit-animation: fadeIn 0.3s ease-in-out;
       animation: fadeIn 0.3s ease-in-out;
   }
-  .help-tip p{  /* The tooltip */
+  .help-tip p{	/* The tooltip */
       display: none;
       text-align: left;
       background-color: #1E2021;
@@ -338,7 +369,7 @@ angular.module('cds_app').controller('ESS_Ctrl', function($scope, $window){
       left:0;
   }
   .references1{
-  font-size: 70%;
+    font-size: 70%;
   }
   /* CSS animation */
   @-webkit-keyframes fadeIn {
@@ -356,15 +387,23 @@ angular.module('cds_app').controller('ESS_Ctrl', function($scope, $window){
       0% { opacity:0; }
       100% { opacity:100%; }
   }
-  #displayresult {
+  #displayresult1 {
     background-color: #e6e6e6; 
     padding-top: 3px;
     padding-bottom: 3px;
-    padding-left: 3px;
-	font-size: 90%;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    background-color: #f2f2f2;
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
   }
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
 
-</div></body></html>
+
+</body></html>
