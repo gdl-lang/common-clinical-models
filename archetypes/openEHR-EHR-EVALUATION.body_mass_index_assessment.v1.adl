@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.body_mass_index_assessment.v1
 
 concept
-	[at0000]	-- Body Mass Index assessment
+	[at0000]	-- Body Mass Index utvärdering
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -21,28 +21,6 @@ description
 		["date"] = <"2017-02-25">
 	>
 	details = <
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"Att utvärdera Body Mass Index i enlighet med definition formulerad av World Health Organization.">
-			use = <"Använd för att utvärdera Body Mass Index (BMI). Klassificering i enlighet med definition formulerad av World Health Organization:
-
-BMI <18,50 - undervikt
-- <16,00 - svår undervikt
-- 16,00-16,99 - måttlig undervikt
-- 17,00-18,49 - lindrig undervikt
------------------------------------------
-BMI 18,50 - 24,99 - normalvikt
------------------------------------------
-BMI 25,00-29,99 - övervikt
------------------------------------------
-BMI ≥30 - fetma
-- 30,00-34,99 - fetma grad I
-- 35,00 - 39,99 - fetma grad II
-- ≥40 - fetma grad III">
-			keywords = <"BMI", "body mass index", "WHO", "övervikt", "fetma">
-			misuse = <"">
-			copyright = <"Cambio Healthcare Systems">
-		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To assess Body Mass Index in accordance with the international classification of BMI from the World Health Organization.">
@@ -65,37 +43,51 @@ BMI ≥30 - obese
 			misuse = <"">
 			copyright = <"Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att utvärdera Body Mass Index i enlighet med definition formulerad av World Health Organization.">
+			use = <"Använd för att utvärdera Body Mass Index (BMI). Klassificering i enlighet med definition formulerad av World Health Organization:
+
+BMI <18,50 - undervikt
+- <16,00 - svår undervikt
+- 16,00-16,99 - måttlig undervikt
+- 17,00-18,49 - lindrig undervikt
+-----------------------------------------
+BMI 18,50 - 24,99 - normalvikt
+-----------------------------------------
+BMI 25,00-29,99 - övervikt
+-----------------------------------------
+BMI ≥30 - fetma
+- 30,00-34,99 - fetma grad I
+- 35,00 - 39,99 - fetma grad II
+- ≥40 - fetma grad III">
+			keywords = <"BMI", "body mass index", "WHO", "övervikt", "fetma">
+			misuse = <"">
+			copyright = <"Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"0">
 	other_contributors = <>
 	other_details = <
 		["references"] = <"BMI Classification. Global Database on Body Mass Index. World Health Organization. 2006. Available from: http://apps.who.int/bmi/index.jsp?introPage=intro_3.html">
-		["MD5-CAM-1.0.1"] = <"2D3B8FDC8C2505110104F8E2C7ECB202">
+		["MD5-CAM-1.0.1"] = <"3DBE2224C1838EE26560109458D478B2">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Body Mass Index assessment
+	EVALUATION[at0000] matches {	-- Body Mass Index utvärdering
 		data matches {
-			ITEM_TREE[at0001] matches {	-- Tree
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Underweight
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- BMI-klassifikation
 						value matches {
-							0|[local::at0003], 	-- Severe thinness
-							1|[local::at0004], 	-- Moderate thinness
-							2|[local::at0005]  	-- Mild thinness
-						}
-					}
-					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Normal range
-						value matches {0|[local::at0007]}		-- Within normal range
-					}
-					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Overweight
-						value matches {0|[local::at0010]}		-- Overweight / pre-obese
-					}
-					ELEMENT[at0009] occurrences matches {0..1} matches {	-- Obese
-						value matches {
-							0|[local::at0011], 	-- Obese class I
-							1|[local::at0012], 	-- Obese class II
-							2|[local::at0013]  	-- Obese class III
+							0|[local::at0003], 	-- Undervikt - svår
+							1|[local::at0004], 	-- Undervikt - måttlig
+							2|[local::at0005], 	-- Undervikt - lindrig
+							3|[local::at0014], 	-- Normalvikt
+							4|[local::at0015], 	-- Övervikt
+							5|[local::at0016], 	-- Fetma - grad I
+							6|[local::at0017], 	-- Fetma - grad II
+							7|[local::at0018]  	-- Fetma - grad III
 						}
 					}
 				}
@@ -116,51 +108,39 @@ ontology
 					description = <"@ internal @">
 				>
 				["at0002"] = <
-					text = <"Underweight">
-					description = <"BMI <18.50">
+					text = <"BMI classification">
+					description = <"BMI assessment in accordance with the international classification  from the World Health Organization.">
 				>
 				["at0003"] = <
-					text = <"Severe thinness">
+					text = <"Underweight - severe thinness">
 					description = <"BMI <16.00">
 				>
 				["at0004"] = <
-					text = <"Moderate thinness">
+					text = <"Underweight - moderate thinness">
 					description = <"BMI 16.00 - 16.99">
 				>
 				["at0005"] = <
-					text = <"Mild thinness">
+					text = <"Underweight - mild thinness">
 					description = <"BMI 17.00 - 18.49">
 				>
-				["at0006"] = <
-					text = <"Normal range">
-					description = <"BMI 18.50 - 24.99">
-				>
-				["at0007"] = <
+				["at0014"] = <
 					text = <"Within normal range">
 					description = <"BMI 18.50 - 24.99">
 				>
-				["at0008"] = <
-					text = <"Overweight">
-					description = <"BMI 25.00-29.99">
-				>
-				["at0009"] = <
-					text = <"Obese">
-					description = <"BMI ≥30.00">
-				>
-				["at0010"] = <
+				["at0015"] = <
 					text = <"Overweight / pre-obese">
 					description = <"BMI 25.00-29.99">
 				>
-				["at0011"] = <
-					text = <"Obese class I">
+				["at0016"] = <
+					text = <"Obese - class I">
 					description = <"BMI 30.00 - 34.99">
 				>
-				["at0012"] = <
-					text = <"Obese class II">
+				["at0017"] = <
+					text = <"Obese - class II">
 					description = <"BMI 35.00 - 39.99">
 				>
-				["at0013"] = <
-					text = <"Obese class III">
+				["at0018"] = <
+					text = <"Obese - class III">
 					description = <"BMI ≥40.00">
 				>
 			>
@@ -176,51 +156,39 @@ ontology
 					description = <"*@ internal @(en)">
 				>
 				["at0002"] = <
-					text = <"Undervikt">
-					description = <"BMI <18.50">
+					text = <"BMI-klassifikation">
+					description = <"Klassifikation av BMI i enlighet med definition formulerad av World Health Organization (WHO).">
 				>
 				["at0003"] = <
-					text = <"Svår undervikt">
+					text = <"Undervikt - svår">
 					description = <"BMI <16.00">
 				>
 				["at0004"] = <
-					text = <"Måttlig undervikt">
+					text = <"Undervikt - måttlig">
 					description = <"BMI 16.00 - 16.99">
 				>
 				["at0005"] = <
-					text = <"Lindrig undervikt">
+					text = <"Undervikt - lindrig">
 					description = <"BMI 17.00 - 18.49">
 				>
-				["at0006"] = <
+				["at0014"] = <
 					text = <"Normalvikt">
 					description = <"BMI 18.50 - 24.99">
 				>
-				["at0007"] = <
-					text = <"Normalvikt">
-					description = <"BMI 18.50 - 24.99">
-				>
-				["at0008"] = <
+				["at0015"] = <
 					text = <"Övervikt">
 					description = <"BMI 25.00-29.99">
 				>
-				["at0009"] = <
-					text = <"Fetma">
-					description = <"BMI ≥30.00">
-				>
-				["at0010"] = <
-					text = <"Övervikt">
-					description = <"BMI 25.00-29.99">
-				>
-				["at0011"] = <
-					text = <"Fetma grad I">
+				["at0016"] = <
+					text = <"Fetma - grad I">
 					description = <"BMI 30.00 - 34.99">
 				>
-				["at0012"] = <
-					text = <"Fetma grad II">
+				["at0017"] = <
+					text = <"Fetma - grad II">
 					description = <"BMI 35.00 - 39.99">
 				>
-				["at0013"] = <
-					text = <"Fetma grad III">
+				["at0018"] = <
+					text = <"Fetma - grad III">
 					description = <"BMI ≥40.00">
 				>
 			>

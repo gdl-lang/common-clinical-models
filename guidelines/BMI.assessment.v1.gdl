@@ -50,7 +50,6 @@ BMI ≥30 - fetma
 		>
 		original_author = <
 			["date"] = <"2017-02-25">
-			["email"] = <"">
 			["name"] = <"Dennis Forslund">
 			["organisation"] = <"Cambio Healthcare Systems">
 		>
@@ -61,72 +60,63 @@ BMI ≥30 - fetma
 	definition = (GUIDE_DEFINITION) <
 		archetype_bindings = <
 			["gt0002"] = (ARCHETYPE_BINDING) <
-				archetype_id = <"openEHR-EHR-OBSERVATION.body_mass_index.v1">
+				archetype_id = <"openEHR-EHR-EVALUATION.body_mass_index_assessment.v1">
 				domain = <"CDS">
 				elements = <
 					["gt0005"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+						path = <"/data[at0001]/items[at0002]">
 					>
 				>
 			>
 			["gt0003"] = (ARCHETYPE_BINDING) <
-				archetype_id = <"openEHR-EHR-EVALUATION.body_mass_index_assessment.v1">
+				archetype_id = <"openEHR-EHR-OBSERVATION.body_mass_index.v1">
 				domain = <"CDS">
 				elements = <
 					["gt0004"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/items[at0002]">
-					>
-					["gt0006"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/items[at0009]">
-					>
-					["gt0007"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/items[at0006]">
-					>
-					["gt0008"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/items[at0008]">
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
 					>
 				>
 			>
 		>
 		rules = <
-			["gt0009"] = (RULE) <
-				when = <"$gt0005.magnitude<16",...>
-				then = <"$gt0004=0|local::at0003|Severe thinness|",...>
+			["gt0006"] = (RULE) <
+				when = <"$gt0004.magnitude<16",...>
+				then = <"$gt0005=0|local::at0003|Underweight - severe thinness|",...>
 				priority = <8>
 			>
-			["gt0010"] = (RULE) <
-				when = <"$gt0005.magnitude>=16", "$gt0005.magnitude<16.99">
-				then = <"$gt0004=1|local::at0004|Moderate thinness|",...>
+			["gt0007"] = (RULE) <
+				when = <"$gt0004.magnitude>=16", "$gt0004.magnitude<=16.99">
+				then = <"$gt0005=1|local::at0004|Underweight - moderate thinness|",...>
 				priority = <7>
 			>
-			["gt0011"] = (RULE) <
-				when = <"$gt0005.magnitude>17", "$gt0005.magnitude<18.99">
-				then = <"$gt0004=2|local::at0005|Mild thinness|",...>
+			["gt0008"] = (RULE) <
+				when = <"$gt0004.magnitude>=17", "$gt0004.magnitude<=18.49">
+				then = <"$gt0005=2|local::at0005|Underweight - mild thinness|",...>
 				priority = <6>
 			>
-			["gt0012"] = (RULE) <
-				when = <"$gt0005.magnitude>=18.5", "$gt0005.magnitude<=24.99">
-				then = <"$gt0007=0|local::at0007|Within normal range|",...>
+			["gt0009"] = (RULE) <
+				when = <"$gt0004.magnitude>=18.50", "$gt0004.magnitude<=24.99">
+				then = <"$gt0005=3|local::at0014|Within normal range|",...>
 				priority = <5>
 			>
-			["gt0013"] = (RULE) <
-				when = <"$gt0005.magnitude>=25", "$gt0005.magnitude<=29.99">
-				then = <"$gt0008=0|local::at0010|Overweight / pre-obese|",...>
+			["gt0010"] = (RULE) <
+				when = <"$gt0004.magnitude>=25", "$gt0004.magnitude<=29.99">
+				then = <"$gt0005=4|local::at0015|Overweight / pre-obese|",...>
 				priority = <4>
 			>
-			["gt0014"] = (RULE) <
-				when = <"$gt0005.magnitude>=30", "$gt0005.magnitude<=34.99">
-				then = <"$gt0006=0|local::at0011|Obese class I|",...>
+			["gt0011"] = (RULE) <
+				when = <"$gt0004.magnitude>=30", "$gt0004.magnitude<=34.99">
+				then = <"$gt0005=5|local::at0016|Obese - class I|",...>
 				priority = <3>
 			>
-			["gt0015"] = (RULE) <
-				when = <"$gt0005.magnitude>=35", "$gt0005.magnitude<=39.99">
-				then = <"$gt0006=1|local::at0012|Obese class II|",...>
+			["gt0012"] = (RULE) <
+				when = <"$gt0004.magnitude>=35", "$gt0004.magnitude<=39.99">
+				then = <"$gt0005=6|local::at0017|Obese - class II|",...>
 				priority = <2>
 			>
-			["gt0016"] = (RULE) <
-				when = <"$gt0005.magnitude>=40",...>
-				then = <"$gt0006=2|local::at0013|Obese class III|",...>
+			["gt0013"] = (RULE) <
+				when = <"$gt0004.magnitude>=40",...>
+				then = <"$gt0005=7|local::at0018|Obese - class III|",...>
 				priority = <1>
 			>
 		>
@@ -140,48 +130,36 @@ BMI ≥30 - fetma
 						description = <"Assessment of Body Mass Index in accordance with the international classification of BMI from the World Health Organization.">
 					>
 					["gt0004"] = (TERM) <
-						text = <"Underweight">
-						description = <"BMI <18.50">
-					>
-					["gt0005"] = (TERM) <
 						text = <"Body Mass Index">
 						description = <"Index describing ratio of weight to height.">
 					>
+					["gt0005"] = (TERM) <
+						text = <"BMI classification">
+						description = <"BMI <18.50">
+					>
 					["gt0006"] = (TERM) <
-						text = <"Obese">
-						description = <"BMI ≥30.00">
+						text = <"BMI severe underweight">
 					>
 					["gt0007"] = (TERM) <
-						text = <"Normal range">
-						description = <"BMI 18.50 - 24.99">
+						text = <"BMI moderate underweight">
 					>
 					["gt0008"] = (TERM) <
-						text = <"Overweight">
-						description = <"BMI 25.00-29.99">
+						text = <"BMI mild underweight">
 					>
 					["gt0009"] = (TERM) <
-						text = <"CDS severe underweight">
+						text = <"BMI normal range">
 					>
 					["gt0010"] = (TERM) <
-						text = <"CDS moderate underweight">
+						text = <"BMI overweight">
 					>
 					["gt0011"] = (TERM) <
-						text = <"CDS mild underweight">
+						text = <"BMI obese class I">
 					>
 					["gt0012"] = (TERM) <
-						text = <"CDS normal range">
+						text = <"BMI obese class II">
 					>
 					["gt0013"] = (TERM) <
-						text = <"CDS overweight">
-					>
-					["gt0014"] = (TERM) <
-						text = <"CDS obese class I">
-					>
-					["gt0015"] = (TERM) <
-						text = <"CDS obese class II">
-					>
-					["gt0016"] = (TERM) <
-						text = <"CDS obese class III">
+						text = <"BMI obese class III">
 					>
 				>
 			>
@@ -192,48 +170,36 @@ BMI ≥30 - fetma
 						description = <"Utvärdering av Body Mass Index i enlighet med definition formulerad av World Health Organization.">
 					>
 					["gt0004"] = (TERM) <
-						text = <"Undervikt">
-						description = <"*(en) BMI <18.50">
-					>
-					["gt0005"] = (TERM) <
 						text = <"Body Mass Index">
 						description = <"*(en) Index describing ratio of weight to height.">
 					>
+					["gt0005"] = (TERM) <
+						text = <"BMI klassificering">
+						description = <"*(en) BMI <18.50">
+					>
 					["gt0006"] = (TERM) <
-						text = <"Fetma">
-						description = <"*(en) BMI ≥30.00">
+						text = <"BMI svår undervikt">
 					>
 					["gt0007"] = (TERM) <
-						text = <"Normalvikt">
-						description = <"*(en) BMI 18.50 - 24.99">
+						text = <"BMI måttlig undervikt">
 					>
 					["gt0008"] = (TERM) <
-						text = <"Övervikt">
-						description = <"*(en) BMI 25.00-29.99">
+						text = <"BMI lindrig undervikt">
 					>
 					["gt0009"] = (TERM) <
-						text = <"CDS svår undervikt">
+						text = <"BMI normalvikt">
 					>
 					["gt0010"] = (TERM) <
-						text = <"CDS måttlig undervikt">
+						text = <"BMI övervikt">
 					>
 					["gt0011"] = (TERM) <
-						text = <"CDS lindrig undervikt">
+						text = <"BMI fetma - grad I">
 					>
 					["gt0012"] = (TERM) <
-						text = <"CDS normalvikt">
+						text = <"BMI fetma - grad II">
 					>
 					["gt0013"] = (TERM) <
-						text = <"CDS övervikt">
-					>
-					["gt0014"] = (TERM) <
-						text = <"CDS fetma grad I">
-					>
-					["gt0015"] = (TERM) <
-						text = <"CDS fetma grad II">
-					>
-					["gt0016"] = (TERM) <
-						text = <"CDS fetma grad III">
+						text = <"BMI fetma - grad III">
 					>
 				>
 			>
