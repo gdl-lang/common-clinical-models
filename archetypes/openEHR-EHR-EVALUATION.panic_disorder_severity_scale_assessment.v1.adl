@@ -1,0 +1,148 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.panic_disorder_severity_scale_assessment.v1
+
+concept
+	[at0000]	-- Panic disorder severity scale assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-02-26">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The PDSS-SR has 7 items which are scored on a scale of 0 to 4 providing a raw score (adding up the scores across the seven questions) and providing a composite score which is made up of the average scores per seven questions.
+Thus the raw score ranges from 0 to 28 and the composite scores from 0 to 4.">
+			use = <"The scores are interpreted by grouping the patients into those with or those without agoraphobia in the following ways:
+
+Without Agoraphobia:
+Normal: 0-1 ; Bordeline: 2-5 ; Slightly ill: 6-9 ; Moderately ill: 10-13 ; Markedly ill: >= 14
+
+With Agoraphobia:
+Normal: 0-2 ; Bordeline: 3-7 ; Slightly ill: 8-10 ; Moderately ill: 11-15 ; Markedly ill: >= 16">
+			keywords = <"Panic disorder", "PDSS-SR">
+			misuse = <"The PDSS-SR tool should not be used to diagnose panic disorder or any other form of mental distress alone. An abnormal score should alert the clinician that further investigation should be done.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Shear MK, Brown TA, Barlow DH, Money R, Sholomskas DE, Woods SW, Gorman JM, Papp LA.  Multicenter collaborative Panic Disorder Severity Scale.  American Journal of Psychiatry 1997;154:1571-1575 
+
+Ref. 2: Furukawa, T. A., M. Katherine Shear, et al. (2009). \"Evidence-based guidelines for interpretation of the Panic Disorder Severity Scale.\" Depress Anxiety 26(10): 922-9.">
+		["MD5-CAM-1.0.1"] = <"0766CB1E80429D75776232A18306DE2C">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Panic disorder severity scale assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0020] occurrences matches {0..1} matches {	-- Presence of Agoraphobia?
+						value matches {
+							0|[local::at0021], 	-- No
+							1|[local::at0022]  	-- Yes
+						}
+					}
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Raw score interpretation - with Agoraphobia
+						value matches {
+							0|[local::at0012], 	-- Normal
+							1|[local::at0013], 	-- Borderline
+							2|[local::at0014], 	-- Slightly ill
+							3|[local::at0015], 	-- Moderately ill
+							4|[local::at0016]  	-- Markedly ill
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Raw score interpretation - without Agoraphobia
+						value matches {
+							0|[local::at0004], 	-- Normal
+							1|[local::at0005], 	-- Borderline
+							2|[local::at0017], 	-- Slightly ill
+							3|[local::at0018], 	-- Moderately ill
+							4|[local::at0019]  	-- Markedly ill
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Panic disorder severity scale assessment">
+					description = <"The PDSS-SR is the self-reported version of the PDSS which helps to gather an assessment from the patient of their anxiety state and severity of panic attacks during the previous week. This stratification tool interprets the scores">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Raw score interpretation - with Agoraphobia">
+					description = <"Raw score interpretation - with Agoraphobia">
+				>
+				["at0003"] = <
+					text = <"Raw score interpretation - without Agoraphobia">
+					description = <"Raw score interpretation - without Agoraphobia">
+				>
+				["at0004"] = <
+					text = <"Normal">
+					description = <"Score 0-1">
+				>
+				["at0005"] = <
+					text = <"Borderline">
+					description = <"Score 2-5">
+				>
+				["at0012"] = <
+					text = <"Normal">
+					description = <"Score 0-2">
+				>
+				["at0013"] = <
+					text = <"Borderline">
+					description = <"Score 3-7">
+				>
+				["at0014"] = <
+					text = <"Slightly ill">
+					description = <"Score 8-10">
+				>
+				["at0015"] = <
+					text = <"Moderately ill">
+					description = <"Score 11-15">
+				>
+				["at0016"] = <
+					text = <"Markedly ill">
+					description = <"Score >= 16">
+				>
+				["at0017"] = <
+					text = <"Slightly ill">
+					description = <"Score 6-9">
+				>
+				["at0018"] = <
+					text = <"Moderately ill">
+					description = <"Score 10-13">
+				>
+				["at0019"] = <
+					text = <"Markedly ill">
+					description = <"Score >= 14">
+				>
+				["at0020"] = <
+					text = <"Presence of Agoraphobia?">
+					description = <"Is Agoraphobia present in the patient">
+				>
+				["at0021"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+			>
+		>
+	>
