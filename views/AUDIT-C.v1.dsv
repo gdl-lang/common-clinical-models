@@ -42,14 +42,16 @@
     "otherContributors": [],
     "details": {
       "sv": {
-        "purpose": "Att använda som screening för alkoholmissbruk.\n",
+        "purpose": "Att använda som screening för alkoholmissbruk.\n\n",
         "keywords": [
           "AUDIT",
           "AUDIT-C",
           "alkoholmissbruk",
-          "riskbruk"
+          "riskbruk",
+          "beroende",
+          "psykiatri"
         ],
-        "use": "Använd som screening för alkoholmissbruk. AUDIT-C innehåller de tre första frågorna från det fullständiga formuläret Alcohol Use Disorders Identification Test (AUDIT) vilket är ett WHO-finansierat projekt.\n\n- Hur ofta dricker du alkohol?\n- Hur många glas dricker du en typisk dag då du dricker alkohol?\n- Hur ofta dricker du (kvinna) 4 eller (man) 5 glas eller mer vid samma tillfälle?\n\nVardera fråga bidrar med poäng till totalsumman vilken uppgår till maximalt 12p. Resultatet tolkas enligt:\n\nKvinna - ≥3p indikerar riskbruk av alkohol\nMan - ≥4p  indikerar riskbruk av alkohol\n5p eller mer är förenligt med alkoholmissbruk och potentiell leverskada.\n",
+        "use": "Använd som screening för alkoholmissbruk. AUDIT-C innehåller de tre första frågorna från det fullständiga formuläret Alcohol Use Disorders Identification Test (AUDIT) vilket är ett WHO-finansierat projekt.\n\n- Hur ofta dricker du alkohol?\n- Hur många glas dricker du en typisk dag då du dricker alkohol?\n- Hur ofta dricker du (kvinna) 4 eller (man) 5 glas eller mer vid samma tillfälle?\n\nVardera fråga bidrar med poäng till totalsumman vilken uppgår till maximalt 12p. Resultatet tolkas enligt:\n\nKvinna - \u003d3p indikerar riskbruk av alkohol\nMan - \u003d4p  indikerar riskbruk av alkohol\n5p eller mer är förenligt med alkoholmissbruk och potentiell leverskada.\n",
         "misuse": "Endast avsedd för registrering av AUDIT-C och ej fullständiga AUDIT.",
         "copyright": "Cambio Healthcare Systems"
       },
@@ -59,9 +61,11 @@
           "AUDIT",
           "AUDIT-C",
           "alcohol misuse",
-          "alcohol abuse"
+          "alcohol abuse",
+          "alcohol use disorder",
+          "psychiatry"
         ],
-        "use": "Use to screen for alcohol abuse. The AUDIT-C contains the first three questions from the full Alcohol Use Disorders Identification Test (AUDIT) which was a World Health Organization-sponsored project. \n\n- How often do you have a drink containing alcohol?\n- How many drinks containing alcohol do you have on a typical day when you are drinking?\n- How often do you have six or more drinks on one occasion?\n\nThe questions each contribute points to the total score which ranges from 0-12.  The total score is interpreted as follows:\n\nFemale - ≥3p indicates alcohol misuse\nMale - ≥4p indicates alcohol misuse\nA score of 5p or more is consistent with alcohol abuse and possible liver damage\n",
+        "use": "Use to screen for alcohol abuse. The AUDIT-C contains the first three questions from the full Alcohol Use Disorders Identification Test (AUDIT) which was a World Health Organization-sponsored project. \n\n- How often do you have a drink containing alcohol?\n- How many drinks containing alcohol do you have on a typical day when you are drinking?\n- How often do you have six or more drinks on one occasion?\n\nThe questions each contribute points to the total score which ranges from 0-12.  The total score is interpreted as follows:\n\nFemale - \u003d3p indicates alcohol misuse\nMale - \u003d4p indicates alcohol misuse\nA score of 5p or more is consistent with alcohol abuse and possible liver damage\n",
         "misuse": "Only intended for AUDIT-C, not the full version.",
         "copyright": "Cambio Healthcare Systems"
       }
@@ -72,6 +76,7 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
+    "AUDIT-C.assessment.v1",
     "AUDIT-C.v1"
   ],
   "alertBindings": {},
@@ -81,7 +86,7 @@
       "terms": {
         "vt0001": {
           "id": "vt0001",
-          "text": "Referenser"
+          "text": "*(en) References"
         }
       }
     },
@@ -100,29 +105,44 @@
 <body ng-controller="cds_controller">
 <#assign app_help_tag = "def.guides['AUDIT-C.v1'].concept">
 <#assign references = "def.terms['vt0001']"/>
-<#assign audit_c_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.audit_c.v1']">
 <#assign audit_c_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.audit_c.v1']">
+<#assign audit_c_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.audit_c.v1']">
 <#assign audit_c_entry_def = "def.entries['openEHR-EHR-OBSERVATION.audit_c.v1']">
+<#assign total_score_def = audit_c_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0023}']">
 <#assign how_often_do_you_have_a_drink_containing_alcohol__def = audit_c_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 <#assign how_many_drinks_containing_alcohol_do_you_have_on_a_typical_day_when_you_are_drinking__def = audit_c_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign total_score_def = audit_c_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0023}']">
-<#assign event_time_def = audit_c_entry_def + ".elements['/data/events/time']">
 <#assign how_often_do_you_have_six_or_more_drinks_on_one_occasion__def = audit_c_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
-<#assign how_often_do_you_have_a_drink_containing_alcohol__ehr_data = audit_c_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign how_many_drinks_containing_alcohol_do_you_have_on_a_typical_day_when_you_are_drinking__ehr_data = audit_c_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign total_score_ehr_data = audit_c_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0023}']">
-<#assign event_time_ehr_data = audit_c_entry_ehr_data + "[0].elements['/data/events/time']">
-<#assign how_often_do_you_have_six_or_more_drinks_on_one_occasion__ehr_data = audit_c_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign event_time_def = audit_c_entry_def + ".elements['/data/events/time']">
+<#assign total_score_cds_data = audit_c_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0023}']">
 <#assign how_often_do_you_have_a_drink_containing_alcohol__cds_data = audit_c_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 <#assign how_many_drinks_containing_alcohol_do_you_have_on_a_typical_day_when_you_are_drinking__cds_data = audit_c_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign total_score_cds_data = audit_c_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0023}']">
-<#assign event_time_cds_data = audit_c_entry_cds_data + "[0].elements['/data/events/time']">
 <#assign how_often_do_you_have_six_or_more_drinks_on_one_occasion__cds_data = audit_c_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign event_time_cds_data = audit_c_entry_cds_data + "[0].elements['/data/events/time']">
+<#assign total_score_ehr_data = audit_c_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0023}']">
+<#assign how_often_do_you_have_a_drink_containing_alcohol__ehr_data = audit_c_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign how_many_drinks_containing_alcohol_do_you_have_on_a_typical_day_when_you_are_drinking__ehr_data = audit_c_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign how_often_do_you_have_six_or_more_drinks_on_one_occasion__ehr_data = audit_c_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign event_time_ehr_data = audit_c_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign audit_c_assessment_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.audit_c_assessment.v1']">
+<#assign audit_c_assessment_entry_def = "def.entries['openEHR-EHR-EVALUATION.audit_c_assessment.v1']">
+<#assign audit_c_def = audit_c_assessment_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign audit_c_cds_data = audit_c_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
+<#assign basic_demographic_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
+<#assign basic_demographic_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
+<#assign basic_demographic_entry_def = "def.entries['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
+<#assign gender_def = basic_demographic_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign event_time1_def = basic_demographic_entry_def + ".elements['/data/events/time']">
+<#assign gender_cds_data = basic_demographic_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign event_time1_cds_data = basic_demographic_entry_cds_data + "[0].elements['/data/events/time']">
+<#assign gender_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign event_time1_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data/events/time']">
 
 <script> 
 angular.module('cds_app').controller('AUDIT-C_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
     $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+	$scope.${gender_ehr_data}.value.selection = $scope.findMin($scope.${gender_def});
     $scope.${how_often_do_you_have_a_drink_containing_alcohol__ehr_data}.value.selection = $scope.findMin($scope.${how_often_do_you_have_a_drink_containing_alcohol__def});
 	$scope.${how_many_drinks_containing_alcohol_do_you_have_on_a_typical_day_when_you_are_drinking__ehr_data}.value.selection = $scope.findMin($scope.${how_many_drinks_containing_alcohol_do_you_have_on_a_typical_day_when_you_are_drinking__def});
 	$scope.${how_often_do_you_have_six_or_more_drinks_on_one_occasion__ehr_data}.value.selection = $scope.findMin($scope.${how_often_do_you_have_six_or_more_drinks_on_one_occasion__def});
@@ -167,12 +187,36 @@ angular.module('cds_app').controller('AUDIT-C_Ctrl', function($scope, $window){
         </select>
       </label>
     </div>
-<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult">
+<div class="row collapse" title="{{${gender_def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${gender_def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${gender_def}.selections">
+      <input type="radio" value="{{key}}" ng-model= "${gender_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult1">
   <div class="medium-5 columns">
     <label><b>{{${total_score_def}.name}}: </b></label>
   </div>
   <div class="medium-7 columns" style="text-align: center;">
     <label>{{${total_score_cds_data}.value.magnitude}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${gender_def}.description}}" id="displayresult2">
+  <div class="medium-5 columns">
+    <label><b>{{${gender_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${gender_cds_data}.value.value}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${audit_c_def}.description}}" id="displayresult1">
+  <div class="medium-5 columns">
+    <label><b>{{${audit_c_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${audit_c_cds_data}.value.symbol.value}}</label>
   </div>
 </div>
 </div>
@@ -260,7 +304,7 @@ angular.module('cds_app').controller('AUDIT-C_Ctrl', function($scope, $window){
       -webkit-animation: fadeIn 0.3s ease-in-out;
       animation: fadeIn 0.3s ease-in-out;
   }
-  .help-tip p{  /* The tooltip */
+  .help-tip p{	/* The tooltip */
       display: none;
       text-align: left;
       background-color: #1E2021;
@@ -294,7 +338,7 @@ angular.module('cds_app').controller('AUDIT-C_Ctrl', function($scope, $window){
       left:0;
   }
   .references1{
-  font-size: 70%;
+    font-size: 70%;
   }
   /* CSS animation */
   @-webkit-keyframes fadeIn {
@@ -312,14 +356,23 @@ angular.module('cds_app').controller('AUDIT-C_Ctrl', function($scope, $window){
       0% { opacity:0; }
       100% { opacity:100%; }
   }
-  #displayresult {
+  #displayresult1 {
     background-color: #e6e6e6; 
     padding-top: 3px;
     padding-bottom: 3px;
-    padding-left: 3px;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    background-color: #f2f2f2;
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
   }
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
+
 
 </body></html>

@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.cage.v1
 
 concept
-	[at0000]	-- CAGE frågeformulär
+	[at0000]	-- CAGE for alcohol misuse
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -21,6 +21,22 @@ description
 		["date"] = <"2016-12-21">
 	>
 	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To screen for alcohol abuse. ">
+			use = <"Use to screen for alcohol abuse. It is one of the most widely used screening instruments for detection of alcohol misuse and potential dependency. 
+
+CAGE is an acronym derived from instrument's four questions;
+- Have you ever felt you needed to Cut down on your drinking?
+- Have people Annoyed you by criticizing your drinking?
+- Have you ever felt Guilty about drinking?
+- Have you ever felt you needed a drink first thing in the morning (Eye-opener) to steady your nerves or to get rid of a hangover?
+
+A score of 2p or more indicates alcohol misuse, and should result in further investigation.">
+			keywords = <"alcohol abuse", "alcohol use disorder", "DSM", "CAGE", "psychiatry">
+			misuse = <"CAGE is to be considered a screening tool, and is not in itself diagnostic.">
+			copyright = <"Cambio Healthcare Systems">
+		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att identifiera alkoholmissbruk. ">
@@ -34,22 +50,8 @@ Guilt - Har du någon gång haft dålig samvete eller skuldkänslor på grund av
 Eye opener - Har du någon gång behövt starta dagen med alkohol för att stilla nerverna eller för att bli av med en bakfylla?
 
 En total poäng om 2p eller mer indikerar alkoholmissbruk, och bör resultera i vidare utredning.">
+			keywords = <"alkoholmissbruk", "missbruk", "beroende", "DSM", "psykiatri">
 			misuse = <"CAGE är avsedd för screening och är ej att betrakta som diagnostiskt.">
-			copyright = <"Cambio Healthcare Systems">
-		>
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To screen for alcohol abuse. ">
-			use = <"Use to screen for alcohol abuse. It is one of the most widely used screening instruments for detection of alcohol misuse and potential dependency. 
-
-CAGE is an acronym derived from instrument's four questions;
-- Have you ever felt you needed to Cut down on your drinking?
-- Have people Annoyed you by criticizing your drinking?
-- Have you ever felt Guilty about drinking?
-- Have you ever felt you needed a drink first thing in the morning (Eye-opener) to steady your nerves or to get rid of a hangover?
-
-A score of 2p or more indicates alcohol misuse, and should result in further investigation.">
-			misuse = <"CAGE is to be considered a screening tool, and is not in itself diagnostic.">
 			copyright = <"Cambio Healthcare Systems">
 		>
 	>
@@ -59,43 +61,43 @@ A score of 2p or more indicates alcohol misuse, and should result in further inv
 		["references"] = <"Ewing JA. Detecting alcoholism. The CAGE questionnaire. JAMA. 1984 Oct 12;252(14):1905-7. 
 
 Dhalla S, Kopec JA. The CAGE questionnaire for alcohol misuse: a review of reliability and validity studies. Clin Invest Med. 2007;30:33–41.">
-		["MD5-CAM-1.0.1"] = <"F9B8EA29FD4161CF3F36B2DC1EF5962D">
+		["MD5-CAM-1.0.1"] = <"28CAA3438B3843AC421D341FF9EA3E5B">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- CAGE frågeformulär
+	OBSERVATION[at0000] matches {	-- CAGE for alcohol misuse
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Har du någon gång känt att du behöver minska din alkoholkonsumtion?
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Have you ever felt you needed to cut down on your drinking?
 										value matches {
-											0|[local::at0009], 	-- Nej
-											1|[local::at0010]  	-- Ja
+											0|[local::at0009], 	-- No
+											1|[local::at0010]  	-- Yes
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Har någon irriterat dig genom att kritisera dina alkoholvanor?
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Have people annoyed you by criticizing your drinking?
 										value matches {
-											0|[local::at0011], 	-- Nej
-											1|[local::at0012]  	-- Ja
+											0|[local::at0011], 	-- No
+											1|[local::at0012]  	-- Yes
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Har du någon gång haft dålig samvete eller skuldkänslor på grund av ditt drickande?
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Have you ever felt guilty about drinking?
 										value matches {
-											0|[local::at0013], 	-- Nej
-											1|[local::at0014]  	-- Ja
+											0|[local::at0013], 	-- No 
+											1|[local::at0014]  	-- Yes
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Har du någon gång behövt starta dagen med alkohol för att stilla nerverna eller för att bli av med en bakfylla?
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Have you ever felt you needed a drink first thing in the morning (eye-opener) to steady your nerves or to get rid of a hangover?
 										value matches {
-											0|[local::at0015], 	-- Nej
-											1|[local::at0016]  	-- Ja
+											0|[local::at0015], 	-- No 
+											1|[local::at0016]  	-- Yes
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Total poäng
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											DV_COUNT matches {*}
 										}
@@ -224,35 +226,35 @@ ontology
 				>
 				["at0009"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0010"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0011"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0012"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0013"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0014"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0015"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0016"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 			>
 		>
