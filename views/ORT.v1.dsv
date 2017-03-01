@@ -1,13 +1,14 @@
-<!DOCTYPE html><html ng-app="cds_app"><head>
+<!DOCTYPE html><html ng-app="cds_app">
+<head>
 <title>{{def.concept.name}}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" type="text/css" href="wro/foundation.css" />
-<link rel="stylesheet" type="text/css" href="wro/date-picker.css" />
-<link rel="stylesheet" type="text/css" href="wro/angular.css" />
+<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
+<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
 <script type="text/javascript" src="wro/angular.js"></script>
-<link rel="text/javascript" type="text/css" href="wro/foundation.js" />
+<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
 <script type="text/javascript" src="wro/moment.js"></script>
 <script type="text/javascript" src="wro/date-picker.js"></script>
 <script type="text/javascript" src="wro/app_lib.js"></script>
@@ -25,7 +26,7 @@
   "decisionSupportViewDefinitions": {
     "sv": {
       "name": "Opioid Risk Tool",
-      "description": "Värdera risken för beroende vid bruk av opioider."
+      "description": "Värdera risken för beroende vid bruk av opioider"
     },
     "en": {
       "name": "Opioid Risk Tool",
@@ -51,8 +52,8 @@
           "opioid risk tool",
           "opioider"
         ],
-        "use": "Instrumentet inkluderar utöver ålder ett antal parametrar gällande patientens historik, inklusive sexuella övergrepp, psykisk sjukdom och missbruk av alkohol och droger. Det tar även hänsyn till eventuell förekomst inom familjen. \n\nResultatet beräknas till följd av olika viktning separat för män och kvinnor. Maximal poäng uppgår till 26p och resultatet tolkas enligt:\n\n≤ 3p: låg risk\n4-7p: måttlig risk\n≥ 8p: hög risk\n",
-        "misuse": "Patienter som med opioider behandlas för kroniska smärtsyndrom bör noga övervakas, Instrumentet är endast avsett att understödja klinisk bedömning.\n",
+        "use": "Instrumentet inkluderar utöver ålder ett antal parametrar gällande patientens historik, inklusive sexuella övergrepp, psykisk sjukdom och missbruk av alkohol och droger. Det tar även hänsyn till eventuell förekomst inom familjen. \n\nResultatet beräknas till följd av olika viktning separat för män och kvinnor. Maximal poäng uppgår till 26p och resultatet tolkas enligt:\n\n\u003d 3p: låg risk\n4-7p: måttlig risk\n\u003d 8p: hög risk\n",
+        "misuse": "Patienter som med opioider behandlas för kroniska smärtsyndrom bör noga övervakas, Instrumentet är endast avsett att understödja klinisk bedömning.",
         "copyright": "© Cambio Healthcare Systems"
       },
       "en": {
@@ -74,7 +75,8 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
-    "ORT.v1"
+    "ORT.v1",
+    "ORT_Assessment.v1"
   ],
   "alertBindings": {},
   "termDefinitions": {
@@ -102,6 +104,10 @@
 <body ng-controller="cds_controller">
 <#assign app_help_tag = "def.guides['ORT.v1'].concept">
 <#assign references = "def.terms['vt0001']"/>
+<#assign opioid_risk_tool_assessment_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.opioid_risk_tool_assessment.v1']">
+<#assign opioid_risk_tool_assessment_entry_def = "def.entries['openEHR-EHR-EVALUATION.opioid_risk_tool_assessment.v1']">
+<#assign risk_interpretation_def = opioid_risk_tool_assessment_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign risk_interpretation_cds_data = opioid_risk_tool_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
 <#assign basic_demographic_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
 <#assign basic_demographic_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
 <#assign basic_demographic_entry_def = "def.entries['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
@@ -120,45 +126,45 @@
 <#assign opioid_risk_tool_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.opioid_risk_tool.v1']">
 <#assign opioid_risk_tool_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.opioid_risk_tool.v1']">
 <#assign opioid_risk_tool_entry_def = "def.entries['openEHR-EHR-OBSERVATION.opioid_risk_tool.v1']">
-<#assign hx_of_alcohol_abuse_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
-<#assign hx_of_illegal_drug_abuse_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign history_of_alcohol_abuse_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign history_of_illegal_drug_abuse_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
 <#assign event_time1_def = opioid_risk_tool_entry_def + ".elements['/data/events/time']">
-<#assign fhx_alcohol_abuse_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
-<#assign fhx_illegal_drug_abuse_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
-<#assign fhx_prescription_drug_abuse_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
-<#assign total_score__m__def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
+<#assign family_history_of_alcohol_abuse_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
+<#assign family_history_of_illegal_drug_abuse_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
+<#assign family_history_of_prescription_drug_abuse_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign result___male_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
 <#assign age_16_45_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign hx_of_preadolescent_sexual_abuse_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign total_score__f__def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0016}']">
-<#assign hx_of_depression_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
-<#assign hx_of_add__ocd__bipolar_or_schizophrenia_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign hx_of_prescription_drug_use_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
-<#assign hx_of_alcohol_abuse_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
-<#assign hx_of_illegal_drug_abuse_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign history_of_preadolescent_sexual_abuse_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign result___female_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0016}']">
+<#assign history_of_depression_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign history_of_add__ocd__bipolar_disorder_or_schizophrenia_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign history_of_prescription_drug_use_def = opioid_risk_tool_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
+<#assign history_of_alcohol_abuse_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign history_of_illegal_drug_abuse_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
 <#assign event_time1_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data/events/time']">
-<#assign fhx_alcohol_abuse_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
-<#assign fhx_illegal_drug_abuse_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
-<#assign fhx_prescription_drug_abuse_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
-<#assign total_score__m__cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
+<#assign family_history_of_alcohol_abuse_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
+<#assign family_history_of_illegal_drug_abuse_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
+<#assign family_history_of_prescription_drug_abuse_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign result___male_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
 <#assign age_16_45_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign hx_of_preadolescent_sexual_abuse_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign total_score__f__cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0016}']">
-<#assign hx_of_depression_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
-<#assign hx_of_add__ocd__bipolar_or_schizophrenia_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign hx_of_prescription_drug_use_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
-<#assign hx_of_alcohol_abuse_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
-<#assign hx_of_illegal_drug_abuse_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign history_of_preadolescent_sexual_abuse_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign result___female_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0016}']">
+<#assign history_of_depression_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign history_of_add__ocd__bipolar_disorder_or_schizophrenia_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign history_of_prescription_drug_use_cds_data = opioid_risk_tool_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
+<#assign history_of_alcohol_abuse_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign history_of_illegal_drug_abuse_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
 <#assign event_time1_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data/events/time']">
-<#assign fhx_alcohol_abuse_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
-<#assign fhx_illegal_drug_abuse_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
-<#assign fhx_prescription_drug_abuse_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
-<#assign total_score__m__ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
+<#assign family_history_of_alcohol_abuse_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0011}']">
+<#assign family_history_of_illegal_drug_abuse_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0012}']">
+<#assign family_history_of_prescription_drug_abuse_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign result___male_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
 <#assign age_16_45_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign hx_of_preadolescent_sexual_abuse_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign total_score__f__ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0016}']">
-<#assign hx_of_depression_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
-<#assign hx_of_add__ocd__bipolar_or_schizophrenia_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign hx_of_prescription_drug_use_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
+<#assign history_of_preadolescent_sexual_abuse_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign result___female_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0016}']">
+<#assign history_of_depression_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign history_of_add__ocd__bipolar_disorder_or_schizophrenia_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign history_of_prescription_drug_use_ehr_data = opioid_risk_tool_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
 
 <script> 
 angular.module('cds_app').controller('ORT_Ctrl', function($scope, $window){
@@ -166,16 +172,16 @@ angular.module('cds_app').controller('ORT_Ctrl', function($scope, $window){
     $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
 	$scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
 	$scope.${birthdate_ehr_data}.value.selection = $scope.findMin($scope.${birthdate_def});
-	$scope.${gender_ehr_data}.value.selection = $scope.findMin($scope.${gender_def});
-	$scope.${hx_of_preadolescent_sexual_abuse_ehr_data}.value.selection = $scope.findMin($scope.${hx_of_preadolescent_sexual_abuse_def});
-	$scope.${hx_of_depression_ehr_data}.value.selection = $scope.findMin($scope.${hx_of_depression_def});
-	$scope.${hx_of_add__ocd__bipolar_or_schizophrenia_ehr_data}.value.selection = $scope.findMin($scope.${hx_of_add__ocd__bipolar_or_schizophrenia_def});
-	$scope.${hx_of_alcohol_abuse_ehr_data}.value.selection = $scope.findMin($scope.${hx_of_alcohol_abuse_def});
-	$scope.${hx_of_illegal_drug_abuse_ehr_data}.value.selection = $scope.findMin($scope.${hx_of_illegal_drug_abuse_def});
-	$scope.${hx_of_prescription_drug_use_ehr_data}.value.selection = $scope.findMin($scope.${hx_of_prescription_drug_use_def});
-	$scope.${fhx_alcohol_abuse_ehr_data}.value.selection = $scope.findMin($scope.${fhx_alcohol_abuse_def});
-	$scope.${fhx_illegal_drug_abuse_ehr_data}.value.selection = $scope.findMin($scope.${fhx_illegal_drug_abuse_def});
-	$scope.${fhx_prescription_drug_abuse_ehr_data}.value.selection = $scope.findMin($scope.${fhx_prescription_drug_abuse_def});
+    $scope.${gender_ehr_data}.value.selection = $scope.findMin($scope.${gender_def});
+	$scope.${history_of_preadolescent_sexual_abuse_ehr_data}.value.selection = $scope.findMin($scope.${history_of_preadolescent_sexual_abuse_def});
+	$scope.${history_of_depression_ehr_data}.value.selection = $scope.findMin($scope.${history_of_depression_def});
+	$scope.${history_of_add__ocd__bipolar_disorder_or_schizophrenia_ehr_data}.value.selection = $scope.findMin($scope.${history_of_add__ocd__bipolar_disorder_or_schizophrenia_def});
+	$scope.${history_of_alcohol_abuse_ehr_data}.value.selection = $scope.findMin($scope.${history_of_alcohol_abuse_def});
+	$scope.${history_of_illegal_drug_abuse_ehr_data}.value.selection = $scope.findMin($scope.${history_of_illegal_drug_abuse_def});
+	$scope.${history_of_prescription_drug_use_ehr_data}.value.selection = $scope.findMin($scope.${history_of_prescription_drug_use_def});
+	$scope.${family_history_of_alcohol_abuse_ehr_data}.value.selection = $scope.findMin($scope.${family_history_of_alcohol_abuse_def});
+	$scope.${family_history_of_illegal_drug_abuse_ehr_data}.value.selection = $scope.findMin($scope.${family_history_of_illegal_drug_abuse_def});
+	$scope.${family_history_of_prescription_drug_abuse_ehr_data}.value.selection = $scope.findMin($scope.${family_history_of_prescription_drug_abuse_def});
   });
 });
 </script>
@@ -206,95 +212,102 @@ angular.module('cds_app').controller('ORT_Ctrl', function($scope, $window){
       <input type="radio" value="{{key}}" ng-model="${gender_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
-<div class="row collapse" title="{{${hx_of_preadolescent_sexual_abuse_def}.description}}">
+<div class="row collapse" title="{{${history_of_preadolescent_sexual_abuse_def}.description}}">
     <div class="medium-6 columns">
-      <label>{{${hx_of_preadolescent_sexual_abuse_def}.name}}</label>
+      <label>{{${history_of_preadolescent_sexual_abuse_def}.name}}</label>
     </div>
-    <label class="medium-3 columns" ng-repeat="(key, desc) in ${hx_of_preadolescent_sexual_abuse_def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${hx_of_preadolescent_sexual_abuse_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${history_of_preadolescent_sexual_abuse_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${history_of_preadolescent_sexual_abuse_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
- <div class="row collapse" title="{{${hx_of_depression_def}.description}}">
+<div class="row collapse" title="{{${history_of_depression_def}.description}}">
     <div class="medium-6 columns">
-      <label>{{${hx_of_depression_def}.name}}</label>
+      <label>{{${history_of_depression_def}.name}}</label>
     </div>
-    <label class="medium-3 columns" ng-repeat="(key, desc) in ${hx_of_depression_def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${hx_of_depression_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${history_of_depression_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${history_of_depression_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
-<div class="row collapse" title="{{${hx_of_add__ocd__bipolar_or_schizophrenia_def}.description}}">
+<div class="row collapse" title="{{${history_of_add__ocd__bipolar_disorder_or_schizophrenia_def}.description}}">
     <div class="medium-6 columns">
-      <label>{{${hx_of_add__ocd__bipolar_or_schizophrenia_def}.name}}</label>
+      <label>{{${history_of_add__ocd__bipolar_disorder_or_schizophrenia_def}.name}}</label>
     </div>
-    <label class="medium-3 columns" ng-repeat="(key, desc) in ${hx_of_add__ocd__bipolar_or_schizophrenia_def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${hx_of_add__ocd__bipolar_or_schizophrenia_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${history_of_add__ocd__bipolar_disorder_or_schizophrenia_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${history_of_add__ocd__bipolar_disorder_or_schizophrenia_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
-<div class="row collapse" title="{{${hx_of_alcohol_abuse_def}.description}}">
+<div class="row collapse" title="{{${history_of_alcohol_abuse_def}.description}}">
     <div class="medium-6 columns">
-      <label>{{${hx_of_alcohol_abuse_def}.name}}</label>
+      <label>{{${history_of_alcohol_abuse_def}.name}}</label>
     </div>
-    <label class="medium-3 columns" ng-repeat="(key, desc) in ${hx_of_alcohol_abuse_def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${hx_of_alcohol_abuse_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${history_of_alcohol_abuse_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${history_of_alcohol_abuse_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
-<div class="row collapse" title="{{${hx_of_illegal_drug_abuse_def}.description}}">
+<div class="row collapse" title="{{${history_of_illegal_drug_abuse_def}.description}}">
     <div class="medium-6 columns">
-      <label>{{${hx_of_illegal_drug_abuse_def}.name}}</label>
+      <label>{{${history_of_illegal_drug_abuse_def}.name}}</label>
     </div>
-    <label class="medium-3 columns" ng-repeat="(key, desc) in ${hx_of_illegal_drug_abuse_def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${hx_of_illegal_drug_abuse_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${history_of_illegal_drug_abuse_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${history_of_illegal_drug_abuse_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
-<div class="row collapse" title="{{${hx_of_prescription_drug_use_def}.description}}">
+<div class="row collapse" title="{{${history_of_prescription_drug_use_def}.description}}">
     <div class="medium-6 columns">
-      <label>{{${hx_of_prescription_drug_use_def}.name}}</label>
+      <label>{{${history_of_prescription_drug_use_def}.name}}</label>
     </div>
-    <label class="medium-3 columns" ng-repeat="(key, desc) in ${hx_of_prescription_drug_use_def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${hx_of_prescription_drug_use_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${history_of_prescription_drug_use_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${history_of_prescription_drug_use_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
-<div class="row collapse" title="{{${fhx_alcohol_abuse_def}.description}}">
+<div class="row collapse" title="{{${family_history_of_alcohol_abuse_def}.description}}">
     <div class="medium-6 columns">
-      <label>{{${fhx_alcohol_abuse_def}.name}}</label>
+      <label>{{${family_history_of_alcohol_abuse_def}.name}}</label>
     </div>
-    <label class="medium-3 columns" ng-repeat="(key, desc) in ${fhx_alcohol_abuse_def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${fhx_alcohol_abuse_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${family_history_of_alcohol_abuse_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${family_history_of_alcohol_abuse_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
-<div class="row collapse" title="{{${fhx_illegal_drug_abuse_def}.description}}">
+<div class="row collapse" title="{{${family_history_of_illegal_drug_abuse_def}.description}}">
     <div class="medium-6 columns">
-      <label>{{${fhx_illegal_drug_abuse_def}.name}}</label>
+      <label>{{${family_history_of_illegal_drug_abuse_def}.name}}</label>
     </div>
-    <label class="medium-3 columns" ng-repeat="(key, desc) in ${fhx_illegal_drug_abuse_def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${fhx_illegal_drug_abuse_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${family_history_of_illegal_drug_abuse_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${family_history_of_illegal_drug_abuse_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
-<div class="row collapse" title="{{${fhx_prescription_drug_abuse_def}.description}}">
+<div class="row collapse" title="{{${family_history_of_prescription_drug_abuse_def}.description}}">
     <div class="medium-6 columns">
-      <label>{{${fhx_prescription_drug_abuse_def}.name}}</label>
+      <label>{{${family_history_of_prescription_drug_abuse_def}.name}}</label>
     </div>
-    <label class="medium-3 columns" ng-repeat="(key, desc) in ${fhx_prescription_drug_abuse_def}.selections">
-      <input type="radio" value="{{key}}" ng-model="${fhx_prescription_drug_abuse_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${family_history_of_prescription_drug_abuse_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${family_history_of_prescription_drug_abuse_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
-<div class="row collapse" title="{{${total_score__f__def}.description}}" id="displayresult1">
+<div class="row collapse" title="{{${result___female_def}.description}}" id="displayresult1">
   <div class="medium-5 columns">
-    <label><b>{{${total_score__f__def}.name}}: </b></label>
+    <label><b>{{${result___female_def}.name}}: </b></label>
   </div>
   <div class="medium-7 columns" style="text-align: center;">
-    <label>{{${total_score__f__cds_data}.value.magnitude}}</label>
+    <label>{{${result___female_cds_data}.value.magnitude}}</label>
   </div>
 </div>
-<div class="row collapse" title="{{${total_score__m__def}.description}}" id="displayresult2">
+<div class="row collapse" title="{{${result___male_def}.description}}" id="displayresult2">
   <div class="medium-5 columns">
-    <label><b>{{${total_score__m__def}.name}}:</b></label>
+    <label><b>{{${result___male_def}.name}}: </b></label>
   </div>
-  <div class="medium-7 columns end" style="text-align: center;">
-    <label>{{${total_score__m__cds_data}.value.magnitude}}</label>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${result___male_cds_data}.value.magnitude}}</label>
   </div>
 </div>
-
+<div class="row collapse" title="{{${risk_interpretation_def}.description}}" id="displayresult1">
+  <div class="medium-5 columns">
+    <label><b>{{${risk_interpretation_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${risk_interpretation_cds_data}.value.symbol.value}}</label>
+  </div>
+</div>
 </div>
 </div>
 
@@ -314,6 +327,7 @@ angular.module('cds_app').controller('ORT_Ctrl', function($scope, $window){
       </div>
     </div>
   </div>
+</div>
 
 <style>
   html, body {
