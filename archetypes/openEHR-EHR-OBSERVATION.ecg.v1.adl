@@ -58,22 +58,22 @@ Not to be used for recording Holter monitor results.">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
-	other_contributors = <"Koray Atalag, University of Auckland, New Zealand", "Marja Buur, Medisch Centrum Alkmaar/ Code24, Netherlands", "Tamsin Cockayne, Australia", "Marc Cotran, identity vision systems, Canada", "Sam Heard, Ocean Informatics, Australia", "Eugene Igras, IRIS Systems, Inc., Canada", "Heather Leslie, Ocean Informatics, Australia (Editor)", "Ian McNicoll, Ocean Informatics, United Kingdom (Editor)", "Raymond Simkus, Brookswood Family Practice, Canada", "Tim Sturgill, United States", "Eneimi Allwell-Brown, Cambio Healthcare Systems">
+	other_contributors = <"Koray Atalag, University of Auckland, New Zealand", "Marja Buur, Medisch Centrum Alkmaar/ Code24, Netherlands", "Tamsin Cockayne, Australia", "Marc Cotran, identity vision systems, Canada", "Sam Heard, Ocean Informatics, Australia", "Eugene Igras, IRIS Systems, Inc., Canada", "Heather Leslie, Ocean Informatics, Australia (Editor)", "Ian McNicoll, Ocean Informatics, United Kingdom (Editor)", "Raymond Simkus, Brookswood Family Practice, Canada", "Tim Sturgill, United States", "Eneimi Allwell-Brown, Cambio Healthcare Systems", "Jimmy Axelsson, Cambio Healthcare Systems">
 	other_details = <
 		["references"] = <"Lead descriptions - http://en.wikipedia.org/wiki/Electrocardiography [accessed 22 February, 2010]">
-		["MD5-CAM-1.0.1"] = <"93FD6F5DB01A6994E8B3F80C79C10664">
+		["MD5-CAM-1.0.1"] = <"6E4D5EACFBC61C0E22E1539A39A20D09">
 	>
 
 definition
 	OBSERVATION[at0000] matches {	-- Registrering av EKG
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Händelseförlopp
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Vilken händelse som helst. 
 						data matches {
-							ITEM_TREE[at0005] matches {	-- *Tree(en)
+							ITEM_TREE[at0005] matches {	-- Träd
 								items cardinality matches {0..*; unordered} matches {
-									CLUSTER[at0006] occurrences matches {0..1} matches {	-- Övergripande EKG-parametrar
+									CLUSTER[at0006] occurrences matches {0..1} matches {	-- Globala EKG-parametrar
 										items cardinality matches {1..*; unordered} matches {
 											ELEMENT[at0013] occurrences matches {0..1} matches {	-- RR-intervall
 												value matches {
@@ -147,7 +147,7 @@ definition
 											}
 											CLUSTER[at0023] occurrences matches {0..1} matches {	-- El-axel
 												items cardinality matches {1..*; unordered} matches {
-													ELEMENT[at0020] occurrences matches {0..1} matches {	-- *P axis(en)
+													ELEMENT[at0020] occurrences matches {0..1} matches {	-- P-axel
 														value matches {
 															C_DV_QUANTITY <
 																property = <[openehr::497]>
@@ -159,7 +159,7 @@ definition
 															>
 														}
 													}
-													ELEMENT[at0021] occurrences matches {0..1} matches {	-- *QRS axis(en)
+													ELEMENT[at0021] occurrences matches {0..1} matches {	-- QRS-axel
 														value matches {
 															C_DV_QUANTITY <
 																property = <[openehr::497]>
@@ -171,7 +171,7 @@ definition
 															>
 														}
 													}
-													ELEMENT[at0022] occurrences matches {0..1} matches {	-- *T axis(en)
+													ELEMENT[at0022] occurrences matches {0..1} matches {	-- T-axel
 														value matches {
 															C_DV_QUANTITY <
 																property = <[openehr::497]>
@@ -192,18 +192,18 @@ definition
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0029, 	-- *Lead I(en)
-													at0030, 	-- *Lead II(en)
-													at0031, 	-- *Lead III(en)
-													at0032, 	-- *Lead aVR(en)
-													at0033, 	-- *Lead aVL(en)
-													at0034, 	-- *Lead aVF(en)
-													at0035, 	-- *Lead V1(en)
-													at0036, 	-- *Lead V2(en)
-													at0037, 	-- *Lead V3(en)
-													at0038, 	-- *Lead V4(en)
-													at0039, 	-- *Lead V5(en)
-													at0040]	-- *Lead V6(en)
+													at0029, 	-- Avledning I
+													at0030, 	-- Avledning II
+													at0031, 	-- Avledning III
+													at0032, 	-- Avledning aVR
+													at0033, 	-- Avledning aVL
+													at0034, 	-- Avledning aVF
+													at0035, 	-- Avledning V1
+													at0036, 	-- Avledning V2
+													at0037, 	-- Avledning V3
+													at0038, 	-- Avledning V4
+													at0039, 	-- Avledning V5
+													at0040]	-- Avledning V6
 												}
 											}
 										}
@@ -234,7 +234,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0042] occurrences matches {0..1} matches {	-- *P area(en)
+											ELEMENT[at0042] occurrences matches {0..1} matches {	-- P area
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::655]>
@@ -247,7 +247,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0043] occurrences matches {0..1} matches {	-- *P' amplitude(en)
+											ELEMENT[at0043] occurrences matches {0..1} matches {	-- P' amplitud
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -259,7 +259,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0044] occurrences matches {0..1} matches {	-- *P' duration(en)
+											ELEMENT[at0044] occurrences matches {0..1} matches {	-- P' duration
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::128]>
@@ -273,7 +273,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0046] occurrences matches {0..1} matches {	-- *P' area(en)
+											ELEMENT[at0046] occurrences matches {0..1} matches {	-- P' area
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::655]>
@@ -286,7 +286,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0048] occurrences matches {0..1} matches {	-- *Q amplitude(en)
+											ELEMENT[at0048] occurrences matches {0..1} matches {	-- Q amplitud
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -298,7 +298,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0049] occurrences matches {0..1} matches {	-- *Q duration(en)
+											ELEMENT[at0049] occurrences matches {0..1} matches {	-- Q duration
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::128]>
@@ -312,7 +312,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0050] occurrences matches {0..1} matches {	-- *R amplitude(en)
+											ELEMENT[at0050] occurrences matches {0..1} matches {	-- R amplitud
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -324,7 +324,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0051] occurrences matches {0..1} matches {	-- *R duration(en)
+											ELEMENT[at0051] occurrences matches {0..1} matches {	-- R duration
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::128]>
@@ -338,7 +338,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0053] occurrences matches {0..1} matches {	-- *S amplitude(en)
+											ELEMENT[at0053] occurrences matches {0..1} matches {	-- S amplitud
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -350,7 +350,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0054] occurrences matches {0..1} matches {	-- *S duration(en)
+											ELEMENT[at0054] occurrences matches {0..1} matches {	-- S duration
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::128]>
@@ -364,7 +364,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0055] occurrences matches {0..1} matches {	-- *R' amplitude(en)
+											ELEMENT[at0055] occurrences matches {0..1} matches {	-- R' amplitud
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -376,7 +376,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0056] occurrences matches {0..1} matches {	-- *R' duration(en)
+											ELEMENT[at0056] occurrences matches {0..1} matches {	-- R' duration
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::128]>
@@ -390,7 +390,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0057] occurrences matches {0..1} matches {	-- *S' amplitude(en)
+											ELEMENT[at0057] occurrences matches {0..1} matches {	-- S' amplitud
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -402,7 +402,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0058] occurrences matches {0..1} matches {	-- *S' duration(en)
+											ELEMENT[at0058] occurrences matches {0..1} matches {	-- S' duration
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::128]>
@@ -416,7 +416,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0059] occurrences matches {0..1} matches {	-- *V.A.T.(en)
+											ELEMENT[at0059] occurrences matches {0..1} matches {	-- Ventrikelaktiveringstid (V.A.T.)
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::128]>
@@ -430,7 +430,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0060] occurrences matches {0..1} matches {	-- *QRS p-p(en)
+											ELEMENT[at0060] occurrences matches {0..1} matches {	-- QRS p-p
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -444,7 +444,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0061] occurrences matches {0..1} matches {	-- *QRS duration(en)
+											ELEMENT[at0061] occurrences matches {0..1} matches {	-- QRS duration
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::128]>
@@ -458,7 +458,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0062] occurrences matches {0..1} matches {	-- *QRS area(en)
+											ELEMENT[at0062] occurrences matches {0..1} matches {	-- QRS area
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::655]>
@@ -471,7 +471,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0063] occurrences matches {0..1} matches {	-- *ST onset(en)
+											ELEMENT[at0063] occurrences matches {0..1} matches {	-- ST start
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -483,7 +483,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0064] occurrences matches {0..1} matches {	-- *ST midpoint(en)
+											ELEMENT[at0064] occurrences matches {0..1} matches {	-- ST mittpunkt
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -495,7 +495,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0065] occurrences matches {0..1} matches {	-- *ST 80ms(en)
+											ELEMENT[at0065] occurrences matches {0..1} matches {	-- ST 80 ms
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -507,7 +507,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0066] occurrences matches {0..1} matches {	-- *ST end(en)
+											ELEMENT[at0066] occurrences matches {0..1} matches {	-- ST slut
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -519,7 +519,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0067] occurrences matches {0..1} matches {	-- *ST duration(en)
+											ELEMENT[at0067] occurrences matches {0..1} matches {	-- ST duration
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::128]>
@@ -533,7 +533,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0068] occurrences matches {0..1} matches {	-- *ST slope(en)
+											ELEMENT[at0068] occurrences matches {0..1} matches {	-- ST lutning
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::497]>
@@ -547,19 +547,19 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0069] occurrences matches {0..1} matches {	-- *ST shape(en)
+											ELEMENT[at0069] occurrences matches {0..1} matches {	-- ST form
 												value matches {
 													DV_CODED_TEXT matches {
 														defining_code matches {
 															[local::
-															at0070, 	-- *Straight(en)
-															at0071, 	-- *Concave upward(en)
-															at0072]	-- *Concave downward(en)
+															at0070, 	-- Rakt
+															at0071, 	-- Konkavt uppåt
+															at0072]	-- Konkavt nedåt
 														}
 													}
 												}
 											}
-											ELEMENT[at0073] occurrences matches {0..1} matches {	-- *T amplitude(en)
+											ELEMENT[at0073] occurrences matches {0..1} matches {	-- T amplitud
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -572,7 +572,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0074] occurrences matches {0..1} matches {	-- *T duration(en)
+											ELEMENT[at0074] occurrences matches {0..1} matches {	-- T duration
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::128]>
@@ -586,7 +586,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0075] occurrences matches {0..1} matches {	-- *T area(en)
+											ELEMENT[at0075] occurrences matches {0..1} matches {	-- T area
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::655]>
@@ -601,17 +601,17 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..*} matches {	-- *Automatic interpretation(en)
+									ELEMENT[at0009] occurrences matches {0..*} matches {	-- Automatisk tolkning
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0081] occurrences matches {0..*} matches {	-- *Overall interpretation(en)
+									ELEMENT[at0081] occurrences matches {0..*} matches {	-- Sammanfattande tolkning
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- *ECG Recording(en)
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- EKG-registrering
 										value matches {
 											DV_MULTIMEDIA matches {
 												media_type matches {[openEHR::]}
@@ -622,18 +622,18 @@ definition
 							}
 						}
 						state matches {
-							ITEM_TREE[at0077] matches {	-- *Tree(en)
+							ITEM_TREE[at0077] matches {	-- Träd
 								items cardinality matches {0..*; unordered} matches {
-									allow_archetype CLUSTER[at0080] occurrences matches {0..1} matches {	-- *Level of Exertion(en)
+									allow_archetype CLUSTER[at0080] occurrences matches {0..1} matches {	-- Ansträngningsnivå
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.level_of_exertion(-[a-zA-Z0-9_]+)*\.v1/}
 									}
-									ELEMENT[at0079] occurrences matches {0..1} matches {	-- *Confounding factors(en)
+									ELEMENT[at0079] occurrences matches {0..1} matches {	-- Förväxlingsfaktorer
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0078] occurrences matches {0..1} matches {	-- *Tilt(en)
+									ELEMENT[at0078] occurrences matches {0..1} matches {	-- Lutning
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -646,25 +646,25 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0003] matches {	-- *Tree(en)
+			ITEM_TREE[at0003] matches {	-- Träd
 				items cardinality matches {0..*; unordered} matches {
-					allow_archetype CLUSTER[at0076] occurrences matches {0..1} matches {	-- *ECG Device(en)
+					allow_archetype CLUSTER[at0076] occurrences matches {0..1} matches {	-- EKG-apparat
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.device(-[a-zA-Z0-9_]+)*\.v1/}
 					}
-					allow_archetype CLUSTER[at0082] occurrences matches {0..1} matches {	-- *ECG Viewer(en)
+					allow_archetype CLUSTER[at0082] occurrences matches {0..1} matches {	-- EKG visningsprogram
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.device(-[a-zA-Z0-9_]+)*\.v1/}
 					}
-					ELEMENT[at0025] occurrences matches {0..1} matches {	-- *QTc calculation method(en)
+					ELEMENT[at0025] occurrences matches {0..1} matches {	-- QTc beräkningsmetod. 
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
-									at0083, 	-- *Bazett’s formula(en)
-									at0084, 	-- *Fredericia’s formula(en)
-									at0085, 	-- *Framingham formula(en)
-									at0086; 	-- *Hodges formula(en)
+									at0083, 	-- Bazetts formel
+									at0084, 	-- Fredericias formel
+									at0085, 	-- Framinghams formel
+									at0086; 	-- Hodges formel
 									at0083]	-- assumed value
 								}
 							}
@@ -1353,24 +1353,24 @@ T">
 					description = <"Använd för att registrera resultat av standard 12-avlednings-elektrokardiografi (EKG) inklusive enskilda parametrar och tolkning.">
 				>
 				["at0001"] = <
-					text = <"*Event Series(en)">
-					description = <"*@ internal @(en)">
+					text = <"Händelseförlopp">
+					description = <"@ internal @">
 				>
 				["at0002"] = <
-					text = <"*Any event(en)">
-					description = <"*Any event.(en)">
+					text = <"Vilken händelse som helst. ">
+					description = <"Vilken händelse som helst. ">
 				>
 				["at0003"] = <
-					text = <"*Tree(en)">
-					description = <"*@ internal @(en)">
+					text = <"Träd">
+					description = <"@ internal @">
 				>
 				["at0005"] = <
-					text = <"*Tree(en)">
-					description = <"*@ internal @(en)">
+					text = <"Träd">
+					description = <"@ internal @">
 				>
 				["at0006"] = <
-					text = <"Övergripande EKG-parametrar">
-					description = <"">
+					text = <"Globala EKG-parametrar">
+					description = <"*">
 				>
 				["at0007"] = <
 					text = <"QT-tid">
@@ -1381,12 +1381,12 @@ T">
 					description = <"QT-tid korrigerad för hjärtfrekvens">
 				>
 				["at0009"] = <
-					text = <"*Automatic interpretation(en)">
-					description = <"*Interpretative comment on this recording originating from the device.(en)">
+					text = <"Automatisk tolkning">
+					description = <"Tolkningskommentar om den aktuella EKG-registreringen som genererats av den använda EKG-apparaten.">
 				>
 				["at0010"] = <
-					text = <"*ECG Recording(en)">
-					description = <"*Multimedia representation of the ECG.(en)">
+					text = <"EKG-registrering">
+					description = <"Multimedia represenation av det aktuella EKG:et.">
 				>
 				["at0012"] = <
 					text = <"PQ-tid">
@@ -1401,252 +1401,252 @@ T">
 					description = <"Kammarkomplex - kammarnas depolarisation">
 				>
 				["at0020"] = <
-					text = <"*P axis(en)">
-					description = <"*Average direction of electrical activity during atrial depolarization.(en)">
+					text = <"P-axel">
+					description = <"Genomsnittlig riktning av den elektriska aktiviteten vid depolarisation av förmaken. ">
 				>
 				["at0021"] = <
-					text = <"*QRS axis(en)">
-					description = <"*Average direction of electrical activity during ventricular depolarization.(en)">
+					text = <"QRS-axel">
+					description = <"Genomsnittlig riktning av den elektriska aktiviteten vid depolarisation av kamrarna.">
 				>
 				["at0022"] = <
-					text = <"*T axis(en)">
-					description = <"*Average direction of electrical activity during ventricular repolarization.(en)">
+					text = <"T-axel">
+					description = <"Genomsnittlig riktning av den elektriska aktiviteten vid kamrarnas repolarisation. ">
 				>
 				["at0023"] = <
 					text = <"El-axel">
-					description = <"*Details about the heart's electrical axis i.e. the general direction of the heart's depolarization wavefront.(en)">
+					description = <"Information om hjärtats el-axel, exempelvis den generella riktningen av hjärtats vågfrontspolarisation.">
 				>
 				["at0025"] = <
-					text = <"*QTc calculation method(en)">
-					description = <"*Method used to correct QT interval.(en)">
+					text = <"QTc beräkningsmetod. ">
+					description = <"Metod som använts för att beräkna det korrekta QT-intervallet. ">
 				>
 				["at0027"] = <
 					text = <"Specifika EKG-parametrar">
-					description = <"*Details about measured parameters for each named lead (specified in the run-time name constraint).(en)">
+					description = <"Specifika detaljer om de uppmätta parametrarna för varje avledning.">
 				>
 				["at0028"] = <
 					text = <"P-vågsduration">
 					description = <"P-vågens duration">
 				>
 				["at0029"] = <
-					text = <"*Lead I(en)">
-					description = <"*Lead I is the voltage between the (positive) left arm (LA) electrode and right arm (RA) electrode.(en)">
+					text = <"Avledning I">
+					description = <"Avledning I är spänningen mellan (positiva) vänstra armens (LA) elektrod och höger arms (RA) elektrod.">
 				>
 				["at0030"] = <
-					text = <"*Lead II(en)">
-					description = <"*Lead II is the voltage between the (positive) left leg (LL) electrode and the right arm (RA) electrode.(en)">
+					text = <"Avledning II">
+					description = <"Avledning II är spänningen mellan (positiva) vänster bens (LL) elektrod och högra armens elektrod.">
 				>
 				["at0031"] = <
-					text = <"*Lead III(en)">
-					description = <"*Lead III is the voltage between the (positive) left leg (LL) electrode and the left arm (LA) electrode.(en)">
+					text = <"Avledning III">
+					description = <"Avledning III är spänningen mellan (positiva) vänster bens  (LL) elektrod och vänster arms (LA) elektrod.">
 				>
 				["at0032"] = <
-					text = <"*Lead aVR(en)">
-					description = <"*Lead augmented vector right (aVR) has the positive electrode (white) on the right arm. The negative electrode is a combination of the left arm (black) electrode and the left leg (red) electrode, which \"augments\" the signal strength of the positive electrode on the right arm.(en)">
+					text = <"Avledning aVR">
+					description = <"Avledning aVR (augmented vector right) har den positiva (vita) elektroden på höger arm. Den negativa elektroden är en kombination av vänster arms (svarta) elektrod och vänster bens (röda) elektrod som förstärker signalstyrkan av den positiva elektroden på höger arm.">
 				>
 				["at0033"] = <
-					text = <"*Lead aVL(en)">
-					description = <"*Lead augmented vector left (aVL) has the positive (black) electrode on the left arm. The negative electrode is a combination of the right arm (white) electrode and the left leg (red) electrode, which \"augments\" the signal strength of the positive electrode on the left arm.(en)">
+					text = <"Avledning aVL">
+					description = <"Avledning aVL (augmented vector left) har den positiva (svarta) elektroden på vänster arm. Den negativa elektroden är en kombination av högra armens (vita) elektrod och vänster bens (röda) elektrod och som förstärker signalstyrkan av elektroden på vänster arm. ">
 				>
 				["at0034"] = <
-					text = <"*Lead aVF(en)">
-					description = <"*Lead augmented vector foot (aVF) has the positive (red) electrode on the left leg. The negative electrode is a combination of the right arm (white) electrode and the left arm (black) electrode, which \"augments\" the signal of the positive electrode on the left leg.(en)">
+					text = <"Avledning aVF">
+					description = <"Avledning aVF (augmented vector foot) har den positiva (röda) elektroden på vänster ben. Den negativa elektroden är en kombination av högra armens (vita) elektrod och vänstra armens (svarta) elektrod som förstärker signalstyrkan från den positiva elektroden på vänster ben.">
 				>
 				["at0035"] = <
-					text = <"*Lead V1(en)">
-					description = <"*Lead V1 is a precordial lead, placed in the fourth intercostal space (between ribs 4 & 5) just to the right of the sternum (breastbone).(en)">
+					text = <"Avledning V1">
+					description = <"Avledning V1 är en bröstavledning placerad i det fjärde interkostala rummet (mellan revben 4 & 5) till höger om sternum (bröstbenet). ">
 				>
 				["at0036"] = <
-					text = <"*Lead V2(en)">
-					description = <"*Lead V2 is a precordial lead, placed in the fourth intercostal space (between ribs 4 & 5) just to the left of the sternum.(en)">
+					text = <"Avledning V2">
+					description = <"Avledning V2 är en bröstavledning placerad i det fjärde interkostala rummet (mellan revben 4 & 5) till vänster om sternum (bröstbenet). ">
 				>
 				["at0037"] = <
-					text = <"*Lead V3(en)">
-					description = <"*Lead V3 is a precordial lead, placed in between leads V2 and V4.(en)">
+					text = <"Avledning V3">
+					description = <"Avledning V3 är en bröstavledning placerad i mellan elektrod V2 och V4.">
 				>
 				["at0038"] = <
-					text = <"*Lead V4(en)">
-					description = <"*Lead V4 is a precordial lead, placed in the fifth intercostal space (between ribs 5 & 6) in the mid-clavicular line (the imaginary line that extends down from the midpoint of the clavicle (collarbone).(en)">
+					text = <"Avledning V4">
+					description = <"Avledning V4 är en bröstavledning placerad i det femte interkostala utrymmet (mellan revben 5 & 6) i den midklavikulära linjen (en tänkt linje som sträcker sig rakt nedåt från mitten av klavikeln (nyckelbenet).">
 				>
 				["at0039"] = <
-					text = <"*Lead V5(en)">
-					description = <"*Lead V5 is a precordial lead, placed horizontally even with V4, but in the anterior axillary line. (The anterior axillary line is the imaginary line that runs down from the point midway between the middle of the clavicle and the lateral end of the clavicle; the lateral end of the collarbone is the end closer to the arm).(en)">
+					text = <"Avledning V5">
+					description = <"Avledning V5 är en bröstavledning placerad i samma horisontella plan som avledning V4, men i den anteriora axillarlinjen. (Den anteriora axillarlinjen är en tänkt linje som sträcker sig nedåt från punkten som befinner sig halvvägs mellan mitten av klavikeln och laterala kanten av klavikeln (laterala kanten av nyckelbenet är kanten som angränsar mot armen).">
 				>
 				["at0040"] = <
-					text = <"*Lead V6(en)">
-					description = <"*Lead V6 is a precordial lead, placed horizontally even with V4 and V5 in the midaxillary line. (The midaxillary line is the imaginary line that extends down from the middle of the patient's armpit).(en)">
+					text = <"Avledning V6">
+					description = <"Avledning V6 är en bröstavledning placerad i samma horisontella plan som avledning V4 och V5 i den midaxillära linjen. (Midaxillära linjen är en tänkt linje som sträcker sig nedåt från mitten av patientens armhåla. ">
 				>
 				["at0041"] = <
 					text = <"P-vågsamplitud">
 					description = <"P-vågens amplitud.">
 				>
 				["at0042"] = <
-					text = <"*P area(en)">
-					description = <"*P wave area for monophasic P waves or the area of the initial portion of a biphasic P wave.(en)">
+					text = <"P area">
+					description = <"P-vågsarea för monofasiska P-vågor alternativt arean av den initiala delen av en bifasisk P-våg.">
 				>
 				["at0043"] = <
-					text = <"*P' amplitude(en)">
-					description = <"*Amplitude of P' wave.(en)">
+					text = <"P' amplitud">
+					description = <"Amplitud av en P'-våg.">
 				>
 				["at0044"] = <
-					text = <"*P' duration(en)">
-					description = <"*Duration of P' wave.(en)">
+					text = <"P' duration">
+					description = <"Duration av en P'-våg.">
 				>
 				["at0046"] = <
-					text = <"*P' area(en)">
-					description = <"*Area of the terminal portion of a biphasic P wave.(en)">
+					text = <"P' area">
+					description = <"Arean av den avslutande delen av en bifasisk P-våg.">
 				>
 				["at0048"] = <
-					text = <"*Q amplitude(en)">
-					description = <"*Q wave amplitude.(en)">
+					text = <"Q amplitud">
+					description = <"Q-vågsamplitud">
 				>
 				["at0049"] = <
-					text = <"*Q duration(en)">
-					description = <"*Q wave duration.(en)">
+					text = <"Q duration">
+					description = <"Q-vågsduration.">
 				>
 				["at0050"] = <
-					text = <"*R amplitude(en)">
-					description = <"*R wave amplitude.(en)">
+					text = <"R amplitud">
+					description = <"R-vågsamplitud.">
 				>
 				["at0051"] = <
-					text = <"*R duration(en)">
-					description = <"*R wave duration.(en)">
+					text = <"R duration">
+					description = <"R-vågsduration.">
 				>
 				["at0053"] = <
-					text = <"*S amplitude(en)">
-					description = <"*S wave amplitude.(en)">
+					text = <"S amplitud">
+					description = <"S-vågsamplitud.">
 				>
 				["at0054"] = <
-					text = <"*S duration(en)">
-					description = <"*S wave duration.(en)">
+					text = <"S duration">
+					description = <"S-vågsduration.">
 				>
 				["at0055"] = <
-					text = <"*R' amplitude(en)">
-					description = <"*R' wave amplitude.(en)">
+					text = <"R' amplitud">
+					description = <"R'-vågsamplitud.">
 				>
 				["at0056"] = <
-					text = <"*R' duration(en)">
-					description = <"*R' wave duration.(en)">
+					text = <"R' duration">
+					description = <"R'-vågsduration.">
 				>
 				["at0057"] = <
-					text = <"*S' amplitude(en)">
-					description = <"*S' wave amplitude.(en)">
+					text = <"S' amplitud">
+					description = <"S'-vågsamplitud.">
 				>
 				["at0058"] = <
-					text = <"*S' duration(en)">
-					description = <"*S' wave duration.(en)">
+					text = <"S' duration">
+					description = <"S'-vågsduration.">
 				>
 				["at0059"] = <
-					text = <"*V.A.T.(en)">
-					description = <"*Ventricular Activation Time is the interval from the onset of the QRS complex to the latest positive peak in the complex, or the latest substantial notch on the latest peak (whichever is later).(en)">
+					text = <"Ventrikelaktiveringstid (V.A.T.)">
+					description = <"Ventrikelaktiveringstid är intervallet mellan starten av QRS-komplexet och den sista positiva peaken i komplexet, alternativt det sista tydliga hacket på den sista toppen (välj det alternativ som inträffar senast).">
 				>
 				["at0060"] = <
-					text = <"*QRS p-p(en)">
-					description = <"*Peak-to-peak QRS complex amplitude.(en)">
+					text = <"QRS p-p">
+					description = <"QRS-komplexets peak-to-peak amplitud.">
 				>
 				["at0061"] = <
-					text = <"*QRS duration(en)">
-					description = <"*QRS complex duration, measured from its onset to the ST segment onset (J point).(en)">
+					text = <"QRS duration">
+					description = <"QRS-komplexets duration, mätt från dess start till början av ST-segmentet (J-punkten).">
 				>
 				["at0062"] = <
-					text = <"*QRS area(en)">
-					description = <"*The area of the QRS complex.(en)">
+					text = <"QRS area">
+					description = <"Arean av QRS-komplexet.">
 				>
 				["at0063"] = <
-					text = <"*ST onset(en)">
-					description = <"*Elevation or depression at the onset (J point) of the ST segment.(en)">
+					text = <"ST start">
+					description = <"Höjning eller sänkning vid starten (J-punkten) av ST-segmentet.">
 				>
 				["at0064"] = <
-					text = <"*ST midpoint(en)">
-					description = <"*Elevation or depression at the midpoint of the ST segment.(en)">
+					text = <"ST mittpunkt">
+					description = <"Höjning eller sänkning vid mittpunkten av ST-segmentet.">
 				>
 				["at0065"] = <
-					text = <"*ST 80ms(en)">
-					description = <"*Elevation or depression of the ST segment 80 ms after the end of the QRS complex (J point).(en)">
+					text = <"ST 80 ms">
+					description = <"Höjning eller sänkning av ST-segmentet 80 ms efter slutet av QRS-komplexet (J-punkten).">
 				>
 				["at0066"] = <
-					text = <"*ST end(en)">
-					description = <"*Elevation or depression at the end of the ST segment.(en)">
+					text = <"ST slut">
+					description = <"Höjning eller sänkning vid slutet av ST-segmentet.">
 				>
 				["at0067"] = <
-					text = <"*ST duration(en)">
-					description = <"*ST segment duration.(en)">
+					text = <"ST duration">
+					description = <"ST-segmentets duration.">
 				>
 				["at0068"] = <
-					text = <"*ST slope(en)">
-					description = <"*ST segment slope. Slope is measured in degrees for 25 mm/sec, 1mV/cm scaling.(en)">
+					text = <"ST lutning">
+					description = <"ST-segmentets lutning. Lutningen mäts i grader för 25 mm/s med 1mV/cm skala.">
 				>
 				["at0069"] = <
-					text = <"*ST shape(en)">
-					description = <"*The ST segment shape.(en)">
+					text = <"ST form">
+					description = <"ST-segmentets utformning.">
 				>
 				["at0070"] = <
-					text = <"*Straight(en)">
-					description = <"*The ST segment is straight.(en)">
+					text = <"Rakt">
+					description = <"ST-segmentet är rakt.">
 				>
 				["at0071"] = <
-					text = <"*Concave upward(en)">
-					description = <"*The ST segment is concave upward.(en)">
+					text = <"Konkavt uppåt">
+					description = <"ST- segmentet är konkavt uppåt.">
 				>
 				["at0072"] = <
-					text = <"*Concave downward(en)">
-					description = <"*The ST segment is concave downward.(en)">
+					text = <"Konkavt nedåt">
+					description = <"ST-segmentet är konkavt nedåt.">
 				>
 				["at0073"] = <
-					text = <"*T amplitude(en)">
-					description = <"*T wave amplitude.(en)">
+					text = <"T amplitud">
+					description = <"T-vågsamplitud.">
 				>
 				["at0074"] = <
-					text = <"*T duration(en)">
-					description = <"*T wave duration.(en)">
+					text = <"T duration">
+					description = <"T-vågsduration.">
 				>
 				["at0075"] = <
-					text = <"*T area(en)">
-					description = <"*The area of T wave.(en)">
+					text = <"T area">
+					description = <"Arean av T-vågen.">
 				>
 				["at0076"] = <
-					text = <"*ECG Device(en)">
-					description = <"*Details about the electrocardiograph device used to record the ECG.(en)">
+					text = <"EKG-apparat">
+					description = <"Detaljer om EKG-apparaten som används för att registrera EKG.">
 				>
 				["at0077"] = <
-					text = <"*Tree(en)">
-					description = <"*@ internal @(en)">
+					text = <"Träd">
+					description = <"@ internal @">
 				>
 				["at0078"] = <
-					text = <"*Tilt(en)">
-					description = <"*The craniocaudal tilt of the surface on which the person is lying at the time of ECG recording.(en)">
+					text = <"Lutning">
+					description = <"Den kraniokaudala lutningen av ytan som patienten vilar på under registreringen.">
 				>
 				["at0079"] = <
-					text = <"*Confounding factors(en)">
-					description = <"*Comment on and record other incidental factors that may be contributing to ECG recording.(en)">
+					text = <"Förväxlingsfaktorer">
+					description = <"Kommentera och dokumentera andra faktorer som kan påverka EKG-registreringen.">
 				>
 				["at0080"] = <
-					text = <"*Level of Exertion(en)">
-					description = <"*Details about physical activity undertaken at the time of ECG recording.(en)">
+					text = <"Ansträngningsnivå">
+					description = <"Beskrivning av den fysiska aktivitetsnivån under EKG-registreringen.">
 				>
 				["at0081"] = <
-					text = <"*Overall interpretation(en)">
-					description = <"*An overall interpretative comment on this recording.(en)">
+					text = <"Sammanfattande tolkning">
+					description = <"Sammanfattande tolkningsutlåtande för den aktuella EKG-registreringen.">
 				>
 				["at0082"] = <
-					text = <"*ECG Viewer(en)">
-					description = <"*Details of device used to view the ECG output.(en)">
+					text = <"EKG visningsprogram">
+					description = <"Beskrivning av visningsprogrammet som används för att uppvisa EKG.">
 				>
 				["at0083"] = <
-					text = <"*Bazett’s formula(en)">
-					description = <"*Bazett’s formula(en)">
+					text = <"Bazetts formel">
+					description = <"Bazetts formel">
 				>
 				["at0084"] = <
-					text = <"*Fredericia’s formula(en)">
-					description = <"*Fredericia’s formula(en)">
+					text = <"Fredericias formel">
+					description = <"Fredericias formel">
 				>
 				["at0085"] = <
-					text = <"*Framingham formula(en)">
-					description = <"*Framingham formula(en)">
+					text = <"Framinghams formel">
+					description = <"Framinghams formel">
 				>
 				["at0086"] = <
-					text = <"*Hodges formula(en)">
-					description = <"*Hodges formula(en)">
+					text = <"Hodges formel">
+					description = <"Hodges formel">
 				>
 			>
 		>
