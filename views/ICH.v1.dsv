@@ -46,11 +46,10 @@
       "sv": {
         "purpose": "Att bedöma vårdnivå och uppskatta mortalitet för patienter som inkommer med intracerebral blödning. Instrumentet baseras på ålder och DT-fynd.",
         "keywords": [
+          "intracerebral blödning",
           "ICH",
-          "intracerebral haemorrhage",
           "stroke",
-          "blödning",
-          "intracerebral blödning"
+          "blödning"
         ],
         "use": "Instrumentet är avsett att användas efter fastställd diagnos, och möjliggör effektiv kommunikation kliniker emellan genom säker och konsekvent gradering av tillståndet. Resultatet anges som svårighetsgrad och 30-dagarsmortalitet.\n",
         "misuse": "Ej avsedd att användas diagnostiskt eller för att styra behandling. Instrumentet ska endast användas för att understödja prognostisk värdering",
@@ -59,8 +58,8 @@
       "en": {
         "purpose": "The Intracerebral haemorrhage risk tool (ICH) enables clinicians to assess the adequate amount of care needed for patients admitted for ICH.",
         "keywords": [
-          "ICH",
-          "intracerebral haemorrhage"
+          "intracerebral haemorrhage",
+          "ICH"
         ],
         "use": "The ICH tool helps clinicans communicate effectively in order to safely and consistently grade ICH which provides a measure for ICH severity and consequent 30-day mortality. The tool allows clinicians with a wide range of clinical skills and backgrounds to confidently grade ICH severity. The tool is designed to be used post-diagnosis.",
         "misuse": "Do not use this tool to provide diagnostic information or as the main method of predicting ICH patient outcomes. Neither should it be used to guide treatment.",
@@ -73,7 +72,8 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
-    "ICH.v1"
+    "ICH.v1",
+    "ICH_Assessment.v1"
   ],
   "alertBindings": {},
   "termDefinitions": {
@@ -101,26 +101,30 @@
 <body ng-controller="cds_controller">
 <#assign app_help_tag = "def.guides['ICH.v1'].concept">
 <#assign references = "def.terms['vt0001']"/>
+<#assign intracerebral_haemorrhage_assessment_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.intracerebral_haemorrhage_assessment.v1']">
+<#assign intracerebral_haemorrhage_assessment_entry_def = "def.entries['openEHR-EHR-EVALUATION.intracerebral_haemorrhage_assessment.v1']">
+<#assign mortality_rate_def = intracerebral_haemorrhage_assessment_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign mortality_rate_cds_data = intracerebral_haemorrhage_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
 <#assign intracerebral_haemorrhage_score_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.intracerebral_haemorrhage_score.v1']">
 <#assign intracerebral_haemorrhage_score_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.intracerebral_haemorrhage_score.v1']">
 <#assign intracerebral_haemorrhage_score_entry_def = "def.entries['openEHR-EHR-OBSERVATION.intracerebral_haemorrhage_score.v1']">
-<#assign gcs_def = intracerebral_haemorrhage_score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign age____80_def = intracerebral_haemorrhage_score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign ich_vol____30ml_def = intracerebral_haemorrhage_score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign glasgow_coma_scale_def = intracerebral_haemorrhage_score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign age___80_def = intracerebral_haemorrhage_score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign intracerebral_haemorrhage_volume___30ml_def = intracerebral_haemorrhage_score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
 <#assign intraventricular_haemorrhage_def = intracerebral_haemorrhage_score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
 <#assign infratentorial_origin_of_haemorrhage_def = intracerebral_haemorrhage_score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
 <#assign total_score_def = intracerebral_haemorrhage_score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
 <#assign event_time_def = intracerebral_haemorrhage_score_entry_def + ".elements['/data/events/time']">
-<#assign gcs_cds_data = intracerebral_haemorrhage_score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign age____80_cds_data = intracerebral_haemorrhage_score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign ich_vol____30ml_cds_data = intracerebral_haemorrhage_score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign glasgow_coma_scale_cds_data = intracerebral_haemorrhage_score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign age___80_cds_data = intracerebral_haemorrhage_score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign intracerebral_haemorrhage_volume___30ml_cds_data = intracerebral_haemorrhage_score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
 <#assign intraventricular_haemorrhage_cds_data = intracerebral_haemorrhage_score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
 <#assign infratentorial_origin_of_haemorrhage_cds_data = intracerebral_haemorrhage_score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
 <#assign total_score_cds_data = intracerebral_haemorrhage_score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
 <#assign event_time_cds_data = intracerebral_haemorrhage_score_entry_cds_data + "[0].elements['/data/events/time']">
-<#assign gcs_ehr_data = intracerebral_haemorrhage_score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign age____80_ehr_data = intracerebral_haemorrhage_score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign ich_vol____30ml_ehr_data = intracerebral_haemorrhage_score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign glasgow_coma_scale_ehr_data = intracerebral_haemorrhage_score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign age___80_ehr_data = intracerebral_haemorrhage_score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign intracerebral_haemorrhage_volume___30ml_ehr_data = intracerebral_haemorrhage_score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
 <#assign intraventricular_haemorrhage_ehr_data = intracerebral_haemorrhage_score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
 <#assign infratentorial_origin_of_haemorrhage_ehr_data = intracerebral_haemorrhage_score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
 <#assign total_score_ehr_data = intracerebral_haemorrhage_score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
@@ -139,9 +143,9 @@
 <#assign event_time1_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign glasgow_coma_scale_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.glasgow_coma_scale.v1']">
 <#assign glasgow_coma_scale_entry_def = "def.entries['openEHR-EHR-OBSERVATION.glasgow_coma_scale.v1']">
-<#assign gcs_total_score_def = glasgow_coma_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0026}']">
+<#assign total_score1_def = glasgow_coma_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0026}']">
 <#assign event_time2_def = glasgow_coma_scale_entry_def + ".elements['/data/events/time']">
-<#assign gcs_total_score_ehr_data = glasgow_coma_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0026}']">
+<#assign total_score1_ehr_data = glasgow_coma_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0026}']">
 <#assign event_time2_ehr_data = glasgow_coma_scale_entry_ehr_data + "[0].elements['/data/events/time']">
 
 <script> 
@@ -151,8 +155,8 @@ angular.module('cds_app').controller('ICH_Ctrl', function($scope, $window){
 	$scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
 	$scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
 	$scope.${birthdate_ehr_data}.value.selection = $scope.findMin($scope.${birthdate_def});
-	$scope.${gcs_total_score_ehr_data}.value.magnitude = $scope.findMin($scope.${gcs_total_score_def});
-	$scope.${ich_vol____30ml_ehr_data}.value.selection = $scope.findMin($scope.${ich_vol____30ml_def});
+	$scope.${total_score1_ehr_data}.value.magnitude = $scope.findMin($scope.${total_score1_def});
+	$scope.${intracerebral_haemorrhage_volume___30ml_ehr_data}.value.selection = $scope.findMin($scope.${intracerebral_haemorrhage_volume___30ml_def});
 	$scope.${intraventricular_haemorrhage_ehr_data}.value.selection = $scope.findMin($scope.${intraventricular_haemorrhage_def});
 	$scope.${infratentorial_origin_of_haemorrhage_ehr_data}.value.selection = $scope.findMin($scope.${infratentorial_origin_of_haemorrhage_def});
   });
@@ -177,20 +181,20 @@ angular.module('cds_app').controller('ICH_Ctrl', function($scope, $window){
       <input ng-model="${birthdate_ehr_data}.value.value" type="text" pikaday="date" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
     </div>
   </div>
-<div class="row collapse" title="{{${gcs_total_score_def}.description}}">
+<div class="row collapse" title="{{${total_score1_def}.description}}">
 <div class="medium-6 columns">
-<label>{{${gcs_total_score_def}.name}}</label>
+<label>{{${total_score1_def}.name}}</label>
 </div>
 <div class="medium-6 columns">
-        <input ng-model="${gcs_total_score_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+        <input ng-model="${total_score1_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
 </div>
-<div class="row collapse" title="{{${ich_vol____30ml_def}.description}}">
+<div class="row collapse" title="{{${intracerebral_haemorrhage_volume___30ml_def}.description}}">
     <div class="medium-7 columns">
-      <label>{{${ich_vol____30ml_def}.name}}</label>
+      <label>{{${intracerebral_haemorrhage_volume___30ml_def}.name}}</label>
     </div>
-    <label class="medium-2 columns" ng-repeat="(key, desc) in ${ich_vol____30ml_def}.selections">
-      <input type="radio" value="{{key}}" ng-model= "${ich_vol____30ml_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${intracerebral_haemorrhage_volume___30ml_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${intracerebral_haemorrhage_volume___30ml_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
 <div class="row collapse" title="{{${intraventricular_haemorrhage_def}.description}}">
@@ -198,7 +202,7 @@ angular.module('cds_app').controller('ICH_Ctrl', function($scope, $window){
       <label>{{${intraventricular_haemorrhage_def}.name}}</label>
     </div>
     <label class="medium-2 columns" ng-repeat="(key, desc) in ${intraventricular_haemorrhage_def}.selections">
-      <input type="radio" value="{{key}}" ng-model= "${intraventricular_haemorrhage_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      <input type="radio" value="{{key}}" ng-model="${intraventricular_haemorrhage_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
 <div class="row collapse" title="{{${infratentorial_origin_of_haemorrhage_def}.description}}">
@@ -206,15 +210,23 @@ angular.module('cds_app').controller('ICH_Ctrl', function($scope, $window){
       <label>{{${infratentorial_origin_of_haemorrhage_def}.name}}</label>
     </div>
     <label class="medium-2 columns" ng-repeat="(key, desc) in ${infratentorial_origin_of_haemorrhage_def}.selections">
-      <input type="radio" value="{{key}}" ng-model= "${infratentorial_origin_of_haemorrhage_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      <input type="radio" value="{{key}}" ng-model="${infratentorial_origin_of_haemorrhage_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
-  </div>
-<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult">
-  <div class="medium-5 columns">
+  </div>  
+<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult1">
+  <div class="medium-6 columns">
     <label><b>{{${total_score_def}.name}}: </b></label>
   </div>
-  <div class="medium-7 columns" style="text-align: center;">
+  <div class="medium-6 columns" style="text-align: center;">
     <label>{{${total_score_cds_data}.value.magnitude}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${mortality_rate_def}.description}}" id="displayresult2">
+  <div class="medium-6 columns">
+    <label><b>{{${mortality_rate_def}.name}}: </b></label>
+  </div>
+  <div class="medium-6 columns" style="text-align: center;">
+    <label>{{${mortality_rate_cds_data}.value.symbol.value}}</label>
   </div>
 </div>
 </div>
@@ -302,7 +314,7 @@ angular.module('cds_app').controller('ICH_Ctrl', function($scope, $window){
       -webkit-animation: fadeIn 0.3s ease-in-out;
       animation: fadeIn 0.3s ease-in-out;
   }
-  .help-tip p{  /* The tooltip */
+  .help-tip p{	/* The tooltip */
       display: none;
       text-align: left;
       background-color: #1E2021;
@@ -336,7 +348,7 @@ angular.module('cds_app').controller('ICH_Ctrl', function($scope, $window){
       left:0;
   }
   .references1{
-  font-size: 70%;
+    font-size: 70%;
   }
   /* CSS animation */
   @-webkit-keyframes fadeIn {
@@ -354,15 +366,23 @@ angular.module('cds_app').controller('ICH_Ctrl', function($scope, $window){
       0% { opacity:0; }
       100% { opacity:100%; }
   }
-  #displayresult {
+  #displayresult1 {
     background-color: #e6e6e6; 
     padding-top: 3px;
     padding-bottom: 3px;
-    padding-left: 3px;
-	font-size: 90%;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    background-color: #f2f2f2;
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
   }
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
+
 
 </body></html>
