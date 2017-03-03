@@ -240,6 +240,15 @@ angular.module('cds_app').controller('GRACE_Ctrl', function($scope, $window){
         <select ng-model="${creatinine_ehr_data}.value.units" ng-options="unit for unit in ${creatinine_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
+<div class="row collapse" title="{{${killip_class_score_def}.description}}">
+    <div class="medium-5 columns">
+      <label>{{${killip_class_score_def}.name}}</label>
+      </div>
+      <label class="medium-7 columns">
+        <select ng-model="${killip_class_score_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${killip_class_score_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
 <div class="row collapse" title="{{${cardiac_arrest_at_admission_def}.description}}">
     <div class="medium-6 columns">
       <label>{{${cardiac_arrest_at_admission_def}.name}}</label>
@@ -264,20 +273,11 @@ angular.module('cds_app').controller('GRACE_Ctrl', function($scope, $window){
       <input type="radio" value="{{key}}" ng-model= "${elevated_abnormal_cardiac_enzymes_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
-<div class="row collapse" title="{{${killip_class_score_def}.description}}">
-    <div class="medium-6 columns">
-      <label>{{${killip_class_score_def}.name}}</label>
-      </div>
-      <label class="medium-6 columns">
-        <select ng-model="${killip_class_score_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${killip_class_score_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
-        </select>
-      </label>
-    </div>
 <div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult1">
-  <div class="medium-5 columns">
+  <div class="medium-4 columns">
     <label><b>{{${total_score_def}.name}}: </b></label>
   </div>
-  <div class="medium-7 columns" style="text-align: center;">
+  <div class="medium-8 columns" style="text-align: center;">
     <label>{{${total_score_cds_data}.value.magnitude}}</label>
   </div>
 </div>
