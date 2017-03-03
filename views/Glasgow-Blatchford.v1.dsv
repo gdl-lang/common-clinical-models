@@ -26,7 +26,7 @@
   "decisionSupportViewDefinitions": {
     "sv": {
       "name": "Glasgow-Blatchford Bleeding Score",
-      "description": "Uppskatta risk med avseende på behandlingsbehov, re-blödning och mortalitet hos patienter med övre GI-blödning."
+      "description": "Riskvärdering av patienter med övre GI-blödning"
     },
     "en": {
       "name": "Glasgow-Blatchford Bleeding Score",
@@ -49,9 +49,9 @@
         "keywords": [
           "GI-blödning",
           "blödning",
-          "Rockall score",
           "gastrointestinal blödning",
-          "gastrointestinal blödning, övre"
+          "gastrointestinal blödning, övre",
+          "Rockall score"
         ],
         "use": "Att registrera data och resultat i enlighet med Glasgow-Blatchford bleeding score i syfte att uppskatta risk med avseende på behandlingsbehov (blodtransfusion, endoskopi, kirurgi), re-blödning och mortalitet hos patienter med övre GI-blödning.\n\nInstrumentet baseras på följande faktorer, registrerade vid ankomst:\n\n- Urea (0-6p)\n- Hemoglobin (0-6p)\n- Hjärtfrekvens (0-1p)\n- Systoliskt blodtryck (0-3p)\n- Synkope vid ankomst (0-2p)\n- Melena (0-1p)\n- Tecken på leversjukdom (0-2p)\n- Tecken på hjärtsjukdom (0-2p)\n\nMaximal poäng uppgår till 23p. 0p indikerar låg komplikationsrisk (0,5%). Ju högre poäng, desto högre risk. ",
         "misuse": "Endast avsedd för bruk vid initial bedömning.",
@@ -76,6 +76,7 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
+    "GBS_Assessment.v1",
     "Glasgow_Blatchford_score_Calculation.v1"
   ],
   "alertBindings": {},
@@ -178,6 +179,12 @@
 <#assign event_time6_def = urea_and_electrolytes_entry_def + ".elements['/data/events/time']">
 <#assign urea_ehr_data = urea_and_electrolytes_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078.1}']">
 <#assign event_time6_ehr_data = urea_and_electrolytes_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign glasgow_blatchford_bleeding_score_assessment_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.glasgow_blatchford_bleeding_score_assessment.v1']">
+<#assign glasgow_blatchford_bleeding_score_assessment_entry_def = "def.entries['openEHR-EHR-EVALUATION.glasgow_blatchford_bleeding_score_assessment.v1']">
+<#assign score_interpretation_def = glasgow_blatchford_bleeding_score_assessment_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign recommendation_def = glasgow_blatchford_bleeding_score_assessment_entry_def + ".elements['/data{at0001}/items{at0005}']">
+<#assign score_interpretation_cds_data = glasgow_blatchford_bleeding_score_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
+<#assign recommendation_cds_data = glasgow_blatchford_bleeding_score_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0005}']">
 
 <script> 
 angular.module('cds_app').controller('Glasgow-Blatchford_Ctrl', function($scope, $window){
@@ -219,7 +226,7 @@ angular.module('cds_app').controller('Glasgow-Blatchford_Ctrl', function($scope,
       <label>{{${gender_def}.name}}</label>
     </div>
     <label class="medium-3 columns" ng-repeat="(key, desc) in ${gender_def}.selections">
-      <input type="radio" value="{{key}}" ng-model= "${gender_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      <input type="radio" value="{{key}}" ng-model="${gender_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
 	<div class="row collapse" title="{{${liver_disease_def}.description}}">
@@ -227,7 +234,7 @@ angular.module('cds_app').controller('Glasgow-Blatchford_Ctrl', function($scope,
       <label>{{${liver_disease_def}.name}}</label>
     </div>
     <label class="medium-3 columns" ng-repeat="(key, desc) in ${liver_disease_def}.selections">
-      <input type="radio" value="{{key}}" ng-model= "${liver_disease_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      <input type="radio" value="{{key}}" ng-model="${liver_disease_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
 	<div class="row collapse" title="{{${heart_failure__unspecified__def}.description}}">
@@ -235,7 +242,7 @@ angular.module('cds_app').controller('Glasgow-Blatchford_Ctrl', function($scope,
       <label>{{${heart_failure__unspecified__def}.name}}</label>
     </div>
     <label class="medium-3 columns" ng-repeat="(key, desc) in ${heart_failure__unspecified__def}.selections">
-      <input type="radio" value="{{key}}" ng-model= "${heart_failure__unspecified__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      <input type="radio" value="{{key}}" ng-model="${heart_failure__unspecified__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
 	<div class="row collapse" title="{{${melaena_def}.description}}">
@@ -243,7 +250,7 @@ angular.module('cds_app').controller('Glasgow-Blatchford_Ctrl', function($scope,
       <label>{{${melaena_def}.name}}</label>
     </div>
     <label class="medium-3 columns" ng-repeat="(key, desc) in ${melaena_def}.selections">
-      <input type="radio" value="{{key}}" ng-model= "${melaena_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      <input type="radio" value="{{key}}" ng-model="${melaena_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
 	<div class="row collapse" title="{{${syncope_def}.description}}">
@@ -251,7 +258,7 @@ angular.module('cds_app').controller('Glasgow-Blatchford_Ctrl', function($scope,
       <label>{{${syncope_def}.name}}</label>
     </div>
     <label class="medium-3 columns" ng-repeat="(key, desc) in ${syncope_def}.selections">
-      <input type="radio" value="{{key}}" ng-model= "${syncope_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      <input type="radio" value="{{key}}" ng-model="${syncope_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
 <div class="row collapse" title="{{${systolic_def}.description}}">
@@ -298,12 +305,28 @@ angular.module('cds_app').controller('Glasgow-Blatchford_Ctrl', function($scope,
         <select ng-model="${urea_ehr_data}.value.units" ng-options="unit for unit in ${urea_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
-<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult">
+<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult1">
   <div class="medium-5 columns">
     <label><b>{{${total_score_def}.name}}: </b></label>
   </div>
   <div class="medium-7 columns" style="text-align: center;">
     <label>{{${total_score_cds_data}.value.magnitude}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${score_interpretation_def}.description}}" id="displayresult2">
+  <div class="medium-5 columns">
+    <label><b>{{${score_interpretation_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${score_interpretation_cds_data}.value.symbol.value}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${recommendation_def}.description}}" id="displayresult1">
+  <div class="medium-5 columns">
+    <label><b>{{${recommendation_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${recommendation_cds_data}.value.symbol.value}}</label>
   </div>
 </div>
 </div>
@@ -398,7 +421,7 @@ angular.module('cds_app').controller('Glasgow-Blatchford_Ctrl', function($scope,
       -webkit-animation: fadeIn 0.3s ease-in-out;
       animation: fadeIn 0.3s ease-in-out;
   }
-  .help-tip p{  /* The tooltip */
+  .help-tip p{	/* The tooltip */
       display: none;
       text-align: left;
       background-color: #1E2021;
@@ -432,7 +455,7 @@ angular.module('cds_app').controller('Glasgow-Blatchford_Ctrl', function($scope,
       left:0;
   }
   .references1{
-  font-size: 70%;
+    font-size: 70%;
   }
   /* CSS animation */
   @-webkit-keyframes fadeIn {
@@ -450,16 +473,22 @@ angular.module('cds_app').controller('Glasgow-Blatchford_Ctrl', function($scope,
       0% { opacity:0; }
       100% { opacity:100%; }
   }
-  #displayresult {
+  #displayresult1 {
     background-color: #e6e6e6; 
     padding-top: 3px;
     padding-bottom: 3px;
-    padding-left: 3px;
-	font-size: 90%;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    background-color: #f2f2f2;
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
   }
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
-
 
 </body></html>
