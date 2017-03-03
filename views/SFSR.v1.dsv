@@ -1,4 +1,18 @@
-<html><head><script id="decision-support-view" type="application/json">{
+<!DOCTYPE html><html ng-app="cds_app">
+<head>
+<title>{{def.concept.name}}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
+<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
+<script type="text/javascript" src="wro/angular.js"></script>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
+<script type="text/javascript" src="wro/moment.js"></script>
+<script type="text/javascript" src="wro/date-picker.js"></script>
+<script type="text/javascript" src="wro/app_lib.js"></script>
+<script id="decision-support-view" type="application/json">{
   "dsViewId": "SFSR.v1",
   "language": {
     "originalLanguage": {
@@ -80,4 +94,280 @@
       }
     }
   }
-}</script></head><body></body></html>
+}</script>
+</head>
+<body ng-controller="cds_controller">
+<#assign full_blood_count_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.lab_test-full_blood_count.v1']">
+<#assign full_blood_count_entry_def = "def.entries['openEHR-EHR-OBSERVATION.lab_test-full_blood_count.v1']">
+<#assign packed_cell_volume__pcv__def = full_blood_count_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078.6}']">
+<#assign event_time_def = full_blood_count_entry_def + ".elements['/data/events/time']">
+<#assign packed_cell_volume__pcv__ehr_data = full_blood_count_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078.6}']">
+<#assign event_time_ehr_data = full_blood_count_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign blood_pressure_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.blood_pressure.v1']">
+<#assign blood_pressure_entry_def = "def.entries['openEHR-EHR-OBSERVATION.blood_pressure.v1']">
+<#assign systolic_def = blood_pressure_entry_def + ".elements['/data{at0001}/events{at0006}/data{at0003}/items{at0004}']">
+<#assign event_time1_def = blood_pressure_entry_def + ".elements['/data/events/time']">
+<#assign systolic_ehr_data = blood_pressure_entry_ehr_data + "[0].elements['/data{at0001}/events{at0006}/data{at0003}/items{at0004}']">
+<#assign event_time1_ehr_data = blood_pressure_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign san_francisco_syncope_rule_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.san_francisco_syncope_rule.v1']">
+<#assign san_francisco_syncope_rule_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.san_francisco_syncope_rule.v1']">
+<#assign san_francisco_syncope_rule_entry_def = "def.entries['openEHR-EHR-OBSERVATION.san_francisco_syncope_rule.v1']">
+<#assign congestive_heart_failure_history_def = san_francisco_syncope_rule_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign hematocrit__30__def = san_francisco_syncope_rule_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign ekg_abnormal_def = san_francisco_syncope_rule_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign shortness_of_breath_def = san_francisco_syncope_rule_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign systolic_bp__90_mmhg_at_triage_def = san_francisco_syncope_rule_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign any_response_positive__def = san_francisco_syncope_rule_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign event_time2_def = san_francisco_syncope_rule_entry_def + ".elements['/data/events/time']">
+<#assign congestive_heart_failure_history_cds_data = san_francisco_syncope_rule_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign hematocrit__30__cds_data = san_francisco_syncope_rule_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign ekg_abnormal_cds_data = san_francisco_syncope_rule_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign shortness_of_breath_cds_data = san_francisco_syncope_rule_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign systolic_bp__90_mmhg_at_triage_cds_data = san_francisco_syncope_rule_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign any_response_positive__cds_data = san_francisco_syncope_rule_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign event_time2_cds_data = san_francisco_syncope_rule_entry_cds_data + "[0].elements['/data/events/time']">
+<#assign congestive_heart_failure_history_ehr_data = san_francisco_syncope_rule_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign hematocrit__30__ehr_data = san_francisco_syncope_rule_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign ekg_abnormal_ehr_data = san_francisco_syncope_rule_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign shortness_of_breath_ehr_data = san_francisco_syncope_rule_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign systolic_bp__90_mmhg_at_triage_ehr_data = san_francisco_syncope_rule_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign any_response_positive__ehr_data = san_francisco_syncope_rule_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign event_time2_ehr_data = san_francisco_syncope_rule_entry_ehr_data + "[0].elements['/data/events/time']">
+<div ng-show="ready">
+<div class="row">
+<div class="medium-12 column">
+<h1>{{def.concept.name}}</h1>
+</div>
+</div>
+<div class="row">
+<div class="medium-6 column">
+<form name="form">
+<fieldset>
+<legend>{{${full_blood_count_entry_def}.name}}</legend>
+<label>{{${packed_cell_volume__pcv__def}.name}}</label>
+<div class="row collapse" title="{{${packed_cell_volume__pcv__def}.description}}">
+<div class="medium-9 columns">
+<input ng-model="${packed_cell_volume__pcv__ehr_data}.value.numerator" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+</div>
+<div class="medium-9 columns">
+<input type=number ng-model="${packed_cell_volume__pcv__ehr_data}.value.denominator" id="packed_cell_volume__pcv__ehr_denominator" ng-change="execute()"></select>
+</div>
+<div class="medium-3 columns">
+<select ng-model="${packed_cell_volume__pcv__ehr_data}.value.type" id="packed_cell_volume__pcv__ehr_type" ng-options="type for type in [1,2,3,4]" ng-change="execute()"></select>
+</div>
+</div>
+<label>{{${event_time_def}.name}}</label>
+<div class="row collapse" title="{{${event_time_def}.description}}">
+<div class="medium-9 columns">
+<input ng-model="${event_time_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+</div>
+</div>
+</fieldset>
+<fieldset>
+<legend>{{${blood_pressure_entry_def}.name}}</legend>
+<label>{{${systolic_def}.name}}</label>
+<div class="row collapse" title="{{${systolic_def}.description}}">
+<div class="medium-9 columns">
+<input ng-model="${systolic_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+</div>
+<div class="medium-3 columns">
+<select ng-model="${systolic_ehr_data}.value.units" id="systolic_ehr_units" ng-options="unit for unit in ${systolic_def}.units" ng-change="execute()"></select>
+</div>
+</div>
+<label>{{${event_time1_def}.name}}</label>
+<div class="row collapse" title="{{${event_time1_def}.description}}">
+<div class="medium-9 columns">
+<input ng-model="${event_time1_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+</div>
+</div>
+</fieldset>
+<fieldset>
+<legend>{{${san_francisco_syncope_rule_entry_def}.name}}</legend>
+<label>{{${congestive_heart_failure_history_def}.name}}</label>
+<div class="row collapse" title="{{${congestive_heart_failure_history_def}.description}}">
+<div class="medium-9 columns">
+<select ng-model="${congestive_heart_failure_history_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${congestive_heart_failure_history_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+</div>
+</div>
+<label>{{${ekg_abnormal_def}.name}}</label>
+<div class="row collapse" title="{{${ekg_abnormal_def}.description}}">
+<div class="medium-9 columns">
+<select ng-model="${ekg_abnormal_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${ekg_abnormal_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+</div>
+</div>
+<label>{{${shortness_of_breath_def}.name}}</label>
+<div class="row collapse" title="{{${shortness_of_breath_def}.description}}">
+<div class="medium-9 columns">
+<select ng-model="${shortness_of_breath_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${shortness_of_breath_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+</div>
+</div>
+<label>{{${event_time2_def}.name}}</label>
+<div class="row collapse" title="{{${event_time2_def}.description}}">
+<div class="medium-9 columns">
+<input ng-model="${event_time2_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+</div>
+</div>
+</fieldset>
+</form>
+</div>
+<div class="medium-6 column">
+<fieldset>
+<legend>{{${san_francisco_syncope_rule_entry_def}.name}}</legend>
+<div class="row">
+<div class="medium-12 columns">
+<b>{{${congestive_heart_failure_history_def}.name}}: </b>{{${congestive_heart_failure_history_cds_data}.value.symbol.value}}</div>
+</div>
+<div class="row">
+<div class="medium-12 columns">
+<b>{{${hematocrit__30__def}.name}}: </b>{{${hematocrit__30__cds_data}.value.symbol.value}}</div>
+</div>
+<div class="row">
+<div class="medium-12 columns">
+<b>{{${ekg_abnormal_def}.name}}: </b>{{${ekg_abnormal_cds_data}.value.symbol.value}}</div>
+</div>
+<div class="row">
+<div class="medium-12 columns">
+<b>{{${shortness_of_breath_def}.name}}: </b>{{${shortness_of_breath_cds_data}.value.symbol.value}}</div>
+</div>
+<div class="row">
+<div class="medium-12 columns">
+<b>{{${systolic_bp__90_mmhg_at_triage_def}.name}}: </b>{{${systolic_bp__90_mmhg_at_triage_cds_data}.value.symbol.value}}</div>
+</div>
+<div class="row">
+<div class="medium-12 columns">
+<b>{{${any_response_positive__def}.name}}: </b>{{${any_response_positive__cds_data}.value.symbol.value}}</div>
+</div>
+</fieldset>
+</div>
+</div>
+</div>
+
+<style>
+  html, body {
+    height:100%;
+    width: 100%;
+  }
+  body {
+    font-family: sans-serif;
+    font-weight: 300;
+    color: #333;
+    background: #ecf0f9;
+    padding: 1em;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 {
+    font-weight: 600;
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 22px;
+    font-style: italic;
+  }
+  .header {
+    margin-bottom: 2em;
+  }
+  .card {
+    background-color: #fdfdfd;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 10px auto 0 auto;
+    padding: 1em;
+    width: 50%;
+    overflow: hidden;
+  }
+  .help-tip{
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      text-align: center;
+      background-color: #BCDBEA;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      line-height: 26px;
+      cursor: default;
+  }
+  .help-tip:before{
+      content:'?';
+      font-weight: bold;
+      color:#fff;
+  }
+  .help-tip:hover p{
+      display:block;
+      transform-origin: 100% 0%;
+      -webkit-animation: fadeIn 0.3s ease-in-out;
+      animation: fadeIn 0.3s ease-in-out;
+  }
+  .help-tip p{	/* The tooltip */
+      display: none;
+      text-align: left;
+      background-color: #1E2021;
+      padding: 20px;
+      width: 300px;
+      position: absolute;
+      border-radius: 3px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+      right: -4px;
+      color: #FFF;
+      font-size: 13px;
+      line-height: 1.4;
+      z-index: 9999;
+  }
+  .help-tip p:before{ /* The pointer of the tooltip */
+      position: absolute;
+      content: '';
+      width:0;
+      height: 0;
+      border:6px solid transparent;
+      border-bottom-color:#1E2021;
+      right:10px;
+      top:-12px;
+  }
+  .help-tip p:after{ /* Prevents the tooltip from being hidden */
+      width:100%;
+      height:40px;
+      content:'';
+      position: absolute;
+      top:-40px;
+      left:0;
+  }
+  .references1{
+    font-size: 70%;
+  }
+  /* CSS animation */
+  @-webkit-keyframes fadeIn {
+      0% { 
+          opacity:0; 
+          transform: scale(0.6);
+      }
+
+      100% {
+          opacity:100%;
+          transform: scale(1);
+      }
+  }
+  @keyframes fadeIn {
+      0% { opacity:0; }
+      100% { opacity:100%; }
+  }
+  #displayresult1 {
+    background-color: #e6e6e6; 
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    background-color: #f2f2f2;
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  select, label:not(#h-fix) {
+    margin-bottom: 10px;
+</style>
+
+</body></html>
