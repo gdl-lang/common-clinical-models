@@ -51,7 +51,7 @@
           "Trauma Associated Severe Hemorrhage",
           "trauma"
         ],
-        "use": "TASH baseras på sju viktade parametrar:\n\nSystoliskt blodtryck\nHb-värde\nFAST (positiv)\nSvår fraktur och/eller bäckeninstabilitet\nHjärtfrekvens\nBase excess\nKön\n\nMaximal poäng uppgår till 28p och ju högre poäng, desto högre sannolikhet för behov av massiv transfusion. En poäng om ≥16p indikerar \u003e50% risk för behov av massiv transfusion.",
+        "use": "TASH baseras på sju viktade parametrar:\n\nSystoliskt blodtryck\nHb-värde\nFAST (positiv)\nSvår fraktur och/eller bäckeninstabilitet\nHjärtfrekvens\nBase excess\nKön\n\nMaximal poäng uppgår till 28p och ju högre poäng, desto högre sannolikhet för behov av massiv transfusion. En poäng om \u003d16p indikerar \u003e50% risk för behov av massiv transfusion.",
         "misuse": "Endast avsedd för bedömning av behov av massiv transfusion i enlighet med lokala protokoll.",
         "copyright": "Cambio Healthcare Systems"
       },
@@ -62,7 +62,7 @@
           "TASH",
           "Trauma Associated Severe Hemorrhage"
         ],
-        "use": "Seven independent variables were identified and used to build the TASH:\n\nSBP\nHb \nIntra-abdominal fluid\nComplex long bone and/or pelvic fractures\nHR\nBase excess\nGender \n\nThe TASH score ranges from 0 to 28. Increasing TASH-score points are associated with increasing probability of MT.\n\nA TASH score ≥ 16 points (i.e.) means a probability of MT \u003e50%.",
+        "use": "Seven independent variables were identified and used to build the TASH:\n\nSBP\nHb \nIntra-abdominal fluid\nComplex long bone and/or pelvic fractures\nHR\nBase excess\nGender \n\nThe TASH score ranges from 0 to 28. Increasing TASH-score points are associated with increasing probability of MT.\n\nA TASH score \u003d 16 points (i.e.) means a probability of MT \u003e50%.",
         "misuse": "TASH Score does not indicate if trauma patients should receive blood, only if they should receive blood through a massive transfusion protocol.",
         "copyright": "Cambio Healthcare Systems"
       }
@@ -73,7 +73,8 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
-    "TASH.v1"
+    "TASH.v1",
+    "TASH_Assessment.v1"
   ],
   "alertBindings": {},
   "termDefinitions": {
@@ -105,28 +106,28 @@
 <#assign trauma_associated_severe_hemorrhage_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.tash.v1']">
 <#assign trauma_associated_severe_hemorrhage_entry_def = "def.entries['openEHR-EHR-OBSERVATION.tash.v1']">
 <#assign gender_score_def = trauma_associated_severe_hemorrhage_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign hb_score_def = trauma_associated_severe_hemorrhage_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign be_score_def = trauma_associated_severe_hemorrhage_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
-<#assign sys_bp_score_def = trauma_associated_severe_hemorrhage_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign hr_score_def = trauma_associated_severe_hemorrhage_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign haemoglobin_score_def = trauma_associated_severe_hemorrhage_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign base_excess_score_def = trauma_associated_severe_hemorrhage_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign systolic_bp_score_def = trauma_associated_severe_hemorrhage_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign heart_rate_score_def = trauma_associated_severe_hemorrhage_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
 <#assign positive_fast_for_intra_abdo_fluid_def = trauma_associated_severe_hemorrhage_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
 <#assign total_score_def = trauma_associated_severe_hemorrhage_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0036}']">
 <#assign fracture_of_trunk_leg_def = trauma_associated_severe_hemorrhage_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
 <#assign event_time_def = trauma_associated_severe_hemorrhage_entry_def + ".elements['/data/events/time']">
 <#assign gender_score_cds_data = trauma_associated_severe_hemorrhage_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign hb_score_cds_data = trauma_associated_severe_hemorrhage_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign be_score_cds_data = trauma_associated_severe_hemorrhage_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
-<#assign sys_bp_score_cds_data = trauma_associated_severe_hemorrhage_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign hr_score_cds_data = trauma_associated_severe_hemorrhage_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign haemoglobin_score_cds_data = trauma_associated_severe_hemorrhage_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign base_excess_score_cds_data = trauma_associated_severe_hemorrhage_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign systolic_bp_score_cds_data = trauma_associated_severe_hemorrhage_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign heart_rate_score_cds_data = trauma_associated_severe_hemorrhage_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
 <#assign positive_fast_for_intra_abdo_fluid_cds_data = trauma_associated_severe_hemorrhage_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
 <#assign total_score_cds_data = trauma_associated_severe_hemorrhage_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0036}']">
 <#assign fracture_of_trunk_leg_cds_data = trauma_associated_severe_hemorrhage_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
 <#assign event_time_cds_data = trauma_associated_severe_hemorrhage_entry_cds_data + "[0].elements['/data/events/time']">
 <#assign gender_score_ehr_data = trauma_associated_severe_hemorrhage_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign hb_score_ehr_data = trauma_associated_severe_hemorrhage_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign be_score_ehr_data = trauma_associated_severe_hemorrhage_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
-<#assign sys_bp_score_ehr_data = trauma_associated_severe_hemorrhage_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign hr_score_ehr_data = trauma_associated_severe_hemorrhage_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign haemoglobin_score_ehr_data = trauma_associated_severe_hemorrhage_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign base_excess_score_ehr_data = trauma_associated_severe_hemorrhage_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign systolic_bp_score_ehr_data = trauma_associated_severe_hemorrhage_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign heart_rate_score_ehr_data = trauma_associated_severe_hemorrhage_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
 <#assign positive_fast_for_intra_abdo_fluid_ehr_data = trauma_associated_severe_hemorrhage_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
 <#assign total_score_ehr_data = trauma_associated_severe_hemorrhage_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0036}']">
 <#assign fracture_of_trunk_leg_ehr_data = trauma_associated_severe_hemorrhage_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
@@ -137,6 +138,10 @@
 <#assign event_time1_def = full_blood_count_entry_def + ".elements['/data/events/time']">
 <#assign haemoglobin_ehr_data = full_blood_count_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078.4}']">
 <#assign event_time1_ehr_data = full_blood_count_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign trauma_associated_severe_hemorrhage_assessment_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.trauma_associated_severe_hemorrhage_assessment.v1']">
+<#assign trauma_associated_severe_hemorrhage_assessment_entry_def = "def.entries['openEHR-EHR-EVALUATION.trauma_associated_severe_hemorrhage_assessment.v1']">
+<#assign probability_of_massive_transfusion_def = trauma_associated_severe_hemorrhage_assessment_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign probability_of_massive_transfusion_cds_data = trauma_associated_severe_hemorrhage_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
 <#assign blood_gas_assessment_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.lab_test-blood_gases.v1']">
 <#assign blood_gas_assessment_entry_def = "def.entries['openEHR-EHR-OBSERVATION.lab_test-blood_gases.v1']">
 <#assign base_excess_def = blood_gas_assessment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078.9}']">
@@ -198,7 +203,7 @@ angular.module('cds_app').controller('TASH_Ctrl', function($scope, $window){
       <label>{{${gender_def}.name}}</label>
     </div>
     <label class="medium-3 columns" ng-repeat="(key, desc) in ${gender_def}.selections">
-      <input type="radio" value="{{key}}" ng-model= "${gender_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      <input type="radio" value="{{key}}" ng-model="${gender_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
 <div class="row collapse" title="{{${positive_fast_for_intra_abdo_fluid_def}.description}}">
@@ -206,7 +211,7 @@ angular.module('cds_app').controller('TASH_Ctrl', function($scope, $window){
       <label>{{${positive_fast_for_intra_abdo_fluid_def}.name}}</label>
     </div>
     <label class="medium-3 columns" ng-repeat="(key, desc) in ${positive_fast_for_intra_abdo_fluid_def}.selections">
-      <input type="radio" value="{{key}}" ng-model= "${positive_fast_for_intra_abdo_fluid_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      <input type="radio" value="{{key}}" ng-model="${positive_fast_for_intra_abdo_fluid_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
 <div class="row collapse" title="{{${systolic_def}.description}}">
@@ -262,12 +267,20 @@ angular.module('cds_app').controller('TASH_Ctrl', function($scope, $window){
         <select ng-model="${base_excess_ehr_data}.value.units" ng-options="unit for unit in ${base_excess_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
-<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult">
+<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult1">
   <div class="medium-5 columns">
     <label><b>{{${total_score_def}.name}}: </b></label>
   </div>
   <div class="medium-7 columns" style="text-align: center;">
     <label>{{${total_score_cds_data}.value.magnitude}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${probability_of_massive_transfusion_def}.description}}" id="displayresult2">
+  <div class="medium-5 columns">
+    <label><b>{{${probability_of_massive_transfusion_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${probability_of_massive_transfusion_cds_data}.value.symbol.value}}</label>
   </div>
 </div>
 </div>
@@ -355,7 +368,7 @@ angular.module('cds_app').controller('TASH_Ctrl', function($scope, $window){
       -webkit-animation: fadeIn 0.3s ease-in-out;
       animation: fadeIn 0.3s ease-in-out;
   }
-  .help-tip p{  /* The tooltip */
+  .help-tip p{	/* The tooltip */
       display: none;
       text-align: left;
       background-color: #1E2021;
@@ -389,7 +402,7 @@ angular.module('cds_app').controller('TASH_Ctrl', function($scope, $window){
       left:0;
   }
   .references1{
-  font-size: 70%;
+    font-size: 70%;
   }
   /* CSS animation */
   @-webkit-keyframes fadeIn {
@@ -407,12 +420,19 @@ angular.module('cds_app').controller('TASH_Ctrl', function($scope, $window){
       0% { opacity:0; }
       100% { opacity:100%; }
   }
-  #displayresult {
+  #displayresult1 {
     background-color: #e6e6e6; 
     padding-top: 3px;
     padding-bottom: 3px;
-    padding-left: 3px;
-	font-size: 90%;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    background-color: #f2f2f2;
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
   }
   select, label:not(#h-fix) {
     margin-bottom: 10px;
