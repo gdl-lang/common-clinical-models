@@ -1,0 +1,107 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.clinical_disease_activity_index.v1
+
+concept
+	[at0000]	-- Clinical disease activity index (CDAI)
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Eneimi Allwell-Brown">
+		["email"] = <"info@cambio.se">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-03-03">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess the calculated CDAI for assessing disease activity and treatment response in rheumatoid arthritis.">
+			use = <"Use to store assessment data for CDAI which is based on 4 (four) input parameters: tender joint count (TJC), swollen joint count (SJC), patient global assessment of disease activity (PtGDA), and provider global assessment of disease activity (PrGDA).
+CDAI = TJC + SJC + PtGDA + PrGDA
+CDAI score ≤ 2.8 = Remission
+CDAI score > 2.8 - 10.0 = Low activity
+CDAI score > 10.0 - 22.0 = Moderate activity
+CDAI score > 22.0 = High activity.
+
+CDAI correlates well with disease activity score (DAS28), health assessment questionnaire (HAQ) and American College of Rheumatology (ACR) response criteria, and is useful in assessing disease activity, assessing response to therapy, assessing disease remission and in guiding therapy based on severity of the disease. A CDAI reduction by 6.5 represents a moderate improvement. CDAI data is stored in a separate observation archetype: openEHR-EHR-OBSERVATION.clinical_disease_activity_index.v1">
+			keywords = <"rheumatoid arthritis", "PaGDA", "PrGDA", "tender joint", "swollen joint", "CDAI">
+			misuse = <"Not to be used for simplified disease activity index (SDAI).">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Anderson J, Caplan L, Yazdany J, Robbins ML, Neogi T, Michaud K, Saag KG, O'dell JR, Kazi S. Rheumatoid arthritis disease activity measures: American College of Rheumatology recommendations for use in clinical practice. Arthritis care & research. 2012 May 1;64(5):640-7.
+
+Aletaha D, Smolen JS. The simplified disease activity index (SDAI) and clinical disease activity index (CDAI) to monitor patients in standard clinical care. Best practice & research Clinical rheumatology. 2007 Aug 31;21(4):663-75.">
+		["MD5-CAM-1.0.1"] = <"DD68AAF4AB214EFD6B929C565DF9F05F">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Clinical disease activity index (CDAI)
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Disease activity
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0004, 	-- Remission
+									at0005, 	-- Low activity
+									at0006, 	-- Moderate activity
+									at0007]	-- High activity
+								}
+							}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Comment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Clinical disease activity index (CDAI)">
+					description = <"Clinical disease activity index (CDAI) is a composite score for assessing disease activity in individuals with rheumatoid arthritis (RA). It is the numerical sum of four parameters: the number of tender (0 - 28) and swollen (0 - 28) joints the patient has, and the patient and physician global assessment of disease activity (on a visual analogue scale 0.0 -10.0). The disease is in remission with CDAI score ≤ 2.8; low activity > 2.8 - 10.0; moderate activity > 10.0 - 22.0 and high activity > 22.0. It is similar to simplified disease activity index (SDAI), and correlates well with disease activity score (DAS28), health assessment questionnaire (HAQ) and American College of Rheumatology (ACR) response criteria. A CDAI reduction by 6.5 represents a moderate improvement.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Disease activity">
+					description = <"The assessment of disease activity based on CDAI.">
+				>
+				["at0003"] = <
+					text = <"Comment">
+					description = <"Any additional information about this recording.">
+				>
+				["at0004"] = <
+					text = <"Remission">
+					description = <"CDAI: ≤2.8">
+				>
+				["at0005"] = <
+					text = <"Low activity">
+					description = <"CDAI: >2.8 - 10.0">
+				>
+				["at0006"] = <
+					text = <"Moderate activity">
+					description = <"CDAI: >10.0 - 22.0">
+				>
+				["at0007"] = <
+					text = <"High activity">
+					description = <"CDAI: >22.0">
+				>
+			>
+		>
+	>
