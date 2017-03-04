@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.meld_score.v1
 
 concept
-	[at0000]	-- Model For End-Stage Liver Disease (MELD)
+	[at0000]	-- Model For End-Stage Liver Disease (MELD) utvärdering
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
@@ -34,6 +43,40 @@ score = 9 or less (1.9% mortality).">
 MELD score is not useful for predicting mortality following liver transplantation.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att utvärdera poäng i enlighet med Model For End-Stage Liver Disease (MELD) Score, som används för att på kort sikt uppskatta mortalitet hos patienter med terminal leversjukdom och därigenom bedöma behov av levertransplantation.">
+			use = <"Använd för att utvärdera poäng genererad i enlighet med Model For End-Stage Liver Disease (MELD) Score, som används för att på kort sikt uppskatta mortalitet hos patienter med terminal leversjukdom och därigenom bedöma behov av levertransplantation.
+
+Instrumentet baseras på ett antal parametrar:
+
+- Kreatinin (mg/dl eller umol/L)
+- Totalt bilirubin (mg/dl eller umol/L)
+- Natrum (mmol/L)
+- International Normalized Ratio for prothrombin time (INR)
+- Huruvida patienten under senaste veckan genomgått dialys vid åtminstone två tillfällen eller CVVHD under minst 24 timmar
+
+Formel för ursprungliga MELD Score = = 9.57 * ln(kreatinin, mg/dL) + 3.78 * ln(bilirubin, mg/dL) + 11.20 * ln(INR) + 6.43; har patienten genomgått dialys sätts kreatininvärdet automatiskt till 4 mg/dl. 
+
+Formel för senaste versionen av MELD score = oMELD + [1.32 * (137-Na)] – [0.033 * oMELD * (137-Na)]; (baserat på referensvärde för natrium = 125-137 mmol/L.)
+
+Resultatet används för att uppskatta 90-dagarsmortalitet hos patienter med terminal leversjukdom, och registreras med hjälp av en separat arketyp - openEHR-EHR-EVALUATION.meld_score.v1.
+
+MELD Score är även användbar för att uppskatta överlevnad hos patienter med varicerblödning, levercirros kombinerat med infektion, fulminant leversvikt, alkoholhepatit och andra former av kronisk leversjukdom, samt för att prioritera behov av levertransplantation.
+
+90-dagars mortalitet baserat på MELD Score:
+
+40p = 71.3% 
+30-39p = 52.6%
+20-29p = 19.6%
+10-19p = 6.0%
+≤9p = 1.9%">
+			keywords = <"cirros", "levercirros", "alkoholhepatit", "leversvikt", "kronisk leversjukdom", "leversjukdom", "gastroenterologi", "MELD", "MELD score">
+			misuse = <"Endast avsedd för patienter över 12 års ålder. 
+
+MELD Score är ej avsedd för att uppskatta mortalitet efter levertransplantation.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -47,15 +90,15 @@ Said A, Williams J, Holden J, Remington P, Gangnon R, Musat A, Lucey MR. Model f
 Dunn W, Jamil LH, Brown LS, Wiesner RH, Kim W, Menon KV, Malinchoc M, Kamath PS, Shah V. MELD accurately predicts mortality in patients with alcoholic hepatitis. Hepatology. 2005 Feb 1;41(2):353-8.
 
 Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 2007 Mar 1;45(3):797-805.">
-		["MD5-CAM-1.0.1"] = <"C329A5042956FCC7C03DB2A5C02B387E">
+		["MD5-CAM-1.0.1"] = <"FBE26BEDF1D9731CA184A1D2468A93C6">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Model For End-Stage Liver Disease (MELD)
+	EVALUATION[at0000] matches {	-- Model For End-Stage Liver Disease (MELD) utvärdering
 		data matches {
-			ITEM_TREE[at0001] matches {	-- Tree
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- 90-day mortality
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- 90-dagars mortalitet
 						value matches {
 							C_DV_QUANTITY <
 								property = <[openehr::507]>
@@ -68,7 +111,7 @@ definition
 							>
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Comment
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Kommentar
 						value matches {
 							DV_TEXT matches {*}
 						}
@@ -97,6 +140,26 @@ ontology
 				["at0003"] = <
 					text = <"Comment">
 					description = <"Any additional information about this recording.">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Model For End-Stage Liver Disease (MELD) utvärdering">
+					description = <"Utvärdering av poäng genererad i enlighet med Model For End-Stage Liver Disease (MELD) Score, som används för att på kort sikt uppskatta mortalitet hos patienter med terminal leversjukdom och därigenom bedöma behov av levertransplantation.">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"90-dagars mortalitet">
+					description = <"Utvärdering av poäng genererad i enlighet med MELD Score.">
+				>
+				["at0003"] = <
+					text = <"Kommentar">
+					description = <"Ev tillägg">
 				>
 			>
 		>
