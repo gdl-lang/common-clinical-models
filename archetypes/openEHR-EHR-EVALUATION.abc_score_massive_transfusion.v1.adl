@@ -1,0 +1,122 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.abc_score_massive_transfusion.v1
+
+concept
+	[at0000]	-- ABC score for massive transfusion
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Eneimi Allwell-Brown">
+		["email"] = <"info@cambio.se">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-03-04">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To predict the need for massive transfusion of blood (and blood products) in acutely injured patients at initial assessment using simple clinical and bedside criteria.">
+			use = <"To record the assessment of ABC score for massive transfusion. The score is based on presence or absence of its component variables: penetrating mechanism of injury, arrival systolic blood pressure of 90 mmHg or less, arrival heart rate of 120 bpm or greater, and positive FAST (focused assessment with sonography in trauma). The presence of any variable contributes one point to the total score giving a minimum score of 0 and a maximum possible score of 4. A score of 2 or greater is likely to require massive transfusion.
+ABC score	      Massive transfusion probability
+0	      Unlikely – 1%
+1	      Unlikely – 10%
+2	      Likely – 41%
+3	      Likely – 48%
+4	      Highly likely – 100%
+Score data is stored in a separate observation archetype: openEHR-EHR-OBSERVATION.abc_score_massive_transfusion.v1.
+Massive transfusion is defined as 10 units or more of packed red blood cells in 24hrs or 5 units of packed red blood cells over 3 hours.">
+			keywords = <"transfusion protocol", "trauma care", "massive blood transfusion">
+			misuse = <"The ABC score does not indicate if a patient should receive blood, only if they should receive blood through a massive transfusion protocol.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Subramanian A, Albert V, Sharma S, Kondru S, Pandey RM. Assessing the Efficiency of Scoring System for Predicting the Probability of Massive Transfusion in Trauma Patients. Journal of Hematology & Thromboembolic Diseases. 2014 Nov 4;2014.
+
+Cotton BA, Dossett LA, Haut ER, Shafi S, Nunez TC, Au BK, Zaydfudim V, Johnston M, Arbogast P, Young PP. Multicenter validation of a simplified score to predict massive transfusion in trauma. Journal of Trauma and Acute Care Surgery. 2010 Jul 1;69(1):S33-9.
+
+Nunez TC, Voskresensky IV, Dossett LA, Shinall R, Dutton WD, Cotton BA. Early prediction of massive transfusion in trauma: simple as ABC (assessment of blood consumption)?. Journal of Trauma and Acute Care Surgery. 2009 Feb 1;66(2):346-52.">
+		["MD5-CAM-1.0.1"] = <"5847A57176174E61252C5CD7A3193D6D">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- ABC score for massive transfusion
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Massive transfusion assessment
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0004, 	-- Unlikely to require massive transfusion
+									at0005, 	-- Likely to require massive transfusion
+									at0006]	-- Highly likely to receive massive transfusion
+								}
+							}
+						}
+					}
+					ELEMENT[at0007] occurrences matches {0..1} matches {	-- Probability of massive transfusion
+						value matches {
+							C_DV_QUANTITY <
+								property = <[openehr::507]>
+								list = <
+									["1"] = <
+										units = <"%">
+										magnitude = <|>=0.0|>
+									>
+								>
+							>
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Comment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"ABC score for massive transfusion">
+					description = <"Assessment of Blood Consumption (ABC) Score is used for early and rapid estimation of the need for massive transfusion in acutely injured patients, using four simple clinical and bedside criteria: penetrating mechanism of injury, arrival systolic blood pressure of 90 mmHg or less, arrival heart rate of 120 bpm or greater, and positive FAST (focused assessment with sonography in trauma). The presence of any variable contributes one point to the total score giving a minimum score of 0 and a maximum possible score of 4. A score of 2 or greater is likely to require massive transfusion. Massive transfusion is defined as 10 units or more of packed red blood cells in 24hrs or 5 units of packed red blood cells over 3 hours.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Massive transfusion assessment">
+					description = <"The assessment of the need for massive blood transfusion based on ABC_score.">
+				>
+				["at0003"] = <
+					text = <"Comment">
+					description = <"Any additional information about this recording.">
+				>
+				["at0004"] = <
+					text = <"Unlikely to require massive transfusion">
+					description = <"ABC_score: <2">
+				>
+				["at0005"] = <
+					text = <"Likely to require massive transfusion">
+					description = <"ABC_score: ≥2">
+				>
+				["at0006"] = <
+					text = <"Highly likely to receive massive transfusion">
+					description = <"ABC_score: 4">
+				>
+				["at0007"] = <
+					text = <"Probability of massive transfusion">
+					description = <"The numeric assessment of the probability of massive transfusion based on the ABC_score.">
+				>
+			>
+		>
+	>
