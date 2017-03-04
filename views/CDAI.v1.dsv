@@ -118,9 +118,7 @@
 <#assign clinical_disease_activity_index__cdai__entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.clinical_disease_activity_index.v1']">
 <#assign clinical_disease_activity_index__cdai__entry_def = "def.entries['openEHR-EHR-OBSERVATION.clinical_disease_activity_index.v1']">
 <#assign clinical_disease_activity_index__cdai__score_def = clinical_disease_activity_index__cdai__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign event_time1_def = clinical_disease_activity_index__cdai__entry_def + ".elements['/data/events/time']">
 <#assign clinical_disease_activity_index__cdai__score_cds_data = clinical_disease_activity_index__cdai__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign event_time1_cds_data = clinical_disease_activity_index__cdai__entry_cds_data + "[0].elements['/data/events/time']">
 <#assign clinical_disease_activity_index__cdai__entry1_cds_data = "data.cds['openEHR-EHR-EVALUATION.clinical_disease_activity_index.v1']">
 <#assign clinical_disease_activity_index__cdai__entry1_def = "def.entries['openEHR-EHR-EVALUATION.clinical_disease_activity_index.v1']">
 <#assign disease_activity_def = clinical_disease_activity_index__cdai__entry1_def + ".elements['/data{at0001}/items{at0002}']">
@@ -128,15 +126,15 @@
 <#assign provider_global_assessment_of_disease_activity__prgda__entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.provider_global_assessment_arthritis_activity.v1']">
 <#assign provider_global_assessment_of_disease_activity__prgda__entry_def = "def.entries['openEHR-EHR-OBSERVATION.provider_global_assessment_arthritis_activity.v1']">
 <#assign provider_global_assessment_of_disease_activity__prgda__score__def = provider_global_assessment_of_disease_activity__prgda__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign event_time2_def = provider_global_assessment_of_disease_activity__prgda__entry_def + ".elements['/data/events/time']">
+<#assign event_time1_def = provider_global_assessment_of_disease_activity__prgda__entry_def + ".elements['/data/events/time']">
 <#assign provider_global_assessment_of_disease_activity__prgda__score__ehr_data = provider_global_assessment_of_disease_activity__prgda__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign event_time2_ehr_data = provider_global_assessment_of_disease_activity__prgda__entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign event_time1_ehr_data = provider_global_assessment_of_disease_activity__prgda__entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign patient_global_assessment_of_disease_activity__ptgda__entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.patient_global_assessment_arthritis_activity.v1']">
 <#assign patient_global_assessment_of_disease_activity__ptgda__entry_def = "def.entries['openEHR-EHR-OBSERVATION.patient_global_assessment_arthritis_activity.v1']">
 <#assign patient_global_assessment_of_disease_activity__ptgda__score_def = patient_global_assessment_of_disease_activity__ptgda__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign event_time3_def = patient_global_assessment_of_disease_activity__ptgda__entry_def + ".elements['/data/events/time']">
+<#assign event_time2_def = patient_global_assessment_of_disease_activity__ptgda__entry_def + ".elements['/data/events/time']">
 <#assign patient_global_assessment_of_disease_activity__ptgda__score_ehr_data = patient_global_assessment_of_disease_activity__ptgda__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign event_time3_ehr_data = patient_global_assessment_of_disease_activity__ptgda__entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign event_time2_ehr_data = patient_global_assessment_of_disease_activity__ptgda__entry_ehr_data + "[0].elements['/data/events/time']">
 
 <script> 
 angular.module('cds_app').controller('CDAI_Ctrl', function($scope, $window){
@@ -144,7 +142,6 @@ angular.module('cds_app').controller('CDAI_Ctrl', function($scope, $window){
     $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
     $scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
     $scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
-    $scope.${event_time3_ehr_data}.value.value = new Date().toISOString();
     $scope.${patient_global_assessment_of_disease_activity__ptgda__score_ehr_data}.value.units = $scope.${patient_global_assessment_of_disease_activity__ptgda__score_def}.units[1];
     $scope.${provider_global_assessment_of_disease_activity__prgda__score__ehr_data}.value.units = $scope.${provider_global_assessment_of_disease_activity__prgda__score__def}.units[0];
   });
@@ -211,7 +208,7 @@ angular.module('cds_app').controller('CDAI_Ctrl', function($scope, $window){
       <span><b>{{${disease_activity_def}.name}}:</b></span>
     </div>
     <div class="medium-7 columns">
-      <span>{{${disease_activity_cds_data}.value.symbol.value}}</span>
+      <span>{{${disease_activity_cds_data}.value.value}}</span>
     </div>
   </div>
   
