@@ -9,7 +9,7 @@
 		details = <
 			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
 				copyright = <"© Cambio Healthcare Systems">
-				keywords = <"GRACE ACS Risk score", "STEMI", "NSTEMI", "Acute Coronary Syndrome">
+				keywords = <"GRACE ACS Risk score", "STEMI", "NSTEMI", "Acute Coronary Syndrome", "cardiology">
 				misuse = <"The score was not designed to assess which patients’ anginal symptoms are due to ACS and should not be used out of context without a more thorough clinical examination.">
 				purpose = <"Identified patients will have a known STEMI (ST Elevation Myocardial Infarction) or NSTEMI (Non-ST Elevation Myocardial Infarction).">
 				use = <"Determining the mortality of these patients can be achieved with these 8 variables:
@@ -38,16 +38,43 @@ Low: score 1-108 (<1% probablility of death in hospital)
 Intermediate: score 109-140 (1-3%)
 High: score 141-372 (>3%)">
 			>
+			["sv"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"GRACE ACS Risk score", "STEMI", "NSTEMI", "akut koronart syndrom", "akut kranskärlssjukdom", "kardiologi">
+				misuse = <"Instrumentet är ej avsett för att identifiera patienter med akut koronart syndrom och ska endast användas i samråd med utförlig klinisk utredning.">
+				purpose = <"Att uppskatta 6-månadersmortalitet hos nyligen mottagna patienter med akut koronart syndrom.
+">
+				use = <"Använd för att uppskatta 6-månadersmortalitet hos nyligen mottagna patienter med akut koronart syndrom. Instrumentet baseras på följande åtta faktorer:
+
+Ålder
+Hjärtfrekvens
+Systoliskt blodtryck
+Kreatininvärde, angivet i mg/dl
+Hjärtstopp vid ankomst till sjukhus
+Patologiska ST-förändringar på EKG
+Förhöjda/avvikande hjärtmarkörer
+Killip-klassificering (Klass I - ingen hjärtsvikt, klass II - rassel och/eller halsvenstas, klass III - lungödem, klass IV - kardiogen chock)
+
+Resultatet uppgår till maximalt 372p - för detaljerad beskrivning av poängsystemet vänligen se (1). Resultatet tolkas enligt:
+
+Non-STEMI inlagd på sjukhus:
+1-108p - låg risk (<1% risk att avlida på sjukhuset)
+109-140p - mellanrisk (1-3% risk att avlida på sjukhuset)
+141-372p - hög risk (>3% risk att avlida på sjukhuset)
+
+För detaljerad beskrivning av denna tolkning, vänligen se (2).">
+			>
 		>
 		original_author = <
-			["date"] = <"2016-02-18">
+			["date"] = <"2017-02-18">
 			["name"] = <"Syeeda S Farruque">
 			["organisation"] = <"Cambio Healthcare Systems">
 		>
+		other_contributors = <"Dennis Forslund, Cambio Healthcare Systems",...>
 		other_details = <
 			["references"] = <"Ref. 1: Fox KA, Dabbous OH, Goldberg RJ, Pieper KS, Eagle KA, Van de Werf F, Avezum A,Goodman SG, Flather MD, Anderson FA Jr, Granger CB. Prediction of risk of death and myocardial infarction in the six months after presentation with acute coronary syndrome: prospective multinational observational study (GRACE). BMJ. 2006 Nov 25;333(7578):1091. Epub 2006 Oct 10. PubMed PMID: 17032691; PubMed Central PMCID: PMC1661748.
 
-Ref. 2: http://www.outcomes-umassmed.org/GRACE/grace_risk_table.aspx">
+Ref. 2: http://www.outcomes-umassmed.org/GRACE/grace_risk_table.aspx ; University Court of the University of Edinburgh and the University of Massachusetts Centres for Outcomes Research (COR)">
 		>
 	>
 	definition = (GUIDE_DEFINITION) <
@@ -331,7 +358,7 @@ Ref. 2: http://www.outcomes-umassmed.org/GRACE/grace_risk_table.aspx">
 				priority = <2>
 			>
 			["gt0073"] = (RULE) <
-				then = <"$gt0030.magnitude=((((((($gt0022.value+$gt0023.value)+$gt0024.value)+$gt0025.value)+$gt0026.value)+$gt0026.value)+$gt0028.value)+$gt0029.value)",...>
+				then = <"$gt0030.magnitude=((((((($gt0022.value+$gt0023.value)+$gt0024.value)+$gt0025.value)+$gt0027.value)+$gt0026.value)+$gt0028.value)+$gt0029.value)",...>
 				priority = <1>
 			>
 		>
@@ -549,6 +576,219 @@ Estimates admission-6-month mortality for patients with ACS">
 					>
 					["gt0073"] = (TERM) <
 						text = <"Set total score">
+					>
+				>
+			>
+			["sv"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"GRACE ACS Score">
+						description = <"Global Registry of Acute Coronary Events (GRACE) Acute Coronary Syndrome (ACS) Risk Score används för att uppskatta 6-månadersmortalitet hos nyligen mottagna patienter med akut koronart syndrom.">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Födelsedatum">
+						description = <"*(en) *">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Systoliskt blodtryck">
+						description = <"*(en) Peak systemic arterial blood pressure  - measured in systolic or contraction phase of the heart cycle.">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Hjärtfrekvens">
+						description = <"*(en) The rate of the heart in beats per minute.">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Hjärtfrekvens">
+						description = <"*(en) The rate, measured in beats per minute.">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Kreatinin - provresultat">
+						description = <"*(en) Creatinine value">
+					>
+					["gt0013"] = (TERM) <
+					>
+					["gt0015"] = (TERM) <
+						text = <"Killip-klassificering">
+						description = <"*(en) Killip Classification">
+					>
+					["gt0016"] = (TERM) <
+						text = <"Hjärtstopp vid ankomst till sjukhus">
+						description = <"*(en) Yes or No values are 39 and 0 respectively">
+					>
+					["gt0017"] = (TERM) <
+						text = <"Patologiska ST-förändringar på EKG">
+						description = <"*(en) Yes and No values are 28 and 0 respectively">
+					>
+					["gt0018"] = (TERM) <
+						text = <"Förhöjda/avvikande hjärtmarkörer">
+						description = <"*(en) Yes and No scores are 14 and 0 respectively">
+					>
+					["gt0020"] = (TERM) <
+						text = <"Ålder">
+						description = <"*(en) Age in years, and for babies: months, weeks or days">
+					>
+					["gt0022"] = (TERM) <
+						text = <"Ålder - poäng">
+						description = <"*(en) Discretized values for Age in years">
+					>
+					["gt0023"] = (TERM) <
+						text = <"Hjärtfrekvens - poäng">
+						description = <"*(en) Discretized values for Heart rate in BPM">
+					>
+					["gt0024"] = (TERM) <
+						text = <"Systoliskt blodtryck - poäng">
+						description = <"*(en) Discretized values for Systolic Blood Pressure (mmHg)">
+					>
+					["gt0025"] = (TERM) <
+						text = <"Kreatinin - poäng">
+						description = <"*(en) Discretized values for Creatinine (mg/dL)">
+					>
+					["gt0026"] = (TERM) <
+						text = <"Hjärtstopp vid ankomst">
+						description = <"*(en) Yes or No values are 39 and 0 respectively">
+					>
+					["gt0027"] = (TERM) <
+						text = <"Patologiska ST-förändringar på EKG">
+						description = <"*(en) Yes and No values are 28 and 0 respectively">
+					>
+					["gt0028"] = (TERM) <
+						text = <"Förhöjda/avvikande hjärtmarkörer">
+						description = <"*(en) Yes and No scores are 14 and 0 respectively">
+					>
+					["gt0029"] = (TERM) <
+						text = <"Killip - poäng">
+						description = <"*(en) Killip Classification (Signs and Symptoms)">
+					>
+					["gt0030"] = (TERM) <
+						text = <"Resultat">
+						description = <"*(en) Sum of all the individual scores">
+					>
+					["gt0031"] = (TERM) <
+						text = <"CDS killip">
+					>
+					["gt0032"] = (TERM) <
+						text = <"Killip - poäng">
+						description = <"*(en) Killip Classification (Signs and Symptoms)">
+					>
+					["gt0033"] = (TERM) <
+						text = <"CDS Killip poäng">
+					>
+					["gt0034"] = (TERM) <
+						text = <"CDS standard">
+					>
+					["gt0035"] = (TERM) <
+						text = <"Beräkna ålder i år">
+					>
+					["gt0036"] = (TERM) <
+						text = <"CDS kreatinin - 0p">
+					>
+					["gt0038"] = (TERM) <
+						text = <"Kreatinin">
+						description = <"*(en) Creatinine level in this specimen">
+					>
+					["gt0039"] = (TERM) <
+					>
+					["gt0040"] = (TERM) <
+						text = <"CDS kreatinin - 1p">
+					>
+					["gt0041"] = (TERM) <
+						text = <"CDS kreatinin - 4p">
+					>
+					["gt0042"] = (TERM) <
+						text = <"CDS kreatinin - 7p">
+					>
+					["gt0043"] = (TERM) <
+						text = <"CDS kreatinin - 10p">
+					>
+					["gt0044"] = (TERM) <
+						text = <"CDS kreatinin - 13p">
+					>
+					["gt0045"] = (TERM) <
+						text = <"CDS kreatinin - 21p">
+					>
+					["gt0046"] = (TERM) <
+						text = <"CDS kreatinin - 28p">
+					>
+					["gt0047"] = (TERM) <
+						text = <"CDS ålder - 0p">
+					>
+					["gt0048"] = (TERM) <
+						text = <"CDS ålder - 8p">
+					>
+					["gt0049"] = (TERM) <
+						text = <"CDS ålder - 25p">
+					>
+					["gt0050"] = (TERM) <
+						text = <"CDS ålder - 41p">
+					>
+					["gt0051"] = (TERM) <
+						text = <"CDS ålder - 58p">
+					>
+					["gt0052"] = (TERM) <
+						text = <"CDS ålder - 75p">
+					>
+					["gt0053"] = (TERM) <
+						text = <"CDS ålder - 91p">
+					>
+					["gt0054"] = (TERM) <
+						text = <"CDS ålder - 100p">
+					>
+					["gt0055"] = (TERM) <
+						text = <"CDS hjärtfrekvens - 0p">
+					>
+					["gt0056"] = (TERM) <
+						text = <"CDS hjärtfrekvens - 3p">
+					>
+					["gt0057"] = (TERM) <
+						text = <"CDS hjärtfrekvens - 9p">
+					>
+					["gt0058"] = (TERM) <
+						text = <"CDS hjärtfrekvens - 15p">
+					>
+					["gt0059"] = (TERM) <
+						text = <"CDS hjärtfrekvens - 24p">
+					>
+					["gt0060"] = (TERM) <
+						text = <"CDS hjärtfrekvens - 38p">
+					>
+					["gt0061"] = (TERM) <
+						text = <"CDS hjärtfrekvens - 46p">
+					>
+					["gt0062"] = (TERM) <
+						text = <"CDS systoliskt blodtryck - 0p">
+					>
+					["gt0063"] = (TERM) <
+						text = <"CDS systoliskt blodtryck - 10p">
+					>
+					["gt0064"] = (TERM) <
+						text = <"CDS systoliskt blodtryck - 24p">
+					>
+					["gt0065"] = (TERM) <
+						text = <"CDS systoliskt blodtryck - 34p">
+					>
+					["gt0066"] = (TERM) <
+						text = <"CDS systoliskt blodtryck - 43p">
+					>
+					["gt0067"] = (TERM) <
+						text = <"CDS systoliskt blodtryck - 53p">
+					>
+					["gt0068"] = (TERM) <
+						text = <"CDS systoliskt blodtryck - 58p">
+					>
+					["gt0069"] = (TERM) <
+						text = <"CDS hjärtstopp">
+					>
+					["gt0070"] = (TERM) <
+						text = <"CDS Patologiska ST-förändringar på EKG">
+					>
+					["gt0071"] = (TERM) <
+						text = <"CDS Förhöjda/avvikande hjärtmarkörer">
+					>
+					["gt0072"] = (TERM) <
+						text = <"CDS killip klassificering">
+					>
+					["gt0073"] = (TERM) <
+						text = <"CDS resultat">
 					>
 				>
 			>

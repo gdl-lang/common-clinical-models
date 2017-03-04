@@ -21,6 +21,24 @@ description
 		["date"] = <"2016-12-13">
 	>
 	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To screen for alcohol abuse.">
+			use = <"Use to screen for alcohol abuse. The AUDIT-C contains the first three questions from the full Alcohol Use Disorders Identification Test (AUDIT) which was a World Health Organization-sponsored project. 
+
+- How often do you have a drink containing alcohol?
+- How many drinks containing alcohol do you have on a typical day when you are drinking?
+- How often do you have six or more drinks on one occasion?
+
+The questions each contribute points to the total score which ranges from 0-12.  The total score is interpreted as follows:
+
+Female - ≥3p indicates alcohol misuse
+Male - ≥4p indicates alcohol misuse
+A score of 5p or more is consistent with alcohol abuse and possible liver damage">
+			keywords = <"AUDIT", "AUDIT-C", "alcohol misuse", "alcohol abuse", "alcohol use disorder", "DSM", "psychiatry", "primary care", "screening">
+			misuse = <"This archetype is only intended for the AUDIT-C, not the full version.">
+			copyright = <"Cambio Healthcare Systems">
+		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att använda som screening för alkoholmissbruk.">
@@ -37,24 +55,8 @@ Man - ≥4p  indikerar riskbruk av alkohol
 5p eller mer är förenligt med alkoholmissbruk och potentiell leverskada.
 
 ">
+			keywords = <"AUDIT", "AUDIT-C", "alkoholmissbruk", "beroende", "missbruk", "psykiatri", "primärvård", "screening", "riskbruk">
 			misuse = <"Denna arketyp är endast avsedd för registrering av AUDIT-C och ej fullständiga AUDIT.">
-			copyright = <"Cambio Healthcare Systems">
-		>
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To screen for alcohol abuse.">
-			use = <"Use to screen for alcohol abuse. The AUDIT-C contains the first three questions from the full Alcohol Use Disorders Identification Test (AUDIT) which was a World Health Organization-sponsored project. 
-
-- How often do you have a drink containing alcohol?
-- How many drinks containing alcohol do you have on a typical day when you are drinking?
-- How often do you have six or more drinks on one occasion?
-
-The questions each contribute points to the total score which ranges from 0-12.  The total score is interpreted as follows:
-
-Female - ≥3p indicates alcohol misuse
-Male - ≥4p indicates alcohol misuse
-A score of 5p or more is consistent with alcohol abuse and possible liver damage">
-			misuse = <"This archetype is only intended for the AUDIT-C, not the full version.">
 			copyright = <"Cambio Healthcare Systems">
 		>
 	>
@@ -64,7 +66,7 @@ A score of 5p or more is consistent with alcohol abuse and possible liver damage
 		["references"] = <"Bush K, Kivlahan DR, McDonell MB, Fihn SD, Bradley KA. The AUDIT alcohol consumption questions (AUDIT-C): an effective brief screening test for problem drinking. Ambulatory Care Quality Improvement Project (ACQUIP). Alcohol Use Disorders Identification Test. Arch Intern Med. 1998 Sep 14;158(16):1789-95.
 
 Bradley KA, et. al. AUDIT-C as a brief screen for alcohol misuse in primary care. Alcohol Clin Exp Res. 2007 Jul;31(7):1208-17. Epub 2007 Apr 19.">
-		["MD5-CAM-1.0.1"] = <"9C74019BE47F018BE0DAC0336111D928">
+		["MD5-CAM-1.0.1"] = <"13FB4196C6B207B1A7D0F5CA86291E72">
 	>
 
 definition
@@ -115,6 +117,17 @@ definition
 				}
 			}
 		}
+		state matches {
+			HISTORY[at0025] matches {	-- State Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0026] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0024] matches {*}
+						}
+					}
+				}
+			}
+		}
 	}
 
 ontology
@@ -151,67 +164,79 @@ ontology
 				>
 				["at0008"] = <
 					text = <"Never">
-					description = <"">
+					description = <"*">
 				>
 				["at0009"] = <
 					text = <"Monthly or less">
-					description = <"">
+					description = <"*">
 				>
 				["at0010"] = <
 					text = <"2-4 times a month">
-					description = <"">
+					description = <"*">
 				>
 				["at0011"] = <
 					text = <"2-3 times a week">
-					description = <"">
+					description = <"*">
 				>
 				["at0012"] = <
 					text = <"4 or more times a week">
-					description = <"">
+					description = <"*">
 				>
 				["at0013"] = <
 					text = <"1 or 2">
-					description = <"">
+					description = <"*">
 				>
 				["at0014"] = <
 					text = <"3 or 4">
-					description = <"">
+					description = <"*">
 				>
 				["at0015"] = <
 					text = <"5 or 6">
-					description = <"">
+					description = <"*">
 				>
 				["at0016"] = <
 					text = <"7 to 9">
-					description = <"">
+					description = <"*">
 				>
 				["at0017"] = <
 					text = <"10 or more standard drinks">
-					description = <"">
+					description = <"*">
 				>
 				["at0018"] = <
 					text = <"Never">
-					description = <"">
+					description = <"*">
 				>
 				["at0019"] = <
 					text = <"Less than monthly">
-					description = <"">
+					description = <"*">
 				>
 				["at0020"] = <
 					text = <"Monthly">
-					description = <"">
+					description = <"*">
 				>
 				["at0021"] = <
 					text = <"Weekly">
-					description = <"">
+					description = <"*">
 				>
 				["at0022"] = <
 					text = <"Daily or almost daily">
-					description = <"">
+					description = <"*">
 				>
 				["at0023"] = <
 					text = <"Total score">
 					description = <"Sum of all factors ">
+				>
+				["at0024"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0025"] = <
+					text = <"*State Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0026"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
 				>
 			>
 		>
@@ -247,67 +272,79 @@ ontology
 				>
 				["at0008"] = <
 					text = <"Aldrig">
-					description = <"">
+					description = <"*">
 				>
 				["at0009"] = <
 					text = <"1 gång i månaden eller mer sällan">
-					description = <"">
+					description = <"*">
 				>
 				["at0010"] = <
 					text = <"2-4 gånger i månaden">
-					description = <"">
+					description = <"*">
 				>
 				["at0011"] = <
 					text = <"2-3 gånger i veckan">
-					description = <"">
+					description = <"*">
 				>
 				["at0012"] = <
 					text = <"4 gånger per vecka eller mer">
-					description = <"">
+					description = <"*">
 				>
 				["at0013"] = <
 					text = <"1-2">
-					description = <"">
+					description = <"*">
 				>
 				["at0014"] = <
 					text = <"3-4">
-					description = <"">
+					description = <"*">
 				>
 				["at0015"] = <
 					text = <"5-6">
-					description = <"">
+					description = <"*">
 				>
 				["at0016"] = <
 					text = <"7-9">
-					description = <"">
+					description = <"*">
 				>
 				["at0017"] = <
 					text = <"10 eller fler">
-					description = <"">
+					description = <"*">
 				>
 				["at0018"] = <
 					text = <"Aldrig">
-					description = <"">
+					description = <"*">
 				>
 				["at0019"] = <
 					text = <"Mer sällan än en gång i månaden">
-					description = <"">
+					description = <"*">
 				>
 				["at0020"] = <
 					text = <"Varje månad">
-					description = <"">
+					description = <"*">
 				>
 				["at0021"] = <
 					text = <"Varje vecka">
-					description = <"">
+					description = <"*">
 				>
 				["at0022"] = <
 					text = <"Dagligen eller nästan varje dag">
-					description = <"">
+					description = <"*">
 				>
 				["at0023"] = <
 					text = <"Total poäng">
 					description = <"Summan av samtliga faktorer">
+				>
+				["at0024"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0025"] = <
+					text = <"State Event Series">
+					description = <"@ internal @">
+				>
+				["at0026"] = <
+					text = <"Any event">
+					description = <"*">
 				>
 			>
 		>

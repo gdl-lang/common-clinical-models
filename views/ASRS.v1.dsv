@@ -48,9 +48,9 @@
         "keywords": [
           "ADHD",
           "ASRS",
-          "DSM-IV"
+          "DSM"
         ],
-        "use": "Del A består av sex frågor vilka används för screening, medan de resterande tolv frågorna utgör Del B vilken avser uppnå en fördjupad kartläggning av tillståndet. \n\nDiagnostiken vid ADHD är komplex och baseras ofta på symtom från barndomen. Detta verktyg avser utvärdera nuvarande tillstånd utan hänsyn till historik, och på så sätt identifiera individer i behov av vidare utredning.\n\nDel A genererar en poäng som uppgår till maximalt 24p, medan Del B som mest uppgår till 48p. Delarna slås även ihop för en total poäng; denna uppgår således till maximalt 72p. Svarsalternativen utgörs av fem alternativ;\n\nAldrig\nSällan\nIbland\nOfta\nMycket ofta\n\nPoäng fördelas per svarsalternativ i enlighet med [3]. Vid en poäng om ≤13p i Del A bedöms ADHD osannolikt, medan ≤13p indikerar behov av vidare utredning. \n",
+        "use": "Del A består av sex frågor vilka används för screening, medan de resterande tolv frågorna utgör Del B vilken avser uppnå en fördjupad kartläggning av tillståndet. \n\nDiagnostiken vid ADHD är komplex och baseras ofta på symtom från barndomen. Detta verktyg avser utvärdera nuvarande tillstånd utan hänsyn till historik, och på så sätt identifiera individer i behov av vidare utredning.\n\nDel A genererar en poäng som uppgår till maximalt 24p, medan Del B som mest uppgår till 48p. Delarna slås även ihop för en total poäng; denna uppgår således till maximalt 72p. Svarsalternativen utgörs av fem alternativ;\n\nAldrig\nSällan\nIbland\nOfta\nMycket ofta\n\nPoäng fördelas per svarsalternativ i enlighet med [3]. Vid en poäng om \u003d13p i Del A bedöms ADHD osannolikt, medan \u003d13p indikerar behov av vidare utredning. \n",
         "misuse": "ASRS är avsedd för screening och utvärdering, och är ej att betrakta som diagnostisk.",
         "copyright": "© Cambio Healthcare Systems"
       },
@@ -59,7 +59,7 @@
         "keywords": [
           "ADHD",
           "ASRS",
-          "DSM-IV",
+          "DSM",
           "Adult ADHD"
         ],
         "use": "The first part consisting of 6 questions - Part A - acts as a screening tool with the remaining 12 questions in Part B helping to explore the issues deeper. \n\nThe detection of adult ADHD is notoriously difficult and often based on whether the individual had childhood symptoms. This tool is able to assess the possibility regardless of a previous history. This tool may, however, alert the clinician to asking for a possible past history as the patient may have been undiagnosed as having ADHD as a child.\n\nPart A is normally marked out of 6 and starts at 0. Some marking systems separate out the selections among the five possibilities of response:\n\nNever Rarely Sometimes Often Very often\n\nThis tool replicates this separation, so the total marks in Part A ranges from 0 to 24\n\nA similar convention is used in Part B over the 12 questions, with overall score range of between 0 and 48 and a maximum score of 72 across both parts..\n\nA score of \u003e\u003d 13 is indicative of ADHD warranting further investigation and a score of \u003e\u003d 8 in part B. However, a score \u003e\u003d 13 in Part A on it\u0027s own is able to trigger the need to run further tests on its own. One must bare in mind that the threshold between ADHD and non-ADHD varies depending on the question - scored at 2 or 3. The convention to use to interpret the score follows that in Ref [3]",
@@ -73,7 +73,8 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
-    "ASRS_ADHD.v1"
+    "ASRS_ADHD.v1",
+    "ASRS_ADHD_Assessment.v1"
   ],
   "alertBindings": {},
   "termDefinitions": {
@@ -101,6 +102,12 @@
 <body ng-controller="cds_controller">
 <#assign app_help_tag = "def.guides['ASRS_ADHD.v1'].concept">
 <#assign references = "def.terms['vt0001']"/>
+<#assign asrs_for_adhd_assessment_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.asrs_for_adhd_assessment.v1']">
+<#assign asrs_for_adhd_assessment_entry_def = "def.entries['openEHR-EHR-EVALUATION.asrs_for_adhd_assessment.v1']">
+<#assign part_a_screening_interpretation_def = asrs_for_adhd_assessment_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign part_b_score_interpretation_def = asrs_for_adhd_assessment_entry_def + ".elements['/data{at0001}/items{at0003}']">
+<#assign part_a_screening_interpretation_cds_data = asrs_for_adhd_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
+<#assign part_b_score_interpretation_cds_data = asrs_for_adhd_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0003}']">
 <#assign asrs_for_adhd_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.asrs_for_adhd.v1']">
 <#assign asrs_for_adhd_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.asrs_for_adhd.v1']">
 <#assign asrs_for_adhd_entry_def = "def.entries['openEHR-EHR-OBSERVATION.asrs_for_adhd.v1']">
@@ -393,6 +400,23 @@ angular.module('cds_app').controller('ASRS_Ctrl', function($scope, $window){
       <span>{{${part_a_and_b_total_score_cds_data}.value.magnitude}}</span>
     </div>
   </div>
+ <div class="row collapse" title="{{${part_a_screening_interpretation_def}.description}}" id="displayresult2">
+    <div class="medium-7 columns">
+      <span><b>{{${part_a_screening_interpretation_def}.name}}:</b></span>
+    </div>
+    <div class="medium-5 columns">
+      <span>{{${part_a_screening_interpretation_cds_data}.value.symbol.value}}</span>
+    </div>
+  </div>
+ <div class="row collapse" title="{{${part_b_score_interpretation_def}.description}}" id="displayresult1">
+    <div class="medium-7 columns">
+      <span><b>{{${part_b_score_interpretation_def}.name}}:</b></span>
+    </div>
+    <div class="medium-5 columns">
+      <span>{{${part_b_score_interpretation_cds_data}.value.symbol.value}}</span>
+    </div>
+  </div>
+ 
 </div>
 </div>
 
@@ -407,21 +431,21 @@ angular.module('cds_app').controller('ASRS_Ctrl', function($scope, $window){
   <div class="row collapse">
       <div class="medium-11 medium-offset-1 column">
         <li>
-          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/12501574">[1] Schweitzer JB, et al. Attention-deficit/hyperactivity disorder. Med Clin North Am. 2001;85(3):10-11, 757-777.</a></i>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/12501574">Schweitzer JB, et al. Attention-deficit/hyperactivity disorder. Med Clin North Am. 2001;85(3):10-11, 757-777.</a></i>
         </li>
       </div>
     </div>
 	<div class="row collapse">
       <div class="medium-11 medium-offset-1 column">
         <li>
-          <i><a>[2] Barkley RA. Attention Deficit Hyperactivity Disorder: A Handbook for Diagnosis and Treatment. 2nd ed. 1998.</a></i>
+          <i><a>Barkley RA. Attention Deficit Hyperactivity Disorder: A Handbook for Diagnosis and Treatment. 2nd ed. 1998.</a></i>
         </li>
       </div>
     </div>
 	<div class="row collapse">
       <div class="medium-11 medium-offset-1 column">
         <li>
-          <i><a href="https://add.org/wp-content/uploads/2015/03/adhd-questionnaire-ASRS111.pdf">[3] https://add.org/wp-content/uploads/2015/03/adhd-questionnaire-ASRS111.pdf</a></i>
+          <i><a href="https://add.org/wp-content/uploads/2015/03/adhd-questionnaire-ASRS111.pdf">https://add.org/wp-content/uploads/2015/03/adhd-questionnaire-ASRS111.pdf</a></i>
         </li>
       </div>
     </div>
@@ -554,6 +578,5 @@ angular.module('cds_app').controller('ASRS_Ctrl', function($scope, $window){
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
-
 
 </body></html>
