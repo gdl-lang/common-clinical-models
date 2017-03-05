@@ -51,21 +51,23 @@
           "PtGDA",
           "RA",
           "DAS28",
-          "DAS28-CRP"
+          "DAS28-CRP",
+          "reumatologi"
         ],
-        "use": "Använd för att beräkna värdet av DAS28-CRP baserat på fyra parametrar: antal ömma (TJC) och svullna (SJC) leder, sjukdomskänsla enligt VAS (PtGDA - Patient Global Assessment of Disease Activity), provresultat för CRP (angivet i mg/dl). Dessa parametrar återfinns samtliga i separata arketyper. (PtGDA anges i \\\"mm\\\")\n\nFormel: DAS28-CRP \u003d (0.56*√(TJC)+0.28*√(SJC)+0.36*ln(CRP + 1)+0.014*PtGDA +0.96)\n",
+        "use": "Använd för att beräkna värdet av DAS28-CRP baserat på fyra parametrar: antal ömma (TJC) och svullna (SJC) leder, sjukdomskänsla enligt VAS (PtGDA - Patient Global Assessment of Disease Activity), provresultat för CRP (angivet i mg/dl). Dessa parametrar återfinns samtliga i separata arketyper. (PtGDA anges i \\\"mm\\\")\n\nFormel: DAS28-CRP \u003d (0.56*v(TJC)+0.28*v(SJC)+0.36*ln(CRP + 1)+0.014*PtGDA +0.96)\n",
         "copyright": "© Cambio Healthcare Systems"
       },
       "en": {
-        "purpose": "This guide calculates the disesase activity score 28-CRP (DAS28-CRP) which is a measure of disease activity and treatment response in individuals with rheumatoid arthritis.",
+        "purpose": "This guideline calculates the disesase activity score 28-CRP (DAS28-CRP) which is a measure of disease activity and treatment response in individuals with rheumatoid arthritis.",
         "keywords": [
           "rheumatoid arthritis",
           "PtGDA",
           "tender joint count",
           "swollen joint count",
-          "DAS28-CRP"
+          "DAS28-CRP",
+          "rheumatology"
         ],
-        "use": "Use to calculate DAS28-CRP, based on four input parameters: tender joint count (TJC), swollen joint count (SJC), patient global assessment of disease activity (PtGDA), and level of C-reactive protein (in mg/dl). PtGDA uses the unit \u0027mm\u0027.\n\nDAS28-CRP \u003d (0.56*√(TJC)+0.28*√(SJC)+0.36*ln(CRP + 1)+0.014*PtGDA +0.96)",
+        "use": "Use to calculate DAS28-CRP, based on four input parameters: tender joint count (TJC), swollen joint count (SJC), patient global assessment of disease activity (PtGDA), and level of C-reactive protein (in mg/dl). PtGDA uses the unit \u0027mm\u0027.\n\nDAS28-CRP \u003d (0.56*v(TJC)+0.28*v(SJC)+0.36*ln(CRP + 1)+0.014*PtGDA +0.96)",
         "copyright": "© Cambio Healthcare Systems"
       }
     },
@@ -75,57 +77,70 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
+    "DAS28-CRP_Assessment.v1",
     "DAS28-CRP_Calculation.v1"
   ],
   "alertBindings": {},
   "termDefinitions": {
     "sv": {
-      "id": "sv"
+      "id": "sv",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "Referenser"
+        }
+      }
     },
     "en": {
       "id": "en",
-      "terms": {}
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "References"
+        }
+      }
     }
   }
-}
-</script>
+}</script>
 </head>
 <body ng-controller="cds_controller">
 <#assign app_help_tag = "def.guides['DAS28-CRP_Calculation.v1'].concept">
 <#assign references = "def.terms['vt0001']"/>
 <#assign lab_test_c_reactive_protein_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.lab_test_c_reactive_protein.v1']">
 <#assign lab_test_c_reactive_protein_entry_def = "def.entries['openEHR-EHR-OBSERVATION.lab_test_c_reactive_protein.v1']">
-<#assign event_time_def = lab_test_c_reactive_protein_entry_def + ".elements['/data/events/time']">
 <#assign result_def = lab_test_c_reactive_protein_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
-<#assign event_time_ehr_data = lab_test_c_reactive_protein_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign event_time_def = lab_test_c_reactive_protein_entry_def + ".elements['/data/events/time']">
 <#assign result_ehr_data = lab_test_c_reactive_protein_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign event_time_ehr_data = lab_test_c_reactive_protein_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign disease_activity_index___joint_score_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.disease_activity_index_joint_score.v1']">
 <#assign disease_activity_index___joint_score_entry_def = "def.entries['openEHR-EHR-OBSERVATION.disease_activity_index_joint_score.v1']">
+<#assign tender_joint_count__tjc__def = disease_activity_index___joint_score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0043}']">
 <#assign swollen_joint_count__sjc__def = disease_activity_index___joint_score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0044}']">
 <#assign event_time1_def = disease_activity_index___joint_score_entry_def + ".elements['/data/events/time']">
-<#assign tender_joint_count__tjc__def = disease_activity_index___joint_score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0043}']">
+<#assign tender_joint_count__tjc__ehr_data = disease_activity_index___joint_score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0043}']">
 <#assign swollen_joint_count__sjc__ehr_data = disease_activity_index___joint_score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0044}']">
 <#assign event_time1_ehr_data = disease_activity_index___joint_score_entry_ehr_data + "[0].elements['/data/events/time']">
-<#assign tender_joint_count__tjc__ehr_data = disease_activity_index___joint_score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0043}']">
-<#assign disease_activity_score_28_crp_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.disease_activity_score_28_crp.v1']">
-<#assign disease_activity_score_28_crp_entry_def = "def.entries['openEHR-EHR-OBSERVATION.disease_activity_score_28_crp.v1']">
-<#assign das28_crp_def = disease_activity_score_28_crp_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign event_time2_def = disease_activity_score_28_crp_entry_def + ".elements['/data/events/time']">
-<#assign das28_crp_cds_data = disease_activity_score_28_crp_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign event_time2_cds_data = disease_activity_score_28_crp_entry_cds_data + "[0].elements['/data/events/time']">
+<#assign disease_activity_score_28_crp_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.disease_activity_score_28_crp.v1']">
+<#assign disease_activity_score_28_crp_entry_def = "def.entries['openEHR-EHR-EVALUATION.disease_activity_score_28_crp.v1']">
+<#assign disease_activity_def = disease_activity_score_28_crp_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign disease_activity_cds_data = disease_activity_score_28_crp_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
+<#assign disease_activity_score_28_crp_entry1_cds_data = "data.cds['openEHR-EHR-OBSERVATION.disease_activity_score_28_crp.v1']">
+<#assign disease_activity_score_28_crp_entry1_def = "def.entries['openEHR-EHR-OBSERVATION.disease_activity_score_28_crp.v1']">
+<#assign das28_crp_def = disease_activity_score_28_crp_entry1_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign das28_crp_cds_data = disease_activity_score_28_crp_entry1_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 <#assign patient_global_assessment_of_disease_activity__ptgda__entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.patient_global_assessment_arthritis_activity.v1']">
 <#assign patient_global_assessment_of_disease_activity__ptgda__entry_def = "def.entries['openEHR-EHR-OBSERVATION.patient_global_assessment_arthritis_activity.v1']">
 <#assign patient_global_assessment_of_disease_activity__ptgda__score_def = patient_global_assessment_of_disease_activity__ptgda__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign event_time3_def = patient_global_assessment_of_disease_activity__ptgda__entry_def + ".elements['/data/events/time']">
+<#assign event_time2_def = patient_global_assessment_of_disease_activity__ptgda__entry_def + ".elements['/data/events/time']">
 <#assign patient_global_assessment_of_disease_activity__ptgda__score_ehr_data = patient_global_assessment_of_disease_activity__ptgda__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign event_time3_ehr_data = patient_global_assessment_of_disease_activity__ptgda__entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign event_time2_ehr_data = patient_global_assessment_of_disease_activity__ptgda__entry_ehr_data + "[0].elements['/data/events/time']">
 
 <script> 
 angular.module('cds_app').controller('DAS28-CRP_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
     $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
     $scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
-    $scope.${event_time3_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
     $scope.${patient_global_assessment_of_disease_activity__ptgda__score_ehr_data}.value.units = $scope.${patient_global_assessment_of_disease_activity__ptgda__score_def}.units[0];
     $scope.${result_ehr_data}.value.units = $scope.${result_def}.units[0];
   });
@@ -165,7 +180,7 @@ angular.module('cds_app').controller('DAS28-CRP_Ctrl', function($scope, $window)
         <input ng-model="${patient_global_assessment_of_disease_activity__ptgda__score_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
 	  <div class="medium-2 columns">
-        <select ng-model="${patient_global_assessment_of_disease_activity__ptgda__score_ehr_data}.value.units" ng-options="unit for unit in ${patient_global_assessment_of_disease_activity__ptgda__score_def}.units" ng-change="execute()" disabled></select>
+        <select ng-model="${patient_global_assessment_of_disease_activity__ptgda__score_ehr_data}.value.units" ng-options="unit for unit in ${patient_global_assessment_of_disease_activity__ptgda__score_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
   <div class="row collapse" title="{{${lab_test_c_reactive_protein_entry_def}.description}}">
@@ -176,7 +191,7 @@ angular.module('cds_app').controller('DAS28-CRP_Ctrl', function($scope, $window)
         <input ng-model="${result_ehr_data}.value.magnitude" type="number" step="any" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
       <div class="medium-2 columns">
-        <select ng-model="${result_ehr_data}.value.units" id="result_ehr_units" ng-options="unit for unit in ${result_def}.units" ng-change="execute()" disabled></select>
+        <select ng-model="${result_ehr_data}.value.units" id="result_ehr_units" ng-options="unit for unit in ${result_def}.units" ng-change="execute()" disabled=""></select>
       </div>
     </div>
  <div class="row collapse" title="{{${das28_crp_def}.description}}" id="displayresult1">
@@ -187,10 +202,42 @@ angular.module('cds_app').controller('DAS28-CRP_Ctrl', function($scope, $window)
       <span>{{${das28_crp_cds_data}.value.magnitude}} {{${das28_crp_cds_data}.value.units}}</span>
     </div>
   </div>
+  <div class="row collapse" title="{{${disease_activity_def}.description}}" id="displayresult2">
+    <div class="medium-5 columns">
+      <span><b>{{${disease_activity_def}.name}}:</b></span>
+    </div>
+    <div class="medium-7 columns">
+      <span>{{${disease_activity_cds_data}.value.value}}</span>
+    </div>
+  </div>
   
 </div>
 </div>
 
+<div class="row"><div class="medium-12 columns"></div></div>
+<br /><br />
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
+</div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/22473918">Anderson J, Caplan L, Yazdany J, Robbins ML, Neogi T, Michaud K, Saag KG, O'dell JR, Kazi S. Rheumatoid arthritis disease activity measures: American College of Rheumatology recommendations for use in clinical practice. Arthritis care & research. 2012 May 1;64(5):640-7.</a></i>
+        </li>
+      </div>
+    </div>
+	<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/18490431">Wells G, Becker JC, Teng J, Dougados M, Schiff M, Smolen J, Aletaha D, Van Riel PL. Validation of the 28-joint Disease Activity Score (DAS28) and European League Against Rheumatism response criteria based on C-reactive protein against disease progression in patients with rheumatoid arthritis, and comparison with the DAS28 based on erythrocyte sedimentation rate. Annals of the rheumatic diseases. 2009 Jun 1;68(6):954-60.</a></i>
+        </li>
+      </div>
+    </div>
+  </div>
+  
 <style>
   html, body {
     height:100%;
@@ -305,16 +352,18 @@ angular.module('cds_app').controller('DAS28-CRP_Ctrl', function($scope, $window)
     background-color: #e6e6e6; 
     padding-top: 3px;
     padding-bottom: 3px;
+	padding-left: 3px;
     font-size: 90%;
   }
   #displayresult2 {
+    background-color: #f2f2f2;
     padding-top: 3px;
     padding-bottom: 3px;
+	padding-left: 3px;
     font-size: 90%;
   }
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
-
 
 </body></html>
