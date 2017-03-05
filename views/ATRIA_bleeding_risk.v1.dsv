@@ -106,6 +106,8 @@
 }</script>
 </head>
 <body ng-controller="cds_controller">
+<#assign app_help_tag = "def.guides['ATRIA_bleeding_risk_score_Calculation.v1'].concept">
+<#assign references = "def.terms['vt0001']"/>
 <#assign full_blood_count_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.lab_test-full_blood_count.v1']">
 <#assign full_blood_count_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.lab_test-full_blood_count.v1']">
 <#assign full_blood_count_entry_def = "def.entries['openEHR-EHR-OBSERVATION.lab_test-full_blood_count.v1']">
@@ -156,150 +158,137 @@
 <#assign history_of_hypertension_cds_data = atria_bleeding_risk_score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
 <#assign total_score_cds_data = atria_bleeding_risk_score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
 
+<script> 
+angular.module('cds_app').controller('ATRIA_bleeding_risk_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time3_ehr_data}.value.value = new Date().toISOString();
+    $scope.${haemoglobin_ehr_data}.value.units = $scope.${haemoglobin_def}.units[1];
+    $scope.${estimated_glomerular_filtration_rate_ehr_data}.value.units = $scope.${estimated_glomerular_filtration_rate_def}.units[0];
+	$scope.${birthdate_ehr_data}.value.selection = $scope.findMin($scope.${birthdate_def});
+	$scope.${gender_ehr_data}.value.selection = $scope.findMin($scope.${gender_def});
+	$scope.${hypertension_ehr_data}.value.selection = $scope.findMin($scope.${hypertension_def});
+	$scope.${hemorrhage_diagnosis__unspecified__ehr_data}.value.selection = $scope.findMin($scope.${hemorrhage_diagnosis__unspecified__def});
+  });
+});
+</script>
 
-
+<div ng-show="ready" ng-controller="ATRIA_bleeding_risk_Ctrl">
 <div ng-show="ready">
+<div class="header">
+  <h1>{{def.concept.name}}</h1>
+  <h2>{{def.concept.description}}</h2>
+  <div class="help-tip">
+	<p>{{${app_help_tag}.description}}</p>
+  </div>
+</div>
 
-
-
-
-
-
-
-
-<div class="row">
-<div class="medium-12 column">
-<h1>{{def.concept.name}}</h1>
-</div>
-</div>
-<div class="row">
-<div class="medium-6 column">
-<form name="form">
-<fieldset>
-<legend>{{${full_blood_count_entry_def}.name}}</legend>
-<label>{{${haemoglobin_def}.name}}</label>
-<div class="row collapse" title="{{${haemoglobin_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${haemoglobin_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-<div class="medium-3 columns">
-<select ng-model="${haemoglobin_ehr_data}.value.units" id="haemoglobin_ehr_units" ng-options="unit for unit in ${haemoglobin_def}.units" ng-change="execute()"></select>
-</div>
-</div>
-<label>{{${event_time_def}.name}}</label>
-<div class="row collapse" title="{{${event_time_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${history_of_prior_medical_diagnosis_entry_def}.name}}</legend>
-<label>{{${hypertension_def}.name}}</label>
-<div class="row collapse" title="{{${hypertension_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${hypertension_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${hypertension_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${hemorrhage_diagnosis__unspecified__def}.name}}</label>
-<div class="row collapse" title="{{${hemorrhage_diagnosis__unspecified__def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${hemorrhage_diagnosis__unspecified__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${hemorrhage_diagnosis__unspecified__def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${event_time1_def}.name}}</label>
-<div class="row collapse" title="{{${event_time1_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time1_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${estimated_glomerular_filtration_rate_entry_def}.name}}</legend>
-<label>{{${estimated_glomerular_filtration_rate_def}.name}}</label>
-<div class="row collapse" title="{{${estimated_glomerular_filtration_rate_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${estimated_glomerular_filtration_rate_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-<div class="medium-3 columns">
-<select ng-model="${estimated_glomerular_filtration_rate_ehr_data}.value.units" id="estimated_glomerular_filtration_rate_ehr_units" ng-options="unit for unit in ${estimated_glomerular_filtration_rate_def}.units" ng-change="execute()"></select>
-</div>
-</div>
-<label>{{${event_time2_def}.name}}</label>
-<div class="row collapse" title="{{${event_time2_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time2_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${basic_demographic_entry_def}.name}}</legend>
-<label>{{${gender_def}.name}}</label>
-<div class="row collapse" title="{{${gender_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${gender_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${gender_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${birthdate_def}.name}}</label>
+<div class="card">
 <div class="row collapse" title="{{${birthdate_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${birthdate_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+    <div class="medium-5 columns">
+      <label>{{${birthdate_def}.name}}</label>
+    </div>
+    <div class="medium-7 columns">
+      <input ng-model="${birthdate_ehr_data}.value.value" type="text" pikaday="date" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+    </div>
+  </div>
+  <div class="row collapse" title="{{${gender_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${gender_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${gender_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${gender_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${hypertension_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${hypertension_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${hypertension_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${hypertension_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+  <div class="row collapse" title="{{${hemorrhage_diagnosis__unspecified__def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${hemorrhage_diagnosis__unspecified__def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${hemorrhage_diagnosis__unspecified__def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${hemorrhage_diagnosis__unspecified__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${haemoglobin_def}.description}}">
+<div class="medium-5 columns">
+<label>{{${haemoglobin_def}.name}}</label>
+</div>
+<div class="medium-5 columns">
+        <input ng-model="${haemoglobin_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${haemoglobin_ehr_data}.value.units" ng-options="unit for unit in ${haemoglobin_def}.units" ng-change="execute()" disabled=""></select>
+      </div>
+</div>
+<div class="row collapse" title="{{${estimated_glomerular_filtration_rate_def}.description}}">
+<div class="medium-5 columns">
+<label>{{${estimated_glomerular_filtration_rate_def}.name}}</label>
+</div>
+<div class="medium-5 columns">
+        <input ng-model="${estimated_glomerular_filtration_rate_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${estimated_glomerular_filtration_rate_ehr_data}.value.units" ng-options="unit for unit in ${estimated_glomerular_filtration_rate_def}.units" ng-change="execute()" disabled=""></select>
+      </div>
+</div>
+<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult1">
+  <div class="medium-5 columns">
+    <label><b>{{${total_score_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${total_score_cds_data}.value.magnitude}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${atria_bleeding_risk_def}.description}}" id="displayresult2">
+  <div class="medium-5 columns">
+    <label><b>{{${atria_bleeding_risk_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${atria_bleeding_risk_cds_data}.value.value}}</label>
+  </div>
 </div>
 </div>
-<label>{{${event_time3_def}.name}}</label>
-<div class="row collapse" title="{{${event_time3_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${event_time3_ehr_data}.value.value" type="text"  pikaday="date"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
 </div>
+
+<div class="row"><div class="medium-12 columns"></div></div>
+<br /><br />
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
 </div>
-</fieldset>
-</form>
-</div>
-<div class="medium-6 column">
-<fieldset>
-<legend>{{${full_blood_count_entry_def}.name}}</legend>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${haemoglobin_def}.name}}: </b>{{${haemoglobin_cds_data}.value.magnitude}} {{${haemoglobin_cds_data}.value.units}}</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${atria_bleeding_risk_assessment_entry_def}.name}}</legend>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${atria_bleeding_risk_def}.name}}: </b>{{${atria_bleeding_risk_cds_data}.value.value}}</div>
-</div>
-</fieldset>
-<fieldset>
-<legend>{{${atria_bleeding_risk_score_entry_def}.name}}</legend>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${anemia_def}.name}}: </b>{{${anemia_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${severe_renal_disease_def}.name}}: </b>{{${severe_renal_disease_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${age__75_years_def}.name}}: </b>{{${age__75_years_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${prior_hemorrhage_diagnosis_def}.name}}: </b>{{${prior_hemorrhage_diagnosis_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${history_of_hypertension_def}.name}}: </b>{{${history_of_hypertension_cds_data}.value.symbol.value}}</div>
-</div>
-<div class="row">
-<div class="medium-12 columns">
-<b>{{${total_score_def}.name}}: </b>{{${total_score_cds_data}.value.magnitude}}</div>
-</div>
-</fieldset>
-</div>
-</div>
-</div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/21757117">Fang MC, Go AS, Chang Y, Borowsky LH, Pomernacki NK, Udaltsova N, Singer DE. A new risk scheme to predict warfarin-associated hemorrhage: The ATRIA (Anticoagulation and Risk Factors in Atrial Fibrillation) Study. Journal of the American College of Cardiology. 2011 Jul 19;58(4):395-401.</a></i>
+        </li>
+      </div>
+    </div>
+<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/22858389">Apostolakis S, Lane DA, Guo Y, Buller H, Lip GY. Performance of the HEMORR 2 HAGES, ATRIA, and HAS-BLED Bleeding Risk–Prediction Scores in Patients With Atrial Fibrillation Undergoing Anticoagulation: The AMADEUS (Evaluating the Use of SR34006 Compared to Warfarin or Acenocoumarol in Patients With Atrial Fibrillation) Study. Journal of the American College of Cardiology. 2012 Aug 28;60(9):861-7.</a></i>
+        </li>
+      </div>
+    </div>
+<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/22722228">Roldán V, Marín F, Fernández H, Manzano-Fernandez S, Gallego P, Valdés M, Vicente V, Lip GY. Predictive value of the HAS-BLED and ATRIA bleeding scores for the risk of serious bleeding in a “real-world” population with atrial fibrillation receiving anticoagulant therapy. CHEST Journal. 2013 Jan 1;143(1):179-84.</a></i>
+        </li>
+      </div>
+    </div>
+  </div>
 
 <style>
   html, body {
