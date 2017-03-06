@@ -37,11 +37,10 @@
     "originalAuthor": {
       "date": "2017-01-03",
       "name": "Syeeda S Farruque",
-      "organisation": "Cambio Healthcare Systems",
-      "email": ""
+      "organisation": "Cambio Healthcare Systems"
     },
     "otherContributors": [
-      "Dennis Forslund"
+      "Dennis Forslund, Cambio Healthcare Systems"
     ],
     "details": {
       "sv": {
@@ -79,7 +78,8 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
-    "CCI.v1"
+    "CCI.v1",
+    "CCI_Assessment.v1"
   ],
   "alertBindings": {},
   "termDefinitions": {
@@ -107,6 +107,20 @@
 <body ng-controller="cds_controller">
 <#assign app_help_tag = "def.guides['CCI.v1'].concept">
 <#assign references = "def.terms['vt0001']"/>
+<#assign cci_scoring_system_assessment_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.cci_scoring_system_assessment.v1']">
+<#assign cci_scoring_system_assessment_entry_def = "def.entries['openEHR-EHR-EVALUATION.cci_scoring_system_assessment.v1']">
+<#assign _1_year_survival_probability__cci_score_alone_def = cci_scoring_system_assessment_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign _2_year_survival_probability__cci_score_alone_def = cci_scoring_system_assessment_entry_def + ".elements['/data{at0001}/items{at0003}']">
+<#assign _1_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score__def = cci_scoring_system_assessment_entry_def + ".elements['/data{at0001}/items{at0004}']">
+<#assign _2_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score_def = cci_scoring_system_assessment_entry_def + ".elements['/data{at0001}/items{at0005}']">
+<#assign _1_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score_def = cci_scoring_system_assessment_entry_def + ".elements['/data{at0001}/items{at0006}']">
+<#assign _2_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score1_def = cci_scoring_system_assessment_entry_def + ".elements['/data{at0001}/items{at0007}']">
+<#assign _1_year_survival_probability__cci_score_alone_cds_data = cci_scoring_system_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
+<#assign _2_year_survival_probability__cci_score_alone_cds_data = cci_scoring_system_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0003}']">
+<#assign _1_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score__cds_data = cci_scoring_system_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0004}']">
+<#assign _2_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score_cds_data = cci_scoring_system_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0005}']">
+<#assign _1_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score_cds_data = cci_scoring_system_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0006}']">
+<#assign _2_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score1_cds_data = cci_scoring_system_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0007}']">
 <#assign basic_demographic_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
 <#assign basic_demographic_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
 <#assign basic_demographic_entry_def = "def.entries['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
@@ -241,7 +255,7 @@ angular.module('cds_app').controller('CCI_Ctrl', function($scope, $window){
       <label>{{${myocardial_infarction__history__not_ecg_changes_only__def}.name}}</label>
     </div>
     <label class="medium-3 columns" ng-repeat="(key, desc) in ${myocardial_infarction__history__not_ecg_changes_only__def}.selections">
-      <input type="radio" value="{{key}}" ng-model= "${myocardial_infarction__history__not_ecg_changes_only__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      <input type="radio" value="{{key}}" ng-model="${myocardial_infarction__history__not_ecg_changes_only__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
   <div class="row collapse" title="{{${congestive_heart_failure_def}.description}}">
@@ -281,7 +295,7 @@ angular.module('cds_app').controller('CCI_Ctrl', function($scope, $window){
       <label>{{${chronic_pulmonary_disease_def}.name}}</label>
     </div>
     <label class="medium-3 columns" ng-repeat="(key, desc) in ${chronic_pulmonary_disease_def}.selections">
-      <input type="radio" value="{{key}}" ng-model= "${chronic_pulmonary_disease_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      <input type="radio" value="{{key}}" ng-model="${chronic_pulmonary_disease_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
   <div class="row collapse" title="{{${connective_tissue_disease_def}.description}}">
@@ -321,7 +335,7 @@ angular.module('cds_app').controller('CCI_Ctrl', function($scope, $window){
       <label>{{${hemiplegia_def}.name}}</label>
     </div>
     <label class="medium-3 columns" ng-repeat="(key, desc) in ${hemiplegia_def}.selections">
-      <input type="radio" value="{{key}}" ng-model= "${hemiplegia_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      <input type="radio" value="{{key}}" ng-model="${hemiplegia_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
   <div class="row collapse" title="{{${__moderate_or_severe_renal_disease_def}.description}}">
@@ -361,7 +375,7 @@ angular.module('cds_app').controller('CCI_Ctrl', function($scope, $window){
       <label>{{${lymphoma_def}.name}}</label>
     </div>
     <label class="medium-3 columns" ng-repeat="(key, desc) in ${lymphoma_def}.selections">
-      <input type="radio" value="{{key}}" ng-model= "${lymphoma_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      <input type="radio" value="{{key}}" ng-model="${lymphoma_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
   <div class="row collapse" title="{{${moderate_or_severe_liver_disease_def}.description}}">
@@ -402,6 +416,54 @@ angular.module('cds_app').controller('CCI_Ctrl', function($scope, $window){
   </div>
   <div class="medium-7 columns" style="text-align: center;">
     <label>{{${cci_age_adjusted_score_cds_data}.value.magnitude}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${_1_year_survival_probability__cci_score_alone_def}.description}}" id="displayresult1">
+  <div class="medium-5 columns">
+    <label><b>{{${_1_year_survival_probability__cci_score_alone_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${_1_year_survival_probability__cci_score_alone_cds_data}.value.symbol.value}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${_2_year_survival_probability__cci_score_alone_def}.description}}" id="displayresult2">
+  <div class="medium-5 columns">
+    <label><b>{{${_2_year_survival_probability__cci_score_alone_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${_2_year_survival_probability__cci_score_alone_cds_data}.value.symbol.value}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${_1_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score__def}.description}}" id="displayresult1">
+  <div class="medium-5 columns">
+    <label><b>{{${_1_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score__def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${_1_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score__cds_data}.value.symbol.value}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${_2_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score_def}.description}}" id="displayresult2">
+  <div class="medium-5 columns">
+    <label><b>{{${_2_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${_2_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score_cds_data}.value.symbol.value}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${_1_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score_def}.description}}" id="displayresult1">
+  <div class="medium-5 columns">
+    <label><b>{{${_1_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${_1_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score_cds_data}.value.symbol.value}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${_2_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score1_def}.description}}" id="displayresult2">
+  <div class="medium-5 columns">
+    <label><b>{{${_2_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score1_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${_2_year_survival_probability__based_on_cci_score_and_serum_albumin__3_5g_dl_to_categorize_the_score1_cds_data}.value.symbol.value}}</label>
   </div>
 </div>
 
@@ -566,6 +628,5 @@ angular.module('cds_app').controller('CCI_Ctrl', function($scope, $window){
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
-
 
 </body></html>
