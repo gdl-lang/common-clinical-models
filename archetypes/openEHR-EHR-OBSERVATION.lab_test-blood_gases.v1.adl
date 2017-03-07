@@ -4,7 +4,7 @@ specialize
 	openEHR-EHR-OBSERVATION.lab_test.v1
 
 concept
-	[at0000.1]	-- Blodgas-analys
+	[at0000.1]	-- Blood gas assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -23,20 +23,20 @@ description
 		["date"] = <"23/04/2006">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"For recording the arterial or venous blood gases and respiration products.">
-			use = <"">
-			keywords = <"lab", "laboratory", "oxygen", "pH", "carbon dioxide">
-			misuse = <"">
-			copyright = <"� openEHR Foundation">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Registrering av provsvar för arteriell eller venös blodgas.
 ">
 			use = <"">
 			keywords = <"lab", "blodgas", "pH", "PCO2", "BE", "base excess", "klinisk kemi">
+			misuse = <"">
+			copyright = <"� openEHR Foundation">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"For recording the arterial or venous blood gases and respiration products.">
+			use = <"">
+			keywords = <"lab", "laboratory", "oxygen", "pH", "carbon dioxide">
 			misuse = <"">
 			copyright = <"� openEHR Foundation">
 		>
@@ -49,44 +49,44 @@ Available from: http://www.nehta.gov.au/data-group-library/data-specifications/d
 
 IHE. IHE, Laboratory Technical Framework, Volume 3 Content [Internet]. 2008;
 Available from: http://www.ihe.net/Technical_Framework/upload/ihe_lab_TF_rel2_1-Vol-3_FT_2008-08-08.pdf">
-		["MD5-CAM-1.0.1"] = <"9BFA94351B0D5018743C02B427128B61">
+		["MD5-CAM-1.0.1"] = <"EC75414AC70E8FFA2FF7E1F4A17AEFE9">
 	>
 
 definition
-	OBSERVATION[at0000.1] matches {	-- Blodgas-analys
+	OBSERVATION[at0000.1] matches {	-- Blood gas assessment
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..*} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- *Test name(en)
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Test name
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0077] occurrences matches {0..1} matches {	-- *Diagnostic service(en)
+									ELEMENT[at0077] occurrences matches {0..1} matches {	-- Diagnostic service
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0073] occurrences matches {0..1} matches {	-- *Test status(en)
+									ELEMENT[at0073] occurrences matches {0..1} matches {	-- Test status
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0037, 	-- *Interim(en)
-													at0038, 	-- *Final(en)
-													at0039, 	-- *Supplementary(en)
-													at0040, 	-- *Corrected (amended)(en)
-													at0074, 	-- *Aborted(en)
-													at0079]	-- *Never performed(en)
+													at0037, 	-- Interim
+													at0038, 	-- Final
+													at0039, 	-- Supplementary
+													at0040, 	-- Corrected (amended)
+													at0074, 	-- Aborted
+													at0079]	-- Never performed
 												}
 											}
 										}
 									}
-									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- *Specimen detail(en)
+									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- Specimen detail
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.specimen\.v1/}
 										exclude
@@ -125,7 +125,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.10] occurrences matches {0..1} matches {	-- Arteriellt pH
+									ELEMENT[at0078.10] occurrences matches {0..1} matches {	-- Arterial pH
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -166,14 +166,17 @@ definition
 									}
 									ELEMENT[at0078.7] occurrences matches {0..1} matches {	-- SaO2
 										value matches {
-											DV_PROPORTION matches {
-												numerator matches {|0.0..100.0|}
-												is_integral matches {False}
-												type matches {2}
-											}
+											C_DV_QUANTITY <
+												property = <[openehr::507]>
+												list = <
+													["1"] = <
+														units = <"%">
+													>
+												>
+											>
 										}
 									}
-									ELEMENT[at0078.6] occurrences matches {0..1} matches {	-- *CaO2(en)
+									ELEMENT[at0078.6] occurrences matches {0..1} matches {	-- CaO2
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -186,7 +189,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.5] occurrences matches {0..1} matches {	-- *PvO2(en)
+									ELEMENT[at0078.5] occurrences matches {0..1} matches {	-- PvO2
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::125]>
@@ -199,7 +202,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.4] occurrences matches {0..1} matches {	-- *PvCO2(en)
+									ELEMENT[at0078.4] occurrences matches {0..1} matches {	-- PvCO2
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::125]>
@@ -212,7 +215,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.3] occurrences matches {0..1} matches {	-- Venöst pH
+									ELEMENT[at0078.3] occurrences matches {0..1} matches {	-- Venous pH
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -225,7 +228,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.2] occurrences matches {0..1} matches {	-- Kapillärt pH
+									ELEMENT[at0078.2] occurrences matches {0..1} matches {	-- Capillary PH
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -253,18 +256,18 @@ definition
 										}
 									}
 									ELEMENT[at0078] occurrences matches {0..*} matches {*}
-									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- *Per-result annotation(en)
+									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- Per-result annotation
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.lab_result_annotation(-[a-zA-Z0-9_]+)*\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
-									ELEMENT[at0057] occurrences matches {0..1} matches {	-- *Overall interpretation(en)
+									ELEMENT[at0057] occurrences matches {0..1} matches {	-- Overall interpretation
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..*} matches {	-- *Multimedia representation(en)
+									ELEMENT[at0010] occurrences matches {0..*} matches {	-- Multimedia representation
 										value matches {
 											DV_MULTIMEDIA matches {
 												media_type matches {[openEHR::]}
@@ -275,13 +278,13 @@ definition
 							}
 						}
 						state matches {
-							ITEM_TREE[at0.91] matches {	-- *Tree(en)
+							ITEM_TREE[at0.91] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									allow_archetype CLUSTER[at0.92] occurrences matches {0..1} matches {	-- *Ambient oxygen(en)
+									allow_archetype CLUSTER[at0.92] occurrences matches {0..1} matches {	-- Ambient oxygen
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.ambient_oxygen(-[a-zA-Z0-9_]+)*\.v1/}
 									}
-									ELEMENT[at0.93] occurrences matches {0..1} matches {	-- *Confounding factors(en)
+									ELEMENT[at0.93] occurrences matches {0..1} matches {	-- Confounding factors
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -294,34 +297,34 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0004] matches {	-- *Tree(en)
+			ITEM_TREE[at0004] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0062] occurrences matches {0..1} matches {	-- *Requestor order identifier(en)
+					ELEMENT[at0062] occurrences matches {0..1} matches {	-- Requestor order identifier
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					allow_archetype CLUSTER[at0090] occurrences matches {0..*} matches {	-- *Requestor(en)
+					allow_archetype CLUSTER[at0090] occurrences matches {0..*} matches {	-- Requestor
 						include
 							archetype_id/value matches {/.*/}
 					}
-					ELEMENT[at0063] occurrences matches {0..1} matches {	-- *Receiver order Identifier(en)
+					ELEMENT[at0063] occurrences matches {0..1} matches {	-- Receiver order Identifier
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- *Receiving laboratory(en)
+					allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- Receiving laboratory
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.organisation\.v1/}
 						exclude
 							archetype_id/value matches {/.*/}
 					}
-					ELEMENT[at0068] occurrences matches {0..1} matches {	-- *Laboratory test result identifier(en)
+					ELEMENT[at0068] occurrences matches {0..1} matches {	-- Laboratory test result identifier
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					ELEMENT[at0075] occurrences matches {0..1} matches {	-- *Datetime result issued(en)
+					ELEMENT[at0075] occurrences matches {0..1} matches {	-- Datetime result issued
 						value matches {
 							DV_DATE_TIME matches {*}
 						}
