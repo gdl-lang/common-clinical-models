@@ -4,7 +4,7 @@ specialize
 	openEHR-EHR-OBSERVATION.lab_test-urea_and_electrolytes.v1
 
 concept
-	[at0000.1.1]	-- Urea-utsöndring (Fractional excretion of urea- FEUrea)
+	[at0000.1.1]	-- Fractional excretion of urea (FEUrea)
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -87,19 +87,19 @@ description
 	other_contributors = <"Heather Leslie AEG / Ocean Infomatics", "Sam Heard Ocean Informatics", "Dr Ian McNicoll openEHR Archetype Editorial Group / Ocean Informatics">
 	other_details = <
 		["references"] = <"Carvounis CP, Nisar S, Guro-Razuman S. Significance of the fractional excretion of urea in the differential diagnosis of acute renal failure. Kidney international. 2002 Dec 31;62(6):2223-9.">
-		["MD5-CAM-1.0.1"] = <"3A8BC1D6270BD48578B70A9B4CE78DA9">
+		["MD5-CAM-1.0.1"] = <"51D7279A1D6AA680C407F87128FAFC99">
 	>
 
 definition
-	OBSERVATION[at0000.1.1] matches {	-- Urea-utsöndring (Fractional excretion of urea- FEUrea)
+	OBSERVATION[at0000.1.1] matches {	-- Fractional excretion of urea (FEUrea)
 		data matches {
-			HISTORY[at0001] matches {	-- Händelseförlopp
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Händelse
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Träd
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0.0.14] occurrences matches {0..1} matches {	-- B-Urea
+									ELEMENT[at0.0.14] occurrences matches {0..1} matches {	-- Blood urea nitrogen (BUN) 
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -116,7 +116,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0.0.15] occurrences matches {0..1} matches {	-- U-Urea
+									ELEMENT[at0.0.15] occurrences matches {0..1} matches {	-- Urine urea (uUrea) 
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -133,7 +133,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0.0.16] occurrences matches {0..1} matches {	-- S-Kreatinin
+									ELEMENT[at0.0.17] occurrences matches {0..1} matches {	-- Urine creatinine (uCr) 
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -150,24 +150,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0.0.17] occurrences matches {0..1} matches {	-- U-Kreatinin
-										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::119]>
-												list = <
-													["1"] = <
-														units = <"umol/l">
-														magnitude = <|>=0.0|>
-													>
-													["2"] = <
-														units = <"mg/dl">
-														magnitude = <|>=0.0|>
-													>
-												>
-											>
-										}
-									}
-									ELEMENT[at0.0.18] occurrences matches {0..1} matches {	-- Urea-utsöndring (FEUrea) 
+									ELEMENT[at0.0.18] occurrences matches {0..1} matches {	-- Fractional excretion of urea (FEUrea) 
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::507]>
@@ -180,9 +163,26 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0.0.19] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0.0.19] occurrences matches {0..1} matches {	-- Comment 
 										value matches {
 											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0.0.16] occurrences matches {0..1} matches {	-- Serum creatinine (sCr) 
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::119]>
+												list = <
+													["1"] = <
+														units = <"umol/l">
+														magnitude = <|>=0.0|>
+													>
+													["2"] = <
+														units = <"mg/dl">
+														magnitude = <|>=0.0|>
+													>
+												>
+											>
 										}
 									}
 								}
@@ -533,15 +533,15 @@ useful for version control and cumulative results for the report.(en)">
 					description = <"Urea level in this specimen.">
 				>
 				["at0.0.15"] = <
-					text = <"urine Urea (uUrea) ">
+					text = <"Urine urea (uUrea) ">
 					description = <"Urea level in this specimen.">
 				>
 				["at0.0.16"] = <
-					text = <"serum Creatinine (sCr) ">
+					text = <"Serum creatinine (sCr) ">
 					description = <"Creatinine level in this specimen.">
 				>
 				["at0.0.17"] = <
-					text = <"urine Creatinine (uCr) ">
+					text = <"Urine creatinine (uCr) ">
 					description = <"Creatinine level in this specimen.">
 				>
 				["at0.0.18"] = <
