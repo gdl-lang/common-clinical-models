@@ -1,0 +1,92 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"Fractional_urea_excretion_Assessment.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"acute kidney injury", "FEUN", "FENa", "acute tubular necrosis", "prerenal azotemia">
+				misuse = <"FEUrea is a useful discriminator in acute renal failure, not chronic renal failure.">
+				purpose = <"To assess fractional excretion of urea and possible etiology of acute renal failure/acute azotemia. ">
+				use = <"To assess FEUrea and determine if acute renal failure/kidney injury is due to prerenal or intrinsic renal pathology. A patient with acute azotemia and:
+FEUrea <= 35% suggests kidney injury of prerenal etiology;
+FEUrea > 50% suggests an intrinsic renal etiology.
+Etiology of acute kidney injury (AKI) should be based upon the totality of the presentation (history, clinical examination, urine microscopy, and, when appropriate, response to volume resuscitation), not just on the FEUrea. FEUrea is calculated by a separate application: Fractional_urea_excretion_Assessment.v1.">
+			>
+		>
+		lifecycle_state = <"Author draft">
+		original_author = <
+			["date"] = <"2017-01-18">
+			["email"] = <"info@cambio.se">
+			["name"] = <"Eneimi Allwell-Brown">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"Carvounis CP, Nisar S, Guro-Razuman S. Significance of the fractional excretion of urea in the differential diagnosis of acute renal failure. Kidney international. 2002 Dec 31;62(6):2223-9.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-fractional_urea_excretion.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0.0.18]">
+					>
+				>
+			>
+			["gt0004"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.fractional_urea_excretion.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0006"] = (RULE) <
+				when = <"$gt0003<=35,%",...>
+				then = <"$gt0005=local::at0004|Prerenal etiology|",...>
+				priority = <2>
+			>
+			["gt0007"] = (RULE) <
+				when = <"$gt0003>50,%",...>
+				then = <"$gt0005=local::at0005|Intrinsic renal etiology|",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Fractional Excretion of Urea (FEUrea) Assessment">
+						description = <"Fractional excretion of urea (FEUrea) is the percentage of blood urea nitrogen filtered by the kidney which is excreted in the urine. FEUrea helps distinguish between prerenal and intrinsic renal causes of acute renal failure, specifically prerenal azotemia and acute tubular nerosis (ATN). Though less common than fractional excretion of sodium (FENa), it is more specific and sensitive and potentially more useful because urea excretion (unlike sodium) is not significantly affected by diuretics. The calculation requires blood urea nitrogen (BUN) and urine urea (uUrea) concentrations (mmol/L or mg/dl), and serum (sCr) and urine (uCr) creatinine concentrations (umol/L or mg/dl). FEUrea <= 35% suggests kidney injury of prerenal etiology while FEUrea > 50% suggests an intrinsic renal etiology.">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Fractional excretion of urea (FEUrea)">
+						description = <"Percentage of filtered urea that is excreted in the urine.">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Cause of ARF">
+						description = <"Possible etiology of ARF based on FEUrea.">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Set prerenal etiology">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Set intrinsic renal etiology">
+					>
+				>
+			>
+		>
+	>
+>
