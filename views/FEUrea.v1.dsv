@@ -78,6 +78,7 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
+    "Fractional_urea_excretion_Assessment.v1",
     "Fractional_urea_excretion_Calculation.v1"
   ],
   "alertBindings": {},
@@ -127,6 +128,10 @@
 <#assign urine_creatinine__ucr___ehr_data = fractional_excretion_of_urea__feurea__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0.0.17}']">
 <#assign blood_urea_nitrogen__bun___ehr_data = fractional_excretion_of_urea__feurea__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0.0.14}']">
 <#assign event_time_ehr_data = fractional_excretion_of_urea__feurea__entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign fractional_excretion_of_urea__feurea__entry1_cds_data = "data.cds['openEHR-EHR-EVALUATION.fractional_urea_excretion.v1']">
+<#assign fractional_excretion_of_urea__feurea__entry1_def = "def.entries['openEHR-EHR-EVALUATION.fractional_urea_excretion.v1']">
+<#assign cause_of_arf_def = fractional_excretion_of_urea__feurea__entry1_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign cause_of_arf_cds_data = fractional_excretion_of_urea__feurea__entry1_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
 
 <script> 
 angular.module('cds_app').controller('FEUrea_Ctrl', function($scope, $window){
@@ -201,6 +206,14 @@ angular.module('cds_app').controller('FEUrea_Ctrl', function($scope, $window){
       <span>{{${fractional_excretion_of_urea__feurea___cds_data}.value.magnitude}} {{${fractional_excretion_of_urea__feurea___cds_data}.value.units}}</span>
     </div>
   </div>
+  <div class="row collapse" title="{{${cause_of_arf_def}.description}}" id="displayresult2">
+  <div class="medium-1 columns">
+    <label><b>{{${cause_of_arf_def}.name}}: </b></label>
+  </div>
+  <div class="medium-11 columns" style="text-align: center;">
+    <label>{{${cause_of_arf_cds_data}.value.value}}</label>
+  </div>
+</div>
 
 </div>
 </div>
@@ -349,5 +362,6 @@ angular.module('cds_app').controller('FEUrea_Ctrl', function($scope, $window){
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
+
 
 </body></html>

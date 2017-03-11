@@ -2,7 +2,7 @@
 	openEHR-EHR-OBSERVATION.pulse.v1
 
 concept
-	[at0000]	-- Puls
+	[at0000]	-- Pulse
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -167,34 +167,34 @@ Begrepp som optimal träningspuls bör registreras i separata EVALUATION arketyp
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <"Nadim Anani, Karolinska Institutet, Sweden", "Vebjoern Arntzen, Oslo university hospital, Norway", "Koray Atalag, University of Auckland, New Zealand", "Gustavo Bacelar-Silva, Healthcare Designs, Brazil (openEHR Editor)", "Silje Ljosland Bakke, Bergen Hospital Trust, Norway (openEHR Editor)", "Lars Bitsch-Larsen, Haukeland University hospital, Norway", "Diego Bosca, IBIME group, Spain", "Rong Chen, Cambio Healthcare Systems, Sweden", "Stephen Chu, Queensland Health, Australia", "Angela de Zwart, Orion Health, New Zealand", "Graham Denyer, Australian Antarctic Division, Australia", "Paul Donaldson, Nursing Informatics Australia, Australia", "Shahla Foozonkhah, Ocean Informatics, Australia", "Einar Fosse, National Centre for Integrated Care and Telemedicine, Norway", "Sebastian Garde, Ocean Informatics, Germany", "John George, HSCIC, United Kingdom", "Heather Grain, Llewelyn Grain Informatics, Australia", "Sam Heard, Ocean Informatics, Australia", "Evelyn Hovenga, EJSH Consulting, Australia", "Eugene Igras, IRIS Systems, Inc., Canada", "Lars Karlsen, DIPS ASA, Norway", "Athanasios Kleontas, Ergobyte Informatics, Greece", "Shinji Kobayashi, Kyoto University, Japan", "Robert Legan, NEHTA, Australia", "Heather Leslie, Ocean Informatics, Australia (openEHR Editor)", "Rohan Martin, Ambulance Victoria, Australia", "Ian McNicoll, freshEHR Clinical Informatics, United Kingdom (openEHR Editor)", "Jeroen Meintjens, Medisch Centrum Alkmaar, Netherlands", "Monica Merchat, Hospital Cardiac Electrophysiology, MS Health Informatics Student, former ICU nurse, former Anesthesia Technician, United States", "Bjoern Naess, DIPS ASA, Norway", "Andrej Orel, Marand d.o.o., Slovenia", "Arturo Romero, SESCAM, Spain", "Jussara Rotzsch, UNB, Brazil", "Micaela Thierley, Helse Bergen, Norway", "Soon Ghee Yap, Singapore General Hospital, Singapore">
 	other_details = <
-		["revision"] = <"1.0.0">
+		["MD5-CAM-1.0.1"] = <"D31BC553B63718447F0A4F973B9C2166">
 		["original_publisher"] = <"openEHR Foundation">
 		["current_contact"] = <"Heather Leslie, Ocean Informatics, heather.leslie@oceaninformatics.com">
 		["build_uid"] = <"607618ac-b7e3-40f0-ab5e-b0fe8b4691bf">
 		["original_namespace"] = <"org.openehr">
 		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.">
 		["references"] = <"Direct communication with clinicians.">
-		["MD5-CAM-1.0.1"] = <"9B4822D6E9138261F8A613AD8AC2F979">
+		["revision"] = <"1.0.0">
 		["custodian_namespace"] = <"org.openehr">
 		["custodian_organisation"] = <"openEHR Foundation">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Puls
+	OBSERVATION[at0000] matches {	-- Pulse
 		data matches {
-			HISTORY[at0002] matches {	-- Historia
+			HISTORY[at0002] matches {	-- history
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0003] occurrences matches {0..*} matches {	-- Vilken händelse som helst
+					EVENT[at0003] occurrences matches {0..*} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0001] matches {	-- Struktur
+							ITEM_TREE[at0001] matches {	-- structure
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at1005] occurrences matches {0..1} matches {	-- Förekomst
+									ELEMENT[at1005] occurrences matches {0..1} matches {	-- Presence
 										name matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at1045, 	-- Förekomst av puls
-													at1046]	-- Förekomst av hjärtslag
+													at1045, 	-- Pulse presence
+													at1046]	-- Heart beat presence
 												}
 											}
 										}
@@ -202,19 +202,19 @@ definition
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at1024, 	-- Närvarande
-													at1025]	-- Inte identifierad 
+													at1024, 	-- Present
+													at1025]	-- Not detected
 												}
 											}
 										}
 									}
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Pulsfrekvens
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Heart rate
 										name matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at1026, 	-- Puls
-													at1027]	-- Hjärtfrekvens
+													at1026, 	-- Pulse Rate
+													at1027]	-- Heart Rate
 												}
 											}
 										}
@@ -231,45 +231,45 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Regelbunden?
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Regular?
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0006, 	-- Regelbunden
-													at1028]	-- Oregelbunden
+													at0006, 	-- Regular
+													at1028]	-- Irregular
 												}
 											}
 										}
 									}
-									ELEMENT[at1055] occurrences matches {0..1} matches {	-- Oregelbunden typ
+									ELEMENT[at1055] occurrences matches {0..1} matches {	-- Irregular type
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0007, 	-- Regelbundet oregelbunden
-													at0008]	-- Oregelbundet oregelbunden
+													at0007, 	-- Regularly Irregular
+													at0008]	-- Irregularly Irregular
 												}
 											}
 										}
 									}
-									ELEMENT[at1030] occurrences matches {0..*} matches {	-- Karaktär
+									ELEMENT[at1030] occurrences matches {0..*} matches {	-- Character
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at1022] occurrences matches {0..1} matches {	-- Klinisk beskrivning
+									ELEMENT[at1022] occurrences matches {0..1} matches {	-- Clinical description
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at1023] occurrences matches {0..*} matches {	-- Klinisk tolkning
+									ELEMENT[at1023] occurrences matches {0..*} matches {	-- Clinical interpretation
 										name matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at1057, 	-- Klinisk tolkning
-													at1058]	-- Rytm
+													at1057, 	-- Clinical interpretation
+													at1058]	-- Rhythm
 												}
 											}
 										}
@@ -277,7 +277,7 @@ definition
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at1059] occurrences matches {0..1} matches {	-- Ytterligare kommentar
+									ELEMENT[at1059] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -286,28 +286,28 @@ definition
 							}
 						}
 						state matches {
-							ITEM_TREE[at0012] matches {	-- Lista
+							ITEM_TREE[at0012] matches {	-- List
 								items cardinality matches {0..*; unordered} matches {
 									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Position
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at1003, 	-- Stående / upprätt
-													at1001, 	-- Sitter
-													at1002, 	-- Tillbakalutande
-													at1000; 	-- Ligger
+													at1003, 	-- Standing/upright
+													at1001, 	-- Sitting
+													at1002, 	-- Reclining
+													at1000; 	-- Lying
 													at1001]	-- assumed value
 												}
 											}
 										}
 									}
-									ELEMENT[at1018] occurrences matches {0..*} matches {	-- Andra påverkande faktorer
+									ELEMENT[at1018] occurrences matches {0..*} matches {	-- Confounding factors
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									allow_archetype CLUSTER[at1017] occurrences matches {0..*} matches {	-- Ansträngning
+									allow_archetype CLUSTER[at1017] occurrences matches {0..*} matches {	-- Exertion
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.level_of_exertion(-[a-zA-Z0-9_]+)*\.v1/}
 									}
@@ -322,60 +322,60 @@ definition
 							}
 						}
 						data matches {
-							use_node ITEM_TREE /data[at0002]/events[at0003]/data[at0001]	-- /data[Historia]/events[Vilken händelse som helst]/data[Struktur]
+							use_node ITEM_TREE /data[at0002]/events[at0003]/data[at0001]	-- /data[history]/events[Any event]/data[structure]
 						}
 						state matches {
-							use_node ITEM_TREE /data[at0002]/events[at0003]/state[at0012]	-- /data[Historia]/events[Vilken händelse som helst]/state[Lista]
+							use_node ITEM_TREE /data[at0002]/events[at0003]/state[at0012]	-- /data[history]/events[Any event]/state[List]
 						}
 					}
 				}
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0010] matches {	-- Lista
+			ITEM_TREE[at0010] matches {	-- List
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at1019] occurrences matches {0..1} matches {	-- Metod
+					ELEMENT[at1019] occurrences matches {0..1} matches {	-- Method
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
 									at1032, 	-- Palpation
-									at1033, 	-- Auskultation
-									at1034, 	-- Automatisk, icke-invasiv
-									at1050]	-- Automatisk, invasiv
+									at1033, 	-- Auscultation
+									at1034, 	-- Automatic, non-invasive
+									at1050]	-- Automatic, invasive
 								}
 							}
 						}
 					}
-					ELEMENT[at1037] occurrences matches {0..1} matches {	-- Mätningens plats
+					ELEMENT[at1037] occurrences matches {0..1} matches {	-- Body site
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
-									at1038, 	-- Radial artär - Vänster
-									at1039, 	-- Radial artär - Höger
-									at1040, 	-- Hjärtat
-									at1041, 	-- Halspulsådern - Vänster
-									at1042, 	-- Halspulsådern - Höger
-									at1043, 	-- Femoralartären - Vänster
-									at1044, 	-- Femoralartären - Höger
-									at1049, 	-- Brakialartären - Högra
-									at1048, 	-- Brakialartären - Vänster
+									at1038, 	-- Radial Artery - Left
+									at1039, 	-- Radial Artery - Right
+									at1040, 	-- Heart
+									at1041, 	-- Carotid Artery - Left
+									at1042, 	-- Carotid Artery - Right
+									at1043, 	-- Femoral Artery - Left
+									at1044, 	-- Femoral Artery - Right
+									at1049, 	-- Brachial artery - Right
+									at1048, 	-- Brachial artery - Left
 									at1047, 	-- Finger
-									at1054, 	-- Tå
-									at1051]	-- Örsnibben
+									at1054, 	-- Toe
+									at1051]	-- Ear lobe
 								}
 							}
 							DV_TEXT matches {*}
 						}
 					}
-					allow_archetype CLUSTER[at1013] occurrences matches {0..1} matches {	-- Anordning
+					allow_archetype CLUSTER[at1013] occurrences matches {0..1} matches {	-- Device
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.device(-[a-zA-Z0-9_]+)*\.v1/}
 						exclude
 							archetype_id/value matches {/.*/}
 					}
-					allow_archetype CLUSTER[at1056] occurrences matches {0..*} matches {	-- Ytterligare kommentar
+					allow_archetype CLUSTER[at1056] occurrences matches {0..*} matches {	-- Extension
 						include
 							archetype_id/value matches {/.*/}
 					}
@@ -859,7 +859,7 @@ ontology
 					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0004"] = <
-					text = <"Rate">
+					text = <"Heart rate">
 					description = <"The rate, measured in beats per minute.">
 					comment = <"Run-time name constraints have been specified, in order to simplify the renaming of this data element to Pulse Rate or Heart Rate, as required.">
 				>

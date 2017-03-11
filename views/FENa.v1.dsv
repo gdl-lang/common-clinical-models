@@ -50,6 +50,7 @@
           "akut njursvikt",
           "njursvikt",
           "azotemi",
+          "nefrologi",
           "FENa"
         ],
         "use": "Använd för att beräkna FENa (%) med hjälp av givna värden för natrium och kreatinin uppmätt i serum och urin, och därigenom avgöra huruvida njursvikten har prerenal (FENa \u003c1%), renal (FENa \u003e1%) eller postrenal (FENa \u003e4%) etiologi.\nFENa \u003c1% kan även tolkas som normal njurfunktion med lågt till måttligt saltintag, alternativt är beroende av specifik renal, postrenal eller annan orsak. FENa är endast avsedd för understödja klinisk bedömning.",
@@ -76,6 +77,7 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
+    "Fractional_sodium_excretion_Assessment.v1",
     "Fractional_sodium_excretion_Calculation.v1"
   ],
   "alertBindings": {},
@@ -94,8 +96,7 @@
       "terms": {
         "vt0001": {
           "id": "vt0001",
-          "text": "References",
-          "description": ""
+          "text": "References"
         }
       }
     }
@@ -126,6 +127,10 @@
 <#assign serum_creatinine__scr__ehr_data = fractional_excretion_of_sodium__fena__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078.3.1}']">
 <#assign urine_creatinine__ucr__ehr_data = fractional_excretion_of_sodium__fena__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078.2.1}']">
 <#assign event_time_ehr_data = fractional_excretion_of_sodium__fena__entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign fractional_excretion_of_sodium__fena__entry1_cds_data = "data.cds['openEHR-EHR-EVALUATION.fractional_sodium_excretion.v1']">
+<#assign fractional_excretion_of_sodium__fena__entry1_def = "def.entries['openEHR-EHR-EVALUATION.fractional_sodium_excretion.v1']">
+<#assign cause_of_arf_def = fractional_excretion_of_sodium__fena__entry1_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign cause_of_arf_cds_data = fractional_excretion_of_sodium__fena__entry1_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
 
 <script> 
 angular.module('cds_app').controller('FENa_Ctrl', function($scope, $window){
@@ -200,6 +205,14 @@ angular.module('cds_app').controller('FENa_Ctrl', function($scope, $window){
       <span>{{${fractional_excretion_of_sodium__fena__cds_data}.value.magnitude}} {{${fractional_excretion_of_sodium__fena__cds_data}.value.units}}</span>
     </div>
   </div>
+  <div class="row collapse" title="{{${cause_of_arf_def}.description}}" id="displayresult2">
+  <div class="medium-2 columns">
+    <label><b>{{${cause_of_arf_def}.name}}: </b></label>
+  </div>
+  <div class="medium-10 columns" style="text-align: center;">
+    <label>{{${cause_of_arf_cds_data}.value.value}}</label>
+  </div>
+</div>
 
 </div>
 </div>
