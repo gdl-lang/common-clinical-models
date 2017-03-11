@@ -174,9 +174,30 @@
 <#assign creatinine_ehr_data = urea_and_electrolytes_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078.7}']">
 <#assign event_time5_ehr_data = urea_and_electrolytes_entry_ehr_data + "[0].elements['/data/events/time']">
 
+<script> 
+angular.module('cds_app').controller('EHMRG_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time3_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time4_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time5_ehr_data}.value.value = new Date().toISOString();
+    $scope.${systolic_bp_ehr_data}.value.units = $scope.${systolic_bp_def}.units[0];
+    $scope.${heart_rate_ehr_data}.value.units = $scope.${heart_rate_def}.units[0];
+	$scope.${sao2_ehr_data}.value.units = $scope.${sao2_def}.units[0];
+    $scope.${creatinine_ehr_data}.value.units = $scope.${creatinine_def}.units[0];
+	$scope.${potassium_ehr_data}.value.units = $scope.${potassium_def}.units[0];
+	$scope.${active_cancer_variable_ehr_data}.value.selection = $scope.findMin($scope.${active_cancer_variable_def});
+	$scope.${on_outpatient_metolazone__at_home__ehr_data}.value.selection = $scope.findMin($scope.${on_outpatient_metolazone__at_home__def});
+	$scope.${transported_by_ems_ehr_data}.value.selection = $scope.findMin($scope.${transported_by_ems_def});
+	$scope.${troponin_positive_variable_ehr_data}.value.selection = $scope.findMin($scope.${troponin_positive_variable_def});
+	$scope.${birthdate_ehr_data}.value.selection = $scope.findMin($scope.${birthdate_def});
+  });
+});
+</script>
 
-
-<div ng-show="ready">
+<div ng-show="ready" ng-controller="EHMRG_Ctrl">
 <div class="header">
   <h1>{{def.concept.name}}</h1>
   <h2>{{def.concept.description}}</h2>
@@ -283,10 +304,10 @@
   </div>
 <br /><br />
 <div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult1">
-  <div class="medium-5 columns">
+  <div class="medium-4 columns">
     <label><b>{{${total_score_def}.name}}: </b></label>
   </div>
-  <div class="medium-7 columns" style="text-align: center;">
+  <div class="medium-8 columns" style="text-align: center;">
     <label>{{${total_score_cds_data}.value.magnitude}}</label>
   </div>
 </div>
