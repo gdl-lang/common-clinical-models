@@ -1,0 +1,98 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.fractional_sodium_excretion.v1
+
+concept
+	[at0000]	-- Fractional excretion of sodium (FENa)
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Eneimi Allwell-Brown">
+		["email"] = <"info@cambio.se">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-03-11">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the assessment of fractional excretion of sodium and possible etiology of acute renal failure.">
+			use = <"To record the possible etiology of acute renal failure based on fractional excretion of sodium. A patient with acute azotemia and:
+FENa < 1% and uNa < 20mmol/L suggests kidney injury of prerenal etiology; 
+FENa > 1% and uNa > 40mmol/L suggests an intrinsic renal etiology; 
+FENa > 4% and uNa > 40mmol/L suggests a postrenal etiology.
+FENa value is stored in a separate observation archetype: openEHR-EHR-OBSERVATION.lab_test-fractional_sodium_excretion.v1">
+			keywords = <"FENa", "acute kidney injury", "AKI", "acute renal failure", "acute azotemia">
+			misuse = <"Not for use if the patient is on diuretics. Use fractional_urea_excretion instead.
+Not for use in the absence of acute renal failure (or acute azotemia).">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Steiner RW. Interpreting the fractional excretion of sodium. The American journal of medicine. 1984 Oct 31;77(4):699-702.">
+		["MD5-CAM-1.0.1"] = <"5B8A46F925EF29546E7F1CFE67FB30ED">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Fractional excretion of sodium (FENa)
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Cause of ARF
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0003, 	-- Prerenal etiology
+									at0004, 	-- Intrinsic renal etiology
+									at0005]	-- Postrenal etiology
+								}
+							}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Comment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Fractional excretion of sodium (FENa)">
+					description = <"Fractional excretion of sodium (FENa) is the percentage of the sodium filtered by the kidney which is excreted in the urine. FENa helps distinguish between prerenal, intrinsic renal and postrenal causes of renal failure, and is widely used to differentiate prerenal disease (decreased renal perfusion) from acute tubular necrosis (ATN) as the cause of acute kidney injury (AKI). The calculation requires serum (sNa) and urine (uNa) sodium concentrations (mmol/L), and serum (sCr) and urine (uCr) creatinine concentrations (umol/L or mg/dl). A patient with acute azotemia and: FENa < 1% and uNa < 20mmol/L suggests kidney injury of prerenal etiology; FENa > 1% and uNa > 40mmol/L suggests an intrinsic renal etiology; while FENa > 4% and uNa > 40mmol/L suggests a postrenal etiology. Fractional excretion of urea (FEUrea) is preferred for patients on diuretics.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Cause of ARF">
+					description = <"Possible etiology of ARF based on FENa.">
+				>
+				["at0003"] = <
+					text = <"Prerenal etiology">
+					description = <"FENa < 1% (and uNa < 20 mmol/L)">
+				>
+				["at0004"] = <
+					text = <"Intrinsic renal etiology">
+					description = <"FENa > 1% (and uNa > 40 mmol/L)">
+				>
+				["at0005"] = <
+					text = <"Postrenal etiology">
+					description = <"FENa > 4% (and uNa > 40 mmol/L)">
+				>
+				["at0006"] = <
+					text = <"Comment">
+					description = <"Any additional information about this recording.">
+				>
+			>
+		>
+	>
