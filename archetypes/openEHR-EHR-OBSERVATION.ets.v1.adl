@@ -71,57 +71,50 @@ The scores are a mixture of integers and decimals and have been doubled for the 
 		["references"] = <"Ref. 1: Chico-Fernández, M., García-Fuentes, C., Alonso-Fernández, M., Toral-Vázquez, D., Bermejo-Aznarez, S., & Alted-López, E. (2011). Massive transfusion predictive scores in trauma. Experience of a transfusion registry. Medicina Intensiva (English Edition), 35(9), 546-551.
 
 Ref. 2: Subramaniam A, Albert V, Sharma S, et al.: Assessing the efficiency of scoring systems for predicting the probability of massive transfusion in trauma patients. J Haematol Thrombo Dis 2014; 2:1000161">
-		["MD5-CAM-1.0.1"] = <"D3845781982C8DBE9662B134B836DFD9">
+		["MD5-CAM-1.0.1"] = <"B479DBF89DBF9249B9176EE63E2BF931">
 	>
 
 definition
 	OBSERVATION[at0000] matches {	-- Emergency transfusion score
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Ålder
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Age
 										value matches {
-											0|[local::at0012], 	-- Under 20 år
-											1|[local::at0013], 	-- 20-60 år
-											3|[local::at0014]  	-- > 60 år
+											0|[local::at0012], 	-- Below 20 yrs
+											1|[local::at0013], 	-- 20 - 60 yrs
+											3|[local::at0014]  	-- >60 yrs
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Direkt transport från skadeplats
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Admission from scene
 										value matches {
-											0|[local::at0015], 	-- Nej
-											2|[local::at0016]  	-- Ja
+											0|[local::at0015], 	-- No
+											2|[local::at0016]  	-- Yes
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Trafikolycka eller fall från >3m
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Traffic accident or fall >3m
 										value matches {
-											0|[local::at0017], 	-- Nej
-											2|[local::at0018]  	-- Ja
+											0|[local::at0017], 	-- No
+											2|[local::at0018]  	-- Yes
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Systoliskt blodtryck
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Pelvic ring disruption
 										value matches {
-											0|[local::at0021], 	-- >120 mmHg
-											3|[local::at0020], 	-- 90-120 mmHg
-											5|[local::at0019]  	-- 0-90 mmHg
+											0|[local::at0022], 	-- No
+											3|[local::at0023]  	-- Yes
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Bäckeninstabilitet
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- FAST/abdominal free fluid
 										value matches {
-											0|[local::at0022], 	-- Nej
-											3|[local::at0023]  	-- Ja
+											0|[local::at0024], 	-- No
+											4|[local::at0025]  	-- Yes
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- FAST
-										value matches {
-											0|[local::at0024], 	-- Negativ
-											4|[local::at0025]  	-- Positiv
-										}
-									}
-									ELEMENT[at0027] occurrences matches {0..1} matches {	-- Ålder
+									ELEMENT[at0027] occurrences matches {0..1} matches {	-- Age
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::128]>
@@ -133,7 +126,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Resultat
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::380]>
@@ -146,9 +139,16 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Systolic blood pressure
+										value matches {
+											0|[local::at0021], 	-- >120 mmHg
+											3|[local::at0020], 	-- SBP 90 to 120 mmHg
+											5|[local::at0019]  	-- SBP 0 to 90 mmHg
 										}
 									}
 								}
@@ -229,7 +229,7 @@ ontology
 					description = <"*">
 				>
 				["at0016"] = <
-					text = <"yes">
+					text = <"Yes">
 					description = <"*">
 				>
 				["at0017"] = <
@@ -237,7 +237,7 @@ ontology
 					description = <"*">
 				>
 				["at0018"] = <
-					text = <"Traffic accident or Fall >3m">
+					text = <"Yes">
 					description = <"*">
 				>
 				["at0019"] = <
@@ -326,51 +326,51 @@ ontology
 				>
 				["at0012"] = <
 					text = <"Under 20 år">
-					description = <"">
+					description = <"*">
 				>
 				["at0013"] = <
 					text = <"20-60 år">
-					description = <"">
+					description = <"*">
 				>
 				["at0014"] = <
 					text = <"> 60 år">
-					description = <"">
+					description = <"*">
 				>
 				["at0015"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0016"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0017"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0018"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0019"] = <
 					text = <"0-90 mmHg">
-					description = <"">
+					description = <"*">
 				>
 				["at0020"] = <
 					text = <"90-120 mmHg">
-					description = <"">
+					description = <"*">
 				>
 				["at0021"] = <
 					text = <">120 mmHg">
-					description = <"">
+					description = <"*">
 				>
 				["at0022"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0023"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0024"] = <
 					text = <"Negativ">
@@ -382,7 +382,7 @@ ontology
 				>
 				["at0027"] = <
 					text = <"Ålder">
-					description = <"">
+					description = <"*">
 				>
 			>
 		>
