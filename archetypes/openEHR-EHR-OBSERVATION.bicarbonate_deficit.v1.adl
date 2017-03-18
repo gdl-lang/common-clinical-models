@@ -1,0 +1,98 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.bicarbonate_deficit.v1
+
+concept
+	[at0000]	-- Bicarbonate deficit
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-03-08">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"This tool calculates an estimate of a patient's total body bicarbonate from their weight and bicarbonate level">
+			use = <"The calculation formula is:
+
+Bicarbonate Deficit = 0.4 * weight (kg) * (24 - Patient's bicarb level)">
+			keywords = <"bicarbonate deficit", "bicarbonate", "weight">
+			misuse = <"This tool only gives an estimate of the total body bicarbonate deficit and not an accurate value.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Kurtz I. Acid-Base Case Studies. 2nd Ed. Trafford Publishing (2004); 68:150">
+		["MD5-CAM-1.0.1"] = <"97D8F018292508D68D29E9E4F9752534">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Bicarbonate deficit
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Bicarbonate deficit
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::119]>
+												list = <
+													["1"] = <
+														units = <"mmol/l">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Bicarbonate deficit">
+					description = <"Calculates the total body bicarbonate deficit from the patient's weight (kg) and bicarbonate (mmol/L).">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Bicarbonate deficit">
+					description = <"Bicarbonate Deficit = 0.4 * weight (kg) * (24 - Patient's bicarb level)">
+				>
+				["at0005"] = <
+					text = <"Comment">
+					description = <"Any comments regarding the value">
+				>
+			>
+		>
+	>

@@ -25,11 +25,11 @@
   },
   "decisionSupportViewDefinitions": {
     "sv": {
-      "name": "TIMI-Score för ST-höjningsinfarkt",
-      "description": "30-dagarsmortalitet hos patienter med trombolysbehandlad ST-höjningsinfarkt"
+      "name": "TIMI Risk Score for STEMI",
+      "description": "30-dagars mortalitet hos patienter med trombolysbehandlad ST-höjningsinfarkt"
     },
     "en": {
-      "name": "TIMI for STEMI",
+      "name": "TIMI Risk Score for STEMI",
       "description": "30 day mortality risk among patients with STEMI"
     }
   },
@@ -40,7 +40,7 @@
       "organisation": "Cambio Healthcare Systems"
     },
     "otherContributors": [
-      "Dennis Forslund"
+      "Dennis Forslund, Cambio Healthcare Systems"
     ],
     "details": {
       "sv": {
@@ -49,7 +49,7 @@
           "TIMI risk for STEMI",
           "TIMI",
           "trombolys",
-          "30-dagarsmortalitet",
+          "30-dagars mortalitet",
           "ST-höjning",
           "ST-höjningsinfarkt",
           "LBBB",
@@ -79,6 +79,7 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
+    "TIMI_Assessment.v1",
     "TIMI_STEMI"
   ],
   "alertBindings": {},
@@ -140,6 +141,10 @@
 <#assign age_category_ehr_data = timi_risk_for_stemi_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0018}']">
 <#assign time_to_treatment___4hrs__ehr_data = timi_risk_for_stemi_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
 <#assign event_time_ehr_data = timi_risk_for_stemi_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign timi_risk_for_stemi_assessment_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.timi_risk_for_stemi_assessment.v1']">
+<#assign timi_risk_for_stemi_assessment_entry_def = "def.entries['openEHR-EHR-EVALUATION.timi_risk_for_stemi_assessment.v1']">
+<#assign _30_day_mortality_risk_def = timi_risk_for_stemi_assessment_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign _30_day_mortality_risk_cds_data = timi_risk_for_stemi_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
 <#assign killip_categorisation_entry_ehr_data = "data.ehr['openEHR-EHR-EVALUATION.killip_categorisation.v1']">
 <#assign killip_categorisation_entry_def = "def.entries['openEHR-EHR-EVALUATION.killip_categorisation.v1']">
 <#assign killip_class_def = killip_categorisation_entry_def + ".elements['/data{at0001}/items{at0002}']">
@@ -178,7 +183,7 @@ angular.module('cds_app').controller('TIMI_STEMI_Ctrl', function($scope, $window
     $scope.${event_time3_ehr_data}.value.value = new Date().toISOString();
 	$scope.${event_time4_ehr_data}.value.value = new Date().toISOString();
 	$scope.${age_ehr_data}.value.units = $scope.${age_def}.units[0];
-	$scope.${weight_ehr_data}.value.units = $scope.${weight_def}.units[0];
+	$scope.${weight_ehr_data}.value.units = $scope.${weight_def}.units[1];
 	$scope.${systolic_ehr_data}.value.units = $scope.${systolic_def}.units[0];
 	$scope.${rate_ehr_data}.value.units = $scope.${rate_def}.units[0];
 	$scope.${killip_class_ehr_data}.value.selection = $scope.findMin($scope.${killip_class_def});
@@ -276,12 +281,20 @@ angular.module('cds_app').controller('TIMI_STEMI_Ctrl', function($scope, $window
       <input type="radio" value="{{key}}" ng-model="${time_to_treatment___4hrs__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
-<div class="row collapse" title="{{${timi_for_stemi_score_def}.description}}" id="displayresult">
-  <div class="medium-5 columns">
+<div class="row collapse" title="{{${timi_for_stemi_score_def}.description}}" id="displayresult1">
+  <div class="medium-4 columns">
     <label><b>{{${timi_for_stemi_score_def}.name}}: </b></label>
   </div>
-  <div class="medium-7 columns" style="text-align: center;">
+  <div class="medium-8 columns" style="text-align: center;">
     <label>{{${timi_for_stemi_score_cds_data}.value.magnitude}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${_30_day_mortality_risk_def}.description}}" id="displayresult2">
+  <div class="medium-4 columns">
+    <label><b>{{${_30_day_mortality_risk_def}.name}}: </b></label>
+  </div>
+  <div class="medium-8 columns" style="text-align: center;">
+    <label>{{${_30_day_mortality_risk_cds_data}.value.symbol.value}}</label>
   </div>
 </div>
 
@@ -363,7 +376,7 @@ angular.module('cds_app').controller('TIMI_STEMI_Ctrl', function($scope, $window
       -webkit-animation: fadeIn 0.3s ease-in-out;
       animation: fadeIn 0.3s ease-in-out;
   }
-  .help-tip p{  /* The tooltip */
+  .help-tip p{	/* The tooltip */
       display: none;
       text-align: left;
       background-color: #1E2021;
@@ -397,7 +410,7 @@ angular.module('cds_app').controller('TIMI_STEMI_Ctrl', function($scope, $window
       left:0;
   }
   .references1{
-  font-size: 70%;
+    font-size: 70%;
   }
   /* CSS animation */
   @-webkit-keyframes fadeIn {
@@ -415,12 +428,19 @@ angular.module('cds_app').controller('TIMI_STEMI_Ctrl', function($scope, $window
       0% { opacity:0; }
       100% { opacity:100%; }
   }
-  #displayresult {
+  #displayresult1 {
     background-color: #e6e6e6; 
     padding-top: 3px;
     padding-bottom: 3px;
-    padding-left: 3px;
-	font-size: 90%;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    background-color: #f2f2f2;
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
   }
   select, label:not(#h-fix) {
     margin-bottom: 10px;

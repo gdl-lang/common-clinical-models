@@ -61,13 +61,11 @@ Epstein, J.I., et al., Best practices recommendations in the application of immu
 				archetype_id = <"openEHR-EHR-EVALUATION.prostate_cancer_treatment_recommendation.v0">
 				domain = <"CDS">
 				elements = <
-					["gt0007"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/items[at0002]">
-					>
 					["gt0008"] = (ELEMENT_BINDING) <
 						path = <"/data[at0001]/items[at0005]">
 					>
 				>
+				template_id = <"prostate_cancer_treatment_recommendation">
 			>
 			["gt0015"] = (ARCHETYPE_BINDING) <
 				archetype_id = <"openEHR-EHR-OBSERVATION.prostate_cancer_tnm_staging.v0">
@@ -93,56 +91,85 @@ Epstein, J.I., et al., Best practices recommendations in the application of immu
 					>
 				>
 			>
+			["gt0026"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.luts.v0">
+				domain = <"EHR">
+				elements = <
+					["gt0027"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+				>
+			>
 		>
 		rules = <
 			["gt0009"] = (RULE) <
-				when = <"$gt0005>=10,a", "$gt0003==2|local::at0007|Intermediate risk|">
-				then = <"$gt0008.value='Radiotherapy or prostatectomy'", "$gt0007=local::at0003|Curative|">
-				priority = <10>
+				when = <"$gt0027==false", "$gt0005>=10,a", "$gt0003==2|local::at0007|Intermediate risk|">
+				then = <"$gt0008=prostate_cancer_recommendations_sv::intermediate_risk_above_equal_10_years_without_luts|Prostatacancer, mellanrisk. Nationella vårdprogrammet rekommenderar kurativ behandling. Prostatektomi och kurativ strålbehandling är tillgängliga alternativ.|",...>
+				priority = <13>
 			>
 			["gt0011"] = (RULE) <
 				when = <"$gt0005<8,a", "$gt0003==2|local::at0007|Intermediate risk|">
-				then = <"$gt0008.value='Expectancy'", "$gt0007=local::at0008|Follow-up|">
-				priority = <9>
+				then = <"$gt0008=prostate_cancer_recommendations_sv::intermediate_risk_below_8_years|Prostatacancer, mellanrisk. Enligt nationella vårdprogrammet rekommenderas [utifrån förväntad överlevnad] expektans.|",...>
+				priority = <12>
 			>
 			["gt0012"] = (RULE) <
 				when = <"$gt0005>=8,a", "$gt0005<10,a", "$gt0003==2|local::at0007|Intermediate risk|">
-				then = <"$gt0008.value='Active monitoring'", "$gt0007=local::at0008|Follow-up|">
-				priority = <8>
+				then = <"$gt0008=prostate_cancer_recommendations_sv::intermediate_risk_above_equal_8_below_10_years|Prostatacancer, mellanrisk. Vid tveksamhet kring lämplighet med kurativ behandling rekommenderas enligt nationella vårdprogrammet aktiv monitorering.|",...>
+				priority = <11>
 			>
 			["gt0013"] = (RULE) <
-				when = <"$gt0005>=10,a", "$gt0003==1|local::at0006|Low risk|">
-				then = <"$gt0008.value='Active monitoring'", "$gt0007=local::at0008|Follow-up|">
-				priority = <7>
+				when = <"$gt0027==true", "$gt0005>=10,a", "$gt0003==1|local::at0006|Low risk|">
+				then = <"$gt0008=prostate_cancer_recommendations_sv::low_risk_above_equal_10_years_with_luts|Prostatacancer, låg risk. 1. Enligt nationella vårdprogrammet rekommenderas i första hand aktiv monitorering 2. Prostatektomi alternativt kurativt syftande strålbehandling är tillgängliga andrahandsalternativ. Patientens LUTS-problematik kan dock tala emot strålbehandling.|",...>
+				priority = <10>
 			>
 			["gt0014"] = (RULE) <
 				when = <"$gt0005<10,a", "$gt0003==1|local::at0006|Low risk|">
-				then = <"$gt0008.value='Expectancy'", "$gt0007=local::at0008|Follow-up|">
-				priority = <6>
+				then = <"$gt0008=prostate_cancer_recommendations_sv::low_risk_below_10_years|Prostatacancer, låg risk. Enligt nationella vårdprogrammet rekommenderas [utifråm förväntad överlevnad] expektans.|",...>
+				priority = <8>
 			>
 			["gt0017"] = (RULE) <
-				when = <"$gt0019==0|local::at0012|N0|", "$gt0020==0|local::at0016|M0|", "$gt0005>=5,a", "$gt0003==3|local::at0008|High risk|", "$gt0016!=5|local::at0009|T3|", "$gt0016!=6|local::at0010|T4|">
-				then = <"$gt0008.value='Prostatectomy or radiotherapy'", "$gt0007=local::at0003|Curative|">
-				priority = <5>
+				when = <"$gt0027==false", "$gt0019==0|local::at0012|N0|", "$gt0020==0|local::at0016|M0|", "$gt0005>=5,a", "$gt0003==3|local::at0008|High risk|", "$gt0016!=5|local::at0009|T3|", "$gt0016!=6|local::at0010|T4|">
+				then = <"$gt0008=prostate_cancer_recommendations_sv::high_risk_above_equals_5_years_t1c_t2c_n0_m0_without_luts|Prostatacancer, högrisk. Kurativ behandling rekommenderas. Två tillgängliga alternativ: - Prostatektomi - Kurativ strålbehandling med neoadjuvant TAB samt adjuvant behandling med antiandrogen 2-3 år.|",...>
+				priority = <7>
 			>
 			["gt0018"] = (RULE) <
 				when = <"$gt0019==0|local::at0012|N0|", "$gt0020==0|local::at0016|M0|", "$gt0016==5|local::at0009|T3|", "$gt0005>=5,a", "$gt0003==3|local::at0008|High risk|">
-				then = <"$gt0008.value='Radiotherapy'", "$gt0007=local::at0003|Curative|">
+				then = <"$gt0008=prostate_cancer_recommendations_sv::high_risk_above_equals_5_years_t3_n0_m0|Prostatacancer, högrisk. Kurativ behandling rekommenderas.  1. - Kurativ strålbehandling med neoadjuvant TAB samt adjuvant behandling med antiandrogen 2-3 år.  2. Prostatektomi är på grund av T3-status enligt nationella vårdprogrammet andrahandsval.|",...>
 				priority = <4>
 			>
 			["gt0021"] = (RULE) <
-				when = <"$gt0005>=10,a", "$gt0003==0|local::at0005|Very low risk|">
-				then = <"$gt0008.value='Active monitoring'", "$gt0007=local::at0008|Follow-up|">
+				when = <"$gt0005>10,a", "$gt0003==0|local::at0005|Very low risk|">
+				then = <"$gt0008=prostate_cancer_recommendations_sv::very_low_risk_above_10_years|Prostatacancer, mycket låg risk. Enligt nationella vårdprogrammet rekommenderas aktiv monitorering.|",...>
 				priority = <3>
 			>
 			["gt0022"] = (RULE) <
-				when = <"$gt0003==0|local::at0005|Very low risk|", "$gt0005<10,a">
-				then = <"$gt0008.value='Expectancy'", "$gt0007=local::at0008|Follow-up|">
+				when = <"$gt0003==0|local::at0005|Very low risk|", "$gt0005<=10,a">
+				then = <"$gt0008=prostate_cancer_recommendations_sv::very_low_risk_equal_below_10_years|Prostatacancer, mycket låg risk. Enligt nationella vårdprogrammet rekommenderas expektans med ev senare hormonbehandling.|",...>
 				priority = <2>
 			>
-			["gt0025"] = (RULE) <
-				when = <"(($gt0020==2|local::at0018|M1|)||($gt0019==2|local::at0014|N1|))||(($gt0024>=100,ng/mL)||($gt0016==6|local::at0010|T4|))",...>
-				then = <"$gt0007=local::at0004|Palliative|",...>
+			["gt0028"] = (RULE) <
+				when = <"$gt0027==false", "$gt0003==1|local::at0006|Low risk|", "$gt0005>=10,a">
+				then = <"$gt0008=prostate_cancer_recommendations_sv::low_risk_above_equal_10_years_without_luts|Prostatacancer, låg risk. 1. Enligt nationella vårdprogrammet rekommenderas i första hand aktiv monitorering 2. Prostatektomi alternativt kurativt syftande strålbehandling är tillgängliga andrahandsalternativ.|",...>
+				priority = <9>
+			>
+			["gt0029"] = (RULE) <
+				when = <"$gt0027==true", "$gt0003==2|local::at0007|Intermediate risk|", "$gt0005>=10,a">
+				then = <"$gt0008=prostate_cancer_recommendations_sv::intermediate_risk_above_equal_10_years_with_luts|Prostatacancer, mellanrisk. Nationella vårdprogrammet rekommenderar kurativ behandling. 1. Prostatektomi är förstahandsval. 2. Pga LUTS-problematik är kurativ strålbehandling andrahandsval.|",...>
+				priority = <14>
+			>
+			["gt0030"] = (RULE) <
+				when = <"($gt0020==1|local::at0017|Mx|)||($gt0019==1|local::at0013|Nx|)", "$gt0003==3|local::at0008|High risk|">
+				then = <"$gt0008=prostate_cancer_recommendations_sv::high_risk_nx_mx|Prostatacancer, högrisk. Radiologisk metastasutredning krävs.|",...>
+				priority = <5>
+			>
+			["gt0031"] = (RULE) <
+				when = <"$gt0003==3|local::at0008|High risk|", "$gt0005<5,a">
+				then = <"$gt0008=prostate_cancer_recommendations_sv::high_risk_below_5_years|Prostatacancer, högrisk. Det nationella vårdprogrammet rekommenderar [utifrån utifrån förväntad kvarstående livslängd] expektans.|",...>
+				priority = <6>
+			>
+			["gt0032"] = (RULE) <
+				when = <"$gt0003==3|local::at0008|High risk|", "$gt0027==true", "$gt0016!=6|local::at0010|T4|", "$gt0016!=5|local::at0009|T3|", "$gt0020==0|local::at0016|M0|", "$gt0019==0|local::at0012|N0|", "$gt0005>=5,a">
+				then = <"$gt0008=prostate_cancer_recommendations_sv::high_risk_above_equals_5_years_t1c_t2c_n0_m0_with_luts|Prostatacancer, högrisk. Kurativ behandling rekommenderas. 1. Prostatektomi är pga LUTS-problematiken förstahandsval 2. Kurativ strålbehandling med neoadjuvant TAB samt adjuvant behandling med antiandrogen 2-3 år.|",...>
 				priority = <1>
 			>
 		>
@@ -172,19 +199,19 @@ Epstein, J.I., et al., Best practices recommendations in the application of immu
 						description = <"*">
 					>
 					["gt0009"] = (TERM) <
-						text = <"Intermediate risk category curative treatment">
+						text = <"Intermediate risk category above 10 years without LUTS">
 					>
 					["gt0010"] = (TERM) <
 						text = <"Low risk category treatment recommendation">
 					>
 					["gt0011"] = (TERM) <
-						text = <"Intermediate risk category expectancy">
+						text = <"Intermediate risk category below 8 years">
 					>
 					["gt0012"] = (TERM) <
-						text = <"Intermediate risk cateogry active monitoring">
+						text = <"Intermediate risk cateogry 8 to 10 years">
 					>
 					["gt0013"] = (TERM) <
-						text = <"Low risk category active monitoring">
+						text = <"Low risk category above 10 years with LUTS">
 					>
 					["gt0014"] = (TERM) <
 						text = <"Low risk category expectancy">
@@ -194,7 +221,7 @@ Epstein, J.I., et al., Best practices recommendations in the application of immu
 						description = <"*">
 					>
 					["gt0017"] = (TERM) <
-						text = <"High risk category curative prostatecmy or radiotherapy">
+						text = <"High risk category T1c to T2c N0 M0 without LUTS">
 					>
 					["gt0018"] = (TERM) <
 						text = <"High risk cateogry curative radiotherapy">
@@ -219,6 +246,25 @@ Epstein, J.I., et al., Best practices recommendations in the application of immu
 					>
 					["gt0025"] = (TERM) <
 						text = <"Palliative treatment">
+					>
+					["gt0027"] = (TERM) <
+						text = <"Uttalade LUTS">
+						description = <"*">
+					>
+					["gt0028"] = (TERM) <
+						text = <"Low risk category above 10 years without LUTS">
+					>
+					["gt0029"] = (TERM) <
+						text = <"Intermediate risk cateogry above 10 years with LUTS">
+					>
+					["gt0030"] = (TERM) <
+						text = <"High_risk_Nx_or_Mx">
+					>
+					["gt0031"] = (TERM) <
+						text = <"High risk below 5 years">
+					>
+					["gt0032"] = (TERM) <
+						text = <"High risk cateogry T1c to T2c N0 M0 with LUTS">
 					>
 				>
 			>

@@ -26,11 +26,11 @@
   "decisionSupportViewDefinitions": {
     "sv": {
       "name": "Sequential Organ Failure Assessment",
-      "description": "Uppskattning av mortalitet hos patienter som vårdas på intensivvårdsavdelning. "
+      "description": "Uppskattning av mortalitet hos patienter som vårdas på intensivvårdsavdelning"
     },
     "en": {
       "name": "Sequential Organ Failure Assessment",
-      "description": "Indicator of mortality and morbidity prognosis among ICU patients."
+      "description": "Indicator of mortality and morbidity prognosis among ICU patients"
     }
   },
   "resourceDescription": {
@@ -47,7 +47,7 @@
         "purpose": "Att förutsäga mortalitet hos patient som vårdas på intensivvårdsavdelning. Poängen beräknas fortlöpande med 24h-intervall från initial bedömning till utskrivning. Registrering görs med hänsyn till det senaste dygnet.",
         "keywords": [
           "SOFA",
-          "ICU",
+          "IVA",
           "Sequential organ failure assessment",
           "mortalitet",
           "organsvikt",
@@ -77,7 +77,8 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
-    "SOFA.v1"
+    "SOFA.v1",
+    "SOFA_Interpretation.v1"
   ],
   "alertBindings": {},
   "termDefinitions": {
@@ -175,10 +176,14 @@
 <#assign event_time6_ehr_data = laboratory_test___bilirubin_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign glasgow_coma_scale_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.glasgow_coma_scale.v1']">
 <#assign glasgow_coma_scale_entry_def = "def.entries['openEHR-EHR-OBSERVATION.glasgow_coma_scale.v1']">
-<#assign total_score1_def = glasgow_coma_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0026}']">
+<#assign gcs_total_score_def = glasgow_coma_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0026}']">
 <#assign event_time7_def = glasgow_coma_scale_entry_def + ".elements['/data/events/time']">
-<#assign total_score1_ehr_data = glasgow_coma_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0026}']">
+<#assign gcs_total_score_ehr_data = glasgow_coma_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0026}']">
 <#assign event_time7_ehr_data = glasgow_coma_scale_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign sequential_organ_failure_assessment_interpretation_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.sequential_organ_failure_assessment_interpretation.v1']">
+<#assign sequential_organ_failure_assessment_interpretation_entry_def = "def.entries['openEHR-EHR-EVALUATION.sequential_organ_failure_assessment_interpretation.v1']">
+<#assign mortality_percentage_def = sequential_organ_failure_assessment_interpretation_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign mortality_percentage_cds_data = sequential_organ_failure_assessment_interpretation_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
 
 <script> 
 angular.module('cds_app').controller('SOFA_Ctrl', function($scope, $window){
@@ -257,12 +262,12 @@ angular.module('cds_app').controller('SOFA_Ctrl', function($scope, $window){
         <select ng-model="${total_bilirubin_ehr_data}.value.units" ng-options="unit for unit in ${total_bilirubin_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
-<div class="row collapse" title="{{${total_score1_def}.description}}">
+<div class="row collapse" title="{{${gcs_total_score_def}.description}}">
 <div class="medium-6 columns">
-<label>{{${total_score1_def}.name}}</label>
+<label>{{${gcs_total_score_def}.name}}</label>
 </div>
 <div class="medium-6 columns">
-        <input ng-model="${total_score1_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+        <input ng-model="${gcs_total_score_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
       </div>
 </div>
 <div class="row collapse" title="{{${map_or_admin_of_vasopressors_required_def}.description}}">
@@ -283,12 +288,20 @@ angular.module('cds_app').controller('SOFA_Ctrl', function($scope, $window){
         </select>
       </label>
     </div>
-<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult">
+<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult1">
   <div class="medium-5 columns">
     <label><b>{{${total_score_def}.name}}: </b></label>
   </div>
   <div class="medium-7 columns" style="text-align: center;">
     <label>{{${total_score_cds_data}.value.magnitude}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${mortality_percentage_def}.description}}" id="displayresult2">
+  <div class="medium-5 columns">
+    <label><b>{{${mortality_percentage_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${mortality_percentage_cds_data}.value.symbol.value}}</label>
   </div>
 </div>
 </div>
@@ -383,7 +396,7 @@ angular.module('cds_app').controller('SOFA_Ctrl', function($scope, $window){
       -webkit-animation: fadeIn 0.3s ease-in-out;
       animation: fadeIn 0.3s ease-in-out;
   }
-  .help-tip p{  /* The tooltip */
+  .help-tip p{	/* The tooltip */
       display: none;
       text-align: left;
       background-color: #1E2021;
@@ -417,7 +430,7 @@ angular.module('cds_app').controller('SOFA_Ctrl', function($scope, $window){
       left:0;
   }
   .references1{
-  font-size: 70%;
+    font-size: 70%;
   }
   /* CSS animation */
   @-webkit-keyframes fadeIn {
@@ -435,15 +448,23 @@ angular.module('cds_app').controller('SOFA_Ctrl', function($scope, $window){
       0% { opacity:0; }
       100% { opacity:100%; }
   }
-  #displayresult {
+  #displayresult1 {
     background-color: #e6e6e6; 
     padding-top: 3px;
     padding-bottom: 3px;
-    padding-left: 3px;
-	font-size: 90%;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    background-color: #f2f2f2;
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
   }
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
+
 
 </body></html>

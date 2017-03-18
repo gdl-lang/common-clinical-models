@@ -57,16 +57,6 @@ Benyttes vanligvis ikke for gravide.">
 			misuse = <"No utilizar para el registro de cada medición fisiológica u observación clínica. Utilizar para ello los arquetipos OBSERVATION específicos - OBSERVATION.blood_pressure, OBSERVATION.pulse, OBSERVATION.respirations, OBSERVATION.body_temperature, OBSERVATION.avpu, CLUSTER.ambient_oxygen u OBSERVATION.indirect_oximetry.
 No debe utilizarse para niños y adolescentes menores de 16 años ni durante el embarazo.">
 		>
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"Att registrera resultat baserat på fysiologiska och kliniska observationer, i syfte att understödja objektiv bedömning av en vuxen patients vitala funktioner.">
-			use = <"Använd för att registrera resultat baserat på fysiologiska och kliniska observationer, i syfte att understödja objektiv bedömning av en vuxen patients vitala funktioner.">
-			keywords = <"Warning", "AVPU", "Andningsfrekvens", "Pulsfrekvens", "Blodtryck", "Temperatur", "Triage", "NEWS", "Syremättnad", "MEWS", "EWS", "Syrgas">
-			misuse = <"Är ej avsedd för att registrera enskilda fysiologiska eller kliniska observationer - för detta finns separata arketyper för vardera område; OBSERVATION.blood_pressure, OBSERVATION.pulse, OBSERVATION.respirations, OBSERVATION.body_temperature, OBSERVATION.avpu, CLUSTER.ambient_oxygen or OBSERVATION.indirect_oximetry.
-
-Ska ej tillämpas på gravida och individer 16 år gamla eller yngre.">
-			copyright = <"© Clinical Models UK, Nasjonal IKT HF, openEHR Foundation">
-		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record a composite score based on categorising physiological readings and observations, as a simple method to support objective assessment of the degree of clinical deterioration in an unwell patient over the age of 16 years.">
@@ -75,6 +65,16 @@ Ska ej tillämpas på gravida och individer 16 år gamla eller yngre.">
 			misuse = <"Not to be used to record each physical measurement or clinical observation. Use specific OBSERVATION archetypes for this purpose - OBSERVATION.blood_pressure, OBSERVATION.pulse, OBSERVATION.respirations, OBSERVATION.body_temperature, OBSERVATION.avpu, CLUSTER.ambient_oxygen or OBSERVATION.indirect_oximetry.
 
 Not to be used for children/teens under the age of 16 years or in pregnancy.">
+			copyright = <"© Clinical Models UK, Nasjonal IKT HF, openEHR Foundation">
+		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att registrera resultat baserat på fysiologiska och kliniska observationer, i syfte att understödja objektiv bedömning av en vuxen patients vitala funktioner.">
+			use = <"Använd för att registrera resultat baserat på fysiologiska och kliniska observationer, i syfte att understödja objektiv bedömning av en vuxen patients vitala funktioner.">
+			keywords = <"Warning", "AVPU", "Andningsfrekvens", "Pulsfrekvens", "Blodtryck", "Temperatur", "Triage", "NEWS", "Syremättnad", "MEWS", "EWS", "Syrgas">
+			misuse = <"Är ej avsedd för att registrera enskilda fysiologiska eller kliniska observationer - för detta finns separata arketyper för vardera område; OBSERVATION.blood_pressure, OBSERVATION.pulse, OBSERVATION.respirations, OBSERVATION.body_temperature, OBSERVATION.avpu, CLUSTER.ambient_oxygen or OBSERVATION.indirect_oximetry.
+
+Ska ej tillämpas på gravida och individer 16 år gamla eller yngre.">
 			copyright = <"© Clinical Models UK, Nasjonal IKT HF, openEHR Foundation">
 		>
 	>
@@ -93,7 +93,7 @@ National Early Warning Score (NEWS). [Internet]. London, UK: Royal College of Ph
 National Early Warning Score (NEWS). In: eHåndbok - Internettutgave [Internet]. Oslo, Norway: Oslo University Hospital; 2016 February. Available from: http://ehandboken.oslo-universitetssykehus.no/Modules/module_136/handbook_view.aspx?documentId=78636.
 
 Modified Early Warning Score (NT RMP), draft archetype, NEHTA Clinical Knowledge Manager [Internet]. NEHTA. Authored: 07 Feb 2013. Available at: http://dcm.nehta.org.au/ckm/#showArchetype_1013.1.1172_2 (accessed 01 June 2013).">
-		["MD5-CAM-1.0.1"] = <"791262F397D3E0616541033F7DD320EE">
+		["MD5-CAM-1.0.1"] = <"AC7E168F3DFC489BA9C17BD53C222FC9">
 		["custodian_namespace"] = <"no.nasjonalikt">
 		["custodian_organisation"] = <"Nasjonal IKT">
 	>
@@ -101,83 +101,83 @@ Modified Early Warning Score (NT RMP), draft archetype, NEHTA Clinical Knowledge
 definition
 	OBSERVATION[at0000] matches {	-- NEWS (UK RCP)
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					POINT_EVENT[at0002] occurrences matches {0..1} matches {	-- Point in time
+					POINT_EVENT[at0002] occurrences matches {0..1} matches {	-- *Point in time(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Respiration rate
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Andningsfrekvens
 										value matches {
 											0|[local::at0018], 	-- 12-20
 											1|[local::at0019], 	-- 9-11
 											2|[local::at0020], 	-- 21-24
-											3|[local::at0021]  	-- <=8 or >=25
+											3|[local::at0021]  	-- ≤8 eller ≥25
 										}
 									}
-									ELEMENT[at0029] occurrences matches {0..1} matches {	-- Oxygen saturation
+									ELEMENT[at0034] occurrences matches {0..1} matches {	-- Syrgastillförsel
 										value matches {
-											0|[local::at0030], 	-- >= 96
-											1|[local::at0031], 	-- 94-95
-											2|[local::at0032], 	-- 92-93
-											3|[local::at0033]  	-- <=91
+											0|[local::at0036], 	-- Frånvarande
+											2|[local::at0037]  	-- Föreligger
 										}
 									}
-									ELEMENT[at0034] occurrences matches {0..1} matches {	-- Supplemental oxygen
-										value matches {
-											0|[local::at0036], 	-- No
-											2|[local::at0037]  	-- Yes
-										}
-									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Body temperature
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Temperatur
 										value matches {
 											0|[local::at0022], 	-- 36.1-38.0
-											1|[local::at0023], 	-- 35.1-36.0 or 38.1-39.0
-											2|[local::at0038], 	-- >=39.1
-											3|[local::at0039]  	-- <=35.0
+											1|[local::at0023], 	-- 35.1-36.0 eller 38.1-39.0
+											2|[local::at0038], 	-- ≥39.1
+											3|[local::at0039]  	-- ≤35.0
 										}
 									}
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Systolic blood pressure
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Systoliskt blodtryck
 										value matches {
 											0|[local::at0014], 	-- 111-219
 											1|[local::at0015], 	-- 101-110
 											2|[local::at0016], 	-- 91-100
-											3|[local::at0017]  	-- <=90 or >= 220
+											3|[local::at0017]  	-- ≤90 eller ≥ 220
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Heart rate
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Pulsfrekvens
 										value matches {
 											0|[local::at0013], 	-- 51-90
-											1|[local::at0012], 	-- 41-50 or 91-110
+											1|[local::at0012], 	-- 41-50 eller 91-110
 											2|[local::at0011], 	-- 111-130
-											3|[local::at0010]  	-- <=40 or >=131
+											3|[local::at0010]  	-- ≤40 or ≥131
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Level of consciousness
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Medvetandegrad
 										value matches {
 											0|[local::at0024], 	-- A
-											3|[local::at0025]  	-- V, P or U
+											3|[local::at0025]  	-- V, P eller U
 										}
 									}
-									ELEMENT[at0028] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0028] occurrences matches {0..1} matches {	-- Total poäng
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..20|}
 											}
 										}
 									}
-									ELEMENT[at0044] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0044] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0029] occurrences matches {0..1} matches {	-- Syremättnad
+										value matches {
+											0|[local::at0030], 	-- ≥ 96
+											1|[local::at0031], 	-- 94-95
+											2|[local::at0032], 	-- 92-93
+											3|[local::at0033]  	-- ≤91
 										}
 									}
 								}
 							}
 						}
 						state matches {
-							ITEM_TREE[at0041] matches {	-- Tree
+							ITEM_TREE[at0041] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0043] occurrences matches {0..1} matches {	-- Confounding factors
+									ELEMENT[at0043] occurrences matches {0..1} matches {	-- *Confounding factors(en)
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -190,9 +190,9 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0045] matches {	-- Tree
+			ITEM_TREE[at0045] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					allow_archetype CLUSTER[at0046] occurrences matches {0..*} matches {	-- Extension
+					allow_archetype CLUSTER[at0046] occurrences matches {0..*} matches {	-- *Extension(en)
 						include
 							archetype_id/value matches {/.*/}
 					}
@@ -242,7 +242,7 @@ ontology
 					description = <"Observed category for the AVPU scale rating of a patient's conscious state.">
 				>
 				["at0010"] = <
-					text = <"<=40 or >=131">
+					text = <"≤40 or ≥131">
 					description = <"The heart rate measurement is less than/equal to 40 beats/min or greater than/equal to 131 beats/min; scored as 3 points.">
 				>
 				["at0011"] = <
@@ -270,7 +270,7 @@ ontology
 					description = <"The systolic blood pressure measurement is between 91 and 100 mmHg; scored as 2 points.">
 				>
 				["at0017"] = <
-					text = <"<=90 or >= 220">
+					text = <"≤90 or ≥220">
 					description = <"The systolic blood pressure measurement is less than/equal to 90 mmHg or greater than/equal to 220 mmHg; scored as 3 points.">
 				>
 				["at0018"] = <
@@ -286,7 +286,7 @@ ontology
 					description = <"The respiratory rate measurement is between 21 and 24 breaths/min; scored as 2 points.">
 				>
 				["at0021"] = <
-					text = <"<=8 or >=25">
+					text = <"≤8 or ≥25">
 					description = <"The respiratory rate measurement is less than/equal to 8 breaths/min or greater than/equal to 25 breaths/min; scored as 3 points.">
 				>
 				["at0022"] = <
@@ -315,7 +315,7 @@ ontology
 					description = <"Range category for the oxygen saturation measurement of a patient.">
 				>
 				["at0030"] = <
-					text = <">= 96">
+					text = <"≥96">
 					description = <"The oxygen saturation level is greater than/equal to 96%;scored as 0 points.">
 				>
 				["at0031"] = <
@@ -327,7 +327,7 @@ ontology
 					description = <"The oxygen saturation level is between 92% and 93%; scored as 2 points.">
 				>
 				["at0033"] = <
-					text = <"<=91">
+					text = <"≤91">
 					description = <"The oxygen saturation level is less than/equal to 91%; scored as 3 points.">
 				>
 				["at0034"] = <
@@ -343,11 +343,11 @@ ontology
 					description = <"The patient is receiving supplemental oxygen; scored as 2 points.">
 				>
 				["at0038"] = <
-					text = <">=39.1">
+					text = <"≥39.1">
 					description = <"The body temperature is greater than/equal to 39.1 degrees Celcius; scored as 2 points.">
 				>
 				["at0039"] = <
-					text = <"<=35.0">
+					text = <"≤35.0">
 					description = <"The body temperature is less than/equal to 35 degrees Celcius ; scored as 3 points.">
 				>
 				["at0041"] = <
@@ -755,7 +755,7 @@ ontology
 					description = <"Patientens medvetandegrad i enlighet med AVPU">
 				>
 				["at0010"] = <
-					text = <"<=40 or >=131">
+					text = <"≤40 or ≥131">
 					description = <"Pulsfrekvensen är 40 eller lägre alternativt 131 eller högre">
 				>
 				["at0011"] = <
@@ -783,7 +783,7 @@ ontology
 					description = <"Systoliska blodtrycket är inom intervallet 91-100 mmHg">
 				>
 				["at0017"] = <
-					text = <"<=90 eller >= 220">
+					text = <"≤90 eller ≥ 220">
 					description = <"Systoliska blodtrycket är 90mmHg eller lägre alternativt 220 mmHg eller högre">
 				>
 				["at0018"] = <
@@ -799,7 +799,7 @@ ontology
 					description = <"Andningsfrekvensen är mellan 21 och 24">
 				>
 				["at0021"] = <
-					text = <"<=8 eller >=25">
+					text = <"≤8 eller ≥25">
 					description = <"Andningsfrekvensen är 8 eller mindre alternativt 25 eller mer">
 				>
 				["at0022"] = <
@@ -828,7 +828,7 @@ ontology
 					description = <"Patientens syremättnad">
 				>
 				["at0030"] = <
-					text = <">= 96">
+					text = <"≥ 96">
 					description = <"Syremättnaden är 96% eller högre ">
 				>
 				["at0031"] = <
@@ -840,7 +840,7 @@ ontology
 					description = <"Syremättnaden är inom intervallet 92-93%">
 				>
 				["at0033"] = <
-					text = <"<=91">
+					text = <"≤91">
 					description = <"Syremättnaden är 91% eller lägre">
 				>
 				["at0034"] = <
@@ -856,11 +856,11 @@ ontology
 					description = <"Patienten genomgår syrgasbehandling">
 				>
 				["at0038"] = <
-					text = <">=39.1">
+					text = <"≥39.1">
 					description = <"Kroppstemperaturen är 39,1 grader C eller högre">
 				>
 				["at0039"] = <
-					text = <"<=35.0">
+					text = <"≤35.0">
 					description = <"Kroppstemperaturen är 35,0 grader C eller lägre">
 				>
 				["at0041"] = <

@@ -1,13 +1,14 @@
-<!DOCTYPE html><html ng-app="cds_app"><head>
+<!DOCTYPE html><html ng-app="cds_app">
+<head>
 <title>{{def.concept.name}}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" type="text/css" href="wro/foundation.css" />
-<link rel="stylesheet" type="text/css" href="wro/date-picker.css" />
-<link rel="stylesheet" type="text/css" href="wro/angular.css" />
+<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
+<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
 <script type="text/javascript" src="wro/angular.js"></script>
-<link rel="text/javascript" type="text/css" href="wro/foundation.js" />
+<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
 <script type="text/javascript" src="wro/moment.js"></script>
 <script type="text/javascript" src="wro/date-picker.js"></script>
 <script type="text/javascript" src="wro/app_lib.js"></script>
@@ -41,18 +42,17 @@
     "otherContributors": [
       "Dennis Forslund, Cambio Healthcare Systems"
     ],
-    "lifecycleState": "Author draft",
     "details": {
       "sv": {
-        "purpose": "Använd för att registrera data i enlighet med Acute Gout Diagnosis Rule, och utvärdera huruvida vidare utredning med ledvätskeanalys är nödvändig. Instrumentet baseras på sju faktorer; kön (2p om man), tidigare artrit (2p om föreliggande), akut debut (0,5p om föreliggande), rodnad av led (1p om föreliggande), MTP1-engagemang (2,5p om föreliggande), hjärtkärlsjukdom (1,5p om föreliggande) och S-Urat (3,5p om \u003e5.88 mg/dl eller \u003e0.35 mmol/L eller \u003e350 umol/L).\n\nEn poäng om ≤4p indikerar att gikt ej föreligger, medan ≥8p indikerar att gikt sannolikt föreligger. 5-7p är en gråzon som bör utredas vidare med ledvätskeanalys. \n\nSannolikhet för gikt;\nVid ≤4p - 2,2 %.\nVid 5-7p - 31,2%.\nVid ≥8p - 80,4%",
+        "purpose": "Använd för att registrera data i enlighet med Acute Gout Diagnosis Rule, och utvärdera huruvida vidare utredning med ledvätskeanalys är nödvändig. ",
         "keywords": [
           "gikt",
           "monoartrit",
           "ledvätska",
           "ledvätskeanalys",
-          "Urat"
+          "urat"
         ],
-        "use": "Använd för att registrera data i enlighet med Acute Gout Diagnosis Rule, och utvärdera huruvida vidare utredning med ledvätskeanalys är nödvändig. Instrumentet baseras på sju faktorer; kön (2p om man), tidigare artrit (2p om föreliggande), akut debut (0,5p om föreliggande), rodnad av led (1p om föreliggande), MTP1-engagemang (2,5p om föreliggande), hjärtkärlsjukdom (1,5p om föreliggande) och S-Urat (3,5p om \u003e5.88 mg/dl eller \u003e0.35 mmol/L eller \u003e350 umol/L).\n\nEn poäng om ≤4p indikerar att gikt ej föreligger, medan ≥8p indikerar att gikt sannolikt föreligger. 5-7p är en gråzon som bör utredas vidare med ledvätskeanalys. \n\nSannolikhet för gikt;\nVid ≤4p - 2,2 %.\nVid 5-7p - 31,2%.\nVid ≥8p - 80,4%\n",
+        "use": "Använd för att registrera data i enlighet med Acute Gout Diagnosis Rule, och utvärdera huruvida vidare utredning med ledvätskeanalys är nödvändig. Instrumentet baseras på sju faktorer; kön (2p om man), tidigare artrit (2p om föreliggande), akut debut (0,5p om föreliggande), rodnad av led (1p om föreliggande), MTP1-engagemang (2,5p om föreliggande), hjärtkärlsjukdom (1,5p om föreliggande) och S-Urat (3,5p om \u003e5.88 mg/dl eller \u003e0.35 mmol/L eller \u003e350 umol/L).\n\nEn poäng om \u003d4p indikerar att gikt ej föreligger, medan \u003d8p indikerar att gikt sannolikt föreligger. 5-7p är en gråzon som bör utredas vidare med ledvätskeanalys. \n\nSannolikhet för gikt;\nVid \u003d4p - 2,2 %.\nVid 5-7p - 31,2%.\nVid \u003d8p - 80,4%\n",
         "copyright": "Cambio Healthcare Systems"
       },
       "en": {
@@ -75,6 +75,7 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
+    "acute_gout_diagnosis_assessment.v1",
     "acute_gout_diagnosis_rule.v1"
   ],
   "alertBindings": {},
@@ -165,6 +166,12 @@
 <#assign event_time3_def = basic_demographic_entry_def + ".elements['/data/events/time']">
 <#assign gender_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 <#assign event_time3_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign acute_gout_diagnosis_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.acute_gout_diagnosis.v1']">
+<#assign acute_gout_diagnosis_entry_def = "def.entries['openEHR-EHR-EVALUATION.acute_gout_diagnosis.v1']">
+<#assign gout_assessment_def = acute_gout_diagnosis_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign gout_prevalence_def = acute_gout_diagnosis_entry_def + ".elements['/data{at0001}/items{at0003}']">
+<#assign gout_assessment_cds_data = acute_gout_diagnosis_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
+<#assign gout_prevalence_cds_data = acute_gout_diagnosis_entry_cds_data + "[0].elements['/data{at0001}/items{at0003}']">
 
 <script> 
 angular.module('cds_app').controller('Acute_Gout_Ctrl', function($scope, $window){
@@ -261,7 +268,7 @@ angular.module('cds_app').controller('Acute_Gout_Ctrl', function($scope, $window
         <select ng-model="${uric_acid_concentration_ehr_data}.value.units" ng-options="unit for unit in ${uric_acid_concentration_def}.units" ng-change="execute()" disabled=""></select>
       </div>
     </div>
- <div class="row collapse" title="{{${total_score_def}.description}}" style="background-color: #e6e6e6;">
+ <div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult1">
   <div class="medium-6 columns">
     <label><b>{{${total_score_def}.name}}: </b></label>
   </div>
@@ -269,9 +276,49 @@ angular.module('cds_app').controller('Acute_Gout_Ctrl', function($scope, $window
     <label>{{${total_score_cds_data}.value.magnitude}}</label>
   </div>
 </div>
+<div class="row collapse" title="{{${gout_assessment_def}.description}}" id="displayresult2">
+  <div class="medium-6 columns">
+    <label><b>{{${gout_assessment_def}.name}}: </b></label>
+  </div>
+  <div class="medium-4 columns end" style="text-align: center;">
+    <label>{{${gout_assessment_cds_data}.value.value}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${gout_prevalence_def}.description}}" id="displayresult1">
+  <div class="medium-6 columns">
+    <label><b>{{${gout_prevalence_def}.name}}: </b></label>
+  </div>
+  <div class="medium-4 columns end" style="text-align: center;">
+    <label>{{${gout_prevalence_cds_data}.value.magnitude}} {{${gout_prevalence_cds_data}.value.units}}</label>
+  </div>
+</div>
 </div>
 </div>
 
+<div class="row"><div class="medium-12 columns"></div></div>
+<br /><br />
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
+</div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/20625017">Janssens HJ, Fransen J, Van de Lisdonk EH, van Riel PL, van Weel C, Janssen M. A diagnostic rule for acute gouty arthritis in primary care without joint fluid analysis. Archives of internal medicine. 2010 Jul 12;170(13):1120-6.</a></i>
+        </li>
+      </div>
+    </div>
+	<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/25231179">Kienhorst LB, Janssens HJ, Fransen J, Janssen M. The validation of a diagnostic rule for gout without joint fluid analysis: a prospective study. Rheumatology. 2014 Sep 16:keu378.</a></i>
+        </li>
+      </div>
+    </div>
+  </div>
+  
 <style>
   html, body {
     height:100%;
@@ -330,7 +377,7 @@ angular.module('cds_app').controller('Acute_Gout_Ctrl', function($scope, $window
       -webkit-animation: fadeIn 0.3s ease-in-out;
       animation: fadeIn 0.3s ease-in-out;
   }
-  .help-tip p{  /* The tooltip */
+  .help-tip p{	/* The tooltip */
       display: none;
       text-align: left;
       background-color: #1E2021;
@@ -364,7 +411,7 @@ angular.module('cds_app').controller('Acute_Gout_Ctrl', function($scope, $window
       left:0;
   }
   .references1{
-  font-size: 70%;
+    font-size: 70%;
   }
   /* CSS animation */
   @-webkit-keyframes fadeIn {
@@ -382,17 +429,23 @@ angular.module('cds_app').controller('Acute_Gout_Ctrl', function($scope, $window
       0% { opacity:0; }
       100% { opacity:100%; }
   }
-  #displayresult {
+  #displayresult1 {
     background-color: #e6e6e6; 
     padding-top: 3px;
     padding-bottom: 3px;
-    padding-left: 3px;
-	font-size: 90%;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    background-color: #f2f2f2;
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
   }
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
-
 
 
 </body></html>

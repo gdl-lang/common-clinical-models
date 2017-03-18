@@ -1,0 +1,623 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.mnihss.v1
+
+concept
+	[at0000]	-- mNIHSS
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Dennis Forslund">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-03-17">
+	>
+	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"*(en)">
+			use = <"*(en)">
+			misuse = <"*(en)">
+			copyright = <"*(en)">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"PD Lyden, M Lu, Sr Levine, Tg Brott, J Broderick. A modified National Institutes of Health Stroke Scale for use in stroke clinical trials: preliminary reliability and validity. Stroke. 2001, Vol.32(6), p.1310-1317
+
+BC Meyer, TM Hemmen, CM Jackson, PD Lyden. Modified National Institutes of Health Stroke Scale for use in stroke clinical trials: prospective reliability and validity. Stroke. 2002, Vol.33(5), p.1261-1266
+
+BC Meyer, PD Lyden. The modified National Institutes of Health Stroke Scale: its time has come. International journal of stroke. , 2009, Vol.4(4), p.267-273">
+		["MD5-CAM-1.0.1"] = <"ABFDA0E5AB49E5EB40D75FA5C169BEBE">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- mNIHSS
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- 1B - Level of consciousness questions
+										value matches {
+											0|[local::at0020], 	-- Answers both correctly
+											1|[local::at0021], 	-- Answers one correctly
+											2|[local::at0022]  	-- Answers neither correctly
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- 1C - Level of consciousness commands
+										value matches {
+											0|[local::at0023], 	-- Performs both tasks correctly
+											1|[local::at0024], 	-- Performs one task correctly
+											2|[local::at0025]  	-- Performs neither task
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- 2 - Horizontal eye movement
+										value matches {
+											0|[local::at0026], 	-- Normal
+											1|[local::at0027], 	-- Partial gaze palsy
+											2|[local::at0028]  	-- Total gaze palsy
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- 3 - Visual fields
+										value matches {
+											0|[local::at0029], 	-- No visual loss
+											1|[local::at0030], 	-- Partial hemianopia
+											2|[local::at0031], 	-- Complete hemianopia
+											3|[local::at0032]  	-- Bilateral hemianopia
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- 5A - Left arm motor drift
+										value matches {
+											0|[local::at0033], 	-- No drift
+											1|[local::at0034], 	-- Drift before 10 seconds
+											2|[local::at0035], 	-- Falls before 10 seconds
+											3|[local::at0036], 	-- No effort against gravity
+											4|[local::at0037]  	-- No movement
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- 5B - Right arm motor drift
+										value matches {
+											0|[local::at0038], 	-- No drift
+											1|[local::at0039], 	-- Drift before 10 seconds
+											2|[local::at0040], 	-- Falls before 10 seconds
+											3|[local::at0041], 	-- No effort against gravity
+											4|[local::at0042]  	-- No movement
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- 6A - Left leg motor drift
+										value matches {
+											0|[local::at0043], 	-- No drift
+											1|[local::at0044], 	-- Drift before 10 seconds
+											2|[local::at0045], 	-- Falls before 10 seconds
+											3|[local::at0046]  	-- No effort against gravity
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- 6B - Right leg motor drift
+										value matches {
+											0|[local::at0047], 	-- No drift
+											1|[local::at0048], 	-- Drift before 10 seconds
+											2|[local::at0049], 	-- Falls before 10 seconds
+											3|[local::at0050], 	-- No effort against gravity
+											4|[local::at0051]  	-- No movement
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- 8 - Sensory
+										value matches {
+											0|[local::at0052], 	-- Normal - no sensory loss
+											1|[local::at0053]  	-- Abnormal - sensory loss
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- 9 - Language
+										value matches {
+											0|[local::at0054], 	-- Normal - no aphasia
+											1|[local::at0055], 	-- Mild aphasia
+											2|[local::at0056], 	-- Severe aphasia
+											3|[local::at0057]  	-- Mute or global aphasia
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- 11 - Neglect
+										value matches {
+											0|[local::at0058], 	-- Normal
+											1|[local::at0059], 	-- Mild
+											2|[local::at0060]  	-- Severe
+										}
+									}
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"mNIHSS">
+					description = <"Modified NIH Stroke Scale">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"1B - Level of consciousness questions">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"1C - Level of consciousness commands">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"2 - Horizontal eye movement">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"3 - Visual fields">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"5A - Left arm motor drift">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"5B - Right arm motor drift">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"6A - Left leg motor drift">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"6B - Right leg motor drift">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"8 - Sensory">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"9 - Language">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"11 - Neglect">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Total score">
+					description = <"Sum of all factors.">
+				>
+				["at0020"] = <
+					text = <"Answers both correctly">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Answers one correctly">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Answers neither correctly">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Performs both tasks correctly">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Performs one task correctly">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Performs neither task">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Normal">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Partial gaze palsy">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Total gaze palsy">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"No visual loss">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Partial hemianopia">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Complete hemianopia">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Bilateral hemianopia">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"No drift">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"Drift before 10 seconds">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Falls before 10 seconds">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"No effort against gravity">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"No movement">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"No drift">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Drift before 10 seconds">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"Falls before 10 seconds">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"No effort against gravity">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"No movement">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"No drift">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Drift before 10 seconds">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"Falls before 10 seconds">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"No effort against gravity">
+					description = <"*">
+				>
+				["at0047"] = <
+					text = <"No drift">
+					description = <"*">
+				>
+				["at0048"] = <
+					text = <"Drift before 10 seconds">
+					description = <"*">
+				>
+				["at0049"] = <
+					text = <"Falls before 10 seconds">
+					description = <"*">
+				>
+				["at0050"] = <
+					text = <"No effort against gravity">
+					description = <"*">
+				>
+				["at0051"] = <
+					text = <"No movement">
+					description = <"*">
+				>
+				["at0052"] = <
+					text = <"Normal - no sensory loss">
+					description = <"*">
+				>
+				["at0053"] = <
+					text = <"Abnormal - sensory loss">
+					description = <"*">
+				>
+				["at0054"] = <
+					text = <"Normal - no aphasia">
+					description = <"*">
+				>
+				["at0055"] = <
+					text = <"Mild aphasia">
+					description = <"*">
+				>
+				["at0056"] = <
+					text = <"Severe aphasia">
+					description = <"*">
+				>
+				["at0057"] = <
+					text = <"Mute or global aphasia">
+					description = <"*">
+				>
+				["at0058"] = <
+					text = <"Normal">
+					description = <"*">
+				>
+				["at0059"] = <
+					text = <"Mild">
+					description = <"*">
+				>
+				["at0060"] = <
+					text = <"Severe">
+					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"*mNIHSS(en)">
+					description = <"*Modified NIH Stroke Scale(en)">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"1B - Orientering">
+					description = <"**(en)">
+				>
+				["at0005"] = <
+					text = <"1C - Förståelse">
+					description = <"**(en)">
+				>
+				["at0006"] = <
+					text = <"2 - Ögonmotorik">
+					description = <"**(en)">
+				>
+				["at0007"] = <
+					text = <"3 - Synfält">
+					description = <"**(en)">
+				>
+				["at0008"] = <
+					text = <"5A - Motorik vänster arm">
+					description = <"**(en)">
+				>
+				["at0009"] = <
+					text = <"5B - Motorik höger arm">
+					description = <"**(en)">
+				>
+				["at0010"] = <
+					text = <"6A - Motorik vänster ben">
+					description = <"**(en)">
+				>
+				["at0011"] = <
+					text = <"6B - Motorik höger ben">
+					description = <"**(en)">
+				>
+				["at0012"] = <
+					text = <"8 - Sensorik">
+					description = <"**(en)">
+				>
+				["at0013"] = <
+					text = <"9 - Språk">
+					description = <"**(en)">
+				>
+				["at0014"] = <
+					text = <"11 - Neglekt">
+					description = <"**(en)">
+				>
+				["at0019"] = <
+					text = <"Total poäng">
+					description = <"Summan av samtliga faktorer.">
+				>
+				["at0020"] = <
+					text = <"*Answers both correctly(en)">
+					description = <"**(en)">
+				>
+				["at0021"] = <
+					text = <"*Answers one correctly(en)">
+					description = <"**(en)">
+				>
+				["at0022"] = <
+					text = <"*Answers neither correctly(en)">
+					description = <"**(en)">
+				>
+				["at0023"] = <
+					text = <"*Performs both tasks correctly(en)">
+					description = <"**(en)">
+				>
+				["at0024"] = <
+					text = <"*Performs one task correctly(en)">
+					description = <"**(en)">
+				>
+				["at0025"] = <
+					text = <"*Performs neither task(en)">
+					description = <"**(en)">
+				>
+				["at0026"] = <
+					text = <"*Normal(en)">
+					description = <"**(en)">
+				>
+				["at0027"] = <
+					text = <"*Partial gaze palsy(en)">
+					description = <"**(en)">
+				>
+				["at0028"] = <
+					text = <"*Total gaze palsy(en)">
+					description = <"**(en)">
+				>
+				["at0029"] = <
+					text = <"*No visual loss(en)">
+					description = <"**(en)">
+				>
+				["at0030"] = <
+					text = <"*Partial hemianopia(en)">
+					description = <"**(en)">
+				>
+				["at0031"] = <
+					text = <"*Complete hemianopia(en)">
+					description = <"**(en)">
+				>
+				["at0032"] = <
+					text = <"*Bilateral hemianopia(en)">
+					description = <"**(en)">
+				>
+				["at0033"] = <
+					text = <"*No drigt(en)">
+					description = <"**(en)">
+				>
+				["at0034"] = <
+					text = <"*Drift before 10 seconds(en)">
+					description = <"**(en)">
+				>
+				["at0035"] = <
+					text = <"*Falls before 10 seconds(en)">
+					description = <"**(en)">
+				>
+				["at0036"] = <
+					text = <"*No effort against gravity(en)">
+					description = <"**(en)">
+				>
+				["at0037"] = <
+					text = <"*No movement(en)">
+					description = <"**(en)">
+				>
+				["at0038"] = <
+					text = <"*No drift(en)">
+					description = <"**(en)">
+				>
+				["at0039"] = <
+					text = <"*Drift before 10 seconds(en)">
+					description = <"**(en)">
+				>
+				["at0040"] = <
+					text = <"*Falls before 10 seconds(en)">
+					description = <"**(en)">
+				>
+				["at0041"] = <
+					text = <"*No effort against gravity(en)">
+					description = <"**(en)">
+				>
+				["at0042"] = <
+					text = <"*No movement(en)">
+					description = <"**(en)">
+				>
+				["at0043"] = <
+					text = <"*No drift(en)">
+					description = <"**(en)">
+				>
+				["at0044"] = <
+					text = <"*Drift before 10 seconds(en)">
+					description = <"**(en)">
+				>
+				["at0045"] = <
+					text = <"*Falls before 10 seconds(en)">
+					description = <"**(en)">
+				>
+				["at0046"] = <
+					text = <"*No effort against gravity(en)">
+					description = <"**(en)">
+				>
+				["at0047"] = <
+					text = <"*No drift(en)">
+					description = <"**(en)">
+				>
+				["at0048"] = <
+					text = <"*Drift before 10 seconds(en)">
+					description = <"**(en)">
+				>
+				["at0049"] = <
+					text = <"*Falls before 10 seconds(en)">
+					description = <"**(en)">
+				>
+				["at0050"] = <
+					text = <"*No effort against gravity(en)">
+					description = <"**(en)">
+				>
+				["at0051"] = <
+					text = <"*No movement(en)">
+					description = <"**(en)">
+				>
+				["at0052"] = <
+					text = <"*Normal - no sensory loss(en)">
+					description = <"**(en)">
+				>
+				["at0053"] = <
+					text = <"*Abnormal - sensory loss(en)">
+					description = <"**(en)">
+				>
+				["at0054"] = <
+					text = <"*Normal - no aphasia(en)">
+					description = <"**(en)">
+				>
+				["at0055"] = <
+					text = <"*Mild aphasia(en)">
+					description = <"**(en)">
+				>
+				["at0056"] = <
+					text = <"*Severe aphasia(en)">
+					description = <"**(en)">
+				>
+				["at0057"] = <
+					text = <"*Mute or global aphasia(en)">
+					description = <"**(en)">
+				>
+				["at0058"] = <
+					text = <"*Normal(en)">
+					description = <"**(en)">
+				>
+				["at0059"] = <
+					text = <"*Mild(en)">
+					description = <"**(en)">
+				>
+				["at0060"] = <
+					text = <"*Severe(en)">
+					description = <"**(en)">
+				>
+			>
+		>
+	>

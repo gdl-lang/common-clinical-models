@@ -1,0 +1,103 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.behavioral_observational_pain_scale_pediatric_assessment.v1
+
+concept
+	[at0000]	-- Behavioral observational pain scale pediatric assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-03-11">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Provides a simple, quick pain assessment in children 1-7 years old after surgery.">
+			use = <"Frequency of performing pain assessments:
+•	Every 3 hours
+•	15-20 minutes after IV administration of analgesics
+•	30-45 minutes after oral/rectal administration
+
+Consider analgesia for scores ≥ 3.
+
+0-2 points: Minimal or no pain: Consider reassessing after 30 minutes.
+≥3 points: Significant pain present: Consider analgesia and reassess afterward.
+">
+			keywords = <"Behavioral Observational Pain Scale ", "BOPS", "pediatric pain">
+			misuse = <"This pain scale is not intended for use on patients outside of 1-7 years old.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Anand KJ, Craig KD. New perspectives on definition of pain. Pain 1996; 67:3-6.
+
+Ref. 2: Hesselgard K, Larsson S, Romner B, Strömblad LG, Reinstrup P. Validity and reliability of the Behavioural Observational Pain Scale for postoperative pain measurement in children 1-7 years of age. Pediatr Crit Care Med. 2007 Mar;8(2):102-8. ">
+		["MD5-CAM-1.0.1"] = <"C22F4B51B5C093D44B281C70067F48C6">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Behavioral observational pain scale pediatric assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Pain scale
+						value matches {
+							0|[local::at0004], 	-- Minimal or no pain
+							1|[local::at0005]  	-- Significant pain present
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Recommendation
+						value matches {
+							0|[local::at0006], 	-- Consider reassessing after 30 minutes.
+							1|[local::at0007]  	-- Consider analgesia and reassess afterward.
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Behavioral observational pain scale pediatric assessment">
+					description = <"Behavioral Observational Pain Scale (BOPS) for Post-Op Pediatric Pain. Quantifies post-operative pain for children aged 1-7 years.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Pain scale">
+					description = <"Frequency of performing pain assessments: Every 3 hours; 
+15-20 minutes after IV. administration of analgesics; 30-45 minutes after oral/rectal administration">
+				>
+				["at0003"] = <
+					text = <"Recommendation">
+					description = <"Treatment options">
+				>
+				["at0004"] = <
+					text = <"Minimal or no pain">
+					description = <"Score 0-2">
+				>
+				["at0005"] = <
+					text = <"Significant pain present">
+					description = <"Score ≥3">
+				>
+				["at0006"] = <
+					text = <"Consider reassessing after 30 minutes.">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Consider analgesia and reassess afterward.">
+					description = <"*">
+				>
+			>
+		>
+	>

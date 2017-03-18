@@ -26,7 +26,7 @@
   "decisionSupportViewDefinitions": {
     "sv": {
       "name": "ABC score for massive transfusion",
-      "description": "För att bedöma behov av massiv blodtransfusion hos patienter med akut traumatisk skada"
+      "description": "Behov av massiv blodtransfusion hos patienter med akut traumatisk skada"
     },
     "en": {
       "name": "ABC score for massive transfusion",
@@ -52,7 +52,7 @@
           "FAST",
           "trauma"
         ],
-        "use": "Att registrera resultat i enlighet med ABC Score och dess faktorer: penetrerande trauma, systoliskt blodtryck ≤90 mmHg, hjärtfrekvens ≥120 /min, positiv FAST. Maximal poäng uppgår till 4p och en poäng om ≥2p indikerar hög sannolikhet för behov av massiv blodtransfusion.",
+        "use": "Att registrera resultat i enlighet med ABC Score och dess faktorer: penetrerande trauma, systoliskt blodtryck \u003d90 mmHg, hjärtfrekvens \u003d120 /min, positiv FAST. Maximal poäng uppgår till 4p och en poäng om \u003d2p indikerar hög sannolikhet för behov av massiv blodtransfusion.",
         "misuse": "Endast avsedd för bedömning av behov av massiv transfusion i enlighet med lokala protokoll.",
         "copyright": "© Cambio Healthcare Systems"
       },
@@ -75,7 +75,8 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
-    "ABC_score_massive_transfusion.v1"
+    "ABC_score_massive_transfusion.v1",
+    "ABC_score_massive_transfusion_Assessment.v1"
   ],
   "alertBindings": {},
   "termDefinitions": {
@@ -103,6 +104,12 @@
 <body ng-controller="cds_controller">
 <#assign app_help_tag = "def.guides['ABC_score_massive_transfusion.v1'].concept">
 <#assign references = "def.terms['vt0001']"/>
+<#assign abc_score_for_massive_transfusion_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.abc_score_massive_transfusion.v1']">
+<#assign abc_score_for_massive_transfusion_entry_def = "def.entries['openEHR-EHR-EVALUATION.abc_score_massive_transfusion.v1']">
+<#assign massive_transfusion_assessment_def = abc_score_for_massive_transfusion_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign probability_of_massive_transfusion_def = abc_score_for_massive_transfusion_entry_def + ".elements['/data{at0001}/items{at0007}']">
+<#assign massive_transfusion_assessment_cds_data = abc_score_for_massive_transfusion_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
+<#assign probability_of_massive_transfusion_cds_data = abc_score_for_massive_transfusion_entry_cds_data + "[0].elements['/data{at0001}/items{at0007}']">
 <#assign pulse_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.pulse.v1']">
 <#assign pulse_entry_def = "def.entries['openEHR-EHR-OBSERVATION.pulse.v1']">
 <#assign rate_def = pulse_entry_def + ".elements['/data{at0002}/events{at0003}/data{at0001}/items{at0004}']">
@@ -121,27 +128,27 @@
 <#assign event_time2_def = focused_assessment_with_sonography_for_trauma__fast__entry_def + ".elements['/data/events/time']">
 <#assign result_value_ehr_data = focused_assessment_with_sonography_for_trauma__fast__entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0015}/items{at0016}/items{at0017.1}']">
 <#assign event_time2_ehr_data = focused_assessment_with_sonography_for_trauma__fast__entry_ehr_data + "[0].elements['/data/events/time']">
-<#assign abc_score_for_massive_transfusion_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.abc_score_massive_transfusion.v1']">
-<#assign abc_score_for_massive_transfusion_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.abc_score_massive_transfusion.v1']">
-<#assign abc_score_for_massive_transfusion_entry_def = "def.entries['openEHR-EHR-OBSERVATION.abc_score_massive_transfusion.v1']">
-<#assign focused_assessment_with_sonography_for_trauma__fast__def = abc_score_for_massive_transfusion_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
-<#assign penetrating_trauma_def = abc_score_for_massive_transfusion_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign total_score_def = abc_score_for_massive_transfusion_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0016}']">
-<#assign systolic_blood_pressure__sbp__def = abc_score_for_massive_transfusion_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign heart_rate_def = abc_score_for_massive_transfusion_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
-<#assign event_time3_def = abc_score_for_massive_transfusion_entry_def + ".elements['/data/events/time']">
-<#assign focused_assessment_with_sonography_for_trauma__fast__cds_data = abc_score_for_massive_transfusion_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
-<#assign penetrating_trauma_cds_data = abc_score_for_massive_transfusion_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign total_score_cds_data = abc_score_for_massive_transfusion_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0016}']">
-<#assign systolic_blood_pressure__sbp__cds_data = abc_score_for_massive_transfusion_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign heart_rate_cds_data = abc_score_for_massive_transfusion_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
-<#assign event_time3_cds_data = abc_score_for_massive_transfusion_entry_cds_data + "[0].elements['/data/events/time']">
-<#assign focused_assessment_with_sonography_for_trauma__fast__ehr_data = abc_score_for_massive_transfusion_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
-<#assign penetrating_trauma_ehr_data = abc_score_for_massive_transfusion_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign total_score_ehr_data = abc_score_for_massive_transfusion_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0016}']">
-<#assign systolic_blood_pressure__sbp__ehr_data = abc_score_for_massive_transfusion_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
-<#assign heart_rate_ehr_data = abc_score_for_massive_transfusion_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
-<#assign event_time3_ehr_data = abc_score_for_massive_transfusion_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign abc_score_for_massive_transfusion_entry1_cds_data = "data.cds['openEHR-EHR-OBSERVATION.abc_score_massive_transfusion.v1']">
+<#assign abc_score_for_massive_transfusion_entry1_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.abc_score_massive_transfusion.v1']">
+<#assign abc_score_for_massive_transfusion_entry1_def = "def.entries['openEHR-EHR-OBSERVATION.abc_score_massive_transfusion.v1']">
+<#assign focused_assessment_with_sonography_for_trauma__fast__def = abc_score_for_massive_transfusion_entry1_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign penetrating_trauma_def = abc_score_for_massive_transfusion_entry1_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign total_score_def = abc_score_for_massive_transfusion_entry1_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0016}']">
+<#assign systolic_blood_pressure__sbp__def = abc_score_for_massive_transfusion_entry1_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign heart_rate_def = abc_score_for_massive_transfusion_entry1_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
+<#assign event_time3_def = abc_score_for_massive_transfusion_entry1_def + ".elements['/data/events/time']">
+<#assign focused_assessment_with_sonography_for_trauma__fast__cds_data = abc_score_for_massive_transfusion_entry1_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign penetrating_trauma_cds_data = abc_score_for_massive_transfusion_entry1_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign total_score_cds_data = abc_score_for_massive_transfusion_entry1_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0016}']">
+<#assign systolic_blood_pressure__sbp__cds_data = abc_score_for_massive_transfusion_entry1_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign heart_rate_cds_data = abc_score_for_massive_transfusion_entry1_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
+<#assign event_time3_cds_data = abc_score_for_massive_transfusion_entry1_cds_data + "[0].elements['/data/events/time']">
+<#assign focused_assessment_with_sonography_for_trauma__fast__ehr_data = abc_score_for_massive_transfusion_entry1_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign penetrating_trauma_ehr_data = abc_score_for_massive_transfusion_entry1_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign total_score_ehr_data = abc_score_for_massive_transfusion_entry1_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0016}']">
+<#assign systolic_blood_pressure__sbp__ehr_data = abc_score_for_massive_transfusion_entry1_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign heart_rate_ehr_data = abc_score_for_massive_transfusion_entry1_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
+<#assign event_time3_ehr_data = abc_score_for_massive_transfusion_entry1_ehr_data + "[0].elements['/data/events/time']">
 
 <script> 
 angular.module('cds_app').controller('ABC_massive_transfusion_Ctrl', function($scope, $window){
@@ -173,7 +180,7 @@ angular.module('cds_app').controller('ABC_massive_transfusion_Ctrl', function($s
       <label>{{${penetrating_trauma_def}.name}}</label>
     </div>
     <label class="medium-3 columns" ng-repeat="(key, desc) in ${penetrating_trauma_def}.selections">
-      <input type="radio" value="{{key}}" ng-model= "${penetrating_trauma_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+      <input type="radio" value="{{key}}" ng-model="${penetrating_trauma_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
   <div class="row collapse" title="{{${result_value_def}.description}}">
@@ -206,12 +213,28 @@ angular.module('cds_app').controller('ABC_massive_transfusion_Ctrl', function($s
         <select ng-model="${rate_ehr_data}.value.units" ng-options="unit for unit in ${rate_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
-<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult">
+<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult1">
   <div class="medium-4 columns">
     <label><b>{{${total_score_def}.name}}: </b></label>
   </div>
   <div class="medium-8 columns" style="text-align: center;">
     <label>{{${total_score_cds_data}.value.magnitude}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${massive_transfusion_assessment_def}.description}}" id="displayresult2">
+  <div class="medium-4 columns">
+    <label><b>{{${massive_transfusion_assessment_def}.name}}: </b></label>
+  </div>
+  <div class="medium-8 columns" style="text-align: center;">
+    <label>{{${massive_transfusion_assessment_cds_data}.value.value}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${probability_of_massive_transfusion_def}.description}}" id="displayresult1">
+  <div class="medium-4 columns">
+    <label><b>{{${probability_of_massive_transfusion_def}.name}}: </b></label>
+  </div>
+  <div class="medium-8 columns" style="text-align: center;">
+    <label>{{${probability_of_massive_transfusion_cds_data}.value.magnitude}} {{${probability_of_massive_transfusion_cds_data}.value.units}}</label>
   </div>
 </div>
 </div>
@@ -306,7 +329,7 @@ angular.module('cds_app').controller('ABC_massive_transfusion_Ctrl', function($s
       -webkit-animation: fadeIn 0.3s ease-in-out;
       animation: fadeIn 0.3s ease-in-out;
   }
-  .help-tip p{  /* The tooltip */
+  .help-tip p{	/* The tooltip */
       display: none;
       text-align: left;
       background-color: #1E2021;
@@ -340,7 +363,7 @@ angular.module('cds_app').controller('ABC_massive_transfusion_Ctrl', function($s
       left:0;
   }
   .references1{
-  font-size: 70%;
+    font-size: 70%;
   }
   /* CSS animation */
   @-webkit-keyframes fadeIn {
@@ -358,14 +381,23 @@ angular.module('cds_app').controller('ABC_massive_transfusion_Ctrl', function($s
       0% { opacity:0; }
       100% { opacity:100%; }
   }
-  #displayresult {
+  #displayresult1 {
     background-color: #e6e6e6; 
     padding-top: 3px;
     padding-bottom: 3px;
-    padding-left: 3px;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    background-color: #f2f2f2;
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
   }
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
+
 
 </body></html>

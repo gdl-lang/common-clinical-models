@@ -22,17 +22,6 @@ description
 		["date"] = <"2016-12-12">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To record the 1-year predicted risk of ischaemic stroke or other thromembolism (TE) in individuals with atrial fibrillation. ATRIA stroke risk score has been validated as performing better than the CHADS2 and CHA2DS2-VASc risk models and provides more accurate and reliable stroke risk prediction, as well as guides optimal anticoagulation decision-making, in individuals with atrial fibrillation.">
-			use = <"Use to record the ATRIA stroke risk, as determined from the ATRIA stroke risk score.
-A score of 0 - 5 predicts a risk of ischaemic stroke/TE less than 1% (low risk of stroke);
-a score of 6 predicts 1 - <2% risk (intermediate risk of stroke); and
-a score of >6 predicts >=2% risk (high risk of stroke).">
-			keywords = <"atrial fibrillation", "stroke risk", "thromboembolism risk">
-			misuse = <"Do not use if the patient does not have atrial fibrillation.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att registrera 1-årsrisk för stroke eller annan tromboembolisk händelse hos patienter med förmaksflimmer. Denna arketyp är skapad för utvärdering av poäng genererad i enlighet med ATRIA stroke risk score, ett validerat instrument som används för uppskattning av strokerisk och som riktlinje för optimal behandling med antikoagulantia. 
@@ -45,6 +34,17 @@ a score of >6 predicts >=2% risk (high risk of stroke).">
 			misuse = <"Endast avsedd för patienter med diagnosticerat förmaksflimmer.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the 1-year predicted risk of ischaemic stroke or other thromembolism (TE) in individuals with atrial fibrillation. ATRIA stroke risk score has been validated as performing better than the CHADS2 and CHA2DS2-VASc risk models and provides more accurate and reliable stroke risk prediction, as well as guides optimal anticoagulation decision-making, in individuals with atrial fibrillation.">
+			use = <"Use to record the ATRIA stroke risk, as determined from the ATRIA stroke risk score.
+A score of 0 - 5 predicts a risk of ischaemic stroke/TE less than 1% (low risk of stroke);
+a score of 6 predicts 1 - <2% risk (intermediate risk of stroke); and
+a score of >6 predicts >=2% risk (high risk of stroke).">
+			keywords = <"atrial fibrillation", "stroke risk", "thromboembolism risk">
+			misuse = <"Do not use if the patient does not have atrial fibrillation.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -52,22 +52,22 @@ a score of >6 predicts >=2% risk (high risk of stroke).">
 		["references"] = <"Singer DE, Chang Y, Borowsky LH, Fang MC, Pomernacki NK, Udaltsova N, Reynolds K, Go AS. A new risk scheme to predict ischemic stroke and other thromboembolism in atrial fibrillation: the ATRIA study stroke risk score. Journal of the American Heart Association. 2013 Jun 18;2(3):e000250.
 
 http://www.mdcalc.com/atria-stroke-risk-score/">
-		["MD5-CAM-1.0.1"] = <"8A9C88D81CEB9CC38B354FB7585420AD">
+		["MD5-CAM-1.0.1"] = <"611D3BDA5E4D7E00F9A7C6FEF7882820">
 	>
 
 definition
 	EVALUATION[at0000] matches {	-- ATRIA stroke risk
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
 					ELEMENT[at0002] occurrences matches {0..1} matches {	-- ATRIA stroke risk
 						value matches {
-							0|[local::at0004], 	-- Låg risk (<1%)
-							1|[local::at0005], 	-- Intermediär risk (1 - <2%)
-							2|[local::at0006]  	-- Hög risk (≥2%)
+							0|[local::at0004], 	-- Low risk of stroke (<1%)
+							1|[local::at0005], 	-- Intermediate risk of stroke (1 - <2%)
+							2|[local::at0006]  	-- High risk of stroke (≥2%)
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Kommentar
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Comment
 						value matches {
 							DV_TEXT matches {*}
 						}
@@ -106,7 +106,7 @@ ontology
 					description = <"ATRIA stroke risk score = 6">
 				>
 				["at0006"] = <
-					text = <"High risk of stroke (>=2%)">
+					text = <"High risk of stroke (≥2%)">
 					description = <"ATRIA stroke risk score > 6">
 				>
 			>

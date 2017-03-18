@@ -44,13 +44,13 @@
     ],
     "details": {
       "sv": {
-        "purpose": "För att beräkna en summa baserad på kategorisering av fysiologiska avläsningar och observationer, som en enkel metod för att stödja objektiv bedömning av graden av sjukdom hos en sjuk patient.",
+        "purpose": "Att baserat på kliniska parametrar identifiera patienter med hög risk att försämras och med hjälp av denna information vidta adekvata förebyggande åtgärder.\n",
         "keywords": [
           "MEWS",
           "modified early warning score",
           "vitalparametrar"
         ],
-        "use": "Används för att räkna ut en sammansatt poäng för att stödja bedömningen av graden av sjukdom hos en sjuk patient.",
+        "use": "Använd för att baserat på kliniska parametrar identifiera patienter med hög risk att försämras och med hjälp av denna information vidta adekvata förebyggande åtgärder.\n\nModified Early Warning Score (MEWS) baseras på fem parametrar som enkelt kontrolleras genom klinisk undersökning:\n\n- Andningsfrekvens\n- Systoliskt blodtryck\n- Hjärtfrekvens\n- Medvetandegrad (AVPU)\n- Kroppstemperatur\n\nEn total poäng om ≥5p och/eller 3p för separat parameter bör föranleda skyndsam bedömning av läkare då det är förenligt med försämrande tillstånd och ökad risk för hjärtstopp och behov av intensivvård.\n\nFlertalet sjukhus använder lokalt anpassade versioner av MEWS där diures inkluderas - denna modell kan enkelt justeras för att tillmötesgå specifika önskemål.",
         "misuse": "Får ej användas för att beräkna National Early Warning Score (NEWS).",
         "copyright": "Cambio Healthcare Systems"
       },
@@ -63,13 +63,13 @@
           "pulse",
           "blood pressure"
         ],
-        "use": "Use to calculate a composite score to support assessment of the degree of illness in an unwell patient.",
+        "use": "Use to record a composite score to support assessmennt of the degree of illness in an unwell patient.\n\nThe Modified Early Warning Score (MEWS) is based on five parameters easily controlled for through simple bedside examination:\n\n- Respiration rate\n- Systolic blood pressure\n- Heart rate\n- Level of consciousness (AVPU)\n- Body temperature\n\nA total score of ≥5p and/or 3p of one parameter should result in higher level of care as it is consistent with deteriorating state of the patient and increased risk of cardiac arrest and need for intensive care. \n\nSeveral hospitals use locally modified versions of the instrument including urine output - the model can be adjusted to accommodate specific requests.",
         "misuse": "Not to be used to record National Early Warning Score (NEWS). ",
         "copyright": "Cambio Healthcare Systems"
       }
     },
     "otherDetails": {
-      "references": "Modified Early Warning Scale, MEWS. Capio S:t Görans Sjukhus. Version 4.0. 2011-09-05"
+      "references": "Subbe CP, Kruger M, Rutherford P, et al. Validation of a modified early warning score in medical admissions. Q J Med 2001;94:521–6.  \n\nModified Early Warning Scale, MEWS. Capio S:t Görans Sjukhus. Version 4.0. 2011-09-05"
     }
   },
   "alertGuideIds": [],
@@ -108,32 +108,30 @@
 <#assign event_time_def = body_temperature_entry_def + ".elements['/data/events/time']">
 <#assign temperature_ehr_data = body_temperature_entry_ehr_data + "[0].elements['/data{at0002}/events{at0003}/data{at0001}/items{at0004}']">
 <#assign event_time_ehr_data = body_temperature_entry_ehr_data + "[0].elements['/data/events/time']">
-<#assign pulse_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.pulse.v1']">
-<#assign pulse_entry_def = "def.entries['openEHR-EHR-OBSERVATION.pulse.v1']">
-<#assign rate_def = pulse_entry_def + ".elements['/data{at0002}/events{at0003}/data{at0001}/items{at0004}']">
-<#assign event_time1_def = pulse_entry_def + ".elements['/data/events/time']">
-<#assign rate_ehr_data = pulse_entry_ehr_data + "[0].elements['/data{at0002}/events{at0003}/data{at0001}/items{at0004}']">
-<#assign event_time1_ehr_data = pulse_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign blood_pressure_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.blood_pressure.v1']">
 <#assign blood_pressure_entry_def = "def.entries['openEHR-EHR-OBSERVATION.blood_pressure.v1']">
 <#assign systolic_def = blood_pressure_entry_def + ".elements['/data{at0001}/events{at0006}/data{at0003}/items{at0004}']">
-<#assign event_time2_def = blood_pressure_entry_def + ".elements['/data/events/time']">
+<#assign event_time1_def = blood_pressure_entry_def + ".elements['/data/events/time']">
 <#assign systolic_ehr_data = blood_pressure_entry_ehr_data + "[0].elements['/data{at0001}/events{at0006}/data{at0003}/items{at0004}']">
-<#assign event_time2_ehr_data = blood_pressure_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign event_time1_ehr_data = blood_pressure_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign pulse_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.pulse.v1']">
+<#assign pulse_entry_def = "def.entries['openEHR-EHR-OBSERVATION.pulse.v1']">
+<#assign rate_def = pulse_entry_def + ".elements['/data{at0002}/events{at0003}/data{at0001}/items{at0004}']">
+<#assign event_time2_def = pulse_entry_def + ".elements['/data/events/time']">
+<#assign rate_ehr_data = pulse_entry_ehr_data + "[0].elements['/data{at0002}/events{at0003}/data{at0001}/items{at0004}']">
+<#assign event_time2_ehr_data = pulse_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign modified_early_warning_score__mews__entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.mews.v1']">
 <#assign modified_early_warning_score__mews__entry_def = "def.entries['openEHR-EHR-OBSERVATION.mews.v1']">
 <#assign total_score_def = modified_early_warning_score__mews__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0032}']">
 <#assign level_of_consciousness_def = modified_early_warning_score__mews__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0023}']">
 <#assign systolic_blood_pressure_def = modified_early_warning_score__mews__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
 <#assign respiratory_rate_def = modified_early_warning_score__mews__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign urine_output_24_hr_def = modified_early_warning_score__mews__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0028}']">
 <#assign temperature1_def = modified_early_warning_score__mews__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}']">
 <#assign heart_rate_def = modified_early_warning_score__mews__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
 <#assign total_score_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0032}']">
 <#assign level_of_consciousness_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0023}']">
 <#assign systolic_blood_pressure_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
 <#assign respiratory_rate_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
-<#assign urine_output_24_hr_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0028}']">
 <#assign temperature1_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}']">
 <#assign heart_rate_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
 <#assign respirations_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.respiration.v1']">
@@ -142,20 +140,14 @@
 <#assign event_time3_def = respirations_entry_def + ".elements['/data/events/time']">
 <#assign respiration_rate_ehr_data = respirations_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 <#assign event_time3_ehr_data = respirations_entry_ehr_data + "[0].elements['/data/events/time']">
-<#assign urine_output_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.urine_output.v1']">
-<#assign urine_output_entry_def = "def.entries['openEHR-EHR-OBSERVATION.urine_output.v1']">
-<#assign total_urine_output_24_hr_def = urine_output_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign event_time4_def = urine_output_entry_def + ".elements['/data/events/time']">
-<#assign total_urine_output_24_hr_ehr_data = urine_output_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
-<#assign event_time4_ehr_data = urine_output_entry_ehr_data + "[0].elements['/data/events/time']">
 <#assign avpu_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.avpu.v1']">
 <#assign avpu_entry_def = "def.entries['openEHR-EHR-OBSERVATION.avpu.v1']">
 <#assign avpu_observation_def = avpu_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 <#assign new_confusion_def = avpu_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
-<#assign event_time5_def = avpu_entry_def + ".elements['/data/events/time']">
+<#assign event_time4_def = avpu_entry_def + ".elements['/data/events/time']">
 <#assign avpu_observation_ehr_data = avpu_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 <#assign new_confusion_ehr_data = avpu_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
-<#assign event_time5_ehr_data = avpu_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign event_time4_ehr_data = avpu_entry_ehr_data + "[0].elements['/data/events/time']">
 
 <script> 
 angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
@@ -165,19 +157,18 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
     $scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
     $scope.${event_time3_ehr_data}.value.value = new Date().toISOString();
     $scope.${event_time4_ehr_data}.value.value = new Date().toISOString();
-    $scope.${event_time5_ehr_data}.value.value = new Date().toISOString();
     $scope.${respiration_rate_ehr_data}.value.units = $scope.${respiration_rate_def}.units[0];
-	$scope.${rate_ehr_data}.value.units = $scope.${rate_def}.units[0];
-	$scope.${systolic_ehr_data}.value.units = $scope.${systolic_def}.units[0];
 	$scope.${temperature_ehr_data}.value.units = $scope.${temperature_def}.units[0];
-	$scope.${total_urine_output_24_hr_ehr_data}.value.units = $scope.${total_urine_output_24_hr_def}.units[0];
+    $scope.${systolic_ehr_data}.value.units = $scope.${systolic_def}.units[0];
+	$scope.${rate_ehr_data}.value.units = $scope.${rate_def}.units[0];
 	$scope.${avpu_observation_ehr_data}.value.selection = $scope.findMin($scope.${avpu_observation_def});
+	$scope.${new_confusion_ehr_data}.value.selection = $scope.findMin($scope.${new_confusion_def});
+
   });
 });
 </script>
 
-<div ng-show="ready" ng-controller="MEWS_Ctrl">
-<div class="header">
+<div class="header" ng-controller="MEWS_Ctrl">
   <h1>{{def.concept.name}}</h1>
   <h2>{{def.concept.description}}</h2>
   <div class="help-tip">
@@ -197,17 +188,6 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
         <select ng-model="${respiration_rate_ehr_data}.value.units" ng-options="unit for unit in ${respiration_rate_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
-<div class="row collapse" title="{{${rate_def}.description}}">
-<div class="medium-5 columns">
-<label>{{${rate_def}.name}}</label>
-</div>
-<div class="medium-5 columns">
-        <input ng-model="${rate_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
-      </div>
-	  <div class="medium-2 columns">
-        <select ng-model="${rate_ehr_data}.value.units" ng-options="unit for unit in ${rate_def}.units" ng-change="execute()" disabled=""></select>
-      </div>
-</div>
 <div class="row collapse" title="{{${systolic_def}.description}}">
 <div class="medium-5 columns">
 <label>{{${systolic_def}.name}}</label>
@@ -217,6 +197,17 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
       </div>
 	  <div class="medium-2 columns">
         <select ng-model="${systolic_ehr_data}.value.units" ng-options="unit for unit in ${systolic_def}.units" ng-change="execute()" disabled=""></select>
+      </div>
+</div>
+<div class="row collapse" title="{{${rate_def}.description}}">
+<div class="medium-5 columns">
+<label>{{${rate_def}.name}}</label>
+</div>
+<div class="medium-5 columns">
+        <input ng-model="${rate_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${rate_ehr_data}.value.units" ng-options="unit for unit in ${rate_def}.units" ng-change="execute()" disabled=""></select>
       </div>
 </div>
 <div class="row collapse" title="{{${temperature_def}.description}}">
@@ -239,18 +230,16 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
         </select>
       </label>
     </div>
-<div class="row collapse" title="{{${total_urine_output_24_hr_def}.description}}">
-<div class="medium-5 columns">
-<label>{{${total_urine_output_24_hr_def}.name}}</label>
-</div>
-<div class="medium-5 columns">
-        <input ng-model="${total_urine_output_24_hr_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
-      </div>
-	  <div class="medium-2 columns">
-        <select ng-model="${total_urine_output_24_hr_ehr_data}.value.units" ng-options="unit for unit in ${total_urine_output_24_hr_def}.units" ng-change="execute()" disabled=""></select>
-      </div>
-</div>
-<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult">
+	<div class="row collapse" title="{{${new_confusion_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${new_confusion_def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${new_confusion_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${new_confusion_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<br /><br />
+<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult1">
   <div class="medium-5 columns">
     <label><b>{{${total_score_def}.name}}: </b></label>
   </div>
@@ -258,6 +247,7 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
     <label>{{${total_score_cds_data}.value.magnitude}}</label>
   </div>
 </div>
+
 </div>
 </div>
 
@@ -269,6 +259,13 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
   </div>
 </div>
 <div class="references1">
+<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/11588210">Subbe CP, Kruger M, Rutherford P, et al. Validation of a modified early warning score in medical admissions. Q J Med 2001;94:521–6. </a></i>
+        </li>
+      </div>
+    </div>
   <div class="row collapse">
       <div class="medium-11 medium-offset-1 column">
         <li>
@@ -277,7 +274,7 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
       </div>
     </div>
   </div>
-
+  
 <style>
   html, body {
     height:100%;
@@ -336,7 +333,7 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
       -webkit-animation: fadeIn 0.3s ease-in-out;
       animation: fadeIn 0.3s ease-in-out;
   }
-  .help-tip p{  /* The tooltip */
+  .help-tip p{	/* The tooltip */
       display: none;
       text-align: left;
       background-color: #1E2021;
@@ -370,7 +367,7 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
       left:0;
   }
   .references1{
-  font-size: 70%;
+    font-size: 70%;
   }
   /* CSS animation */
   @-webkit-keyframes fadeIn {
@@ -388,17 +385,23 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
       0% { opacity:0; }
       100% { opacity:100%; }
   }
-  #displayresult {
+  #displayresult1 {
     background-color: #e6e6e6; 
     padding-top: 3px;
     padding-bottom: 3px;
-    padding-left: 3px;
-	font-size: 90%;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    background-color: #f2f2f2;
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
   }
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
-
 
 
 </body></html>
