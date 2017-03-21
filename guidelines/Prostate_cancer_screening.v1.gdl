@@ -1,0 +1,178 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"Prostate_cancer_screening.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				keywords = <"Prostate cancer", "screening">
+			>
+		>
+		original_author = <
+			["name"] = <"Rong Chen">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test_psa.v0">
+				domain = <"EHR">
+				elements = <
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+				>
+			>
+			["gt0004"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.prostate_cancer_screening.v0">
+				domain = <"EHR">
+				elements = <
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0005]">
+					>
+					["gt0007"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0006]">
+					>
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0007]">
+					>
+					["gt0009"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0008]">
+					>
+				>
+			>
+			["gt0010"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.recommendation.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0011"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002]">
+					>
+				>
+			>
+			["gt0012"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.prostate_cancer_screening.v0">
+				domain = <"CDS">
+				elements = <
+					["gt0013"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0009]">
+					>
+				>
+			>
+			["gt0015"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.basic_demographic.v1">
+				elements = <
+					["gt0016"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0013]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0014"] = (RULE) <
+				when = <"$gt0009==true",...>
+				then = <"$gt0013=true",...>
+				priority = <6>
+			>
+			["gt0017"] = (RULE) <
+				when = <"$gt0003>10,ng/mL",...>
+				then = <"$gt0013=true",...>
+				priority = <5>
+			>
+			["gt0019"] = (RULE) <
+				when = <"$gt0016<70,a", "$gt0003>=3,ng/mL", "(($gt0007==true)||($gt0008==true))||(($gt0005==true)||($gt0006==true))">
+				then = <"$gt0013=true",...>
+				priority = <4>
+			>
+			["gt0020"] = (RULE) <
+				when = <"$gt0016>=70,a", "$gt0016<80,a", "$gt0003>=5,ng/mL", "(($gt0007==true)||($gt0008==true))||(($gt0005==true)||($gt0006==true))">
+				then = <"$gt0013=true",...>
+				priority = <3>
+			>
+			["gt0021"] = (RULE) <
+				when = <"$gt0016>=80,a", "$gt0003>=7,ng/mL", "(($gt0007==true)||($gt0008==true))||(($gt0005==true)||($gt0006==true))">
+				then = <"$gt0013=true",...>
+				priority = <2>
+			>
+			["gt0022"] = (RULE) <
+				when = <"$gt0013==null",...>
+				then = <"$gt0013=false",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Prostate cancer screening">
+					>
+					["gt0003"] = (TERM) <
+						text = <"PSA value">
+						description = <"Lab test result of prostate-specific antigen (PSA)">
+					>
+					["gt0005"] = (TERM) <
+						text = <"increasing bone pain">
+						description = <"*">
+					>
+					["gt0006"] = (TERM) <
+						text = <"bone metastases without known primary tumor">
+						description = <"*">
+					>
+					["gt0007"] = (TERM) <
+						text = <"prolonged hematospermia">
+						description = <"*">
+					>
+					["gt0008"] = (TERM) <
+						text = <"difficulties in urinating">
+						description = <"*">
+					>
+					["gt0009"] = (TERM) <
+						text = <"abnormal prostate palpation">
+						description = <"*">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Recommendation">
+						description = <"Narrative description of the recommendation.">
+					>
+					["gt0013"] = (TERM) <
+						text = <"prostate cancer suspected">
+						description = <"*">
+					>
+					["gt0014"] = (TERM) <
+						text = <"abnormal palpation">
+					>
+					["gt0016"] = (TERM) <
+						text = <"Age">
+						description = <"Age in years, and for babies: months, weeks or days">
+					>
+					["gt0017"] = (TERM) <
+						text = <"very high psa">
+					>
+					["gt0018"] = (TERM) <
+						text = <"Younger than 50 years, high psa with sympton">
+					>
+					["gt0019"] = (TERM) <
+						text = <"Under 70 years, high psa with sympton">
+					>
+					["gt0020"] = (TERM) <
+						text = <"From 70 to 80 years, high psa with sympton">
+					>
+					["gt0021"] = (TERM) <
+						text = <"Over 80 years, high psa with sympton">
+					>
+					["gt0022"] = (TERM) <
+						text = <"The rest cases">
+					>
+				>
+			>
+		>
+	>
+>
