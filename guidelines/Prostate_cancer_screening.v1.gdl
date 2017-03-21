@@ -49,12 +49,13 @@
 			>
 			["gt0010"] = (ARCHETYPE_BINDING) <
 				archetype_id = <"openEHR-EHR-EVALUATION.recommendation.v1">
-				domain = <"EHR">
+				domain = <"CDS">
 				elements = <
-					["gt0011"] = (ELEMENT_BINDING) <
+					["gt0023"] = (ELEMENT_BINDING) <
 						path = <"/data[at0001]/items[at0002]">
 					>
 				>
+				template_id = <"prostate_cancer_screening">
 			>
 			["gt0012"] = (ARCHETYPE_BINDING) <
 				archetype_id = <"openEHR-EHR-OBSERVATION.prostate_cancer_screening.v0">
@@ -77,32 +78,37 @@
 		rules = <
 			["gt0014"] = (RULE) <
 				when = <"$gt0009==true",...>
-				then = <"$gt0013=true",...>
-				priority = <6>
+				then = <"$gt0023=prostate_cancer_screening_sv::referral|Utifrån ovanstående föreligger välgrundad misstanke,  remiss för SVF Prostatacancer skall därför skickas.|", "$gt0013=true">
+				priority = <7>
 			>
 			["gt0017"] = (RULE) <
 				when = <"$gt0003>10,ng/mL",...>
-				then = <"$gt0013=true",...>
-				priority = <5>
+				then = <"$gt0023=prostate_cancer_screening_sv::referral|Utifrån ovanstående föreligger välgrundad misstanke,  remiss för SVF Prostatacancer skall därför skickas.|", "$gt0013=true">
+				priority = <6>
 			>
 			["gt0019"] = (RULE) <
 				when = <"$gt0016<70,a", "$gt0003>=3,ng/mL", "(($gt0007==true)||($gt0008==true))||(($gt0005==true)||($gt0006==true))">
-				then = <"$gt0013=true",...>
-				priority = <4>
+				then = <"$gt0023=prostate_cancer_screening_sv::referral|Utifrån ovanstående föreligger välgrundad misstanke,  remiss för SVF Prostatacancer skall därför skickas.|", "$gt0013=true">
+				priority = <5>
 			>
 			["gt0020"] = (RULE) <
 				when = <"$gt0016>=70,a", "$gt0016<80,a", "$gt0003>=5,ng/mL", "(($gt0007==true)||($gt0008==true))||(($gt0005==true)||($gt0006==true))">
-				then = <"$gt0013=true",...>
-				priority = <3>
+				then = <"$gt0023=prostate_cancer_screening_sv::referral|Utifrån ovanstående föreligger välgrundad misstanke,  remiss för SVF Prostatacancer skall därför skickas.|", "$gt0013=true">
+				priority = <4>
 			>
 			["gt0021"] = (RULE) <
 				when = <"$gt0016>=80,a", "$gt0003>=7,ng/mL", "(($gt0007==true)||($gt0008==true))||(($gt0005==true)||($gt0006==true))">
-				then = <"$gt0013=true",...>
-				priority = <2>
+				then = <"$gt0023=prostate_cancer_screening_sv::referral|Utifrån ovanstående föreligger välgrundad misstanke,  remiss för SVF Prostatacancer skall därför skickas.|", "$gt0013=true">
+				priority = <3>
 			>
 			["gt0022"] = (RULE) <
+				when = <"$gt0007==false", "$gt0008==false", "$gt0005==false", "$gt0006==false", "$gt0013==null">
+				then = <"$gt0023=prostate_cancer_screening_sv::no_referral_follow_up|Utifrån ovanstående föreligger inte välgrundad misstanke. För ålder dock förhöjt PSA, varför nytt prov bör beställas om ca 4 veckor.|", "$gt0013=false">
+				priority = <2>
+			>
+			["gt0024"] = (RULE) <
 				when = <"$gt0013==null",...>
-				then = <"$gt0013=false",...>
+				then = <"$gt0023=prostate_cancer_screening_sv::no_referral|Utifrån ovanstående föreligger inte välgrundad misstanke.|", "$gt0013=false">
 				priority = <1>
 			>
 		>
@@ -169,7 +175,14 @@
 						text = <"Over 80 years, high psa with sympton">
 					>
 					["gt0022"] = (TERM) <
-						text = <"The rest cases">
+						text = <"No need for referral and follow up">
+					>
+					["gt0023"] = (TERM) <
+						text = <"Recommendation">
+						description = <"Narrative description of the recommendation.">
+					>
+					["gt0024"] = (TERM) <
+						text = <"No need for referral no follow up">
 					>
 				>
 			>
