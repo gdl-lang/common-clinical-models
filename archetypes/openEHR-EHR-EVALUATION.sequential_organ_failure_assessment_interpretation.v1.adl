@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.sequential_organ_failure_assessment_interpretation.v1
 
 concept
-	[at0000]	-- Sequential Organ Failure Assessment utvärdering
+	[at0000]	-- Sequential organ failure assessment interpretation
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,10 +17,28 @@ language
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-03-05">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att utvärdera poäng genererad i enlighet med SOFA: Sequential Organ Failure Assessment - ett poängsystem utvecklat European Society of Intensive Care Medicine för uppskattning av mortalitet hos patienter som vårdas på intensivvårdsavdelning.">
+			use = <"Använd för att utvärdera poäng genererad i enlighet med SOFA: Sequential Organ Failure Assessment - ett poängsystem utvecklat European Society of Intensive Care Medicine för uppskattning av mortalitet hos patienter som vårdas på intensivvårdsavdelning.
+
+Total poäng uppgår till maximalt 24p och tolkas med avseende på mortalitet enligt:
+                                 
+0-6p = <10%
+7-9p =15-20%
+10-12p = 40-50%
+13-14p = 50-60%
+15p = >80%
+15-24p = >90%">
+			keywords = <"SOFA", "mortalitet", "organsvikt", "Sequential Organ Failure Assessment ", "intensivvård", "IVA">
+			misuse = <"SOFA är endast en uppskattning och är ej avsedd för att påverka medicinsk handläggning eller utvärdera intervention.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"The SOFA helps to predict mortality across 6 organ systems which is calculated every 24 hrs from the initial assessment at admission until the patient is discharged. The worst results of each measured parameter is recorded during the previous 24 hrs.">
@@ -39,23 +57,6 @@ SOFA score     Mortality
 			misuse = <"The SOFA is not designed to accurately predict mortality (and was initially aimed only to ICU mortality specifically)">
 			copyright = <"© Cambio Healthcare Systems">
 		>
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"Att utvärdera poäng genererad i enlighet med SOFA: Sequential Organ Failure Assessment - ett poängsystem utvecklat European Society of Intensive Care Medicine för uppskattning av mortalitet hos patienter som vårdas på intensivvårdsavdelning.">
-			use = <"Använd för att utvärdera poäng genererad i enlighet med SOFA: Sequential Organ Failure Assessment - ett poängsystem utvecklat European Society of Intensive Care Medicine för uppskattning av mortalitet hos patienter som vårdas på intensivvårdsavdelning.
-
-Total poäng uppgår till maximalt 24p och tolkas med avseende på mortalitet enligt:
-                                 
-0-6p = <10%
-7-9p =15-20%
-10-12p = 40-50%
-13-14p = 50-60%
-15p = >80%
-15-24p = >90%">
-			keywords = <"SOFA", "mortalitet", "organsvikt", "Sequential Organ Failure Assessment ", "intensivvård", "IVA">
-			misuse = <"SOFA är endast en uppskattning och är ej avsedd för att påverka medicinsk handläggning eller utvärdera intervention.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -70,18 +71,18 @@ Ref. 3: Kratz A, Ferraro M, Sluss PM, et al: Case records of the Massachusetts G
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Sequential Organ Failure Assessment utvärdering
+	EVALUATION[at0000] matches {	-- Sequential organ failure assessment interpretation
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Mortalitet
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Mortality percentage
 						value matches {
-							0|[local::at0003], 	-- <10 %
-							1|[local::at0004], 	-- 15-20%
-							2|[local::at0005], 	-- 40-50% 
-							3|[local::at0006], 	-- 50-60%
-							4|[local::at0007], 	-- > 80% 
-							5|[local::at0008]  	-- > 90%
+							0|[local::at0003], 	-- <10 % mortality
+							1|[local::at0004], 	-- 15-20% mortality
+							2|[local::at0005], 	-- 40-50% mortality
+							3|[local::at0006], 	-- 50-60% mortality
+							4|[local::at0007], 	-- > 80% mortality
+							5|[local::at0008]  	-- > 90% mortality
 						}
 					}
 				}

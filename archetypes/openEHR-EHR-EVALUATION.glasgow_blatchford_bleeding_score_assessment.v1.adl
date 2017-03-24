@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.glasgow_blatchford_bleeding_score_assessment.v1
 
 concept
-	[at0000]	-- Glasgow-Blatchford Bleeding Score utvärdering
+	[at0000]	-- Glasgow blatchford bleeding score assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,19 +17,11 @@ language
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-03-01">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To stratify patients with acute UGIB into low or high risk groups for needing treatment, rebleeding or mortality">
-			use = <"The points are summed to give a total score (Glasgow-Blatchford bleeding score) between 0 - 23, with score of 0 (zero) suggesting a low risk of complications (0.5%) and higher scores corresponding to increasing acuity, need for treatment, and mortality.
-">
-			keywords = <"upper GI bleeding", "upper GI haemorrhage", "Rockall score", "nonvariceal bleeding">
-			misuse = <"Should only be used at initial patient ssessment.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att utvärdera poäng genererad i enlighet med Glasgow-Blatchford Bleeding Score, som används för att i initialt skede uppskatta risk med avseende på behandlingsbehov, re-blödning och mortalitet hos patienter med övre GI-blödning. ">
@@ -51,6 +43,15 @@ Maximal poäng uppgår till 23p. 0p indikerar låg komplikationsrisk (0,5%). Ju 
 			misuse = <"Endast avsedd för bruk vid initial bedömning.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To stratify patients with acute UGIB into low or high risk groups for needing treatment, rebleeding or mortality">
+			use = <"The points are summed to give a total score (Glasgow-Blatchford bleeding score) between 0 - 23, with score of 0 (zero) suggesting a low risk of complications (0.5%) and higher scores corresponding to increasing acuity, need for treatment, and mortality.
+">
+			keywords = <"upper GI bleeding", "upper GI haemorrhage", "Rockall score", "nonvariceal bleeding">
+			misuse = <"Should only be used at initial patient ssessment.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <"Eneimi Allwell-Brown", ...>
@@ -64,20 +65,20 @@ Ref. 3: Srirajaskanthan R, Conn R, Bulwer C, Irving P. The Glasgow Blatchford sc
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Glasgow-Blatchford Bleeding Score utvärdering
+	EVALUATION[at0000] matches {	-- Glasgow blatchford bleeding score assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Resultat
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Score interpretation
 						value matches {
-							0|[local::at0003], 	-- Låg komplikationsrisk (0,5%)
-							1|[local::at0004]  	-- Hög komplikationsrisk
+							0|[local::at0003], 	-- Score 0 suggesting a 0.5% risk of complications
+							1|[local::at0004]  	-- Score > 0 suggesting high risk of complications
 						}
 					}
-					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Rekommendation
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Recommendation
 						value matches {
-							0|[local::at0006], 	-- Intervention ej nödvändig
-							1|[local::at0007]  	-- Intervention rekommenderas
+							0|[local::at0006], 	-- No intervention required
+							1|[local::at0007]  	-- Intervention required
 						}
 					}
 				}

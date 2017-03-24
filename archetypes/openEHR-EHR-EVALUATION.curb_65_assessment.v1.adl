@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.curb_65_assessment.v1
 
 concept
-	[at0000]	-- CURB-65 utvärdering
+	[at0000]	-- CURB-65 assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,6 +17,7 @@ language
 description
 	original_author = <
 		["name"] = <"Dennis Forslund">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2016-07-13">
 	>
@@ -52,26 +53,26 @@ WS Lim, SV Baudouin, RC George, et al. BTS guidelines for the management of comm
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- CURB-65 utvärdering
+	EVALUATION[at0000] matches {	-- CURB-65 assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Risknivå
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Risk assessment
 						value matches {
-							0|[local::at0005], 	-- Låg riskgrupp
-							1|[local::at0006], 	-- Måttlig riskgrupp
-							2|[local::at0007], 	-- Hög riskgrupp
-							3|[local::at0008]  	-- Högst riskgrupp
+							0|[local::at0005], 	-- Low risk group
+							1|[local::at0006], 	-- Moderate risk group
+							2|[local::at0007], 	-- Severe risk group
+							3|[local::at0008]  	-- Highest risk group
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Rekommendation
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Recommendation
 						value matches {
-							0|[local::at0009], 	-- Överväg hembehandling
-							1|[local::at0010], 	-- Överväg sjukhusvård
-							2|[local::at0011]  	-- Sjukhusvård, överväg IVA
+							0|[local::at0009], 	-- Consider home treatment
+							1|[local::at0010], 	-- Consider hospital care
+							2|[local::at0011]  	-- Urgent hospital admission
 						}
 					}
-					ELEMENT[at0004] occurrences matches {0..1} matches {	-- 30-dagars mortalitet
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- 30-day mortality
 						value matches {
 							0|[local::at0012], 	-- <3 %
 							1|[local::at0013], 	-- 9 %

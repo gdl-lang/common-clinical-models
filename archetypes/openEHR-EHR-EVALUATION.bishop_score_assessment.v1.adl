@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.bishop_score_assessment.v1
 
 concept
-	[at0000]	-- Bishop Score utvärdering
+	[at0000]	-- Bishop Score assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,6 +17,7 @@ language
 description
 	original_author = <
 		["name"] = <"Dennis Forslund">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-03-18">
 	>
@@ -75,15 +76,15 @@ Newman RB, Goldenberg RL, Iams JD, Meis PJ, Mercer BM, Moawad AH, et al. Preterm
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Bishop Score utvärdering
+	EVALUATION[at0000] matches {	-- Bishop Score assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Utvärdering
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Assessment
 						value matches {
-							0|[local::at0003], 	-- Värkarbete är osannolikt att påbörjas utan induktion
-							1|[local::at0004], 	-- Gråzon; klinisk bedömning vägledande
-							2|[local::at0005]  	-- Värkarbete kommer sannolikt påbörjas spontant; induktion bör således ej vara nödvändigt
+							0|[local::at0003], 	-- Labor is unlikely to commence without induction
+							1|[local::at0004], 	-- Indeterminate group - use clinical judgment
+							2|[local::at0005]  	-- Labor is likely to commence spontaneously, making induction unnecessary
 						}
 					}
 				}

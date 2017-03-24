@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.phq9_assessment.v1
 
 concept
-	[at0000]	-- PHQ9 utvärdering
+	[at0000]	-- Phq9 assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,6 +17,7 @@ language
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-02-23">
 	>
@@ -71,28 +72,28 @@ Not to be used with bipolar patients, those in mourning or those suffering from 
 		["references"] = <"Ref. 1: Kroenke K, Spitzer RL, Williams JB. The PHQ-9: validity of a brief depression severity measure. J Gen Intern Med. 2001 Sep;16(9):606-13. PubMed PMID: 11556941; PubMed Central PMCID: PMC1495268.
 
 Ref. 2: Arroll B, Goodyear-Smith F, Crengle S, Gunn J, Kerse N, Fishman T, Falloon K, Hatcher S. Validation of PHQ-2 and PHQ-9 to screen for major depression in the primary care population. Ann Fam Med. 2010 Jul-Aug;8(4):348-53. doi: 10.1370/afm.1139. PubMed PMID: 20644190; PubMed Central PMCID: PMC2906530.">
-		["MD5-CAM-1.0.1"] = <"D05A1DD98B7E2A39A6A9B57E4CA8CB34">
+		["MD5-CAM-1.0.1"] = <"36BD9FCA9B345EAACFFD087722C9C7B1">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- PHQ9 utvärdering
+	EVALUATION[at0000] matches {	-- Phq9 assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Depression
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Severity grade
 						value matches {
-							0|[local::at0004], 	-- Minimal eller ingen depression 
-							1|[local::at0005], 	-- Lindrig depression
-							2|[local::at0006], 	-- Måttlig depression
-							3|[local::at0007], 	-- Medelsvår depression
-							4|[local::at0008]  	-- Svår depression
+							0|[local::at0004], 	-- Minimal or no depression
+							1|[local::at0005], 	-- Mild depression
+							2|[local::at0006], 	-- Moderate depression
+							3|[local::at0007], 	-- Moderately severe depression 
+							4|[local::at0008]  	-- Severe depression  
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Rekommendation
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Recommendation
 						value matches {
-							0|[local::at0009], 	-- Uppföljning
-							1|[local::at0010], 	-- Klinisk bedömning för att avgöra behov av behandling
-							2|[local::at0011]  	-- Kräver behandling med psykoterapi, läkemedel eller kombination
+							0|[local::at0009], 	-- Monitor the patient.
+							1|[local::at0010], 	-- Use clinical judgment to determine necessity of treatment
+							2|[local::at0011]  	-- Warrants active treatment with psychotherapy, medication or combination
 						}
 					}
 				}
@@ -194,11 +195,11 @@ ontology
 				>
 				["at0009"] = <
 					text = <"Uppföljning">
-					description = <"">
+					description = <"*">
 				>
 				["at0010"] = <
 					text = <"Klinisk bedömning för att avgöra behov av behandling">
-					description = <"">
+					description = <"*">
 				>
 				["at0011"] = <
 					text = <"Kräver behandling med psykoterapi, läkemedel eller kombination">

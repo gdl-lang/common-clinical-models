@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.dfri_assessment.v1
 
 concept
-	[at0000]	-- DFRI utvärdering
+	[at0000]	-- DFRI Assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -16,10 +16,27 @@ language
 description
 	original_author = <
 		["name"] = <"Dennis Forslund">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2016-10-23">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att utvärdera poäng genererad i enlighet med Downton Fall Risk Index.">
+			use = <"Använd för att utvärdera poäng genererad i enlighet med Downton Fall Risk Index.
+
+Downton Risk Index är en etablerad metod och inkluderar väldokumenterade riskfaktorer för fall hos äldre. Riskfaktorerna bidrar med en poäng vardera till totala poängen. Tre eller fler poäng indikerar hög risk för fall.
+
+- Tidigare kända fall
+- Medicinering: sedativa, diuretika, antihypertensiva, antiparkinson, antidepressiva (en poäng vardera)
+- Sensorisk funktionsnedsättning: syn-, hörselnedsättning, nedsatt motorik (en poäng vardera)
+- Kognitiv funktionsnedsättning (konfusion)
+- Osäker gångförmåga (med eller utan hjälpmedel)">
+			keywords = <"Downton Fall Risk Index", "DFRI", "Äldrevård", "Fall", "Senior Alert">
+			misuse = <"Särskild uppmärksamhet bör riktas mot existerande riskfaktorer och inte enbart totala poängen, då dessa bidrar med värdefull information att agera på för att minska fallrisken. Skalan bör användas regelbundet för att snabbt identifiera förändringar bidragande till ökad fallrisk.">
+			copyright = <"Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To assess score generated in accordance with the Downton Fall Risk Index.">
@@ -38,22 +55,6 @@ Downton Fall Risk Index is an established instrument and includes well-documente
 ">
 			copyright = <"Cambio Healthcare Systems">
 		>
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"Att utvärdera poäng genererad i enlighet med Downton Fall Risk Index.">
-			use = <"Använd för att utvärdera poäng genererad i enlighet med Downton Fall Risk Index.
-
-Downton Risk Index är en etablerad metod och inkluderar väldokumenterade riskfaktorer för fall hos äldre. Riskfaktorerna bidrar med en poäng vardera till totala poängen. Tre eller fler poäng indikerar hög risk för fall.
-
-- Tidigare kända fall
-- Medicinering: sedativa, diuretika, antihypertensiva, antiparkinson, antidepressiva (en poäng vardera)
-- Sensorisk funktionsnedsättning: syn-, hörselnedsättning, nedsatt motorik (en poäng vardera)
-- Kognitiv funktionsnedsättning (konfusion)
-- Osäker gångförmåga (med eller utan hjälpmedel)">
-			keywords = <"Downton Fall Risk Index", "DFRI", "Äldrevård", "Fall", "Senior Alert">
-			misuse = <"Särskild uppmärksamhet bör riktas mot existerande riskfaktorer och inte enbart totala poängen, då dessa bidrar med värdefull information att agera på för att minska fallrisken. Skalan bör användas regelbundet för att snabbt identifiera förändringar bidragande till ökad fallrisk.">
-			copyright = <"Cambio Healthcare Systems">
-		>
 	>
 	lifecycle_state = <"0">
 	other_contributors = <>
@@ -62,14 +63,14 @@ Downton Risk Index är en etablerad metod och inkluderar väldokumenterade riskf
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- DFRI utvärdering
+	EVALUATION[at0000] matches {	-- DFRI Assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Fallrisk
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Risk group
 						value matches {
-							0|[local::at0003], 	-- Låg risk för fall
-							1|[local::at0004]  	-- Hög risk för fall
+							0|[local::at0003], 	-- Low-risk group
+							1|[local::at0004]  	-- High-risk group
 						}
 					}
 				}
