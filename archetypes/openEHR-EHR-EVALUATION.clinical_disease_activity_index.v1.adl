@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.clinical_disease_activity_index.v1
 
 concept
-	[at0000]	-- Clinical disease activity index (CDAI) utvärdering
+	[at0000]	-- Clinical disease activity index (CDAI)
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,26 +17,11 @@ language
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
-		["email"] = <"info@cambio.se">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-03-03">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To assess the calculated CDAI for assessing disease activity and treatment response in rheumatoid arthritis.">
-			use = <"Use to store assessment data for CDAI which is based on 4 (four) input parameters: tender joint count (TJC), swollen joint count (SJC), patient global assessment of disease activity (PtGDA), and provider global assessment of disease activity (PrGDA).
-CDAI = TJC + SJC + PtGDA + PrGDA
-CDAI score ≤ 2.8 = Remission
-CDAI score > 2.8 - 10.0 = Low activity
-CDAI score > 10.0 - 22.0 = Moderate activity
-CDAI score > 22.0 = High activity.
-
-CDAI correlates well with disease activity score (DAS28), health assessment questionnaire (HAQ) and American College of Rheumatology (ACR) response criteria, and is useful in assessing disease activity, assessing response to therapy, assessing disease remission and in guiding therapy based on severity of the disease. A CDAI reduction by 6.5 represents a moderate improvement. CDAI data is stored in a separate observation archetype: openEHR-EHR-OBSERVATION.clinical_disease_activity_index.v1">
-			keywords = <"rheumatoid arthritis", "PaGDA", "PrGDA", "tender joint", "swollen joint", "CDAI">
-			misuse = <"Not to be used for simplified disease activity index (SDAI).">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att utvärdera poäng genererad i enlighet med Clinical Disease Activity Index (CDAI), vilket är ett validerat instrument för utvärdering av sjukdomsaktivitet och behandlingseffekt hos patienter med reumatoid artrit (RA).">
@@ -54,6 +39,21 @@ CDAI korrelerar väl med Disease Activity Score (DAS28), Health Assessment Quest
 			misuse = <"Denna arketyp är ej avsedd att användas för registrering av Simplified Disease Activity Index (SDAI). För denna återfinns separat arketyp.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess the calculated CDAI for assessing disease activity and treatment response in rheumatoid arthritis.">
+			use = <"Use to store assessment data for CDAI which is based on 4 (four) input parameters: tender joint count (TJC), swollen joint count (SJC), patient global assessment of disease activity (PtGDA), and provider global assessment of disease activity (PrGDA).
+CDAI = TJC + SJC + PtGDA + PrGDA
+CDAI score ≤ 2.8 = Remission
+CDAI score > 2.8 - 10.0 = Low activity
+CDAI score > 10.0 - 22.0 = Moderate activity
+CDAI score > 22.0 = High activity.
+
+CDAI correlates well with disease activity score (DAS28), health assessment questionnaire (HAQ) and American College of Rheumatology (ACR) response criteria, and is useful in assessing disease activity, assessing response to therapy, assessing disease remission and in guiding therapy based on severity of the disease. A CDAI reduction by 6.5 represents a moderate improvement. CDAI data is stored in a separate observation archetype: openEHR-EHR-OBSERVATION.clinical_disease_activity_index.v1">
+			keywords = <"rheumatoid arthritis", "PaGDA", "PrGDA", "tender joint", "swollen joint", "CDAI">
+			misuse = <"Not to be used for simplified disease activity index (SDAI).">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -65,24 +65,24 @@ Aletaha D, Smolen JS. The simplified disease activity index (SDAI) and clinical 
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Clinical disease activity index (CDAI) utvärdering
+	EVALUATION[at0000] matches {	-- Clinical disease activity index (CDAI)
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Sjukdomsaktivitet
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Disease activity
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
 									at0004, 	-- Remission
-									at0005, 	-- Låg sjukdomsaktivitet
-									at0006, 	-- Måttlig sjukdomsaktivitet
-									at0007]	-- Hög sjukdomsaktivitet
+									at0005, 	-- Low activity
+									at0006, 	-- Moderate activity
+									at0007]	-- High activity
 								}
 							}
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Kommentar
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Comment
 						value matches {
 							DV_TEXT matches {*}
 						}

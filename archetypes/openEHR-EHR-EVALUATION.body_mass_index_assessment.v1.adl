@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.body_mass_index_assessment.v1
 
 concept
-	[at0000]	-- Body Mass Index utvärdering
+	[at0000]	-- Body Mass Index assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,32 +17,11 @@ language
 description
 	original_author = <
 		["name"] = <"Dennis Forslund">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-02-25">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To assess Body Mass Index in accordance with the international classification of BMI from the World Health Organization.">
-			use = <"Use to assess Body Mass Index (BMI). The international classification of BMI from the World Health Organization:
-
-BMI <18,50 - underweight
-- <16,00 - severe thinness
-- 16,00-16,99 - moderate thinness
-- 17,00-18,49 - mild thinness
------------------------------------------
-BMI 18,50 - 24,99 - normal range
------------------------------------------
-BMI 25,00-29,99 - overweight/pre-obese
------------------------------------------
-BMI ≥30 - obese
-- 30,00-34,99 - obese class I
-- 35,00 - 39,99 - obese class II
-- ≥40 - obese class III">
-			keywords = <"BMI", "body mass index", "WHO", "obese", "obesity">
-			misuse = <"">
-			copyright = <"Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att utvärdera Body Mass Index i enlighet med definition formulerad av World Health Organization.">
@@ -65,6 +44,28 @@ BMI ≥30 - fetma
 			misuse = <"">
 			copyright = <"Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess Body Mass Index in accordance with the international classification of BMI from the World Health Organization.">
+			use = <"Use to assess Body Mass Index (BMI). The international classification of BMI from the World Health Organization:
+
+BMI <18,50 - underweight
+- <16,00 - severe thinness
+- 16,00-16,99 - moderate thinness
+- 17,00-18,49 - mild thinness
+-----------------------------------------
+BMI 18,50 - 24,99 - normal range
+-----------------------------------------
+BMI 25,00-29,99 - overweight/pre-obese
+-----------------------------------------
+BMI ≥30 - obese
+- 30,00-34,99 - obese class I
+- 35,00 - 39,99 - obese class II
+- ≥40 - obese class III">
+			keywords = <"BMI", "body mass index", "WHO", "obese", "obesity">
+			misuse = <"">
+			copyright = <"Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"0">
 	other_contributors = <>
@@ -74,20 +75,20 @@ BMI ≥30 - fetma
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Body Mass Index utvärdering
+	EVALUATION[at0000] matches {	-- Body Mass Index assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- BMI-klassifikation
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- BMI classification
 						value matches {
-							0|[local::at0003], 	-- Undervikt - svår
-							1|[local::at0004], 	-- Undervikt - måttlig
-							2|[local::at0005], 	-- Undervikt - lindrig
-							3|[local::at0014], 	-- Normalvikt
-							4|[local::at0015], 	-- Övervikt
-							5|[local::at0016], 	-- Fetma - grad I
-							6|[local::at0017], 	-- Fetma - grad II
-							7|[local::at0018]  	-- Fetma - grad III
+							0|[local::at0003], 	-- Underweight - severe thinness
+							1|[local::at0004], 	-- Underweight - moderate thinness
+							2|[local::at0005], 	-- Underweight - mild thinness
+							3|[local::at0014], 	-- Within normal range
+							4|[local::at0015], 	-- Overweight / pre-obese
+							5|[local::at0016], 	-- Obese - class I
+							6|[local::at0017], 	-- Obese - class II
+							7|[local::at0018]  	-- Obese - class III
 						}
 					}
 				}

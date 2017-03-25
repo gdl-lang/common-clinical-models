@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.trauma_associated_severe_hemorrhage_assessment.v1
 
 concept
-	[at0000]	-- Trauma associated severe hemorrhage utvärdering
+	[at0000]	-- Trauma associated severe hemorrhage assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,20 +17,11 @@ language
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-03-02">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"Trauma Associated Severe Hemorrhage (TASH) score is made up with weighted variables and is used in the management of severe haemorrhage and to predict the risk of needing to provide a massive transfusion for a trauma patient">
-			use = <"Increasing TASH-score points are associated with increasing probability of MT.
-
-A TASH score ≥ 16 points (i.e.) means a probability of MT >50% and a score ≥ 27 is equivalent to 100% probability of MT">
-			keywords = <"massive transfusion", "TASH", "Trauma Associated Severe Hemorrhage">
-			misuse = <"TASH Score does not indicate if trauma patients should receive blood, only if they should receive blood through a massive transfusion protocol.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att utvärdera poäng genererad i enlighet med Trauma Associated Severe Hemorrhage (TASH), som används som stöd för hantering av svår blödning och för bedömning av behov av massiv transfusion hos traumapatienter.">
@@ -51,6 +42,16 @@ Maximal poäng uppgår till 28p och ju högre poäng, desto högre sannolikhet f
 			misuse = <"Endast avsedd för bedömning av behov av massiv transfusion i enlighet med lokala protokoll.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Trauma Associated Severe Hemorrhage (TASH) score is made up with weighted variables and is used in the management of severe haemorrhage and to predict the risk of needing to provide a massive transfusion for a trauma patient">
+			use = <"Increasing TASH-score points are associated with increasing probability of MT.
+
+A TASH score ≥ 16 points (i.e.) means a probability of MT >50% and a score ≥ 27 is equivalent to 100% probability of MT">
+			keywords = <"massive transfusion", "TASH", "Trauma Associated Severe Hemorrhage">
+			misuse = <"TASH Score does not indicate if trauma patients should receive blood, only if they should receive blood through a massive transfusion protocol.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -62,13 +63,13 @@ Ref. 2: Maegele M, Lefering R, Wafaisade A, Theodorou P, Wutzler S, Fischer P, B
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Trauma associated severe hemorrhage utvärdering
+	EVALUATION[at0000] matches {	-- Trauma associated severe hemorrhage assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Riskvärdering massiv transfusion
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Probability of Massive Transfusion
 						value matches {
-							0|[local::at0003], 	-- < 50%
+							0|[local::at0003], 	-- < 50% 
 							1|[local::at0004], 	-- 50-99%
 							2|[local::at0005]  	-- 100%
 						}

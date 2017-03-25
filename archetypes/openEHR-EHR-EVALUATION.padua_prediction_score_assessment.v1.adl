@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.padua_prediction_score_assessment.v1
 
 concept
-	[at0000]	-- Padua Prediction Score utvärdering
+	[at0000]	-- Padua prediction score assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,24 +17,11 @@ language
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-02-27">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"The Padua score allows the identification of patients at high risk of VTE (Venous Thrombotic Embolism) and whom might benefit from thromboprophylaxis">
-			use = <"The scoring tool sums 11 variables between 0 to 20 which are interpreted thus:
-
-Score interpretation:
-
-Padua Score ≥ 4 points indictates high risk: medical prophylaxis recommended
-
-Padua Score < 4 points - do not use medical prophylaxis - use mechanical prophylaxis">
-			keywords = <"Anticoagulation", "VTE", "thromboprophylaxis">
-			misuse = <"The Padua score has not fully been validated and should be used with caution and with supporting information">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att utvärdera poäng genererad i enlighet med Padua Prediction Score, som används för att bedöma behov av antikoagulantia hos sjukhusvårdade patienter baserat på risk för venös tromboembolism.">
@@ -50,6 +37,20 @@ Padua Score < 4 poäng - mekanisk, ej medicinsk, profylax rekommenderas">
 			misuse = <"Instrumentet är ej validerat och bör således användas med försiktighet.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The Padua score allows the identification of patients at high risk of VTE (Venous Thrombotic Embolism) and whom might benefit from thromboprophylaxis">
+			use = <"The scoring tool sums 11 variables between 0 to 20 which are interpreted thus:
+
+Score interpretation:
+
+Padua Score ≥ 4 points indictates high risk: medical prophylaxis recommended
+
+Padua Score < 4 points - do not use medical prophylaxis - use mechanical prophylaxis">
+			keywords = <"Anticoagulation", "VTE", "thromboprophylaxis">
+			misuse = <"The Padua score has not fully been validated and should be used with caution and with supporting information">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -57,24 +58,24 @@ Padua Score < 4 poäng - mekanisk, ej medicinsk, profylax rekommenderas">
 		["references"] = <"Ref. 1: Barbar S, Noventa F, Rossetto V, Ferrari A, Brandolin B, Perlati M, De Bon E, Tormene D, Pagnan A, Prandoni P. A risk assessment model for the identification of hospitalized medical patients at risk for venous thromboembolism: the Padua Prediction Score. J Thromb Haemost. 2010 Nov;8(11):2450-7. doi: 10.1111/j.1538-7836.2010.04044.
 
 Ref. 2: Nendaz M, Spirk D, Kucher N, Aujesky D, Hayoz D, Beer JH, Husmann M, Frauchiger B, Korte W, Wuillemin WA, Jäger K, Righini M, Bounameaux H. Multicentre validation of the Geneva Risk Score for hospitalised medical patients at risk of venous thromboembolism. Explicit ASsessment of Thromboembolic RIsk and Prophylaxis for Medical PATients in SwitzErland (ESTIMATE).Thromb Haemost. 2014 Mar 3;111(3):531-8. doi: 10.1160/TH13-05-0427. Epub 2013 Nov 14.">
-		["MD5-CAM-1.0.1"] = <"5DD5AB4744785BA1AB3995DFBC674982">
+		["MD5-CAM-1.0.1"] = <"05B8B993BD486303698D48220EDEDE9C">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Padua Prediction Score utvärdering
+	EVALUATION[at0000] matches {	-- Padua prediction score assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Riskvärdering
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Risk Level
 						value matches {
-							0|[local::at0004], 	-- Låg risk
-							1|[local::at0005]  	-- Hög risk
+							0|[local::at0004], 	-- Low risk
+							1|[local::at0005]  	-- High risk
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Rekommendation
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Recommendation
 						value matches {
-							0|[local::at0006], 	-- Mekanisk - ej medicinsk - profylax rekommenderas
-							1|[local::at0007]  	-- Medicinsk profylax rekommenderas 
+							0|[local::at0006], 	-- Do not use medical prophylaxis
+							1|[local::at0007]  	-- Medical prophylaxis recommended
 						}
 					}
 				}
@@ -154,7 +155,7 @@ ontology
 				["at0007"] = <
 					text = <"Medicinsk profylax rekommenderas 
 ">
-					description = <"">
+					description = <"*">
 				>
 			>
 		>

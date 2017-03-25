@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.alvarado_appendicitis_assessment.v1
 
 concept
-	[at0000]	-- Alvarado score utvärdering
+	[at0000]	-- Alvarado appendicitis assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,22 +17,11 @@ language
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-02-28">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"The Alvarado score was developed to assist in diagnosing appendicitis.">
-			use = <"Score interpretation and recommended action:
-
-- A CT scan is recommended for scores 4-6 
-- A surgical consultation for scores  ≥ 7. 
-- For scores  ≤ 3: a CT scan is not needed due to the low probability of appendicitis.">
-			keywords = <"Alvarado appendicitis", "acute appendicitis">
-			misuse = <"This tool depends on a thorough clinical assessment made by the physician and care team and should only be used to assist diagnosis.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att utvärdera poäng genererad i enlighet med Alvarado Score, som utvecklades för att understödja diagnostik vid misstänkt akut appendicit.">
@@ -57,6 +46,18 @@ Totala poängen uppgår till maximalt 10p och utgörs av summan av följande fak
 			misuse = <"Ej att anse som diagnostisk utan är endast till för att understödja klinisk bedömning.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The Alvarado score was developed to assist in diagnosing appendicitis.">
+			use = <"Score interpretation and recommended action:
+
+- A CT scan is recommended for scores 4-6 
+- A surgical consultation for scores  ≥ 7. 
+- For scores  ≤ 3: a CT scan is not needed due to the low probability of appendicitis.">
+			keywords = <"Alvarado appendicitis", "acute appendicitis">
+			misuse = <"This tool depends on a thorough clinical assessment made by the physician and care team and should only be used to assist diagnosis.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -68,15 +69,15 @@ Ref. 2: McKay R, Shepherd J. The use of the clinical scoring system by Alvarado 
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Alvarado score utvärdering
+	EVALUATION[at0000] matches {	-- Alvarado appendicitis assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Rekommendation
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Score recommendation
 						value matches {
-							0|[local::at0003], 	-- Låg risk utan behov av vidare utredning med DT
-							1|[local::at0004], 	-- Vidare utredning med DT rekommenderas
-							2|[local::at0005]  	-- Snar kontakt med kirurg rekommenderas
+							0|[local::at0003], 	-- A CT scan is not needed due to the low probability of appendicitis.
+							1|[local::at0004], 	-- A CT scan is recommended 
+							2|[local::at0005]  	-- A surgical consultation is needed
 						}
 					}
 				}

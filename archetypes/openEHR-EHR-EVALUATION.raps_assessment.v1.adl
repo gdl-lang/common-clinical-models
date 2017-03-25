@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.raps_assessment.v1
 
 concept
-	[at0000]	-- RAPS utvärdering
+	[at0000]	-- RAPS assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,6 +17,7 @@ language
 description
 	original_author = <
 		["name"] = <"Dennis Forslund">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-02-23">
 	>
@@ -76,18 +77,18 @@ The cut-off point indicating high risk is a score of 31 or less. Predictive vali
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Lindgren M, Unosson M, Krantz AM, Ek AC. A risk assessment scale for the prediction of pressure sore development: reliability and validity. Journal of advanced nursing. 2002 Apr 1;38(2):190-9.">
-		["MD5-CAM-1.0.1"] = <"85E5D139F0C8A7456F6AE9742C8B7C16">
+		["MD5-CAM-1.0.1"] = <"7027760596A9B44DCA69974FD360F508">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- RAPS utvärdering
+	EVALUATION[at0000] matches {	-- RAPS assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Riskgrupp
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Pressure sore risk
 						value matches {
-							0|[local::at0003], 	-- Låg risk
-							1|[local::at0004]  	-- Hög risk
+							0|[local::at0003], 	-- Low risk
+							1|[local::at0004]  	-- High risk
 						}
 					}
 				}
@@ -137,11 +138,11 @@ ontology
 				>
 				["at0003"] = <
 					text = <"Låg risk">
-					description = <"">
+					description = <"*">
 				>
 				["at0004"] = <
 					text = <"Hög risk">
-					description = <"">
+					description = <"*">
 				>
 			>
 		>

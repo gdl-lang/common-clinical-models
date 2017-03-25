@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.opioid_risk_tool_assessment.v1
 
 concept
-	[at0000]	-- Opioid risk tool utvärdering
+	[at0000]	-- Opioid risk tool assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,25 +17,11 @@ language
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-02-26">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"The ORT (Opioid Risk Tool) is used on initial visit and prior to opioid therapy for chronic pain in order to provide the clinician some idea of potential risk of drug abuse including alcohol, illegal and prescription drug abuse.">
-			use = <"This risk stratification occurs on 3 grades as shown.
-
-The score interpretations are:
-
-≤ 3: low risk
-4-7: moderate risk
-≥ 8: high risk
-">
-			keywords = <"Opioid risk tool", "ORT", "drug abuse risk">
-			misuse = <"Patients in all cases should be watched when administrating opioids for chronic pain management and so the score should only be used as a supporting piece of evidence only.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att utvärdera poäng genererad i enlighet med Opioid Risk Tool (ORT), som används för att värdera risken för beroende vid bruk av opioider.">
@@ -52,6 +38,21 @@ Resultatet beräknas till följd av olika viktning separat för män och kvinnor
 			misuse = <"Patienter som med opioider behandlas för kroniska smärtsyndrom bör noga övervakas, Instrumentet är endast avsett att understödja klinisk bedömning.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The ORT (Opioid Risk Tool) is used on initial visit and prior to opioid therapy for chronic pain in order to provide the clinician some idea of potential risk of drug abuse including alcohol, illegal and prescription drug abuse.">
+			use = <"This risk stratification occurs on 3 grades as shown.
+
+The score interpretations are:
+
+≤ 3: low risk
+4-7: moderate risk
+≥ 8: high risk
+">
+			keywords = <"Opioid risk tool", "ORT", "drug abuse risk">
+			misuse = <"Patients in all cases should be watched when administrating opioids for chronic pain management and so the score should only be used as a supporting piece of evidence only.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -61,15 +62,15 @@ Resultatet beräknas till följd av olika viktning separat för män och kvinnor
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Opioid risk tool utvärdering
+	EVALUATION[at0000] matches {	-- Opioid risk tool assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Riskvärdering
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Risk interpretation
 						value matches {
-							0|[local::at0003], 	-- Låg risk
-							1|[local::at0004], 	-- Måttlig risk
-							2|[local::at0005]  	-- Hög risk
+							0|[local::at0003], 	-- Low risk
+							1|[local::at0004], 	-- Moderate risk
+							2|[local::at0005]  	-- High risk
 						}
 					}
 				}

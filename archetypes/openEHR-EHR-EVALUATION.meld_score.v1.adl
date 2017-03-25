@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.meld_score.v1
 
 concept
-	[at0000]	-- Model For End-Stage Liver Disease (MELD) utvärdering
+	[at0000]	-- Model For End-Stage Liver Disease (MELD)
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,32 +17,11 @@ language
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
-		["email"] = <"info@cambio.se">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-03-01">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To assess 90-day mortality rates in individuals with end-stage liver disease, based on the calculate MELD score.">
-			use = <"To record the assessment of 90-day mortality rate, based on the calculated MELD score that considers serum creatinine, total serum bilirubin, and serum sodium concentrations; the International Normalized Ratio for prothrombin time (INR); and whether or not the individual has had at least two dialysis sessions or 24hrs of continuous venovenous hemodialysis (CVVHD) in the last week before serum creatinine was measured.
-
-Original MELD (oMELD) score = 9.57 * ln(creatinine, mg/dL) + 3.78 * ln(bilirubin, mg/dL) + 11.20 * ln(INR) + 6.43; a positive history of dialysis automatically defaults serum creatinine concentration to 4 mg/dl.
-MELD score = oMELD + [1.32 * (137-Na)] – [0.033 * oMELD * (137-Na)]; based on a normal serum sodium concentration of 125-137 mmol/L.
-MELD score is stored in a separate observation archetype: openEHR-EHR-OBSERVATION.meld_score.v1. 
-MELD score is also accurate in predicting survival in patients with variceal bleeding, determining mortality in patients with cirrhosis who develop infections, predicting mortality in patients with fulminant hepatic failure, alcoholic hepatitis and other forms of chronic liver disease, as well as in prioritizing recipients of liver transplantation.
-
-90-day mortality rates based on MELD score are: 
-score = 40 (71.3% mortality); 
-score = 30-39 (52.6% mortality); 
-score = 20-29 (19.6% mortality); 
-score = 10-19 (6.0% mortality) and 
-score = 9 or less (1.9% mortality).">
-			keywords = <"liver cirrhosis", "alcoholic hepatitis", "hepatic failure", "liver failure", "chronic liver disease", "end-stage liver disease">
-			misuse = <"Not applicable for children under 12 years of age.
-MELD score is not useful for predicting mortality following liver transplantation.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att utvärdera poäng i enlighet med Model For End-Stage Liver Disease (MELD) Score, som används för att på kort sikt uppskatta mortalitet hos patienter med terminal leversjukdom och därigenom bedöma behov av levertransplantation.">
@@ -77,6 +56,27 @@ MELD Score är även användbar för att uppskatta överlevnad hos patienter med
 MELD Score är ej avsedd för att uppskatta mortalitet efter levertransplantation.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess 90-day mortality rates in individuals with end-stage liver disease, based on the calculate MELD score.">
+			use = <"To record the assessment of 90-day mortality rate, based on the calculated MELD score that considers serum creatinine, total serum bilirubin, and serum sodium concentrations; the International Normalized Ratio for prothrombin time (INR); and whether or not the individual has had at least two dialysis sessions or 24hrs of continuous venovenous hemodialysis (CVVHD) in the last week before serum creatinine was measured.
+
+Original MELD (oMELD) score = 9.57 * ln(creatinine, mg/dL) + 3.78 * ln(bilirubin, mg/dL) + 11.20 * ln(INR) + 6.43; a positive history of dialysis automatically defaults serum creatinine concentration to 4 mg/dl.
+MELD score = oMELD + [1.32 * (137-Na)] – [0.033 * oMELD * (137-Na)]; based on a normal serum sodium concentration of 125-137 mmol/L.
+MELD score is stored in a separate observation archetype: openEHR-EHR-OBSERVATION.meld_score.v1. 
+MELD score is also accurate in predicting survival in patients with variceal bleeding, determining mortality in patients with cirrhosis who develop infections, predicting mortality in patients with fulminant hepatic failure, alcoholic hepatitis and other forms of chronic liver disease, as well as in prioritizing recipients of liver transplantation.
+
+90-day mortality rates based on MELD score are: 
+score = 40 (71.3% mortality); 
+score = 30-39 (52.6% mortality); 
+score = 20-29 (19.6% mortality); 
+score = 10-19 (6.0% mortality) and 
+score = 9 or less (1.9% mortality).">
+			keywords = <"liver cirrhosis", "alcoholic hepatitis", "hepatic failure", "liver failure", "chronic liver disease", "end-stage liver disease">
+			misuse = <"Not applicable for children under 12 years of age.
+MELD score is not useful for predicting mortality following liver transplantation.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -94,11 +94,11 @@ Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 20
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Model For End-Stage Liver Disease (MELD) utvärdering
+	EVALUATION[at0000] matches {	-- Model For End-Stage Liver Disease (MELD)
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- 90-dagars mortalitet
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- 90-day mortality
 						value matches {
 							C_DV_QUANTITY <
 								property = <[openehr::507]>
@@ -111,7 +111,7 @@ definition
 							>
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Kommentar
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Comment
 						value matches {
 							DV_TEXT matches {*}
 						}
