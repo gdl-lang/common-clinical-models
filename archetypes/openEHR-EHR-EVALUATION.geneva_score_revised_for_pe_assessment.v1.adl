@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.geneva_score_revised_for_pe_assessment.v1
 
 concept
-	[at0000]	-- Geneva score revised utvärdering
+	[at0000]	-- Geneva score revised for pe assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,6 +17,7 @@ language
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-02-26">
 	>
@@ -67,26 +68,26 @@ Validation
 
 Ref. 2: Ceriani E, Combescure C, Le Gal G, Nendaz M, Perneger T, Bounameaux H, Perrier A, Righini M. Clinical prediction rules for pulmonary embolism: a systematic review and meta-analysis. J Thromb Haemost. 2010 May;8(5):957-70. doi:10.1111/j.1538-7836.2010.03801.x. Epub 2010 Feb 2. Review. PubMed PMID: 20149072.
 ">
-		["MD5-CAM-1.0.1"] = <"B3FD3850F19D24E53877EE9A69EA2619">
+		["MD5-CAM-1.0.1"] = <"8DFFAACCF0B5F13A14564D7FF7645737">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Geneva score revised utvärdering
+	EVALUATION[at0000] matches {	-- Geneva score revised for pe assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Riskvärdering
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Pulmonary Embolism Risk level
 						value matches {
-							0|[local::at0004], 	-- Låg risk
-							1|[local::at0005], 	-- Mellanrisk
-							2|[local::at0006]  	-- Hög risk
+							0|[local::at0004], 	-- Low Risk
+							1|[local::at0005], 	-- Intermediate Risk
+							2|[local::at0006]  	-- High Risk
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Risk för lungemboli
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Pulmonary Embolism Risk percentage
 						value matches {
-							0|[local::at0007], 	-- < 10% risk 
-							1|[local::at0008], 	-- 20-40% risk
-							2|[local::at0009]  	-- > 60% risk
+							0|[local::at0007], 	-- < 10% risk of PE
+							1|[local::at0008], 	-- 20-40% risk of PE
+							2|[local::at0009]  	-- > 60% risk of PE
 						}
 					}
 				}
@@ -172,15 +173,15 @@ ontology
 				>
 				["at0007"] = <
 					text = <"< 10% risk ">
-					description = <"">
+					description = <"*">
 				>
 				["at0008"] = <
 					text = <"20-40% risk">
-					description = <"">
+					description = <"*">
 				>
 				["at0009"] = <
 					text = <"> 60% risk">
-					description = <"">
+					description = <"*">
 				>
 			>
 		>

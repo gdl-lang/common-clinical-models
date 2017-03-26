@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.as_18_assessment.v1
 
 concept
-	[at0000]	-- AS-18 utvärdering
+	[at0000]	-- AS-18 assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,6 +17,7 @@ language
 description
 	original_author = <
 		["name"] = <"Dennis Forslund">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-03-11">
 	>
@@ -62,24 +63,24 @@ The score is generated for depression and mania separately, and a score above 10
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Adler, M., et al. Development and validation of the Affective Self Rating Scale for manic, depressive, and mixed affective states. Nord J Psychiatry. 2008;62(2):130-5.">
-		["MD5-CAM-1.0.1"] = <"E24A04B22A8EC038DCD224DEFD45D21B">
+		["MD5-CAM-1.0.1"] = <"CFF316D3EB753B74B578555D79D8C56A">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- AS-18 utvärdering
+	EVALUATION[at0000] matches {	-- AS-18 assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Resultat - depression
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Result - depression
 						value matches {
-							0|[local::at0004], 	-- Depression ej sannolikt
-							1|[local::at0005]  	-- Depression sannolikt - vidare utredning indicerad
+							0|[local::at0004], 	-- Depression not likely
+							1|[local::at0005]  	-- Depression likely - further investigation required
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Resultat - mani
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Result - mania
 						value matches {
-							0|[local::at0006], 	-- Manisk episod ej sannolik
-							1|[local::at0007]  	-- Manisk episod sannolik - vidare utredning indicerad
+							0|[local::at0006], 	-- Manic episode not likely
+							1|[local::at0007]  	-- Manic episode likely - further investigation required
 						}
 					}
 				}
@@ -146,19 +147,19 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Depression ej sannolikt">
-					description = <"">
+					description = <"*">
 				>
 				["at0005"] = <
 					text = <"Depression sannolikt - vidare utredning indicerad">
-					description = <"">
+					description = <"*">
 				>
 				["at0006"] = <
 					text = <"Manisk episod ej sannolik">
-					description = <"">
+					description = <"*">
 				>
 				["at0007"] = <
 					text = <"Manisk episod sannolik - vidare utredning indicerad">
-					description = <"">
+					description = <"*">
 				>
 			>
 		>

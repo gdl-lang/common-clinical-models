@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.air_score_assessment.v1
 
 concept
-	[at0000]	-- AIR Score Utvärdering
+	[at0000]	-- AIR Score Assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,6 +17,7 @@ language
 description
 	original_author = <
 		["name"] = <"Dennis Forslund">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2016-07-19">
 	>
@@ -73,22 +74,22 @@ Sum 9-12 - high probability. Consider surgical exploration.">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- AIR Score Utvärdering
+	EVALUATION[at0000] matches {	-- AIR Score Assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Sannolikhet
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Probability
 						value matches {
-							0|[local::at0004], 	-- Låg sannolikhet
-							1|[local::at0005], 	-- Intermediär sannolikhet
-							2|[local::at0006]  	-- Hög sannolikhet
+							0|[local::at0004], 	-- Low probability
+							1|[local::at0005], 	-- Indeterminate group
+							2|[local::at0006]  	-- High probability
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Rekommendation
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Recommendation
 						value matches {
-							0|[local::at0007], 	-- Överväg poliklinisk uppföljning om ej påverkat allmäntillstånd
-							1|[local::at0008], 	-- Överväg aktiv observation med upprepad testning och/eller vidare undersökning i enligt lokal tradition
-							2|[local::at0009]  	-- Överväg kirurgisk exploration
+							0|[local::at0007], 	-- Consider outpatient follow-up if unaltered general condition
+							1|[local::at0008], 	-- In-hospital active observation
+							2|[local::at0009]  	-- Consider surgical exploration
 						}
 					}
 				}

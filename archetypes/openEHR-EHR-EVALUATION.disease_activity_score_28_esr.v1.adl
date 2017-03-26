@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.disease_activity_score_28_esr.v1
 
 concept
-	[at0000]	-- Disease activity score 28-ESR utvärdering
+	[at0000]	-- Disease activity score 28-ESR
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,20 +17,11 @@ language
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
-		["email"] = <"info@cambio.se">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-03-03">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To record the assessment of disease activity score 28-ESR (DAS28-ESR) which is a measure of disease activity and treatment response in individuals with rheumatoid arthritis.">
-			use = <"To record assessment data for DAS28-ESR which is based on 4 (four) input parameters: tender joint count (TJC), swollen joint count (SJC), patient global assessment of disease activity (PtGDA) and erythrodyte sedimentation rate (in mm/hr).
-DAS28-ESR = (0.56*√(TJC)+0.28*√(SJC)+0.7*ln(ESR)+0.014*(PtGDA)). The score is stored in a separate observation archetype: openEHR-EHR-OBSERVATION.disease_activity_score_28_esr.v1
-The disease is considered to be in remission if the score is between 0 and <2.6., low activity is score  2.6 to <3.2, moderate activity is 3.2 to ≤5.1, while high activity is strictly above 5.1.">
-			misuse = <"">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att utvärdera poäng i enlighet med Disease Activity Score 28-ESR (DAS28-ESR), ett poängsystem för utvärdering av sjukdomsaktivitet hos patienter med reumatoid artrit (RA). ">
@@ -47,6 +38,15 @@ Resultatet tolkas enligt:
 			misuse = <"">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the assessment of disease activity score 28-ESR (DAS28-ESR) which is a measure of disease activity and treatment response in individuals with rheumatoid arthritis.">
+			use = <"To record assessment data for DAS28-ESR which is based on 4 (four) input parameters: tender joint count (TJC), swollen joint count (SJC), patient global assessment of disease activity (PtGDA) and erythrodyte sedimentation rate (in mm/hr).
+DAS28-ESR = (0.56*√(TJC)+0.28*√(SJC)+0.7*ln(ESR)+0.014*(PtGDA)). The score is stored in a separate observation archetype: openEHR-EHR-OBSERVATION.disease_activity_score_28_esr.v1
+The disease is considered to be in remission if the score is between 0 and <2.6., low activity is score  2.6 to <3.2, moderate activity is 3.2 to ≤5.1, while high activity is strictly above 5.1.">
+			misuse = <"">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -58,24 +58,24 @@ Wells G, Becker JC, Teng J, Dougados M, Schiff M, Smolen J, Aletaha D, Van Riel 
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Disease activity score 28-ESR utvärdering
+	EVALUATION[at0000] matches {	-- Disease activity score 28-ESR
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Sjukdomsaktivitet
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Disease activity
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
 									at0004, 	-- Remission
-									at0005, 	-- Låg sjukdomsaktivitet
-									at0006, 	-- Måttlig sjukdomsaktivitet
-									at0007]	-- Hög sjukdomsaktivitet
+									at0005, 	-- Low activity
+									at0006, 	-- Moderate activity
+									at0007]	-- High activity
 								}
 							}
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Kommentar
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Comment
 						value matches {
 							DV_TEXT matches {*}
 						}

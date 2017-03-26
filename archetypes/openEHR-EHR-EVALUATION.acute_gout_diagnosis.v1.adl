@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.acute_gout_diagnosis.v1
 
 concept
-	[at0000]	-- Acute Gout Diagnosis utvärdering
+	[at0000]	-- Acute Gout Diagnosis
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,7 +17,7 @@ language
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
-		["email"] = <"info@cambio.se">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-03-04">
 	>
@@ -60,23 +60,23 @@ Kienhorst LB, Janssens HJ, Fransen J, Janssen M. The validation of a diagnostic 
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Acute Gout Diagnosis utvärdering
+	EVALUATION[at0000] matches {	-- Acute Gout Diagnosis
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Acute Gout Diagnosis Rule
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Gout assessment
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
-									at0005, 	-- Gikt osannolikt
-									at0006, 	-- Gråzon - ledvätskeanalys rekommenderas
-									at0007]	-- Bild förenlig med gikt
+									at0005, 	-- Gout unlikely
+									at0006, 	-- Gout indeterminate
+									at0007]	-- Gout very likely
 								}
 							}
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Gikt - prevalens inom grupp
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Gout prevalence
 						value matches {
 							C_DV_QUANTITY <
 								property = <[openehr::507]>
@@ -89,7 +89,7 @@ definition
 							>
 						}
 					}
-					ELEMENT[at0004] occurrences matches {0..1} matches {	-- Kommentar
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- Comment
 						value matches {
 							DV_TEXT matches {*}
 						}

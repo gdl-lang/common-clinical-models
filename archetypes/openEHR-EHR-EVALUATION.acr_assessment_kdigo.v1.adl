@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.acr_assessment_kdigo.v1
 
 concept
-	[at0000]	-- U-albumin/kreatinin-kvot -  KDIGO
+	[at0000]	-- ACR Assessment KDIGO
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,7 +17,7 @@ language
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
-		["email"] = <"info@cambio.se">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2016-10-17">
 	>
@@ -59,11 +59,11 @@ May be used in concert with GFR assessment archetype (openEHR-EHR-EVALUATION.gfr
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- U-albumin/kreatinin-kvot -  KDIGO
+	EVALUATION[at0000] matches {	-- ACR Assessment KDIGO
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- KDIGO kategori
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- KDIGO ACR category
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
@@ -75,21 +75,21 @@ definition
 							}
 						}
 					}
-					ELEMENT[at0006] occurrences matches {0..1} matches {	-- U-albumin/kreatinin-kvot
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- ACR value
 						value matches {
 							0|[local::at0007], 	-- < 30
 							1|[local::at0008], 	-- 30 - 300
 							2|[local::at0009]  	-- > 300
 						}
 					}
-					ELEMENT[at0010] occurrences matches {0..1} matches {	-- KDIGO beskrivning
+					ELEMENT[at0010] occurrences matches {0..1} matches {	-- KDIGO ACR description
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
-									at0011, 	-- Normal till måttligt ökad U-albumin/kreatinin-kvot 
-									at0012, 	-- Måttligt ökad U-albumin/kreatinin-kvot 
-									at0013]	-- Allvarligt förhöjd U-albumin/kreatinin-kvot 
+									at0011, 	-- Normal to mildly increased ACR
+									at0012, 	-- Moderately increased ACR
+									at0013]	-- Severely increased ACR
 								}
 							}
 						}

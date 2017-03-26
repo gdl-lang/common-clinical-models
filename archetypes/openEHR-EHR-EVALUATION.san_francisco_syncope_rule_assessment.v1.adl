@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.san_francisco_syncope_rule_assessment.v1
 
 concept
-	[at0000]	-- San Francisco Syncope Rule utvärdering
+	[at0000]	-- San francisco syncope rule assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,18 +17,11 @@ language
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-03-07">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"Risk stratification of syncope among patients via 5 True/False questions.">
-			use = <"If any of the questions answered in the questionnaire are true, the risk is not low and further investigation is warranted in case of serious outcomes.">
-			keywords = <"syncope", "san francisco syncope rule">
-			misuse = <"Should not be used on its own for diagnostic purposes.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att utvärdera poäng genererad i enlighet med San Francisco Syncope Rule (SFSR), vilken används för att identifiera patienter med hög risk för synkope.">
@@ -45,6 +38,14 @@ Om någon av ovanstående faktorer föreligger kan patienten ej kategoriseras in
 			misuse = <"Endast avsedd att användas som stöd till klinisk bedömning och är i sig ej att anse som diagnotisk.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Risk stratification of syncope among patients via 5 True/False questions.">
+			use = <"If any of the questions answered in the questionnaire are true, the risk is not low and further investigation is warranted in case of serious outcomes.">
+			keywords = <"syncope", "san francisco syncope rule">
+			misuse = <"Should not be used on its own for diagnostic purposes.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -56,14 +57,14 @@ Ref. 2: Birnbaum A, Esses D, Bijur P, Wollowitz A, Gallagher EJ. Failure to vali
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- San Francisco Syncope Rule utvärdering
+	EVALUATION[at0000] matches {	-- San francisco syncope rule assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- SFSR - resultat
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- SFSR interpretation
 						value matches {
-							0|[local::at0003], 	-- Patienten tillhör lågriskgruppen
-							1|[local::at0004]  	-- Vidare utredning är indicerad
+							0|[local::at0003], 	-- Patient is in the low-risk group for serious outcomes.
+							1|[local::at0004]  	-- Patient is NOT in the low-risk group for serious outcomes and further investigation is warranted
 						}
 					}
 				}

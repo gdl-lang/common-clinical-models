@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.panic_disorder_severity_scale_assessment.v1
 
 concept
-	[at0000]	-- Panic Disorder Severity Scale utvärdering
+	[at0000]	-- Panic disorder severity scale assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,6 +17,7 @@ language
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-02-26">
 	>
@@ -75,36 +76,36 @@ Normal: 0-2 ; Bordeline: 3-7 ; Slightly ill: 8-10 ; Moderately ill: 11-15 ; Mark
 		["references"] = <"Ref. 1: Shear MK, Brown TA, Barlow DH, Money R, Sholomskas DE, Woods SW, Gorman JM, Papp LA.  Multicenter collaborative Panic Disorder Severity Scale.  American Journal of Psychiatry 1997;154:1571-1575 
 
 Ref. 2: Furukawa, T. A., M. Katherine Shear, et al. (2009). \"Evidence-based guidelines for interpretation of the Panic Disorder Severity Scale.\" Depress Anxiety 26(10): 922-9.">
-		["MD5-CAM-1.0.1"] = <"436489EC076B50B1439EF89921F8E9FC">
+		["MD5-CAM-1.0.1"] = <"1D47BCAD1C6BF2C9F89E5FF411D30CAC">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Panic Disorder Severity Scale utvärdering
+	EVALUATION[at0000] matches {	-- Panic disorder severity scale assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0020] occurrences matches {0..1} matches {	-- Agorafobi?
+					ELEMENT[at0020] occurrences matches {0..1} matches {	-- Presence of Agoraphobia?
 						value matches {
-							0|[local::at0021], 	-- Nej
-							1|[local::at0022]  	-- Ja
+							0|[local::at0021], 	-- No
+							1|[local::at0022]  	-- Yes
 						}
 					}
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Resultat - med agorafobi
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Raw score interpretation - with Agoraphobia
 						value matches {
-							0|[local::at0012], 	-- Normalt
-							1|[local::at0013], 	-- Gränsfall
-							2|[local::at0014], 	-- Lätt-milt paniksyndrom
-							3|[local::at0015], 	-- Måttligt paniksyndrom
-							4|[local::at0016]  	-- Svårt paniksyndrom
+							0|[local::at0012], 	-- Normal
+							1|[local::at0013], 	-- Borderline
+							2|[local::at0014], 	-- Slightly ill
+							3|[local::at0015], 	-- Moderately ill
+							4|[local::at0016]  	-- Markedly ill
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Resultat - utan agorafobi
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Raw score interpretation - without Agoraphobia
 						value matches {
-							0|[local::at0004], 	-- Normalt
-							1|[local::at0005], 	-- Gränsfall
-							2|[local::at0017], 	-- Lätt-milt paniksyndrom
-							3|[local::at0018], 	-- Måttligt paniksyndrom
-							4|[local::at0019]  	-- Svårt paniksyndrom
+							0|[local::at0004], 	-- Normal
+							1|[local::at0005], 	-- Borderline
+							2|[local::at0017], 	-- Slightly ill
+							3|[local::at0018], 	-- Moderately ill
+							4|[local::at0019]  	-- Markedly ill
 						}
 					}
 				}
@@ -250,11 +251,11 @@ ontology
 				>
 				["at0021"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0022"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 			>
 		>

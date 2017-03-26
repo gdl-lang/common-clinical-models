@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.social_phobia_inventory_assessment.v1
 
 concept
-	[at0000]	-- Social phobia inventory utvärdering
+	[at0000]	-- Social phobia inventory assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,37 +17,11 @@ language
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-02-22">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"SPIN (The Social Phobia INventory) is designed on an interviewer-based assessment called the Brief Social Phobia Scale (BSPS) [3] and is a self-assessed 17 part questionnaire that helps to grade and screen for anxiety disorder.
-
-This archetype provides the severity classifications related to the various scores in the questionnaire">
-			use = <"The tool can help to:
-
-a) Classify subjects according to whether they can be diagnosed with social phobia or not.
-b) Quantify the degree of social phobia present in the subject.
-c) Offer tracking of symptoms over time.
-d) Offer screening for social phobia by assessing the scores against threshold values.
-e) Track the effects of treatment alongside other methods.
-
-For every severity rating the scores are as follows:
-
-None: ≤ 20
-Mild: 21-30
-Moderate: 31-40
-Severe: 41-50
-Very Severe: ≥ 51">
-			keywords = <"anxiety disorder", "SPIN", "social phobia", "BSPS">
-			misuse = <"Studies on the use of SPIN have been conducted on small numbers of participants, so it should be used in association with other tools to measure anxiety and should be used with care in:
-
-- Subjects with DSM-IV social phobia.
-- Children, ethnic minorities, and non-English speakers.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att utvärdera poäng genererad i enlighet med Social Phobia Inventory (SPIN). 
@@ -82,6 +56,33 @@ Totala poängsumman uppgår till maximalt 68p. Resultatet tolkas med avseende p�
 ">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"SPIN (The Social Phobia INventory) is designed on an interviewer-based assessment called the Brief Social Phobia Scale (BSPS) [3] and is a self-assessed 17 part questionnaire that helps to grade and screen for anxiety disorder.
+
+This archetype provides the severity classifications related to the various scores in the questionnaire">
+			use = <"The tool can help to:
+
+a) Classify subjects according to whether they can be diagnosed with social phobia or not.
+b) Quantify the degree of social phobia present in the subject.
+c) Offer tracking of symptoms over time.
+d) Offer screening for social phobia by assessing the scores against threshold values.
+e) Track the effects of treatment alongside other methods.
+
+For every severity rating the scores are as follows:
+
+None: ≤ 20
+Mild: 21-30
+Moderate: 31-40
+Severe: 41-50
+Very Severe: ≥ 51">
+			keywords = <"anxiety disorder", "SPIN", "social phobia", "BSPS">
+			misuse = <"Studies on the use of SPIN have been conducted on small numbers of participants, so it should be used in association with other tools to measure anxiety and should be used with care in:
+
+- Subjects with DSM-IV social phobia.
+- Children, ethnic minorities, and non-English speakers.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -95,17 +96,17 @@ Ref.3: Davidson, J. R. T., Miner, C. M., DeVeaugh-Geiss, J., et al (1997) The Br
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Social phobia inventory utvärdering
+	EVALUATION[at0000] matches {	-- Social phobia inventory assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Resultat
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Anxiety severity scale
 						value matches {
-							0|[local::at0003], 	-- Låg sannolikhet för ångest
-							1|[local::at0004], 	-- Lindrig ångest
-							2|[local::at0005], 	-- Måttlig ångest
-							3|[local::at0006], 	-- Svår ångest
-							4|[local::at0007]  	-- Mycket svår ångest
+							0|[local::at0003], 	-- None
+							1|[local::at0004], 	-- Mild
+							2|[local::at0005], 	-- Moderate
+							3|[local::at0006], 	-- Severe
+							4|[local::at0007]  	-- Very Severe
 						}
 					}
 				}

@@ -1,0 +1,113 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.timi_risk_ua_nstemi_assessment.v1
+
+concept
+	[at0000]	-- Timi risk ua nstemi assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-03-16">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The TIMI Risk Score for Unstable Angina/NSTEMI helps to grade patients with anginal symptoms, but is better-suited for patients with confirmed NSTEMI or unstable angina.">
+			use = <"Risk grading follows the following structure:
+
+0-1 points: 5% risk at 14 days of all-cause mortality,
+new or recurrent MI, or severe recurrent ischemia requiring urgent revascularization.
+
+2 points: 8% risk at 14 days of all-cause mortality, new or recurrent MI, or severe recurrent ischemia requiring urgent revascularization.
+
+3 points: 13% risk at 14 days of all-cause mortality, new or recurrent MI, or severe recurrent ischemia requiring urgent revascularization.
+
+4 points: 20% risk at 14 days of all-cause mortality, new or recurrent MI, or severe recurrent ischemia requiring urgent revascularization.
+
+5 points: 26% risk at 14 days of all-cause mortality, new or recurrent MI, or severe recurrent ischemia requiring urgent revascularization.
+
+≥ 6 points: 41% risk at 14 days of all-cause mortality, new or recurrent MI, or severe recurrent ischemia requiring urgent revascularization.
+
+">
+			keywords = <"TIMI Risk Score for Unstable Angina/NSTEMI", "unstable angina", "NSTEMI", "all-cause mortality">
+			misuse = <"Even with a 0/1 point score, risk factors are not low enough to safely allow discharge from hospital. Thus do not use this tool on its own but verify the risk with another tool and/or your organisation's practices.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Antman EM, Cohen M, et. al. The TIMI risk score for unstable angina/non-ST elevation MI: A method for prognostication and therapeutic decision making. JAMA. 2000 Aug 16;284(7):835-42.
+
+
+Ref. 2: Charles V. Pollack Jr., MA, MD, Frank D. Sites, RN, Frances S. Shofer, PhD">
+		["MD5-CAM-1.0.1"] = <"297B5CE5649AA729F2AF9536C2927F40">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Timi risk ua nstemi assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Risk grading
+						value matches {
+							0|[local::at0003], 	-- 5% risk at 14 days of all-cause mortality
+							1|[local::at0004], 	-- 8% risk at 14 days of all-cause mortality
+							2|[local::at0005], 	-- 13% risk at 14 days of all-cause mortality
+							3|[local::at0006], 	-- 20% risk at 14 days of all-cause mortality
+							4|[local::at0007], 	-- 26% risk at 14 days of all-cause mortality
+							5|[local::at0008]  	-- 41% risk at 14 days of all-cause mortality
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Timi risk ua nstemi assessment">
+					description = <"The TIMI Risk Score for Unstable Angina/NSTEMI is the best known chest pain risk score tool.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Risk grading">
+					description = <"Risk at 14 days of all-cause mortality,
+new or recurrent MI, or severe recurrent ischemia requiring urgent revascularization.">
+				>
+				["at0003"] = <
+					text = <"5% risk at 14 days of all-cause mortality">
+					description = <"Score 0-1">
+				>
+				["at0004"] = <
+					text = <"8% risk at 14 days of all-cause mortality">
+					description = <"Score 2">
+				>
+				["at0005"] = <
+					text = <"13% risk at 14 days of all-cause mortality">
+					description = <"Score 3">
+				>
+				["at0006"] = <
+					text = <"20% risk at 14 days of all-cause mortality">
+					description = <"Score 4">
+				>
+				["at0007"] = <
+					text = <"26% risk at 14 days of all-cause mortality">
+					description = <"Score 5">
+				>
+				["at0008"] = <
+					text = <"41% risk at 14 days of all-cause mortality">
+					description = <"Score ≥ 6">
+				>
+			>
+		>
+	>
