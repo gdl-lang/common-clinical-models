@@ -14,12 +14,14 @@
 				purpose = <"This tool calculates the AG (Anion gap) the corrected Anion Gap (cAG), the primary acid/base disturbance of blood PH and the compensatory - if any - reaction by utilising the various blood gas/electrolytes values found in a patient's record.
 
 Increased Anion gap is measured in the presence of a metabolic acidosis with a corrected gap in the presence of albumin values.">
-				use = <"PH normal range: 7.35-7.45 PH (but with an extreme deviation in either bicarb or PaCO2 if the Ph is between above or below 7.4, even if the value is within this normal range, it will be moving in the direction of the disturbance).
+				use = <"According to the US National Library of Medicine (NIH) on their MedlinePlus health information platform (3) reference ranges at sea level used are:
 
-Bicarb (HCO3-) normal range: 22-29 mmol/L
-PaCO2: 35-45mmHg
-Na: 135-145mmol/L
-Cl: 95-105mmol/L
+Arterial PH normal range: 7.38-7.42 PH (but with an extreme deviation in either bicarb or PaCO2 if the Ph is between above or below 7.4, even if the value is within this normal range, it will be moving in the direction of the disturbance).
+
+Bicarb (HCO3-) normal range: 22-28 mmol/L (mEq/L)
+PaCO2: 38-42mmHg (5.1-5.6kPa)
+Na: 136-145mmol/L
+Cl: 98-107mmol/L
 Albumin: 40 g/L
 The picture is also contextualised in terms of acute or chronic.
 
@@ -55,14 +57,17 @@ Cl: 95-105mmol/l">
 		>
 		original_author = <
 			["date"] = <"2016-01-13">
+			["email"] = <"models@cambiocds.com">
 			["name"] = <"Syeeda S Farruque">
 			["organisation"] = <"Cambio Healthcare Systems">
 		>
-		other_contributors = <"Dennis Forslund, Cambio Healthcare Systems",...>
+		other_contributors = <"Dennis Forslund, Cambio Healthcare Systems", "Jimmy Axelsson, Cambio Healthcare Systems">
 		other_details = <
 			["references"] = <"Ref. 1: Baillie JK. Simple, easily memorised 'rules of thumb' for the rapid assessment of physiological compensation for respiratory acid-base disorders. Thorax 2008;63:289-290 doi:10.1136/thx.2007.091223
 
 Ref. 2: Kaufman DA. Interpretation of Arterial Blood Gases (ABGs). Written for Thoracic.org. Retrieved 12/9/2014.
+
+Ref. 3: NIH: US National Library of Medicine: Accessed at: https://medlineplus.gov/ency/article/003855.htm
 ">
 		>
 	>
@@ -164,117 +169,107 @@ Ref. 2: Kaufman DA. Interpretation of Arterial Blood Gases (ABGs). Written for T
 			["gt0018"] = (RULE) <
 				when = <"$gt0004!=null",...>
 				then = <"$gt0019=$gt0004",...>
-				priority = <24>
-			>
-			["gt0020"] = (RULE) <
-				when = <"$gt0012<7.35,[pH]",...>
-				then = <"$gt0021=2|local::at0009|Yes|",...>
 				priority = <23>
 			>
-			["gt0022"] = (RULE) <
-				when = <"$gt0012>7.45,[pH]", "$gt0012!=null">
-				then = <"$gt0021=1|local::at0008|No - alkalotic|",...>
+			["gt0020"] = (RULE) <
+				when = <"$gt0012<7.38,[pH]",...>
+				then = <"$gt0021=2|local::at0009|Yes|",...>
 				priority = <22>
 			>
-			["gt0023"] = (RULE) <
-				when = <"$gt0012!=null", "$gt0012<=7.45,[pH]", "$gt0012>=7.35,[pH]">
-				then = <"$gt0021=0|local::at0007|No - normal |",...>
+			["gt0022"] = (RULE) <
+				when = <"$gt0012!=null", "$gt0012>7.42,[pH]">
+				then = <"$gt0021=1|local::at0008|No - alkalotic|",...>
 				priority = <21>
+			>
+			["gt0023"] = (RULE) <
+				when = <"$gt0012!=null", "$gt0012<=7.42,[pH]", "$gt0012>=7.38,[pH]">
+				then = <"$gt0021=0|local::at0007|No - normal |",...>
+				priority = <20>
 			>
 			["gt0024"] = (RULE) <
 				when = <"$gt0016.units=='mmol/l'", "$gt0015.units=='mmol/l'", "$gt0014.units=='mmol/l'", "$gt0016!=null", "$gt0015!=null", "$gt0014!=null">
 				then = <"$gt0007.units='mmol/l'", "$gt0007.magnitude=($gt0014.magnitude-($gt0015.magnitude+$gt0016.magnitude))">
-				priority = <20>
+				priority = <19>
 			>
 			["gt0033"] = (RULE) <
 				when = <"$gt0031.units=='gm/l'", "$gt0031!=null">
 				then = <"$gt0008.magnitude=($gt0007.magnitude+(2.5*(40-$gt0031.magnitude)))",...>
-				priority = <19>
-			>
-			["gt0035"] = (RULE) <
-				when = <"$gt0016.magnitude<22", "$gt0016.units=='mmol/l'", "$gt0021==2|local::at0009|Yes|">
-				then = <"$gt0042=1|local::at0034|Primary Metabolic acidosis|",...>
 				priority = <18>
 			>
-			["gt0036"] = (RULE) <
-				when = <"$gt0021==1|local::at0008|No - alkalotic|", "$gt0016.magnitude>29", "$gt0016.units=='mmol/l'">
-				then = <"$gt0043=1|local::at0036|Primary Metabolic alkalosis|",...>
+			["gt0035"] = (RULE) <
+				when = <"$gt0016<22,mmol/l", "$gt0021==2|local::at0009|Yes|">
+				then = <"$gt0042=1|local::at0034|Primary Metabolic acidosis|",...>
 				priority = <17>
 			>
-			["gt0037"] = (RULE) <
-				when = <"$gt0021==2|local::at0009|Yes|", "$gt0011.units=='kPa'", "$gt0011.magnitude>45">
-				then = <"$gt0040=1|local::at0030|Primary Respiratory acidosis|",...>
+			["gt0036"] = (RULE) <
+				when = <"$gt0016>28,mmol/l", "$gt0021==1|local::at0008|No - alkalotic|">
+				then = <"$gt0043=1|local::at0036|Primary Metabolic alkalosis|",...>
 				priority = <16>
 			>
-			["gt0038"] = (RULE) <
-				when = <"$gt0021==1|local::at0008|No - alkalotic|", "$gt0011.magnitude<35", "$gt0011.units=='kPa'">
-				then = <"$gt0041=1|local::at0032|Primary Respiratory alkalosis|",...>
+			["gt0037"] = (RULE) <
+				when = <"$gt0011>42,mm[Hg]", "$gt0021==2|local::at0009|Yes|">
+				then = <"$gt0040=1|local::at0030|Primary Respiratory acidosis|",...>
 				priority = <15>
 			>
-			["gt0039"] = (RULE) <
-				when = <"($gt0021==2|local::at0009|Yes|)||($gt0012.magnitude<7.4)", "$gt0016.magnitude>29", "$gt0016.units=='mmol/l'", "$gt0011.magnitude>45", "$gt0011.units=='kPa'">
-				then = <"$gt0044=4|local::at0043|Compensatory metabolic alkalosis|",...>
+			["gt0038"] = (RULE) <
+				when = <"$gt0011<38,mm[Hg]", "$gt0021==1|local::at0008|No - alkalotic|">
+				then = <"$gt0041=1|local::at0032|Primary Respiratory alkalosis|",...>
 				priority = <14>
 			>
-			["gt0046"] = (RULE) <
-				when = <"$gt0012>7.45,[pH]", "$gt0011.magnitude<35", "$gt0011.units=='kPa'", "$gt0016.magnitude<22", "$gt0016.units=='mmol/l'">
-				then = <"$gt0044=3|local::at0042|Compensatory metabolic acidosis|",...>
+			["gt0039"] = (RULE) <
+				when = <"$gt0040==1|local::at0030|Primary Respiratory acidosis|", "$gt0016>28,mmol/l">
+				then = <"$gt0044=4|local::at0043|Compensatory metabolic alkalosis|",...>
 				priority = <13>
 			>
-			["gt0048"] = (RULE) <
-				when = <"$gt0040==1|local::at0030|Primary Respiratory acidosis|", "$gt0016.magnitude>=22", "$gt0016.magnitude<=29", "$gt0016.units=='mmol/l'">
-				then = <"$gt0044=5|local::at0044|Uncompensated|",...>
-				priority = <9>
+			["gt0046"] = (RULE) <
+				when = <"$gt0041==1|local::at0032|Primary Respiratory alkalosis|", "$gt0016<22,mmol/l">
+				then = <"$gt0044=3|local::at0042|Compensatory metabolic acidosis|",...>
+				priority = <12>
 			>
-			["gt0049"] = (RULE) <
-				when = <"$gt0043==1|local::at0036|Primary Metabolic alkalosis|", "$gt0011.magnitude>35", "$gt0011.magnitude<45", "$gt0011.units=='kPa'">
+			["gt0048"] = (RULE) <
+				when = <"$gt0040==1|local::at0030|Primary Respiratory acidosis|", "$gt0016<=28,mmol/l", "$gt0016>=22,mmol/l">
 				then = <"$gt0044=5|local::at0044|Uncompensated|",...>
 				priority = <8>
 			>
+			["gt0049"] = (RULE) <
+				when = <"$gt0043==1|local::at0036|Primary Metabolic alkalosis|", "$gt0011>=38,mm[Hg]", "$gt0011<=42,mm[Hg]">
+				then = <"$gt0044=5|local::at0044|Uncompensated|",...>
+				priority = <7>
+			>
 			["gt0052"] = (RULE) <
-				when = <"$gt0016.magnitude<22", "$gt0016.units=='mmol/l'", "$gt0011.magnitude<35", "$gt0011.units=='kPa'", "$gt0021==2|local::at0009|Yes|">
+				when = <"$gt0042==1|local::at0034|Primary Metabolic acidosis|", "$gt0011<38,mm[Hg]">
 				then = <"$gt0044=2|local::at0041|Compensatory respiratory alkalosis|",...>
-				priority = <12>
+				priority = <11>
 			>
 			["gt0053"] = (RULE) <
-				when = <"$gt0016.magnitude>29", "$gt0016.units=='mmol/l'", "$gt0011.magnitude<35", "$gt0011.units=='kPa'", "$gt0021==1|local::at0008|No - alkalotic|">
+				when = <"$gt0043==1|local::at0036|Primary Metabolic alkalosis|", "$gt0011>42,mm[Hg]">
 				then = <"$gt0044=1|local::at0040|Compenatory respiratory acidosis|",...>
-				priority = <11>
+				priority = <10>
 			>
 			["gt0058"] = (RULE) <
 				when = <"$gt0067==null", "$gt0050==null", "$gt0040==null", "$gt0021==null", "$gt0042==null", "$gt0041==null", "$gt0044==null", "$gt0019==null", "$gt0043==null">
 				then = <"$gt0067=0|local::at0051|NA|", "$gt0050=0|local::at0046|No AG|", "$gt0040=0|local::at0029|No|", "$gt0021=0|local::at0007|No - normal |", "$gt0042=0|local::at0033|No|", "$gt0041=0|local::at0031|No|", "$gt0044=0|local::at0039|N/A|", "$gt0043=0|local::at0035|No|", "$gt0019=0|local::at0015|Acute|">
-				priority = <25>
+				priority = <24>
 			>
 			["gt0059"] = (RULE) <
 				when = <"$gt0042==1|local::at0034|Primary Metabolic acidosis|", "$gt0007.magnitude>=10", "$gt0007.magnitude<=14", "$gt0007.units=='mmol/l'">
 				then = <"$gt0050=0|local::at0046|No AG|",...>
-				priority = <5>
+				priority = <4>
 			>
 			["gt0060"] = (RULE) <
 				when = <"$gt0042==1|local::at0034|Primary Metabolic acidosis|", "$gt0007.magnitude>14", "$gt0007.units=='mmol/l'">
 				then = <"$gt0050=1|local::at0047|AG present|",...>
-				priority = <6>
-			>
-			["gt0061"] = (RULE) <
-				when = <"$gt0041==1|local::at0032|Primary Respiratory alkalosis|", "$gt0043==1|local::at0036|Primary Metabolic alkalosis|">
-				then = <"$gt0044=6|local::at0048|Mixed disturbance|",...>
-				priority = <4>
-			>
-			["gt0062"] = (RULE) <
-				when = <"$gt0040==1|local::at0030|Primary Respiratory acidosis|", "$gt0042==1|local::at0034|Primary Metabolic acidosis|">
-				then = <"$gt0044=6|local::at0048|Mixed disturbance|",...>
-				priority = <3>
+				priority = <5>
 			>
 			["gt0063"] = (RULE) <
-				when = <"$gt0011.magnitude>=35", "$gt0011.magnitude<=45", "$gt0011.units=='kPa'", "$gt0042==1|local::at0034|Primary Metabolic acidosis|">
+				when = <"$gt0042==1|local::at0034|Primary Metabolic acidosis|", "$gt0011>=38,mm[Hg]", "$gt0011<=42,mm[Hg]">
 				then = <"$gt0044=5|local::at0044|Uncompensated|",...>
-				priority = <10>
+				priority = <9>
 			>
 			["gt0064"] = (RULE) <
-				when = <"$gt0016.magnitude<=29", "$gt0016.magnitude>=22", "$gt0016.units=='mmol/l'", "$gt0041==1|local::at0032|Primary Respiratory alkalosis|">
+				when = <"$gt0041==1|local::at0032|Primary Respiratory alkalosis|", "$gt0016<=28,mmol/l", "$gt0016>=22,mmol/l">
 				then = <"$gt0044=5|local::at0044|Uncompensated|",...>
-				priority = <7>
+				priority = <6>
 			>
 			["gt0065"] = (RULE) <
 				when = <"$gt0050==1|local::at0047|AG present|",...>
@@ -286,6 +281,11 @@ Ref. 2: Kaufman DA. Interpretation of Arterial Blood Gases (ABGs). Written for T
 				then = <"$gt0067=1|local::at0052|<0.4|",...>
 				priority = <1>
 			>
+			["gt0069"] = (RULE) <
+				when = <"(($gt0041==1|local::at0032|Primary Respiratory alkalosis|)&&($gt0043==1|local::at0036|Primary Metabolic alkalosis|))||(($gt0040==1|local::at0030|Primary Respiratory acidosis|)&&($gt0042==1|local::at0034|Primary Metabolic acidosis|))",...>
+				then = <"$gt0044=6|local::at0048|Mixed disturbance|",...>
+				priority = <3>
+			>
 		>
 	>
 	ontology = (GUIDE_ONTOLOGY) <
@@ -293,7 +293,7 @@ Ref. 2: Kaufman DA. Interpretation of Arterial Blood Gases (ABGs). Written for T
 			["en"] = (TERM_DEFINITION) <
 				terms = <
 					["gt0001"] = (TERM) <
-						text = <"ABG">
+						text = <"Arterial Blood Gas Analyser">
 						description = <"Arterial Blood Gas Analyser (ABG) helps to calculate the acid/base disturbances that can be ascertained from a patient's arterial blood gases/electrolytes and albumin.
 ">
 					>
@@ -320,7 +320,7 @@ Ref. 2: Kaufman DA. Interpretation of Arterial Blood Gases (ABGs). Written for T
 						description = <"(AG - [HCO3-])/(24 - [HCO3-]) where AG = anion gap">
 					>
 					["gt0011"] = (TERM) <
-						text = <"PaCO2">
+						text = <"PaCO2 in mmHg">
 						description = <"The carbon dioxide pressure in the arterial blood.">
 					>
 					["gt0012"] = (TERM) <
@@ -382,7 +382,7 @@ Ref. 2: Kaufman DA. Interpretation of Arterial Blood Gases (ABGs). Written for T
 						text = <"Final analysis: met aci/resp alki">
 					>
 					["gt0031"] = (TERM) <
-						text = <"Serum albumin">
+						text = <"Serum albumin in g/L">
 						description = <"Serum albumin level in this specimen.">
 					>
 					["gt0032"] = (TERM) <
@@ -407,7 +407,7 @@ Ref. 2: Kaufman DA. Interpretation of Arterial Blood Gases (ABGs). Written for T
 						text = <"Set respiratory alkalosis">
 					>
 					["gt0039"] = (TERM) <
-						text = <"Set Renal comp met alk">
+						text = <"Set Renal compensatory alkalosis for respiratory acidosis">
 					>
 					["gt0040"] = (TERM) <
 						text = <"Respiratory acidosis">
@@ -433,15 +433,15 @@ Ref. 2: Kaufman DA. Interpretation of Arterial Blood Gases (ABGs). Written for T
 						text = <"Default">
 					>
 					["gt0046"] = (TERM) <
-						text = <"Set Renal comp met acid">
+						text = <"Set Renal compensatory acidosis for respiratory alkalosis">
 					>
 					["gt0047"] = (TERM) <
 					>
 					["gt0048"] = (TERM) <
-						text = <"Set uncompen Resp acidosis">
+						text = <"Set uncompensated respiratory acidosis">
 					>
 					["gt0049"] = (TERM) <
-						text = <"Set uncomp Metab alkalosis">
+						text = <"Set uncompensated metabolic alkalosis">
 					>
 					["gt0050"] = (TERM) <
 						text = <"Associated Anion Gap?">
@@ -450,10 +450,10 @@ Ref. 2: Kaufman DA. Interpretation of Arterial Blood Gases (ABGs). Written for T
 					["gt0051"] = (TERM) <
 					>
 					["gt0052"] = (TERM) <
-						text = <"Set comp resp alk">
+						text = <"Set compensatory respiratory alkalosis for metabolic acidosis">
 					>
 					["gt0053"] = (TERM) <
-						text = <"Set comp resp acidosis">
+						text = <"Set compensatory respiratory acidosis for metabolic alkalosis">
 					>
 					["gt0054"] = (TERM) <
 						text = <"Set: No AG associated">
@@ -477,16 +477,16 @@ Ref. 2: Kaufman DA. Interpretation of Arterial Blood Gases (ABGs). Written for T
 						text = <"Set AG if metab acidosis: AG present">
 					>
 					["gt0061"] = (TERM) <
-						text = <"Set mixed: alkalosis">
+						text = <"Set mixed disturbance">
 					>
 					["gt0062"] = (TERM) <
 						text = <"Set mixed: acidosis">
 					>
 					["gt0063"] = (TERM) <
-						text = <"Set uncomp metab acid">
+						text = <"Set uncompensated metabolic acidosis">
 					>
 					["gt0064"] = (TERM) <
-						text = <"Set uncomp resp alk">
+						text = <"Set uncompensated respiratory alkalosis">
 					>
 					["gt0065"] = (TERM) <
 						text = <"Calc delta ratio">
@@ -501,6 +501,12 @@ Ref. 2: Kaufman DA. Interpretation of Arterial Blood Gases (ABGs). Written for T
 					>
 					["gt0068"] = (TERM) <
 						text = <"Delta ratio assessment">
+					>
+					["gt0069"] = (TERM) <
+						text = <"Mixed disturbance">
+					>
+					["gt0070"] = (TERM) <
+						text = <"Unclassifiable or complicated disturbance">
 					>
 				>
 			>
@@ -715,6 +721,12 @@ Ref. 2: Kaufman DA. Interpretation of Arterial Blood Gases (ABGs). Written for T
 					>
 					["gt0068"] = (TERM) <
 						text = <"Delta ratio - utvärdering">
+					>
+					["gt0069"] = (TERM) <
+						text = <"CDS Oklar blandad bild">
+					>
+					["gt0070"] = (TERM) <
+						text = <"*(en) Unclassifiable or complicated disturbance">
 					>
 				>
 			>
