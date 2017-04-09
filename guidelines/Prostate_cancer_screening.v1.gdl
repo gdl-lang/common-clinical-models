@@ -31,19 +31,22 @@
 				domain = <"EHR">
 				elements = <
 					["gt0005"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0011]/items[at0004]">
 					>
 					["gt0006"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0005]">
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0011]/items[at0005]">
 					>
 					["gt0007"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0006]">
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0011]/items[at0006]">
 					>
 					["gt0008"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0007]">
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0011]/items[at0007]">
 					>
 					["gt0009"] = (ELEMENT_BINDING) <
 						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0008]">
+					>
+					["gt0026"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0011]/items[at0012]">
 					>
 				>
 			>
@@ -62,10 +65,10 @@
 				domain = <"CDS">
 				elements = <
 					["gt0013"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0009]">
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0013]/items[at0009]">
 					>
 					["gt0025"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0010]">
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0013]/items[at0010]">
 					>
 				>
 			>
@@ -90,17 +93,17 @@
 				priority = <6>
 			>
 			["gt0019"] = (RULE) <
-				when = <"$gt0016<70,a", "$gt0003>=3,ng/mL", "(($gt0007==true)||($gt0008==true))||(($gt0005==true)||($gt0006==true))">
+				when = <"((($gt0007==true)||($gt0008==true))||(($gt0005==true)||($gt0006==true)))||($gt0026==true)", "$gt0016<70,a", "$gt0003>=3,ng/mL">
 				then = <"$gt0025=true", "$gt0023=prostate_cancer_screening_sv::referral|Utifrån ovanstående föreligger välgrundad misstanke,  remiss för SVF Prostatacancer skall därför skickas.|", "$gt0013=true">
 				priority = <5>
 			>
 			["gt0020"] = (RULE) <
-				when = <"$gt0016>=70,a", "$gt0016<=80,a", "$gt0003>=5,ng/mL", "(($gt0007==true)||($gt0008==true))||(($gt0005==true)||($gt0006==true))">
+				when = <"((($gt0007==true)||($gt0008==true))||(($gt0005==true)||($gt0006==true)))||($gt0026==true)", "$gt0016>=70,a", "$gt0016<=80,a", "$gt0003>=5,ng/mL">
 				then = <"$gt0025=true", "$gt0023=prostate_cancer_screening_sv::referral|Utifrån ovanstående föreligger välgrundad misstanke,  remiss för SVF Prostatacancer skall därför skickas.|", "$gt0013=true">
 				priority = <4>
 			>
 			["gt0021"] = (RULE) <
-				when = <"$gt0016>80,a", "$gt0003>=7,ng/mL", "(($gt0007==true)||($gt0008==true))||(($gt0005==true)||($gt0006==true))">
+				when = <"((($gt0007==true)||($gt0008==true))||(($gt0005==true)||($gt0006==true)))||($gt0026==true)", "$gt0016>80,a", "$gt0003>=7,ng/mL">
 				then = <"$gt0025=true", "$gt0023=prostate_cancer_screening_sv::referral|Utifrån ovanstående föreligger välgrundad misstanke,  remiss för SVF Prostatacancer skall därför skickas.|", "$gt0013=true">
 				priority = <3>
 			>
@@ -189,6 +192,9 @@
 					>
 					["gt0025"] = (TERM) <
 						text = <"abnormally high PSA for the age group">
+					>
+					["gt0026"] = (TERM) <
+						text = <"radiology finding indicating prostate cancer">
 					>
 				>
 			>
