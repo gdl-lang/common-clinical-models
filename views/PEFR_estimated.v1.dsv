@@ -127,9 +127,19 @@
 <#assign peak_expiratory_flow__estimated__def = peak_expiratory_flow__estimated_expected__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 <#assign peak_expiratory_flow__estimated__cds_data = peak_expiratory_flow__estimated_expected__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 
+<script> 
+angular.module('cds_app').controller('PEFR_estimated_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+	$scope.${height_length_ehr_data}.value.units = $scope.${height_length_def}.units[1];
+	$scope.${birthdate_ehr_data}.value.selection = $scope.findMin($scope.${birthdate_def});
+	$scope.${gender_ehr_data}.value.selection = $scope.findMin($scope.${gender_def});
+  });
+});
+</script>
 
-
-<div ng-show="ready">
+<div ng-show="ready" ng-controller="PEFR_estimated_Ctrl">
 <div class="header">
   <h1>{{def.concept.name}}</h1>
   <h2>{{def.concept.description}}</h2>
@@ -167,10 +177,10 @@
     </label>
   </div>
 <div class="row collapse" title="{{${peak_expiratory_flow__estimated__def}.description}}" id="displayresult1">
-  <div class="medium-5 columns">
+  <div class="medium-4 columns">
     <label><b>{{${peak_expiratory_flow__estimated__def}.name}}: </b></label>
   </div>
-  <div class="medium-7 columns" style="text-align: center;">
+  <div class="medium-8 columns" style="text-align: center;">
     <label>{{${peak_expiratory_flow__estimated__cds_data}.value.magnitude}} {{${peak_expiratory_flow__estimated__cds_data}.value.units}}</label>
   </div>
 </div>
@@ -189,14 +199,21 @@
   <div class="row collapse">
       <div class="medium-11 medium-offset-1 column">
         <li>
-          <i><a href="https://www.ncbi.nlm.nih.gov/books/NBK2003/">Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults: The Evidence Report [Internet]. Bethesda (MD): National Heart, Lung, and Blood Institute; NIH Publication No. 98-4083, Sep 1998, [cited 2009 July 02].</a></i>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/6859656">Knudson RJ, Lebowitz MD, Holberg CJ, Burrows B. Changes in the normal maximal expiratory flow-volume curve with growth and aging 1–3. American Review of Respiratory Disease. 1983 Jun;127(6):725-34.</a></i>
         </li>
       </div>
     </div>
 	<div class="row collapse">
       <div class="medium-11 medium-offset-1 column">
         <li>
-          <i><a href="http://apps.who.int/bmi/index.jsp?introPage=intro_3.html">BMI Classification. Global Database on Body Mass Index. World Health Organization. 2006. Available from: http://apps.who.int/bmi/index.jsp?introPage=intro_3.html</a></i>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/2497892">Nunn AJ, Gregg I. New regression equations for predicting peak expiratory flow in adults. BMj. 1989 Apr 22;298(6680):1068-70.</a></i>
+        </li>
+      </div>
+    </div>
+	<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="www.ncbi.nlm.nih.gov/pubmed/11805367">Balasubramanian S, Ravikumar NR, Chakkarapani E, Shivbalan SO. Peak expiratory flow rate in children-A ready reckoner. Indian pediatrics. 2002 Jan 24;39(1):104-5.</a></i>
         </li>
       </div>
     </div>
