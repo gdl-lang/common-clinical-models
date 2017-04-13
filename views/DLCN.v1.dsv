@@ -1,4 +1,18 @@
-<html><head><script id="decision-support-view" type="application/json">{
+<!DOCTYPE html><html ng-app="cds_app">
+<head>
+<title>{{def.concept.name}}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
+<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
+<script type="text/javascript" src="wro/angular.js"></script>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
+<script type="text/javascript" src="wro/moment.js"></script>
+<script type="text/javascript" src="wro/date-picker.js"></script>
+<script type="text/javascript" src="wro/app_lib.js"></script>
+<script id="decision-support-view" type="application/json">{
   "dsViewId": "DLCN.v1",
   "language": {
     "originalLanguage": {
@@ -84,4 +98,401 @@
       }
     }
   }
-}</script></head><body></body></html>
+}</script>
+</head>
+<body ng-controller="cds_controller">
+<#assign app_help_tag = "def.guides['DLCN_score_Calculation.v1'].concept">
+<#assign references = "def.terms['vt0001']"/>
+<#assign history_of_prior_medical_diagnosis_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.history_prior_medical_diagnosis.v1']">
+<#assign history_of_prior_medical_diagnosis_entry_def = "def.entries['openEHR-EHR-OBSERVATION.history_prior_medical_diagnosis.v1']">
+<#assign coronary_heart_disease_def = history_of_prior_medical_diagnosis_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}/items{at0079}']">
+<#assign peripheral_vascular_disease_def = history_of_prior_medical_diagnosis_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}/items{at0083}']">
+<#assign cerebrovascular_disease_def = history_of_prior_medical_diagnosis_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}/items{at0082}']">
+<#assign event_time_def = history_of_prior_medical_diagnosis_entry_def + ".elements['/data/events/time']">
+<#assign coronary_heart_disease_ehr_data = history_of_prior_medical_diagnosis_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}/items{at0079}']">
+<#assign peripheral_vascular_disease_ehr_data = history_of_prior_medical_diagnosis_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}/items{at0083}']">
+<#assign cerebrovascular_disease_ehr_data = history_of_prior_medical_diagnosis_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}/items{at0082}']">
+<#assign event_time_ehr_data = history_of_prior_medical_diagnosis_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign dutch_lipid_clinic_network__dlcn__score_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.dutch_lipid_clinic_network_score.v1']">
+<#assign dutch_lipid_clinic_network__dlcn__score_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.dutch_lipid_clinic_network_score.v1']">
+<#assign dutch_lipid_clinic_network__dlcn__score_entry_def = "def.entries['openEHR-EHR-OBSERVATION.dutch_lipid_clinic_network_score.v1']">
+<#assign total_score_def = dutch_lipid_clinic_network__dlcn__score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0052}']">
+<#assign first_degree_relative_with_known_ldl_cholesterol__95th_percentile_by_age_and_gender_for_country__def = dutch_lipid_clinic_network__dlcn__score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0010}']">
+<#assign child_ren___18_years_with_ldl_cholesterol__95th_percentile_by_age_and_gender_for_country__def = dutch_lipid_clinic_network__dlcn__score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0012}']">
+<#assign first_degree_relative_with_tendon_xanthoma_and_or_corneal_arcus_def = dutch_lipid_clinic_network__dlcn__score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0011}']">
+<#assign finding_of_corneal_arcus_in_a_person__45_years_def = dutch_lipid_clinic_network__dlcn__score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}/items{at0016}']">
+<#assign ldl_cholesterol_def = dutch_lipid_clinic_network__dlcn__score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}/items{at0017}']">
+<#assign finding_of_tendon_xanthoma__def = dutch_lipid_clinic_network__dlcn__score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}/items{at0015}']">
+<#assign individual_has_premature___55_years__men___60_years__women__cerebral_or_peripheral_vascular_disease__def = dutch_lipid_clinic_network__dlcn__score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}/items{at0014}']">
+<#assign individual_has_premature___55_years__men___60_years__women__coronary_heart_disease_def = dutch_lipid_clinic_network__dlcn__score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}/items{at0013}']">
+<#assign first_degree_relative_with_known_premature___55_years__men___60_years__women__coronary_heart_disease_def = dutch_lipid_clinic_network__dlcn__score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0009}']">
+<#assign causative_mutation_shown_in_the_ldlr__apob__or_pcsk9_genes_def = dutch_lipid_clinic_network__dlcn__score_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}/items{at0021}']">
+<#assign event_time1_def = dutch_lipid_clinic_network__dlcn__score_entry_def + ".elements['/data/events/time']">
+<#assign total_score_cds_data = dutch_lipid_clinic_network__dlcn__score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0052}']">
+<#assign first_degree_relative_with_known_ldl_cholesterol__95th_percentile_by_age_and_gender_for_country__cds_data = dutch_lipid_clinic_network__dlcn__score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0010}']">
+<#assign child_ren___18_years_with_ldl_cholesterol__95th_percentile_by_age_and_gender_for_country__cds_data = dutch_lipid_clinic_network__dlcn__score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0012}']">
+<#assign first_degree_relative_with_tendon_xanthoma_and_or_corneal_arcus_cds_data = dutch_lipid_clinic_network__dlcn__score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0011}']">
+<#assign finding_of_corneal_arcus_in_a_person__45_years_cds_data = dutch_lipid_clinic_network__dlcn__score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}/items{at0016}']">
+<#assign ldl_cholesterol_cds_data = dutch_lipid_clinic_network__dlcn__score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}/items{at0017}']">
+<#assign finding_of_tendon_xanthoma__cds_data = dutch_lipid_clinic_network__dlcn__score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}/items{at0015}']">
+<#assign individual_has_premature___55_years__men___60_years__women__cerebral_or_peripheral_vascular_disease__cds_data = dutch_lipid_clinic_network__dlcn__score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}/items{at0014}']">
+<#assign individual_has_premature___55_years__men___60_years__women__coronary_heart_disease_cds_data = dutch_lipid_clinic_network__dlcn__score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}/items{at0013}']">
+<#assign first_degree_relative_with_known_premature___55_years__men___60_years__women__coronary_heart_disease_cds_data = dutch_lipid_clinic_network__dlcn__score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0009}']">
+<#assign causative_mutation_shown_in_the_ldlr__apob__or_pcsk9_genes_cds_data = dutch_lipid_clinic_network__dlcn__score_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}/items{at0021}']">
+<#assign event_time1_cds_data = dutch_lipid_clinic_network__dlcn__score_entry_cds_data + "[0].elements['/data/events/time']">
+<#assign total_score_ehr_data = dutch_lipid_clinic_network__dlcn__score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0052}']">
+<#assign first_degree_relative_with_known_ldl_cholesterol__95th_percentile_by_age_and_gender_for_country__ehr_data = dutch_lipid_clinic_network__dlcn__score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0010}']">
+<#assign child_ren___18_years_with_ldl_cholesterol__95th_percentile_by_age_and_gender_for_country__ehr_data = dutch_lipid_clinic_network__dlcn__score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0012}']">
+<#assign first_degree_relative_with_tendon_xanthoma_and_or_corneal_arcus_ehr_data = dutch_lipid_clinic_network__dlcn__score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0011}']">
+<#assign finding_of_corneal_arcus_in_a_person__45_years_ehr_data = dutch_lipid_clinic_network__dlcn__score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}/items{at0016}']">
+<#assign ldl_cholesterol_ehr_data = dutch_lipid_clinic_network__dlcn__score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}/items{at0017}']">
+<#assign finding_of_tendon_xanthoma__ehr_data = dutch_lipid_clinic_network__dlcn__score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}/items{at0015}']">
+<#assign individual_has_premature___55_years__men___60_years__women__cerebral_or_peripheral_vascular_disease__ehr_data = dutch_lipid_clinic_network__dlcn__score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}/items{at0014}']">
+<#assign individual_has_premature___55_years__men___60_years__women__coronary_heart_disease_ehr_data = dutch_lipid_clinic_network__dlcn__score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}/items{at0013}']">
+<#assign first_degree_relative_with_known_premature___55_years__men___60_years__women__coronary_heart_disease_ehr_data = dutch_lipid_clinic_network__dlcn__score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0009}']">
+<#assign causative_mutation_shown_in_the_ldlr__apob__or_pcsk9_genes_ehr_data = dutch_lipid_clinic_network__dlcn__score_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}/items{at0021}']">
+<#assign event_time1_ehr_data = dutch_lipid_clinic_network__dlcn__score_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign basic_demographic_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
+<#assign basic_demographic_entry_def = "def.entries['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
+<#assign gender_def = basic_demographic_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign birthdate_def = basic_demographic_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign event_time2_def = basic_demographic_entry_def + ".elements['/data/events/time']">
+<#assign gender_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign birthdate_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign event_time2_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign dutch_lipid_clinic_network__dlcn__score_entry1_cds_data = "data.cds['openEHR-EHR-EVALUATION.dutch_lipid_clinic_network_score.v1']">
+<#assign dutch_lipid_clinic_network__dlcn__score_entry1_def = "def.entries['openEHR-EHR-EVALUATION.dutch_lipid_clinic_network_score.v1']">
+<#assign dlcn_score_assessment_def = dutch_lipid_clinic_network__dlcn__score_entry1_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign dlcn_score_assessment_cds_data = dutch_lipid_clinic_network__dlcn__score_entry1_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
+<#assign lipid_studies_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.lab_test-lipids.v1']">
+<#assign lipid_studies_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.lab_test-lipids.v1']">
+<#assign lipid_studies_entry_def = "def.entries['openEHR-EHR-OBSERVATION.lab_test-lipids.v1']">
+<#assign ldl_cholesterol1_def = lipid_studies_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078.2}']">
+<#assign event_time3_def = lipid_studies_entry_def + ".elements['/data/events/time']">
+<#assign ldl_cholesterol1_cds_data = lipid_studies_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078.2}']">
+<#assign event_time3_cds_data = lipid_studies_entry_cds_data + "[0].elements['/data/events/time']">
+<#assign ldl_cholesterol1_ehr_data = lipid_studies_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0078.2}']">
+<#assign event_time3_ehr_data = lipid_studies_entry_ehr_data + "[0].elements['/data/events/time']">
+
+<script> 
+angular.module('cds_app').controller('DLCN_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time3_ehr_data}.value.value = new Date().toISOString();
+    $scope.${ldl_cholesterol1_ehr_data}.value.units = $scope.${ldl_cholesterol1_def}.units[0];
+    $scope.${birthdate_ehr_data}.value.selection = $scope.findMin($scope.${birthdate_def});
+	$scope.${gender_ehr_data}.value.selection = $scope.findMin($scope.${gender_def});
+	$scope.${coronary_heart_disease_ehr_data}.value.selection = $scope.findMin($scope.${coronary_heart_disease_def});
+	$scope.${peripheral_vascular_disease_ehr_data}.value.selection = $scope.findMin($scope.${peripheral_vascular_disease_def});
+	$scope.${cerebrovascular_disease_ehr_data}.value.selection = $scope.findMin($scope.${cerebrovascular_disease_def});
+	$scope.${finding_of_tendon_xanthoma__ehr_data}.value.selection = $scope.findMin($scope.${finding_of_tendon_xanthoma__def});
+	$scope.${finding_of_corneal_arcus_in_a_person__45_years_ehr_data}.value.selection = $scope.findMin($scope.${finding_of_corneal_arcus_in_a_person__45_years_def});
+	$scope.${causative_mutation_shown_in_the_ldlr__apob__or_pcsk9_genes_ehr_data}.value.selection = $scope.findMin($scope.${causative_mutation_shown_in_the_ldlr__apob__or_pcsk9_genes_def});
+	$scope.${first_degree_relative_with_known_premature___55_years__men___60_years__women__coronary_heart_disease_ehr_data}.value.selection = $scope.findMin($scope.${first_degree_relative_with_known_premature___55_years__men___60_years__women__coronary_heart_disease_def});
+	$scope.${first_degree_relative_with_known_ldl_cholesterol__95th_percentile_by_age_and_gender_for_country__ehr_data}.value.selection = $scope.findMin($scope.${first_degree_relative_with_known_ldl_cholesterol__95th_percentile_by_age_and_gender_for_country__def});
+	$scope.${first_degree_relative_with_tendon_xanthoma_and_or_corneal_arcus_ehr_data}.value.selection = $scope.findMin($scope.${first_degree_relative_with_tendon_xanthoma_and_or_corneal_arcus_def});
+	$scope.${child_ren___18_years_with_ldl_cholesterol__95th_percentile_by_age_and_gender_for_country__ehr_data}.value.selection = $scope.findMin($scope.${child_ren___18_years_with_ldl_cholesterol__95th_percentile_by_age_and_gender_for_country__def});
+  });
+});
+</script>
+
+<div ng-show="ready" ng-controller="DLCN_Ctrl">
+<div class="header">
+  <h1>{{def.concept.name}}</h1>
+  <h2>{{def.concept.description}}</h2>
+  <div class="help-tip">
+	<p>{{${app_help_tag}.description}}</p>
+  </div>
+</div>
+
+<div class="card">
+<div class="row collapse" title="{{${birthdate_def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${birthdate_def}.name}}</label>
+    </div>
+    <div class="medium-6 columns">
+      <input ng-model="${birthdate_ehr_data}.value.value" type="text" pikaday="date" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+    </div>
+  </div>
+<div class="row collapse" title="{{${gender_def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${gender_def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${gender_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${gender_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+  <div class="row collapse" title="{{${coronary_heart_disease_def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${coronary_heart_disease_def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${coronary_heart_disease_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${coronary_heart_disease_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+  <div class="row collapse" title="{{${peripheral_vascular_disease_def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${peripheral_vascular_disease_def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${peripheral_vascular_disease_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${peripheral_vascular_disease_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+  <div class="row collapse" title="{{${cerebrovascular_disease_def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${cerebrovascular_disease_def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${cerebrovascular_disease_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${cerebrovascular_disease_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+  <div class="row collapse" title="{{${finding_of_tendon_xanthoma__def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${finding_of_tendon_xanthoma__def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${finding_of_tendon_xanthoma__def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${finding_of_tendon_xanthoma__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+ <div class="row collapse" title="{{${finding_of_corneal_arcus_in_a_person__45_years_def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${finding_of_corneal_arcus_in_a_person__45_years_def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${finding_of_corneal_arcus_in_a_person__45_years_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${finding_of_corneal_arcus_in_a_person__45_years_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+ <div class="row collapse" title="{{${ldl_cholesterol1_def}.description}}">
+<div class="medium-6 columns">
+<label>{{${ldl_cholesterol_def}.name}}</label>
+</div>
+<div class="medium-5 columns">
+        <input ng-model="${ldl_cholesterol1_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-1 columns">
+        <select ng-model="${ldl_cholesterol1_ehr_data}.value.units" ng-options="unit for unit in ${ldl_cholesterol1_def}.units" ng-change="execute()" disabled=""></select>
+      </div>
+</div>
+  <div class="row collapse" title="{{${causative_mutation_shown_in_the_ldlr__apob__or_pcsk9_genes_def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${causative_mutation_shown_in_the_ldlr__apob__or_pcsk9_genes_def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${causative_mutation_shown_in_the_ldlr__apob__or_pcsk9_genes_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${causative_mutation_shown_in_the_ldlr__apob__or_pcsk9_genes_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+  <div class="row collapse" title="{{${first_degree_relative_with_known_premature___55_years__men___60_years__women__coronary_heart_disease_def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${first_degree_relative_with_known_premature___55_years__men___60_years__women__coronary_heart_disease_def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${first_degree_relative_with_known_premature___55_years__men___60_years__women__coronary_heart_disease_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${first_degree_relative_with_known_premature___55_years__men___60_years__women__coronary_heart_disease_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+  <div class="row collapse" title="{{${first_degree_relative_with_known_ldl_cholesterol__95th_percentile_by_age_and_gender_for_country__def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${first_degree_relative_with_known_ldl_cholesterol__95th_percentile_by_age_and_gender_for_country__def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${first_degree_relative_with_known_ldl_cholesterol__95th_percentile_by_age_and_gender_for_country__def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${first_degree_relative_with_known_ldl_cholesterol__95th_percentile_by_age_and_gender_for_country__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+ <div class="row collapse" title="{{${first_degree_relative_with_tendon_xanthoma_and_or_corneal_arcus_def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${first_degree_relative_with_tendon_xanthoma_and_or_corneal_arcus_def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${first_degree_relative_with_tendon_xanthoma_and_or_corneal_arcus_def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${first_degree_relative_with_tendon_xanthoma_and_or_corneal_arcus_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+ <div class="row collapse" title="{{${child_ren___18_years_with_ldl_cholesterol__95th_percentile_by_age_and_gender_for_country__def}.description}}">
+    <div class="medium-7 columns">
+      <label>{{${child_ren___18_years_with_ldl_cholesterol__95th_percentile_by_age_and_gender_for_country__def}.name}}</label>
+    </div>
+    <label class="medium-2 columns" ng-repeat="(key, desc) in ${child_ren___18_years_with_ldl_cholesterol__95th_percentile_by_age_and_gender_for_country__def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${child_ren___18_years_with_ldl_cholesterol__95th_percentile_by_age_and_gender_for_country__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult1">
+  <div class="medium-6 columns">
+    <label><b>{{${total_score_def}.name}}: </b></label>
+  </div>
+  <div class="medium-6 columns" style="text-align: center;">
+    <label>{{${total_score_cds_data}.value.magnitude}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${dlcn_score_assessment_def}.description}}" id="displayresult2">
+  <div class="medium-6 columns">
+    <label><b>{{${dlcn_score_assessment_def}.name}}: </b></label>
+  </div>
+  <div class="medium-6 columns" style="text-align: center;">
+    <label>{{${dlcn_score_assessment_cds_data}.value.value}}</label>
+  </div>
+</div>
+
+</div>
+</div>
+
+<div class="row"><div class="medium-12 columns"></div></div>
+<br /><br />
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
+</div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/6859656">Knudson RJ, Lebowitz MD, Holberg CJ, Burrows B. Changes in the normal maximal expiratory flow-volume curve with growth and aging 1–3. American Review of Respiratory Disease. 1983 Jun;127(6):725-34.</a></i>
+        </li>
+      </div>
+    </div>
+	<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/2497892">Nunn AJ, Gregg I. New regression equations for predicting peak expiratory flow in adults. BMj. 1989 Apr 22;298(6680):1068-70.</a></i>
+        </li>
+      </div>
+    </div>
+	<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="www.ncbi.nlm.nih.gov/pubmed/11805367">Balasubramanian S, Ravikumar NR, Chakkarapani E, Shivbalan SO. Peak expiratory flow rate in children-A ready reckoner. Indian pediatrics. 2002 Jan 24;39(1):104-5.</a></i>
+        </li>
+      </div>
+    </div>
+  </div>
+
+<style>
+  html, body {
+    height:100%;
+    width: 100%;
+  }
+  body {
+    font-family: sans-serif;
+    font-weight: 300;
+    color: #333;
+    background: #ecf0f9;
+    padding: 1em;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 {
+    font-weight: 600;
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 22px;
+    font-style: italic;
+  }
+  .header {
+    margin-bottom: 2em;
+  }
+  .card {
+    background-color: #fdfdfd;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 10px auto 0 auto;
+    padding: 1em;
+    width: 50%;
+    overflow: hidden;
+  }
+  .help-tip{
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      text-align: center;
+      background-color: #BCDBEA;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      line-height: 26px;
+      cursor: default;
+  }
+  .help-tip:before{
+      content:'?';
+      font-weight: bold;
+      color:#fff;
+  }
+  .help-tip:hover p{
+      display:block;
+      transform-origin: 100% 0%;
+      -webkit-animation: fadeIn 0.3s ease-in-out;
+      animation: fadeIn 0.3s ease-in-out;
+  }
+  .help-tip p{	/* The tooltip */
+      display: none;
+      text-align: left;
+      background-color: #1E2021;
+      padding: 20px;
+      width: 300px;
+      position: absolute;
+      border-radius: 3px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+      right: -4px;
+      color: #FFF;
+      font-size: 13px;
+      line-height: 1.4;
+      z-index: 9999;
+  }
+  .help-tip p:before{ /* The pointer of the tooltip */
+      position: absolute;
+      content: '';
+      width:0;
+      height: 0;
+      border:6px solid transparent;
+      border-bottom-color:#1E2021;
+      right:10px;
+      top:-12px;
+  }
+  .help-tip p:after{ /* Prevents the tooltip from being hidden */
+      width:100%;
+      height:40px;
+      content:'';
+      position: absolute;
+      top:-40px;
+      left:0;
+  }
+  .references1{
+    font-size: 70%;
+  }
+  /* CSS animation */
+  @-webkit-keyframes fadeIn {
+      0% { 
+          opacity:0; 
+          transform: scale(0.6);
+      }
+
+      100% {
+          opacity:100%;
+          transform: scale(1);
+      }
+  }
+  @keyframes fadeIn {
+      0% { opacity:0; }
+      100% { opacity:100%; }
+  }
+  #displayresult1 {
+    background-color: #e6e6e6; 
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    background-color: #f2f2f2;
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  select, label:not(#h-fix) {
+    margin-bottom: 10px;
+</style>
+
+
+</body></html>
