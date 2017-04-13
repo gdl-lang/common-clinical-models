@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.dutch_lipid_clinic_network_score.v1
 
 concept
-	[at0000]	-- Dutch lipid clinic network (DLCN) score
+	[at0000]	-- Dutch Lipid Clinic Network (DLCN) 
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
@@ -13,6 +22,35 @@ description
 		["date"] = <"2017-02-17">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att understödja diagnostik vid misstanke om familjär hyperkolesterolemi (FH) hos vuxna.">
+			use = <"Registrera data för DLCN, vilken används för att understödja diagnostik vid misstanke om familjär hyperkolesterolemi (FH) hos vuxna. Kriterierna enligt område: 
+1. familjehistorik
+ - förstagradssläkting som i tidig ålder (<55 år, män; <60 år, kvinnor) drabbats av kranskärlssjukdom --> 1 poäng
+ - förstagradssläkting med känd LDL-kolesterol >95:e percentilen i enlighet med lokal definition --> 1 poäng
+ - förstagradssläkting med senxanton och/eller arcus senilis --> 2 poäng
+ - barn <18 år med LDL kolesterol >95:e percentilen i enlighet med lokal definition --> 2 poäng
+2. sjukdomshistoria
+ - individen har i tidig ålder (<55 år, män; <60 år, kvinnor) drabbats av kranskärlssjukdom --> 2 poäng
+ - individen har i tidig ålder (<55 år, män; <60 år, kvinnor) drabbats av cerebral eller perifer kärlsjukdom --> 1 poäng
+3. undersökningsfynd
+ - senxantom --> 6 poäng
+ - arcus senilis, om <45 år --> 4 poäng
+4. provsvar ('obehandlat' LDL-kolesterol*)
+ - >8.5 mmol/L (>325 mg/dL) --> 8 poäng
+ - 6.5–8.4 mmol/L (251–325 mg/dL) --> 5 poäng
+ - 5.0–6.4 mmol/L (191–250 mg/dL) --> 3 poäng
+ - 4.0–4.9 mmol/L (155–190 mg/dL) --> 1 poäng
+5. molekylärt test (DNA-analys)
+ -  mutation i någon av följande gener; LDLR, APOB, eller PCSK9 --> 8 poäng
+Endast högst poängsatta kriterierna inom respektive område bidrar till totala DLCN-poängen, vilket gör att maximal poäng uppgår till 26p. DLCN >8p definieras som ”Definitiv FH”, 6-8p som ”Sannolik FH”, 3-5p som ”möjlig FH” och 0-2p som ”FH osannolikt”. Utvärdering av resultatet återfinns i separat arketyp: openEHR-EHR-EVALUATION.dutch_lipid_clinic_network_score.v1
+
+* Kriterium för LDL-kolesterol gäller värde före initierad behandling. Används värde efter påbörjad behandling måste detta justeras för - vänligen se referenserna.">
+			keywords = <"familjär hyperkolesterolemi", "FH", "xantom", "LDL", "kolesterol">
+			misuse = <"">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To support the diagnosis of heterozygous Familial Hypercholesterolaemia (FH) in adults.">
@@ -52,107 +90,107 @@ DLCN score >8 is ‘definite FH’, score 6 - 8 is ‘probable FH', score 3 - 5 
 Law MR, Wald NJ, Rudnicka AR. Quantifying effect of statins on low density lipoprotein cholesterol, ischaemic heart disease, and stroke: systematic review and meta-analysis. Bmj. 2003 Jun 26;326(7404):1423.
 
 https://www.fhscore.eu/#/about#section3">
-		["MD5-CAM-1.0.1"] = <"6270DF1D85F10DFB2DF4AE46E07F25E7">
+		["MD5-CAM-1.0.1"] = <"5F9994D5CEC8E90E95CCCD9CEFD3FF79">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Dutch lipid clinic network (DLCN) score
+	OBSERVATION[at0000] matches {	-- Dutch Lipid Clinic Network (DLCN) 
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									CLUSTER[at0004] occurrences matches {0..1} matches {	-- Family history
+									CLUSTER[at0004] occurrences matches {0..1} matches {	-- Familjehistorik
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0009] occurrences matches {0..1} matches {	-- First-degree relative with known premature (<55 years, men; <60 years, women) coronary heart disease
+											ELEMENT[at0009] occurrences matches {0..1} matches {	-- Förstagradssläkting som i tidig ålder (<55 år, män; <60 år, kvinnor) drabbats av kranskärlssjukdom
 												value matches {
-													0|[local::at0022], 	-- No
-													1|[local::at0023]  	-- Yes
+													0|[local::at0022], 	-- Nej
+													1|[local::at0023]  	-- Ja
 												}
 											}
-											ELEMENT[at0010] occurrences matches {0..1} matches {	-- First-degree relative with known LDL cholesterol >95th percentile by age and gender for country 
+											ELEMENT[at0010] occurrences matches {0..1} matches {	-- Förstagradssläkting med känd LDL-kolesterol >95:e percentilen i enlighet med lokal definition
 												value matches {
-													0|[local::at0024], 	-- No
-													1|[local::at0025]  	-- Yes
+													0|[local::at0024], 	-- Nej
+													1|[local::at0025]  	-- Ja
 												}
 											}
-											ELEMENT[at0011] occurrences matches {0..1} matches {	-- First-degree relative with tendon xanthoma and/or corneal arcus
+											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Förstagradssläkting med senxanton och/eller arcus senilis
 												value matches {
-													0|[local::at0026], 	-- No
-													2|[local::at0027]  	-- Yes
+													0|[local::at0026], 	-- Nej
+													2|[local::at0027]  	-- Ja
 												}
 											}
-											ELEMENT[at0012] occurrences matches {0..1} matches {	-- Child(ren) <18 years with LDL cholesterol >95th percentile by age and gender for country 
+											ELEMENT[at0012] occurrences matches {0..1} matches {	-- Barn <18 år med LDL kolesterol >95:e percentilen i enlighet med lokal definition
 												value matches {
-													0|[local::at0028], 	-- No
-													2|[local::at0029]  	-- Yes
+													0|[local::at0028], 	-- Nej
+													2|[local::at0029]  	-- Ja
 												}
 											}
 										}
 									}
-									CLUSTER[at0005] occurrences matches {0..1} matches {	-- Clinical history
+									CLUSTER[at0005] occurrences matches {0..1} matches {	-- Sjukdomshistoria
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0013] occurrences matches {0..1} matches {	-- Individual has premature (<55 years, men; <60 years, women) coronary heart disease
+											ELEMENT[at0013] occurrences matches {0..1} matches {	-- Individen har i tidig ålder (<55 år, män; <60 år, kvinnor) drabbats av kranskärlssjukdom
 												value matches {
-													0|[local::at0030], 	-- No
-													2|[local::at0031]  	-- Yes
+													0|[local::at0030], 	-- Nej
+													2|[local::at0031]  	-- Ja
 												}
 											}
-											ELEMENT[at0014] occurrences matches {0..1} matches {	-- Individual has premature (<55 years, men; <60 years, women) cerebral or peripheral vascular disease 
+											ELEMENT[at0014] occurrences matches {0..1} matches {	-- Individen har i tidig ålder (<55 år, män; <60 år, kvinnor) drabbats av cerebral eller perifer kärlsjukdom
 												value matches {
-													0|[local::at0032], 	-- No
-													1|[local::at0033]  	-- Yes
+													0|[local::at0032], 	-- Nej
+													1|[local::at0033]  	-- Ja
 												}
 											}
 										}
 									}
-									CLUSTER[at0006] occurrences matches {0..1} matches {	-- Physical examination
+									CLUSTER[at0006] occurrences matches {0..1} matches {	-- Undersökningsfynd
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0015] occurrences matches {0..1} matches {	-- Finding of tendon xanthoma 
+											ELEMENT[at0015] occurrences matches {0..1} matches {	-- Senxantom
 												value matches {
-													0|[local::at0034], 	-- No
-													6|[local::at0035]  	-- Yes
+													0|[local::at0034], 	-- Nej
+													6|[local::at0035]  	-- Ja
 												}
 											}
-											ELEMENT[at0016] occurrences matches {0..1} matches {	-- Finding of corneal arcus in a person <45 years
+											ELEMENT[at0016] occurrences matches {0..1} matches {	-- Arcus senilis, om <45 år
 												value matches {
-													0|[local::at0036], 	-- No
-													4|[local::at0037]  	-- Yes
+													0|[local::at0036], 	-- Nej
+													4|[local::at0037]  	-- Ja
 												}
 											}
 										}
 									}
-									CLUSTER[at0007] occurrences matches {0..1} matches {	-- 'untreated' LDL cholesterol
+									CLUSTER[at0007] occurrences matches {0..1} matches {	-- *Obehandlat LDL-kolesterol
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0017] occurrences matches {0..1} matches {	-- LDL cholesterol
+											ELEMENT[at0017] occurrences matches {0..1} matches {	-- LDL-kolesterol(en)
 												value matches {
-													0|[local::at0038], 	-- <4.0 mmol/L (<155 mg/dL)
-													1|[local::at0039], 	-- 4.0–4.9 mmol/L (155–190 mg/dL)
-													3|[local::at0049], 	-- 5.0–6.4 mmol/L (191–250 mg/dL)
-													5|[local::at0050], 	-- 6.5–8.4 mmol/L (251–325 mg/dL)
-													8|[local::at0051]  	-- >8.5 mmol/L (>325 mg/dL)
+													0|[local::at0038], 	-- <4.0 mmol/l (<155 mg/dl)
+													1|[local::at0039], 	-- 4.0–4.9 mmol/l (155–190 mg/dl)
+													3|[local::at0049], 	-- 5.0–6.4 mmol/l (191–250 mg/dl)
+													5|[local::at0050], 	-- 6.5–8.4 mmol/l (251–325 mg/dl)
+													8|[local::at0051]  	-- >8.5 mmol/l (>325 mg/dl)
 												}
 											}
 										}
 									}
-									CLUSTER[at0008] occurrences matches {0..1} matches {	-- DNA analysis
+									CLUSTER[at0008] occurrences matches {0..1} matches {	-- DNA-analys
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0021] occurrences matches {0..1} matches {	-- Causative mutation shown in the LDLR, APOB, or PCSK9 genes
+											ELEMENT[at0021] occurrences matches {0..1} matches {	-- Mutation i någon av följande gener; LDLR, APOB, eller PCSK9
 												value matches {
-													0|[local::at0046], 	-- No
-													8|[local::at0047]  	-- Yes
+													0|[local::at0046], 	-- Nej
+													8|[local::at0047]  	-- Ja
 												}
 											}
 										}
 									}
-									ELEMENT[at0048] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0048] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0052] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0052] occurrences matches {0..1} matches {	-- Total poäng
 										value matches {
 											DV_COUNT matches {*}
 										}
@@ -345,6 +383,186 @@ ontology
 				["at0052"] = <
 					text = <"Total score">
 					description = <"Sum of points from DLCN criteria.">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Dutch Lipid Clinic Network (DLCN) ">
+					description = <"Dutch Lipid Clinic Networks (DLCN) kriterier baseras på tio frågor rekommenderade av European Atherosclerosis Society (EAS) i syfte att understödja diagnostik vid misstanke om familjär hyperkolesterolemi (FH) hos vuxna. Frågorna delas upp i fem områden: familjehistorik (förstagradssläkting som i tidig ålder drabbats av kranskärlssjukdom, senxantom, arcus senilis eller LDL-kolesterol >95:e percentilen); sjukdomshistoria (i tidig ålder insjuknat i hjärtkärlsjukdom, cerebral eller perifer kärlsjukdom); undersökningsfynd (senxanton eller arcus senilis); provsvar (LDL-kolesterol); och molekylär testning (DNA-analys). Vardera kriterium tilldelas viktad poäng, och maximal poäng uppgår till 26p. DLCN >8p definieras som ”Definitiv FH”, 6-8p som ”Sannolik FH”, 3-5p som ”möjlig FH” och 0-2p som ”FH osannolikt”. ">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Familjehistorik">
+					description = <"Sjukdomshistorik inom familjen.">
+				>
+				["at0005"] = <
+					text = <"Sjukdomshistoria">
+					description = <"*Clinical history(en)">
+				>
+				["at0006"] = <
+					text = <"Undersökningsfynd">
+					description = <"Fynd i samband med undersökning.">
+				>
+				["at0007"] = <
+					text = <"*Obehandlat LDL-kolesterol">
+					description = <"*Obehandlat värde av LDL-kolesterol">
+				>
+				["at0008"] = <
+					text = <"DNA-analys">
+					description = <"Provsvar för DNA-analys.">
+				>
+				["at0009"] = <
+					text = <"Förstagradssläkting som i tidig ålder (<55 år, män; <60 år, kvinnor) drabbats av kranskärlssjukdom">
+					description = <"Förstagradssläkting med känd kranskärlssjukdom i tidig ålder.">
+				>
+				["at0010"] = <
+					text = <"Förstagradssläkting med känd LDL-kolesterol >95:e percentilen i enlighet med lokal definition">
+					description = <"Förstagradssläkting med förhöjda kolesterolvärden.">
+				>
+				["at0011"] = <
+					text = <"Förstagradssläkting med senxanton och/eller arcus senilis">
+					description = <"Förstagradssläkting med senxanton och/eller arcus senilis">
+				>
+				["at0012"] = <
+					text = <"Barn <18 år med LDL kolesterol >95:e percentilen i enlighet med lokal definition">
+					description = <"Familjehistorik med barn <18 år med LDL-kolesterol >95:e percentilen i enlighet med lokal definition.">
+				>
+				["at0013"] = <
+					text = <"Individen har i tidig ålder (<55 år, män; <60 år, kvinnor) drabbats av kranskärlssjukdom">
+					description = <"Personlig sjukdomshistoria med kranskärlssjukdom i tidig ålder.">
+				>
+				["at0014"] = <
+					text = <"Individen har i tidig ålder (<55 år, män; <60 år, kvinnor) drabbats av cerebral eller perifer kärlsjukdom">
+					description = <"Personlig sjukdomshistoria med cerebral eller perifer kärlsjukdom i tidig ålder.">
+				>
+				["at0015"] = <
+					text = <"Senxantom">
+					description = <"Senxantom vid kroppslig undersökning.">
+				>
+				["at0016"] = <
+					text = <"Arcus senilis, om <45 år">
+					description = <"Arcus senilis upptäckt före 45 års ålder.">
+				>
+				["at0017"] = <
+					text = <"LDL-kolesterol(en)">
+					description = <"Provsvar för LDL-kolesterol före eventuell behandling.">
+				>
+				["at0021"] = <
+					text = <"Mutation i någon av följande gener; LDLR, APOB, eller PCSK9">
+					description = <"Provsvar för klinisk genetik påvisar mutation i någon av följande gener; LDLR, APOB, eller PCSK9">
+				>
+				["at0022"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0023"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0026"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0027"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0028"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0029"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0030"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0031"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0032"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0033"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0034"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0035"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0036"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0037"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0038"] = <
+					text = <"<4.0 mmol/l (<155 mg/dl)">
+					description = <"">
+				>
+				["at0039"] = <
+					text = <"4.0–4.9 mmol/l (155–190 mg/dl)">
+					description = <"">
+				>
+				["at0046"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0047"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0048"] = <
+					text = <"Kommentar">
+					description = <"Ev. tillägg.">
+				>
+				["at0049"] = <
+					text = <"5.0–6.4 mmol/l (191–250 mg/dl)">
+					description = <"">
+				>
+				["at0050"] = <
+					text = <"6.5–8.4 mmol/l (251–325 mg/dl)">
+					description = <"">
+				>
+				["at0051"] = <
+					text = <">8.5 mmol/l (>325 mg/dl)">
+					description = <"">
+				>
+				["at0052"] = <
+					text = <"Total poäng">
+					description = <"Summan av samtliga faktorer, i enlighet med DLCN-kriterierna.">
 				>
 			>
 		>
