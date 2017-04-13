@@ -5,6 +5,15 @@ concept
 	[at0000]	-- Revised trauma score (RTS)
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
@@ -13,6 +22,29 @@ description
 		["date"] = <"2017-01-22">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att registrera data i enlighet med Revised Trauma Score (RTS) och Triage-Revised Trauma Score (T-RTS), vilka används för pre-hospital triage, att bedöma svårighetsgrad av skada och att utvärdera chans för överlevnad hos patient som genomgått allvarligt trauma.">
+			use = <"Registrera data erhållen i enlighet med RTS och T-RTS, baserat på Glasgow Coma Scale, systoliskt blodtryck och andningsfrekvens vid initial bedömning av patient som genomgått allvarligt trauma. 
+
+Glasgow Coma Scale(GCS)     Systoliskt Blodtryck (SBP)     Andningsfrekvens (AF)     Kodat Värde(c)
+13-15                                          >89                                                10-29                            4
+9-12                                            76-89                                             >29                               3
+6-8                                              50-75                                             6-9                                2
+4-5                                              1-49                                               1-5                                1
+3                                                  0                                                     0                                 0
+
+RTS = (0.9368 * cGCS) + (0.7326 * cSBP) + (0.2908 * cAF)  --> total poäng 0 - 7.8408 (inklusive icke-heltal). Poängen är starkt viktad för Glasgow Coma Scale för att kompensera för möjligheten till allvarlig skallskada utan multiorgansvikt. RTS används för att bedöma svårighetsgrad av skada och att utvärdera risk för död. Maximal poäng för RTS uppgår till 7.8408 och ju högre poäng, desto bättre chans för överlevnad (RTS 4 => 60% sannolikhet till överlevnad). Utvärderingen registreras i separat arketyp: openEHR-EHR-EVALUATION.revised_trauma_score.v1.
+
+T-RTS = cGCS + cSBP + cAF  -->  0 - 12p (endast heltal), och används för triage i pre-hospital miljö.
+Patienter med T-RTS = 1 - 10 (T1) kräver omedelbar livsuppehållande behandling; T-RTS = 11 (T2) kräver åtgärd inom två till fyra timmar, vid T-RTS = 12 (T3) kan vård vänta, medan T-RTS = 0 indikerar avliden patient.
+
+RTS kan med fördel kombineras med Injury Severity Score (ISS) för epidemiologiska studier. Kombinationen kan även användas tillsammans med patientens ålder för att beräkna Trauma and Injury Severity Score (TRISS) vilket används för att utvärdera möjlighet till överlevnad.
+">
+			keywords = <"TRISS", "ISS", "RTS", "T-RTS", "trauma", "triage">
+			misuse = <"Resultatet kan vara missvisande för patienter som är intuberade och mekaniskt ventilerade.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record revised trauma score (RTS) and triage-revised trauma score (T-RTS), for pre-hospital triage, quantifying injury severity, and assessing probability of survival/death following trauma.">
@@ -41,17 +73,17 @@ RTS may be combined with Injury Severity Score (ISS), an anatomic trauma scoring
 		["references"] = <"Champion HR, Sacco WJ, Copes WS, Gann DS, Gennarelli TA, Flanagan ME. A revision of the Trauma Score. Journal of Trauma and Acute Care Surgery. 1989 May 1;29(5):623-9.
 
 Moore L, Lavoie A, LeSage N, Abdous B, Bergeron E, Liberman M, Emond M. Statistical validation of the revised trauma score. Journal of Trauma and Acute Care Surgery. 2006 Feb 1;60(2):305-11.">
-		["MD5-CAM-1.0.1"] = <"80D6D665B836A97CD9D8885C74048125">
+		["MD5-CAM-1.0.1"] = <"405D8875675B137D78E4306458A8E2C2">
 	>
 
 definition
 	OBSERVATION[at0000] matches {	-- Revised trauma score (RTS)
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
 									ELEMENT[at0004] occurrences matches {0..1} matches {	-- cGCS
 										value matches {
@@ -71,29 +103,29 @@ definition
 											4|[local::at0018]  	-- > 89 (mmHg)
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- cRR
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- cAF
 										value matches {
-											0|[local::at0019], 	-- 0 (breaths/min)
-											1|[local::at0020], 	-- 1 - 5 (breaths/min)
-											2|[local::at0021], 	-- 6 - 9 (breaths/min)
-											3|[local::at0022], 	-- > 29 (breaths/min)
-											4|[local::at0023]  	-- 10 - 29 (breaths/min)
+											0|[local::at0019], 	-- 0/min
+											1|[local::at0020], 	-- 1 - 5/min
+											2|[local::at0021], 	-- 6 - 9/min
+											3|[local::at0022], 	-- > 29/min
+											4|[local::at0023]  	-- 10 - 29/min
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Revised trauma score (RTS)
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Revised Trauma Score (RTS)
 										value matches {
 											C_DV_QUANTITY <
 											>
 										}
 									}
-									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Triage-Revised trauma score (T-RTS)
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Triage-Revised Trauma Score (T-RTS)
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..12|}
 											}
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -210,6 +242,110 @@ ontology
 				["at0024"] = <
 					text = <"Triage-Revised trauma score (T-RTS)">
 					description = <"Calculated triage-revised trauma score.">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Revised trauma score (RTS)">
+					description = <"Revised Trauma Score (RTS) är ett instrument för initial bedömning av patient som genomgått trauma, och baseras på viktade skalor av systoliskt blodtryck, andningsfrekvens och Glasgow Coma Scale. RTS används för att bedöma svårighetsgrad av skada, chans för överlevnad och som ett triage-verktyg utanför sjukhus (T-RTS). Maximal poäng för RTS uppgår till 7.8408 och ju högre poäng, desto bättre chans för överlevnad.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"cGCS">
+					description = <"Poängsättning baserad på Glasgow Coma Scale (GCS).">
+				>
+				["at0005"] = <
+					text = <"cSBP">
+					description = <"Poängsättning baserad på systoliskt blodtryck (mmHg).">
+				>
+				["at0006"] = <
+					text = <"cAF">
+					description = <"Poängsättning baserad på andningsfrekvens (andetag/min).">
+				>
+				["at0007"] = <
+					text = <"Revised Trauma Score (RTS)">
+					description = <"Beräknad Revised Trauma Score (RTS).">
+				>
+				["at0008"] = <
+					text = <"Kommentar">
+					description = <"Ev. tillägg.">
+				>
+				["at0009"] = <
+					text = <"3">
+					description = <"GCS score = 0. ">
+				>
+				["at0010"] = <
+					text = <"4 - 5">
+					description = <"GCS score = 4 - 5.">
+				>
+				["at0011"] = <
+					text = <"6 - 8">
+					description = <"GCS score = 6 - 8.">
+				>
+				["at0012"] = <
+					text = <"9 - 12">
+					description = <"GCS score = 9 - 12.">
+				>
+				["at0013"] = <
+					text = <"13 - 15">
+					description = <"GCS score = 13-15.">
+				>
+				["at0014"] = <
+					text = <"0 (mmHg)">
+					description = <"Systoliskt blodtryck = 0 mmHg. ">
+				>
+				["at0015"] = <
+					text = <"1 - 49 (mmHg)">
+					description = <"Systoliskt blodtryck = 1 - 49 mmHg.">
+				>
+				["at0016"] = <
+					text = <"50 - 75 (mmHg)">
+					description = <"Systoliskt blodtryck = 50 - 75 mmHg. ">
+				>
+				["at0017"] = <
+					text = <"76 - 89 (mmHg)">
+					description = <"Systoliskt blodtryck = 76 - 89 mmHg.">
+				>
+				["at0018"] = <
+					text = <"> 89 (mmHg)">
+					description = <"Systoliskt blodtryck > 89 mmHg.">
+				>
+				["at0019"] = <
+					text = <"0/min">
+					description = <"Andningsfrekvens = 0/min">
+				>
+				["at0020"] = <
+					text = <"1 - 5/min">
+					description = <"Andningsfrekvens = 1 - 5/min">
+				>
+				["at0021"] = <
+					text = <"6 - 9/min">
+					description = <"Andningsfrekvens = 6 - 9/min">
+				>
+				["at0022"] = <
+					text = <"> 29/min">
+					description = <"Andningsfrekvens > 29/min">
+				>
+				["at0023"] = <
+					text = <"10 - 29/min">
+					description = <"Andningsfrekvens = 10 - 29/min">
+				>
+				["at0024"] = <
+					text = <"Triage-Revised Trauma Score (T-RTS)">
+					description = <"Beräknad Triage-Revised Trauma Score (T-RTS).">
 				>
 			>
 		>
