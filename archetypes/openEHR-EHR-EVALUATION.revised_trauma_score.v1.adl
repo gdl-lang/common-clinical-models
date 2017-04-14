@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.revised_trauma_score.v1
 
 concept
-	[at0000]	-- Revised trauma score (RTS)
+	[at0000]	-- Revised Trauma Score (RTS) - utvärdering
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
@@ -13,6 +22,21 @@ description
 		["date"] = <"2017-01-25">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att registrera svårighetsgrad av skada och chans för överlevnad, baserat på poäng genererad i enlighet med Revised Trauma Score (RTS).">
+			use = <"Att registrera data för chans till överlevnad (sP) hos patient som genomgått allvarligt trauma, baserat på poäng genererad i enlighet med Revised Trauma Score (RTS).
+
+A = W + RTS
+sP = 1 / 1 + e^-A  
+W = viktad konstant deriverad från regressionsanalys = -3.5718
+e = Napiers konstant =  2.71828
+
+Ju högre RTS-poäng, desto högre chans för överlevnad. Själva poängen registreras i separat arketyp: openEHR-EHR-OBSERVATION.revised_trauma_score.v1 archetype.">
+			keywords = <"överlevnad", "trauma", "RTS", "revised trauma score">
+			misuse = <"Resultatet kan vara missvisande för patienter som är intuberade och mekaniskt ventilerade.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record probability of survival following trauma, based on revised trauma score.">
@@ -33,21 +57,21 @@ Higher RTS scores are associated with greater probability of survival, and RTS v
 		["references"] = <"Champion HR, Sacco WJ, Copes WS, Gann DS, Gennarelli TA, Flanagan ME. A revision of the Trauma Score. Journal of Trauma and Acute Care Surgery. 1989 May 1;29(5):623-9.
 
 Moore L, Lavoie A, LeSage N, Abdous B, Bergeron E, Liberman M, Emond M. Statistical validation of the revised trauma score. Journal of Trauma and Acute Care Surgery. 2006 Feb 1;60(2):305-11.">
-		["MD5-CAM-1.0.1"] = <"E1759C68DD44988C33725A405A9931D6">
+		["MD5-CAM-1.0.1"] = <"67D1E4E67BB132E533B6EAAD81C9C8FE">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Revised trauma score (RTS)
+	EVALUATION[at0000] matches {	-- Revised Trauma Score (RTS) - utvärdering
 		data matches {
-			ITEM_TREE[at0001] matches {	-- Tree
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Probability of survival (sP)
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Chans för överlevnad
 						value matches {
 							C_DV_QUANTITY <
 							>
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Comment
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Kommentar
 						value matches {
 							DV_TEXT matches {*}
 						}
@@ -76,6 +100,26 @@ ontology
 				["at0003"] = <
 					text = <"Comment">
 					description = <"Additional information about this recording.">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Revised Trauma Score (RTS) - utvärdering">
+					description = <"Revised Trauma Score (RTS) är ett instrument för initial bedömning av patient som genomgått trauma, och baseras på viktade skalor av systoliskt blodtryck, andningsfrekvens och Glasgow Coma Scale. RTS används för att bedöma svårighetsgrad av skada och chans för överlevnad. ">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Chans för överlevnad">
+					description = <"Chans för överlevnad, baserat på poäng genererad i enlighet med RTS.">
+				>
+				["at0003"] = <
+					text = <"Kommentar">
+					description = <"Ev. tillägg.">
 				>
 			>
 		>
