@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.timi_risk_ua_nstemi.v1
 
 concept
-	[at0000]	-- Timi risk ua nstemi
+	[at0000]	-- TIMI Risk Score for UA/NSTEMI
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -13,12 +22,36 @@ description
 		["date"] = <"2017-03-16">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"TIMI Risk Score for Unstable Angina/NSTEMI används för att klassificera patienter med bröstsmärta; särskilt lämpade är patienter med bekräftad NSTEMI eller instabil angina pectoris.">
+			use = <"Instrumentet baseras på sju kriterier:                                        
+
+Ålder ≥ 65	                                               
+≥ 3 riskfaktorer för kranskärlssjukdom*	                
+Känd kranskärlssjukdom (stenos ≥ 50%)	                
+ASA-bruk senaste sju dagarna	                   
+Svår angina (≥ 2 episoder per dygn)       
+EKG ST-förändringar ≥ 0.5mm	                
+Förhöjda hjärtmarkörer	                  
+
+*Även med 0/1 riskfaktorer, är detta kriterium ej av tillräcklig betydelse för att säkert kunna skicka hem patienten från sjukhuset.
+
+Maximal poäng uppgår till 7p och resultatet tolkas med avseende på 14-dagars all-cause mortality enligt:
+
+0-1p : 5% risk 
+2p: 8% risk 
+3p: 13% risk 
+4p: 20% risk
+5p: 26% risk 
+≥ 6p: 41% risk">
+			keywords = <"instabil angina", "NSTEMI", "non ST elevation myocardial infarction", "TIMI Risk Score for UA/NSTEMI", "kardiologi">
+			misuse = <"Instrumentet är endast avsett att understödja utredningen och ska ej ensamt ligga till grund för beslutsfattande.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"The TIMI Risk Score for Unstable Angina/NSTEMI helps to grade patients with anginal symptoms, but is better-suited for patients with confirmed NSTEMI or unstable angina.
-
-
-">
+			purpose = <"The TIMI Risk Score for Unstable Angina/NSTEMI helps to grade patients with anginal symptoms, but is better-suited for patients with confirmed NSTEMI or unstable angina.">
 			use = <"Seven criteria are used to score the risk:
 
 Criteria	                                                     Value
@@ -39,9 +72,8 @@ Risk grading follows:
 3 points: 13% risk at 14 days of all-cause mortality
 4 points: 20% risk at 14 days of all-cause mortality
 5 points: 26% risk at 14 days of all-cause mortality
-≥ 6 points: 41% risk at 14 days of all-cause mortality
-">
-			keywords = <"Unstable angina", "NSTEMI", "non ST elevation Myocardial Infarction", "TIMI RIsk score for UA/NSTEMI">
+≥ 6 points: 41% risk at 14 days of all-cause mortality">
+			keywords = <"Unstable angina", "NSTEMI", "non ST elevation Myocardial Infarction", "TIMI RIsk score for UA/NSTEMI", "cardiology">
 			misuse = <"Even with a 0/1 point score, risk factors are not low enough to safely allow discharge from hospital. Thus do not use this tool on its own but verify the risk with another tool and/or your organisation's practices.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
@@ -54,68 +86,68 @@ Risk grading follows:
 
 Ref. 2: Charles V. Pollack Jr., MA, MD, Frank D. Sites, RN, Frances S. Shofer, PhD
 ">
-		["MD5-CAM-1.0.1"] = <"FD0948A6CEBAD0ADAD9946AA55BE29AE">
+		["MD5-CAM-1.0.1"] = <"6379161FC4D4518AA4AAB87EE469E9CC">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Timi risk ua nstemi
+	OBSERVATION[at0000] matches {	-- TIMI Risk Score for UA/NSTEMI
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0023] occurrences matches {0..1} matches {	-- Age ≥ 65
+									ELEMENT[at0023] occurrences matches {0..1} matches {	-- Ålder ≥ 65
 										value matches {
-											0|[local::at0024], 	-- No
-											1|[local::at0025]  	-- Yes
+											0|[local::at0024], 	-- Nej
+											1|[local::at0025]  	-- Ja
 										}
 									}
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- ≥ 3 CAD Risk Factors*
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- ≥ 3 riskfaktorer för kranskärlssjukdom
 										value matches {
-											0|[local::at0010], 	-- No
-											1|[local::at0011]  	-- Yes
+											0|[local::at0010], 	-- Nej
+											1|[local::at0011]  	-- Ja
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Known CAD (Stenosis ≥ 50%)
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Känd kranskärlssjukdom (Stenos ≥ 50%)
 										value matches {
-											0|[local::at0012], 	-- No
-											1|[local::at0013]  	-- Yes
+											0|[local::at0012], 	-- Nej
+											1|[local::at0013]  	-- Ja
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- ASA Use in Past 7 days
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- ASA-bruk senaste sju dagarna
 										value matches {
-											0|[local::at0014], 	-- No
-											1|[local::at0015]  	-- Yes
+											0|[local::at0014], 	-- Nej
+											1|[local::at0015]  	-- Ja
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Severe angina (≥ 2 episodes in 24 hrs)
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Svår angina (≥ 2 episoder per dygn)
 										value matches {
-											0|[local::at0016], 	-- No
-											1|[local::at0017]  	-- Yes
+											0|[local::at0016], 	-- Nej
+											1|[local::at0017]  	-- Ja
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- EKG ST changes ≥ 0.5mm
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- EKG: ST-förändringar ≥ 0.5mm
 										value matches {
-											0|[local::at0018], 	-- No
-											1|[local::at0019]  	-- Yes
+											0|[local::at0018], 	-- Nej
+											1|[local::at0019]  	-- Ja
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Positive Cardiac Marker
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Förhöjda hjärtmarkörer
 										value matches {
-											0|[local::at0020], 	-- No
-											1|[local::at0021]  	-- Yes
+											0|[local::at0020], 	-- Nej
+											1|[local::at0021]  	-- Ja
 										}
 									}
-									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Total poäng
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..7|}
 											}
 										}
 									}
-									ELEMENT[at0026] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0026] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -240,6 +272,118 @@ ontology
 				["at0026"] = <
 					text = <"Comment">
 					description = <"Any comments regarding the score">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"TIMI Risk Score for UA/NSTEMI">
+					description = <"TIMI Risk Score for Unstable Angina/NSTEMI är det mest välkända instrumentet för riskskattning av bröstsmärta.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"≥ 3 riskfaktorer för kranskärlssjukdom">
+					description = <"Riskfaktorer inkluderar: ärtlighet, hypertoni, hyperkolesterolemi, diabetes, och rökning.">
+				>
+				["at0005"] = <
+					text = <"Känd kranskärlssjukdom (Stenos ≥ 50%)">
+					description = <"Har patienten en känd kranskärlssjukdom (stenos ≥ 50%)?">
+				>
+				["at0006"] = <
+					text = <"ASA-bruk senaste sju dagarna">
+					description = <"Har patienten intagit acetylsalicylsyra senaste sju dagarna?">
+				>
+				["at0007"] = <
+					text = <"Svår angina (≥ 2 episoder per dygn)">
+					description = <"Har patienten svår angina (≥ 2 episoder per dygn)?">
+				>
+				["at0008"] = <
+					text = <"EKG: ST-förändringar ≥ 0.5mm">
+					description = <"Finns ST-förändringar ≥ 0.5mm på aktuellt EKG?">
+				>
+				["at0009"] = <
+					text = <"Förhöjda hjärtmarkörer">
+					description = <"Provsvar för förhöjda hjärtmarkörer?">
+				>
+				["at0010"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"Total poäng">
+					description = <"Summan av samtliga faktorer.">
+				>
+				["at0023"] = <
+					text = <"Ålder ≥ 65">
+					description = <"Är patienten 65 år gammal eller äldre?">
+				>
+				["at0024"] = <
+					text = <"Nej">
+					description = <"**(en)">
+				>
+				["at0025"] = <
+					text = <"Ja">
+					description = <"**(en)">
+				>
+				["at0026"] = <
+					text = <"Kommentar">
+					description = <"Ev. tillägg.">
 				>
 			>
 		>
