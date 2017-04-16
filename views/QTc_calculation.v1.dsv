@@ -132,9 +132,19 @@
 <#assign qt_interval_ehr_data = ecg_recording_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0005}/items{at0006}/items{at0007}']">
 <#assign event_time1_ehr_data = ecg_recording_entry_ehr_data + "[0].elements['/data/events/time']">
 
+<script> 
+angular.module('cds_app').controller('QTc_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+	$scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+	$scope.${heart_rate_ehr_data}.value.units = $scope.${heart_rate_def}.units[0];
+    $scope.${qt_interval_ehr_data}.value.units = $scope.${qt_interval_def}.units[0];
+	$scope.${qtc_calculation_method_ehr_data}.value.selection = $scope.findMin($scope.${qtc_calculation_method_def});
+  });
+});
+</script>
 
-
-<div ng-show="ready">
+<div ng-show="ready" ng-controller="QTc_Ctrl">
 <div class="header">
   <h1>{{def.concept.name}}</h1>
   <h2>{{def.concept.description}}</h2>
@@ -167,10 +177,10 @@
       </div>
 </div>
 <div class="row collapse" title="{{${qtc_calculation_method_def}.description}}">
-    <div class="medium-6 columns">
+    <div class="medium-5 columns">
       <label>{{${qtc_calculation_method_def}.name}}</label>
       </div>
-      <label class="medium-6 columns">
+      <label class="medium-7 columns">
         <select ng-model="${qtc_calculation_method_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${qtc_calculation_method_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
         </select>
       </label>
