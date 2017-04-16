@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.timi_risk_ua_nstemi_assessment.v1
 
 concept
-	[at0000]	-- Timi risk ua nstemi assessment
+	[at0000]	-- TIMI Risk Score for UA/NSTEMI - utvärdering
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -13,6 +22,34 @@ description
 		["date"] = <"2017-03-16">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"TIMI Risk Score for Unstable Angina/NSTEMI används för att klassificera patienter med bröstsmärta; särskilt lämpade är patienter med bekräftad NSTEMI eller instabil angina pectoris.
+">
+			use = <"Resultatet tolkas med avseende på riskvärdering enligt:
+
+0-1 points: 5% 14-dagarsrisk med avseende på all-cause mortality,
+hjärtinfarkt, eller svår återkommande akut revaskulariseringskrävande ischemi.
+
+2 poäng: 8% 14-dagarsrisk med avseende på all-cause mortality,
+hjärtinfarkt, eller svår återkommande akut revaskulariseringskrävande ischemi.
+
+3 poäng: 13% 14-dagarsrisk med avseende på all-cause mortality,
+hjärtinfarkt, eller svår återkommande akut revaskulariseringskrävande ischemi.
+
+4 poäng: 20% 14-dagarsrisk med avseende på all-cause mortality,
+hjärtinfarkt, eller svår återkommande akut revaskulariseringskrävande ischemi.
+
+5 poäng: 26% 14-dagarsrisk med avseende på all-cause mortality,
+hjärtinfarkt, eller svår återkommande akut revaskulariseringskrävande ischemi.
+
+≥ 6 poäng: 41% 14-dagarsrisk med avseende på all-cause mortality,
+hjärtinfarkt, eller svår återkommande akut revaskulariseringskrävande ischemi.
+">
+			keywords = <"instabil angina", "NSTEMI", "TIMI Risk Score for Unstable Angina/NSTEMI", "non ST elevation myocardial infarction", "kardiologi">
+			misuse = <"*Även med 0/1 riskfaktorer, är detta kriterium ej av tillräcklig betydelse för att säkert kunna skicka hem patienten från sjukhuset. Instrumentet är endast avsett att understödja utredningen och ska ej ensamt ligga till grund för beslutsfattande.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"The TIMI Risk Score for Unstable Angina/NSTEMI helps to grade patients with anginal symptoms, but is better-suited for patients with confirmed NSTEMI or unstable angina.">
@@ -44,22 +81,22 @@ new or recurrent MI, or severe recurrent ischemia requiring urgent revasculariza
 
 
 Ref. 2: Charles V. Pollack Jr., MA, MD, Frank D. Sites, RN, Frances S. Shofer, PhD">
-		["MD5-CAM-1.0.1"] = <"297B5CE5649AA729F2AF9536C2927F40">
+		["MD5-CAM-1.0.1"] = <"6B854B41092A023FCAF3E81526D50F6B">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Timi risk ua nstemi assessment
+	EVALUATION[at0000] matches {	-- TIMI Risk Score for UA/NSTEMI - utvärdering
 		data matches {
-			ITEM_TREE[at0001] matches {	-- Tree
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Risk grading
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Riskvärdering
 						value matches {
-							0|[local::at0003], 	-- 5% risk at 14 days of all-cause mortality
-							1|[local::at0004], 	-- 8% risk at 14 days of all-cause mortality
-							2|[local::at0005], 	-- 13% risk at 14 days of all-cause mortality
-							3|[local::at0006], 	-- 20% risk at 14 days of all-cause mortality
-							4|[local::at0007], 	-- 26% risk at 14 days of all-cause mortality
-							5|[local::at0008]  	-- 41% risk at 14 days of all-cause mortality
+							0|[local::at0003], 	-- 5% 14-dagarsrisk för all-cause mortality
+							1|[local::at0004], 	-- 8% 14-dagarsrisk för all-cause mortality
+							2|[local::at0005], 	-- 13% 14-dagarsrisk för all-cause mortality
+							3|[local::at0006], 	-- 20% 14-dagarsrisk för all-cause mortality
+							4|[local::at0007], 	-- 26% 14-dagarsrisk för all-cause mortality
+							5|[local::at0008]  	-- 41% 14-dagarsrisk för all-cause mortality
 						}
 					}
 				}
@@ -107,6 +144,47 @@ new or recurrent MI, or severe recurrent ischemia requiring urgent revasculariza
 				["at0008"] = <
 					text = <"41% risk at 14 days of all-cause mortality">
 					description = <"Score ≥ 6">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"TIMI Risk Score for UA/NSTEMI - utvärdering">
+					description = <"Utvärdering av poäng genererad i enlighet med Timi Risk Score for UA/NSTEMI - det mest välkända instrumentet för riskskattning av bröstsmärta.">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Riskvärdering">
+					description = <"14-dagarsrisk med avseende på all-cause mortality,
+hjärtinfarkt, eller svår återkommande akut revaskulariseringskrävande ischemi.">
+				>
+				["at0003"] = <
+					text = <"5% 14-dagarsrisk för all-cause mortality">
+					description = <"0-1p">
+				>
+				["at0004"] = <
+					text = <"8% 14-dagarsrisk för all-cause mortality">
+					description = <"2p">
+				>
+				["at0005"] = <
+					text = <"13% 14-dagarsrisk för all-cause mortality">
+					description = <"3p">
+				>
+				["at0006"] = <
+					text = <"20% 14-dagarsrisk för all-cause mortality">
+					description = <"4p">
+				>
+				["at0007"] = <
+					text = <"26% 14-dagarsrisk för all-cause mortality">
+					description = <"5p">
+				>
+				["at0008"] = <
+					text = <"41% 14-dagarsrisk för all-cause mortality">
+					description = <"≥ 6p">
 				>
 			>
 		>
