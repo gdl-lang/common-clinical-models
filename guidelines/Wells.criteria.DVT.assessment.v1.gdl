@@ -1,0 +1,88 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"Wells.criteria.DVT.assessment.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				misuse = <"Not to be used with any other formula or criteria for DVT risk stratification.">
+				purpose = <"Assessment of score generated in accordance with Wells' Criteria for risk of DVT.">
+				use = <"Use to assess score generated in accordance with Wells' Criteria for risk of DVT.
+">
+			>
+		>
+		original_author = <
+			["email"] = <"models@cambiocds.com">
+			["name"] = <"Dennis Forslund">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"Tovey C, Wyatt S. Diagnosis, investigation, and management of deep vein thrombosis. BMJ : British Medical Journal. 2003;326(7400):1180-1184.
+
+Wells PS, Anderson DR, Rodger M, Forgie M, Kearon C, Dreyer J, Kovacs G, Mitchell M, Lewandowski B, Kovacs MJ. Evaluation of D-dimer in the diagnosis of suspected deep-vein thrombosis. N Engl J Med. 2003 Sep 25;349(13):1227-35.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.wells_criteria_for_dvt_assessment.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002]">
+					>
+				>
+			>
+			["gt0003"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.wells_criteria_dvt.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0004"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0029]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0006"] = (RULE) <
+				when = <"$gt0004.magnitude<2",...>
+				then = <"$gt0005=0|local::at0003|Low risk|",...>
+				priority = <2>
+			>
+			["gt0007"] = (RULE) <
+				when = <"$gt0004.magnitude>=2",...>
+				then = <"$gt0005=1|local::at0004|High risk|",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Wells' Criteria for DVT - assessment">
+						description = <"Assessment of score generated in accordance with Wells' Criteria for risk of deep vein thrombosis (DVT).">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Total score">
+						description = <"*">
+					>
+					["gt0005"] = (TERM) <
+						text = <"DVT risk">
+						description = <"Assessment of score generated in accordance with Wells' Criteria for risk of DVT.">
+					>
+					["gt0006"] = (TERM) <
+						text = <"CDS Low risk">
+					>
+					["gt0007"] = (TERM) <
+						text = <"CDS High risk">
+					>
+				>
+			>
+		>
+	>
+>

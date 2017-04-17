@@ -1,0 +1,128 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.wells_criteria_for_dvt_assessment.v1
+
+concept
+	[at0000]	-- Wells kriterier för DVT - utvärdering
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Dennis Forslund">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-04-17">
+	>
+	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Utvärdering av poäng genererad i enlighet med Wells kriterier för djup ventrombos (DVT). ">
+			use = <"Använd för utvärdering av poäng genererad i enlighet med Wells kriterier för djup ventrombos (DVT). 
+
+En summa om minst 2p innebär att det finns ett behov av vidare utredning vid misstanke om DVT. 
+
+Wells DVT kriterier bör endast användas efter en noggrann historie- och fysisk kontroll utförts, och enbart i de fall klinisk bedömning leder till misstanke om DVT.
+
+Observera att kalkyleringen av Wells Score är mindre användbar för inlagda patienter.">
+			keywords = <"Wells", "Wells kriterier", "DVT", "djup ventrombos">
+			misuse = <"Får inte användas med någon annan formel eller andra kriterier för DVT riskstratifiering.">
+			copyright = <"Cambio Healthcare Systems">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Assessment of score generated in accordance with Wells' Criteria for risk of DVT.">
+			use = <"Use to assess score generated in accordance with Wells' Criteria for risk of DVT.
+
+The Wells’ DVT criteria can be used in the outpatient and emergency department setting. With a low risk (Wells’ Score <2) and a negative d-dimer the clinician can exclude the need for ultrasound to rule out DVT. 
+
+Only use the Wells’ DVT criteria after a careful history and physical is completed. Also, the Wells’ DVT criteria should only be used on patients with a suspicion of DVT. If there is no concern for DVT than there is no need for risk stratification.
+
+Note that the Wells Score is less useful in hospitalized patients.">
+			keywords = <"Wells", "Wells criteria", "DVT">
+			misuse = <"Not to be used with any other formula or criteria for DVT risk stratification.">
+			copyright = <"Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Tovey C, Wyatt S. Diagnosis, investigation, and management of deep vein thrombosis. BMJ : British Medical Journal. 2003;326(7400):1180-1184.
+
+Wells PS, Anderson DR, Rodger M, Forgie M, Kearon C, Dreyer J, Kovacs G, Mitchell M, Lewandowski B, Kovacs MJ. Evaluation of D-dimer in the diagnosis of suspected deep-vein thrombosis. N Engl J Med. 2003 Sep 25;349(13):1227-35.">
+		["MD5-CAM-1.0.1"] = <"B6FC85A5DD88D0CAA6C76E1CC1D1E4E7">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Wells kriterier för DVT - utvärdering
+		data matches {
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Riskvärdering DVT
+						value matches {
+							0|[local::at0003], 	-- Låg sannolikhet
+							1|[local::at0004]  	-- Hög sannolikhet
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Wells' Criteria for DVT - assessment">
+					description = <"Assessment of score generated in accordance with Wells' Criteria for risk of deep vein thrombosis (DVT).">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"DVT risk">
+					description = <"Assessment of score generated in accordance with Wells' Criteria for risk of DVT.">
+				>
+				["at0003"] = <
+					text = <"Low risk">
+					description = <"<2p">
+				>
+				["at0004"] = <
+					text = <"High risk">
+					description = <"At least 2p">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Wells kriterier för DVT - utvärdering">
+					description = <"Utvärdering av poäng genererad i enlighet med Wells kriterier för djup ventrombos (DVT). ">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Riskvärdering DVT">
+					description = <"Utvärdering av poäng genererad i enlighet med Wells kriterier för djup ventrombos (DVT). ">
+				>
+				["at0003"] = <
+					text = <"Låg sannolikhet">
+					description = <"<2p">
+				>
+				["at0004"] = <
+					text = <"Hög sannolikhet">
+					description = <"Minst 2p">
+				>
+			>
+		>
+	>
