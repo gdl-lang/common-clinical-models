@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.peak_expiratory_flow_estimated.v1
 
 concept
-	[at0000]	-- Peak expiratory flow (estimated/expected)
+	[at0000]	-- Peak expiratory flow (PEF)
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
@@ -28,6 +37,22 @@ For recording tests of pulmonary function, including PEFR by spirometry or peak 
 			misuse = <"Do not use to record standard tests of pulmonary function or PEF by spirometry or peak flow meter.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att uppskatta PEF-värde.">
+			use = <"Att registrera uppskattat förväntat PEF-värde bland olika åldersgrupper och kön. Det finns flera olika formler för uppskattning av PEF-värde och dessa används för denna riktlinje:
+
+Barn:
+PEF (l/min) = ((längd, cm - 100) * 5) + 100
+Vuxna män:
+(((längd, m * 5,48) + 1.58) - (ålder * 0.041)) * 60
+Vuxna kvinnor:
+(((längd, m * 3.72) + 2.24) - (ålder * 0.03)) * 60
+För registering av värden erhållna med hjälp av spirometri eller PEF-mätare, vänligen använd openEHR-EHR-OBSERVATION.pulmonary_function.">
+			keywords = <"PEF", "astma", "KOL", "luftvägsobstruktion", "peak expiratory flow">
+			misuse = <"Använd ej för registrering av värden erhållna med hjälp av spirometri eller PEF-mätare.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -37,19 +62,19 @@ For recording tests of pulmonary function, including PEFR by spirometry or peak 
 Nunn AJ, Gregg I. New regression equations for predicting peak expiratory flow in adults. BMj. 1989 Apr 22;298(6680):1068-70.
 
 Balasubramanian S, Ravikumar NR, Chakkarapani E, Shivbalan SO. Peak expiratory flow rate in children-A ready reckoner. Indian pediatrics. 2002 Jan 24;39(1):104-5.">
-		["MD5-CAM-1.0.1"] = <"E8A6E789826878B312F9832739F3CB49">
+		["MD5-CAM-1.0.1"] = <"D46652FCFE4C811AF75E7FDC0784136F">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Peak expiratory flow (estimated/expected)
+	OBSERVATION[at0000] matches {	-- Peak expiratory flow (PEF)
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Peak expiratory flow (estimated)
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Uppskattat PEF-värde
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::126]>
@@ -62,7 +87,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -103,6 +128,34 @@ ontology
 				["at0005"] = <
 					text = <"Comment">
 					description = <"Any additional information about this recording.">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Peak expiratory flow (PEF)">
+					description = <"Peak expiratory flow (PEF – topputandningsflöde), är ett mått på maximalt forcerat utandningsflöde. PEF mäts vanligtvis med hjälp av spirometri eller PEF-mätare, men ett basvärde på förväntat resultat kan uppskattas genom olika formler baserat på ålder, längd och kön. PEF-värden anges i liter per minut (l/min) och används för att följa och utvärdera grad av luftvägsobstruktion hos patienter med astma och kronisk exspiratorisk lungsjukdom (KOL).">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Uppskattat PEF-värde">
+					description = <"Uppskattat PEF-värde baserat på kön och ålder, anges i l/min.">
+				>
+				["at0005"] = <
+					text = <"Kommentar">
+					description = <"Ev. tillägg.">
 				>
 			>
 		>
