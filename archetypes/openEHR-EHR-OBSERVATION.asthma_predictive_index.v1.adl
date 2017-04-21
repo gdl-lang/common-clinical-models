@@ -66,85 +66,85 @@ A corresponding evaluation archetype: openEHR-EHR-EVALUATION.asthma_predictive_i
 		["references"] = <"Castro-Rodríguez JA, Holberg CJ, Wright AL, Martinez FD. A clinical index to define risk of asthma in young children with recurrent wheezing. American journal of respiratory and critical care medicine. 2000 Oct 1;162(4):1403-6.
 
 Leonardi NA, Spycher BD, Strippoli MP, Frey U, Silverman M, Kuehni CE. Validation of the Asthma Predictive Index and comparison with simpler clinical prediction rules. Journal of allergy and clinical immunology. 2011 Jun 30;127(6):1466-72.">
-		["MD5-CAM-1.0.1"] = <"C0609EDB59989530978187A7F13C7F22">
+		["MD5-CAM-1.0.1"] = <"FA406D7108F1DDFD6EA399495227C173">
 	>
 
 definition
 	OBSERVATION[at0000] matches {	-- Asthma predictive index (API)
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Episoder med pipande, väsande andning/år
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Wheezing episodes/year
 										value matches {
 											0|[local::at0024], 	-- <3
 											1|[local::at0025]  	-- ≥3
 										}
 									}
-									CLUSTER[at0005] occurrences matches {0..1} matches {	-- Huvudkriterier
+									CLUSTER[at0005] occurrences matches {0..1} matches {	-- Major criteria
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0032] occurrences matches {0..1} matches {	-- Antal uppfyllda huvudkriterier
+											ELEMENT[at0032] occurrences matches {0..1} matches {	-- Major criteria count
 												value matches {
 													DV_COUNT matches {
 														magnitude matches {|0..2|}
 													}
 												}
 											}
-											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Patient med eksem
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Patient with eczema
 												value matches {
-													0|[local::at0020], 	-- Nej
-													1|[local::at0021]  	-- Ja
+													0|[local::at0020], 	-- No
+													1|[local::at0021]  	-- Yes
 												}
 											}
-											ELEMENT[at0006] occurrences matches {0..1} matches {	-- Förälder med astma
+											ELEMENT[at0006] occurrences matches {0..1} matches {	-- Parent with asthma
 												value matches {
-													0|[local::at0018], 	-- Nej
-													1|[local::at0019]  	-- Ja
+													0|[local::at0018], 	-- No
+													1|[local::at0019]  	-- Yes
 												}
 											}
 										}
 									}
-									CLUSTER[at0008] occurrences matches {0..1} matches {	-- Underkriterier
+									CLUSTER[at0008] occurrences matches {0..1} matches {	-- Minor
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0033] occurrences matches {0..1} matches {	-- Antal uppfyllda underkriterier
+											ELEMENT[at0033] occurrences matches {0..1} matches {	-- Minor criteria count
 												value matches {
 													DV_COUNT matches {*}
 												}
 											}
-											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Eosinofili (≥4%)
+											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Eosinophilia (≥4% on FBC)
 												value matches {
-													0|[local::at0016], 	-- Nej
-													1|[local::at0017]  	-- Ja
+													0|[local::at0016], 	-- No
+													1|[local::at0017]  	-- Yes
 												}
 											}
-											ELEMENT[at0010] occurrences matches {0..1} matches {	-- Pipande, väsande andning utöver vid förkylning
+											ELEMENT[at0010] occurrences matches {0..1} matches {	-- Wheezing apart from colds
 												value matches {
-													0|[local::at0014], 	-- Nej
-													1|[local::at0015]  	-- Ja
+													0|[local::at0014], 	-- No
+													1|[local::at0015]  	-- Yes
 												}
 											}
-											ELEMENT[at0009] occurrences matches {0..1} matches {	-- Patient med allergisk rinit
+											ELEMENT[at0009] occurrences matches {0..1} matches {	-- Patient with allergic rhinitis
 												value matches {
-													0|[local::at0012], 	-- Nej
-													1|[local::at0013]  	-- Ja
+													0|[local::at0012], 	-- No
+													1|[local::at0013]  	-- Yes
 												}
 											}
 										}
 									}
-									ELEMENT[at0026] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0026] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0027] occurrences matches {0..1} matches {	-- Asthma Predictive Index
+									ELEMENT[at0027] occurrences matches {0..1} matches {	-- Asthma predictive index
 										value matches {
-											0|[local::at0028], 	-- Loose index - negativ
-											1|[local::at0029], 	-- Strict index - negativ
-											2|[local::at0030], 	-- Loose index - positiv
-											3|[local::at0031]  	-- Strict index - positiv
+											0|[local::at0028], 	-- Negative by loose criteria
+											1|[local::at0029], 	-- Negative by strict criteria
+											2|[local::at0030], 	-- Positive by loose criteria
+											3|[local::at0031]  	-- Positive by strict criteria
 										}
 									}
 								}
@@ -162,7 +162,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Asthma predictive index (API)">
-					description = <"Asthma predictive index (API) appplies to children/infants ≤3 years old and is a method for predicting likelihood of a later diagnosis of childhood asthma. It is based on the presence of at least one of 2 major criteria and at least two of 3 minor criteria, plus the number of wheezing episodes per year. Major criteria are: parent with asthma/patient with eczema; minor criteria are: patient with allergic rhinitis/wheezing apart from colds/eosinophilia (≥ 4% on FBC). A positive API is fulfilled by either 'strict index' (≥3 episodes of wheezing per year, AND ≥1 major criteria OR ≥2 minor criteria) or 'loose index' (<3 episodes of wheezing per year, AND ≥1 major criteria OR ≥2 minor criteria), and they each provide >95% specificity, and 80% specificity respectively. It has good specificity but is not a good screening tool and does not detect many patients who will later be diagnosed with asthma. It allows for more aggressive trials of asthma medications in patients who are likely to be diagnosed with asthma later in life.">
+					description = <"Asthma predictive index (API) applies to children/infants ≤3 years old and is a method for predicting likelihood of a later diagnosis of childhood asthma. It is based on the presence of at least one of 2 major criteria and at least two of 3 minor criteria, plus the number of wheezing episodes per year. Major criteria are: parent with asthma/patient with eczema; minor criteria are: patient with allergic rhinitis/wheezing apart from colds/eosinophilia (≥ 4% on FBC). A positive API is fulfilled by either 'strict index' (≥3 episodes of wheezing per year, AND ≥1 major criteria OR ≥2 minor criteria) or 'loose index' (<3 episodes of wheezing per year, AND ≥1 major criteria OR ≥2 minor criteria), and they each provide >95% specificity, and 80% specificity respectively. It has good specificity but is not a good screening tool and does not detect many patients who will later be diagnosed with asthma. It allows for more aggressive trials of asthma medications in patients who are likely to be diagnosed with asthma later in life.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
