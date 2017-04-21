@@ -1,0 +1,84 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.asthma_predictive_index.v1
+
+concept
+	[at0000]	-- Asthma predictive index (API)
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Eneimi Allwell-Brown">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-03-17">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To determine the specificity of the API and likelihood of developing childhood asthma (generally before age 15 years).">
+			use = <"To record assessment of specificity of the API for children/infants ≤3 years old. It is based on the presence of at least one of 2 major criteria and at least two of 3 minor criteria, plus the number of wheezing episodes per year. Major criteria are: parent with asthma/patient with eczema; minor criteria are: patient with allergic rhinitis/wheezing apart from colds/eosinophilia (≥ 4% on FBC). A positive API is fulfilled by either 'strict index' or 'loose index' which provide >95% specificity, and 80% specificity respectively.
+Strict index (>95% API specificity):
+     ≥3 episodes of wheezing per year, AND
+     ≥1 major criteria OR ≥2 minor criteria
+Loose index (80% API specificity):
+     <3 episodes of wheezing per year, AND
+     ≥1 major criteria OR ≥2 minor criteria
+It may also be used by clinicians to detemine which patients are suitable for more aggressive trials of asthma medications because of the likelihood of being diagnosed with asthma later in life.
+A corresponding observation archetype: openEHR-EHR-OBSERVATION.asthma_predictive_index.v1 is used to store data for assessment of the asthma predictive index.">
+			keywords = <"asthma", "wheezing", "respiratory illness", "atopy">
+			misuse = <"">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Castro-Rodríguez JA, Holberg CJ, Wright AL, Martinez FD. A clinical index to define risk of asthma in young children with recurrent wheezing. American journal of respiratory and critical care medicine. 2000 Oct 1;162(4):1403-6.
+
+Leonardi NA, Spycher BD, Strippoli MP, Frey U, Silverman M, Kuehni CE. Validation of the Asthma Predictive Index and comparison with simpler clinical prediction rules. Journal of allergy and clinical immunology. 2011 Jun 30;127(6):1466-72.">
+		["MD5-CAM-1.0.1"] = <"8CC44A039A38B246DBF82EB7FE9CF091">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Asthma predictive index (API)
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Specificity of API
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Comment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Asthma predictive index (API)">
+					description = <"Asthma predictive index (API) appplies to children/infants ≤3 years old and is a method for predicting likelihood of a later diagnosis of childhood asthma. It is based on the presence of at least one of 2 major criteria and at least two of 3 minor criteria, plus the number of wheezing episodes per year. Major criteria are: parent with asthma/patient with eczema; minor criteria are: patient with allergic rhinitis/wheezing apart from colds/eosinophilia (≥ 4% on FBC). A positive API is fulfilled by either 'strict index' (≥3 episodes of wheezing per year, AND ≥1 major criteria OR ≥2 minor criteria) or 'loose index' (<3 episodes of wheezing per year, AND ≥1 major criteria OR ≥2 minor criteria), and they each provide >95% specificity, and 80% specificity respectively. It has good specificity but is not a good screening tool and does not detect many patients who will later be diagnosed with asthma. It allows for more aggressive trials of asthma medications in patients who are likely to be diagnosed with asthma later in life.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Specificity of API">
+					description = <"Likelihood of a diagnosis of asthma later in childhood, based on major and minor API criteria.">
+				>
+				["at0003"] = <
+					text = <"Comment">
+					description = <"Any additional information about this recording.">
+				>
+			>
+		>
+	>
