@@ -1,3 +1,5 @@
+![alt text](http://www.cambio.se/wp-content/themes/cambio/images/logotype.png)
+
 ### Introduction
 
 Welcome to the overview page of the clinical decision support (CDS) apps.
