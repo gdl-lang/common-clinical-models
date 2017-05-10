@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="http://www.cambio.se/wp-content/themes/cambio/images/logotype.png"> 
+  <img style="border: #000000 2px outset;"src="http://www.cambio.se/wp-content/themes/cambio/images/logotype.png"> 
 </p>
 
 ### Introduction
@@ -95,7 +95,6 @@ _Select a medical specialty below to view the available apps._
 ### Clinical Chemistry
 
 ----------
-Application name | English | Swedish
 :-- | :--: | :--:
 [Bicarbonate Deficit Calculator](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bicarbonate-deficit-calculator) | ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Bicarbonate_deficit.v1.dsv?token=4269636172626f6e6174655f646566696369742e7631:1546214400000:b531ab3b845a8c03f35ba4d0cbf0a7a9&language=en)) | ([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Bicarbonate_deficit.v1.dsv?token=4269636172626f6e6174655f646566696369742e7631:1546214400000:b531ab3b845a8c03f35ba4d0cbf0a7a9&language=sv))
 [Corrected Calcium](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#corrected-calcium) | ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Corrected_Calcium.v1.dsv?token=436f727265637465645f43616c6369756d2e7631:1546300799000:6c67ba2385202a2b81ee7b85b2ebb8a5&language=en)) | ([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Corrected_Calcium.v1.dsv?token=436f727265637465645f43616c6369756d2e7631:1546300799000:6c67ba2385202a2b81ee7b85b2ebb8a5&language=sv))
