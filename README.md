@@ -1,5 +1,4 @@
-<div align="center">![alt text](http://www.cambio.se/wp-content/themes/cambio/images/logotype.png)</div>
-
+<div style="text-align:center"><img src ="http://www.cambio.se/wp-content/themes/cambio/images/logotype.png" /></div>
 ### Introduction
 
 Welcome to the overview page of the clinical decision support (CDS) apps.
