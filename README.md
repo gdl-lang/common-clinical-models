@@ -1,4 +1,4 @@
-<div style="text-align:center"><img src ="http://www.cambio.se/wp-content/themes/cambio/images/logotype.png" />
+<div style="text-align:center"><img src ="http://www.cambio.se/wp-content/themes/cambio/images/logotype.png" /></div>
 
 ### Introduction
 
