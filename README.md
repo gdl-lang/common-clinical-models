@@ -11,7 +11,9 @@ We've gathered all of the available applications in one place and organized them
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
 ### *Published Apps: 108*
+
 ----------
+
 ### Categories by specialty
 
 _Select a medical specialty below to view the available apps._
@@ -95,12 +97,11 @@ _Select a medical specialty below to view the available apps._
 ### Clinical Chemistry
 
 ----------
+[Bicarbonate Deficit Calculator](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bicarbonate-deficit-calculator) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Bicarbonate_deficit.v1.dsv?token=4269636172626f6e6174655f646566696369742e7631:1546214400000:b531ab3b845a8c03f35ba4d0cbf0a7a9&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Bicarbonate_deficit.v1.dsv?token=4269636172626f6e6174655f646566696369742e7631:1546214400000:b531ab3b845a8c03f35ba4d0cbf0a7a9&language=sv))
 
---- | --- | ---
-[Bicarbonate Deficit Calculator](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bicarbonate-deficit-calculator) | [_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Bicarbonate_deficit.v1.dsv?token=4269636172626f6e6174655f646566696369742e7631:1546214400000:b531ab3b845a8c03f35ba4d0cbf0a7a9&language=en) | [_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Bicarbonate_deficit.v1.dsv?token=4269636172626f6e6174655f646566696369742e7631:1546214400000:b531ab3b845a8c03f35ba4d0cbf0a7a9&language=sv)
-[Corrected Calcium](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#corrected-calcium) | [_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Corrected_Calcium.v1.dsv?token=436f727265637465645f43616c6369756d2e7631:1546300799000:6c67ba2385202a2b81ee7b85b2ebb8a5&language=en) | [_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Corrected_Calcium.v1.dsv?token=436f727265637465645f43616c6369756d2e7631:1546300799000:6c67ba2385202a2b81ee7b85b2ebb8a5&language=sv)
-[Estimated Average Glucose (eAG)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#estimated-average-glucose-eag) | [_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/eAG.v1.dsv?token=6541472e7631:1546300799000:c3472ac935fa472ad7ec284e724c5cac&language=en) | [_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/eAG.v1.dsv?token=6541472e7631:1546300799000:c3472ac935fa472ad7ec284e724c5cac&language=sv)
+[Corrected Calcium](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#corrected-calcium) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Corrected_Calcium.v1.dsv?token=436f727265637465645f43616c6369756d2e7631:1546300799000:6c67ba2385202a2b81ee7b85b2ebb8a5&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Corrected_Calcium.v1.dsv?token=436f727265637465645f43616c6369756d2e7631:1546300799000:6c67ba2385202a2b81ee7b85b2ebb8a5&language=sv))
 
+[Estimated Average Glucose (eAG)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#estimated-average-glucose-eag) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/eAG.v1.dsv?token=6541472e7631:1546300799000:c3472ac935fa472ad7ec284e724c5cac&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/eAG.v1.dsv?token=6541472e7631:1546300799000:c3472ac935fa472ad7ec284e724c5cac&language=sv))
 
 ----------
 
