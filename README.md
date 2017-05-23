@@ -18,37 +18,37 @@ If you would like to test an app, simply click on "ENG" to access the English ve
 
 _Select a medical specialty below to view the available apps._
 
-* [Cardiology](https://github.com/gdl-lang/common-clinical-models#cardiology)
+[Cardiology](https://github.com/gdl-lang/common-clinical-models#cardiology)
 
-* [Clinical Chemistry](https://github.com/gdl-lang/common-clinical-models#clinical-chemistry)
+[Clinical Chemistry](https://github.com/gdl-lang/common-clinical-models#clinical-chemistry)
 
-* [Elderly Care](https://github.com/gdl-lang/common-clinical-models#elderly-care)
+[Elderly Care](https://github.com/gdl-lang/common-clinical-models#elderly-care)
 
-* [Emergency Medicine](https://github.com/gdl-lang/common-clinical-models#emergency-medicine)
+[Emergency Medicine](https://github.com/gdl-lang/common-clinical-models#emergency-medicine)
 
-* [Gastroenterology](https://github.com/gdl-lang/common-clinical-models#gastroenterology)
+[Gastroenterology](https://github.com/gdl-lang/common-clinical-models#gastroenterology)
 
-* [Intensive Care](https://github.com/gdl-lang/common-clinical-models#intensive-care)
+[Intensive Care](https://github.com/gdl-lang/common-clinical-models#intensive-care)
 
-* [Neonatology](https://github.com/gdl-lang/common-clinical-models#neonatology)
+[Neonatology](https://github.com/gdl-lang/common-clinical-models#neonatology)
 
-* [Nephrology](https://github.com/gdl-lang/common-clinical-models#nephrology)
+[Nephrology](https://github.com/gdl-lang/common-clinical-models#nephrology)
 
-* [Neurology](https://github.com/gdl-lang/common-clinical-models#neurology)
+[Neurology](https://github.com/gdl-lang/common-clinical-models#neurology)
 
-* [Obstetrics](https://github.com/gdl-lang/common-clinical-models#obstetrics)
+[Obstetrics](https://github.com/gdl-lang/common-clinical-models#obstetrics)
 
-* [Orthopedic Surgery](https://github.com/gdl-lang/common-clinical-models#orthopedic-surgery)
+[Orthopedic Surgery](https://github.com/gdl-lang/common-clinical-models#orthopedic-surgery)
 
-* [Pediatrics](https://github.com/gdl-lang/common-clinical-models#pediatrics) 
+[Pediatrics](https://github.com/gdl-lang/common-clinical-models#pediatrics) 
 
-* [Primary Care](https://github.com/gdl-lang/common-clinical-models#primary-care)
+[Primary Care](https://github.com/gdl-lang/common-clinical-models#primary-care)
 
-* [Psychiatry](https://github.com/gdl-lang/common-clinical-models#psychiatry)
+[Psychiatry](https://github.com/gdl-lang/common-clinical-models#psychiatry)
 
-* [Rheumatology](https://github.com/gdl-lang/common-clinical-models#rheumatology)
+[Rheumatology](https://github.com/gdl-lang/common-clinical-models#rheumatology)
 
-* [Trauma Care](https://github.com/gdl-lang/common-clinical-models#trauma-care)
+[Trauma Care](https://github.com/gdl-lang/common-clinical-models#trauma-care)
 
 ----------
 
