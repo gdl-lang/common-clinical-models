@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 108*
+### *Published Apps: 109*
 
 ----------
 
@@ -22,11 +22,11 @@ _Select a medical specialty below to view the available apps._
 
 [Clinical Chemistry](https://github.com/gdl-lang/common-clinical-models#clinical-chemistry)
 
-[Elderly Care](https://github.com/gdl-lang/common-clinical-models#elderly-care)
-
 [Emergency Medicine](https://github.com/gdl-lang/common-clinical-models#emergency-medicine)
 
 [Gastroenterology](https://github.com/gdl-lang/common-clinical-models#gastroenterology)
+
+[Geriatrics](https://github.com/gdl-lang/common-clinical-models#geriatrics)
 
 [Intensive Care](https://github.com/gdl-lang/common-clinical-models#intensive-care)
 
@@ -105,21 +105,6 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 
-### Elderly Care
-
-----------
-* [Abbey Pain Scale (APS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abbey-pain-scale-aps) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/APS.v1.dsv?token=4150532e7631:1546214400000:6fbae25e6c9c3fd58878a8d6290a8cfa&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/APS.v1.dsv?token=4150532e7631:1546214400000:6fbae25e6c9c3fd58878a8d6290a8cfa&language=sv))
-
-* [Downton Fall Risk Index (DFRI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#downton-fall-risk-index-dfri) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/DFRI.v1.dsv?token=444652492e7631:1546300799000:1d7108e5135325ae75ac78a658210499&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/DFRI.v1.dsv?token=444652492e7631:1546300799000:1d7108e5135325ae75ac78a658210499&language=sv))
-
-* [Modified Norton Scale (MNS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#modified-norton-scale-mns) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/MNS.v1.dsv?token=4d4e532e7631:1546300799000:80fbe9d0f75e231e8f6c99f59a752879&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/MNS.v1.dsv?token=4d4e532e7631:1546300799000:80fbe9d0f75e231e8f6c99f59a752879&language=sv))
-
-* [Mini Nutritional Assessment (MNA)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#mini-nutritional-assessment-mna) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/MNA.v1.dsv?token=4d4e412e7631:1546300799000:282684a5ba5df3f862bf759b18858364&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/MNA.v1.dsv?token=4d4e412e7631:1546300799000:282684a5ba5df3f862bf759b18858364&language=sv))
-
-* [Risk Assessment Pressure Sore Scale (RAPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#risk-assessment-pressure-sore-raps) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/RAPS.v1.dsv?token=524150532e7631:1546300799000:197c310251907fe2df3e539994d19606&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/RAPS.v1.dsv?token=524150532e7631:1546300799000:197c310251907fe2df3e539994d19606&language=sv))
-
-----------
-
 ### Emergency Medicine
 
 ----------
@@ -160,6 +145,22 @@ _Select a medical specialty below to view the available apps._
 * [Model For End-Stage Liver Disease Score (MELD)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#model-for-end-stage-liver-disease-score-meld) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/MELD.v1.dsv?token=4d454c442e7631:1546300799000:fe4879610a670690b829250a44e41cfc&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/MELD.v1.dsv?token=4d454c442e7631:1546300799000:fe4879610a670690b829250a44e41cfc&language=sv))
 
 ----------
+
+### Geriatrics
+
+----------
+* [Abbey Pain Scale (APS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abbey-pain-scale-aps) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/APS.v1.dsv?token=4150532e7631:1546214400000:6fbae25e6c9c3fd58878a8d6290a8cfa&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/APS.v1.dsv?token=4150532e7631:1546214400000:6fbae25e6c9c3fd58878a8d6290a8cfa&language=sv))
+
+* [Downton Fall Risk Index (DFRI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#downton-fall-risk-index-dfri) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/DFRI.v1.dsv?token=444652492e7631:1546300799000:1d7108e5135325ae75ac78a658210499&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/DFRI.v1.dsv?token=444652492e7631:1546300799000:1d7108e5135325ae75ac78a658210499&language=sv))
+
+* [Modified Norton Scale (MNS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#modified-norton-scale-mns) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/MNS.v1.dsv?token=4d4e532e7631:1546300799000:80fbe9d0f75e231e8f6c99f59a752879&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/MNS.v1.dsv?token=4d4e532e7631:1546300799000:80fbe9d0f75e231e8f6c99f59a752879&language=sv))
+
+* [Mini Nutritional Assessment (MNA)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#mini-nutritional-assessment-mna) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/MNA.v1.dsv?token=4d4e412e7631:1546300799000:282684a5ba5df3f862bf759b18858364&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/MNA.v1.dsv?token=4d4e412e7631:1546300799000:282684a5ba5df3f862bf759b18858364&language=sv))
+
+* [Risk Assessment Pressure Sore Scale (RAPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#risk-assessment-pressure-sore-raps) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/RAPS.v1.dsv?token=524150532e7631:1546300799000:197c310251907fe2df3e539994d19606&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/RAPS.v1.dsv?token=524150532e7631:1546300799000:197c310251907fe2df3e539994d19606&language=sv))
+
+----------
+
 ### Intensive Care
 
 ----------
@@ -294,6 +295,8 @@ _Select a medical specialty below to view the available apps._
 * [Hamilton Anxiety Scale (HAM-A)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#hamilton-anxiety-scale-ham-a) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/HAM-A.v1.dsv?token=48414d2d412e7631:1546300799000:26d86f6e1c260465c9d600b171358327&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/HAM-A.v1.dsv?token=48414d2d412e7631:1546300799000:26d86f6e1c260465c9d600b171358327&language=sv))
 
 * [Hospital Anxiety and Depression Scale (HAD)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#hospital-anxiety-and-depression-scale-had) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/HAD.v1.dsv?token=4841442e7631:1546300799000:c26d257cdf77254eef10e369c54e2a2c&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/HAD.v1.dsv?token=4841442e7631:1546300799000:c26d257cdf77254eef10e369c54e2a2c&language=sv))
+
+* [Impact of Event Scale - Revised (IES-R)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#impact-of-event-scale---revised-ies-r) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/IES-R.v1.dsv?token=4945532d522e7631:1546214400000:53443ea04e8afbca62f8a173be1ecc2d&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/IES-R.v1.dsv?token=4945532d522e7631:1546214400000:53443ea04e8afbca62f8a173be1ecc2d&language=sv))
 
 * [Montgomery Åsberg Depression Rating Scale (MADRS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#montgomery-%C3%85sberg-depression-rating-scale-madrs) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/MADRS.v1.dsv?token=4d414452532e7631:1546300799000:441848f468a6b960bb0b321c873054af&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/MADRS.v1.dsv?token=4d414452532e7631:1546300799000:441848f468a6b960bb0b321c873054af&language=sv))
 
