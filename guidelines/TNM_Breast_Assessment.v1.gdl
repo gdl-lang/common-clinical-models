@@ -1,0 +1,167 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"TNM_Breast_Assessment.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"TNM breast cancer staging",...>
+				misuse = <"Using the TNM classification alone is not recommended in providing diagnostic assessment. Clinical evidence is required to back up the staging suggestions. ">
+				purpose = <"The American Joint Committee on Cancer (AJCC) TNM staging system reports on the severity of breast cancer based on tumor, lymph node and metastasis characteristics. The characteristics of the size of the tumour, the extent of spread to local lymph nodes and body organs. These aspects are captured in 3 ways that make up the mnemonic TNM: T: Tumour size; N: Number of regional lymph nodes affected and M: whether the cancer has spread/metastasised beyond the primary organ and regional nodes. Each major category is further subdivided to help classify the picture further. These subdivisions are given suffixes or numbered as shown below.">
+				use = <"There are main stages Stage 0 to IV with each stage (except Stage 0) subdivided. Survival rates are shown below:
+
+Stage	TNM	            Description	                                                                                                                 5-year Survival
+0	Tis N0 M0             Carcinoma in situ. 
+                                                  No tumor is regional lymph nodes, No distant metastases	                                                                      99%
+I	T1 N0 M0	            Tumor is less than or equal to 2 centimeters, 
+                                                  No tumor in regional lymph nodes, No distant metastases                                                                                            92%
+IIA	T0 N1 M0              No evidence of primary tumor, metastases to movable ipsilateral nodes, 
+                   T1 N1 M0              No distant metastases.
+                   T2 N0 M0	            Tumor is less than or equal to 2 centimeters, metastases to movable ipsilateral    
+                                                  nodes, No distant metastases.
+                                                 Tumor is between 2 and 5 centimeters, No tumor in regional lymph nodes,
+                                                 No distant metastases	                                                                                                                                                      82%
+IIB	T2 N1 M0             Tumor is between 2 and 5 centimeters, metastases to movable ipsilateral nodes,
+                   T3 N0 M0             No distant metastases.
+                                                 Tumor is over 5 centimeters, No tumor in regional lymph nodes, No distant metastases.	                                      65%
+IIIA	T0 N2 M0              No evidence of primary tumor, metastases to fixed ipsilateral nodes, no distant metastases.
+                   T1 N2 M0             Tumor is less than or equal to 2 centimeters, metastases to fixed ipsilateral nodes, No distant metastases.
+                   T2 N2 M0             Tumor is between 2 and 5 centimeters, metastases to fixed ipsilateral nodes, no distant metastases. 
+                   T3 N1, N2 M0      Tumor is over 5 centimeters, metastases to movable or fixed ipsilateral nodes, no distant metastases.	47%
+IIIB	T4 Any N M0
+Any T N3 M0	•	Tumor extends to chest wall, any nodal involvement, no distant metastases.
+•	Any primary tumor involvement, metastases to ipsilateral internal mammary nodes, no distant metastases.	44%
+IV	Any T Any N M1	Any primary tumor involvement, any nodal involvement, distant metastases.	14%
+">
+			>
+		>
+		lifecycle_state = <"Author draft">
+		original_author = <
+			["date"] = <"2016-06-18">
+			["email"] = <"syeeda.farruque@cambiocds.com">
+			["name"] = <"Syeeda S Farruque">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"Ref. 1: AJCC Cancer Staging Atlas A Companion to the Seventh Editions of the AJCC Cancer Staging Manual and Handbook
+Carolyn C. Compton David R Byrd; Julio Garcia-Aguilar; American Joint Committee on Cancer Content Provider. New York, NY : Springer New York : Imprint: Springer 2nd ed. 2012
+
+Ref. 2: Theriault RL, Carlson RW, Allred C, et al. Breast Cancer, Version 3.2013: Featured Updates to the NCCN Guidelines. Journal of the National Comprehensive Cancer Network : JNCCN. 2013;11(7):753-761.
+
+Ref. 3: Regular updates for breast cancer staging and treeatment can be found on the NCCN  (National Comprehensive Cancer Network) website, accessed at: www.nccn.org
+
+Ref. 4: Breast cancer survival rates: Cancer Monthly: http://www.cancermonthly.com/cancer_basics/breast.asp">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.tnm_breast_cancer_staging.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0007"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0007]">
+					>
+				>
+			>
+			["gt0004"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.tnm_breast_cancer_assessment.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0009"] = (RULE) <
+				when = <"$gt0007==0|local::at0036|Stage 0|",...>
+				then = <"$gt0005=0|local::at0003|99% Stage 0|",...>
+				priority = <7>
+			>
+			["gt0010"] = (RULE) <
+				when = <"($gt0007==1|local::at0037|Stage IA|)||($gt0007==2|local::at0038|Stage IB|)",...>
+				then = <"$gt0005=1|local::at0004|92% Stage I|",...>
+				priority = <6>
+			>
+			["gt0011"] = (RULE) <
+				when = <"$gt0007==3|local::at0039|Stage IIA|",...>
+				then = <"$gt0005=2|local::at0005|82% Stage IIA|",...>
+				priority = <5>
+			>
+			["gt0012"] = (RULE) <
+				when = <"$gt0007==4|local::at0040|Stage IIB|",...>
+				then = <"$gt0005=3|local::at0006|65% Stage IIB|",...>
+				priority = <4>
+			>
+			["gt0013"] = (RULE) <
+				when = <"$gt0007==5|local::at0041|Stage IIIA|",...>
+				then = <"$gt0005=4|local::at0007|47% Stage IIIA|",...>
+				priority = <3>
+			>
+			["gt0014"] = (RULE) <
+				when = <"$gt0007==6|local::at0042|Stage IIIB|",...>
+				then = <"$gt0005=5|local::at0008|44% Stage IIIB|",...>
+				priority = <2>
+			>
+			["gt0015"] = (RULE) <
+				when = <"$gt0007==8|local::at0044|Stage IV|",...>
+				then = <"$gt0005=6|local::at0009|14% Stage IV|",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"TNM Breast Assessment">
+						description = <"The American Joint Committee on Cancer (AJCC) TNM staging system reports on the severity of breast cancer based on tumor, lymph node and metastasis characteristics.">
+					>
+					["gt0005"] = (TERM) <
+						text = <"5 Year Survival rates">
+						description = <"5 Year survival according to the Stage of breast cancer">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Breast cancer stage">
+						description = <"Breast cancer staging made up of the TNM groups">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Breast cancer stage">
+						description = <"Breast cancer staging made up of the TNM groups">
+					>
+					["gt0008"] = (TERM) <
+						text = <"set staging">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Stage 0 - 5 year survival">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Stage I - 5 year survival">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Stage IIA - 5 year survival">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Stage IIB - 5 year survival">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Stage IIIA  - 5 year survival">
+					>
+					["gt0014"] = (TERM) <
+						text = <"Stage IIIB  - 5 year survival">
+					>
+					["gt0015"] = (TERM) <
+						text = <"Stage IV  - 5 year survival">
+					>
+				>
+			>
+		>
+	>
+>
