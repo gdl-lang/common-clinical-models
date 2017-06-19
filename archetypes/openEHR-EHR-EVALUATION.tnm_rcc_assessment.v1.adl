@@ -1,0 +1,139 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.tnm_rcc_assessment.v1
+
+concept
+	[at0000]	-- Tnm rcc assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"syeeda.farruque@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-06-10">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The American Joint Committee on Cancer (AJCC) TNM staging system reports on the severity of renal cell cancer based on tumor, lymph node and metastasis characteristics. The characteristics of the size of the tumour, the extent of spread to local lymph nodes and body organs. These aspects are captured in 3 ways that make up the mnemonic TNM: T: Tumour size; N: Number of regional lymph nodes affected and M: whether the cancer has spread/metastasised beyond the primary organs and regional nodes. Each major category is further subdivided to help classify the picture further. These subdivisions are given suffixes or numbered as shown below.
+This staging system does not deal with cancers in the renal pelvis.">
+			use = <"Staging is based on multiple factors including:
+
+•Primary tumor (T) characteristics
+•Regional lymph nodes (N) 
+o	Clinical
+o	Pathological
+•Distant metastasis (M)
+
+The 5 year survival has a strong correlation to the T stage classification regardless of the N or M classification
+
+T stage	5 Year Cancer Specific Survival
+T1a	94.9%
+T1b	92.6%
+T2a	85.4%
+T2b	70.0%
+T3a	64.7%
+T3b	54.7%
+T3c	17.9%
+T4	24.7%
+
+However, any T,  N+ and MO that involves the lymph nodes has a 0-20% 5 year survival and with systemic metastases, any T, any N and M1 has a 0-10% 5 year survival. (3)
+
+The different T acronyms stand for:
+
+T
+TX: The primary tumor cannot be assessed (information not available).
+T0: No evidence of a primary tumor.
+
+T1: The tumor is only in the kidney and is no larger than 7 centimeters (cm), or a little less than 3 inches, across
+T1a: The tumor is 4 cm (about 1½ inches) across or smaller and is only in the kidney.
+T1b: The tumor is larger than 4 cm but not larger than 7 cm across and is only in the kidney.
+
+T2: The tumor is larger than 7 cm across but is still only in the kidney.
+T2a: The tumor is more than 7 cm but not more than 10 cm (about 4 inches) across and is only in the kidney
+T2b: The tumor is more than 10 cm across and is only in the kidney
+
+T3: The tumor is growing into a major vein or into tissue around the kidney, but it is not growing into the adrenal gland (on top of the kidney) or beyond Gerota’s fascia (the fibrous layer that surrounds the kidney and nearby fatty tissue).
+T3a: The tumor is growing into the main vein leading out of the kidney (renal vein) or into fatty tissue around the kidney
+T3b: The tumor is growing into the part of the large vein leading into the heart (vena cava) that is within the abdomen.
+T3c: The tumor has grown into the part of the vena cava that is within the chest or it is growing into the wall of the vena cava.
+
+T4: The tumor has spread beyond Gerota’s fascia (the fibrous layer that surrounds the kidney and nearby fatty tissue). The tumor may have grown into the adrenal gland (on top of the kidney).">
+			keywords = <"TNM staging", "renal cell carcinoma", "5 year survival">
+			misuse = <"The interpretation of the staging system using the TNM has not been fully validated for use in determining the management of RCC (renal cell carcinoma) and further clarification maybe needed using other systems such as the University of California Los Angeles (UCLA) Integrated Staging System and other Survival predictors. Thus on its own, the TNM  can not be used for individual prediction but used as a more general guide.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Kidney. In: Edge SB, Byrd DR, Compton CC, et al., eds.: AJCC Cancer Staging Manual. 7th ed.
+
+Ref. 2: Escudier B, et al. Renal cell carcinoma: ESMO Clinical Practice Guidelines for diagnosis, treatment and follow-up. Ann Oncol (2014) 25 (suppl 3): iii49-iii56.
+
+Ref. 3: Chaan S. Ng, Christopher G. Wood, Paul M. Silverman, Nizar M. Tannir, Pheroze Tamboli, and Carl M. Sandler">
+		["MD5-CAM-1.0.1"] = <"FAE63E17BDDA9E4EE33B08267F8DE516">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Tnm rcc assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- 5 Year Survival
+						value matches {
+							0|[local::at0013], 	-- 92.6 to 94.9% 5 Year Survival
+							1|[local::at0016], 	-- 70 to 85.4% 5 Year Survival
+							2|[local::at0019], 	-- 17.9 to 64.7% 5 Year Survival
+							3|[local::at0022]  	-- 0 to 24.7% 5 Year Survival
+						}
+					}
+					ELEMENT[at0012] occurrences matches {0..1} matches {	-- Comment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Tnm rcc assessment">
+					description = <"The American Joint Committee on Cancer (AJCC) TNM staging system reports on the severity of renal cell cancer  based on tumor, lymph node and metastasis characteristics.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"5 Year Survival">
+					description = <"5 Year Survival is strongly correlated to the T classification but nodal or metastatic involvement has a worse but widely spread prognosis">
+				>
+				["at0012"] = <
+					text = <"Comment">
+					description = <"Comments regarding the TNM tool">
+				>
+				["at0013"] = <
+					text = <"92.6 to 94.9% 5 Year Survival">
+					description = <"Stage I">
+				>
+				["at0016"] = <
+					text = <"70 to 85.4% 5 Year Survival">
+					description = <"Stage II">
+				>
+				["at0019"] = <
+					text = <"17.9 to 64.7% 5 Year Survival">
+					description = <"Stage III">
+				>
+				["at0022"] = <
+					text = <"0 to 24.7% 5 Year Survival">
+					description = <"Stage IV">
+				>
+			>
+		>
+	>

@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.ideal_body_weight.v1
 
 concept
-	[at0000]	-- Ideal Body Weight
+	[at0000]	-- Ideal body weight
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,7 +17,8 @@ language
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
-		["organisation"] = <"Cambio Healthcare Services">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2016-10-01">
 	>
 	details = <
@@ -36,47 +37,44 @@ Formeln genererar ett uppskattat värde som kan användas på personer som är 1
 			misuse = <"I första hand bör lokala protokoll följas med rekommenderad formel för beräkning i syfte att ordinera adekvat dosering. Kontrollera att dosering för specifikt läkemedel är avsett att användas i enlighet med Ideal Body Weight och inte patientens aktuella kroppsvikt.
 
 Ej avsedd för personer med längd under 152 centimeter (60 inches).">
-			copyright = <"Cambio Healthcare Services">
+			copyright = <"© Cambio Healthcare Services">
 		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To calculate idea body weight of men and woman for the purposes of correctly prescribing doses of certain medications.">
-			use = <"To calculate idea body weight (IBW) of men and woman for the purposes of correctly prescribing doses of certain medications when actual body weight is not used. 
+			purpose = <"To calculate the ideal body weight of men and women. ">
+			use = <"Use to calculate the ideal body weight of individuals in order to prescribe adequate dosages of medication.
 
-There are multiple formulas/methods for calculating IBW, this particular version relates to the Devine formula:
+There are multiple formulas/methods for calculating ideal body weight. The most widely used method is the Devine formula:
 
 ▪ Ideal Body Weight (men) = [50kg + 2.3kg * ( Height(in) - 60 inches )]
 ▪ Ideal Body Weight (women) = [45.5kg + 2.3kg *( Height(in) - 60 inches )]
 
-The formula generates an approximate value, can be used with people equal to or over 5 foot tall and relates to the IBW calculated in respect to the height for every inch over 5 foot (60 inches).
-">
+The formula generates an approximate value that can be used for individuals with a height of 5 feet or taller.">
 			keywords = <"ideal body weight", "height", "weight", "Devine formula">
-			misuse = <"Take care with specific calculations of IBW and refer to the healthcare setting's own protocols by using the correct formula for the population in question. Double check the dosage information at point of dispensation to ensure that it is actually IBW and not ABW (actual body weight) that is indicated.
+			misuse = <"Should not be used to determine medication dosages in cases where the ABW (actual body weight) is needed. 
 
-Do not use on people under 5 foot tall.
-
-">
-			copyright = <"Cambio Healthcare Services">
+Do not calculate IBW for individuals under 5 feet tall. ">
+			copyright = <"© Cambio Healthcare Systems">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
-	other_contributors = <>
+	other_contributors = <"Jimmy Axelsson, Cambio Healthcare Systems", ...>
 	other_details = <
 		["references"] = <"Ref.1: Devine BJ. Gentamicin therapy. Drug Intell Clin Pharm. 1974;8:650–655.
 
 Ref. 2: Pai MP, Paloucek FP. The origin of the \"ideal\" body weight equations. Ann Pharmacother. 2000;34(9):1066-9. PMID 10981254.
 ">
-		["MD5-CAM-1.0.1"] = <"1DDB6C9A79C195EB8015D1F4AA605B6C">
+		["MD5-CAM-1.0.1"] = <"B0CC329D392B4DB755FD572ED32F3AF6">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Ideal Body Weight
+	OBSERVATION[at0000] matches {	-- Ideal body weight
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
 									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Ideal Body Weight
 										value matches {
@@ -94,6 +92,11 @@ definition
 											>
 										}
 									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
 								}
 							}
 						}
@@ -109,7 +112,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Ideal body weight">
-					description = <"Ideal Body Weight (IBW) can be calculated in many ways and for varying purposes. This archetype relates to the Devine formula for calculating IBW as would be needed in order to assess medication doses appropriately and in cases when actual body weight must not be used. It is calculated from the height and weight with separate formulas for men and women.">
+					description = <"Ideal Body Weight (IBW) can be calculated using several different formulas. This archetype describes the Devine formula, which is the most widely used formula. Ideal body weight can be used in various clinical situations, e.g. to determine appropriate medication doses in cases where the actual body weight (ABW) should not be used. The formula uses the patient's height to calculate the IBW. There are two versions of the Devine formula available - one for each gender. ">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -125,8 +128,12 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Ideal Body Weight">
-					description = <"The Devine formula for calculating ideal body weight is: Ideal Body Weight (men) = 50kg + 2.3kg * (Height(in) - 60 inches) and Ideal Body Weight (women) = 45.5kg + 2.3kg *( Height(in) - 60 inches). This is the weight adjusted for their height for every inch that the person is above 60 inches (5 feet).
+					description = <"The Devine formula for calculating Ideal Body Weight is: Ideal Body Weight (men) = 50kg + 2.3kg * (Height(in) - 60 inches) and Ideal Body Weight (women) = 45.5kg + 2.3kg *( Height(in) - 60 inches). This is the ideal weight adjusted for every inch above 60 inches (5 feet) in height.
 ">
+				>
+				["at0005"] = <
+					text = <"Comment">
+					description = <"Additional information about the measurement, not captured in other fields.">
 				>
 			>
 		>
@@ -151,6 +158,10 @@ ontology
 				["at0004"] = <
 					text = <"Ideal Body Weight">
 					description = <"Beräkning av Ideal Body Weight i enlighet med Devine-formeln: Ideal Body Weight (män) = 50kg + 2.3kg * (längd(tum) - 60 tum) och Ideal Body Weight (kvinnor) = 45.5kg + 2.3kg *( längd(tum) - 60 tum). ">
+				>
+				["at0005"] = <
+					text = <"Kommentar">
+					description = <"Ytterligare information om mätningen, som inte fångades upp i övriga fält.">
 				>
 			>
 		>

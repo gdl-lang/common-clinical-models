@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.pulmonary_embolism_severity_index.v1
 
 concept
-	[at0000]	-- Pulmonary embolism severity index (PESI)
+	[at0000]	-- Pulmonary Embolism Severity Index (PESI)
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
@@ -13,13 +22,36 @@ description
 		["date"] = <"2017-02-12">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Skattning av 30-dagarsmortalitet bland patienter med lungemboli samt differentiering mellan lågriskpatienter potentiellt lämpliga för öppenvård och högriskpatienter som kan vara i behov av intensivvård.">
+			use = <"Att registrera data i enlighet med Pulmonary Embolism Severity Index (PESI). Verktyget baseras på elva viktade faktorer enligt;
+- demografi; ålder (poäng = antal år), kön (manligt = 10p)
+- komorbiditet; cancer (30p), hjärtsvikt (10p), kronisk lungsjukdom (10p)
+- kliniska fynd; puls (≥110 = 20p), systoliskt blodtryck (<100mmHg = 30p), andningsfrekvens (≥30 = 20p), temperatur (<36°C = 20p), kognitiv påverkan (desorienterad, letargisk, stupor, koma = 60p), arteriell syresaturation (<90% = 20p)
+Ingen av ovanstående = 0p.
+
+Resultatet tolkas med avseende på riskstratifiering enligt:
+
+KLASS         Poäng              Risknivå               30-dagarsmortalitet
+Klass I          ≤ 65                Mycket låg risk            0.0-1.6%
+Klass II         66-85               Låg risk                       1.7-3.5%
+Klass III        86-105             Mellanrisk                    3.2-7.1%
+Klass IV       106-125             Hög risk                       4.0-11.4%
+Klass V        >125                 Mycket hög risk           10.0-24.5%
+
+Utvärdering av poäng genererad i enlighet med PESI registreras med separat arketyp: openEHR-EHR-EVALUATION.pulmonary_embolism_severity_index.v1">
+			keywords = <"lungemboli", "PESI">
+			misuse = <"Ej avsedd att användas som stöd i diagnosticering av lungemboli utan enbart riskstratifiering efter bekräftad diagnos.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To predict 30-day mortality in patients with pulmonary embolism, and help distinguish between low-risk individuals who are potential candidates for out-patient care and high-risk patients who require high dependency/intensive care.">
 			use = <"To store data for presence/absence of each of the 11 PESI predictor variables, as well as the total risk score. The variables are:
 - demographic characteristics (age = +age in years; male sex = +10)
 - comorbidities (cancer = +30; heart failure = +10; chronic lung disease = +10)
-- clinical findings (pulse ⩾ 110/min = +20; systolic blood pressure < 100 mmHg = +30; respiratory rate ⩾ 30/min = +20; temperature < 36°C = +20; altered mental status [disorientation, lethargy, stupor, or coma] = +60; arterial oxygen saturation < 90% =+20).
+- clinical findings (pulse ≥ 110/min = +20; systolic blood pressure < 100 mmHg = +30; respiratory rate ≥ 30/min = +20; temperature < 36°C = +20; altered mental status [disorientation, lethargy, stupor, or coma] = +60; arterial oxygen saturation < 90% =+20).
 Absence of any characteristic => score of 0 (zero).
 
 The sum of the 11 points assigned is used to categorize patients into risk classes:
@@ -44,19 +76,19 @@ Data for risk level and 30-day mortality is stored in a separate evaluation arch
 Donzé J, Le Gal G, Fine MJ, Roy PM, Sanchez O, Verschuren F, Cornuz J, Meyer G, Perrier A, Righini M, Aujesky D. Prospective validation of the Pulmonary Embolism Severity Index-A clinical prognostic model for pulmonary embolism. Thrombosis and haemostasis. 2008;100(5):943-8.
 
 Fraga M, Taffé P, Méan M, Hugli O, Witzig S, Waeber G, Aujesky D. The inter-rater reliability of the Pulmonary Embolism Severity Index. Thrombosis & Haemostasis. 2010 Dec 10;104(6):1258.">
-		["MD5-CAM-1.0.1"] = <"E4D0BEC5EF09850D1C7538E60DF92CAD">
+		["MD5-CAM-1.0.1"] = <"9678578A04ED3D05D632B02CEED3AAA0">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Pulmonary embolism severity index (PESI)
+	OBSERVATION[at0000] matches {	-- Pulmonary Embolism Severity Index (PESI)
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Age score
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Ålder
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::128]>
@@ -68,72 +100,72 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Male sex
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Manligt kön
 										value matches {
-											0|[local::at0015], 	-- Absent
-											10|[local::at0016]  	-- Present
+											0|[local::at0015], 	-- Nej
+											10|[local::at0016]  	-- Ja
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Cancer (comorbidity)
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Cancer (komorbiditet)
 										value matches {
-											0|[local::at0017], 	-- Absent
-											30|[local::at0018]  	-- Present
+											0|[local::at0017], 	-- Nej
+											30|[local::at0018]  	-- Ja
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Heart failure (comorbidity)
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Hjärtsvikt (komorbiditet)
 										value matches {
-											0|[local::at0019], 	-- Absent
-											10|[local::at0020]  	-- Present
+											0|[local::at0019], 	-- Nej
+											10|[local::at0020]  	-- Ja
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Chronic lung disease (comorbidity)
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Kronisk lungsjukdom (komorbiditet)
 										value matches {
-											0|[local::at0021], 	-- Absent
-											10|[local::at0022]  	-- Present
+											0|[local::at0021], 	-- Nej
+											10|[local::at0022]  	-- Ja
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Pulse ≥ 110/min
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Puls ≥ 110/min
 										value matches {
-											0|[local::at0023], 	-- Absent
-											20|[local::at0024]  	-- Present
+											0|[local::at0023], 	-- Nej
+											20|[local::at0024]  	-- Ja
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Systolic blood pressure < 100 mmHg
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Systoliskt blodtryck < 100 mmHg
 										value matches {
-											0|[local::at0025], 	-- Absent
-											30|[local::at0026]  	-- Present
+											0|[local::at0025], 	-- Nej
+											30|[local::at0026]  	-- Ja
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Respiratory rate ≥ 30/min
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Andningsfrekvens ≥ 30/min
 										value matches {
-											0|[local::at0027], 	-- Absent
-											20|[local::at0028]  	-- Present
+											0|[local::at0027], 	-- Nej
+											20|[local::at0028]  	-- Ja
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Temperature < 36°C
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Temperatur < 36°C
 										value matches {
-											0|[local::at0029], 	-- Absent
-											20|[local::at0030]  	-- Present
+											0|[local::at0029], 	-- Nej
+											20|[local::at0030]  	-- Ja
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Altered mental status
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Kognitiv påverkan
 										value matches {
-											0|[local::at0031], 	-- Absent
-											60|[local::at0032]  	-- Present
+											0|[local::at0031], 	-- Nej
+											60|[local::at0032]  	-- Ja
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Arterial oxygen saturation < 90%
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Arteriell syresaturation < 90%
 										value matches {
-											0|[local::at0033], 	-- Absent
-											20|[local::at0034]  	-- Present
+											0|[local::at0033], 	-- Nej
+											20|[local::at0034]  	-- Ja
 										}
 									}
-									ELEMENT[at0035] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0035] occurrences matches {0..1} matches {	-- Total poäng
 										value matches {
 											DV_COUNT matches {*}
 										}
 									}
-									ELEMENT[at0036] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0036] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -298,6 +330,158 @@ ontology
 				["at0036"] = <
 					text = <"Comment">
 					description = <"Additional information about this recording.">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Pulmonary Embolism Severity Index (PESI)">
+					description = <"Pulmonary Embolism Severity Index (PESI) är ett instrument för skattning av 30-dagarsmortalitet bland patienter med lungemboli. Verktyget baseras på elva viktade faktorer och resultatet tolkas med avseende på riskklassificering enligt; klass I (0-65p) = mycket låg risk, klass II (66-85p) = låg risk, klass III (86-105p) = mellanrisk, klass IV (106-125p) = hög risk och klass V (>125p) = mycket hög risk. Till dessa klasser hör 30-dagarsmortalitet uttryckt i procent, vilka registreras med separat arketyp. PESI har hög intern och extern validitet med hög sensitivitet för 30-dagarsmortalitet och identifiering av patienter med låg risk som är potentiella kandidater för öppenvård.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Ålder">
+					description = <"Poäng för ålder.">
+				>
+				["at0005"] = <
+					text = <"Manligt kön">
+					description = <"Poäng för manligt kön.">
+				>
+				["at0006"] = <
+					text = <"Cancer (komorbiditet)">
+					description = <"Poäng för aktuell cancersjukdom.">
+				>
+				["at0007"] = <
+					text = <"Hjärtsvikt (komorbiditet)">
+					description = <"Poäng för hjärtsvikt.">
+				>
+				["at0008"] = <
+					text = <"Kronisk lungsjukdom (komorbiditet)">
+					description = <"Poäng för kronisk lungsjukdom.">
+				>
+				["at0009"] = <
+					text = <"Puls ≥ 110/min">
+					description = <"Poäng för puls ≥ 110/min.">
+				>
+				["at0010"] = <
+					text = <"Systoliskt blodtryck < 100 mmHg">
+					description = <"Poäng för systoliskt blodtryck < 100 mmHg.">
+				>
+				["at0011"] = <
+					text = <"Andningsfrekvens ≥ 30/min">
+					description = <"Poäng för andningsfrekvens ≥ 30/min.">
+				>
+				["at0012"] = <
+					text = <"Temperatur < 36°C">
+					description = <"Poäng för temperatur < 36°C.">
+				>
+				["at0013"] = <
+					text = <"Kognitiv påverkan">
+					description = <"Poäng för kognitiv påverkan (desorienterad, letargisk, stupor, koma).">
+				>
+				["at0014"] = <
+					text = <"Arteriell syresaturation < 90%">
+					description = <"Poäng för arteriell syresaturation < 90% (med eller utan syrgastillförsel).">
+				>
+				["at0015"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0023"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0026"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0027"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0028"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0029"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0030"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0031"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0032"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0033"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0034"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0035"] = <
+					text = <"Total poäng">
+					description = <"Summan av samtliga faktorer.">
+				>
+				["at0036"] = <
+					text = <"Kommentar">
+					description = <"Ev. tillägg.">
 				>
 			>
 		>
