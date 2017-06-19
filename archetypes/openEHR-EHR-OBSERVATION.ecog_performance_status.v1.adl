@@ -1,0 +1,150 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.ecog_performance_status.v1
+
+concept
+	[at0000]	-- ECOG performance status
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Eneimi Allwell-Brown">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-06-11">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess the functional status of a patient with cancerous disease, and their ability to perform activities of daily living.">
+			use = <"To record the ECOG performance status score of a patient, as assessed by a clinician. The reference recording should be performed at initial presentation and before the implementation of treatment. ECOG performance status is an important prognostic indicator and is used to determine the level of functioning of the patient, the effectiveness and appropriateness of treatment, and to assess disease progression. It is particularly useful for cancer clinical researchers while enrolling patients for chemotherapy trials, as it helps ensure uniformity in patient selection in addition to tracking changes in a patient’s level of functioning as a result of treatment during the trial.
+ECOG score is graded from 0 (zero) to 5 (five):
+0 = Fully active, able to carry on all pre-disease performance without restriction
+1 = Restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature, e.g., light house work, office work
+2 = Ambulatory and capable of all selfcare but unable to carry out any work activities; up and about more than 50% of waking hours
+3 = Capable of only limited selfcare; confined to bed or chair more than 50% of waking hours
+4 = Completely disabled; cannot carry on any selfcare; totally confined to bed or chair
+5 = Dead
+A deterioration in ECOG performance status of ≥1 is regarded as disease progression. 
+
+The 6 grades of ECOG performance status have been mapped to the also popular Karnofsky Performance Status (KPS) and Palliative Performance Scale (PPS).
+ECOG          PPS                        KPS
+0                   100                        100—Normal, no complaints; no evidence of disease
+                       
+1                     90                          90—Able to carry on normal activity; minor signs or symptoms of disease
+                       80                          80—Normal activity with effort, some signs or symptoms of disease
+                       
+2                     70                          70—Cares for self but unable to carry on normal activity or to do active work
+                       60                          60—Requires occasional assistance but is able to care for most of personal needs
+                       
+3                     50                          50—Requires considerable assistance and frequent medical care
+                       40                          40—Disabled; requires special care and assistance
+                       
+4                     30                          30—Severely disabled; hospitalization is indicated although death not imminent
+                       20                          20—Very ill; hospitalization and active supportive care necessary
+                       10                          10—Moribund
+
+5                       0                            0—Dead">
+			keywords = <"Zubrod score", "WHO performance status score", "Karnofsky index", "cancer prognosis", "ECOG-ACRIN", "ECOG score", "KPS", "PPS">
+			misuse = <"ECOG score is only to be determined by a clinician, and not from a patients' own notes.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"1. Oken MM, Creech RH, Tormey DC, Horton J, Davis TE, McFadden ET, Carbone PP. Toxicity and response criteria of the Eastern Cooperative Oncology Group. American journal of clinical oncology. 1982 Dec 1;5(6):649-56.
+
+2. Zubrod CG, Schneiderman M, Frei E, Brindley C, Gold GL, Shnider B, Oviedo R, Gorman J, Jones R, Jonsson U, Colsky J. Appraisal of methods for the study of chemotherapy of cancer in man: comparative therapeutic trial of nitrogen mustard and triethylene thiophosphoramide. Journal of Chronic Diseases. 1960 Jan 1;11(1):7-33.
+
+3. Ma C, Bandukwala S, Burman D, Bryson J, Seccareccia D, Banerjee S, Myers J, Rodin G, Dudgeon D, Zimmermann C. Interconversion of three measures of performance status: an empirical analysis. European Journal of Cancer. 2010 Dec 31;46(18):3175-83.">
+		["MD5-CAM-1.0.1"] = <"D77D90DC5F365B51AA5C7AA04C141556">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- ECOG performance status
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- ECOG performance status
+										value matches {
+											0|[local::at0005], 	-- Fully active, able to carry on all pre-disease performance without restriction
+											1|[local::at0006], 	-- Restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature, e.g., light house work, office work
+											2|[local::at0007], 	-- Ambulatory and capable of all selfcare but unable to carry out any work activities; up and about more than 50% of waking hours
+											3|[local::at0008], 	-- Capable of only limited selfcare; confined to bed or chair more than 50% of waking hours
+											4|[local::at0009], 	-- Completely disabled; cannot carry on any selfcare; totally confined to bed or chair
+											5|[local::at0010]  	-- Dead
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"ECOG performance status">
+					description = <"The Eastern Cooperative Oncology Group (ECOG) Scale of Performance Status is an ordinal assessment scale for measuring how cancer impacts a patient’s ability to perform activities of daily living - ability to care for themself, daily activity, and physical ability. Graded from zero (0 = fully active and able to carry on all pre-disease performance without restriction) to five (5 = dead), it provides a standardized way for clinicians and researchers to classify patients according to their level of functioning, for comparing effectiveness/appropriateness of therapies, assessing disease progression and assessing patient prognosis.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"ECOG performance status">
+					description = <"Patient functional ability as assessed by a clinician.">
+				>
+				["at0005"] = <
+					text = <"Fully active, able to carry on all pre-disease performance without restriction">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature, e.g., light house work, office work">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Ambulatory and capable of all selfcare but unable to carry out any work activities; up and about more than 50% of waking hours">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Capable of only limited selfcare; confined to bed or chair more than 50% of waking hours">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Completely disabled; cannot carry on any selfcare; totally confined to bed or chair">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Dead">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Comment">
+					description = <"Any additional information about this recording.">
+				>
+			>
+		>
+	>
