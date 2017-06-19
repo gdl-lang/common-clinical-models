@@ -1,0 +1,132 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.tnm_breast_cancer_assessment.v1
+
+concept
+	[at0000]	-- Tnm breast cancer assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"syeeda.farruque@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-06-15">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The American Joint Committee on Cancer (AJCC) TNM staging system reports on the severity of breast cancer based on tumor, lymph node and metastasis characteristics. The characteristics of the size of the tumour, the extent of spread to local lymph nodes and body organs. These aspects are captured in 3 ways that make up the mnemonic TNM: T: Tumour size; N: Number of regional lymph nodes affected and M: whether the cancer has spread/metastasised beyond the primary organ and regional nodes. Each major category is further subdivided to help classify the picture further. These subdivisions are given suffixes or numbered as shown below.">
+			use = <"There are main stages Stage 0 to IV with each stage (except Stage 0) subdivided. Survival rates are shown below:
+
+Stage	TNM	            Description	                                                                                                                          5-year Survival
+0	Tis N0 M0             Carcinoma in situ. 
+                                                  No tumor is regional lymph nodes, No distant metastases	                                                                           99%
+I	T1 N0 M0	            Tumor is less than or equal to 2 centimeters, 
+                                                  No tumor in regional lymph nodes, No distant metastases                                                                                            92%
+IIA	T0 N1 M0              No evidence of primary tumor, metastases to movable ipsilateral nodes, 
+                   T1 N1 M0              No distant metastases.
+                   T2 N0 M0	            Tumor is less than or equal to 2 centimeters, metastases to movable ipsilateral    
+                                                  nodes, No distant metastases.
+                                                 Tumor is between 2 and 5 centimeters, No tumor in regional lymph nodes,
+                                                 No distant metastases	                                                                                                                                                      82%
+IIB	T2 N1 M0             Tumor is between 2 and 5 centimeters, metastases to movable ipsilateral nodes,
+                   T3 N0 M0             No distant metastases.
+                                                 Tumor is over 5 centimeters, No tumor in regional lymph nodes, No distant metastases.	                                      65%
+IIIA	T0 N2 M0              No evidence of primary tumor, metastases to fixed ipsilateral nodes, no distant metastases.
+                   T1 N2 M0             Tumor is less than or equal to 2 centimeters, metastases to fixed ipsilateral nodes, No distant metastases.
+                   T2 N2 M0             Tumor is between 2 and 5 centimeters, metastases to fixed ipsilateral nodes, no distant metastases. 
+                   T3 N1, N2 M0      Tumor is over 5 centimeters, metastases to movable or fixed ipsilateral nodes, no distant metastases.	47%
+IIIB	T4 Any N M0
+Any T N3 M0	•	Tumor extends to chest wall, any nodal involvement, no distant metastases.
+•	Any primary tumor involvement, metastases to ipsilateral internal mammary nodes, no distant metastases.	44%
+IV	Any T Any N M1	Any primary tumor involvement, any nodal involvement, distant metastases.	14%
+
+
+">
+			keywords = <"TNM breast cancer staging", "breast cancer">
+			misuse = <"Using the TNM classification alone is not recommended in providing diagnostic assessment. Clinical evidence is required to back up the staging suggestions. ">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: AJCC Cancer Staging Atlas A Companion to the Seventh Editions of the AJCC Cancer Staging Manual and Handbook
+Carolyn C. Compton David R Byrd; Julio Garcia-Aguilar; American Joint Committee on Cancer Content Provider. New York, NY : Springer New York : Imprint: Springer 2nd ed. 2012
+
+Ref. 2: Theriault RL, Carlson RW, Allred C, et al. Breast Cancer, Version 3.2013: Featured Updates to the NCCN Guidelines. Journal of the National Comprehensive Cancer Network : JNCCN. 2013;11(7):753-761.
+
+Ref. 3: Regular updates for breast cancer staging and treeatment can be found on the NCCN  (National Comprehensive Cancer Network) website, accessed at: www.nccn.org
+
+Ref. 4: Breast cancer survival rates: Cancer Monthly: http://www.cancermonthly.com/cancer_basics/breast.asp">
+		["MD5-CAM-1.0.1"] = <"C626E3AD960DCCC97905717EEE68F47D">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Tnm breast cancer assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- 5 Year Survival rates
+						value matches {
+							0|[local::at0003], 	-- 99% Stage 0
+							1|[local::at0004], 	-- 92% Stage I
+							2|[local::at0005], 	-- 82% Stage IIA
+							3|[local::at0006], 	-- 65% Stage IIB
+							4|[local::at0007], 	-- 47% Stage IIIA
+							5|[local::at0008], 	-- 44% Stage IIIB
+							6|[local::at0009]  	-- 14% Stage IV
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Tnm breast cancer assessment">
+					description = <"The American Joint Committee on Cancer (AJCC) TNM staging system reports on the severity of breast cancer based on tumor, lymph node and metastasis characteristics.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"5 Year Survival rates">
+					description = <"5 Year survival according to the Stage of breast cancer">
+				>
+				["at0003"] = <
+					text = <"99% Stage 0">
+					description = <"">
+				>
+				["at0004"] = <
+					text = <"92% Stage I">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"82% Stage IIA">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"65% Stage IIB">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"47% Stage IIIA">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"44% Stage IIIB">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"14% Stage IV">
+					description = <"">
+				>
+			>
+		>
+	>
