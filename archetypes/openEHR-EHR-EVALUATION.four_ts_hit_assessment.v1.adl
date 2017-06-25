@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.four_ts_hit_assessment.v1
 
 concept
-	[at0000]	-- Four ts hit assessment
+	[at0000]	-- Four Ts HIT - utvärdering
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -27,6 +36,26 @@ Interpretation:
 			misuse = <"Any positive scores should lead to further clinical evidence to provide further support to the result and so the tool should not be used on its own.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Utvärdering av poäng genererad i enlighet med 4 Ts (instrumentets fyra beståndsdelar börjar med bokstaven T) score, vilken understödjer riskstratifiering för heparininducerad trombocytopeni (HIT) bland patienter som intar heparinbaserade substanser.">
+			use = <"För patienter i lågriskgruppen är vidare utredning med avseende på heparininducerad trombocytopeni (HIT) ej nödvändig.
+För patienter i mellan- eller högriskgrupp är vidare utredning indicerad och byte till annan antikoagulantia bör övervägas.
+
+Fyra områden poängsätts med 0-2p:
+- Trombocytopeni
+- Tidsintervall (dag 0 motsvarar första heparindosen)
+- Trombos eller annan förändring
+- Trombocytopeni av annan orsak
+
+Tolkning av resultat, med avseende på risk för HIT-utveckling:
+•≤3 poäng: låg sannolikhet (≤5%).
+• 4-5 poäng: mellanrisk (~14%).
+• 6-8 poäng: hög sannolikhet (~64%).">
+			keywords = <"trombocytopeni", "heparin", "heparininducerad trombocytopeni">
+			misuse = <"Instrumentet är ej avsett för isolerat bruk utan används understödjande till vidare inhämtad klinisk data.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -34,28 +63,28 @@ Interpretation:
 		["references"] = <"Ref. 1: Lo GK, Juhl D, Warkentin TE, Sigouin CS, Eichler P, Greinacher A. Evaluation of pretest clinical score (4 Ts) for the diagnosis of heparin-induced thrombocytopenia in two clinical settings. J Thromb Haemost 2006; 4: 759–65.
 
 Ref. 2: Vatanparast R, Lantz S, Ward K, Crilley PA, Styler M. Evaluation of a pretest scoring system (4Ts) for the diagnosis of heparin-induced thrombocytopenia in a university hospital setting. Postgrad Med. 2012 Nov;124(6):36-42.">
-		["MD5-CAM-1.0.1"] = <"463D5DBC913F21EE7AB4C9057AD698F9">
+		["MD5-CAM-1.0.1"] = <"8E3C8F6C4D057D5A5D0F7598744495B8">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Four ts hit assessment
+	EVALUATION[at0000] matches {	-- Four Ts HIT - utvärdering
 		data matches {
-			ITEM_TREE[at0001] matches {	-- Tree
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Risk level
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Risknivå
 						value matches {
-							0|[local::at0005], 	-- Low Risk: ≤3
-							1|[local::at0006], 	-- Intermediate Risk: 4-5
-							2|[local::at0007]  	-- High Risk: 6-8
+							0|[local::at0005], 	-- Låg risk
+							1|[local::at0006], 	-- Mellanrisk
+							2|[local::at0007]  	-- Hög risk
 						}
 					}
-					ELEMENT[at0010] occurrences matches {0..1} matches {	-- Management
+					ELEMENT[at0010] occurrences matches {0..1} matches {	-- Rekommendation
 						value matches {
-							0|[local::at0011], 	-- No intervention required
-							1|[local::at0012]  	-- Intervention required
+							0|[local::at0011], 	-- Intervention ej nödvändig.
+							1|[local::at0012]  	-- Intervention rekommenderas.
 						}
 					}
-					ELEMENT[at0004] occurrences matches {0..1} matches {	-- Comments
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- Kommentar
 						value matches {
 							DV_TEXT matches {*}
 						}
@@ -71,7 +100,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Four ts hit assessment">
-					description = <"4 Ts score for heparin induced thrombocytopenia (HIT). Differentiates patients with HIT from those with other causes of thrombocytopenia.">
+					description = <"Evaluation of 4 Ts score for heparin induced thrombocytopenia (HIT). Differentiates patients with HIT from those with other causes of thrombocytopenia.">
 				>
 				["at0001"] = <
 					text = <"Tree">
@@ -111,6 +140,53 @@ ontology
 				["at0012"] = <
 					text = <"Intervention required">
 					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Four Ts HIT - utvärdering">
+					description = <"Utvärdering av poäng genererad i enlighet med 4 Ts score för heparininducerad trombocytopeni (HIT). Differentierar HIT från andra orsaker till trombocytopeni.">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Risknivå">
+					description = <"Tolkning av resultat, med avseende på risk för HIT-utveckling:
+•≤3 poäng: låg sannolikhet (≤5%).
+• 4-5 poäng: mellanrisk (~14%).
+• 6-8 poäng: hög sannolikhet (~64%).">
+				>
+				["at0004"] = <
+					text = <"Kommentar">
+					description = <"Ev. tillägg.">
+				>
+				["at0005"] = <
+					text = <"Låg risk">
+					description = <"Låg sannolikhet (≤5%)">
+				>
+				["at0006"] = <
+					text = <"Mellanrisk">
+					description = <"Mellanhög sannolikhet (~14%)">
+				>
+				["at0007"] = <
+					text = <"Hög risk">
+					description = <"Hög sannolikhet (~64%)">
+				>
+				["at0010"] = <
+					text = <"Rekommendation">
+					description = <"Rekommenderad åtgärd baserat på risknivå. Vidare utredning indicerad och byte till annan antikoagulantia bör övervägas vid en total poäng om minst 4p.">
+				>
+				["at0011"] = <
+					text = <"Intervention ej nödvändig.">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Intervention rekommenderas.">
+					description = <"Vidare utredning indicerad och byte till annan antikoagulantia bör övervägas">
 				>
 			>
 		>
