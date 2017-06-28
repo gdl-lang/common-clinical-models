@@ -129,9 +129,18 @@
 <#assign metastases_ehr_data = tnm_pancreas_staging_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
 <#assign event_time_ehr_data = tnm_pancreas_staging_entry_ehr_data + "[0].elements['/data/events/time']">
 
+<script> 
+angular.module('cds_app').controller('TNM_Pancreas_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+	$scope.${tumour_size_ehr_data}.value.selection = $scope.findMin($scope.${tumour_size_def});
+	$scope.${node_involvement_ehr_data}.value.selection = $scope.findMin($scope.${node_involvement_def});
+	$scope.${metastases_ehr_data}.value.selection = $scope.findMin($scope.${metastases_def});
+  });
+});
+</script>
 
-
-<div ng-show="ready">
+<div ng-show="ready" ng-controller="TNM_Pancreas_Ctrl">
 <div class="header">
   <h1>{{def.concept.name}}</h1>
   <h2>{{def.concept.description}}</h2>
