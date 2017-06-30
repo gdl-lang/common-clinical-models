@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.basic_demographic.v1
 
 concept
-	[at0000]	-- Grundläggande demografi
+	[at0000]	-- Basic demographic
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -35,7 +35,7 @@ language
 description
 	original_author = <
 		["name"] = <"Konstantinos Kalliamvakos">
-		["email"] = <"Konstantinos.Kalliamvakos@cambio.se">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2015-02-24">
 	>
@@ -89,51 +89,51 @@ description
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Grundläggande demografi
+	OBSERVATION[at0000] matches {	-- Basic demographic
 		data matches {
-			HISTORY[at0001] matches {	-- Händelser
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Vilken händelse som helst
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Träd
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Kön
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Gender
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0005, 	-- Man
-													at0006]	-- Kvinna
+													at0005, 	-- Male
+													at0006]	-- Female
 												}
 											}
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Födelsedatum
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Birthdate
 										value matches {
 											DV_DATE_TIME matches {*}
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..*} matches {	-- Språk
+									ELEMENT[at0009] occurrences matches {0..*} matches {	-- Languages
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Bostadsort
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Place of residence
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Län
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- County
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Kommun
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Municipality
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Ålder
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Age
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::128]>

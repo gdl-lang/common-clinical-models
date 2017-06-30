@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.chadsvasc_score.v1
 
 concept
-	[at0000]	-- CHA2DS2VASc Poäng
+	[at0000]	-- CHA2DS2-VASc Score
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -18,7 +18,7 @@ language
 description
 	original_author = <
 		["name"] = <"Rong Chen">
-		["email"] = <"rong.chen@cambio.se">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"08/03/2013">
 	>
@@ -51,58 +51,58 @@ description
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- CHA2DS2VASc Poäng
+	OBSERVATION[at0000] matches {	-- CHA2DS2-VASc Score
 		data matches {
-			HISTORY[at0002] matches {	-- historik
+			HISTORY[at0002] matches {	-- history
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0003] occurrences matches {0..*} matches {	-- Alla händelser
+					EVENT[at0003] occurrences matches {0..*} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0001] matches {	-- Träd
+							ITEM_TREE[at0001] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0026] occurrences matches {0..1} matches {	-- Hjärtsvikt/VK-dysfunktion
+									ELEMENT[at0026] occurrences matches {0..1} matches {	-- Congestive Heart Failure
 										value matches {
-											0|[local::at0027], 	-- Nej
-											1|[local::at0028]  	-- Ja
+											0|[local::at0027], 	-- Absent
+											1|[local::at0028]  	-- Present
 										}
 									}
-									ELEMENT[at0029] occurrences matches {0..1} matches {	-- Hypertoni
+									ELEMENT[at0029] occurrences matches {0..1} matches {	-- Hypertension
 										value matches {
-											0|[local::at0027], 	-- Nej
-											1|[local::at0028]  	-- Ja
+											0|[local::at0027], 	-- Absent
+											1|[local::at0028]  	-- Present
 										}
 									}
 									ELEMENT[at0032] occurrences matches {0..1} matches {	-- Diabetes
 										value matches {
-											0|[local::at0027], 	-- Nej
-											1|[local::at0028]  	-- Ja
+											0|[local::at0027], 	-- Absent
+											1|[local::at0028]  	-- Present
 										}
 									}
-									ELEMENT[at0035] occurrences matches {0..1} matches {	-- Ålder
+									ELEMENT[at0035] occurrences matches {0..1} matches {	-- Age
 										value matches {
 											0|[local::at0036], 	-- Under 65
-											1|[local::at0037], 	-- Mellan 65-74
-											2|[local::at0038]  	-- Över eller lika med 75
+											1|[local::at0037], 	-- Between 65-74
+											2|[local::at0038]  	-- Above or equals to 75
 										}
 									}
-									ELEMENT[at0039] occurrences matches {0..1} matches {	-- Stroke/TIA/Tromboembolism
+									ELEMENT[at0039] occurrences matches {0..1} matches {	-- Stroke/TIA/Thromboembolism
 										value matches {
-											0|[local::at0027], 	-- Nej
-											2|[local::at0028]  	-- Ja
+											0|[local::at0027], 	-- Absent
+											2|[local::at0028]  	-- Present
 										}
 									}
-									ELEMENT[at0046] occurrences matches {0..1} matches {	-- Kärlsjukdom
+									ELEMENT[at0046] occurrences matches {0..1} matches {	-- Vascular disease
 										value matches {
-											0|[local::at0027], 	-- Nej
-											1|[local::at0028]  	-- Ja
+											0|[local::at0027], 	-- Absent
+											1|[local::at0028]  	-- Present
 										}
 									}
-									ELEMENT[at0042] occurrences matches {0..1} matches {	-- Kön
+									ELEMENT[at0042] occurrences matches {0..1} matches {	-- Gender
 										value matches {
-											0|[local::at0043], 	-- Manligt kön
-											1|[local::at0044]  	-- Kvinnligt kön
+											0|[local::at0043], 	-- Male
+											1|[local::at0044]  	-- Female
 										}
 									}
-									ELEMENT[at0099] occurrences matches {0..1} matches {	-- Total poäng
+									ELEMENT[at0099] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											DV_COUNT matches {*}
 										}

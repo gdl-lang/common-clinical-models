@@ -2,7 +2,7 @@
 	openEHR-EHR-OBSERVATION.ciwa_ar_questionnaire.v1
 
 concept
-	[at0000]	-- CIWA-Ar frågeformulär
+	[at0000]	-- CIWA-Ar questionnaire
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,6 +17,7 @@ language
 description
 	original_author = <
 		["name"] = <"Dennis Forslund">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2016-11-18">
 	>
@@ -80,137 +81,137 @@ Maximum score is 67 points, and the result is interpreted as follows:
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- CIWA-Ar frågeformulär
+	OBSERVATION[at0000] matches {	-- CIWA-Ar questionnaire
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Illamående och kräkning
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Nausea and vomiting
 										value matches {
-											0|[local::at0016], 	-- Ej illamående eller kräkning
-											1|[local::at0017], 	-- Lätt illamående utan kräkning
+											0|[local::at0016], 	-- No nausea or vomiting
+											1|[local::at0017], 	-- Mild nausea with no vomiting
 											2|[local::at0018], 	-- .
 											3|[local::at0019], 	-- .
-											4|[local::at0020], 	-- Måttligt illamående med kväljning
+											4|[local::at0020], 	-- Intermittent nausea with dry heaves
 											5|[local::at0021], 	-- .
 											6|[local::at0022], 	-- .
-											7|[local::at0023]  	-- Konstant illamående, kväljningar, kräkningar
+											7|[local::at0023]  	-- Constant nausea, frequently dry heaves and vomiting
 										}
 									}
 									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Tremor
 										value matches {
-											0|[local::at0024], 	-- Ingen tremor
-											1|[local::at0025], 	-- Ej synlig men påvisbar via känsel
+											0|[local::at0024], 	-- No tremor
+											1|[local::at0025], 	-- Not visible but can be felt fingertip to fingertip
 											2|[local::at0026], 	-- .
 											3|[local::at0027], 	-- .
-											4|[local::at0028], 	-- Måttlig tremor med utsträckta armar
+											4|[local::at0028], 	-- Moderate, with arms extended
 											5|[local::at0029], 	-- .
 											6|[local::at0030], 	-- .
-											7|[local::at0031]  	-- Kraftig tremor trots stöd för armarna
+											7|[local::at0031]  	-- Severe, even with arms not extended
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Svettning
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Paroxysmal sweats
 										value matches {
-											0|[local::at0032], 	-- Ingen svettning
-											1|[local::at0033], 	-- Knappt synlig svettning, fuktiga handflator
+											0|[local::at0032], 	-- No sweat visible
+											1|[local::at0033], 	-- Barely perceptible sweating, palms moist
 											2|[local::at0034], 	-- .
 											3|[local::at0035], 	-- .
-											4|[local::at0036], 	-- Synliga svettdroppar på pannan
+											4|[local::at0036], 	-- Beads of sweat obvious on forehead
 											5|[local::at0037], 	-- .
 											6|[local::at0038], 	-- .
-											7|[local::at0039]  	-- Kroppen genomsvettig
+											7|[local::at0039]  	-- Drenching sweats
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Ångest
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Anxiety
 										value matches {
-											0|[local::at0040], 	-- Ingen ångest, lugn
-											1|[local::at0041], 	-- Lätt ångest
+											0|[local::at0040], 	-- No anxiety, at ease
+											1|[local::at0041], 	-- Mildly anxious
 											2|[local::at0042], 	-- .
 											3|[local::at0043], 	-- .
-											4|[local::at0044], 	-- Måttlig ångest eller spänd
+											4|[local::at0044], 	-- Moderately anxious, or guarded, so anxiety is inferred
 											5|[local::at0045], 	-- .
 											6|[local::at0046], 	-- .
-											7|[local::at0047]  	-- Motsvarande panikångest, mycket stark ångest
+											7|[local::at0047]  	-- Equivalent to acute panic states as seen in severe delirium or acute schizophrenic reactions
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Psykomotorisk oro
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Agitation
 										value matches {
-											0|[local::at0048], 	-- Normal aktivitet
-											1|[local::at0049], 	-- Något förhöjd aktivitetsnivå
+											0|[local::at0048], 	-- Normal activity
+											1|[local::at0049], 	-- Somewhat more than normal activity
 											2|[local::at0050], 	-- .
 											3|[local::at0051], 	-- .
-											4|[local::at0052], 	-- Måttligt orolig och rastlös
+											4|[local::at0052], 	-- Moderately fidgety and restless
 											5|[local::at0053], 	-- .
 											6|[local::at0054], 	-- .
-											7|[local::at0055]  	-- Går runt under större delen av samtalet, kan inte sitta eller ligga still
+											7|[local::at0055]  	-- Paces back and forth during most of the interview or constantly thrashes about
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Taktila förändringar
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Tactile disturbance
 										value matches {
-											0|[local::at0056], 	-- Frånvarande
-											1|[local::at0057], 	-- Vag antydan om taktila förändringar
-											2|[local::at0058], 	-- Lätt klåda eller brännande känsla
-											3|[local::at0059], 	-- Måttlig klåda eller brännande känsla
-											4|[local::at0060], 	-- Måttliga taktila hallucinationer
-											5|[local::at0061], 	-- Svåra taktila hallucinationer
-											6|[local::at0062], 	-- Mycket svåra taktila hallucinationer
-											7|[local::at0063]  	-- Kontinuerliga taktila hallucinationer
+											0|[local::at0056], 	-- None
+											1|[local::at0057], 	-- Very mild itching, pins and needles, burning or numbness
+											2|[local::at0058], 	-- Mild itching, pins and needles, burning or numbness
+											3|[local::at0059], 	-- Moderate itching, pins and needles, burning or numbness
+											4|[local::at0060], 	-- Moderately severe hallucinations
+											5|[local::at0061], 	-- Severe hallucinations
+											6|[local::at0062], 	-- Extremely severe hallucinations
+											7|[local::at0063]  	-- Continuous hallucinations
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Hörselförändringar
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Auditory disturbance
 										value matches {
-											0|[local::at0064], 	-- Frånvarande
-											1|[local::at0065], 	-- Vag antydan om förstärkta hörselintryck
-											2|[local::at0066], 	-- Lätt förstärkta hörselintryck
-											3|[local::at0067], 	-- Måttligt förstärkta hörselintryck
-											4|[local::at0068], 	-- Måttliga hörselhallucinationer
-											5|[local::at0069], 	-- Svåra hörselhallucinationer
-											6|[local::at0070], 	-- Mycket svåra hörselhallucinationer
-											7|[local::at0071]  	-- Kontinuerliga hörselhallucinationer
+											0|[local::at0064], 	-- Not present
+											1|[local::at0065], 	-- Very mild harshness or ability to frighten
+											2|[local::at0066], 	-- Mild harshness or ability to frighten
+											3|[local::at0067], 	-- Moderate harshness or ability to frighten
+											4|[local::at0068], 	-- Moderately severe hallucinations
+											5|[local::at0069], 	-- Severe hallucinations
+											6|[local::at0070], 	-- Extremely severe hallucinations
+											7|[local::at0071]  	-- Continuous hallucinations
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Synförändringar
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Visual disturbance
 										value matches {
-											0|[local::at0072], 	-- Frånvarande
-											1|[local::at0073], 	-- Vag antydan om synförändringar
-											2|[local::at0074], 	-- Lätta synförändringar
-											3|[local::at0075], 	-- Måttliga synförändringar
-											4|[local::at0076], 	-- Måttliga synhallucinationer
-											5|[local::at0077], 	-- Svåra synhallucinationer
-											6|[local::at0078], 	-- Mycket svåra synhallucinationer
-											7|[local::at0079]  	-- Kontinuerliga synhallucinationer
+											0|[local::at0072], 	-- Not present
+											1|[local::at0073], 	-- Very mild sensitivity
+											2|[local::at0074], 	-- Mild sensitivity
+											3|[local::at0075], 	-- Moderate sensitivity
+											4|[local::at0076], 	-- Moderately severe hallucinations
+											5|[local::at0077], 	-- Severe hallucinations
+											6|[local::at0078], 	-- Extremely severe hallucinations
+											7|[local::at0079]  	-- Continuous hallucinations
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Huvudvärk
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Headache, fullness in head
 										value matches {
-											0|[local::at0080], 	-- Frånvarande
-											1|[local::at0081], 	-- Lätt huvudvärk
-											2|[local::at0082], 	-- Lindrig huvudvärk
-											3|[local::at0083], 	-- Måttlig huvudvärk
-											4|[local::at0084], 	-- Kraftig huvudvärk
-											5|[local::at0085], 	-- Svår huvudvärk
-											6|[local::at0086], 	-- Mycket svår huvudvärk
-											7|[local::at0087]  	-- Extremt svår huvudvärk
+											0|[local::at0080], 	-- Not present
+											1|[local::at0081], 	-- Very mild
+											2|[local::at0082], 	-- Mild
+											3|[local::at0083], 	-- Moderate
+											4|[local::at0084], 	-- Moderately severe
+											5|[local::at0085], 	-- Severe
+											6|[local::at0086], 	-- Very severe
+											7|[local::at0087]  	-- Extremely severe
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Orienteringsgrad
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Orientation and clouding of sensorium
 										value matches {
-											0|[local::at0088], 	-- Fullt orienterad till tid, rum och person
-											1|[local::at0089], 	-- Osäker kring datum
-											2|[local::at0090], 	-- Desorienterad till tid med högst två dagar
-											3|[local::at0091], 	-- Desorienterad till tid med mer än två dagar
-											4|[local::at0092]  	-- Desorienterad för tid, rum och/eller person
+											0|[local::at0088], 	-- Oriented and can do serial additions
+											1|[local::at0089], 	-- Cannot do serial additions or is uncertain about date
+											2|[local::at0090], 	-- Disoriented for date by no more than two calendar days
+											3|[local::at0091], 	-- Disoriented for date by more than two calendar days
+											4|[local::at0092]  	-- Disoriented for place and/or person
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Total poäng
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											DV_COUNT matches {*}
 										}
 									}
-									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}

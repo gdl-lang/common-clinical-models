@@ -17,28 +17,11 @@ language
 description
 	original_author = <
 		["name"] = <"Dennis Forslund">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2016-07-13">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To assess severity of community-acquired pneumonia measured in 30-day mortality, and aid in determining care level. ">
-			use = <"Use to evaluate the presence of key factors determining severity of illness in patients presenting with suspected community-acquired pneumonia.
-
-CURB-65 is an acronym for Confusion, blood Urea nitrogen level, Respiratory rate, Blood pressure and age (over or equal to) 65. When present each factor contributes one (1) additional point to the total score.
-
-Total score ranges from 0-5 and is associated with a risk level, which is in turn associated with certain care level recommendations.
-* 0-1 points, low risk group. Consider home treatment. 30-day mortality: <3 %.
-* 2 points, moderate risk group. Consider hospital admission. 30-day mortality: 9 %.
-* 3 points, severe risk group. Urgent hospital admission. 30-day mortality: 15-40 %.
-* 4-5 points, highest risk group. Urgent hospital admission, consider ICU admission. 30-day mortality: 15-40 %
-
-
-">
-			misuse = <"">
-			copyright = <"Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att utvärdera svårighetsgraden, angiven i mortalitet inom 30 dagar, av samhällsförvärvad pneumoni och underlätta beslutsfattande gällande vårdnivå.
@@ -59,6 +42,24 @@ Totala poängen har ett spann mellan 0-5 och är beroende på resultat associera
 			misuse = <"">
 			copyright = <"Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess severity of community-acquired pneumonia measured in 30-day mortality, and aid in determining care level. ">
+			use = <"Use to evaluate the presence of key factors determining severity of illness in patients presenting with suspected community-acquired pneumonia.
+
+CURB-65 is an acronym for Confusion, blood Urea nitrogen level, Respiratory rate, Blood pressure and age (over or equal to) 65. When present each factor contributes one (1) additional point to the total score.
+
+Total score ranges from 0-5 and is associated with a risk level, which is in turn associated with certain care level recommendations.
+* 0-1 points, low risk group. Consider home treatment. 30-day mortality: <3 %.
+* 2 points, moderate risk group. Consider hospital admission. 30-day mortality: 9 %.
+* 3 points, severe risk group. Urgent hospital admission. 30-day mortality: 15-40 %.
+* 4-5 points, highest risk group. Urgent hospital admission, consider ICU admission. 30-day mortality: 15-40 %
+
+
+">
+			misuse = <"">
+			copyright = <"Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"0">
 	other_contributors = <>
@@ -72,43 +73,43 @@ WS Lim, SV Baudouin, RC George, et al. BTS guidelines for the management of comm
 definition
 	OBSERVATION[at0000] matches {	-- CURB-65
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Konfusion
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Confusion
 										value matches {
-											0|[local::at0013], 	-- Frånvarande
-											1|[local::at0014]  	-- Föreligger
+											0|[local::at0013], 	-- Absent
+											1|[local::at0014]  	-- Present
 										}
 									}
 									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Hypotension
 										value matches {
-											0|[local::at0015], 	-- Frånvarande
-											1|[local::at0016]  	-- Föreligger
+											0|[local::at0015], 	-- Absent
+											1|[local::at0016]  	-- Present
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Ålder
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Age
 										value matches {
-											0|[local::at0017], 	-- Frånvarande
-											1|[local::at0018]  	-- Föreligger
+											0|[local::at0017], 	-- Absent
+											1|[local::at0018]  	-- Present
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Andningsfrekvens
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Respiratory rate
 										value matches {
-											0|[local::at0019], 	-- Frånvarande
-											1|[local::at0020]  	-- Föreligger
+											0|[local::at0019], 	-- Absent
+											1|[local::at0020]  	-- Present
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Ureahalt i blod 
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Blood urea nitrogen level
 										value matches {
-											0|[local::at0021], 	-- Frånvarande
-											1|[local::at0022]  	-- Föreligger
+											0|[local::at0021], 	-- Absent
+											1|[local::at0022]  	-- Present
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Total poäng
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											DV_COUNT matches {*}
 										}

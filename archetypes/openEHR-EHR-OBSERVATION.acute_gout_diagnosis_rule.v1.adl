@@ -17,22 +17,11 @@ language
 description
 	original_author = <
 		["name"] = <"Dennis Forslund">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2016-10-27">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To clinically determine whether an individual's joint symptoms are due to acute gouty arthritis, and if there is need for further laboratory testing.">
-			use = <"Use to record data about an individual's acute gout arthritis score, and determine the need for further joint fluid analysis based on 7 variables: sex (2 points if male), previous report of arthritis (2 points if present), onset within 1 day (0.5 points if present), joint redness (1 point if present), involvement of 1st metatarsophalangeal joint (2.5 points if present), cardiovascular disease (1.5 points if present) and serum uric acid level (3.5 points if >5.88 mg/dl OR >0.35 mmol/L OR >350 umol/L). 
-A total score <=4 is unlikely to be gout (gout prevalence 2.2%), 
-score >4 and <8 is indeterminate (gout prevalence 31.2%), 
-and a score >=8 is likely to be gout (gout prevalence 80.4%). 
-Synovial fluid analysis of the affected joint for monosodium urate (MSU) crystals is recommended in the indeterminate group.">
-			keywords = <"acute gouty arthritis", "crystal-induced arthropathy", "gout", "monoarthritis", "MSU crystals", "synovial fluid analysis">
-			misuse = <"">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att kliniskt utvärdera eventuell förekomst av gikt hos patient med ledbesvär, samt huruvida vidare utredning är indicerad.">
@@ -45,6 +34,18 @@ Vid ≤4p - 2,2 %.
 Vid 5-7p - 31,2%.
 Vid ≥8p - 80,4%">
 			keywords = <"gikt", "monoartrit", "ledvätska", "ledvätskeanalys", "urat">
+			misuse = <"">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To clinically determine whether an individual's joint symptoms are due to acute gouty arthritis, and if there is need for further laboratory testing.">
+			use = <"Use to record data about an individual's acute gout arthritis score, and determine the need for further joint fluid analysis based on 7 variables: sex (2 points if male), previous report of arthritis (2 points if present), onset within 1 day (0.5 points if present), joint redness (1 point if present), involvement of 1st metatarsophalangeal joint (2.5 points if present), cardiovascular disease (1.5 points if present) and serum uric acid level (3.5 points if >5.88 mg/dl OR >0.35 mmol/L OR >350 umol/L). 
+A total score <=4 is unlikely to be gout (gout prevalence 2.2%), 
+score >4 and <8 is indeterminate (gout prevalence 31.2%), 
+and a score >=8 is likely to be gout (gout prevalence 80.4%). 
+Synovial fluid analysis of the affected joint for monosodium urate (MSU) crystals is recommended in the indeterminate group.">
+			keywords = <"acute gouty arthritis", "crystal-induced arthropathy", "gout", "monoarthritis", "MSU crystals", "synovial fluid analysis">
 			misuse = <"">
 			copyright = <"© Cambio Healthcare Systems">
 		>
@@ -61,103 +62,103 @@ Kienhorst LB, Janssens HJ, Fransen J, Janssen M. The validation of a diagnostic 
 definition
 	OBSERVATION[at0000] matches {	-- Acute Gout Diagnosis Rule
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Manligt kön
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Male sex
 										value matches {
-											0|[local::at0026], 	-- Nej
-											1|[local::at0027]  	-- Ja
+											0|[local::at0026], 	-- Absent
+											1|[local::at0027]  	-- Present
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Tidigare artrit
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Previous patient-reported arthritis attack
 										value matches {
-											0|[local::at0029], 	-- Nej
-											1|[local::at0030]  	-- Ja
+											0|[local::at0029], 	-- Absent
+											1|[local::at0030]  	-- Present
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Akut debut
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Onset within one day
 										value matches {
-											0|[local::at0031], 	-- Nej
-											1|[local::at0032]  	-- Ja
+											0|[local::at0031], 	-- Absent
+											1|[local::at0032]  	-- Present
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Rodnad led
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Joint redness
 										value matches {
-											0|[local::at0033], 	-- Nej
-											1|[local::at0034]  	-- Ja
+											0|[local::at0033], 	-- Absent
+											1|[local::at0034]  	-- Present
 										}
 									}
-									ELEMENT[at0015] occurrences matches {0..1} matches {	-- MTP 1-engagemang
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- 1st MTP joint involvement
 										value matches {
-											0|[local::at0035], 	-- Nej
-											1|[local::at0036]  	-- Ja
+											0|[local::at0035], 	-- Absent
+											1|[local::at0036]  	-- Present
 										}
 									}
-									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Hypertoni eller >1 hjärt-kärlsjukdom
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Hypertension or ≥ 1 cardiac diseases
 										value matches {
-											0|[local::at0037], 	-- Nej
-											1|[local::at0038]  	-- Ja
+											0|[local::at0037], 	-- Absent
+											1|[local::at0038]  	-- Present
 										}
 									}
-									ELEMENT[at0020] occurrences matches {0..1} matches {	-- S-urat > 350 µmol/l (> 5.88 mg/dl eller > 0.35 mmol/L)
+									ELEMENT[at0020] occurrences matches {0..1} matches {	-- Serum uric acid > 350 µmol/l (> 5.88 mg/dl OR > 0.35 mmol/L)
 										value matches {
-											0|[local::at0039], 	-- Nej
-											1|[local::at0040]  	-- Ja
+											0|[local::at0039], 	-- Absent
+											1|[local::at0040]  	-- Present
 										}
 									}
-									ELEMENT[at0042] occurrences matches {0..1} matches {	-- Poäng manligt kön
-										value matches {
-											C_DV_QUANTITY <
-											>
-										}
-									}
-									ELEMENT[at0043] occurrences matches {0..1} matches {	-- Poäng tidigare artrit
+									ELEMENT[at0042] occurrences matches {0..1} matches {	-- Male sex score
 										value matches {
 											C_DV_QUANTITY <
 											>
 										}
 									}
-									ELEMENT[at0044] occurrences matches {0..1} matches {	-- Poäng akut debut
+									ELEMENT[at0043] occurrences matches {0..1} matches {	-- Previous arthritis score
 										value matches {
 											C_DV_QUANTITY <
 											>
 										}
 									}
-									ELEMENT[at0045] occurrences matches {0..1} matches {	-- Poäng rodnad led
+									ELEMENT[at0044] occurrences matches {0..1} matches {	-- Onset duration score
 										value matches {
 											C_DV_QUANTITY <
 											>
 										}
 									}
-									ELEMENT[at0046] occurrences matches {0..1} matches {	-- Poäng MTP 1-engagemang
+									ELEMENT[at0045] occurrences matches {0..1} matches {	-- Joint redness score
 										value matches {
 											C_DV_QUANTITY <
 											>
 										}
 									}
-									ELEMENT[at0047] occurrences matches {0..1} matches {	-- Poäng hjärtkärlsjukdom
+									ELEMENT[at0046] occurrences matches {0..1} matches {	-- 1st MTP joint score
 										value matches {
 											C_DV_QUANTITY <
 											>
 										}
 									}
-									ELEMENT[at0048] occurrences matches {0..1} matches {	-- Poäng S-urat
+									ELEMENT[at0047] occurrences matches {0..1} matches {	-- Cardiovascular disease score
 										value matches {
 											C_DV_QUANTITY <
 											>
 										}
 									}
-									ELEMENT[at0049] occurrences matches {0..1} matches {	-- Total poäng
+									ELEMENT[at0048] occurrences matches {0..1} matches {	-- Serum uric acid score
 										value matches {
 											C_DV_QUANTITY <
 											>
 										}
 									}
-									ELEMENT[at0050] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0049] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+									ELEMENT[at0050] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}

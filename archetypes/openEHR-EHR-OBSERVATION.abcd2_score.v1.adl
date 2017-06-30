@@ -2,7 +2,7 @@
 	openEHR-EHR-OBSERVATION.abcd2_score.v1
 
 concept
-	[at0000]	-- ABCD2 Score
+	[at0000]	-- ABCD2 Score for TIA
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,6 +17,7 @@ language
 description
 	original_author = <
 		["name"] = <"Dennis Forslund">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2016-11-30">
 	>
@@ -74,47 +75,47 @@ Perry JJ, Sharma M, Sivilotti ML, Sutherland J, Symington C, Worster A, Émond M
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- ABCD2 Score
+	OBSERVATION[at0000] matches {	-- ABCD2 Score for TIA
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Ålder ≥ 60 år
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Age ≥ 60 years 
 										value matches {
-											0|[local::at0010], 	-- Frånvarande
-											1|[local::at0011]  	-- Föreligger
+											0|[local::at0010], 	-- Absent
+											1|[local::at0011]  	-- Present
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Blodtryck ≥ 140/90 mmHg
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Blood pressure ≥ 140/90 mmHg
 										value matches {
-											0|[local::at0012], 	-- Frånvarande
-											1|[local::at0013]  	-- Föreligger
+											0|[local::at0012], 	-- Absent
+											1|[local::at0013]  	-- Present
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Kliniska fynd (TIA)
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- TIA clinical features
 										value matches {
-											0|[local::at0014], 	-- Andra symtom
-											1|[local::at0015], 	-- Språkrubbning utan ensidig svaghet
-											2|[local::at0016]  	-- Ensidig svaghet
+											0|[local::at0014], 	-- Other symptoms
+											1|[local::at0015], 	-- Speech disturbance without focal weakness
+											2|[local::at0016]  	-- Unilateral weakness
 										}
 									}
 									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Diabetes mellitus
 										value matches {
-											0|[local::at0017], 	-- Frånvarande
-											1|[local::at0018]  	-- Föreligger
+											0|[local::at0017], 	-- Absent
+											1|[local::at0018]  	-- Present
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Symtomduration
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Symptom duration
 										value matches {
-											0|[local::at0019], 	-- <10 minuter
-											1|[local::at0020], 	-- 10-59 minuter
-											2|[local::at0021]  	-- ≥60 minuter
+											0|[local::at0019], 	-- <10 minutes
+											1|[local::at0020], 	-- 10-59 minutes
+											2|[local::at0021]  	-- ≥60 minutes 
 										}
 									}
-									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Total poäng
+									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											DV_COUNT matches {*}
 										}

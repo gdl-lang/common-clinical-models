@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.acr_eular_ra_classification.v1
 
 concept
-	[at0000]	-- ACR EULAR RA klassificering
+	[at0000]	-- Acr eular ra classification
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -16,7 +16,8 @@ language
 	>
 description
 	original_author = <
-		["name"] = <"Syeeda S Farruque, Cambio Healthcare Systems">
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2016-11-13">
 	>
@@ -88,50 +89,50 @@ Ref. 2: Aletaha, Daniel, et al. \"2010 rheumatoid arthritis classification crite
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- ACR EULAR RA klassificering
+	OBSERVATION[at0000] matches {	-- Acr eular ra classification
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Ledengagemang
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Joint Distribution
 										value matches {
-											0|[local::at0010], 	-- 1 stor led
-											1|[local::at0011], 	-- 2-10 stora leder
-											2|[local::at0012], 	-- 1-3 små leder (stora räknas ej)
-											3|[local::at0013], 	-- 4-10 små leder (stora räknas ej)
-											5|[local::at0014]  	-- >10 leder 
+											0|[local::at0010], 	-- 1 large joint
+											1|[local::at0011], 	-- 2-10 large joints
+											2|[local::at0012], 	-- 1-3 small joints
+											3|[local::at0013], 	-- 4-10 small joints 
+											5|[local::at0014]  	-- >10 joints 
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Serologiska analyser
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Serology
 										value matches {
-											0|[local::at0015], 	-- Negativ RF och anti-CP
-											2|[local::at0016], 	-- Låg titer RF eller låg titer anti-CP
-											3|[local::at0017]  	-- Hög titer RF eller hög titer anti-CP
+											0|[local::at0015], 	-- Negative RF AND ACPA
+											2|[local::at0016], 	-- Low positive RF OR ACPA
+											3|[local::at0017]  	-- High positive RF OR ACPA
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Symtomduration
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Symptom Duration
 										value matches {
-											0|[local::at0018], 	-- <6 veckor
-											1|[local::at0019]  	-- ≥ 6 veckor
+											0|[local::at0018], 	-- <6 weeks
+											1|[local::at0019]  	-- ≥ 6 weeks
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Akutfasreaktanter
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Acute Phase Reactants
 										value matches {
-											0|[local::at0020], 	-- Normal CRP och SR
-											1|[local::at0021]  	-- Förhöjd CRP eller SR
+											0|[local::at0020], 	-- Normal CRP AND ESR
+											1|[local::at0021]  	-- Abnormal CRP OR ESR
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Poäng
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Score
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..10|}
 											}
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}

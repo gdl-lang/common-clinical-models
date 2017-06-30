@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.asrs_for_adhd.v1
 
 concept
-	[at0000]	-- ASRS
+	[at0000]	-- ASRS for adhd
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,10 +17,31 @@ language
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2016-12-12">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Kriterierna för ADHD kräver enligt DSM-IV förekomst av koncentrationssvårigheter, impulsivitet och/eller hyperaktivitet under de senaste sex månaderna. ASRS-formuläret baseras i dessa kriterier och avser kartlägga eventuell förekomst av nämnda symtom.">
+			use = <"Del A består av sex frågor vilka används för screening, medan de resterande tolv frågorna utgör Del B vilken avser uppnå en fördjupad kartläggning av tillståndet. 
+
+Diagnostiken vid ADHD är komplex och baseras ofta på symtom från barndomen. Detta verktyg avser utvärdera nuvarande tillstånd utan hänsyn till historik, och på så sätt identifiera individer i behov av vidare utredning.
+
+Del A genererar en poäng som uppgår till maximalt 24p, medan Del B som mest uppgår till 48p. Delarna slås även ihop för en total poäng; denna uppgår således till maximalt 72p. Svarsalternativen utgörs av fem alternativ;
+
+Aldrig
+Sällan
+Ibland
+Ofta
+Mycket ofta
+
+Poäng fördelas per svarsalternativ i enlighet med [3]. Vid en poäng om <15p i Del A eller <32p i del B bedöms förekomst av ADHD som osannolikt. En poäng om ≥15p i del A och ≥32p i del B indikerar behov av vidare utredning. Att notera är att del A har företräde, dvs ett resultat om ≥15p i del A räcker för att vidare utredning ska vara indicerad">
+			keywords = <"ASRS", "ADHD", "DSM-IV">
+			misuse = <"ASRS är avsedd för screening och utvärdering, och är ej att betrakta som diagnostisk.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"The DSM criteria for ADHD requires the presence of current symptoms of inattention, impulsivity, and/or hyperactivity in the past 6 months.
@@ -45,26 +66,6 @@ A score of <= 13 is indicative of no ADHD and >= 13 is indicative of ADHD warran
 			misuse = <"As with all tools of this nature, it should not be used as sole evidence to make a diagnosis of ADHD without also being accompanied by results to back this up derived by further investigation.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"Kriterierna för ADHD kräver enligt DSM-IV förekomst av koncentrationssvårigheter, impulsivitet och/eller hyperaktivitet under de senaste sex månaderna. ASRS-formuläret baseras i dessa kriterier och avser kartlägga eventuell förekomst av nämnda symtom.">
-			use = <"Del A består av sex frågor vilka används för screening, medan de resterande tolv frågorna utgör Del B vilken avser uppnå en fördjupad kartläggning av tillståndet. 
-
-Diagnostiken vid ADHD är komplex och baseras ofta på symtom från barndomen. Detta verktyg avser utvärdera nuvarande tillstånd utan hänsyn till historik, och på så sätt identifiera individer i behov av vidare utredning.
-
-Del A genererar en poäng som uppgår till maximalt 24p, medan Del B som mest uppgår till 48p. Delarna slås även ihop för en total poäng; denna uppgår således till maximalt 72p. Svarsalternativen utgörs av fem alternativ;
-
-Aldrig
-Sällan
-Ibland
-Ofta
-Mycket ofta
-
-Poäng fördelas per svarsalternativ i enlighet med [3]. Vid en poäng om <15p i Del A eller <32p i del B bedöms förekomst av ADHD som osannolikt. En poäng om ≥15p i del A och ≥32p i del B indikerar behov av vidare utredning. Att notera är att del A har företräde, dvs ett resultat om ≥15p i del A räcker för att vidare utredning ska vara indicerad">
-			keywords = <"ASRS", "ADHD", "DSM-IV">
-			misuse = <"ASRS är avsedd för screening och utvärdering, och är ej att betrakta som diagnostisk.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -78,191 +79,191 @@ Poäng fördelas per svarsalternativ i enlighet med [3]. Vid en poäng om <15p i
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- ASRS
+	OBSERVATION[at0000] matches {	-- ASRS for adhd
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- 1. Hur ofta har du svårigheter med att avsluta de sista detaljerna i en uppgift/ett projekt när de mer krävande momenten har avklarats?
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- 1.Trouble wrapping up fine details
 										value matches {
-											0|[local::at0047], 	-- Aldrig
-											1|[local::at0048], 	-- Sällan
-											2|[local::at0083], 	-- Ibland
-											3|[local::at0084], 	-- Ofta
-											4|[local::at0085]  	-- Mycket ofta
+											0|[local::at0047], 	-- Never
+											1|[local::at0048], 	-- Rarely
+											2|[local::at0083], 	-- Sometimes
+											3|[local::at0084], 	-- Often
+											4|[local::at0085]  	-- Very often
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- 2. Hur ofta har du svårigheter med att få ordning på saker och ting när du ska utföra en uppgift som kräver organisation?
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- 2.Trouble getting things in order
 										value matches {
-											0|[local::at0049], 	-- Aldrig
-											1|[local::at0050], 	-- Sällan
-											2|[local::at0086], 	-- Ibland
-											3|[local::at0087], 	-- Ofta
-											4|[local::at0088]  	-- Mycket ofta
+											0|[local::at0049], 	-- Never
+											1|[local::at0050], 	-- Rarely
+											2|[local::at0086], 	-- Sometimes
+											3|[local::at0087], 	-- Often
+											4|[local::at0088]  	-- Very often
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- 3. Hur ofta har du problem att komma ihåg avtalade möten?
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- 3.Trouble remembering appointments
 										value matches {
-											0|[local::at0057], 	-- Aldrig
-											1|[local::at0058], 	-- Sällan
-											2|[local::at0089], 	-- Ibland
-											3|[local::at0090], 	-- Ofta
-											4|[local::at0091]  	-- Mycket ofta
+											0|[local::at0057], 	-- Never
+											1|[local::at0058], 	-- Rarely
+											2|[local::at0089], 	-- Sometimes
+											3|[local::at0090], 	-- Often
+											4|[local::at0091]  	-- Very often
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- 4. Hur ofta skjuter du upp eller undviker att sätta igång med en uppgift som kräver mycket tankemöda?
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- 4.Trouble starting things that need a lot of thought
 										value matches {
-											0|[local::at0051], 	-- Aldrig
-											1|[local::at0052], 	-- Sällan
-											2|[local::at0092], 	-- Ibland
-											3|[local::at0093], 	-- Ofta
-											4|[local::at0094]  	-- Mycket ofta
+											0|[local::at0051], 	-- Never
+											1|[local::at0052], 	-- Rarely
+											2|[local::at0092], 	-- Sometimes
+											3|[local::at0093], 	-- Often
+											4|[local::at0094]  	-- Very often
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- 5. Hur ofta händer det att du skruvar på dig eller rör händer och fötter när du är tvungen att sitta en längre stund?
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- 5.Trouble with fidgeting when sitting
 										value matches {
-											0|[local::at0053], 	-- Aldrig
-											1|[local::at0054], 	-- Sällan
-											2|[local::at0095], 	-- Ibland
-											3|[local::at0096], 	-- Ofta
-											4|[local::at0097]  	-- Mycket ofta
+											0|[local::at0053], 	-- Never
+											1|[local::at0054], 	-- Rarely
+											2|[local::at0095], 	-- Sometimes
+											3|[local::at0096], 	-- Often
+											4|[local::at0097]  	-- Very often
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- 6. Hur ofta känner du dig överaktiv och tvungen att göra saker, som att du går på högvarv?
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- 6.Trouble with feeling overly active or compelled
 										value matches {
-											0|[local::at0055], 	-- Aldrig
-											1|[local::at0056], 	-- Sällan
-											2|[local::at0098], 	-- Ibland
-											3|[local::at0099], 	-- Ofta
-											4|[local::at0100]  	-- Mycket ofta
+											0|[local::at0055], 	-- Never
+											1|[local::at0056], 	-- Rarely
+											2|[local::at0098], 	-- Sometimes
+											3|[local::at0099], 	-- Often
+											4|[local::at0100]  	-- Very often
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- 7. Hur ofta gör du slarvfel när du arbetar med en tråkig eller svår uppgift?
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- 7. Careless mistakes
 										value matches {
-											0|[local::at0059], 	-- Aldrig
-											1|[local::at0060], 	-- Sällan
-											2|[local::at0101], 	-- Ibland
-											3|[local::at0102], 	-- Ofta
-											4|[local::at0103]  	-- Mycket ofta
+											0|[local::at0059], 	-- Never
+											1|[local::at0060], 	-- Rarely
+											2|[local::at0101], 	-- Sometimes
+											3|[local::at0102], 	-- Often
+											4|[local::at0103]  	-- Very often
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- 8. Hur ofta har du svårt att fokusera när du utför en tråkig eller monoton uppgift?
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- 8. Difficult with attention
 										value matches {
-											0|[local::at0061], 	-- Aldrig
-											1|[local::at0062], 	-- Sällan
-											2|[local::at0104], 	-- Ibland
-											3|[local::at0105], 	-- Ofta
-											4|[local::at0106]  	-- Mycket ofta
+											0|[local::at0061], 	-- Never
+											1|[local::at0062], 	-- Rarely
+											2|[local::at0104], 	-- Sometimes
+											3|[local::at0105], 	-- Often
+											4|[local::at0106]  	-- Very often
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- 9. Hur ofta har du svårt att koncentrera dig på vad folk säger, även när de talar direkt till dig?
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- 9. Difficulty concentrating
 										value matches {
-											0|[local::at0075], 	-- Aldrig
-											1|[local::at0076], 	-- Sällan
-											2|[local::at0107], 	-- Ibland
-											3|[local::at0108], 	-- Ofta
-											4|[local::at0109]  	-- Mycket ofta
+											0|[local::at0075], 	-- Never
+											1|[local::at0076], 	-- Rarely
+											2|[local::at0107], 	-- Sometimes
+											3|[local::at0108], 	-- Often
+											4|[local::at0109]  	-- Very often
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- 10. Hur ofta händer det att du förlägger eller har svårt att hitta saker hemma eller på arbetet? 
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- 10. Difficulty finding things
 										value matches {
-											0|[local::at0063], 	-- Aldrig
-											1|[local::at0064], 	-- Sällan
-											2|[local::at0110], 	-- Ibland
-											3|[local::at0111], 	-- Ofta
-											4|[local::at0112]  	-- Mycket ofta
+											0|[local::at0063], 	-- Never
+											1|[local::at0064], 	-- Rarely
+											2|[local::at0110], 	-- Sometimes
+											3|[local::at0111], 	-- Often
+											4|[local::at0112]  	-- Very often
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- 11. Hur ofta distraheras du av ljud eller händelser i din omgivning?
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- 11. Easily distracted
 										value matches {
-											0|[local::at0065], 	-- Aldrig
-											1|[local::at0066], 	-- Sällan
-											2|[local::at0113], 	-- Ibland
-											3|[local::at0114], 	-- Ofta
-											4|[local::at0115]  	-- Mycket ofta
+											0|[local::at0065], 	-- Never
+											1|[local::at0066], 	-- Rarely
+											2|[local::at0113], 	-- Sometimes
+											3|[local::at0114], 	-- Often
+											4|[local::at0115]  	-- Very often
 										}
 									}
-									ELEMENT[at0015] occurrences matches {0..1} matches {	-- 12. Hur ofta händer det att du lämnar din plats under möter eller i andra situationer där du förväntas sitta kvar?
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- 12. Leave your seat
 										value matches {
-											0|[local::at0077], 	-- Aldrig
-											1|[local::at0078], 	-- Sällan
-											2|[local::at0116], 	-- Ibland
-											3|[local::at0117], 	-- Ofta
-											4|[local::at0118]  	-- Mycket ofta
+											0|[local::at0077], 	-- Never
+											1|[local::at0078], 	-- Rarely
+											2|[local::at0116], 	-- Sometimes
+											3|[local::at0117], 	-- Often
+											4|[local::at0118]  	-- Very often
 										}
 									}
-									ELEMENT[at0016] occurrences matches {0..1} matches {	-- 13. Hur ofta känner du dig rastlös eller har svårt att sitta still?
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- 13. Restless or fidgety
 										value matches {
-											0|[local::at0067], 	-- Aldrig
-											1|[local::at0068], 	-- Sällan
-											2|[local::at0119], 	-- Ibland
-											3|[local::at0120], 	-- Ofta
-											4|[local::at0121]  	-- Mycket ofta
+											0|[local::at0067], 	-- Never
+											1|[local::at0068], 	-- Rarely
+											2|[local::at0119], 	-- Sometimes
+											3|[local::at0120], 	-- Often
+											4|[local::at0121]  	-- Very often
 										}
 									}
-									ELEMENT[at0017] occurrences matches {0..1} matches {	-- 14. Hur ofta har du svårt att gå ner i varv och koppla av när du har en stund över?
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- 14. Difficulty relaxing 
 										value matches {
-											0|[local::at0069], 	-- Aldrig
-											1|[local::at0070], 	-- Sällan
-											2|[local::at0122], 	-- Ibland
-											3|[local::at0123], 	-- Ofta
-											4|[local::at0124]  	-- Mycket ofta
+											0|[local::at0069], 	-- Never
+											1|[local::at0070], 	-- Rarely
+											2|[local::at0122], 	-- Sometimes
+											3|[local::at0123], 	-- Often
+											4|[local::at0124]  	-- Very often
 										}
 									}
-									ELEMENT[at0018] occurrences matches {0..1} matches {	-- 15. Hur ofta kommer du på dig själv med att prata för mycket i sociala sammanhang?
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- 15. Talking too much
 										value matches {
-											0|[local::at0071], 	-- Aldrig
-											1|[local::at0072], 	-- Sällan
-											2|[local::at0125], 	-- Ibland
-											3|[local::at0126], 	-- Ofta
-											4|[local::at0127]  	-- Mycket ofta
+											0|[local::at0071], 	-- Never
+											1|[local::at0072], 	-- Rarely
+											2|[local::at0125], 	-- Sometimes
+											3|[local::at0126], 	-- Often
+											4|[local::at0127]  	-- Very often
 										}
 									}
-									ELEMENT[at0019] occurrences matches {0..1} matches {	-- 16. Hur ofta händer det att du avslutar meningar åt dem du talar med, innan de själva hinner avsluta dem?
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- 16. Finishing other's sentences
 										value matches {
-											0|[local::at0079], 	-- Aldrig
-											1|[local::at0080], 	-- Sällan
-											2|[local::at0128], 	-- Ibland
-											3|[local::at0129], 	-- Ofta
-											4|[local::at0130]  	-- Mycket ofta
+											0|[local::at0079], 	-- Never
+											1|[local::at0080], 	-- Rarely
+											2|[local::at0128], 	-- Sometimes
+											3|[local::at0129], 	-- Often
+											4|[local::at0130]  	-- Very often
 										}
 									}
-									ELEMENT[at0020] occurrences matches {0..1} matches {	-- 17. Hur ofta har du svårt att vänta på din tur i situationer då det krävs?
+									ELEMENT[at0020] occurrences matches {0..1} matches {	-- 17. Difficulty waiting your turn
 										value matches {
-											0|[local::at0073], 	-- Aldrig
-											1|[local::at0074], 	-- Sällan
-											2|[local::at0131], 	-- Ibland
-											3|[local::at0132], 	-- Ofta
-											4|[local::at0133]  	-- Mycket ofta
+											0|[local::at0073], 	-- Never
+											1|[local::at0074], 	-- Rarely
+											2|[local::at0131], 	-- Sometimes
+											3|[local::at0132], 	-- Often
+											4|[local::at0133]  	-- Very often
 										}
 									}
-									ELEMENT[at0021] occurrences matches {0..1} matches {	-- 18. Hur ofta händer det att du avbryter eller stör andra när de är upptagna?
+									ELEMENT[at0021] occurrences matches {0..1} matches {	-- 18. Tendency to interrupt others
 										value matches {
-											0|[local::at0081], 	-- Aldrig
-											1|[local::at0082], 	-- Sällan
-											2|[local::at0134], 	-- Ibland
-											3|[local::at0135], 	-- Ofta
-											4|[local::at0136]  	-- Mycket ofta
+											0|[local::at0081], 	-- Never
+											1|[local::at0082], 	-- Rarely
+											2|[local::at0134], 	-- Sometimes
+											3|[local::at0135], 	-- Often
+											4|[local::at0136]  	-- Very often
 										}
 									}
-									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Del A - poäng
+									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Part A: 6 question screening score
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..24|}
 											}
 										}
 									}
-									ELEMENT[at0023] occurrences matches {0..1} matches {	-- Del B - poäng
+									ELEMENT[at0023] occurrences matches {0..1} matches {	-- Part B: 12 additional questions score
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..48|}
 											}
 										}
 									}
-									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Total poäng
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Part A and B total score
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..72|}
