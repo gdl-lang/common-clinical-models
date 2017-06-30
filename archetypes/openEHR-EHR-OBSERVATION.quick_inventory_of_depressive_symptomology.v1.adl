@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.quick_inventory_of_depressive_symptomology.v1
 
 concept
-	[at0000]	-- QIDS
+	[at0000]	-- Quick inventory of depressive symptomology
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,10 +17,31 @@ language
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2016-10-09">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att utvärdera och registrera en självskattning av depressiva symtom hos patienter, i enlighet med Quick Inventory of Depressive Symptomology (QIDS).">
+			use = <"QIDS kan användas av såväl patienter själva som av anhöriga för självskattning och dokumentation av depressiva symtom över tid. 
+
+De sexton frågorna utgår från nio olika områden relaterade till depression inkluderande sömnsvårigheter, sinnesstämning, aptit, viktförändring, egenvärde/självuppfattning, beslutsförmåga, suicidala tankar, psykomotorisk funktion, intresse av andra människor samt energinivå. Respektive fråga graderas med 0-4p.
+
+Totala poängen uppgår till maximalt 27p. För fråga 1-4, 6-9, 15-16 tas endast högst graderade svaret med i beräkningen. Detta gör att endast nio frågor bidrar till totala poängsumman. 
+
+Resultat tolkas enligt:
+    
+    ≤5 indikerar att depression ej föreligger
+    6-10 indikerar förekomst av lindrig depression
+    11-15 indikerar måttlig depression
+    16-20 indikerar allvarlig/svår depression
+    ≥ 21p indikerar mycket svår depression ">
+			keywords = <"Quick Inventory of Depressive Symptomology", "QIDS", "depression", "självskattning", "uppföljning">
+			misuse = <"Bör ej användas isolerat utan är avsedd att användas i kombination med psykiatrisk bedömning och övriga adekvata resurser.">
+			copyright = <"Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"A self-reported method to quantify depressive symptoms from patients across 16 multiple choice questions, which relate to 9 depression symptoms. ">
@@ -43,26 +64,6 @@ Score ≥ 21 - Indicates Very Severe Depression">
 			misuse = <"Do not use in isolation of supporting psychiatric assessment and without the provision of other supporting resources as needed.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"Att utvärdera och registrera en självskattning av depressiva symtom hos patienter, i enlighet med Quick Inventory of Depressive Symptomology (QIDS).">
-			use = <"QIDS kan användas av såväl patienter själva som av anhöriga för självskattning och dokumentation av depressiva symtom över tid. 
-
-De sexton frågorna utgår från nio olika områden relaterade till depression inkluderande sömnsvårigheter, sinnesstämning, aptit, viktförändring, egenvärde/självuppfattning, beslutsförmåga, suicidala tankar, psykomotorisk funktion, intresse av andra människor samt energinivå. Respektive fråga graderas med 0-4p.
-
-Totala poängen uppgår till maximalt 27p. För fråga 1-4, 6-9, 15-16 tas endast högst graderade svaret med i beräkningen. Detta gör att endast nio frågor bidrar till totala poängsumman. 
-
-Resultat tolkas enligt:
-    
-    ≤5 indikerar att depression ej föreligger
-    6-10 indikerar förekomst av lindrig depression
-    11-15 indikerar måttlig depression
-    16-20 indikerar allvarlig/svår depression
-    ≥ 21p indikerar mycket svår depression ">
-			keywords = <"Quick Inventory of Depressive Symptomology", "QIDS", "depression", "självskattning", "uppföljning">
-			misuse = <"Bör ej användas isolerat utan är avsedd att användas i kombination med psykiatrisk bedömning och övriga adekvata resurser.">
-			copyright = <"Cambio Healthcare Systems">
-		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -74,150 +75,150 @@ Ref. 2: Rush AJ, Trivedi MH, Ibrahim HM, Carmody TJ, Arnow B, Klein DN, Markowit
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- QIDS
+	OBSERVATION[at0000] matches {	-- Quick inventory of depressive symptomology
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- 1. Insomning
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- 1. Sleep Onset Insomnia
 										value matches {
-											0|[local::at0020], 	-- Det tar aldrig länge än 30 minuter att somna
-											1|[local::at0021], 	-- Mindre än hälften av tiden tar det minst 30 minuter att somna
-											2|[local::at0022], 	-- Mer än hälften av tiden tar det minst 30 minuter att somna
-											3|[local::at0023]  	-- Mer än hälften av tiden tar det minst 60 minuter att somna
+											0|[local::at0020], 	-- Never takes longer than 30 minutes to fall asleep
+											1|[local::at0021], 	-- Takes at least 30 minutes to fall asleep, less than half the time
+											2|[local::at0022], 	-- Takes at least 30 minutes to fall asleep, more than half the time
+											3|[local::at0023]  	-- Takes more than 60 minutes to fall asleep, more than half the time
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- 2. Nattsömn
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- 2. Mid-Nocturnal Insomnia
 										value matches {
-											0|[local::at0024], 	-- Vaknar ej om nätterna
-											1|[local::at0025], 	-- Sover oroligt/lätt och vaknar korta stunder varje natt
-											2|[local::at0026], 	-- Vaknar minst en gång per natt men somnar lätt om
-											3|[local::at0027]  	-- Vaknar mer än hälften av tiden mer än en gång per natt och är då vaken i minst 20 minuter
+											0|[local::at0024], 	-- Does not wake up at night
+											1|[local::at0025], 	-- Restless, light sleep with few awakenings
+											2|[local::at0026], 	-- Wakes up at least once a night, but goes back to sleep easily.
+											3|[local::at0027]  	-- Awakens more than once a night and stays awake for 20 minutes or more, more than half the time.
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- 3. Tidigt uppvaknande
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- 3. Early Morning Insomnia
 										value matches {
-											0|[local::at0028], 	-- Vaknar för det mesta inte mer än 30 minuter innan avsedd tid
-											1|[local::at0029], 	-- Vaknar mer än hälften av tiden mer än 30 minuter innan avsedd tid
-											2|[local::at0030], 	-- Vaknar näst intill alltid minst en timme innan avsedd tid, men somnar om
-											3|[local::at0031]  	-- Vaknar minst en timme innan avsedd tid, och kan inte somna om
+											0|[local::at0028], 	-- Less than half the time, awakens no more than 30 minutes before necessary
+											1|[local::at0029], 	-- More than half the time, awakens more than 30 minutes before need be
+											2|[local::at0030], 	-- Awakens at least one hour before need be, more than half the time.
+											3|[local::at0031]  	-- Awakens at least two hours before need be, more than half the time.
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- 4. Överdriven sömn
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- 4. Hypersomnia
 										value matches {
-											0|[local::at0032], 	-- Sover som mest 7-8 timmar per natt, utan tupplurar under dagen
-											1|[local::at0033], 	-- Sover som mest 10 timmar inklusive tupplurar under 24-timmarsperiod
-											2|[local::at0034], 	-- Sover som mest 12 timmar inklusive tupplurar under 24-timmarsperiod
-											3|[local::at0035]  	-- Sover mer än 12 timmar inklusive tupplurar under 24-timmarsperiod
+											0|[local::at0032], 	-- Sleeps no longer than 7-8 hours/night, without naps
+											1|[local::at0033], 	-- Sleeps no longer than 10 hours in a 24 hour period (including naps)
+											2|[local::at0034], 	-- Sleeps no longer than 12 hours in a 24 hour period (including naps).
+											3|[local::at0035]  	-- Sleeps longer than 12 hours in a 24 hour period (including naps).
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- 5. Nedstämdhet
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- 5. Mood (Sad)
 										value matches {
-											0|[local::at0036], 	-- Känner sig inte nedstämd
-											1|[local::at0037], 	-- Känner sig nedstämd mindre än hälften av tiden
-											2|[local::at0038], 	-- Känner sig nedstämd mer än hälften av tiden
-											3|[local::at0039]  	-- Känner sig nedstämd i princip hela tiden
+											0|[local::at0036], 	-- Does not feel sad.
+											1|[local::at0037], 	-- Feels sad less than half the time.
+											2|[local::at0038], 	-- Feels sad more than half the time.
+											3|[local::at0039]  	-- Feels intensely sad virtually all the time.
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- 6. Minskad aptit
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- 6. Appetite (Decreased)
 										value matches {
-											0|[local::at0040], 	-- Ingen förändring mot vanlig aptit
-											1|[local::at0041], 	-- Äter något mer sällan eller mindre än vanligt
-											2|[local::at0042], 	-- Äter mycket mer sällan eller mindre än vanligt
-											3|[local::at0043]  	-- Äter knappt alls under en 24-timmarsperiod och endast under extrem ansträngning eller pga andras övertalning
+											0|[local::at0040], 	-- No change from usual appetite.
+											1|[local::at0041], 	-- Eats somewhat less often and/or lesser amounts than usual.
+											2|[local::at0042], 	-- Eats much less than usual and only with personal effort.
+											3|[local::at0043]  	-- Eats rarely within a 24-hour period, and only with extreme personal effort or with persuasion by others.
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- 7. Ökad aptit
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- 7. Appetite (Increased)
 										value matches {
-											0|[local::at0044], 	-- Ingen förändring mot vanlig aptit
-											1|[local::at0045], 	-- Känner behov av att äta oftare än vanligt
-											2|[local::at0046], 	-- Äter regelbundet oftare eller större mängd än vanligt
-											3|[local::at0047]  	-- Känner begär att äta för mycket både under och mellan måltider
+											0|[local::at0044], 	-- No change from usual appetite.
+											1|[local::at0045], 	-- More frequently feels a need to eat than usual.
+											2|[local::at0046], 	-- Regularly eats more often and/or greater amounts than usual.
+											3|[local::at0047]  	-- Feels driven to overeat at and between meals.
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- 8. Viktnedgång senaste två veckorna
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- 8. Weight (Decrease) Within The Last Two Weeks
 										value matches {
-											0|[local::at0048], 	-- Vikten har ej förändrats
-											1|[local::at0049], 	-- Möjligen minskat något i vikt
-											2|[local::at0050], 	-- Har gått ned minst ett kilo
-											3|[local::at0051]  	-- Har gått ned minst två kilo
+											0|[local::at0048], 	-- Has experienced no weight change.
+											1|[local::at0049], 	-- Feels as if some slight weight loss occurred.
+											2|[local::at0050], 	-- Has lost 2 pounds or more.
+											3|[local::at0051]  	-- Has lost 5 pounds or more.
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- 9. Viktuppgång senaste två veckorna
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- 9. Weight (Increase) Within The Last Two Weeks
 										value matches {
-											0|[local::at0052], 	-- Vikten har ej förändrats
-											1|[local::at0053], 	-- Möjligen ökat något i vikt
-											2|[local::at0054], 	-- Har ökat minst ett kilo
-											3|[local::at0055]  	-- Har ökat minst två kilo
+											0|[local::at0052], 	-- Has experienced no weight change.
+											1|[local::at0053], 	-- Feels as if some slight weight gain has occurred
+											2|[local::at0054], 	-- Has gained 2 pounds or more.
+											3|[local::at0055]  	-- Has gained 5 pounds or more.
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- 10. Koncentration/beslutsfattande
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- 10. Concentration/Decision making
 										value matches {
-											0|[local::at0056], 	-- Ej märkt förändring i förmåga att koncentrera sig eller fatta beslut
-											1|[local::at0057], 	-- Emellanåt känt sig obeslutsam eller märkt av svagt fokus
-											2|[local::at0058], 	-- Får större delen av tiden kämpa med att fokusera eller fatta beslut
-											3|[local::at0059]  	-- Klarar inte koncentrera sig tillräckligt för att läsa eller fatta enkla beslut
+											0|[local::at0056], 	-- No change in usual capacity to concentrate and decide
+											1|[local::at0057], 	-- Occasionally feels indecisive or notes that attention often wanders.
+											2|[local::at0058], 	-- Most of the time struggles to focus attention or make decisions.
+											3|[local::at0059]  	-- Cannot concentrate well enough to read or cannot make even minor decisions.
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- 11. Självuppfattning
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- 11. Outlook (Self)
 										value matches {
-											0|[local::at0060], 	-- Ser sig som lika mycket värd som andra människor
-											1|[local::at0061], 	-- Förebrår sig själv mer än vanligt
-											2|[local::at0062], 	-- Anser sig till stor del orsaka problem för andra
-											3|[local::at0063]  	-- Tänker nästan konstant över större och mindre brister hos sig själv
+											0|[local::at0060], 	-- Sees self as equally worthwhile and deserving as others.
+											1|[local::at0061], 	-- Is more self-blaming than usual.
+											2|[local::at0062], 	-- Largely believes that he/she causes problems for others.
+											3|[local::at0063]  	-- Ruminates over major and minor defects in self.
 										}
 									}
-									ELEMENT[at0015] occurrences matches {0..1} matches {	-- 12. Tankar om döden eller självmord
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- 12. Suicidal Ideation
 										value matches {
-											0|[local::at0064], 	-- Tänker inte på döden eller självmord
-											1|[local::at0065], 	-- Känner att livet är tomt eller inte värt att leva
-											2|[local::at0066], 	-- Tänker på döden/självmord under flera minuter, flera gånger i veckan
-											3|[local::at0067]  	-- Tänker på döden/självmord flera gånger om dagen, eller har funderat på specifika självmordsplaner alternativt försökt ta livet av sig
+											0|[local::at0064], 	-- Does not think of suicide or death.
+											1|[local::at0065], 	-- Feels life is empty or is not worth living.
+											2|[local::at0066], 	-- Thinks of suicide/death several times a week for several minutes
+											3|[local::at0067]  	-- Thinks of suicide/death several times a day in depth, or has made specific plans to commit or attempted suicide.
 										}
 									}
-									ELEMENT[at0016] occurrences matches {0..1} matches {	-- 13. Engagemang
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- 13. Involvement
 										value matches {
-											0|[local::at0068], 	-- Ingen förändring i intresse av andra människor och aktiviteter
-											1|[local::at0069], 	-- Märkt av minskat intresse för människor eller aktiviteter
-											2|[local::at0070], 	-- Har bara intresse för en eller två av tidigare utövade aktiviteter
-											3|[local::at0071]  	-- Har i princip inget intresse för tidigare utövade aktiviteter
+											0|[local::at0068], 	-- No change from usual level of interest in other people and activities.
+											1|[local::at0069], 	-- Notices a reduction in former interests/activities.
+											2|[local::at0070], 	-- Finds only one or two former interests remain.
+											3|[local::at0071]  	-- Has virtually no interest in formerly pursued activities.
 										}
 									}
-									ELEMENT[at0017] occurrences matches {0..1} matches {	-- 14. Energinivå
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- 14. Energy/Fatiguability
 										value matches {
-											0|[local::at0072], 	-- Ingen förändring i energinivå.
-											1|[local::at0073], 	-- Blir trött fortare än vanligt.
-											2|[local::at0074], 	-- Måste anstränga sig väldigt mycket för att påbörja eller avsluta vardagsaktiviteter
-											3|[local::at0075]  	-- Klarar inte av att utföra de flesta av vardagsaktiviteter till följd av avsaknad av energi
+											0|[local::at0072], 	-- No change in usual level of energy.
+											1|[local::at0073], 	-- Tires more easily than usual.
+											2|[local::at0074], 	-- Makes significant personal effort to initiate or maintain usual daily activities.
+											3|[local::at0075]  	-- Unable to carry out most of usual daily activities due to lack of energy.
 										}
 									}
-									ELEMENT[at0018] occurrences matches {0..1} matches {	-- 15. Psykomotorisk hämning
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- 15. Psychomotor Slowing
 										value matches {
-											0|[local::at0076], 	-- Tänkar, talar och rör sig i samma hastighet som vanligt
-											1|[local::at0077], 	-- Har känt sig mer trögtänkt och att rösten låtit svag eller uttryckslös
-											2|[local::at0078], 	-- Tar flera sekunder att besvara frågor, känner av nedsatt tankeförmåga
-											3|[local::at0079]  	-- Klarar för det mesta inte av att besvara frågor utan kraftfull ansträngning
+											0|[local::at0076], 	-- Normal speed of thinking, gesturing, and speaking.
+											1|[local::at0077], 	-- Notes slowed thinking, and voice modulation is reduced.
+											2|[local::at0078], 	-- Takes several seconds to respond to most questions; reports slowed thinking.
+											3|[local::at0079]  	-- Is largely unresponsive to most questions without strong encouragement.
 										}
 									}
-									ELEMENT[at0019] occurrences matches {0..1} matches {	-- 16. Psykomotorisk agitation
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- 16. Psychomotor Agitation
 										value matches {
-											0|[local::at0080], 	-- Inga problem att organisera tankar och gester
-											1|[local::at0081], 	-- Rör sig rastlöst, vrider händer och byter ofta position 
-											2|[local::at0082], 	-- Har känsla av att vilja röra sig och känner sig rastlös
-											3|[local::at0083]  	-- Klarar inte av att sitta till och går fram och tillbaka med eller utan tillåtelse
+											0|[local::at0080], 	-- No increased speed or disorganization in thinking or gesturing.
+											1|[local::at0081], 	-- Fidgets, wrings hands, and shifts positions often.
+											2|[local::at0082], 	-- Describes impulse to move about and displays motor restlessness.
+											3|[local::at0083]  	-- Unable to stay seated; paces about with or without permission.
 										}
 									}
-									ELEMENT[at0084] occurrences matches {0..1} matches {	-- Resultat
+									ELEMENT[at0084] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..27|}
 											}
 										}
 									}
-									ELEMENT[at0085] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0085] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}

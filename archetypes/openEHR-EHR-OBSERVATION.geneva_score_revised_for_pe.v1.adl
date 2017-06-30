@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.geneva_score_revised_for_pe.v1
 
 concept
-	[at0000]	-- Geneva Score
+	[at0000]	-- Geneva score revised for pe
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,6 +17,7 @@ language
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-02-03">
 	>
@@ -77,75 +78,75 @@ Score 11-22: High risk (>60% risk of PE)">
 Validation
 
 Ref. 2: Ceriani E, Combescure C, Le Gal G, Nendaz M, Perneger T, Bounameaux H, Perrier A, Righini M. Clinical prediction rules for pulmonary embolism: a systematic review and meta-analysis. J Thromb Haemost. 2010 May;8(5):957-70. doi:10.1111/j.1538-7836.2010.03801.x. Epub 2010 Feb 2. Review. PubMed PMID: 20149072.">
-		["MD5-CAM-1.0.1"] = <"386B4062D9269CF3F25B4ED31C126A58">
+		["MD5-CAM-1.0.1"] = <"24E93A4A7160259F63B20F70AC7A4539">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Geneva Score
+	OBSERVATION[at0000] matches {	-- Geneva score revised for pe
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Ålder
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Age variable
 										value matches {
-											0|[local::at0014], 	-- Nej
-											1|[local::at0015]  	-- Ja
+											0|[local::at0014], 	-- No
+											1|[local::at0015]  	-- Yes
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Tidigare DVT eller lungemboli
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Previous DVT or PE
 										value matches {
-											0|[local::at0016], 	-- Nej
-											3|[local::at0017]  	-- Ja
+											0|[local::at0016], 	-- No
+											3|[local::at0017]  	-- Yes
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Kirurgi (i narkos)
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Surgery (under General)
 										value matches {
-											0|[local::at0018], 	-- Nej
-											2|[local::at0019]  	-- Ja
+											0|[local::at0018], 	-- No
+											2|[local::at0019]  	-- Yes
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Aktiv cancer
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Active malignant condition
 										value matches {
-											0|[local::at0020], 	-- Nej
-											2|[local::at0021]  	-- Ja
+											0|[local::at0020], 	-- No
+											2|[local::at0021]  	-- Yes
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Unilateral smärta nedre extremitet
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Unilateral lower limb pain
 										value matches {
-											0|[local::at0022], 	-- Nej
-											3|[local::at0023]  	-- Ja
+											0|[local::at0022], 	-- No
+											3|[local::at0023]  	-- Yes
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Hemoptys
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Hemoptysis
 										value matches {
-											0|[local::at0024], 	-- Nej
-											2|[local::at0025]  	-- Ja
+											0|[local::at0024], 	-- No
+											2|[local::at0025]  	-- Yes
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Hjärtfrekvens
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Heart rate variable
 										value matches {
 											0|[local::at0026], 	-- <75
 											3|[local::at0027], 	-- 75-94
 											5|[local::at0028]  	-- ≥ 95
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Palpationssmärta extremitet
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Pain on limb palpation
 										value matches {
-											0|[local::at0029], 	-- Nej
-											4|[local::at0030]  	-- Ja
+											0|[local::at0029], 	-- No
+											4|[local::at0030]  	-- Yes
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Resultat
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..22|}
 											}
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Comments
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -349,71 +350,71 @@ ontology
 				>
 				["at0014"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0015"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0016"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0017"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0018"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0019"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0020"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0021"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0022"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0023"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0024"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0025"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0026"] = <
 					text = <"<75">
-					description = <"">
+					description = <"*">
 				>
 				["at0027"] = <
 					text = <"75-94">
-					description = <"">
+					description = <"*">
 				>
 				["at0028"] = <
 					text = <"≥ 95">
-					description = <"">
+					description = <"*">
 				>
 				["at0029"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0030"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 			>
 		>

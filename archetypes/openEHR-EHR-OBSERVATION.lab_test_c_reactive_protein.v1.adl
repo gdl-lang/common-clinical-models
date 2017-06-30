@@ -2,7 +2,7 @@
 	openEHR-EHR-OBSERVATION.lab_test_c_reactive_protein.v1
 
 concept
-	[at0000]	-- P-CRP (C-reaktivt protein)
+	[at0000]	-- Lab test C-reactive protein
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,20 +17,11 @@ language
 description
 	original_author = <
 		["name"] = <"Dennis Forslund">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2016-09-22">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To record lab test result of C-reactive protein. ">
-			use = <"Use to record lab test result of C-reactive protein. 
-
-C-reactive protein (CRP) is an acute-phase protein synthesized in the liver. Blood plasma levels increases in response to inflammation, making it a valuable clinical marker.  ">
-			keywords = <"CRP", "C-reactive protein", "Lab">
-			misuse = <"Not intended to record information regarding other laboratory tests. ">
-			copyright = <"Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att registrera provsvar för C-reaktivt protein (CRP).">
@@ -39,6 +30,16 @@ C-reactive protein (CRP) is an acute-phase protein synthesized in the liver. Blo
 C-reaktivt protein (CRP) är ett akut-fasprotein som tillverkas i levern. Plasmanivåerna ökar vid inflammation, vilket gör CRP till en värdefull klinisk markör.">
 			keywords = <"CRP", "C-reaktivt protein", "Lab">
 			misuse = <"Ej avsedd för att registrera andra provsvar.">
+			copyright = <"Cambio Healthcare Systems">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record lab test result of C-reactive protein. ">
+			use = <"Use to record lab test result of C-reactive protein. 
+
+C-reactive protein (CRP) is an acute-phase protein synthesized in the liver. Blood plasma levels increases in response to inflammation, making it a valuable clinical marker.  ">
+			keywords = <"CRP", "C-reactive protein", "Lab">
+			misuse = <"Not intended to record information regarding other laboratory tests. ">
 			copyright = <"Cambio Healthcare Systems">
 		>
 	>
@@ -52,20 +53,20 @@ Kushner I, Volanakis JE, Gewurz H. C-Reactive Protein and the Plasma Protein Res
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- P-CRP (C-reaktivt protein)
+	OBSERVATION[at0000] matches {	-- Lab test C-reactive protein
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- **(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *
 						data matches {
-							ITEM_TREE[at0003] matches {	-- **(en)
+							ITEM_TREE[at0003] matches {	-- *
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Benämning av prov
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Test name
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Resultat
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Result
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>

@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.timi_risk_for_stemi.v1
 
 concept
-	[at0000]	-- TIMI-Score för ST-höjningsinfarkt
+	[at0000]	-- Timi risk for stemi
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,6 +17,7 @@ language
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2016-12-09">
 	>
@@ -70,61 +71,61 @@ Score ranges from 0 to a total score of 14 but anything above 8 would be conside
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- TIMI-Score för ST-höjningsinfarkt
+	OBSERVATION[at0000] matches {	-- Timi risk for stemi
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- DM, hypertoni eller angina pectoris?
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- DM/HyperT/Angina history?
 										value matches {
-											0|[local::at0005], 	-- Nej
-											1|[local::at0006]  	-- Ja
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Anterior ST-höjning eller LBBB?
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Anterior ST elevation or LBBB?
 										value matches {
-											0|[local::at0008], 	-- Nej
-											1|[local::at0009]  	-- Ja
+											0|[local::at0008], 	-- No
+											1|[local::at0009]  	-- Yes
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Initierad behandling >4 timmar?
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Time to treatment > 4hrs?
 										value matches {
-											0|[local::at0011], 	-- Nej
-											1|[local::at0012]  	-- Ja
+											0|[local::at0011], 	-- No
+											1|[local::at0012]  	-- Yes
 										}
 									}
-									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Ålder
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Age category
 										value matches {
-											0|[local::at0019], 	-- Ålder < 65
-											2|[local::at0020], 	-- Ålder 65-74
-											3|[local::at0021]  	-- Ålder >= 75
+											0|[local::at0019], 	-- Age < 65
+											2|[local::at0020], 	-- Age between 65-74
+											3|[local::at0021]  	-- Age >= 75
 										}
 									}
-									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Vikt under 67kg?
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Weight below 67kg?
 										value matches {
-											0|[local::at0016], 	-- Nej
-											1|[local::at0017]  	-- Ja
+											0|[local::at0016], 	-- No
+											1|[local::at0017]  	-- Yes
 										}
 									}
-									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Killip-klass II-IV?
+									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Killip Class II-IV?
 										value matches {
-											0|[local::at0023], 	-- Nej
-											2|[local::at0024]  	-- Ja
+											0|[local::at0023], 	-- No
+											2|[local::at0024]  	-- Yes
 										}
 									}
-									ELEMENT[at0025] occurrences matches {0..1} matches {	-- Systoliskt blodtryck < 100mmHg?
+									ELEMENT[at0025] occurrences matches {0..1} matches {	-- Sys BP < 100mmhg?
 										value matches {
-											0|[local::at0027], 	-- Nej
-											3|[local::at0028]  	-- Ja
+											0|[local::at0027], 	-- No
+											3|[local::at0028]  	-- Yes
 										}
 									}
-									ELEMENT[at0026] occurrences matches {0..1} matches {	-- Hjärtfrekvens > 100/min?
+									ELEMENT[at0026] occurrences matches {0..1} matches {	-- HR > 100 bpm?
 										value matches {
-											0|[local::at0029], 	-- Nej
-											2|[local::at0030]  	-- Ja
+											0|[local::at0029], 	-- No
+											2|[local::at0030]  	-- Yes
 										}
 									}
 									ELEMENT[at0014] occurrences matches {0..1} matches {	-- TIMI for STEMI score
@@ -134,7 +135,7 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}

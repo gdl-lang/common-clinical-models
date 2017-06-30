@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.pulmonary_embolism_severity_index.v1
 
 concept
-	[at0000]	-- Pulmonary Embolism Severity Index (PESI)
+	[at0000]	-- Pulmonary embolism severity index (PESI)
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,7 +17,7 @@ language
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
-		["email"] = <"info@cambio.se">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-02-12">
 	>
@@ -76,19 +76,19 @@ Data for risk level and 30-day mortality is stored in a separate evaluation arch
 Donzé J, Le Gal G, Fine MJ, Roy PM, Sanchez O, Verschuren F, Cornuz J, Meyer G, Perrier A, Righini M, Aujesky D. Prospective validation of the Pulmonary Embolism Severity Index-A clinical prognostic model for pulmonary embolism. Thrombosis and haemostasis. 2008;100(5):943-8.
 
 Fraga M, Taffé P, Méan M, Hugli O, Witzig S, Waeber G, Aujesky D. The inter-rater reliability of the Pulmonary Embolism Severity Index. Thrombosis & Haemostasis. 2010 Dec 10;104(6):1258.">
-		["MD5-CAM-1.0.1"] = <"9678578A04ED3D05D632B02CEED3AAA0">
+		["MD5-CAM-1.0.1"] = <"9B7DA05368D8DCC9E75CD04E7E8B7789">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Pulmonary Embolism Severity Index (PESI)
+	OBSERVATION[at0000] matches {	-- Pulmonary embolism severity index (PESI)
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Ålder
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Age score
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::128]>
@@ -100,72 +100,72 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Manligt kön
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Male sex
 										value matches {
-											0|[local::at0015], 	-- Nej
-											10|[local::at0016]  	-- Ja
+											0|[local::at0015], 	-- Absent
+											10|[local::at0016]  	-- Present
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Cancer (komorbiditet)
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Cancer (comorbidity)
 										value matches {
-											0|[local::at0017], 	-- Nej
-											30|[local::at0018]  	-- Ja
+											0|[local::at0017], 	-- Absent
+											30|[local::at0018]  	-- Present
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Hjärtsvikt (komorbiditet)
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Heart failure (comorbidity)
 										value matches {
-											0|[local::at0019], 	-- Nej
-											10|[local::at0020]  	-- Ja
+											0|[local::at0019], 	-- Absent
+											10|[local::at0020]  	-- Present
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Kronisk lungsjukdom (komorbiditet)
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Chronic lung disease (comorbidity)
 										value matches {
-											0|[local::at0021], 	-- Nej
-											10|[local::at0022]  	-- Ja
+											0|[local::at0021], 	-- Absent
+											10|[local::at0022]  	-- Present
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Puls ≥ 110/min
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Pulse ≥ 110/min
 										value matches {
-											0|[local::at0023], 	-- Nej
-											20|[local::at0024]  	-- Ja
+											0|[local::at0023], 	-- Absent
+											20|[local::at0024]  	-- Present
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Systoliskt blodtryck < 100 mmHg
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Systolic blood pressure < 100 mmHg
 										value matches {
-											0|[local::at0025], 	-- Nej
-											30|[local::at0026]  	-- Ja
+											0|[local::at0025], 	-- Absent
+											30|[local::at0026]  	-- Present
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Andningsfrekvens ≥ 30/min
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Respiratory rate ≥ 30/min
 										value matches {
-											0|[local::at0027], 	-- Nej
-											20|[local::at0028]  	-- Ja
+											0|[local::at0027], 	-- Absent
+											20|[local::at0028]  	-- Present
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Temperatur < 36°C
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Temperature < 36°C
 										value matches {
-											0|[local::at0029], 	-- Nej
-											20|[local::at0030]  	-- Ja
+											0|[local::at0029], 	-- Absent
+											20|[local::at0030]  	-- Present
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Kognitiv påverkan
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Altered mental status
 										value matches {
-											0|[local::at0031], 	-- Nej
-											60|[local::at0032]  	-- Ja
+											0|[local::at0031], 	-- Absent
+											60|[local::at0032]  	-- Present
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Arteriell syresaturation < 90%
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Arterial oxygen saturation < 90%
 										value matches {
-											0|[local::at0033], 	-- Nej
-											20|[local::at0034]  	-- Ja
+											0|[local::at0033], 	-- Absent
+											20|[local::at0034]  	-- Present
 										}
 									}
-									ELEMENT[at0035] occurrences matches {0..1} matches {	-- Total poäng
+									ELEMENT[at0035] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											DV_COUNT matches {*}
 										}
 									}
-									ELEMENT[at0036] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0036] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -397,83 +397,83 @@ ontology
 				>
 				["at0015"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0016"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0017"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0018"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0019"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0020"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0021"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0022"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0023"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0024"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0025"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0026"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0027"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0028"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0029"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0030"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0031"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0032"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0033"] = <
 					text = <"Nej">
-					description = <"">
+					description = <"*">
 				>
 				["at0034"] = <
 					text = <"Ja">
-					description = <"">
+					description = <"*">
 				>
 				["at0035"] = <
 					text = <"Total poäng">

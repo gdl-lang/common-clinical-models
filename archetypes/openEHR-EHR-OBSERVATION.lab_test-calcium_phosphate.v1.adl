@@ -2,7 +2,7 @@
 	openEHR-EHR-OBSERVATION.lab_test-calcium_phosphate.v1
 
 concept
-	[at0000]	-- Kalcium och fosfat
+	[at0000]	-- Calcium and phosphate
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -38,7 +38,7 @@ language
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
-		["email"] = <"info@cambio.se">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2016-10-06">
 	>
@@ -104,40 +104,40 @@ Bansal VK. Serum Inorganic Phosphorus. In: Walker HK, Hall WD, Hurst JW, editors
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Kalcium och fosfat
+	OBSERVATION[at0000] matches {	-- Calcium and phosphate
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..*} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Testnamn
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Test name
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0077] occurrences matches {0..1} matches {	-- Diagnostisk metod
+									ELEMENT[at0077] occurrences matches {0..1} matches {	-- Diagnostic service
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0073] occurrences matches {0..1} matches {	-- Teststatus
+									ELEMENT[at0073] occurrences matches {0..1} matches {	-- Test status
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0037, 	-- Delresultat
-													at0038, 	-- Slutgiltigt
-													at0039, 	-- Kompletterande
-													at0040, 	-- Korrigerat
-													at0074, 	-- Avbrutet
-													at0079]	-- Aldrig utfört
+													at0037, 	-- Interim
+													at0038, 	-- Final
+													at0039, 	-- Supplementary
+													at0040, 	-- Corrected (amended)
+													at0074, 	-- Aborted
+													at0079]	-- Never performed
 												}
 											}
 										}
 									}
-									ELEMENT[at0078] occurrences matches {0..1} matches {	-- Kalcium
+									ELEMENT[at0078] occurrences matches {0..1} matches {	-- Calcium
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -154,7 +154,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0092] occurrences matches {0..1} matches {	-- Korrigerat kalcium
+									ELEMENT[at0092] occurrences matches {0..1} matches {	-- Corrected calcium
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -171,7 +171,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0091] occurrences matches {0..1} matches {	-- Fosfat
+									ELEMENT[at0091] occurrences matches {0..1} matches {	-- Phosphate
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -188,24 +188,24 @@ definition
 											>
 										}
 									}
-									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- Kommentar om provresultatet
+									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- Per-result annotation
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.lab_result_annotation(-[a-zA-Z0-9_]+)*\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
-									ELEMENT[at0057] occurrences matches {0..1} matches {	-- Övergripande tolkning
+									ELEMENT[at0057] occurrences matches {0..1} matches {	-- Overall interpretation
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- Provdetaljer
+									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- Specimen detail
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.specimen\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
-									ELEMENT[at0010] occurrences matches {0..*} matches {	-- Multimedia
+									ELEMENT[at0010] occurrences matches {0..*} matches {	-- Multimedia representation
 										value matches {
 											DV_MULTIMEDIA matches {
 												media_type matches {[openEHR::]}
@@ -220,34 +220,34 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0004] matches {	-- *Tree(en)
+			ITEM_TREE[at0004] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0062] occurrences matches {0..1} matches {	-- *Requestor order identifier(en)
+					ELEMENT[at0062] occurrences matches {0..1} matches {	-- Requestor order identifier
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					allow_archetype CLUSTER[at0090] occurrences matches {0..*} matches {	-- *Requestor(en)
+					allow_archetype CLUSTER[at0090] occurrences matches {0..*} matches {	-- Requestor
 						include
 							archetype_id/value matches {/.*/}
 					}
-					ELEMENT[at0063] occurrences matches {0..1} matches {	-- *Receiver order Identifier(en)
+					ELEMENT[at0063] occurrences matches {0..1} matches {	-- Receiver order Identifier
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- *Receiving laboratory(en)
+					allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- Receiving laboratory
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.organisation\.v1/}
 						exclude
 							archetype_id/value matches {/.*/}
 					}
-					ELEMENT[at0068] occurrences matches {0..1} matches {	-- *Laboratory test result identifier(en)
+					ELEMENT[at0068] occurrences matches {0..1} matches {	-- Laboratory test result identifier
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					ELEMENT[at0075] occurrences matches {0..1} matches {	-- *Datetime result issued(en)
+					ELEMENT[at0075] occurrences matches {0..1} matches {	-- Datetime result issued
 						value matches {
 							DV_DATE_TIME matches {*}
 						}

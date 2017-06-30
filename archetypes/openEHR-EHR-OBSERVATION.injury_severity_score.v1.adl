@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.injury_severity_score.v1
 
 concept
-	[at0000]	-- Injury Severity Score
+	[at0000]	-- Injury severity score
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,22 +17,11 @@ language
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
-		["email"] = <"info@cambio.se">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2016-10-02">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"Records the Injury Severity Score which describes severity of injury in persons with multiple trauma.">
-			use = <"Use to record the injury severity score (ISS) which is the sum of the squares of the highest abbreviated injury scale (AIS) score in each of the three most severely injured body regions. Injury severity score (ISS) summarizes injury severity and correlates well with survival following multiple injury. It also demonstrates the effects of additional injuries on mortality.
-
-ISS = A*A + B*B + C*C, where A, B and C are the AIS scores assigned to the most severe injuries in the three most severely injured body regions. Possible AIS scores range from 0 = no injury to 5 = critical injury, while possible ISS ranges from 0 - 75. An unsurvivable injury (AIS score of 6) in any body region results in the individual automatically assigned the maximum ISS of 75, as further medical care is thought to be futile in such cases.
-More detail about scoring of the AIS is provided in the openEHR-EHR-OBSERVATION.abbreviated_injury_scale.v1 archetype.">
-			keywords = <"injury severity", "ISS", "anatomical scoring system", "multiple injury assessment", "AIS score", "NISS">
-			misuse = <"Do not use for triage.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att registrera resultat genererade i enlighet med Injury Severity Score, vilken beskriver svårighetsgrad vid multipla skador.">
@@ -43,6 +32,17 @@ ISS = A*A + B*B + C*C, där samtliga faktorer hämtas från Abbreviated Injury S
 En AIS-gradering om 6 genererar automatiskt en ISS-poäng om 75p, vilket innebär att skadorna är icke förenliga med liv. Mer information kring AIS återfinns i separat arketyp.">
 			keywords = <"ISS", "injury severity score", "injury severity", "AIS", "trauma">
 			misuse = <"Ej avsedd att användas för triage. ">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Records the Injury Severity Score which describes severity of injury in persons with multiple trauma.">
+			use = <"Use to record the injury severity score (ISS) which is the sum of the squares of the highest abbreviated injury scale (AIS) score in each of the three most severely injured body regions. Injury severity score (ISS) summarizes injury severity and correlates well with survival following multiple injury. It also demonstrates the effects of additional injuries on mortality.
+
+ISS = A*A + B*B + C*C, where A, B and C are the AIS scores assigned to the most severe injuries in the three most severely injured body regions. Possible AIS scores range from 0 = no injury to 5 = critical injury, while possible ISS ranges from 0 - 75. An unsurvivable injury (AIS score of 6) in any body region results in the individual automatically assigned the maximum ISS of 75, as further medical care is thought to be futile in such cases.
+More detail about scoring of the AIS is provided in the openEHR-EHR-OBSERVATION.abbreviated_injury_scale.v1 archetype.">
+			keywords = <"injury severity", "ISS", "anatomical scoring system", "multiple injury assessment", "AIS score", "NISS">
+			misuse = <"Do not use for triage.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
 	>
@@ -58,55 +58,55 @@ Baker SP, o'Neill B, Haddon Jr W, Long WB. The injury severity score: a method f
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Injury Severity Score
+	OBSERVATION[at0000] matches {	-- Injury severity score
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- AIS region - mest omfattande skada
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- AIS score of most severely injured region
 										value matches {
-											0|[local::at0009], 	-- Ingen skada
-											1|[local::at0010], 	-- Lindrig skada
-											2|[local::at0011], 	-- Måttlig skada
-											3|[local::at0012], 	-- Omfattande skada
-											4|[local::at0013], 	-- Svår skada
-											5|[local::at0014], 	-- Kritisk skada
-											6|[local::at0015]  	-- Skada ej förenlig med överlevnad
+											0|[local::at0009], 	-- No injury
+											1|[local::at0010], 	-- Minor injury
+											2|[local::at0011], 	-- Moderate injury
+											3|[local::at0012], 	-- Serious injury
+											4|[local::at0013], 	-- Severe injury
+											5|[local::at0014], 	-- Critical injury
+											6|[local::at0015]  	-- Unsurvivable injury
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- AIS region - näst mest omfattande skada
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- AIS score of 2nd most severely injured region
 										value matches {
-											0|[local::at0016], 	-- Ingen skada
-											1|[local::at0017], 	-- Lindrig skada
-											2|[local::at0018], 	-- Måttlig skada
-											3|[local::at0019], 	-- Omfattande skada
-											4|[local::at0020], 	-- Svår skada
-											5|[local::at0021], 	-- Kritisk skada
-											6|[local::at0022]  	-- Skada ej förenlig med överlevnad
+											0|[local::at0016], 	-- No injury
+											1|[local::at0017], 	-- Mild injury
+											2|[local::at0018], 	-- Moderate injury
+											3|[local::at0019], 	-- Serious injury
+											4|[local::at0020], 	-- Severe injury
+											5|[local::at0021], 	-- Critical injury
+											6|[local::at0022]  	-- Unsurvivable injury
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- AIS region - tredje mest omfattande skada
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- AIS score of 3rd most severely injured region
 										value matches {
-											0|[local::at0023], 	-- Ingen skada
-											1|[local::at0024], 	-- Lindrig skada
-											2|[local::at0025], 	-- Måttlig skada
-											3|[local::at0026], 	-- Omfattande skada
-											4|[local::at0027], 	-- Svår skada
-											5|[local::at0028], 	-- Kritisk skada
-											6|[local::at0029]  	-- Skada ej förenlig med överlevnad
+											0|[local::at0023], 	-- No injury
+											1|[local::at0024], 	-- Mild injury
+											2|[local::at0025], 	-- Moderate injury
+											3|[local::at0026], 	-- Serious injury
+											4|[local::at0027], 	-- Severe injury
+											5|[local::at0028], 	-- Critical injury
+											6|[local::at0029]  	-- Unsurvivable injury
 										}
 									}
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Injury Severity Score
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Injury severity score
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..75|}
 											}
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}

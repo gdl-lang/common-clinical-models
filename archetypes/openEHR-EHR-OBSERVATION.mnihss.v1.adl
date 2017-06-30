@@ -17,10 +17,37 @@ language
 description
 	original_author = <
 		["name"] = <"Dennis Forslund">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-03-17">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att skatta och utvärdera svårighetsgrad av neurologisk påverkan vid stroke.">
+			use = <"Använd för att skatta och utvärdera svårighetsgrad av neurologisk påverkan vid stroke.
+
+Modified National Institutes of Health Stroke Scale (mNIHSS) utvecklades från ursprungliga versionen (NIHSS) i syfte att skapa ett mer effektivt verktyg genom att utelämna faktorerna med låg \"interrater reliability\". Den nya versionen består av elva parametrar erhållna via klinisk neurologisk undersökning:
+
+- 1B: Orientering (0-2p)
+- 1C: Förståelse (0-2p)
+- 2: Ögonmotorik (0-2p)
+- 3: Synfält (0-3p)
+- 5A: Pares vänster arm (0-4p)
+- 5B: Pares höger arm (0-4p)
+- 6A: Pares vänster ben (0-4p)
+- 6B: Pares höger ben (0-4p)
+- 8: Sensorik (0-1p)
+- 9: Språk (0-3p)
+- 11: Sensoriskt neglekt (0-2p)
+
+Maximal poäng uppgår till 31p. Med högre mNIHSS-poäng följer en ökande risk för svår neurologisk påverkan.">
+			keywords = <"NIHSS", "mNIHSS", "stroke", "neurologi">
+			misuse = <"Trots att data indikerar att mNIHSS uppvisar högre \"interrater reliability\", är användandet inte alls lika omfattande som det av ursprungliga NIHSS.
+
+Bortsett från \"9 - Språk\" ska samtliga parametrar bedömas på initial respons.">
+			copyright = <"Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To measure and evaluate the neurological severity of a stroke. ">
@@ -48,32 +75,6 @@ The maximum score is 31p. Increasing mNIHSS scores are consistent with severe ne
 Aside from \"9 - Language\", all parameters should be rated by the first response. ">
 			copyright = <"Cambio Healthcare Systems">
 		>
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"Att skatta och utvärdera svårighetsgrad av neurologisk påverkan vid stroke.">
-			use = <"Använd för att skatta och utvärdera svårighetsgrad av neurologisk påverkan vid stroke.
-
-Modified National Institutes of Health Stroke Scale (mNIHSS) utvecklades från ursprungliga versionen (NIHSS) i syfte att skapa ett mer effektivt verktyg genom att utelämna faktorerna med låg \"interrater reliability\". Den nya versionen består av elva parametrar erhållna via klinisk neurologisk undersökning:
-
-- 1B: Orientering (0-2p)
-- 1C: Förståelse (0-2p)
-- 2: Ögonmotorik (0-2p)
-- 3: Synfält (0-3p)
-- 5A: Pares vänster arm (0-4p)
-- 5B: Pares höger arm (0-4p)
-- 6A: Pares vänster ben (0-4p)
-- 6B: Pares höger ben (0-4p)
-- 8: Sensorik (0-1p)
-- 9: Språk (0-3p)
-- 11: Sensoriskt neglekt (0-2p)
-
-Maximal poäng uppgår till 31p. Med högre mNIHSS-poäng följer en ökande risk för svår neurologisk påverkan.">
-			keywords = <"NIHSS", "mNIHSS", "stroke", "neurologi">
-			misuse = <"Trots att data indikerar att mNIHSS uppvisar högre \"interrater reliability\", är användandet inte alls lika omfattande som det av ursprungliga NIHSS.
-
-Bortsett från \"9 - Språk\" ska samtliga parametrar bedömas på initial respons.">
-			copyright = <"Cambio Healthcare Systems">
-		>
 	>
 	lifecycle_state = <"0">
 	other_contributors = <>
@@ -89,99 +90,99 @@ BC Meyer, PD Lyden. The modified National Institutes of Health Stroke Scale: its
 definition
 	OBSERVATION[at0000] matches {	-- mNIHSS
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- 1B - Orientering
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- 1B - Level of consciousness questions
 										value matches {
-											0|[local::at0020], 	-- Besvarar båda korrekt
-											1|[local::at0021], 	-- Besvarar en fråga korrekt
-											2|[local::at0022]  	-- Besvarar ingen fråga korrekt
+											0|[local::at0020], 	-- Answers both correctly
+											1|[local::at0021], 	-- Answers one correctly
+											2|[local::at0022]  	-- Answers neither correctly
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- 1C - Förståelse
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- 1C - Level of consciousness commands
 										value matches {
-											0|[local::at0023], 	-- Utför båda uppgifterna
-											1|[local::at0024], 	-- Utför en uppgift
-											2|[local::at0025]  	-- Utför ingen av uppgifterna
+											0|[local::at0023], 	-- Performs both tasks correctly
+											1|[local::at0024], 	-- Performs one task correctly
+											2|[local::at0025]  	-- Performs neither task
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- 2 - Ögonmotorik
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- 2 - Horizontal eye movement
 										value matches {
-											0|[local::at0026], 	-- Normalt
-											1|[local::at0027], 	-- Partiell blickpares
-											2|[local::at0028]  	-- Komplett blickpares
+											0|[local::at0026], 	-- Normal
+											1|[local::at0027], 	-- Partial gaze palsy
+											2|[local::at0028]  	-- Total gaze palsy
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- 3 - Synfält
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- 3 - Visual field
 										value matches {
-											0|[local::at0029], 	-- Inga synfältsbortfall
-											1|[local::at0030], 	-- Partiell hemianopsi
-											2|[local::at0031], 	-- Komplett hemianopsi
-											3|[local::at0032]  	-- Bilaterala synfältsdefekter
+											0|[local::at0029], 	-- No visual loss
+											1|[local::at0030], 	-- Partial hemianopia
+											2|[local::at0031], 	-- Complete hemianopia
+											3|[local::at0032]  	-- Bilateral hemianopia
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- 5A - Pares vänster arm
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- 5A - Left arm motor drift
 										value matches {
-											0|[local::at0033], 	-- Håller kvar armen minst 10s
-											1|[local::at0034], 	-- Armen sjunker inom 10s
-											2|[local::at0035], 	-- Armen faller till sängen inom 10s men patienten håller emot
-											3|[local::at0036], 	-- Armen faller omedelbart utan motstånd
-											4|[local::at0037]  	-- Ingen rörlighet
+											0|[local::at0033], 	-- No drift
+											1|[local::at0034], 	-- Drift before 10 seconds
+											2|[local::at0035], 	-- Falls before 10 seconds
+											3|[local::at0036], 	-- No effort against gravity
+											4|[local::at0037]  	-- No movement
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- 5B - Pares höger arm
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- 5B - Right arm motor drift
 										value matches {
-											0|[local::at0038], 	-- Håller kvar armen minst 10s
-											1|[local::at0039], 	-- Armen sjunker inom 10s
-											2|[local::at0040], 	-- Armen faller till sängen inom 10s men patienten håller emot
-											3|[local::at0041], 	-- Armen faller omedelbart utan motstånd
-											4|[local::at0042]  	-- Ingen rörlighet
+											0|[local::at0038], 	-- No drift
+											1|[local::at0039], 	-- Drift before 10 seconds
+											2|[local::at0040], 	-- Falls before 10 seconds
+											3|[local::at0041], 	-- No effort against gravity
+											4|[local::at0042]  	-- No movement
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- 6A - Pares vänster ben
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- 6A - Left leg motor drift
 										value matches {
-											0|[local::at0043], 	-- Håller kvar benet minst 5s
-											1|[local::at0044], 	-- Benet sjunker inom 5s
-											2|[local::at0045], 	-- Benet faller till sängen inom 5s men patienten håller emot
-											3|[local::at0046], 	-- Benet faller omedelbart utan motstånd
-											4|[local::at0061]  	-- Ingen rörlighet
+											0|[local::at0043], 	-- No drift
+											1|[local::at0044], 	-- Drift before 5 seconds
+											2|[local::at0045], 	-- Falls before 5 seconds
+											3|[local::at0046], 	-- No effort against gravity
+											4|[local::at0061]  	-- No movement
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- 6B - Pares höger ben
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- 6B - Right leg motor drift
 										value matches {
-											0|[local::at0047], 	-- Håller kvar benet minst 5s
-											1|[local::at0048], 	-- Benet sjunker inom 5s
-											2|[local::at0049], 	-- Benet faller till sängen inom 5s men patienten håller emot
-											3|[local::at0050], 	-- Benet faller omedelbart utan motstånd
-											4|[local::at0051]  	-- Ingen rörlighet
+											0|[local::at0047], 	-- No drift
+											1|[local::at0048], 	-- Drift before 5 seconds
+											2|[local::at0049], 	-- Falls before 5 seconds
+											3|[local::at0050], 	-- No effort against gravity
+											4|[local::at0051]  	-- No movement
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- 8 - Sensibilitet
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- 8 - Sensory
 										value matches {
-											0|[local::at0052], 	-- Normalt - inga känselbortfall
-											1|[local::at0053]  	-- Avvikande - känselnedsättning
+											0|[local::at0052], 	-- Normal - no sensory loss
+											1|[local::at0053]  	-- Abnormal - sensory loss
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- 9 - Språk
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- 9 - Language
 										value matches {
-											0|[local::at0054], 	-- Normalt - ingen afasi
-											1|[local::at0055], 	-- Lätt till måttlig afasi
-											2|[local::at0056], 	-- Svår afasi
-											3|[local::at0057]  	-- Stum eller global afasi
+											0|[local::at0054], 	-- Normal - no aphasia
+											1|[local::at0055], 	-- Mild aphasia
+											2|[local::at0056], 	-- Severe aphasia
+											3|[local::at0057]  	-- Mute or global aphasia
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- 11 - Sensoriskt neglekt
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- 11 - Extinction/Inattention
 										value matches {
-											0|[local::at0058], 	-- Normalt - ingen avvikelse
-											1|[local::at0059], 	-- Lätt till måttlig avvikelse
-											2|[local::at0060]  	-- Uttalad avvikelse
+											0|[local::at0058], 	-- Normal
+											1|[local::at0059], 	-- Mild
+											2|[local::at0060]  	-- Severe
 										}
 									}
-									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Total poäng
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											DV_COUNT matches {*}
 										}

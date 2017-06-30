@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.modified_norton_scale.v1
 
 concept
-	[at0000]	-- Modifierad Nortonskala
+	[at0000]	-- Modified norton scale
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,19 +17,11 @@ language
 description
 	original_author = <
 		["name"] = <"Konstantinos Kalliamvakos">
-		["email"] = <"Konstantinos.Kalliamvakos@cambio.se">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2015-01-15">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"The Norton scale was devised in 1960 as an additive scale to facilitate the prediction and prevention of pressure sore development.">
-			use = <"">
-			keywords = <"Modified Norton Scale", "mNs", "ulcer", "pressure", "wound", "sore", "Senior Alert">
-			misuse = <"">
-			copyright = <"">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Ett specialinstrument för riskbedömning för att utvärdera om en person löper risk att utveckla trycksår.">
@@ -38,80 +30,88 @@ description
 			misuse = <"*">
 			copyright = <"*">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The Norton scale was devised in 1960 as an additive scale to facilitate the prediction and prevention of pressure sore development.">
+			use = <"">
+			keywords = <"Modified Norton Scale", "mNs", "ulcer", "pressure", "wound", "sore", "Senior Alert">
+			misuse = <"">
+			copyright = <"">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"F57EA0138D791BB4BAC9A2F65E79C397">
 		["references"] = <"Ek AC, Unosson M, Bjurulf P. The modified Norton scale and the nutritional state. Scandinavian Journal of Caring Sciences. 1989 Dec 1;3(4):183-7.">
+		["MD5-CAM-1.0.1"] = <"F57EA0138D791BB4BAC9A2F65E79C397">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Modifierad Nortonskala
+	OBSERVATION[at0000] matches {	-- Modified norton scale
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Träd
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Psykisk status
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Mental condition
 										value matches {
-											1|[local::at0005], 	-- Ej kontaktbar
-											2|[local::at0006], 	-- Svarar ej adekvat på tilltal
-											3|[local::at0007], 	-- Stundtals förvirrad
-											4|[local::at0008]  	-- Helt orienterad till tid och rum
+											1|[local::at0005], 	-- No contact
+											2|[local::at0006], 	-- Cannot answer adequately
+											3|[local::at0007], 	-- Occasionaly confused
+											4|[local::at0008]  	-- Fully oriented
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Fysisk status
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Physical activity
 										value matches {
-											1|[local::at0010], 	-- Sängliggande
-											2|[local::at0011], 	-- Rullstolsburen (hela dagen)
-											3|[local::at0012], 	-- Går med hjälp av annan person
-											4|[local::at0013]  	-- Går själv med eller utan hjälpmedel
+											1|[local::at0010], 	-- Bedridden
+											2|[local::at0011], 	-- Chair bound
+											3|[local::at0012], 	-- Walks with help
+											4|[local::at0013]  	-- Ambulant
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Rörelseförmåga
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Mobility
 										value matches {
-											1|[local::at0015], 	-- Orörlig
-											2|[local::at0016], 	-- Mycket begränsad
-											3|[local::at0017], 	-- Något begränsad
-											4|[local::at0018]  	-- Full rörlighet
+											1|[local::at0015], 	-- Immobile
+											2|[local::at0016], 	-- Very limited
+											3|[local::at0017], 	-- Slightly limited
+											4|[local::at0018]  	-- Full
 										}
 									}
-									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Födointag
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Food intake
 										value matches {
-											1|[local::at0020], 	-- Mindre än halv portion
-											2|[local::at0021], 	-- Halv portion
-											3|[local::at0022], 	-- 3/4 portion
-											4|[local::at0023]  	-- Normal portion
+											1|[local::at0020], 	-- < 1/2 portion
+											2|[local::at0021], 	-- 1/2 portion and/or equivalent
+											3|[local::at0022], 	-- 3/4 portion and/or equivalent
+											4|[local::at0023]  	-- 1 portion and/or equivalent
 										}
 									}
-									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Vätskeintag
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Fluid intake
 										value matches {
-											1|[local::at0025], 	-- Mindre än 500 ml/dygn
-											2|[local::at0026], 	-- 500-700 ml/dygn
-											3|[local::at0027], 	-- 700-1000 ml/dygn
-											4|[local::at0028]  	-- Mer än 1000 ml/dygn
+											1|[local::at0025], 	-- < 500 ml/24hr
+											2|[local::at0026], 	-- 500-700 ml/24hr
+											3|[local::at0027], 	-- 700 - 1000 ml/24hr
+											4|[local::at0028]  	-- > 1000 ml/24hr
 										}
 									}
-									ELEMENT[at0029] occurrences matches {0..1} matches {	-- Inkontinens
+									ELEMENT[at0029] occurrences matches {0..1} matches {	-- Incontinence
 										value matches {
-											1|[local::at0030], 	-- Urin- och tarminkontinent
-											2|[local::at0031], 	-- Urin- eller tarminkontinent (KAD)
-											3|[local::at0032], 	-- Tillfälligt (annars vanligen kontinent)
-											4|[local::at0033]  	-- Nej
+											1|[local::at0030], 	-- Urine and feces
+											2|[local::at0031], 	-- Usually urine (catheter)
+											3|[local::at0032], 	-- Occasional
+											4|[local::at0033]  	-- None
 										}
 									}
-									ELEMENT[at0034] occurrences matches {0..1} matches {	-- Allmäntillstånd
+									ELEMENT[at0034] occurrences matches {0..1} matches {	-- Physical condition
 										value matches {
-											1|[local::at0035], 	-- Mycket dåligt
-											2|[local::at0036], 	-- Dåligt
-											3|[local::at0037], 	-- Ganska gott
-											4|[local::at0038]  	-- Gott
+											1|[local::at0035], 	-- Very poor
+											2|[local::at0036], 	-- Poor
+											3|[local::at0037], 	-- Fair
+											4|[local::at0038]  	-- Good
 										}
 									}
-									ELEMENT[at0039] occurrences matches {0..1} matches {	-- Poäng
+									ELEMENT[at0039] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|>=0|}

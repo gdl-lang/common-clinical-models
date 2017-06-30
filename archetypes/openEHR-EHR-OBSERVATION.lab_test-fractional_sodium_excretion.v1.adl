@@ -4,7 +4,7 @@ specialize
 	openEHR-EHR-OBSERVATION.lab_test-urea_and_electrolytes.v1
 
 concept
-	[at0000.1.1]	-- Natriumutsöndring (Fractional excretion of sodium - FENa)
+	[at0000.1.1]	-- Fractional excretion of sodium (FENa)
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -37,7 +37,7 @@ language
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
-		["email"] = <"info@cambio.se">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-01-14">
 	>
@@ -91,15 +91,15 @@ description
 	>
 
 definition
-	OBSERVATION[at0000.1.1] matches {	-- Natriumutsöndring (Fractional excretion of sodium - FENa)
+	OBSERVATION[at0000.1.1] matches {	-- Fractional excretion of sodium (FENa)
 		data matches {
-			HISTORY[at0001] matches {	-- Händelseförlopp
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Händelse
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Träd
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0078.5.1] occurrences matches {0..1} matches {	-- Natrium
+									ELEMENT[at0078.5.1] occurrences matches {0..1} matches {	-- serum Sodium (sNa)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -112,7 +112,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.4.1] occurrences matches {0..1} matches {	-- Kalium
+									ELEMENT[at0078.4.1] occurrences matches {0..1} matches {	-- urine Sodium (uNa)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -125,7 +125,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.3.1] occurrences matches {0..1} matches {	-- Klorid
+									ELEMENT[at0078.3.1] occurrences matches {0..1} matches {	-- serum Creatinine (sCr)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -142,7 +142,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.2.1] occurrences matches {0..1} matches {	-- Bikarbonat
+									ELEMENT[at0078.2.1] occurrences matches {0..1} matches {	-- urine Creatinine (uCr)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -159,7 +159,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.1.1] occurrences matches {0..1} matches {	-- Natriumutsöndring (FENa)
+									ELEMENT[at0078.1.1] occurrences matches {0..1} matches {	-- Fractional excretion of sodium (FENa)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::507]>
@@ -172,7 +172,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0057.0.1] occurrences matches {0..1} matches {	-- Sammanfattande tolkning
+									ELEMENT[at0057.0.1] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}

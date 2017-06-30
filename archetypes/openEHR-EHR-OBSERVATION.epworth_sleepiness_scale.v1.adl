@@ -2,7 +2,7 @@
 	openEHR-EHR-OBSERVATION.epworth_sleepiness_scale.v1
 
 concept
-	[at0000]	-- ESS frågeformulär
+	[at0000]	-- ESS questionnaire
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,24 +17,11 @@ language
 description
 	original_author = <
 		["name"] = <"Dennis Forslund">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2016-11-23">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To identify possible sleeping disorders using a self-administered questionnaire containing eight questions regarding probability of falling asleep in various situations. ">
-			use = <"Use to identify possible sleeping disorders using a self-administered questionnaire containing eight questions regarding probability of falling asleep in various situations. Each answer generates 0-3 points, thus making the maximum potential score 24 points. The score is interpreted as follows:
-
-0-9p - normal
-10-15 - indicate possibility of mild sleep apnea or narcolepsy
-16 or more - indicate possibility of severe sleep apnea or narcolepsy
-
-A score of 10 or more should result in further medical examination and evaluation. ">
-			keywords = <"Epworth", "Narcolepsy", "Sleep apnea", "Sleeping disorder", "ESS">
-			misuse = <"The questionnaire is not in itself diagnostic and should only be used to support further examination and clinical assessment.">
-			copyright = <"Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att identifiera potentiella sömnstörningar hos patienter med hjälp av ett självskattningsformulär innehållandes åtta frågor relaterade till sannolikhet att somna i diverse i situationer.">
@@ -49,6 +36,20 @@ En poäng om 10 eller mer bör föranleda vidare utredning.">
 			misuse = <"Formuläret är i sig ej diagnostiskt och är endast avsett att användas som stöd för vidare utredning.">
 			copyright = <"Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To identify possible sleeping disorders using a self-administered questionnaire containing eight questions regarding probability of falling asleep in various situations. ">
+			use = <"Use to identify possible sleeping disorders using a self-administered questionnaire containing eight questions regarding probability of falling asleep in various situations. Each answer generates 0-3 points, thus making the maximum potential score 24 points. The score is interpreted as follows:
+
+0-9p - normal
+10-15 - indicate possibility of mild sleep apnea or narcolepsy
+16 or more - indicate possibility of severe sleep apnea or narcolepsy
+
+A score of 10 or more should result in further medical examination and evaluation. ">
+			keywords = <"Epworth", "Narcolepsy", "Sleep apnea", "Sleeping disorder", "ESS">
+			misuse = <"The questionnaire is not in itself diagnostic and should only be used to support further examination and clinical assessment.">
+			copyright = <"Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"0">
 	other_contributors = <>
@@ -58,79 +59,79 @@ En poäng om 10 eller mer bör föranleda vidare utredning.">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- ESS frågeformulär
+	OBSERVATION[at0000] matches {	-- ESS questionnaire
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Sitter och läser
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Sitting and reading
 										value matches {
-											0|[local::at0012], 	-- Skulle aldrig slumra
-											1|[local::at0013], 	-- Liten risk att slumra
-											2|[local::at0014], 	-- Måttlig risk att slumra
-											3|[local::at0015]  	-- Stor risk att slumra
+											0|[local::at0012], 	-- Would never doze
+											1|[local::at0013], 	-- Slight chance of dozing
+											2|[local::at0014], 	-- Moderate chance of dozing
+											3|[local::at0015]  	-- High chance of dozing
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Tittar på TV
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Watching TV
 										value matches {
-											0|[local::at0016], 	-- Skulle aldrig slumra
-											1|[local::at0017], 	-- Liten risk att slumra
-											2|[local::at0018], 	-- Måttlig risk att slumra
-											3|[local::at0019]  	-- Stor risk att slumra
+											0|[local::at0016], 	-- Would never doze
+											1|[local::at0017], 	-- Slight chance of dozing
+											2|[local::at0018], 	-- Moderate chance of dozing
+											3|[local::at0019]  	-- High chance of dozing
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Sitter overksam på allmän plats (t.ex. teater eller möte)
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Sitting, inactive in a public place (e.g. a theater or meeting)
 										value matches {
-											0|[local::at0021], 	-- Skulle aldrig slumra
-											1|[local::at0022], 	-- Liten risk att slumra
-											2|[local::at0023], 	-- Måttlig risk att slumra
-											3|[local::at0024]  	-- Stor risk att slumra
+											0|[local::at0021], 	-- Would never doze
+											1|[local::at0022], 	-- Slight chance of dozing
+											2|[local::at0023], 	-- Moderate chance of dozing
+											3|[local::at0024]  	-- High chance of dozing
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Som passagerare i en bil i en timme utan paus
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- As a passenger in a car for an hour without a break
 										value matches {
-											0|[local::at0025], 	-- Skulle aldrig slumra
-											1|[local::at0026], 	-- Liten risk att slumra
-											2|[local::at0027], 	-- Måttlig risk att slumra
-											3|[local::at0028]  	-- Stor risk att slumra
+											0|[local::at0025], 	-- Would never doze
+											1|[local::at0026], 	-- Slight chance of dozing
+											2|[local::at0027], 	-- Moderate chance of dozing
+											3|[local::at0028]  	-- High chance of dozing
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Ligger ner och vilar på eftermiddagen om omständigheterna tillåter
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Lying down to rest in the afternoon when circumstances permit
 										value matches {
-											0|[local::at0029], 	-- Skulle aldrig slumra
-											1|[local::at0030], 	-- Liten risk att slumra
-											2|[local::at0031], 	-- Måttlig risk att slumra
-											3|[local::at0032]  	-- Stor risk att slumra
+											0|[local::at0029], 	-- Would never doze
+											1|[local::at0030], 	-- Slight chance of dozing
+											2|[local::at0031], 	-- Moderate chance of dozing
+											3|[local::at0032]  	-- High chance of dozing
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Sitter och pratar med någon
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Sitting and talking to someone
 										value matches {
-											0|[local::at0033], 	-- Skulle aldrig slumra
-											1|[local::at0034], 	-- Liten risk att slumra
-											2|[local::at0035], 	-- Måttlig risk att slumra
-											3|[local::at0036]  	-- Stor risk att slumra
+											0|[local::at0033], 	-- Would never doze
+											1|[local::at0034], 	-- Slight chance of dozing
+											2|[local::at0035], 	-- Moderate chance of dozing
+											3|[local::at0036]  	-- High chance of dozing
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Sitter stilla efter att ha ätit lunch (utan alkohol)
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Sitting quietly after a lunch without alcohol
 										value matches {
-											0|[local::at0037], 	-- Skulle aldrig slumra
-											1|[local::at0038], 	-- Liten risk att slumra
-											2|[local::at0039], 	-- Måttlig risk att slumra
-											3|[local::at0040]  	-- Stor risk att slumra
+											0|[local::at0037], 	-- Would never doze
+											1|[local::at0038], 	-- Slight chance of dozing
+											2|[local::at0039], 	-- Moderate chance of dozing
+											3|[local::at0040]  	-- High chance of dozing
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- I en bil som stannat några minuter i trafiken
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- In a car, while stopped for a few minutes in traffic
 										value matches {
-											0|[local::at0041], 	-- Skulle aldrig slumra
-											1|[local::at0042], 	-- Liten risk att slumra
-											2|[local::at0043], 	-- Måttlig risk att slumra
-											3|[local::at0044]  	-- Stor risk att slumra
+											0|[local::at0041], 	-- Would never doze
+											1|[local::at0042], 	-- Slight chance of dozing
+											2|[local::at0043], 	-- Moderate chance of dozing
+											3|[local::at0044]  	-- High chance of dozing
 										}
 									}
-									ELEMENT[at0045] occurrences matches {0..1} matches {	-- Total poäng
+									ELEMENT[at0045] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											DV_COUNT matches {*}
 										}

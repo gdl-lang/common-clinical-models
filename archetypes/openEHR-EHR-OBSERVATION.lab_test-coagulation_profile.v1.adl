@@ -4,7 +4,7 @@ specialize
 	openEHR-EHR-OBSERVATION.lab_test.v1
 
 concept
-	[at0000.1]	-- Koagulationsprover
+	[at0000.1]	-- Coagulation profile tests
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -40,7 +40,7 @@ language
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
-		["email"] = <"info@cambio.se">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-01-20">
 	>
@@ -107,25 +107,25 @@ Rapporteras vanligen tillbaka till beställande kliniker som del i övergripande
 	>
 
 definition
-	OBSERVATION[at0000.1] matches {	-- Koagulationsprover
+	OBSERVATION[at0000.1] matches {	-- Coagulation profile tests
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..*} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- *Test name(en)
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Test name
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0077] occurrences matches {0..1} matches {	-- *Diagnostic service(en)
+									ELEMENT[at0077] occurrences matches {0..1} matches {	-- Diagnostic service
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0.91] occurrences matches {0..1} matches {	-- Protrombintid
+									ELEMENT[at0.91] occurrences matches {0..1} matches {	-- PT
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::128]>
@@ -138,7 +138,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0.99] occurrences matches {0..1} matches {	-- Trombintid
+									ELEMENT[at0.99] occurrences matches {0..1} matches {	-- TT
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::128]>
@@ -151,7 +151,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0.93] occurrences matches {0..1} matches {	-- APT-tid
+									ELEMENT[at0.93] occurrences matches {0..1} matches {	-- APTT
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::128]>
@@ -164,7 +164,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0.95] occurrences matches {0..1} matches {	-- Blödningstid
+									ELEMENT[at0.95] occurrences matches {0..1} matches {	-- Bleeding time
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::128]>
@@ -177,7 +177,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0.96] occurrences matches {0..1} matches {	-- Trombocyter
+									ELEMENT[at0.96] occurrences matches {0..1} matches {	-- Platelet count
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -235,35 +235,35 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0073] occurrences matches {0..1} matches {	-- *Test status(en)
+									ELEMENT[at0073] occurrences matches {0..1} matches {	-- Test status
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0037, 	-- *Interim(en)
-													at0038, 	-- *Final(en)
-													at0039, 	-- *Supplementary(en)
-													at0040, 	-- *Corrected (amended)(en)
-													at0074, 	-- *Aborted(en)
-													at0079]	-- *Never performed(en)
+													at0037, 	-- Interim
+													at0038, 	-- Final
+													at0039, 	-- Supplementary
+													at0040, 	-- Corrected (amended)
+													at0074, 	-- Aborted
+													at0079]	-- Never performed
 												}
 											}
 										}
 									}
-									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- *Specimen detail(en)
+									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- Specimen detail
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.specimen\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
 									ELEMENT[at0078] occurrences matches {0..*} matches {*}
-									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- *Per-result annotation(en)
+									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- Per-result annotation
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.lab_result_annotation(-[a-zA-Z0-9_]+)*\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
-									ELEMENT[at0057] occurrences matches {0..1} matches {	-- *Overall interpretation(en)
+									ELEMENT[at0057] occurrences matches {0..1} matches {	-- Overall interpretation
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -274,12 +274,12 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0.100] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0.100] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..*} matches {	-- *Multimedia representation(en)
+									ELEMENT[at0010] occurrences matches {0..*} matches {	-- Multimedia representation
 										value matches {
 											DV_MULTIMEDIA matches {
 												media_type matches {[openEHR::]}
@@ -299,34 +299,34 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0004] matches {	-- *Tree(en)
+			ITEM_TREE[at0004] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0062] occurrences matches {0..1} matches {	-- *Requestor order identifier(en)
+					ELEMENT[at0062] occurrences matches {0..1} matches {	-- Requestor order identifier
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					allow_archetype CLUSTER[at0090] occurrences matches {0..*} matches {	-- *Requestor(en)
+					allow_archetype CLUSTER[at0090] occurrences matches {0..*} matches {	-- Requestor
 						include
 							archetype_id/value matches {/.*/}
 					}
-					ELEMENT[at0063] occurrences matches {0..1} matches {	-- *Receiver order Identifier(en)
+					ELEMENT[at0063] occurrences matches {0..1} matches {	-- Receiver order Identifier
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- *Receiving laboratory(en)
+					allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- Receiving laboratory
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.organisation\.v1/}
 						exclude
 							archetype_id/value matches {/.*/}
 					}
-					ELEMENT[at0068] occurrences matches {0..1} matches {	-- *Laboratory test result identifier(en)
+					ELEMENT[at0068] occurrences matches {0..1} matches {	-- Laboratory test result identifier
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					ELEMENT[at0075] occurrences matches {0..1} matches {	-- *Datetime result issued(en)
+					ELEMENT[at0075] occurrences matches {0..1} matches {	-- Datetime result issued
 						value matches {
 							DV_DATE_TIME matches {*}
 						}

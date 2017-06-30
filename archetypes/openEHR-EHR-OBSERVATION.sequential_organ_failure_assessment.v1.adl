@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.sequential_organ_failure_assessment.v1
 
 concept
-	[at0000]	-- Sequential Organ Failure Assessment
+	[at0000]	-- Sequential organ failure assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -17,10 +17,42 @@ language
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-01-03">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att förutsäga mortalitet hos patient som vårdas på intensivvårdsavdelning. Poängen beräknas fortlöpande med 24h-intervall från initial bedömning till utskrivning. Registrering görs med hänsyn till det senaste dygnet.">
+			use = <"Varje individuell parameter poängsätts med 0-4p där 0 indikerar antingen normalvärde eller att aktuellt värde saknas eller av någon anledning ej är tillämpligt. 
+
+Systemet har flera möjliga tillämpningar:
+ - Parametrarna kan användas för utvärdering av respektive organsystem.
+ - Totala poängsumman kan användas för att uppskatta prognos för den specifika dagen
+ - Totala summan av de värst drabbade parametrarna kan användas för att utvärdera hela vårdtiden
+
+De sex parametrarna inkluderar:
+- Respiration
+- Koagulation
+- Lever
+- Neurologi
+- Hjärt-kärl
+- Njure 
+
+Total poäng uppgår till maximalt 24p och tolkas med avseende på mortalitet enligt:
+                                 
+0-6p = <10%
+7-9p =15-20%
+10-12p = 40-50%
+13-14p = 50-60%
+15p = >80%
+15-24p = >90%
+">
+			keywords = <"SOFA", "mortalitet", "organsvikt", "Sequential Organ Failure Assessment", "intensivvård", "IVA">
+			misuse = <"SOFA är endast en uppskattning och är ej avsedd för att påverka medicinsk handläggning eller utvärdera intervention.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"The SOFA helps to predict mortality across 6 organ systems which is calculated every 24 hrs from the initial assessment at admission until the patient is discharged. The worst results of each measured parameter is recorded during the previous 24 hrs.">
@@ -57,37 +89,6 @@ SOFA score     Mortality
 			misuse = <"The SOFA is not designed to accurately predict mortality (and was initially aimed only to ICU mortality specifically)">
 			copyright = <"© Cambio Healthcare Systems">
 		>
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"Att förutsäga mortalitet hos patient som vårdas på intensivvårdsavdelning. Poängen beräknas fortlöpande med 24h-intervall från initial bedömning till utskrivning. Registrering görs med hänsyn till det senaste dygnet.">
-			use = <"Varje individuell parameter poängsätts med 0-4p där 0 indikerar antingen normalvärde eller att aktuellt värde saknas eller av någon anledning ej är tillämpligt. 
-
-Systemet har flera möjliga tillämpningar:
- - Parametrarna kan användas för utvärdering av respektive organsystem.
- - Totala poängsumman kan användas för att uppskatta prognos för den specifika dagen
- - Totala summan av de värst drabbade parametrarna kan användas för att utvärdera hela vårdtiden
-
-De sex parametrarna inkluderar:
-- Respiration
-- Koagulation
-- Lever
-- Neurologi
-- Hjärt-kärl
-- Njure 
-
-Total poäng uppgår till maximalt 24p och tolkas med avseende på mortalitet enligt:
-                                 
-0-6p = <10%
-7-9p =15-20%
-10-12p = 40-50%
-13-14p = 50-60%
-15p = >80%
-15-24p = >90%
-">
-			keywords = <"SOFA", "mortalitet", "organsvikt", "Sequential Organ Failure Assessment", "intensivvård", "IVA">
-			misuse = <"SOFA är endast en uppskattning och är ej avsedd för att påverka medicinsk handläggning eller utvärdera intervention.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -101,69 +102,69 @@ Ref. 3: Kratz A, Ferraro M, Sluss PM, et al: Case records of the Massachusetts G
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Sequential Organ Failure Assessment
+	OBSERVATION[at0000] matches {	-- Sequential organ failure assessment
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Respiration - poäng
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- PF ratio/carrico index score
 										value matches {
-											0|[local::at0041], 	-- Ej tillämpbar
+											0|[local::at0041], 	-- N/A
 											1|[local::at0012], 	-- <400
 											2|[local::at0013], 	-- <300
-											3|[local::at0014], 	-- <200 och intuberad
-											4|[local::at0015]  	-- <100 och intuberad
+											3|[local::at0014], 	-- <200 and mechanically ventilated
+											4|[local::at0015]  	-- <100 and mechanically ventilated
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Trombocyter - poäng
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Platlets score
 										value matches {
-											0|[local::at0036], 	-- Ej tillämpbar
+											0|[local::at0036], 	-- N/A
 											1|[local::at0037], 	-- <150
 											2|[local::at0038], 	-- <100
 											3|[local::at0039], 	-- <50
 											4|[local::at0040]  	-- <20
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- GCS - poäng
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- GCS score
 										value matches {
-											0|[local::at0031], 	-- Ej tillämpbar
+											0|[local::at0031], 	-- N/A
 											1|[local::at0032], 	-- 13-14
 											2|[local::at0033], 	-- 10-12
 											3|[local::at0034], 	-- 6-9
 											4|[local::at0035]  	-- <6
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Bilirubin - poäng
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- BR score
 										value matches {
-											0|[local::at0026], 	-- Ej tillämpbar
+											0|[local::at0026], 	-- N/A
 											1|[local::at0027], 	-- 1.2–1.9 [>20-32]
 											2|[local::at0028], 	-- 2.0–5.9 [33-101]
 											3|[local::at0029], 	-- 6.0–11.9 [102-204]
 											4|[local::at0030]  	-- >12.0 [>204]
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Medelartärtryck (MAP) alt behov av vasopressor
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- MAP or admin of vasopressors required
 										value matches {
-											0|[local::at0016], 	-- Ej hypotension
+											0|[local::at0016], 	-- No hypotension
 											1|[local::at0017], 	-- MAP< 70 mmHg
-											2|[local::at0018], 	-- Dopamin < 5 eller
-											3|[local::at0019], 	-- Dopamin > 5 eller
-											4|[local::at0020]  	-- Dopamin > 15 eller noradrenalin
+											2|[local::at0018], 	-- dop =< 5 or dob (any dose)
+											3|[local::at0019], 	-- dop >5 OR epi =< 0.1 ORnor <= 0.1
+											4|[local::at0020]  	-- dop >15 OR epi >0.1 OR nor >0.1
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Kreatinin eller dygnsdiures
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Creatinine or urine output
 										value matches {
 											0|[local::at0021], 	-- <1.2 [<106]
 											1|[local::at0022], 	-- 1.2–1.9 [106-168]
 											2|[local::at0023], 	-- 2.0–3.4 [169-301]
-											3|[local::at0024], 	-- 3.5–4.9 [302-433] (eller dygnsdiures < 500 ml/dygn)
-											4|[local::at0025]  	-- >5.0 [>433] (eller dygnsdiures <200 ml/dag)
+											3|[local::at0024], 	-- 3.5–4.9 [302-433] (or < 500 ml/d)
+											4|[local::at0025]  	-- >5.0 [>433] (or <200 ml/d)
 										}
 									}
-									ELEMENT[at0042] occurrences matches {0..1} matches {	-- Respiration - PaO2/FiO2
+									ELEMENT[at0042] occurrences matches {0..1} matches {	-- Carrico/PF
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::125]>
@@ -177,14 +178,14 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Total poäng
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..24|}
 											}
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}

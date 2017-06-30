@@ -17,19 +17,11 @@ language
 description
 	original_author = <
 		["name"] = <"Eneimi Allwell-Brown">
-		["email"] = <"info@cambio.se">
+		["email"] = <"models@cambiocds.com">
 		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-01-02">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To stratify patients with acute UGIB into low or high risk groups for needing treatment, rebleeding or mortality.">
-			use = <"To record data for Glasgow-Blatchford bleeding score and for stratifying patients with acute UGIB as low or high risk of needing treatment (blood transfusion, endoscopy or surgery), rebleeding, or dying. Points are assigned for patients' admission haemoglobin (0 - 6), blood urea (0 - 6), pulse (0 -1), and systolic blood pressure (0 -3), as well as presentation with syncope (0 - 2) or melaena (0 - 1), and evidence of hepatic disease (0 - 2) or cardiac failure (0 - 2). The points are summed to give a total score (Glasgow-Blatchford bleeding score) between 0 - 23, with score of 0 (zero) suggesting a low risk of complications (0.5%) and higher scores corresponding to increasing acuity, need for treatment, and mortality.">
-			keywords = <"upper GI bleeding", "upper GI haemorrhage", "Rockall score", "nonvariceal bleeding">
-			misuse = <"Should only be used at initial patient ssessment.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att uppskatta risk med avseende på behandlingsbehov, re-blödning och mortalitet hos patienter med övre GI-blödning.">
@@ -51,6 +43,14 @@ Maximal poäng uppgår till 23p. 0p indikerar låg komplikationsrisk (0,5%). Ju 
 			misuse = <"Endast avsedd för bruk vid initial bedömning.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To stratify patients with acute UGIB into low or high risk groups for needing treatment, rebleeding or mortality.">
+			use = <"To record data for Glasgow-Blatchford bleeding score and for stratifying patients with acute UGIB as low or high risk of needing treatment (blood transfusion, endoscopy or surgery), rebleeding, or dying. Points are assigned for patients' admission haemoglobin (0 - 6), blood urea (0 - 6), pulse (0 -1), and systolic blood pressure (0 -3), as well as presentation with syncope (0 - 2) or melaena (0 - 1), and evidence of hepatic disease (0 - 2) or cardiac failure (0 - 2). The points are summed to give a total score (Glasgow-Blatchford bleeding score) between 0 - 23, with score of 0 (zero) suggesting a low risk of complications (0.5%) and higher scores corresponding to increasing acuity, need for treatment, and mortality.">
+			keywords = <"upper GI bleeding", "upper GI haemorrhage", "Rockall score", "nonvariceal bleeding">
+			misuse = <"Should only be used at initial patient ssessment.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -66,81 +66,81 @@ Srirajaskanthan R, Conn R, Bulwer C, Irving P. The Glasgow Blatchford scoring sy
 definition
 	OBSERVATION[at0000] matches {	-- Glasgow-Blatchford bleeding score (GBS)
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Urea
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Blood Urea Nitrogen (BUN)
 										value matches {
-											0|[local::at0031], 	-- P-Urea <18.2 mg/dl
-											2|[local::at0032], 	-- P-Urea 18.2 - <22.4 mg/dl
-											3|[local::at0033], 	-- P-Urea 22.4 - <28 mg/dl
-											4|[local::at0034], 	-- P-Urea 28 - <70.01 mg/dl
-											6|[local::at0035]  	-- P-Urea ≥70.01 mg/dl
+											0|[local::at0031], 	-- BUN <18.2 mg/dl
+											2|[local::at0032], 	-- BUN = 18.2 - <22.4 mg/dl
+											3|[local::at0033], 	-- BUN = 22.4 - <28 mg/dl
+											4|[local::at0034], 	-- BUN = 28 - <70.01 mg/dl
+											6|[local::at0035]  	-- BUN >=70.01 mg/dl
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Hemoglobin (Hb)
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Haemoglobin (Hb)
 										value matches {
-											0|[local::at0036], 	-- Hb >13 g/dl (man) eller >12 g/dl (kvinna)
-											1|[local::at0037], 	-- Hb 12 - 13 g/dl (man) eller 10-12 g/dl (kvinna)
-											3|[local::at0038], 	-- Hb 10 - 12 g/dl (man)
-											6|[local::at0039]  	-- Hb <10 g/dl (oavsett kön)
+											0|[local::at0036], 	-- Hb >13 g/dl in men (or >12 g/dl in women)
+											1|[local::at0037], 	-- Hb 12 - 13 g/dl in men (or 10 - 12 g/dl in women)
+											3|[local::at0038], 	-- Hb 10 - 12 g/dl in men
+											6|[local::at0039]  	-- Hb <10 g/dl in men or women
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Kön
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Sex
 										value matches {
-											0|[local::at0015], 	-- Kvinna
-											1|[local::at0016]  	-- Man
+											0|[local::at0015], 	-- Female
+											1|[local::at0016]  	-- Male
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Systoliskt blodtryck
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Systolic blood pressure (SBP)
 										value matches {
-											0|[local::at0027], 	-- ≥110 mmHg
-											1|[local::at0028], 	-- 100 - 109 mmHg
-											2|[local::at0029], 	-- 90 - 99 mmHg
-											3|[local::at0030]  	-- <90 mmHg
+											0|[local::at0027], 	-- SBP >=110 mmHg
+											1|[local::at0028], 	-- SBP = 100 - 109 mmHg
+											2|[local::at0029], 	-- SBP = 90 - 99 mmHg
+											3|[local::at0030]  	-- SBP <90 mmHg
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Hjärtfrekvens
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Pulse
 										value matches {
-											0|[local::at0025], 	-- <100 /min
-											1|[local::at0026]  	-- ≥100 /min
+											0|[local::at0025], 	-- Pulse <100 /min
+											1|[local::at0026]  	-- Pulse >=100 /min
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Melena
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Melaena
 										value matches {
-											0|[local::at0017], 	-- Nej
-											1|[local::at0018]  	-- Ja
+											0|[local::at0017], 	-- No
+											1|[local::at0018]  	-- Yes
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Synkope
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Syncope
 										value matches {
-											0|[local::at0019], 	-- Nej
-											2|[local::at0020]  	-- Ja
+											0|[local::at0019], 	-- No
+											2|[local::at0020]  	-- Yes
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Leversjukdom
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Liver disease
 										value matches {
-											0|[local::at0021], 	-- Nej
-											2|[local::at0022]  	-- Ja
+											0|[local::at0021], 	-- No
+											2|[local::at0022]  	-- Yes
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Hjärtsvikt
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Heart failure
 										value matches {
-											0|[local::at0023], 	-- Nej
-											2|[local::at0024]  	-- Ja
+											0|[local::at0023], 	-- No
+											2|[local::at0024]  	-- Yes
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Total poäng
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..23|}
 											}
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
