@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.tnm_breast_cancer_assessment.v1
 
 concept
-	[at0000]	-- TNM bröstcancer - utvärdering
+	[at0000]	-- Tnm breast cancer assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -64,7 +64,6 @@ IV                        14%
 			language = <[ISO_639-1::en]>
 			purpose = <"The American Joint Committee on Cancer (AJCC) TNM staging system reports on the severity of breast cancer based on tumor, lymph node and metastasis characteristics. The characteristics of the size of the tumour, the extent of spread to local lymph nodes and body organs. These aspects are captured in 3 ways that make up the mnemonic TNM: T: Tumour size; N: Number of regional lymph nodes affected and M: whether the cancer has spread/metastasised beyond the primary organ and regional nodes. Each major category is further subdivided to help classify the picture further. These subdivisions are given suffixes or numbered as shown below.">
 			use = <"There are main stages Stage 0 to IV with each stage (except Stage 0) subdivided. Survival rates are shown below:
-
 Stage	TNM	            Description	                                                                                                                          5-year Survival
 0	Tis N0 M0             Carcinoma in situ. 
                                                   No tumor is regional lymph nodes, No distant metastases	                                                                           99%
@@ -84,7 +83,7 @@ IIIA	T0 N2 M0              No evidence of primary tumor, metastases to fixed ips
                    T2 N2 M0             Tumor is between 2 and 5 centimeters, metastases to fixed ipsilateral nodes, no distant metastases. 
                    T3 N1, N2 M0      Tumor is over 5 centimeters, metastases to movable or fixed ipsilateral nodes, no distant metastases.	47%
 IIIB	T4 Any N M0
-Any T N3 M0	•	Tumor extends to chest wall, any nodal involvement, no distant metastases.
+IIIC              Any T N3 M0      Tumor extends to chest wall, any nodal involvement, no distant metastases.
 •	Any primary tumor involvement, metastases to ipsilateral internal mammary nodes, no distant metastases.	44%
 IV	Any T Any N M1	Any primary tumor involvement, any nodal involvement, distant metastases.	14%
 
@@ -105,24 +104,25 @@ Ref. 2: Theriault RL, Carlson RW, Allred C, et al. Breast Cancer, Version 3.2013
 
 Ref. 3: Regular updates for breast cancer staging and treeatment can be found on the NCCN  (National Comprehensive Cancer Network) website, accessed at: www.nccn.org
 
-Ref. 4: Breast cancer survival rates: Cancer Monthly: http://www.cancermonthly.com/cancer_basics/breast.asp">
-		["MD5-CAM-1.0.1"] = <"D0C92E6B8551F46E9A6431F4B52CB7AD">
+Ref. 4: Breast cancer survival rates: Cancer.org: https://www.cancer.org/cancer/breast-cancer/understanding-a-breast-cancer-diagnosis/stages-of-breast-cancer.html">
+		["MD5-CAM-1.0.1"] = <"35D05CAC27CA13B4D0CFBD566CCCDB7B">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- TNM bröstcancer - utvärdering
+	EVALUATION[at0000] matches {	-- Tnm breast cancer assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- 5-årsöverlevnad
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- 5 Year Survival rates
 						value matches {
-							0|[local::at0003], 	-- Stadium 0 - 99%
-							1|[local::at0004], 	-- Stadium I - 92%
-							2|[local::at0005], 	-- Stadium IIA - 82%
-							3|[local::at0006], 	-- Stadium IIB - 65%
-							4|[local::at0007], 	-- Stadium IIIA - 47%
-							5|[local::at0008], 	-- Stadium IIIB - 44%
-							6|[local::at0009]  	-- Stadium IV - 14%
+							0|[local::at0003], 	-- 99% Stage 0
+							1|[local::at0004], 	-- 92% Stage I
+							2|[local::at0005], 	-- 82% Stage IIA
+							3|[local::at0006], 	-- 65% Stage IIB
+							4|[local::at0007], 	-- 47% Stage IIIA
+							5|[local::at0008], 	-- 44% Stage IIIB
+							6|[local::at0009], 	-- 14-44% Stage IIIc
+							7|[local::at0010]  	-- 14% Stage IV
 						}
 					}
 				}
@@ -171,6 +171,10 @@ ontology
 					description = <"*">
 				>
 				["at0009"] = <
+					text = <"14-44% Stage IIIc">
+					description = <"*">
+				>
+				["at0010"] = <
 					text = <"14% Stage IV">
 					description = <"*">
 				>
@@ -192,31 +196,35 @@ ontology
 				>
 				["at0003"] = <
 					text = <"Stadium 0 - 99%">
-					description = <"">
+					description = <"*">
 				>
 				["at0004"] = <
 					text = <"Stadium I - 92%">
-					description = <"">
+					description = <"*">
 				>
 				["at0005"] = <
 					text = <"Stadium IIA - 82%">
-					description = <"">
+					description = <"*">
 				>
 				["at0006"] = <
 					text = <"Stadium IIB - 65%">
-					description = <"">
+					description = <"*">
 				>
 				["at0007"] = <
 					text = <"Stadium IIIA - 47%">
-					description = <"">
+					description = <"*">
 				>
 				["at0008"] = <
 					text = <"Stadium IIIB - 44%">
-					description = <"">
+					description = <"*">
 				>
 				["at0009"] = <
 					text = <"Stadium IV - 14%">
-					description = <"">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"*new ordinal(en)">
+					description = <"**(en)">
 				>
 			>
 		>
