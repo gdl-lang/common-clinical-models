@@ -1,0 +1,1050 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.self_administered_comorbidity_questionnaire.v1
+
+concept
+	[at0000]	-- Self administered comorbidity questionnaire
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-06-25">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The Self-administered comorbidity questionnaire (SCQ) helps to provide a prediction of psychometric properties of patients with comorbidities. It is associated health status and health care utilization after 1 year.">
+			use = <"The SCQ provides an efficient method to help assess comorbid conditions in clinical and health services research and in settings where medical records are not easily available.
+The self-administered questionnaire asks 12 questions about conditions in 3 parts:
+
+1) Whether the patient has the condition
+2) Whether they receive treatment for the condition
+3) Whether the condition limits their activities
+
+Each of the 3 parts scores either 0 (no) or 1 (yes).
+
+There are then upto 3 optional additional questions that the patient can fill in for any condition not already mentioned to which the above 3 parts also apply. As Osteoarthritis is often hard to distinguish with rheumatoid arthritis for patients, therefore, it is not scored but added in with the osteoarthritis question.
+
+The maximum score possible is thus 45 but if no optional conditions are added, the score maximum is 36.
+
+Comorbid conditions listed are:
+
+Heart disease
+High blood pressure
+Lung disease
+Diabetes
+Ulcer or stomach disease
+Kidney disease
+Liver disease
+Anaemia or other blood disease
+Cancer
+Depression
+Osteoarthritis, degenerative arthritis
+Back pain
+
+">
+			keywords = <"comorbidity", "health status", "questionnaire">
+			misuse = <"As this is a patient-reported tool, diagnostic reasoning must include sound clinical judgment and further investigations in order to provide a reliable result.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Sangha O,  Stucki G,  Liang MH, et al.  . The Self-Administered Comorbidity Questionnaire: a new method to assess comorbidity for clinical and health services research, Arthritis Rheum , 2003, vol. 49 (pg. 156-63)">
+		["MD5-CAM-1.0.1"] = <"BB8BE748EDC27FD46DA39A331FBCBDE5">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Self administered comorbidity questionnaire
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0117] occurrences matches {0..1} matches {	-- Heart Disease
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0114] occurrences matches {0..1} matches {	-- Heart Disease: Do you have the problem?
+												value matches {
+													0|[local::at0120], 	-- No
+													1|[local::at0121]  	-- Yes
+												}
+											}
+											ELEMENT[at0115] occurrences matches {0..1} matches {	-- Heart Disease: Do you receive treatment for it?
+												value matches {
+													0|[local::at0122], 	-- No
+													1|[local::at0123]  	-- Yes
+												}
+											}
+											ELEMENT[at0116] occurrences matches {0..1} matches {	-- Heart Disease: Does it limit your activities?
+												value matches {
+													0|[local::at0124], 	-- No
+													1|[local::at0125]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0118] occurrences matches {0..1} matches {	-- High BP
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0015] occurrences matches {0..1} matches {	-- High blood pressure: Do you have the problem?
+												value matches {
+													0|[local::at0026], 	-- No
+													1|[local::at0027]  	-- Yes
+												}
+											}
+											ELEMENT[at0017] occurrences matches {0..1} matches {	-- High blood pressure: Do you receive treatment for it?
+												value matches {
+													0|[local::at0028], 	-- No
+													1|[local::at0029]  	-- Yes
+												}
+											}
+											ELEMENT[at0016] occurrences matches {0..1} matches {	-- High blood pressure: Does it limit your activities?
+												value matches {
+													0|[local::at0030], 	-- No
+													1|[local::at0031]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0119] occurrences matches {0..1} matches {	-- Lung disease
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0021] occurrences matches {0..1} matches {	-- Lung disease: Do you have the problem?
+												value matches {
+													0|[local::at0032], 	-- No
+													1|[local::at0033]  	-- Yes
+												}
+											}
+											ELEMENT[at0019] occurrences matches {0..1} matches {	-- Lung disease: Do you receive treatment for it?
+												value matches {
+													0|[local::at0034], 	-- No
+													1|[local::at0035]  	-- Yes
+												}
+											}
+											ELEMENT[at0020] occurrences matches {0..1} matches {	-- Lung disease: Does it limit your activities?
+												value matches {
+													0|[local::at0036], 	-- No
+													1|[local::at0037]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0022] occurrences matches {0..1} matches {	-- Diabetes
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0025] occurrences matches {0..1} matches {	-- Diabetes: Do you have the problem?
+												value matches {
+													0|[local::at0038], 	-- No
+													1|[local::at0039]  	-- Yes
+												}
+											}
+											ELEMENT[at0024] occurrences matches {0..1} matches {	-- Diabetes: Do you receive treatment for it?
+												value matches {
+													0|[local::at0040], 	-- No
+													1|[local::at0041]  	-- Yes
+												}
+											}
+											ELEMENT[at0023] occurrences matches {0..1} matches {	-- Diabetes: Does it limit your activities?
+												value matches {
+													0|[local::at0042], 	-- No
+													1|[local::at0043]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0044] occurrences matches {0..1} matches {	-- Ulcer or stomach disease
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0047] occurrences matches {0..1} matches {	-- Ulcer or stomach disease: Do you have the problem?
+												value matches {
+													0|[local::at0052], 	-- No
+													1|[local::at0053]  	-- Yes
+												}
+											}
+											ELEMENT[at0046] occurrences matches {0..1} matches {	-- Ulcer or stomach disease: Do you receive treatment for it?
+												value matches {
+													0|[local::at0050], 	-- No
+													1|[local::at0051]  	-- Yes
+												}
+											}
+											ELEMENT[at0045] occurrences matches {0..1} matches {	-- Ulcer or stomach disease: Does it limit your activities?
+												value matches {
+													0|[local::at0048], 	-- No
+													1|[local::at0049]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0054] occurrences matches {0..1} matches {	-- Kidney disease
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0057] occurrences matches {0..1} matches {	-- Kidney disease: Do you have the problem?
+												value matches {
+													0|[local::at0062], 	-- No
+													1|[local::at0063]  	-- Yes
+												}
+											}
+											ELEMENT[at0056] occurrences matches {0..1} matches {	-- Kidney disease: Do you receive treatment for it?
+												value matches {
+													0|[local::at0060], 	-- No
+													1|[local::at0061]  	-- Yes
+												}
+											}
+											ELEMENT[at0055] occurrences matches {0..1} matches {	-- Kidney disease: Does it limit your activities?
+												value matches {
+													0|[local::at0058], 	-- No
+													1|[local::at0059]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0064] occurrences matches {0..1} matches {	-- Liver disease
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0067] occurrences matches {0..1} matches {	-- Liver disease: Do you have the problem?
+												value matches {
+													0|[local::at0072], 	-- No
+													1|[local::at0073]  	-- Yes
+												}
+											}
+											ELEMENT[at0066] occurrences matches {0..1} matches {	-- Liver disease: Do you receive treatment for it?
+												value matches {
+													0|[local::at0070], 	-- No
+													1|[local::at0071]  	-- Yes
+												}
+											}
+											ELEMENT[at0065] occurrences matches {0..1} matches {	-- Liver disease: Does it limit your activities?
+												value matches {
+													0|[local::at0068], 	-- No
+													1|[local::at0069]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0074] occurrences matches {0..1} matches {	-- Anaemia or other blood disease
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0077] occurrences matches {0..1} matches {	-- Anaemia or other blood disease: Do you have the problem?
+												value matches {
+													0|[local::at0082], 	-- No
+													1|[local::at0083]  	-- Yes
+												}
+											}
+											ELEMENT[at0076] occurrences matches {0..1} matches {	-- Anaemia or other blood disease: Do you receive treatment for it?
+												value matches {
+													0|[local::at0080], 	-- No
+													1|[local::at0081]  	-- Yes
+												}
+											}
+											ELEMENT[at0075] occurrences matches {0..1} matches {	-- Anaemia or other blood disease: Does it limit your activities?
+												value matches {
+													0|[local::at0078], 	-- No
+													1|[local::at0079]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0084] occurrences matches {0..1} matches {	-- Cancer
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0087] occurrences matches {0..1} matches {	-- Cancer: Do you have the problem?
+												value matches {
+													0|[local::at0092], 	-- No
+													1|[local::at0093]  	-- Yes
+												}
+											}
+											ELEMENT[at0086] occurrences matches {0..1} matches {	-- Cancer: Do you receive treatment for it?
+												value matches {
+													0|[local::at0090], 	-- No
+													1|[local::at0091]  	-- Yes
+												}
+											}
+											ELEMENT[at0085] occurrences matches {0..1} matches {	-- Cancer: Does it limit your activities?
+												value matches {
+													0|[local::at0088], 	-- No
+													1|[local::at0089]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0094] occurrences matches {0..1} matches {	-- Depression
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0097] occurrences matches {0..1} matches {	-- Depression: Do you have the problem?
+												value matches {
+													0|[local::at0102], 	-- No
+													1|[local::at0103]  	-- Yes
+												}
+											}
+											ELEMENT[at0096] occurrences matches {0..1} matches {	-- Depression: Do you receive treatment for it?
+												value matches {
+													0|[local::at0100], 	-- No
+													1|[local::at0101]  	-- Yes
+												}
+											}
+											ELEMENT[at0095] occurrences matches {0..1} matches {	-- Depression: Does it limit your activities?
+												value matches {
+													0|[local::at0098], 	-- No
+													1|[local::at0099]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0104] occurrences matches {0..1} matches {	-- Osteoarthritis, degenerative arthritis
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0107] occurrences matches {0..1} matches {	-- Osteoarthritis, degenerative arthritis: Do you have the problem?
+												value matches {
+													0|[local::at0112], 	-- No
+													1|[local::at0113]  	-- Yes
+												}
+											}
+											ELEMENT[at0106] occurrences matches {0..1} matches {	-- Osteoarthritis, degenerative arthritis: Do you receive treatment for it?
+												value matches {
+													0|[local::at0110], 	-- No
+													1|[local::at0111]  	-- Yes
+												}
+											}
+											ELEMENT[at0105] occurrences matches {0..1} matches {	-- Osteoarthritis, degenerative arthritis: Does it limit your activities?
+												value matches {
+													0|[local::at0108], 	-- No
+													1|[local::at0109]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0159] occurrences matches {0..1} matches {	-- Back pain
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0162] occurrences matches {0..1} matches {	-- Back pain: Do you have the problem?
+												value matches {
+													0|[local::at0163], 	-- No
+													1|[local::at0164]  	-- Yes
+												}
+											}
+											ELEMENT[at0161] occurrences matches {0..1} matches {	-- Back pain: Do you receive treatment for it?
+												value matches {
+													0|[local::at0165], 	-- No
+													1|[local::at0166]  	-- Yes
+												}
+											}
+											ELEMENT[at0160] occurrences matches {0..1} matches {	-- Back pain: Does it limit your activities?
+												value matches {
+													0|[local::at0167], 	-- No
+													1|[local::at0168]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0129] occurrences matches {0..1} matches {	-- Extra condition 1
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0126] occurrences matches {0..1} matches {	-- Extra condition 1: Do you have the problem?
+												value matches {
+													0|[local::at0141], 	-- No
+													1|[local::at0142]  	-- Yes
+												}
+											}
+											ELEMENT[at0133] occurrences matches {0..1} matches {	-- Extra condition 1: Do you receive treatment for it?
+												value matches {
+													0|[local::at0143], 	-- No
+													1|[local::at0144]  	-- Yes
+												}
+											}
+											ELEMENT[at0132] occurrences matches {0..1} matches {	-- Extra condition 1: Does it limit your activities
+												value matches {
+													0|[local::at0145], 	-- No
+													1|[local::at0146]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0130] occurrences matches {0..1} matches {	-- Extra condition 2
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0127] occurrences matches {0..1} matches {	-- Extra condition 2: Do you have the problem?
+												value matches {
+													0|[local::at0147], 	-- No
+													1|[local::at0148]  	-- Yes
+												}
+											}
+											ELEMENT[at0134] occurrences matches {0..1} matches {	-- Extra condition 2: Do you receive treatment for it?
+												value matches {
+													0|[local::at0149], 	-- No
+													1|[local::at0150]  	-- Yes
+												}
+											}
+											ELEMENT[at0135] occurrences matches {0..1} matches {	-- Extra condition 2: Does it limit your activities?
+												value matches {
+													0|[local::at0151], 	-- No
+													1|[local::at0152]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0131] occurrences matches {0..1} matches {	-- Extra condition 3
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0128] occurrences matches {0..1} matches {	-- Extra condition 3: Do you have the problem?
+												value matches {
+													0|[local::at0153], 	-- No
+													1|[local::at0154]  	-- Yes
+												}
+											}
+											ELEMENT[at0137] occurrences matches {0..1} matches {	-- Extra condition 3: Do you receive treatment for it?
+												value matches {
+													0|[local::at0155], 	-- No
+													1|[local::at0156]  	-- Yes
+												}
+											}
+											ELEMENT[at0136] occurrences matches {0..1} matches {	-- Extra condition 3: Does it limit your activities?
+												value matches {
+													0|[local::at0157], 	-- No
+													1|[local::at0158]  	-- Yes
+												}
+											}
+										}
+									}
+									ELEMENT[at0139] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..45|}
+											}
+										}
+									}
+									ELEMENT[at0140] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Self administered comorbidity questionnaire">
+					description = <"The Self-administered comorbidity questionnaire (SCQ) helps to provide a prediction of psychometric properties of patients with comorbidities. It is associated health status and health care utilization after 1 year.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0015"] = <
+					text = <"High blood pressure: Do you have the problem?">
+					description = <"High blood pressure">
+				>
+				["at0016"] = <
+					text = <"High blood pressure: Does it limit your activities?">
+					description = <"High blood pressure">
+				>
+				["at0017"] = <
+					text = <"High blood pressure: Do you receive treatment for it?">
+					description = <"High blood pressure">
+				>
+				["at0019"] = <
+					text = <"Lung disease: Do you receive treatment for it?">
+					description = <"Lung disease">
+				>
+				["at0020"] = <
+					text = <"Lung disease: Does it limit your activities?">
+					description = <"Lung disease">
+				>
+				["at0021"] = <
+					text = <"Lung disease: Do you have the problem?">
+					description = <"Lung disease">
+				>
+				["at0022"] = <
+					text = <"Diabetes">
+					description = <"Diabetes">
+				>
+				["at0023"] = <
+					text = <"Diabetes: Does it limit your activities?">
+					description = <"Diabetes">
+				>
+				["at0024"] = <
+					text = <"Diabetes: Do you receive treatment for it?">
+					description = <"Diabetes">
+				>
+				["at0025"] = <
+					text = <"Diabetes: Do you have the problem?">
+					description = <"Diabetes">
+				>
+				["at0026"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Ulcer or stomach disease">
+					description = <"Ulcer or stomach disease">
+				>
+				["at0045"] = <
+					text = <"Ulcer or stomach disease: Does it limit your activities?">
+					description = <"Ulcer or stomach disease">
+				>
+				["at0046"] = <
+					text = <"Ulcer or stomach disease: Do you receive treatment for it?">
+					description = <"Ulcer or stomach disease">
+				>
+				["at0047"] = <
+					text = <"Ulcer or stomach disease: Do you have the problem?">
+					description = <"Ulcer or stomach disease">
+				>
+				["at0048"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0049"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0050"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0051"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0052"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0053"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0054"] = <
+					text = <"Kidney disease">
+					description = <"Kidney disease">
+				>
+				["at0055"] = <
+					text = <"Kidney disease: Does it limit your activities?">
+					description = <"Kidney disease">
+				>
+				["at0056"] = <
+					text = <"Kidney disease: Do you receive treatment for it?">
+					description = <"Kidney disease">
+				>
+				["at0057"] = <
+					text = <"Kidney disease: Do you have the problem?">
+					description = <"Kidney disease">
+				>
+				["at0058"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0059"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0060"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0061"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0062"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0063"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0064"] = <
+					text = <"Liver disease">
+					description = <"Liver disease">
+				>
+				["at0065"] = <
+					text = <"Liver disease: Does it limit your activities?">
+					description = <"Liver disease">
+				>
+				["at0066"] = <
+					text = <"Liver disease: Do you receive treatment for it?">
+					description = <"Liver disease">
+				>
+				["at0067"] = <
+					text = <"Liver disease: Do you have the problem?">
+					description = <"Liver disease">
+				>
+				["at0068"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0069"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0070"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0071"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0072"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0073"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0074"] = <
+					text = <"Anaemia or other blood disease">
+					description = <"Anaemia or other blood disease">
+				>
+				["at0075"] = <
+					text = <"Anaemia or other blood disease: Does it limit your activities?">
+					description = <"Anaemia or other blood disease">
+				>
+				["at0076"] = <
+					text = <"Anaemia or other blood disease: Do you receive treatment for it?">
+					description = <"Anaemia or other blood disease">
+				>
+				["at0077"] = <
+					text = <"Anaemia or other blood disease: Do you have the problem?">
+					description = <"Anaemia or other blood disease">
+				>
+				["at0078"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0079"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0080"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0081"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0082"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0083"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0084"] = <
+					text = <"Cancer">
+					description = <"Cancer">
+				>
+				["at0085"] = <
+					text = <"Cancer: Does it limit your activities?">
+					description = <"Cancer">
+				>
+				["at0086"] = <
+					text = <"Cancer: Do you receive treatment for it?">
+					description = <"Cancer">
+				>
+				["at0087"] = <
+					text = <"Cancer: Do you have the problem?">
+					description = <"Cancer">
+				>
+				["at0088"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0089"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0090"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0091"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0092"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0093"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0094"] = <
+					text = <"Depression">
+					description = <"Depression">
+				>
+				["at0095"] = <
+					text = <"Depression: Does it limit your activities?">
+					description = <"Depression">
+				>
+				["at0096"] = <
+					text = <"Depression: Do you receive treatment for it?">
+					description = <"Depression">
+				>
+				["at0097"] = <
+					text = <"Depression: Do you have the problem?">
+					description = <"Depression">
+				>
+				["at0098"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0099"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0100"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0101"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0102"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0103"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0104"] = <
+					text = <"Osteoarthritis, degenerative arthritis">
+					description = <"Osteoarthritis, degenerative arthritis (rheumatoid arthritis is also considered here)">
+				>
+				["at0105"] = <
+					text = <"Osteoarthritis, degenerative arthritis: Does it limit your activities?">
+					description = <"Osteoarthritis, degenerative arthritis">
+				>
+				["at0106"] = <
+					text = <"Osteoarthritis, degenerative arthritis: Do you receive treatment for it?">
+					description = <"Osteoarthritis, degenerative arthritis">
+				>
+				["at0107"] = <
+					text = <"Osteoarthritis, degenerative arthritis: Do you have the problem?">
+					description = <"Osteoarthritis, degenerative arthritis">
+				>
+				["at0108"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0109"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0110"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0111"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0112"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0113"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0114"] = <
+					text = <"Heart Disease: Do you have the problem?">
+					description = <"*">
+				>
+				["at0115"] = <
+					text = <"Heart Disease: Do you receive treatment for it?">
+					description = <"*">
+				>
+				["at0116"] = <
+					text = <"Heart Disease: Does it limit your activities?">
+					description = <"*">
+				>
+				["at0117"] = <
+					text = <"Heart Disease">
+					description = <"Heart Disease">
+				>
+				["at0118"] = <
+					text = <"High BP">
+					description = <"*">
+				>
+				["at0119"] = <
+					text = <"Lung disease">
+					description = <"*">
+				>
+				["at0120"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0121"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0122"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0123"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0124"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0125"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0126"] = <
+					text = <"Extra condition 1: Do you have the problem?">
+					description = <"*">
+				>
+				["at0127"] = <
+					text = <"Extra condition 2: Do you have the problem?">
+					description = <"*">
+				>
+				["at0128"] = <
+					text = <"Extra condition 3: Do you have the problem?">
+					description = <"*">
+				>
+				["at0129"] = <
+					text = <"Extra condition 1">
+					description = <"Extra condition that can be optionally added and scored">
+				>
+				["at0130"] = <
+					text = <"Extra condition 2">
+					description = <"Extra condition that can be optionally added and scored">
+				>
+				["at0131"] = <
+					text = <"Extra condition 3">
+					description = <"Extra condition that can be optionally added and scored">
+				>
+				["at0132"] = <
+					text = <"Extra condition 1: Does it limit your activities">
+					description = <"*">
+				>
+				["at0133"] = <
+					text = <"Extra condition 1: Do you receive treatment for it?">
+					description = <"*">
+				>
+				["at0134"] = <
+					text = <"Extra condition 2: Do you receive treatment for it?">
+					description = <"*">
+				>
+				["at0135"] = <
+					text = <"Extra condition 2: Does it limit your activities?">
+					description = <"*">
+				>
+				["at0136"] = <
+					text = <"Extra condition 3: Does it limit your activities?">
+					description = <"*">
+				>
+				["at0137"] = <
+					text = <"Extra condition 3: Do you receive treatment for it?">
+					description = <"*">
+				>
+				["at0139"] = <
+					text = <"Total score">
+					description = <"Sum of the individual scores to a maximum of 45 including the extra optional questions (36 without)">
+				>
+				["at0140"] = <
+					text = <"Comment">
+					description = <"Add free text to name the 3 extra conditions if added. ">
+				>
+				["at0141"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0142"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0143"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0144"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0145"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0146"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0147"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0148"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0149"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0150"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0151"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0152"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0153"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0154"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0155"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0156"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0157"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0158"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0159"] = <
+					text = <"Back pain">
+					description = <"Back pain">
+				>
+				["at0160"] = <
+					text = <"Back pain: Does it limit your activities?">
+					description = <"*">
+				>
+				["at0161"] = <
+					text = <"Back pain: Do you receive treatment for it?">
+					description = <"*">
+				>
+				["at0162"] = <
+					text = <"Back pain: Do you have the problem?">
+					description = <"*">
+				>
+				["at0163"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0164"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0165"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0166"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0167"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0168"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+			>
+		>
+	>
