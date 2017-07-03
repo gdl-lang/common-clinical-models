@@ -21,7 +21,9 @@ There are multiple formulas/methods for calculating ideal body weight. The most 
 ▪ Ideal Body Weight (men) = [50kg + 2.3kg * ( Height(in) - 60 inches )]
 ▪ Ideal Body Weight (women) = [45.5kg + 2.3kg *( Height(in) - 60 inches )]
 
-The formula generates an approximate value that can be used for individuals with a height of 5 feet or taller.">
+The formula generates an approximate value that can be used for individuals with a height of 5 feet or taller.
+
+The model supports use of inches as well as centimeters for input.">
 			>
 			["sv"] = (RESOURCE_DESCRIPTION_ITEM) <
 				copyright = <"Cambio Healthcare Systems">
@@ -88,11 +90,21 @@ Ref. 2: Pai MP, Paloucek FP. The origin of the \"ideal\" body weight equations. 
 			["gt0005"] = (RULE) <
 				when = <"$gt0007==local::at0005|Male|", "$gt0003.units=='in'">
 				then = <"$gt0015.magnitude=((2.3*($gt0003.magnitude-60))+50)", "$gt0015.units='kg'", "$gt0015.precision=2">
-				priority = <2>
+				priority = <4>
 			>
 			["gt0019"] = (RULE) <
 				when = <"$gt0007==local::at0006|Female|", "$gt0003.units=='in'">
 				then = <"$gt0015.magnitude=((2.3*($gt0003.magnitude-60))+45.5)", "$gt0015.units='kg'", "$gt0015.precision=2">
+				priority = <3>
+			>
+			["gt0020"] = (RULE) <
+				when = <"$gt0007==local::at0005|Male|", "$gt0003.units=='cm'">
+				then = <"$gt0015.magnitude=((2.3*(($gt0003.magnitude/2.54)-60))+50)", "$gt0015.units='kg'", "$gt0015.precision=2">
+				priority = <2>
+			>
+			["gt0022"] = (RULE) <
+				when = <"$gt0007==local::at0006|Female|", "$gt0003.units=='cm'">
+				then = <"$gt0015.magnitude=((2.3*(($gt0003.magnitude/2.54)-60))+45.5)", "$gt0015.precision=2", "$gt0015.units='kg'">
 				priority = <1>
 			>
 		>
@@ -112,7 +124,7 @@ Ref. 2: Pai MP, Paloucek FP. The origin of the \"ideal\" body weight equations. 
 					["gt0004"] = (TERM) <
 					>
 					["gt0005"] = (TERM) <
-						text = <"Calculate Ideal Body Weight Male">
+						text = <"Calculate Ideal Body Weight Male (in)">
 					>
 					["gt0007"] = (TERM) <
 						text = <"Gender">
@@ -148,7 +160,16 @@ Ref. 2: Pai MP, Paloucek FP. The origin of the \"ideal\" body weight equations. 
 						description = <"The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event.">
 					>
 					["gt0019"] = (TERM) <
-						text = <"Calculate Ideal Body Weight Female">
+						text = <"Calculate Ideal Body Weight Female (in)">
+					>
+					["gt0020"] = (TERM) <
+						text = <"Calculate Ideal Body Weight Male (cm)">
+					>
+					["gt0021"] = (TERM) <
+						text = <"Calculate Ideal Body Weight Female (cm)">
+					>
+					["gt0022"] = (TERM) <
+						text = <"Calculate Ideal Body Weight Female (cm)">
 					>
 				>
 			>
@@ -202,6 +223,12 @@ Ref. 2: Pai MP, Paloucek FP. The origin of the \"ideal\" body weight equations. 
 					>
 					["gt0019"] = (TERM) <
 						text = <"Beräkna Ideal Body Weight kvinna">
+					>
+					["gt0020"] = (TERM) <
+					>
+					["gt0021"] = (TERM) <
+					>
+					["gt0022"] = (TERM) <
 					>
 				>
 			>

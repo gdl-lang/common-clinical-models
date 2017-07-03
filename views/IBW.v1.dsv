@@ -29,7 +29,7 @@
     },
     "en": {
       "name": "Ideal Body Weight",
-      "description": "Calculation of the ideal body weight"
+      "description": "Calculation of ideal body weight"
     }
   },
   "resourceDescription": {
@@ -52,7 +52,7 @@
           "*(en) Weight",
           "*(en) Devine formula"
         ],
-        "use": "Använd för att beräkna ideal kroppsvikt (IBW) för män och kvinnor i syfte att ordinera adekvat dosering av läkemedel i situationer då den aktuella kroppsvikten ej ska användas.\n\nDenna beräkning genomförs med hjälp av Devine-formeln enligt:\n▪ Ideal Body Weight (män) \u003d [50kg + 2.3kg * ( längd(tum) - 60 tum )]\n▪ Ideal Body Weight (kvinnor) \u003d [45.5kg + 2.3kg *( längd(tum) - 60 tum )]\n\nFormeln genererar ett uppskattat värde som kan användas på personer som är 152 centimeter (60 tum) långa eller mer, då formeln beräknas på allt över 152 centimeter.\n",
+        "use": "Använd för att beräkna ideal kroppsvikt (IBW) för män och kvinnor i syfte att ordinera adekvat dosering av läkemedel i situationer då den aktuella kroppsvikten ej ska användas.\n\nDenna beräkning genomförs med hjälp av Devine-formeln enligt:\n? Ideal Body Weight (män) \u003d [50kg + 2.3kg * ( längd(tum) - 60 tum )]\n? Ideal Body Weight (kvinnor) \u003d [45.5kg + 2.3kg *( längd(tum) - 60 tum )]\n\nFormeln genererar ett uppskattat värde som kan användas på personer som är 152 centimeter (60 tum) långa eller mer, då formeln beräknas på allt över 152 centimeter.\n",
         "misuse": "I första hand bör lokala protokoll följas med rekommenderad formel för beräkning i syfte att ordinera adekvat dosering. Kontrollera att dosering för specifikt läkemedel är avsett att användas i enlighet med Ideal Body Weight och inte patientens aktuella kroppsvikt.",
         "copyright": "© Cambio Healthcare Systems"
       },
@@ -64,7 +64,7 @@
           "Weight",
           "Devine formula"
         ],
-        "use": "Use to calculate the ideal body weight of individuals in order to prescribe adequate dosages of medication.\n\nThere are multiple formulas/methods for calculating ideal body weight. The most widely used method is the Devine formula:\n\n▪ Ideal Body Weight (men) \u003d [50kg + 2.3kg * ( Height(in) - 60 inches )]\n▪ Ideal Body Weight (women) \u003d [45.5kg + 2.3kg *( Height(in) - 60 inches )]\n\nThe formula generates an approximate value that can be used for individuals with a height of 5 feet or taller.",
+        "use": "Use to calculate the ideal body weight of individuals in order to prescribe adequate dosages of medication.\n\nThere are multiple formulas/methods for calculating ideal body weight. The most widely used method is the Devine formula:\n\n? Ideal Body Weight (men) \u003d [50kg + 2.3kg * ( Height(in) - 60 inches )]\n? Ideal Body Weight (women) \u003d [45.5kg + 2.3kg *( Height(in) - 60 inches )]\n\nThe formula generates an approximate value that can be used for individuals with a height of 5 feet or taller.",
         "misuse": "Should not be used to determine medication dosages in cases where the ABW (actual body weight) is needed. \n\nDo not calculate IBW for individuals under 5 feet tall. ",
         "copyright": "© Cambio Healthcare Systems"
       }
@@ -110,8 +110,7 @@
 </head>
 <body ng-controller="cds_controller">
 <#assign app_help_tag = "def.guides['IBW.v1'].concept">
-<#assign height = "def.terms['vt0001']"/>
-<#assign references = "def.terms['vt0002']"/>
+<#assign references = "def.terms['vt0001']"/>
 <#assign ideal_body_weight_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.ideal_body_weight.v1']">
 <#assign ideal_body_weight_entry_def = "def.entries['openEHR-EHR-OBSERVATION.ideal_body_weight.v1']">
 <#assign ideal_body_weight_def = ideal_body_weight_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
@@ -128,25 +127,18 @@
 <#assign event_time1_def = basic_demographic_entry_def + ".elements['/data/events/time']">
 <#assign gender_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 <#assign event_time1_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data/events/time']">
+
 <script> 
 angular.module('cds_app').controller('IBW_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
-    $scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
     $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
-    $scope.${height_length_ehr_data}.value.units = $scope.${height_length_def}.units[0];
-  });
-  $scope.$on('executeEnd', function() {
-    $scope.firedRules.filter(function(rule) {
-      if (rule.gtCode === 'gt0005') {
-        $scope.ibw_round = Math.round($scope.${ideal_body_weight_cds_data}.value.magnitude * 10)/10;
-      }
-      if (rule.gtCode === 'gt0019') {
-        $scope.ibw_round = Math.round($scope.${ideal_body_weight_cds_data}.value.magnitude * 10)/10;
-      }   
-    });
+	$scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+	$scope.${height_length_ehr_data}.value.units = $scope.${height_length_def}.units[1];
+    $scope.${gender_ehr_data}.value.selection = $scope.findMin($scope.${gender_def});
   });
 });
 </script>
+
 <div ng-show="ready" ng-controller="IBW_Ctrl">
 <div class="header">
   <h1>{{def.concept.name}}</h1>
@@ -155,8 +147,20 @@ angular.module('cds_app').controller('IBW_Ctrl', function($scope, $window){
 	<p>{{${app_help_tag}.description}}</p>
   </div>
 </div>
-<div class="card" id="card1">
-  <div class="row collapse" title="{{${gender_def}.description}}">
+
+<div class="card">
+<div class="row collapse" title="{{${height_length_def}.description}}">
+<div class="medium-5 columns">
+<label>{{${height_length_def}.name}}</label>
+</div>
+<div class="medium-5 columns">
+        <input ng-model="${height_length_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+      </div>
+	  <div class="medium-2 columns">
+        <select ng-model="${height_length_ehr_data}.value.units" ng-options="unit for unit in ${height_length_def}.units" ng-change="execute()"></select>
+      </div>
+</div>
+<div class="row collapse" title="{{${gender_def}.description}}">
     <div class="medium-6 columns">
       <label>{{${gender_def}.name}}</label>
     </div>
@@ -164,26 +168,19 @@ angular.module('cds_app').controller('IBW_Ctrl', function($scope, $window){
       <input type="radio" value="{{key}}" ng-model="${gender_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
     </label>
   </div>
-  <div class="row collapse" title="{{${height_length_def}.description}}">
-      <div class="medium-6 columns">
-        <label>{{${height}.text}}</label>
-      </div>
-      <div class="medium-4 columns">
-        <input ng-model="${height_length_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
-      </div>
-      <div class="medium-2 columns">
-        <select ng-model="${height_length_ehr_data}.value.units" ng-options="unit for unit in ${height_length_def}.units" ng-change="execute()" disabled=""></select>
-      </div>
+<div class="row collapse" title="{{${ideal_body_weight_def}.description}}" id="displayresult1">
+  <div class="medium-5 columns">
+    <label><b>{{${ideal_body_weight_def}.name}}: </b></label>
   </div>
-  <div class="row collapse" title="{{${ideal_body_weight_entry_def}.description}}" id="displayresult">
-    <div class="medium-6 columns">
-      <b>{{${ideal_body_weight_entry_def}.name}}:</b>
-    </div>
-    <div class="medium-6 columns">
-      <span>{{ibw_round}} {{${ideal_body_weight_cds_data}.value.units}}</span>
-    </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${ideal_body_weight_cds_data}.value.magnitude}} {{${ideal_body_weight_cds_data}.value.units}}</label>
   </div>
 </div>
+
+</div>
+</div>
+
+<div class="row"><div class="medium-12 columns"></div></div>
 <br /><br />
 <div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
   <div class="medium-11 medium-offset-1 column">
@@ -194,12 +191,19 @@ angular.module('cds_app').controller('IBW_Ctrl', function($scope, $window){
   <div class="row collapse">
       <div class="medium-11 medium-offset-1 column">
         <li>
-          <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/10981254">Pai MP, Paloucek FP. The origin of the "ideal" body weight equations. Ann Pharmacother. 2000;34(9):1066-9. PMID 10981254.</a></i>
+          <i><a href="https://www.ncbi.nlm.nih.gov/books/NBK2003/">Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults: The Evidence Report [Internet]. Bethesda (MD): National Heart, Lung, and Blood Institute; NIH Publication No. 98-4083, Sep 1998, [cited 2009 July 02].</a></i>
+        </li>
+      </div>
+    </div>
+	<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i><a href="http://apps.who.int/bmi/index.jsp?introPage=intro_3.html">BMI Classification. Global Database on Body Mass Index. World Health Organization. 2006. Available from: http://apps.who.int/bmi/index.jsp?introPage=intro_3.html</a></i>
         </li>
       </div>
     </div>
   </div>
-</div>
+
 <style>
   html, body {
     height:100%;
@@ -292,7 +296,7 @@ angular.module('cds_app').controller('IBW_Ctrl', function($scope, $window){
       left:0;
   }
   .references1{
-  font-size: 70%;
+    font-size: 70%;
   }
   /* CSS animation */
   @-webkit-keyframes fadeIn {
@@ -310,15 +314,25 @@ angular.module('cds_app').controller('IBW_Ctrl', function($scope, $window){
       0% { opacity:0; }
       100% { opacity:100%; }
   }
-  #displayresult {
+  #displayresult1 {
     background-color: #e6e6e6; 
     padding-top: 3px;
     padding-bottom: 3px;
-    padding-left: 3px;
-	font-size: 90%;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    background-color: #f2f2f2;
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
   }
   select, label:not(#h-fix) {
     margin-bottom: 10px;
 </style>
+
+
+
 
 </body></html>
