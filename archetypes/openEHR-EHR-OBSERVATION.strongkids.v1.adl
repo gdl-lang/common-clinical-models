@@ -1,0 +1,150 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.strongkids.v1
+
+concept
+	[at0000]	-- STRONGkids Nutritional Risk Screening
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Dennis Forslund">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-07-06">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"4549E3F72A36C00960965143C2863DE5">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- STRONGkids Nutritional Risk Screening
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Is the patient in a poor nutritional status judged by subjective clinical assessment?
+										value matches {
+											C_DV_ORDINAL <
+											>
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Is there an underlying illness with a risk of malnutrition or expected major surgery?
+										value matches {
+											C_DV_ORDINAL <
+											>
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Excessive diarrhoea (5 per day) and/or vomiting (>3 times/day) the last few days?
+										value matches {
+											C_DV_ORDINAL <
+											>
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Reduced food intake during the last few days before admission (not including fasting for an elective procedure or surgery?)
+										value matches {
+											C_DV_ORDINAL <
+											>
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Pre-existing dietetically advised nutritional intervention?
+										value matches {
+											C_DV_ORDINAL <
+											>
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Inability to consume adequate intake because of pain?
+										value matches {
+											C_DV_ORDINAL <
+											>
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Is there weight loss or no weight gain (infants <1 year) during the last few weeks/months?
+										value matches {
+											C_DV_ORDINAL <
+											>
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"STRONGkids Nutritional Risk Screening">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Is the patient in a poor nutritional status judged by subjective clinical assessment?">
+					description = <"Subjective clinical assessment - diminished subcutaneous fat and/or
+muscle mass and/or hollow face?">
+				>
+				["at0005"] = <
+					text = <"Is there an underlying illness with a risk of malnutrition or expected major surgery?">
+					description = <"High risk disease including but not limited to; anorexia, burns, bronchopulmonary dysplasia, celiac disease, cystic fibrosis, prematurity, cardiac disease, infectious disease (AIDS), IBD, cancer, liver/kidney/pancreatic disease, short bowel syndrome, muscle disease, metabolic disease, trauma, mental handicap, expected major surgery.">
+				>
+				["at0006"] = <
+					text = <"Excessive diarrhoea (5 per day) and/or vomiting (>3 times/day) the last few days?">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Reduced food intake during the last few days before admission (not including fasting for an elective procedure or surgery?)">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Pre-existing dietetically advised nutritional intervention?">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Inability to consume adequate intake because of pain?">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Is there weight loss or no weight gain (infants <1 year) during the last few weeks/months?">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Total score">
+					description = <"Sum of all factors.">
+				>
+			>
+		>
+	>
