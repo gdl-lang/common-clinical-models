@@ -1,0 +1,224 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.feverpain_for_strep_throat.v1
+
+concept
+	[at0000]	-- Feverpain for strep throat
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-07-08">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The FeverPAIN Score for Strep Pharyngitis identifies patients with streptococcal pharyngitis specifically">
+			use = <"Identifying patients with Strep pharyngitis can help reduce the unnecessary use of antibiotics.
+
+2 Sections of questions split between History and Physical findings with Y/N binary questions (scores 0,1):
+
+History:
+Fever in past 24 hours
+Absence of cough or coryza
+Symptom onset ≤3 days
+
+Physical findings:
+Purulent tonsils
+Severe tonsil inflammation
+
+Score interpretation:
+
+A score of 0-1 is associated with 13-18% isolation of streptococcus (close to background carriage rates).
+No antibiotics recommended.
+
+A score of 2 is associated with 30-35% isolation of streptococcus.
+Delayed antibiotic may be appropriate.
+
+A score of 3 is associated with 39-48% isolation of streptococcus.
+Delayed antibiotic may be appropriate.
+
+A score of 4 or more is associated with 62-65% isolation of streptococcus.
+Consider antibiotics if symptoms are severe or a short delayed prescribing strategy may be appropriate (48 hours).
+">
+			keywords = <"streptococcus", "strep throat", "pharyngitis", "FeverPAIN score">
+			misuse = <"The FeverPAIN Score requires detailed history taking and examination of the pharynx and shouldn't be used without these parts of the investigation in place.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Little P, et al. Incidence and clinical variables associated with streptococcal throat infections: a prospective diagnostic cohort study. Br J Gen Pract. 2012 Nov;62(604):e787-94.">
+		["MD5-CAM-1.0.1"] = <"57CE6337B28F9C30C74103BBA56DAB4C">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Feverpain for strep throat
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0011] occurrences matches {0..1} matches {	-- History:
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0006] occurrences matches {0..1} matches {	-- Symptom onset ≤3 days
+												value matches {
+													0|[local::at0013], 	-- No
+													1|[local::at0014]  	-- Yes
+												}
+											}
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Absence of cough or coryza
+												value matches {
+													0|[local::at0015], 	-- No
+													1|[local::at0016]  	-- Yes
+												}
+											}
+											ELEMENT[at0004] occurrences matches {0..1} matches {	-- Fever in past 24 hours
+												value matches {
+													0|[local::at0017], 	-- No
+													1|[local::at0018]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0012] occurrences matches {0..1} matches {	-- Physical findings:
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Purulent tonsils
+												value matches {
+													0|[local::at0019], 	-- No
+													1|[local::at0020]  	-- Yes
+												}
+											}
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Severe tonsil inflammation
+												value matches {
+													0|[local::at0021], 	-- No
+													1|[local::at0022]  	-- Yes
+												}
+											}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..5|}
+											}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Feverpain for strep throat">
+					description = <"Predicts likelihood of strep throat.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Fever in past 24 hours">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Absence of cough or coryza">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Symptom onset ≤3 days">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Severe tonsil inflammation">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Purulent tonsils">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Total score">
+					description = <"Total sum of the individual scores. Range is 0 to 5">
+				>
+				["at0010"] = <
+					text = <"Comment">
+					description = <"Any comments about the tool">
+				>
+				["at0011"] = <
+					text = <"History:">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Physical findings:">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+			>
+		>
+	>
