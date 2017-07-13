@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.feverpain_for_strep_throat.v1
 
 concept
-	[at0000]	-- Feverpain for strep throat
+	[at0000]	-- FeverPAIN Score
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -47,69 +56,99 @@ Consider antibiotics if symptoms are severe or a short delayed prescribing strat
 			misuse = <"The FeverPAIN Score requires detailed history taking and examination of the pharynx and shouldn't be used without these parts of the investigation in place.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"FeverPAIN Score identifierar patienter med streptokock-orsakad faryngit.">
+			use = <"Använd för att identifiera patienter med fayngit orsakad av streptokocker. 
+
+Instrumentet baseras på följande faktorer:
+
+Historik:
+Feber senaste 24 timmarna
+Frånvaro av hosta eller snuva
+Symtomdebut ≤3 dagar
+
+Undersökningsfynd:
+Beläggningar på tonsillerna
+Svårt inflammerade tonsiller
+
+Resultatet tolkas enligt:
+
+0-1p - associerat med streptokocker i 13-18% av fallen (nära bärarfrekvens). Antibiotika ej rekommenderat.
+
+2p - associerat med streptokocker i 30-35% av fallen. Antibiotika kan vara lämpligt om utdraget förlopp.
+
+3p - associerat med streptokocker i 39-48% av fallen. Antibiotika kan vara lämpligt om utdraget förlopp.
+
+4p eller mer - associerat med streptokocker i 62-65% av fallen. Överväg antibiotika om svåra symtom, alternativt om en lätt fördröjd förskrivning (48h) kan vara lämpligt.
+">
+			keywords = <"streptokocker", "FeverPAIN", "faryngit", "primärvård">
+			misuse = <"För bruk av FeverPAIN krävs samtliga efterfrågade uppgifter inkl. klinisk undersökning.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Ref. 1: Little P, et al. Incidence and clinical variables associated with streptococcal throat infections: a prospective diagnostic cohort study. Br J Gen Pract. 2012 Nov;62(604):e787-94.">
-		["MD5-CAM-1.0.1"] = <"57CE6337B28F9C30C74103BBA56DAB4C">
+		["MD5-CAM-1.0.1"] = <"29A4F1FC7FA7E257B4512B5D6B6728EF">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Feverpain for strep throat
+	OBSERVATION[at0000] matches {	-- FeverPAIN Score
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									CLUSTER[at0011] occurrences matches {0..1} matches {	-- History:
+									CLUSTER[at0011] occurrences matches {0..1} matches {	-- Historik
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0006] occurrences matches {0..1} matches {	-- Symptom onset ≤3 days
+											ELEMENT[at0006] occurrences matches {0..1} matches {	-- Symtomdebut ≤3 dagar
 												value matches {
-													0|[local::at0013], 	-- No
-													1|[local::at0014]  	-- Yes
+													0|[local::at0013], 	-- Nej
+													1|[local::at0014]  	-- Ja
 												}
 											}
-											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Absence of cough or coryza
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Frånvaro av hosta eller snuva
 												value matches {
-													0|[local::at0015], 	-- No
-													1|[local::at0016]  	-- Yes
+													0|[local::at0015], 	-- Nej
+													1|[local::at0016]  	-- Ja
 												}
 											}
-											ELEMENT[at0004] occurrences matches {0..1} matches {	-- Fever in past 24 hours
+											ELEMENT[at0004] occurrences matches {0..1} matches {	-- Feber senaste 24 timmarna
 												value matches {
-													0|[local::at0017], 	-- No
-													1|[local::at0018]  	-- Yes
+													0|[local::at0017], 	-- Nej
+													1|[local::at0018]  	-- Ja
 												}
 											}
 										}
 									}
-									CLUSTER[at0012] occurrences matches {0..1} matches {	-- Physical findings:
+									CLUSTER[at0012] occurrences matches {0..1} matches {	-- Undersökningsfynd
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Purulent tonsils
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Beläggning på tonsillerna?
 												value matches {
-													0|[local::at0019], 	-- No
-													1|[local::at0020]  	-- Yes
+													0|[local::at0019], 	-- Nej
+													1|[local::at0020]  	-- Ja
 												}
 											}
-											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Severe tonsil inflammation
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Svårt inflammerade tonsiller?
 												value matches {
-													0|[local::at0021], 	-- No
-													1|[local::at0022]  	-- Yes
+													0|[local::at0021], 	-- Nej
+													1|[local::at0022]  	-- Ja
 												}
 											}
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Poäng
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..5|}
 											}
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -218,6 +257,102 @@ ontology
 				["at0022"] = <
 					text = <"Yes">
 					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"FeverPAIN Score">
+					description = <"Estimerar sannolikhet för streptokocker som orsak till halsont.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Feber senaste 24 timmarna">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Frånvaro av hosta eller snuva">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Symtomdebut ≤3 dagar">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Svårt inflammerade tonsiller?">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Beläggning på tonsillerna?">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Poäng">
+					description = <"Summan av samtliga faktorer.">
+				>
+				["at0010"] = <
+					text = <"Kommentar">
+					description = <"Ev. tillägg.">
+				>
+				["at0011"] = <
+					text = <"Historik">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Undersökningsfynd">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"Ja">
+					description = <"">
 				>
 			>
 		>
