@@ -1,0 +1,94 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.acr_eular_gout_assessment.v1
+
+concept
+	[at0000]	-- Acr eular gout assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-07-16">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"This tool helps to differentiate between those patients with and those without Gout while reducing the need to assess synovial fluid through testing, especially if this is unavailable.">
+			use = <"Use with patients with mono or oligoarthritis of unclear etiology or when gout is part of the differential diagnosis.
+
+Can be used when synovial fluid testing is not available.
+
+There are  3 levels or steps of criteria to get passed with the first 2 steps unscored but which lead to a definite classification or to allow further questioning to define classification further:
+
+ Step 1 – Entry criterion:
+
+≥1 episode of swelling, pain, or tenderness in a peripheral joint/bursa
+
+Step 2 – Sufficient criterion:
+
+Presence of Monosodium Urate (MSU) crystals in a symptomatic joint, bursa, or tophus
+
+Step 3: Classification criteria (scored) with a range of -6 to 23 with 8 sections with various scores.
+
+A threshold score of ≥8 classifies an individual as having gout.
+">
+			keywords = <"ACR EULAR Gout", "gout", "MSU">
+			misuse = <"Supplementary evidence may be needed in cases that are unclear and so always defer to sound clinical judgment when using this tool
+">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Neogi T, et al. 2015 Gout Classification Criteria: An American College of Rheumatology/European League Against Rheumatism Collaborative Initiative. Arthritis &amp; Rheumatology. 20015; 67: 2557–2568. doi: 10.1002/art.39254
+
+Ref. 2: Use of online calculator as referenced from the American College of Rheumatology (ACR) and European League Against Rheumatism (EULAR) web sites. Accessed at: http://goutclassificationcalculator.auckland.ac.nz">
+		["MD5-CAM-1.0.1"] = <"EFF4EE323FF519CFFA101FF83B47BA9C">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Acr eular gout assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Diagnosis of Gout?
+						value matches {
+							0|[local::at0003], 	-- No - This patient does NOT meet criteria for gout classification (scores < 8).
+							1|[local::at0004]  	-- Yes - This patient MEETS sufficient criterion and can be classified as having gout and/or has a score ≥8
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Acr eular gout assessment">
+					description = <"The ACR EULAR Gout Classification Criteria provides a formal diagnostic criteria for gout.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Diagnosis of Gout?">
+					description = <"A diagnosis of gout can be made if the Sufficient criteria has been fulfilled or entry and classification criteria are fulfilled with a threshold score of ≥8 classifying an individual as having gout.">
+				>
+				["at0003"] = <
+					text = <"No - This patient does NOT meet criteria for gout classification (scores < 8).">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Yes - This patient MEETS sufficient criterion and can be classified as having gout and/or has a score ≥8">
+					description = <"*">
+				>
+			>
+		>
+	>
