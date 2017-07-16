@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.simplified_motor_score.v1
 
 concept
-	[at0000]	-- Simplified motor score
+	[at0000]	-- Simplified Motor Score
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -38,6 +47,25 @@ SMS score = 2 indicates low risk of need for intubation, neurosurgical intervent
 			misuse = <"Although of value within an acute setting, a more through clinical assessment should be employed in less urgent settings">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att i såväl akut som pre-hospital miljö utvärdera potentiellt skalltrauma.">
+			use = <"Simplified Motor Score (SMS) föreslås kunna användas som alternativ till Glasgow Coma Scale (GCS) för bedömning av patienter med traumatiska hjärnskador. 
+
+SMS:
+
+Lyder uppmaning = 2
+Lokaliserar smärta = 1 
+Drar undan vid smärta, eller sämre = 0
+
+Resultatet tolkas enligt:
+2p = låg risk för behov av intubering, neurokirurgisk åtgärd och mortalitet (motsvarande GCS 14-15). 
+<2p = indikerar signifikant förhöjd risk för traumatisk hjärnskada, med behov av akut bedömning och CT.
+">
+			keywords = <"simplified motor score", "SMS", "GCS", "skalltrauma", "trauma">
+			misuse = <"SMS kan vara av värde att använda i akutmiljö, men vid mindre kritiska situationer bör mer omfattande undersökning genomföras för bedömning.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -45,26 +73,26 @@ SMS score = 2 indicates low risk of need for intubation, neurosurgical intervent
 		["references"] = <"Ref. 1: Gill M, Windemuth R, Steele R, Green SM. A comparison of the Glasgow Coma Scale score to simplified alternative scores for the prediction of traumatic brain injury outcomes. Ann Emerg Med. 2005 Jan;45(1):37-42.
 
 ">
-		["MD5-CAM-1.0.1"] = <"6B9E7C1C0439FFDEAEC9C531BD75E61E">
+		["MD5-CAM-1.0.1"] = <"28640698AC7921CCA8DA174A2FB9DF55">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Simplified motor score
+	OBSERVATION[at0000] matches {	-- Simplified Motor Score
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Patient response
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Patientens svar på stimuli
 										value matches {
-											0|[local::at0007], 	-- Withdrawals to pain or worse
-											1|[local::at0008], 	-- Localizes pain
-											2|[local::at0009]  	-- Obeys commands
+											0|[local::at0007], 	-- Drar sig från smärtstimuli, eller sämre
+											1|[local::at0008], 	-- Lokaliserar smärta
+											2|[local::at0009]  	-- Lyder uppmaning
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -117,6 +145,46 @@ ontology
 				["at0009"] = <
 					text = <"Obeys commands">
 					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Simplified Motor Score">
+					description = <"Ett alternativ till GCS för enkel bedömning av patienter som genomgått skalltrauma.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Patientens svar på stimuli">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Kommentar">
+					description = <"Ev tillägg.">
+				>
+				["at0007"] = <
+					text = <"Drar sig från smärtstimuli, eller sämre">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Lokaliserar smärta">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Lyder uppmaning">
+					description = <"">
 				>
 			>
 		>
