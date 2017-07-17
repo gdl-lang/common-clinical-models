@@ -28,7 +28,7 @@ _Select a medical specialty below to view the available apps._
 
 [Geriatrics](https://github.com/gdl-lang/common-clinical-models#geriatrics)
 
-[Hematology] (https://github.com/gdl-lang/common-clinical-models/wiki/CDS-Apps-Overview#hematology)
+[Hematology](https://github.com/gdl-lang/common-clinical-models/wiki/CDS-Apps-Overview#hematology)
 
 [Intensive Care](https://github.com/gdl-lang/common-clinical-models#intensive-care)
 
@@ -168,7 +168,7 @@ _Select a medical specialty below to view the available apps._
 ### Hematology
 ----------
 
-* [4Ts for Heparin Induced Thrombocytopenia (4Ts for HIT)]((https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#4-ts-for-heparin-inducerad-thrombocytopenia-4ts-for-hit)) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/4Ts_HIT.v1.dsv?token=3454735f4849542e7631:1546214400000:db06f312e51d51b8c29bb23bcc2d43a3&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/4Ts_HIT.v1.dsv?token=3454735f4849542e7631:1546214400000:db06f312e51d51b8c29bb23bcc2d43a3&language=sv))
+* [4Ts for Heparin Induced Thrombocytopenia (4Ts for HIT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#4-ts-for-heparin-inducerad-thrombocytopenia-4ts-for-hit)) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/4Ts_HIT.v1.dsv?token=3454735f4849542e7631:1546214400000:db06f312e51d51b8c29bb23bcc2d43a3&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/4Ts_HIT.v1.dsv?token=3454735f4849542e7631:1546214400000:db06f312e51d51b8c29bb23bcc2d43a3&language=sv))
 
 ----------
 
