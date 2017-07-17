@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 109*
+### *Published Apps: 120*
 
 ----------
 
@@ -28,6 +28,8 @@ _Select a medical specialty below to view the available apps._
 
 [Geriatrics](https://github.com/gdl-lang/common-clinical-models#geriatrics)
 
+[Hematology] (https://github.com/gdl-lang/common-clinical-models/wiki/CDS-Apps-Overview#hematology)
+
 [Intensive Care](https://github.com/gdl-lang/common-clinical-models#intensive-care)
 
 [Neonatology](https://github.com/gdl-lang/common-clinical-models#neonatology)
@@ -37,6 +39,8 @@ _Select a medical specialty below to view the available apps._
 [Neurology](https://github.com/gdl-lang/common-clinical-models#neurology)
 
 [Obstetrics](https://github.com/gdl-lang/common-clinical-models#obstetrics)
+
+[Oncology](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#oncology)
 
 [Orthopedic Surgery](https://github.com/gdl-lang/common-clinical-models#orthopedic-surgery)
 
@@ -62,6 +66,8 @@ _Select a medical specialty below to view the available apps._
 
 * [CHA2DS2-VASc Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#cha2ds2-vasc-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/CHA2DS2-VASc.v1.dsv?token=434841324453322d564153632e7631:1546300799000:ae41a8cdd978eae9c92992f0dc10b9ff&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/CHA2DS2-VASc.v1.dsv?token=434841324453322d564153632e7631:1546300799000:ae41a8cdd978eae9c92992f0dc10b9ff&language=sv))
 
+* [Corrected QT Interval (QTc) Calculator](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#corrected-qt-interval-qtc-calculator) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/QTc_calculation.v1.dsv?token=5154635f63616c63756c6174696f6e2e7631:1546214400000:2034f3f203aa213613b8080798c19084&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/QTc_calculation.v1.dsv?token=5154635f63616c63756c6174696f6e2e7631:1546214400000:2034f3f203aa213613b8080798c19084&language=sv))
+
 * [DASH Prediction Score for Recurrent VTE](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#dash-prediction-score-for-recurrent-vte) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/DASH_VTE.v1.dsv?token=444153485f5654452e7631:1546300799000:996a78952adc51ebdb054ebeba18be49&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/DASH_VTE.v1.dsv?token=444153485f5654452e7631:1546300799000:996a78952adc51ebdb054ebeba18be49&language=sv))
 
 * [Duke Criteria](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#duke-criteria) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Duke_Criteria.v1.dsv?token=44756b655f43726974657269612e7631:1546300799000:7638e586b6b57e5eae6b321ff41ee0cc&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Duke_Criteria.v1.dsv?token=44756b655f43726974657269612e7631:1546300799000:7638e586b6b57e5eae6b321ff41ee0cc&language=sv))
@@ -83,8 +89,6 @@ _Select a medical specialty below to view the available apps._
 * [New York Heart Association Functional Classification (NYHA)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#new-york-heart-association-functional-classification-nyha) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/NYHA.v1.dsv?token=4e5948412e7631:1546300799000:8e910d27ef38dbcf65bd85dfc4988777&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/NYHA.v1.dsv?token=4e5948412e7631:1546300799000:8e910d27ef38dbcf65bd85dfc4988777&language=sv))
 
 * [Padua Prediction Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#padua-prediction-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Padua.v1.dsv?token=50616475612e7631:1546300799000:73fa8e5049530503432d7635ccbecafa&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Padua.v1.dsv?token=50616475612e7631:1546300799000:73fa8e5049530503432d7635ccbecafa&language=sv))
-
-* [Corrected QT Interval (QTc) Calculator](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#corrected-qt-interval-qtc-calculator) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/QTc_calculation.v1.dsv?token=5154635f63616c63756c6174696f6e2e7631:1546214400000:2034f3f203aa213613b8080798c19084&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/QTc_calculation.v1.dsv?token=5154635f63616c63756c6174696f6e2e7631:1546214400000:2034f3f203aa213613b8080798c19084&language=sv))
 
 * [TIMI Risk Index (TRI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#timi-risk-index-tri) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/TRI.v1.dsv?token=5452492e7631:1546300799000:80214541910854b64cabcd81cf3f197b&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/TRI.v1.dsv?token=5452492e7631:1546300799000:80214541910854b64cabcd81cf3f197b&language=sv))
 
@@ -119,9 +123,9 @@ _Select a medical specialty below to view the available apps._
 
 * [Emergency Transfusion Score (ETS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#emergency-transfusion-score-ets) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ETS.v1.dsv?token=4554532e7631:1546300799000:2e4d9699c5e3065ca65c8281b776341d&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ETS.v1.dsv?token=4554532e7631:1546300799000:2e4d9699c5e3065ca65c8281b776341d&language=sv))
 
-* [Glasgow Coma Scale (GCS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#glasgow-coma-scale-gcs) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/GCS.v1.dsv?token=4743532e7631:1546300799000:a13f234ff0cce0b9b3bd2b619fd380f3&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/GCS.v1.dsv?token=4743532e7631:1546300799000:a13f234ff0cce0b9b3bd2b619fd380f3&language=sv))
-
 * [Glasgow-Blatchford Bleeding Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#glasgow-blatchford-bleeding-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Glasgow-Blatchford.v1.dsv?token=476c6173676f772d426c61746368666f72642e7631:1546300799000:98747d0da168fac52c59d913eee1aed2&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Glasgow-Blatchford.v1.dsv?token=476c6173676f772d426c61746368666f72642e7631:1546300799000:98747d0da168fac52c59d913eee1aed2&language=sv))
+
+* [Glasgow Coma Scale (GCS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#glasgow-coma-scale-gcs) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/GCS.v1.dsv?token=4743532e7631:1546300799000:a13f234ff0cce0b9b3bd2b619fd380f3&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/GCS.v1.dsv?token=4743532e7631:1546300799000:a13f234ff0cce0b9b3bd2b619fd380f3&language=sv))
 
 * [Pulmonary Embolism Severity Index (PESI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pulmonary-embolism-severity-index-pesi) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/PESI.v1.dsv?token=504553492e7631:1546214400000:df1d0b1265968fc16b16afb70e13c881&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/PESI.v1.dsv?token=504553492e7631:1546214400000:df1d0b1265968fc16b16afb70e13c881&language=sv))
 
@@ -158,6 +162,13 @@ _Select a medical specialty below to view the available apps._
 * [Mini Nutritional Assessment (MNA)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#mini-nutritional-assessment-mna) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/MNA.v1.dsv?token=4d4e412e7631:1546300799000:282684a5ba5df3f862bf759b18858364&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/MNA.v1.dsv?token=4d4e412e7631:1546300799000:282684a5ba5df3f862bf759b18858364&language=sv))
 
 * [Risk Assessment Pressure Sore Scale (RAPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#risk-assessment-pressure-sore-raps) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/RAPS.v1.dsv?token=524150532e7631:1546300799000:197c310251907fe2df3e539994d19606&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/RAPS.v1.dsv?token=524150532e7631:1546300799000:197c310251907fe2df3e539994d19606&language=sv))
+
+----------
+
+### Hematology
+----------
+
+* [4Ts for Heparin Induced Thrombocytopenia (4Ts for HIT)]((https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#4-ts-for-heparin-inducerad-thrombocytopenia-4ts-for-hit)) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/4Ts_HIT.v1.dsv?token=3454735f4849542e7631:1546214400000:db06f312e51d51b8c29bb23bcc2d43a3&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/4Ts_HIT.v1.dsv?token=3454735f4849542e7631:1546214400000:db06f312e51d51b8c29bb23bcc2d43a3&language=sv))
 
 ----------
 
@@ -220,6 +231,20 @@ _Select a medical specialty below to view the available apps._
 ----------
 * [Bishop Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bishop-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Bishop.v1.dsv?token=426973686f702e7631:1546300799000:18109583a6a7953c861d8ed2aabb7ed4&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Bishop.v1.dsv?token=426973686f702e7631:1546300799000:18109583a6a7953c861d8ed2aabb7ed4&language=sv))
 
+* [VBAC Risk Score for Successful Vaginal Delivery (VBAC)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#vbac-risk-score-for-successful-vaginal-delivery-vbac) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/VBAC.v1.dsv?token=564241432e7631:1546214400000:3fd443beaf253358af0b393e20d714ba&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/VBAC.v1.dsv?token=564241432e7631:1546214400000:3fd443beaf253358af0b393e20d714ba&language=sv))
+----------
+
+### Oncology
+
+----------
+* [ECOG Performance Status](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ecog-performance-status) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ECOG_performance_status.v1.dsv?token=45434f475f706572666f726d616e63655f7374617475732e7631:1546214400000:bfbd0ac863c760bb7bbeb2e06d771bbb&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ECOG_performance_status.v1.dsv?token=45434f475f706572666f726d616e63655f7374617475732e7631:1546214400000:bfbd0ac863c760bb7bbeb2e06d771bbb&language=sv))
+
+* [TNM for Breast Cancer](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#tnm-for-breast-cancer) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/TNM_breast_cancer.v1.dsv?token=544e4d5f6272656173745f63616e6365722e7631:1546214400000:4edda3514d2951adb55d3fe4506e46d0&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/TNM_breast_cancer.v1.dsv?token=544e4d5f6272656173745f63616e6365722e7631:1546214400000:4edda3514d2951adb55d3fe4506e46d0&language=sv))
+
+* [TNM for Pancreatic Cancer](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#tnm-for-pancreatic-cancer) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/TNM_pancreas.v1.dsv?token=544e4d5f70616e63726561732e7631:1546214400000:b06d9a2fb64e6f22035b99a53d9c6ebe&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/TNM_pancreas.v1.dsv?token=544e4d5f70616e63726561732e7631:1546214400000:b06d9a2fb64e6f22035b99a53d9c6ebe&language=sv))
+
+* [TNM for Renal Cell Carcinoma](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#tnm-for-renal-cell-carcinoma) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/TNM_renal.v1.dsv?token=544e4d5f72656e616c2e7631:1546214400000:cb6d83d6901e516624520cfd139c05c6&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/TNM_renal.v1.dsv?token=544e4d5f72656e616c2e7631:1546214400000:cb6d83d6901e516624520cfd139c05c6&language=sv))
+
 ----------
 
 ### Orthopedic Surgery
@@ -236,6 +261,9 @@ _Select a medical specialty below to view the available apps._
 
 * [Behavioral Observational Pain Scale (BOPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#behavioral-observational-pain-scale-bops) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/BOPS.v1.dsv?token=424f50532e7631:1546214400000:8539e690c81ab32231425335cd068f4d&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/BOPS.v1.dsv?token=424f50532e7631:1546214400000:8539e690c81ab32231425335cd068f4d&language=sv))
 
+* [Height Potential](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#height-potential) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Height_potential.v1.dsv?4865696768745f706f74656e7469616c2e7631:1546214400000:413bc1fc35aa5d6530dd61022356f66a&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Height_potential.v1.dsv?4865696768745f706f74656e7469616c2e7631:1546214400000:413bc1fc35aa5d6530dd61022356f66a&language=sv))
+
+* [STRONGkids Nutritional Risk Screening](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#strongkids-nutritional-risk-screening) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/STRONGkids.v1.dsv?token=5354524f4e476b6964732e7631:1546214400000:10b69bfff0b6fc85d7b4a3c4f6120fc3&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/STRONGkids.v1.dsv?token=5354524f4e476b6964732e7631:1546214400000:10b69bfff0b6fc85d7b4a3c4f6120fc3&language=sv))
 ----------
 
 ### Primary care
@@ -256,6 +284,8 @@ _Select a medical specialty below to view the available apps._
 * [Epworth Sleepiness Scale](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#epworth-sleepiness-scale) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ESS.v1.dsv?token=4553532e7631:1546300799000:c9a859d9cbb453b5d54dfcdca9b4a0b4&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ESS.v1.dsv?token=4553532e7631:1546300799000:c9a859d9cbb453b5d54dfcdca9b4a0b4&language=sv))
 
 * [Estimated PEF-value](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#estimated-pef-value) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/PEFR_estimated.v1.dsv?token=504546525f657374696d617465642e7631:1546214400000:9266ba35aa6f47617da242806bee4ca0&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/PEFR_estimated.v1.dsv?token=504546525f657374696d617465642e7631:1546214400000:9266ba35aa6f47617da242806bee4ca0&language=sv))
+
+* [FeverPAIN](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#feverpain) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/FeverPAIN.v1.dsv?token=46657665725041494e2e7631:1546214400000:371c188d0e99ea1fe8622aeaf415f6df&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/FeverPAIN.v1.dsv?token=46657665725041494e2e7631:1546214400000:371c188d0e99ea1fe8622aeaf415f6df&language=sv))
 
 * [Ideal Body Weight (IBW)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#ideal-body-weight-ibw) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/IBW.v1.dsv?token=4942572e7631:1546300799000:9546ca74e9e710d599008c55763d8ef9&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/IBW.v1.dsv?token=4942572e7631:1546300799000:9546ca74e9e710d599008c55763d8ef9&language=sv))
 
@@ -297,6 +327,8 @@ _Select a medical specialty below to view the available apps._
 * [Hospital Anxiety and Depression Scale (HAD)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#hospital-anxiety-and-depression-scale-had) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/HAD.v1.dsv?token=4841442e7631:1546300799000:c26d257cdf77254eef10e369c54e2a2c&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/HAD.v1.dsv?token=4841442e7631:1546300799000:c26d257cdf77254eef10e369c54e2a2c&language=sv))
 
 * [Impact of Event Scale - Revised (IES-R)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#impact-of-event-scale---revised-ies-r) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/IES-R.v1.dsv?token=4945532d522e7631:1546214400000:53443ea04e8afbca62f8a173be1ecc2d&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/IES-R.v1.dsv?token=4945532d522e7631:1546214400000:53443ea04e8afbca62f8a173be1ecc2d&language=sv))
+
+* [Medical Outcomes Study - Social Support Survey (MOS-SSS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#medical-outcomes-study---social-support-survey-mos-sss) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/MOS-SSS.v1.dsv?token=4d4f532d5353532e7631:1546214400000:2afdf3b1c98ccc43448ac5633a44bf8e&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/MOS-SSS.v1.dsv?token=4d4f532d5353532e7631:1546214400000:2afdf3b1c98ccc43448ac5633a44bf8e&language=sv))
 
 * [Montgomery Åsberg Depression Rating Scale (MADRS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#montgomery-%C3%85sberg-depression-rating-scale-madrs) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/MADRS.v1.dsv?token=4d414452532e7631:1546300799000:441848f468a6b960bb0b321c873054af&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/MADRS.v1.dsv?token=4d414452532e7631:1546300799000:441848f468a6b960bb0b321c873054af&language=sv))
 
@@ -345,6 +377,8 @@ _Select a medical specialty below to view the available apps._
 * [Injury Severity Score (ISS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#injury-severity-score-iss) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ISS.v1.dsv?token=4953532e7631:1546300799000:2c055844543615831795d634d86099ed&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ISS.v1.dsv?token=4953532e7631:1546300799000:2c055844543615831795d634d86099ed&language=sv))
 
 * [Revised Trauma Score (RTS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#revised-trauma-score-rts) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/RTS.v1.dsv?token=5254532e7631:1546214400000:87554b77b06e336d7acc287892affa47&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/RTS.v1.dsv?token=5254532e7631:1546214400000:87554b77b06e336d7acc287892affa47&language=sv))
+
+* [Simplified Motor Score (SMS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#simplified-motor-score-sms) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/SMS.v1.dsv?token=534d532e7631:1546214400000:a094d021f1546ab1d64e481601c44eaf&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/SMS.v1.dsv?token=534d532e7631:1546214400000:a094d021f1546ab1d64e481601c44eaf&language=sv))
 
 * [Trauma Associated Severe Hemorrhage (TASH)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#trauma-associated-severe-hemorrhage-tash) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/TASH.v1.dsv?token=544153482e7631:1546300799000:562a198b04b4d001211cf50c145b2fe3&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/TASH.v1.dsv?token=544153482e7631:1546300799000:562a198b04b4d001211cf50c145b2fe3&language=sv))
 
