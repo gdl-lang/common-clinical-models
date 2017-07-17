@@ -2,9 +2,18 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.canadian_c_spine_rule.v1
 
 concept
-	[at0000]	-- Canadian c spine rule
+	[at0000]	-- Canadian C-spine Rule
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -13,6 +22,46 @@ description
 		["date"] = <"2017-07-15">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Canadian C-spine Rule (CCR) används för att utan bruk av bilddiagnostik utesluta halsryggskador hos traumapatienter i stabilt, vaket tillstånd.">
+			use = <"Exklusionskriterier som måste tas i beaktande återfinns under \"Misuse\".
+
+Inklusionskriterier:
+
+- Om patienten har högriskfaktor (ålder >65, något av alternativen listade under \"Farliga mekanismer\" eller  parestesier i armar eller ben) krävs bilddiagnostik.
+
+Farlig mekanism:
+
+Fall >= 5 trappsteg
+Axialt våld mot huvudet
+Trafikolycka: >100km/h, voltat, utslängd ur fordonet
+Motordrivet fritidsfordon
+Cykelolycka
+
+- Om patienten saknar högriskfaktorer men även lågriskfaktorer (listade nedan), krävs bilddiagnostik.
+
+Uppesittande på akuten
+Varit uppegående efter inträffad händelse
+Fördröjd smärtdebut
+Ingen ömhet i nackens medellinje
+Enkel påkörning bakifrån: ej inkrockad i mötande trafik, påkörd av buss eller lastbil eller voltat, samt låg hastighet.
+
+- Om halsryggssmärta, avsaknad av högriskfaktorer och minst en lågriskfaktor, är det säkert att testa patientens förmåga till 45 graders rotation åt höger och vänster
+- Om rotation är möjlig (även med viss smärta eller obehag), krävs inte vidare bilddiagnostik.
+- Om rotation ej är möjlig till 45 grader i båda riktningarna, är bilddiagnostik indicerad.">
+			keywords = <"Canadian spine rule", "halsryggskada", "halsryggskador", "trauma", "ryggmärg", "ryggmärgsskada">
+			misuse = <"Använd ej instrumentet om någon av följande exklusionskriterier föreligger:
+
+Ej traumapatient
+GCS <15
+Instabila vitalparametrar
+Ålder <16 år
+Akut paralys
+Känd vertebral sjukdom
+Tidigare genomgången halsryggskirurgi">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"The Canadian C-spine Rule (CCR) helps to safely rule out CSI (Cervical spine injury) in trauma patients who are in a stable and alert condition without needing to resort to taking radiographic images.">
@@ -51,7 +100,7 @@ Simple rear-end motor vehicle collision (MVC) not simple if: pushed into traffic
 
 
 ">
-			keywords = <"Canadian spine rule", "cervical spine injury", "cervical trauma">
+			keywords = <"Canadian spine rule", "cervical spine injury", "cervical trauma", "trauma care">
 			misuse = <"Do not use if any of the following exclusion criteria are present:
 
 Exclusion Criteria:
@@ -70,46 +119,46 @@ Previous C-Spine Surgery">
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Ref. 1: Stiell IG, Wells GA, Vandemheen KL, Clement CM, Lesiuk H, De Maio VJ, Laupacis A, Schull M, McKnight RD, Verbeek R, Brison R, Cass D, Dreyer J, Eisenhauer MA, Greenberg GH, MacPhail I, Morrison L, Reardon M, Worthington J. The Canadian C-spine rule for radiography in alert and stable trauma patients. JAMA. 2001 Oct 17;286(15):1841-8. PubMed PMID: 11597285">
-		["MD5-CAM-1.0.1"] = <"733BB595C043942A694E887B227A9B6A">
+		["MD5-CAM-1.0.1"] = <"58CFD22E8FABCBE061C2FDDE7E3477C3">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Canadian c spine rule
+	OBSERVATION[at0000] matches {	-- Canadian C-spine Rule
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Q1. Age ≥ 65 years, extremity paresthesias or dangerous mechanism (IF no go to Q2)
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Q1. Ålder ≥ 65 år, extremitetsparestesi eller farlig mekanism? (om nej - gå vidare till Q2)
 										value matches {
-											0|[local::at0008], 	-- No
-											1|[local::at0009], 	-- Yes
-											2|[local::at0017]  	-- NA
+											0|[local::at0008], 	-- Nej
+											1|[local::at0009], 	-- Ja
+											2|[local::at0017]  	-- Ej tillämpbar
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Q2. Low risk factor present (if yes – low risk go to Q3)
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Q2. Föreliggande lågriskfaktor? (om ja - gå vidare till Q3)
 										value matches {
-											0|[local::at0010], 	-- No
-											1|[local::at0011], 	-- Yes
-											2|[local::at0018]  	-- NA
+											0|[local::at0010], 	-- Nej
+											1|[local::at0011], 	-- Ja
+											2|[local::at0018]  	-- Ej tillämpbar
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Q3. Able to actively rotate neck 45° left and right IF NO – High risk factors
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Q3. Aktiv rotation i 45° höger och vänster möjlig?
 										value matches {
-											0|[local::at0012], 	-- No
-											1|[local::at0013], 	-- Yes
-											2|[local::at0019]  	-- NA
+											0|[local::at0012], 	-- Nej
+											1|[local::at0013], 	-- Ja
+											2|[local::at0019]  	-- Ej tillämpbar
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Risk level
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Risknivå
 										value matches {
-											0|[local::at0015], 	-- Low risk
-											1|[local::at0016]  	-- High Risk
+											0|[local::at0015], 	-- Låg risk
+											1|[local::at0016]  	-- Hög risk
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -216,6 +265,102 @@ Simple rear-end motor vehicle collision (MVC) not simple if: pushed into traffic
 				["at0019"] = <
 					text = <"NA">
 					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Canadian C-spine Rule">
+					description = <"Canadian C-spine Rule (CCR) används för att utan bruk av bilddiagnostik utesluta halsryggskador hos traumapatienter i stabilt, vaket tillstånd.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Q1. Ålder ≥ 65 år, extremitetsparestesi eller farlig mekanism? (om nej - gå vidare till Q2)">
+					description = <"Om patientens ålder är över 65 år, om patienten har extremitetsparestesier eller om farlig mekanism föreligger. Till farlig mekanism räknas: 
+Fall >= 5 trappsteg
+Axialt våld mot huvudet
+Trafikolycka: >100km/h, voltat, utslängd ur fordonet
+Motordrivet fritidsfordon
+Cykelolycka
+">
+				>
+				["at0005"] = <
+					text = <"Q2. Föreliggande lågriskfaktor? (om ja - gå vidare till Q3)">
+					description = <"Minst en föreliggande lågriskfaktor:
+Uppesittande på akuten
+Varit uppegående efter inträffad händelse
+Fördröjd smärtdebut
+Ingen ömhet i nackens medellinje
+Enkel påkörning bakifrån: ej inkrockad i mötande trafik, påkörd av buss eller lastbil eller voltat, samt låg hastighet.
+">
+				>
+				["at0006"] = <
+					text = <"Q3. Aktiv rotation i 45° höger och vänster möjlig?">
+					description = <"Undersök huruvida patienten kan genomföra aktiv rotation i 45 grader till höger och vänster (med eller utan viss smärta eller obehag)">
+				>
+				["at0007"] = <
+					text = <"Kommentar">
+					description = <"Ev. tillägg.">
+				>
+				["at0008"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"Risknivå">
+					description = <"Risknivå med avseende på föreliggande halsryggsskada.">
+				>
+				["at0015"] = <
+					text = <"Låg risk">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"Hög risk">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Ej tillämpbar">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Ej tillämpbar">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Ej tillämpbar">
+					description = <"">
 				>
 			>
 		>
