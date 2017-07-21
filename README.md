@@ -269,6 +269,8 @@ _Select a medical specialty below to view the available apps._
 ### Primary care
 
 ----------
+* [ACR EULAR Gout](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#acr-eular-gout) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ACR_EULAR_Gout.v1.dsv?token=4143525f45554c41525f476f75742e7631:1546214400000:289da41d3ef45ac6d5b1c2cbd9525942&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ACR_EULAR_Gout.v1.dsv?token=4143525f45554c41525f476f75742e7631:1546214400000:289da41d3ef45ac6d5b1c2cbd9525942&language=sv))
+
 * [ASSIGN Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#assign-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ASSIGN.v1.dsv?token=41535349474e2e7631:1546300799000:b2e8159eb4e8dc235e52107a5fe2af73&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ASSIGN.v1.dsv?token=41535349474e2e7631:1546300799000:b2e8159eb4e8dc235e52107a5fe2af73&language=sv))
 
 * [Body Mass Index (BMI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#body-mass-index-bmi) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/BMI.v1.dsv?token=424d492e7631:1546300799000:f9d8373aef9a0e001982a857d67500f8&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/BMI.v1.dsv?token=424d492e7631:1546300799000:f9d8373aef9a0e001982a857d67500f8&language=sv))
@@ -373,6 +375,8 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 * [ABC Score for massive transfusion](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#abc-score-for-massive-transfusion) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ABC_massive_transfusion.v1.dsv?token=4142435f6d6173736976655f7472616e73667573696f6e2e7631:1546300799000:f116ac3223887878f943dbf44215e021&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ABC_massive_transfusion.v1.dsv?token=4142435f6d6173736976655f7472616e73667573696f6e2e7631:1546300799000:f116ac3223887878f943dbf44215e021&language=sv))
+
+* [Canadian C-Spine Rule (CCR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#canadian-c-spine-rule-ccr) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/CCR.v1.dsv?token=4343522e7631:1546214400000:c33b42d0ee6ed44e3fa721456777c20a&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/CCR.v1.dsv?token=4343522e7631:1546214400000:c33b42d0ee6ed44e3fa721456777c20a&language=sv))
 
 * [Injury Severity Score (ISS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#injury-severity-score-iss) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ISS.v1.dsv?token=4953532e7631:1546300799000:2c055844543615831795d634d86099ed&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ISS.v1.dsv?token=4953532e7631:1546300799000:2c055844543615831795d634d86099ed&language=sv))
 
