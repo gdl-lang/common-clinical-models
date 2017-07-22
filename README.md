@@ -4,7 +4,7 @@
 
 ### Introduction
 
-Welcome to the overview page of the clinical decision support (CDS) apps. We're currently experiencing some technical issues, but we're working on bringing the apps back online as soon as possible. 
+Welcome to the overview page of the clinical decision support (CDS) apps.
 
 We've gathered all of the available applications in one place and organized them by medical specialty. Please note that the apps have been published for **demonstration purposes** only and should **NOT** be used to make medical decisions in their current state.
 
