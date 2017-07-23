@@ -1,0 +1,319 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.ransons_criteria_for_pancreatitis_mortality.v1
+
+concept
+	[at0000]	-- Ransons criteria for pancreatitis mortality
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-07-19">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The Ranson's criteria for pancreatitis mortality helps to calculate both on admission and at 48 hours after admission, the estimated mortality from pancreatitis using lab values.">
+			use = <"The tool uses various lab test results taken both at admission and 48 hrs after admission, which are assigned scores (0 or 1 equivalent to No or Yes). These individual scores are summed to produce the overall score and assessment of mortality from pancreatitis.
+
+Score ranges from 0 to 11 and the scores acquired at admission relate to the likelihood of severe pancreatitis at a threshold of >= 3 above which severe pancreatitis becomes likely, whilst the lab values point to the cumulative predicted mortality.
+
+Score interpretation:
+
+Score 0-2 on admission: Severe pancreatitis unlikely. 1% predicted mortality
+Score 3-4: Severe pancreatitis likely. Consider ICU admission. 15% predicted mortality
+Score 5-6:  Severe pancreatitis likely. Consider ICU admission. 40% predicted mortality
+Score 7-11: Severe pancreatitis likely. Consider ICU admission. 100% predicted mortality
+
+">
+			keywords = <"pancreatitis", "mortality", "Ranson's Criteria">
+			misuse = <"Do not use this tool alone, when lab values are not available or when these cannot be obtained at the appropriate times.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Ranson JH, Rifkind KM, Roses DF, Fink SD, Eng K, Spencer FC. Prognostic signs and the role of operative management in acute pancreatitis. Surg Gynecol Obstet. 1974 Jul;139(1):69-81. PubMed PMID: 4834279.
+
+">
+		["MD5-CAM-1.0.1"] = <"FA1BDF8F0070C612356C79BCF9FD2F03">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Ransons criteria for pancreatitis mortality
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0009] occurrences matches {0..1} matches {	-- On Admission
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0004] occurrences matches {0..1} matches {	-- WBC score: >16k (16 x 10^9/L)
+												value matches {
+													0|[local::at0037], 	-- No
+													1|[local::at0038]  	-- Yes
+												}
+											}
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Age score > 55 yrs
+												value matches {
+													0|[local::at0035], 	-- No
+													1|[local::at0036]  	-- Yes
+												}
+											}
+											ELEMENT[at0006] occurrences matches {0..1} matches {	-- Glucose score > 200 mg/dL (>10 mmol/L)
+												value matches {
+													0|[local::at0033], 	-- No
+													1|[local::at0034]  	-- Yes
+												}
+											}
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- AST score > 250 units/L
+												value matches {
+													0|[local::at0031], 	-- No
+													1|[local::at0032]  	-- Yes
+												}
+											}
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- LDH score > 350 units/L
+												value matches {
+													0|[local::at0029], 	-- No
+													1|[local::at0030]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0010] occurrences matches {0..1} matches {	-- 48 hrs after admission
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0016] occurrences matches {0..1} matches {	-- HCT drop score >10% from admission
+												value matches {
+													0|[local::at0027], 	-- No
+													1|[local::at0028]  	-- Yes
+												}
+											}
+											ELEMENT[at0015] occurrences matches {0..1} matches {	-- BUN increase score > 5 mg/dL (>1.79 mmol/L) from admission
+												value matches {
+													0|[local::at0025], 	-- No
+													1|[local::at0026]  	-- Yes
+												}
+											}
+											ELEMENT[at0014] occurrences matches {0..1} matches {	-- Serum Calcium score < 8mg/dL (< 2 mmol/L) within 48 hrs
+												value matches {
+													0|[local::at0023], 	-- No
+													1|[local::at0024]  	-- Yes
+												}
+											}
+											ELEMENT[at0013] occurrences matches {0..1} matches {	-- PaO2 score < 60 mmHg within 48 hrs
+												value matches {
+													0|[local::at0021], 	-- No
+													1|[local::at0022]  	-- Yes
+												}
+											}
+											ELEMENT[at0012] occurrences matches {0..1} matches {	-- Base Deficit score (24-HCO3) > 4mg/dL within 48 hrs
+												value matches {
+													0|[local::at0019], 	-- No
+													1|[local::at0020]  	-- Yes
+												}
+											}
+											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Fluid needs score > 6L within 48hrs
+												value matches {
+													0|[local::at0017], 	-- No
+													1|[local::at0018]  	-- Yes
+												}
+											}
+										}
+									}
+									ELEMENT[at0039] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..11|}
+											}
+										}
+									}
+									ELEMENT[at0040] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Ransons criteria for pancreatitis mortality">
+					description = <"The Ranson's criteria for pancreatitis mortality helps to calculate both on admission and at 48 hours after admission, the estimated mortality from pancreatitis.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"WBC score: >16k (16 x 10^9/L)">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Age score > 55 yrs">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Glucose score > 200 mg/dL (>10 mmol/L)">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"AST score > 250 units/L">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"LDH score > 350 units/L">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"On Admission">
+					description = <"Variuos lab values taken at admission">
+				>
+				["at0010"] = <
+					text = <"48 hrs after admission">
+					description = <"Various other lab values taken at 48hrs after admission">
+				>
+				["at0011"] = <
+					text = <"Fluid needs score > 6L within 48hrs">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Base Deficit score (24-HCO3) > 4mg/dL within 48 hrs">
+					description = <"Base deficit >4 mEq/L or >4mg/dL in  48hrs">
+				>
+				["at0013"] = <
+					text = <"PaO2 score < 60 mmHg within 48 hrs">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Serum Calcium score < 8mg/dL (< 2 mmol/L) within 48 hrs">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"BUN increase score > 5 mg/dL (>1.79 mmol/L) from admission">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"HCT drop score >10% from admission">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Total score">
+					description = <"Score ranges from 0 to 11. The total score sums the individual scores.">
+				>
+				["at0040"] = <
+					text = <"Comment">
+					description = <"Any comments regarding the tool">
+				>
+			>
+		>
+	>
