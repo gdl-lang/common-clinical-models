@@ -1,0 +1,116 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.ransons_criteria_pancreatitis_assessment.v1
+
+concept
+	[at0000]	-- Ransons criteria pancreatitis assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-07-22">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The Ranson's criteria for pancreatitis mortality helps to calculate both on admission and at 48 hours after admission, the estimated mortality from pancreatitis using lab values.">
+			use = <"This tool captures the score interpretation and percentage predicted mortality of acute pancreatitis:
+
+Score 0-2 on admission: Severe pancreatitis unlikely. 1% predicted mortality
+Score 3-4: Severe pancreatitis likely. Consider ICU admission. 15% predicted mortality
+Score 5-6:  Severe pancreatitis likely. Consider ICU admission. 40% predicted mortality
+Score 7-11: Severe pancreatitis likely. Consider ICU admission. 100% predicted mortality">
+			keywords = <"acute pancreatitis", "predicted mortality">
+			misuse = <"Do not use this tool alone, when lab values are not available or when these cannot be obtained at the appropriate times.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Ranson JH, Rifkind KM, Roses DF, Fink SD, Eng K, Spencer FC. Prognostic signs and the role of operative management in acute pancreatitis. Surg Gynecol Obstet. 1974 Jul;139(1):69-81. PubMed PMID: 4834279.">
+		["MD5-CAM-1.0.1"] = <"0937BD67A0A8615D7BC1142096BC5272">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Ransons criteria pancreatitis assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Likelihood of severe pancreatitis
+						value matches {
+							0|[local::at0009], 	-- Severe pancreatitis unlikely
+							1|[local::at0010]  	-- Severe pancreatitis likely
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Predicted mortality
+						value matches {
+							0|[local::at0005], 	-- 1% Predicted mortality
+							1|[local::at0006], 	-- 15% Predicted mortality
+							2|[local::at0007], 	-- 40% Predicted mortality
+							3|[local::at0008]  	-- 100% Predicted mortality
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- Comments
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Ransons criteria pancreatitis assessment">
+					description = <"The Ranson's criteria for pancreatitis mortality helps to calculate both on admission and at 48 hours after admission, the estimated mortality from pancreatitis.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Likelihood of severe pancreatitis">
+					description = <"Likelihood of severe pancreatitis">
+				>
+				["at0003"] = <
+					text = <"Predicted mortality">
+					description = <"Predicted mortality">
+				>
+				["at0004"] = <
+					text = <"Comments">
+					description = <"Comments regarding the tool">
+				>
+				["at0005"] = <
+					text = <"1% Predicted mortality">
+					description = <"Score 0-2">
+				>
+				["at0006"] = <
+					text = <"15% Predicted mortality">
+					description = <"Score 3-4">
+				>
+				["at0007"] = <
+					text = <"40% Predicted mortality">
+					description = <"Score 5-6">
+				>
+				["at0008"] = <
+					text = <"100% Predicted mortality">
+					description = <"Score 7-11">
+				>
+				["at0009"] = <
+					text = <"Severe pancreatitis unlikely">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Severe pancreatitis likely">
+					description = <"*">
+				>
+			>
+		>
+	>
