@@ -1,0 +1,138 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.heart_score_for_mace_assessment.v1
+
+concept
+	[at0000]	-- Heart score for mace assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-07-28">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The HEART Score for Major Cardiac Events (MACE), helps to risk-stratify patients admitted to the emergency department who exhibits chest pain which is deemed appropriate for further investigation for ACS (acute coronary syndrome).">
+			use = <"Thia tool holds the assessment of risk of having an adverse cardiac event.
+
+Low risk patients score 0-3 with less than 2% risk of MACE (All-cause mortality myocardial infarction, or coronary revascularization) at 6 weeks.
+High risk patients score > 3 with > 2% risk that rises exponentially. See below:
+
+Risk of adverse cardiac event:
+
+0-3: 0.9-1.7% - These patients could be discharged. 
+
+4-6: 12-16.6% - These patients need to be admitted to the hospital. 
+
+≥7: 50-65% - These patients are candidates for early invasive measures. ">
+			keywords = <"HEART score for Major Cardiac Events", "adverse cardiac event">
+			misuse = <"Do not use if:
+
+< 21 years of age
+New ST-segment elevation ≥1 mm or other new EKG changes
+Hypotension
+Life expectancy less than 1 year, or non-cardiac medical/surgical/psychiatric illness requiring admission.
+">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Six AJ, Backus BE, Kelder JC. Chest pain in the emergency room: value of the HEART score. Neth Heart J. 2008 Jun;16(6):191-6. PubMed PMID: 18665203; PubMed Central PMCID: PMC2442661.
+">
+		["MD5-CAM-1.0.1"] = <"11D249432F4234BCA8FD55A96CE21314">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Heart score for mace assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Risk Level of adverse event
+						value matches {
+							0|[local::at0004], 	-- Low risk at 6 weeks
+							1|[local::at0005]  	-- High risk at 6 weeks
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Management
+						value matches {
+							0|[local::at0006], 	-- These patients could be discharged.
+							1|[local::at0007], 	-- These patients need to be admitted to the hospital.
+							2|[local::at0008]  	-- These patients are candidates for early invasive measures. 
+						}
+					}
+					ELEMENT[at0009] occurrences matches {0..1} matches {	-- Risk Percentage
+						value matches {
+							0|[local::at0010], 	-- 0.9-1.7% risk of adverse cardiac event
+							1|[local::at0011], 	-- 12-16.6% risk of adverse cardiac event
+							2|[local::at0012]  	-- 50-65% risk of adverse cardiac event
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Heart score for mace assessment">
+					description = <"Provides a 6-week prediction of the risk of having an adverse major cardiac event.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Risk Level of adverse event">
+					description = <"Risk of adverse event">
+				>
+				["at0003"] = <
+					text = <"Management">
+					description = <"Management according to the risk level">
+				>
+				["at0004"] = <
+					text = <"Low risk at 6 weeks">
+					description = <"Score 0-3">
+				>
+				["at0005"] = <
+					text = <"High risk at 6 weeks">
+					description = <"Score > 3">
+				>
+				["at0006"] = <
+					text = <"These patients could be discharged.">
+					description = <"Score 0-3">
+				>
+				["at0007"] = <
+					text = <"These patients need to be admitted to the hospital.">
+					description = <"Score 4-6">
+				>
+				["at0008"] = <
+					text = <"These patients are candidates for early invasive measures. ">
+					description = <"Score ≥7 ">
+				>
+				["at0009"] = <
+					text = <"Risk Percentage">
+					description = <"Percentage risk stratification according to the score">
+				>
+				["at0010"] = <
+					text = <"0.9-1.7% risk of adverse cardiac event">
+					description = <"Score 0-3">
+				>
+				["at0011"] = <
+					text = <"12-16.6% risk of adverse cardiac event">
+					description = <"Score 4-6">
+				>
+				["at0012"] = <
+					text = <"50-65% risk of adverse cardiac event">
+					description = <"Score ≥7">
+				>
+			>
+		>
+	>
