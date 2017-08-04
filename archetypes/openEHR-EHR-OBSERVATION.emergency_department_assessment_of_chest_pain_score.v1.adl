@@ -1,0 +1,339 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.emergency_department_assessment_of_chest_pain_score.v1
+
+concept
+	[at0000]	-- Emergency department assessment of chest pain score
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-07-30">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Pain Score (EDACS) provides a method to identify patients with a low risk of a major cardiac adverse event or possible acute coronary syndrom (ACS) to ascertain whether they might be suitable for early discharge.">
+			use = <"This score only applies to patients: (1) ≥18 years old with normal vital signs; (2) Chest pain consistent with Acure Coronary Syndrome (ACS); (3) No ongoing chest pain or crescendo angina.
+
+There are various variables that register a score, such as Age, Sex, known CAD (Coronary Artery Disease) or 3 or more risk factors and a number of symptoms and signs. There are 2 additional questions that help to stratify the risk between low and not low which adds to the EDAC score and is called the EDACS-ADP score. This score uses the EDACS score and the variables of EKG findings and whether 0hr and 2hr Troponin are negative or not.
+
+Low Risk Cohort:
+
+EDACS < 16 and
+If EKG shows no new ischemia and 0h and 2h troponin both negative
+
+Recommendation: safe for discharge to early outpatient follow-up investigation (or proceed to earlier inpatient testing).
+
+ Not Low Risk Cohort:
+
+EDACS ≥16 or EKG shows new ischemia 0h or 2h troponin positive
+
+Recommendation: Proceed with usual care with further observation and delayed troponin.">
+			keywords = <"chest pain", "adverse cardiac event", "acute coronary syndrome">
+			misuse = <"Not to be used with patients below 18 years of age or with chest pain not consistent with ACS or if there is ongoing chest pain or crescendo angina.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Than M, et al. Emerg Med Australas. Development and validation of the Emergency Department Assessment of Chest pain Score and 2 h accelerated diagnostic protocol. 2014 Feb;26(1):34-44. doi: 10.1111/1742-6723.12164.">
+		["MD5-CAM-1.0.1"] = <"7684A188F5E7C291CAFFF889B9C80063">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Emergency department assessment of chest pain score
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0006] occurrences matches {0..1} matches {	-- Clinical characteristics
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Age score
+												value matches {
+													0|[local::at0026], 	-- N/A
+													2|[local::at0027], 	-- 18–45 years
+													4|[local::at0028], 	-- 46–50 years
+													6|[local::at0029], 	-- 51-55 years
+													8|[local::at0030], 	-- 56-60 years
+													10|[local::at0031], 	-- 61-65 years
+													12|[local::at0032], 	-- 66-70 years
+													14|[local::at0033], 	-- 71-75 years
+													16|[local::at0034], 	-- 76-80 years
+													18|[local::at0035], 	-- 81-85 years
+													20|[local::at0036]  	-- 86+ years
+												}
+											}
+											ELEMENT[at0004] occurrences matches {0..1} matches {	-- Sex score
+												value matches {
+													0|[local::at0022], 	-- Female
+													6|[local::at0023]  	-- Male
+												}
+											}
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Aged 18-50 yrs and either known CAD or >= 3 risk factors
+												value matches {
+													0|[local::at0024], 	-- No
+													4|[local::at0025]  	-- Yes
+												}
+											}
+											CLUSTER[at0010] occurrences matches {0..1} matches {	-- Symptoms and Signs
+												items cardinality matches {1..*; unordered} matches {
+													ELEMENT[at0008] occurrences matches {0..1} matches {	-- Diaphoresis
+														value matches {
+															0|[local::at0020], 	-- No
+															3|[local::at0021]  	-- Yes
+														}
+													}
+													ELEMENT[at0011] occurrences matches {0..1} matches {	-- Pain radiates to arm, shoulder, neck or jaw
+														value matches {
+															0|[local::at0018], 	-- No
+															5|[local::at0019]  	-- Yes
+														}
+													}
+													ELEMENT[at0013] occurrences matches {0..1} matches {	-- Pain occurred or worsened with inspiration
+														value matches {
+															-4|[local::at0017], 	-- Yes
+															0|[local::at0016]  	-- No
+														}
+													}
+													ELEMENT[at0012] occurrences matches {0..1} matches {	-- Pain is reproduced by palpation
+														value matches {
+															-6|[local::at0015], 	-- Yes
+															0|[local::at0014]  	-- No
+														}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0037] occurrences matches {0..1} matches {	-- EDACS-ADP
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0038] occurrences matches {0..1} matches {	-- Was there new ischemia on ECG?
+												value matches {
+													0|[local::at0044], 	-- No
+													1|[local::at0045]  	-- Yes
+												}
+											}
+											ELEMENT[at0039] occurrences matches {0..1} matches {	-- Was both 0hr and 2hr troponin negative?
+												value matches {
+													0|[local::at0040], 	-- Both 0hr and 2hr Troponin was negative
+													1|[local::at0041]  	-- Either 0hr or 2hr Troponin was positive
+												}
+											}
+										}
+									}
+									ELEMENT[at0042] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|-10..38|}
+											}
+										}
+									}
+									ELEMENT[at0043] occurrences matches {0..1} matches {	-- Comments
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Emergency department assessment of chest pain score">
+					description = <"Emergency Department Assessment of Chest Pain Score (EDACS) provides a method to identify patients with a low risk of a major cardiac adverse event">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Sex score">
+					description = <"Scores related to gender">
+				>
+				["at0005"] = <
+					text = <"Age score">
+					description = <"Scores related to age">
+				>
+				["at0006"] = <
+					text = <"Clinical characteristics">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Aged 18-50 yrs and either known CAD or >= 3 risk factors">
+					description = <"Than et. al. define coronary artery disease (CAD) as “previous acute myocardial infarction, coronary artery bypass graft or percutaneous intervention.”
+Risk factors: family history of premature CAD, dislipidaemia, diabetes, hypertension, current smoker.">
+				>
+				["at0008"] = <
+					text = <"Diaphoresis">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Symptoms and Signs">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Pain radiates to arm, shoulder, neck or jaw">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Pain is reproduced by palpation">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Pain occurred or worsened with inspiration">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Female">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Male">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"N/A">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"18–45 years">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"46–50 years">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"51-55 years">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"56-60 years">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"61-65 years">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"66-70 years">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"71-75 years">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"76-80 years">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"81-85 years">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"86+ years">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"EDACS-ADP">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"Was there new ischemia on ECG?">
+					description = <"Was there new ischemia on ECG?">
+				>
+				["at0039"] = <
+					text = <"Was both 0hr and 2hr troponin negative?">
+					description = <"These EDACS-ADP questions help to evaluate for the purposes of the EDACS - Accelerated Diagnostic Protocol for fast evaluation. These questions must be combined with the EDACS score for the evaluation to be completed. These questions  are not added to the score for EDACS however.">
+				>
+				["at0040"] = <
+					text = <"Both 0hr and 2hr Troponin was negative">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"Either 0hr or 2hr Troponin was positive">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"Total score">
+					description = <"Sum of the individual EDACS scores (not including the ADP section)">
+				>
+				["at0043"] = <
+					text = <"Comments">
+					description = <"Comments regarding the score">
+				>
+				["at0044"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+			>
+		>
+	>

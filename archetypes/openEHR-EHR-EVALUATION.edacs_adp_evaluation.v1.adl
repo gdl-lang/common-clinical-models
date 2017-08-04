@@ -1,0 +1,136 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.edacs_adp_evaluation.v1
+
+concept
+	[at0000]	-- Edacs ADP evaluation
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-08-03">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Pain Score (EDACS) provides a method to identify patients with a low risk of a major cardiac adverse event or possible acute coronary syndrom (ACS). The addition of a couple of variables, the extended EDACS, EDACS-ADP (accelerated diagnostic protocol) helps to ascertain whether they might be suitable for early discharge.">
+			use = <"The EDACS- ADP extends on the EDAC score to provide  a fast evaluation of the risk a major cardiac adverse event or possible acute coronary syndrom (ACS). This uses the EDACS score and requires the additonal ADP elements to stratify the risk between low and not low risk: 
+
+Low Risk Cohort:
+
+EDACS < 16 and
+If EKG shows no new ischemia and 0h and 2h troponin both negative
+
+Recommendation: safe for discharge to early outpatient follow-up investigation (or proceed to earlier inpatient testing).
+
+Not Low Risk Cohort:
+
+EDACS ≥16 or EKG shows new ischemia 0h or 2h troponin positive
+
+Recommendation: Proceed with usual care with further observation and delayed troponin.
+
+Management
+
+    For low-risk patients: consider other causes of chest pain due to aortic, esophageal, pulmonary, cardiac, and abdominal, and muskuloskeletal sources prior to discharge.
+    For non-low-risk patients: Treat as per usual chest pain protocols, including but not limited to consideration of aspirin, nitroglycerin, and serial EKGs and biomarkers at minimum.
+
+">
+			keywords = <"chest pain", "EDACS ADP">
+			misuse = <"Not to be used with patients below 18 years of age or with chest pain not consistent with ACS or if there is ongoing chest pain or crescendo angina.
+
+">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Than M, et al. Emerg Med Australas. Development and validation of the Emergency Department Assessment of Chest pain Score and 2 h accelerated diagnostic protocol. 2014 Feb;26(1):34-44. doi: 10.1111/1742-6723.12164.">
+		["MD5-CAM-1.0.1"] = <"431635ACE30B7DA0E358941502F7446F">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Edacs ADP evaluation
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Cohort Risk Level
+						value matches {
+							0|[local::at0003], 	-- Low Risk
+							1|[local::at0004]  	-- Not Low Risk
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Recommendation
+						value matches {
+							0|[local::at0006], 	-- Recommendation: safe for discharge to early outpatient follow-up investigation (or proceed to earlier inpatient testing).
+							1|[local::at0007]  	-- Recommendation: Proceed with usual care with further observation and delayed troponin.
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Management
+						value matches {
+							0|[local::at0009], 	-- For low-risk patients: consider other causes of chest pain due to aortic, esophageal, pulmonary, cardiac, and abdominal, and muskuloskeletal sources prior to discharge.
+							1|[local::at0010]  	-- For non-low-risk patients: Treat as per usual chest pain protocols, including but not limited to consideration of aspirin, nitroglycerin, and serial EKGs and biomarkers at minimum.
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Edacs ADP evaluation">
+					description = <"Emergency Department Assessment of Chest Pain Score (EDACS) provides a method to identify patients with a low risk of a major cardiac adverse event">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Cohort Risk Level">
+					description = <"Low Risk Cohort: EDACS < 16 and
+If EKG shows no new ischemia and 0h and 2h troponin both negative 
+Not Low Risk Cohort: EDACS ≥16 or EKG shows new ischemia 0h or 2h troponin positive">
+				>
+				["at0003"] = <
+					text = <"Low Risk">
+					description = <" EDACS < 16 and If EKG shows no new ischemia and 0h and 2h troponin both negative 
+If EKG shows no new ischemia and 0h and 2h troponin both negative">
+				>
+				["at0004"] = <
+					text = <"Not Low Risk">
+					description = <"EDACS ≥16 or EKG shows new ischemia 0h or 2h troponin positive">
+				>
+				["at0005"] = <
+					text = <"Recommendation">
+					description = <"Recommendation dependant upon cohort risk level.">
+				>
+				["at0006"] = <
+					text = <"Recommendation: safe for discharge to early outpatient follow-up investigation (or proceed to earlier inpatient testing).">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Recommendation: Proceed with usual care with further observation and delayed troponin.">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Management">
+					description = <"For low-risk patients: consider other causes of chest pain due to aortic, esophageal, pulmonary, cardiac, and abdominal, and muskuloskeletal sources prior to discharge. For non-low-risk patients: Treat as per usual chest pain protocols, including but not limited to consideration of aspirin, nitroglycerin, and serial EKGs and biomarkers at minimum.
+">
+				>
+				["at0009"] = <
+					text = <"For low-risk patients: consider other causes of chest pain due to aortic, esophageal, pulmonary, cardiac, and abdominal, and muskuloskeletal sources prior to discharge.">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"For non-low-risk patients: Treat as per usual chest pain protocols, including but not limited to consideration of aspirin, nitroglycerin, and serial EKGs and biomarkers at minimum.">
+					description = <"*">
+				>
+			>
+		>
+	>
