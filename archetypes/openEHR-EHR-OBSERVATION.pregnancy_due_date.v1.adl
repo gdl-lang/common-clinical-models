@@ -1,0 +1,153 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.pregnancy_due_date.v1
+
+concept
+	[at0000]	-- Pregnancy due date
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-07-08">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To help track and calculate an estimation of the due date of a pregnancy both forward from the LMP and backwards from the Due Date.">
+			use = <"The tool uses either last menstrual period (LMP), current gestational age (GA), OR expected due date to determine the other two variables, plus estimated date of conception.
+
+To calculate pregnancy due date from LMP:
+
+    Determine last date of LMP.
+    Add 40 weeks to the date.
+    Add another 7 days to the date 40 weeks from the LMP. (OR use the First day of the Last Menstrual Period as has been done here)
+">
+			keywords = <"expected date of delivery", "expected due date", "expected date of conception", "last menstrual period", "gestational age">
+			misuse = <"Do not use when the cycles are not regular and LMP cannot be reliably used. Employ using other tools and investigations to support the results.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Chervenak FA, Skupski DW, Romero R, et al: How accurate is fetal biometry in the assessment of fetal age?. Am J Obstet Gynecol 1998; 178:678">
+		["MD5-CAM-1.0.1"] = <"EC264BE3BF50DF554F8F6967DE860CE5">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Pregnancy due date
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Last day of LMP
+										value matches {
+											DV_DATE_TIME matches {*}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Gestational Age: weeks
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+														magnitude = <|>=0.0|>
+														precision = <|0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Gestational Age: days
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+														magnitude = <|>=0.0|>
+														precision = <|1|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Due Date (EDD)
+										value matches {
+											DV_DATE_TIME matches {*}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- EDC
+										value matches {
+											DV_DATE_TIME matches {*}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Comment about the calculator
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Pregnancy due date">
+					description = <"Pregnancy Due Date calculator helps to track and estimate the progress to term of a pregnancy. The tool uses either last menstrual period (LMP), current gestational age (GA), OR expected due date to determine the other two variables, plus estimated date of conception.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Last day of LMP">
+					description = <"Last day of LMP (Last Menstrual Period)">
+				>
+				["at0005"] = <
+					text = <"Gestational Age: weeks">
+					description = <"Number of whole weeks of Gestation">
+				>
+				["at0006"] = <
+					text = <"Gestational Age: days">
+					description = <"Number of whole days extra of Gestation (when the gestation age is less than the next whole week. Choose days between 1 and 6, add to the weeks count if more than 6 days.">
+				>
+				["at0007"] = <
+					text = <"Due Date (EDD)">
+					description = <"EDC - Expected Date of Conception or Expected Due Date. To calculate pregnancy due date from LMP: Determine last date of LMP.
+Add 40 weeks to the date. Add another 7 days to the date 40 weeks from the LMP.
+">
+				>
+				["at0008"] = <
+					text = <"Comment about the calculator">
+					description = <"Any comments about the calculator">
+				>
+				["at0009"] = <
+					text = <"EDC">
+					description = <"Expected Date of Conception ">
+				>
+			>
+		>
+	>
