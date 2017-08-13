@@ -1,0 +1,81 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.lansky_play_performance_scale_assessment.v1
+
+concept
+	[at0000]	-- Lansky play performance scale assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-08-13">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"This tool captures a parental assessment of their chronically ill child's ability and response to treatment and provides a method to to track disease progression overtime.">
+			use = <"Restrictions are separated into 3 groups, such as none (70-100), mild (50-60) and moderate (0-40) restriction.
+
+">
+			keywords = <"disease progression", "Pediatric Functional Status">
+			misuse = <"Do not use for patients >= 16 yrs of age">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Lansky DA, List MA, Lansky LL, Ritter-Sterr C, Miller DR (1987). The measurement of performance in childhood cancer patients. Cancer 60 (7): 1651–6.doi:10.1002/1097-0142(19871001)60:73.0.CO;2-J. PMID 3621134.">
+		["MD5-CAM-1.0.1"] = <"1315EFF20FDDE2600CFBA7530C70A2A4">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Lansky play performance scale assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Play Performance Scale
+						value matches {
+							0|[local::at0003], 	-- No restriction
+							1|[local::at0004], 	-- Mild restriction
+							2|[local::at0005]  	-- Moderate restriction
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Lansky play performance scale assessment">
+					description = <"The Lansky Play-Performance Scale for Pediatric Functional Status captures a parental assessment of their child's ability and response to treatment">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Play Performance Scale">
+					description = <"Restrictions are separated into 3 groups, such as none, mild and moderate restriction">
+				>
+				["at0003"] = <
+					text = <"No restriction">
+					description = <"Score 70-100">
+				>
+				["at0004"] = <
+					text = <"Mild restriction">
+					description = <"Score 50-60">
+				>
+				["at0005"] = <
+					text = <"Moderate restriction">
+					description = <"Score 0-40">
+				>
+			>
+		>
+	>

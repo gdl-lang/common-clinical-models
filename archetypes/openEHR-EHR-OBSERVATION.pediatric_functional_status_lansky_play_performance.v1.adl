@@ -1,0 +1,157 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.pediatric_functional_status_lansky_play_performance.v1
+
+concept
+	[at0000]	-- Pediatric functional status lansky play performance
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-08-13">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"This tool captures a parental assessment of their chronically ill child's ability and response to treatment and provides a method to to track disease progression overtime.">
+			use = <"Restrictions are separated into 3 groups, such as none, mild and moderate restriction and the scale runs in 10s from 0 to 100 where unresponsive is 0 and 100 is fully active.
+">
+			keywords = <"disease progression", "Pediatric Functional Status">
+			misuse = <"Do not use for patients >= 16 yrs of age">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Lansky DA, List MA, Lansky LL, Ritter-Sterr C, Miller DR (1987). The measurement of performance in childhood cancer patients. Cancer 60 (7): 1651–6.doi:10.1002/1097-0142(19871001)60:73.0.CO;2-J. PMID 3621134.
+">
+		["MD5-CAM-1.0.1"] = <"7059E8E2371767D073330B19CF057511">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Pediatric functional status lansky play performance
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Patient Description
+										value matches {
+											0|[local::at0016], 	-- Unresponsive.
+											10|[local::at0017], 	-- Doesn't play; does not get out of bed.
+											20|[local::at0018], 	-- Sleeping often; play entirely limited to very passive activities.
+											30|[local::at0019], 	-- Bedbound; needing assistance even for quiet play.
+											40|[local::at0020], 	-- Mainly in bed; participates in quiet activities.
+											50|[local::at0021], 	-- Lying around much of the day, but gets dressed; no active playing participates in all quiet play and activities.
+											60|[local::at0022], 	-- Up and around, but active play minimal; keeps busy by being involved in quieter activities.
+											70|[local::at0023], 	-- Greater restriction of play and less time spent in play activity.
+											80|[local::at0024], 	-- Active, but gets tired more quickly.
+											90|[local::at0025], 	-- Minor restrictions in strenuous physical activity.
+											100|[local::at0026]  	-- Fully active, normal.
+										}
+									}
+									ELEMENT[at0027] occurrences matches {0..1} matches {	-- Final score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..100|}
+											}
+										}
+									}
+									ELEMENT[at0028] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Pediatric functional status lansky play performance">
+					description = <"The Lansky Play-Performance Scale for Pediatric Functional Status captures a parental assessment of their child's ability and response to treatment">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Patient Description">
+					description = <"Patient Description">
+				>
+				["at0016"] = <
+					text = <"Unresponsive.">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Doesn't play; does not get out of bed.">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Sleeping often; play entirely limited to very passive activities.">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Bedbound; needing assistance even for quiet play.">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Mainly in bed; participates in quiet activities.">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Lying around much of the day, but gets dressed; no active playing participates in all quiet play and activities.">
+					description = <"No active playing participates in all quiet play and activities.">
+				>
+				["at0022"] = <
+					text = <"Up and around, but active play minimal; keeps busy by being involved in quieter activities.">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Greater restriction of play and less time spent in play activity.">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Active, but gets tired more quickly.">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Minor restrictions in strenuous physical activity.">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Fully active, normal.">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Final score">
+					description = <"Final score">
+				>
+				["at0028"] = <
+					text = <"Comment">
+					description = <"Any comments on tool">
+				>
+			>
+		>
+	>
