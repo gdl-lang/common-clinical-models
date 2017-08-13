@@ -1,0 +1,119 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.anion_gap_delta_ratio_evaluation.v1
+
+concept
+	[at0000]	-- Anion gap delta ratio evaluation
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-08-13">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"This tool evaluates the anion gap, both corrected for albumin and the resultant delta ratio.
+
+">
+			use = <"There are many varying differential diagnoses based on the type of anion gap acidosis states. The delta ratio and corrected anion gap (for serum albumin) helps in this differentiation.
+
+The delta ratio helps to evaluate whether there is a mixed acid-base picture in the presence of an anion gap acidosis. The interpretation is shown below:
+
+Delta Ratio Interpretation:
+
+Delta Ratio... 	Suggests...
+< 0.4 	                   Hyperchloremic normal anion gap acidosis
+< 1 	                   High AG & normal AG acidosis
+1 to 2 	                   Pure Anion Gap Acidosis
+                                      Lactic acidosis: average value 1.6
+                                      DKA more likely to have a ratio closer to 1 due to urine ketone loss
+> 2 	                    High AG acidosis and a concurrent metabolic alkalosis or a pre-existing compensated respiratory acidosis
+
+Also a corrected Anion Gap that is higher than 1 mEq/L (mmol/L) in comparison to a non-corrected anion gap, is indicative of a high anion gap acidosis
+">
+			keywords = <"anion gap", "delta ratio", "metabolic acidosis">
+			misuse = <"Always combine such tools with sound clinical judgment when evaluating the results.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Oh MS, Carroll HJ. The anion gap. N. Engl. J. Med. 1977; 297 (15): 814–7.doi:10.1056/NEJM197710132971507. PMID 895822">
+		["MD5-CAM-1.0.1"] = <"C3E15473BDC5EFF55415DDD06045CAC1">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Anion gap delta ratio evaluation
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Anion Gap evaluation
+						value matches {
+							0|[local::at0003], 	-- Non anion gap acidosis
+							1|[local::at0004]  	-- High anion gap acidosis
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Delta ratio evaluation
+						value matches {
+							0|[local::at0006], 	-- Hyperchloremic normal anion gap acidosis
+							1|[local::at0007], 	-- High AG & normal AG acidosis
+							2|[local::at0008], 	-- Pure anion gap acidosis/Lactic acidosis (see text for more info)
+							3|[local::at0009]  	-- High AG acidosis and metabolic alkalosis (see text for more info)
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Anion gap delta ratio evaluation">
+					description = <"This tool evaluates the anion gap, both corrected for albumin and the resultant delta ratio">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Anion Gap evaluation">
+					description = <"If the corrected Anion Gap more than 1 mEq/L higher than the AG, there is a high anion gap acidosis">
+				>
+				["at0003"] = <
+					text = <"Non anion gap acidosis">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"High anion gap acidosis">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Delta ratio evaluation">
+					description = <"The delta ratio helps to evaluate whether there is a mixed acid-base picture in the presence of an anion gap acidosis. ">
+				>
+				["at0006"] = <
+					text = <"Hyperchloremic normal anion gap acidosis">
+					description = <"Delta ratio of < 0.4">
+				>
+				["at0007"] = <
+					text = <"High AG & normal AG acidosis">
+					description = <"Delta ratio of < 1">
+				>
+				["at0008"] = <
+					text = <"Pure anion gap acidosis/Lactic acidosis (see text for more info)">
+					description = <"Delta ratio of 1-2">
+				>
+				["at0009"] = <
+					text = <"High AG acidosis and metabolic alkalosis (see text for more info)">
+					description = <"Delta ratio of > 2">
+				>
+			>
+		>
+	>
