@@ -1,0 +1,237 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.neuropathy_pain_scale.v1
+
+concept
+	[at0000]	-- Neuropathy pain scale
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-08-20">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"This tool helps to track known neuropathy patients over time for neuropathic pain intensity">
+			use = <"The NPS tool captures scores based on patient responses to questions about pain intensity. 0 indicates no pain; 10 indicates the most pain imaginable. .
+
+The score allows tracking of neuropathic pain with already diagnosed patients using the patient's own assessment on a 0 to 10 scale for the 10 questions asked and an additional question that explores the temporal aspects of the experienced pain.
+
+The total score is the sum of the individual scores.
+
+The higher the score indicates that the neuropathic pain is worse and appropriate analgesia should be considered.
+">
+			keywords = <"neuropathy pain scale", "pain intensity">
+			misuse = <"Do not use this tool to diagnose secondary pain due to neuropathy but only with patients who have already been diagnosed.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Galer BS, Jensen MP. Development and preliminary validation of a pain measure specific to neuropathic pain: the Neuropathic Pain Scale. Neurology. 1997 Feb;48(2):332-8">
+		["MD5-CAM-1.0.1"] = <"F8CAC271E4E9714E21535DA196A97861">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Neuropathy pain scale
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- How intense is the pain?
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..10|}
+											}
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- How sharp is the pain?
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..10|}
+											}
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- How hot is the pain?
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..10|}
+											}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- How cold is the pain?
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..10|}
+											}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- How sensitive is the skin to light touch?
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..10|}
+											}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- How itchy is the pain?
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..10|}
+											}
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- What is the time quality of the pain?
+										value matches {
+											0|[local::at0017], 	-- Present all the time with occasional flare-ups (breakthrough pain)
+											1|[local::at0018], 	-- Single type of pain present all the time
+											2|[local::at0019]  	-- Single type of pain only sometimes present
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- How unpleasant is the pain?
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..10|}
+											}
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- How dull is the pain?
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..10|}
+											}
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- If the pain is deep, how intense is the deep pain?
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..10|}
+											}
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- If the pain is on the surface, how intense is the surface pain?
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..10|}
+											}
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..102|}
+											}
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Comments
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Neuropathy pain scale">
+					description = <"The Neuropathy Pain Scale (NPS) allows for standardized pain assessment in neuropathy patients.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"How intense is the pain?">
+					description = <"How intense is the pain?">
+				>
+				["at0005"] = <
+					text = <"How sharp is the pain?">
+					description = <"How sharp is the pain?
+‘Like a knife’">
+				>
+				["at0006"] = <
+					text = <"How hot is the pain?">
+					description = <"How hot is the pain?
+‘On fire’">
+				>
+				["at0007"] = <
+					text = <"How dull is the pain?">
+					description = <"How dull is the pain?">
+				>
+				["at0008"] = <
+					text = <"How cold is the pain?">
+					description = <"How cold is the pain?
+‘Freezing’">
+				>
+				["at0009"] = <
+					text = <"How sensitive is the skin to light touch?">
+					description = <"How sensitive is the skin to light touch?
+‘Raw skin’">
+				>
+				["at0010"] = <
+					text = <"How itchy is the pain?">
+					description = <"How itchy is the pain?">
+				>
+				["at0011"] = <
+					text = <"What is the time quality of the pain?">
+					description = <"What is the time quality of the pain?">
+				>
+				["at0012"] = <
+					text = <"How unpleasant is the pain?">
+					description = <"How unpleasant is the pain?
+‘Intolerable’">
+				>
+				["at0013"] = <
+					text = <"If the pain is deep, how intense is the deep pain?">
+					description = <"If the pain is deep, how intense is the deep pain?">
+				>
+				["at0014"] = <
+					text = <"If the pain is on the surface, how intense is the surface pain?">
+					description = <"If the pain is on the surface, how intense is the surface pain?">
+				>
+				["at0015"] = <
+					text = <"Total score">
+					description = <"Sum of the individual scores">
+				>
+				["at0016"] = <
+					text = <"Comments">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Present all the time with occasional flare-ups (breakthrough pain)">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Single type of pain present all the time">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Single type of pain only sometimes present">
+					description = <"*">
+				>
+			>
+		>
+	>

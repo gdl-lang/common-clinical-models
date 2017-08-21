@@ -1,0 +1,108 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.manchester_score_assessment.v1
+
+concept
+	[at0000]	-- Manchester score assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-08-17">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The Manchester score for prognosis in small cell lung cancer helps to provide a 2 yr prediction of small cell carcinoma of the lung. This archetype holds the score and allows interpretation in order to ascertain the prognostic group and 2 year survival of patients with SCC (Small Cell Carcinoma) of the lung">
+			use = <"The score interpretation in regards to 2 year survival and grouping are shown below:
+
+Manchester score 	Prognostic group 	2 year survival (%)
+≤1 	                   Good 	                              16.2
+2 - 3 	                   Medium 	                               2.5
+≥4 	                   Poor 	                               0">
+			keywords = <"small cell carcinoma of lung", "Manchester score for prognosis in small cell lung cancer">
+			misuse = <"Do not use alone for prognostic purposes or without also in combination with other supporting evidence and sound clinical judgement">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Cerny, T; Blair V, Anderson H et al. Pretreatment prognostic factors and scoring system in 407 small-cell lung cancer patients. International Journal of Cancer. 1987, (2): 146–149.
+">
+		["MD5-CAM-1.0.1"] = <"144D2C9CEF30F17DDEE435E0384B732A">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Manchester score assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Prognostic Group
+						value matches {
+							0|[local::at0004], 	-- Good
+							1|[local::at0005], 	-- Medium
+							2|[local::at0006]  	-- Poor
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- 2 Year Survival
+						value matches {
+							0|[local::at0007], 	-- 16.2%
+							1|[local::at0008], 	-- 2.5%
+							2|[local::at0009]  	-- 0%
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Manchester score assessment">
+					description = <"The Manchester score for prognosis in small cell lung cancer helps to provide a 2 yr prediction of small cell carcinoma of the lung">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Prognostic Group">
+					description = <"Prognostic group">
+				>
+				["at0003"] = <
+					text = <"2 Year Survival">
+					description = <"2 Year Survival">
+				>
+				["at0004"] = <
+					text = <"Good">
+					description = <"Score ≤1 ">
+				>
+				["at0005"] = <
+					text = <"Medium">
+					description = <"Score 2 - 3 ">
+				>
+				["at0006"] = <
+					text = <"Poor">
+					description = <"Score ≥4 ">
+				>
+				["at0007"] = <
+					text = <"16.2%">
+					description = <"Score ≤1 ">
+				>
+				["at0008"] = <
+					text = <"2.5%">
+					description = <"Score 2 - 3 ">
+				>
+				["at0009"] = <
+					text = <"0%">
+					description = <"Score ≥4 ">
+				>
+			>
+		>
+	>
