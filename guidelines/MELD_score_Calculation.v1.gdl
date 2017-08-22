@@ -174,9 +174,9 @@ Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 20
 				priority = <7>
 			>
 			["gt0026"] = (RULE) <
-				when = <"$gt0006>1,mg/dl", "$gt0006.units=='mg/dl'">
+				when = <"$gt0006.magnitude>1", "$gt0006.units=='mg/dl'">
 				then = <"$gt0018=$gt0006",...>
-				priority = <13>
+				priority = <12>
 			>
 			["gt0027"] = (RULE) <
 				when = <"$gt0010!=null",...>
@@ -184,7 +184,7 @@ Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 20
 				priority = <5>
 			>
 			["gt0028"] = (RULE) <
-				when = <"$gt0006>17.1,µmol/l", "$gt0006.units=='µmol/l'">
+				when = <"$gt0006.magnitude>17.1", "$gt0006.units=='µmol/l'">
 				then = <"$gt0018.precision=2", "$gt0018.units='mg/dl'", "$gt0018.magnitude=($gt0006.magnitude/17.1)">
 				priority = <14>
 			>
@@ -218,13 +218,13 @@ Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 20
 				priority = <8>
 			>
 			["gt0038"] = (RULE) <
-				when = <"$gt0006.units=='µmol/l'", "$gt0006<=17.1,µmol/l">
-				then = <"$gt0018=1,mg/dl",...>
-				priority = <12>
+				when = <"$gt0006.magnitude<=17.1", "$gt0006.units=='µmol/l'">
+				then = <"$gt0018.units='mg/dl'", "$gt0018.magnitude=1">
+				priority = <13>
 			>
 			["gt0039"] = (RULE) <
 				when = <"$gt0006.units=='mg/dl'", "$gt0006<=1,mg/dl">
-				then = <"$gt0018=1,mg/dl",...>
+				then = <"$gt0018.units='mg/dl'", "$gt0018.magnitude=1">
 				priority = <11>
 			>
 			["gt0040"] = (RULE) <
@@ -301,13 +301,13 @@ Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 20
 						text = <"Set INR">
 					>
 					["gt0026"] = (TERM) <
-						text = <"Set total serum bilirubin">
+						text = <"Set serum bilirubin >1 mg/dl">
 					>
 					["gt0027"] = (TERM) <
 						text = <"Set dialysis history">
 					>
 					["gt0028"] = (TERM) <
-						text = <"Convert serum bilirubin to mg/dl">
+						text = <"Convert and set serum bilirubin >17.1 umol/L to mg/dl">
 					>
 					["gt0029"] = (TERM) <
 						text = <"Calculate original MELD score with no dialysis">
@@ -334,10 +334,10 @@ Kamath PS, Kim W. The model for end‐stage liver disease (MELD). Hepatology. 20
 						text = <"Set serum creatinine <1 mg/dl">
 					>
 					["gt0038"] = (TERM) <
-						text = <"Set serum bilirubin <1 umol/L">
+						text = <"Convert and set serum bilirubin ≤17.1 umol/L to mg/dl">
 					>
 					["gt0039"] = (TERM) <
-						text = <"Set serum bilirubin <1 mg/dl">
+						text = <"Set serum bilirubin ≤1 mg/dl">
 					>
 					["gt0040"] = (TERM) <
 						text = <"Set INR <1">
