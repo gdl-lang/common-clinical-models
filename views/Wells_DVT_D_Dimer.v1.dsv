@@ -13,7 +13,7 @@
 <script type="text/javascript" src="wro/date-picker.js"></script>
 <script type="text/javascript" src="wro/app_lib.js"></script>
 <script id="decision-support-view" type="application/json">{
-  "dsViewId": "Wells_DVT_D_Dimer.v9",
+  "dsViewId": "Wells_DVT_D_Dimer.v1",
   "language": {
     "originalLanguage": {
       "terminologyId": {
@@ -51,7 +51,7 @@
       }
     },
     "otherDetails": {
-      "references": "Tovey C, Wyatt S. Diagnosis, investigation, and management of deep vein thrombosis. BMJ : British Medical Journal. 2003;326(7400):1180-1184."
+      "references": "Tovey C, Wyatt S. Diagnosis, investigation, and management of deep vein thrombosis. BMJ : British Medical Journal. 2003;326(7400):1180-1184. \n\nWells PS, Anderson DR, Rodger M, Forgie M, Kearon C, Dreyer J, Kovacs G, Mitchell M, Lewandowski B, Kovacs MJ. Evaluation of D-dimer in the diagnosis of suspected deep-vein thrombosis. N Engl J Med. 2003 Sep 25;349(13):1227-35."
     }
   },
   "alertGuideIds": [],
@@ -142,9 +142,26 @@ angular.module('cds_app').controller('Wells_Ctrl', function($scope, $window){
   $scope.$on('json_loaded', function(){
     $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
     $scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+    $scope.${d_dimer_value_ehr_data}.value.units = $scope.${d_dimer_value_def}.units[0];
+	$scope.hideUltrasound=true; <!-- Hide ultrasound from start -->
 	getInformation();
   });
+  $scope.$on('executeEnd', function() {
+  	$scope.highRisk=false;
+    $scope.hideDdimer=false;
+    $scope.hideUltrasound=true;
+    if ($scope.${total_score_cds_data}.value.magnitude >= 2 ) { <!-- check if total score is greater than two --> 
+      $scope.hideUltrasound=false;
+      $scope.hideDdimer=true;
+      $scope.highRisk=true;
+    }
+    if ($scope.${total_score_cds_data}.value.magnitude < 2 && $scope.${d_dimer_value_ehr_data}.value.magnitude >= 0.25 ) { <!-- check if d-dimer is elevated --> 
+      $scope.hideUltrasound=false;
+    }
+  });
 });
+
+<!-- Toggle hide/show of infobox -->
 
 function getInformation() {
     var x = document.getElementById('infobox');
@@ -158,98 +175,131 @@ function getInformation() {
 </script>
 
 <div ng-show="ready" ng-controller="Wells_Ctrl">
-<div ng-show="ready">
-      <h1>{{def.concept.name}}</h1>
-      <hr style="height:1.5px;border:none;color:SlateGray;background-color:SlateGray;" />
-        <div class="wrapper1">
-          <button class="button" onclick="getInformation()">App Description</button>
-          <div id="infobox">
-            <h2>{{def.concept.description}}</h2>
-            <br/>
-            <div id="geninfo">
-              {{${app_info}.description}}
-            </div>
-          </div>
-        </div>
-  </div>
-
+	<div ng-show="ready">
+	      <h1>{{def.concept.name}}</h1>
+	      <hr style="height:1.5px;border:none;color:SlateGray;background-color:SlateGray;" />
+	        <div class="wrapper1">
+	          <button class="button" onclick="getInformation()">App Description</button>
+	          <div id="infobox">
+	            <h2>{{def.concept.description}}</h2>
+	            <br/>
+	            <div id="geninfo">
+	              {{${app_info}.description}}
+	            </div>
+	          </div>
+	        </div>
+	</div>
 <div class="card">
-<label>{{${calf_swelling___3_cm_compared_to_the_other_leg__def}.name}}</label>
-<div class="row collapse" title="{{${calf_swelling___3_cm_compared_to_the_other_leg__def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${calf_swelling___3_cm_compared_to_the_other_leg__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${calf_swelling___3_cm_compared_to_the_other_leg__def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${pitting_edema__confined_to_symptomatic_leg__def}.name}}</label>
-<div class="row collapse" title="{{${pitting_edema__confined_to_symptomatic_leg__def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${pitting_edema__confined_to_symptomatic_leg__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${pitting_edema__confined_to_symptomatic_leg__def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${previously_documented_dvt_def}.name}}</label>
-<div class="row collapse" title="{{${previously_documented_dvt_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${previously_documented_dvt_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${previously_documented_dvt_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${localized_tenderness_along_the_deep_venous_system_def}.name}}</label>
-<div class="row collapse" title="{{${localized_tenderness_along_the_deep_venous_system_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${localized_tenderness_along_the_deep_venous_system_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${localized_tenderness_along_the_deep_venous_system_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${collateral__nonvaricose__superficial_veins_def}.name}}</label>
-<div class="row collapse" title="{{${collateral__nonvaricose__superficial_veins_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${collateral__nonvaricose__superficial_veins_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${collateral__nonvaricose__superficial_veins_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${active_cancer__treatment_or_palliation_within_6_months__def}.name}}</label>
-<div class="row collapse" title="{{${active_cancer__treatment_or_palliation_within_6_months__def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${active_cancer__treatment_or_palliation_within_6_months__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${active_cancer__treatment_or_palliation_within_6_months__def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${entire_leg_swollen_def}.name}}</label>
-<div class="row collapse" title="{{${entire_leg_swollen_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${entire_leg_swollen_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${entire_leg_swollen_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${alternative_diagnosis_to_dvt_at_least_as_likely_def}.name}}</label>
-<div class="row collapse" title="{{${alternative_diagnosis_to_dvt_at_least_as_likely_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${alternative_diagnosis_to_dvt_at_least_as_likely_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${alternative_diagnosis_to_dvt_at_least_as_likely_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${paralysis__paresis__or_recent_plaster_immobilisation_of_the_lower_extremity_def}.name}}</label>
-<div class="row collapse" title="{{${paralysis__paresis__or_recent_plaster_immobilisation_of_the_lower_extremity_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${paralysis__paresis__or_recent_plaster_immobilisation_of_the_lower_extremity_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${paralysis__paresis__or_recent_plaster_immobilisation_of_the_lower_extremity_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${bedridden_recently__3_days_or_major_surgery_within_12_weeks_def}.name}}</label>
-<div class="row collapse" title="{{${bedridden_recently__3_days_or_major_surgery_within_12_weeks_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${bedridden_recently__3_days_or_major_surgery_within_12_weeks_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${bedridden_recently__3_days_or_major_surgery_within_12_weeks_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-<label>{{${d_dimer_value_def}.name}}</label>
-<div class="row collapse" title="{{${d_dimer_value_def}.description}}">
-<div class="medium-9 columns">
-<input ng-model="${d_dimer_value_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
-</div>
-<div class="medium-3 columns">
-<select ng-model="${d_dimer_value_ehr_data}.value.units" id="d_dimer_value_ehr_units" ng-options="unit for unit in ${d_dimer_value_def}.units" ng-change="execute()"></select>
-</div>
-</div>
-<label>{{${ultrasound_def}.name}}</label>
-<div class="row collapse" title="{{${ultrasound_def}.description}}">
-<div class="medium-9 columns">
-<select ng-model="${ultrasound_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${ultrasound_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
-</div>
-</div>
-
+	<div class="row collapse" title="{{${calf_swelling___3_cm_compared_to_the_other_leg__def}.description}}">
+	    <div class="medium-5 columns">
+	      <label>{{${calf_swelling___3_cm_compared_to_the_other_leg__def}.name}}</label>
+	    </div>
+	    	<label class="medium-7 columns">
+	    		<select ng-model="${calf_swelling___3_cm_compared_to_the_other_leg__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${calf_swelling___3_cm_compared_to_the_other_leg__def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+	        	</select>
+	      </label>
+	</div>
+	<div class="row collapse" title="{{${pitting_edema__confined_to_symptomatic_leg__def}.description}}">
+	    <div class="medium-5 columns">
+	      <label>{{${pitting_edema__confined_to_symptomatic_leg__def}.name}}</label>
+	    </div>
+	    	<label class="medium-7 columns">
+	    		<select ng-model="${pitting_edema__confined_to_symptomatic_leg__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${pitting_edema__confined_to_symptomatic_leg__def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+	        	</select>
+	      </label>
+	</div>
+	<div class="row collapse" title="{{${previously_documented_dvt_def}.description}}">
+	    <div class="medium-5 columns">
+	      <label>{{${previously_documented_dvt_def}.name}}</label>
+	    </div>
+	    	<label class="medium-7 columns">
+	    		<select ng-model="${previously_documented_dvt_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${previously_documented_dvt_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+	        	</select>
+	      </label>
+	</div>
+	<div class="row collapse" title="{{${localized_tenderness_along_the_deep_venous_system_def}.description}}">
+	    <div class="medium-5 columns">
+	      <label>{{${localized_tenderness_along_the_deep_venous_system_def}.name}}</label>
+	    </div>
+	    	<label class="medium-7 columns">
+	    		<select ng-model="${localized_tenderness_along_the_deep_venous_system_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${localized_tenderness_along_the_deep_venous_system_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+	        	</select>
+	      </label>
+	</div>	
+	<div class="row collapse" title="{{${collateral__nonvaricose__superficial_veins_def}.description}}">
+	    <div class="medium-5 columns">
+	      <label>{{${collateral__nonvaricose__superficial_veins_def}.name}}</label>
+	    </div>
+	    	<label class="medium-7 columns">
+	    		<select ng-model="${collateral__nonvaricose__superficial_veins_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${collateral__nonvaricose__superficial_veins_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+	        	</select>
+	      </label>
+	</div>
+	<div class="row collapse" title="{{${active_cancer__treatment_or_palliation_within_6_months__def}.description}}">
+	    <div class="medium-5 columns">
+	      <label>{{${active_cancer__treatment_or_palliation_within_6_months__def}.name}}</label>
+	    </div>
+	    	<label class="medium-7 columns">
+	    		<select ng-model="${active_cancer__treatment_or_palliation_within_6_months__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${active_cancer__treatment_or_palliation_within_6_months__def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+	        	</select>
+	      </label>
+	</div>
+	<div class="row collapse" title="{{${entire_leg_swollen_def}.description}}">
+	    <div class="medium-5 columns">
+	      <label>{{${entire_leg_swollen_def}.name}}</label>
+	    </div>
+	    	<label class="medium-7 columns">
+	    		<select ng-model="${entire_leg_swollen_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${entire_leg_swollen_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+	        	</select>
+	      </label>
+	</div>
+	<div class="row collapse" title="{{${alternative_diagnosis_to_dvt_at_least_as_likely_def}.description}}">
+	    <div class="medium-5 columns">
+	      <label>{{${alternative_diagnosis_to_dvt_at_least_as_likely_def}.name}}</label>
+	    </div>
+	    	<label class="medium-7 columns">
+	    		<select ng-model="${alternative_diagnosis_to_dvt_at_least_as_likely_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${alternative_diagnosis_to_dvt_at_least_as_likely_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+	        	</select>
+	      </label>
+	</div>
+	<div class="row collapse" title="{{${paralysis__paresis__or_recent_plaster_immobilisation_of_the_lower_extremity_def}.description}}">
+	    <div class="medium-5 columns">
+	      <label>{{${paralysis__paresis__or_recent_plaster_immobilisation_of_the_lower_extremity_def}.name}}</label>
+	    </div>
+	    	<label class="medium-7 columns">
+	    		<select ng-model="${paralysis__paresis__or_recent_plaster_immobilisation_of_the_lower_extremity_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${paralysis__paresis__or_recent_plaster_immobilisation_of_the_lower_extremity_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+	        	</select>
+	      </label>
+	</div>
+	<div class="row collapse" title="{{${bedridden_recently__3_days_or_major_surgery_within_12_weeks_def}.description}}">
+	    <div class="medium-5 columns">
+	      <label>{{${bedridden_recently__3_days_or_major_surgery_within_12_weeks_def}.name}}</label>
+	    </div>
+	    	<label class="medium-7 columns">
+	    		<select ng-model="${bedridden_recently__3_days_or_major_surgery_within_12_weeks_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${bedridden_recently__3_days_or_major_surgery_within_12_weeks_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+	        	</select>
+	      </label>
+	</div>
+	<div ng-hide="hideDdimer" class="row collapse" title="{{${d_dimer_value_def}.description}}">
+		<div class="medium-5 columns">
+			<label>{{${d_dimer_value_def}.name}}</label>
+		</div>
+		<div class="medium-5 columns">
+			<input ng-model="${d_dimer_value_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+		</div>
+		<div class="medium-2 columns">
+			<select ng-model="${d_dimer_value_ehr_data}.value.units" ng-options="unit for unit in ${d_dimer_value_def}.units" ng-change="execute()" disabled=""></select>
+			</div>
+	</div>
+	<div ng-hide="hideUltrasound" class="row collapse" title="{{${ultrasound_def}.description}}">
+	    <div class="medium-5 columns">
+	      <label>{{${ultrasound_def}.name}}</label>
+	    </div>
+	    	<label class="medium-7 columns">
+	    		<select ng-model="${ultrasound_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${ultrasound_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+	        	</select>
+	      </label>
+	</div>
   <div class="displayresult1" title="{{${total_score_def}.description}}">
       <div class="row collapse">
         <div class="medium-6 columns">
@@ -260,7 +310,7 @@ function getInformation() {
         </div>
       </div>
     </div>
-<div class="displayresult2" title="{{${risk_level_def}.description}}">
+<div class="displayresult2" title="{{${risk_level_def}.description}}" ng-class="{'highrisk':highRisk}">
       <div class="row collapse">
         <div class="medium-6 columns">
           <label><b>{{${risk_level_def}.name}}: </b></label>
@@ -290,7 +340,7 @@ function getInformation() {
         </div>
       </div>
     </div>
-</div>
+   </div>
 </div>
 
 <br/><br/>
@@ -300,11 +350,19 @@ function getInformation() {
     <div class="medium-12 columns">
       <h3>{{${references}.text}}</h3>
         <div id="ref">
-          <li >
-            <i><a href="https://www.nice.org.uk/guidance/ng28">National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28).To identify diabetes patients in need of autonomic neuropathy monitoring.</a>
+        <div class="row collapse">
+        	<li>
+            <i><a href="https://www.ncbi.nlm.nih.gov/pubmed/14507948/">Wells PS, Anderson DR, Rodger M, Forgie M, Kearon C, Dreyer J, Kovacs G, Mitchell M, Lewandowski B, Kovacs MJ. Evaluation of D-dimer in the diagnosis of suspected deep-vein thrombosis. N Engl J Med. 2003 Sep 25;349(13):1227-35.</a>
             </i>
-          </li>
+            </li>
         </div>
+        <div class="row collapse">
+        	<li>
+            <i><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1126050/">Tovey C, Wyatt S. Diagnosis, investigation, and management of deep vein thrombosis. BMJ : British Medical Journal. 2003;326(7400):1180-1184. </a>
+            </i>
+            </li>
+        </div>
+       </div>
     </div>
   </div>
 </div>
@@ -398,6 +456,11 @@ function getInformation() {
     background-color: #f2f2f2;
     padding: 3px;
     font-size: 90%;
+  }
+  .highrisk {
+  background-color: #f79e9e; 
+  padding: 3px;
+  font-size: 90%;
   }
   #ref {
     font-size:90%; 
