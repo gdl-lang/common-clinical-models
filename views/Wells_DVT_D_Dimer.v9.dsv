@@ -1,0 +1,437 @@
+<!DOCTYPE html><html ng-app="cds_app">
+<head>
+<title>{{def.concept.name}}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="wro/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css"/>
+<link rel="stylesheet" type="text/css" href="wro/angular.css"></link>
+<script type="text/javascript" src="wro/angular.js"></script>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js"/>
+<script type="text/javascript" src="wro/moment.js"></script>
+<script type="text/javascript" src="wro/date-picker.js"></script>
+<script type="text/javascript" src="wro/app_lib.js"></script>
+<script id="decision-support-view" type="application/json">{
+  "dsViewId": "Wells_DVT_D_Dimer.v9",
+  "language": {
+    "originalLanguage": {
+      "terminologyId": {
+        "name": "ISO_639-1",
+        "value": "ISO_639-1"
+      },
+      "codeString": "en"
+    }
+  },
+  "decisionSupportViewDefinitions": {
+    "en": {
+      "name": "Wells’ Criteria for DVT (D-Dimer)",
+      "description": "The Wells’ Criteria for DVT are used for evaluating the pre-test probability for deep vein thrombosis (DVT). Two points or greater indicates high probability of DVT."
+    }
+  },
+  "resourceDescription": {
+    "originalAuthor": {
+      "date": "2017-08-19",
+      "name": "Jimmy Axelsson",
+      "organisation": "Cambio Healthcare Systems",
+      "email": "jimmy.axelsson@cambiocds.com"
+    },
+    "otherContributors": [],
+    "lifecycleState": "Author draft",
+    "details": {
+      "en": {
+        "purpose": "For evaluating the pre-test probability of DVT. By utilizing the Wells’ DVT criteria, the physician can identify patients with low risk of  DVT, thereby avoiding unnecessary additional clinical investigations. ",
+        "keywords": [
+          "DVT",
+          "deep vein thrombosis",
+          "risk assessment"
+        ],
+        "use": "The Wells\u0027 Criteria should only be applied after a thorough history and physical examination resulting in a suspicion of DVT. The protocol can be implemented in outpatient as well as emergency department settings. \n\nA low risk score (\u003c2 points) along with a negative test result for d-dimer excludes the need for further examination with ultrasound. \n\nThe score is composed of seven weighted criteria:\n\n- Active cancer (treatment or palliation within 6 months)\n- Paralysis, paresis, or recent plaster immobilisation of the lower extremity\n- Bedridden recently ≥3 days or major surgery within 12 weeks\n- Localized tenderness along the deep venous system\n- Entire leg swollen\n- Calf swelling (\u003e3 cm compared to the other leg)\n- Pitting edema (confined to symptomatic leg)\n- Collateral (nonvaricose) superficial veins\n- Previously documented DVT\n- Alternative diagnosis to DVT at least as likely\n\nThe maximum score is eight points. Two points or greater  indicates high probability of DVT. ",
+        "copyright": "© Cambio Healthcare Systems"
+      }
+    },
+    "otherDetails": {
+      "references": "Tovey C, Wyatt S. Diagnosis, investigation, and management of deep vein thrombosis. BMJ : British Medical Journal. 2003;326(7400):1180-1184."
+    }
+  },
+  "alertGuideIds": [],
+  "executionGuideIds": [
+    "Wells_DVT_D_Dimer_US.v1",
+    "Wells_DVT_D_Dimer_Assessment.v1"
+  ],
+ "alertBindings": {},
+  "termDefinitions": {
+    "en": {
+      "id": "en",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "References"
+        }
+      }
+    }
+  },
+  "resultTemplates": []
+}</script>
+</head>
+<body ng-controller="cds_controller">
+<#assign app_info = "def.guides['Wells_DVT_D_Dimer_US.v1'].concept">
+<#assign references = "def.terms['vt0001']"/>
+<#assign lab_test_d_dimer_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.lab_test_d_dimer.v0']">
+<#assign lab_test_d_dimer_entry_def = "def.entries['openEHR-EHR-OBSERVATION.lab_test_d_dimer.v0']">
+<#assign d_dimer_value_def = lab_test_d_dimer_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign event_time_def = lab_test_d_dimer_entry_def + ".elements['/data/events/time']">
+<#assign d_dimer_value_ehr_data = lab_test_d_dimer_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign event_time_ehr_data = lab_test_d_dimer_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign wells__criteria_for_dvt_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.wells_criteria_dvt_d_dimer.v1']">
+<#assign wells__criteria_for_dvt_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.wells_criteria_dvt_d_dimer.v1']">
+<#assign wells__criteria_for_dvt_entry_def = "def.entries['openEHR-EHR-OBSERVATION.wells_criteria_dvt_d_dimer.v1']">
+<#assign calf_swelling___3_cm_compared_to_the_other_leg__def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}']">
+<#assign event_time1_def = wells__criteria_for_dvt_entry_def + ".elements['/data/events/time']">
+<#assign pitting_edema__confined_to_symptomatic_leg__def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0022}']">
+<#assign previously_documented_dvt_def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0032}']">
+<#assign localized_tenderness_along_the_deep_venous_system_def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign collateral__nonvaricose__superficial_veins_def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0025}']">
+<#assign active_cancer__treatment_or_palliation_within_6_months__def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign entire_leg_swollen_def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0016}']">
+<#assign alternative_diagnosis_to_dvt_at_least_as_likely_def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0028}']">
+<#assign total_score_def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0029}']">
+<#assign paralysis__paresis__or_recent_plaster_immobilisation_of_the_lower_extremity_def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign ultrasound_def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0038}']">
+<#assign d_dimer_def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0035}']">
+<#assign bedridden_recently__3_days_or_major_surgery_within_12_weeks_def = wells__criteria_for_dvt_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
+<#assign calf_swelling___3_cm_compared_to_the_other_leg__cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}']">
+<#assign event_time1_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data/events/time']">
+<#assign pitting_edema__confined_to_symptomatic_leg__cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0022}']">
+<#assign previously_documented_dvt_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0032}']">
+<#assign localized_tenderness_along_the_deep_venous_system_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign collateral__nonvaricose__superficial_veins_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0025}']">
+<#assign active_cancer__treatment_or_palliation_within_6_months__cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign entire_leg_swollen_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0016}']">
+<#assign alternative_diagnosis_to_dvt_at_least_as_likely_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0028}']">
+<#assign total_score_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0029}']">
+<#assign paralysis__paresis__or_recent_plaster_immobilisation_of_the_lower_extremity_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign ultrasound_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0038}']">
+<#assign d_dimer_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0035}']">
+<#assign bedridden_recently__3_days_or_major_surgery_within_12_weeks_cds_data = wells__criteria_for_dvt_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
+<#assign calf_swelling___3_cm_compared_to_the_other_leg__ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}']">
+<#assign event_time1_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign pitting_edema__confined_to_symptomatic_leg__ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0022}']">
+<#assign previously_documented_dvt_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0032}']">
+<#assign localized_tenderness_along_the_deep_venous_system_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign collateral__nonvaricose__superficial_veins_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0025}']">
+<#assign active_cancer__treatment_or_palliation_within_6_months__ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign entire_leg_swollen_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0016}']">
+<#assign alternative_diagnosis_to_dvt_at_least_as_likely_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0028}']">
+<#assign total_score_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0029}']">
+<#assign paralysis__paresis__or_recent_plaster_immobilisation_of_the_lower_extremity_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign ultrasound_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0038}']">
+<#assign d_dimer_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0035}']">
+<#assign bedridden_recently__3_days_or_major_surgery_within_12_weeks_ehr_data = wells__criteria_for_dvt_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0010}']">
+<#assign wells_criteria_for_dvt_d_dimer___assessment_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.wells_criteria_for_dvt_d_dimer_assessment.v0']">
+<#assign wells_criteria_for_dvt_d_dimer___assessment_entry_def = "def.entries['openEHR-EHR-EVALUATION.wells_criteria_for_dvt_d_dimer_assessment.v0']">
+<#assign risk_level_def = wells_criteria_for_dvt_d_dimer___assessment_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign action_def = wells_criteria_for_dvt_d_dimer___assessment_entry_def + ".elements['/data{at0001}/items{at0005}']">
+<#assign final_result_def = wells_criteria_for_dvt_d_dimer___assessment_entry_def + ".elements['/data{at0001}/items{at0007}']">
+<#assign risk_level_cds_data = wells_criteria_for_dvt_d_dimer___assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
+<#assign action_cds_data = wells_criteria_for_dvt_d_dimer___assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0005}']">
+<#assign final_result_cds_data = wells_criteria_for_dvt_d_dimer___assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0007}']">
+
+<script> 
+angular.module('cds_app').controller('Wells_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+	getInformation();
+  });
+});
+
+function getInformation() {
+    var x = document.getElementById('infobox');
+    if (x.style.display === 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+
+</script>
+
+<div ng-show="ready" ng-controller="Wells_Ctrl">
+<div ng-show="ready">
+      <h1>{{def.concept.name}}</h1>
+      <hr style="height:1.5px;border:none;color:SlateGray;background-color:SlateGray;" />
+        <div class="wrapper1">
+          <button class="button" onclick="getInformation()">App Description</button>
+          <div id="infobox">
+            <h2>{{def.concept.description}}</h2>
+            <br/>
+            <div id="geninfo">
+              {{${app_info}.description}}
+            </div>
+          </div>
+        </div>
+  </div>
+
+<div class="card">
+<label>{{${calf_swelling___3_cm_compared_to_the_other_leg__def}.name}}</label>
+<div class="row collapse" title="{{${calf_swelling___3_cm_compared_to_the_other_leg__def}.description}}">
+<div class="medium-9 columns">
+<select ng-model="${calf_swelling___3_cm_compared_to_the_other_leg__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${calf_swelling___3_cm_compared_to_the_other_leg__def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+</div>
+</div>
+<label>{{${pitting_edema__confined_to_symptomatic_leg__def}.name}}</label>
+<div class="row collapse" title="{{${pitting_edema__confined_to_symptomatic_leg__def}.description}}">
+<div class="medium-9 columns">
+<select ng-model="${pitting_edema__confined_to_symptomatic_leg__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${pitting_edema__confined_to_symptomatic_leg__def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+</div>
+</div>
+<label>{{${previously_documented_dvt_def}.name}}</label>
+<div class="row collapse" title="{{${previously_documented_dvt_def}.description}}">
+<div class="medium-9 columns">
+<select ng-model="${previously_documented_dvt_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${previously_documented_dvt_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+</div>
+</div>
+<label>{{${localized_tenderness_along_the_deep_venous_system_def}.name}}</label>
+<div class="row collapse" title="{{${localized_tenderness_along_the_deep_venous_system_def}.description}}">
+<div class="medium-9 columns">
+<select ng-model="${localized_tenderness_along_the_deep_venous_system_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${localized_tenderness_along_the_deep_venous_system_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+</div>
+</div>
+<label>{{${collateral__nonvaricose__superficial_veins_def}.name}}</label>
+<div class="row collapse" title="{{${collateral__nonvaricose__superficial_veins_def}.description}}">
+<div class="medium-9 columns">
+<select ng-model="${collateral__nonvaricose__superficial_veins_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${collateral__nonvaricose__superficial_veins_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+</div>
+</div>
+<label>{{${active_cancer__treatment_or_palliation_within_6_months__def}.name}}</label>
+<div class="row collapse" title="{{${active_cancer__treatment_or_palliation_within_6_months__def}.description}}">
+<div class="medium-9 columns">
+<select ng-model="${active_cancer__treatment_or_palliation_within_6_months__ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${active_cancer__treatment_or_palliation_within_6_months__def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+</div>
+</div>
+<label>{{${entire_leg_swollen_def}.name}}</label>
+<div class="row collapse" title="{{${entire_leg_swollen_def}.description}}">
+<div class="medium-9 columns">
+<select ng-model="${entire_leg_swollen_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${entire_leg_swollen_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+</div>
+</div>
+<label>{{${alternative_diagnosis_to_dvt_at_least_as_likely_def}.name}}</label>
+<div class="row collapse" title="{{${alternative_diagnosis_to_dvt_at_least_as_likely_def}.description}}">
+<div class="medium-9 columns">
+<select ng-model="${alternative_diagnosis_to_dvt_at_least_as_likely_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${alternative_diagnosis_to_dvt_at_least_as_likely_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+</div>
+</div>
+<label>{{${paralysis__paresis__or_recent_plaster_immobilisation_of_the_lower_extremity_def}.name}}</label>
+<div class="row collapse" title="{{${paralysis__paresis__or_recent_plaster_immobilisation_of_the_lower_extremity_def}.description}}">
+<div class="medium-9 columns">
+<select ng-model="${paralysis__paresis__or_recent_plaster_immobilisation_of_the_lower_extremity_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${paralysis__paresis__or_recent_plaster_immobilisation_of_the_lower_extremity_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+</div>
+</div>
+<label>{{${bedridden_recently__3_days_or_major_surgery_within_12_weeks_def}.name}}</label>
+<div class="row collapse" title="{{${bedridden_recently__3_days_or_major_surgery_within_12_weeks_def}.description}}">
+<div class="medium-9 columns">
+<select ng-model="${bedridden_recently__3_days_or_major_surgery_within_12_weeks_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${bedridden_recently__3_days_or_major_surgery_within_12_weeks_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+</div>
+</div>
+<label>{{${d_dimer_value_def}.name}}</label>
+<div class="row collapse" title="{{${d_dimer_value_def}.description}}">
+<div class="medium-9 columns">
+<input ng-model="${d_dimer_value_ehr_data}.value.magnitude" type="number" step='any' ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></input>
+</div>
+<div class="medium-3 columns">
+<select ng-model="${d_dimer_value_ehr_data}.value.units" id="d_dimer_value_ehr_units" ng-options="unit for unit in ${d_dimer_value_def}.units" ng-change="execute()"></select>
+</div>
+</div>
+<label>{{${ultrasound_def}.name}}</label>
+<div class="row collapse" title="{{${ultrasound_def}.description}}">
+<div class="medium-9 columns">
+<select ng-model="${ultrasound_ehr_data}.value.selection" ng-options="key as desc for (key, desc) in ${ultrasound_def}.selections"  ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+</div>
+</div>
+
+  <div class="displayresult1" title="{{${total_score_def}.description}}">
+      <div class="row collapse">
+        <div class="medium-6 columns">
+          <label><b>{{${total_score_def}.name}}: </b></label>
+        </div>
+        <div class="medium-6 columns" style="text-align: center;">
+          <label>{{${total_score_cds_data}.value.magnitude}}</label>
+        </div>
+      </div>
+    </div>
+<div class="displayresult2" title="{{${risk_level_def}.description}}">
+      <div class="row collapse">
+        <div class="medium-6 columns">
+          <label><b>{{${risk_level_def}.name}}: </b></label>
+        </div>
+        <div class="medium-6 columns" style="text-align: center;">
+          <label>{{${risk_level_cds_data}.value.symbol.value}}</label>
+        </div>
+      </div>
+    </div>
+<div class="displayresult1" title="{{${action_def}.description}}">
+      <div class="row collapse">
+        <div class="medium-6 columns">
+          <label><b>{{${action_def}.name}}: </b></label>
+        </div>
+        <div class="medium-6 columns" style="text-align: center;">
+          <label>{{${action_cds_data}.value.symbol.value}}</label>
+        </div>
+      </div>
+    </div>
+  <div class="displayresult2" title="{{${final_result_def}.description}}">
+      <div class="row collapse">
+        <div class="medium-6 columns">
+          <label><b>{{${final_result_def}.name}}: </b></label>
+        </div>
+        <div class="medium-6 columns" style="text-align: center;">
+          <label>{{${final_result_cds_data}.value.symbol.value}}</label>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+<br/><br/>
+
+<div class="references1">
+  <div class="row collapse">
+    <div class="medium-12 columns">
+      <h3>{{${references}.text}}</h3>
+        <div id="ref">
+          <li >
+            <i><a href="https://www.nice.org.uk/guidance/ng28">National Institute for Health and Clinical Excellence (2015) Type 2 diabetes in adults: management. NICE guideline (NG28).To identify diabetes patients in need of autonomic neuropathy monitoring.</a>
+            </i>
+          </li>
+        </div>
+    </div>
+  </div>
+</div>
+
+<br/>
+
+<div class="wrapper2">
+  <div class="row collapse">
+    <div class="medium-12 columns">
+      <div id="disc">
+      <b>Disclaimer: </b>
+            The single-page application presented on this page has been created for demonstration purposes only and should NOT be used to make medical decisions in the current state. The app is not intended to replace clinical judgement and all clinical information must be validated by the user prior to use. The user assumes sole responsibility for any decisions made or actions taken based on information generated by the clinical decision support application. Cambio Healthcare Systems and the individual authors of the published clinical models assume no liability of any kind.
+    </div>
+  </div>
+</div>
+
+<br/>
+
+<div class="wrapper1">
+    <img src="http://www.cambiohealthcare.co.uk/wp-content/uploads/2016/09/Cambio_logo_left.jpg" id="projectimg"/>
+</div>
+
+<br/>
+
+<style>
+  html, body {
+    height:100%;
+    width: 100%;
+  }
+  body {
+    font-family: sans-serif;
+    font-weight: 300;
+    color: #333;
+    background: #F5F5F5;
+    padding: 1em;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 {
+    font-weight: 600;
+    text-align: center;
+    color:  #264040;
+  }
+  h2 {
+    text-align: left;
+    font-weight: 300;
+    font-size: 20px;
+  }
+  h3 {
+    text-align: left;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+  }
+  select, label:not(#h-fix) {
+    margin-bottom: 10px;
+  }
+  .header {
+    margin: 2em;
+  }
+  .wrapper1{
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  .wrapper2{
+    font-style: italic;
+    max-width: 55%;
+    margin: auto;
+  }
+  .card {
+    background-color: #FFFAFA;
+    border: 1px solid #99a6b2;
+    border-width: thin;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 10px auto 0 auto;
+    padding: 1em;
+    width: 70%;
+    overflow: hidden;
+  }
+  .references1 {
+    border: 1.2px dashed SlateGray;
+    padding:0.5em;
+    width: 70%;
+    margin: auto;
+  }
+  .displayresult1 {
+    background-color: #e6e6e6; 
+    padding: 3px;
+    font-size: 90%;
+  }
+  .displayresult2 {
+    background-color: #f2f2f2;
+    padding: 3px;
+    font-size: 90%;
+  }
+  #ref {
+    font-size:90%; 
+    padding-left:2em;
+  }
+  #infobox{
+    margin: auto;
+    border: 1px solid LightSlateGrey;
+    border-width: thin;
+    background-color: #FFFAFA;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 10px auto 0 auto;
+    padding: 1em;
+    width: 55%;
+    overflow: hidden;
+  }
+  #geninfo{
+    text-align: left;
+    border: 1.2px dashed SlateGray;
+    padding:0.5em;
+  }
+  #disc {
+    font-size: 55%;
+  }
+  #projectimg{
+    border: 5px solid SlateGray;
+    border-width: thin;
+    height: auto; 
+    width: auto; 
+    max-height: 50px;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+  }
+</style>
+</div>
+</body>
+</html>
