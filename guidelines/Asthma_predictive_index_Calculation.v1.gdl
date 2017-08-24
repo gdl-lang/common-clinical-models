@@ -116,24 +116,24 @@ Leonardi NA, Spycher BD, Strippoli MP, Frey U, Silverman M, Kuehni CE. Validatio
 		>
 		rules = <
 			["gt0020"] = (RULE) <
-				when = <"($gt0031<1)||($gt0032<2)", "$gt0013==0|local::at0024|<3|">
+				when = <"!fired($gt0023)", "!fired($gt0022)", "!fired($gt0021)", "($gt0031<1)||($gt0032<2)", "$gt0013==0|local::at0024|<3|">
 				then = <"$gt0019=0|local::at0028|Negative by loose criteria|",...>
-				priority = <4>
+				priority = <1>
 			>
 			["gt0021"] = (RULE) <
-				when = <"($gt0031<1)||($gt0032<2)", "$gt0013==1|local::at0025|≥3|">
+				when = <"!fired($gt0022)", "!fired($gt0023)", "($gt0031<1)||($gt0032<2)", "$gt0013==1|local::at0025|≥3|">
 				then = <"$gt0019=1|local::at0029|Negative by strict criteria|",...>
-				priority = <3>
+				priority = <2>
 			>
 			["gt0022"] = (RULE) <
-				when = <"($gt0031>=1)||($gt0032>=2)", "$gt0013==0|local::at0024|<3|">
+				when = <"!fired($gt0023)", "($gt0031>=1)||($gt0032>=2)", "$gt0013==0|local::at0024|<3|">
 				then = <"$gt0019=2|local::at0030|Positive by loose criteria|",...>
-				priority = <2>
+				priority = <3>
 			>
 			["gt0023"] = (RULE) <
 				when = <"($gt0031>=1)||($gt0032>=2)", "$gt0013==1|local::at0025|≥3|">
 				then = <"$gt0019=3|local::at0031|Positive by strict criteria|",...>
-				priority = <1>
+				priority = <4>
 			>
 			["gt0024"] = (RULE) <
 				when = <"$gt0017==null", "$gt0016==null", "$gt0015==null", "$gt0014==null", "$gt0018==null", "$gt0013==null">
@@ -141,32 +141,32 @@ Leonardi NA, Spycher BD, Strippoli MP, Frey U, Silverman M, Kuehni CE. Validatio
 				priority = <13>
 			>
 			["gt0025"] = (RULE) <
-				when = <"$gt0003==1|local::at0025|≥3|",...>
+				when = <"$gt0003!=null",...>
 				then = <"$gt0013=$gt0003",...>
 				priority = <12>
 			>
 			["gt0026"] = (RULE) <
-				when = <"$gt0004==1|local::at0019|Yes|",...>
+				when = <"$gt0004!=null",...>
 				then = <"$gt0015=$gt0004",...>
 				priority = <11>
 			>
 			["gt0027"] = (RULE) <
-				when = <"$gt0008==1|local::at0093|Yes|",...>
-				then = <"$gt0018=1|local::at0013|Yes|",...>
+				when = <"$gt0008!=null",...>
+				then = <"$gt0018=$gt0008",...>
 				priority = <9>
 			>
 			["gt0028"] = (RULE) <
-				when = <"$gt0007==1|local::at0091|Yes|",...>
-				then = <"$gt0014=1|local::at0021|Yes|",...>
+				when = <"$gt0007!=null",...>
+				then = <"$gt0014=$gt0007",...>
 				priority = <10>
 			>
 			["gt0029"] = (RULE) <
-				when = <"$gt0005==1|local::at0015|Yes|",...>
+				when = <"$gt0005!=null",...>
 				then = <"$gt0017=$gt0005",...>
 				priority = <8>
 			>
 			["gt0030"] = (RULE) <
-				when = <"$gt0011.units=='10*9/l'", "$gt0010.units=='10*9/l'", "$gt0010.magnitude>=((4/100)*$gt0011.magnitude)">
+				when = <"$gt0010!=null", "$gt0011!=null", "$gt0011.units=='10*9/l'", "$gt0010.units=='10*9/l'", "$gt0010.magnitude>=((4/100)*$gt0011.magnitude)">
 				then = <"$gt0016=1|local::at0017|Yes|",...>
 				priority = <7>
 			>
