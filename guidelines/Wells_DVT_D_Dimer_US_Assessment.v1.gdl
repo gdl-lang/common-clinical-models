@@ -1,6 +1,6 @@
 (GUIDE) <
 	gdl_version = <"0.1">
-	id = <"Wells_DVT_D_Dimer_Assessment.v1">
+	id = <"Wells_DVT_D_Dimer_US_Assessment.v1">
 	concept = <"gt0001">
 	language = (LANGUAGE) <
 		original_language = <[ISO_639-1::en]>
@@ -52,46 +52,46 @@
 				>
 			>
 		>
-		default_actions = <"$gt0009=0|local::at0008|No result|", "$gt0008=0|local::at0006|No recommendation|">
+		default_actions = <"$gt0009=0|local::at0008|No result|", "$gt0008=0|local::at0006|-|">
 		rules = <
 			["gt0010"] = (RULE) <
 				when = <"$gt0003<2",...>
-				then = <"$gt0007=0|local::at0003|Low risk|",...>
+				then = <"$gt0007=0|local::at0003|Low risk of DVT |",...>
 				priority = <8>
 			>
 			["gt0011"] = (RULE) <
 				when = <"$gt0003>=2",...>
-				then = <"$gt0007=1|local::at0004|High risk|",...>
+				then = <"$gt0007=1|local::at0004|High risk of DVT|",...>
 				priority = <7>
 			>
 			["gt0015"] = (RULE) <
-				when = <"$gt0009==0|local::at0008|No result|", "$gt0005==0|local::at0039|Not examined|", "$gt0004==0|local::at0036|Not tested|", "$gt0007==0|local::at0003|Low risk|">
+				when = <"$gt0009==0|local::at0008|No result|", "$gt0005==0|local::at0039|Not examined|", "$gt0004==0|local::at0036|Not tested|", "$gt0007==0|local::at0003|Low risk of DVT |">
 				then = <"$gt0008=1|local::at0010|Order D-dimer lab test|",...>
 				priority = <6>
 			>
 			["gt0016"] = (RULE) <
-				when = <"$gt0009==0|local::at0008|No result|", "$gt0005==0|local::at0039|Not examined|", "$gt0004==2|local::at0041|Elevated|", "$gt0007==0|local::at0003|Low risk|">
+				when = <"$gt0009==0|local::at0008|No result|", "$gt0005==0|local::at0039|Not examined|", "$gt0004==2|local::at0041|Elevated|", "$gt0007==0|local::at0003|Low risk of DVT |">
 				then = <"$gt0008=2|local::at0012|Order ultrasound|",...>
 				priority = <5>
 			>
 			["gt0017"] = (RULE) <
-				when = <"$gt0009==0|local::at0008|No result|", "$gt0005==0|local::at0039|Not examined|", "$gt0007==1|local::at0004|High risk|">
+				when = <"$gt0009==0|local::at0008|No result|", "$gt0005==0|local::at0039|Not examined|", "$gt0007==1|local::at0004|High risk of DVT|">
 				then = <"$gt0008=2|local::at0012|Order ultrasound|",...>
 				priority = <4>
 			>
 			["gt0018"] = (RULE) <
-				when = <"$gt0005==1|local::at0040|Negative|",...>
-				then = <"$gt0009=2|local::at0011|Patient does not have DVT|",...>
+				when = <"$gt0005==1|local::at0040|Negative for DVT|",...>
+				then = <"$gt0009=2|local::at0011|Patient is unlikely have DVT|",...>
 				priority = <3>
 			>
 			["gt0019"] = (RULE) <
-				when = <"$gt0005==2|local::at0042|Positive|",...>
-				then = <"$gt0009=1|local::at0009|Patient has DVT|",...>
+				when = <"$gt0005==2|local::at0042|Positive for DVT|",...>
+				then = <"$gt0008=3|local::at0013|Consider anticoagulation treatment|", "$gt0009=1|local::at0009|Patient is likely to have DVT|">
 				priority = <1>
 			>
 			["gt0020"] = (RULE) <
-				when = <"$gt0004==1|local::at0037|Normal|", "$gt0007==0|local::at0003|Low risk|">
-				then = <"$gt0009=2|local::at0011|Patient does not have DVT|",...>
+				when = <"$gt0004==1|local::at0037|Normal|", "$gt0007==0|local::at0003|Low risk of DVT |">
+				then = <"$gt0009=2|local::at0011|Patient is unlikely have DVT|",...>
 				priority = <2>
 			>
 		>
