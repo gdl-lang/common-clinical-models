@@ -75,19 +75,6 @@ Roldán V, Marín F, Fernández H, Manzano-Fernandez S, Gallego P, Valdés M, Vi
 				>
 				predicates = <"max(/data/events/time)",...>
 			>
-			["gt0009"] = (ARCHETYPE_BINDING) <
-				archetype_id = <"openEHR-EHR-OBSERVATION.history_prior_medical_diagnosis.v1">
-				domain = <"EHR">
-				elements = <
-					["gt0010"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0061]">
-					>
-					["gt0011"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0019]/items[at0006]">
-					>
-				>
-				predicates = <"max(/data/events/time)",...>
-			>
 			["gt0012"] = (ARCHETYPE_BINDING) <
 				archetype_id = <"openEHR-EHR-OBSERVATION.atria_bleeding_risk_score.v1">
 				domain = <"CDS">
@@ -121,6 +108,28 @@ Roldán V, Marín F, Fernández H, Manzano-Fernandez S, Gallego P, Valdés M, Vi
 					>
 				>
 			>
+			["gt0032"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.problem-diagnosis.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0033"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002.1]">
+					>
+				>
+				predicates = <"/data[at0001]/items[at0002.1] is_a local::gt0034|Hypertension|",...>
+				template_id = <"diagnosis">
+			>
+			["gt0035"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.problem-diagnosis.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0036"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002.1]">
+					>
+				>
+				predicates = <"/data[at0001]/items[at0002.1] is_a local::gt0037|Hemorrhage|",...>
+				template_id = <"diagnosis">
+			>
 		>
 		rules = <
 			["gt0019"] = (RULE) <
@@ -149,12 +158,12 @@ Roldán V, Marín F, Fernández H, Manzano-Fernandez S, Gallego P, Valdés M, Vi
 				priority = <4>
 			>
 			["gt0024"] = (RULE) <
-				when = <"$gt0010==1|local::at0064|Yes|",...>
+				when = <"$gt0036!=null",...>
 				then = <"$gt0016=1|local::at0014|Yes|",...>
 				priority = <3>
 			>
 			["gt0025"] = (RULE) <
-				when = <"$gt0011==1|local::at0012|Yes|",...>
+				when = <"$gt0033!=null",...>
 				then = <"$gt0017=1|local::at0012|Yes|",...>
 				priority = <2>
 			>
@@ -175,6 +184,20 @@ Roldán V, Marín F, Fernández H, Manzano-Fernandez S, Gallego P, Valdés M, Vi
 		>
 	>
 	ontology = (GUIDE_ONTOLOGY) <
+		term_bindings = <
+			["ICD-10-SE"] = (TERM_BINDING) <
+				bindings = <
+					["gt0034"] = (BINDING) <
+						codes = <[ICD-10-SE::I11], [ICD-10-SE::I10], [ICD-10-SE::I13], [ICD-10-SE::I12], [ICD-10-SE::I15], [ICD-10-SE::I14]>
+						uri = <"">
+					>
+					["gt0037"] = (BINDING) <
+						codes = <[ICD-10-SE::I60], [ICD-10-SE::I61], [ICD-10-SE::I62], [ICD-10-SE::D65], [ICD-10-SE::D66], [ICD-10-SE::D67], [ICD-10-SE::D68], [ICD-10-SE::D69], [ICD-10-SE::I850], [ICD-10-SE::K226], [ICD-10-SE::K250], [ICD-10-SE::K252], [ICD-10-SE::K254], [ICD-10-SE::K256], [ICD-10-SE::K260], [ICD-10-SE::K262], [ICD-10-SE::K264], [ICD-10-SE::K266], [ICD-10-SE::K270], [ICD-10-SE::K272], [ICD-10-SE::K274], [ICD-10-SE::K276], [ICD-10-SE::K280], [ICD-10-SE::K282], [ICD-10-SE::K284], [ICD-10-SE::K286], [ICD-10-SE::K290], [ICD-10-SE::K625], [ICD-10-SE::K922]>
+						uri = <"">
+					>
+				>
+			>
+		>
 		term_definitions = <
 			["en"] = (TERM_DEFINITION) <
 				terms = <
@@ -197,14 +220,6 @@ Roldán V, Marín F, Fernández H, Manzano-Fernandez S, Gallego P, Valdés M, Vi
 					["gt0008"] = (TERM) <
 						text = <"Birthdate">
 						description = <"The patient's date of birth.">
-					>
-					["gt0010"] = (TERM) <
-						text = <"Hemorrhage diagnosis (unspecified)">
-						description = <"Has the individual ever been diagnosed with any kind of haemorrhage?">
-					>
-					["gt0011"] = (TERM) <
-						text = <"Hypertension">
-						description = <"Has the individual ever been diagnosed with Hypertension?">
 					>
 					["gt0013"] = (TERM) <
 						text = <"Anemia">
@@ -267,6 +282,22 @@ Roldán V, Marín F, Fernández H, Manzano-Fernandez S, Gallego P, Valdés M, Vi
 					>
 					["gt0031"] = (TERM) <
 						text = <"Set hemoglobin">
+					>
+					["gt0033"] = (TERM) <
+						text = <"Hypertension diagnosis">
+						description = <"The index diagnosis">
+					>
+					["gt0034"] = (TERM) <
+						text = <"Hypertension">
+						description = <"Terminology binding">
+					>
+					["gt0036"] = (TERM) <
+						text = <"Hemorrhage diagnosis">
+						description = <"The index diagnosis">
+					>
+					["gt0037"] = (TERM) <
+						text = <"Hemorrhage">
+						description = <"Terminology binding">
 					>
 				>
 			>
