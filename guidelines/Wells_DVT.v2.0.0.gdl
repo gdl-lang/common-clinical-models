@@ -1,0 +1,229 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"Wells_DVT.v2.0.0">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"Cambio Healthcare Systems">
+				keywords = <"dvt", "deep vein thrombosis", "risk", "assessment", "predict", "probability">
+				misuse = <"Not to be used with any other formula or criteria for DVT risk stratification.">
+				purpose = <"For evaluating the pre-test probability for deep vein thrombosis (DVT). Utilization of the Wells’ DVT criteria can determine those patients who are overall unlikely to have a DVT. ">
+				use = <"The Wells’ DVT criteria can be used in outpatient as well as emergency department settings. They are only to be applied after a thorough history and physical examination resulting in a suspicion of DVT. 
+
+A low risk score (<2) along with a negative test result for d-dimer excludes the need for further examination with ultrasound. 
+
+The score is generated based on seven weighted criteria:
+
+- Active cancer
+- Paralysis, paresis, or recent plaster immobilisation of the legs
+- Bedridden recently ≥3 days or major surgery within 12 weeks
+- Localized tenderness along the deep venous system
+- Entire leg swollen
+- Calf swelling >3 cm compared to the other leg
+- Pitting oedema 
+- Collateral (nonvaricose) superficial veins
+- Alternative diagnosis to DVT at least as likely
+
+The maximum score is 8p and a score of 2p or more suggests high probability of DVT. ">
+			>
+			["sv"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"Cambio Healthcare Systems">
+				keywords = <"dvt", "djup ventrombos", "risk", "utvärdering">
+				misuse = <"Får inte användas med någon annan formel eller några andra kriterier för DVT riskstratifiering.">
+				purpose = <"Att baserat på klinisk undersökning förutsäga sannolikhet för djup ventrombos (DVT), och därigenom minska överflödig vidare utredning.">
+				use = <"Wells DVT kriterier kan användas såväl inom öppenvården som på akutmottagningar. De bör endast appliceras efter noggrann anamnes och fysisk undersökning som resulterat i misstanke om djup ventrombos (DVT). 
+
+En poäng om under 2 tillsammans med negativ d-dimer indikerar låg sannolikhet för DVT.
+
+Poängen baseras på sju viktade kriterier:
+
+- Aktiv cancer
+- Förlamning, pares, eller nyligen orörlig i benen p.g.a. gips
+- Sängliggande nyligen i ≥3 dagar eller större operation inom 12 veckor
+- Lokaliserad ömhet längs det djupa vensystemet
+- Hela benet svullet
+- Svullen vad >3 cm jämfört med det andra benet
+- Pittingödem
+- Kollaterala ytliga vener (utan varicer)
+- Alternativ diagnos till DVT minst lika sannolikt
+
+Maximal poäng uppgår till 8p och en poäng om 2p eller mer indikerar hög sannolikhet för DVT.">
+			>
+		>
+		lifecycle_state = <"Author draft">
+		original_author = <
+			["date"] = <"2017-09-01">
+			["email"] = <"konstantinos.kalliamvakos@cambio.se">
+			["name"] = <"Konstantinos Kalliamvakos">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_contributors = <"Dennis Forslund", "Jimmy Axelsson", "Oskar Nielsen", "Eneimi Allwell-Brown">
+		other_details = <
+			["references"] = <"Tovey C, Wyatt S. Diagnosis, investigation, and management of deep vein thrombosis. BMJ : British Medical Journal. 2003;326(7400):1180-1184.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.wells_criteria_dvt.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0015]">
+					>
+				>
+			>
+			["gt0004"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.wells_criteria_dvt.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0007]">
+					>
+					["gt0007"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0008]">
+					>
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0009]">
+					>
+					["gt0009"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0010]">
+					>
+					["gt0010"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0011]">
+					>
+					["gt0011"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0012]">
+					>
+					["gt0012"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0013]">
+					>
+					["gt0013"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0014]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+		>
+		rules = <
+			["gt0014"] = (RULE) <
+				when = <"!fired($gt0014)", "$gt0003==null">
+				then = <"$gt0003.magnitude=(((((((($gt0005.value+$gt0007.value)+$gt0011.value)+$gt0010.value)+$gt0009.value)+$gt0008.value)+$gt0012.value)+$gt0006.value)+$gt0013.value)",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Wells’ Criteria for DVT">
+						description = <"Wells’ Criteria for DVT are used for evaluating the pre-test probability for deep vein thrombosis (DVT). Utilization of the Wells’ DVT criteria can determine those patients who are overall unlikely to have a DVT. Two points or more indicate high probability for DVT.">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Wells' Score">
+						description = <"Sum of all factors.">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Active cancer">
+						description = <"Treatment or palliation within 6 months.">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Paralysis, paresis, or recent plaster immobilisation of the legs">
+						description = <"*">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Bedridden recently ≥3 days or major surgery within 12 weeks">
+						description = <"*">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Localized tenderness along the deep venous system">
+						description = <"*">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Entire leg swollen">
+						description = <"*">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Calf swelling >3 cm compared to the other leg">
+						description = <"*">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Pitting oedema">
+						description = <"Measured 10 cm below the tibial tuberosity.">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Collateral (nonvaricose) superficial veins">
+						description = <"Greater in the symptomatic leg.">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Alternative diagnosis to DVT at least as likely">
+						description = <"*">
+					>
+					["gt0014"] = (TERM) <
+						text = <"Calculate Wells' Score">
+					>
+				>
+			>
+			["sv"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Wells kriterier för DVT">
+						description = <"Wells kriterier för djup ventrombos (DVT) används för att baserat på klinisk undersökning förutsäga sannolikhet för DVT, och därigenom minska överflödig vidare utredning. En total poäng om minst 2p indikerar hög sannolikhet för DVT.">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Wells' Score">
+						description = <"*(en) Sum of all factors.">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Aktiv cancer">
+						description = <"*(en) Treatment or palliation within 6 months.">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Förlamning, pares, eller nyligen orörlig i benen p.g.a. gips">
+						description = <"*(en) *">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Sängliggande nyligen i ≥3 dagar eller större operation inom 12 veckor">
+						description = <"*(en) *">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Lokaliserad ömhet längs det djupa vensystemet">
+						description = <"*(en) *">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Hela benet svullet">
+						description = <"*(en) *">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Kollaterala ytliga vener (utan varicer)">
+						description = <"*(en) *">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Svullen vad >3 cm jämfört med det andra benet">
+						description = <"*(en) Measured 10 cm below the tibial tuberosity.">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Pittingödem">
+						description = <"*(en) Greater in the symptomatic leg.">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Alternativ diagnos till DVT minst lika sannolikt">
+						description = <"*(en) *">
+					>
+					["gt0014"] = (TERM) <
+						text = <"Beräkna total poäng">
+					>
+				>
+			>
+		>
+	>
+>
