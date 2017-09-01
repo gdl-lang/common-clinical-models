@@ -14,7 +14,7 @@
 				purpose = <"Calculated LDL cholesterol concentration is used for risk stratification of coronary heart disease (CHD) events.
 Calculated LDL is also used to set goals for therapy (reduction of LDL cholesterol levels), to determine need for therapeutic lifestyle changes (TLC) and to determine whether cholesterol lowering drug therapy should be considered.">
 				use = <"Use to calculate the LDL cholesterol level from given levels of Total cholesterol (TC), HDL cholesterol (HDL) and Triglycerides (TG).
-This guide calculates LDL cholesterol using the Friedewald formula: (Total cholesterol - HDL cholesterol - [Triglycerides/5]). All analytes are given with the unit: mg/dl. In an adult, values less than 100 mg/dl are regarded as optimal; 100-129 mg/dl — near optimal, above optimal; 130-159 mg/dl — borderline high; 160-189 mg/dl — high; and greater than 189 mg/dl — very high.">
+This guide calculates LDL cholesterol using the Friedewald formula: (Total cholesterol - HDL cholesterol - [Triglycerides/5]). Calculated LDL cholesterol is given in mg/dl. In an adult, values less than 100 mg/dl are regarded as optimal; 100-129 mg/dl — near optimal, above optimal; 130-159 mg/dl — borderline high; 160-189 mg/dl — high; and greater than 189 mg/dl — very high.">
 			>
 			["sv"] = (RESOURCE_DESCRIPTION_ITEM) <
 				copyright = <"© Cambio Healthcare Systems">
@@ -66,38 +66,61 @@ Resulterande värde bedöms i enlighet med rådande lokala riktlinjer.">
 					>
 				>
 			>
-		>
-		rules = <
-			["gt0002"] = (RULE) <
-				when = <"$gt0004.units=='mg/dl'", "$gt0006.units=='mg/dl'", "$gt0005.units=='mg/dl'">
-				then = <"$gt0009.magnitude=(($gt0004.magnitude-$gt0005.magnitude)-($gt0006.magnitude/5))", "$gt0009.precision=2", "$gt0009.units='mg/dl'">
-				priority = <1>
-			>
-		>
-	>
-	ontology = (GUIDE_ONTOLOGY) <
-		term_bindings = <
-			["SNOMEDCT"] = (TERM_BINDING) <
-				bindings = <
-					["gt0004"] = (BINDING) <
-						codes = <[SNOMEDCT::121868005],...>
-						uri = <"http://snomed.info/id/">
+			["gt0010"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-lipids.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0011"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.5]">
 					>
-					["gt0005"] = (BINDING) <
-						codes = <[SNOMEDCT::28036006],...>
-						uri = <"http://snomed.info/id/">
+					["gt0012"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.3]">
 					>
-					["gt0006"] = (BINDING) <
-						codes = <[SNOMEDCT::14740000],...>
-						uri = <"http://snomed.info/id/">
-					>
-					["gt0009"] = (BINDING) <
-						codes = <[SNOMEDCT::395065005],...>
-						uri = <"http://snomed.info/id/">
+					["gt0013"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.4]">
 					>
 				>
 			>
 		>
+		rules = <
+			["gt0002"] = (RULE) <
+				when = <"$gt0004!=null", "$gt0005!=null", "$gt0006!=null">
+				then = <"$gt0009.magnitude=(($gt0011.magnitude-$gt0012.magnitude)-($gt0013.magnitude/5))", "$gt0009.units='mg/dl'">
+				priority = <1>
+			>
+			["gt0014"] = (RULE) <
+				when = <"$gt0004.units=='mmol/l'",...>
+				then = <"$gt0011.units='mg/dl'", "$gt0011.magnitude=($gt0004.magnitude*38.67)">
+				priority = <7>
+			>
+			["gt0015"] = (RULE) <
+				when = <"$gt0005.units=='mmol/l'",...>
+				then = <"$gt0012.units='mg/dl'", "$gt0012.magnitude=($gt0005.magnitude*38.67)">
+				priority = <6>
+			>
+			["gt0016"] = (RULE) <
+				when = <"$gt0006.units=='mmol/l'",...>
+				then = <"$gt0013.units='mg/dl'", "$gt0013.magnitude=($gt0006.magnitude*88.57)">
+				priority = <5>
+			>
+			["gt0017"] = (RULE) <
+				when = <"$gt0004.units=='mg/dl'",...>
+				then = <"$gt0011=$gt0004",...>
+				priority = <4>
+			>
+			["gt0018"] = (RULE) <
+				when = <"$gt0005.units=='mg/dl'",...>
+				then = <"$gt0012=$gt0005",...>
+				priority = <3>
+			>
+			["gt0019"] = (RULE) <
+				when = <"$gt0006.units=='mg/dl'",...>
+				then = <"$gt0013=$gt0006",...>
+				priority = <2>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
 		term_definitions = <
 			["en"] = (TERM_DEFINITION) <
 				terms = <
@@ -124,6 +147,36 @@ Resulterande värde bedöms i enlighet med rådande lokala riktlinjer.">
 					["gt0009"] = (TERM) <
 						text = <"LDL Cholesterol">
 						description = <"LDL cholesterol level in the sample.">
+					>
+					["gt0011"] = (TERM) <
+						text = <"cTotal Cholesterol">
+						description = <"The total cholesterol concentration in the sample.">
+					>
+					["gt0012"] = (TERM) <
+						text = <"cHDL-Cholesterol">
+						description = <"HDL-Cholesterol level in the sample.">
+					>
+					["gt0013"] = (TERM) <
+						text = <"cTriglycerides">
+						description = <"The triglyceride concentration in the sample.">
+					>
+					["gt0014"] = (TERM) <
+						text = <"Convert total cholesterol units">
+					>
+					["gt0015"] = (TERM) <
+						text = <"Convert HDL-cholesterol units">
+					>
+					["gt0016"] = (TERM) <
+						text = <"Convert triglycerides unit">
+					>
+					["gt0017"] = (TERM) <
+						text = <"Set total cholesterol">
+					>
+					["gt0018"] = (TERM) <
+						text = <"Set HDL-cholesterol">
+					>
+					["gt0019"] = (TERM) <
+						text = <"Set triglycerides">
 					>
 				>
 			>
@@ -152,6 +205,24 @@ Resulterande värde bedöms i enlighet med rådande lokala riktlinjer.">
 					["gt0009"] = (TERM) <
 						text = <"*(en) LDL Cholesterol">
 						description = <"*(en) LDL cholesterol level in the sample.">
+					>
+					["gt0011"] = (TERM) <
+					>
+					["gt0012"] = (TERM) <
+					>
+					["gt0013"] = (TERM) <
+					>
+					["gt0014"] = (TERM) <
+					>
+					["gt0015"] = (TERM) <
+					>
+					["gt0016"] = (TERM) <
+					>
+					["gt0017"] = (TERM) <
+					>
+					["gt0018"] = (TERM) <
+					>
+					["gt0019"] = (TERM) <
 					>
 				>
 			>
