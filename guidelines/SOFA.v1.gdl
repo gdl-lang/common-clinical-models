@@ -80,7 +80,7 @@ Total poäng uppgår till maximalt 24p och tolkas med avseende på mortalitet en
 			["name"] = <"Syeeda S Farruque">
 			["organisation"] = <"Cambio Healthcare Systems">
 		>
-		other_contributors = <"Dennis Forslund", "Jimmy Axelsson">
+		other_contributors = <"Dennis Forslund", "Jimmy Axelsson", "Eneimi Allwell-Brown">
 		other_details = <
 			["references"] = <"Ref. 1: Vincent JL, Moreno R, Takala J, et al. The SOFA (Sepsis-related Organ Failure Assessment) score to describe organ dysfunction/failure. On behalf of the Working Group on Sepsis-Related Problems of the European Society of Intensive Care Medicine. In: Vol 22. 1996:707–710.
 
@@ -171,9 +171,6 @@ Ref. 3: Kratz A, Ferraro M, Sluss PM, et al: Case records of the Massachusetts G
 					["gt0023"] = (ELEMENT_BINDING) <
 						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0008]">
 					>
-					["gt0075"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0009]">
-					>
 				>
 				predicates = <"max(/data/events/time)",...>
 			>
@@ -212,166 +209,176 @@ Ref. 3: Kratz A, Ferraro M, Sluss PM, et al: Case records of the Massachusetts G
 			["gt0036"] = (RULE) <
 				when = <"$gt0028==null", "$gt0029==null", "$gt0030==null", "$gt0031==null", "$gt0032==null", "$gt0034==null">
 				then = <"$gt0028=0|local::at0036|N/A|", "$gt0029=0|local::at0031|N/A|", "$gt0030=0|local::at0026|N/A|", "$gt0031=0|local::at0016|No hypotension|", "$gt0032=0|local::at0021|<1.2 [<106]|", "$gt0034=0|local::at0041|N/A|">
-				priority = <33>
+				priority = <35>
 			>
 			["gt0037"] = (RULE) <
 				when = <"$gt0013.units=='%'", "$gt0012.units=='mm[Hg]'", "$gt0013!=null", "$gt0012!=null">
 				then = <"$gt0038.magnitude=(($gt0012.magnitude/$gt0013.magnitude)*100)", "$gt0038.units='mm[Hg]'">
-				priority = <32>
+				priority = <34>
 			>
 			["gt0039"] = (RULE) <
-				when = <"$gt0038.magnitude>=300", "$gt0038.magnitude<400">
+				when = <"$gt0038.magnitude>300", "$gt0038.magnitude<=400">
 				then = <"$gt0034=1|local::at0012|<400|",...>
-				priority = <30>
+				priority = <32>
 			>
 			["gt0040"] = (RULE) <
-				when = <"$gt0038.magnitude>=200", "$gt0038.magnitude<300">
+				when = <"$gt0038.magnitude>200", "$gt0038.magnitude<=300">
 				then = <"$gt0034=2|local::at0013|<300|",...>
-				priority = <29>
+				priority = <31>
 			>
 			["gt0041"] = (RULE) <
-				when = <"$gt0038.magnitude>=100", "$gt0038.magnitude<200">
+				when = <"$gt0038.magnitude>100", "$gt0038.magnitude<=200">
 				then = <"$gt0034=3|local::at0014|<200 and mechanically ventilated|",...>
-				priority = <28>
+				priority = <30>
 			>
 			["gt0042"] = (RULE) <
-				when = <"$gt0038.magnitude<100",...>
+				when = <"$gt0038.magnitude<=100",...>
 				then = <"$gt0034=4|local::at0015|<100 and mechanically ventilated|",...>
-				priority = <27>
+				priority = <29>
 			>
 			["gt0043"] = (RULE) <
 				when = <"$gt0017.magnitude>=100", "$gt0017.magnitude<150", "$gt0017.units=='10*9/l'", "$gt0017!=null">
 				then = <"$gt0028=1|local::at0037|<150|",...>
-				priority = <26>
+				priority = <28>
 			>
 			["gt0044"] = (RULE) <
 				when = <"$gt0017.magnitude<100", "$gt0017.magnitude>=50", "$gt0017.units=='10*9/l'", "$gt0017!=null">
 				then = <"$gt0028=2|local::at0038|<100|",...>
-				priority = <25>
+				priority = <27>
 			>
 			["gt0045"] = (RULE) <
 				when = <"$gt0017.magnitude>=20", "$gt0017.magnitude<50", "$gt0017!=null", "$gt0017.units=='10*9/l'">
 				then = <"$gt0028=3|local::at0039|<50|",...>
-				priority = <24>
+				priority = <26>
 			>
 			["gt0046"] = (RULE) <
 				when = <"$gt0017!=null", "$gt0017.magnitude<20", "$gt0017.units=='10*9/l'">
 				then = <"$gt0028=4|local::at0040|<20|",...>
-				priority = <23>
+				priority = <25>
 			>
 			["gt0047"] = (RULE) <
-				when = <"$gt0038.magnitude>=400",...>
+				when = <"$gt0038.magnitude>400",...>
 				then = <"$gt0034=0|local::at0041|N/A|",...>
-				priority = <31>
+				priority = <33>
 			>
 			["gt0048"] = (RULE) <
 				when = <"$gt0017.magnitude>=150", "$gt0017.units=='10*9/l'", "$gt0017!=null">
 				then = <"$gt0028=0|local::at0036|N/A|",...>
-				priority = <22>
+				priority = <24>
 			>
 			["gt0049"] = (RULE) <
 				when = <"$gt0007.magnitude<=14", "$gt0007.magnitude>=13", "$gt0007!=null">
 				then = <"$gt0029=1|local::at0032|13-14|",...>
-				priority = <21>
+				priority = <23>
 			>
 			["gt0050"] = (RULE) <
 				when = <"$gt0007.magnitude<=12", "$gt0007.magnitude>=10", "$gt0007!=null">
 				then = <"$gt0029=2|local::at0033|10-12|",...>
-				priority = <20>
+				priority = <22>
 			>
 			["gt0051"] = (RULE) <
 				when = <"$gt0007.magnitude<=9", "$gt0007.magnitude>=6", "$gt0007!=null">
 				then = <"$gt0029=3|local::at0034|6-9|",...>
-				priority = <19>
+				priority = <21>
 			>
 			["gt0052"] = (RULE) <
 				when = <"$gt0007.magnitude<6", "$gt0007!=null">
 				then = <"$gt0029=4|local::at0035|<6|",...>
-				priority = <18>
+				priority = <20>
 			>
 			["gt0053"] = (RULE) <
 				when = <"$gt0007.magnitude>=15", "$gt0007!=null">
 				then = <"$gt0029=0|local::at0031|N/A|",...>
-				priority = <17>
+				priority = <19>
 			>
 			["gt0054"] = (RULE) <
 				when = <"$gt0010.magnitude>=1.2", "$gt0010.magnitude<=1.9", "$gt0010.units=='mg/dl'", "$gt0010!=null">
 				then = <"$gt0030=1|local::at0027|1.2–1.9 [>20-32]|",...>
-				priority = <16>
+				priority = <18>
 			>
 			["gt0055"] = (RULE) <
 				when = <"$gt0010.magnitude<=5.9", "$gt0010.magnitude>=2.0", "$gt0010.units=='mg/dl'", "$gt0010!=null">
 				then = <"$gt0030=2|local::at0028|2.0–5.9 [33-101]|",...>
-				priority = <15>
+				priority = <17>
 			>
 			["gt0056"] = (RULE) <
 				when = <"$gt0010.magnitude<=11.9", "$gt0010.magnitude>=6.0", "$gt0010.units=='mg/dl'", "$gt0010!=null">
 				then = <"$gt0030=3|local::at0029|6.0–11.9 [102-204]|",...>
-				priority = <14>
+				priority = <16>
 			>
 			["gt0057"] = (RULE) <
 				when = <"$gt0010.magnitude>12.0", "$gt0010.units=='mg/dl'", "$gt0010!=null">
 				then = <"$gt0030=4|local::at0030|>12.0 [>204]|",...>
-				priority = <13>
+				priority = <15>
 			>
 			["gt0058"] = (RULE) <
 				when = <"$gt0010.magnitude<1.2", "$gt0010.units=='mg/dl'", "$gt0010!=null">
 				then = <"$gt0030=0|local::at0026|N/A|",...>
-				priority = <12>
+				priority = <14>
 			>
 			["gt0059"] = (RULE) <
-				when = <"($gt0015<106,µmol/l)||($gt0075==0|local::at0021|<1.2 [<106]|)",...>
+				when = <"!fired($gt0078)", "!fired($gt0077)", "$gt0015<106,µmol/l">
 				then = <"$gt0032=0|local::at0021|<1.2 [<106]|",...>
 				priority = <11>
 			>
 			["gt0060"] = (RULE) <
-				when = <"(($gt0015<=168,µmol/l)&&($gt0015>=106,µmol/l))||($gt0075==1|local::at0022|1.2–1.9 [106-168]|)",...>
+				when = <"!fired($gt0078)", "!fired($gt0077)", "$gt0015>=106,µmol/l", "$gt0015<=168,µmol/l">
 				then = <"$gt0032=1|local::at0022|1.2–1.9 [106-168]|",...>
 				priority = <10>
 			>
 			["gt0061"] = (RULE) <
-				when = <"(($gt0015>=169,µmol/l)&&($gt0015<=301,µmol/l))||($gt0075==2|local::at0023|2.0–3.4 [169-301]|)",...>
+				when = <"!fired($gt0078)", "!fired($gt0077)", "$gt0015<=301,µmol/l", "$gt0015>=169,µmol/l">
 				then = <"$gt0032=2|local::at0023|2.0–3.4 [169-301]|",...>
 				priority = <9>
 			>
 			["gt0062"] = (RULE) <
-				when = <"((($gt0015<=433,µmol/l)&&($gt0015>=302,µmol/l))||(($gt0005<500,ml/24hr)&&($gt0005>=200,ml/24hr)))||($gt0075==3|local::at0024|3.5–4.9 [302-433] (or < 500 ml/d)|)",...>
+				when = <"!fired($gt0078)", "!fired($gt0077)", "$gt0015>=302,µmol/l", "$gt0015<=433,µmol/l">
 				then = <"$gt0032=3|local::at0024|3.5–4.9 [302-433] (or < 500 ml/d)|",...>
 				priority = <8>
 			>
 			["gt0063"] = (RULE) <
-				when = <"(($gt0005<200,ml/24hr)||($gt0015>433,µmol/l))||($gt0075==4|local::at0025|>5.0 [>433] (or <200 ml/d)|)",...>
+				when = <"!fired($gt0078)", "!fired($gt0077)", "$gt0015>433,µmol/l">
 				then = <"$gt0032=4|local::at0025|>5.0 [>433] (or <200 ml/d)|",...>
 				priority = <7>
 			>
-			["gt0065"] = (RULE) <
-				when = <"($gt0003<70,mm[Hg])||($gt0023==1|local::at0017|MAP< 70 mmHg|)",...>
-				then = <"$gt0031=1|local::at0017|MAP< 70 mmHg|",...>
-				priority = <6>
-			>
 			["gt0066"] = (RULE) <
-				when = <"$gt0023==2|local::at0018|dop =< 5 or dob (any dose)|", "$gt0023!=null">
+				when = <"$gt0023==2|local::at0018|dop =< 5 or dob (any dose)|",...>
 				then = <"$gt0031=2|local::at0018|dop =< 5 or dob (any dose)|",...>
 				priority = <4>
 			>
 			["gt0067"] = (RULE) <
-				when = <"$gt0023==3|local::at0019|dop >5 OR epi =< 0.1 ORnor <= 0.1|", "$gt0023!=null">
+				when = <"$gt0023==3|local::at0019|dop >5 OR epi =< 0.1 ORnor <= 0.1|",...>
 				then = <"$gt0031=3|local::at0019|dop >5 OR epi =< 0.1 ORnor <= 0.1|",...>
-				priority = <3>
+				priority = <5>
 			>
 			["gt0068"] = (RULE) <
-				when = <"$gt0023==4|local::at0020|dop >15 OR epi >0.1 OR nor >0.1|", "$gt0023!=null">
+				when = <"$gt0023==4|local::at0020|dop >15 OR epi >0.1 OR nor >0.1|",...>
 				then = <"$gt0031=4|local::at0020|dop >15 OR epi >0.1 OR nor >0.1|",...>
-				priority = <2>
-			>
-			["gt0073"] = (RULE) <
-				when = <"($gt0003>=70,mm[Hg])||($gt0023==0|local::at0016|No hypotension|)",...>
-				then = <"$gt0031=0|local::at0016|No hypotension|",...>
-				priority = <5>
+				priority = <6>
 			>
 			["gt0076"] = (RULE) <
 				then = <"$gt0033.magnitude=((((($gt0028.value+$gt0029.value)+$gt0032.value)+$gt0034.value)+$gt0030.value)+$gt0031.value)",...>
 				priority = <1>
+			>
+			["gt0077"] = (RULE) <
+				when = <"$gt0005>=200,ml/24hr", "$gt0005<500,ml/24hr">
+				then = <"$gt0032=3|local::at0024|3.5–4.9 [302-433] (or < 500 ml/d)|",...>
+				priority = <13>
+			>
+			["gt0078"] = (RULE) <
+				when = <"$gt0005<200,ml/24hr",...>
+				then = <"$gt0032=4|local::at0025|>5.0 [>433] (or <200 ml/d)|",...>
+				priority = <12>
+			>
+			["gt0079"] = (RULE) <
+				when = <"!fired($gt0068)", "!fired($gt0067)", "!fired($gt0066)", "$gt0003<70,mm[Hg]">
+				then = <"$gt0031=1|local::at0017|MAP< 70 mmHg|",...>
+				priority = <3>
+			>
+			["gt0080"] = (RULE) <
+				when = <"!fired($gt0068)", "!fired($gt0067)", "!fired($gt0066)", "$gt0003>=70,mm[Hg]">
+				then = <"$gt0031=0|local::at0016|No hypotension|",...>
+				priority = <2>
 			>
 		>
 	>
@@ -443,8 +450,6 @@ Ref. 3: Kratz A, Ferraro M, Sluss PM, et al: Case records of the Massachusetts G
 						text = <"Creatinine or urine output">
 						description = <"Creatinine (mg/dl) [μmol/L] (or urine output - mL/day)">
 					>
-					["gt0025"] = (TERM) <
-					>
 					["gt0027"] = (TERM) <
 						text = <"PF ration/carrico index score">
 						description = <"PaO2/FiO2 is ration of arterial partial pressure of O2 to the fractional inspired O2 (O2 concentration in air delivered as a percentage). At sea level this is above 400mmHg (some say over 500mmHg but we shall use the lower threshold value).">
@@ -492,16 +497,16 @@ Ref. 3: Kratz A, Ferraro M, Sluss PM, et al: Case records of the Massachusetts G
 						description = <"Calculation value of the Carrico/PF ratio of PaO2/FiO2">
 					>
 					["gt0039"] = (TERM) <
-						text = <"Set PF score <400">
+						text = <"Set PF score <=400">
 					>
 					["gt0040"] = (TERM) <
-						text = <"Set PF score <300">
+						text = <"Set PF score <=300">
 					>
 					["gt0041"] = (TERM) <
-						text = <"Set PF score <200">
+						text = <"Set PF score <=200">
 					>
 					["gt0042"] = (TERM) <
-						text = <"Set PF score <100">
+						text = <"Set PF score <=100">
 					>
 					["gt0043"] = (TERM) <
 						text = <"Set Platlets <150">
@@ -516,7 +521,7 @@ Ref. 3: Kratz A, Ferraro M, Sluss PM, et al: Case records of the Massachusetts G
 						text = <"Set platlets <20">
 					>
 					["gt0047"] = (TERM) <
-						text = <"Set PF score >=400">
+						text = <"Set PF score >400">
 					>
 					["gt0048"] = (TERM) <
 						text = <"Set Platlets >=150">
@@ -561,16 +566,10 @@ Ref. 3: Kratz A, Ferraro M, Sluss PM, et al: Case records of the Massachusetts G
 						text = <"Set Creatinine (micromols/L)  169-301">
 					>
 					["gt0062"] = (TERM) <
-						text = <"Set Creatinine (micromols/L)  302-433 or <500ml/day urine output">
+						text = <"Set Creatinine (micromols/L)  302-433">
 					>
 					["gt0063"] = (TERM) <
-						text = <"Set Creatinine (micromols/L) >433 or <200 urine output">
-					>
-					["gt0064"] = (TERM) <
-						text = <"Set MAP or vasopressors - no HypoT">
-					>
-					["gt0065"] = (TERM) <
-						text = <"Set MAP or vp - < 70mmHg">
+						text = <"Set Creatinine (micromols/L) >433">
 					>
 					["gt0066"] = (TERM) <
 						text = <"Set vp score 2">
@@ -581,30 +580,20 @@ Ref. 3: Kratz A, Ferraro M, Sluss PM, et al: Case records of the Massachusetts G
 					["gt0068"] = (TERM) <
 						text = <"Set vp score 4">
 					>
-					["gt0069"] = (TERM) <
-						text = <"Set urine < 500">
-					>
-					["gt0070"] = (TERM) <
-						text = <"Set urine output <500">
-					>
-					["gt0071"] = (TERM) <
-						text = <"Set urine output <200 ml/24">
-					>
-					["gt0072"] = (TERM) <
-						text = <"Set MAP rule">
-					>
-					["gt0073"] = (TERM) <
-						text = <"Set MAP noHypo">
-					>
-					["gt0074"] = (TERM) <
-						text = <"Set MAP cds <70">
-					>
-					["gt0075"] = (TERM) <
-						text = <"Creatinine or urine output">
-						description = <"Creatinine (mg/dl) [μmol/L] (or urine output - mL/day). As the ranges in micromols/L have holes, the ranges have been stretched to cover the holes">
-					>
 					["gt0076"] = (TERM) <
 						text = <"Calculate Total score">
+					>
+					["gt0077"] = (TERM) <
+						text = <"Set urine output <500ml/day">
+					>
+					["gt0078"] = (TERM) <
+						text = <"Set urine output <200ml/day">
+					>
+					["gt0079"] = (TERM) <
+						text = <"MAP <70 mmHg">
+					>
+					["gt0080"] = (TERM) <
+						text = <"MAP >70 mmHg">
 					>
 				>
 			>
@@ -673,8 +662,6 @@ Ref. 3: Kratz A, Ferraro M, Sluss PM, et al: Case records of the Massachusetts G
 					["gt0024"] = (TERM) <
 						text = <"Kreatinin eller dygnsdiures">
 						description = <"*(en) Creatinine (mg/dl) [μmol/L] (or urine output - mL/day)">
-					>
-					["gt0025"] = (TERM) <
 					>
 					["gt0027"] = (TERM) <
 						text = <"PF ration/carrico index score">
@@ -797,12 +784,6 @@ Ref. 3: Kratz A, Ferraro M, Sluss PM, et al: Case records of the Massachusetts G
 					["gt0063"] = (TERM) <
 						text = <"CDS kreatinin (micromols/L) >433 or <200 urine output">
 					>
-					["gt0064"] = (TERM) <
-						text = <"CDS Medelartärtryck (MAP) alt behov av vasopressor - ej hypotension">
-					>
-					["gt0065"] = (TERM) <
-						text = <"CDS Medelartärtryck (MAP) alt behov av vasopressor - < 70mmHg">
-					>
 					["gt0066"] = (TERM) <
 						text = <"CDS Medelartärtryck (MAP) alt behov av vasopressor - 2p">
 					>
@@ -812,30 +793,16 @@ Ref. 3: Kratz A, Ferraro M, Sluss PM, et al: Case records of the Massachusetts G
 					["gt0068"] = (TERM) <
 						text = <"CDS Medelartärtryck (MAP) alt behov av vasopressor - 4p">
 					>
-					["gt0069"] = (TERM) <
-						text = <"CDS dygnsdiures < 500">
-					>
-					["gt0070"] = (TERM) <
-						text = <"CDS dygnsdiures <500">
-					>
-					["gt0071"] = (TERM) <
-						text = <"CDS dygnsdiures <200">
-					>
-					["gt0072"] = (TERM) <
-						text = <"CDS MAP ">
-					>
-					["gt0073"] = (TERM) <
-						text = <"CDS MAP - ej hypotension">
-					>
-					["gt0074"] = (TERM) <
-						text = <"CDS MAP - <70">
-					>
-					["gt0075"] = (TERM) <
-						text = <"Kreatinin eller dygnsdiures">
-						description = <"*(en) Creatinine (mg/dl) [μmol/L] (or urine output - mL/day). As the ranges in micromols/L have holes, the ranges have been stretched to cover the holes">
-					>
 					["gt0076"] = (TERM) <
 						text = <"Beräkna total poäng">
+					>
+					["gt0077"] = (TERM) <
+					>
+					["gt0078"] = (TERM) <
+					>
+					["gt0079"] = (TERM) <
+					>
+					["gt0080"] = (TERM) <
 					>
 				>
 			>
