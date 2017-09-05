@@ -1,0 +1,200 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"Apgar.v1.1.0">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"Cambio Healthcare Systems">
+				keywords = <"APGAR", "appearance", "pulse", "grimace", "activity", "respiration", "neonate", "assessment", "score">
+				purpose = <"To evaluate the physical condition of newborn infants.">
+				use = <"Allows the assessment of the state of a neonate after birth.">
+			>
+			["sv"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"Cambio Healthcare Systems">
+				keywords = <"APGAR", "*(en) appearance", "puls", "grimas", "aktivitet", "respiration", "nyfödd", "bedömning", "score">
+				misuse = <"Delvis fullständig poäng och lägg till 5 för att ge det totala värdet.">
+				purpose = <"Att utvärdera det fysiska tillståndet hos nyfödda barn.">
+				use = <"Används för utvärdering av ett nyfött barns fysiska tillstånd.
+
+Bedömning och registrering en, två, tre, fem och/eller tio minuter efter födsel. Sker i regel en minut efter födsel med kontroll efter fem minuter, plus ytterligare om kliniskt motiverat. 
+
+Om det totala värdet ska beräknas är det nödvändigt att svar för alla fem parametrar anges. Totalen är summan av de fem parametrarna, som vardera bidrar med 0-2 poäng (min 0, max 10).">
+			>
+		>
+		lifecycle_state = <"Initial">
+		original_author = <
+			["date"] = <"2017-09-05">
+			["email"] = <"models@cambiocds.com">
+			["name"] = <"Konstantinos Kalliamvakos">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_contributors = <"Jimmy Axelsson", "Dennis Forslund", "Oskar Nielsen">
+		other_details = <
+			["references"] = <"1. Apgar V.  A proposal of a New Method of Evaluation of the Newborn Infant. Curr Res Anesth Analg.  1953 Jul-Aug;32(4):260-7.
+2. Apgar V, Holaday DA, James LS, Weisbrod IM, and Berrien C.  Evaluation of the newborn infant; second report.  J Am Med Assoc.  1958 Dec 13;168(15):1985-8.
+3. Apgar V.  The newborn (Apgar) scoring system.  Pediatr Clin North Am. 1966 Aug;13(3):645-50.
+4. Whaley LF, Wong DL (1979).  Nursing Care of Infants and Children.  St. Louis, Toronto, London, The C.V. Mosby Company.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.apgar.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0002]/events[at0003]/data[at0001]/items[at0025]">
+					>
+					["gt0004"] = (ELEMENT_BINDING) <
+						path = <"/data[at0002]/events[at0003]/data[at0001]/items[at0005]">
+					>
+				>
+			>
+			["gt0005"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.apgar.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0002]/events[at0003]/data[at0001]/items[at0021]">
+					>
+					["gt0007"] = (ELEMENT_BINDING) <
+						path = <"/data[at0002]/events[at0003]/data[at0001]/items[at0017]">
+					>
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0002]/events[at0003]/data[at0001]/items[at0013]">
+					>
+					["gt0009"] = (ELEMENT_BINDING) <
+						path = <"/data[at0002]/events[at0003]/data[at0001]/items[at0009]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0010"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.pulse.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0011"] = (ELEMENT_BINDING) <
+						path = <"/data[at0002]/events[at0003]/data[at0001]/items[at0004]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+		>
+		default_actions = <"$gt0004=2|local::at0008|≥100 beats per minute|",...>
+		rules = <
+			["gt0012"] = (RULE) <
+				when = <"!fired($gt0012)", "$gt0011==null">
+				then = <"$gt0004=0|local::at0006|Absent|",...>
+				priority = <3>
+			>
+			["gt0013"] = (RULE) <
+				when = <"!fired($gt0013)", "$gt0011<100,/min">
+				then = <"$gt0004=1|local::at0007|<100 beats per minute|",...>
+				priority = <2>
+			>
+			["gt0014"] = (RULE) <
+				when = <"!fired($gt0014)", "$gt0003==null">
+				then = <"$gt0003.magnitude=(((($gt0004.value+$gt0007.value)+$gt0008.value)+$gt0009.value)+$gt0006.value)",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Apgar Score">
+						description = <"Apgar is an acronym for Appearance, Pulse, Grimace, Activity, Respiration. The Apgar score is used as a simple, repeatable method to document the state of the newborn infant immediately after birth. The clinical score is derived from assessment of respiratory effort, heart rate, reflex irritability, muscle tone and skin colour.">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Total score">
+						description = <"The sum of the 5 ordinal scores for each component parameter.">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Pulse">
+						description = <"Recording of the infant's heart rate.">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Skin color">
+						description = <"Observation of the skin colour of the infant.">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Reflex irritability">
+						description = <"Observation of the response of the infant to an irritant stimulation, for example, suctioning the oropharynx and nares with a soft rubber catheter.">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Muscle tone">
+						description = <"Observation of the infant's muscle tone.">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Respiratory effort">
+						description = <"Observation of the infant's respiratory effort.">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Heart rate">
+						description = <"The rate, measured in beats per minute.">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Set heart rate to 0">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Set heart rate to 1">
+					>
+					["gt0014"] = (TERM) <
+						text = <"Calculate total score">
+					>
+				>
+			>
+			["sv"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Apgar Score">
+						description = <"Beräknar poäng för Apgar Score. Klinisk värdering av fysiska tillståndet hos nyfödda barn baserad på bedömning av andning, hjärtfrekvens, reflexer, muskeltonus och hudfärg. Apgar är en akronym för Appearance (hudfärg), Pulse (hjärtfrekvens), Grimace (retbarhet, reflexer), Activity (muskeltonus), Respiration (andningsfrekvens).">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Totalpoäng">
+						description = <"*(en) The sum of the 5 ordinal scores for each component parameter.">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Puls">
+						description = <"*(en) Recording of the infant's heart rate.">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Hudfärg">
+						description = <"*(en) Observation of the skin colour of the infant.">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Retbarhet reflexer">
+						description = <"*(en) Observation of the response of the infant to an irritant stimulation, for example, suctioning the oropharynx and nares with a soft rubber catheter.">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Muskeltonus">
+						description = <"*(en) Observation of the infant's muscle tone.">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Andning">
+						description = <"*(en) Observation of the infant's respiratory effort.">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Hjärtfrekvens">
+						description = <"*(en) The rate, measured in beats per minute.">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Ange puls till 0">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Ange puls till 1">
+					>
+					["gt0014"] = (TERM) <
+						text = <"Beräkna totalpoäng">
+					>
+				>
+			>
+		>
+	>
+>
