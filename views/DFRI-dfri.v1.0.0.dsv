@@ -1,0 +1,573 @@
+<!DOCTYPE html><html ng-app="cds_app"><head>
+<title>{{def.concept.name}}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="wro/foundation.css" />
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css" />
+<link rel="stylesheet" type="text/css" href="wro/angular.css" />
+<script type="text/javascript" src="wro/angular.js"></script>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js" />
+<script type="text/javascript" src="wro/moment.js"></script>
+<script type="text/javascript" src="wro/date-picker.js"></script>
+<script type="text/javascript" src="wro/app_lib.js"></script>
+<script id="decision-support-view" type="application/json">{
+  "dsViewId": "DFRI-dfri.v1.0.0",
+  "language": {
+    "originalLanguage": {
+      "terminologyId": {
+        "name": "ISO_639-1",
+        "value": "ISO_639-1"
+      },
+      "codeString": "en"
+    }
+  },
+  "decisionSupportViewDefinitions": {
+    "sv": {
+      "name": "Downton Fall Risk Index",
+      "description": "Etablerad metod för bedömning av fallrisk hos äldre."
+    },
+    "en": {
+      "name": "Downton Fall Risk Index",
+      "description": "An established instrument for assessment of fall risk in elderly."
+    }
+  },
+  "resourceDescription": {
+    "originalAuthor": {
+      "email": "mig@cambiocds.com",
+      "organisation": "Cambio Healthcare Systems",
+      "name": "Medical Informatics Group (MIG)",
+      "date": "2017-03-16"
+    },
+    "otherContributors": [
+      "Dennis Forslund"
+    ],
+    "details": {
+      "sv": {
+        "purpose": "För att bedöma och registrera fallrisk hos äldre med hjälp av riskbedömningsverktyget DFRI.",
+        "keywords": [
+          "Downton Fall Risk Index",
+          "DFRI",
+          "fall",
+          "risk",
+          "äldre",
+          "äldrevård"
+        ],
+        "use": "Använd för att bedöma och registrera fallrisk hos äldre.\n\nDownton Risk Index är en etablerad metod och inkluderar väldokumenterade riskfaktorer för fall hos äldre. Riskfaktorerna bidrar med en poäng vardera till totala poängen. Tre eller fler poäng indikerar hög risk för fall.\n\n- Tidigare kända fall\n- Medicinering: sedativa, diuretika, antihypertensiva, antiparkinson, antidepressiva (en poäng vardera)\n- Sensorisk funktionsnedsättning: syn-, hörselnedsättning, nedsatt motorik (en poäng vardera)\n- Kognitiv funktionsnedsättning (konfusion)\n- Osäker gångförmåga (med eller utan hjälpmedel)",
+        "misuse": "Särskild uppmärksamhet bör riktas mot existerande riskfaktorer och inte enbart totala poängen, då dessa bidrar med värdefull information att agera på för att minska fallrisken. Skalan bör användas regelbundet för att snabbt identifiera förändringar bidragande till ökad fallrisk.",
+        "copyright": "Cambio Healthcare Systems"
+      },
+      "en": {
+        "purpose": "To assess and record the risk of falling in elderly using the DFRI risk assessment tool.",
+        "keywords": [
+          "Downton Fall Risk Index",
+          "DFRI",
+          "fall",
+          "risk",
+          "elderly",
+          "elderly care"
+        ],
+        "use": "Use to assess and record the risk of falling in elderly.\n\nDownton Fall Risk Index is an established instrument and includes well-documented risk factors for falls. The risk factors contributes one point each to the total score, which ranges from 0-11. Three or more points indicate high risk of falling. \n\n- Known previous falls\n- Medications: sedatives, diuretics, antihypertensive, antiparkinsonian, antidepressants (one point each)\n- Sensory deficit: visual, hearing and limb impairment (one point each)\n- Confusion\n- Unsafe gait (with or without walking aids)",
+        "misuse": "Proper attention to existing risk factors and not total score alone is of importance as it provides valuable information to act on in order to decrease fall risk. The index should be used regularly in order to detect changes in health status affecting fall risk.",
+        "copyright": "Cambio Healthcare Systems"
+      }
+    },
+    "otherDetails": {
+      "references": "1. Downton JH. Falls in the Elderly. London: Edward Arnold; 1993. p. 128-30.\n2. Downton JH, Andrews K. Prevalence, characteristics and factors associated with falls among the elderly living at home. Aging (Milano) 1991;3(3):219–228\n3. Rosendahl E, Lundin-Olsson L, Kallin K, Jensen J, Gustafson Y, Nyberg L. Prediction of falls among older people in residential care facilities by the Downton index. Aging Clin Exp Res. 2003;15(2):142–147."
+    }
+  },
+  "alertGuideIds": [],
+  "executionGuideIds": [
+    "DFRI-fall_risk_index.v1.0.0"
+  ],
+  "alertBindings": {},
+  "termDefinitions": {
+    "sv": {
+      "id": "sv",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "Referenser"
+        },
+        "vt0002": {
+          "id": "vt0002",
+          "text": "Medicinering",
+          "description": "Följande läkemedel är för närvarande ordinerade."
+        },
+        "vt0003": {
+          "id": "vt0003",
+          "text": "Sensoriska funktionsnedsättningar",
+          "description": "Patienten lider av följande sensoriska funktionsnedsättningar."
+        }
+      }
+    },
+    "en": {
+      "id": "en",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "References"
+        },
+        "vt0002": {
+          "id": "vt0002",
+          "text": "Medications",
+          "description": "The patient is currently prescribed the following risk medications."
+        },
+        "vt0003": {
+          "id": "vt0003",
+          "text": "Sensory deficits",
+          "description": "The patient suffers from any of the following sensory deficits."
+        }
+      }
+    }
+  },
+  "resultTemplates": []
+}</script>
+</head>
+<body ng-controller="cds_controller">
+	<!-- GUIDELINES -->
+	<#assign app_help_tag = "def.guides['DFRI-fall_risk_index.v1.0.0'].concept">
+	<!-- VIEW TERMS -->
+	<#assign references = "def.terms['vt0001']"/>
+	<#assign medications = "def.terms['vt0002']"/>
+	<#assign sensory_deficits = "def.terms['vt0003']"/>
+	<!-- ARCHETYPES: generated -->
+	<#assign diagnosis_entry_ehr_data = "data.ehr['diagnosis|openEHR-EHR-EVALUATION.problem-diagnosis.v1']">
+	<#assign diagnosis_entry_def = "def.entries['diagnosis|openEHR-EHR-EVALUATION.problem-diagnosis.v1']">
+	<#assign date_of_initial_onset_def = diagnosis_entry_def + ".elements['/data{at0001}/items{at0003}']">
+	<#assign diagnosis_def = diagnosis_entry_def + ".elements['/data{at0001}/items{at0002.1}']">
+	<#assign date_of_initial_onset_ehr_data = diagnosis_entry_ehr_data + "[0].elements['/data{at0001}/items{at0003}']">
+	<#assign diagnosis_ehr_data = diagnosis_entry_ehr_data + "[0].elements['/data{at0001}/items{at0002.1}']">
+	<#assign downton_fall_risk_index_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.dfri.v1']">
+	<#assign downton_fall_risk_index_entry_ehr_data = "data.ehr['openEHR-EHR-EVALUATION.dfri.v1']">
+	<#assign downton_fall_risk_index_entry_def = "def.entries['openEHR-EHR-EVALUATION.dfri.v1']">
+	<#assign sensory_score_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0016}/items{at0021}']">
+	<#assign motor_impairment_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0016}/items{at0020}']">
+	<#assign other_medications_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0005}/items{at0012}']">
+	<#assign antidepressants_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0005}/items{at0011}']">
+	<#assign antiparkinsonian_drugs_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0005}/items{at0010}']">
+	<#assign total_score_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0031}']">
+	<#assign risk_group_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0032}']">
+	<#assign mental_state_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0022}']">
+	<#assign ability_to_walk_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0025}/items{at0026}']">
+	<#assign none_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0005}/items{at0006}']">
+	<#assign medication_score_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0005}/items{at0015}']">
+	<#assign known_previous_falls_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0002}']">
+	<#assign hearing_impairment_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0016}/items{at0019}']">
+	<#assign review_date_time_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0035}']">
+	<#assign visual_impairment_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0016}/items{at0018}']">
+	<#assign none1_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0016}/items{at0017}']">
+	<#assign antihypertensives__other_than_diuretics__def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0005}/items{at0009}']">
+	<#assign diuretics_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0005}/items{at0008}']">
+	<#assign walking_ability_score_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0025}/items{at0030}']">
+	<#assign tranquilizers_sedatives_neuroleptics_def = downton_fall_risk_index_entry_def + ".elements['/data{at0001}/items{at0005}/items{at0007}']">
+	<#assign sensory_score_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0016}/items{at0021}']">
+	<#assign motor_impairment_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0016}/items{at0020}']">
+	<#assign other_medications_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0005}/items{at0012}']">
+	<#assign antidepressants_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0005}/items{at0011}']">
+	<#assign antiparkinsonian_drugs_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0005}/items{at0010}']">
+	<#assign total_score_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0031}']">
+	<#assign risk_group_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0032}']">
+	<#assign mental_state_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0022}']">
+	<#assign ability_to_walk_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0025}/items{at0026}']">
+	<#assign none_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0005}/items{at0006}']">
+	<#assign medication_score_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0005}/items{at0015}']">
+	<#assign known_previous_falls_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
+	<#assign hearing_impairment_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0016}/items{at0019}']">
+	<#assign review_date_time_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0035}']">
+	<#assign visual_impairment_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0016}/items{at0018}']">
+	<#assign none1_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0016}/items{at0017}']">
+	<#assign antihypertensives__other_than_diuretics__cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0005}/items{at0009}']">
+	<#assign diuretics_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0005}/items{at0008}']">
+	<#assign walking_ability_score_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0025}/items{at0030}']">
+	<#assign tranquilizers_sedatives_neuroleptics_cds_data = downton_fall_risk_index_entry_cds_data + "[0].elements['/data{at0001}/items{at0005}/items{at0007}']">
+	<#assign sensory_score_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0016}/items{at0021}']">
+	<#assign motor_impairment_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0016}/items{at0020}']">
+	<#assign other_medications_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0005}/items{at0012}']">
+	<#assign antidepressants_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0005}/items{at0011}']">
+	<#assign antiparkinsonian_drugs_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0005}/items{at0010}']">
+	<#assign total_score_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0031}']">
+	<#assign risk_group_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0032}']">
+	<#assign mental_state_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0022}']">
+	<#assign ability_to_walk_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0025}/items{at0026}']">
+	<#assign none_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0005}/items{at0006}']">
+	<#assign medication_score_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0005}/items{at0015}']">
+	<#assign known_previous_falls_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0002}']">
+	<#assign hearing_impairment_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0016}/items{at0019}']">
+	<#assign review_date_time_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0035}']">
+	<#assign visual_impairment_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0016}/items{at0018}']">
+	<#assign none1_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0016}/items{at0017}']">
+	<#assign antihypertensives__other_than_diuretics__ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0005}/items{at0009}']">
+	<#assign diuretics_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0005}/items{at0008}']">
+	<#assign walking_ability_score_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0025}/items{at0030}']">
+	<#assign tranquilizers_sedatives_neuroleptics_ehr_data = downton_fall_risk_index_entry_ehr_data + "[0].elements['/data{at0001}/items{at0005}/items{at0007}']">
+	<#assign medication_order_entry_ehr_data = "data.ehr['medication|openEHR-EHR-INSTRUCTION.medication.v1']">
+	<#assign medication_order_entry_def = "def.entries['medication|openEHR-EHR-INSTRUCTION.medication.v1']">
+	<#assign generic_name_def = medication_order_entry_def + ".elements['/activities{at0001}/description{openEHR-EHR-ITEM_TREE.medication.v1}/items{at0012}']">
+	<#assign date__time__of_last_administration_def = medication_order_entry_def + ".elements['/activities{at0001}/description{openEHR-EHR-ITEM_TREE.medication.v1}/items{at0018}/items{at0032}']">
+	<#assign date__time__of_first_administration_def = medication_order_entry_def + ".elements['/activities{at0001}/description{openEHR-EHR-ITEM_TREE.medication.v1}/items{at0018}/items{at0019}']">
+	<#assign generic_name_ehr_data = medication_order_entry_ehr_data + "[0].elements['/activities{at0001}/description{openEHR-EHR-ITEM_TREE.medication.v1}/items{at0012}']">
+	<#assign date__time__of_last_administration_ehr_data = medication_order_entry_ehr_data + "[0].elements['/activities{at0001}/description{openEHR-EHR-ITEM_TREE.medication.v1}/items{at0018}/items{at0032}']">
+	<#assign date__time__of_first_administration_ehr_data = medication_order_entry_ehr_data + "[0].elements['/activities{at0001}/description{openEHR-EHR-ITEM_TREE.medication.v1}/items{at0018}/items{at0019}']">
+
+	<script> 
+
+		angular.module('cds_app').controller('DFRI_Ctrl', function($scope, $window){
+			$scope.$on('json_loaded', function(){
+				$scope.${review_date_time_ehr_data}.value.value = new Date().toISOString();
+				$scope.${other_medications_ehr_data}.value.value = false;
+				$scope.${none_ehr_data}.value.value = false;
+				$scope.${visual_impairment_ehr_data}.value.selection = $scope.findMin($scope.${visual_impairment_def});
+				$scope.${hearing_impairment_ehr_data}.value.selection = $scope.findMin($scope.${hearing_impairment_def});
+				$scope.${motor_impairment_ehr_data}.value.selection = $scope.findMin($scope.${motor_impairment_def});
+				$scope.${mental_state_ehr_data}.value.selection = $scope.findMin($scope.${mental_state_def});
+				var selections = $scope.${ability_to_walk_def}.selections;
+				Object.keys(selections).forEach(key => {
+					if(key.includes("at0027")) {
+						$scope.${ability_to_walk_ehr_data}.value.selection = key;
+					}
+				});
+				$scope.execute();
+				$scope.isMedicationsDisabled = function() {
+					return $scope.${none_ehr_data}.value.value || $scope.${other_medications_ehr_data}.value.value;
+				}
+				$scope.hasSetMedication = function() {
+					return $scope.${tranquilizers_sedatives_neuroleptics_cds_data}.value.value === 1 ||
+					$scope.${diuretics_cds_data}.value.value === 1 ||
+					$scope.${antihypertensives__other_than_diuretics__cds_data}.value.value === 1 ||
+					$scope.${antiparkinsonian_drugs_cds_data}.value.value === 1 ||
+					$scope.${antidepressants_cds_data}.value.value === 1;
+				}
+				$scope.hasNoMedications = function() {
+					return $scope.${none_ehr_data}.value.value;
+				}
+				$scope.isNoneDisabled = function() {
+					return $scope.hasOtherMedications() || $scope.hasSetMedication();
+				}
+				$scope.isOtherMedDisabled = function() {
+					return $scope.hasNoMedications() || $scope.hasSetMedication();
+				}
+				$scope.hasOtherMedications = function() {
+					return $scope.${other_medications_ehr_data}.value.value;
+				}
+			});
+			$scope.findMin = function (element) {
+				var array = []
+				for(selection in element.selections) {
+					array.push(selection);
+				}
+				return (function() {
+					var min = 0;
+					var result;
+					for (i=0; i<array.length; i++) {
+						if (array[i].charAt(0) <= min) {
+							result = array[i];
+						}
+					}
+					return result;
+				})(array);
+			};
+		});
+	</script>
+
+	<div ng-show="ready" ng-controller="DFRI_Ctrl">
+		<div class="header">
+			<h1>{{def.concept.name}}</h1>
+			<h2>{{def.concept.description}}</h2>
+			<div class="help-tip">
+				<p>{{${app_help_tag}.description}}</p>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-inside">
+				<div class="row collapse" title="{{${known_previous_falls_def}.description}}">
+					<div class="medium-6 columns">
+						<label class="cluster">{{${known_previous_falls_def}.name}}</label>
+					</div>
+					<label class="medium-3 columns" ng-repeat="(key, desc) in ${known_previous_falls_def}.selections">
+						<input type="radio" value="{{key}}" ng-model="${known_previous_falls_cds_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+					</label>
+				</div>
+				<div class="row collapse" title="{{${medications}.description}}">
+					<div class="medium-6 columns">
+						<label class="cluster">{{${medications}.text}}</label>
+					</div>
+				</div>
+				<div class="row collapse" title="{{${none_def}.description}}">
+					<div class="medium-6 columns">
+						<label class="indent">{{${none_def}.name}}</label>
+					</div>
+					<input ng-disabled="isNoneDisabled()" type="checkbox" value="{{key}}" ng-model="${none_ehr_data}.value.value" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+				</div>
+				<div class="row collapse" title="{{${tranquilizers_sedatives_neuroleptics_def}.description}}">
+					<div class="medium-6 columns">
+						<label class="indent">{{${tranquilizers_sedatives_neuroleptics_def}.name}}</label>
+					</div>
+					<label ng-class="{disabled: isMedicationsDisabled()}" class="medium-3 columns" ng-repeat="(key, desc) in ${tranquilizers_sedatives_neuroleptics_def}.selections">
+						<input ng-disabled="isMedicationsDisabled()" type="radio" value="{{key}}" ng-model="${tranquilizers_sedatives_neuroleptics_cds_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+					</label>
+				</div>
+				<div class="row collapse" title="{{${diuretics_def}.description}}">
+					<div class="medium-6 columns">
+						<label class="indent">{{${diuretics_def}.name}}</label>
+					</div>
+					<label ng-class="{disabled: isMedicationsDisabled()}" class="medium-3 columns" ng-repeat="(key, desc) in ${diuretics_def}.selections">
+						<input ng-disabled="isMedicationsDisabled()" type="radio" value="{{key}}" ng-model="${diuretics_cds_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+					</label>
+				</div>
+				<div class="row collapse" title="{{${antihypertensives__other_than_diuretics__def}.description}}">
+					<div class="medium-6 columns">
+						<label class="indent">{{${antihypertensives__other_than_diuretics__def}.name}}</label>
+					</div>
+					<label ng-class="{disabled: isMedicationsDisabled()}" class="medium-3 columns" ng-repeat="(key, desc) in ${antihypertensives__other_than_diuretics__def}.selections">
+						<input ng-disabled="isMedicationsDisabled()" type="radio" value="{{key}}" ng-model="${antihypertensives__other_than_diuretics__cds_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+					</label>
+				</div>
+				<div class="row collapse" title="{{${antiparkinsonian_drugs_def}.description}}">
+					<div class="medium-6 columns">
+						<label class="indent">{{${antiparkinsonian_drugs_def}.name}}</label>
+					</div>
+					<label ng-class="{disabled: isMedicationsDisabled()}" class="medium-3 columns" ng-repeat="(key, desc) in ${antiparkinsonian_drugs_def}.selections">
+						<input ng-disabled="isMedicationsDisabled()" type="radio" value="{{key}}" ng-model="${antiparkinsonian_drugs_cds_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+					</label>
+				</div>
+				<div class="row collapse" title="{{${antidepressants_def}.description}}">
+					<div class="medium-6 columns">
+						<label class="indent">{{${antidepressants_def}.name}}</label>
+					</div>
+					<label ng-class="{disabled: isMedicationsDisabled()}" class="medium-3 columns" ng-repeat="(key, desc) in ${antidepressants_def}.selections">
+						<input ng-disabled="isMedicationsDisabled()" type="radio" value="{{key}}" ng-model="${antidepressants_cds_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+					</label>
+				</div>
+				<div class="row collapse" title="{{${other_medications_def}.description}}">
+					<div class="medium-6 columns">
+						<label class="indent">{{${other_medications_def}.name}}</label>
+					</div>
+					<input ng-disabled="isOtherMedDisabled()" type="checkbox" value="{{key}}" ng-model="${other_medications_ehr_data}.value.value" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+				</div>
+				<div class="row collapse" title="{{${sensory_deficits}.description}}">
+					<div class="medium-6 columns">
+						<label class="cluster">{{${sensory_deficits}.text}}</label>
+					</div>
+				</div>
+				<div class="row collapse" title="{{${visual_impairment_def}.description}}">
+					<div class="medium-6 columns">
+						<label class="indent">{{${visual_impairment_def}.name}}</label>
+					</div>
+					<label class="medium-3 columns" ng-repeat="(key, desc) in ${visual_impairment_def}.selections">
+						<input type="radio" value="{{key}}" ng-model="${visual_impairment_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+					</label>
+				</div>
+				<div class="row collapse" title="{{${hearing_impairment_def}.description}}">
+					<div class="medium-6 columns">
+						<label class="indent">{{${hearing_impairment_def}.name}}</label>
+					</div>
+					<label class="medium-3 columns" ng-repeat="(key, desc) in ${hearing_impairment_def}.selections">
+						<input type="radio" value="{{key}}" ng-model="${hearing_impairment_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+					</label>
+				</div>
+				<div class="row collapse" title="{{${motor_impairment_def}.description}}">
+					<div class="medium-6 columns">
+						<label class="indent">{{${motor_impairment_def}.name}}</label>
+					</div>
+					<label class="medium-3 columns" ng-repeat="(key, desc) in ${motor_impairment_def}.selections">
+						<input type="radio" value="{{key}}" ng-model="${motor_impairment_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+					</label>
+				</div>
+				<div class="row collapse" title="{{${mental_state_def}.description}}">
+					<div class="medium-6 columns">
+						<label class="cluster">{{${mental_state_def}.name}}</label>
+					</div>
+					<label class="medium-3 columns" ng-repeat="(key, desc) in ${mental_state_def}.selections">
+						<input type="radio" value="{{key}}" ng-model="${mental_state_ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+					</label>
+				</div>
+				<div class="row collapse" title="{{${ability_to_walk_def}.description}}">
+					<div class="medium-6 columns">
+						<label class="cluster">{{${ability_to_walk_def}.name}}</label>
+					</div>
+					<label class="medium-6 columns">
+						<select ng-model="${ability_to_walk_ehr_data}.value.selection" ng-options="key as value for (key, value) in ${ability_to_walk_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"></select>
+					</label>
+				</div>
+				<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult1">
+					<div class="medium-4 columns">
+						<label style="margin: 5px 0"><b>{{${total_score_def}.name}}: </b></label>
+					</div>
+					<div class="medium-8 columns" style="text-align: center;">
+						<label style="margin: 5px 0">{{${total_score_cds_data}.value.magnitude}}</label>
+					</div>
+				</div>
+				<div class="row collapse" title="{{${risk_group_def}.description}}" id="displayresult2">
+					<div class="medium-4 columns">
+						<label style="margin: 5px 0"><b>{{${risk_group_def}.name}}: </b></label>
+					</div>
+					<div class="medium-8 columns" style="text-align: center;">
+						<label style="margin: 5px 0">{{${risk_group_cds_data}.value.symbol.value}}</label>
+					</div>
+				</div>
+			</div>
+			<div title="{{${references}.text}}" class="references">
+				<p style="font-size: 70%">{{${references}.text}}:</p>
+				<ol style="font-size: 70%">
+					<li>
+						<i>Downton JH. Falls in the Elderly. London: Edward Arnold; 1993. p. 128-30.</i>
+					</li>
+					<li>
+						<i>Downton JH, Andrews K. Prevalence, characteristics and factors associated with falls among the elderly living at home. Aging (Milano) 1991;3(3):219–228</i>
+					</li>
+					<li>
+						<i>Rosendahl E, Lundin-Olsson L, Kallin K, Jensen J, Gustafson Y, Nyberg L. Prediction of falls among older people in residential care facilities by the Downton index. Aging Clin Exp Res. 2003;15(2):142–147.</i>
+					</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+
+	<style>
+		html, body {
+			height:100%;
+			width: 100%;
+		}
+		body {
+			font-family: sans-serif;
+			font-weight: 300;
+			color: #333;
+			background: #ecf0f9;
+			padding: 1em;
+			-webkit-font-smoothing: antialiased;
+		}
+		h1 {
+			font-weight: 600;
+			text-align: center;
+		}
+		h2 {
+			text-align: center;
+			font-weight: 300;
+			font-size: 22px;
+			font-style: italic;
+		}
+		.header {
+			margin-bottom: 2em;
+		}
+		.card {
+			margin: 10px auto 0 auto;
+			width: 50%;
+			overflow: hidden;
+			padding: 1em;
+		}
+		.card-inside {
+			padding: 1em;
+			background-color: #fdfdfd;
+			box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+		}
+		.cluster {
+			font-weight: 600;
+		}
+		.indent {
+			padding-left: 20px;
+		}
+		.help-tip{
+			position: absolute;
+			top: 18px;
+			right: 18px;
+			text-align: center;
+			background-color: #BCDBEA;
+			border-radius: 50%;
+			width: 24px;
+			height: 24px;
+			font-size: 14px;
+			line-height: 26px;
+			cursor: default;
+		}
+		.help-tip:before{
+			content:'?';
+			font-weight: bold;
+			color:#fff;
+		}
+		.help-tip:hover p{
+			display:block;
+			transform-origin: 100% 0%;
+			-webkit-animation: fadeIn 0.3s ease-in-out;
+			animation: fadeIn 0.3s ease-in-out;
+		}
+		.help-tip p{	/* The tooltip */
+			display: none;
+			text-align: left;
+			background-color: #1E2021;
+			padding: 20px;
+			width: 300px;
+			position: absolute;
+			border-radius: 3px;
+			box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+			right: -4px;
+			color: #FFF;
+			font-size: 13px;
+			line-height: 1.4;
+			z-index: 9999;
+		}
+		.help-tip p:before{ /* The pointer of the tooltip */
+			position: absolute;
+			content: '';
+			width:0;
+			height: 0;
+			border:6px solid transparent;
+			border-bottom-color:#1E2021;
+			right:10px;
+			top:-12px;
+		}
+		.help-tip p:after{ /* Prevents the tooltip from being hidden */
+			width:100%;
+			height:40px;
+			content:'';
+			position: absolute;
+			top:-40px;
+			left:0;
+		}
+		.references {
+			padding: 1em;
+		}
+		.references p {
+			margin: 0;
+			padding: 0;
+			font-size: large;
+			font-weight: bold;
+		}
+		/* CSS animation */
+		@-webkit-keyframes fadeIn {
+			0% {
+				opacity:0;
+				transform: scale(0.6);
+			}
+			100% {
+				opacity:100%;
+				transform: scale(1);
+			}
+		}
+		@keyframes fadeIn {
+			0% { opacity:0; }
+			100% { opacity:100%; }
+		}
+		#displayresult1 {
+			background-color: #e6e6e6; 
+			padding-top: 3px;
+			padding-bottom: 3px;
+			padding-left: 3px;
+			font-size: 90%;
+		}
+		#displayresult2 {
+			background-color: #f2f2f2;
+			padding-top: 3px;
+			padding-bottom: 3px;
+			padding-left: 3px;
+			font-size: 90%;
+		}
+		select, label:not(#h-fix) {
+			margin-bottom: 10px;
+		}
+		.disabled {
+			opacity: 0.7;
+		}
+	</style>
+
+</body></html>
