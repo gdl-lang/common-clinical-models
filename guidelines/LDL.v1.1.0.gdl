@@ -1,6 +1,6 @@
 (GUIDE) <
 	gdl_version = <"0.1">
-	id = <"LDL.v1">
+	id = <"LDL.v1.1.0">
 	concept = <"gt0001">
 	language = (LANGUAGE) <
 		original_language = <[ISO_639-1::en]>
@@ -66,57 +66,12 @@ Resulterande värde bedöms i enlighet med rådande lokala riktlinjer.">
 					>
 				>
 			>
-			["gt0010"] = (ARCHETYPE_BINDING) <
-				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-lipids.v1">
-				domain = <"CDS">
-				elements = <
-					["gt0011"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.5]">
-					>
-					["gt0012"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.3]">
-					>
-					["gt0013"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.4]">
-					>
-				>
-			>
 		>
 		rules = <
 			["gt0002"] = (RULE) <
-				when = <"$gt0004!=null", "$gt0005!=null", "$gt0006!=null">
-				then = <"$gt0009.magnitude=(($gt0011.magnitude-$gt0012.magnitude)-($gt0013.magnitude/5))", "$gt0009.units='mg/dl'">
+				when = <"!fired($gt0002)", "$gt0005.units=='mmol/l'", "$gt0004.units=='mmol/l'", "$gt0006.units=='mmol/l'">
+				then = <"$gt0009.magnitude=(($gt0004.magnitude-$gt0005.magnitude)-($gt0006.magnitude/2.19))", "$gt0009.precision=2", "$gt0009.units='mmol/l'">
 				priority = <1>
-			>
-			["gt0014"] = (RULE) <
-				when = <"$gt0004.units=='mmol/l'",...>
-				then = <"$gt0011.units='mg/dl'", "$gt0011.magnitude=($gt0004.magnitude*38.67)">
-				priority = <7>
-			>
-			["gt0015"] = (RULE) <
-				when = <"$gt0005.units=='mmol/l'",...>
-				then = <"$gt0012.units='mg/dl'", "$gt0012.magnitude=($gt0005.magnitude*38.67)">
-				priority = <6>
-			>
-			["gt0016"] = (RULE) <
-				when = <"$gt0006.units=='mmol/l'",...>
-				then = <"$gt0013.units='mg/dl'", "$gt0013.magnitude=($gt0006.magnitude*88.57)">
-				priority = <5>
-			>
-			["gt0017"] = (RULE) <
-				when = <"$gt0004.units=='mg/dl'",...>
-				then = <"$gt0011=$gt0004",...>
-				priority = <4>
-			>
-			["gt0018"] = (RULE) <
-				when = <"$gt0005.units=='mg/dl'",...>
-				then = <"$gt0012=$gt0005",...>
-				priority = <3>
-			>
-			["gt0019"] = (RULE) <
-				when = <"$gt0006.units=='mg/dl'",...>
-				then = <"$gt0013=$gt0006",...>
-				priority = <2>
 			>
 		>
 	>
@@ -148,36 +103,6 @@ Resulterande värde bedöms i enlighet med rådande lokala riktlinjer.">
 						text = <"LDL Cholesterol">
 						description = <"LDL cholesterol level in the sample.">
 					>
-					["gt0011"] = (TERM) <
-						text = <"cTotal Cholesterol">
-						description = <"The total cholesterol concentration in the sample.">
-					>
-					["gt0012"] = (TERM) <
-						text = <"cHDL-Cholesterol">
-						description = <"HDL-Cholesterol level in the sample.">
-					>
-					["gt0013"] = (TERM) <
-						text = <"cTriglycerides">
-						description = <"The triglyceride concentration in the sample.">
-					>
-					["gt0014"] = (TERM) <
-						text = <"Convert total cholesterol units">
-					>
-					["gt0015"] = (TERM) <
-						text = <"Convert HDL-cholesterol units">
-					>
-					["gt0016"] = (TERM) <
-						text = <"Convert triglycerides unit">
-					>
-					["gt0017"] = (TERM) <
-						text = <"Set total cholesterol">
-					>
-					["gt0018"] = (TERM) <
-						text = <"Set HDL-cholesterol">
-					>
-					["gt0019"] = (TERM) <
-						text = <"Set triglycerides">
-					>
 				>
 			>
 			["sv"] = (TERM_DEFINITION) <
@@ -205,24 +130,6 @@ Resulterande värde bedöms i enlighet med rådande lokala riktlinjer.">
 					["gt0009"] = (TERM) <
 						text = <"*(en) LDL Cholesterol">
 						description = <"*(en) LDL cholesterol level in the sample.">
-					>
-					["gt0011"] = (TERM) <
-					>
-					["gt0012"] = (TERM) <
-					>
-					["gt0013"] = (TERM) <
-					>
-					["gt0014"] = (TERM) <
-					>
-					["gt0015"] = (TERM) <
-					>
-					["gt0016"] = (TERM) <
-					>
-					["gt0017"] = (TERM) <
-					>
-					["gt0018"] = (TERM) <
-					>
-					["gt0019"] = (TERM) <
 					>
 				>
 			>
