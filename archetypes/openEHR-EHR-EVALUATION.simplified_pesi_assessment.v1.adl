@@ -1,0 +1,120 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.simplified_pesi_assessment.v1
+
+concept
+	[at0000]	-- Simplified pesi assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-09-05">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Once a diagnosis of Pulmonary Embolism has been made, the Simplified PESI score can risk stratify patients between those at high risk and requiring inpatient admission and those with low risk who may be managed as an outpatient">
+			use = <"If there is 1 or more criteria selected, the patient should be considered high risk.
+
+Management
+
+Low risk of mortality (1.1%) or severe morbidity (1.5%) for a score of 0
+
+Consider outpatient management of PE if clinically appropriate and social factors allow for it.
+   
+High risk of mortality (8.9%) or severe morbidity (2.7%) for a score of ≥ 1
+
+Consider inpatient management and higher levels of care if clinically appropriate.">
+			keywords = <"pulmonary embolism", "Simplified PESI">
+			misuse = <"Do not use alone without sound clinical judgement and only for risk stratification once a diagnosis has been made.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Jiménez D, Aujesky D, Moores L, Gómez V, Lobo JL, Uresandi F, Otero R, Monreal M, Muriel A, Yusen RD; RIETE Investigators. Simplification of the pulmonary embolism severity index for prognostication in patients with acute symptomatic pulmonary embolism. Arch Intern Med. 2010 Aug 9;170(15):1383-9. PubMed PMID:20696966.">
+		["MD5-CAM-1.0.1"] = <"E463F30E1FDFC1D50A836F946BFA5E40">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Simplified pesi assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Percentage Mortality Risk
+						value matches {
+							0|[local::at0004], 	-- Low risk of mortality (1.1%)
+							1|[local::at0005]  	-- High risk of mortality (8.9%)
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Percentage Severe Morbidity
+						value matches {
+							0|[local::at0007], 	-- Severe morbidity (1.5%)
+							1|[local::at0008]  	-- Severe morbidity (2.7%)
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Management
+						value matches {
+							0|[local::at0009], 	-- Consider outpatient management of PE
+							1|[local::at0010]  	-- Consider inpatient management of PE
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Simplified pesi assessment">
+					description = <"Simplified PESI (Pulmonary Embolism Severity Index) predicts 30-day outcome of patients with PE (Pulmonary Embolism)">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Percentage Mortality Risk">
+					description = <"Percentage Mortality Risk">
+				>
+				["at0003"] = <
+					text = <"Management">
+					description = <"Management">
+				>
+				["at0004"] = <
+					text = <"Low risk of mortality (1.1%)">
+					description = <"Score 0">
+				>
+				["at0005"] = <
+					text = <"High risk of mortality (8.9%)">
+					description = <"Score ≥ 1">
+				>
+				["at0006"] = <
+					text = <"Percentage Severe Morbidity">
+					description = <"Percentage Severe Morbidity">
+				>
+				["at0007"] = <
+					text = <"Severe morbidity (1.5%)">
+					description = <"Score 0">
+				>
+				["at0008"] = <
+					text = <"Severe morbidity (2.7%)">
+					description = <"Score ≥ 1">
+				>
+				["at0009"] = <
+					text = <"Consider outpatient management of PE">
+					description = <"If clinically appropriate and social factors allow for it.">
+				>
+				["at0010"] = <
+					text = <"Consider inpatient management of PE">
+					description = <"Higher levels of care if clinically appropriate.">
+				>
+			>
+		>
+	>

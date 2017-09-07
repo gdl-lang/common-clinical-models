@@ -1,0 +1,213 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.simplified_pesi.v1
+
+concept
+	[at0000]	-- Simplified PESI (Pulmonary Embolism Severity Index)
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-09-04">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Once a diagnosis of Pulmonary Embolism has been made, the Simplified PESI score can risk stratify patients between those at high risk and requiring inpatient admission and those with low risk who may be managed as an outpatient">
+			use = <"There are 6 criteria considered with 2 variables to do with history (of cancer and cardiopulmonary disease) and other demographics including age, heart rate, systolic blood pressure and oxygen saturation
+
+If there is 1 or more criteria selected, the patient should be considered high risk.
+
+Management
+
+Low risk of mortality (1.1%) or severe morbidity (1.5%) for a score of 0
+
+Consider outpatient management of PE if clinically appropriate and social factors allow for it.
+   
+High risk of mortality (8.9%) or severe morbidity (2.7%) for a score of ≥ 1
+
+Consider inpatient management and higher levels of care if clinically appropriate.">
+			keywords = <" pulmonary embolism", "Simplified PESI">
+			misuse = <"Do not use alone without sound clinical judgement and only for risk stratification once a diagnosis has been made.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Jiménez D, Aujesky D, Moores L, Gómez V, Lobo JL, Uresandi F, Otero R, Monreal M, Muriel A, Yusen RD; RIETE Investigators. Simplification of the pulmonary embolism severity index for prognostication in patients with acute symptomatic pulmonary embolism. Arch Intern Med. 2010 Aug 9;170(15):1383-9. PubMed PMID:20696966.
+">
+		["MD5-CAM-1.0.1"] = <"11EAB93AC53A5238D37DB4D584903517">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Simplified PESI (Pulmonary Embolism Severity Index)
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Age > 80 years
+										value matches {
+											0|[local::at0020], 	-- No
+											1|[local::at0021]  	-- Yes
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- History of cancer
+										value matches {
+											0|[local::at0018], 	-- No
+											1|[local::at0019]  	-- Yes
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- History of chronic cardiopulmonary disease
+										value matches {
+											0|[local::at0016], 	-- No
+											1|[local::at0017]  	-- Yes
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Heart rate ≥ 110
+										value matches {
+											0|[local::at0014], 	-- No
+											1|[local::at0015]  	-- Yes
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Systolic BP < 100 mm Hg
+										value matches {
+											0|[local::at0012], 	-- No
+											1|[local::at0013]  	-- Yes
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- O2 saturation < 90%
+										value matches {
+											0|[local::at0010], 	-- No
+											1|[local::at0011]  	-- Yes
+										}
+									}
+									ELEMENT[at0023] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..6|}
+											}
+										}
+									}
+									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Comments
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Simplified PESI (Pulmonary Embolism Severity Index)">
+					description = <"Simplified PESI (Pulmonary Embolism Severity Index) predicts 30-day outcome of patients with PE (Pulmonary Embolism)">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Age > 80 years">
+					description = <"Age > 80 years">
+				>
+				["at0005"] = <
+					text = <"History of cancer">
+					description = <"History of cancer">
+				>
+				["at0006"] = <
+					text = <"History of chronic cardiopulmonary disease">
+					description = <"History of chronic cardiopulmonary disease">
+				>
+				["at0007"] = <
+					text = <"Heart rate ≥ 110">
+					description = <"Heart rate ≥ 110">
+				>
+				["at0008"] = <
+					text = <"Systolic BP < 100 mm Hg">
+					description = <"Systolic BP < 100 mm Hg">
+				>
+				["at0009"] = <
+					text = <"O2 saturation < 90%">
+					description = <"O2 saturation < 90%">
+				>
+				["at0010"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Comments">
+					description = <"Any comments regarding the tool">
+				>
+				["at0023"] = <
+					text = <"Total score">
+					description = <"Total sum of the individual scores">
+				>
+			>
+		>
+	>
