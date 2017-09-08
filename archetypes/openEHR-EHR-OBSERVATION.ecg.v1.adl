@@ -2,7 +2,7 @@
 	openEHR-EHR-OBSERVATION.ecg.v1
 
 concept
-	[at0000]	-- Registrering av EKG
+	[at0000]	-- ECG recording
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -61,21 +61,21 @@ Not to be used for recording Holter monitor results.">
 	other_contributors = <"Koray Atalag, University of Auckland, New Zealand", "Marja Buur, Medisch Centrum Alkmaar/ Code24, Netherlands", "Tamsin Cockayne, Australia", "Marc Cotran, identity vision systems, Canada", "Sam Heard, Ocean Informatics, Australia", "Eugene Igras, IRIS Systems, Inc., Canada", "Heather Leslie, Ocean Informatics, Australia (Editor)", "Ian McNicoll, Ocean Informatics, United Kingdom (Editor)", "Raymond Simkus, Brookswood Family Practice, Canada", "Tim Sturgill, United States", "Eneimi Allwell-Brown, Cambio Healthcare Systems", "Jimmy Axelsson, Cambio Healthcare Systems">
 	other_details = <
 		["references"] = <"Lead descriptions - http://en.wikipedia.org/wiki/Electrocardiography [accessed 22 February, 2010]">
-		["MD5-CAM-1.0.1"] = <"6E4D5EACFBC61C0E22E1539A39A20D09">
+		["MD5-CAM-1.0.1"] = <"94B4921BF6AF1DEA08E05F5A50D8E7E5">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Registrering av EKG
+	OBSERVATION[at0000] matches {	-- ECG recording
 		data matches {
-			HISTORY[at0001] matches {	-- Händelseförlopp
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Vilken händelse som helst. 
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0005] matches {	-- Träd
+							ITEM_TREE[at0005] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									CLUSTER[at0006] occurrences matches {0..1} matches {	-- Globala EKG-parametrar
+									CLUSTER[at0006] occurrences matches {0..1} matches {	-- Global ECG Parameters
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0013] occurrences matches {0..1} matches {	-- RR-intervall
+											ELEMENT[at0013] occurrences matches {0..1} matches {	-- RR Rate
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::382]>
@@ -89,7 +89,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0012] occurrences matches {0..1} matches {	-- PQ-tid
+											ELEMENT[at0012] occurrences matches {0..1} matches {	-- PR interval
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::128]>
@@ -103,7 +103,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0014] occurrences matches {0..1} matches {	-- QRS-komplex
+											ELEMENT[at0014] occurrences matches {0..1} matches {	-- QRS duration
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::128]>
@@ -117,7 +117,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0007] occurrences matches {0..1} matches {	-- QT-tid
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- QT interval
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::128]>
@@ -131,7 +131,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0008] occurrences matches {0..1} matches {	-- QTc-tid
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- QTc interval
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::128]>
@@ -145,9 +145,9 @@ definition
 													>
 												}
 											}
-											CLUSTER[at0023] occurrences matches {0..1} matches {	-- El-axel
+											CLUSTER[at0023] occurrences matches {0..1} matches {	-- Axis
 												items cardinality matches {1..*; unordered} matches {
-													ELEMENT[at0020] occurrences matches {0..1} matches {	-- P-axel
+													ELEMENT[at0020] occurrences matches {0..1} matches {	-- P axis
 														value matches {
 															C_DV_QUANTITY <
 																property = <[openehr::497]>
@@ -159,7 +159,7 @@ definition
 															>
 														}
 													}
-													ELEMENT[at0021] occurrences matches {0..1} matches {	-- QRS-axel
+													ELEMENT[at0021] occurrences matches {0..1} matches {	-- QRS axis
 														value matches {
 															C_DV_QUANTITY <
 																property = <[openehr::497]>
@@ -171,7 +171,7 @@ definition
 															>
 														}
 													}
-													ELEMENT[at0022] occurrences matches {0..1} matches {	-- T-axel
+													ELEMENT[at0022] occurrences matches {0..1} matches {	-- T axis
 														value matches {
 															C_DV_QUANTITY <
 																property = <[openehr::497]>
@@ -187,28 +187,28 @@ definition
 											}
 										}
 									}
-									CLUSTER[at0027] occurrences matches {0..12} matches {	-- Specifika EKG-parametrar
+									CLUSTER[at0027] occurrences matches {0..12} matches {	-- Per-lead Parameters
 										name matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0029, 	-- Avledning I
-													at0030, 	-- Avledning II
-													at0031, 	-- Avledning III
-													at0032, 	-- Avledning aVR
-													at0033, 	-- Avledning aVL
-													at0034, 	-- Avledning aVF
-													at0035, 	-- Avledning V1
-													at0036, 	-- Avledning V2
-													at0037, 	-- Avledning V3
-													at0038, 	-- Avledning V4
-													at0039, 	-- Avledning V5
-													at0040]	-- Avledning V6
+													at0029, 	-- Lead I
+													at0030, 	-- Lead II
+													at0031, 	-- Lead III
+													at0032, 	-- Lead aVR
+													at0033, 	-- Lead aVL
+													at0034, 	-- Lead aVF
+													at0035, 	-- Lead V1
+													at0036, 	-- Lead V2
+													at0037, 	-- Lead V3
+													at0038, 	-- Lead V4
+													at0039, 	-- Lead V5
+													at0040]	-- Lead V6
 												}
 											}
 										}
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0041] occurrences matches {0..1} matches {	-- P-vågsamplitud
+											ELEMENT[at0041] occurrences matches {0..1} matches {	-- P amplitude
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -220,7 +220,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0028] occurrences matches {0..1} matches {	-- P-vågsduration
+											ELEMENT[at0028] occurrences matches {0..1} matches {	-- P duration
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::128]>
@@ -247,7 +247,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0043] occurrences matches {0..1} matches {	-- P' amplitud
+											ELEMENT[at0043] occurrences matches {0..1} matches {	-- P' amplitude
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -286,7 +286,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0048] occurrences matches {0..1} matches {	-- Q amplitud
+											ELEMENT[at0048] occurrences matches {0..1} matches {	-- Q amplitude
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -312,7 +312,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0050] occurrences matches {0..1} matches {	-- R amplitud
+											ELEMENT[at0050] occurrences matches {0..1} matches {	-- R amplitude
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -338,7 +338,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0053] occurrences matches {0..1} matches {	-- S amplitud
+											ELEMENT[at0053] occurrences matches {0..1} matches {	-- S amplitude
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -364,7 +364,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0055] occurrences matches {0..1} matches {	-- R' amplitud
+											ELEMENT[at0055] occurrences matches {0..1} matches {	-- R' amplitude
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -390,7 +390,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0057] occurrences matches {0..1} matches {	-- S' amplitud
+											ELEMENT[at0057] occurrences matches {0..1} matches {	-- S' amplitude
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -416,7 +416,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0059] occurrences matches {0..1} matches {	-- Ventrikelaktiveringstid (V.A.T.)
+											ELEMENT[at0059] occurrences matches {0..1} matches {	-- V.A.T.
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::128]>
@@ -471,7 +471,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0063] occurrences matches {0..1} matches {	-- ST start
+											ELEMENT[at0063] occurrences matches {0..1} matches {	-- ST onset
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -483,7 +483,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0064] occurrences matches {0..1} matches {	-- ST mittpunkt
+											ELEMENT[at0064] occurrences matches {0..1} matches {	-- ST midpoint
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -495,7 +495,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0065] occurrences matches {0..1} matches {	-- ST 80 ms
+											ELEMENT[at0065] occurrences matches {0..1} matches {	-- ST 80ms
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -507,7 +507,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0066] occurrences matches {0..1} matches {	-- ST slut
+											ELEMENT[at0066] occurrences matches {0..1} matches {	-- ST end
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -533,7 +533,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0068] occurrences matches {0..1} matches {	-- ST lutning
+											ELEMENT[at0068] occurrences matches {0..1} matches {	-- ST slope
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::497]>
@@ -547,19 +547,19 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0069] occurrences matches {0..1} matches {	-- ST form
+											ELEMENT[at0069] occurrences matches {0..1} matches {	-- ST shape
 												value matches {
 													DV_CODED_TEXT matches {
 														defining_code matches {
 															[local::
-															at0070, 	-- Rakt
-															at0071, 	-- Konkavt uppåt
-															at0072]	-- Konkavt nedåt
+															at0070, 	-- Straight
+															at0071, 	-- Concave upward
+															at0072]	-- Concave downward
 														}
 													}
 												}
 											}
-											ELEMENT[at0073] occurrences matches {0..1} matches {	-- T amplitud
+											ELEMENT[at0073] occurrences matches {0..1} matches {	-- T amplitude
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::374]>
@@ -601,17 +601,17 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..*} matches {	-- Automatisk tolkning
+									ELEMENT[at0009] occurrences matches {0..*} matches {	-- Automatic interpretation
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0081] occurrences matches {0..*} matches {	-- Sammanfattande tolkning
+									ELEMENT[at0081] occurrences matches {0..*} matches {	-- Overall interpretation
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- EKG-registrering
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- ECG Recording
 										value matches {
 											DV_MULTIMEDIA matches {
 												media_type matches {[openEHR::]}
@@ -622,18 +622,18 @@ definition
 							}
 						}
 						state matches {
-							ITEM_TREE[at0077] matches {	-- Träd
+							ITEM_TREE[at0077] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									allow_archetype CLUSTER[at0080] occurrences matches {0..1} matches {	-- Ansträngningsnivå
+									allow_archetype CLUSTER[at0080] occurrences matches {0..1} matches {	-- Level of Exertion
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.level_of_exertion(-[a-zA-Z0-9_]+)*\.v1/}
 									}
-									ELEMENT[at0079] occurrences matches {0..1} matches {	-- Förväxlingsfaktorer
+									ELEMENT[at0079] occurrences matches {0..1} matches {	-- Confounding factors
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0078] occurrences matches {0..1} matches {	-- Lutning
+									ELEMENT[at0078] occurrences matches {0..1} matches {	-- Tilt
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -646,25 +646,25 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0003] matches {	-- Träd
+			ITEM_TREE[at0003] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					allow_archetype CLUSTER[at0076] occurrences matches {0..1} matches {	-- EKG-apparat
+					allow_archetype CLUSTER[at0076] occurrences matches {0..1} matches {	-- ECG Device
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.device(-[a-zA-Z0-9_]+)*\.v1/}
 					}
-					allow_archetype CLUSTER[at0082] occurrences matches {0..1} matches {	-- EKG visningsprogram
+					allow_archetype CLUSTER[at0082] occurrences matches {0..1} matches {	-- ECG Viewer
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.device(-[a-zA-Z0-9_]+)*\.v1/}
 					}
-					ELEMENT[at0025] occurrences matches {0..1} matches {	-- QTc beräkningsmetod. 
+					ELEMENT[at0025] occurrences matches {0..1} matches {	-- QTc calculation method
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
-									at0083, 	-- Bazetts formel
-									at0084, 	-- Fredericias formel
-									at0085, 	-- Framinghams formel
-									at0086; 	-- Hodges formel
+									at0083, 	-- Bazett’s formula
+									at0084, 	-- Fridericia’s formula
+									at0085, 	-- Framingham formula
+									at0086; 	-- Hodges formula
 									at0083]	-- assumed value
 								}
 							}
@@ -969,8 +969,8 @@ the ST segment onset (J point).">
 					description = <"Bazett’s formula">
 				>
 				["at0084"] = <
-					text = <"Fredericia’s formula">
-					description = <"Fredericia’s formula">
+					text = <"Fridericia’s formula">
+					description = <"Fridericia’s formula">
 				>
 				["at0085"] = <
 					text = <"Framingham formula">
@@ -1333,8 +1333,8 @@ T">
 					description = <"*Bazett’s formula(en)">
 				>
 				["at0084"] = <
-					text = <"*Fredericia’s formula(en)">
-					description = <"*Fredericia’s formula(en)">
+					text = <"*Fridericia’s formula(en)">
+					description = <"*Fridericia’s formula(en)">
 				>
 				["at0085"] = <
 					text = <"*Framingham formula(en)">
@@ -1637,8 +1637,8 @@ T">
 					description = <"Bazetts formel">
 				>
 				["at0084"] = <
-					text = <"Fredericias formel">
-					description = <"Fredericias formel">
+					text = <"*Fridericia’s formula(en)">
+					description = <"*Fridericia’s formula(en)">
 				>
 				["at0085"] = <
 					text = <"Framinghams formel">
