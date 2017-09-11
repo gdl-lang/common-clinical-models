@@ -1,0 +1,378 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"Estimated_GFR_Cockcroft_Gault.v1.1.0">
+	concept = <"gt0016">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["da"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"Cambio Healthcare Systems">
+			>
+			["el"] = (RESOURCE_DESCRIPTION_ITEM) <
+			>
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"estimated glomerular filtration rate", "estimated GFR", "kidney function", "creatinine", "kidney", "Cockcroft-Gault">
+				misuse = <"Do not use for calculating eGFR based on other formulas.
+Do not use for calculating eGFR in children and adolescents <18 years old.">
+				purpose = <"To calculate estimated glomerular filtration rate in adults, in accordance with the Cockcroft-Gault formula.">
+				use = <"Use for predicting creatinine clearance (as an estimate GFR) based on the Cockcroft-Gault formula. 
+
+Males (≥ 20 years of age): eGFR = (1.2281 * (140 - age) * weight) / creatinine
+Females (≥ 20 years of age): eGFR = (1.0438 * (140 - age) * weight) / creatinine 
+
+Weight is entered in kilograms (kg) and creatinine in umol/l.">
+			>
+			["es"] = (RESOURCE_DESCRIPTION_ITEM) <
+				keywords = <"IFG estimado",...>
+				purpose = <"Calcular el índice de filtrado glomerular estimado basándose en el nivel de creatinina del sujeto">
+			>
+			["pt"] = (RESOURCE_DESCRIPTION_ITEM) <
+			>
+			["si"] = (RESOURCE_DESCRIPTION_ITEM) <
+			>
+			["sv"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"Cambio Healthcare Systems">
+				keywords = <"Cockcroft-Gault", "GFR", "eGFR", "glomerulär", "kreatinin">
+				misuse = <"Använd inte för att beräkna eGFR med andra formler än Cockcroft-Gault.">
+				purpose = <"För att möjliggöra bedömning av njurfunktion hos personer genom att beräkna den glomerulära filtrationshastigheten med labbvärdet serumkreatinin i enlighet med Cockcroft-Gault formeln hos män och kvinnor.">
+				use = <"Använd för att beräkna eGFR baserat på Cockcroft-Gault formeln hos män, kvinnor och barn.
+
+Män (≥20 års ålder): eGFR = (1.23 * (140 - ålder) * vikt) / kreatinin 
+
+Kvinnor (≥20 års ålder): eGFR = (1.04 * (140 - ålder) * vikt) / kreatinin 
+
+Barn (<20 års ålder): Kreatininclearance = ((42.5 * längd) / kreatinin) * (vikt / 70) ^ 0.7 
+
+Vikt anges i kg och längd i cm.">
+			>
+		>
+		lifecycle_state = <"Author draft">
+		original_author = <
+			["date"] = <"2012-09-12">
+			["email"] = <"rong.chen@cambio.se">
+			["name"] = <"Rong Chen">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_contributors = <"Gustavo Barcelar", "Iago Corbal, Cambio Healthcare Systems", "Jimmy Axelsson, Cambio Healthcare Systems", "Dennis Forslund, Cambio Healthcare Systems", "Eneimi Allwell-Brown, Cambio Healthcare Systems">
+		other_details = <
+			["references"] = <"1. Cockcroft DW, Gault MH. Prediction of creatinine clearance from serum creatinine. Nephron. 1976;16(1):31-41. PubMed PMID: 1244564.
+
+2. M. Rowland and T. N. Tozer, “Clinical Pharmacokinetics. Concepts and Applications,” 3rd Edition, Lea & Febiger, Philadelphia, London, 1995.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0017"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.basic_demographic.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0002"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0008]">
+					>
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0018"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.body_weight.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0002]/events[at0003]/data[at0001]/items[at0004]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0020"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-urea_and_electrolytes.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0009"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.7]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0021"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.estimated_glomerular_filtration_rate.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0011"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+				>
+			>
+		>
+		pre_conditions = <"$gt0005.units=='kg'", "$gt0009.units=='umol/l'", "$gt0002.value<=($currentDateTime.value-18,a)">
+		rules = <
+			["gt0012"] = (RULE) <
+				when = <"!fired($gt0012)", "$gt0003==local::at0005|Male|">
+				then = <"$gt0011.magnitude=((1.2281*(140-(($currentDateTime.value-$gt0002.value)/1,a)))*($gt0005.magnitude/$gt0009.magnitude))", "$gt0011.precision=2", "$gt0011.units='ml/min'">
+				priority = <2>
+			>
+			["gt0013"] = (RULE) <
+				when = <"!fired($gt0013)", "$gt0003==local::at0006|Female|">
+				then = <"$gt0011.units='ml/min'", "$gt0011.precision=2", "$gt0011.magnitude=((1.0438*(140-(($currentDateTime.value-$gt0002.value)/1,a)))*($gt0005.magnitude/$gt0009.magnitude))">
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["da"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0002"] = (TERM) <
+						text = <"Fødselsdato">
+						description = <"** (en)">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Køn">
+						description = <"** (en)">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Vægt">
+						description = <"*The weight of the individual. (en)">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Creatinin">
+						description = <"*Creatinine level in this specimen (en)">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Anslået eGFR">
+						description = <"*Value describing estimation of glomerular filtration rate adjusted by body-surface area (mL/min/1.73m?). (en)">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Beregn GFR for voksne mænd">
+						description = <"*Rule for calculating estimated GFR for adult male (en)">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Beregn GFR for voksen kvinde">
+						description = <"*Rule for  calculating estimated GFR for adult female (en)">
+					>
+					["gt0016"] = (TERM) <
+						text = <"GFR beregning">
+						description = <"*Calculation of glomerular filtration rate (GFR) to asssess renal function. (en)">
+					>
+				>
+			>
+			["el"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0002"] = (TERM) <
+						text = <"Ημερομηνία γέννησης">
+						description = <"** (en)">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Φύλο">
+						description = <"** (en)">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Σωματικό βάρος">
+						description = <"*The weight of the individual. (en)">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Κρεατινίνη">
+						description = <"*Creatinine level in this specimen (en)">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Εκτιμώμενος ρυθμός σπειραματικής διήθησης">
+						description = <"*Value describing estimation of glomerular filtration rate adjusted by body-surface area (mL/min/1.73m?). (en)">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Υπολογισμός ρυθμού σπειραματικής διήθησης σε ενήλικες άνδρες">
+						description = <"*Rule for calculating estimated GFR for adult male (en)">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Υπολογισμός ρυθμού σπειραματικής διήθησης σε ενήλικες γυναίκες">
+						description = <"*Rule for  calculating estimated GFR for adult female (en)">
+					>
+					["gt0016"] = (TERM) <
+						text = <"*GFR Calculation (en)">
+					>
+				>
+			>
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0002"] = (TERM) <
+						text = <"Birthdate">
+						description = <"*">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Gender">
+						description = <"*">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Weight">
+						description = <"The weight of the individual.">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Creatinine">
+						description = <"Creatinine level in this specimen">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Estimated GFR">
+						description = <"Value describing estimation of glomerular filtration rate adjusted by body-surface area (mL/min/1.73m?).">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Calculate GFR for Adult Male">
+						description = <"Rule for calculating estimated GFR for adult male">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Calculate GFR for Adult Female">
+						description = <"Rule for  calculating estimated GFR for adult female">
+					>
+					["gt0016"] = (TERM) <
+						text = <"GFR Calculation (Cockcroft-Gault)">
+						description = <"Calculation of glomerular filtration rate (GFR) to assess renal function, in accordance with the Cockcroft-Gault formula. The formula includes the individual's age (years), weight (kg), serum creatinine level (umol/l) and an adjustment for gender. It is only for use in adults aged 18 years and older.">
+					>
+				>
+			>
+			["es"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0002"] = (TERM) <
+						text = <"Edad">
+						description = <"Edad">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Sexo">
+						description = <"Sexo">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Peso">
+						description = <"El peso del individuo">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Creatinina">
+						description = <"El nivel de creatinina en este espécimen">
+					>
+					["gt0011"] = (TERM) <
+						text = <"IFG estimado">
+						description = <"Valor del índice de filtrado glomerular basado en la superficie corporal (mL/min/1.73m?). ">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Cálculo del IFG para hombre adulto">
+						description = <"Regla para calcular el IFG estimado de un hombre adulto">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Cálculo del IFG para mujer adulta">
+						description = <"Regla para calcular el IFG estimado de una mujer adulta">
+					>
+					["gt0016"] = (TERM) <
+						text = <"Cálculo del IFG">
+						description = <"">
+					>
+				>
+			>
+			["pt"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0002"] = (TERM) <
+						text = <"Idade">
+						description = <"** (en)">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Sexo">
+						description = <"** (en)">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Peso">
+						description = <"*The weight of the individual. (en)">
+					>
+					["gt0009"] = (TERM) <
+						text = <"*Creatinine (en)">
+						description = <"*Creatinine level in this specimen (en)">
+					>
+					["gt0011"] = (TERM) <
+						text = <"*Estimated GFR (en)">
+						description = <"*Value describing estimation of glomerular filtration rate adjusted by body-surface area (mL/min/1.73m?). (en)">
+					>
+					["gt0012"] = (TERM) <
+						text = <"*Calculate GFR for Adult Male (en)">
+						description = <"*Rule for calculating estimated GFR for adult male (en)">
+					>
+					["gt0013"] = (TERM) <
+						text = <"*Calculate GFR for Adult Female (en)">
+						description = <"*Rule for  calculating estimated GFR for adult female (en)">
+					>
+					["gt0016"] = (TERM) <
+						text = <"*GFR Calculation (en)">
+					>
+				>
+			>
+			["si"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0002"] = (TERM) <
+						text = <"උපන් දිනය">
+						description = <"** (en)">
+					>
+					["gt0003"] = (TERM) <
+						text = <"ස්ත්‍රි පුරුෂ භාවය">
+						description = <"** (en)">
+					>
+					["gt0005"] = (TERM) <
+						text = <"සිරුරේ බර">
+						description = <"*The weight of the individual. (en)">
+					>
+					["gt0009"] = (TERM) <
+						text = <"*Creatinine (en)">
+						description = <"*Creatinine level in this specimen (en)">
+					>
+					["gt0011"] = (TERM) <
+						text = <"ඇස්තමේන්තුගත GFR ">
+						description = <"*Value describing estimation of glomerular filtration rate adjusted by body-surface area (mL/min/1.73m?). (en)">
+					>
+					["gt0012"] = (TERM) <
+						text = <"වැඩිහිටි පිරිමි සඳහා GFR ගණනය">
+						description = <"*Rule for calculating estimated GFR for adult male (en)">
+					>
+					["gt0013"] = (TERM) <
+						text = <"වැඩිහිටි ගැහැණු සඳහා GFR ගණනය">
+						description = <"*Rule for  calculating estimated GFR for adult female (en)">
+					>
+					["gt0016"] = (TERM) <
+						text = <"GFR ගණනය">
+					>
+				>
+			>
+			["sv"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0002"] = (TERM) <
+						text = <"Ålder">
+						description = <"Ålder">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Kön">
+						description = <"Kön">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Vikt">
+						description = <"*">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Kreatinin">
+						description = <"*">
+					>
+					["gt0011"] = (TERM) <
+						text = <"GFR">
+						description = <"*">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Beräkna GFR för vuxen man">
+						description = <"*">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Beräkna GFR för vuxen kvinna">
+						description = <"*">
+					>
+					["gt0016"] = (TERM) <
+						text = <"Beräkning av eGFR">
+						description = <"Beräkning av estimerad glomerulär filtrationshastighet (GFR) i enlighet med Cockcroft-Gault-formeln, vilken återfinns i den detaljerade beskrivningen.">
+					>
+				>
+			>
+		>
+	>
+>
