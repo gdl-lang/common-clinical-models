@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.bishop_score_assessment.v1
 
 concept
-	[at0000]	-- Bishop Score assessment
+	[at0000]	-- Bishop Score utvärdering
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -22,6 +22,27 @@ description
 		["date"] = <"2017-03-18">
 	>
 	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Assessment of score generated in accordance with Bishop Score, which is used to predict need for induction of labor.">
+			use = <"Use to assess score generated in accordance with Bishop Score, which is used to predict need for induction of labor.
+
+The Bishop Score is based on five parameters:
+
+Dilation - dilation of the cervix (0-3p).
+Effacement - how thin the cervix is (0-3p).
+Fetal station - the position of the fetus' head in relation to spinae ishiadica (0-3p).
+Position - position of the cervix (0-2p).
+Consistency - consistency of the cervix (0-2p).
+
+Thus the maximum score is 13p. Score interpretation:
+≤5p - labor is unlikely to commence without induction
+6-7p - indeterminate group - use clinical judgment
+≥8p - labor is likely to commence spontaneously, making induction unnecessary">
+			keywords = <"Bishop Score", "obstetrics", "induction", "labor">
+			misuse = <"The result may vary depending of weeks of gestation - the Bishop Score should only be used as support to overall clinical assessment. ">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Utvärdering av poäng genererad i enlighet med Bishop Score, som används för att bedöma behov av inducerad förlossning.">
@@ -44,47 +65,31 @@ Maximal poäng uppgår till 13p, och resultatet tolkas enligt:
 			misuse = <"Resultatet kan variera beroende på aktuell graviditetsvecka - Bishop Score ska endast användas som del i fullständig klinisk bedömning.">
 			copyright = <"Cambio Healthcare Systems">
 		>
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"Assessment of score generated in accordance with Bishop Score, which is used to predict need for induction of labor.">
-			use = <"Use to assess score generated in accordance with Bishop Score, which is used to predict need for induction of labor.
-
-The Bishop Score is based on five parameters:
-
-Dilation - dilation of the cervix (0-3p).
-Effacement - how thin the cervix is (0-3p).
-Fetal station - the position of the fetus' head in relation to spinae ishiadica (0-3p).
-Position - position of the cervix (0-2p).
-Consistency - consistency of the cervix (0-2p).
-
-Thus the maximum score is 13p. Score interpretation:
-≤5p - labor is unlikely to commence without induction
-6-7p - indeterminate group - use clinical judgment
-≥8p - labor is likely to commence spontaneously, making induction unnecessary">
-			keywords = <"Bishop Score", "obstetrics", "induction", "labor">
-			misuse = <"The result may vary depending of weeks of gestation - the Bishop Score should only be used as support to overall clinical assessment. ">
-			copyright = <"Cambio Healthcare Systems">
-		>
 	>
-	lifecycle_state = <"0">
-	other_contributors = <>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <"Eneimi Allwell-Brown, Cambio Healthcare Systems", ...>
 	other_details = <
 		["references"] = <"Bishop EH. Pelvic scoring for elective induction. Obstet Gynecol 1964;24:266–8.
 
 Newman RB, Goldenberg RL, Iams JD, Meis PJ, Mercer BM, Moawad AH, et al. Preterm prediction study: comparison of the cervical score and Bishop score for prediction of spontaneous preterm delivery. Obstet Gynecol. 2008;112(3):508–515.">
-		["MD5-CAM-1.0.1"] = <"C01B5D33245EAA8838A944D196530283">
+		["MD5-CAM-1.0.1"] = <"F923200F3ACF074B91B7D8409B186A5D">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Bishop Score assessment
+	EVALUATION[at0000] matches {	-- Bishop Score utvärdering
 		data matches {
-			ITEM_TREE[at0001] matches {	-- Tree
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Assessment
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Utvärdering
 						value matches {
-							0|[local::at0003], 	-- Labor is unlikely to commence without induction
-							1|[local::at0004], 	-- Indeterminate group - use clinical judgment
-							2|[local::at0005]  	-- Labor is likely to commence spontaneously, making induction unnecessary
+							0|[local::at0003], 	-- Värkarbete är osannolikt att påbörjas utan induktion
+							1|[local::at0004], 	-- Gråzon; klinisk bedömning vägledande
+							2|[local::at0005]  	-- Värkarbete kommer sannolikt påbörjas spontant; induktion bör således ej vara nödvändigt
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Komment
+						value matches {
+							DV_TEXT matches {*}
 						}
 					}
 				}
@@ -120,6 +125,10 @@ ontology
 					text = <"Labor is likely to commence spontaneously, making induction unnecessary">
 					description = <"≥8p">
 				>
+				["at0006"] = <
+					text = <"Comment">
+					description = <"Additional information about this recording.">
+				>
 			>
 		>
 		["sv"] = <
@@ -147,6 +156,10 @@ ontology
 				["at0005"] = <
 					text = <"Värkarbete kommer sannolikt påbörjas spontant; induktion bör således ej vara nödvändigt">
 					description = <"≥8p">
+				>
+				["at0006"] = <
+					text = <"Komment">
+					description = <"Andra information om den här dokumentering.">
 				>
 			>
 		>

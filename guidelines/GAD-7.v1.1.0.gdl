@@ -1,0 +1,135 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"GAD-7.v1.1.0">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"generalized anxiety disorder", "GAD-7", "panic disorder", "social anxiety disorder", "post-traumatic stress disorder", "PTSD">
+				misuse = <"Should not to be used for making confirmatory diagnoses.
+GAD-7 provides only a probable diagnosis which requires confirmation by further evaluation.">
+				purpose = <"It is intended to identify individuals with generalized anxiety disorder (GAD) and assess the severity of anxiety symptoms using a 7-item self-reported questionnaire (GAD-7).">
+				use = <"Used to screen individuals for Generalized Anxiety Disorder (GAD) based on the individual's health status in the past 2 weeks. Also used to assess the severity of anxiety symptoms and their change over time. May be used to screen individuals for panic disorder, social anxiety disorder and post-traumatic stress disorder (PTSD). 
+
+The GAD-7 scale consists of 7 questions with answers scored on a 4-point Likert scale:
+(0 = Not at all, 1 = Several days, 2 = More than half the days, 3 = Nearly every day). 
+
+The total score is the sum of the scores on all 7 items and gives a minimum score of 0 and maximum score of 21. 
+Scores of 5, 10 and 15 are cut-off points for mild, moderate and severe anxiety respectively. Further evaluation of the individual is recommended with a total score of 10 or greater.">
+			>
+		>
+		lifecycle_state = <"Author draft">
+		original_author = <
+			["date"] = <"2016-10-08">
+			["email"] = <"models@cambiocds.com">
+			["name"] = <"Eneimi Allwell-Brown">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_contributors = <"Jimmy Axelsson", "Dennis Forslund">
+		other_details = <
+			["references"] = <"Spitzer RL, Kroenke K, Williams JB, Löwe B. A brief measure for assessing generalized anxiety disorder: the GAD-7. Archives of internal medicine. 2006 May 22;166(10):1092-7.
+
+Kroenke K, Spitzer RL, Williams JB, Monahan PO, Löwe B. Anxiety disorders in primary care: prevalence, impairment, comorbidity, and detection. Annals of internal medicine. 2007 Mar 6;146(5):317-25.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0003"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.generalized_anxiety_disorder_7.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0005]">
+					>
+					["gt0009"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0010]">
+					>
+					["gt0010"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0015]">
+					>
+					["gt0011"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0021]">
+					>
+					["gt0012"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0026]">
+					>
+					["gt0013"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0031]">
+					>
+					["gt0014"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0036]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0006"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.generalized_anxiety_disorder_7.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0055"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0042]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0002"] = (RULE) <
+				when = <"!fired($gt0002)", "$gt0055==null">
+				then = <"$gt0055.magnitude=(((((($gt0010.value+$gt0011.value)+$gt0012.value)+$gt0013.value)+$gt0008.value)+$gt0009.value)+$gt0014.value)",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Generalized Anxiety Disorder Score">
+						description = <"Generalized anxiety disorder score (GAD-7) is a seven-item self-report screening tool for identifying individuals with probable generalized anxiety disorder and assessing the severity of symptoms. Answers to the 7 questions are scored on a 4-point Likert scale: (0 = Not at all, 1 = Several days, 2 = More than half the days, 3 = Nearly every day), giving a minimum score = 0 and a maximum score = 28. Mild, moderate and severe anxiety are defined by scores of 5, 10 and 15 respectively. Individuals with score >= 10 require further evaluation.">
+					>
+					["gt0002"] = (TERM) <
+						text = <"Calculate GAD-7 Score">
+						description = <"This rule contains the expression logic for calculating the GAD-7 score.">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Feeling nervous, anxious or on edge">
+						description = <"Instantiates the EHR element Feeling nervous, anxious or on edge.">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Not being able to stop or control worrying">
+						description = <"Instantiates the EHR element Not being able to stop or control worrying">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Worrying too much about different things">
+						description = <"Instantiates the EHR element Worrying too much about different things.">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Trouble relaxing">
+						description = <"Instantiates the EHR element Trouble relaxing.">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Being so restless that it is hard to sit still">
+						description = <"Instantiates the EHR element Being so restless that it is hard to sit still.">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Becoming easily annoyed or irritable">
+						description = <"Instantiates the EHR element Becoming easily annoyed or irritable.">
+					>
+					["gt0014"] = (TERM) <
+						text = <"Feeling afraid as if something awful might happen">
+						description = <"Instantiates the EHR element Feeling afraid as if something awful might happen.">
+					>
+					["gt0055"] = (TERM) <
+						text = <"GAD-7 Total score">
+						description = <"Sum of the ordinal scores recorded for each of the 7 GAD questionnaire responses.">
+					>
+				>
+			>
+		>
+	>
+>
