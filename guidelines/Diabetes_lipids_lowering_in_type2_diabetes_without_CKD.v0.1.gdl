@@ -1,0 +1,293 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"Diabetes_lipids_lowering_in_type2_diabetes_without_CKD.v0.1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				keywords = <"Diabetes",...>
+				purpose = <"Sample cds-rules for demostration purpose">
+			>
+		>
+		original_author = <
+			["email"] = <"">
+			["name"] = <"Rong Chen">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"NICE guideline -Cardiovascular disease: risk assessment and reduction, including lipid modification, Chapter 1.3.20-1.3.51,">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.problem-diagnosis.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002.1]">
+					>
+				>
+				predicates = <"/data[at0001]/items[at0002.1] is_a local::gt0004|Diabetes|",...>
+				template_id = <"diagnosis_icd10">
+			>
+			["gt0005"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.problem-diagnosis.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002.1]">
+					>
+				>
+				predicates = <"/data[at0001]/items[at0002.1] is_a local::gt0007|CKD|",...>
+				template_id = <"diagnosis_icd10">
+			>
+			["gt0008"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.qrisk2_2015_score.v0">
+				domain = <"EHR">
+				elements = <
+					["gt0009"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+				>
+			>
+			["gt0010"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-INSTRUCTION.medication.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0011"] = (ELEMENT_BINDING) <
+						path = <"/activities[at0001]/description[openEHR-EHR-ITEM_TREE.medication.v1]/items[at0012]">
+					>
+				>
+				predicates = <"/activities[at0001]/description[openEHR-EHR-ITEM_TREE.medication.v1]/items[at0012] is_a local::gt0012|Statin|",...>
+				template_id = <"medication">
+			>
+			["gt0013"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.estimated_glomerular_filtration_rate.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0014"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+				>
+			>
+			["gt0015"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-lipids.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0016"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.2]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0017"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.lab_test-lipids.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0018"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0078.2]">
+					>
+				>
+				predicates = <"/data/events/time/value/value<=(max($currentDateTime.value))",...>
+			>
+			["gt0019"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.problem-diagnosis.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0020"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002.1]">
+					>
+				>
+				predicates = <"/data[at0001]/items[at0002.1] is_a local::gt0021|CVD|",...>
+				template_id = <"diagnosis_icd10">
+			>
+			["gt0022"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-INSTRUCTION.medication.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0023"] = (ELEMENT_BINDING) <
+						path = <"/activities[at0001]/description[openEHR-EHR-ITEM_TREE.medication.v1]/items[at0012]">
+					>
+					["gt0024"] = (ELEMENT_BINDING) <
+						path = <"/activities[at0001]/description[openEHR-EHR-ITEM_TREE.medication.v1]/items[at0033]/items[at0035]/items[at0037]">
+					>
+				>
+				template_id = <"medication">
+			>
+			["gt0027"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.goal.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0029"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002]">
+					>
+				>
+			>
+			["gt0030"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-INSTRUCTION.request.v0">
+				domain = <"CDS">
+				elements = <
+					["gt0031"] = (ELEMENT_BINDING) <
+						path = <"/activities[at0001]/description[at0009]/items[at0121]">
+					>
+					["gt0032"] = (ELEMENT_BINDING) <
+						path = <"/activities[at0001]/description[at0009]/items[at0135]">
+					>
+				>
+			>
+		>
+		pre_conditions = <"$gt0003!=null", "$gt0006==null">
+		rules = <
+			["gt0025"] = (RULE) <
+				when = <"$gt0020!=null",...>
+				then = <"$gt0022.create($gt0024=80,mg;$gt0023=ATC::C10AA05|Atorvastatin|)",...>
+				priority = <4>
+			>
+			["gt0026"] = (RULE) <
+				when = <"$gt0020==null", "$gt0011==null", "$gt0009>100,%">
+				then = <"$gt0030.create($gt0031='Appointment';$gt0032='Arrange a follow-up within three months')", "$gt0022.create($gt0024=20,mg;$gt0023=ATC::C10AA05|Atorvastatin|)", "$gt0027.create($gt0029='Aim 40% reduction in non-HDL cholesterol')">
+				priority = <3>
+			>
+			["gt0033"] = (RULE) <
+				when = <"$gt0009==null", "$gt0020==null">
+				then = <"$gt0030.create($gt0031='QRISK2';$gt0032='Measure and evaluate QRISK2')",...>
+				priority = <5>
+			>
+			["gt0034"] = (RULE) <
+				when = <"$gt0011!=null", "$gt0009>=10,%", "$gt0020==null", "$gt0016.magnitude>=($gt0018.magnitude*0.6)">
+				then = <"$gt0022.create($gt0023=ATC::C10AA05|Atorvastatin|;$gt0024=80,mg)",...>
+				priority = <2>
+			>
+			["gt0035"] = (RULE) <
+				when = <"$gt0020==null", "$gt0009>=10,%", "$gt0011!=null", "$gt0016.magnitude<($gt0018.magnitude*0.6)">
+				then = <"$gt0030.create($gt0031='Appointment';$gt0032='Contiue treatment and arange annual follow-up')",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_bindings = <
+			["ATC"] = (TERM_BINDING) <
+				bindings = <
+					["gt0012"] = (BINDING) <
+						codes = <[ATC::C10AA05],...>
+						uri = <"">
+					>
+				>
+			>
+			["ICD-10"] = (TERM_BINDING) <
+				bindings = <
+					["gt0004"] = (BINDING) <
+						codes = <[ICD-10::E11],...>
+						uri = <"">
+					>
+					["gt0007"] = (BINDING) <
+						codes = <[ICD-10::N18.9], [ICD-10::N18.0], [ICD-10::N18.3], [ICD-10::N18.4], [ICD-10::N18.1], [ICD-10::N18.2], [ICD-10::N18.5]>
+						uri = <"">
+					>
+					["gt0021"] = (BINDING) <
+						codes = <[ICD-10::I48.9], [ICD-10::I24.9], [ICD-10::I48.2], [ICD-10::I48.1], [ICD-10::I48.4], [ICD-10::I48.3], [ICD-10::I21.2], [ICD-10::I21.3], [ICD-10::I48.0], [ICD-10::I21.4], [ICD-10::I20.0], [ICD-10::I21.0], [ICD-10::I21.1]>
+						uri = <"">
+					>
+				>
+			>
+		>
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Diabetes lipids lowering in type 2 diabetes without CKD">
+						description = <"Managing lipids and cardiovascular risk in Type 2 Diabetes patients">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Type-2 diabetes diagnosis">
+						description = <"The index diagnosis">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Type-2 diabetes">
+					>
+					["gt0006"] = (TERM) <
+						text = <"CKD diagnosis">
+						description = <"The index diagnosis">
+					>
+					["gt0007"] = (TERM) <
+						text = <"CKD">
+						description = <"Chronic kidney disease">
+					>
+					["gt0009"] = (TERM) <
+						text = <"QRISK2 score">
+						description = <"QRISK2 score">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Statin treatment">
+						description = <"The generic name of the drug which is an alternative name to the name of medication">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Statin">
+					>
+					["gt0014"] = (TERM) <
+						text = <"Estimated Glomerular Filtration Rate">
+						description = <"Value describing estimation of glomerular filtration rate adjusted by body-surface area (mL/min/1.73m²).">
+					>
+					["gt0016"] = (TERM) <
+						text = <"Latest LDL Cholesterol">
+						description = <"LDL-Cholesterol level in the sample.">
+					>
+					["gt0018"] = (TERM) <
+						text = <"Previous LDL Cholesterol">
+						description = <"LDL-Cholesterol level in the sample.">
+					>
+					["gt0020"] = (TERM) <
+						text = <"CVD diagnosis">
+						description = <"The index diagnosis">
+					>
+					["gt0021"] = (TERM) <
+						text = <"CVD">
+						description = <"Chronic vascular disease">
+					>
+					["gt0023"] = (TERM) <
+						text = <"Requested medication generic name">
+						description = <"The generic name of the drug which is an alternative name to the name of medication">
+					>
+					["gt0024"] = (TERM) <
+						text = <"Requested medication dose">
+						description = <"*">
+					>
+					["gt0025"] = (TERM) <
+						text = <"Start statin treatment in patient with CVD">
+					>
+					["gt0026"] = (TERM) <
+						text = <"Start statin treatment in patient without CVD">
+					>
+					["gt0028"] = (TERM) <
+					>
+					["gt0029"] = (TERM) <
+						text = <"Goal name">
+						description = <"The name of the desired health outcome.">
+					>
+					["gt0031"] = (TERM) <
+						text = <"Requested service name">
+						description = <"Identification of the service requested, by name.">
+					>
+					["gt0032"] = (TERM) <
+						text = <"Request description">
+						description = <"Narrative description of the service requested.">
+					>
+					["gt0033"] = (TERM) <
+						text = <"Request QRISK">
+					>
+					["gt0034"] = (TERM) <
+						text = <"Increase statin dose">
+					>
+					["gt0035"] = (TERM) <
+						text = <"Contiute treatment">
+					>
+				>
+			>
+		>
+	>
+>
