@@ -1,0 +1,147 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"HADS_assessment.v1">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"HADS scale", "anxiety", "depression">
+				misuse = <"Not to be used as a diagnostic tool.
+Not to be used in screening for global/general psychiatric disorders.">
+				purpose = <"To detect states of depression and anxiety in the hospital medical outpatient clinic and serve as a valid measure of severity of the emotional disorder.">
+				use = <"To evaluate the HADS score.
+HADS consists of 14 questions, with 7 related to anxiety (HADS-A subscale) and 7 related to depression (HADS-D subscale). Both subscales are scored separately and each response to every question is scored either 0 (best case), 1, 2, or 3 (worst case). 
+The total score for each subscale ranges from 0 to 21.
+Anxiety (HADS-A): 0-7 points = no anxiety, 8-10 = possible anxiety, ≥11 = definite anxiety
+Depression (HADS-D):  0-7 points = no depression, 8-10 = possible depression, ≥11 = definite depression. 
+
+Another HADS categorization has 0-7 = non-case, 8-10 = mild, 11-14 = moderate, 15-21 = severe, for both anxiety and depression subscales.">
+			>
+		>
+		lifecycle_state = <"Author draft">
+		original_author = <
+			["date"] = <"2016-11-22">
+			["email"] = <"joana.vicente@cambio.se">
+			["name"] = <"Joana Vicente">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_contributors = <"Syeeda S Farruque", "Jimmy Axelsson", "Dennis Forslund", "Eneimi Allwell-Brown, Cambio Healthcare Systems">
+		other_details = <
+			["references"] = <"Zigmond AS, Snaith RP. The hospital anxiety and depression scale. Acta psychiatrica scandinavica. 1983 Jun 1;67(6):361-70.
+
+Bjelland I, Dahl AA, Haug TT, Neckelmann D. The validity of the Hospital Anxiety and Depression Scale: an updated literature review. Journal of psychosomatic research. 2002 Feb 28;52(2):69-77.
+
+Stern AF. The hospital anxiety and depression scale. Occupational Medicine. 2014 Jun 28;64(5):393-4.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0008"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.hads_assessment.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0009"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002]">
+					>
+					["gt0010"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0003]">
+					>
+				>
+			>
+			["gt0014"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.hospital_anxiety_and_depression_scale.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0015"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0077]/items[at0079]">
+					>
+					["gt0016"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0077]/items[at0078]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0011"] = (RULE) <
+				when = <"$gt0015.magnitude<=7",...>
+				then = <"$gt0009=0|local::at0004|No depression|",...>
+				priority = <4>
+			>
+			["gt0012"] = (RULE) <
+				when = <"$gt0016.magnitude<=7",...>
+				then = <"$gt0010=0|local::at0007|No anxiety|",...>
+				priority = <1>
+			>
+			["gt0013"] = (RULE) <
+				when = <"$gt0015.magnitude<=10", "$gt0015.magnitude>=8">
+				then = <"$gt0009=1|local::at0005|Possible depression|",...>
+				priority = <5>
+			>
+			["gt0017"] = (RULE) <
+				when = <"$gt0015.magnitude>=11",...>
+				then = <"$gt0009=2|local::at0006|Definite depression|",...>
+				priority = <6>
+			>
+			["gt0018"] = (RULE) <
+				when = <"$gt0016.magnitude>=8", "$gt0016.magnitude<=10">
+				then = <"$gt0010=1|local::at0008|Possible anxiety|",...>
+				priority = <2>
+			>
+			["gt0019"] = (RULE) <
+				when = <"$gt0016.magnitude>=11",...>
+				then = <"$gt0010=2|local::at0009|Definite anxiety|",...>
+				priority = <3>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Hospital Anxiety and Depression Scale (HADS) assessment">
+						description = <"Hospital Anxiety and Depression Scale (HADS) was originally developed by Zigmond and Snaith (1983) as a self-assessment scale to detect states of depression and anxiety in the hospital medical outpatient clinic, as well as the severity of these mood disorders. It consists of 14 questions, with 7 related to anxiety (HADS-A subscale) and 7 related to depression (HADS-D subscale). Both subscales are scored separately and each response to every question is scored either 0 (best case), 1, 2, or 3 (worst case). The total score for each subscale ranges from 0 to 21 and for Anxiety (HADS-A): 0-7 points = no anxiety, 8-10 = possible anxiety, ≥11 = definite anxiety, while for Depression (HADS-D):  0-7 points = no depression, 8-10 = possible depression, ≥11 = definite depression. Another HADS categorization has 0-7 = non-case, 8-10 = mild, 11-14 = moderate, 15-21 = severe, for both anxiety and depression subscales.">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Depression assessment">
+						description = <"From the total score of 21 derived from the  HADS scale calculation, each category of depression is indicated.">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Anxiety assessment">
+						description = <"From the total score of 21 derived from the  HADS scale calculation, each category of anxiety is indicated.">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Set no depression">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Set no anxiety">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Set possible depression">
+					>
+					["gt0015"] = (TERM) <
+						text = <"Depression total score">
+						description = <"*">
+					>
+					["gt0016"] = (TERM) <
+						text = <"Anxiety total score">
+						description = <"*">
+					>
+					["gt0017"] = (TERM) <
+						text = <"Set definite depression">
+					>
+					["gt0018"] = (TERM) <
+						text = <"Set possible anxiety">
+					>
+					["gt0019"] = (TERM) <
+						text = <"Set definite anxiety">
+					>
+				>
+			>
+		>
+	>
+>
