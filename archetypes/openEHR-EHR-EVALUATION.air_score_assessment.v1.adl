@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.air_score_assessment.v1
 
 concept
-	[at0000]	-- AIR Score Assessment
+	[at0000]	-- AIR Score Utvärdering
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -22,10 +22,32 @@ description
 		["date"] = <"2016-07-19">
 	>
 	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Evaluation of score generated in accordance with AIR Score.">
+			use = <"Use for objective measure in determining prognosis and appropriate care level for patients presenting with suspected acute appendicitis. 
+
+AIR is an acronym for Appendicitis Inflammatory Response and consists of seven components, each contributing points to the total score generating an estimated probability as well as a recommendation based on the risk level; 
+- Vomiting 0-1
+- Pain in right inferior fossa 0-1
+- Rebound tenderness or muscular defense 0-3
+- Body temperature ≥38.5 0-1
+- Neutrophils 0-2
+- White blood cell count 0-2
+- CRP 0-2
+
+The tool has a maximum score of 12 points, and the result is associated with one of three categories estimating probability along with a recommendation on appropriate action;
+Sum 0-4 - low probability. Consider outpatient follow-up if unaltered general condition.
+Sum 5-8 - indeterminate group. Consider in-hospital active observation with rescoring and/or further examination in accordance with local tradition.
+Sum 9-12 - high probability. Consider surgical exploration.">
+			keywords = <"AIR Score", "appendicitis inflammatory response score", "appendicitis", "surgery", "emergency medicine">
+			misuse = <"">
+			copyright = <"Cambio Healthcare Systems">
+		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Utvärdering av poäng genererad i enlighet med AIR Score.">
-			use = <"Använd som objektivt kliniskt understöd i bedömning av prognos och lämplig vårdnivå hos patienter med misstänkt akut appendicit.
+			use = <"Använd som objektivt kliniskt understöd i bedömning av prognos och lämplig vårdnivå för patienter med misstänkt akut appendicit.
 
 AIR är en akronym för Appendicitis Inflammatory Response och består av sju faktorer som vardera bidrar till totala poängen (max.12) enligt; 
 - Förekomst av kräkning 0-1
@@ -36,32 +58,11 @@ AIR är en akronym för Appendicitis Inflammatory Response och består av sju fa
 - Andel neutrofiler 0-2 
 - CRP 0-2
 
-Resultatet genererar en översiktlig prognos samt en rekommendation kring vidare åtgärd;
-0-4 poäng - låg sannolikhet. Överväg uppföljning polikliniskt om ej påverkat allmäntillstånd.
-5-8 poäng - intermediär sannolikhet. Överväg aktiv observation med upprepad testning och/eller vidare undersökning i enlighet med lokal tradition.
+Resultatet används för att generera en uppskattad sannolikhet för att appendicit föreligger, samt en rekommendation kring vidare åtgärd: 
+0-4 poäng - låg sannolikhet. Överväg uppföljning polikliniskt om opåverkat allmäntillstånd.
+5-8 poäng - intermediär sannolikhet. Överväg aktiv observation med upprepad bedömning och/eller vidare undersökning i enlighet med lokal tradition.
 9-12 poäng - hög sannolikhet. Överväg kirurgisk exploration.">
-			misuse = <"*(en)">
-			copyright = <"Cambio Healthcare Systems">
-		>
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"Evaluation of score generated in accordance with AIR Score.
-">
-			use = <"Use to determine prognosis and appropriate care level in patients presenting with suspected acute appendicitis.
-
-AIR is an acronym for Appendicitis Inflammatory Response and consists of seven components, each contributing points to the total score determining probability and suggested action; 
-- Vomiting 0-1
-- Pain in right inferior fossa 0-1
-- Rebound tenderness or muscular defense 0-3
-- Body temperature ≥38.5 0-1
-- Neutrophils 0-2
-- White blood cell count 0-2
-- CRP 0-2
-
-Total score has a maximum of 12 points, and the result is associated with one of three categories determining probability and suggested action;
-Sum 0-4 - low probability. Consider outpatient follow-up if unaltered general condition.
-Sum 5-8 - indeterminate group. Consider in-hospital active observation with rescoring and/or further examination in accordance with local tradition.
-Sum 9-12 - high probability. Consider surgical exploration.">
+			keywords = <"AIR Score", "appendicitis inflammatory response score", "appendicit", "kirurgi", "akut buk">
 			misuse = <"">
 			copyright = <"Cambio Healthcare Systems">
 		>
@@ -70,26 +71,26 @@ Sum 9-12 - high probability. Consider surgical exploration.">
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Andersson M, Andersson RE. The appendicitis inflammatory response score: a tool for the diagnosis of acute appendicitis that outperforms the Alvarado score. World journal of surgery. 2008 Aug;32(8):1843–9.">
-		["MD5-CAM-1.0.1"] = <"8EF77A7582EFB1B574CF1453C4C032F5">
+		["MD5-CAM-1.0.1"] = <"49084E14264796C33F2CA3062EC80BE5">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- AIR Score Assessment
+	EVALUATION[at0000] matches {	-- AIR Score Utvärdering
 		data matches {
-			ITEM_TREE[at0001] matches {	-- Tree
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Probability
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Sannolikhet för appendicit
 						value matches {
-							0|[local::at0004], 	-- Low probability
-							1|[local::at0005], 	-- Indeterminate group
-							2|[local::at0006]  	-- High probability
+							0|[local::at0004], 	-- Låg sannolikhet
+							1|[local::at0005], 	-- Intermediär sannolikhet
+							2|[local::at0006]  	-- Hög sannolikhet
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Recommendation
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Rekommendation
 						value matches {
-							0|[local::at0007], 	-- Consider outpatient follow-up if unaltered general condition
-							1|[local::at0008], 	-- In-hospital active observation
-							2|[local::at0009]  	-- Consider surgical exploration
+							0|[local::at0007], 	-- Överväg poliklinisk uppföljning om opåverkat allmäntillstånd
+							1|[local::at0008], 	-- Överväg aktiv observation med upprepad bedömning och/eller vidare undersökning i enlighet med lokal praxis
+							2|[local::at0009]  	-- Överväg kirurgisk exploration
 						}
 					}
 				}
@@ -110,7 +111,7 @@ ontology
 					description = <"@ internal @">
 				>
 				["at0002"] = <
-					text = <"Probability">
+					text = <"Probability of appendicitis">
 					description = <"Probability of appendicitis diagnosis. ">
 				>
 				["at0003"] = <
@@ -154,7 +155,7 @@ ontology
 					description = <"*@ internal @(en)">
 				>
 				["at0002"] = <
-					text = <"Sannolikhet">
+					text = <"Sannolikhet för appendicit">
 					description = <"Sannolikhet för appendicit.">
 				>
 				["at0003"] = <
@@ -163,27 +164,27 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Låg sannolikhet">
-					description = <"**(en)">
+					description = <"">
 				>
 				["at0005"] = <
 					text = <"Intermediär sannolikhet">
-					description = <"**(en)">
+					description = <"">
 				>
 				["at0006"] = <
 					text = <"Hög sannolikhet">
-					description = <"**(en)">
+					description = <"">
 				>
 				["at0007"] = <
-					text = <"Överväg poliklinisk uppföljning om ej påverkat allmäntillstånd">
-					description = <"**(en)">
+					text = <"Överväg poliklinisk uppföljning om opåverkat allmäntillstånd">
+					description = <"">
 				>
 				["at0008"] = <
-					text = <"Överväg aktiv observation med upprepad testning och/eller vidare undersökning i enligt lokal tradition">
-					description = <"**(en)">
+					text = <"Överväg aktiv observation med upprepad bedömning och/eller vidare undersökning i enlighet med lokal praxis">
+					description = <"">
 				>
 				["at0009"] = <
 					text = <"Överväg kirurgisk exploration">
-					description = <"**(en)">
+					description = <"">
 				>
 			>
 		>
