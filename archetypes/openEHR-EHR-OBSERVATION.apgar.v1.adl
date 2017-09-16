@@ -217,12 +217,10 @@ Den engelske mnemotekniske regel for å huske alle parametre er: A for Appearanc
 		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
-			purpose = <"Registrerar poäng för Apgars test som en enkel, repeterbar metod för att dokumentera tillståndet för det nyfödda barnet omedelbart efter födseln. Den ursprungliga tiden för händelseförloppet är alltid födelsen.">
-			use = <"Registering av en bedömning av tillståndet för ett nyfött barn vid en, två, tre, fem och / eller 10 minuters händelser efter födseln, plus ytterligare händelser om så krävs. Praxis är att dokumentera poängen vid 1 och 5 minuter; ytterligare poäng kan registreras som det är kliniskt indikerat. Det är möjligt att spela in Apgarpoäng när som helst efter födseln med hjälp av denna arketyp.
+			purpose = <"Att registrera poäng i enlighet med Apgar Score i syfte att med en enkel, repeterbar metod dokumentera nyfödda barns hälsotillstånd omedelbart efter födseln. ">
+			use = <"Bedömning enligt Apgar Score genomförs vid en, två, tre, fem och/eller 10 minuters förlopp efter födseln, plus ytterligare om så krävs. Praxis i Sverige är att dokumentera poängen efter 1, 5 och 10 minuter, och ytterligare om kliniskt indicerat.  Klinisk praxis är att registrera samtliga fem parametrar och därmed få en giltig poängsumma (min 0, max 10).
 
-Om det totala värdet ska beräknas är det nödvändigt att svar för alla 5 parametrar anges. Totalen är summan av de fem parametrarna (min 0, max 10).
-
-APGAR är ett välkänd minneshjälpmedel som lärs ut. Till exempel, på engelska: A för Appearance (hudfärg), P för Pulse (hjärtfrekvens), G för Grimace (grimaser, reflex, retbarhet) A för Activity (muskeltonus), och R för Respiration (andningsfrekvens). Eftersom detta är inte allmängiltigt för alla språk, föreslås att detta minneshjälpmedel kan appliceras genom att döpa dataelementen i mallar (\"templates\") om så önskas för specifika kliniska scenarion.">
+APGAR är en välkänd akronym: A för Appearance (hudfärg), P för Pulse (hjärtfrekvens), G för Grimace (grimaser, reflex, retbarhet) A för Activity (muskeltonus), och R för Respiration (andningsfrekvens). Om tillämpbart, kan elementen döpas om för att anpassa efter det aktuella språket; detta görs lämpligen med hjälp av mallar (templates).">
 			keywords = <"nyfödd", "poäng", "apgar", "födelse", "spädbarn">
 			misuse = <"Delvis fullständig poäng och lägg till 5 för att ge det totala värdet.">
 			copyright = <"© openEHR Foundation">
@@ -254,59 +252,59 @@ Apgar V.  The newborn (Apgar) scoring system.  Pediatr Clin North Am. 1966 Aug;1
 Whaley LF, Wong DL (1979).  Nursing Care of Infants and Children.  St. Louis, Toronto, London, The C.V. Mosby Company.
 
 http://en.wikipedia.org/wiki/Apgar_score">
-		["MD5-CAM-1.0.1"] = <"B6E4F9393EDB9258CC96A9C4D1B1A489">
+		["MD5-CAM-1.0.1"] = <"403776E4D9F9C29D48D7FE3FEF59E755">
 	>
 
 definition
 	OBSERVATION[at0000] matches {	-- Apgar Score
 		data matches {
-			HISTORY[at0002] matches {	-- history
+			HISTORY[at0002] matches {	-- Historia
 				events cardinality matches {1..*; unordered} matches {
-					POINT_EVENT[at0003] occurrences matches {0..1} matches {	-- 1 minute
+					POINT_EVENT[at0003] occurrences matches {0..1} matches {	-- 1 minut
 						offset matches {
 							DV_DURATION matches {
 								value matches {|PT1M|}
 							}
 						}
 						data matches {
-							ITEM_LIST[at0001] matches {	-- structure
+							ITEM_LIST[at0001] matches {	-- Struktur
 								items cardinality matches {1..6; ordered} matches {
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Respiratory effort
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Andning
 										value matches {
-											0|[local::at0010], 	-- Absent
-											1|[local::at0011], 	-- Weak or irregular
-											2|[local::at0012]  	-- Normal
+											0|[local::at0010], 	-- Ingen, obefintlig
+											1|[local::at0011], 	-- Oregelbunden, långsam
+											2|[local::at0012]  	-- God, skriker
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Heart Rate
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Puls
 										value matches {
-											0|[local::at0006], 	-- Absent
-											1|[local::at0007], 	-- <100 beats per minute
-											2|[local::at0008]  	-- ≥100 beats per minute
+											0|[local::at0006], 	-- Obefintlig
+											1|[local::at0007], 	-- <100 slag per minut
+											2|[local::at0008]  	-- ≥100 slag per minut
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Muscle tone
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Muskeltonus
 										value matches {
-											0|[local::at0014], 	-- Limp or flaccid
-											1|[local::at0015], 	-- Reduced tone
-											2|[local::at0016]  	-- Normal tone
+											0|[local::at0014], 	-- Obefintlig
+											1|[local::at0015], 	-- Armar och ben stela
+											2|[local::at0016]  	-- Livlig rörelse
 										}
 									}
-									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Reflex irritability
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Retbarhet
 										value matches {
-											0|[local::at0018], 	-- No response
-											1|[local::at0019], 	-- Reduced response
-											2|[local::at0020]  	-- Normal response
+											0|[local::at0018], 	-- Ingen respons
+											1|[local::at0019], 	-- Bara grimaserar
+											2|[local::at0020]  	-- Skriker
 										}
 									}
-									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Skin colour
+									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Hudfärg
 										value matches {
-											0|[local::at0022], 	-- Completely blue
-											1|[local::at0023], 	-- Body pink; extremities blue
-											2|[local::at0024]  	-- Completely pink
+											0|[local::at0022], 	-- Blå/blek över hela kroppen (cyanos)
+											1|[local::at0023], 	-- Rosa kropp, blå extremiteter
+											2|[local::at0024]  	-- Rosa över hela kroppen
 										}
 									}
-									ELEMENT[at0025] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0025] occurrences matches {0..1} matches {	-- Total poäng
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..10|}
@@ -317,58 +315,58 @@ definition
 							}
 						}
 					}
-					POINT_EVENT[at0026] occurrences matches {0..1} matches {	-- 2 minute
+					POINT_EVENT[at0026] occurrences matches {0..1} matches {	-- 2 minuter
 						offset matches {
 							DV_DURATION matches {
 								value matches {|PT2M|}
 							}
 						}
 						data matches {
-							use_node ITEM_LIST /data[at0002]/events[at0003]/data[at0001]	-- /data[history]/events[1 minute]/data[structure]
+							use_node ITEM_LIST /data[at0002]/events[at0003]/data[at0001]	-- /data[Historia]/events[1 minut]/data[Struktur]
 						}
 					}
-					POINT_EVENT[at0027] occurrences matches {0..1} matches {	-- 3 minute
+					POINT_EVENT[at0027] occurrences matches {0..1} matches {	-- 3 minuter
 						offset matches {
 							DV_DURATION matches {
 								value matches {|PT3M|}
 							}
 						}
 						data matches {
-							use_node ITEM_LIST /data[at0002]/events[at0003]/data[at0001]	-- /data[history]/events[1 minute]/data[structure]
+							use_node ITEM_LIST /data[at0002]/events[at0003]/data[at0001]	-- /data[Historia]/events[1 minut]/data[Struktur]
 						}
 					}
-					POINT_EVENT[at0028] occurrences matches {0..1} matches {	-- 5 minute
+					POINT_EVENT[at0028] occurrences matches {0..1} matches {	-- 5 minuter
 						offset matches {
 							DV_DURATION matches {
 								value matches {|PT5M|}
 							}
 						}
 						data matches {
-							use_node ITEM_LIST /data[at0002]/events[at0003]/data[at0001]	-- /data[history]/events[1 minute]/data[structure]
+							use_node ITEM_LIST /data[at0002]/events[at0003]/data[at0001]	-- /data[Historia]/events[1 minut]/data[Struktur]
 						}
 					}
-					POINT_EVENT[at0031] occurrences matches {0..1} matches {	-- 10 minute
+					POINT_EVENT[at0031] occurrences matches {0..1} matches {	-- 10 minutes
 						offset matches {
 							DV_DURATION matches {
 								value matches {|PT10M|}
 							}
 						}
 						data matches {
-							use_node ITEM_LIST /data[at0002]/events[at0003]/data[at0001]	-- /data[history]/events[1 minute]/data[structure]
+							use_node ITEM_LIST /data[at0002]/events[at0003]/data[at0001]	-- /data[Historia]/events[1 minut]/data[Struktur]
 						}
 					}
-					EVENT[at0037] occurrences matches {0..*} matches {	-- Any event
+					EVENT[at0037] occurrences matches {0..*} matches {	-- Vilken händelse som helst
 						data matches {
-							use_node ITEM_LIST /data[at0002]/events[at0003]/data[at0001]	-- /data[history]/events[1 minute]/data[structure]
+							use_node ITEM_LIST /data[at0002]/events[at0003]/data[at0001]	-- /data[Historia]/events[1 minut]/data[Struktur]
 						}
 					}
 				}
 			}
 		}
 		protocol matches {
-			ITEM_LIST[at0029] matches {	-- List
+			ITEM_LIST[at0029] matches {	-- Lista
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0030] occurrences matches {0..1} matches {	-- Notes on measurement
+					ELEMENT[at0030] occurrences matches {0..1} matches {	-- Anmärkningar om mätning
 						value matches {
 							DV_TEXT matches {*}
 						}
@@ -1704,8 +1702,8 @@ ontology
 		["sv"] = <
 			items = <
 				["at0000"] = <
-					text = <"Apgar">
-					description = <"Klinisk värdering som härrör från bedömningen av andningsansträngning, hjärtfrekvens, reflex eller retbarhet, muskeltonus, och hudfärg.">
+					text = <"Apgar Score">
+					description = <"Klinisk värdering av nyfödda barns hälsotillstånd baserad på bedömning av andning, hjärtfrekvens, retbarhet, muskeltonus, och hudfärg.">
 				>
 				["at0001"] = <
 					text = <"Struktur">
@@ -1721,7 +1719,7 @@ ontology
 				>
 				["at0005"] = <
 					text = <"Puls">
-					description = <"Observation av barnets hjärtfrekvens.">
+					description = <"Observation av det nyfödda barnets hjärtfrekvens.">
 				>
 				["at0006"] = <
 					text = <"Obefintlig">
@@ -1729,31 +1727,31 @@ ontology
 				>
 				["at0007"] = <
 					text = <"<100 slag per minut">
-					description = <"Puls mindre än 100 slag per minut.">
+					description = <"Puls lägre än 100 slag per minut.">
 				>
 				["at0008"] = <
 					text = <"≥100 slag per minut">
-					description = <"Puls större än eller lika med 100 slag per minut.">
+					description = <"Puls högre än eller lika med 100 slag per minut.">
 				>
 				["at0009"] = <
 					text = <"Andning">
-					description = <"Observation av barnets andningsansträngning.">
+					description = <"Observation av det nyfödda barnets andning.">
 				>
 				["at0010"] = <
-					text = <"Frånvarande">
+					text = <"Ingen, obefintlig">
 					description = <"Inga ansträngningar att andas.">
 				>
 				["at0011"] = <
-					text = <"Svag eller oregelbunden">
-					description = <"Vissa ansträngningar att andas, röra bröstet.">
+					text = <"Oregelbunden, långsam">
+					description = <"Vissa ansträngningar att andas, rörelse av bröstkorg.">
 				>
 				["at0012"] = <
-					text = <"Normal">
+					text = <"God, skriker">
 					description = <"Andas normalt eller gråter.">
 				>
 				["at0013"] = <
 					text = <"Muskeltonus">
-					description = <"Observation av spädbarnets  muskeltonus.">
+					description = <"Observation av det nyfödda barnets  muskeltonus.">
 				>
 				["at0014"] = <
 					text = <"Obefintlig">
@@ -1761,15 +1759,15 @@ ontology
 				>
 				["at0015"] = <
 					text = <"Armar och ben stela">
-					description = <"Vissa böjning av extremiteter.">
+					description = <"Viss tonus i extremiteter.">
 				>
 				["at0016"] = <
-					text = <" Livlig rörelse">
-					description = <"Normala, kraftfulla rörelser.">
+					text = <"Livlig rörelse">
+					description = <"Normala, livliga rörelser.">
 				>
 				["at0017"] = <
-					text = <"Grimaser">
-					description = <"Observation av svaret från spädbarn för irriterande stimulering, till exempel sugning av orofarynx och nares med en mjuk gummikateter.">
+					text = <"Retbarhet">
+					description = <"Observation av det nyfödda barnets svar på irriterande stimulering, till exempel sugning av orofarynx och nares med en mjuk gummikateter.">
 				>
 				["at0018"] = <
 					text = <"Ingen respons">
@@ -1781,18 +1779,18 @@ ontology
 				>
 				["at0020"] = <
 					text = <"Skriker">
-					description = <"Grimas, nysa, hosta eller drar sig undan vid stimulering.">
+					description = <"Grimaserar, nyser, hostar eller drar sig undan vid stimulering.">
 				>
 				["at0021"] = <
 					text = <"Hudfärg">
-					description = <"Observation av barnets hudfärg.">
+					description = <"Observation av det nyfödda barnets hudfärg.">
 				>
 				["at0022"] = <
 					text = <"Blå/blek över hela kroppen (cyanos)">
 					description = <"Kropp och extremiteter är blå.">
 				>
 				["at0023"] = <
-					text = <"Rosa kropp, blå armar/ben">
+					text = <"Rosa kropp, blå extremiteter">
 					description = <"Kropp är rosa, extremiteter är blå.">
 				>
 				["at0024"] = <
@@ -1801,7 +1799,7 @@ ontology
 				>
 				["at0025"] = <
 					text = <"Total poäng">
-					description = <"Summan av de 5 parametrarna.">
+					description = <"Summan av de fem parametrarna.">
 				>
 				["at0026"] = <
 					text = <"2 minuter">

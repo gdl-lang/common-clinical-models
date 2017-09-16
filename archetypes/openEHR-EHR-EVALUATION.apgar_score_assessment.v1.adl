@@ -2,7 +2,7 @@
 	openEHR-EHR-EVALUATION.apgar_score_assessment.v1
 
 concept
-	[at0000]	-- Apgar score assessment
+	[at0000]	-- Apgar score utvärdering
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -11,6 +11,7 @@ language
 			author = <
 				["name"] = <"Dennis Forslund">
 				["organisation"] = <"Cambio Healthcare Systems">
+				["email"] = <"models@cambiocds.com">
 			>
 		>
 	>
@@ -22,12 +23,28 @@ description
 		["date"] = <"2017-03-12">
 	>
 	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Assessment of score generated in accordance with Apgar Score. ">
+			use = <"To be used for assessment of score generated in accordance with Apgar Score. 
+
+The Apgar score is used as a simple, repeatable method to document the state of newborn infants immediately after birth. The clinical score is derived from assessment of respiratory effort, heart rate, reflex irritability, muscle tone and skin colour. 
+
+The score is recorded at 1, 5 and/or 10 minutes after birth, and further if needed. Score interpretation:
+
+Scores ≥7; reassuring, normal
+Score of 4 to 6; moderately abnormal
+Scores ≤3; critically low, intervention required">
+			keywords = <"newborn", "birth", "infant", "neonate", "apgar", "neonatology", "obstetrics">
+			misuse = <"">
+			copyright = <"Cambio Healthcare Systems">
+		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Utvärdering av poäng genererad i enlighet med Apgar Score.">
 			use = <"Använd för utvärdering av poäng genererad i enlighet med Apgar Score.
 
-Apgar Score är en enkel, repeterbar metod för att dokumentera tillståndet för det nyfödda barnet omedelbart efter födseln. Instrumentet baseras på följande faktorer;
+Apgar Score är en enkel, repeterbar metod för dokumentation av nyfödda barns hälsotillstånd i omedelbar anslutning till födseln. Instrumentet baseras på följande faktorer;
 
 Appearance - hudfärg
 Pulse - puls/hjärtfrekvens
@@ -39,25 +56,9 @@ Undersökning enligt Apgar genomförs 1, 5 och/eller 10 minuter efter födsel oc
 
 ≥7p; normalt
 4-6p; måttligt avvikande
-≤3p; kritiskt låg score, intervention nödvändig
+≤3p; kritiskt låg poäng, intervention nödvändig
 ">
 			keywords = <"nyfödd", "spädbarn", "apgar", "neonatal", "neonatologi", "obstetrik">
-			misuse = <"">
-			copyright = <"Cambio Healthcare Systems">
-		>
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"Assessment of score generated in accordance with Apgar Score. ">
-			use = <"To be used for assessment of score generated in accordance with Apgar Score. 
-
-The Apgar score is used as a simple, repeatable method to document the state of the newborn infant immediately after birth. The clinical score is derived from assessment of respiratory effort, heart rate, reflex irritability, muscle tone and skin colour. 
-
-The score is recorded at 1, 5 and/or 10 minutes after birth, and further if needed. Score interpretation:
-
-Scores ≥7; reassuring, normal
-Score of 4 to 6; moderately abnormal
-Scores ≤3; critically low, intervention required">
-			keywords = <"newborn", "birth", "infant", "neonate", "apgar", "neonatology", "obstetrics">
 			misuse = <"">
 			copyright = <"Cambio Healthcare Systems">
 		>
@@ -72,19 +73,19 @@ Apgar V, Holaday DA, James LS, Weisbrod IM, and Berrien C.  Evaluation of the ne
 Apgar V.  The newborn (Apgar) scoring system.  Pediatr Clin North Am. 1966 Aug;13(3):645-50.
 
 The American Academy of Pediatrics Committee on Fetus and Newborn, The American College of Obstetricians and Gynecologists Committee on Obstetric Practice. The Agpar Score. Pediatrics 2015 Oct; 136 (4): 819-22.">
-		["MD5-CAM-1.0.1"] = <"93EDD52FAD36C829AC1CE17C2012BE50">
+		["MD5-CAM-1.0.1"] = <"DF68B875C69161DC8512FF0A2B7650DB">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Apgar score assessment
+	EVALUATION[at0000] matches {	-- Apgar score utvärdering
 		data matches {
-			ITEM_TREE[at0001] matches {	-- Tree
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Apgar assessment
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Apgar - resultat
 						value matches {
-							0|[local::at0003], 	-- Normal
-							1|[local::at0004], 	-- Moderately abnormal
-							2|[local::at0005]  	-- Critically low, intervention required
+							0|[local::at0003], 	-- Normalt
+							1|[local::at0004], 	-- Måttligt avvikande
+							2|[local::at0005]  	-- Kritiskt - intervention nödvändig
 						}
 					}
 				}
