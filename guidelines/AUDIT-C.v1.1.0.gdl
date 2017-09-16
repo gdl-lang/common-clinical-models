@@ -1,0 +1,207 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"AUDIT-C.v1.1.0">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"AUDIT-C", "AUDIT", "alcohol misuse", "alcohol abuse", "alcohol use disorder", "psychiatry", "primary care", "screening">
+				misuse = <"Only intended for AUDIT-C, not the full version.
+">
+				purpose = <"To screen for alcohol abuse.
+">
+				use = <"Use to screen for alcohol abuse. The AUDIT-C focuses on the level of alcohol consumption and contains the first three questions from the full Alcohol Use Disorders Identification Test (AUDIT) which is a World Health Organization-sponsored guideline. 
+
+- How often do you have a drink containing alcohol?
+- How many drinks containing alcohol do you have on a typical day when you are drinking?
+- How often do you have six or more drinks on one occasion?
+
+The questions each contribute points to the total score which ranges from 0-12.  The total score is interpreted as follows:
+
+Female - ≥3p indicates alcohol misuse
+Male - ≥4p indicates alcohol misuse
+A score of 5p or more is consistent with alcohol abuse and possible liver damage
+ for which a full AUDIT assessment is recommended.
+">
+			>
+			["sv"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"Cambio Healthcare Systems">
+				keywords = <"AUDIT-C", "AUDIT", "alkoholmissbruk", "riskbruk", "missbruk", "beroende", "psykiatri", "primärvård", "screening">
+				misuse = <"Endast avsedd för registrering av AUDIT-C och ej fullständiga AUDIT.
+
+">
+				purpose = <"Att använda som screening för alkoholmissbruk.">
+				use = <"Använd som screening för alkoholmissbruk. AUDIT-C innehåller de tre första frågorna från det fullständiga formuläret Alcohol Use Disorders Identification Test (AUDIT) vilket är ett WHO-finansierat projekt.
+
+- Hur ofta dricker du alkohol?
+- Hur många glas dricker du en typisk dag då du dricker alkohol?
+- Hur ofta dricker du (kvinna) 4 eller (man) 5 glas eller mer vid samma tillfälle?
+
+Vardera fråga bidrar med poäng till totalsumman vilken uppgår till maximalt 12p. Resultatet tolkas enligt:
+
+Kvinna - ≥3p indikerar riskbruk av alkohol
+Man - ≥4p  indikerar riskbruk av alkohol
+5p eller mer är förenligt med alkoholmissbruk och potentiell leverskada.
+">
+			>
+		>
+		lifecycle_state = <"Author draft">
+		original_author = <
+			["date"] = <"2016-12-13">
+			["email"] = <"models@cambiocds.com">
+			["name"] = <"Dennis Forslund">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_contributors = <"Jimmy Axelsson", "Eneimi Allwell-Brown, Cambio Healthcare Systems">
+		other_details = <
+			["references"] = <"Bush K, Kivlahan DR, McDonell MB, Fihn SD, Bradley KA. The AUDIT alcohol consumption questions (AUDIT-C): an effective brief screening test for problem drinking. Ambulatory Care Quality Improvement Project (ACQUIP). Alcohol Use Disorders Identification Test. Arch Intern Med. 1998 Sep 14;158(16):1789-95.
+
+Bradley KA, et. al. AUDIT-C as a brief screen for alcohol misuse in primary care. Alcohol Clin Exp Res. 2007 Jul;31(7):1208-17. Epub 2007 Apr 19.
+">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.audit_c.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0004"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0005]">
+					>
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0006]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0006"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.audit_c.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0010"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0023]">
+					>
+				>
+			>
+			["gt0016"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.basic_demographic.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0017"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0021"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.basic_demographic.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0022"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0015"] = (RULE) <
+				when = <"!fired($gt0015)",...>
+				then = <"$gt0010.magnitude=(($gt0003.value+$gt0004.value)+$gt0005.value)",...>
+				priority = <1>
+			>
+			["gt0018"] = (RULE) <
+				when = <"$gt0017!=null",...>
+				then = <"$gt0022=$gt0017",...>
+				priority = <2>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"AUDIT-C">
+						description = <"Alcohol Use Disorders Identification Test—Consumption (AUDIT-C) is a three-item questionnaire used to screen for alcohol abuse. It is derived from the full (10-question) Alcohol Use Disorders Identification Test (AUDIT). The response to each question is scored 0 (best case), 1, 2, 3, or 4 (worst case), with a maximum possible score of 12. A score of ≥3 points for females and ≥4 points for males indicates alcohol misuse, whereas a score of 5 points or more is consistent with alcohol abuse and possible liver damage for which a full AUDIT assessment is recommended.">
+					>
+					["gt0003"] = (TERM) <
+						text = <"How often do you have a drink containing alcohol?">
+						description = <"Q1 AUDIT Questionnaire">
+					>
+					["gt0004"] = (TERM) <
+						text = <"How many drinks containing alcohol do you have on a typical day when you are drinking?">
+						description = <"Q2 AUDIT Questionnaire">
+					>
+					["gt0005"] = (TERM) <
+						text = <"How often do you have six or more drinks on one occasion?">
+						description = <"Q3 AUDIT Questionnaire">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Total score">
+						description = <"Sum of all factors ">
+					>
+					["gt0015"] = (TERM) <
+						text = <"Calculate total score">
+					>
+					["gt0017"] = (TERM) <
+						text = <"Gender">
+						description = <"The patient's gender.">
+					>
+					["gt0018"] = (TERM) <
+						text = <"Set gender">
+					>
+					["gt0022"] = (TERM) <
+						text = <"Gender">
+						description = <"The patient's gender.">
+					>
+				>
+			>
+			["sv"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"AUDIT-C">
+						description = <"AUDIT-C, utvecklat från fullständiga Alcohol Use Disorders Identification Test (AUDIT), används som screening för alkoholmissbruk. En poäng om ≥3p för kvinnor och ≥4p för män indikerar riskbruk av alkohol medan 5p eller mer är förenligt med alkoholmissbruk och potentiell leverskada.">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Hur ofta dricker du alkohol?">
+						description = <"*(en) Q1 AUDIT Questionnaire">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Hur många glas dricker du en typisk dag då du dricker alkohol?">
+						description = <"*(en) Q2 AUDIT Questionnaire">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Hur ofta dricker du (kvinna) 4 eller (man) 5 glas eller mer vid samma tillfälle?">
+						description = <"*(en) Q3 AUDIT Questionnaire">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Total poäng">
+						description = <"*(en) Sum of all factors ">
+					>
+					["gt0015"] = (TERM) <
+						text = <"Beräkna total poäng">
+					>
+					["gt0017"] = (TERM) <
+						text = <"*(en) Gender">
+						description = <"*(en) The patient's gender.">
+					>
+					["gt0018"] = (TERM) <
+						text = <"*(en) Set male">
+					>
+					["gt0022"] = (TERM) <
+						text = <"*(en) Gender">
+						description = <"*(en) The patient's gender.">
+					>
+				>
+			>
+		>
+	>
+>
