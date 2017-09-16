@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.modified_norton_scale.v1
 
 concept
-	[at0000]	-- Modified norton scale
+	[at0000]	-- Modified Norton Scale
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -32,22 +32,33 @@ description
 		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"The Norton scale was devised in 1960 as an additive scale to facilitate the prediction and prevention of pressure sore development.">
-			use = <"">
+			purpose = <"The Norton scale was devised in 1960 as an additive scale to facilitate the prediction and prevention of pressure sore development. It is used in both normal and modified form.">
+			use = <"Whenever an assessment of risks of acquiring pressure ulcers among new inpatients, especially those who are elderly and/or infirm.
+
+There are 7 questions answered on a range of 1 to 4. These relate to the following 7 aspects:
+
+Mental condition
+Physical activity
+Food intake
+Fluid intake
+Incontinence
+Physical condition
+
+The individual score ranges from 1 to 4 with a higher score relating to a lower risk and visa versa so the maximum score of 28 indicates a healthy patient whilst a minimum of 7 indicates a seriously poor score.">
 			keywords = <"Modified Norton Scale", "mNs", "ulcer", "pressure", "wound", "sore", "Senior Alert">
-			misuse = <"">
-			copyright = <"">
+			misuse = <"Should be used as a risk identificaiton tool only. Not diagnostic on its own.">
+			copyright = <"© Cambio Healthcare Systems">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
-	other_contributors = <>
+	other_contributors = <"Syeeda S Farruque", ...>
 	other_details = <
-		["references"] = <"Ek AC, Unosson M, Bjurulf P. The modified Norton scale and the nutritional state. Scandinavian Journal of Caring Sciences. 1989 Dec 1;3(4):183-7.">
-		["MD5-CAM-1.0.1"] = <"F57EA0138D791BB4BAC9A2F65E79C397">
+		["references"] = <"Ref.1: Ek AC, Unosson M, Bjurulf P. The modified Norton scale and the nutritional state. Scandinavian Journal of Caring Sciences. 1989 Dec 1;3(4):183-7.">
+		["MD5-CAM-1.0.1"] = <"CA1F3525E5EB5361251814BB17349283">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Modified norton scale
+	OBSERVATION[at0000] matches {	-- Modified Norton Scale
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
@@ -57,7 +68,7 @@ definition
 								items cardinality matches {0..*; unordered} matches {
 									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Mental condition
 										value matches {
-											1|[local::at0005], 	-- No contact
+											1|[local::at0005], 	-- Non responsive
 											2|[local::at0006], 	-- Cannot answer adequately
 											3|[local::at0007], 	-- Occasionaly confused
 											4|[local::at0008]  	-- Fully oriented
@@ -84,7 +95,7 @@ definition
 											1|[local::at0020], 	-- < 1/2 portion
 											2|[local::at0021], 	-- 1/2 portion and/or equivalent
 											3|[local::at0022], 	-- 3/4 portion and/or equivalent
-											4|[local::at0023]  	-- 1 portion and/or equivalent
+											4|[local::at0023]  	-- Normal portion and/or equivalent
 										}
 									}
 									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Fluid intake
@@ -114,8 +125,13 @@ definition
 									ELEMENT[at0039] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											DV_COUNT matches {
-												magnitude matches {|>=0|}
+												magnitude matches {|0..28|}
 											}
+										}
+									}
+									ELEMENT[at0047] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
 										}
 									}
 								}
@@ -132,8 +148,8 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Modified norton scale">
-					description = <"Modified norton scale">
+					text = <"Modified Norton Scale">
+					description = <"Modified Norton Scale (MNS) is a special instrument designed for risk assessment in order to evaluate if a person is at risk for developing pressure ulcers. The maximum total score is 28 and the minimum is 7, where lower scores mean a greater risk for developing pressure ulcers. Note that the modified Norton scale should be used as a complement to clinical judgment.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -149,10 +165,10 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Mental condition">
-					description = <"*">
+					description = <"Mental status">
 				>
 				["at0005"] = <
-					text = <"No contact">
+					text = <"Non responsive">
 					description = <"*">
 				>
 				["at0006"] = <
@@ -169,7 +185,7 @@ ontology
 				>
 				["at0009"] = <
 					text = <"Physical activity">
-					description = <"*">
+					description = <"Level of physical activity">
 				>
 				["at0010"] = <
 					text = <"Bedridden">
@@ -189,7 +205,7 @@ ontology
 				>
 				["at0014"] = <
 					text = <"Mobility">
-					description = <"*">
+					description = <"Degree of mobility">
 				>
 				["at0015"] = <
 					text = <"Immobile">
@@ -209,7 +225,7 @@ ontology
 				>
 				["at0019"] = <
 					text = <"Food intake">
-					description = <"*">
+					description = <"Amount of food intake">
 				>
 				["at0020"] = <
 					text = <"< 1/2 portion">
@@ -224,12 +240,12 @@ ontology
 					description = <"*">
 				>
 				["at0023"] = <
-					text = <"1 portion and/or equivalent">
+					text = <"Normal portion and/or equivalent">
 					description = <"*">
 				>
 				["at0024"] = <
 					text = <"Fluid intake">
-					description = <"*">
+					description = <"Amount of fluid intake">
 				>
 				["at0025"] = <
 					text = <"< 500 ml/24hr">
@@ -249,7 +265,7 @@ ontology
 				>
 				["at0029"] = <
 					text = <"Incontinence">
-					description = <"*">
+					description = <"Any incontinence">
 				>
 				["at0030"] = <
 					text = <"Urine and feces">
@@ -269,7 +285,7 @@ ontology
 				>
 				["at0034"] = <
 					text = <"Physical condition">
-					description = <"*">
+					description = <"Physical status">
 				>
 				["at0035"] = <
 					text = <"Very poor">
@@ -289,15 +305,19 @@ ontology
 				>
 				["at0039"] = <
 					text = <"Total score">
-					description = <"*">
+					description = <"Sum of the scores: range from 0 to 28 where 0 relates to Not Available N/A">
+				>
+				["at0047"] = <
+					text = <"Comment">
+					description = <"Additional information about this recording">
 				>
 			>
 		>
 		["sv"] = <
 			items = <
 				["at0000"] = <
-					text = <"Modifierad Nortonskala">
-					description = <"Modifierad Nortonskala">
+					text = <"*Modified norton scale(en)">
+					description = <"*Modified norton scale (MNS): is a special instrument designed for risk assessment in order to evaluate if a person is at risk for developing pressure ulcers. The maximum total score is 28 and the minimum is 7, where lower scores mean a greater risk for developing pressure ulcers. Note that the modified Norton scale should be used as a complement to clinical judgment.(en)">
 				>
 				["at0001"] = <
 					text = <"*Event Series(en)">
@@ -453,8 +473,12 @@ ontology
 					description = <"*">
 				>
 				["at0039"] = <
-					text = <"Poäng">
-					description = <"*">
+					text = <"*Total score(en)">
+					description = <"*Sum of the scores: range from 0 to 28 where 0 relates to Not Available N/A(en)">
+				>
+				["at0047"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
 				>
 			>
 		>

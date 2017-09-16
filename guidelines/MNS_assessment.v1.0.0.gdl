@@ -1,0 +1,109 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"MNS_assessment.v1.0.0">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"modified Norton scale", "ulcer", "wound", "pressure sore">
+				misuse = <"Do not use as a substitute for proper clinical judgement">
+				purpose = <"To assess the Modified Norton Scale score and determine a patient's risk of developing pressure ulcers.">
+				use = <"Assessment of the modified Norton scale score into:
+≤9 = very high risk
+10-14 = high risk
+15-19 = intermediate risk
+≥20 = low risk">
+			>
+		>
+		lifecycle_state = <"Author draft">
+		original_author = <
+			["date"] = <"2017-09-16">
+			["email"] = <"models@cambiocds.com">
+			["name"] = <"Eneimi Allwell-Brown">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"Ek AC, Unosson M, Bjurulf P. The modified Norton scale and the nutritional state. Scandinavian Journal of Caring Sciences. 1989 Dec 1;3(4):183-7.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.modified_norton_scale.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0039]">
+					>
+				>
+			>
+			["gt0004"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.modified_norton_scale_assessment.v0">
+				domain = <"CDS">
+				elements = <
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0006"] = (RULE) <
+				when = <"$gt0003<=9",...>
+				then = <"$gt0005=local::at0006|Very high risk|",...>
+				priority = <4>
+			>
+			["gt0007"] = (RULE) <
+				when = <"$gt0003<=14", "$gt0003>=10">
+				then = <"$gt0005=local::at0005|High risk|",...>
+				priority = <3>
+			>
+			["gt0008"] = (RULE) <
+				when = <"$gt0003<=19", "$gt0003>=15">
+				then = <"$gt0005=local::at0004|Intermediate risk|",...>
+				priority = <2>
+			>
+			["gt0009"] = (RULE) <
+				when = <"$gt0003>=20",...>
+				then = <"$gt0005=local::at0003|Low risk|",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Modified Norton Scale (MNS) Assessment">
+						description = <"Modified Norton Scale (MNS) is a risk assessment tool to evaluate a person's risk of developing pressure ulcers. It assesses 7 mental and physical variables, each with a possible response scored 1 (worst possible), 2, 3, or 4 (best possible) for a maximum possible total score of 28 and a minimum of 7. Lower scores mean a greater risk for developing pressure ulcers. Patients with a total score of ≤20 are considered to be at risk of developing pressure sores. Note that the Modified Norton Scale should be used as a complement to clinical judgment.">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Total score">
+						description = <"Sum of the scores: range from 0 to 28 where 0 relates to Not Available N/A">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Risk assessment">
+						description = <"Risk of developing a pressure ulcer">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Set very high risk">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Set high risk">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Set intermediate risk">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Set low risk">
+					>
+				>
+			>
+		>
+	>
+>

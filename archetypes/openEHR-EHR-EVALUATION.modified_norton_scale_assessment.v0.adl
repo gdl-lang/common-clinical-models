@@ -1,0 +1,103 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.modified_norton_scale_assessment.v0
+
+concept
+	[at0000]	-- Modified Norton Scale Assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Eneimi Allwell-Brown">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-09-16">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess the Modified Norton Scale score and determine a patient's risk of developing pressure ulcers">
+			use = <"Assessment of the modified Norton scale score into:
+≤9 = very high risk
+10-14 = high risk
+15-19 = intermediate risk
+≥20 = low risk">
+			keywords = <"modified Norton scale", "ulcer", "wound", "pressure sore">
+			misuse = <"Do not use as a substitute for proper clinical judgement">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ek AC, Unosson M, Bjurulf P. The modified Norton scale and the nutritional state. Scandinavian Journal of Caring Sciences. 1989 Dec 1;3(4):183-7.">
+		["MD5-CAM-1.0.1"] = <"FA7F11ACBD3A2946B298F812BCD7F78D">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Modified Norton Scale Assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Risk assessment
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0003, 	-- Low risk
+									at0004, 	-- Intermediate risk
+									at0005, 	-- High risk
+									at0006; 	-- Very high risk
+									at0003]	-- assumed value
+								}
+							}
+						}
+					}
+					ELEMENT[at0007] occurrences matches {0..1} matches {	-- Comment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Modified Norton Scale Assessment">
+					description = <"Modified Norton Scale (MNS) is a risk assessment tool to evaluate a person's risk of developing pressure ulcers. It assesses 7 mental and physical variables, each with a possible response scored 1 (worst possible), 2, 3, or 4 (best possible) for a maximum total score of 28 and a minimum of 7. Lower scores mean a greater risk for developing pressure ulcers. Patients with a total score of ≤9 = very high risk, 10-14 = high risk,15-19 = intermediate risk and ≥20 = low risk. Note that the Modified Norton Scale should be used as a complement to clinical judgment.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Risk assessment">
+					description = <"Risk of developing a pressure ulcer">
+				>
+				["at0003"] = <
+					text = <"Low risk">
+					description = <"≥20 points">
+				>
+				["at0004"] = <
+					text = <"Intermediate risk">
+					description = <"15-19 points">
+				>
+				["at0005"] = <
+					text = <"High risk">
+					description = <"10-14 points">
+				>
+				["at0006"] = <
+					text = <"Very high risk">
+					description = <"≤9 points">
+				>
+				["at0007"] = <
+					text = <"Comment">
+					description = <"Additional information about this recording">
+				>
+			>
+		>
+	>
