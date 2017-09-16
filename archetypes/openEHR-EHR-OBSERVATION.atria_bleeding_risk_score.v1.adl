@@ -22,29 +22,6 @@ description
 		["date"] = <"2017-02-13">
 	>
 	details = <
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"Att hos patienter med förmaksflimmer uppskatta risken för warfarin-associerad blödning.">
-			use = <"Att registrera data i enlighet med Anticoagulation and Risk Factors in Atrial Fibrillation Score (ATRIA). Instrumentet baseras på följande faktorer:
-
-- Anemi
-- Svår njursjukdom (eGFR <30 ml/min alternativ dialys)
-- Ålder ≥75 år
-- Tidigare blödning
-- Hypertoni
-
-Resultatet uppgår till maximalt 10p, och tolkas med avseende på risk för warfarin-associerad blödning enligt:
-<4p - låg risk (0,8%)
-4p - mellanrisk (2,6%)
->4p - hög risk (5,8%)
-
-Utfallet definieras som blödning med dödlig utgång, behov av minst två enheter blodtransfusion eller blödning i kritisk anatomisk lokal såsom intrakraniellt eller retroperitonealt.
-
-Instrumentet kan användas som stöd för beslut kring huruvida behandling med warfarin är lämplig samt utvärdera behandling med antikoagulantia hos patienter med förmaksflimmer. Utvärdering av poängen görs med openEHR-EHR-EVALUATION.atria_bleeding_risk.v1.">
-			keywords = <"antikoagulantia", "warfarin", "waran", "blödning", "blödningsrisk", "kardiologi", "förmaksflimmer">
-			misuse = <"Endast avsedd för patienter med förmaksflimmer.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"Determine risk of warfarin-associated hemorrhage in individuals with atrial fibrillation.">
@@ -62,6 +39,29 @@ The score is used in the determination of whether to commence warfarin anticoagu
 			misuse = <"Do not use if the patient does not have atrial fibrillation.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att hos patienter med förmaksflimmer uppskatta risken för warfarin-associerad blödning.">
+			use = <"Använd för registrering av data i enlighet med Anticoagulation and Risk Factors in Atrial Fibrillation Score (ATRIA). Instrumentet baseras på förekomst av följande faktorer:
+
+- Anemi
+- Svår njursjukdom (eGFR <30 ml/min alternativt dialys)
+- Ålder ≥75 år
+- Tidigare blödning
+- Hypertoni
+
+Resultatet uppgår till maximalt 10p, och tolkas med avseende på risk för warfarin-associerad blödning enligt:
+<4p - låg risk (0,8%)
+4p - mellanrisk (2,6%)
+>4p - hög risk (5,8%)
+
+Utfallet definieras som blödning med dödlig utgång, behov av minst två enheter blodtransfusion eller blödning i kritisk anatomisk lokal såsom intrakraniellt eller retroperitonealt.
+
+Instrumentet kan användas som stöd för beslut kring huruvida behandling med warfarin är lämplig samt för att utvärdera behandling med antikoagulantia hos patienter med förmaksflimmer. Utvärdering av poängen görs med openEHR-EHR-EVALUATION.atria_bleeding_risk.v1.">
+			keywords = <"antikoagulantia", "warfarin", "waran", "blödning", "blödningsrisk", "kardiologi", "förmaksflimmer">
+			misuse = <"Endast avsedd för patienter med förmaksflimmer.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -77,50 +77,50 @@ Roldán V, Marín F, Fernández H, Manzano-Fernandez S, Gallego P, Valdés M, Vi
 definition
 	OBSERVATION[at0000] matches {	-- ATRIA bleeding risk score
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Anemia
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Anemi
 										value matches {
-											0|[local::at0019], 	-- No
-											3|[local::at0020]  	-- Yes
+											0|[local::at0019], 	-- Nej
+											3|[local::at0020]  	-- Ja
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Severe renal disease
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Svår njursjukdom
 										value matches {
-											0|[local::at0017], 	-- No
-											3|[local::at0018]  	-- Yes
+											0|[local::at0017], 	-- Nej
+											3|[local::at0018]  	-- Ja
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Age ≥75 years
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Ålder ≥75 år
 										value matches {
-											0|[local::at0015], 	-- No
-											2|[local::at0016]  	-- Yes
+											0|[local::at0015], 	-- Nej
+											2|[local::at0016]  	-- Ja
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Prior hemorrhage diagnosis
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Tidigare blödning
 										value matches {
-											0|[local::at0013], 	-- No
-											1|[local::at0014]  	-- Yes
+											0|[local::at0013], 	-- Nej
+											1|[local::at0014]  	-- Ja
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- History of hypertension
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Hypertoni
 										value matches {
-											0|[local::at0011], 	-- No
-											1|[local::at0012]  	-- Yes
+											0|[local::at0011], 	-- Nej
+											1|[local::at0012]  	-- Ja
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Resultat
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..10|}
 											}
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
