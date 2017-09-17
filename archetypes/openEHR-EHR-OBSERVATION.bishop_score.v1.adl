@@ -22,27 +22,6 @@ description
 		["date"] = <"2017-03-17">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To predict need for induction of labor.">
-			use = <"Use to predict need for induction of labor.
-
-The Bishop Score is based on five parameters:
-
-Dilation - dilation of the cervix (0-3p).
-Effacement - how thin the cervix is (0-3p).
-Fetal station - the position of the fetus' head in relation to spinae ishiadica (0-3p).
-Position - position of the cervix (0-2p).
-Consistency - consistency of the cervix (0-2p).
-
-Thus the maximum score is 13p. Score interpretation:
-≤5p - labor is unlikely to commence without induction
-6-7p - indeterminate group - use clinical judgment
-≥8p - labor is likely to commence spontaneously, making induction unnecessary">
-			keywords = <"Bishop Score", "obstetrics", "induction", "labor">
-			misuse = <"The result may vary depending of weeks of gestation - the Bishop Score should only be used as support to overall clinical assessment. ">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att bedöma behov av inducerad förlossning.">
@@ -65,6 +44,27 @@ Maximal poäng uppgår till 13p, och resultatet tolkas enligt:
 			misuse = <"Resultatet kan variera beroende på aktuell graviditetsvecka - Bishop Score ska endast användas som del i fullständig klinisk bedömning.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To predict need for induction of labor.">
+			use = <"Use to predict need for induction of labor.
+
+The Bishop Score is based on five parameters:
+
+Dilation - dilation of the cervix (0-3p).
+Effacement - how thin the cervix is (0-3p).
+Fetal station - the position of the fetus' head in relation to spinae ishiadica (0-3p).
+Position - position of the cervix (0-2p).
+Consistency - consistency of the cervix (0-2p).
+
+Thus the maximum score is 13p. Score interpretation:
+≤5p - labor is unlikely to commence without induction
+6-7p - indeterminate group; use clinical judgment
+≥8p - labor is likely to commence spontaneously, making induction unnecessary">
+			keywords = <"Bishop Score", "obstetrics", "induction", "labor">
+			misuse = <"The result may vary depending of weeks of gestation - the Bishop Score should only be used as support to overall clinical assessment. ">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <"Eneimi Allwell-Brown, Cambio Healthcare Systems", ...>
@@ -72,40 +72,40 @@ Maximal poäng uppgår till 13p, och resultatet tolkas enligt:
 		["references"] = <"Bishop EH. Pelvic scoring for elective induction. Obstet Gynecol 1964;24:266–8.
 
 Newman RB, Goldenberg RL, Iams JD, Meis PJ, Mercer BM, Moawad AH, et al. Preterm prediction study: comparison of the cervical score and Bishop score for prediction of spontaneous preterm delivery. Obstet Gynecol. 2008;112(3):508–515.">
-		["MD5-CAM-1.0.1"] = <"4238CCE94CDFEC0E6D180C415F9C4E4B">
+		["MD5-CAM-1.0.1"] = <"AA8C65585AE798DB850FF31C2D1BE7CC">
 	>
 
 definition
 	OBSERVATION[at0000] matches {	-- Bishop Score
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Dilation
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Cervixdilatation
 										value matches {
-											0|[local::at0010], 	-- Closed
+											0|[local::at0010], 	-- Sluten
 											1|[local::at0011], 	-- 1-2 cm
 											2|[local::at0012], 	-- 3-4 cm
 											3|[local::at0013]  	-- ≥5 cm
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Effacement
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Utplåning
 										value matches {
 											0|[local::at0014], 	-- 0-30 %
 											1|[local::at0015], 	-- 40-50 %
 											2|[local::at0016], 	-- 60-70 %
-											3|[local::at0017]  	-- ≥80%
+											3|[local::at0017]  	-- ≥80 %
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Fetal station
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Station ffd
 										value matches {
-											0|[local::at0018], 	-- -3
-											1|[local::at0019], 	-- -2
-											2|[local::at0020], 	-- -1, 0
-											3|[local::at0021]  	-- +1, +2
+											0|[local::at0018], 	-- -3, ovan spinae
+											1|[local::at0019], 	-- -2, ovan spinae
+											2|[local::at0020], 	-- -1, 0, ovan spinae
+											3|[local::at0021]  	-- +1, +2, nedom spinae
 										}
 									}
 									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Position
@@ -115,11 +115,11 @@ definition
 											2|[local::at0024]  	-- Anterior
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Consistency
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Konsistens
 										value matches {
-											0|[local::at0025], 	-- Firm
+											0|[local::at0025], 	-- Fast
 											1|[local::at0026], 	-- Medium
-											2|[local::at0027]  	-- Soft
+											2|[local::at0027]  	-- Mjuk
 										}
 									}
 									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Bishop Score
@@ -127,7 +127,7 @@ definition
 											DV_COUNT matches {*}
 										}
 									}
-									ELEMENT[at0029] occurrences matches {0..1} matches {	-- Comment
+									ELEMENT[at0029] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -174,7 +174,7 @@ ontology
 				>
 				["at0006"] = <
 					text = <"Fetal station">
-					description = <"The position of the fetus' head in relation to the ischial spines.">
+					description = <"The position of the fetus' head in relation to the ischial spines. Negative numbers indicate a position above the ischial spines. ">
 				>
 				["at0007"] = <
 					text = <"Position">
@@ -221,19 +221,19 @@ ontology
 					description = <"*">
 				>
 				["at0018"] = <
-					text = <"-3">
+					text = <"-3, above spines">
 					description = <"*">
 				>
 				["at0019"] = <
-					text = <"-2">
+					text = <"-2, above spines">
 					description = <"*">
 				>
 				["at0020"] = <
-					text = <"-1, 0">
+					text = <"-1, 0, above spines">
 					description = <"*">
 				>
 				["at0021"] = <
-					text = <"+1, +2">
+					text = <"+1, +2, below spines">
 					description = <"*">
 				>
 				["at0022"] = <
@@ -298,7 +298,7 @@ ontology
 				>
 				["at0006"] = <
 					text = <"Station ffd">
-					description = <"Position av föregående fosterdel i relation till spinae ishiadica.">
+					description = <"Position av föregående fosterdel i relation till spinae ishiadica. Negativa ">
 				>
 				["at0007"] = <
 					text = <"Position">
@@ -345,19 +345,19 @@ ontology
 					description = <"*">
 				>
 				["at0018"] = <
-					text = <"-3">
+					text = <"-3, ovan spinae">
 					description = <"*">
 				>
 				["at0019"] = <
-					text = <"-2">
+					text = <"-2, ovan spinae">
 					description = <"*">
 				>
 				["at0020"] = <
-					text = <"-1, 0">
+					text = <"-1, 0, ovan spinae">
 					description = <"*">
 				>
 				["at0021"] = <
-					text = <"+1, +2">
+					text = <"+1, +2, nedom spinae">
 					description = <"*">
 				>
 				["at0022"] = <
@@ -389,8 +389,8 @@ ontology
 					description = <"@ internal @">
 				>
 				["at0029"] = <
-					text = <"Komment">
-					description = <"Andra information om den här dokumentering.">
+					text = <"Kommentar">
+					description = <"">
 				>
 			>
 		>
