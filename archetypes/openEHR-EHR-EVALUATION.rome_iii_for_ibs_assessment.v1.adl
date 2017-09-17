@@ -2,9 +2,19 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.rome_iii_for_ibs_assessment.v1
 
 concept
-	[at0000]	-- Rome iii for ibs assessment
+	[at0000]	-- ROME III för IBS - utvärdering
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["email"] = <"models@cambiocds.com">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -32,6 +42,20 @@ Therefore, if any 2 or more of the 3 above criteria are fulfilled, the patient m
 			misuse = <"As there is no gold standard for the assessment of IBS, this tool should be accompanied by a full clinical work-up and should therefore, not be relied upon alone to make a diagnosis.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att i brist på golden standard understödja diagnostik vid misstänkt Irritable Bowel Syndrome (IBS). ">
+			use = <"Förutsättningar för att använda verktyget är att patienten genomgått utredning för återkommande buksmärta eller obehag, och att dessa symtom förekommit minst tre dagar per månad under de senaste tolv veckorna. Symtomdebut för minst sex månader sedan är obligat för diagnos.
+
+Om patienten uppfyller minst två av följande kriterier, är det förenligt med diagnosen IBS i enlighet med ROME III:
+
+- Förbättring med tarmtömning
+- Association med förändrad avföringsfrekvens 
+- Association med förändrad avföringskonsistens ">
+			keywords = <"IBS", "irritable bowel syndrome", "ROME III", "primärvård", "colon irritable">
+			misuse = <"För diagnos krävs att andra orsaker uteslutits; först därefter är bruk av detta verktyg tillämpligt.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -39,18 +63,18 @@ Therefore, if any 2 or more of the 3 above criteria are fulfilled, the patient m
 		["references"] = <"Ref. 1: Drossman DA. The functional gastrointestinal disorders and the Rome II process. Gut. 1999;45(suppl II):II1–II5
 
 Ref. 2: Ford AC, et. al. Validation of the Rome III criteria for the diagnosis of irritable bowel syndrome in secondary care. Gastroenterology. 145: 1262–70.e1. Dec 2013.doi:10.1053/j.gastro.2013.08.048. PMID 2399420">
-		["MD5-CAM-1.0.1"] = <"76C67822063220B0112A8C9076AFD11E">
+		["MD5-CAM-1.0.1"] = <"8426BAC36263E4E6D7AB4A81B2F191B0">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Rome iii for ibs assessment
+	EVALUATION[at0000] matches {	-- ROME III för IBS - utvärdering
 		data matches {
-			ITEM_TREE[at0001] matches {	-- Tree
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Are ≥2 of the criteria for suspected IBS fulfilled?
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Är minst två kriterier uppfyllda?
 						value matches {
-							0|[local::at0003], 	-- Patient does not meet the criteria for an IBS diagnosis
-							1|[local::at0004]  	-- Patient meets the criteria for an IBS diagnosis
+							0|[local::at0003], 	-- Nej, patienten uppfyller inte minst två kriterier
+							1|[local::at0004]  	-- Ja, patienten uppfyller minst två kriterier förenliga med diagnosen IBS
 						}
 					}
 				}
@@ -82,6 +106,30 @@ Onset of symptoms 6 months prior to the diagnosis of IBS is required to fulfill 
 				["at0004"] = <
 					text = <"Patient meets the criteria for an IBS diagnosis">
 					description = <"Yes">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"ROME III för IBS - utvärdering">
+					description = <"ROME III utgör diagnostiska kriterier för Irritable Bowel Syndrome (IBS).">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Är minst två kriterier uppfyllda?">
+					description = <"Förutsättningar för att använda verktyget är att patienten genomgått utredning för återkommande buksmärta eller obehag, och att dessa symtom förekommit minst tre dagar per månad under de senaste tolv veckorna. Symtomdebut för minst sex månader sedan är obligat för diagnos.">
+				>
+				["at0003"] = <
+					text = <"Nej, patienten uppfyller inte minst två kriterier">
+					description = <"Nej">
+				>
+				["at0004"] = <
+					text = <"Ja, patienten uppfyller minst två kriterier förenliga med diagnosen IBS">
+					description = <"Ja">
 				>
 			>
 		>
