@@ -1,0 +1,171 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.gleason_assessment.v1
+
+concept
+	[at0000]	-- Gleason assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-09-10">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"This tool helps to stage prostate cancer based on biopsy findings.">
+			use = <"The score interpretation uses both the total sum of the scores of the Primary and Secondary grades and then reporting on the score issued from the Tertiary or minor score in addition to this score.
+
+Grading System:
+
+Gleason Score 	Prognostic Grade Group
+Gleason score ≤ 6: 	                   I
+Gleason score 3 + 4 = 7: 	II
+Gleason score 4 + 3 = 7: 	III
+Gleason score 8: 	                   IV
+Gleason score 9-10: 	                   V
+
+">
+			keywords = <"prostate cancer", "Gleason score">
+			misuse = <"Do not use for diagnostic purposes without also considering other evidence">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Pierorazio PM, Walsh PC, Partin AW, Epstein JI. Prognostic Gleason grade grouping: data based on the modified Gleason scoring system. BJU international. 2013;111(5):753-760. doi:10.1111/j.1464-410X.2012.11611.x.">
+		["MD5-CAM-1.0.1"] = <"CC102D534A6F5EF7A0B13EF77B36B09A">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Gleason assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Prognostic Grade Group
+						value matches {
+							0|[local::at0003], 	-- Grade I
+							1|[local::at0004], 	-- Grade II
+							2|[local::at0005], 	-- Grade III
+							3|[local::at0006], 	-- Grade IV
+							4|[local::at0007]  	-- Grade V
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Tertiary Grade score
+						value matches {
+							0|[local::at0009], 	-- With Tertiary Grade score 1
+							1|[local::at0010], 	-- With Tertiary Grade score 2
+							2|[local::at0011], 	-- With Tertiary Grade score 3
+							3|[local::at0012], 	-- With Tertiary Grade score 4
+							4|[local::at0013]  	-- With Tertiary Grade score 5
+						}
+					}
+					ELEMENT[at0014] occurrences matches {0..1} matches {	-- Prognostic Grade group management
+						value matches {
+							0|[local::at0015], 	-- Prognostic grade group I - Unlikely severe cancer is present. Consider close monitoring.
+							1|[local::at0016], 	-- Prognostic grade group I - 97.1 and 98.8% remission of tumor within 2 years of diagnosis.
+							2|[local::at0017], 	-- Prognostic grade group II - 90.6 and 93.6% remission of tumor within 2 years of diagnosis.
+							3|[local::at0018], 	-- Prognostic grade group III - < 90.6% remission of tumor within 2 years of diagnosis.
+							4|[local::at0019], 	-- Prognostic grade group IV - 70.9 - 73.7% remission of tumor within 2 years of diagnosis.
+							5|[local::at0020]  	-- Prognostic grade group V - 66.7 - 58.5% remission of tumor within 2 years of diagnosis.
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Gleason assessment">
+					description = <"Provides prognostic information on prostate cancer based on microscopic tumor appearance.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Prognostic Grade Group">
+					description = <"Prognostic Grade Group. There are 5 grades I to V">
+				>
+				["at0003"] = <
+					text = <"Grade I">
+					description = <"Score ≤ 6">
+				>
+				["at0004"] = <
+					text = <"Grade II">
+					description = <"Score 3 + 4 = 7">
+				>
+				["at0005"] = <
+					text = <"Grade III">
+					description = <"Score 4 + 3 = 7">
+				>
+				["at0006"] = <
+					text = <"Grade IV">
+					description = <"Score 8">
+				>
+				["at0007"] = <
+					text = <"Grade V">
+					description = <"Score 9-10">
+				>
+				["at0008"] = <
+					text = <"Tertiary Grade score">
+					description = <"Tertiary Grade score. Reported separately.">
+				>
+				["at0009"] = <
+					text = <"With Tertiary Grade score 1">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"With Tertiary Grade score 2">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"With Tertiary Grade score 3">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"With Tertiary Grade score 4">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"With Tertiary Grade score 5">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Prognostic Grade group management">
+					description = <"Prognostic Grade group management">
+				>
+				["at0015"] = <
+					text = <"Prognostic grade group I - Unlikely severe cancer is present. Consider close monitoring.">
+					description = <"Score < 6">
+				>
+				["at0016"] = <
+					text = <"Prognostic grade group I - 97.1 and 98.8% remission of tumor within 2 years of diagnosis.">
+					description = <"Score 6">
+				>
+				["at0017"] = <
+					text = <"Prognostic grade group II - 90.6 and 93.6% remission of tumor within 2 years of diagnosis.">
+					description = <"Score 3 + 4 = 7">
+				>
+				["at0018"] = <
+					text = <"Prognostic grade group III - < 90.6% remission of tumor within 2 years of diagnosis.">
+					description = <"Score 4 + 3 = 7">
+				>
+				["at0019"] = <
+					text = <"Prognostic grade group IV - 70.9 - 73.7% remission of tumor within 2 years of diagnosis.">
+					description = <"Score 8">
+				>
+				["at0020"] = <
+					text = <"Prognostic grade group V - 66.7 - 58.5% remission of tumor within 2 years of diagnosis.">
+					description = <"Score 9-10">
+				>
+			>
+		>
+	>
