@@ -50,7 +50,7 @@ language
 			language = <[ISO_639-1::sv]>
 			author = <
 				["name"] = <"Oskar Nielsen">
-				["email"] = <"oskar.nielsen@mail.com">
+				["email"] = <"models@cambiocds.com">
 				["organisation"] = <"Cambio Healthcare Systems">
 			>
 		>
@@ -169,16 +169,18 @@ Em crianças e adolescentes, o IMC deve ser avaliada por meio de tabelas de refe
 		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
-			purpose = <"För att registera Body Mass Index (BMI) hos en individ. Body Mass Index är ett beräknat förhållande som beskriver hur en individs kroppsvikt förhåller sig till det som betraktas som normalt, eller önskvärt, baserat på individens höjd.">
-			use = <"Används för att registera Body Mass Index (BMI) hos både vuxna och barn.
+			purpose = <"För att registera en individs Body Mass Index (BMI). 
 
-Används för att mata in Body Mass Index antingen manuellt (dvs. beräknas och matas in direkt av läkaren), eller automatiskt (dvs. beräkning och inträde sker automatiskt genom ett program som bygger på separata höjd och viktmätningar ).
+Body Mass Index är ett beräknat förhållande som beskriver hur en individs kroppsvikt förhåller sig till det som betraktas som normalt, eller önskvärt, baserat på individens längd.">
+			use = <"Använd för att registera Body Mass Index (BMI) hos både vuxna och barn.
 
-Formler: Body Mass Index är vanligtvis beräknad som vikt (kg) / [längd (m) i kvadrat]. Detta är den antagna formeln om inte annat anges i 'Formel' elementet i protokollet. Alternativt uppskattas Body Mass Index genom användandet av pounds och inches: Vikt (lb) / [höjd (i) i kvadrat] x 703 (med uns (oz) och fraktioner ändras till decimala värden).
+Använd för att mata in Body Mass Index antingen manuellt (dvs. beräknas av läkare som direkt fyller i resulterande BMI), eller automatiskt (dvs. beräkning och registrering sker automatiskt genom ett program som bygger på separata längd- och viktmätningar).
 
-I vissa situationer kan Body Mass Index formeln korrigeras t.ex. för användning till indvider som genomgått amputation - denna specifika formel kan registreras som en del av protokollet. Alternativt kan den gemensamma Body Mass Index beräkningen användas för amputerade och liknande skador eller handikapp om du använder justerad höjd och/eller justerad vikt, i förekommande fall, snarare än faktisk längd och vikt. Se openEHR-EHR-OBSERVATION.height-adjusted för justerad höjd/längd och openEHR-EHR-OBSERVATION.body_weight adjusted för justerad kroppsvikt.
+Formler: Body Mass Index beräknas vanligen som vikt (kg) / [längd (m) i kvadrat]. Detta är den antagna formeln om inte annat anges i 'Formel'-elementet i protokollet. Alternativt uppskattas Body Mass Index genom användandet av pund (pounds, lb) och tum (inches, in): Vikt (lb) / [längd(in) i kvadrat] x 703 (med uns (oz) och fraktioner justerade till decimala värden).
 
-Se WHO referens för justerad höjd / längd för Body Mass Index i pediatrik. Hos barn och ungdomar behöver BMI bedömas med hjälp av åldersrelaterade referensdiagram.">
+I vissa situationer kan Body Mass Index-formeln korrigeras, t.ex. för individer som genomgått amputation - denna specifika formel kan registreras som en del av protokollet. Alternativt kan den gemensamma Body Mass Index-beräkningen användas för amputerade och liknande skador eller handikapp om du använder justerad längd och/eller justerad vikt, i förekommande fall, snarare än faktisk längd och vikt. Se openEHR-EHR-OBSERVATION.height-adjusted för justerad höjd/längd och openEHR-EHR-OBSERVATION.body_weight adjusted för justerad kroppsvikt.
+
+Se WHO-referens för justerad höjd / längd för Body Mass Index i pediatrik. Hos barn och ungdomar behöver BMI bedömas med hjälp av åldersrelaterade referensdiagram.">
 			keywords = <"övervikt", "fetma", "bulimi", "undernäring", "anorexia", "index", "body mass", "BMI">
 			misuse = <"Inte avsedd att användas för att registrera information om Body Mass Index percentiler - dessa kommer att registreras i separata arketyper.">
 			copyright = <"© openEHR Foundation">
@@ -212,17 +214,17 @@ WHO Child Growth Standards: Length/height-for-age, weight-for-age, weight-for-le
 Obesity: Preventing and Managing the Global Epidemic: Report of a WHO Consultation [Internet]. Geneva, Switzerland: World Health Organisation; 2000 [cited 2009 Jul 28]. Available from: http://www.who.int/nutrition/publications/obesity/WHO_TRS_894/en/index.html
 
 Tzamaloukas AH, Patron A, Malhotra D. Body Mass Index in Amputees. Journal of Parenteral and Enteral Nutrition [Internet]. 1994 [cited 2009 Jul 28]; 18 (4): 355. Available from: http://pen.sagepub.com/cgi/content/abstract/18/4/355">
-		["MD5-CAM-1.0.1"] = <"942FC6327D1C006B3F9525CDF10D65A0">
+		["MD5-CAM-1.0.1"] = <"C53E00C7A2D52817897F15431C91008A">
 	>
 
 definition
 	OBSERVATION[at0000] matches {	-- Body mass index
 		data matches {
-			HISTORY[at0001] matches {	-- history
+			HISTORY[at0001] matches {	-- Historia
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {1..*} matches {	-- Any event
+					EVENT[at0002] occurrences matches {1..*} matches {	-- Vilken händelse som helst
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Single
+							ITEM_TREE[at0003] matches {	-- Träd
 								items cardinality matches {1..*; unordered} matches {
 									ELEMENT[at0004] matches {	-- Body Mass Index
 										value matches {
@@ -251,25 +253,25 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_LIST[at0005] matches {	-- List
+			ITEM_LIST[at0005] matches {	-- Lista
 				items cardinality matches {0..*; ordered} matches {
-					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Method
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Metod
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
-									at0007, 	-- Automatic entry
-									at0008]	-- Direct entry
+									at0007, 	-- Automatisk inmatning
+									at0008]	-- Direkt inmatning
 								}
 							}
 						}
 					}
-					ELEMENT[at0010] occurrences matches {0..1} matches {	-- Formula
+					ELEMENT[at0010] occurrences matches {0..1} matches {	-- Formel
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					ELEMENT[at0011] occurrences matches {0..1} matches {	-- Comment
+					ELEMENT[at0011] occurrences matches {0..1} matches {	-- Kommentar
 						value matches {
 							DV_TEXT matches {*}
 						}
@@ -350,7 +352,7 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Body Mass Index">
-					description = <"Index som beskriver förhållandet mellan vikt och höjd.">
+					description = <"Index som beskriver förhållandet mellan vikt och längd.">
 				>
 				["at0005"] = <
 					text = <"Lista">
