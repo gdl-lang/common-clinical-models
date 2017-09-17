@@ -47,40 +47,36 @@ Formuläret avslutas sedan med en övergripande fråga kring påverkan på livsk
 		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"The International Prostate Symptom Score (IPSS) relates to 7 questions that concern urinary symptoms and an additional question that concerns quality of life and is used to assist in the rapid diagnosis of BPH (Benign Prostatic Hyperplasia).">
-			use = <"This assessment archetype is used to allocate the scoring interpretation which is outlined below:
+			purpose = <"Rapid diagnosis and symptom tracking of benign prostatic hyperplasia (BPH).">
+			use = <"This assessment archetype is used to allocate the IPSS questionnaire scoring interpretation which is outlined below:
 
-Each urinary-system related question is scored from 0 to 5 representing increasing severity of the outlined symptoms.
+Each urinary-system related question is scored from 0 to 5 representing increasing severity of the outlined symptoms. The total score ranges from 0 to 35 which interprets as mildly symptomatic to severely symptomatic.
 
-The total score ranges from 0 to 35 which interpret as asymptomatic to symptomatic
-
-The 7 questions are:
-
-1 Incomplete emptying
+The 7 questions refere to symptoms within the last month and cover:
+1 Incomplete bladder emptying
 2 Frequency
 3 Intermittency
 4 Urgency
 5 Weak Stream
 6 Straining
 7 Nocturia
-and the 8th question is about the patient's perceived quality of life and though it is scored on a 0 to 6 scale, does not contribute to the overall score.
+The 8th question is about the patient's perceived quality of life and though it is scored on a 0 to 6 scale, does not contribute to the overall score.
 
 The interpretation of the scores are:
 
-Mild : <=7
-Moderate: 8-19
-Severe: 20-35
-">
+Mild symptoms : <=7
+Moderate symptoms: 8-19
+Severe symptoms: 20-35">
 			keywords = <"urinary symptoms", "IPSS score", "BPH", "prostate assessment">
 			misuse = <"The score and its assessment should not be used in isolation of a full work-up to diagnose problems with the prostate unless specifically declared as confirmation of already strong diagnostic evidence.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
-	other_contributors = <"Syeeda S Farruque", ...>
+	other_contributors = <"Syeeda S Farruque", "Eneimi Allwell-Brown, Cambio Healthcare Systems">
 	other_details = <
 		["references"] = <"Ref.1: Barry MJ, Fowler FJ Jr, O'Leary MP,et. al. The American Urological Association symptom index for benign prostatic hyperplasia. The Measurement Committee of the American Urological Association. J Urol. 1992 Nov;148(5):1549-57.">
-		["MD5-CAM-1.0.1"] = <"F33380A8906E2E57BCA756C771B81784">
+		["MD5-CAM-1.0.1"] = <"739292C504DBF6CA9F648C693E6179DD">
 	>
 
 definition
@@ -88,11 +84,12 @@ definition
 		data matches {
 			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- IPSS Assessment
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- IPSS assessment
 						value matches {
-							0|[local::at0003], 	-- Mild
-							1|[local::at0004], 	-- Moderate
-							2|[local::at0005]  	-- Severe
+							0|[local::at0003], 	-- Mild symptoms
+							1|[local::at0004], 	-- Moderate symptoms
+							2|[local::at0005]; 	-- Severe symptoms
+							0  	-- assumed value
 						}
 					}
 					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Quality of life due to urinary symptoms
@@ -103,7 +100,13 @@ definition
 							3|[local::at0010], 	-- Mixed
 							4|[local::at0011], 	-- Mostly dissatisfied
 							5|[local::at0012], 	-- Unhappy
-							6|[local::at0013]  	-- Terrible
+							6|[local::at0013]; 	-- Terrible
+							0  	-- assumed value
+						}
+					}
+					ELEMENT[at0014] occurrences matches {0..1} matches {	-- Comment
+						value matches {
+							DV_TEXT matches {*}
 						}
 					}
 				}
@@ -117,26 +120,26 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"IPSS Assessment">
-					description = <"Evaluation of the score generated in accordance with IPSS.">
+					description = <"Evaluation of the score generated from the IPSS questionnaire.">
 				>
 				["at0001"] = <
 					text = <"Tree">
 					description = <"@ internal @">
 				>
 				["at0002"] = <
-					text = <"IPSS Assessment">
+					text = <"IPSS assessment">
 					description = <"Severity of condition.">
 				>
 				["at0003"] = <
-					text = <"Mild">
+					text = <"Mild symptoms">
 					description = <"≤ 7">
 				>
 				["at0004"] = <
-					text = <"Moderate">
+					text = <"Moderate symptoms">
 					description = <"8-19">
 				>
 				["at0005"] = <
-					text = <"Severe">
+					text = <"Severe symptoms">
 					description = <"20-35">
 				>
 				["at0006"] = <
@@ -170,6 +173,10 @@ ontology
 				["at0013"] = <
 					text = <"Terrible">
 					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Comment">
+					description = <"Additional information about this recording">
 				>
 			>
 		>
@@ -230,6 +237,10 @@ ontology
 				["at0013"] = <
 					text = <"Fruktansvärt">
 					description = <"*">
+				>
+				["at0014"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
 				>
 			>
 		>

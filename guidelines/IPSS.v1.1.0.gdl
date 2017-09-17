@@ -1,0 +1,243 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"IPSS.v1.1.0">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"BPH", "urinary symptoms", "prostate assessment", "I-PSS", "AUA symptom index">
+				misuse = <"The score should not be used in isolation of a full work-up to diagnose problems with the prostate, unless specifically declared as confirmation of already strong diagnostic evidence.">
+				purpose = <"Rapid diagnosis and symptom tracking of benign prostatic hyperplasia (BPH).">
+				use = <"The International Prostate Symptom Score (IPSS) relates to 7 questions that concern urinary symptoms and an additional question that concerns quality of life and is used to assist in the rapid diagnosis of BPH (Benign Prostatic Hyperplasia).
+
+Each urinary-system related question is scored from 0 to 5 representing increasing severity of the outlined symptoms. The total score ranges from 0 to 35 which interprets as mildly symptomatic to severely symptomatic.
+
+The 7 questions refere to symptoms within the last month and cover:
+1 Incomplete bladder emptying
+2 Frequency
+3 Intermittency
+4 Urgency
+5 Weak Stream
+6 Straining
+7 Nocturia
+The 8th question is about the patient's perceived quality of life and though it is scored on a 0 to 6 scale, does not contribute to the overall score.
+
+The interpretation of the scores are:
+
+Mild symptoms : <=7
+Moderate symptoms: 8-19
+Severe symptoms: 20-35">
+			>
+			["sv"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"BPH", "IPSS">
+				misuse = <"IPSS är endast avsedd att användas som stöd och är ej i sig diagnostisk.
+">
+				purpose = <"International Prostate Symptom Score (IPSS) är en metod för utvärdering av urinvägsbesvär och dess påverkan på livskvaliteten, samt för diagnosticeringsstöd av benign prostatahyperplasi.">
+				use = <"IPSS består av sju frågor vilka besvaras på en skala 0-5. Totala poängen uppgår till maximalt 35p. Frågorna berör flera olika urinvägsbesvär enligt:
+
+- Ofullständig tömning
+- Ökad miktionsfrekvens
+- Start/stopp-svårigheter
+- Inkontinens
+- Svag stråle
+- Krystning
+- Nokturi
+
+Formuläret avslutas sedan med en övergripande fråga kring påverkan på livskvalitet. Denna fråga bidrar ej till slutgiltiga poängsumman. Resultatet tolkas enligt:
+
+≤7p : Lindriga besvär
+8-19p : måttliga besvär
+20-35p : svåra besvär
+
+">
+			>
+		>
+		lifecycle_state = <"Author draft">
+		original_author = <
+			["date"] = <"2016-10-27">
+			["email"] = <"models@cambiocds.com">
+			["name"] = <"Dennis Forslund">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_contributors = <"Syeeda S Farruque", "Jimmy Axelsson", "Eneimi Allwell-Brown, Cambio Healthcare Systems">
+		other_details = <
+			["references"] = <"Ref.1: Barry MJ, Fowler FJ Jr, O'Leary MP,et. al. The American Urological Association symptom index for benign prostatic hyperplasia. The Measurement Committee of the American Urological Association. J Urol. 1992 Nov;148(5):1549-57.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.ipss_questionnaire.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0005]">
+					>
+					["gt0007"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0006]">
+					>
+					["gt0008"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0007]">
+					>
+					["gt0009"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0008]">
+					>
+					["gt0010"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0009]">
+					>
+					["gt0011"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0010]">
+					>
+					["gt0012"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0011]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0013"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.ipss_questionnaire.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0022"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0048]">
+					>
+					["gt0035"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0011]">
+					>
+				>
+			>
+		>
+		default_actions = <"$gt0035=0|local::at0055|Delighted|",...>
+		rules = <
+			["gt0032"] = (RULE) <
+				when = <"$gt0022==null", "!fired($gt0032)">
+				then = <"$gt0022.magnitude=(((((($gt0010.value+$gt0011.value)+$gt0007.value)+$gt0008.value)+$gt0009.value)+$gt0005.value)+$gt0006.value)",...>
+				priority = <1>
+			>
+			["gt0036"] = (RULE) <
+				when = <"$gt0012!=null",...>
+				then = <"$gt0035=$gt0012",...>
+				priority = <2>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"International Prostate Symptom Score (IPSS)">
+						description = <"The International Prostate Symptom Score (IPSS) is used to assist in the rapid diagnosis of Benign Prostatic Hyperplasia (BPH), as well as monitor the symptoms of the disease over time. The questionnaire consists first of 7 questions addressing how the patient has experienced the following symptoms over the past month: incomplete emptying (of the bladder), frequency, intermittency, urgency, weak stream, straining, and nocturia. The responses are scored from 0 (no symptoms) to 5 (worst possible) and a score of ≤7 indicates mild symptoms, 8-19 moderate symptoms, and 20-35 severe symptoms. An 8th question which addresses the perceived quality of life as a result of the urinary symptoms, does not contribute to the overall score or its assessment.
+">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Incomplete emptying over the past month">
+						description = <"Sensation of incomplete emptying.">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Frequency over the past month">
+						description = <"Frequency of urination.">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Intermittency over the past month">
+						description = <"Intermittency of urination.">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Urgency over the past month">
+						description = <"Feeling of urgency.">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Weak urinary stream over the past month">
+						description = <"Weak stream of urine.">
+					>
+					["gt0010"] = (TERM) <
+						text = <"Straining over the past month">
+						description = <"Need to strain in order to start urination.">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Nocturia over the past month">
+						description = <"Frequency of nocturia.">
+					>
+					["gt0012"] = (TERM) <
+						text = <"If you were to spend the rest of your life with your urinary condition just the way it is not, how would you feel about that?">
+						description = <"Additional question, not included in total score.">
+					>
+					["gt0022"] = (TERM) <
+						text = <"Total score">
+						description = <"Sum of all factors. Last question not included.">
+					>
+					["gt0032"] = (TERM) <
+						text = <"Calculate total score">
+					>
+					["gt0035"] = (TERM) <
+						text = <"Perceived quality of life with urinary symptoms">
+						description = <"Additional question, not included in total score.">
+					>
+					["gt0036"] = (TERM) <
+						text = <"Set perceived quality of life">
+					>
+				>
+			>
+			["sv"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"IPSS">
+						description = <"International Prostate Symptom Score (IPSS) är en metod för utvärdering av urinvägsbesvär och dess påverkan på livskvaliteten, samt för diagnosticeringsstöd av benign prostatahyperplasi. En poäng om ≤7p indikerar lindriga, 8-19p måttliga och 20-35p svåra besvär.
+">
+					>
+					["gt0005"] = (TERM) <
+						text = <"*(en) How often have you had the sensation of not emptying your bladder?">
+						description = <"*(en) Sensation of incomplete emptying.">
+					>
+					["gt0006"] = (TERM) <
+						text = <"*(en) How often have you had to urinate less than every two hours?">
+						description = <"*(en) Frequency of urination.">
+					>
+					["gt0007"] = (TERM) <
+						text = <"*(en) How often have you found you stopped and started again several times when urinating?">
+						description = <"*(en) Intermittency of urination.">
+					>
+					["gt0008"] = (TERM) <
+						text = <"*(en) How often have you found it difficult to postpone urination?">
+						description = <"*(en) Feeling of urgency.">
+					>
+					["gt0009"] = (TERM) <
+						text = <"*(en) How often have you had a weak urinary stream?">
+						description = <"*(en) Weak stream of urine.">
+					>
+					["gt0010"] = (TERM) <
+						text = <"*(en) How often have you had to strain to start urination?">
+						description = <"*(en) Need to strain in order to start urination.">
+					>
+					["gt0011"] = (TERM) <
+						text = <"*(en) How many times did you typically get up at night to urinate?">
+						description = <"*(en) Frequency of nocturia.">
+					>
+					["gt0012"] = (TERM) <
+						text = <"*(en) If you were to spend the rest of your life with your urinary condition just the way it is not, how would you feel about that?">
+						description = <"*(en) Additional question, not included in total score.">
+					>
+					["gt0022"] = (TERM) <
+						text = <"*(en) Total score">
+						description = <"*(en) Sum of all factors. Last question not included.">
+					>
+					["gt0032"] = (TERM) <
+						text = <"*(en) Calculate total score">
+					>
+					["gt0035"] = (TERM) <
+					>
+					["gt0036"] = (TERM) <
+					>
+				>
+			>
+		>
+	>
+>
