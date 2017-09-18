@@ -37,16 +37,23 @@ CRB-65 är en akronym för Confusion, Respiratory rate (≥30/min), Blood pressu
 			purpose = <"To assess severity of community-acquired pneumonia measured in 30-day mortality, and aid in determining care level. ">
 			use = <"Use to evaluate the presence of key factors determining severity of illness in patients presenting with suspected community-acquired pneumonia.
 
-CRB-65 is a clinical scoring system using various key elements to predict severity of illness in patients presenting with suspected community-acquired pneumonia. CRB-65 is an acronym for Confusion, Respiratory rate (≥30/min), Blood pressure (Systolic BP <90mmHg or diastolic BP ≤60mmHg) and age (over or equal to) 65.">
+CRB-65 is a clinical scoring system using various key elements to predict severity of illness in patients presenting with suspected community-acquired pneumonia. CRB-65 is an acronym for Confusion, Respiratory rate (≥30/min), Blood pressure (Systolic BP <90mmHg or diastolic BP ≤60mmHg) and age (over or equal to) 65.
+When present each factor contributes one (1) additional point to the total score.
+
+Total score ranges from 0-4 and is associated with a risk level, which is in turn associated with certain care level recommendations.
+* 0 points, low risk group. Consider home treatment. 30-day mortality: 1,2 %.
+* 1-2 points, moderate risk group. Consider hospital admission. 30-day mortality: 8,2 %.
+* 3-4 points, severe risk group. Urgent hospital admission, consider ICU admission. 30-day mortality: 31,3 %.">
+			keywords = <"CURB-65", "pneumonia", "CAP">
 			misuse = <"">
-			copyright = <"Cambio Healthcare Systems">
+			copyright = <"© Cambio Healthcare Systems">
 		>
 	>
-	lifecycle_state = <"0">
-	other_contributors = <>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <"Eneimi Allwell-Brown, Cambio Healthcare Systems", ...>
 	other_details = <
 		["references"] = <"McNally M, Curtain J, O'Brien K, Dimitrov B, Fahey T. \"Validity of British Thoracic Society guidance (the CRB-65 rule) for predicting the severity of pneumonia in general practice: systematic review and meta-analysis\". Br J Gen Pract. 2010 Oct;60(579):e423-33.">
-		["MD5-CAM-1.0.1"] = <"DEB82DD9B4D52FC276055200FFFB1C7E">
+		["MD5-CAM-1.0.1"] = <"5E6D2C3577C57130FE0BC450BA974344">
 	>
 
 definition
@@ -61,25 +68,34 @@ definition
 									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Confusion?
 										value matches {
 											0|[local::at0007], 	-- Absent
-											1|[local::at0008]  	-- Present
+											1|[local::at0008]; 	-- Present
+											0  	-- assumed value
 										}
 									}
 									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Respiratory rate ≥30/min?
 										value matches {
-											0|[local::at0009], 	-- Absent
-											1|[local::at0010]  	-- Present
+											0|[local::at0007], 	-- Absent
+											1|[local::at0008]; 	-- Present
+											0  	-- assumed value
 										}
 									}
 									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Systolic BP <90mmHg or diastolic BP ≤60mmHg?
 										value matches {
-											0|[local::at0011], 	-- Absent 
-											1|[local::at0012]  	-- Present
+											0|[local::at0007], 	-- Absent
+											1|[local::at0008]; 	-- Present
+											0  	-- assumed value
 										}
 									}
 									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Age ≥ 65 years?
 										value matches {
-											0|[local::at0014], 	-- Absent
-											1|[local::at0015]  	-- Present
+											0|[local::at0007], 	-- Absent
+											1|[local::at0008]; 	-- Present
+											0  	-- assumed value
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
 										}
 									}
 								}
@@ -97,7 +113,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"CRB-65 questionnaire">
-					description = <"Contains the questions needed to predict the severity of community-acquired pneumonia in accordance with CRB-65.">
+					description = <"Clinical scoring system used to predict severity of community-acquired pneumonia, measured in 30-day mortality. CRB-65 is an acronym for Confusion, Respiratory rate, Blood pressure and age (over or equal to) 65. ">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -113,7 +129,7 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Confusion?">
-					description = <"New-onset disorientation in person, place or time">
+					description = <"A Mental Test Score of 8 or less, OR new-onset disorientation in person, place or time">
 				>
 				["at0005"] = <
 					text = <"Respiratory rate ≥30/min?">
@@ -131,33 +147,13 @@ ontology
 					text = <"Present">
 					description = <"*">
 				>
-				["at0009"] = <
-					text = <"Absent">
-					description = <"*">
-				>
-				["at0010"] = <
-					text = <"Present">
-					description = <"*">
-				>
-				["at0011"] = <
-					text = <"Absent ">
-					description = <"*">
-				>
-				["at0012"] = <
-					text = <"Present">
-					description = <"*">
-				>
 				["at0013"] = <
 					text = <"Age ≥ 65 years?">
 					description = <"The patient is above 65 years of age.">
 				>
-				["at0014"] = <
-					text = <"Absent">
-					description = <"*">
-				>
-				["at0015"] = <
-					text = <"Present">
-					description = <"*">
+				["at0016"] = <
+					text = <"Comment">
+					description = <"Additional information about this recording">
 				>
 			>
 		>
@@ -199,32 +195,12 @@ ontology
 					text = <"Föreligger">
 					description = <"**(en)">
 				>
-				["at0009"] = <
-					text = <"Frånvarande">
-					description = <"**(en)">
-				>
-				["at0010"] = <
-					text = <"Föreligger">
-					description = <"**(en)">
-				>
-				["at0011"] = <
-					text = <"Frånvarande">
-					description = <"**(en)">
-				>
-				["at0012"] = <
-					text = <"Föreligger">
-					description = <"**(en)">
-				>
 				["at0013"] = <
 					text = <"Ålder ≥ 65 år?">
 					description = <"Patienten är över 65 år gammal. ">
 				>
-				["at0014"] = <
-					text = <"Frånvarande">
-					description = <"**(en)">
-				>
-				["at0015"] = <
-					text = <"Föreligger">
+				["at0016"] = <
+					text = <"*New element(en)">
 					description = <"**(en)">
 				>
 			>
