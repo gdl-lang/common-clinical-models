@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.qsofa_assessment.v1
 
 concept
-	[at0000]	-- quick Sepsis Related Organ Failure Assessment (Evaluation)
+	[at0000]	-- quick Sepsis Related Organ Failure Assessment (qSOFA) Evaluation
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -47,16 +47,16 @@ Kontinuerlig utvärdering med hjälp av qSOFA kan utföras för att detektera f�
 
 qSOFA is an acronym for quick Sepsis Related Organ Failure Assessment. It is can be used bedside to assess the risk of a poor outcome in patients with suspected or confirmed infection outside the ICU. qSOFA consists of three criteria: altered mental state (GCS<15), fast respiratory rate (≥22 breaths per min), and low blood pressure (SBP≤100 mmHg). Each criteria is worth one point, thus the maximum qSOFA Score is 3. 
 
-The qSOFA protocol is a markedly simplified version of the SOFA protocol. qSOFA uses only its three clinical criteria and uses \"altered mental status\" instead of GCS≤13.
+The qSOFA protocol is a markedly simplified version of the SOFA protocol. qSOFA uses only three clinical criteria including \"altered mental status\" which the authors define as GCS≤15.
 
 A qSOFA score of ≥2 is indicative of a high risk of poor prognosis (mortality or ICU stay of ≥3 days). Patients with qSOFA score of ≥2 should be assessed for organ dysfunction (this includes lactate levels). Furthermore, the SOFA Score should be calculated for these patients and the standard interventions for sepsis should be used as treatment. 
 
-A qSOFA score of <2 is not associated with a high risk of poor prognosis, but it does not suggest that the subject of care is not a high risk patient. If sepsis is still suspected when the qSOFA score is <2, continue monitoration and evaluation of the patient. Initiate standard treatment if needed.
+A qSOFA score of <2 is not associated with a high risk of poor prognosis, but it does not suggest that the subject of care is not a high risk patient. If sepsis is still suspected when the qSOFA score is <2, continue monitoring and evaluation of the patient. Initiate standard treatment if needed.
 
 Serial qSOFA assessments can be performed to detect changes in prognosis.">
 			keywords = <"Sepsis", "Infection", "qSOFA", "Mental state", "Respiratory rate", "Hypotension">
-			misuse = <"Do not use to rule out sepsis. If sepsis is still suspected when the qSOFA score is <2, continue monitoration and evaluation of the patient. Initiate standard treatment if needed. Conduct qSOFA assessments regularly in order to detect changes in prognosis.">
-			copyright = <"Cambio Healthcare Systems">
+			misuse = <"Do not use to rule out sepsis. If sepsis is still suspected when the qSOFA score is <2, continue monitoring and evaluation of the patient. Initiate standard treatment if needed. Conduct qSOFA assessments regularly in order to detect changes in prognosis.">
+			copyright = <"© Cambio Healthcare Systems">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
@@ -67,18 +67,24 @@ Serial qSOFA assessments can be performed to detect changes in prognosis.">
 Ref 2: Shankar-Hari M, Phillips GS, Levy ML, et al. Developing a New Definition and Assessing New Clinical Criteria for Septic Shock: For the Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):775-787. doi:10.1001/jama.2016.0289.
 
 Ref 3: Seymour CW, Liu VX, Iwashyna TJ, et al. Assessment of Clinical Criteria for Sepsis: For the Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016;315(8):762-774. doi:10.1001/jama.2016.02">
-		["MD5-CAM-1.0.1"] = <"D113DA2DDFA415D32F1F4CC41D748A13">
+		["MD5-CAM-1.0.1"] = <"6A507BAF5363C2B71CA9886D06B1A92C">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- quick Sepsis Related Organ Failure Assessment (Evaluation)
+	EVALUATION[at0000] matches {	-- quick Sepsis Related Organ Failure Assessment (qSOFA) Evaluation
 		data matches {
 			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Risk Assessment
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Risk assessment
 						value matches {
 							0|[local::at0004], 	-- Not high risk.
-							1|[local::at0005]  	-- High risk.
+							1|[local::at0005]; 	-- High risk.
+							0  	-- assumed value
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Comment
+						value matches {
+							DV_TEXT matches {*}
 						}
 					}
 				}
@@ -91,7 +97,7 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"quick Sepsis Related Organ Failure Assessment (Evaluation)">
+					text = <"quick Sepsis Related Organ Failure Assessment (qSOFA) Evaluation">
 					description = <"qSOFA is an acronym for quick Sepsis Related Organ Failure Assessment. It is used to identify patients with suspected infection who have a greater risk of poor outcome outside of the intensive care unit. qSOFA consists of three criteria: altered mental state (GCS<15), fast respiratory rate (≥22 breaths per min), and low blood pressure (SBP≤100 mmHg). Each criteria is worth one point.">
 				>
 				["at0001"] = <
@@ -99,7 +105,7 @@ ontology
 					description = <"@ internal @">
 				>
 				["at0003"] = <
-					text = <"Risk Assessment">
+					text = <"Risk assessment">
 					description = <"Risk of poor prognosis in patient with infection outside of the ICU.">
 				>
 				["at0004"] = <
@@ -109,6 +115,10 @@ ontology
 				["at0005"] = <
 					text = <"High risk.">
 					description = <"High risk patient.">
+				>
+				["at0006"] = <
+					text = <"Comment">
+					description = <"Additional information about this recording">
 				>
 			>
 		>
@@ -133,6 +143,10 @@ ontology
 				["at0005"] = <
 					text = <"Hög risk">
 					description = <"Högriskpatient.">
+				>
+				["at0006"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
 				>
 			>
 		>
