@@ -2,9 +2,19 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.ssign_cc_renal_cell_carcinoma.v1
 
 concept
-	[at0000]	-- Ssign cc renal cell carcinoma
+	[at0000]	-- SSIGN Score - Klarcellig Njurcancer
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["email"] = <"models@cambiocds.com">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -13,6 +23,36 @@ description
 		["date"] = <"2017-06-24">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"SSIGN (Stage, Size, Grade, Necrosis) score är endast applicerbar på klarcellig njurcancer.">
+			use = <"SSIGN score används för att komplettera andra graderingssystem med hjälp av specifika kliniska, patologiska fynd. Verktyget är endast applicerbart på klarcellig njurcancer. Instrumentet baseras på följande faktorer:
+
+- Patologiskt T-stadium (i enlighet med TNM-riktlinjer, 2002): pT1-pT4, poäng 0-4
+- Regionalt lymfkörtelengagemang (i enlighet med TNM-riktlinjer, 2002): pNx/pN0 eller pN1/pN2, poäng 0/2 
+- Metastaser (i enlighet med TNM-riktlinjer, 2002): M0 eller M1, poäng 0/4
+- Gradering enligt Fuhrman Nuclear Grade: grad 1/2 (0p), 3 (1p), 4 (2p)
+- Tumörstorlek: <5 cm (0p) eller ≥5 cm (+2p)
+- Förekomst av tumörnekros: Nej (0p) eller Ja (1p)
+
+Slutlig poängsumma uppgår till maximalt 17p.
+
+Resultatet tolkas enligt:
+
+	% uppskattad överlevnad, cancer-specifik
+SSIGN Score 	   År 1      År 3      År 5      År 7      År 10
+0 - 2 	   99.7      98.7      97.3      96 	   93.6
+3 - 4 	   98.1      93.4      89.8 	  84 	   77.9
+5 - 6 	   92.9      83.8      74.1 	  65 	   57.3
+7 - 9 	   76.5      46.9      38.6 	  29 	   25.9
+≥ 10 	   43.3      21.9      19.2 	  19.2 	   19.2
+">
+			keywords = <"SSIGN", "klarcellig njurcancer", "njurcancer", "cancer", "onkologi", "fuhrman nuclear grade">
+			misuse = <"Endast avsedd för klarcellig njurcancer.
+
+Vidare utredning och bruk av andra instrument rekommenderas för sammanvägd bild.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"The SSIGN (Stage, Size, Grade and Necrosis) score only applies to any stage of clear cell renal cell carcinoma (RCC).">
@@ -30,12 +70,12 @@ Survival scores are:
 
 Predicted Outcomes
 	% estimated cancer-specific survival rates
-SSIGN Score 	 Year 1 	Year 3 	Year 5 	Year 7 	Year 10
-0 - 2 	                   99.7 	98.7 	97.3 	 96 	 93.6
-3 - 4 	                   98.1 	93.4 	89.8 	 84 	 77.9
-5 - 6 	                   92.9 	83.8 	74.1 	 65 	 57.3
-7 - 9 	                   76.5 	46.9 	38.6 	 29 	 25.9
-≥ 10 	                   43.3 	21.9 	19.2 	 19.2 	 19.2
+SSIGN Score 	 Year 1   Year 3   Year 5   Year 7   Year 10
+0 - 2 	   99.7      98.7      97.3      96 	   93.6
+3 - 4 	   98.1      93.4      89.8 	  84 	   77.9
+5 - 6 	   92.9      83.8      74.1 	  65 	   57.3
+7 - 9 	   76.5      46.9      38.6 	  29 	   25.9
+≥ 10 	   43.3      21.9      19.2 	  19.2 	   19.2
 ">
 			keywords = <"SSIGN", "Clear cell renal cell carcinoma", "fuhrman nuclear grade">
 			misuse = <"Don't use on non-clear cell types of RCC.
@@ -48,19 +88,19 @@ It is recommended not to rely on this tool on its own but to include the use of 
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Ref. 1: Frank I, Blute ML, Cheville JC, Lohse CM, Weaver AL, Zincke H. An outcome prediction model for patients with clear cell renal cell carcinoma treated with radical nephrectomy based on tumour stage, size, grade and necrosis: the SSIGN score. J Urol 2002; 168:2395–400.">
-		["MD5-CAM-1.0.1"] = <"2F969456F25A9A0ECDF0F02B965CAA83">
+		["MD5-CAM-1.0.1"] = <"4B151CE11696815C43C38A222DD9134B">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Ssign cc renal cell carcinoma
+	OBSERVATION[at0000] matches {	-- SSIGN Score - Klarcellig Njurcancer
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Pathological T category
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Patologiskt T-stadium
 										value matches {
 											0|[local::at0012], 	-- pT1
 											1|[local::at0013], 	-- pT2
@@ -68,45 +108,45 @@ definition
 											4|[local::at0015]  	-- pT4
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Regional lymph node status
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Regionalt lymfkörtelengagemang
 										value matches {
-											0|[local::at0016], 	-- pNx or pN0
-											2|[local::at0017]  	-- pN1 or pN2
+											0|[local::at0016], 	-- pNx eller pN0
+											2|[local::at0017]  	-- pN1 eller pN2
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Metastasis category
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Metastaser
 										value matches {
 											0|[local::at0018], 	-- M0
 											4|[local::at0019]  	-- M1
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Tumor size
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Tumörstorlek
 										value matches {
 											0|[local::at0020], 	-- <5 cm
 											2|[local::at0027]  	-- >= 5 cm
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Tumor (nuclear) grade
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Gradering enligt Fuhrman Nuclear Grade
 										value matches {
-											0|[local::at0022], 	-- Stage 1 or 2
-											1|[local::at0023], 	-- Stage 3
-											3|[local::at0024]  	-- Stage 4
+											0|[local::at0022], 	-- Grad 1 eller 2
+											1|[local::at0023], 	-- Grad 3
+											3|[local::at0024]  	-- Grad 4
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Tumor necrosis present
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Förekomst av tumörnekros
 										value matches {
-											0|[local::at0025], 	-- No
-											2|[local::at0026]  	-- Yes
+											0|[local::at0025], 	-- Nej
+											2|[local::at0026]  	-- Ja
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Poängsumma
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..17|}
 											}
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Comments
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -231,6 +271,118 @@ ontology
 				["at0027"] = <
 					text = <">= 5 cm">
 					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"SSIGN Score - Klarcellig Njurcancer">
+					description = <"SSIGN Score är ett instrument för prognostiskt bedömning vid klarcellig njurcancer, efter radikal nefrektomi.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Patologiskt T-stadium">
+					description = <"I enlighet med TNM-riktlinjer, 2002">
+				>
+				["at0005"] = <
+					text = <"Regionalt lymfkörtelengagemang">
+					description = <"I enlighet med TNM-riktlinjer, 2002">
+				>
+				["at0006"] = <
+					text = <"Metastaser">
+					description = <"I enlighet med TNM-riktlinjer, 2002">
+				>
+				["at0007"] = <
+					text = <"Tumörstorlek">
+					description = <"Aktuella tumörens storlek.">
+				>
+				["at0008"] = <
+					text = <"Gradering enligt Fuhrman Nuclear Grade">
+					description = <"Fuhrman Nuclear Grade för klarcellig njurcancer.">
+				>
+				["at0009"] = <
+					text = <"Förekomst av tumörnekros">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Poängsumma">
+					description = <"Summan av samtliga faktorer, maximalt 17p.">
+				>
+				["at0011"] = <
+					text = <"Kommentar">
+					description = <"Ev. kommentar kring instrumentet">
+				>
+				["at0012"] = <
+					text = <"pT1">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"pT2">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"pT3a-c">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"pT4">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"pNx eller pN0">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"pN1 eller pN2">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"M0">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"M1">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"<5 cm">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"Grad 1 eller 2">
+					description = <"">
+				>
+				["at0023"] = <
+					text = <"Grad 3">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"Grad 4">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <"Nej">
+					description = <"">
+				>
+				["at0026"] = <
+					text = <"Ja">
+					description = <"">
+				>
+				["at0027"] = <
+					text = <">= 5 cm">
+					description = <"">
 				>
 			>
 		>
