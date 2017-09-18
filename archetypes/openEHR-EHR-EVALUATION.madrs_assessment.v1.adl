@@ -1,0 +1,169 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.madrs_assessment.v1
+
+concept
+	[at0000]	-- MADRS Assessment
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Eneimi Allwell-Brown">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-09-18">
+	>
+	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Ärketypen kan med fördel användas för bedömning av depression eller depressiva symtom samt för att följa förloppet vid depression.">
+			use = <"Används för att bedöma en patients grad av depression enligt fyra nivåer. ">
+			misuse = <"">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Archetype to be used to effectively evaluate grade of depression using the MADRS or MADRS-S archetype.">
+			use = <"To evaluate the presence/severity of depression based on the MADRS score.
+The Montgomery-Åsberg Depression Rating Scale was developed from the Comprehensive Psychopathological Rating Scale, and consists of 10 items each yielding a score of 0 (best possible) to 6 (worst possible);
+
+- Apparent sadness
+- Reported sadness
+- Inner tension
+- Reduced sleep 
+- Reduced appetite
+- Concentration difficulties
+- Lassitude
+- Inability to feel
+- Pessimistic thoughts
+- Suicidal thoughts
+
+Total score ranges between 0 to 60. Scores 0 to 6 = normal/symptom absent, 7 to 19 = mild depression, 20 to 34 = moderate depression, and >34 = severe depression.
+
+The rating should be based on a clinical interview moving from broadly phrased questions about symptoms to more detailed ones which allow a precise rating of severity. The interviewer must decide whether the rating correlates to the defined scale steps (0, 2, 4, 6) or the ones between them (1, 3, 5). The items should be rated with regards to how the patient has done over the past week. ">
+			keywords = <"Montgomery", "depression", "Åsberg", "rating scale">
+			misuse = <"Do not use to evaluate the self-assessment scale (MADRS-S)">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"7CBDF51AC90317A9B630FCB91590C03F">
+		["references"] = <"Montgomery SA, Asberg MA. A new depression scale designed to be sensitive to change. The British journal of psychiatry. 1979 Apr 1;134(4):382-9.
+
+Snaith RP, Harrop FM, Newby TD, Teale C. Grade scores of the Montgomery-Åsberg Depression and the Clinical Anxiety Scales. The British journal of psychiatry. 1986 May.
+
+Williams JB, Kobak KA. Development and reliability of a structured interview guide for the Montgomery–Åsberg Depression Rating Scale (SIGMA). The British Journal of Psychiatry. 2008 Jan 1;192(1):52-8.">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- MADRS Assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Grade of depression
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0007, 	-- No depression
+									at0008, 	-- Mild depression
+									at0009, 	-- Moderate depression
+									at0011; 	-- Severe depression
+									at0007]	-- assumed value
+								}
+							}
+						}
+					}
+					ELEMENT[at0012] occurrences matches {0..1} matches {	-- Comment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"MADRS Assessment">
+					description = <"To evaluate the presence/severity of depression based on the MADRS score.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0006"] = <
+					text = <"Grade of depression">
+					description = <"Assessment of depression based on the MADRS score">
+				>
+				["at0007"] = <
+					text = <"No depression">
+					description = <"MADRS score 0 - 6">
+				>
+				["at0008"] = <
+					text = <"Mild depression">
+					description = <"MADRS score 7 - 19">
+				>
+				["at0009"] = <
+					text = <"Moderate depression">
+					description = <"MADRS score 20 - 34">
+				>
+				["at0011"] = <
+					text = <"Severe depression">
+					description = <"MADRS score 35 - 60">
+				>
+				["at0012"] = <
+					text = <"Comment">
+					description = <"Additional information about this recording">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"MADRS Utvärdering för depression">
+					description = <"Ärketypen kan med fördel användas för bedömning av depression eller depressiva symtom samt för att följa förloppet vid depression.">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0006"] = <
+					text = <"Nivå av depression">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Ingen eller mycket lätt depression">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Lätt depression">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Måttlig depression">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Svår depression">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+			>
+		>
+	>

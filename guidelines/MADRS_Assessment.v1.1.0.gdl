@@ -1,0 +1,128 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"MADRS_Assessment.v1.1.0">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"MADRS", "Depression">
+				misuse = <"Do not use to evaluate the self-assessment scale (MADRS-S)">
+				purpose = <"Assessment of MADRS score.">
+				use = <"To evaluate the presence/severity of depression based on the MADRS score.
+The Montgomery-Åsberg Depression Rating Scale was developed from the Comprehensive Psychopathological Rating Scale, and consists of 10 items each yielding a score of 0 (best possible) to 6 (worst possible);
+
+- Apparent sadness
+- Reported sadness
+- Inner tension
+- Reduced sleep 
+- Reduced appetite
+- Concentration difficulties
+- Lassitude
+- Inability to feel
+- Pessimistic thoughts
+- Suicidal thoughts
+
+Total score ranges between 0 to 60. Scores 0 to 6 = normal/symptom absent, 7 to 19 = mild depression, 20 to 34 = moderate depression, and >34 = severe depression.
+
+The rating should be based on a clinical interview moving from broadly phrased questions about symptoms to more detailed ones which allow a precise rating of severity. The interviewer must decide whether the rating correlates to the defined scale steps (0, 2, 4, 6) or the ones between them (1, 3, 5). The items should be rated with regards to how the patient has done over the past week. ">
+			>
+		>
+		lifecycle_state = <"Author draft">
+		original_author = <
+			["date"] = <"2015-08-01">
+			["email"] = <"models@cambiocds.com">
+			["name"] = <"Oskar Nielsen">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_contributors = <"Dennis Forslund", "Jimmy Axelsson", "Eneimi Allwell-Brown, Cambio Healthcare Systems">
+		other_details = <
+			["references"] = <"Svanborg P, Asberg M: A comparison between the Beck Depression Inventory (BDI) and the self-rated version of the Montgomery-Asberg Depression Rating Scale (MADRS). J Affect Dis 2001, 64(2-3):203-16.
+
+Snaith, R.P., Harrop, F.M., Newby, D.A. (1986). Grade scores of the Montgomery-Åsberg Depression and Clinical Anxiety Scales. British Journal of Psychiatry, 148, 599-601.
+
+Montgomery SA, Asberg M. (1979). \"A new depression scale designed to be sensitive to change\". British Journal of Psychiatry 134 (4): 382–89.
+
+Williams JBW, Kobak KA. Development and reliability of a structured interview guide for the Montgomery–Åsberg Depression Rating Scale (SIGMA). Br J Psychiatry (2008) 192:52–8.10.1192/bjp.bp.106.032532">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0010"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.madrs.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0011"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0077]">
+					>
+				>
+			>
+			["gt0012"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.madrs_assessment.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0013"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0006]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0006"] = (RULE) <
+				when = <"$gt0011>=0", "$gt0011<=6">
+				then = <"$gt0013=local::at0007|No depression|",...>
+				priority = <4>
+			>
+			["gt0007"] = (RULE) <
+				when = <"$gt0011<=19", "$gt0011>=7">
+				then = <"$gt0013=local::at0008|Mild depression|",...>
+				priority = <3>
+			>
+			["gt0008"] = (RULE) <
+				when = <"$gt0011>=20", "$gt0011<=34">
+				then = <"$gt0013=local::at0009|Moderate depression|",...>
+				priority = <2>
+			>
+			["gt0009"] = (RULE) <
+				when = <"$gt0011>=35", "$gt0011<=60">
+				then = <"$gt0013=local::at0011|Severe depression|",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"MADRS Assessment">
+						description = <"To evaluate the presence/severity of depression based on the MADRS score.">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Set no depression">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Set mild depression">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Set moderate depression">
+					>
+					["gt0009"] = (TERM) <
+						text = <"Set severe depression">
+					>
+					["gt0011"] = (TERM) <
+						text = <"Total score">
+						description = <"*">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Grade of depression">
+						description = <"*">
+					>
+				>
+			>
+		>
+	>
+>
