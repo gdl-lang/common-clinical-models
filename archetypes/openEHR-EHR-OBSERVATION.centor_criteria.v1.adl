@@ -56,11 +56,12 @@ The modified Centor Criteria scoring system consists of several factors, each co
 
 The total score results in a recommendation. Throat culture or rapid antigen detection testing (RADT) is indicated for a score of two or more. As a rule, empiric antibiotic treatment should be preceded by testing. 
 ">
+			keywords = <"sore throat", "Centor score", "McIsaac score", "pharyngitis">
 			misuse = <"The Centor Criteria is to be used primarily on patients without severe underlying disease, in primary care setting. Should only be used to support clinical assessment. As a rule, empiric antibiotic treatment should be preceded by RADT and/or throat culture.">
-			copyright = <"Cambio Healthcare Systems">
+			copyright = <"© Cambio Healthcare Systems">
 		>
 	>
-	lifecycle_state = <"0">
+	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Fine AM, Nizet V, Mandl KD. Large-scale validation of the centor and McIsaac scores to predict group a streptococcal pharyngitis. Arch Intern Med. 2012;172(11):847–52
@@ -69,7 +70,7 @@ Chiappini E, Regoli M, Bonsignori F, et al. Analysis of different recommendation
 
 Handläggning av faryngotonsilliter i öppen vård – ny rekommendation. Information från Läkemedelsverket. 2012;6:18-25
 (https://lakemedelsverket.se/malgrupp/Halso---sjukvard/Behandlingsrekommendationer-arkiv/Behandlingsrekommendation---arkivlista/Faryngotonsilliter/)">
-		["MD5-CAM-1.0.1"] = <"879793A58F65D8C5804C14AC39AD3287">
+		["MD5-CAM-1.0.1"] = <"6A41A099F6CF4A790E28F8DD63895223">
 	>
 
 definition
@@ -84,37 +85,47 @@ definition
 									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Cough?
 										value matches {
 											0|[local::at0010], 	-- Present
-											1|[local::at0011]  	-- Absent
+											1|[local::at0011]; 	-- Absent
+											0  	-- assumed value
 										}
 									}
 									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Swollen/tender anterior cervical nodes?
 										value matches {
-											0|[local::at0012], 	-- Absent
-											1|[local::at0013]  	-- Present
+											0|[local::at0011], 	-- Absent
+											1|[local::at0010]; 	-- Present
+											0  	-- assumed value
 										}
 									}
 									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Temperature >38° C?
 										value matches {
-											0|[local::at0014], 	-- Absent
-											1|[local::at0015]  	-- Present
+											0|[local::at0011], 	-- Absent
+											1|[local::at0010]; 	-- Present
+											0  	-- assumed value
 										}
 									}
 									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Tonsillar exudate or swelling?
 										value matches {
-											0|[local::at0016], 	-- Absent
-											1|[local::at0017]  	-- Present
+											0|[local::at0011], 	-- Absent
+											1|[local::at0010]; 	-- Present
+											0  	-- assumed value
 										}
 									}
 									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Age?
 										value matches {
 											-1|[local::at0018], 	-- 45+ years
 											0|[local::at0019], 	-- 15-44 years
-											1|[local::at0020]  	-- 3-14 years
+											1|[local::at0020]; 	-- 3-14 years
+											-1  	-- assumed value
 										}
 									}
 									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Total score
 										value matches {
 											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
 										}
 									}
 								}
@@ -179,30 +190,6 @@ ontology
 					text = <"Absent">
 					description = <"*">
 				>
-				["at0012"] = <
-					text = <"Absent">
-					description = <"*">
-				>
-				["at0013"] = <
-					text = <"Present">
-					description = <"*">
-				>
-				["at0014"] = <
-					text = <"Absent">
-					description = <"*">
-				>
-				["at0015"] = <
-					text = <"Present">
-					description = <"*">
-				>
-				["at0016"] = <
-					text = <"Absent">
-					description = <"*">
-				>
-				["at0017"] = <
-					text = <"Present">
-					description = <"*">
-				>
 				["at0018"] = <
 					text = <"45+ years">
 					description = <"*">
@@ -214,6 +201,10 @@ ontology
 				["at0020"] = <
 					text = <"3-14 years">
 					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Comment">
+					description = <"Additional information about this recording">
 				>
 			>
 		>
@@ -267,30 +258,6 @@ ontology
 					text = <"Frånvarande">
 					description = <"*">
 				>
-				["at0012"] = <
-					text = <"Frånvarande">
-					description = <"*">
-				>
-				["at0013"] = <
-					text = <"Föreligger">
-					description = <"*">
-				>
-				["at0014"] = <
-					text = <"Frånvarande">
-					description = <"*">
-				>
-				["at0015"] = <
-					text = <"Föreligger">
-					description = <"*">
-				>
-				["at0016"] = <
-					text = <"Frånvarande">
-					description = <"*">
-				>
-				["at0017"] = <
-					text = <"Föreligger">
-					description = <"*">
-				>
 				["at0018"] = <
 					text = <"45+ år">
 					description = <"*">
@@ -302,6 +269,10 @@ ontology
 				["at0020"] = <
 					text = <"3-14 år">
 					description = <"*">
+				>
+				["at0021"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
 				>
 			>
 		>

@@ -1,0 +1,415 @@
+<!DOCTYPE html><html ng-app="cds_app"><head>
+<title>{{def.concept.name}}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="wro/foundation.css" />
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css" />
+<link rel="stylesheet" type="text/css" href="wro/angular.css" />
+<script type="text/javascript" src="wro/angular.js"></script>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js" />
+<script type="text/javascript" src="wro/moment.js"></script>
+<script type="text/javascript" src="wro/date-picker.js"></script>
+<script type="text/javascript" src="wro/app_lib.js"></script>
+<script id="decision-support-view" type="application/json">{
+  "dsViewId": "Centor_Criteria.v2",
+  "language": {
+    "originalLanguage": {
+      "terminologyId": {
+        "name": "ISO_639-1",
+        "value": "ISO_639-1"
+      },
+      "codeString": "en"
+    }
+  },
+  "decisionSupportViewDefinitions": {
+    "en": {
+      "name": "Centor Criteria",
+      "description": "A guide to testing and treatment for group A streptococcal (GAS) pharyngitis in patients presenting with a sore throat"
+    },
+    "sv": {
+      "name": "Centorkriterierna",
+      "description": "Stöd för värdering av behov av vidare utredning och behandling av patienter som söker med halsont."
+    }
+  },
+  "resourceDescription": {
+    "originalAuthor": {
+      "organisation": "Cambio Healthcare Systems",
+      "name": "Dennis Forslund",
+      "date": "2016-07-22",
+      "email": "models@cambiocds.com"
+    },
+    "otherContributors": [
+      "Jimmy Axelsson",
+      "Eneimi Allwell-Brown, Cambio Healthcare Systems"
+    ],
+    "lifecycleState": "Author draft",
+    "details": {
+      "en": {
+        "purpose": "To assess the probability that a sore throat/pharyngitis is streptococcal, and suggest a management course",
+        "keywords": [
+          "sore throat",
+          "pharyngitis",
+          "McIsaac score",
+          "Centor score"
+        ],
+        "use": "Use to evaluate value of testing and treatment in patients presenting with a sore throat. \n\nThe modified Centor Criteria scoring system consists of several factors, each contributing points to the total score; \n- (Absence of) Cough 0-1\n- Swollen/tender anterior cervical nodes 0-1\n- Temperature \u003e38° C 0-1\n- Tonsillar exudate or swelling 0-1\n- Age range, 45+ (-1), 15-44 (0), 3-14 (1)\n\nThe total score matches a known percentage prevalence of streptococcal infection in community studies, and results in one of 3 possible recommendations: total score 0-1 \u003d do not test and do not treat; 2-3 \u003d do test and do treat only if positive; 4 \u003d do test and do treat empirically.\nNOTE: A 2012 recommendation from the Drug Regulatory Agency and Infectious Disease Prevention Institute in Sweden sets the temperature cut off as ≥ 38.5 °C; score 0-2 \u003d do not test, only symptomatic treatment as needed; score 3-4 \u003d RADT based on clinician\u0027s judgement and treatment only if positive.",
+        "misuse": "Not recommended for use in patients with severe underlying disease outside the primary care setting. \nNot a replacement for sound clinical assessment and judgement.",
+        "copyright": "© Cambio Healthcare Systems"
+      },
+      "sv": {
+        "purpose": "Att värdera nytta av provtagning och behandling av patienter som söker med halsont.\n",
+        "keywords": [],
+        "use": "Använd som stöd för att värdera nytta av provtagning och behandling av patienter med halsont.\n\nDe modifierade Centorkriterierna består av flertalet faktorer som vardera bidrar till totala poängen enligt;\n- (avsaknad av) Hosta (0-1)\n- Svullna/ömma anteriora cervicala adeniter (0-1), \n- Temperatur \u003e38° (0-1), \n- Beläggning på/svullen tonsill (0-1)\n- Åldersintervall 45+ (-1), 15-44 (0), 3-14 (1).\n\nTotala poängen genererar en rekommendation. Snabbtest för GAS eller svalgodling rekommenderas vid två eller fler poäng. Som regel bör empirisk antibiotikabehandling alltid föregås av utredning.\n",
+        "misuse": "Centorkriterierna är primärt avsedd att inom primärvården användas på patienter utan allvarlig underliggande sjukdom. Används endast som stöd till klinisk utvärdering. Som regel bör empirisk antibiotikabehandling alltid föregås av snabbtest för GAS och/eller svalgodling.\n\n",
+        "copyright": "Cambio Healthcare Systems"
+      }
+    },
+    "otherDetails": {
+      "references": "Centor RM, Witherspoon JM, Dalton HP, Brody CE, Link K. The diagnosis of strep throat in adults in the emergency room. Medical Decision Making. 1981 Aug;1(3):239-46.\n\nMcIsaac WJ, White D, Tannenbaum D, Low DE. A clinical score to reduce unnecessary antibiotic use in patients with sore throat. Canadian Medical Association Journal. 1998 Jan 13;158(1):75-83.\n\nFine AM, Nizet V, Mandl KD. Large-scale validation of the Centor and McIsaac scores to predict group A streptococcal pharyngitis. Archives of internal medicine. 2012 Jun 11;172(11):847-52.\n\nHandläggning av faryngotonsilliter i öppen vård – ny rekommendation. Information från Läkemedelsverket. 2012;6:18-25\nhttps://lakemedelsverket.se/upload/halso-och-sjukvard/behandlingsrekommendationer/Rev_130117_Handl%C3%A4ggning%20av%20faryngotonsilliter%20i%20%C3%B6ppen%20v%C3%A5rd%20-%20ny%20rekommendation_webb.pdf"
+    }
+  },
+  "alertGuideIds": [],
+  "executionGuideIds": [
+    "Centor_Criteria.v1.1.0",
+    "Centor_Criteria_Assessment.v1"
+  ],
+  "alertBindings": {},
+  "termDefinitions": {
+    "en": {
+      "id": "en",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "References"
+        }
+      }
+    },
+    "sv": {
+      "id": "sv",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "Referenser"
+        }
+      }
+    }
+  },
+  "resultTemplates": []
+}</script>
+</head>
+<body ng-controller="cds_controller">
+<#assign app_help_tag = "def.guides['Centor_Criteria.v1.1.0'].concept">
+<#assign references = "def.terms['vt0001']"/>
+<#assign centor_criteria_assessment_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.centor_criteria_assessment.v1']">
+<#assign centor_criteria_assessment_entry_def = "def.entries['openEHR-EHR-EVALUATION.centor_criteria_assessment.v1']">
+<#assign recommendation_def = centor_criteria_assessment_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign recommendation_cds_data = centor_criteria_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
+<#assign centor_criteria_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.centor_criteria.v1']">
+<#assign centor_criteria_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.centor_criteria.v1']">
+<#assign centor_criteria_entry_def = "def.entries['openEHR-EHR-OBSERVATION.centor_criteria.v1']">
+<#assign cough__def = centor_criteria_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign swollen_tender_anterior_cervical_nodes__def = centor_criteria_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign age__def = centor_criteria_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign total_score_def = centor_criteria_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign event_time_def = centor_criteria_entry_def + ".elements['/data/events/time']">
+<#assign tonsillar_exudate_or_swelling__def = centor_criteria_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign temperature__38__c__def = centor_criteria_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign cough__ehr_data = centor_criteria_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign swollen_tender_anterior_cervical_nodes__ehr_data = centor_criteria_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign total_score_ehr_data = centor_criteria_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign event_time_ehr_data = centor_criteria_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign tonsillar_exudate_or_swelling__ehr_data = centor_criteria_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign cough__cds_data = centor_criteria_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign swollen_tender_anterior_cervical_nodes__cds_data = centor_criteria_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0005}']">
+<#assign age__cds_data = centor_criteria_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign total_score_cds_data = centor_criteria_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign event_time_cds_data = centor_criteria_entry_cds_data + "[0].elements['/data/events/time']">
+<#assign tonsillar_exudate_or_swelling__cds_data = centor_criteria_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0007}']">
+<#assign temperature__38__c__cds_data = centor_criteria_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0006}']">
+<#assign basic_demographic_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
+<#assign basic_demographic_entry_def = "def.entries['openEHR-EHR-OBSERVATION.basic_demographic.v1']">
+<#assign birthdate_def = basic_demographic_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign event_time2_def = basic_demographic_entry_def + ".elements['/data/events/time']">
+<#assign birthdate_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign event_time2_ehr_data = basic_demographic_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign body_temperature_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.body_temperature.v1']">
+<#assign body_temperature_entry_def = "def.entries['openEHR-EHR-OBSERVATION.body_temperature.v1']">
+<#assign temperature_def = body_temperature_entry_def + ".elements['/data{at0002}/events{at0003}/data{at0001}/items{at0004}']">
+<#assign event_time3_def = body_temperature_entry_def + ".elements['/data/events/time']">
+<#assign temperature_ehr_data = body_temperature_entry_ehr_data + "[0].elements['/data{at0002}/events{at0003}/data{at0001}/items{at0004}']">
+<#assign event_time3_ehr_data = body_temperature_entry_ehr_data + "[0].elements['/data/events/time']">
+
+<script>
+  angular.module('cds_app').controller('Centor_Criteria_Ctrl', function($scope, $window){
+    $scope.$on('json_loaded', function(){
+      $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+	  $scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
+	  $scope.${event_time3_ehr_data}.value.value = new Date().toISOString();      
+      $scope.${swollen_tender_anterior_cervical_nodes__ehr_data}.value.selection = $scope.findMin($scope.${swollen_tender_anterior_cervical_nodes__def});
+      $scope.${tonsillar_exudate_or_swelling__ehr_data}.value.selection = $scope.findMin($scope.${tonsillar_exudate_or_swelling__def});
+	  $scope.${cough__ehr_data}.value.selection = $scope.findMin($scope.${cough__def});
+      $scope.${temperature_ehr_data}.value.units = $scope.${temperature_def}.units[0];
+	  $scope.execute();
+	  var selections = $scope.${cough__def}.selections;
+				Object.keys(selections).forEach((selection) => {
+					if(selection.includes("at0010")) {
+						$scope.alternative_present_value = selection;
+						$scope.alternative_present_desc = selections[selection];
+					}
+					if(selection.includes("at0011")) {
+						$scope.alternative_absent_value = selection;
+						$scope.alternative_absent_desc = selections[selection];
+					}
+				});
+    });
+    $scope.findMin = function (element) {
+        var array = []
+        for  (selection in element.selections) {
+          array.push(selection);
+        }
+        return (function() {
+          var min = 0;
+          var result;
+          for (i=0; i<array.length; i++) {
+            if (array[i].charAt(0) <= min && array[i].charAt(0) >= 0) { //catch exception of -2
+              result = array[i];
+            }
+          }
+          return result;
+        })(array);
+      };
+  });
+</script>
+<div ng-show="ready" ng-controller="Centor_Criteria_Ctrl">
+<div class="header">
+  <h1>Centor Criteria</h1>
+  <h2>{{def.concept.description}}</h2>
+  <div class="help-tip">
+  <p>{{${app_help_tag}.description}}</p>
+  </div>
+</div>
+<div class="card">
+<div class="row collapse" title="{{${birthdate_def}.description}}">
+	<div class="medium-5 columns">
+		<label>{{${birthdate_def}.name}}</label>
+	</div>
+	<div class="medium-7 columns">
+		<input ng-model="${birthdate_ehr_data}.value.value" type="text" pikaday="date" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+	</div>
+</div>
+<div class="row collapse" title="{{${cough__def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${cough__def}.name}}</label>
+    </div>
+    <label class="medium-3 columns">
+		<input type="radio" value="{{alternative_absent_value}}" ng-model="${cough__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{alternative_absent_desc}}
+	</label>
+	<label class="medium-3 columns">
+		<input type="radio" value="{{alternative_present_value}}" ng-model="${cough__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{alternative_present_desc}}
+	</label>
+  </div>
+<div class="row collapse" title="{{${swollen_tender_anterior_cervical_nodes__def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${swollen_tender_anterior_cervical_nodes__def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${swollen_tender_anterior_cervical_nodes__def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${swollen_tender_anterior_cervical_nodes__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${tonsillar_exudate_or_swelling__def}.description}}">
+    <div class="medium-6 columns">
+      <label>{{${tonsillar_exudate_or_swelling__def}.name}}</label>
+    </div>
+    <label class="medium-3 columns" ng-repeat="(key, desc) in ${tonsillar_exudate_or_swelling__def}.selections">
+      <input type="radio" value="{{key}}" ng-model="${tonsillar_exudate_or_swelling__ehr_data}.value.selection" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+    </label>
+  </div>
+<div class="row collapse" title="{{${body_temperature_entry_def}.description}}">
+	<div class="medium-5 columns">
+		<label>{{${temperature_def}.name}}</label>
+	</div>
+	<div class="medium-5 columns">
+		<input ng-model="${temperature_ehr_data}.value.magnitude" type="number" step="any" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" />
+	</div>
+	<div class="medium-2 columns">
+		<select ng-model="${temperature_ehr_data}.value.units" id="temperature_ehr_units" ng-options="unit for unit in ${temperature_def}.units" ng-change="execute()" disabled=""></select>
+	</div>
+</div>
+<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult1">
+  <div class="medium-4 columns">
+    <label><b>{{${total_score_def}.name}}: </b></label>
+  </div>
+  <div class="medium-8 columns end" style="text-align: center;">
+    <label>{{${total_score_cds_data}.value.magnitude}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${recommendation_def}.description}}" id="displayresult2">
+  <div class="medium-5 columns">
+    <label><b>{{${recommendation_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${recommendation_cds_data}.value.value}}</label>
+  </div>
+</div>
+</div>
+<br /><br />
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
+</div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i>Chiappini E, Regoli M, Bonsignori F, et al. Analysis of different recommendations from international guidelines for the management of acute pharyngitis in adults and children. Clin Ther. 2011;33:48-58.</i>
+        </li>
+      </div>
+    </div>
+    <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i>Fine AM, Nizet V, Mandl KD. Large-scale validation of the centor and McIsaac scores to predict group a streptococcal pharyngitis. Arch Intern Med. 2012;172(11):847–52</i>
+        </li>
+      </div>
+    </div>
+    <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i>Handläggning av faryngotonsilliter i öppen vård – ny rekommendation. Information från Läkemedelsverket. 2012;6:18-25.</i>
+        </li>
+      </div>
+    </div>
+  </div>
+  </div>
+<style>
+  html, body {
+    height:100%;
+    width: 100%;
+  }
+  body {
+    font-family: sans-serif;
+    font-weight: 300;
+    color: #333;
+    background: #ecf0f9;
+    padding: 1em;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 {
+    font-weight: 600;
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 22px;
+    font-style: italic;
+  }
+  .header {
+    margin-bottom: 2em;
+  }
+  .card {
+    background-color: #fdfdfd;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 10px auto 0 auto;
+    padding: 1em;
+    width: 50%;
+    overflow: hidden;
+  }
+  .help-tip{
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      text-align: center;
+      background-color: #BCDBEA;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      line-height: 26px;
+      cursor: default;
+  }
+  .help-tip:before{
+      content:'?';
+      font-weight: bold;
+      color:#fff;
+  }
+  .help-tip:hover p{
+      display:block;
+      transform-origin: 100% 0%;
+      -webkit-animation: fadeIn 0.3s ease-in-out;
+      animation: fadeIn 0.3s ease-in-out;
+  }
+  .help-tip p{	/* The tooltip */
+      display: none;
+      text-align: left;
+      background-color: #1E2021;
+      padding: 20px;
+      width: 300px;
+      position: absolute;
+      border-radius: 3px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+      right: -4px;
+      color: #FFF;
+      font-size: 13px;
+      line-height: 1.4;
+      z-index: 9999;
+  }
+  .help-tip p:before{ /* The pointer of the tooltip */
+      position: absolute;
+      content: '';
+      width:0;
+      height: 0;
+      border:6px solid transparent;
+      border-bottom-color:#1E2021;
+      right:10px;
+      top:-12px;
+  }
+  .help-tip p:after{ /* Prevents the tooltip from being hidden */
+      width:100%;
+      height:40px;
+      content:'';
+      position: absolute;
+      top:-40px;
+      left:0;
+  }
+  .references1{
+    font-size: 70%;
+  }
+  /* CSS animation */
+  @-webkit-keyframes fadeIn {
+      0% { 
+          opacity:0; 
+          transform: scale(0.6);
+      }
+
+      100% {
+          opacity:100%;
+          transform: scale(1);
+      }
+  }
+  @keyframes fadeIn {
+      0% { opacity:0; }
+      100% { opacity:100%; }
+  }
+  #displayresult1 {
+    background-color: #e6e6e6; 
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    background-color: #f2f2f2;
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  select, label:not(#h-fix) {
+    margin-bottom: 10px;
+</style>
+
+
+</body></html>
