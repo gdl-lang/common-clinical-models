@@ -1,0 +1,172 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"CAGE.v1.1.0">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"CAGE", "alcohol abuse", "alcohol misuse", "dependency">
+				misuse = <"CAGE is to be considered a screening tool, and is not in itself diagnostic.
+">
+				purpose = <"To screen for alcohol abuse. 
+">
+				use = <"Use to screen for alcohol abuse. It is one of the most widely used screening instruments for detection of alcohol misuse and potential dependency. 
+
+CAGE is an acronym derived from instrument's four questions;
+- Have you ever felt you needed to Cut down on your drinking?
+- Have people Annoyed you by criticizing your drinking?
+- Have you ever felt Guilty about drinking?
+- Have you ever felt you needed a drink first thing in the morning (Eye-opener) to steady your nerves or to get rid of a hangover?
+
+A score of 2p or more indicates alcohol misuse, and should result in further investigation.">
+			>
+			["sv"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"Cambio Healthcare Systems">
+				keywords = <"CAGE", "riskbruk", "missbruk", "beroende", "alkohol">
+				misuse = <"CAGE är avsedd för screening och är ej att betrakta som diagnostiskt.
+">
+				purpose = <"Att identifiera alkoholmissbruk. 
+
+">
+				use = <"
+Använd för att identifiera alkoholmissbruk. Instrumentet är ett av de mest använda för upptäckt av alkoholmissbruk och potentiellt beroende.
+
+CAGE är en akronym baserad på dess fyra frågor;
+
+Cut down - Har du någon gång känt att du behöver minska din alkoholkonsumtion?
+Annoy - Har någon irriterat dig genom att kritisera dina alkoholvanor?
+Guilt - Har du någon gång haft dålig samvete eller skuldkänslor på grund av ditt drickande?
+Eye opener - Har du någon gång behövt starta dagen med alkohol för att stilla nerverna eller för att bli av med en bakfylla?
+
+En total poäng om 2p eller mer indikerar alkoholmissbruk, och bör resultera i vidare utredning.
+
+">
+			>
+		>
+		lifecycle_state = <"Author draft">
+		original_author = <
+			["date"] = <"2016-12-21">
+			["email"] = <"models@cambiocds.com">
+			["name"] = <"Dennis Forslund">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_contributors = <"Jimmy Axelsson", "Eneimi Allwell-Brown, Cambio Healthcare Systems">
+		other_details = <
+			["references"] = <"Ewing JA. Detecting alcoholism. The CAGE questionnaire. JAMA. 1984 Oct 12;252(14):1905-7. 
+
+Dhalla S, Kopec JA. The CAGE questionnaire for alcohol misuse: a review of reliability and validity studies. Clin Invest Med. 2007;30:33–41.
+">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.cage.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
+					>
+					["gt0004"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0005]">
+					>
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0006]">
+					>
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0007]">
+					>
+				>
+				predicates = <"max(/data/events/time)",...>
+			>
+			["gt0007"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.cage.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0012"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0008]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0018"] = (RULE) <
+				when = <"$gt0012==null", "!fired($gt0018)">
+				then = <"$gt0012.magnitude=((($gt0003.value+$gt0004.value)+$gt0005.value)+$gt0006.value)",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"CAGE Questionnaire">
+						description = <"CAGE is one of the most widely used screening instruments for detection of alcohol misuse and potential dependency. It consists of four questions related to alcohol use. A score of 2p or more indicates alcohol misuse, and should result in further investigation.
+">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Have you ever felt you needed to cut down on your drinking?">
+						description = <"*">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Have people annoyed you by criticizing your drinking?">
+						description = <"*">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Have you ever felt guilty about drinking?">
+						description = <"*">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Have you ever felt you needed a drink first thing in the morning (eye-opener) to steady your nerves or to get rid of a hangover?">
+						description = <"*">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Total score">
+						description = <"Sum of all factors">
+					>
+					["gt0018"] = (TERM) <
+						text = <"Calculate total score">
+					>
+				>
+			>
+			["sv"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"CAGE">
+						description = <"CAGE är ett av de mest använda instrumenten för screening av alkoholmissbruk och potentiellt beroende. Det består av fyra frågor relaterade till alkoholkonsumtion. En poäng om 2p eller mer indikerar alkoholmissbruk, och bör resultera i vidare utredning.
+">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Har du någon gång känt att du behöver minska din alkoholkonsumtion?">
+						description = <"*(en) *">
+					>
+					["gt0004"] = (TERM) <
+						text = <"Har någon irriterat dig genom att kritisera dina alkoholvanor?">
+						description = <"*(en) *">
+					>
+					["gt0005"] = (TERM) <
+						text = <"Har du någon gång haft dålig samvete eller skuldkänslor på grund av ditt drickande?">
+						description = <"*(en) *">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Har du någon gång behövt starta dagen med alkohol för att stilla nerverna eller för att bli av med en bakfylla?">
+						description = <"*(en) *">
+					>
+					["gt0012"] = (TERM) <
+						text = <"Total poäng">
+						description = <"*(en) Sum of all factors">
+					>
+					["gt0018"] = (TERM) <
+						text = <"Beräkna total poäng">
+					>
+				>
+			>
+		>
+	>
+>
