@@ -2,9 +2,19 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.infective_endocarditis_mortality_risk_assessment.v1
 
 concept
-	[at0000]	-- Infective endocarditis mortality risk assessment
+	[at0000]	-- Infectious Endocarditis Mortality Risk Score - utvärdering
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["email"] = <"models@cambiocds.com">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -30,20 +40,43 @@ Score	6-Month Mortality
 			misuse = <"Not to be used to make diagnostic assessments of IE, only to provide an estimate of mortality and should not be used alone without also providing supplementary evidence.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Utvärdering av poäng genererad i enlighet med Infectious Endocarditis Mortality Risk Score.">
+			use = <"Instrumentet baseras på faktorer indelade i kategorierna:
+- Värd
+- Infektiös endokardit
+- Komplikationer
+
+Poängsumman uppgår till maximalt 22p. 
+6-månadersmortalitet = 2.416*score + 0.109*score^2−4.849
+
+Resultat tolkas enligt:
+
+Score	6-månadersmortalitet
+0-6	8-12%
+7-8	16-20%
+9-10	30-34%
+11-16	42-50%
+17-22	>60%">
+			keywords = <"mortalitet", "överlevnad", "infektiös endokardit", "endokardit">
+			misuse = <"Ej avsedd för diagnostik, utan endast för att estimera mortalitet vid diagnos. Bör användas tillsammans med andra verktyg.  ">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Ref. 1: Park LP, Chu VH, Peterson G, Skoutelis A, Lejko-Zupa T, Bouza E, Tattevin P, Habib G, Tan R, Gonzalez J, Altclas J, Edathodu J, Fortes CQ, Siciliano RF,Pachirat O, Kanj S, Wang A; International Collaboration on Endocarditis (ICE) Investigators. Validated Risk Score for Predicting 6-Month Mortality in Infective Endocarditis. J Am Heart Assoc. 2016 Apr 18;5(4). pii: e003016. doi: 10.1161/JAHA.115.003016.">
-		["MD5-CAM-1.0.1"] = <"194D611D14CF5E0D9A6D5C1F9F3F3763">
+		["MD5-CAM-1.0.1"] = <"318BA52855568D46B8A30B40DBC74117">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Infective endocarditis mortality risk assessment
+	EVALUATION[at0000] matches {	-- Infectious Endocarditis Mortality Risk Score - utvärdering
 		data matches {
-			ITEM_TREE[at0001] matches {	-- Tree
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- 6-Month Mortality rate
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- 6-månadersmortalitet
 						value matches {
 							0|[local::at0003], 	-- 8-12%
 							1|[local::at0004], 	-- 16-20%
@@ -92,6 +125,42 @@ ontology
 				["at0007"] = <
 					text = <">60%">
 					description = <"Score 17-22">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Infectious Endocarditis Mortality Risk Score - utvärdering">
+					description = <"Utvärdering av poäng genererad i enlighet med Infectious Endocarditis Mortality Risk Score.">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"6-månadersmortalitet">
+					description = <"6-månadersmortalitet, baserat på poängsumma.">
+				>
+				["at0003"] = <
+					text = <"8-12%">
+					description = <"0-6p">
+				>
+				["at0004"] = <
+					text = <"16-20%">
+					description = <"7-8p">
+				>
+				["at0005"] = <
+					text = <"30-34%">
+					description = <"9-10p">
+				>
+				["at0006"] = <
+					text = <"42-50%">
+					description = <"11-16p">
+				>
+				["at0007"] = <
+					text = <">60%">
+					description = <"17-22p">
 				>
 			>
 		>
