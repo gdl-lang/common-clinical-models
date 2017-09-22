@@ -2,9 +2,19 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.edacs_adp_evaluation.v1
 
 concept
-	[at0000]	-- Edacs ADP evaluation
+	[at0000]	-- EDACS-ADP - utvärdering
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["email"] = <"models@cambiocds.com">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -13,6 +23,33 @@ description
 		["date"] = <"2017-08-03">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Emergency Department Assessment of Chest Pain Score (EDACS) är en metod för att identifiera individer med låg risk för akut allvarlig hjärtsjukdom, inklusive akut koronart syndrom, i syfte att i kombination med EDACS-ADP (Accelerated Diagnostic Protocol) bedöma vilka som säkert kan skrivas ut för poliklinisk uppföljning.">
+			use = <"EDACS-ADP är ett tillägg till EDACS, och används som stöd till klinisk bedömning av vilka patienter som kan kategoriseras ha låg risk för akut allvarlig hjärtsjukdom inklusive akut koronart syndrom. 
+
+Resultatet tolkas enligt:
+
+* Låg risk
+EDACS < 16 och
+Ingen nytillkommen ischemi på EKG samt negativa troponinprover vid 0h och 2h
+
+Rekommendation: säkert att skriva ut med poliklinisk uppföljning (alternativt att gå vidare med tidig provtagning på sjukhuset).
+
+* Allvarlig akut hjärtsjukdom kan ej uteslutas
+EDACS ≥16, eller
+Nytillkommen ischemi på EKG/positivt troponinprov vid 0h och 2h
+
+Rekommendation: gå vidare i enlighet med sjukhusets protokoll för vidare observation och troponinprovtagning
+
+Handläggning
+
+    Lågriskpatienter: överväg annat fokus för genes innan utskrivning, såsom aorta, esofagus, lungor, hjärta, buk och muskuloskeletal.
+    Allvarlig akut hjärtsjukdom kan ej uteslutas: gå vidare i enlighet med sjukhusets protokoll för vidare observation, överväg administrering av nitroglycering och smärtstillande, uppföljande EKG och troponinprovtagning">
+			keywords = <"bröstsmärta", "EDACS", "EDACS-ADP">
+			misuse = <"Ej tillämpbar på patienter under 18 års ålder, patienter med bröstsmärta ej förenlig med akut koronart syndrom, eller vid pågående bröstsmärta eller instabil angina.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"Pain Score (EDACS) provides a method to identify patients with a low risk of a major cardiac adverse event or possible acute coronary syndrom (ACS). The addition of a couple of variables, the extended EDACS, EDACS-ADP (accelerated diagnostic protocol) helps to ascertain whether they might be suitable for early discharge.">
@@ -48,30 +85,30 @@ Management
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Ref. 1: Than M, et al. Emerg Med Australas. Development and validation of the Emergency Department Assessment of Chest pain Score and 2 h accelerated diagnostic protocol. 2014 Feb;26(1):34-44. doi: 10.1111/1742-6723.12164.">
-		["MD5-CAM-1.0.1"] = <"431635ACE30B7DA0E358941502F7446F">
+		["MD5-CAM-1.0.1"] = <"527195623EA577120B25D7497073A73B">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Edacs ADP evaluation
+	EVALUATION[at0000] matches {	-- EDACS-ADP - utvärdering
 		data matches {
-			ITEM_TREE[at0001] matches {	-- Tree
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Cohort Risk Level
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Risknivå
 						value matches {
-							0|[local::at0003], 	-- Low Risk
-							1|[local::at0004]  	-- Not Low Risk
+							0|[local::at0003], 	-- Låg risk
+							1|[local::at0004]  	-- Allvarlig akut hjärtsjukdom kan ej uteslutas
 						}
 					}
-					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Recommendation
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Rekommendation
 						value matches {
-							0|[local::at0006], 	-- Recommendation: safe for discharge to early outpatient follow-up investigation (or proceed to earlier inpatient testing).
-							1|[local::at0007]  	-- Recommendation: Proceed with usual care with further observation and delayed troponin.
+							0|[local::at0006], 	-- Säkert att skriva ut med poliklinisk uppföljning (alternativt att gå vidare med tidig provtagning på sjukhuset)
+							1|[local::at0007]  	-- Gå vidare i enlighet med sjukhusets protokoll för vidare observation och troponinprovtagning
 						}
 					}
-					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Management
+					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Handläggning
 						value matches {
-							0|[local::at0009], 	-- For low-risk patients: consider other causes of chest pain due to aortic, esophageal, pulmonary, cardiac, and abdominal, and muskuloskeletal sources prior to discharge.
-							1|[local::at0010]  	-- For non-low-risk patients: Treat as per usual chest pain protocols, including but not limited to consideration of aspirin, nitroglycerin, and serial EKGs and biomarkers at minimum.
+							0|[local::at0009], 	-- Överväg annat fokus för genes innan utskrivning, såsom aorta, esofagus, lungor, hjärta, buk och muskuloskeletal.
+							1|[local::at0010]  	-- Gå vidare i enlighet med sjukhusets protokoll för vidare observation, överväg administrering av nitroglycering och smärtstillande, uppföljande EKG och troponinprovtagning
 						}
 					}
 				}
@@ -130,6 +167,56 @@ If EKG shows no new ischemia and 0h and 2h troponin both negative">
 				["at0010"] = <
 					text = <"For non-low-risk patients: Treat as per usual chest pain protocols, including but not limited to consideration of aspirin, nitroglycerin, and serial EKGs and biomarkers at minimum.">
 					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"EDACS-ADP - utvärdering">
+					description = <"Emergency Department Assessment of Chest Pain Score (EDACS) är en metod för att identifiera individer med låg risk för akut allvarlig hjärtsjukdom.">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Risknivå">
+					description = <"Risknivå baserad på poäng.">
+				>
+				["at0003"] = <
+					text = <"Låg risk">
+					description = <"EDACS < 16 och
+avsaknad av nytillkommen ischemi på EKG samt negativa troponinprover vid 0h och 2h">
+				>
+				["at0004"] = <
+					text = <"Allvarlig akut hjärtsjukdom kan ej uteslutas">
+					description = <"EDACS ≥16, eller
+nytillkommen ischemi på EKG/positivt troponinprov vid 0h och 2h">
+				>
+				["at0005"] = <
+					text = <"Rekommendation">
+					description = <"Rekommendation baserad på risknivå.">
+				>
+				["at0006"] = <
+					text = <"Säkert att skriva ut med poliklinisk uppföljning (alternativt att gå vidare med tidig provtagning på sjukhuset)">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Gå vidare i enlighet med sjukhusets protokoll för vidare observation och troponinprovtagning">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Handläggning">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Överväg annat fokus för genes innan utskrivning, såsom aorta, esofagus, lungor, hjärta, buk och muskuloskeletal.">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Gå vidare i enlighet med sjukhusets protokoll för vidare observation, överväg administrering av nitroglycering och smärtstillande, uppföljande EKG och troponinprovtagning">
+					description = <"">
 				>
 			>
 		>
