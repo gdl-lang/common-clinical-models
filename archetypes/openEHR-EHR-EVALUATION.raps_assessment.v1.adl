@@ -53,7 +53,7 @@ Används med försiktighet på patienter som genomgår behandling på annan än 
 			purpose = <"To assess the score generated in accordance with the Risk Assessment Pressure Sore scale (RAPS). ">
 			use = <"Use to assess the risk of pressure ulcer development in a patient. 
 
-RAPS is an acronym for Risk Assessment Pressure Sore, and is included in the Senior Alert registry. It consists of ten variables, most of which has been used in previous scales such as the modified Norton and Braden scales. The maximum score is 39 and each factor contribute points as follows:
+RAPS is an acronym for Risk Assessment Pressure Sore, and is included in the Senior Alert registry. Though originally consisting of 12 variables, 2 of those (Skin type and Bodily constitution) are usually left out because of poor correlation in studies. The other ten (10) variables, most of which have been used in previous scales such as the Norton, modified Norton, and Braden scales, contribute to a maximum score of 39 and each factor contributes points as follows:
 
 - General physical condition (1-4)
 - Physical activity (1-4)
@@ -66,18 +66,17 @@ RAPS is an acronym for Risk Assessment Pressure Sore, and is included in the Sen
 - Body temperature (1-4)
 - s-Albumin (1-4)
 
-The cut-off point indicating high risk is a score of 31 or less. Predictive validity is highest for patients undergoing treatment in medical and infectious disease wards. 
-">
+The cut-off point indicating a high risk of developing a pressure sore is a score of 31 or less. Predictive validity is highest for patients undergoing treatment in medical and infectious disease wards. ">
 			keywords = <"senior alert", "RAPS", "pressure sore", "risk assessment pressure sore">
 			misuse = <"Do not use outside of context of risk assessment of pressure ulcers. Use with caution on patients undergoing treatment in other wards than medical or infectious disease wards (ie. surgical/orthopaedic) as predictive validity suggests the RAPS scale does not cover all factors of importance in these circumstances. Individual assessment should as a rule be applied as predisposed patients might be high risk despite a score above 31. ">
-			copyright = <"Cambio Healthcare Systems">
+			copyright = <"© Cambio Healthcare Systems">
 		>
 	>
-	lifecycle_state = <"0">
+	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Lindgren M, Unosson M, Krantz AM, Ek AC. A risk assessment scale for the prediction of pressure sore development: reliability and validity. Journal of advanced nursing. 2002 Apr 1;38(2):190-9.">
-		["MD5-CAM-1.0.1"] = <"7027760596A9B44DCA69974FD360F508">
+		["MD5-CAM-1.0.1"] = <"1D0D43821E6E701CBD10876D4F5ACAAE">
 	>
 
 definition
@@ -87,8 +86,13 @@ definition
 				items cardinality matches {0..*; unordered} matches {
 					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Pressure sore risk
 						value matches {
-							0|[local::at0003], 	-- Low risk
-							1|[local::at0004]  	-- High risk
+							0|[local::at0003], 	-- Low risk of pressure sore
+							1|[local::at0004]  	-- High risk of pressure sore
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Comment
+						value matches {
+							DV_TEXT matches {*}
 						}
 					}
 				}
@@ -113,12 +117,16 @@ ontology
 					description = <"Risk assessment of pressure ulcer development in a patient, based on score generated in accordance with RAPS. ">
 				>
 				["at0003"] = <
-					text = <"Low risk">
+					text = <"Low risk of pressure sore">
 					description = <"*">
 				>
 				["at0004"] = <
-					text = <"High risk">
+					text = <"High risk of pressure sore">
 					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Comment">
+					description = <"Additional information about this recording">
 				>
 			>
 		>
@@ -143,6 +151,10 @@ ontology
 				["at0004"] = <
 					text = <"Hög risk">
 					description = <"*">
+				>
+				["at0005"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
 				>
 			>
 		>
