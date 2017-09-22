@@ -2,9 +2,19 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.pcdai_assessment.v1
 
 concept
-	[at0000]	-- Pcdai assessment
+	[at0000]	-- PCDAI - utvärdering
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["email"] = <"models@cambiocds.com">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -30,6 +40,21 @@ Score ≥40: Severe Crohn’s Disease ">
 			misuse = <"Do not use this tool in patients over the age of 19 yrs.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Pediatric Crohn's Disease Activity Index (PCDAI) är ett instrument för utvärdering av svårighetsgrad vid Crohns sjukdom hos barn.">
+			use = <"Instrumentet kan med fördel användas såväl tidigt i förloppet som vid uppföljning, i syfte att utvärdera allvarlighetsgrad. 
+
+Parametrarna är kategoriserade till Historik, Undersökning och Laboratorieprover. Maximal poäng uppgår till 105p och resultatet tolkas enligt:
+
+<10p: Remission
+10–27.5p: Mild Crohns sjukdom
+30–37.5p: Måttlig Crohns sjukdom
+≥40p: Svår Crohns sjukdom">
+			keywords = <"Pediatric Crohns Activity Index score", "Crohns sjukdom", "morbus Crohn", "Crohns">
+			misuse = <"Ej avsedd för individer över 19 års ålder.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -37,20 +62,20 @@ Score ≥40: Severe Crohn’s Disease ">
 		["references"] = <"Ref. 1: Hyams JS, et al. Development and validation of a pediatric Crohn's disease activity index. J Pediatr Gastroenterol Nutr. 1991 May;12(4):439-47.
 
 Ref. 2: Hyams J, et al. Evaluation of the pediatric Crohn disease activity index: a prospective multicenter experience. J Pediatr Gastroenterol Nutr. 2005 Oct;41(4):416-21.">
-		["MD5-CAM-1.0.1"] = <"D27EB673E8F4A840E8D99AEAF5D7D9AB">
+		["MD5-CAM-1.0.1"] = <"A2608401B0CC32F67653604AB6F5F998">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Pcdai assessment
+	EVALUATION[at0000] matches {	-- PCDAI - utvärdering
 		data matches {
-			ITEM_TREE[at0001] matches {	-- Tree
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Score interpretation
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Resultat
 						value matches {
 							0|[local::at0003], 	-- Remission
-							1|[local::at0004], 	-- Mild Crohn’s Disease
-							2|[local::at0005], 	-- Moderate Crohn’s Disease
-							3|[local::at0006]  	-- Severe Crohn’s Disease 
+							1|[local::at0004], 	-- Mild Crohns sjukdom
+							2|[local::at0005], 	-- Måttlig Crohns sjukdom
+							3|[local::at0006]  	-- Svår Crohns sjukdom
 						}
 					}
 				}
@@ -89,6 +114,38 @@ ontology
 				["at0006"] = <
 					text = <"Severe Crohn’s Disease ">
 					description = <"Score ≥40">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"PCDAI - utvärdering">
+					description = <"Pediatric Crohn's Disease Activity Index (PCDAI) är ett instrument för utvärdering av svårighetsgrad vid Crohns sjukdom hos barn.">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Resultat">
+					description = <"Utvärdering baserad på poäng genererad i enligt med PCDAI.">
+				>
+				["at0003"] = <
+					text = <"Remission">
+					description = <"<10p">
+				>
+				["at0004"] = <
+					text = <"Mild Crohns sjukdom">
+					description = <"10–27.5p">
+				>
+				["at0005"] = <
+					text = <"Måttlig Crohns sjukdom">
+					description = <"30–37.5p">
+				>
+				["at0006"] = <
+					text = <"Svår Crohns sjukdom">
+					description = <"≥40p">
 				>
 			>
 		>
