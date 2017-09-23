@@ -53,7 +53,7 @@ Strict index:
 Loose index:
      <3 episodes of wheezing per year, AND
      ≥1 major criteria OR ≥2 minor criteria
-It may also be used by clinicians to detemine which patients are suitable for more aggressive trials of asthma medications because of the likelihood of being diagnosed with asthma later in life.
+It may also be used by clinicians to determine which patients are suitable for more aggressive trials of asthma medications because of the likelihood of being diagnosed with asthma later in life.
 A corresponding evaluation archetype: openEHR-EHR-EVALUATION.asthma_predictive_index.v1 is used to store data for assessment of the asthma predictive index.">
 			keywords = <"asthma", "wheezing", "respiratory illness", "atopy">
 			misuse = <"">
@@ -66,7 +66,7 @@ A corresponding evaluation archetype: openEHR-EHR-EVALUATION.asthma_predictive_i
 		["references"] = <"Castro-Rodríguez JA, Holberg CJ, Wright AL, Martinez FD. A clinical index to define risk of asthma in young children with recurrent wheezing. American journal of respiratory and critical care medicine. 2000 Oct 1;162(4):1403-6.
 
 Leonardi NA, Spycher BD, Strippoli MP, Frey U, Silverman M, Kuehni CE. Validation of the Asthma Predictive Index and comparison with simpler clinical prediction rules. Journal of allergy and clinical immunology. 2011 Jun 30;127(6):1466-72.">
-		["MD5-CAM-1.0.1"] = <"059A0A8B91901723E360A49027243F3B">
+		["MD5-CAM-1.0.1"] = <"924984ED15D1EFE7680606E6106421C5">
 	>
 
 definition
@@ -86,6 +86,18 @@ definition
 									}
 									CLUSTER[at0005] occurrences matches {0..1} matches {	-- Major criteria
 										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Patient with eczema
+												value matches {
+													0|[local::at0012], 	-- No
+													1|[local::at0013]  	-- Yes
+												}
+											}
+											ELEMENT[at0006] occurrences matches {0..1} matches {	-- Parent with asthma
+												value matches {
+													0|[local::at0012], 	-- No
+													1|[local::at0013]  	-- Yes
+												}
+											}
 											ELEMENT[at0032] occurrences matches {0..1} matches {	-- Major criteria count
 												value matches {
 													DV_COUNT matches {
@@ -93,37 +105,20 @@ definition
 													}
 												}
 											}
-											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Patient with eczema
-												value matches {
-													0|[local::at0020], 	-- No
-													1|[local::at0021]  	-- Yes
-												}
-											}
-											ELEMENT[at0006] occurrences matches {0..1} matches {	-- Parent with asthma
-												value matches {
-													0|[local::at0018], 	-- No
-													1|[local::at0019]  	-- Yes
-												}
-											}
 										}
 									}
-									CLUSTER[at0008] occurrences matches {0..1} matches {	-- Minor
+									CLUSTER[at0008] occurrences matches {0..1} matches {	-- Minor criteria
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0033] occurrences matches {0..1} matches {	-- Minor criteria count
-												value matches {
-													DV_COUNT matches {*}
-												}
-											}
 											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Eosinophilia (≥4% on FBC)
 												value matches {
-													0|[local::at0016], 	-- No
-													1|[local::at0017]  	-- Yes
+													0|[local::at0012], 	-- No
+													1|[local::at0013]  	-- Yes
 												}
 											}
 											ELEMENT[at0010] occurrences matches {0..1} matches {	-- Wheezing apart from colds
 												value matches {
-													0|[local::at0014], 	-- No
-													1|[local::at0015]  	-- Yes
+													0|[local::at0012], 	-- No
+													1|[local::at0013]  	-- Yes
 												}
 											}
 											ELEMENT[at0009] occurrences matches {0..1} matches {	-- Patient with allergic rhinitis
@@ -132,19 +127,31 @@ definition
 													1|[local::at0013]  	-- Yes
 												}
 											}
+											ELEMENT[at0033] occurrences matches {0..1} matches {	-- Minor criteria count
+												value matches {
+													DV_COUNT matches {
+														magnitude matches {|0..3|}
+													}
+												}
+											}
+										}
+									}
+									ELEMENT[at0027] occurrences matches {0..1} matches {	-- Asthma predictive index
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0028, 	-- Negative by loose criteria
+													at0029, 	-- Negative by strict criteria
+													at0030, 	-- Positive by loose criteria
+													at0031]	-- Positive by strict criteria
+												}
+											}
 										}
 									}
 									ELEMENT[at0026] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
-										}
-									}
-									ELEMENT[at0027] occurrences matches {0..1} matches {	-- Asthma predictive index
-										value matches {
-											0|[local::at0028], 	-- Negative by loose criteria
-											1|[local::at0029], 	-- Negative by strict criteria
-											2|[local::at0030], 	-- Positive by loose criteria
-											3|[local::at0031]  	-- Positive by strict criteria
 										}
 									}
 								}
@@ -193,8 +200,8 @@ ontology
 					description = <"Does the individual suffer from eczema?">
 				>
 				["at0008"] = <
-					text = <"Minor">
-					description = <"Major defining criteria for the asthma predictive index.">
+					text = <"Minor criteria">
+					description = <"Minor defining criteria for the asthma predictive index.">
 				>
 				["at0009"] = <
 					text = <"Patient with allergic rhinitis">
@@ -210,43 +217,11 @@ ontology
 				>
 				["at0012"] = <
 					text = <"No">
-					description = <"Patient does not have allergic rhinitis.">
+					description = <"*">
 				>
 				["at0013"] = <
 					text = <"Yes">
-					description = <"Patient has allergic rhinitis.">
-				>
-				["at0014"] = <
-					text = <"No">
-					description = <"Patient does not wheeze apart rom having colds.">
-				>
-				["at0015"] = <
-					text = <"Yes">
-					description = <"Patient wheezes apart from having colds.">
-				>
-				["at0016"] = <
-					text = <"No">
-					description = <"Patient does not have eosinophilia.">
-				>
-				["at0017"] = <
-					text = <"Yes">
-					description = <"Patient has eosinophilia.">
-				>
-				["at0018"] = <
-					text = <"No">
-					description = <"Neither parent with asthma.">
-				>
-				["at0019"] = <
-					text = <"Yes">
-					description = <"At least one parent with asthma.">
-				>
-				["at0020"] = <
-					text = <"No">
-					description = <"Patient does not have eczema.">
-				>
-				["at0021"] = <
-					text = <"Yes">
-					description = <"Patient has eczema.">
+					description = <"*">
 				>
 				["at0024"] = <
 					text = <"<3">
@@ -262,7 +237,7 @@ ontology
 				>
 				["at0027"] = <
 					text = <"Asthma predictive index">
-					description = <"Whether the individual meets any of the criteria for likelihood of developing asthma later in childhood.">
+					description = <"Criteria met for likelihood of developing asthma later in childhood.">
 				>
 				["at0028"] = <
 					text = <"Negative by loose criteria">
@@ -347,38 +322,6 @@ ontology
 				["at0013"] = <
 					text = <"Ja">
 					description = <"Patienten har allergisk rinit.">
-				>
-				["at0014"] = <
-					text = <"Nej">
-					description = <"Patienten har ej haft pipande, väsande andning utöver vid förkylning.">
-				>
-				["at0015"] = <
-					text = <"Ja">
-					description = <"Patienten har haft haft pipande, väsande andning utöver vid förkylning.">
-				>
-				["at0016"] = <
-					text = <"Nej">
-					description = <"Provsvar visar ej eosinofili.">
-				>
-				["at0017"] = <
-					text = <"Ja">
-					description = <"Provsvar visar eosinifili.">
-				>
-				["at0018"] = <
-					text = <"Nej">
-					description = <"Ingen förälder med astma.">
-				>
-				["at0019"] = <
-					text = <"Ja">
-					description = <"Minst en förälder med astma.">
-				>
-				["at0020"] = <
-					text = <"Nej">
-					description = <"Patienten har inte eksem">
-				>
-				["at0021"] = <
-					text = <"Ja">
-					description = <"Patienten har eksem">
 				>
 				["at0024"] = <
 					text = <"<3">

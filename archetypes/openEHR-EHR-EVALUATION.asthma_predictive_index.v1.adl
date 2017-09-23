@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.asthma_predictive_index.v1
 
 concept
-	[at0000]	-- Asthma predictive index (API) - utvärdering
+	[at0000]	-- Asthma predictive index (API)
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -22,22 +22,6 @@ description
 		["date"] = <"2017-03-17">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To determine the specificity of the API and likelihood of developing childhood asthma (generally before age 15 years).">
-			use = <"To record assessment of specificity of the API for children/infants ≤3 years old. It is based on the presence of at least one of 2 major criteria and at least two of 3 minor criteria, plus the number of wheezing episodes per year. Major criteria are: parent with asthma/patient with eczema; minor criteria are: patient with allergic rhinitis/wheezing apart from colds/eosinophilia (≥ 4% on FBC). A positive API is fulfilled by either 'strict index' or 'loose index' which provide >95% specificity, and 80% specificity respectively.
-Strict index (>95% API specificity):
-     ≥3 episodes of wheezing per year, AND
-     ≥1 major criteria OR ≥2 minor criteria
-Loose index (80% API specificity):
-     <3 episodes of wheezing per year, AND
-     ≥1 major criteria OR ≥2 minor criteria
-It may also be used by clinicians to detemine which patients are suitable for more aggressive trials of asthma medications because of the likelihood of being diagnosed with asthma later in life.
-A corresponding observation archetype: openEHR-EHR-OBSERVATION.asthma_predictive_index.v1 is used to store data for assessment of the asthma predictive index.">
-			keywords = <"asthma", "wheezing", "respiratory illness", "atopy">
-			misuse = <"">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Utvärdering av poäng genererad i enlighet med Asthma Predictive Index (API), som används för att hos barn skatta sannolikhet för utveckling av astma (generellt före 15 års ålder).
@@ -59,6 +43,22 @@ Instrumentet kan även användas för att avgöra vilka patienter som är lämpl
 			misuse = <"">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To determine the specificity of the API and likelihood of developing childhood asthma (generally before age 15 years).">
+			use = <"To record assessment of specificity of the API for children/infants ≤3 years old. It is based on the presence of at least one of 2 major criteria and at least two of 3 minor criteria, plus the number of wheezing episodes per year. Major criteria are: parent with asthma/patient with eczema; minor criteria are: patient with allergic rhinitis/wheezing apart from colds/eosinophilia (≥ 4% on FBC). A positive API is fulfilled by either 'strict index' or 'loose index' which provide >95% specificity, and 80% specificity respectively.
+Strict index (>95% API specificity):
+     ≥3 episodes of wheezing per year, AND
+     ≥1 major criteria OR ≥2 minor criteria
+Loose index (80% API specificity):
+     <3 episodes of wheezing per year, AND
+     ≥1 major criteria OR ≥2 minor criteria
+It may also be used by clinicians to determine which patients are suitable for more aggressive trials of asthma medications because of the likelihood of being diagnosed with asthma later in life.
+A corresponding observation archetype: openEHR-EHR-OBSERVATION.asthma_predictive_index.v1 is used to store data for assessment of the asthma predictive index.">
+			keywords = <"asthma", "wheezing", "respiratory illness", "atopy">
+			misuse = <"">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -66,20 +66,26 @@ Instrumentet kan även användas för att avgöra vilka patienter som är lämpl
 		["references"] = <"Castro-Rodríguez JA, Holberg CJ, Wright AL, Martinez FD. A clinical index to define risk of asthma in young children with recurrent wheezing. American journal of respiratory and critical care medicine. 2000 Oct 1;162(4):1403-6.
 
 Leonardi NA, Spycher BD, Strippoli MP, Frey U, Silverman M, Kuehni CE. Validation of the Asthma Predictive Index and comparison with simpler clinical prediction rules. Journal of allergy and clinical immunology. 2011 Jun 30;127(6):1466-72.">
-		["MD5-CAM-1.0.1"] = <"E6DA6A28F2538A1D3F0D01E00A9001EF">
+		["MD5-CAM-1.0.1"] = <"CA2C45C7F505C1DCF392F3080D10667A">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Asthma predictive index (API) - utvärdering
+	EVALUATION[at0000] matches {	-- Asthma predictive index (API)
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- API - specificitet
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Specificity of API
 						value matches {
-							DV_TEXT matches {*}
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0004, 	-- > 95% likelihood of later childhood asthma diagnosis
+									at0005]	-- 80% likelihood of later childhood asthma diagnosis
+								}
+							}
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Kommentar
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Comment
 						value matches {
 							DV_TEXT matches {*}
 						}
@@ -103,11 +109,19 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Specificity of API">
-					description = <"Likelihood of a diagnosis of asthma later in childhood, based on major and minor API criteria.">
+					description = <"Quantified likelihood of a diagnosis of asthma later in childhood, based on major and minor API criteria.">
 				>
 				["at0003"] = <
 					text = <"Comment">
 					description = <"Any additional information about this recording.">
+				>
+				["at0004"] = <
+					text = <"> 95% likelihood of later childhood asthma diagnosis">
+					description = <"Positive by strict criteria">
+				>
+				["at0005"] = <
+					text = <"80% likelihood of later childhood asthma diagnosis">
+					description = <"Positive by loose criteria">
 				>
 			>
 		>
@@ -128,6 +142,14 @@ ontology
 				["at0003"] = <
 					text = <"Kommentar">
 					description = <"Ev. tillägg.">
+				>
+				["at0004"] = <
+					text = <"*>90 %(en)">
+					description = <"*Positive by strict criteria(en)">
+				>
+				["at0005"] = <
+					text = <"*80 %(en)">
+					description = <"*Positive by loose criteria(en)">
 				>
 			>
 		>
