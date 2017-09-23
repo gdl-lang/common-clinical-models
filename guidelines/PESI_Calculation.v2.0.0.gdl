@@ -1,6 +1,6 @@
 (GUIDE) <
 	gdl_version = <"0.1">
-	id = <"PESI_Calculation.v1">
+	id = <"PESI_Calculation.v2.0.0">
 	concept = <"gt0001">
 	language = (LANGUAGE) <
 		original_language = <[ISO_639-1::en]>
@@ -15,7 +15,7 @@
 				use = <"To calculate the pulmonary embolism severity index using the following 11 variables:
 - demographic characteristics (age = +age in years; male sex = +10)
 - comorbidities (cancer = +30; heart failure = +10; chronic lung disease = +10)
-- clinical findings (pulse ⩾ 110/min = +20; systolic blood pressure < 100 mmHg = +30; respiratory rate ⩾ 30/min = +20; temperature < 36°C = +20; altered mental status [disorientation, lethargy, stupor, or coma] = +60; arterial oxygen saturation < 90% =+20).
+- clinical findings (pulse ⩾ 110/min = +20; systolic blood pressure < 100 mmHg = +30; respiratory rate ⩾ 30/min = +20; temperature < 36°C = +20; altered mental status [disorientation, lethargy, stupor, or coma] = +60; arterial oxygen saturation < 90% = +20).
 Absence of any characteristic => score of 0 (zero).
 
 The sum of the 11 points assigned is used to categorize patients into risk classes:
@@ -56,22 +56,6 @@ Fraga M, Taffé P, Méan M, Hugli O, Witzig S, Waeber G, Aujesky D. The inter-ra
 					>
 					["gt0004"] = (ELEMENT_BINDING) <
 						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
-					>
-				>
-				predicates = <"max(/data/events/time)",...>
-			>
-			["gt0005"] = (ARCHETYPE_BINDING) <
-				archetype_id = <"openEHR-EHR-OBSERVATION.history_prior_medical_diagnosis.v1">
-				domain = <"EHR">
-				elements = <
-					["gt0006"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0050]">
-					>
-					["gt0007"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0019]/items[at0043]">
-					>
-					["gt0008"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0020]/items[at0047]">
 					>
 				>
 				predicates = <"max(/data/events/time)",...>
@@ -178,76 +162,132 @@ Fraga M, Taffé P, Méan M, Hugli O, Witzig S, Waeber G, Aujesky D. The inter-ra
 					>
 				>
 			>
-		>
-		rules = <
-			["gt0034"] = (RULE) <
-				when = <"$gt0028==null", "$gt0027==null", "$gt0026==null", "$gt0025==null", "$gt0029==null", "$gt0031==null", "$gt0030==null", "$gt0024==null", "$gt0023==null", "$gt0032==null">
-				then = <"$gt0032=0|local::at0033|Absent|", "$gt0023=0|local::at0015|Absent|", "$gt0024=0|local::at0017|Absent|", "$gt0030=0|local::at0029|Absent|", "$gt0031=0|local::at0031|Absent|", "$gt0029=0|local::at0027|Absent|", "$gt0025=0|local::at0019|Absent|", "$gt0026=0|local::at0021|Absent|", "$gt0027=0|local::at0023|Absent|", "$gt0028=0|local::at0025|Absent|">
-				priority = <13>
+			["gt0047"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.problem-diagnosis.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0048"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002.1]">
+					>
+					["gt0049"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0003]">
+					>
+				>
+				predicates = <"/data[at0001]/items[at0002.1] is_a local::gt0048|Heart failure diagnosis|", "max(/data[at0001]/items[at0003])">
+				template_id = <"diagnosis">
 			>
+			["gt0050"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.problem-diagnosis.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0051"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002.1]">
+					>
+					["gt0052"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0003]">
+					>
+				>
+				predicates = <"/data[at0001]/items[at0002.1] is_a local::gt0051|Cancer diagnosis|", "max(/data[at0001]/items[at0003])">
+				template_id = <"diagnosis">
+			>
+			["gt0053"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.problem-diagnosis.v1">
+				domain = <"EHR">
+				elements = <
+					["gt0054"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002.1]">
+					>
+					["gt0055"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0003]">
+					>
+				>
+				predicates = <"/data[at0001]/items[at0002.1] is_a local::gt0054|Chronic lung disease diagnosis|", "max(/data[at0001]/items[at0003])">
+				template_id = <"diagnosis">
+			>
+		>
+		default_actions = <"$gt0022.magnitude=(($currentDateTime.value-$currentDateTime.value)/1,a)", "$gt0032=0|local::at0015|Absent|", "$gt0023=0|local::at0015|Absent|", "$gt0024=0|local::at0015|Absent|", "$gt0030=0|local::at0015|Absent|", "$gt0031=0|local::at0015|Absent|", "$gt0029=0|local::at0015|Absent|", "$gt0025=0|local::at0015|Absent|", "$gt0026=0|local::at0015|Absent|", "$gt0027=0|local::at0015|Absent|", "$gt0028=0|local::at0015|Absent|">
+		rules = <
 			["gt0035"] = (RULE) <
-				when = <"$gt0003!=null",...>
-				then = <"$gt0022.magnitude=($currentDateTime.year-$gt0003.year)",...>
+				when = <"!fired($gt0035)", "$gt0003!=null">
+				then = <"$gt0022.magnitude=(($currentDateTime.value-$gt0003.value)/1,a)",...>
 				priority = <12>
 			>
 			["gt0036"] = (RULE) <
-				when = <"$gt0004==local::at0005|Male|",...>
+				when = <"!fired($gt0036)", "$gt0004==local::at0005|Male|">
 				then = <"$gt0023=10|local::at0016|Present|",...>
 				priority = <11>
 			>
 			["gt0037"] = (RULE) <
-				when = <"$gt0006==1|local::at0052|Yes|",...>
-				then = <"$gt0024=30|local::at0018|Present|",...>
+				when = <"!fired($gt0037)", "$gt0051!=null">
+				then = <"$gt0024=30|local::at0016|Present|",...>
 				priority = <10>
 			>
 			["gt0038"] = (RULE) <
-				when = <"$gt0007==1|local::at0045|Yes|",...>
-				then = <"$gt0025=10|local::at0020|Present|",...>
+				when = <"!fired($gt0038)", "$gt0048!=null">
+				then = <"$gt0025=10|local::at0016|Present|",...>
 				priority = <9>
 			>
 			["gt0039"] = (RULE) <
-				when = <"$gt0008==1|local::at0049|Yes|",...>
-				then = <"$gt0026=10|local::at0022|Present|",...>
+				when = <"!fired($gt0039)", "$gt0054!=null">
+				then = <"$gt0026=10|local::at0016|Present|",...>
 				priority = <8>
 			>
 			["gt0040"] = (RULE) <
-				when = <"$gt0010>=110,/min",...>
-				then = <"$gt0027=20|local::at0024|Present|",...>
+				when = <"!fired($gt0040)", "$gt0010>=110,/min">
+				then = <"$gt0027=20|local::at0016|Present|",...>
 				priority = <7>
 			>
 			["gt0041"] = (RULE) <
-				when = <"$gt0012<100,mm[Hg]",...>
-				then = <"$gt0028=30|local::at0026|Present|",...>
+				when = <"!fired($gt0041)", "$gt0012<100,mm[Hg]">
+				then = <"$gt0028=30|local::at0016|Present|",...>
 				priority = <6>
 			>
 			["gt0042"] = (RULE) <
-				when = <"$gt0014>=30,/min",...>
-				then = <"$gt0029=20|local::at0028|Present|",...>
+				when = <"!fired($gt0042)", "$gt0014>=30,/min">
+				then = <"$gt0029=20|local::at0016|Present|",...>
 				priority = <5>
 			>
 			["gt0043"] = (RULE) <
-				when = <"$gt0016<36,°C",...>
-				then = <"$gt0030=20|local::at0030|Present|",...>
+				when = <"!fired($gt0043)", "$gt0016<36,°C">
+				then = <"$gt0030=20|local::at0016|Present|",...>
 				priority = <4>
 			>
 			["gt0044"] = (RULE) <
-				when = <"$gt0020==60|local::at0032|Present|",...>
-				then = <"$gt0031=60|local::at0032|Present|",...>
+				when = <"!fired($gt0044)", "$gt0020==60|local::at0016|Present|">
+				then = <"$gt0031=60|local::at0016|Present|",...>
 				priority = <3>
 			>
 			["gt0045"] = (RULE) <
-				when = <"$gt0018<90,%",...>
-				then = <"$gt0032=20|local::at0034|Present|",...>
+				when = <"!fired($gt0045)", "$gt0018<90,%">
+				then = <"$gt0032=20|local::at0016|Present|",...>
 				priority = <2>
 			>
 			["gt0046"] = (RULE) <
-				when = <"$gt0022!=null",...>
+				when = <"$gt0033==null", "!fired($gt0046)">
 				then = <"$gt0033.magnitude=(((((((((($gt0032.value+$gt0022.magnitude)+$gt0023.value)+$gt0024.value)+$gt0030.value)+$gt0031.value)+$gt0029.value)+$gt0025.value)+$gt0026.value)+$gt0027.value)+$gt0028.value)",...>
 				priority = <1>
 			>
 		>
 	>
 	ontology = (GUIDE_ONTOLOGY) <
+		term_bindings = <
+			["ICD-10-SE"] = (TERM_BINDING) <
+				bindings = <
+					["gt0048"] = (BINDING) <
+						codes = <[ICD-10-SE::I50],...>
+						uri = <"">
+					>
+					["gt0051"] = (BINDING) <
+						codes = <[ICD-10-SE::C00], [ICD-10-SE::C02], [ICD-10-SE::C01], [ICD-10-SE::C04], [ICD-10-SE::C03], [ICD-10-SE::C06], [ICD-10-SE::C05], [ICD-10-SE::C08], [ICD-10-SE::C07], [ICD-10-SE::C09], [ICD-10-SE::C10], [ICD-10-SE::C11], [ICD-10-SE::C12], [ICD-10-SE::C13], [ICD-10-SE::C14], [ICD-10-SE::C15], [ICD-10-SE::C16], [ICD-10-SE::C17], [ICD-10-SE::C18], [ICD-10-SE::C19], [ICD-10-SE::C20], [ICD-10-SE::C21], [ICD-10-SE::C22], [ICD-10-SE::C23], [ICD-10-SE::C24], [ICD-10-SE::C25], [ICD-10-SE::C26], [ICD-10-SE::C27], [ICD-10-SE::C28], [ICD-10-SE::C29], [ICD-10-SE::C30], [ICD-10-SE::C31], [ICD-10-SE::C32], [ICD-10-SE::C33], [ICD-10-SE::C34], [ICD-10-SE::C35], [ICD-10-SE::C36], [ICD-10-SE::C37], [ICD-10-SE::C38], [ICD-10-SE::C39], [ICD-10-SE::C40], [ICD-10-SE::C41], [ICD-10-SE::C42], [ICD-10-SE::C43], [ICD-10-SE::C44], [ICD-10-SE::C45], [ICD-10-SE::C46], [ICD-10-SE::C47], [ICD-10-SE::C48], [ICD-10-SE::C49], [ICD-10-SE::C50], [ICD-10-SE::C51], [ICD-10-SE::C52], [ICD-10-SE::C53], [ICD-10-SE::C54], [ICD-10-SE::C55], [ICD-10-SE::C56], [ICD-10-SE::C57], [ICD-10-SE::C58], [ICD-10-SE::C59], [ICD-10-SE::C60], [ICD-10-SE::C61], [ICD-10-SE::C62], [ICD-10-SE::C63], [ICD-10-SE::C64], [ICD-10-SE::C65], [ICD-10-SE::C66], [ICD-10-SE::C67], [ICD-10-SE::C68], [ICD-10-SE::C69], [ICD-10-SE::C70], [ICD-10-SE::C71], [ICD-10-SE::C72], [ICD-10-SE::C73], [ICD-10-SE::C74], [ICD-10-SE::C75], [ICD-10-SE::C76], [ICD-10-SE::C77], [ICD-10-SE::C78], [ICD-10-SE::C79], [ICD-10-SE::C80], [ICD-10-SE::C81], [ICD-10-SE::C82], [ICD-10-SE::C83], [ICD-10-SE::C84], [ICD-10-SE::C85], [ICD-10-SE::C86], [ICD-10-SE::C87], [ICD-10-SE::C88], [ICD-10-SE::C89], [ICD-10-SE::C90], [ICD-10-SE::C91], [ICD-10-SE::C92], [ICD-10-SE::C93], [ICD-10-SE::C94], [ICD-10-SE::C95], [ICD-10-SE::C96], [ICD-10-SE::C97]>
+						uri = <"">
+					>
+					["gt0054"] = (BINDING) <
+						codes = <[ICD-10-SE::J61], [ICD-10-SE::J60], [ICD-10-SE::J41], [ICD-10-SE::J63], [ICD-10-SE::J40], [ICD-10-SE::J62], [ICD-10-SE::J43], [ICD-10-SE::J65], [ICD-10-SE::J42], [ICD-10-SE::J64], [ICD-10-SE::J45], [ICD-10-SE::J684], [ICD-10-SE::J44], [ICD-10-SE::J47], [ICD-10-SE::J701], [ICD-10-SE::J46], [ICD-10-SE::J703], [ICD-10-SE::P27]>
+						uri = <"">
+					>
+				>
+			>
+		>
 		term_definitions = <
 			["en"] = (TERM_DEFINITION) <
 				terms = <
@@ -262,18 +302,6 @@ Fraga M, Taffé P, Méan M, Hugli O, Witzig S, Waeber G, Aujesky D. The inter-ra
 					["gt0004"] = (TERM) <
 						text = <"Gender">
 						description = <"The patient's gender.">
-					>
-					["gt0006"] = (TERM) <
-						text = <"Cancer (unspecified)">
-						description = <"Has the individual ever been diagnosed with any kind of cancer?">
-					>
-					["gt0007"] = (TERM) <
-						text = <"Heart failure (unspecified)">
-						description = <"Has the individual ever been diagnosed with heart failure?">
-					>
-					["gt0008"] = (TERM) <
-						text = <"Chronic lung disease">
-						description = <"Has the individual ever been diagnosed with Chronic lung disease?">
 					>
 					["gt0010"] = (TERM) <
 						text = <"Rate">
@@ -347,9 +375,6 @@ Fraga M, Taffé P, Méan M, Hugli O, Witzig S, Waeber G, Aujesky D. The inter-ra
 						text = <"Total score">
 						description = <"Sum total of points assigned for the 11 PESI variables.">
 					>
-					["gt0034"] = (TERM) <
-						text = <"Set defaults">
-					>
 					["gt0035"] = (TERM) <
 						text = <"Set age">
 					>
@@ -385,6 +410,30 @@ Fraga M, Taffé P, Méan M, Hugli O, Witzig S, Waeber G, Aujesky D. The inter-ra
 					>
 					["gt0046"] = (TERM) <
 						text = <"Calculate total score">
+					>
+					["gt0048"] = (TERM) <
+						text = <"Heart failure diagnosis">
+						description = <"The index diagnosis">
+					>
+					["gt0049"] = (TERM) <
+						text = <"Heart failure date of initial onset">
+						description = <"The date that the problem began causing symptoms or signs">
+					>
+					["gt0051"] = (TERM) <
+						text = <"Cancer diagnosis">
+						description = <"The index diagnosis">
+					>
+					["gt0052"] = (TERM) <
+						text = <"Cancer date of initial onset">
+						description = <"The date that the problem began causing symptoms or signs">
+					>
+					["gt0054"] = (TERM) <
+						text = <"Chronic lung disease diagnosis">
+						description = <"The index diagnosis">
+					>
+					["gt0055"] = (TERM) <
+						text = <"Chronic lung disease date of initial onset">
+						description = <"The date that the problem began causing symptoms or signs">
 					>
 				>
 			>
