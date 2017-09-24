@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.canadian_c_spine_assessment.v1
 
 concept
-	[at0000]	-- *Canadian c spine assessment(en)
+	[at0000]	-- Canadian C-spine Rule (CCR) Assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -68,68 +68,73 @@ Tidigare genomgången halsryggskirurgi">
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"The Canadian C-spine Rule (CCR) helps to safely rule out CSI (Cervical spine injury) in trauma patients who are in a stable and alert condition without needing to resort to taking radiographic images.">
-			use = <"Assessment made between High risk and Low risk.
+			use = <"Assessment made between HIGH RISK and LOW RISK.
 
-Low risk - no radiography needed.
+Three criteria are assessed for risk level/need for further imaging according to the CCR:
 
-High Risk
-
-•High risk patient. C-Spine cannot be cleared clinically by the initial criteria (Age ≥ 65 years, extremity paresthesias or dangerous mechanism*). Imaging is recommended.
-
-*Dangerous mechanism:
-
+1. If the patient's age > 65, if trauma followed a defined dangerous mechanism (see below), or if the patient experiences paresthesias in the arms or legs; then they are HIGH RISK and require c-spine imaging.
+*Dangerous mechanism is defined as any of:
 Fall from elevation >= 3 feet/5 stairs
 Axial load to head e.g. diving
 MVC (motor vehicle collision) high speed (>100km/hr), rollover, ejection
 Motorized recreational vehicles
 Bicycle collision
 
-•High risk patient due to lack of low-risk criteria**. C-Spine cannot be cleared clinically by these criteria. Imaging is recommended.
-
-**Low risk list:
-Sitting position in the ED
+2. If the patient does not fulfill any criteria in step 1, and meets none of the defined low risk criteria (see list), then they are HIGH RISK and require c-spine imaging.
+*Low risk criteria is defined as any of:
+Sitting position in the emergency room (ER)
 Ambulatory at any time
 Delayed (not immediate onset) neck pain
-No midline tenderness. 
-Simple rear-end motor vehicle collision (MVC) not simple if: pushed into traffic, hit by bus/large truck, rollover, hit by high-speed vehicle.
+No midline tenderness
+Simple rear-end motor vehicle collision (MVC); not simple if: pushed into traffic, hit by bus/large truck, rollover, hit by high-speed vehicle
 
-
-•High risk patient due to inability to rotate neck 45 degrees left AND right. C-Spine cannot be cleared clinically by these criteria. Imaging is recommended.
+3. If the patient does not fulfill any criteria in step 1, and meets at least one criteria in step 2, then it is safe to assess whether the patient is able to rotate their neck 45 degrees to the left and right. 
+- If they cannot rotate their neck 45 degrees in both directions then they HIGH RISK and require c-spine imaging.
+- If they can do this (even with some pain or discomfort), then they are LOW RISK and do not require further imaging.
 ">
 			keywords = <"Canadian C-Spine rule", "cervical spine injury">
-			misuse = <"Do not use if any of the following exclusion criteria are present:
-
-Exclusion Criteria:
-
-Non-trauma Patients
-GCS <15
-Unstable Vital Signs
-Age <16 Years
-Acute Paralysis
-Known Vertebral Disease
-Previous C-Spine Surgery">
+			misuse = <"Not a substitute for sound clinical judgement.
+Do not use if any of the following exclusion criteria are present:
+- Non-trauma Patients
+- GCS <15
+- Unstable Vital Signs
+- Age <16 Years
+- Acute Paralysis
+- Known Vertebral Disease
+- Previous C-Spine Surgery">
 			copyright = <"© Cambio Healthcare Systems">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
-	other_contributors = <>
+	other_contributors = <"Eneimi Allwell-Brown, Cambio Healthcare Systems", ...>
 	other_details = <
 		["references"] = <"Ref. 1: Stiell IG, Wells GA, Vandemheen KL, Clement CM, Lesiuk H, De Maio VJ, Laupacis A, Schull M, McKnight RD, Verbeek R, Brison R, Cass D, Dreyer J, Eisenhauer MA, Greenberg GH, MacPhail I, Morrison L, Reardon M, Worthington J. The Canadian C-spine rule for radiography in alert and stable trauma patients. JAMA. 2001 Oct 17;286(15):1841-8. PubMed PMID: 11597285">
-		["MD5-CAM-1.0.1"] = <"C9C69033F14E714639F7FC452F873006">
+		["MD5-CAM-1.0.1"] = <"F8B70FC2759E3C1E8BEDA54455E937A1">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- *Canadian c spine assessment(en)
+	EVALUATION[at0000] matches {	-- Canadian C-spine Rule (CCR) Assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Åtgärd
+					ELEMENT[at0009] occurrences matches {0..1} matches {	-- Risk assessment
 						value matches {
-							0|[local::at0006], 	-- Bilddiagnostik ej indicerad.
-							1|[local::at0007]  	-- Bilddiagnostik indicerad.
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0010, 	-- Low risk
+									at0011]	-- High risk
+								}
+							}
 						}
 					}
-					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Kommentar
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Recommendation
+						value matches {
+							0|[local::at0006], 	-- No radiography needed
+							1|[local::at0007]  	-- Radiography recommended
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Comment
 						value matches {
 							DV_TEXT matches {*}
 						}
@@ -144,7 +149,7 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Canadian c spine assessment">
+					text = <"Canadian C-spine Rule (CCR) Assessment">
 					description = <"The Canadian C-spine Rule (CCR) helps to safely rule out CSI (Cervical spine injury) in trauma patients who are in a stable and alert condition without needing to resort to taking radiographic images.">
 				>
 				["at0001"] = <
@@ -152,8 +157,8 @@ ontology
 					description = <"@ internal @">
 				>
 				["at0003"] = <
-					text = <"Management">
-					description = <"Management in high risk cases: If a patient has a clinically significant c-spine injury identified on imaging:
+					text = <"Recommendation">
+					description = <"If a patient has a clinically significant c-spine injury identified on imaging:
 •Maintain cervical spine protection with an appropriate collar.
 •Consult neurosurgery.
 •Keep patient non-ambulatory and NPO until treatment plan is complete.
@@ -171,6 +176,18 @@ ontology
 				["at0008"] = <
 					text = <"Comment">
 					description = <"Any comments regarding the tool">
+				>
+				["at0009"] = <
+					text = <"Risk assessment">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Low risk">
+					description = <"No radiography needed">
+				>
+				["at0011"] = <
+					text = <"High risk">
+					description = <"Radiography recommended">
 				>
 			>
 		>
@@ -199,6 +216,18 @@ ontology
 				["at0008"] = <
 					text = <"Kommentar">
 					description = <"Ev tillägg.">
+				>
+				["at0009"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0010"] = <
+					text = <"*Low risk(en)">
+					description = <"**(en)">
+				>
+				["at0011"] = <
+					text = <"*High risk(en)">
+					description = <"**(en)">
 				>
 			>
 		>
