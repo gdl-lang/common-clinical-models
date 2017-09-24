@@ -1,6 +1,6 @@
 (GUIDE) <
 	gdl_version = <"0.1">
-	id = <"RAADS-14.v1">
+	id = <"RAADS-14.v2.0.0">
 	concept = <"gt0001">
 	language = (LANGUAGE) <
 		original_language = <[ISO_639-1::en]>
@@ -8,11 +8,13 @@
 	description = (RESOURCE_DESCRIPTION) <
 		details = <
 			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
-				copyright = <"Cambio Healthcare Systems">
+				copyright = <"© Cambio Healthcare Systems">
 				keywords = <"RAADS-14", "psychiatry", "autism", "patient questionnaire">
-				misuse = <"Do not use for children or teens, do not use to calculate other score than the total score for the RAADS-14 self-evaluation questionnaire.">
-				purpose = <"To calculate the total score for the RAADS-14 self-evaluation questionnaire to screen for ASD (Autism Spectrum Disorder) in adult psychiatric outpatients. To give a clinical meaning to the score´s total value.">
-				use = <"Used for the 14 questions based  RAADS-14 self-evaluation questionnaire, in adult patients.">
+				misuse = <"Do not use for children or teenagers.
+This is not a diagnostic tool but only intended for screening purposes.">
+				purpose = <"To calculate the total score for the RAADS-14 self-evaluation questionnaire to screen for ASD (Autism Spectrum Disorder) in adult psychiatric outpatients.">
+				use = <"To be used in adult psychiatric outpatients. This is a shortened version of the 80-item Ritvo Autism and Asperger Diagnostic Scale-Revised (RAADS-R). It consists of 14 questions each scored 0, 1, 2 or 3 and the total score ranges from a minimum of 0 to a maximum of 42. Three main subdomains are included: Mentalizing deficits, Social anxiety and Sensory reactivity. 
+The total score is assessed as: ≥31 = autism very likely; 14 – 30 = autism likely; 0 – 13 No autism symptoms (autism unlikely).">
 			>
 			["sv"] = (RESOURCE_DESCRIPTION_ITEM) <
 				copyright = <"Cambio Healthcare Systems">
@@ -30,12 +32,14 @@ Resultatet tolkas enligt:
  >31p - Sannolikt autismspektrumtillstånd ">
 			>
 		>
+		lifecycle_state = <"Author draft">
 		original_author = <
+			["date"] = <"2017-09-24">
 			["email"] = <"joana.vicente@cambio.se">
 			["name"] = <"Joana Vicente">
 			["organisation"] = <"Cambio Healthcare Systems">
 		>
-		other_contributors = <"Dennis Forslund", "Jimmy Axelsson">
+		other_contributors = <"Dennis Forslund", "Jimmy Axelsson", "Eneimi Allwell-Brown, Cambio Healthcare Systems">
 		other_details = <
 			["references"] = <"1-Eriksson JM, Andersen MJ, Bejerot S. RAADS-14 Screen: validity of a screening tool for Autism Spectrum Disorder in an adult psychiatric population. Molecular Autism 2013; 4:49.
 2-Ritvo RA, Ritvo ER, Guthrie D, Yuwiler A, Ritvo MJ, Weisbender L: A scale to assist the diagnosis of autism and Asperger’s disorder in adults (RAADS): a pilot study. J Autism Dev Disord. 2008, 38: 213-223. 10.1007/s10803-007-0380-6.
@@ -94,38 +98,20 @@ Resultatet tolkas enligt:
 				>
 				predicates = <"max(/data/events/time)",...>
 			>
-			["gt0003"] = (ARCHETYPE_BINDING) <
-				archetype_id = <"openEHR-EHR-OBSERVATION.raads_14_assessment.v1">
+			["gt0024"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.raads_14_questionnaire.v1">
 				domain = <"CDS">
 				elements = <
-					["gt0004"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
-					>
-					["gt0005"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0005]">
+					["gt0026"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0079]">
 					>
 				>
 			>
 		>
 		rules = <
 			["gt0020"] = (RULE) <
-				when = <"!fired($gt0020)", "$gt0016!=null", "$gt0015!=null", "$gt0014!=null", "$gt0017!=null", "$gt0019!=null", "$gt0018!=null", "$gt0009!=null", "$gt0007!=null", "$gt0008!=null", "$gt0010!=null", "$gt0006!=null", "$gt0011!=null", "$gt0012!=null", "$gt0013!=null">
-				then = <"$gt0004.magnitude=((((((((((((($gt0015.value+$gt0014.value)+$gt0017.value)+$gt0016.value)+$gt0019.value)+$gt0018.value)+$gt0009.value)+$gt0007.value)+$gt0008.value)+$gt0010.value)+$gt0006.value)+$gt0011.value)+$gt0012.value)+$gt0013.value)",...>
-				priority = <4>
-			>
-			["gt0021"] = (RULE) <
-				when = <"!fired($gt0021)", "$gt0004>=31">
-				then = <"$gt0005=local::at0008|Autism found|",...>
-				priority = <3>
-			>
-			["gt0022"] = (RULE) <
-				when = <"!fired($gt0022)", "$gt0004>=14", "$gt0004<=30">
-				then = <"$gt0005=local::at0007|Autism likely|",...>
-				priority = <2>
-			>
-			["gt0023"] = (RULE) <
-				when = <"!fired($gt0023)", "$gt0004>=0", "$gt0004<=13">
-				then = <"$gt0005=local::at0006|No autism symptoms|",...>
+				when = <"!fired($gt0020)",...>
+				then = <"$gt0026.magnitude=((((((((((((($gt0007.value+$gt0018.value)+$gt0008.value)+$gt0019.value)+$gt0009.value)+$gt0014.value)+$gt0015.value)+$gt0016.value)+$gt0006.value)+$gt0017.value)+$gt0010.value)+$gt0011.value)+$gt0012.value)+$gt0013.value)",...>
 				priority = <1>
 			>
 		>
@@ -135,17 +121,8 @@ Resultatet tolkas enligt:
 			["en"] = (TERM_DEFINITION) <
 				terms = <
 					["gt0001"] = (TERM) <
-						text = <"Ritvo Autism and Asperger Diagnostic Scale 14">
-						description = <"This is a shorten version of the 80 item Ritvo Autism and Asperger Diagnostic Scale-Revised (RAADS-R). The score range from a minimum of 0 to a maximum of 42. Three main subdomains are included: Mentalizing deficits, Social anxiety and Sensory reactivity.Three scoring categories are possible: 31 & up Autism found; 14 – 30 Autism likely; 0 – 13 No autism symptoms.
-">
-					>
-					["gt0004"] = (TERM) <
-						text = <"RAADS-14 total score">
-						description = <"*">
-					>
-					["gt0005"] = (TERM) <
-						text = <"RAADS-14 results">
-						description = <"*">
+						text = <"Ritvo Autism and Asperger Diagnostic Scale 14 (RAADS-14)">
+						description = <"Screening tool for autism spectrum disorder (ASD) in an adult psychiatric population. Consists of 14 self-administered questions derived from the 80-item Ritvo Autism and Asperger Diagnostic Scale-Revised (RAADS-R) and covers three domains: mentalizing deficits, social anxiety and sensory reactivity. Each question is scored 0, 1, 2 or 3 and the total score ranges from a minimum of 0 to a maximum of 42. The total score is assessed as: ≥31 = autism very likely; 14 – 30 = autism likely; 0 – 13 No autism symptoms (autism unlikely).">
 					>
 					["gt0006"] = (TERM) <
 						text = <"It is difficult for me to understand how other people are feeling when we are talking.">
@@ -204,16 +181,11 @@ Resultatet tolkas enligt:
 						description = <"*">
 					>
 					["gt0020"] = (TERM) <
-						text = <"Set total sum">
+						text = <"Calculate total score">
 					>
-					["gt0021"] = (TERM) <
-						text = <"Set result to autism found">
-					>
-					["gt0022"] = (TERM) <
-						text = <"Set result to autism likely">
-					>
-					["gt0023"] = (TERM) <
-						text = <"Set result to no autism symptoms">
+					["gt0026"] = (TERM) <
+						text = <"Total score">
+						description = <"RAADS-14 screen score">
 					>
 				>
 			>
@@ -222,14 +194,6 @@ Resultatet tolkas enligt:
 					["gt0001"] = (TERM) <
 						text = <"Ritvo Autism and Asperger Diagnostic Scale 14 ">
 						description = <"Ritvo Autism and Asperger Diagnostic Scale 14 (RAADS-14) är en förkortad version av ursprungsformuläret (RAADS-R) och används som screening för att identifiera autismspektrumtillstånd (AST) hos vuxna. ">
-					>
-					["gt0004"] = (TERM) <
-						text = <"RAADS-14 totalsumma">
-						description = <"*(en) *">
-					>
-					["gt0005"] = (TERM) <
-						text = <"RAADS-14 resultat">
-						description = <"*(en) *">
 					>
 					["gt0006"] = (TERM) <
 						text = <"När jag talar med andra har jag svårt för att förstå hur de känner sig.">
@@ -290,14 +254,7 @@ Resultatet tolkas enligt:
 					["gt0020"] = (TERM) <
 						text = <"Räkna totalsumma">
 					>
-					["gt0021"] = (TERM) <
-						text = <"Ställa in resultat för autism">
-					>
-					["gt0022"] = (TERM) <
-						text = <"Ställa in resultat för möjligt autism">
-					>
-					["gt0023"] = (TERM) <
-						text = <"Ställa in resultat för inga autism symtom">
+					["gt0026"] = (TERM) <
 					>
 				>
 			>

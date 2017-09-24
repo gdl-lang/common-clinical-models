@@ -1,0 +1,492 @@
+<!DOCTYPE html><html ng-app="cds_app"><head>
+<title>{{def.concept.name}}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="wro/foundation.css" />
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css" />
+<link rel="stylesheet" type="text/css" href="wro/angular.css" />
+<script type="text/javascript" src="wro/angular.js"></script>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js" />
+<script type="text/javascript" src="wro/moment.js"></script>
+<script type="text/javascript" src="wro/date-picker.js"></script>
+<script type="text/javascript" src="wro/app_lib.js"></script>
+<script id="decision-support-view" type="application/json">{
+  "dsViewId": "RAADS-14.v1",
+  "language": {
+    "originalLanguage": {
+      "terminologyId": {
+        "name": "ISO_639-1",
+        "value": "ISO_639-1"
+      },
+      "codeString": "en"
+    }
+  },
+  "decisionSupportViewDefinitions": {
+    "sv": {
+      "name": "Ritvo Autism and Asperger Diagnostic Scale 14 (RAADS-14)",
+      "description": "Screening för att identifiera autismspektrumtillstånd (AST) hos vuxna."
+    },
+    "en": {
+      "name": "Ritvo Autism and Asperger Diagnostic Scale 14 (RAADS-14)",
+      "description": "14-item screening tool for autism spectrum disorder (ASD) in adult psychiatric populations"
+    }
+  },
+  "resourceDescription": {
+    "originalAuthor": {
+      "date": "2017-09-24",
+      "name": "Eneimi Allwell-Brown",
+      "organisation": "Cambio Healthcare Systems",
+      "email": "models@cambiocds.com"
+    },
+    "otherContributors": [],
+    "lifecycleState": "Author draft",
+    "details": {
+      "sv": {
+        "purpose": "Screening för att identifiera autismspektrumtillstånd (AST) hos vuxna.",
+        "keywords": [],
+        "use": "Använd som screening för att identifiera autismspektrumtillstånd (AST) hos vuxna. RAADS-14 är en förkortad version av urpsrungliga formuläret Ritvo Autism and Asperger Diagnostic Scale-Revised (RAADS-R). Skalan varierar mellan 0p (min) och 42p (max). RAADS-14 består av tre kategorier: \n- Mentaliseringssvårigheter\n- Social ångest \n- Sensorisk reaktivitet \n\nResultatet tolkas enligt:\n0-13p - Autismspektrumtillstånd osannolikt\n14-30p - Möjligt autismspektrumtillstånd\n \u003e31p - Sannolikt autismspektrumtillstånd ",
+        "misuse": "Använd endast för screening av autismspektrumtillstånd hos vuxna, och ej för att registrera data för ursprungliga formuläret RAADS-R. ",
+        "copyright": "© Cambio Healthcare Systems"
+      },
+      "en": {
+        "purpose": "To identify adult psychiatric patients with autism spectrum disorder (ASD).",
+        "keywords": [
+          "RAADS-14",
+          "autism",
+          "ASD",
+          "Asperger syndrome"
+        ],
+        "use": "To be used in adult psychiatric outpatients. The RAADS-14 screen tool consists of 14 questions each scored 0, 1, 2 or 3 and the total score ranges from a minimum of 0 to a maximum of 42. Three main subdomains are included: Mentalizing deficits, Social anxiety and Sensory reactivity. \nThe total score is assessed as: ≥31 \u003d autism very likely; 14 – 30 \u003d autism likely; 0 – 13 No autism symptoms (autism unlikely).",
+        "misuse": "This is not a diagnostic tool but only intended for screening purposes.",
+        "copyright": "© Cambio Healthcare Systems"
+      }
+    },
+    "otherDetails": {
+      "references": "Eriksson JM, Andersen MJ, Bejerot S. RAADS-14 Screen: validity of a screening tool for Autism Spectrum Disorder in an adult psychiatric population. Molecular Autism 2013; 4:49.\n\nRitvo RA, Ritvo ER, Guthrie D, Yuwiler A, Ritvo MJ, Weisbender L: A scale to assist the diagnosis of autism and Asperger’s disorder in adults (RAADS): a pilot study. J Autism Dev Disord. 2008, 38: 213-223. 10.1007/s10803-007-0380-6.\n\nAndersen LMJ, Näswall K, Manouilenko I, Nylander L, Edgar J, Ritvo RA, Ritvo E, Bejerot S: The Swedish version of the Ritvo Autism and Asperger Diagnostic Scale: revised (RAADS-R). A validation study of a rating scale for adults. J Autism Dev Disord. 2011, 41: 1635-1645. 10.1007/s10803-011-1191-3.\n\nHoekstra RA, Vinkhuyzen AAE, Wheelwright S, Bartels M, Boomsma DI, Baron-Cohen S, Posthuma D, van der Sluis S: The construction and validation of an abridged version of the Autism-Spectrum Quotient (AQ-Short). J Autism Dev Disord. 2011, 41: 589-596. 10.1007/s10803-010-1073-0."
+    }
+  },
+  "alertGuideIds": [],
+  "executionGuideIds": [
+    "RAADS-14.v2.0.0",
+    "RAADS-14_Assessment.v1"
+  ],
+  "alertBindings": {},
+  "termDefinitions": {
+    "sv": {
+      "id": "sv",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "Referenser"
+        }
+      }
+    },
+    "en": {
+      "id": "en",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "References"
+        }
+      }
+    }
+  },
+  "resultTemplates": []
+}</script>
+</head>
+<body ng-controller="cds_controller">
+<#assign app_help_tag = "def.guides['RAADS-14.v2.0.0'].concept">
+<#assign references = "def.terms['vt0001']"/>
+<#assign ritvo_autism_asperger_diagnostic_scale_assessment_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.raads_14_assessment.v0']">
+<#assign ritvo_autism_asperger_diagnostic_scale_assessment_entry_def = "def.entries['openEHR-EHR-EVALUATION.raads_14_assessment.v0']">
+<#assign raads_14_assessment_def = ritvo_autism_asperger_diagnostic_scale_assessment_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign raads_14_assessment_cds_data = ritvo_autism_asperger_diagnostic_scale_assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
+<#assign ritvo_autism_asperger_diagnostic_scale_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.raads_14_questionnaire.v1']">
+<#assign ritvo_autism_asperger_diagnostic_scale_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.raads_14_questionnaire.v1']">
+<#assign ritvo_autism_asperger_diagnostic_scale_entry_def = "def.entries['openEHR-EHR-OBSERVATION.raads_14_questionnaire.v1']">
+<#assign it_is_difficult_for_me_to_understand_how_other_people_are_feeling_when_we_are_talking_def = ritvo_autism_asperger_diagnostic_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0007}']">
+<#assign total_score_def = ritvo_autism_asperger_diagnostic_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0079}']">
+<#assign it_is_difficult_to_figure_out_what_other_people_expect_of_me_def = ritvo_autism_asperger_diagnostic_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0012}']">
+<#assign when_talking_to_someone__i_have_a_hard_time_telling_when_it_is_my_turn_to_talk_or_to_listen_def = ritvo_autism_asperger_diagnostic_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0016}']">
+<#assign it_can_be_very_hard_to_read_someone_s_face__hand__and_body_movements_when_we_are_talking_def = ritvo_autism_asperger_diagnostic_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0021}']">
+<#assign i_focus_on_details_rather_than_the_overall_idea_def = ritvo_autism_asperger_diagnostic_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0026}']">
+<#assign i_take_things_too_literally__so_i_often_miss_what_people_are_trying_to_say_def = ritvo_autism_asperger_diagnostic_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0032}']">
+<#assign i_get_extremely_upset_when_the_way_i_like_to_do_things_is_suddenly_changed_def = ritvo_autism_asperger_diagnostic_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0036}']">
+<#assign event_time_def = ritvo_autism_asperger_diagnostic_scale_entry_def + ".elements['/data/events/time']">
+<#assign total_score_cds_data = ritvo_autism_asperger_diagnostic_scale_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0079}']">
+<#assign event_time_cds_data = ritvo_autism_asperger_diagnostic_scale_entry_cds_data + "[0].elements['/data/events/time']">
+<#assign it_is_difficult_for_me_to_understand_how_other_people_are_feeling_when_we_are_talking_ehr_data = ritvo_autism_asperger_diagnostic_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0007}']">
+<#assign it_is_difficult_to_figure_out_what_other_people_expect_of_me_ehr_data = ritvo_autism_asperger_diagnostic_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0012}']">
+<#assign when_talking_to_someone__i_have_a_hard_time_telling_when_it_is_my_turn_to_talk_or_to_listen_ehr_data = ritvo_autism_asperger_diagnostic_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0016}']">
+<#assign it_can_be_very_hard_to_read_someone_s_face__hand__and_body_movements_when_we_are_talking_ehr_data = ritvo_autism_asperger_diagnostic_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0021}']">
+<#assign i_focus_on_details_rather_than_the_overall_idea_ehr_data = ritvo_autism_asperger_diagnostic_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0026}']">
+<#assign i_take_things_too_literally__so_i_often_miss_what_people_are_trying_to_say_ehr_data = ritvo_autism_asperger_diagnostic_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0032}']">
+<#assign i_get_extremely_upset_when_the_way_i_like_to_do_things_is_suddenly_changed_ehr_data = ritvo_autism_asperger_diagnostic_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}/items{at0036}']">
+<#assign event_time_ehr_data = ritvo_autism_asperger_diagnostic_scale_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign it_is_very_difficult_for_me_to_work_and_function_in_groups_def = ritvo_autism_asperger_diagnostic_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0041}/items{at0043}']">
+<#assign it_is_very_difficult_for_me_to_work_and_function_in_groups_ehr_data = ritvo_autism_asperger_diagnostic_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0041}/items{at0043}']">
+<#assign i_often_don_t_know_how_to_act_in_social_situations_def = ritvo_autism_asperger_diagnostic_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0041}/items{at0047}']">
+<#assign i_often_don_t_know_how_to_act_in_social_situations_ehr_data = ritvo_autism_asperger_diagnostic_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0041}/items{at0047}']">
+<#assign i_can_chat_and_make_small_talk_with_people_def = ritvo_autism_asperger_diagnostic_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0041}/items{at0052}']">
+<#assign i_can_chat_and_make_small_talk_with_people_ehr_data = ritvo_autism_asperger_diagnostic_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0041}/items{at0052}']">
+<#assign how_to_make_friends_and_socialize_is_a_mystery_to_me_def = ritvo_autism_asperger_diagnostic_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0041}/items{at0057}']">
+<#assign how_to_make_friends_and_socialize_is_a_mystery_to_me_ehr_data = ritvo_autism_asperger_diagnostic_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0041}/items{at0057}']">
+<#assign some_ordinary_textures_that_do_not_bother_others_feel_very_offensive_when_they_touch_my_skin_def = ritvo_autism_asperger_diagnostic_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0063}/items{at0064}']">
+<#assign some_ordinary_textures_that_do_not_bother_others_feel_very_offensive_when_they_touch_my_skin_ehr_data = ritvo_autism_asperger_diagnostic_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0063}/items{at0064}']">
+<#assign when_i_feel_overwhelmed_by_my_senses__i_have_to_isolate_myself_to_shut_them_down_def = ritvo_autism_asperger_diagnostic_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0063}/items{at0068}']">
+<#assign when_i_feel_overwhelmed_by_my_senses__i_have_to_isolate_myself_to_shut_them_down_ehr_data = ritvo_autism_asperger_diagnostic_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0063}/items{at0068}']">
+<#assign sometimes_i_have_to_cover_my_ears_to_block_out_painful_noises_def = ritvo_autism_asperger_diagnostic_scale_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0063}/items{at0073}']">
+<#assign sometimes_i_have_to_cover_my_ears_to_block_out_painful_noises_ehr_data = ritvo_autism_asperger_diagnostic_scale_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0063}/items{at0073}']">
+
+<script> 
+angular.module('cds_app').controller('RAADS-14_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+    $scope.${it_can_be_very_hard_to_read_someone_s_face__hand__and_body_movements_when_we_are_talking_ehr_data}.value.selection = $scope.findMin($scope.${it_can_be_very_hard_to_read_someone_s_face__hand__and_body_movements_when_we_are_talking_def});
+	$scope.${i_focus_on_details_rather_than_the_overall_idea_ehr_data}.value.selection = $scope.findMin($scope.${i_focus_on_details_rather_than_the_overall_idea_def});
+	$scope.${when_talking_to_someone__i_have_a_hard_time_telling_when_it_is_my_turn_to_talk_or_to_listen_ehr_data}.value.selection = $scope.findMin($scope.${when_talking_to_someone__i_have_a_hard_time_telling_when_it_is_my_turn_to_talk_or_to_listen_def});
+	$scope.${it_is_difficult_for_me_to_understand_how_other_people_are_feeling_when_we_are_talking_ehr_data}.value.selection = $scope.findMin($scope.${it_is_difficult_for_me_to_understand_how_other_people_are_feeling_when_we_are_talking_def});
+	$scope.${i_take_things_too_literally__so_i_often_miss_what_people_are_trying_to_say_ehr_data}.value.selection = $scope.findMin($scope.${i_take_things_too_literally__so_i_often_miss_what_people_are_trying_to_say_def});
+	$scope.${i_get_extremely_upset_when_the_way_i_like_to_do_things_is_suddenly_changed_ehr_data}.value.selection = $scope.findMin($scope.${i_get_extremely_upset_when_the_way_i_like_to_do_things_is_suddenly_changed_def});
+	$scope.${it_is_difficult_to_figure_out_what_other_people_expect_of_me_ehr_data}.value.selection = $scope.findMin($scope.${it_is_difficult_to_figure_out_what_other_people_expect_of_me_def});
+	$scope.${it_is_very_difficult_for_me_to_work_and_function_in_groups_ehr_data}.value.selection = $scope.findMin($scope.${it_is_very_difficult_for_me_to_work_and_function_in_groups_def});
+	$scope.${i_often_don_t_know_how_to_act_in_social_situations_ehr_data}.value.selection = $scope.findMin($scope.${i_often_don_t_know_how_to_act_in_social_situations_def});
+	$scope.${i_can_chat_and_make_small_talk_with_people_ehr_data}.value.selection = $scope.findMin($scope.${i_can_chat_and_make_small_talk_with_people_def});
+	$scope.${how_to_make_friends_and_socialize_is_a_mystery_to_me_ehr_data}.value.selection = $scope.findMin($scope.${how_to_make_friends_and_socialize_is_a_mystery_to_me_def});
+	$scope.${some_ordinary_textures_that_do_not_bother_others_feel_very_offensive_when_they_touch_my_skin_ehr_data}.value.selection = $scope.findMin($scope.${some_ordinary_textures_that_do_not_bother_others_feel_very_offensive_when_they_touch_my_skin_def});
+	$scope.${when_i_feel_overwhelmed_by_my_senses__i_have_to_isolate_myself_to_shut_them_down_ehr_data}.value.selection = $scope.findMin($scope.${when_i_feel_overwhelmed_by_my_senses__i_have_to_isolate_myself_to_shut_them_down_def});
+	$scope.${sometimes_i_have_to_cover_my_ears_to_block_out_painful_noises_ehr_data}.value.selection = $scope.findMin($scope.${sometimes_i_have_to_cover_my_ears_to_block_out_painful_noises_def});
+	$scope.execute();
+  });
+  $scope.findMin = function (element) {
+	var array = [];
+	for(selection in element.selections) {
+		array.push(selection);
+	}
+	return (function() {
+		var min = Number.MAX_VALUE;
+		var result;
+		for (var i=0; i<array.length; i++) {
+		var value = parseFloat(array[i].split("|")[0]);
+		if (value <= min) {
+			min = value;
+			result = array[i];
+		}
+		}
+		return result;
+	})(array);
+	};
+});
+</script>
+
+<div ng-show="ready" ng-controller="RAADS-14_Ctrl">
+<div class="header">
+  <h1>{{def.concept.name}}</h1>
+  <h2>{{def.concept.description}}</h2>
+  <div class="help-tip">
+	<p>{{${app_help_tag}.description}}</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="row collapse" title="{{${it_can_be_very_hard_to_read_someone_s_face__hand__and_body_movements_when_we_are_talking_def}.description}}">
+    <div class="medium-8 columns">
+      <label>{{${it_can_be_very_hard_to_read_someone_s_face__hand__and_body_movements_when_we_are_talking_def}.name}}</label>
+      </div>
+      <label class="medium-4 columns">
+        <select ng-model="${it_can_be_very_hard_to_read_someone_s_face__hand__and_body_movements_when_we_are_talking_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${it_can_be_very_hard_to_read_someone_s_face__hand__and_body_movements_when_we_are_talking_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${i_focus_on_details_rather_than_the_overall_idea_def}.description}}">
+    <div class="medium-8 columns">
+      <label>{{${i_focus_on_details_rather_than_the_overall_idea_def}.name}}</label>
+      </div>
+      <label class="medium-4 columns">
+        <select ng-model="${i_focus_on_details_rather_than_the_overall_idea_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${i_focus_on_details_rather_than_the_overall_idea_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${when_talking_to_someone__i_have_a_hard_time_telling_when_it_is_my_turn_to_talk_or_to_listen_def}.description}}">
+    <div class="medium-8 columns">
+      <label>{{${when_talking_to_someone__i_have_a_hard_time_telling_when_it_is_my_turn_to_talk_or_to_listen_def}.name}}</label>
+      </div>
+      <label class="medium-4 columns">
+        <select ng-model="${when_talking_to_someone__i_have_a_hard_time_telling_when_it_is_my_turn_to_talk_or_to_listen_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${when_talking_to_someone__i_have_a_hard_time_telling_when_it_is_my_turn_to_talk_or_to_listen_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${it_is_difficult_for_me_to_understand_how_other_people_are_feeling_when_we_are_talking_def}.description}}">
+    <div class="medium-8 columns">
+      <label>{{${it_is_difficult_for_me_to_understand_how_other_people_are_feeling_when_we_are_talking_def}.name}}</label>
+      </div>
+      <label class="medium-4 columns">
+        <select ng-model="${it_is_difficult_for_me_to_understand_how_other_people_are_feeling_when_we_are_talking_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${it_is_difficult_for_me_to_understand_how_other_people_are_feeling_when_we_are_talking_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${i_take_things_too_literally__so_i_often_miss_what_people_are_trying_to_say_def}.description}}">
+    <div class="medium-8 columns">
+      <label>{{${i_take_things_too_literally__so_i_often_miss_what_people_are_trying_to_say_def}.name}}</label>
+      </div>
+      <label class="medium-4 columns">
+        <select ng-model="${i_take_things_too_literally__so_i_often_miss_what_people_are_trying_to_say_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${i_take_things_too_literally__so_i_often_miss_what_people_are_trying_to_say_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${i_get_extremely_upset_when_the_way_i_like_to_do_things_is_suddenly_changed_def}.description}}">
+    <div class="medium-8 columns">
+      <label>{{${i_get_extremely_upset_when_the_way_i_like_to_do_things_is_suddenly_changed_def}.name}}</label>
+      </div>
+      <label class="medium-4 columns">
+        <select ng-model="${i_get_extremely_upset_when_the_way_i_like_to_do_things_is_suddenly_changed_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${i_get_extremely_upset_when_the_way_i_like_to_do_things_is_suddenly_changed_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${it_is_difficult_to_figure_out_what_other_people_expect_of_me_def}.description}}">
+    <div class="medium-8 columns">
+      <label>{{${it_is_difficult_to_figure_out_what_other_people_expect_of_me_def}.name}}</label>
+      </div>
+      <label class="medium-4 columns">
+        <select ng-model="${it_is_difficult_to_figure_out_what_other_people_expect_of_me_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${it_is_difficult_to_figure_out_what_other_people_expect_of_me_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${it_is_very_difficult_for_me_to_work_and_function_in_groups_def}.description}}">
+    <div class="medium-8 columns">
+      <label>{{${it_is_very_difficult_for_me_to_work_and_function_in_groups_def}.name}}</label>
+      </div>
+      <label class="medium-4 columns">
+        <select ng-model="${it_is_very_difficult_for_me_to_work_and_function_in_groups_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${it_is_very_difficult_for_me_to_work_and_function_in_groups_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${i_often_don_t_know_how_to_act_in_social_situations_def}.description}}">
+    <div class="medium-8 columns">
+      <label>{{${i_often_don_t_know_how_to_act_in_social_situations_def}.name}}</label>
+      </div>
+      <label class="medium-4 columns">
+        <select ng-model="${i_often_don_t_know_how_to_act_in_social_situations_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${i_often_don_t_know_how_to_act_in_social_situations_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${i_can_chat_and_make_small_talk_with_people_def}.description}}">
+    <div class="medium-8 columns">
+      <label>{{${i_can_chat_and_make_small_talk_with_people_def}.name}}</label>
+      </div>
+      <label class="medium-4 columns">
+        <select ng-model="${i_can_chat_and_make_small_talk_with_people_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${i_can_chat_and_make_small_talk_with_people_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${how_to_make_friends_and_socialize_is_a_mystery_to_me_def}.description}}">
+    <div class="medium-8 columns">
+      <label>{{${how_to_make_friends_and_socialize_is_a_mystery_to_me_def}.name}}</label>
+      </div>
+      <label class="medium-4 columns">
+        <select ng-model="${how_to_make_friends_and_socialize_is_a_mystery_to_me_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${how_to_make_friends_and_socialize_is_a_mystery_to_me_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${some_ordinary_textures_that_do_not_bother_others_feel_very_offensive_when_they_touch_my_skin_def}.description}}">
+    <div class="medium-8 columns">
+      <label>{{${some_ordinary_textures_that_do_not_bother_others_feel_very_offensive_when_they_touch_my_skin_def}.name}}</label>
+      </div>
+      <label class="medium-4 columns">
+        <select ng-model="${some_ordinary_textures_that_do_not_bother_others_feel_very_offensive_when_they_touch_my_skin_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${some_ordinary_textures_that_do_not_bother_others_feel_very_offensive_when_they_touch_my_skin_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${when_i_feel_overwhelmed_by_my_senses__i_have_to_isolate_myself_to_shut_them_down_def}.description}}">
+    <div class="medium-8 columns">
+      <label>{{${when_i_feel_overwhelmed_by_my_senses__i_have_to_isolate_myself_to_shut_them_down_def}.name}}</label>
+      </div>
+      <label class="medium-4 columns">
+        <select ng-model="${when_i_feel_overwhelmed_by_my_senses__i_have_to_isolate_myself_to_shut_them_down_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${when_i_feel_overwhelmed_by_my_senses__i_have_to_isolate_myself_to_shut_them_down_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${sometimes_i_have_to_cover_my_ears_to_block_out_painful_noises_def}.description}}">
+    <div class="medium-8 columns">
+      <label>{{${sometimes_i_have_to_cover_my_ears_to_block_out_painful_noises_def}.name}}</label>
+      </div>
+      <label class="medium-4 columns">
+        <select ng-model="${sometimes_i_have_to_cover_my_ears_to_block_out_painful_noises_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${sometimes_i_have_to_cover_my_ears_to_block_out_painful_noises_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult1">
+  <div class="medium-8 columns">
+    <label><b>{{${total_score_def}.name}}: </b></label>
+  </div>
+  <div class="medium-4 columns" style="text-align: center;">
+    <label>{{${total_score_cds_data}.value.magnitude}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${raads_14_assessment_def}.description}}" id="displayresult2">
+  <div class="medium-8 columns">
+    <label><b>{{${raads_14_assessment_def}.name}}: </b></label>
+  </div>
+  <div class="medium-4 columns" style="text-align: center;">
+    <label>{{${raads_14_assessment_cds_data}.value.value}}</label>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="row"><div class="medium-12 columns"></div></div>
+<br /><br />
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
+</div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i>Eriksson JM, Andersen MJ, Bejerot S. RAADS-14 Screen: validity of a screening tool for Autism Spectrum Disorder in an adult psychiatric population. Molecular Autism 2013; 4:49.</i>
+        </li>
+      </div>
+    </div>
+	<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i>Ritvo RA, Ritvo ER, Guthrie D, Yuwiler A, Ritvo MJ, Weisbender L: A scale to assist the diagnosis of autism and Asperger’s disorder in adults (RAADS): a pilot study. J Autism Dev Disord. 2008, 38: 213-223. 10.1007/s10803-007-0380-6.</i>
+        </li>
+      </div>
+    </div>
+  </div>
+
+<style>
+  html, body {
+    height:100%;
+    width: 100%;
+  }
+  body {
+    font-family: sans-serif;
+    font-weight: 300;
+    color: #333;
+    background: #ecf0f9;
+    padding: 1em;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 {
+    font-weight: 600;
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 22px;
+    font-style: italic;
+  }
+  .header {
+    margin-bottom: 2em;
+  }
+  .card {
+    background-color: #fdfdfd;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 10px auto 0 auto;
+    padding: 1em;
+    width: 50%;
+    overflow: hidden;
+  }
+  .help-tip{
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      text-align: center;
+      background-color: #BCDBEA;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      line-height: 26px;
+      cursor: default;
+  }
+  .help-tip:before{
+      content:'?';
+      font-weight: bold;
+      color:#fff;
+  }
+  .help-tip:hover p{
+      display:block;
+      transform-origin: 100% 0%;
+      -webkit-animation: fadeIn 0.3s ease-in-out;
+      animation: fadeIn 0.3s ease-in-out;
+  }
+  .help-tip p{	/* The tooltip */
+      display: none;
+      text-align: left;
+      background-color: #1E2021;
+      padding: 20px;
+      width: 300px;
+      position: absolute;
+      border-radius: 3px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+      right: -4px;
+      color: #FFF;
+      font-size: 13px;
+      line-height: 1.4;
+      z-index: 9999;
+  }
+  .help-tip p:before{ /* The pointer of the tooltip */
+      position: absolute;
+      content: '';
+      width:0;
+      height: 0;
+      border:6px solid transparent;
+      border-bottom-color:#1E2021;
+      right:10px;
+      top:-12px;
+  }
+  .help-tip p:after{ /* Prevents the tooltip from being hidden */
+      width:100%;
+      height:40px;
+      content:'';
+      position: absolute;
+      top:-40px;
+      left:0;
+  }
+  .references1{
+    font-size: 70%;
+  }
+  /* CSS animation */
+  @-webkit-keyframes fadeIn {
+      0% { 
+          opacity:0; 
+          transform: scale(0.6);
+      }
+
+      100% {
+          opacity:100%;
+          transform: scale(1);
+      }
+  }
+  @keyframes fadeIn {
+      0% { opacity:0; }
+      100% { opacity:100%; }
+  }
+  #displayresult1 {
+    background-color: #e6e6e6; 
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    background-color: #f2f2f2;
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  select, label:not(#h-fix) {
+    margin-bottom: 10px;
+</style>
+
+
+
+</body></html>
