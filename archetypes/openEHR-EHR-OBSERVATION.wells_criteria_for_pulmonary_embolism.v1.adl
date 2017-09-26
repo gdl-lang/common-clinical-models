@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.wells_criteria_for_pulmonary_embolism.v1
 
 concept
-	[at0000]	-- Wells criteria for pulmonary embolism
+	[at0000]	-- Wells' Criteria for Pulmonary Embolism
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -74,23 +74,17 @@ The total score ranges from 0-12.5
 
 Management follows a 3 or 2 tier model with the latter related to likely or unlikely PE with this grouping leading to testing by either d-Dimer or CTA.
 
-3 Tier Model:
+3-Tier Model:
 
-Score 0-1: Low Risk (1.3% risk prevalence)
-Score 2-6: Moderate Risk (16.2% risk prevalence)
-Score >6: High Risk (37.5% risk prevalence)
+Score 0-1: Low Risk (1.3% - 4% risk prevalence from multiple studies)
+Score 2-6: Moderate Risk (16.2% - 21% risk prevalence from multiple studies)
+Score >6: High Risk (37.5% - 67% risk prevalence from multiple studies)
 
-2 Tier Model:
+2-Tier Model:
 
-Score ≤4: PE Unlikely (with d-dimer) (12.1% risk incidence)
-Score ≥5: PE Likely (with CTA) (37.1% risk incidence)
-
-
-
-
-
-">
-			keywords = <"Pulmonary embolism", "CT angiogram", "Well's criteria for PE">
+Score ≤4: PE Unlikely
+Score ≥5: PE Likely">
+			keywords = <"Pulmonary embolism", "CT angiogram", "CTA", "D-dimer", "PE", "DVT">
 			misuse = <"This tool should not be used to diagnose PE but to help direct the work-up to rule out the diagnosis of PE.
 
 ">
@@ -98,17 +92,17 @@ Score ≥5: PE Likely (with CTA) (37.1% risk incidence)
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
-	other_contributors = <>
+	other_contributors = <"Eneimi Allwell-Brown, Cambio Healthcare Systems", ...>
 	other_details = <
 		["references"] = <"Ref. 1: Wells PS, Anderson DR, Rodger M, Stiell I, Dreyer JF, Barnes D, Forgie M, Kovacs G, Ward J, Kovacs MJ. Excluding pulmonary embolism at the bedside without diagnostic imaging: management of patients with suspected pulmonary embolism presenting to the emergency department by using a simple clinical model and d-dimer. Ann Intern Med. 2001 Jul 17;135(2):98-107. PubMed PMID: 11453709.
 
 Ref. 2: Wolf SJ, McCubbin TR, Feldhaus KM, Faragher JP, Adcock DM. Prospective validation of Wells Criteria in the evaluation of patients with suspected pulmonary embolism. Ann Emerg Med. 2004 Nov;44(5):503-10. PubMed PMID: 15520710
 ">
-		["MD5-CAM-1.0.1"] = <"FC46A906AF720D8DF08BF3130FC27A5A">
+		["MD5-CAM-1.0.1"] = <"7770F60CCED14D97AB4F304122111C45">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Wells criteria for pulmonary embolism
+	OBSERVATION[at0000] matches {	-- Wells' Criteria for Pulmonary Embolism
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
@@ -116,46 +110,46 @@ definition
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Clinical signs and symptoms of DVT?
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Clinical signs and symptoms of DVT
 										value matches {
 											0|[local::at0013], 	-- No
 											6|[local::at0014]  	-- Yes
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Is PE the number 1 diagnosis OR equally likely?
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Heart rate >100 beats/min
 										value matches {
-											0|[local::at0015], 	-- No
-											6|[local::at0016]  	-- Yes
+											0|[local::at0013], 	-- No
+											3|[local::at0014]  	-- Yes
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Heart rate > 100 BPM?
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Immobilization ≥3 days OR surgery in the previous 4 weeks
 										value matches {
-											0|[local::at0017], 	-- No
-											3|[local::at0018]  	-- Yes
+											0|[local::at0013], 	-- No
+											3|[local::at0014]  	-- Yes
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Immobilization at least 3 days OR surgery in the Previous 4 weeks?
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Previous, objectively diagnosed PE or DVT
 										value matches {
-											0|[local::at0019], 	-- No
-											3|[local::at0020]  	-- Yes
+											0|[local::at0013], 	-- No
+											3|[local::at0014]  	-- Yes
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Previous, objectively diagnosed PE or DVT?
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Hemoptysis
 										value matches {
-											0|[local::at0021], 	-- No
-											3|[local::at0022]  	-- Yes
+											0|[local::at0013], 	-- No
+											2|[local::at0014]  	-- Yes
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Hemoptysis?
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Malignancy w/ treatment within 6 months or palliative
 										value matches {
-											0|[local::at0023], 	-- No
-											2|[local::at0024]  	-- Yes
+											0|[local::at0013], 	-- No
+											2|[local::at0014]  	-- Yes
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Malignancy w/ treatment within 6 months or palliative?
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Is PE the number 1 diagnosis OR equally likely
 										value matches {
-											0|[local::at0025], 	-- No
-											2|[local::at0026]  	-- Yes
+											0|[local::at0013], 	-- No
+											6|[local::at0014]  	-- Yes
 										}
 									}
 									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Total score
@@ -166,7 +160,7 @@ definition
 													["1"] = <
 														units = <"1">
 														magnitude = <|0.0..12.5|>
-														precision = <|2|>
+														precision = <|1|>
 													>
 												>
 											>
@@ -191,8 +185,8 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Wells criteria for pulmonary embolism">
-					description = <"Quantifies the risk of Pulmonary Embolism (PE)">
+					text = <"Wells' Criteria for Pulmonary Embolism">
+					description = <"Wells' criteria quantifies an individual's risk of Pulmonary Embolism (PE). It guides physicians on the need for further testing (D-dimer or CT angiogram) to confirm if a suspected case is infact PE. It consists of 7 variables easily assessed at bedside, and the sum of individual scores from each variable ranges between 0 - 12.5. Score 0-1: Low Risk (1.3% risk prevalence), 2-6: Moderate Risk (16.2% risk prevalence) and score >6: High Risk (37.5% risk prevalence). Recommendations for further testing are also provided.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -207,32 +201,32 @@ ontology
 					description = <"@ internal @">
 				>
 				["at0004"] = <
-					text = <"Clinical signs and symptoms of DVT?">
-					description = <"*">
+					text = <"Clinical signs and symptoms of DVT">
+					description = <"Objectively measured leg swelling and pain with palpation in the deep-vein region">
 				>
 				["at0005"] = <
-					text = <"Is PE the number 1 diagnosis OR equally likely?">
-					description = <"*">
+					text = <"Is PE the number 1 diagnosis OR equally likely">
+					description = <"Based on clinical information along with available test results">
 				>
 				["at0006"] = <
-					text = <"Heart rate > 100 BPM?">
+					text = <"Heart rate >100 beats/min">
 					description = <"*">
 				>
 				["at0007"] = <
-					text = <"Immobilization at least 3 days OR surgery in the Previous 4 weeks?">
-					description = <"*">
+					text = <"Immobilization ≥3 days OR surgery in the previous 4 weeks">
+					description = <"Bedrest, except to access the bathroom, for ≥ 3 consecutive days">
 				>
 				["at0008"] = <
-					text = <"Previous, objectively diagnosed PE or DVT?">
+					text = <"Previous, objectively diagnosed PE or DVT">
 					description = <"*">
 				>
 				["at0009"] = <
-					text = <"Hemoptysis?">
+					text = <"Hemoptysis">
 					description = <"*">
 				>
 				["at0010"] = <
-					text = <"Malignancy w/ treatment within 6 months or palliative?">
-					description = <"*">
+					text = <"Malignancy w/ treatment within 6 months or palliative">
+					description = <"Patients with cancer who were receiving treatment, those in whom treatment had been stopped within the past 6 months, or those who were receiving palliative care">
 				>
 				["at0011"] = <
 					text = <"Total score">
@@ -247,54 +241,6 @@ ontology
 					description = <"*">
 				>
 				["at0014"] = <
-					text = <"Yes">
-					description = <"*">
-				>
-				["at0015"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0016"] = <
-					text = <"Yes">
-					description = <"*">
-				>
-				["at0017"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0018"] = <
-					text = <"Yes">
-					description = <"*">
-				>
-				["at0019"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0020"] = <
-					text = <"Yes">
-					description = <"*">
-				>
-				["at0021"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0022"] = <
-					text = <"Yes">
-					description = <"*">
-				>
-				["at0023"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0024"] = <
-					text = <"Yes">
-					description = <"*">
-				>
-				["at0025"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0026"] = <
 					text = <"Yes">
 					description = <"*">
 				>
@@ -360,54 +306,6 @@ ontology
 					description = <"*">
 				>
 				["at0014"] = <
-					text = <"Ja">
-					description = <"*">
-				>
-				["at0015"] = <
-					text = <"Nej">
-					description = <"*">
-				>
-				["at0016"] = <
-					text = <"Ja">
-					description = <"*">
-				>
-				["at0017"] = <
-					text = <"Nej">
-					description = <"*">
-				>
-				["at0018"] = <
-					text = <"Ja">
-					description = <"*">
-				>
-				["at0019"] = <
-					text = <"Nej">
-					description = <"*">
-				>
-				["at0020"] = <
-					text = <"Ja">
-					description = <"*">
-				>
-				["at0021"] = <
-					text = <"Nej">
-					description = <"*">
-				>
-				["at0022"] = <
-					text = <"Ja">
-					description = <"*">
-				>
-				["at0023"] = <
-					text = <"Nej">
-					description = <"*">
-				>
-				["at0024"] = <
-					text = <"Ja">
-					description = <"*">
-				>
-				["at0025"] = <
-					text = <"Nej">
-					description = <"*">
-				>
-				["at0026"] = <
 					text = <"Ja">
 					description = <"*">
 				>

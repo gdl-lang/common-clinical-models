@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.wells_criteria_for_pe_assessment.v1
 
 concept
-	[at0000]	-- Wells kriterier för lungemboli - utvärdering
+	[at0000]	-- Wells' Criteria for PE Assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -60,29 +60,29 @@ Rekommendation: överväg vidare utredning med datortomografi">
 			purpose = <"The Well's criteria for PE quantifies the pre-test probability of the risk of PE and helps to group patients according to this risk allowing the physician to direct further investigation appropriately.">
 			use = <"Management follows a 3 or 2 tier model with the latter related to likely or unlikely PE with this grouping leading to testing by either d-Dimer or CTA (CT angiogram).
 
-3 Tier Model:
+3-Tier Model:
 
-Score 0-1: Low Risk (1.3% risk prevalence)
+Score 0-1: Low Risk (1.3% - 4% risk prevalence from multiple studies)
 Recomendation: consider d-dimer testing to rule out PE or a rule out criteria such as PERC
 If dimer is negative - consider ceasing the work-up
 if dimer is positive - consider CTA
 
-Score 2-6: Moderate Risk (16.2% risk prevalence)
+Score 2-6: Moderate Risk (16.2% - 21% risk prevalence from multiple studies)
 Recommendation: consider high sensitivity d-dimer testing or CTA
 If dimer is negative - consider ceasing the work-up
 if dimer is positive - consider CTA
 
-Score >6: High Risk (37.5% risk prevalence)
+Score >6: High Risk (37.5% - 67% risk prevalence from multiple studies)
 Recommendation: d-dimer testing is not recommended - consider CTA
 
-2 Tier Model:
+2-Tier Model:
 
-Score ≤4: PE Unlikely (with d-dimer) (12.1% risk incidence)
+Score ≤4: PE Unlikely
 Recommendation: consider high sensitivity d-dimer testing
 If dimer is negative - consider ceasing the work-up
 if dimer is positive - consider CTA
 
-Score ≥5: PE Likely (with CTA) (37.1% risk incidence)
+Score ≥5: PE Likely
 Recommendation: consider CTA testing">
 			keywords = <"pulmonary embolism", "well's criteria for PE", "CTA", "d-dimer">
 			misuse = <"This tool should not be used to diagnose PE but to help direct the work-up to rule out the diagnosis of PE.">
@@ -90,51 +90,49 @@ Recommendation: consider CTA testing">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
-	other_contributors = <>
+	other_contributors = <"Eneimi Allwell-Brown, Cambio Healthcare Systems", ...>
 	other_details = <
 		["references"] = <"Ref. 1: Wells PS, Anderson DR, Rodger M, Stiell I, Dreyer JF, Barnes D, Forgie M, Kovacs G, Ward J, Kovacs MJ. Excluding pulmonary embolism at the bedside without diagnostic imaging: management of patients with suspected pulmonary embolism presenting to the emergency department by using a simple clinical model and d-dimer. Ann Intern Med. 2001 Jul 17;135(2):98-107. PubMed PMID: 11453709.
 
 Ref. 2: Wolf SJ, McCubbin TR, Feldhaus KM, Faragher JP, Adcock DM. Prospective validation of Wells Criteria in the evaluation of patients with suspected pulmonary embolism. Ann Emerg Med. 2004 Nov;44(5):503-10. PubMed PMID: 15520710">
-		["MD5-CAM-1.0.1"] = <"D2CE216664D8F440B8136E0D606E6887">
+		["MD5-CAM-1.0.1"] = <"59E43BAB106386E8B387F6B27CE22FAD">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Wells kriterier för lungemboli - utvärdering
+	EVALUATION[at0000] matches {	-- Wells' Criteria for PE Assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Utvärdering - risknivå
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- 3-Tier Risk Level
 						value matches {
-							0|[local::at0005], 	-- Låg risk
-							1|[local::at0006], 	-- Måttlig risk
-							2|[local::at0007]  	-- Hög risk
+							0|[local::at0005], 	-- Low Risk
+							1|[local::at0006], 	-- Moderate Risk
+							2|[local::at0007]  	-- High Risk
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Utvärdering - sannolikhet
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- 2-Tier Risk Level
 						value matches {
-							0|[local::at0008], 	-- Lungemboli osannolikt
-							1|[local::at0009]  	-- Lungemboli sannolikt
+							0|[local::at0008], 	-- PE unlikely
+							1|[local::at0009]  	-- PE likely
 						}
 					}
-					ELEMENT[at0014] occurrences matches {0..1} matches {	-- Prevalens per risknivå
+					ELEMENT[at0014] occurrences matches {0..1} matches {	-- Risk Prevalence
 						value matches {
-							0|[local::at0015], 	-- 1.3%
-							1|[local::at0017], 	-- 16.2% 
-							2|[local::at0019]  	-- 37.5% 
+							0|[local::at0015], 	-- 1.3% - 4%
+							1|[local::at0017], 	-- 16.2% - 21%
+							2|[local::at0019]  	-- 37.5% - 67%
 						}
 					}
-					ELEMENT[at0020] occurrences matches {0..1} matches {	-- Prevalens per sannolikhetsnivå
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- Recommendation
 						value matches {
-							0|[local::at0021], 	-- 12.1%
-							1|[local::at0022]  	-- 37.1%
+							0|[local::at0010], 	-- Do D-dimer testing (or PERC rule assessment), if negative No PE, if positive do CTA
+							1|[local::at0011], 	-- Do high sensitivity D-dimer testing or CTA
+							2|[local::at0013]  	-- Do CTA testing, D-dimer testing is not recommended
 						}
 					}
-					ELEMENT[at0004] occurrences matches {0..1} matches {	-- Rekommendation
+					ELEMENT[at0023] occurrences matches {0..1} matches {	-- Comment
 						value matches {
-							0|[local::at0010], 	-- Överväg d-dimer i syfte att utesluta lungemboli
-							1|[local::at0011], 	-- Överväg högsensitiv d-dimer alternativt datortomografi
-							2|[local::at0012], 	-- Överväg vidare utredning med datortomografi utan d-dimer
-							3|[local::at0013]  	-- Överväg vidare utredning med datortomografi
+							DV_TEXT matches {*}
 						}
 					}
 				}
@@ -147,20 +145,20 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Wells criteria for pe assessment">
-					description = <"The Well's Criteria for Pulmonary Embolism, quantifies the risk of Pulmonary Embolism (PE)">
+					text = <"Wells' Criteria for PE Assessment">
+					description = <"Wells' criteria quantifies an individual's risk of Pulmonary Embolism (PE). It guides physicians on the need for further testing (D-dimer or CT angiogram) to confirm if a suspected case is infact PE. It consists of 7 variables easily assessed at bedside, and the sum of individual scores from each variable ranges between 0 - 12.5. Score 0-1: Low Risk (1.3% risk prevalence), 2-6: Moderate Risk (16.2% risk prevalence) and score >6: High Risk (37.5% risk prevalence). Recommendations for further testing are also provided.">
 				>
 				["at0001"] = <
 					text = <"Tree">
 					description = <"@ internal @">
 				>
 				["at0002"] = <
-					text = <"3 Tier Risk Level">
+					text = <"3-Tier Risk Level">
 					description = <"3 Tier Risk levels: Low, Moderate or High">
 				>
 				["at0003"] = <
-					text = <"2 Tier Risk Level">
-					description = <"PE likely or unlikely">
+					text = <"2-Tier Risk Level">
+					description = <"2 Tier Risk levels: PE likely or unlikely">
 				>
 				["at0004"] = <
 					text = <"Recommendation">
@@ -168,69 +166,55 @@ ontology
 				>
 				["at0005"] = <
 					text = <"Low Risk">
-					description = <"1.3% risk prevalence">
+					description = <"1.3% - 4% risk prevalence">
 				>
 				["at0006"] = <
 					text = <"Moderate Risk">
-					description = <"16.2% risk prevalence">
+					description = <"16.2% - 21% risk prevalence">
 				>
 				["at0007"] = <
 					text = <"High Risk">
-					description = <"37.5% risk prevalence">
+					description = <"37.5% - 67% risk prevalence">
 				>
 				["at0008"] = <
-					text = <"PE unlikely (with d-dimer)">
+					text = <"PE unlikely">
 					description = <"Score ≤4">
 				>
 				["at0009"] = <
-					text = <"PE likely (with CTA)">
+					text = <"PE likely">
 					description = <"Score ≥5">
 				>
 				["at0010"] = <
-					text = <"Consider d-dimer testing to rule out PE or a rule out criteria such as PERC">
-					description = <"If dimer is negative - consider ceasing the work-up; 
-if dimer is positive - consider CTA">
+					text = <"Do D-dimer testing (or PERC rule assessment), if negative No PE, if positive do CTA">
+					description = <"*">
 				>
 				["at0011"] = <
-					text = <"Consider high sensitivity d-dimer testing or CTA">
-					description = <"If dimer is negative - consider ceasing the work-up; 
-if dimer is positive - consider CTA">
-				>
-				["at0012"] = <
-					text = <"D-dimer testing is not recommended - consider CTA">
+					text = <"Do high sensitivity D-dimer testing or CTA">
 					description = <"*">
 				>
 				["at0013"] = <
-					text = <"Consider CTA testing">
+					text = <"Do CTA testing, D-dimer testing is not recommended">
 					description = <"*">
 				>
 				["at0014"] = <
-					text = <"Risk Prevelance">
+					text = <"Risk Prevalence">
 					description = <"*">
 				>
 				["at0015"] = <
-					text = <"1.3% risk prevalence">
+					text = <"1.3% - 4%">
 					description = <"Score 0-1">
 				>
 				["at0017"] = <
-					text = <"16.2% risk prevalence">
+					text = <"16.2% - 21%">
 					description = <"Score 2-6">
 				>
 				["at0019"] = <
-					text = <"37.5% risk prevalence">
+					text = <"37.5% - 67%">
 					description = <"Score >6">
 				>
-				["at0020"] = <
-					text = <"Risk Incidence">
-					description = <"*">
-				>
-				["at0021"] = <
-					text = <"12.1% risk incidence">
-					description = <"Score ≤4">
-				>
-				["at0022"] = <
-					text = <"37.1% risk incidence">
-					description = <"Score ≥5">
+				["at0023"] = <
+					text = <"Comment">
+					description = <"Additional information about this recording">
 				>
 			>
 		>
@@ -279,20 +263,16 @@ if dimer is positive - consider CTA">
 				["at0010"] = <
 					text = <"Överväg d-dimer i syfte att utesluta lungemboli
 ">
-					description = <"">
+					description = <"*">
 				>
 				["at0011"] = <
 					text = <"Överväg högsensitiv d-dimer alternativt datortomografi
 ">
-					description = <"">
-				>
-				["at0012"] = <
-					text = <"Överväg vidare utredning med datortomografi utan d-dimer">
-					description = <"">
+					description = <"*">
 				>
 				["at0013"] = <
 					text = <"Överväg vidare utredning med datortomografi">
-					description = <"">
+					description = <"*">
 				>
 				["at0014"] = <
 					text = <"Prevalens per risknivå">
@@ -310,17 +290,9 @@ if dimer is positive - consider CTA">
 					text = <"37.5% ">
 					description = <">6p">
 				>
-				["at0020"] = <
-					text = <"Prevalens per sannolikhetsnivå">
+				["at0023"] = <
+					text = <"*New element(en)">
 					description = <"**(en)">
-				>
-				["at0021"] = <
-					text = <"12.1%">
-					description = <"≤4p">
-				>
-				["at0022"] = <
-					text = <"37.1%">
-					description = <"≥5p">
 				>
 			>
 		>
