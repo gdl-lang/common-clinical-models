@@ -1,6 +1,6 @@
 (GUIDE) <
 	gdl_version = <"0.1">
-	id = <"MNA.v1">
+	id = <"MNA-SF.v1.0.1">
 	concept = <"gt0001">
 	language = (LANGUAGE) <
 		original_language = <[ISO_639-1::en]>
@@ -8,11 +8,21 @@
 	description = (RESOURCE_DESCRIPTION) <
 		details = <
 			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
-				copyright = <"Société des Produits Nestlé S.A">
+				copyright = <"© Cambio Healthcare Systems">
 				keywords = <"Mini Nutritional Assessment", "MNA", "elderly", "nutrition", "malnutrition">
-				misuse = <"Do not use on patients under the age of 65 unless specifically indicated">
-				purpose = <"To calculate the Mini Nutritional Assessment total score.">
-				use = <"Use on geriatric patients age 65 or above.">
+				misuse = <"Do not use on patients <65 years unless specifically indicated">
+				purpose = <"To identify older adult patients with (or at risk of) nutritional problems.">
+				use = <"Use on geriatric patients age 65 or above.
+Answer the 6 items (calf circumference may be used if BMI is unavailable) to obtain a total score.
+The 6 items include:
+ - food intake in the last 3 months (score 0-2), 
+ - weight loss in the last 3 months (score 0-3), 
+ - mobility (0-2), 
+ - psychological stress/acute diseas in the last 3 months (0-2), 
+ - neuropsychological problems (0-2) and 
+ - body mass index (or calf circumference, 0-3)
+Higher scores are indicative of better nutritional status. Maximum score possible is 14, and a score of ≥12 points = normal (no need for further assessment), score 8 - 11 = at risk of malnutrition and score <8 = malnourished. A score <12 requires further assessment and possible intervention.
+If greater specificity is desired consider 10 points or below as possible malnutrition.">
 			>
 			["sv"] = (RESOURCE_DESCRIPTION_ITEM) <
 				keywords = <"MNA", "Mini", "Nutritional", "Näring", "Undernäring", "Risk", "Senior Alert">
@@ -23,7 +33,7 @@
 		lifecycle_state = <"Author draft">
 		original_author = <
 			["date"] = <"2015-01-16">
-			["email"] = <"Konstantinos.Kalliamvakos@cambio.se">
+			["email"] = <"models@cambiocds.com">
 			["name"] = <"Konstantinos Kalliamvakos">
 			["organisation"] = <"Cambio Healthcare Systems">
 		>
@@ -41,7 +51,7 @@ Ref.4: Kaiser MJ, Bauer JM, Ramsch C, et al.  Validation of the Mini Nutritional
 	definition = (GUIDE_DEFINITION) <
 		archetype_bindings = <
 			["gt0002"] = (ARCHETYPE_BINDING) <
-				archetype_id = <"openEHR-EHR-OBSERVATION.mini_nutritional_assessment.v1">
+				archetype_id = <"openEHR-EHR-OBSERVATION.mini_nutritional_assessment_sf.v1">
 				domain = <"EHR">
 				elements = <
 					["gt0003"] = (ELEMENT_BINDING) <
@@ -78,7 +88,7 @@ Ref.4: Kaiser MJ, Bauer JM, Ramsch C, et al.  Validation of the Mini Nutritional
 				>
 			>
 			["gt0010"] = (ARCHETYPE_BINDING) <
-				archetype_id = <"openEHR-EHR-OBSERVATION.mini_nutritional_assessment.v1">
+				archetype_id = <"openEHR-EHR-OBSERVATION.mini_nutritional_assessment_sf.v1">
 				domain = <"CDS">
 				elements = <
 					["gt0011"] = (ELEMENT_BINDING) <
@@ -102,9 +112,6 @@ Ref.4: Kaiser MJ, Bauer JM, Ramsch C, et al.  Validation of the Mini Nutritional
 					["gt0017"] = (ELEMENT_BINDING) <
 						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0029]">
 					>
-					["gt0018"] = (ELEMENT_BINDING) <
-						path = <"/data/events/time">
-					>
 					["gt0036"] = (ELEMENT_BINDING) <
 						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0030]">
 					>
@@ -113,17 +120,8 @@ Ref.4: Kaiser MJ, Bauer JM, Ramsch C, et al.  Validation of the Mini Nutritional
 					>
 				>
 			>
-			["gt0060"] = (ARCHETYPE_BINDING) <
-				archetype_id = <"openEHR-EHR-OBSERVATION.body_mass_index.v1">
-				domain = <"EHR">
-				elements = <
-					["gt0061"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0004]">
-					>
-				>
-				predicates = <"max(/data/events/time)",...>
-			>
 		>
+		default_actions = <"$gt0011=0|local::at0005|Severe decrease in food intake|", "$gt0012=0|local::at0009|Weight loss greater than 3kg|", "$gt0013=0|local::at0014|Bed or chair bound|", "$gt0014=0|local::at0018|Yes|", "$gt0015=0|local::at0021|Severe dementia or depression|", "$gt0016=0|local::at0025|BMI less than 19|", "$gt0036=0|local::at0031|CC less than 31 cm|">
 		rules = <
 			["gt0033"] = (RULE) <
 				when = <"$gt0017==null", "($gt0037==false)||($gt0037==null)">
@@ -156,23 +154,23 @@ Ref.4: Kaiser MJ, Bauer JM, Ramsch C, et al.  Validation of the Mini Nutritional
 				priority = <9>
 			>
 			["gt0043"] = (RULE) <
-				when = <"$gt0061.units=='kg/m2'", "$gt0061<19,kg/m2">
-				then = <"$gt0016=0|local::at0025|BMI less than 19|",...>
+				when = <"$gt0009<19,kg/m2",...>
+				then = <"$gt0016=0|local::at0025|<19 kg/m2|",...>
 				priority = <8>
 			>
 			["gt0044"] = (RULE) <
-				when = <"$gt0061.units=='kg/m2'", "$gt0061>=19,kg/m2", "$gt0061<21,kg/m2">
-				then = <"$gt0016=1|local::at0026|BMI 19 to less than 21|",...>
+				when = <"$gt0009>=19,kg/m2", "$gt0009<21,kg/m2">
+				then = <"$gt0016=1|local::at0026|≥19 to <21 kg/m2|",...>
 				priority = <7>
 			>
 			["gt0045"] = (RULE) <
-				when = <"$gt0061.units=='kg/m2'", "$gt0061>=21,kg/m2", "$gt0061<23,kg/m2">
-				then = <"$gt0016=2|local::at0027|BMI 21 to less than 23|",...>
+				when = <"$gt0009>=21,kg/m2", "$gt0009<23,kg/m2">
+				then = <"$gt0016=2|local::at0027|≥21 to <23 kg/m2|",...>
 				priority = <6>
 			>
 			["gt0046"] = (RULE) <
-				when = <"$gt0061.units=='kg/m2'", "$gt0061>=23,kg/m2">
-				then = <"$gt0016=3|local::at0028|BMI 23 or greater |",...>
+				when = <"$gt0009>=23,kg/m2",...>
+				then = <"$gt0016=3|local::at0028|≥23 kg/m2|",...>
 				priority = <5>
 			>
 			["gt0047"] = (RULE) <
@@ -190,11 +188,6 @@ Ref.4: Kaiser MJ, Bauer JM, Ramsch C, et al.  Validation of the Mini Nutritional
 				then = <"$gt0037=$gt0035",...>
 				priority = <3>
 			>
-			["gt0053"] = (RULE) <
-				when = <"$gt0036==null", "$gt0016==null", "$gt0011==null", "$gt0012==null", "$gt0013==null", "$gt0014==null", "$gt0015==null">
-				then = <"$gt0036=0|local::at0031|CC less than 31 cm|", "$gt0011=0|local::at0005|Severe decrease in food intake|", "$gt0012=0|local::at0009|Weight loss greater than 3kg|", "$gt0013=0|local::at0014|Bed or chair bound|", "$gt0014=0|local::at0018|Yes|", "$gt0015=0|local::at0021|Severe dementia or depression|", "$gt0016=0|local::at0025|BMI less than 19|">
-				priority = <14>
-			>
 		>
 	>
 	ontology = (GUIDE_ONTOLOGY) <
@@ -202,8 +195,8 @@ Ref.4: Kaiser MJ, Bauer JM, Ramsch C, et al.  Validation of the Mini Nutritional
 			["en"] = (TERM_DEFINITION) <
 				terms = <
 					["gt0001"] = (TERM) <
-						text = <"Mini Nutritional Assessment">
-						description = <"The Mini Nutritional Assessment (MNA) is a risk assessment tool for malnutrition. The tool is validated to help detect geriatric patients age 65 and above who are malnourished or at risk of developing malnutrition.">
+						text = <"Mini Nutritional Assessment - Short Form (MNA-SF)">
+						description = <"The Short-Form Mini Nutritional Assessment (MNA-SF) is a risk assessment tool for malnutrition derived from the lengthier MNA. The tool is validated to help detect geriatric patients ≥65 years who are malnourished or at risk of developing malnutrition. It consists of 6 items: food intake in the last 3 months (score 0-2), weight loss in the last 3 months (score 0-3), mobility (0-2), psychological stress/acute disease in the last 3 months (0-2), neuropsychological problems (0-2) and body mass index (or calf circumference, 0-3), with higher scores implying better nutritional status. Maximum score possible is 14, and a score of ≥12 points = normal (no need for further assessment), score 8 - 11 = at risk of malnutrition and score <8 = malnourished. A score <12 requires further assessment and possible intervention.">
 					>
 					["gt0003"] = (TERM) <
 						text = <"Has food intake declined over the past 3 months due to loss of appetite, digestive problems, chewing or swallowing difficulties?">
@@ -227,7 +220,6 @@ Ref.4: Kaiser MJ, Bauer JM, Ramsch C, et al.  Validation of the Mini Nutritional
 					>
 					["gt0009"] = (TERM) <
 						text = <"Body Mass Index">
-						description = <"Index describing ratio of weight to height.">
 					>
 					["gt0011"] = (TERM) <
 						text = <"A. Has food intake declined over the past 3 months due to loss of appetite, digestive problems, chewing or swallowing difficulties?">
@@ -256,52 +248,6 @@ Ref.4: Kaiser MJ, Bauer JM, Ramsch C, et al.  Validation of the Mini Nutritional
 					["gt0017"] = (TERM) <
 						text = <"MNA score">
 						description = <"*">
-					>
-					["gt0018"] = (TERM) <
-						text = <"MNA time">
-						description = <"The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event.">
-					>
-					["gt0019"] = (TERM) <
-						text = <"Set default">
-					>
-					["gt0020"] = (TERM) <
-						text = <"Set food intake to 0">
-					>
-					["gt0021"] = (TERM) <
-						text = <"Set food intake to 1">
-					>
-					["gt0022"] = (TERM) <
-						text = <"Set weight loss to 0">
-					>
-					["gt0023"] = (TERM) <
-						text = <"Set weight loss to 1">
-					>
-					["gt0024"] = (TERM) <
-						text = <"Set weight loss to 2">
-					>
-					["gt0025"] = (TERM) <
-						text = <"Set mobility to 0">
-					>
-					["gt0026"] = (TERM) <
-						text = <"Set mobility to 1">
-					>
-					["gt0027"] = (TERM) <
-						text = <"Set psychological stress/acute disease to 1">
-					>
-					["gt0028"] = (TERM) <
-						text = <"Set neuropsychological problems to 0">
-					>
-					["gt0029"] = (TERM) <
-						text = <"Set neuropsychological problems to 1">
-					>
-					["gt0030"] = (TERM) <
-						text = <"Set BMI to 0">
-					>
-					["gt0031"] = (TERM) <
-						text = <"Set BMI to 1">
-					>
-					["gt0032"] = (TERM) <
-						text = <"Set BMI to 2">
 					>
 					["gt0033"] = (TERM) <
 						text = <"Calculate total score with bmi">
@@ -355,10 +301,6 @@ Ref.4: Kaiser MJ, Bauer JM, Ramsch C, et al.  Validation of the Mini Nutritional
 					["gt0048"] = (TERM) <
 						text = <"Set CC">
 					>
-					["gt0050"] = (TERM) <
-						text = <"Body Mass Index">
-						description = <"Index describing ratio of weight to height.">
-					>
 					["gt0051"] = (TERM) <
 						text = <"Set BMI">
 					>
@@ -367,24 +309,6 @@ Ref.4: Kaiser MJ, Bauer JM, Ramsch C, et al.  Validation of the Mini Nutritional
 					>
 					["gt0053"] = (TERM) <
 						text = <"Set default view">
-					>
-					["gt0054"] = (TERM) <
-						text = <"Set cannot calulate BMI to false">
-					>
-					["gt0056"] = (TERM) <
-						text = <"Has food intake declined over the past 3 months due to loss of appetite, digestive problems, chewing or swallowing difficulties?">
-						description = <"*">
-					>
-					["gt0057"] = (TERM) <
-						text = <"Test">
-					>
-					["gt0059"] = (TERM) <
-						text = <"Has food intake declined over the past 3 months due to loss of appetite, digestive problems, chewing or swallowing difficulties?">
-						description = <"*">
-					>
-					["gt0061"] = (TERM) <
-						text = <"Body Mass Index">
-						description = <"Index describing ratio of weight to height.">
 					>
 				>
 			>
@@ -414,10 +338,6 @@ Ref.4: Kaiser MJ, Bauer JM, Ramsch C, et al.  Validation of the Mini Nutritional
 						text = <"*Neuropsychological problems (en)">
 						description = <"** (en)">
 					>
-					["gt0009"] = (TERM) <
-						text = <"*Body Mass Index (en)">
-						description = <"*Index describing ratio of weight to height. (en)">
-					>
 					["gt0011"] = (TERM) <
 						text = <"*A. Has food intake declined over the past 3 months due to loss of appetite, digestive problems, chewing or swallowing difficulties? (en)">
 						description = <"** (en)">
@@ -445,52 +365,6 @@ Ref.4: Kaiser MJ, Bauer JM, Ramsch C, et al.  Validation of the Mini Nutritional
 					["gt0017"] = (TERM) <
 						text = <"*MNA score (en)">
 						description = <"** (en)">
-					>
-					["gt0018"] = (TERM) <
-						text = <"*MNA time (en)">
-						description = <"*The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event. (en)">
-					>
-					["gt0019"] = (TERM) <
-						text = <"*Set default (en)">
-					>
-					["gt0020"] = (TERM) <
-						text = <"*Set food intake to 0 (en)">
-					>
-					["gt0021"] = (TERM) <
-						text = <"*Set food intake to 1 (en)">
-					>
-					["gt0022"] = (TERM) <
-						text = <"*Set weight loss to 0 (en)">
-					>
-					["gt0023"] = (TERM) <
-						text = <"*Set weight loss to 1 (en)">
-					>
-					["gt0024"] = (TERM) <
-						text = <"*Set weight loss to 2 (en)">
-					>
-					["gt0025"] = (TERM) <
-						text = <"*Set mobility to 0 (en)">
-					>
-					["gt0026"] = (TERM) <
-						text = <"*Set mobility to 1 (en)">
-					>
-					["gt0027"] = (TERM) <
-						text = <"*Set psychological stress/acute disease to 1 (en)">
-					>
-					["gt0028"] = (TERM) <
-						text = <"*Set neuropsychological problems to 0 (en)">
-					>
-					["gt0029"] = (TERM) <
-						text = <"*Set neuropsychological problems to 1 (en)">
-					>
-					["gt0030"] = (TERM) <
-						text = <"*Set BMI to 0 (en)">
-					>
-					["gt0031"] = (TERM) <
-						text = <"*Set BMI to 1 (en)">
-					>
-					["gt0032"] = (TERM) <
-						text = <"*Set BMI to 2 (en)">
 					>
 					["gt0033"] = (TERM) <
 						text = <"Räkna ut totalpoäng utan BMI">
@@ -544,10 +418,6 @@ Ref.4: Kaiser MJ, Bauer JM, Ramsch C, et al.  Validation of the Mini Nutritional
 					["gt0048"] = (TERM) <
 						text = <"Ange vadomkrets (CC)">
 					>
-					["gt0050"] = (TERM) <
-						text = <"*Body Mass Index (en)">
-						description = <"*Index describing ratio of weight to height. (en)">
-					>
 					["gt0051"] = (TERM) <
 						text = <"*Set BMI (en)">
 					>
@@ -556,17 +426,6 @@ Ref.4: Kaiser MJ, Bauer JM, Ramsch C, et al.  Validation of the Mini Nutritional
 					>
 					["gt0053"] = (TERM) <
 						text = <"Ange förvalda värden">
-					>
-					["gt0054"] = (TERM) <
-						text = <"*Set cannot calulate BMI to false (en)">
-					>
-					["gt0056"] = (TERM) <
-					>
-					["gt0057"] = (TERM) <
-					>
-					["gt0059"] = (TERM) <
-					>
-					["gt0061"] = (TERM) <
 					>
 				>
 			>

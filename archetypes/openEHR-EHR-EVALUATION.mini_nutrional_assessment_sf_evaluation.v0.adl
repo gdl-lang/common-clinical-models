@@ -1,0 +1,99 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.mini_nutrional_assessment_sf_evaluation.v0
+
+concept
+	[at0000]	-- Mini Nutrional Assessment - Short Form (MNA-SF) Evaluation
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Eneimi Allwell-Brown">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-09-25">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To provide a single, rapid assessment of nutritional status in elderly patients in outpatient clinics, hospitals, and nursing homes.">
+			use = <"Use to evaluate the MNA-SF score on geriatric patients ≥ 65 years.
+Maximum MNA-SF score possible is 14; 
+≥12 points = normal (no need for further assessment) 
+8 - 11 points = at risk of malnutrition 
+<8 = malnourished
+A score <12 requires further assessment and possible intervention.
+If greater specificity is desired consider 10 points or below as possible malnutrition.">
+			keywords = <"MNA-SF", "nutrition", "elderly">
+			misuse = <"">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Rubenstein LZ, Harker JO, Salva A, Guigoz Y, Vellas B. Screening for Undernutrition in Geriatric Practice: Developing the Short-Form Mini Nutritional Assessment (MNA-SF).">
+		["MD5-CAM-1.0.1"] = <"9ED7E0B619ADF3EA32814351536F33B7">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Mini Nutrional Assessment - Short Form (MNA-SF) Evaluation
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- MNA-SF assessment
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0003, 	-- Normal - no need for further assessment
+									at0004, 	-- At risk of malnutrition - further assessment required
+									at0006]	-- Malnourished - further assessment and intervention required
+								}
+							}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Comment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Mini Nutrional Assessment - Short Form (MNA-SF) Evaluation">
+					description = <"The Short-Form Mini Nutritional Assessment (MNA-SF) scale is a risk assessment tool for malnutrition derived from the lengthier MNA. The tool is validated to help detect geriatric patients ≥65 years who are malnourished or at risk of developing malnutrition.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"MNA-SF assessment">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Normal - no need for further assessment">
+					description = <"MNA-SF score ≥12">
+				>
+				["at0004"] = <
+					text = <"At risk of malnutrition - further assessment required">
+					description = <"MNA-SF score 8-11">
+				>
+				["at0005"] = <
+					text = <"Comment">
+					description = <"Additional information about this recording">
+				>
+				["at0006"] = <
+					text = <"Malnourished - further assessment and intervention required">
+					description = <"MNA-SF score <8">
+				>
+			>
+		>
+	>

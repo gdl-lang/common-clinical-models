@@ -1,0 +1,107 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"MNA-SF_Assessment.v1.0.0">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"MNA", "nutrition", "elderly">
+				purpose = <"To evaluate the MNA-SF score and identify older adult patients with (or at risk of) nutritional problems.">
+				use = <"Use on geriatric patients age 65 or above.
+The 6 items include:
+ - food intake in the last 3 months (score 0-2), 
+ - weight loss in the last 3 months (score 0-3), 
+ - mobility (0-2), 
+ - psychological stress/acute diseas in the last 3 months (0-2), 
+ - neuropsychological problems (0-2) and 
+ - body mass index (or calf circumference, 0-3)
+Higher scores are indicative of better nutritional status. Maximum score possible is 14, and a score of ≥12 points = normal (no need for further assessment), score 8 - 11 = at risk of malnutrition and score <8 = malnourished. A score <12 requires further assessment and possible intervention.
+If greater specificity is desired consider 10 points or below as possible malnutrition.">
+			>
+		>
+		lifecycle_state = <"Author draft">
+		original_author = <
+			["date"] = <"2017-09-25">
+			["email"] = <"models@cambiocds.com">
+			["name"] = <"Eneimi Allwell-Brown">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"Rubenstein LZ, Harker JO, Salva A, Guigoz Y, Vellas B. Screening for undernutrition in geriatric practice: developing the short-form Mini-Nutritional Assessment (MNA-SF). J Gerontol A Biol Sci Med Sci. 2001;56:M366–372.
+
+Kaiser MJ, Bauer JM, Ramsch C, et al.  Validation of the Mini Nutritional Assessment Short-Form (MNA®-SF): A practical tool for identification  of nutritional status.  J Nutr Health Aging 2009; 13:782-788.">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.mini_nutritional_assessment_sf.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0029]">
+					>
+				>
+			>
+			["gt0004"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.mini_nutrional_assessment_sf_evaluation.v0">
+				domain = <"CDS">
+				elements = <
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002]">
+					>
+				>
+			>
+		>
+		rules = <
+			["gt0006"] = (RULE) <
+				when = <"$gt0003<8",...>
+				then = <"$gt0005=local::at0006|Malnourished - further assessment and intervention required|",...>
+				priority = <3>
+			>
+			["gt0007"] = (RULE) <
+				when = <"$gt0003<12", "$gt0003>=8">
+				then = <"$gt0005=local::at0004|At risk of malnutrition - further assessment required|",...>
+				priority = <2>
+			>
+			["gt0008"] = (RULE) <
+				when = <"$gt0003>=12",...>
+				then = <"$gt0005=local::at0003|Normal - no need for further assessment|",...>
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Mini Nutritional Assessment - Short Form (MNA-SF)">
+						description = <"The Short-Form Mini Nutritional Assessment (MNA-SF) is a risk assessment tool for malnutrition derived from the lengthier MNA. The tool is validated to help detect geriatric patients ≥65 years who are malnourished or at risk of developing malnutrition. It consists of 6 items: food intake in the last 3 months (score 0-2), weight loss in the last 3 months (score 0-3), mobility (0-2), psychological stress/acute disease in the last 3 months (0-2), neuropsychological problems (0-2) and body mass index (or calf circumference, 0-3), with higher scores implying better nutritional status. Maximum score possible is 14, and a score of ≥12 points = normal (no need for further assessment), score 8 - 11 = at risk of malnutrition and score <8 = malnourished. A score <12 requires further assessment and possible intervention.">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Total score">
+						description = <"*">
+					>
+					["gt0005"] = (TERM) <
+						text = <"MNA-SF assessment">
+						description = <"*">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Set malnourished">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Set at risk of malnutrition">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Set normal">
+					>
+				>
+			>
+		>
+	>
+>

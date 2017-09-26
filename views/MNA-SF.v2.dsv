@@ -1,0 +1,487 @@
+<!DOCTYPE html><html ng-app="cds_app"><head>
+<title>{{def.concept.name}}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="wro/foundation.css" />
+<link rel="stylesheet" type="text/css" href="wro/date-picker.css" />
+<link rel="stylesheet" type="text/css" href="wro/angular.css" />
+<script type="text/javascript" src="wro/angular.js"></script>
+<link rel="text/javascript" type="text/css" href="wro/foundation.js" />
+<script type="text/javascript" src="wro/moment.js"></script>
+<script type="text/javascript" src="wro/date-picker.js"></script>
+<script type="text/javascript" src="wro/app_lib.js"></script>
+<script id="decision-support-view" type="application/json">{
+  "dsViewId": "MNA-SF.v2",
+  "language": {
+    "originalLanguage": {
+      "terminologyId": {
+        "name": "ISO_639-1",
+        "value": "ISO_639-1"
+      },
+      "codeString": "en"
+    }
+  },
+  "decisionSupportViewDefinitions": {
+    "sv": {
+      "name": "Mini Nutritional Assessment",
+      "description": "Riskbedömning av undernäring"
+    },
+    "en": {
+      "name": "Mini Nutritional Assessment - Short Form (MNA-SF)",
+      "description": "Risk assessment tool for malnutrition in the elderly"
+    }
+  },
+  "resourceDescription": {
+    "originalAuthor": {
+      "organisation": "Cambio Healthcare Systems",
+      "name": "Oskar Nielsen",
+      "date": "2016-08-10",
+      "email": "models@cambiocds.com"
+    },
+    "otherContributors": [
+      "Eneimi Allwell-Brown, Cambio Healthcare Systems"
+    ],
+    "lifecycleState": "Author draft",
+    "details": {
+      "sv": {
+        "purpose": "Mini Nutritional Assessment (MNA) är ett verktyg för riskbedömning av undernäring. Verktyget är validerat och hjälper upptäcka geriatriska patienter i åldern 65 år och äldre som är undernärda eller löper risk för att utveckla undernäring.",
+        "keywords": [
+          "Mini Nutritional Assessment",
+          "MNA",
+          "äldre",
+          "malnutrition",
+          "nutrition",
+          "geriatrik",
+          "Senior Alert"
+        ],
+        "use": "Används på geriatriska patienter i åldern 65 eller över."
+      },
+      "en": {
+        "purpose": "To aid the detection of older adult patients ≥65 years who are malnourished or at risk of developing malnutrition.",
+        "keywords": [
+          "Mini Nutritional Assessment",
+          "MNA",
+          "elderly",
+          "malnutrition",
+          "nutrition"
+        ],
+        "use": "Use on geriatric patients age 65 or above.\nAnswer the 6 items (calf circumference may be used if BMI is unavailable) to obtain a total score.\nThe 6 items include:\n - food intake in the last 3 months (score 0-2), \n - weight loss in the last 3 months (score 0-3), \n - mobility (0-2), \n - psychological stress/acute diseas in the last 3 months (0-2), \n - neuropsychological problems (0-2) and \n - body mass index (or calf circumference, 0-3)\nHigher scores are indicative of better nutritional status. Maximum score possible is 14, and a score of ≥12 points \u003d normal (no need for further assessment), score 8 - 11 \u003d at risk of malnutrition and score \u003c8 \u003d malnourished. A score \u003c12 requires further assessment and possible intervention.\nIf greater specificity is desired consider 10 points or below as possible malnutrition.",
+        "copyright": "© Cambio Healthcare Systems"
+      }
+    },
+    "otherDetails": {
+      "references": "Ref.1: Vellas B, Villars H, Abellan G, et al. Overview of the MNA® - Its History and Challenges. J Nutr Health Aging 2006;10:456-465. \n\nRef.2: Rubenstein LZ, Harker JO, Salva A, Guigoz Y, Vellas B. Screening for Undernutrition in Geriatric Practice: Developing the Short-Form Mini Nutritional Assessment (MNA-SF). J. Geront 2001;56A: M366-377. \n\nRef.3: Guigoz Y. The Mini-Nutritional Assessment (MNA®) Review of the Literature - What does it tell us? J Nutr Health Aging 2006; 10:466-487. \n\nRef.4: Kaiser MJ, Bauer JM, Ramsch C, et al.  Validation of the Mini Nutritional Assessment Short-Form (MNA®-SF): A practical tool for identification  of nutritional status.  J Nutr Health Aging 2009; 13:782-788."
+    }
+  },
+  "alertGuideIds": [],
+  "executionGuideIds": [
+    "BMI.v1",
+    "MNA-SF.v1.0.1",
+    "MNA-SF_Assessment.v1.0.0"
+  ],
+  "alertBindings": {},
+  "termDefinitions": {
+    "sv": {
+      "id": "sv",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "Referenser"
+        }
+      }
+    },
+    "en": {
+      "id": "en",
+      "terms": {
+        "vt0001": {
+          "id": "vt0001",
+          "text": "References"
+        }
+      }
+    }
+  },
+  "resultTemplates": []
+}</script>
+</head>
+<body ng-controller="cds_controller">
+<#assign app_help_tag = "def.guides['MNA-SF.v1.0.1'].concept">
+<#assign references = "def.terms['vt0001']"/>
+<#assign body_mass_index_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.body_mass_index.v1']">
+<#assign body_mass_index_entry_def = "def.entries['openEHR-EHR-OBSERVATION.body_mass_index.v1']">
+<#assign body_mass_index_def = body_mass_index_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign body_mass_index_cds_data = body_mass_index_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign mini_nutritional_assessment_entry_cds_data = "data.cds['openEHR-EHR-OBSERVATION.mini_nutritional_assessment_sf.v1']">
+<#assign mini_nutritional_assessment_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.mini_nutritional_assessment_sf.v1']">
+<#assign mini_nutritional_assessment_entry_def = "def.entries['openEHR-EHR-OBSERVATION.mini_nutritional_assessment_sf.v1']">
+<#assign mobility_def = mini_nutritional_assessment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign calf_circumference__cc__def = mini_nutritional_assessment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0030}']">
+<#assign body_mass_index__kg_m2__def = mini_nutritional_assessment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0024}']">
+<#assign has_food_intake_declined_over_the_past_3_months_due_to_loss_of_appetite__digestive_problems__chewing_or_swallowing_difficulties__def = mini_nutritional_assessment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign has_suffered_psychological_stress_or_acute_disease_in_the_past_3_months__def = mini_nutritional_assessment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0017}']">
+<#assign total_score_def = mini_nutritional_assessment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0029}']">
+<#assign weight_loss_during_the_last_3_months_def = mini_nutritional_assessment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign neuropsychological_problems_def = mini_nutritional_assessment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0020}']">
+<#assign event_time_def = mini_nutritional_assessment_entry_def + ".elements['/data/events/time']">
+<#assign cannot_calculate_bmi_def = mini_nutritional_assessment_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0033}']">
+<#assign mobility_cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign calf_circumference__cc__cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0030}']">
+<#assign body_mass_index__kg_m2__cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0024}']">
+<#assign has_food_intake_declined_over_the_past_3_months_due_to_loss_of_appetite__digestive_problems__chewing_or_swallowing_difficulties__cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign has_suffered_psychological_stress_or_acute_disease_in_the_past_3_months__cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0017}']">
+<#assign total_score_cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0029}']">
+<#assign weight_loss_during_the_last_3_months_cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign neuropsychological_problems_cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0020}']">
+<#assign event_time_cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data/events/time']">
+<#assign cannot_calculate_bmi_cds_data = mini_nutritional_assessment_entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0033}']">
+<#assign mobility_ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0013}']">
+<#assign calf_circumference__cc__ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0030}']">
+<#assign body_mass_index__kg_m2__ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0024}']">
+<#assign has_food_intake_declined_over_the_past_3_months_due_to_loss_of_appetite__digestive_problems__chewing_or_swallowing_difficulties__ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign has_suffered_psychological_stress_or_acute_disease_in_the_past_3_months__ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0017}']">
+<#assign total_score_ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0029}']">
+<#assign weight_loss_during_the_last_3_months_ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0008}']">
+<#assign neuropsychological_problems_ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0020}']">
+<#assign event_time_ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign cannot_calculate_bmi_ehr_data = mini_nutritional_assessment_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0033}']">
+<#assign height_length_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.height.v1']">
+<#assign height_length_entry_def = "def.entries['openEHR-EHR-OBSERVATION.height.v1']">
+<#assign height_length_def = height_length_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign event_time1_def = height_length_entry_def + ".elements['/data/events/time']">
+<#assign height_length_ehr_data = height_length_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
+<#assign event_time1_ehr_data = height_length_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign body_weight_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.body_weight.v1']">
+<#assign body_weight_entry_def = "def.entries['openEHR-EHR-OBSERVATION.body_weight.v1']">
+<#assign weight_def = body_weight_entry_def + ".elements['/data{at0002}/events{at0003}/data{at0001}/items{at0004}']">
+<#assign event_time2_def = body_weight_entry_def + ".elements['/data/events/time']">
+<#assign weight_ehr_data = body_weight_entry_ehr_data + "[0].elements['/data{at0002}/events{at0003}/data{at0001}/items{at0004}']">
+<#assign event_time2_ehr_data = body_weight_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign mini_nutritional_assessment_evaluation_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.mini_nutrional_assessment_sf_evaluation.v0']">
+<#assign mini_nutritional_assessment_evaluation_entry_def = "def.entries['openEHR-EHR-EVALUATION.mini_nutrional_assessment_sf_evaluation.v0']">
+<#assign mna__sf_assessment_def = mini_nutritional_assessment_evaluation_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign mna__sf_assessment_cds_data = mini_nutritional_assessment_evaluation_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
+
+<script>
+angular.module('cds_app').controller('MNA-SF_Ctrl', function($scope, $window){
+  $scope.$on('json_loaded', function(){
+    $scope.${event_time_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time1_ehr_data}.value.value = new Date().toISOString();
+    $scope.${event_time2_ehr_data}.value.value = new Date().toISOString();
+    $scope.${height_length_ehr_data}.value.units = $scope.${height_length_def}.units[1];
+    $scope.${weight_ehr_data}.value.units = $scope.${weight_def}.units[1];
+	$scope.${has_food_intake_declined_over_the_past_3_months_due_to_loss_of_appetite__digestive_problems__chewing_or_swallowing_difficulties__ehr_data}.value.selection = $scope.findMin($scope.${has_food_intake_declined_over_the_past_3_months_due_to_loss_of_appetite__digestive_problems__chewing_or_swallowing_difficulties__def});
+	$scope.${weight_loss_during_the_last_3_months_ehr_data}.value.selection = $scope.findMin($scope.${weight_loss_during_the_last_3_months_def});
+	$scope.${mobility_ehr_data}.value.selection = $scope.findMin($scope.${mobility_def});
+	$scope.${has_suffered_psychological_stress_or_acute_disease_in_the_past_3_months__ehr_data}.value.selection = $scope.findMin($scope.${has_suffered_psychological_stress_or_acute_disease_in_the_past_3_months__def});
+	$scope.${neuropsychological_problems_ehr_data}.value.selection = $scope.findMin($scope.${neuropsychological_problems_def});
+	$scope.execute();
+	
+  });
+  $scope.findMin = function (element) {
+        var array = []
+        for  (selection in element.selections) {
+          array.push(selection);
+        }
+        return (function() {
+          var min = 0;
+          var result;
+          for (i=0; i<array.length; i++) {
+            if (array[i].charAt(0) <= min) {
+              result = array[i];
+            }
+          }
+          return result;
+        })(array);
+      };
+  $scope.updateCC = function () {
+    document.getElementById("cbox").checked === true ? $scope.checked = true : $scope.checked = false;
+    $scope.execute();
+  };
+  $scope.$on('executeEnd', function() {
+    $scope.firedRules.filter(function(rule) {
+      if (rule.gtCode === 'gt0033' || rule.gtCode === 'gt0047' ) {
+        $scope.bmi_cds = Math.round($scope.${body_mass_index_cds_data}.value.magnitude);
+      }
+    });
+  });
+});
+</script>
+
+<div ng-show="ready" ng-controller="MNA-SF_Ctrl">
+<div class="header">
+  <h1>{{def.concept.name}}</h1>
+  <h2>{{def.concept.description}}</h2>
+  <div class="help-tip">
+	<p>{{${app_help_tag}.description}}</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="row collapse" title="{{${has_food_intake_declined_over_the_past_3_months_due_to_loss_of_appetite__digestive_problems__chewing_or_swallowing_difficulties__def}.description}}">
+    <div class="medium-7 columns">
+      <label>A. {{${has_food_intake_declined_over_the_past_3_months_due_to_loss_of_appetite__digestive_problems__chewing_or_swallowing_difficulties__def}.name}}</label>
+      </div>
+      <label class="medium-5 columns">
+        <select ng-model="${has_food_intake_declined_over_the_past_3_months_due_to_loss_of_appetite__digestive_problems__chewing_or_swallowing_difficulties__ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${has_food_intake_declined_over_the_past_3_months_due_to_loss_of_appetite__digestive_problems__chewing_or_swallowing_difficulties__def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${weight_loss_during_the_last_3_months_def}.description}}">
+    <div class="medium-7 columns">
+      <label>B. {{${weight_loss_during_the_last_3_months_def}.name}}</label>
+      </div>
+      <label class="medium-5 columns">
+        <select ng-model="${weight_loss_during_the_last_3_months_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${weight_loss_during_the_last_3_months_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${mobility_def}.description}}">
+    <div class="medium-7 columns">
+      <label>C. {{${mobility_def}.name}}</label>
+      </div>
+      <label class="medium-5 columns">
+        <select ng-model="${mobility_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${mobility_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${has_suffered_psychological_stress_or_acute_disease_in_the_past_3_months__def}.description}}">
+    <div class="medium-7 columns">
+      <label>D. {{${has_suffered_psychological_stress_or_acute_disease_in_the_past_3_months__def}.name}}</label>
+      </div>
+      <label class="medium-5 columns">
+        <select ng-model="${has_suffered_psychological_stress_or_acute_disease_in_the_past_3_months__ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${has_suffered_psychological_stress_or_acute_disease_in_the_past_3_months__def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${neuropsychological_problems_def}.description}}">
+    <div class="medium-7 columns">
+      <label>E. {{${neuropsychological_problems_def}.name}}</label>
+      </div>
+      <label class="medium-5 columns">
+        <select ng-model="${neuropsychological_problems_ehr_data}.value.selection" ng-options="key as (key.charAt(0) + ' - ' + desc) for (key, desc) in ${neuropsychological_problems_def}.selections" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+        </select>
+      </label>
+    </div>
+	<div class="row collapse" title="{{${body_mass_index__kg_m2__def}.description}}">
+		<div class="medium-5 columns">
+		  <label>F1. {{${body_mass_index__kg_m2__def}.name}}</label>
+		</div>
+    </div>
+	<div class="row collapse" title="{{${cannot_calculate_bmi_def}.description}}">
+		<div class="medium-5 columns">
+		  <label><i>{{${cannot_calculate_bmi_def}.name}}  </i><input id="cbox" type="checkbox" ng-model="${cannot_calculate_bmi_ehr_data}.value.value" ng-change="updateCC()" /></label>
+		</div>
+    </div>
+	<div class="row collapse" title="{{${height_length_def}.description}}">
+		<div class="medium-8 columns">
+			<label ng-class="{'disabled': checked}">{{${height_length_def}.name}}</label>
+		</div>
+		<div class="medium-3 columns">
+			<input ng-model="${height_length_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-disabled="checked" />
+		</div>
+		<div class="medium-1 columns">
+			<select ng-model="${height_length_ehr_data}.value.units" ng-options="unit for unit in ${height_length_def}.units" ng-change="execute()" disabled=""></select>
+		</div>
+	</div>
+	<div class="row collapse" title="{{${weight_def}.description}}">
+		<div class="medium-8 columns">
+			<label ng-class="{'disabled': checked}">{{${weight_def}.name}}</label>
+		</div>
+		<div class="medium-3 columns">
+			<input ng-model="${weight_ehr_data}.value.magnitude" type="number" step="any" min="0" ng-change="execute()" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-disabled="checked" />
+		</div>
+		<div class="medium-1 columns">
+			<select ng-model="${weight_ehr_data}.value.units" ng-options="unit for unit in ${weight_def}.units" ng-change="execute()" disabled=""></select>
+		</div>
+	</div>
+	<div class="row collapse" title="{{${body_mass_index_def}.description}}" id="displayresult1">
+		<div class="medium-8 columns">
+			<label ng-class="{'disabled': checked}" style="margin: 5px 0"><b>{{${body_mass_index_def}.name}}: </b></label>
+		</div>
+		<div class="medium-4 columns" style="text-align: center;">
+			<label ng-class="{'disabled': checked}" style="margin: 5px 0">{{bmi_cds}} {{${body_mass_index_cds_data}.value.units}}</label>
+		</div>
+	</div>
+	<div class="row collapse" title="{{${calf_circumference__cc__def}.description}}">
+		<div class="medium-7 columns">
+			<label ng-class="{'disabled': !checked}">F2. {{${calf_circumference__cc__def}.name}}</label>
+		</div>
+		<label class="medium-2 columns" ng-class="{'disabled': !checked}" ng-repeat="(key, desc) in ${calf_circumference__cc__def}.selections">
+			<input type="radio" value="{{key}}" ng-model="${calf_circumference__cc__ehr_data}.value.selection" ng-disabled="!checked" ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }" ng-change="execute()" /> {{desc}}
+		</label>
+	</div>
+<div class="row collapse" title="{{${total_score_def}.description}}" id="displayresult1">
+  <div class="medium-5 columns">
+    <label><b>{{${total_score_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${total_score_cds_data}.value.magnitude}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${mna__sf_assessment_def}.description}}" id="displayresult2">
+  <div class="medium-5 columns">
+    <label><b>{{${mna__sf_assessment_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${mna__sf_assessment_cds_data}.value.value}}</label>
+  </div>
+</div>
+</div>
+</div>
+
+
+<div class="row"><div class="medium-12 columns"></div></div>
+<br /><br />
+<div class="row collapse" title="{{${references}.text}}" style="font-size: 85%;">
+  <div class="medium-11 medium-offset-1 column">
+    <label>{{${references}.text}}:</label>
+  </div>
+</div>
+<div class="references1">
+  <div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i>Spitzer RL, Kroenke K, Williams JB, Löwe B. A brief measure for assessing generalized anxiety disorder: the GAD-7. Archives of internal medicine. 2006 May 22;166(10):1092-7.</i>
+        </li>
+      </div>
+    </div>
+	<div class="row collapse">
+      <div class="medium-11 medium-offset-1 column">
+        <li>
+          <i>Kroenke K, Spitzer RL, Williams JB, Monahan PO, Löwe B. Anxiety disorders in primary care: prevalence, impairment, comorbidity, and detection. Annals of internal medicine. 2007 Mar 6;146(5):317-25.</i>
+        </li>
+      </div>
+    </div>
+  </div>
+
+<style>
+  html, body {
+    height:100%;
+    width: 100%;
+  }
+  body {
+    font-family: sans-serif;
+    font-weight: 300;
+    color: #333;
+    background: #ecf0f9;
+    padding: 1em;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 {
+    font-weight: 600;
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 22px;
+    font-style: italic;
+  }
+  .header {
+    margin-bottom: 2em;
+  }
+  .card {
+    background-color: #fdfdfd;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: 10px auto 0 auto;
+    padding: 1em;
+    width: 50%;
+    overflow: hidden;
+  }
+  .help-tip{
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      text-align: center;
+      background-color: #BCDBEA;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      line-height: 26px;
+      cursor: default;
+  }
+  .help-tip:before{
+      content:'?';
+      font-weight: bold;
+      color:#fff;
+  }
+  .help-tip:hover p{
+      display:block;
+      transform-origin: 100% 0%;
+      -webkit-animation: fadeIn 0.3s ease-in-out;
+      animation: fadeIn 0.3s ease-in-out;
+  }
+  .help-tip p{	/* The tooltip */
+      display: none;
+      text-align: left;
+      background-color: #1E2021;
+      padding: 20px;
+      width: 300px;
+      position: absolute;
+      border-radius: 3px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+      right: -4px;
+      color: #FFF;
+      font-size: 13px;
+      line-height: 1.4;
+      z-index: 9999;
+  }
+  .help-tip p:before{ /* The pointer of the tooltip */
+      position: absolute;
+      content: '';
+      width:0;
+      height: 0;
+      border:6px solid transparent;
+      border-bottom-color:#1E2021;
+      right:10px;
+      top:-12px;
+  }
+  .help-tip p:after{ /* Prevents the tooltip from being hidden */
+      width:100%;
+      height:40px;
+      content:'';
+      position: absolute;
+      top:-40px;
+      left:0;
+  }
+  .references1{
+    font-size: 70%;
+  }
+  /* CSS animation */
+  @-webkit-keyframes fadeIn {
+      0% { 
+          opacity:0; 
+          transform: scale(0.6);
+      }
+
+      100% {
+          opacity:100%;
+          transform: scale(1);
+      }
+  }
+  @keyframes fadeIn {
+      0% { opacity:0; }
+      100% { opacity:100%; }
+  }
+  #displayresult1 {
+    background-color: #e6e6e6; 
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  #displayresult2 {
+    background-color: #f2f2f2;
+    padding-top: 3px;
+    padding-bottom: 3px;
+	padding-left: 3px;
+    font-size: 90%;
+  }
+  select, label:not(#h-fix) {
+    margin-bottom: 10px;
+</style>
+
+
+
+</body></html>
