@@ -1,0 +1,130 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.nihss_assessment.v0
+
+concept
+	[at0000]	-- NIHSS Assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Eneimi Allwell-Brown">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-09-28">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess the neurological severity of a stroke. ">
+			use = <"Use to measure and assess the neurological severity of a stroke. 
+
+It consists of fifteen parameters obtained through clinical neurological assessment:
+
+- 1A: Level of consciousness (LOC) responsiveness (0-3p)
+- 1B: Level of consciousness questions (0-2p)
+- 1C: Level of conciousness commands (0-2p)
+- 2: Horizontal eye movement (0-2p)
+- 3: Visual fields (0-3p)
+- 4: Facial palsy (0-3p)
+- 5A:Left arm motor drift (0-4p)
+- 5B: Right arm motor drift (0-4p)
+- 6A: Left leg motor drift (0-4p)
+- 6B: Right leg motor drift (0-4p)
+- 7: Ataxia (0-2p)
+- 8: Sensory (0-2p)
+- 9: Language (0-3p)
+- 10: Dysarthria (0-2p)
+- 11: Extinction/Inattention (0-2p)
+
+The maximum score is 42p. Increasing NIHSS scores are consistent with severe neurological impairment. 
+A score = 0 indicates no stroke symptoms, 1-4 = minor stroke, 5-15 = moderate stroke, 16-20 = moderate to severe stroke and 21 - 42 = severe stroke.">
+			keywords = <"NIHSS", "stroke", "neurology">
+			misuse = <"">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Lyden P, Brott T, Tilley B, Welch KM, Mascha EJ et al. Improved reliability of the NIH Stroke Scale using video training. NINDS TPA Stroke Study Group. Stroke. 1994 Nov;25(11):2220-6.
+
+Schlegel D, Kolb SJ, Luciano JM, Tovar JM, Cucchiara BL et al. Utility of the NIH Stroke Scale as a predictor of hospital disposition. Stroke. 2003 Jan;34(1):134-7.
+
+Johnston KC, Connors AF Jr, Wagner DP, Haley EC Jr. Predicting outcome in ischemic stroke: external validation of predictive risk models. Stroke. 2003 Jan;34(1):200-2.
+
+https://www.ninds.nih.gov/sites/default/files/NIH_Stroke_Scale_Booklet.pdf">
+		["MD5-CAM-1.0.1"] = <"FE3F5CA64F5B87063463F048EC8EF321">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- NIHSS Assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Stroke severity
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0004, 	-- No stroke symptoms
+									at0005, 	-- Minor stroke
+									at0006, 	-- Moderate stroke
+									at0007, 	-- Moderate to severe stroke
+									at0008]	-- Severe stroke
+								}
+							}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Comment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"NIHSS Assessment">
+					description = <"The National Institutes of Health Stroke Scale (NIHSS) is an evaluation tool used to measure and assess the neurological severity of a stroke. ">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Stroke severity">
+					description = <"Assessment of stroke severity from NIHSS score">
+				>
+				["at0003"] = <
+					text = <"Comment">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"No stroke symptoms">
+					description = <"NIHSS score = 0">
+				>
+				["at0005"] = <
+					text = <"Minor stroke">
+					description = <"NIHSS score = 1-4">
+				>
+				["at0006"] = <
+					text = <"Moderate stroke">
+					description = <"NIHSS score = 5-15">
+				>
+				["at0007"] = <
+					text = <"Moderate to severe stroke">
+					description = <"NIHSS score = 16-20">
+				>
+				["at0008"] = <
+					text = <"Severe stroke">
+					description = <"NIHSS score = 21-42">
+				>
+			>
+		>
+	>
