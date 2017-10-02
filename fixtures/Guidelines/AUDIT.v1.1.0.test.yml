@@ -1,0 +1,40 @@
+guidelines:
+  AUDIT-C.v1.1.0: 1
+  AUDIT-C.assessment.v1.1.0: 2
+test_cases:
+- id: 1
+  input:
+    1:
+      gt0003|How often do you have a drink containing alcohol?: 1|local::at0009|Monthly or less|
+      gt0004|How many drinks containing alcohol do you have on a typical day when you are drinking?: 0|local::at0013|1 or 2|
+      gt0005|How often do you have six or more drinks on one occasion?: 0|local::at0018|Never|
+      gt0017|Gender: local::at0005|Male|
+  expected_output:
+    1:
+      gt0010|Total score: 1
+    2:
+      gt0005|AUDIT-C assessment: 0|local::at0003|Consistent with normal consumption|
+- id: 2
+  input:
+    1:
+      gt0003|How often do you have a drink containing alcohol?: 2|local::at0010|2-4 times a month|
+      gt0004|How many drinks containing alcohol do you have on a typical day when you are drinking?: 2|local::at0015|5 or 6| 
+      gt0005|How often do you have six or more drinks on one occasion?: 2|local::at0020|Monthly|
+      gt0017|Gender: local::at0006|Female|
+  expected_output:
+    1:
+      gt0010|Total score: 6
+    2:
+      gt0005|AUDIT-C assessment: 2|local::at0005|Consistent with alcohol abuse and possible liver damage|
+- id: 3
+  input:
+    1:
+      gt0003|How often do you have a drink containing alcohol?: 2|local::at0010|2-4 times a month|
+      gt0004|How many drinks containing alcohol do you have on a typical day when you are drinking?: 2|local::at0015|5 or 6|
+      gt0005|How often do you have six or more drinks on one occasion?: 0|local::at0018|Never|
+      gt0017|Gender: local::at0005|Male|
+  expected_output:
+    1:
+      gt0010|Total score: 4
+    2:
+      gt0005|AUDIT-C assessment: 1|local::at0004|Consistent with alcohol misuse|

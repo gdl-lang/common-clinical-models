@@ -1,0 +1,40 @@
+guidelines:
+  Canadian_C_Spine_Rule.v2: 1
+  Canadian_C_Spine_Rule_Assessment.v2: 2
+test_cases:
+- id: 1
+  input:
+    1:
+      gt0003|Q1. Age ≥ 65 years, extremity paresthesias or dangerous mechanism (if No go to Q2): 0|local::at0020|No|
+      gt0004|Q2. Low risk factor present (if Yes – low risk go to Q3): 1|local::at0021|Yes|
+      gt0005|Q3. Able to actively rotate neck 45° left and right (if No – high risk): 0|local::at0020|No|
+      gt0020|Birthdate: 1974-05-05T00:00:00
+  expected_output:
+    1:
+      gt0018|Risk assessment: local::at0011|High risk|
+    2:
+      gt0007|Recommendation: 1|local::at0007|Radiography recommended|
+- id: 2
+  input:
+    1:
+      gt0003|Q1. Age ≥ 65 years, extremity paresthesias or dangerous mechanism (if No go to Q2): 0|local::at0020|No|
+      gt0004|Q2. Low risk factor present (if Yes – low risk go to Q3): 0|local::at0020|No|
+      gt0005|Q3. Able to actively rotate neck 45° left and right (if No – high risk): 1|local::at0021|Yes|
+      gt0020|Birthdate: 1934-05-05T00:00:00
+  expected_output:
+    1:
+      gt0018|Risk assessment: local::at0011|High risk|
+    2:
+      gt0007|Recommendation: 1|local::at0007|Radiography recommended|
+- id: 3
+  input:
+    1:
+      gt0003|Q1. Age ≥ 65 years, extremity paresthesias or dangerous mechanism (if No go to Q2): 0|local::at0020|No|
+      gt0004|Q2. Low risk factor present (if Yes – low risk go to Q3): 1|local::at0021|Yes|
+      gt0005|Q3. Able to actively rotate neck 45° left and right (if No – high risk): 1|local::at0021|Yes|
+      gt0020|Birthdate: 1960-05-05T00:00:00
+  expected_output:
+    1:
+      gt0018|Risk assessment: local::at0010|Low risk|
+    2:
+      gt0007|Recommendation: 0|local::at0006|No radiography needed|

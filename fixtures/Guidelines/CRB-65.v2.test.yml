@@ -1,0 +1,49 @@
+guidelines:
+  CRB-65.v2: 1
+  CRB-65_Assessment.v1: 2
+test_cases:
+- id: 1
+  input:
+    1:
+      gt0022|Systolic BP: 70,mm[Hg]
+      gt0023|Diastolic BP: 40,mm[Hg]
+      gt0033|Confusion?: 1|local::at0008|Present|
+      gt0020|Respiration rate: 35,/min
+      gt0027|Birthdate: 1934-07-17T00:00:00
+  expected_output:
+    1:
+      gt0008|Total score: 4
+    2:
+      gt0003|Risk assessment: 2|local::at0007|Severe risk group|
+      gt0004|Recommendation: 2|local::at0010|Urgent hospital admission|
+      gt0005|30-day mortality: 2|local::at0013|31,3 %|
+- id: 2
+  input:
+    1:
+      gt0022|Systolic BP: 80,mm[Hg]
+      gt0023|Diastolic BP: 50,mm[Hg]
+      gt0033|Confusion?: 0|local::at0007|Absent|
+      gt0020|Respiration rate: 45,/min
+      gt0027|Birthdate: 1965-07-17T00:00:00
+  expected_output:
+    1:
+      gt0008|Total score: 2
+    2:
+      gt0003|Risk assessment: 1|local::at0006|Moderate risk group|
+      gt0004|Recommendation: 1|local::at0009|Consider hospital care|
+      gt0005|30-day mortality: 1|local::at0012|8,2 %|
+- id: 3
+  input:
+    1:
+      gt0022|Systolic BP: 100,mm[Hg]
+      gt0023|Diastolic BP: 70,mm[Hg]
+      gt0033|Confusion?: 0|local::at0007|Absent|
+      gt0020|Respiration rate: 26,/min
+      gt0027|Birthdate: 1968-07-17T00:00:00
+  expected_output:
+    1:
+      gt0008|Total score: 0
+    2:
+      gt0003|Risk assessment: 0|local::at0005|Low risk group|
+      gt0004|Recommendation: 0|local::at0008|Consider home treatment|
+      gt0005|30-day mortality: 0|local::at0011|1,2 %|

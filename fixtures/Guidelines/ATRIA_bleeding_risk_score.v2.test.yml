@@ -1,0 +1,52 @@
+guidelines:
+  ATRIA_bleeding_risk_score_Calculation.v2.0.0: 1
+  ATRIA_bleeding_risk_score_Assessment.v2.0.0: 2
+test_cases:
+- id: case 1
+  input:
+    1:
+      gt0015|Haemoglobin: 12,gm/dl
+      gt0011|Gender: local::at0004|Female|
+      gt0013|Estimated Glomerular Filtration Rate: 90,ml/min
+      gt0010|Birthdate: 1967-05-05T00:00:00
+      gt0019|Prior Hemorrhage diagnosis: ICD-10-SE::R58|Prior Hemorrhage diagnosis|
+      gt0026|Prior hemorrhage date of initial onset: 2000-05-05T00:00:00
+      gt0017|Hypertension diagnosis:
+      gt0027|Hypertension date of initial onset:
+  expected_output:
+    1:
+      gt0003|Total score: 1
+    2:
+      gt0005|ATRIA bleeding risk: local::at0003|Low risk (0.8%)|
+- id: case 2
+  input:
+    1:
+      gt0015|Haemoglobin: 8,gm/dl
+      gt0011|Gender: local::at0005|Male|
+      gt0013|Estimated Glomerular Filtration Rate: 20,ml/min
+      gt0010|Birthdate: 1923-05-05T00:00:00
+      gt0019|Prior Hemorrhage diagnosis: ICD-10-SE::R58|Prior Hemorrhage diagnosis|
+      gt0026|Prior hemorrhage date of initial onset: 2000-05-05T00:00:00
+      gt0017|Hypertension diagnosis: ICD-10-SE::I10|Hypertension diagnosis|
+      gt0027|Hypertension date of initial onset: 2000-05-05T00:00:00
+  expected_output:
+    1:
+      gt0003|Total score: 10
+    2:
+      gt0005|ATRIA bleeding risk: local::at0005|High risk (5.8%)|
+- id: case 3
+  input:
+    1:
+      gt0015|Haemoglobin: 10,gm/dl
+      gt0011|Gender: local::at0005|Male|
+      gt0013|Estimated Glomerular Filtration Rate: 50,ml/min
+      gt0010|Birthdate: 1957-05-05T00:00:00
+      gt0019|Prior Hemorrhage diagnosis: ICD-10-SE::R58|Prior Hemorrhage diagnosis|
+      gt0026|Prior hemorrhage date of initial onset: 2000-05-05T00:00:00
+      gt0017|Hypertension diagnosis:
+      gt0027|Hypertension date of initial onset:
+  expected_output:
+    1:
+      gt0003|Total score: 4
+    2:
+      gt0005|ATRIA bleeding risk: local::at0004|Intermediate risk (2.6%)|

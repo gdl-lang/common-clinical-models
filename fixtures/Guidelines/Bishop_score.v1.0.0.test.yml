@@ -1,0 +1,43 @@
+guidelines:
+  Bishop.score.v1.1.0: 1
+  Bishop.score.assessment.v1: 2
+test_cases:
+- id: 1
+  input:
+    1:
+      gt0007|Position: 0|local::at0022|Posterior|
+      gt0008|Consistency: 1|local::at0026|Medium|
+      gt0004|Dilation: 2|local::at0012|3-4 cm|
+      gt0005|Effacement: 1|local::at0015|40-50 %|
+      gt0006|Fetal station: 1|local::at0019|-2, above spines|
+  expected_output:
+    1:
+      gt0014|Total score: 5
+    2:
+      gt0005|Assessment: 0|local::at0003|Labor is unlikely to commence without induction|
+- id: 2
+  input:
+    1:
+      gt0007|Position: 1|local::at0023|Central|
+      gt0008|Consistency: 1|local::at0026|Medium|
+      gt0004|Dilation: 2|local::at0012|3-4 cm|
+      gt0005|Effacement: 1|local::at0015|40-50 %|
+      gt0006|Fetal station: 2|local::at0020|-1, 0, above spines|
+  expected_output:
+    1:
+      gt0014|Total score: 7
+    2:
+      gt0005|Assessment: 1|local::at0004|Indeterminate group - use clinical judgment|
+- id: 3
+  input:
+    1:
+      gt0007|Position: 2|local::at0024|Anterior|
+      gt0008|Consistency: 2|local::at0027|Soft|
+      gt0004|Dilation: 3|local::at0013|≥5 cm|
+      gt0005|Effacement: 2|local::at0016|60-70 %|
+      gt0006|Fetal station: 3|local::at0021|+1, +2, below spines|
+  expected_output:
+    1:
+      gt0014|Total score: 12
+    2:
+      gt0005|Assessment: 2|local::at0005|Labor is likely to commence spontaneously, making induction unnecessary|

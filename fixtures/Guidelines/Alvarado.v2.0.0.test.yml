@@ -1,0 +1,52 @@
+guidelines:
+  Alvarado.v2.0.0: 1
+  Alvarado_Assessment.v2.0.0: 2
+test_cases:
+- id: 1
+  input:
+    1:
+      gt0014|Temperature: 38.3,°C
+      gt0016|White blood cell count: 12,10*9/l
+      gt0010|Anorexia: 1|local::at0006|Yes|
+      gt0011|Nausea or Vomiting: 1|local::at0006|Yes|
+      gt0012|Leukocyte Left Shift: 1|local::at0006|Yes|
+      gt0007|Right Lower Quadrant Tenderness: 2|local::at0006|Yes|
+      gt0008|Rebound Tenderness: 1|local::at0006|Yes|
+      gt0009|Migration of Pain to the Right Lower Quadrant: 1|local::at0006|Yes|
+  expected_output:
+    1:
+      gt0003|Total score: 10
+    2:
+      gt0005|Score recommendation: 2|local::at0005|A surgical consultation is needed|
+- id: 2
+  input:
+    1:
+      gt0014|Temperature: 37.3,°C
+      gt0016|White blood cell count: 10,10*9/l
+      gt0010|Anorexia: 1|local::at0006|Yes|
+      gt0011|Nausea or Vomiting: 1|local::at0006|Yes|
+      gt0012|Leukocyte Left Shift: 0|local::at0005|No|
+      gt0007|Right Lower Quadrant Tenderness: 2|local::at0006|Yes|
+      gt0008|Rebound Tenderness: 0|local::at0005|No|
+      gt0009|Migration of Pain to the Right Lower Quadrant: 0|local::at0005|No|
+  expected_output:
+    1:
+      gt0003|Total score: 5
+    2:
+      gt0005|Score recommendation: 1|local::at0004|A CT scan is recommended|
+- id: 3
+  input:
+    1:
+      gt0014|Temperature: 36.3,°C
+      gt0016|White blood cell count: 9,10*9/l
+      gt0010|Anorexia: 0|local::at0005|No|
+      gt0011|Nausea or Vomiting: 0|local::at0005|No|
+      gt0012|Leukocyte Left Shift: 0|local::at0005|No|
+      gt0007|Right Lower Quadrant Tenderness: 2|local::at0006|Yes|
+      gt0008|Rebound Tenderness: 0|local::at0005|No|
+      gt0009|Migration of Pain to the Right Lower Quadrant: 0|local::at0005|No|
+  expected_output:
+    1:
+      gt0003|Total score: 2
+    2:
+      gt0005|Score recommendation: 0|local::at0003|A CT scan is not needed due to the low probability of appendicitis|

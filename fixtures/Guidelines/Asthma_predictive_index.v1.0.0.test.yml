@@ -1,0 +1,56 @@
+guidelines:
+  Asthma_predictive_index_Calculation.v2.0.0: 1
+  Asthma_predictive_index_Assessment.v1.1.0: 2
+test_cases:
+- id: 1
+  input:
+    1:
+      gt0012|White cell count: 10,10*9/l
+      gt0013|Eosinophils: 0.4,10*9/l
+      gt0021|Wheezing apart from colds: 0|local::at0012|No|
+      gt0023|Parent with asthma: 1|local::at0013|Yes|
+      gt0024|Wheezing episodes/year: 0|local::at0024|<3|
+      gt0015|Allergic rhinitis diagnosis: ICD-10-SE::J30|Allergic rhinitis diagnosis|
+      gt0016|Allergic rhinitis date of initial onset: 2000-05-05T00:00:00
+      gt0038|Birthdate: 2015-05-05T00:00:00
+      gt0018|Eczema diagnosis: 
+      gt0019|Eczema date of initial onset: 
+  expected_output:
+    1:
+      gt0003|Asthma predictive index: local::at0030|Positive by loose criteria|
+    2:
+      gt0042|Specificity of API: local::at0005|80% likelihood of later childhood asthma diagnosis|
+- id: 2
+  input:
+    1:
+      gt0012|White cell count: 9,10*9/l
+      gt0013|Eosinophils: 0.1,10*9/l
+      gt0021|Wheezing apart from colds: 0|local::at0012|No|
+      gt0023|Parent with asthma: 0|local::at0012|No|
+      gt0024|Wheezing episodes/year: 0|local::at0024|<3|
+      gt0015|Allergic rhinitis diagnosis:
+      gt0016|Allergic rhinitis date of initial onset:
+      gt0038|Birthdate: 2015-05-05T00:00:00
+      gt0018|Eczema diagnosis: 
+      gt0019|Eczema date of initial onset: 
+  expected_output:
+    1:
+      gt0003|Asthma predictive index: local::at0028|Negative by loose criteria|
+- id: 3
+  input:
+    1:
+      gt0012|White cell count: 8,10*9/l
+      gt0013|Eosinophils: 0.6,10*9/l
+      gt0021|Wheezing apart from colds: 0|local::at0012|No|
+      gt0023|Parent with asthma: 1|local::at0013|Yes|
+      gt0024|Wheezing episodes/year: 1|local::at0025|≥3|
+      gt0015|Allergic rhinitis diagnosis:
+      gt0016|Allergic rhinitis date of initial onset:
+      gt0038|Birthdate: 2015-05-05T00:00:00
+      gt0018|Eczema diagnosis: ICD-10-SE::L23|Eczema diagnosis|
+      gt0019|Eczema date of initial onset: 2000-05-05T00:00:00
+  expected_output:
+    1:
+      gt0003|Asthma predictive index: local::at0031|Positive by strict criteria|
+    2:
+      gt0042|Specificity of API: local::at0004|> 95% likelihood of later childhood asthma diagnosis|

@@ -1,0 +1,48 @@
+guidelines:
+  AIR.v2.0.0: 1
+test_cases:
+- id: 1
+  input:
+    1:
+      gt0013|White cell count (×10*9/L): 10,10*9/l
+      gt0014|Polymorphonuclear leukocytes (%): 6,10*9/l
+      gt0010|RIF pain: 1|local::at0006|Present|
+      gt0011|Rebound tenderness or muscular defense: 1|local::at0009|Light|
+      gt0009|Vomiting: 0|local::at0005|Absent|
+      gt0016|CRP level (mg/L): 10,mg/l
+      gt0018|Body temperature (°C): 38,°C
+  expected_output:
+    1:
+      gt0003|Total score: 4
+      gt0029|Recommendation: 0|local::at0007|Consider outpatient follow-up (if unaltered general condition)|
+      gt0028|Probability: 0|local::at0004|Low probability|
+- id: 2
+  input:
+    1:
+      gt0013|White cell count (×10*9/L): 12,10*9/l
+      gt0014|Polymorphonuclear leukocytes (%): 10,10*9/l
+      gt0010|RIF pain: 1|local::at0006|Present|
+      gt0011|Rebound tenderness or muscular defense: 2|local::at0010|Medium|
+      gt0009|Vomiting: 0|local::at0005|Absent|
+      gt0016|CRP level (mg/L): 45,mg/l
+      gt0018|Body temperature (°C): 38,°C
+  expected_output:
+    1:
+      gt0003|Total score: 6
+      gt0029|Recommendation: 1|local::at0008|In-hospital active observation|
+      gt0028|Probability: 1|local::at0005|Indeterminate probability|
+- id: 3
+  input:
+    1:
+      gt0013|White cell count (×10*9/L): 14,10*9/l
+      gt0014|Polymorphonuclear leukocytes (%): 12,10*9/l
+      gt0010|RIF pain: 1|local::at0006|Present|
+      gt0011|Rebound tenderness or muscular defense: 2|local::at0010|Medium|
+      gt0009|Vomiting: 1|local::at0006|Present|
+      gt0016|CRP level (mg/L): 60,mg/l
+      gt0018|Body temperature (°C): 39.7,°C
+  expected_output:
+    1:
+      gt0003|Total score: 10
+      gt0029|Recommendation: 2|local::at0009|Consider surgical exploration|
+      gt0028|Probability: 2|local::at0006|High probability|

@@ -1,0 +1,43 @@
+guidelines:
+  Apgar.v1.1.0: 1
+  Apgar_assessment.v1.0.1: 2
+test_cases:
+- id: case 1
+  input:
+    1:
+      gt0006|Skin colour: 2|local::at0024|Completely pink|
+      gt0009|Respiratory effort: 1|local::at0011|Weak or irregular|
+      gt0011|Heart rate: 80,/min
+      gt0008|Muscle tone: 1|local::at0015|Reduced tone|
+      gt0007|Reflex irritability: 1|local::at0019|Reduced response|
+  expected_output:
+    1:
+      gt0003|Total score: 6
+    2:
+      gt0005|Apgar assessment: 1|local::at0004|Moderately abnormal|
+- id: case 2
+  input:
+    1:
+      gt0006|Skin colour: 2|local::at0024|Completely pink|
+      gt0009|Respiratory effort: 2|local::at0012|Normal|
+      gt0011|Heart Rate: 120,/min
+      gt0008|Muscle tone: 1|local::at0015|Reduced tone|
+      gt0007|Reflex irritability: 2|local::at0020|Normal response|
+  expected_output:
+    1:
+      gt0003|Total score: 9
+    2:
+      gt0005|Apgar assessment: 0|local::at0003|Normal|
+- id: case 3
+  input:
+    1:
+      gt0006|Skin colour: 0|local::at0022|Completely blue|
+      gt0009|Respiratory effort: 0|local::at0006|Absent|
+      gt0011|Heart Rate: 95,/min
+      gt0008|Muscle tone: 1|local::at0015|Reduced tone|
+      gt0007|Reflex irritability: 1|local::at0019|Reduced response|
+  expected_output:
+    1:
+      gt0003|Total score: 3
+    2:
+      gt0005|Apgar assessment: 2|local::at0005|Critically low, intervention required|

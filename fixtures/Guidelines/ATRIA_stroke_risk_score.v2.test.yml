@@ -1,0 +1,64 @@
+guidelines:
+  ATRIA_stroke_risk_score_Calculation.v2.0.0: 1
+  ATRIA_stroke_risk_score_Assessment.v2.0.0: 2
+test_cases:
+- id: 1
+  input:
+    1:
+      gt0022|CHF diagnosis: ICD-10-SE::I50|CHF diagnosis|
+      gt0042|CHF date of initial onset: 2000-07-17T00:00:00
+      gt0013|Birthdate: 1966-07-17T00:00:00
+      gt0014|Gender: local::at0006|Female|
+      gt0024|Hypertension diagnosis:
+      gt0043|Hypertension date of initial onset:
+      gt0020|Diabetes diagnosis: ICD-10-SE::E10|Diabetes diagnosis|
+      gt0044|Diabetes date of initial onset: 2000-07-17T00:00:00
+      gt0026|Urine microalbumin: 50,mg/dl
+      gt0016|Estimated Glomerular Filtration Rate: 50,ml/min
+      gt0018|Stroke diagnosis:
+      gt0045|Stroke date of initial onset:
+  expected_output:
+    1:
+      gt0003|Total score: 4
+    2:
+      gt0005|ATRIA stroke risk: 0|local::at0004|Low risk of stroke (<1%)|
+- id: 2
+  input:
+    1:
+      gt0022|CHF diagnosis: ICD-10-SE::I50|CHF diagnosis|
+      gt0042|CHF date of initial onset: 2000-07-17T00:00:00
+      gt0013|Birthdate: 1920-05-05T00:00:00
+      gt0014|Gender: local::at0006|Female|
+      gt0024|Hypertension diagnosis: ICD-10-SE::I10|Hypertension diagnosis|
+      gt0043|Hypertension date of initial onset: 2000-07-17T00:00:00
+      gt0020|Diabetes diagnosis: ICD-10-SE::E10|Diabetes diagnosis|
+      gt0044|Diabetes date of initial onset: 2000-07-17T00:00:00
+      gt0026|Urine microalbumin: 350,mg/dl
+      gt0016|Estimated Glomerular Filtration Rate: 25,ml/min
+      gt0018|Stroke diagnosis: ICD-10-SE::I61|Stroke diagnosis|
+      gt0045|Stroke date of initial onset: 2000-07-17T00:00:00
+  expected_output:
+    1:
+      gt0003|Total score: 15
+    2:
+      gt0005|ATRIA stroke risk: 2|local::at0006|High risk of stroke (≥2%)|
+- id: 3
+  input:
+    1:
+      gt0022|CHF diagnosis:
+      gt0042|CHF date of initial onset:
+      gt0013|Birthdate: 1937-05-05T00:00:00
+      gt0014|Gender: local::at0006|Female|
+      gt0024|Hypertension diagnosis:
+      gt0043|Hypertension date of initial onset:
+      gt0020|Diabetes diagnosis:
+      gt0044|Diabetes date of initial onset:
+      gt0026|Urine microalbumin: 10,mg/dl
+      gt0016|Estimated Glomerular Filtration Rate: 50,ml/min
+      gt0018|Stroke diagnosis:
+      gt0045|Stroke date of initial onset:
+  expected_output:
+    1:
+      gt0003|Total score: 6
+    2:
+      gt0005|ATRIA stroke risk: 1|local::at0005|Intermediate risk of stroke (1 - <2%)|

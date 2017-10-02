@@ -1,0 +1,55 @@
+guidelines:
+  Wells_DVT.v2.0.0: 1
+  Wells_criteria_DVT_assessment.v2.0.0: 2
+test_cases:
+- id: 1
+  input:
+    1:
+      gt0010|Calf swelling >3 cm compared to the other leg: 1|local::at0006|Present|
+      gt0011|Pitting oedema: 0|local::at0005|Absent|
+      gt0012|Collateral (nonvaricose) superficial veins: 1|local::at0006|Present|
+      gt0013|Alternative diagnosis to DVT at least as likely: 0|local::at0005|Absent|
+      gt0007|Bedridden recently ≥3 days or major surgery within 12 weeks: 1|local::at0006|Present|
+      gt0008|Localized tenderness along the deep venous system: 1|local::at0006|Present|
+      gt0009|Entire leg swollen: 1|local::at0006|Present|
+      gt0005|Active cancer: 1|local::at0006|Present|
+      gt0006|Paralysis, paresis, or recent plaster immobilisation of the legs: 1|local::at0006|Present|
+  expected_output:
+    1:
+      gt0003|Wells Score: 7
+    2:
+      gt0005|DVT risk: 1|local::at0004|High probability|
+- id: 2
+  input:
+    1:
+      gt0010|Calf swelling >3 cm compared to the other leg: 1|local::at0006|Present|
+      gt0011|Pitting oedema: 0|local::at0005|Absent|
+      gt0012|Collateral (nonvaricose) superficial veins: 1|local::at0006|Present|
+      gt0013|Alternative diagnosis to DVT at least as likely: -2|local::at0006|Present|
+      gt0007|Bedridden recently ≥3 days or major surgery within 12 weeks: 0|local::at0005|Absent|
+      gt0008|Localized tenderness along the deep venous system: 1|local::at0006|Present|
+      gt0009|Entire leg swollen: 0|local::at0005|Absent|
+      gt0005|Active cancer: 0|local::at0005|Absent|
+      gt0006|Paralysis, paresis, or recent plaster immobilisation of the legs: 0|local::at0005|Absent|
+  expected_output:
+    1:
+      gt0003|Wells Score: 1
+    2:
+      gt0005|DVT risk: 0|local::at0003|Low probability|
+- id: 3
+  input:
+    1:
+      gt0010|Calf swelling >3 cm compared to the other leg: 1|local::at0006|Present|
+      gt0011|Pitting oedema: 1|local::at0006|Present|
+      gt0012|Collateral (nonvaricose) superficial veins: 1|local::at0006|Present|
+      gt0013|Alternative diagnosis to DVT at least as likely: -2|local::at0006|Present|
+      gt0007|Bedridden recently ≥3 days or major surgery within 12 weeks: 1|local::at0006|Present|
+      gt0008|Localized tenderness along the deep venous system: 1|local::at0006|Present|
+      gt0009|Entire leg swollen: 1|local::at0006|Present|
+      gt0005|Active cancer: 1|local::at0006|Present|
+      gt0006|Paralysis, paresis, or recent plaster immobilisation of the legs: 1|local::at0006|Present|
+  expected_output:
+    1:
+      gt0003|Wells Score: 6
+    2:
+      gt0005|DVT risk: 1|local::at0004|High probability|

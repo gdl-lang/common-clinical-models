@@ -1,0 +1,40 @@
+guidelines:
+  DAS28-CRP_Calculation.v1.0.1: 1
+  DAS28-CRP_Assessment.v1: 2
+test_cases:
+- id: 1
+  input:
+    1:
+      gt0012|PtGDA score: 60,mm
+      gt0009|C-reactive protein: 60,mg/dl
+      gt0007|Swollen joint count (SJC): 13
+      gt0006|Tender joint count (TJC): 18
+  expected_output:
+    1:
+      gt0004|DAS28-CRP: 7.49,1
+    2:
+      gt0006|Disease activity: local::at0006|High activity|
+- id: 2
+  input:
+    1:
+      gt0012|PtGDA score: 10,mm
+      gt0009|C-reactive protein: 10,mg/dl
+      gt0007|Swollen joint count (SJC): 1
+      gt0006|Tender joint count (TJC): 1
+  expected_output:
+    1:
+      gt0004|DAS28-CRP: 3.60,1
+    2:
+      gt0006|Disease activity: local::at0005|Moderate activity|
+- id: 3
+  input:
+    1:
+      gt0012|PtGDA score: 5,mm
+      gt0009|C-reactive protein: 1.5,mg/dl
+      gt0007|Swollen joint count (SJC): 0
+      gt0006|Tender joint count (TJC): 1
+  expected_output:
+    1:
+      gt0004|DAS28-CRP: 2.59,1
+    2:
+      gt0006|Disease activity: local::at0003|Remission|
