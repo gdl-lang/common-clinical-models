@@ -20,8 +20,8 @@ Do not use for calculating eGFR in children and adolescents <18 years old.">
 				purpose = <"To calculate estimated glomerular filtration rate in adults, in accordance with the Cockcroft-Gault formula.">
 				use = <"Use for predicting creatinine clearance (as an estimate GFR) based on the Cockcroft-Gault formula. 
 
-Males (≥ 20 years of age): eGFR = (1.2281 * (140 - age) * weight) / creatinine
-Females (≥ 20 years of age): eGFR = (1.0438 * (140 - age) * weight) / creatinine 
+Males (≥ 20 years of age): eGFR = (140-age)(weight kg) / (72 X Scr)
+Females (≥ 20 years of age): eGFR = (140-age)(weight kg)(0.85) / (72 X Scr)
 
 Weight is entered in kilograms (kg) and creatinine in umol/l.">
 			>
@@ -108,16 +108,16 @@ Vikt anges i kg och längd i cm.">
 				>
 			>
 		>
-		pre_conditions = <"$gt0005.units=='kg'", "$gt0009.units=='umol/l'", "$gt0002.value<=($currentDateTime.value-18,a)">
+		pre_conditions = <"$gt0005.units=='kg'", "$gt0009.units=='umol/l'", "$gt0002.value<=($currentDateTime-18,a)">
 		rules = <
 			["gt0012"] = (RULE) <
 				when = <"!fired($gt0012)", "$gt0003==local::at0005|Male|">
-				then = <"$gt0011.magnitude=((1.2281*(140-(($currentDateTime.value-$gt0002.value)/1,a)))*($gt0005.magnitude/$gt0009.magnitude))", "$gt0011.precision=2", "$gt0011.units='ml/min'">
+				then = <"$gt0011.magnitude=(((140-($currentDateTime.year-$gt0002.year))*$gt0005.magnitude)/(72*($gt0009.magnitude/88.42)))", "$gt0011.precision=1", "$gt0011.units='ml/min'">
 				priority = <2>
 			>
 			["gt0013"] = (RULE) <
 				when = <"!fired($gt0013)", "$gt0003==local::at0006|Female|">
-				then = <"$gt0011.units='ml/min'", "$gt0011.precision=2", "$gt0011.magnitude=((1.0438*(140-(($currentDateTime.value-$gt0002.value)/1,a)))*($gt0005.magnitude/$gt0009.magnitude))">
+				then = <"$gt0011.units='ml/min'", "$gt0011.precision=1", "$gt0011.magnitude=((((140-($currentDateTime.year-$gt0002.year))*$gt0005.magnitude)*0.85)/(72*($gt0009.magnitude/88.42)))">
 				priority = <1>
 			>
 		>
