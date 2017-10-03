@@ -55,12 +55,12 @@ The Modified Early Warning Score (MEWS) is based on five parameters easily contr
 - Level of consciousness (AVPU)
 - Body temperature
 
-A total score of ≥5p and/or 3p of one parameter should result in higher level of care as it is consistent with deteriorating state of the patient and increased risk of cardiac arrest and need for intensive care. 
+A total score of ≥4p (or 3p in any one parameter) should result in higher level of care as it is consistent with deteriorating state of the patient and increased risk of cardiac arrest and need for intensive care. 
 
 Several hospitals use locally modified versions of the instrument including urine output - the model can be adjusted to accommodate specific requests.">
 			keywords = <"early warning", "modified early warning score", "MEWS", "degree of illness">
 			misuse = <"Not to be used to record National Early Warning Score (NEWS). Use openEHR-EHR-OBSERVATION.news_uk_rcp.v1 instead.">
-			copyright = <"">
+			copyright = <"© Cambio Healthcare Systems">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
@@ -69,7 +69,7 @@ Several hospitals use locally modified versions of the instrument including urin
 		["references"] = <"Modified Early Warning Scale, MEWS. Capio S:t Görans Sjukhus. Version 4.0. 2011-09-05
 
 Subbe CP, Kruger M, Rutherford P, et al. Validation of a modified early warning score in medical admissions. Q J Med 2001;94:521–6.  ">
-		["MD5-CAM-1.0.1"] = <"5294A1C5E839E025E934BA268A100F67">
+		["MD5-CAM-1.0.1"] = <"7C8E9346DAC8000D0F15F7E7247C0F4B">
 	>
 
 definition
@@ -131,6 +131,18 @@ definition
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..17|}
+											}
+										}
+									}
+									ELEMENT[at0034] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0035] occurrences matches {0..1} matches {	-- Any single score of 3
+										value matches {
+											DV_BOOLEAN matches {
+												value matches {True, False}
 											}
 										}
 									}
@@ -279,6 +291,14 @@ ontology
 					text = <"No diuresis">
 					description = <"*">
 				>
+				["at0034"] = <
+					text = <"Comment">
+					description = <"Any additional information about this recording">
+				>
+				["at0035"] = <
+					text = <"Any single score of 3">
+					description = <"Any single physiological parameter scored +3">
+				>
 			>
 		>
 		["sv"] = <
@@ -415,6 +435,14 @@ ontology
 				["at0033"] = <
 					text = <"Ingen diures">
 					description = <"*">
+				>
+				["at0034"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
+				>
+				["at0035"] = <
+					text = <"*New element(en)">
+					description = <"**(en)">
 				>
 			>
 		>

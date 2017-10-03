@@ -1,0 +1,130 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.mews_assessment.v0
+
+concept
+	[at0000]	-- Modified Early Warning Score (MEWS) Assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Eneimi Allwell-Brown">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-10-03">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess the MEWS score and provide objective assessment of the degree of illness in an unwell patient.">
+			use = <"Use to evaluate the MEWS score.
+
+The Modified Early Warning Score (MEWS) is based on five parameters easily controlled for through simple bedside examination:
+
+- Respiration rate
+- Systolic blood pressure
+- Heart rate
+- Level of consciousness (AVPU)
+- Body temperature
+
+A total score of ≥4p (or 3p in any one parameter) should result in higher level of care as it is consistent with deteriorating state of the patient and increased risk of cardiac arrest and need for intensive care. 
+
+Several hospitals use locally modified versions of the instrument including urine output - the model can be adjusted to accommodate specific requests.">
+			keywords = <"early warning", "modified early warning score", "MEWS", "degree of illness">
+			misuse = <"">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Subbe CP, Kruger M, Rutherford P, et al. Validation of a modified early warning score in medical admissions. Q J Med 2001;94:521–6.
+
+Gardner-Thorpe J,  Love N,  Wrightson J,  Walsh S,  Keeling N. The value of Modified Early Warning Score (MEWS) in surgical in-patients: a prospective observational study, Ann R Coll Surg Engl 2006;88:571-5">
+		["MD5-CAM-1.0.1"] = <"A2AD1B17277F17127C7F5E370B4D1B96">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Modified Early Warning Score (MEWS) Assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- MEWS assessment
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0003, 	-- Lower risk of deterioration or death
+									at0004]	-- Increased likelihood of deterioration or death
+								}
+							}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Recommendation
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0010, 	-- Continue routine monitoring
+									at0009, 	-- Consider increased frequency of monitoring and inform nurse in charge
+									at0007]	-- Consider higher level of care (ICU or HDU) and inform critical care team
+								}
+							}
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Comment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Modified Early Warning Score (MEWS) Assessment">
+					description = <"Modified Early Warning Score (MEWS) is a simple physiological scoring system suitable for bedside application that helps identify medical patients at risk of catastrophic deterioration, so that appropriate changes in clinical management can be implemented to prevent poor outcomes.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"MEWS assessment">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Lower risk of deterioration or death">
+					description = <"MEWS <4">
+				>
+				["at0004"] = <
+					text = <"Increased likelihood of deterioration or death">
+					description = <"MEWS ≥4">
+				>
+				["at0005"] = <
+					text = <"Recommendation">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Consider higher level of care (ICU or HDU) and inform critical care team">
+					description = <"MEWS ≥4">
+				>
+				["at0008"] = <
+					text = <"Comment">
+					description = <"Additional information about this recording">
+				>
+				["at0009"] = <
+					text = <"Consider increased frequency of monitoring and inform nurse in charge">
+					description = <"MEWS 1-3">
+				>
+				["at0010"] = <
+					text = <"Continue routine monitoring">
+					description = <"MEWS <1">
+				>
+			>
+		>
+	>

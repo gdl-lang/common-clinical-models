@@ -1,0 +1,49 @@
+guidelines:
+  MEWS.v1.1.1: 1
+  MEWS_Assessment.v1.0.0: 2
+test_cases:
+- id: 1
+  input:
+    1:
+      gt0010|Body temperature: 37.9,°C
+      gt0009|Systolic: 90,mm[Hg]
+      gt0015|Rate: 80,/min
+      gt0013|Respiration rate: 20,/min
+      gt0011|AVPU Observation: local::at0006|Voice|
+      gt0012|New Confusion: local::at0010|Absent|
+  expected_output:
+    1:
+      gt0022|Total score: 3
+    2:
+      gt0005|MEWS assessment: local::at0003|Lower risk of deterioration or death|
+      gt0006|Recommendation: local::at0009|Consider increased frequency of monitoring and inform nurse in charge|
+- id: 2
+  input:
+    1:
+      gt0010|Body temperature: 39.0,°C
+      gt0009|Systolic: 70,mm[Hg]
+      gt0015|Rate: 120,/min
+      gt0013|Respiration rate: 30,/min
+      gt0011|AVPU Observation: local::at0007|Pain|
+      gt0012|New Confusion: local::at0011|Present|
+  expected_output:
+    1:
+      gt0022|Total score: 12
+    2:
+      gt0005|MEWS assessment: local::at0004|Increased likelihood of deterioration or death|
+      gt0006|Recommendation: local::at0007|Consider higher level of care (ICU or HDU) and inform critical care team|
+- id: 3
+  input:
+    1:
+      gt0010|Body temperature: 37.6,°C
+      gt0009|Systolic: 120,mm[Hg]
+      gt0015|Rate: 97,/min
+      gt0013|Respiration rate: 12,/min
+      gt0011|AVPU Observation: local::at0005|Alert|
+      gt0012|New Confusion: local::at0010|Absent|
+  expected_output:
+    1:
+      gt0022|Total score: 0
+    2:
+      gt0005|MEWS assessment: local::at0003|Lower risk of deterioration or death|
+      gt0006|Recommendation: local::at0010|Continue routine monitoring|

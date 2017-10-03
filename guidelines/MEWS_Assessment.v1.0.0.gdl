@@ -1,0 +1,118 @@
+(GUIDE) <
+	gdl_version = <"0.1">
+	id = <"MEWS_Assessment.v1.0.0">
+	concept = <"gt0001">
+	language = (LANGUAGE) <
+		original_language = <[ISO_639-1::en]>
+	>
+	description = (RESOURCE_DESCRIPTION) <
+		details = <
+			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
+				copyright = <"© Cambio Healthcare Systems">
+				keywords = <"modified early warning score", "MEWS", "vital signs">
+				misuse = <"Do not use to assess NEWS score.">
+				purpose = <"To assess the MEWS score and provide objective assessment of the degree of illness in an unwell patient.">
+				use = <"Use to evaluate the MEWS score.
+
+The Modified Early Warning Score (MEWS) is based on five parameters easily controlled for through simple bedside examination:
+
+- Respiration rate
+- Systolic blood pressure
+- Heart rate
+- Level of consciousness (AVPU)
+- Body temperature
+
+A total score of ≥4p (or 3p in any one parameter) should result in higher level of care as it is consistent with deteriorating state of the patient and increased risk of cardiac arrest and need for intensive care. 
+
+Several hospitals use locally modified versions of the instrument including urine output - the model can be adjusted to accommodate specific requests.">
+			>
+		>
+		lifecycle_state = <"Author draft">
+		original_author = <
+			["date"] = <"2017-10-03">
+			["email"] = <"models@cambiocds.com">
+			["name"] = <"Eneimi Allwell-Brown">
+			["organisation"] = <"Cambio Healthcare Systems">
+		>
+		other_details = <
+			["references"] = <"Subbe CP, Kruger M, Rutherford P, et al. Validation of a modified early warning score in medical admissions. Q J Med 2001;94:521–6.
+
+Gardner-Thorpe J,  Love N,  Wrightson J,  Walsh S,  Keeling N. The value of Modified Early Warning Score (MEWS) in surgical in-patients: a prospective observational study, Ann R Coll Surg Engl 2006;88:571-5">
+		>
+	>
+	definition = (GUIDE_DEFINITION) <
+		archetype_bindings = <
+			["gt0002"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-OBSERVATION.mews.v1">
+				domain = <"CDS">
+				elements = <
+					["gt0003"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0032]">
+					>
+					["gt0013"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0035]">
+					>
+				>
+			>
+			["gt0004"] = (ARCHETYPE_BINDING) <
+				archetype_id = <"openEHR-EHR-EVALUATION.mews_assessment.v0">
+				domain = <"CDS">
+				elements = <
+					["gt0005"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0002]">
+					>
+					["gt0006"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0005]">
+					>
+				>
+			>
+		>
+		default_actions = <"$gt0005=local::at0003|Lower risk of deterioration or death|", "$gt0006=local::at0010|Continue routine monitoring|">
+		rules = <
+			["gt0007"] = (RULE) <
+				when = <"$gt0003<4", "$gt0003>0">
+				then = <"$gt0006=local::at0009|Consider increased frequency of monitoring and inform nurse in charge|", "$gt0005=local::at0003|Lower risk of deterioration or death|">
+				priority = <2>
+			>
+			["gt0008"] = (RULE) <
+				when = <"($gt0003>=4)||($gt0013==true)",...>
+				then = <"$gt0006=local::at0007|Consider higher level of care (ICU or HDU) and inform critical care team|", "$gt0005=local::at0004|Increased likelihood of deterioration or death|">
+				priority = <1>
+			>
+		>
+	>
+	ontology = (GUIDE_ONTOLOGY) <
+		term_definitions = <
+			["en"] = (TERM_DEFINITION) <
+				terms = <
+					["gt0001"] = (TERM) <
+						text = <"Modified Early Warning Score (MEWS) Assessment">
+						description = <"Modified Early Warning Score (MEWS) is a simple bedside physiological scoring system suitable to identify patients at risk of deterioration. It is the total score assigned based on observation of the following patient physiological variables: systolic blood pressure (scored 0 -3), pulse rate (scored 0-3), respiratory rate (scored 0-3), temperature (scored 0-2) and AVPU score (a measure of the level of consciousness, scored 0-3). A total score ≥4, or a score of 3 in any one physiologic parameter, is linked to an increased likelihood of death or admission to an intensive care unit.">
+					>
+					["gt0003"] = (TERM) <
+						text = <"Total score">
+						description = <"*">
+					>
+					["gt0005"] = (TERM) <
+						text = <"MEWS assessment">
+						description = <"*">
+					>
+					["gt0006"] = (TERM) <
+						text = <"Recommendation">
+						description = <"*">
+					>
+					["gt0007"] = (TERM) <
+						text = <"Set MEWS 1-3">
+					>
+					["gt0008"] = (TERM) <
+						text = <"Set MEWS ≥4">
+					>
+					["gt0013"] = (TERM) <
+						text = <"Any single score of 3">
+						description = <"Any single physiological parameter scored +3">
+					>
+				>
+			>
+		>
+	>
+>

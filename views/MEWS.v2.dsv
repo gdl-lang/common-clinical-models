@@ -41,7 +41,8 @@
     },
     "otherContributors": [
       "Dennis Forslund, Cambio Healthcare Systems",
-      "Dr Niklas Skyttberg"
+      "Dr Niklas Skyttberg",
+	  "Eneimi Allwell-Brown, Cambio Healthcare Systems"
     ],
     "lifecycleState": "Author draft",
     "details": {
@@ -76,7 +77,8 @@
   },
   "alertGuideIds": [],
   "executionGuideIds": [
-    "MEWS.v1.1.1"
+    "MEWS.v1.1.1",
+	"MEWS_Assessment.v1.0.0"
   ],
   "alertBindings": {},
   "termDefinitions": {
@@ -131,12 +133,14 @@
 <#assign respiratory_rate_def = modified_early_warning_score__mews__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 <#assign temperature1_def = modified_early_warning_score__mews__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}']">
 <#assign heart_rate_def = modified_early_warning_score__mews__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign any_single_score_of_3_def = modified_early_warning_score__mews__entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0035}']">
 <#assign total_score_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0032}']">
 <#assign level_of_consciousness_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0023}']">
 <#assign systolic_blood_pressure_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0014}']">
 <#assign respiratory_rate_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 <#assign temperature1_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0019}']">
 <#assign heart_rate_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
+<#assign any_single_score_of_3_cds_data = modified_early_warning_score__mews__entry_cds_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0035}']">
 <#assign respirations_entry_ehr_data = "data.ehr['openEHR-EHR-OBSERVATION.respiration.v1']">
 <#assign respirations_entry_def = "def.entries['openEHR-EHR-OBSERVATION.respiration.v1']">
 <#assign respiration_rate_def = respirations_entry_def + ".elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
@@ -151,6 +155,12 @@
 <#assign avpu_observation_ehr_data = avpu_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0004}']">
 <#assign new_confusion_ehr_data = avpu_entry_ehr_data + "[0].elements['/data{at0001}/events{at0002}/data{at0003}/items{at0009}']">
 <#assign event_time4_ehr_data = avpu_entry_ehr_data + "[0].elements['/data/events/time']">
+<#assign modified_early_warning_score__mews__assessment_entry_cds_data = "data.cds['openEHR-EHR-EVALUATION.mews_assessment.v0']">
+<#assign modified_early_warning_score__mews__assessment_entry_def = "def.entries['openEHR-EHR-EVALUATION.mews_assessment.v0']">
+<#assign mews_assessment_def = modified_early_warning_score__mews__assessment_entry_def + ".elements['/data{at0001}/items{at0002}']">
+<#assign recommendation_def = modified_early_warning_score__mews__assessment_entry_def + ".elements['/data{at0001}/items{at0005}']">
+<#assign mews_assessment_cds_data = modified_early_warning_score__mews__assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0002}']">
+<#assign recommendation_cds_data = modified_early_warning_score__mews__assessment_entry_cds_data + "[0].elements['/data{at0001}/items{at0005}']">
 
 <script> 
 angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
@@ -248,6 +258,22 @@ angular.module('cds_app').controller('MEWS_Ctrl', function($scope, $window){
   </div>
   <div class="medium-7 columns" style="text-align: center;">
     <label>{{${total_score_cds_data}.value.magnitude}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${mews_assessment_def}.description}}" id="displayresult2">
+  <div class="medium-5 columns">
+    <label><b>{{${mews_assessment_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${mews_assessment_cds_data}.value.value}}</label>
+  </div>
+</div>
+<div class="row collapse" title="{{${recommendation_def}.description}}" id="displayresult1">
+  <div class="medium-5 columns">
+    <label><b>{{${recommendation_def}.name}}: </b></label>
+  </div>
+  <div class="medium-7 columns" style="text-align: center;">
+    <label>{{${recommendation_cds_data}.value.value}}</label>
   </div>
 </div>
 
