@@ -1,0 +1,64 @@
+guidelines:
+  PHQ9.v1.1.0: 1
+  PHQ9_Assessment.v1.1.0: 2
+test_cases:
+- id: 1
+  input:
+    1:
+      gt0010|Disturbed speech and/or movement: 0|local::at0019|Not at all|
+      gt0011|Suicidal thoughts: 0|local::at0019|Not at all|
+      gt0052|Degree of difficulty due to symptoms: 1|local::at0016|Somewhat difficult|
+      gt0007|Disturbed appetite: 1|local::at0020|Several days|
+      gt0008|Feeling like a failure: 0|local::at0015|Not at all|
+      gt0009|Trouble concentrating: 1|local::at0020|Several days|
+      gt0003|Little pleasure doing things: 1|local::at0020|Several days|
+      gt0004|Feeling hopeless: 1|local::at0020|Several days|
+      gt0005|Trouble with sleeping: 1|local::at0020|Several days|
+      gt0006|Feeling tired: 1|local::at0021|More than half the days|
+  expected_output:
+    1:
+      gt0026|Total score: 6
+    2:
+      gt0010|Recommendation: 1|local::at0010|Use clinical judgment to determine necessity of treatment|
+      gt0022|Functional limitations: local::at0014|Functionally, the patient is “somewhat” having difficulty with life tasks due to their symptoms|
+      gt0009|Severity grade: 1|local::at0005|Mild depression|
+- id: 2
+  input:
+    1:
+      gt0010|Disturbed speech and/or movement: 1|local::at0020|Several days|
+      gt0011|Suicidal thoughts: 2|local::at0021|More than half the days|
+      gt0052|Degree of difficulty due to symptoms: 2|local::at0017|Very difficult|
+      gt0007|Disturbed appetite: 2|local::at0021|More than half the days|
+      gt0008|Feeling like a failure: 3|local::at0022|Nearly every day|
+      gt0009|Trouble concentrating: 3|local::at0022|Nearly every day|
+      gt0003|Little pleasure doing things: 2|local::at0021|More than half the days|
+      gt0004|Feeling hopeless: 2|local::at0021|More than half the days|
+      gt0005|Trouble with sleeping: 3|local::at0022|Nearly every day|
+      gt0006|Feeling tired: 2|local::at0022|Nearly every day|
+  expected_output:
+    1:
+      gt0026|Total score: 20
+    2:
+      gt0010|Recommendation: 6|local::at0019|Warrants active treatment with psychotherapy, medication or combination. Further suicide assessment risk is also warranted|
+      gt0022|Functional limitations: local::at0015|Functionally, the patient finds it is “very difficult” to perform life tasks due to their symptoms|
+      gt0009|Severity grade: 4|local::at0008|Severe depression|
+- id: 3
+  input:
+    1:
+      gt0010|Disturbed speech and/or movement: 1|local::at0020|Several days|
+      gt0011|Suicidal thoughts: 0|local::at0019|Not at all|
+      gt0052|Degree of difficulty due to symptoms: 3|local::at0018|Extremely difficult|
+      gt0007|Disturbed appetite: 2|local::at0021|More than half the days|
+      gt0008|Feeling like a failure: 3|local::at0022|Nearly every day|
+      gt0009|Trouble concentrating: 3|local::at0022|Nearly every day|
+      gt0003|Little pleasure doing things: 2|local::at0021|More than half the days|
+      gt0004|Feeling hopeless: 2|local::at0021|More than half the days|
+      gt0005|Trouble with sleeping: 3|local::at0022|Nearly every day|
+      gt0006|Feeling tired: 2|local::at0022|Nearly every day|
+  expected_output:
+    1:
+      gt0026|Total score: 18
+    2:
+      gt0010|Recommendation: 2|local::at0011|Warrants active treatment with psychotherapy, medication or combination|
+      gt0022|Functional limitations: local::at0016|Functionally, the patient finds it is “extremely difficult” to perform life tasks due to their symptoms|
+      gt0009|Severity grade: 3|local::at0007|Moderately severe depression|

@@ -1,0 +1,73 @@
+guidelines:
+  PESI_Calculation.v2.0.0: 1
+  PESI_Assessment.v1: 2
+test_cases:
+- id: 1
+  input:
+    1:
+      gt0012|Systolic: 110,mm[Hg]
+      gt0003|Birthdate: 1960-05-05T00:00:00
+      gt0004|Gender: local::at0006|Female|
+      gt0014|Respiration rate: 26,/min
+      gt0051|Cancer diagnosis: 
+      gt0052|Cancer date of initial onset: 
+      gt0054|Chronic lung disease diagnosis: 
+      gt0055|Chronic lung disease date of initial onset: 
+      gt0020|Altered mental status: 0|local::at0015|Absent|
+      gt0010|Rate: 100,/min
+      gt0048|Heart failure diagnosis: ICD-10-SE::I50|Heart failure diagnosis|
+      gt0049|Heart failure date of initial onset: 2000-07-07T00:00:00
+      gt0016|Temperature: 36,°C
+      gt0018|spO2: 90,%
+  expected_output:
+    1:
+      gt0033|Total score: 67
+    2:
+      gt0005|Risk class: local::at0004|Class II (low risk)|
+      gt0006|30-day mortality: local::at0010|1.7 - 3.5%|
+- id: 2
+  input:
+    1:
+      gt0012|Systolic: 80,mm[Hg]
+      gt0003|Birthdate: 1923-05-05T00:00:00
+      gt0004|Gender: local::at0005|Male|
+      gt0014|Respiration rate: 40,/min
+      gt0051|Cancer diagnosis: ICD-10-SE::C50|Cancer diagnosis|
+      gt0052|Cancer date of initial onset: 2000-07-07T00:00:00
+      gt0054|Chronic lung disease diagnosis: ICD-10-SE::J60|Chronic lung disease diagnosis|
+      gt0055|Chronic lung disease date of initial onset: 2000-07-07T00:00:00
+      gt0020|Altered mental status: 60|local::at0016|Present|
+      gt0010|Rate: 120,/min
+      gt0048|Heart failure diagnosis: ICD-10-SE::I50|Heart failure diagnosis|
+      gt0049|Heart failure date of initial onset: 2000-07-07T00:00:00
+      gt0016|Temperature: 35.8,°C
+      gt0018|spO2: 89,%
+  expected_output:
+    1:
+      gt0033|Total score: 324
+    2:
+      gt0005|Risk class: local::at0007|Class V (very high risk)|
+      gt0006|30-day mortality: local::at0013|10.0 - 24.5%|
+- id: 3
+  input:
+    1:
+      gt0012|Systolic: 110,mm[Hg]
+      gt0003|Birthdate: 1970-05-05T00:00:00
+      gt0004|Gender: local::at0006|Female|
+      gt0014|Respiration rate: 20,/min
+      gt0051|Cancer diagnosis: 
+      gt0052|Cancer date of initial onset: 
+      gt0054|Chronic lung disease diagnosis: 
+      gt0055|Chronic lung disease date of initial onset: 
+      gt0020|Altered mental status: 60|local::at0016|Present|
+      gt0010|Rate: 90,/min
+      gt0048|Heart failure diagnosis: 
+      gt0049|Heart failure date of initial onset: 
+      gt0016|Temperature: 37.9,°C
+      gt0018|spO2: 95,%
+  expected_output:
+    1:
+      gt0033|Total score: 107
+    2:
+      gt0005|Risk class: local::at0006|Class IV (high risk)|
+      gt0006|30-day mortality: local::at0012|4.0 - 11.4%|
