@@ -119,6 +119,9 @@ Enkel påkörning bakifrån: ej inkrockad i mötande trafik, påkörd av buss el
 					["gt0018"] = (ELEMENT_BINDING) <
 						path = <"/data[at0001]/items[at0009]">
 					>
+					["gt0024"] = (ELEMENT_BINDING) <
+						path = <"/data[at0001]/items[at0003]">
+					>
 				>
 			>
 			["gt0019"] = (ARCHETYPE_BINDING) <
@@ -135,12 +138,12 @@ Enkel påkörning bakifrån: ej inkrockad i mötande trafik, påkörd av buss el
 		rules = <
 			["gt0014"] = (RULE) <
 				when = <"!fired($gt0014)", "($gt0020.value<=($currentDateTime.value-65,a))||(($gt0003==1|local::at0021|Yes|)||((($gt0003==0|local::at0020|No|)&&($gt0004==0|local::at0020|No|))||(($gt0003==0|local::at0020|No|)&&(($gt0004==1|local::at0021|Yes|)&&($gt0005==0|local::at0020|No|)))))">
-				then = <"$gt0018=local::at0011|High risk|",...>
+				then = <"$gt0024=1|local::at0007|Radiography recommended|", "$gt0018=local::at0011|High risk|">
 				priority = <2>
 			>
 			["gt0016"] = (RULE) <
 				when = <"!fired($gt0016)", "$gt0003==0|local::at0020|No|", "$gt0004==1|local::at0021|Yes|", "$gt0005==1|local::at0021|Yes|">
-				then = <"$gt0018=local::at0010|Low risk|",...>
+				then = <"$gt0024=0|local::at0006|No radiography needed|", "$gt0018=local::at0010|Low risk|">
 				priority = <1>
 			>
 		>
@@ -202,6 +205,15 @@ MVC (motor vehicle collision) high speed (>100km/hr), rollover, ejection,
 Motorized recreational vehicles
 Bicycle collision]">
 					>
+					["gt0024"] = (TERM) <
+						text = <"Recommendation">
+						description = <"If a patient has a clinically significant c-spine injury identified on imaging:
+•Maintain cervical spine protection with an appropriate collar.
+•Consult neurosurgery.
+•Keep patient non-ambulatory and NPO until treatment plan is complete.
+•Patient may require emergent operative stabilization and/or admission to Neurosurgical ICU.
+">
+					>
 				>
 			>
 			["sv"] = (TERM_DEFINITION) <
@@ -245,6 +257,8 @@ Simple rear-end motor vehicle collision (MVC) not simple if: pushed into traffic
 					["gt0021"] = (TERM) <
 					>
 					["gt0023"] = (TERM) <
+					>
+					["gt0024"] = (TERM) <
 					>
 				>
 			>
