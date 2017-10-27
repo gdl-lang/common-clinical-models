@@ -2,9 +2,19 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.pediatric_glasgow_coma_scale_evaluation.v1
 
 concept
-	[at0000]	-- Pediatric glasgow coma scale evaluation
+	[at0000]	-- Pediatric Glasgow Coma Scale - utvärdering
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["email"] = <"models@cambiocds.com">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -30,31 +40,47 @@ Patients with a score of < 15 need to be monitored
 			misuse = <"Do not use this tool with children > 2yrs of age.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Bedömning av medvetandegrad hos barn.">
+			use = <"Använd för bedömning av medvetandegrad hos barn, max två år gamla.  Skalan är en modifierad version av ordinarie Glasgow Coma Scale (GCS) och används dels för att utvärdera aktuell vakenhetsgrad men även för att följa denna över tid. Likt ordinarie GCS genereras en summa om 3-15p baserat på bedömning av kategorierna ögonöppning, motorisk reaktion och svar på tilltal.
+
+Resultatet tolkas enligt:
+
+    ≥13p indikerar mild huvudskada.
+    9-12p indikerar måttlig huvudskada.
+    ≤8p indikerar svår huvudskada.
+
+Samtliga patienter med mindre än 15p bör övervakas.">
+			keywords = <"pediatric glasgow coma scale", "GCS", "medvetandegrad", "vakenhetsgrad", "pediatrik", "barnhälsovård", "pGCS">
+			misuse = <"Ej avsedd för barn över två års ålder.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Ref. 1: James HE. Neurologic Evaluation and Support in the Child with an Acute Brain Insult. Pediatric Annals Pediatr Ann, 1986; 15(1), 16-22.
 ">
-		["MD5-CAM-1.0.1"] = <"3E6C16D93254D2731AB23FD0F0327754">
+		["MD5-CAM-1.0.1"] = <"8DEB04C15D39E509F9AD7D284D4B8F1D">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Pediatric glasgow coma scale evaluation
+	EVALUATION[at0000] matches {	-- Pediatric Glasgow Coma Scale - utvärdering
 		data matches {
-			ITEM_TREE[at0001] matches {	-- Tree
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Score Interpretation
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Resultat
 						value matches {
-							0|[local::at0004], 	-- Minor head injury suggested
-							1|[local::at0005], 	-- Moderate head injury suggested
-							2|[local::at0006]  	-- Severe head injury suggested
+							0|[local::at0004], 	-- Tecken på mild huvudskada
+							1|[local::at0005], 	-- Tecken på måttlig huvudskada
+							2|[local::at0006]  	-- Tecken på svår huvudskada
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Recommendation
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Rekommendation
 						value matches {
-							0|[local::at0007], 	-- Patient doesn't need ot be monitored
-							1|[local::at0008]  	-- Patient needs to be monitored
+							0|[local::at0007], 	-- Patienten kräver ej övervakning
+							1|[local::at0008]  	-- Patienten kräver övervakning
 						}
 					}
 				}
@@ -101,6 +127,46 @@ ontology
 				["at0008"] = <
 					text = <"Patient needs to be monitored">
 					description = <"Scores of < 15">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Pediatric Glasgow Coma Scale - utvärdering">
+					description = <"Pediatric Glasgow Coma Scale (pGCS) används för bedömning av medvetandegrad hos barn.">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Resultat">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Rekommendation">
+					description = <"">
+				>
+				["at0004"] = <
+					text = <"Tecken på mild huvudskada">
+					description = <" ≥13p">
+				>
+				["at0005"] = <
+					text = <"Tecken på måttlig huvudskada">
+					description = <"9-12p">
+				>
+				["at0006"] = <
+					text = <"Tecken på svår huvudskada">
+					description = <"≤8p">
+				>
+				["at0007"] = <
+					text = <"Patienten kräver ej övervakning">
+					description = <"15p">
+				>
+				["at0008"] = <
+					text = <"Patienten kräver övervakning">
+					description = <"<15p">
 				>
 			>
 		>
