@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.pediatric_glasgow_coma_scale_evaluation.v1
 
 concept
-	[at0000]	-- Pediatric Glasgow Coma Scale - utvärdering
+	[at0000]	-- Pediatric glasgow coma scale evaluation
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -23,6 +23,22 @@ description
 		["date"] = <"2017-10-18">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Bedömning av medvetandegrad hos barn.">
+			use = <"Använd för bedömning av medvetandegrad hos barn, max två år gamla.  Skalan är en modifierad version av ordinarie Glasgow Coma Scale (GCS) och används dels för att utvärdera aktuell vakenhetsgrad men även för att följa denna över tid. Likt ordinarie GCS genereras en summa om 3-15p baserat på bedömning av kategorierna ögonöppning, motorisk reaktion och svar på tilltal.
+
+Resultatet tolkas enligt:
+
+    ≥13p indikerar mild huvudskada.
+    9-12p indikerar måttlig huvudskada.
+    ≤8p indikerar svår huvudskada.
+
+Samtliga patienter med mindre än 15p bör övervakas.">
+			keywords = <"pediatric glasgow coma scale", "GCS", "medvetandegrad", "vakenhetsgrad", "pediatrik", "barnhälsovård", "pGCS">
+			misuse = <"Ej avsedd för barn över två års ålder.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"This tool helps to evaluate the mental state of patients who are children">
@@ -40,47 +56,31 @@ Patients with a score of < 15 need to be monitored
 			misuse = <"Do not use this tool with children > 2yrs of age.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"Bedömning av medvetandegrad hos barn.">
-			use = <"Använd för bedömning av medvetandegrad hos barn, max två år gamla.  Skalan är en modifierad version av ordinarie Glasgow Coma Scale (GCS) och används dels för att utvärdera aktuell vakenhetsgrad men även för att följa denna över tid. Likt ordinarie GCS genereras en summa om 3-15p baserat på bedömning av kategorierna ögonöppning, motorisk reaktion och svar på tilltal.
-
-Resultatet tolkas enligt:
-
-    ≥13p indikerar mild huvudskada.
-    9-12p indikerar måttlig huvudskada.
-    ≤8p indikerar svår huvudskada.
-
-Samtliga patienter med mindre än 15p bör övervakas.">
-			keywords = <"pediatric glasgow coma scale", "GCS", "medvetandegrad", "vakenhetsgrad", "pediatrik", "barnhälsovård", "pGCS">
-			misuse = <"Ej avsedd för barn över två års ålder.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Ref. 1: James HE. Neurologic Evaluation and Support in the Child with an Acute Brain Insult. Pediatric Annals Pediatr Ann, 1986; 15(1), 16-22.
 ">
-		["MD5-CAM-1.0.1"] = <"8DEB04C15D39E509F9AD7D284D4B8F1D">
+		["MD5-CAM-1.0.1"] = <"A2EB9A35231316D5BED0636DAD31E204">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Pediatric Glasgow Coma Scale - utvärdering
+	EVALUATION[at0000] matches {	-- Pediatric glasgow coma scale evaluation
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Resultat
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Score Interpretation
 						value matches {
-							0|[local::at0004], 	-- Tecken på mild huvudskada
-							1|[local::at0005], 	-- Tecken på måttlig huvudskada
-							2|[local::at0006]  	-- Tecken på svår huvudskada
+							0|[local::at0004], 	-- Minor head injury suggested
+							1|[local::at0005], 	-- Moderate head injury suggested
+							2|[local::at0006]  	-- Severe head injury suggested
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Rekommendation
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Recommendation
 						value matches {
-							0|[local::at0007], 	-- Patienten kräver ej övervakning
-							1|[local::at0008]  	-- Patienten kräver övervakning
+							0|[local::at0007], 	-- Patient doesn't need to be monitored
+							1|[local::at0008]  	-- Patient needs to be monitored
 						}
 					}
 				}
@@ -121,7 +121,7 @@ ontology
 					description = <"Scores of ≤8">
 				>
 				["at0007"] = <
-					text = <"Patient doesn't need ot be monitored">
+					text = <"Patient doesn't need to be monitored">
 					description = <"Score of 15">
 				>
 				["at0008"] = <
@@ -142,11 +142,11 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Resultat">
-					description = <"">
+					description = <"*">
 				>
 				["at0003"] = <
 					text = <"Rekommendation">
-					description = <"">
+					description = <"*">
 				>
 				["at0004"] = <
 					text = <"Tecken på mild huvudskada">

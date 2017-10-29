@@ -73,30 +73,31 @@ Samtliga patienter med mindre än 15p bör övervakas.">
 					>
 				>
 			>
-			["gt0004"] = (ARCHETYPE_BINDING) <
-				archetype_id = <"openEHR-EHR-OBSERVATION.pediatric_glasgow_coma_scale.v1">
-				domain = <"EHR">
-				elements = <
-					["gt0006"] = (ELEMENT_BINDING) <
-						path = <"/data[at0001]/events[at0002]/data[at0003]/items[at0025]">
-					>
-				>
-			>
 		>
 		rules = <
-			["gt0010"] = (RULE) <
-				when = <"$gt0006!=null",...>
-				then = <"$gt0005=$gt0006",...>
-				priority = <4>
-			>
 			["gt0011"] = (RULE) <
-				when = <"$gt0005<15", "$gt0005>=13">
-				priority = <3>
+				when = <"$gt0005<=15", "$gt0005>=13">
+				then = <"$gt0007=0|local::at0004|Minor head injury suggested|",...>
+				priority = <5>
 			>
 			["gt0012"] = (RULE) <
-				priority = <2>
+				when = <"$gt0005.magnitude>=9", "$gt0005.magnitude<=12">
+				then = <"$gt0007=1|local::at0005|Moderate head injury suggested|",...>
+				priority = <4>
 			>
 			["gt0013"] = (RULE) <
+				when = <"$gt0005.magnitude<9",...>
+				then = <"$gt0007=2|local::at0006|Severe head injury suggested|",...>
+				priority = <3>
+			>
+			["gt0014"] = (RULE) <
+				when = <"$gt0005.magnitude==15",...>
+				then = <"$gt0008=0|local::at0007|Patient doesn't need ot be monitored|",...>
+				priority = <2>
+			>
+			["gt0015"] = (RULE) <
+				when = <"$gt0005.magnitude<15",...>
+				then = <"$gt0008=1|local::at0008|Patient needs to be monitored|",...>
 				priority = <1>
 			>
 		>
@@ -139,6 +140,12 @@ Samtliga patienter med mindre än 15p bör övervakas.">
 					["gt0013"] = (TERM) <
 						text = <"Set Score interpretation for Severe Head Injury">
 					>
+					["gt0014"] = (TERM) <
+						text = <"Set recommendation no monitoring">
+					>
+					["gt0015"] = (TERM) <
+						text = <"Set recommendation monitoring ">
+					>
 				>
 			>
 			["sv"] = (TERM_DEFINITION) <
@@ -176,6 +183,10 @@ Samtliga patienter med mindre än 15p bör övervakas.">
 					>
 					["gt0013"] = (TERM) <
 						text = <"CDS resultat till svår huvudskada">
+					>
+					["gt0014"] = (TERM) <
+					>
+					["gt0015"] = (TERM) <
 					>
 				>
 			>
