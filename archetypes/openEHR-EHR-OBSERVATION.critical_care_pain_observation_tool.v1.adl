@@ -1,0 +1,268 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.critical_care_pain_observation_tool.v1
+
+concept
+	[at0000]	-- Critical care pain observation tool
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-11-04">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The Critical Care Pain Observation Tool (CPOT) provides a method to rate pain among critically ill patients using clinical observations alone and is useful even with intubated or sedated patients due to using facial expressions, movement and interaction with ventilated breathing. ">
+			use = <"The total score is the sum of the individual scores, with a range of 0 to 8 and separates intubated patients from extubated patients.
+
+Management:
+For those patients with a CPOT score of ≤ 2:
+
+•	There is likely minimal to no pain present. Consider re-evaluation in the future.
+
+For those patients with a CPOT score of >2:
+
+•	There is an unacceptable level of pain. Consider further or alternative analgesia and sedation.
+
+">
+			keywords = <"Critical Care Pain Observation Tool (CPOT)", "intubation", "ventilated">
+			misuse = <"Do not rely on one measurement. Regular re-evaluation is crucial to appropriate pain management.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Gélinas C, Fortier M, Viens C, Fillion L, Puntillo KA. Pain assessment and management in critically ill intubated patients: a retrospective study. Am J Crit Care. 2004;13:126-135. ">
+		["MD5-CAM-1.0.1"] = <"05D6FE92F80FAB6E35E1E368F607F4E5">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Critical care pain observation tool
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Patient intubated?
+										value matches {
+											0|[local::at0013], 	-- No
+											1|[local::at0014]  	-- Yes
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Facial expression
+										value matches {
+											0|[local::at0015], 	-- Relaxed, Neutral
+											1|[local::at0016], 	-- Tense
+											2|[local::at0017]  	-- Grimacing
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Body movements
+										value matches {
+											0|[local::at0018], 	-- Absence of movements
+											1|[local::at0019], 	-- Protection
+											2|[local::at0020]  	-- Restlessness
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Muscle Tension
+										value matches {
+											0|[local::at0021], 	-- Relaxed
+											1|[local::at0022], 	-- Tense, Rigid
+											2|[local::at0023]  	-- Very tense or rigid
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Intubated: Compliance with the ventilator 
+										value matches {
+											0|[local::at0024], 	-- Tolerating ventilator or movement
+											1|[local::at0025], 	-- Coughing but tolerating
+											2|[local::at0026]  	-- Fighting Ventilator
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Extubated: Vocalization
+										value matches {
+											0|[local::at0027], 	-- Talking in normal tone or no sound
+											1|[local::at0028], 	-- Sighing, moaning
+											2|[local::at0029]  	-- Crying out, sobbing
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Score if intubated
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..8|}
+											}
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Score if extubated
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..8|}
+											}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Comments
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Critical care pain observation tool">
+					description = <"The Critical Care Pain Observation Tool (CPOT) provides a method to rate pain among critically ill patients using clinical observations alone ">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Patient intubated?">
+					description = <"The score is summed differently depending on whether the patient was intubated or not">
+				>
+				["at0005"] = <
+					text = <"Facial expression">
+					description = <"Facial expression">
+				>
+				["at0006"] = <
+					text = <"Body movements">
+					description = <"Body movements">
+				>
+				["at0007"] = <
+					text = <"Muscle Tension">
+					description = <"Muscle Tension 
+(Evaluation by passive flexion and 
+extension of upper extremities)
+">
+				>
+				["at0008"] = <
+					text = <"Intubated: Compliance with the ventilator ">
+					description = <"Compliance with the ventilator 
+(Intubated patients only)">
+				>
+				["at0009"] = <
+					text = <"Score if intubated">
+					description = <"If the patient was intubated, the score excludes the extubated question within the score">
+				>
+				["at0010"] = <
+					text = <"Score if extubated">
+					description = <"If the patient was not intubated, the score excludes the intubated question within the score">
+				>
+				["at0011"] = <
+					text = <"Extubated: Vocalization">
+					description = <"Vocalization 
+(Extubated patients only)
+">
+				>
+				["at0012"] = <
+					text = <"Comments">
+					description = <"Any comments regarding the score">
+				>
+				["at0013"] = <
+					text = <"No">
+					description = <"Answer questions re extubated patient and choose 0 for extubated">
+				>
+				["at0014"] = <
+					text = <"Yes">
+					description = <"Answer question re intubated patient and choose 0 for extubated">
+				>
+				["at0015"] = <
+					text = <"Relaxed, Neutral">
+					description = <"No muscular tension observed">
+				>
+				["at0016"] = <
+					text = <"Tense">
+					description = <"Presence of frowning brow lowering, 
+orbit tightening
+">
+				>
+				["at0017"] = <
+					text = <"Grimacing">
+					description = <"All of the above facial movements plus 
+eyelid tightly closed
+">
+				>
+				["at0018"] = <
+					text = <"Absence of movements">
+					description = <"Does not move at all (does not 
+necessarily mean absence of pain)
+">
+				>
+				["at0019"] = <
+					text = <"Protection">
+					description = <"Slow cautious movements, touching or 
+rubbing the pain site, seeking attention 
+through movements
+">
+				>
+				["at0020"] = <
+					text = <"Restlessness">
+					description = <"Pulling tube, attempting to sit up, 
+moving limbs/trashing, not following
+">
+				>
+				["at0021"] = <
+					text = <"Relaxed">
+					description = <"No resistance to passive movements">
+				>
+				["at0022"] = <
+					text = <"Tense, Rigid">
+					description = <"Resistance to passive movements">
+				>
+				["at0023"] = <
+					text = <"Very tense or rigid">
+					description = <"Strong resistance to passive 
+movements inability to complete them
+">
+				>
+				["at0024"] = <
+					text = <"Tolerating ventilator or movement">
+					description = <"Alarms not activated, easy ventilation">
+				>
+				["at0025"] = <
+					text = <"Coughing but tolerating">
+					description = <"Alarms stop spontaneously">
+				>
+				["at0026"] = <
+					text = <"Fighting Ventilator">
+					description = <"Asynchrony: blocking ventilation, 
+alarms frequently activated
+">
+				>
+				["at0027"] = <
+					text = <"Talking in normal tone or no sound">
+					description = <"Talking in normal tone or no sound">
+				>
+				["at0028"] = <
+					text = <"Sighing, moaning">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Crying out, sobbing">
+					description = <"*">
+				>
+			>
+		>
+	>
