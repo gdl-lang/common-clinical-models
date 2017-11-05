@@ -1,0 +1,134 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.glasgow_imrie_for_acute_pancreatitis_evaluation.v1
+
+concept
+	[at0000]	-- Glasgow imrie for acute pancreatitis evaluation
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-11-03">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The Glasgow-Imrie Criteria for Severity of Acute Pancreatitis provides an assessment of the severity of pancreatitis using 8 laboratory values">
+			use = <"This tool provides an assessment of the severity of acute pancreatitis.
+
+Scores ≥3 suggest increased likelihood of severe pancreatitis
+Scores < 3 suggest decreased likelihood of severe pancreatitis
+
+Score interpretation:
+
+Score 		Severe Pancreatitis*
+0 		7%
+1 		6%
+2 		16%
+3 	 	20%
+4 	 	61%
+5 	 	55%
+6 		100%
+7 		0%
+8 	 	100%
+">
+			keywords = <"Glasgow-Imrie Criteria for Severity of Acute Pancreatitis", ...>
+			misuse = <"Do not use sooner than 48 hours from presentation">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: Blamey SL, Imrie CW, O'Neill J, Gilmour WH, Carter DC. Prognostic factors in acute pancreatitis. Gut. 1984 Dec;25(12):1340-6.">
+		["MD5-CAM-1.0.1"] = <"73A84303B7E2C6C981378F6D90394823">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Glasgow imrie for acute pancreatitis evaluation
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Likelihood of severe pancreatitis
+						value matches {
+							0|[local::at0003], 	-- Scores ≥3 suggest increased likelihood of severe pancreatitis
+							1|[local::at0004]  	-- Scores < 3 suggest decreased likelihood of severe pancreatitis
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Score interpretation: Percent likelihood of severe pancreatitis
+						value matches {
+							0|[local::at0006], 	-- 0 %
+							1|[local::at0007], 	-- 6%
+							2|[local::at0008], 	-- 16%
+							3|[local::at0009], 	-- 20%
+							4|[local::at0010], 	-- 55%
+							5|[local::at0011], 	-- 61%
+							6|[local::at0012]  	-- 100%
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Glasgow imrie for acute pancreatitis evaluation">
+					description = <"The Glasgow-Imrie Criteria for Severity of Acute Pancreatitis provides an assessment of the severity of pancreatitis using 8 laboratory values">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Likelihood of severe pancreatitis">
+					description = <"Scores that increase or decrease the likelihood of severe pancreatitis">
+				>
+				["at0003"] = <
+					text = <"Scores ≥3 suggest increased likelihood of severe pancreatitis">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Scores < 3 suggest decreased likelihood of severe pancreatitis">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Score interpretation: Percent likelihood of severe pancreatitis">
+					description = <"Score interpretation: Percent likelihood of severe pancreatitis based on the PPV (Positive Predictive Value) of the modified scoring system for all patients with acute pancreatitis">
+				>
+				["at0006"] = <
+					text = <"0 %">
+					description = <"Score 7">
+				>
+				["at0007"] = <
+					text = <"6%">
+					description = <"Score 1">
+				>
+				["at0008"] = <
+					text = <"16%">
+					description = <"Score 2">
+				>
+				["at0009"] = <
+					text = <"20%">
+					description = <"Score 3">
+				>
+				["at0010"] = <
+					text = <"55%">
+					description = <"Score 5">
+				>
+				["at0011"] = <
+					text = <"61%">
+					description = <"Score 4">
+				>
+				["at0012"] = <
+					text = <"100%">
+					description = <"Score 6 or 8">
+				>
+			>
+		>
+	>
