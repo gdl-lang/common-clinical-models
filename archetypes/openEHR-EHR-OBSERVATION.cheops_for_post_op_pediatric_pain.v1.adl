@@ -1,0 +1,226 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.cheops_for_post_op_pediatric_pain.v1
+
+concept
+	[at0000]	-- Cheops for post op pediatric pain
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-11-12">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"This tool is used with children between the age of 1 and 5 years to assess post-op pain ">
+			use = <"The tool utilises 6 variables related to observations made of the child, such as: Leg positioning, wound evaluation, torso, verbal responses and signs of crying.
+
+Each response issues a score that ranges from 4 to as much as 3. The total score is the sum of each individual score. This minimum score is 1 and maximum is 13. As some scores are the same for some of the items, the criteria is based on that found on (1)
+
+Pain assessments should be performed:
+
+    Every 3 hours
+    15-20 minutes after IV administration of analgesics
+    30-45 minutes after oral/rectal administration
+
+Scores ≥5: Consider analgesia.">
+			keywords = <"Children's Hospital of Eastern Ontario Pain Scale (CHEOPS) for Post-Op Pediatric Pain", ...>
+			misuse = <"Do not use the score on its own for diagnostic purposes without supporting evidence">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: McGrath PJ, et al. CHEOPS: a behavioral scale for rating postoperative pain in children. In: H.L. Fields, R. Dubner and F. Cervero (Eds.), Advances in Pain Research and Therapy, Raven Press, New York, 1985b. pp. 395-402.
+">
+		["MD5-CAM-1.0.1"] = <"0C703DFAC7864456A83F9794B6FD5310">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Cheops for post op pediatric pain
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Cry
+										value matches {
+											1|[local::at0016], 	-- No cry
+											2|[local::at0017], 	-- Moaning or crying
+											3|[local::at0018]  	-- Scream
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Facial
+										value matches {
+											0|[local::at0019], 	-- Smiling
+											1|[local::at0020], 	-- Composed
+											2|[local::at0021]  	-- Grimace
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Child verbal
+										value matches {
+											0|[local::at0022], 	-- Positive
+											1|[local::at0023], 	-- None or other complaints
+											2|[local::at0024]  	-- Pain or both types of complaints
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Torso
+										value matches {
+											1|[local::at0025], 	-- Neutral
+											2|[local::at0026]  	-- Shifting, tense, shivering, upright or restrained
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Touch
+										value matches {
+											1|[local::at0027], 	-- Not touching
+											2|[local::at0028]  	-- Reach, touch, grab or restrained
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Legs
+										value matches {
+											1|[local::at0029], 	-- Neutral
+											2|[local::at0030]  	-- Squirm/kicking, Drawnup/tensed, standing or restrained
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Total Score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..13|}
+											}
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Comments
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Cheops for post op pediatric pain">
+					description = <"Children's Hospital of Eastern Ontario Pain Scale (CHEOPS) for Post-Op Pediatric Pain is used with children between the age of 1 and 5 years to assess post-op pain">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0008"] = <
+					text = <"Cry">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Facial">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Child verbal">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Torso">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Touch">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Legs">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Total Score">
+					description = <"The total score is the sum of the individual scores">
+				>
+				["at0015"] = <
+					text = <"Comments">
+					description = <"Any comments regarding the score">
+				>
+				["at0016"] = <
+					text = <"No cry">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Moaning or crying">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Scream">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Smiling">
+					description = <"Score only if definite positive facial expression.">
+				>
+				["at0020"] = <
+					text = <"Composed">
+					description = <"Neutral facial expression.">
+				>
+				["at0021"] = <
+					text = <"Grimace">
+					description = <"Score only if definite negative facial expression.">
+				>
+				["at0022"] = <
+					text = <"Positive">
+					description = <"Child makes any positive statement or talks about others things without complaint.">
+				>
+				["at0023"] = <
+					text = <"None or other complaints">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Pain or both types of complaints">
+					description = <"Child complains about pain and about other things, e.g., 'It hurts; I want my mommy'">
+				>
+				["at0025"] = <
+					text = <"Neutral">
+					description = <"Body (not limbs) is at rest; torso is inactive.">
+				>
+				["at0026"] = <
+					text = <"Shifting, tense, shivering, upright or restrained">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Not touching">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Reach, touch, grab or restrained">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Neutral">
+					description = <"Legs may be in any position but are relaxed; includes gentle swimming or separate-like movements.">
+				>
+				["at0030"] = <
+					text = <"Squirm/kicking, Drawnup/tensed, standing or restrained">
+					description = <"*">
+				>
+			>
+		>
+	>
