@@ -1,0 +1,81 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.cheops_for_pediatric_pain_assessment.v1
+
+concept
+	[at0000]	-- Cheops for pediatric pain assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Syeeda S Farruque">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2017-11-14">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"This tool is used with children between the age of 1 and 5 years to assess post-op pain ">
+			use = <"Pain assessments should be performed:
+
+    Every 3 hours
+    15-20 minutes after IV administration of analgesics
+    30-45 minutes after oral/rectal administration
+
+Scores ≥5: Consider analgesia.">
+			keywords = <"Children's Hospital of Eastern Ontario Pain Scale (CHEOPS) for Post-Op Pediatric Pain", ...>
+			misuse = <"Do not use the score on its own for diagnostic purposes without supporting evidence">
+			copyright = <"© Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Ref. 1: McGrath PJ, et al. CHEOPS: a behavioral scale for rating postoperative pain in children. In: H.L. Fields, R. Dubner and F. Cervero (Eds.), Advances in Pain Research and Therapy, Raven Press, New York, 1985b. pp. 395-402.
+">
+		["MD5-CAM-1.0.1"] = <"F2175C1C84591AC7B932E9DE1A724C06">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Cheops for pediatric pain assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Score interpretation
+						value matches {
+							0|[local::at0003], 	-- Analgesia should not be needed
+							1|[local::at0004]  	-- Consider analgesia
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Cheops for pediatric pain assessment">
+					description = <"Children's Hospital of Eastern Ontario Pain Scale (CHEOPS) for Post-Op Pediatric Pain is used with children between the age of 1 and 5 years to assess post-op pain">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Score interpretation">
+					description = <"Scores ≥5: Consider analgesia.">
+				>
+				["at0003"] = <
+					text = <"Analgesia should not be needed">
+					description = <"Scores < 5">
+				>
+				["at0004"] = <
+					text = <"Consider analgesia">
+					description = <"Scores ≥5">
+				>
+			>
+		>
+	>
