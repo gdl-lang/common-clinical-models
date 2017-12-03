@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 131*
+### *Published Apps: 133*
 
 ----------
 
@@ -91,6 +91,8 @@ _Select a medical specialty below to view the available apps._
 * [New York Heart Association Functional Classification (NYHA)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#new-york-heart-association-functional-classification-nyha) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/NYHA.v1.dsv?token=4e5948412e7631:1546300799000:8e910d27ef38dbcf65bd85dfc4988777&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/NYHA.v1.dsv?token=4e5948412e7631:1546300799000:8e910d27ef38dbcf65bd85dfc4988777&language=sv))
 
 * [Padua Prediction Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#padua-prediction-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Padua.v1.dsv?token=50616475612e7631:1546300799000:73fa8e5049530503432d7635ccbecafa&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Padua.v1.dsv?token=50616475612e7631:1546300799000:73fa8e5049530503432d7635ccbecafa&language=sv))
+
+* [Rated Perceived Exertion Scale](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rated-perceived-exertion-scale) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/RPE_scale.v1.dsv?token=5250455f7363616c652e7631:1546214400000:69895eefddbf890422ea296ca02e6724&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/RPE_scale.v1.dsv?token=5250455f7363616c652e7631:1546214400000:69895eefddbf890422ea296ca02e6724&language=sv))
 
 * [TIMI Risk Index (TRI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#timi-risk-index-tri) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/TRI.v1.dsv?token=5452492e7631:1546300799000:80214541910854b64cabcd81cf3f197b&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/TRI.v1.dsv?token=5452492e7631:1546300799000:80214541910854b64cabcd81cf3f197b&language=sv))
 
@@ -276,6 +278,8 @@ _Select a medical specialty below to view the available apps._
 * [Pediatric Crohn's Disease Activity Index (PCDAI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pediatric-crohns-disease-activity-index-pcdai) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/PCDAI.v1.dsv?token=50434441492e7631:1509667200000:cb906cf442ba2f61910fbd7868dbbad4&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/PCDAI.v1.dsv?token=50434441492e7631:1509667200000:cb906cf442ba2f61910fbd7868dbbad4&language=sv))
 
 * [Pediatric Early Warning Score (PEWS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#strongkids-nutritional-risk-screening) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/PEWS.v1.dsv?token=504557532e7631:1546214400000:9e3dee156fe0fbb549d833f100d055fa&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/PEWS.v1.dsv?token=504557532e7631:1546214400000:9e3dee156fe0fbb549d833f100d055fa&language=sv))
+
+* [Pediatric Glasgow Coma Scale (pGCS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pediatric-glasgow-coma-scale-pgcs) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/pGCS.v1.dsv?token=704743532e7631:1512864000000:240a94cb45d01ef417c640cd7c00a8e0&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/pGCS.v1.dsv?token=704743532e7631:1512864000000:240a94cb45d01ef417c640cd7c00a8e0&language=sv))
 
 * [STRONGkids Nutritional Risk Screening](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#strongkids-nutritional-risk-screening) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/STRONGkids.v1.dsv?token=5354524f4e476b6964732e7631:1546214400000:10b69bfff0b6fc85d7b4a3c4f6120fc3&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/STRONGkids.v1.dsv?token=5354524f4e476b6964732e7631:1546214400000:10b69bfff0b6fc85d7b4a3c4f6120fc3&language=sv))
 ----------
