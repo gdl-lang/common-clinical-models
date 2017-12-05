@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.framingham_chd_risk_score.v1
 
 concept
-	[at0000]	-- Framingham chd risk score
+	[at0000]	-- Framingham CHD Risk Score
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -22,28 +22,6 @@ description
 		["date"] = <"2017-02-04">
 	>
 	details = <
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"Att uppskatta risk för hjärtinfarkt inom en period om 10 år.">
-			use = <"Använd för att uppskatta risk för hjärtinfarkt inom en period om 10 år. Resultatet beräknas olika för män och kvinnor och baseras på totalt sju faktorer;
-
-- Ålder
-- Kön
-- Rökning
-- Kolesterolvärde (referensvärde 150-200 mg/dl)
-- HDL-kolesterol (referensvärde 40-80 mg/dl)
-- Systoliskt blodtryck (referensvärde 100-120)
-- Eventuell behandling av hypertoni
-
-Poängsättning för kolesterol och rökning är åldersjusterad och poäng för systoliskt blodtryck justerat för huruvida patienten behandlas för hypertoni eller ej. För vidare detaljer, vänligen se (1). 
-
-Tolkning av resultatet återfinns i (2) samt i arketypen openEHR-EHR-EVALUATION.framingham_chd_risk_score_assessment.v1.">
-			keywords = <"Framingham", "Framingham risk score", "kardiologi">
-			misuse = <"Instrumentet är utarbetat efter statistisk över populationen i USA, och bör således tillämpas med försiktighet på övriga populationer. 
-
-Endast avsedd att understödja fullständig klinisk bedömning.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"This Framingham Risk score is based on the 'Hard' Coronary Framingham outcomes model, which omits co-morbidities and is used to calculate an estimate of the risk of occurence of a heart attack within a 10 year period.">
@@ -68,6 +46,28 @@ Score of ≥17                              Relates to > 30% 10 year CHD Risk">
 			misuse = <"The tool should be used with caution when applied to varying populations (as figures are based on the US population over many years). The tool should also be accompanied by other supporting evidence and clinical judgement when utilising the results.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att uppskatta risk för hjärtinfarkt inom en period om 10 år.">
+			use = <"Använd för att uppskatta risk för hjärtinfarkt inom en period om 10 år. Resultatet beräknas olika för män och kvinnor och baseras på totalt sju faktorer;
+
+- Ålder
+- Kön
+- Rökning
+- Kolesterolvärde (referensvärde 150-200 mg/dl)
+- HDL-kolesterol (referensvärde 40-80 mg/dl)
+- Systoliskt blodtryck (referensvärde 100-120)
+- Eventuell behandling av hypertoni
+
+Poängsättning för kolesterol och rökning är åldersjusterad och poäng för systoliskt blodtryck justerat för huruvida patienten behandlas för hypertoni eller ej. För vidare detaljer, vänligen se (1). 
+
+Tolkning av resultatet återfinns i (2) samt i arketypen openEHR-EHR-EVALUATION.framingham_chd_risk_score_assessment.v1.">
+			keywords = <"Framingham", "Framingham risk score", "kardiologi">
+			misuse = <"Instrumentet är utarbetat efter statistisk över populationen i USA, och bör således tillämpas med försiktighet på övriga populationer. 
+
+Endast avsedd att understödja fullständig klinisk bedömning.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -76,19 +76,19 @@ Score of ≥17                              Relates to > 30% 10 year CHD Risk">
 
 Ref. 2: D'Agostino RB, Sr. Vasan RS, Pencina M.J, Wolf PA, Cobain M, Massaro JM, Kannel WB. (2008) General cardiovascular risk profile for use in primary care: the Framingham Heart Study. Circulation 117(6): 743–753.
 ">
-		["MD5-CAM-1.0.1"] = <"BCDC8E2806517B84E23E37FF208D3382">
+		["MD5-CAM-1.0.1"] = <"13EB92F1DD3CAE56E6DC08B2C1171072">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Framingham chd risk score
+	OBSERVATION[at0000] matches {	-- Framingham CHD Risk Score
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Age variable: men
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Ålder - män
 										value matches {
 											-9|[local::at0015], 	-- 20-34
 											-4|[local::at0016], 	-- 35-39
@@ -102,7 +102,7 @@ definition
 											13|[local::at0044]  	-- 75-79
 										}
 									}
-									ELEMENT[at0056] occurrences matches {0..1} matches {	-- Age variable: women
+									ELEMENT[at0056] occurrences matches {0..1} matches {	-- Ålder - kvinnor
 										value matches {
 											-7|[local::at0059], 	-- 20-34
 											-3|[local::at0060], 	-- 35-39
@@ -116,63 +116,63 @@ definition
 											16|[local::at0068]  	-- 75-79
 										}
 									}
-									ELEMENT[at0105] occurrences matches {0..1} matches {	-- Smoker
+									ELEMENT[at0105] occurrences matches {0..1} matches {	-- Rökning
 										value matches {
-											0|[local::at0106], 	-- No
-											1|[local::at0107]  	-- Yes
+											0|[local::at0106], 	-- Nej
+											1|[local::at0107]  	-- Ja
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Smoker: men
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Rökare: män
 										value matches {
-											0|[local::at0034], 	-- Non-smoker 
-											1|[local::at0035], 	-- Smoker - 60-79
-											3|[local::at0036], 	-- Smoker - 50 -59
-											5|[local::at0037], 	-- Smoker - 40-49
-											8|[local::at0038]  	-- Smoker - 20-39
+											0|[local::at0034], 	-- Röker ej.
+											1|[local::at0035], 	-- Rökare - 60-79 år
+											3|[local::at0036], 	-- Rökare - 50-59 år
+											5|[local::at0037], 	-- Rökare - 40-49 år
+											8|[local::at0038]  	-- Rökare - 20-39 år
 										}
 									}
-									ELEMENT[at0057] occurrences matches {0..1} matches {	-- Smoker: women
+									ELEMENT[at0057] occurrences matches {0..1} matches {	-- Rökare: kvinnor
 										value matches {
-											0|[local::at0069], 	-- Non smoker
-											1|[local::at0070], 	-- Smoker - 70-79
-											2|[local::at0071], 	-- Smoker - 60-69
-											4|[local::at0072], 	-- Smoker - 50-59
-											7|[local::at0073], 	-- Smoker - 40-49
-											9|[local::at0074]  	-- Smoker - 20-39
+											0|[local::at0069], 	-- Röker ej.
+											1|[local::at0070], 	-- Rökare - 70-79 år
+											2|[local::at0071], 	-- Rökare - 60-69 år
+											4|[local::at0072], 	-- Rökare - 50-59 år
+											7|[local::at0073], 	-- Rökare - 40-49 år
+											9|[local::at0074]  	-- Rökare - 20-39 år
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Total Cholesterol: men
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Totalt kolesterol: män
 										value matches {
-											0|[local::at0023], 	-- < 160 
-											1|[local::at0024], 	-- 160-239 (60-69 years)..
-											2|[local::at0025], 	-- 160-199 (50-59 years)..
-											3|[local::at0026], 	-- 160-199 (40-59 years) or 200-239 (50-59 years)
-											4|[local::at0027], 	-- 160-199 (20-39 years)..
-											5|[local::at0028], 	-- 200-239 (40-49 years)..
-											6|[local::at0029], 	-- 240-279 (40-49 years)
-											7|[local::at0030], 	-- 200-239 (20-39 years)
-											8|[local::at0031], 	-- ≥280 (40-49 years)
-											9|[local::at0032], 	-- 240-279 (20-39 years)
-											11|[local::at0033]  	-- ≥ 280 (20-39 years)
+											0|[local::at0023], 	-- < 160
+											1|[local::at0024], 	-- 160-239 (60-69 år)
+											2|[local::at0025], 	-- 160-199 (50-59 år)
+											3|[local::at0026], 	-- 160-199 (40-59 år) eller 200-239 (50-59 år)
+											4|[local::at0027], 	-- 160-199 (20-39 år)
+											5|[local::at0028], 	-- 200-239 (40-49 år)
+											6|[local::at0029], 	-- 240-279 (40-49 år)
+											7|[local::at0030], 	-- 200-239 (20-39 år)
+											8|[local::at0031], 	-- ≥280 (40-49 år)
+											9|[local::at0032], 	-- 240-279 (20-39 år)
+											11|[local::at0033]  	-- ≥ 280 (20-39 år)
 										}
 									}
-									ELEMENT[at0058] occurrences matches {0..1} matches {	-- Total Cholesterol: women
+									ELEMENT[at0058] occurrences matches {0..1} matches {	-- Totalt kolesterol: kvinnor
 										value matches {
 											0|[local::at0076], 	-- <160
-											1|[local::at0077], 	-- 160-199 or 200-239..
-											2|[local::at0078], 	-- 160 to ≥ 280..
-											3|[local::at0079], 	-- 160-199 or 240-279..
-											4|[local::at0080], 	-- 160-199, 200-239 or ≥280..
-											5|[local::at0081], 	-- 240-279..
-											6|[local::at0082], 	-- 200-239..
-											7|[local::at0083], 	-- ≥ 280..
-											8|[local::at0084], 	-- 200-239..
-											10|[local::at0086], 	-- ≥280..
-											11|[local::at0087], 	-- 240-279..
-											13|[local::at0088]  	-- ≥ 280..
+											1|[local::at0077], 	-- 160-199 eller 200-239
+											2|[local::at0078], 	-- 160 - ≥ 280
+											3|[local::at0079], 	-- 160-199 eller 240-279
+											4|[local::at0080], 	-- 160-199, 200-239 eller ≥280
+											5|[local::at0081], 	-- 240-279
+											6|[local::at0082], 	-- 200-239
+											7|[local::at0083], 	-- ≥ 280
+											8|[local::at0084], 	-- 200-239
+											10|[local::at0086], 	-- ≥280
+											11|[local::at0087], 	-- 240-279
+											13|[local::at0088]  	-- ≥ 280
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- HDL Cholesterol: men and women
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- HDL-kolesterol: män och kvinnor
 										value matches {
 											-1|[local::at0019], 	-- ≥60
 											0|[local::at0020], 	-- 50-59
@@ -180,46 +180,46 @@ definition
 											2|[local::at0022]  	-- < 40
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- BP treated with medication
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Behandlad hypertoni
 										value matches {
-											0|[local::at0053], 	-- No
-											1|[local::at0054]  	-- Yes
+											0|[local::at0053], 	-- Nej
+											1|[local::at0054]  	-- Ja
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Systolic BP: men
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Systoliskt BP: män
 										value matches {
-											0|[local::at0046], 	-- < 120 or 120-129 if untreated
-											1|[local::at0047], 	-- 120-129 if treated or 130-159 if untreated
-											2|[local::at0048], 	-- 130-159 if treated or ≥ 160 if untreated
-											3|[local::at0049]  	-- ≥ 160 if treated
+											0|[local::at0046], 	-- < 120 eller 120-129 om obehandlad
+											1|[local::at0047], 	-- 120-129 om behandlad eller 130-159 om obehandlad
+											2|[local::at0048], 	-- 130-159 om behandlad eller ≥ 160 om obehandlad
+											3|[local::at0049]  	-- ≥ 160 om behandlad
 										}
 									}
-									ELEMENT[at0094] occurrences matches {0..1} matches {	-- Systolic BP: women
+									ELEMENT[at0094] occurrences matches {0..1} matches {	-- Systoliskt BP: kvinnor
 										value matches {
 											0|[local::at0100], 	-- < 120
-											1|[local::at0101], 	-- 120-129 if untreated
-											2|[local::at0102], 	-- 130-139 if untreated
-											3|[local::at0103], 	-- 140-159 if untreated or 120-129 if treated
-											4|[local::at0104], 	-- ≥ 160 if untreated or 130-139 if treated
-											5|[local::at0108], 	-- 140-159 if treated
-											6|[local::at0109]  	-- ≥ 160 if treated
+											1|[local::at0101], 	-- 120-129 om obehandlad
+											2|[local::at0102], 	-- 130-139 om obehandlad
+											3|[local::at0103], 	-- 140-159 om obehandlad eller 120-129 om behandlad
+											4|[local::at0104], 	-- ≥ 160 om obehandlad eller 130-139 om behandlad
+											5|[local::at0108], 	-- 140-159 med behandling
+											6|[local::at0109]  	-- ≥ 160 med behandling
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Total score: men
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Total poäng - män
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|>=0|}
 											}
 										}
 									}
-									ELEMENT[at0055] occurrences matches {0..1} matches {	-- Total score: women
+									ELEMENT[at0055] occurrences matches {0..1} matches {	-- Total poäng - kvinnor
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|>=0|}
 											}
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Comments
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -278,7 +278,7 @@ ontology
 					description = <"Whether treated by BP medication or not">
 				>
 				["at0011"] = <
-					text = <"Total score: men">
+					text = <"Total score - men">
 					description = <"Sum of individual scores for men">
 				>
 				["at0012"] = <
@@ -430,7 +430,7 @@ ontology
 					description = <"*">
 				>
 				["at0055"] = <
-					text = <"Total score: women">
+					text = <"Total score - women">
 					description = <"Sum of individual scores for women">
 				>
 				["at0056"] = <
@@ -646,7 +646,7 @@ ontology
 					description = <"Huruvida patienten behandlas för hypertoni eller ej.">
 				>
 				["at0011"] = <
-					text = <"Total poäng: män">
+					text = <"Total poäng - män">
 					description = <"Summan av samtliga faktorer.">
 				>
 				["at0012"] = <
@@ -798,7 +798,7 @@ ontology
 					description = <"*">
 				>
 				["at0055"] = <
-					text = <"Total poäng: kvinnor">
+					text = <"Total poäng - kvinnor">
 					description = <"Summan av samtliga faktorer.">
 				>
 				["at0056"] = <
