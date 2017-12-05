@@ -2,9 +2,19 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.pittsburgh_knee_assessment.v1
 
 concept
-	[at0000]	-- Pittsburgh knee assessement
+	[at0000]	-- Pittsburgh Knee Rules utvärdering
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["email"] = <"models@cambiocds.com">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -29,23 +39,38 @@ For non-serious non-bony injuries, crutches and knee imobilizers are recommended
 			misuse = <"Do not use for children under the age of 12 years for whom knee x-rays should routinely be done.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att ge objektivt understöd till bedömning av röntgenbehov vid akut knäskada under de senaste sju dagarna.">
+			use = <"Metoden baseras på totalt tre parameterar; ålder, skademekanism och oförmåga att lägga vikt på benet. 
+
+Om kriterium för skademekanism ej uppfylls är instrumentet ej tillämpbart. Om kriteriumet är uppfyllt, krävs att minst 1/2 ytterligare kriterier föreligger, för att röntgen ska rekommenderas. 
+
+Åtgärder
+- För milda mjukdelsskador rekommenderas kryckor och immobilisering av knät för att understödja rörelse.">
+			keywords = <"Pittsburgh knee rules", "knäskada", "knätrauma", "trauma", "ortopedi">
+			misuse = <"Endast avsedd att utgöra understöd till klinisk bedömning.
+
+Ej tillämpbar på barn under 12 års ålder, för vilka röntgen bör vara rutin, och inte heller på patienter som genomgått knäledsoperation eller tidigare utvärdering av aktuella skadan.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Ref. 1: Seaberg DC and Jackson R. Clinical decision rule for knee radiographs. American Journal of Emergency Medicine. 1994; 12(5): 541-3.">
-		["MD5-CAM-1.0.1"] = <"7E40254BCD483F3A92696DE08822E4D8">
+		["MD5-CAM-1.0.1"] = <"0E6DED9755AA8C614924E4C9DC741997">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Pittsburgh knee assessement
+	EVALUATION[at0000] matches {	-- Pittsburgh Knee Rules utvärdering
 		data matches {
-			ITEM_TREE[at0001] matches {	-- Tree
+			ITEM_TREE[at0001] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Recommendation
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Rekommendation
 						value matches {
-							0|[local::at0003], 	-- The Pittsburgh Knee Rules cannot be applied and the patient does not need a knee x-ray
-							1|[local::at0004]  	-- The Pittsburgh Knee Rules can be applied and the patient should get a knee x-ray
+							0|[local::at0003], 	-- Pittsburgh-kriterierna ej uppfyllda – patienten behöver inte röntgas.
+							1|[local::at0004]  	-- Pittsburgh-kriterierna uppfyllda – patienten bör genomgå röntgen
 						}
 					}
 				}
@@ -76,6 +101,30 @@ ontology
 				["at0004"] = <
 					text = <"The Pittsburgh Knee Rules can be applied and the patient should get a knee x-ray">
 					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Pittsburgh Knee Rules utvärdering">
+					description = <"Utvärdering av resultat erhållet i enlighet med Pittsburgh Knee Rules.">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Rekommendation">
+					description = <"Vid uppfyllda kriterier rekommenderas röntgen.">
+				>
+				["at0003"] = <
+					text = <"Pittsburgh-kriterierna ej uppfyllda – patienten behöver inte röntgas.">
+					description = <"">
+				>
+				["at0004"] = <
+					text = <"Pittsburgh-kriterierna uppfyllda – patienten bör genomgå röntgen">
+					description = <"">
 				>
 			>
 		>
