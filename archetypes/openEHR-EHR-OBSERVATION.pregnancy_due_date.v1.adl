@@ -2,9 +2,19 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.pregnancy_due_date.v1
 
 concept
-	[at0000]	-- Pregnancy due date
+	[at0000]	-- Förväntat förlossningsdatum
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["email"] = <"models@cambiocds.com">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -13,6 +23,17 @@ description
 		["date"] = <"2017-07-08">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att beräkna förväntat förlossningsdatum. ">
+			use = <"Metoden baseras på givet värde för antingen senaste menstruationsperiod, aktuell gestationsålder eller förväntat förlossningsdatum, med vilket övriga variabler samt befruktningsdatum kan beräknas.
+
+Beräkning av förväntat förlossningsdatum baseras på sista dagen av senaste menstruationen; addera 40 veckor och sedan ytterligare 7 dagar.
+">
+			keywords = <"förlossning", "förlossningsdatum", "gestationsålder", "obstetrik">
+			misuse = <"Metoden anses ej träffsäker vid oregelbundna menstruationscykler eller när senaste menstruation ej kan fastställas. Bör användas tillsammans med andra metoder för beräkning.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To help track and calculate an estimation of the due date of a pregnancy both forward from the LMP and backwards from the Due Date.">
@@ -24,7 +45,7 @@ To calculate pregnancy due date from LMP:
     Add 40 weeks to the date.
     Add another 7 days to the date 40 weeks from the LMP. (OR use the First day of the Last Menstrual Period as has been done here)
 ">
-			keywords = <"expected date of delivery", "expected due date", "expected date of conception", "last menstrual period", "gestational age">
+			keywords = <"expected date of delivery", "expected due date", "expected date of conception", "last menstrual period", "gestational age", "obstetrics">
 			misuse = <"Do not use when the cycles are not regular and LMP cannot be reliably used. Employ using other tools and investigations to support the results.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
@@ -33,24 +54,24 @@ To calculate pregnancy due date from LMP:
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Ref. 1: Chervenak FA, Skupski DW, Romero R, et al: How accurate is fetal biometry in the assessment of fetal age?. Am J Obstet Gynecol 1998; 178:678">
-		["MD5-CAM-1.0.1"] = <"EC264BE3BF50DF554F8F6967DE860CE5">
+		["MD5-CAM-1.0.1"] = <"D244B0541EBC063CB552A58A895D1544">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Pregnancy due date
+	OBSERVATION[at0000] matches {	-- Förväntat förlossningsdatum
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Last day of LMP
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Sista dagen senaste menstruationen
 										value matches {
 											DV_DATE_TIME matches {*}
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Gestational Age: weeks
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Gestationsålder: veckor
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::380]>
@@ -64,7 +85,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Gestational Age: days
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Gestationsålder: dagar
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::380]>
@@ -78,17 +99,17 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Due Date (EDD)
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Förlossningsdatum
 										value matches {
 											DV_DATE_TIME matches {*}
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- EDC
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Beräknat befruktningsdatum
 										value matches {
 											DV_DATE_TIME matches {*}
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Comment about the calculator
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -147,6 +168,50 @@ Add 40 weeks to the date. Add another 7 days to the date 40 weeks from the LMP.
 				["at0009"] = <
 					text = <"EDC">
 					description = <"Expected Date of Conception ">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Förväntat förlossningsdatum">
+					description = <"Beräkning av förväntat förlossningsdatum. ">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Sista dagen senaste menstruationen">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Gestationsålder: veckor">
+					description = <"Fosterålder angett i hela veckor.">
+				>
+				["at0006"] = <
+					text = <"Gestationsålder: dagar">
+					description = <"Antal extra hela dagar, utöver hela antalet veckor.">
+				>
+				["at0007"] = <
+					text = <"Förlossningsdatum">
+					description = <"Beräknat förlossningsdatum. ">
+				>
+				["at0008"] = <
+					text = <"Kommentar">
+					description = <"Ev. tillägg.">
+				>
+				["at0009"] = <
+					text = <"Beräknat befruktningsdatum">
+					description = <"">
 				>
 			>
 		>
