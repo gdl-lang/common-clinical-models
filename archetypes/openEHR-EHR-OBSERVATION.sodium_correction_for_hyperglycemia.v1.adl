@@ -2,9 +2,19 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.sodium_correction_for_hyperglycemia.v1
 
 concept
-	[at0000]	-- Sodium correction for hyperglycemia
+	[at0000]	-- Korrigerat natrium vid hyperglykemi
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["email"] = <"models@cambiocds.com">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -25,6 +35,18 @@ Corrected Sodium (Hillier, 1999) = Measured sodium + 0.024 * (Serum glucose - 10
 			misuse = <"Ensure that the results are used in combination with sound clinical judgment">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Att med hjälp av två metoder, Katz (1973) och Hillier (1999) beräkna korrigerat natrium vid hyperglykemi.">
+			use = <"Detta instrument beräknar korrigerat natrium vid hyperglykemo baserat på två metoder; dels Katz (1973) och dels Hillier (1999). Beräkningar sker med hjälp av respektive formel:
+ 
+* Korrigerat natrium (Katz, 1973) = uppmätt natrium + 0.016 * (serum-glukos - 100)
+* Korrigerat natrium (Hillier, 1999) = uppmätt natrium + 0.024 * (serum-glukos - 100)
+">
+			keywords = <"natrium", "glukos", "hyperglykemi", "diabetes", "Katz", "Hillier", "korrigerat natrium">
+			misuse = <"Verktyget är endast avsett att utgöra understöd till klinisk bedömning.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -32,19 +54,19 @@ Corrected Sodium (Hillier, 1999) = Measured sodium + 0.024 * (Serum glucose - 10
 		["references"] = <"Ref. 1: Katz MA. Hyperglycemia-induced hyponatremia--calculation of expected serum sodium depression. N Engl J Med. 1973 Oct 18;289(16):843-4. PubMed PMID: 4763428.
 
 Ref. 2: Hillier TA, Abbott RD, Barrett EJ. Hyponatremia: evaluating the correction factor for hyperglycemia. Am J Med. 1999 Apr;106(4):399-403. PubMed PMID: 10225241">
-		["MD5-CAM-1.0.1"] = <"87F81D71E484D03E05B7318D64F7EA6D">
+		["MD5-CAM-1.0.1"] = <"1953AC9EE0BF6CB6F561DF5ABC2B1E9D">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Sodium correction for hyperglycemia
+	OBSERVATION[at0000] matches {	-- Korrigerat natrium vid hyperglykemi
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Corrected Sodium (Katz, 1973)
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Korrigerat natrium (Katz, 1973)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -56,7 +78,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Corrected Sodium (Hillier, 1999)
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Korrigerat natrium (Hillier, 1999)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -68,7 +90,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Comments
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Kommenatar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -113,6 +135,38 @@ ontology
 				["at0006"] = <
 					text = <"Comments">
 					description = <"Any comments regarding the tool">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Korrigerat natrium vid hyperglykemi">
+					description = <"Denna arketyp registrerar aktuellt natriumvärde hos patienter med hyperglykemi, baserat på uppmätta nivåer glukos och natrium.">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"Korrigerat natrium (Katz, 1973)">
+					description = <"Korrigerat natrium (Katz, 1973) = uppmätt natrium + 0.016 * (serum-glukos - 100)">
+				>
+				["at0005"] = <
+					text = <"Korrigerat natrium (Hillier, 1999)">
+					description = <"Korrigerat natrium (Hillier, 1999) = uppmätt natrium + 0.024 * (serum-glukos - 100)">
+				>
+				["at0006"] = <
+					text = <"Kommenatar">
+					description = <"Ev. tillägg.">
 				>
 			>
 		>
