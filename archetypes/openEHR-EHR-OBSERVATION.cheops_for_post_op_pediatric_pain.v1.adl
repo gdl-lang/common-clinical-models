@@ -2,9 +2,19 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.cheops_for_post_op_pediatric_pain.v1
 
 concept
-	[at0000]	-- Cheops for post op pediatric pain
+	[at0000]	-- CHEOPS för postoperativ smärta
 language
 	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["email"] = <"models@cambiocds.com">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
 description
 	original_author = <
 		["name"] = <"Syeeda S Farruque">
@@ -13,6 +23,18 @@ description
 		["date"] = <"2017-11-12">
 	>
 	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Bedömning av postoperativ smärta bland patienter mellan 1 och 5 års ålder.">
+			use = <"Metoden baseras på sex parametrar relaterade till observationer av barnet såsom position av ben, sår, bål, verbal respons och tecken på gråt.
+
+Utvärdering bör genomföras 1) var tredje timme, 2) 15-20 minuter efter intravenös administrering av smärtstillande och 3) 30-45 minuter efter oral eller rektal administrering.
+
+Maximal poängsumma uppgår till 13p. Vid en summa om ≥5p bör behandling evalueras och ytterligare smärtstillande övervägas.">
+			keywords = <"CHEOPS", "postoperativ smärta">
+			misuse = <"Ej avsedd för diagnostiska syften.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"This tool is used with children between the age of 1 and 5 years to assess post-op pain ">
@@ -37,65 +59,65 @@ Scores ≥5: Consider analgesia.">
 	other_details = <
 		["references"] = <"Ref. 1: McGrath PJ, et al. CHEOPS: a behavioral scale for rating postoperative pain in children. In: H.L. Fields, R. Dubner and F. Cervero (Eds.), Advances in Pain Research and Therapy, Raven Press, New York, 1985b. pp. 395-402.
 ">
-		["MD5-CAM-1.0.1"] = <"0C703DFAC7864456A83F9794B6FD5310">
+		["MD5-CAM-1.0.1"] = <"AF691CD89BAB3116D97C12DC4DF7CE76">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Cheops for post op pediatric pain
+	OBSERVATION[at0000] matches {	-- CHEOPS för postoperativ smärta
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
-								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Cry
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
+								items cardinality matches {0..*; ordered} matches {
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Gråt
 										value matches {
-											1|[local::at0016], 	-- No cry
-											2|[local::at0017], 	-- Moaning or crying
-											3|[local::at0018]  	-- Scream
+											1|[local::at0016], 	-- Ingen gråt
+											2|[local::at0017], 	-- Stönar eller gråter
+											3|[local::at0018]  	-- Skriker
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Facial
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Ansiktsuttryck
 										value matches {
-											0|[local::at0019], 	-- Smiling
-											1|[local::at0020], 	-- Composed
-											2|[local::at0021]  	-- Grimace
+											0|[local::at0019], 	-- Ler
+											1|[local::at0020], 	-- Samlad
+											2|[local::at0021]  	-- Grimaserar
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Child verbal
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Verbalt uttryck
 										value matches {
-											0|[local::at0022], 	-- Positive
-											1|[local::at0023], 	-- None or other complaints
-											2|[local::at0024]  	-- Pain or both types of complaints
+											0|[local::at0022], 	-- Positivt
+											1|[local::at0023], 	-- Inget eller annat klagomål
+											2|[local::at0024]  	-- Smärta eller båda typer av klagande
 										}
 									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Torso
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Kroppsposition
 										value matches {
 											1|[local::at0025], 	-- Neutral
-											2|[local::at0026]  	-- Shifting, tense, shivering, upright or restrained
+											2|[local::at0026]  	-- Byter position, darrar, upprätt eller fastspänd
 										}
 									}
-									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Touch
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Beröringsbeteende
 										value matches {
-											1|[local::at0027], 	-- Not touching
-											2|[local::at0028]  	-- Reach, touch, grab or restrained
+											1|[local::at0027], 	-- Ingen aktiv beröring
+											2|[local::at0028]  	-- Sträcker sig, berör, greppar eller fastspänd
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Legs
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Benposition
 										value matches {
 											1|[local::at0029], 	-- Neutral
-											2|[local::at0030]  	-- Squirm/kicking, Drawnup/tensed, standing or restrained
+											2|[local::at0030]  	-- Skruvar/sparker, sträckta, stående, eller fastspänd
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Total Score
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Poängsumma
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..13|}
 											}
 										}
 									}
-									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Comments
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Kommentar
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -220,6 +242,118 @@ ontology
 				["at0030"] = <
 					text = <"Squirm/kicking, Drawnup/tensed, standing or restrained">
 					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"CHEOPS för postoperativ smärta">
+					description = <"Children's Hospital of Eastern Ontario Pain Scale (CHEOPS) används för bedömning av postoperativ smärta bland patienter mellan 1 och 5 års ålder. ">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0008"] = <
+					text = <"Gråt">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Ansiktsuttryck">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Verbalt uttryck">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Kroppsposition">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Beröringsbeteende">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"Benposition">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"Poängsumma">
+					description = <"Summan av samtliga faktorer.">
+				>
+				["at0015"] = <
+					text = <"Kommentar">
+					description = <"Ev. tillägg.">
+				>
+				["at0016"] = <
+					text = <"Ingen gråt">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Stönar eller gråter">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Skriker">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Ler">
+					description = <"Endast om säkert fastställt positivt uttryck.">
+				>
+				["at0020"] = <
+					text = <"Samlad">
+					description = <"Neutralt ansiktsuttryck">
+				>
+				["at0021"] = <
+					text = <"Grimaserar">
+					description = <"Endast om säkert fastställt negativt uttryck.">
+				>
+				["at0022"] = <
+					text = <"Positivt">
+					description = <"Barnet uttrycker sig positivt eller pratar om annat än bekymmer.">
+				>
+				["at0023"] = <
+					text = <"Inget eller annat klagomål">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"Smärta eller båda typer av klagande">
+					description = <"Barnet klagar över smärta och annat">
+				>
+				["at0025"] = <
+					text = <"Neutral">
+					description = <"Kroppen (ej extremiteter) i vila; bålen är avslappnad.">
+				>
+				["at0026"] = <
+					text = <"Byter position, darrar, upprätt eller fastspänd">
+					description = <"">
+				>
+				["at0027"] = <
+					text = <"Ingen aktiv beröring">
+					description = <"">
+				>
+				["at0028"] = <
+					text = <"Sträcker sig, berör, greppar eller fastspänd">
+					description = <"">
+				>
+				["at0029"] = <
+					text = <"Neutral">
+					description = <"I vilken position som helst, men avslappnat.">
+				>
+				["at0030"] = <
+					text = <"Skruvar/sparker, sträckta, stående, eller fastspänd">
+					description = <"">
 				>
 			>
 		>
