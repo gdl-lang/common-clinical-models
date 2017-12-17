@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 134*
+### *Published Apps: 142*
 
 ----------
 
@@ -49,6 +49,8 @@ _Select a medical specialty below to view the available apps._
 [Primary Care](https://github.com/gdl-lang/common-clinical-models#primary-care)
 
 [Psychiatry](https://github.com/gdl-lang/common-clinical-models#psychiatry)
+
+[Pulmonology](https://github.com/gdl-lang/common-clinical-models#psychiatry)
 
 [Rheumatology](https://github.com/gdl-lang/common-clinical-models#rheumatology)
 
@@ -130,6 +132,12 @@ _Select a medical specialty below to view the available apps._
 * [Glasgow-Blatchford Bleeding Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#glasgow-blatchford-bleeding-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Glasgow-Blatchford.v1.dsv?token=476c6173676f772d426c61746368666f72642e7631:1546300799000:98747d0da168fac52c59d913eee1aed2&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Glasgow-Blatchford.v1.dsv?token=476c6173676f772d426c61746368666f72642e7631:1546300799000:98747d0da168fac52c59d913eee1aed2&language=sv))
 
 * [Glasgow Coma Scale (GCS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#glasgow-coma-scale-gcs) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/GCS.v1.dsv?token=4743532e7631:1546300799000:a13f234ff0cce0b9b3bd2b619fd380f3&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/GCS.v1.dsv?token=4743532e7631:1546300799000:a13f234ff0cce0b9b3bd2b619fd380f3&language=sv))
+
+* [Glasgow-Imrie Criteria](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#young-mania-rating-scale-ymrs) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Glasgow_imrie.v1.dsv?token=476c6173676f775f696d7269652e7631:1514073600000:56654e86e39f0a8f09f3867b07bbf430&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Glasgow_imrie.v1.dsv?token=476c6173676f775f696d7269652e7631:1514073600000:56654e86e39f0a8f09f3867b07bbf430&language=sv))
+
+* [HEART Score]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#heart-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/HEART_Score.v1.dsv?token=48454152545f53636f72652e7631:1514073600000:86116c98d3cedb430812142c07a3a981&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/HEART_Score.v1.dsv?token=48454152545f53636f72652e7631:1514073600000:86116c98d3cedb430812142c07a3a981&language=sv))
+
+* [Pittsburgh Knee Rules]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pittsburgh-knee-rules) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Pittsburgh_knee_rules.v1.dsv?token=506974747362757267685f6b6e65655f72756c65732e7631:1514073600000:6adbf717db0e89691c10344724fca9c7&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Pittsburgh_knee_rules.v1.dsv?token=506974747362757267685f6b6e65655f72756c65732e7631:1514073600000:6adbf717db0e89691c10344724fca9c7&language=sv))
 
 * [Pulmonary Embolism Severity Index (PESI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pulmonary-embolism-severity-index-pesi) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/PESI.v1.dsv?token=504553492e7631:1546214400000:df1d0b1265968fc16b16afb70e13c881&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/PESI.v1.dsv?token=504553492e7631:1546214400000:df1d0b1265968fc16b16afb70e13c881&language=sv))
 
@@ -231,6 +239,8 @@ _Select a medical specialty below to view the available apps._
 
 * [National Institutes of Health Stroke Scale (NIHSS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#national-institutes-of-health-stroke-scale-nihss) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/NIHSS.v1.dsv?token=4e494853532e7631:1546300799000:a7cd87b01addd0633d7958337ac6f061&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/NIHSS.v1.dsv?token=4e494853532e7631:1546300799000:a7cd87b01addd0633d7958337ac6f061&language=sv))
 
+* [Neuropathy Pain Scale (NPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#young-mania-rating-scale-ymrs) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/NPS.v1.dsv?token=4e50532e7631:1514073600000:76018d5e9d5d7f4b3e1547114e2cbccf&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/NPS.v1.dsv?token=4e50532e7631:1514073600000:76018d5e9d5d7f4b3e1547114e2cbccf&language=sv))
+
 ----------
 ### Obstetrics
 
@@ -248,6 +258,8 @@ _Select a medical specialty below to view the available apps._
 * [Fuhrman Nuclear Grade for Clear Cell Renal Cell Carcinoma](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#fuhrman-nuclear-grade-for-clear-cell-renal-cell-carcinoma) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Fuhrman_Nuclear_Grade_ccRCC.v1.dsv?token=467568726d616e5f4e75636c6561725f47726164655f63635243432e7631:1546214400000:0d6068133e09fb9b8f926a66d7eb103a&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Fuhrman_Nuclear_Grade_ccRCC.v1.dsv?token=467568726d616e5f4e75636c6561725f47726164655f63635243432e7631:1546214400000:0d6068133e09fb9b8f926a66d7eb103a&language=sv))
 
 * [Gleason Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#gleason-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Gleason_score.v1.dsv?token=476c6561736f6e5f73636f72652e7631:1546214400000:fa1179e548a277a24329aa838e3c3ab6&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Gleason_score.v1.dsv?token=476c6561736f6e5f73636f72652e7631:1546214400000:fa1179e548a277a24329aa838e3c3ab6&language=sv))
+
+* [Heng Score]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#heng-score-for-metastatic-renal-cell-carcinoma-prognosis) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Heng_score.v1.dsv?token=48656e675f73636f72652e7631:1514073600000:9ef402f007afd74e7889fa97f3feafb3&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Heng_score.v1.dsv?token=48656e675f73636f72652e7631:1514073600000:9ef402f007afd74e7889fa97f3feafb3&language=sv))
 
 * [SSIGN Score for Clear Cell Renal Cell Carcinoma](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ssign-score-for-clear-cell-renal-cell-carcinoma) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/SSIGN_ccRCC.v1.dsv?token=535349474e5f63635243432e7631:1546214400000:f261885cf4310ac0e7666f38334047f0&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/SSIGN_ccRCC.v1.dsv?token=535349474e5f63635243432e7631:1546214400000:f261885cf4310ac0e7666f38334047f0&language=sv))
 
@@ -272,6 +284,8 @@ _Select a medical specialty below to view the available apps._
 * [Asthma Predictive Index (API)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#asthma-predictive-index-api) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/API.v1.dsv?token=4150492e7631:1546214400000:05e598a789fdbd4c09aabca5389d071e&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/API.v1.dsv?token=4150492e7631:1546214400000:05e598a789fdbd4c09aabca5389d071e&language=sv))
 
 * [Behavioral Observational Pain Scale (BOPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#behavioral-observational-pain-scale-bops) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/BOPS.v1.dsv?token=424f50532e7631:1546214400000:8539e690c81ab32231425335cd068f4d&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/BOPS.v1.dsv?token=424f50532e7631:1546214400000:8539e690c81ab32231425335cd068f4d&language=sv))
+
+* [Children's Hospital of Eastern Ontario Pain Scale (CHEOPS)]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#childrens-hospital-of-eastern-ontario-pain-scale-cheops) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/CHEOPS.v1.dsv?token=4348454f50532e7631:1514073600000:5f8790fa0ef2c1ae4f9170f4d9189d37&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/CHEOPS.v1.dsv?token=4348454f50532e7631:1514073600000:5f8790fa0ef2c1ae4f9170f4d9189d37&language=sv))
 
 * [Height Potential](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#height-potential) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Height_potential.v1.dsv?4865696768745f706f74656e7469616c2e7631:1546214400000:413bc1fc35aa5d6530dd61022356f66a&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Height_potential.v1.dsv?4865696768745f706f74656e7469616c2e7631:1546214400000:413bc1fc35aa5d6530dd61022356f66a&language=sv))
 
@@ -375,6 +389,16 @@ _Select a medical specialty below to view the available apps._
 * [Yale-Brown Obsessive Compulsive Scale (Y-BOCS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#yale-brown-obsessive-compulsive-scale-y-bocs) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Y-BOCS.v1.dsv?token=592d424f43532e7631:1546300799000:89563e8f1f9d7cfd1c68cbce22918531&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Y-BOCS.v1.dsv?token=592d424f43532e7631:1546300799000:89563e8f1f9d7cfd1c68cbce22918531&language=sv))
 
 * [Young Mania Rating Scale (YMRS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#young-mania-rating-scale-ymrs) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/YMRS.v1.dsv?token=594d52532e7631:1546300799000:2acb717803c4d07e7e28fc472e882d18&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/YMRS.v1.dsv?token=594d52532e7631:1546300799000:2acb717803c4d07e7e28fc472e882d18&language=sv))
+
+----------
+
+### Pulmonology
+
+----------
+
+* [GAP Index](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#young-mania-rating-scale-ymrs) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/GAP_Index.v1.dsv?token=4741505f496e6465782e7631:1514073600000:32995e7b972bfac79560d204a495768d&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/GAP_Index.v1.dsv?token=4741505f496e6465782e7631:1514073600000:32995e7b972bfac79560d204a495768d&language=sv))
+
+* [Manchester Score for small cell lung cancer]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#manchester-score-for-small-cell-lung-cancer) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Manchester_score.v1.dsv?token=4d616e636865737465725f73636f72652e7631:1514073600000:7f70b097346b2ae117e809e15dd14f12&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Manchester_score.v1.dsv?token=4d616e636865737465725f73636f72652e7631:1514073600000:7f70b097346b2ae117e809e15dd14f12&language=sv))
 
 ----------
 
