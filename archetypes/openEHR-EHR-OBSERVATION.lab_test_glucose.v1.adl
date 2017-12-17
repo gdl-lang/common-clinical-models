@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.lab_test_glucose.v1
 
 concept
-	[at0000]	-- Glucose laboratory test
+	[at0000]	-- Provsvar - glukos
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -105,50 +105,50 @@ Rapporteras vanligen tillbaka till beställande kliniker som del i övergripande
 		["references"] = <"NEHTA, Australia. Pathology Episode v1.0 - Data Group library [Internet]. 2009;[cited 2009 Dec 8 ] Available from: http://www.nehta.gov.au/data-group-library/data-specifications/dgl-pathology
 
 IHE. IHE, Laboratory Technical Framework, Volume 3 Content [Internet]. 2008;Available from: http://www.ihe.net/Technical_Framework/upload/ihe_lab_TF_rel2_1-Vol-3_FT_2008-08-08.pdf.">
-		["MD5-CAM-1.0.1"] = <"733F0808426B1CA4744AC13C6619E528">
+		["MD5-CAM-1.0.1"] = <"5FE69B03D7CFCB083CAD05B16E1762F7">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Glucose laboratory test
+	OBSERVATION[at0000] matches {	-- Provsvar - glukos
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {	-- *Event Series(en)
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- *Any event(en)
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {	-- *Tree(en)
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Glucose
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Glukos
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0077] occurrences matches {0..1} matches {	-- Diagnostic service
+									ELEMENT[at0077] occurrences matches {0..1} matches {	-- Diagnostisk metod
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0073] occurrences matches {0..1} matches {	-- Test status
+									ELEMENT[at0073] occurrences matches {0..1} matches {	-- Teststatus
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0037, 	-- Interim
-													at0038, 	-- Final
-													at0039, 	-- Supplementary
-													at0040, 	-- Corrected (amended)
-													at0074, 	-- Aborted
-													at0079]	-- Never performed
+													at0037, 	-- Delresultat
+													at0038, 	-- Slutgiltigt
+													at0039, 	-- Kompletterande
+													at0040, 	-- Korrigerat
+													at0074, 	-- Avbrutet
+													at0079]	-- Aldrig utfört
 												}
 											}
 										}
 									}
-									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- Specimen detail
+									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- Provdetaljer
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.specimen\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
-									ELEMENT[at0078] occurrences matches {0..*} matches {	-- Glucose result
+									ELEMENT[at0078] occurrences matches {0..*} matches {	-- B-Glukos
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -163,18 +163,18 @@ definition
 											>
 										}
 									}
-									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- Per-result annotation
+									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- Kommentar om provresultatet
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.lab_result_annotation(-[a-zA-Z0-9_]+)*\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
-									ELEMENT[at0057] occurrences matches {0..1} matches {	-- Overall interpretation
+									ELEMENT[at0057] occurrences matches {0..1} matches {	-- Övergripande tolkning
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..*} matches {	-- Multimedia representation
+									ELEMENT[at0010] occurrences matches {0..*} matches {	-- Multimedia
 										value matches {
 											DV_MULTIMEDIA matches {
 												media_type matches {[openEHR::]}
@@ -189,34 +189,34 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0004] matches {	-- Tree
+			ITEM_TREE[at0004] matches {	-- *Tree(en)
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0062] occurrences matches {0..1} matches {	-- Requestor order identifier
+					ELEMENT[at0062] occurrences matches {0..1} matches {	-- *Requestor order identifier(en)
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					allow_archetype CLUSTER[at0090] occurrences matches {0..*} matches {	-- Requestor
+					allow_archetype CLUSTER[at0090] occurrences matches {0..*} matches {	-- *Requestor(en)
 						include
 							archetype_id/value matches {/.*/}
 					}
-					ELEMENT[at0063] occurrences matches {0..1} matches {	-- Receiver order Identifier
+					ELEMENT[at0063] occurrences matches {0..1} matches {	-- *Receiver order Identifier(en)
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- Receiving laboratory
+					allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- *Receiving laboratory(en)
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.organisation\.v1/}
 						exclude
 							archetype_id/value matches {/.*/}
 					}
-					ELEMENT[at0068] occurrences matches {0..1} matches {	-- Laboratory test result identifier
+					ELEMENT[at0068] occurrences matches {0..1} matches {	-- *Laboratory test result identifier(en)
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					ELEMENT[at0075] occurrences matches {0..1} matches {	-- Datetime result issued
+					ELEMENT[at0075] occurrences matches {0..1} matches {	-- *Datetime result issued(en)
 						value matches {
 							DV_DATE_TIME matches {*}
 						}
@@ -655,9 +655,8 @@ This archetype also acts as the parent for specialisations appropriate for more 
 		["sv"] = <
 			items = <
 				["at0000"] = <
-					text = <"*Glucose laboratory test(en)">
-					description = <"*To record the result of a glucose laboratory test which may be used to record a single valued test but will often be specialised or templated to represent multiple value or 'panel' tests.
-This archetype also acts as the parent for specialisations appropriate for more specific laboratory tests microbiology, histopathology.(en)">
+					text = <"Provsvar - glukos">
+					description = <"Att registrera resultat av laborationsprover. Kan användas för enstaka provresultat men lär ofta registrera specialiserade tester efter mall dvs en panel av prover t.ex. \"B-blodstatus\". Denna arketyp ska även utgöra grund för specialiseringar lämpliga för mer specifika mikrobiologiska och histopatologiska tester.">
 				>
 				["at0001"] = <
 					text = <"*Event Series(en)">
@@ -676,8 +675,8 @@ This archetype also acts as the parent for specialisations appropriate for more 
 					description = <"*@ internal @(en)">
 				>
 				["at0005"] = <
-					text = <"*Glucose(en)">
-					description = <"*Specific identifier for this lab test. e.g. Full blood count , blood glucose, urine microbiology.  May equate to the result name for a single value result. Commonly a coded term e.g from LOINC or SNOMED-CT.(en)">
+					text = <"Glukos">
+					description = <"Specific identifier for this lab test. e.g. Full blood count , blood glucose, urine microbiology.  May equate to the result name for a single value result. Commonly a coded term e.g from LOINC or SNOMED-CT.">
 				>
 				["at0010"] = <
 					text = <"Multimedia">
@@ -741,8 +740,8 @@ This archetype also acts as the parent for specialisations appropriate for more 
 					description = <"Typen av diagnostik t.ex. hematologi, mikrobiologi etc.">
 				>
 				["at0078"] = <
-					text = <"*Glucose result(en)">
-					description = <"*The result of the test.(en)">
+					text = <"B-Glukos">
+					description = <"Provsvar.">
 				>
 				["at0079"] = <
 					text = <"Aldrig utfört">
