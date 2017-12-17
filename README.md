@@ -239,7 +239,7 @@ _Select a medical specialty below to view the available apps._
 
 * [National Institutes of Health Stroke Scale (NIHSS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#national-institutes-of-health-stroke-scale-nihss) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/NIHSS.v1.dsv?token=4e494853532e7631:1546300799000:a7cd87b01addd0633d7958337ac6f061&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/NIHSS.v1.dsv?token=4e494853532e7631:1546300799000:a7cd87b01addd0633d7958337ac6f061&language=sv))
 
-* [Neuropathy Pain Scale (NPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#young-mania-rating-scale-ymrs) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/NPS.v1.dsv?token=4e50532e7631:1514073600000:76018d5e9d5d7f4b3e1547114e2cbccf&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/NPS.v1.dsv?token=4e50532e7631:1514073600000:76018d5e9d5d7f4b3e1547114e2cbccf&language=sv))
+* [Neuropathy Pain Scale (NPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#neuropathy-pain-scale-nps) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/NPS.v1.dsv?token=4e50532e7631:1514073600000:76018d5e9d5d7f4b3e1547114e2cbccf&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/NPS.v1.dsv?token=4e50532e7631:1514073600000:76018d5e9d5d7f4b3e1547114e2cbccf&language=sv))
 
 ----------
 ### Obstetrics
@@ -396,7 +396,7 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 
-* [GAP Index](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#young-mania-rating-scale-ymrs) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/GAP_Index.v1.dsv?token=4741505f496e6465782e7631:1514073600000:32995e7b972bfac79560d204a495768d&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/GAP_Index.v1.dsv?token=4741505f496e6465782e7631:1514073600000:32995e7b972bfac79560d204a495768d&language=sv))
+* [GAP Index](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#gap-index-for-idiopathic-pulmonary-fibrosis-mortality) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/GAP_Index.v1.dsv?token=4741505f496e6465782e7631:1514073600000:32995e7b972bfac79560d204a495768d&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/GAP_Index.v1.dsv?token=4741505f496e6465782e7631:1514073600000:32995e7b972bfac79560d204a495768d&language=sv))
 
 * [Manchester Score for small cell lung cancer]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#manchester-score-for-small-cell-lung-cancer) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Manchester_score.v1.dsv?token=4d616e636865737465725f73636f72652e7631:1514073600000:7f70b097346b2ae117e809e15dd14f12&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Manchester_score.v1.dsv?token=4d616e636865737465725f73636f72652e7631:1514073600000:7f70b097346b2ae117e809e15dd14f12&language=sv))
 
