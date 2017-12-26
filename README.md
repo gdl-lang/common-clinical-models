@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 142*
+### *Published Apps: 147*
 
 ----------
 
@@ -107,11 +107,17 @@ _Select a medical specialty below to view the available apps._
 ### Clinical Chemistry
 
 ----------
+* [Anion Gap](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#anion-gap) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/anion_gap.v1.dsv?token=616e696f6e5f6761702e7631:1514851200000:f91d879fbecaea114fe85a7d45bbd198&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/anion_gap.v1.dsv?token=616e696f6e5f6761702e7631:1514851200000:f91d879fbecaea114fe85a7d45bbd198&language=sv))
+
 * [Bicarbonate Deficit Calculator](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bicarbonate-deficit-calculator) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Bicarbonate_deficit.v1.dsv?token=4269636172626f6e6174655f646566696369742e7631:1546214400000:b531ab3b845a8c03f35ba4d0cbf0a7a9&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Bicarbonate_deficit.v1.dsv?token=4269636172626f6e6174655f646566696369742e7631:1546214400000:b531ab3b845a8c03f35ba4d0cbf0a7a9&language=sv))
 
 * [Corrected Calcium](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#corrected-calcium) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Corrected_Calcium.v1.dsv?token=436f727265637465645f43616c6369756d2e7631:1546300799000:6c67ba2385202a2b81ee7b85b2ebb8a5&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Corrected_Calcium.v1.dsv?token=436f727265637465645f43616c6369756d2e7631:1546300799000:6c67ba2385202a2b81ee7b85b2ebb8a5&language=sv))
 
+* [Creatinine Clearance Cockcraft-Gault](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#creatinine-clearance-cockcraft-gault) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/CrCl.v1.dsv?token=4372436c2e7631:1514851200000:5134689caf58aba33dd3640743c52dd1&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/CrCl.v1.dsv?token=4372436c2e7631:1514851200000:5134689caf58aba33dd3640743c52dd1&language=sv))
+
 * [Estimated Average Glucose (eAG)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#estimated-average-glucose-eag) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/eAG.v1.dsv?token=6541472e7631:1546300799000:c3472ac935fa472ad7ec284e724c5cac&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/eAG.v1.dsv?token=6541472e7631:1546300799000:c3472ac935fa472ad7ec284e724c5cac&language=sv))
+
+* [Winter Formula](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#winter-formula) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Winters_formula.v1.dsv?token=57696e746572735f666f726d756c612e7631:1514851200000:bcdb7fef648227a010384c70fb5e0227&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Winters_formula.v1.dsv?token=57696e746572735f666f726d756c612e7631:1514851200000:bcdb7fef648227a010384c70fb5e0227&language=sv))
 
 ----------
 
@@ -229,6 +235,8 @@ _Select a medical specialty below to view the available apps._
 ----------
 * [ABCD2 Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abcd2-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ABCD2.v1.dsv?token=41424344322e7631:1546300799000:29d369f63178b61a114751bf08656db9&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ABCD2.v1.dsv?token=41424344322e7631:1546300799000:29d369f63178b61a114751bf08656db9&language=sv))
 
+* [Douleur Neuropathique 4 (DN4)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#douleur-neuropathique-4-questions-dn4) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/DN4.v1.dsv?token=444e342e7631:1514851200000:a0451c5d2df1078088c1725dc17d2223&language=en))
+
 * [Intracerebral Haemorrhage Risk Tool (ICH)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#intracerebral-haemorrhage-risk-tool-ich) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ICH.v1.dsv?token=4943482e7631:1546300799000:91fb1bd872f0032b0bf20cb98d601306&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ICH.v1.dsv?token=4943482e7631:1546300799000:91fb1bd872f0032b0bf20cb98d601306&language=sv))
 
 * [Modified Fatigue Impact Scale (MFIS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#modified-fatigue-impact-scale-mfis) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/MFIS.v1.dsv?token=4d4649532e7631:1546300799000:c1491ad71b4a3d5ea98ce7ff7fb39eaf&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/MFIS.v1.dsv?token=4d4649532e7631:1546300799000:c1491ad71b4a3d5ea98ce7ff7fb39eaf&language=sv))
@@ -246,6 +254,8 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 * [Bishop Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bishop-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Bishop.v1.dsv?token=426973686f702e7631:1546300799000:18109583a6a7953c861d8ed2aabb7ed4&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Bishop.v1.dsv?token=426973686f702e7631:1546300799000:18109583a6a7953c861d8ed2aabb7ed4&language=sv))
+
+* [Pregnancy Due Date](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pregnancy-due-date) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Pregnancy_due_date.v1.dsv?token=507265676e616e63795f6475655f646174652e7631:1514851200000:c5311c5c58e6eaa6f22f24486875d5b2&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Pregnancy_due_date.v1.dsv?token=507265676e616e63795f6475655f646174652e7631:1514851200000:c5311c5c58e6eaa6f22f24486875d5b2&language=sv))
 
 * [VBAC Risk Score for Successful Vaginal Delivery (VBAC)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#vbac-risk-score-for-successful-vaginal-delivery-vbac) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/VBAC.v1.dsv?token=564241432e7631:1546214400000:3fd443beaf253358af0b393e20d714ba&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/VBAC.v1.dsv?token=564241432e7631:1546214400000:3fd443beaf253358af0b393e20d714ba&language=sv))
 ----------
