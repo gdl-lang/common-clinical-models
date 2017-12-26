@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 147*
+### *Published Apps: 148*
 
 ----------
 
@@ -69,6 +69,8 @@ _Select a medical specialty below to view the available apps._
 * [CHA2DS2-VASc Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#cha2ds2-vasc-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/CHA2DS2-VASc.v1.dsv?token=434841324453322d564153632e7631:1546300799000:ae41a8cdd978eae9c92992f0dc10b9ff&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/CHA2DS2-VASc.v1.dsv?token=434841324453322d564153632e7631:1546300799000:ae41a8cdd978eae9c92992f0dc10b9ff&language=sv))
 
 * [Corrected QT Interval (QTc) Calculator](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#corrected-qt-interval-qtc-calculator) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/QTc_calculation.v1.dsv?token=5154635f63616c63756c6174696f6e2e7631:1546214400000:2034f3f203aa213613b8080798c19084&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/QTc_calculation.v1.dsv?token=5154635f63616c63756c6174696f6e2e7631:1546214400000:2034f3f203aa213613b8080798c19084&language=sv))
+
+* [CRUSADE Score)]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#crusade-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Crusade_score.v1.dsv?token=437275736164655f73636f72652e7631:1514851200000:a099553923185dde45f503a6b4f18b0f&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Crusade_score.v1.dsv?token=437275736164655f73636f72652e7631:1514851200000:a099553923185dde45f503a6b4f18b0f&language=sv))
 
 * [DASH Prediction Score for Recurrent VTE](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#dash-prediction-score-for-recurrent-vte) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/DASH_VTE.v1.dsv?token=444153485f5654452e7631:1546300799000:996a78952adc51ebdb054ebeba18be49&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/DASH_VTE.v1.dsv?token=444153485f5654452e7631:1546300799000:996a78952adc51ebdb054ebeba18be49&language=sv))
 
