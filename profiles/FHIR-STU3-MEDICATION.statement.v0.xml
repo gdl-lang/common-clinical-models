@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="FHIR-STU3-MEDICATION.statement.v0" />
   <meta>
-    <lastUpdated value="2017-12-15T08:46:52.314+01:00" />
+    <lastUpdated value="2018-01-04T09:48:40.377+01:00" />
   </meta>
   <url value="https://tools.cambiocds.com/FHIR/StructureDefinition/FHIR-STU3-MEDICATION.statement.v0" />
   <name value="FHIR-STU3-MEDICATION.statement.v0" />
@@ -15,6 +15,54 @@
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/MedicationStatement" />
   <derivation value="constraint" />
   <differential>
+    <element id="MedicationStatement.status">
+      <path value="MedicationStatement.status" />
+      <label value="MedicationStatementStatus" />
+      <type>
+        <code value="code" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/code" />
+      </type>
+      <fixedCode value="active | completed | entered-in-error | intended | stopped | on-hold" />
+    </element>
+    <element id="MedicationStatement.category">
+      <path value="MedicationStatement.category" />
+      <label value="MedicationStatementCategory" />
+      <type>
+        <code value="CodeableConcept" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/CodeableConcept" />
+      </type>
+      <fixedCodeableConcept>
+        <coding>
+          <system value="http://hl7.org/fhir/medication-statement-category" />
+          <code value="outpatient" />
+          <display value="outpatient" />
+        </coding>
+        <coding>
+          <system value="http://hl7.org/fhir/medication-statement-category" />
+          <code value="community" />
+          <display value="community" />
+        </coding>
+        <coding>
+          <system value="http://hl7.org/fhir/medication-statement-category" />
+          <code value="patientspecified" />
+          <display value="patientspecified" />
+        </coding>
+        <coding>
+          <code value="inpatient" />
+          <display value="inpatient" />
+        </coding>
+      </fixedCodeableConcept>
+    </element>
+    <element id="category.text">
+      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
+        <valueBoolean value="true" />
+      </extension>
+      <path value="MedicationStatement.category.text" />
+      <type>
+        <code value="string" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
+      </type>
+    </element>
     <element id="MedicationStatement.medication[x]:medicationCodeableConcept">
       <path value="MedicationStatement.medicationCodeableConcept" />
       <sliceName value="medicationCodeableConcept" />
@@ -33,7 +81,7 @@
     </element>
     <element id="effectivePeriod:effectivePeriod.start">
       <path value="MedicationStatement.effectivePeriod.start" />
-      <label value="StartDateTime" />
+      <label value="MedicationStartDateTime" />
       <type>
         <code value="dateTime" />
         <profile value="http://hl7.org/fhir/StructureDefinition/dateTime" />
@@ -41,10 +89,26 @@
     </element>
     <element id="effectivePeriod:effectivePeriod.end">
       <path value="MedicationStatement.effectivePeriod.end" />
-      <label value="EndDateTime" />
+      <label value="MedicationEndDateTime" />
       <type>
         <code value="dateTime" />
         <profile value="http://hl7.org/fhir/StructureDefinition/dateTime" />
+      </type>
+    </element>
+    <element id="MedicationStatement.dateAsserted">
+      <path value="MedicationStatement.dateAsserted" />
+      <label value="MedicationStatementDateTimeAsserted" />
+      <type>
+        <code value="dateTime" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/dateTime" />
+      </type>
+    </element>
+    <element id="MedicationStatement.note.text">
+      <path value="MedicationStatement.note.text" />
+      <label value="Comment" />
+      <type>
+        <code value="string" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
       </type>
     </element>
   </differential>

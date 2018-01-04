@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="FHIR-STU3-OBSERVATION.body_weight.v0" />
   <meta>
-    <lastUpdated value="2017-12-15T08:44:29.547+01:00" />
+    <lastUpdated value="2018-01-04T11:06:58.151+01:00" />
   </meta>
   <url value="https://tools.cambiocds.com/FHIR/StructureDefinition/FHIR-STU3-OBSERVATION.body_weight.v0" />
   <name value="FHIR-STU3-OBSERVATION.body_weight.v0" />
@@ -15,10 +15,77 @@
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Observation" />
   <derivation value="constraint" />
   <differential>
+    <element id="Observation.status">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-display-hint">
+        <valueString value="default: final" />
+      </extension>
+      <path value="Observation.status" />
+      <label value="ObservationStatus" />
+      <type>
+        <code value="code" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/code" />
+      </type>
+      <fixedCode value="registered | preliminary | final | amended | corrected | cancelled | entered-in-error | unknown" />
+    </element>
+    <element id="Observation.category">
+      <path value="Observation.category" />
+      <label value="ObservationCategory" />
+      <type>
+        <code value="CodeableConcept" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/CodeableConcept" />
+      </type>
+      <fixedCodeableConcept>
+        <coding>
+          <system value="http://hl7.org/fhir/observation-category" />
+          <code value="vital-signs" />
+          <display value="vital-signs" />
+        </coding>
+      </fixedCodeableConcept>
+    </element>
+    <element id="category.text">
+      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
+        <valueBoolean value="true" />
+      </extension>
+      <path value="Observation.category.text" />
+      <type>
+        <code value="string" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
+      </type>
+    </element>
+    <element id="Observation.code">
+      <path value="Observation.code" />
+      <label value="ObservationCode" />
+      <type>
+        <code value="CodeableConcept" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/CodeableConcept" />
+      </type>
+      <fixedCodeableConcept>
+        <coding>
+          <system value="http://loinc.org" />
+          <code value="29463-7" />
+          <display value="Body weight" />
+        </coding>
+        <coding>
+          <system value="http://snomed.info/sct" />
+          <code value="27113001" />
+          <display value="Body weight" />
+        </coding>
+      </fixedCodeableConcept>
+    </element>
+    <element id="code.text">
+      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
+        <valueBoolean value="true" />
+      </extension>
+      <path value="Observation.code.text" />
+      <type>
+        <code value="string" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
+      </type>
+    </element>
     <element id="Observation.effective[x]:effectiveDateTime">
       <path value="Observation.effectiveDateTime" />
       <sliceName value="effectiveDateTime" />
-      <label value="DateTime" />
+      <label value="ObservationDateTime" />
       <type>
         <code value="dateTime" />
         <profile value="http://hl7.org/fhir/StructureDefinition/dateTime" />
@@ -32,6 +99,10 @@
         <code value="Quantity" />
         <profile value="http://hl7.org/fhir/StructureDefinition/Quantity" />
       </type>
+      <fixedQuantity>
+        <value value="99.99" />
+        <unit value="kg, lb" />
+      </fixedQuantity>
     </element>
     <element id="Observation.value[x]:valueQuantity.value">
       <path value="Observation.valueQuantity.value" />
