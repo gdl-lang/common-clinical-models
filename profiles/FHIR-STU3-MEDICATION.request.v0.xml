@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="FHIR-STU3-MEDICATION.request.v0" />
   <meta>
-    <lastUpdated value="2018-01-04T09:39:33.123+01:00" />
+    <lastUpdated value="2018-01-18T23:14:56.727+01:00" />
   </meta>
   <url value="https://tools.cambiocds.com/FHIR/StructureDefinition/FHIR-STU3-MEDICATION.request.v0" />
   <name value="FHIR-STU3-MEDICATION.request.v0" />
@@ -17,7 +17,6 @@
   <differential>
     <element id="MedicationRequest.status">
       <path value="MedicationRequest.status" />
-      <label value="MedicationRequestStatus" />
       <type>
         <code value="code" />
         <profile value="http://hl7.org/fhir/StructureDefinition/code" />
@@ -26,45 +25,17 @@
     </element>
     <element id="MedicationRequest.intent">
       <path value="MedicationRequest.intent" />
-      <label value="MedicationRequestIntent" />
       <type>
         <code value="code" />
         <profile value="http://hl7.org/fhir/StructureDefinition/code" />
       </type>
       <fixedCode value="proposal | plan | order | instance-order" />
     </element>
-    <element id="MedicationRequest.category">
-      <path value="MedicationRequest.category" />
-      <label value="MedicationRequestCategory" />
+    <element id="category.coding">
+      <path value="MedicationRequest.category.coding" />
       <type>
-        <code value="CodeableConcept" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/CodeableConcept" />
-      </type>
-      <fixedCodeableConcept>
-        <coding>
-          <system value="http://hl7.org/fhir/medication-request-category" />
-          <code value="outpatient" />
-          <display value="outpatient" />
-        </coding>
-        <coding>
-          <system value="http://hl7.org/fhir/medication-request-category" />
-          <code value="community" />
-          <display value="community" />
-        </coding>
-        <coding>
-          <code value="inpatient" />
-          <display value="inpatient" />
-        </coding>
-      </fixedCodeableConcept>
-    </element>
-    <element id="category.text">
-      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
-        <valueBoolean value="true" />
-      </extension>
-      <path value="MedicationRequest.category.text" />
-      <type>
-        <code value="string" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
       </type>
     </element>
     <element id="MedicationRequest.priority">
@@ -79,26 +50,19 @@
     <element id="MedicationRequest.medication[x]:medicationCodeableConcept">
       <path value="MedicationRequest.medicationCodeableConcept" />
       <sliceName value="medicationCodeableConcept" />
-      <label value="RequestedMedicationCode" />
       <type>
         <code value="CodeableConcept" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/CodeableConcept" />
       </type>
     </element>
-    <element id="MedicationRequest.medication[x]:medicationCodeableConcept.text">
-      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
-        <valueBoolean value="true" />
-      </extension>
-      <path value="MedicationRequest.medicationCodeableConcept.text" />
-      <label value="RequestedMedicationDescription" />
+    <element id="medicationCodeableConcept:medicationCodeableConcept.coding">
+      <path value="MedicationRequest.medicationCodeableConcept.coding" />
       <type>
-        <code value="string" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
       </type>
     </element>
     <element id="MedicationRequest.authoredOn">
       <path value="MedicationRequest.authoredOn" />
-      <label value="MedicationRequestAuthoredOnDateTime" />
       <type>
         <code value="dateTime" />
         <profile value="http://hl7.org/fhir/StructureDefinition/dateTime" />
@@ -106,11 +70,64 @@
     </element>
     <element id="MedicationRequest.note.text">
       <path value="MedicationRequest.note.text" />
-      <label value="Comment" />
       <type>
         <code value="string" />
         <profile value="http://hl7.org/fhir/StructureDefinition/string" />
       </type>
+    </element>
+    <element id="MedicationRequest.dosageInstruction.text">
+      <path value="MedicationRequest.dosageInstruction.text" />
+      <type>
+        <code value="string" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
+      </type>
+    </element>
+    <element id="MedicationRequest.dosageInstruction.patientInstruction">
+      <path value="MedicationRequest.dosageInstruction.patientInstruction" />
+      <type>
+        <code value="string" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
+      </type>
+    </element>
+    <element id="MedicationRequest.dosageInstruction.timing.code.coding">
+      <path value="MedicationRequest.dosageInstruction.timing.code.coding" />
+      <type>
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
+      </type>
+    </element>
+    <element id="MedicationRequest.dosageInstruction.asNeeded[x]:asNeededBoolean">
+      <path value="MedicationRequest.dosageInstruction.asNeededBoolean" />
+      <sliceName value="asNeededBoolean" />
+      <type>
+        <code value="boolean" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/boolean" />
+      </type>
+    </element>
+    <element id="MedicationRequest.dosageInstruction.site.coding">
+      <path value="MedicationRequest.dosageInstruction.site.coding" />
+      <type>
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
+      </type>
+    </element>
+    <element id="MedicationRequest.dosageInstruction.route.coding">
+      <path value="MedicationRequest.dosageInstruction.route.coding" />
+      <type>
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
+      </type>
+    </element>
+    <element id="MedicationRequest.dosageInstruction.dose[x]:doseQuantity">
+      <path value="MedicationRequest.dosageInstruction.doseQuantity" />
+      <sliceName value="doseQuantity" />
+      <type>
+        <code value="Quantity" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/SimpleQuantity" />
+      </type>
+      <fixedQuantity>
+        <unit value="mcg, mg, g" />
+      </fixedQuantity>
     </element>
   </differential>
 </StructureDefinition>

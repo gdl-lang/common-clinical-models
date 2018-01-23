@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="FHIR-STU3-OBSERVATION.blood_pressure.v0" />
   <meta>
-    <lastUpdated value="2018-01-04T10:11:37.828+01:00" />
+    <lastUpdated value="2018-01-18T23:41:33.103+01:00" />
   </meta>
   <url value="https://tools.cambiocds.com/FHIR/StructureDefinition/FHIR-STU3-OBSERVATION.blood_pressure.v0" />
   <name value="FHIR-STU3-OBSERVATION.blood_pressure.v0" />
@@ -20,79 +20,73 @@
         <valueString value="default: final" />
       </extension>
       <path value="Observation.status" />
-      <label value="ObservationStatus" />
       <type>
         <code value="code" />
         <profile value="http://hl7.org/fhir/StructureDefinition/code" />
       </type>
       <fixedCode value="registered | preliminary | final | amended | corrected | cancelled | entered-in-error | unknown" />
     </element>
-    <element id="Observation.category">
-      <path value="Observation.category" />
-      <label value="ObservationCategory" />
+    <element id="category.coding">
+      <path value="Observation.category.coding" />
       <type>
-        <code value="CodeableConcept" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/CodeableConcept" />
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
       </type>
-      <fixedCodeableConcept>
-        <coding>
-          <code value="vital-signs" />
-          <display value="vital-signs" />
-        </coding>
-      </fixedCodeableConcept>
+      <fixedCoding>
+        <system value="SNOMED-CT" />
+        <code value="118227000" />
+        <display value="Vital signs finding" />
+      </fixedCoding>
     </element>
-    <element id="category.text">
-      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
-        <valueBoolean value="true" />
-      </extension>
-      <path value="Observation.category.text" />
+    <element id="code.coding">
+      <path value="Observation.code.coding" />
       <type>
-        <code value="string" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
       </type>
-    </element>
-    <element id="Observation.code">
-      <path value="Observation.code" />
-      <label value="ObservationCode" />
-      <type>
-        <code value="CodeableConcept" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/CodeableConcept" />
-      </type>
-      <fixedCodeableConcept>
-        <coding>
-          <system value="http://loinc.org" />
-          <code value="55284-4" />
-          <display value="Blood pressure systolic &amp; diastolic" />
-        </coding>
-        <coding>
-          <system value="http://snomed.info/sct" />
-          <code value="75367002" />
-          <display value="Blood pressure" />
-        </coding>
-      </fixedCodeableConcept>
-    </element>
-    <element id="code.text">
-      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
-        <valueBoolean value="true" />
-      </extension>
-      <path value="Observation.code.text" />
-      <type>
-        <code value="string" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
-      </type>
+      <fixedCoding>
+        <system value="SNOMED-CT" />
+        <code value="75367002" />
+        <display value="Blood pressure" />
+      </fixedCoding>
     </element>
     <element id="Observation.effective[x]:effectiveDateTime">
       <path value="Observation.effectiveDateTime" />
       <sliceName value="effectiveDateTime" />
-      <label value="ObservationDateTime" />
       <type>
         <code value="dateTime" />
         <profile value="http://hl7.org/fhir/StructureDefinition/dateTime" />
       </type>
     </element>
+    <element id="Observation.value[x]:bloodPressure">
+      <path value="Observation.valueRatio" />
+      <sliceName value="valueRatio" />
+      <type>
+        <code value="Ratio" />
+      </type>
+    </element>
+    <element id="Observation.value[x]:bloodPressure.numerator">
+      <path value="Observation.valueRatio.numerator" />
+      <type>
+        <code value="Quantity" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Quantity" />
+      </type>
+      <fixedQuantity>
+        <unit value="mm[Hg]" />
+      </fixedQuantity>
+    </element>
+    <element id="Observation.value[x]:bloodPressure.denominator">
+      <path value="Observation.valueRatio.denominator" />
+      <type>
+        <code value="Quantity" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Quantity" />
+      </type>
+      <fixedQuantity>
+        <unit value="mm[Hg]" />
+      </fixedQuantity>
+    </element>
     <element id="Observation.comment">
       <path value="Observation.comment" />
-      <label value="Comment" />
       <type>
         <code value="string" />
         <profile value="http://hl7.org/fhir/StructureDefinition/string" />
@@ -111,25 +105,20 @@
     <element id="Observation.component:SystolicBloodPressure">
       <path value="Observation.component" />
       <sliceName value="SystolicBloodPressure" />
-      <label value="SystolicBloodPressure" />
     </element>
-    <element id="Observation.component:SystolicBloodPressure.code">
-      <path value="Observation.component.code" />
-      <label value="SystolicBloodPressure" />
+    <element id="code.coding">
+      <path value="Observation.component.code.coding" />
       <type>
-        <code value="CodeableConcept" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/CodeableConcept" />
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
       </type>
-      <fixedCodeableConcept>
-        <coding>
-          <system value="http://loinc.org" />
-          <code value="8480-6" />
-          <display value="Systolic blood pressure" />
-        </coding>
-        <text value="Systolic blood pressure" />
-      </fixedCodeableConcept>
+      <fixedCoding>
+        <system value="LOINC" />
+        <code value="8480-6" />
+        <display value="Systolic blood pressure" />
+      </fixedCoding>
     </element>
-    <element id="Observation.component:SystolicBloodPressure.value[x]:valueQuantity">
+    <element id="Observation.component:SystolicBloodPressure.value[x]:systolicBloodPressure">
       <path value="Observation.component.valueQuantity" />
       <sliceName value="valueQuantity" />
       <label value="SystolicBloodPressure" />
@@ -138,85 +127,35 @@
         <profile value="http://hl7.org/fhir/StructureDefinition/Quantity" />
       </type>
       <fixedQuantity>
-        <value value="99" />
         <unit value="mm[Hg]" />
       </fixedQuantity>
-    </element>
-    <element id="Observation.component:SystolicBloodPressure.value[x]:valueQuantity.value">
-      <path value="Observation.component.valueQuantity.value" />
-      <label value="SystolicBloodPressureValue" />
-      <type>
-        <code value="decimal" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/decimal" />
-      </type>
-      <fixedDecimal value="99" />
-    </element>
-    <element id="Observation.component:SystolicBloodPressure.value[x]:valueQuantity.unit">
-      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
-        <valueBoolean value="true" />
-      </extension>
-      <path value="Observation.component.valueQuantity.unit" />
-      <label value="SystolicBloodPressureUnit" />
-      <type>
-        <code value="string" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
-      </type>
-      <fixedString value="mm[Hg]" />
     </element>
     <element id="Observation.component:DiastolicBloodPressure">
       <path value="Observation.component" />
       <sliceName value="DiastolicBloodPressure" />
-      <label value="DiastolicBloodPressure" />
     </element>
-    <element id="Observation.component:DiastolicBloodPressure.code">
-      <path value="Observation.component.code" />
-      <label value="DiastolicBloodPressure" />
+    <element id="code.coding">
+      <path value="Observation.component.code.coding" />
       <type>
-        <code value="CodeableConcept" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/CodeableConcept" />
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
       </type>
-      <fixedCodeableConcept>
-        <coding>
-          <system value="http://loinc.org" />
-          <code value="8462-4" />
-          <display value="Diastolic blood pressure" />
-        </coding>
-        <text value="Diastolic blood pressure" />
-      </fixedCodeableConcept>
+      <fixedCoding>
+        <system value="LOINC" />
+        <code value="8462-4" />
+        <display value="Diastolic blood pressure" />
+      </fixedCoding>
     </element>
-    <element id="Observation.component:DiastolicBloodPressure.value[x]:valueQuantity">
+    <element id="Observation.component:DiastolicBloodPressure.value[x]:diastolicBloodPressure">
       <path value="Observation.component.valueQuantity" />
       <sliceName value="valueQuantity" />
-      <label value="DiastolicBloodPressure" />
       <type>
         <code value="Quantity" />
         <profile value="http://hl7.org/fhir/StructureDefinition/Quantity" />
       </type>
       <fixedQuantity>
-        <value value="99" />
         <unit value="mm[Hg]" />
       </fixedQuantity>
-    </element>
-    <element id="Observation.component:DiastolicBloodPressure.value[x]:valueQuantity.value">
-      <path value="Observation.component.valueQuantity.value" />
-      <label value="DiastolicBloodPressureValue" />
-      <type>
-        <code value="decimal" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/decimal" />
-      </type>
-      <fixedDecimal value="99" />
-    </element>
-    <element id="Observation.component:DiastolicBloodPressure.value[x]:valueQuantity.unit">
-      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
-        <valueBoolean value="true" />
-      </extension>
-      <path value="Observation.component.valueQuantity.unit" />
-      <label value="DiastolicBloodPressureUnit" />
-      <type>
-        <code value="string" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
-      </type>
-      <fixedString value="mm[Hg]" />
     </element>
   </differential>
 </StructureDefinition>
