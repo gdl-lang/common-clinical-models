@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="FHIR-STU3-OBSERVATION.glasgow_coma_scale.v0" />
   <meta>
-    <lastUpdated value="2017-12-15T12:32:54.573+01:00" />
+    <lastUpdated value="2018-01-25T10:38:36.369+01:00" />
   </meta>
   <url value="https://tools.cambiocds.com/FHIR/StructureDefinition/FHIR-STU3-OBSERVATION.glasgow_coma_scale.v0" />
   <name value="FHIR-STU3-OBSERVATION.glasgow_coma_scale.v0" />
@@ -15,30 +15,61 @@
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Observation" />
   <derivation value="constraint" />
   <differential>
+    <element id="Observation.status">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-display-hint">
+        <valueString value="default: final" />
+      </extension>
+      <path value="Observation.status" />
+      <type>
+        <code value="code" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/code" />
+      </type>
+      <fixedCode value="registered | preliminary | final | amended | corrected | cancelled | entered-in-error | unknown" />
+    </element>
+    <element id="Observation.category.coding">
+      <path value="Observation.category.coding" />
+      <type>
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
+      </type>
+      <fixedCoding>
+        <code value="118227000" />
+        <display value="Vital signs finding" />
+      </fixedCoding>
+    </element>
+    <element id="Observation.code.coding">
+      <path value="Observation.code.coding" />
+      <type>
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
+      </type>
+      <fixedCoding>
+        <system value="SNOMED-CT" />
+        <code value="386557006" />
+        <display value="Glasgow coma scale finding" />
+      </fixedCoding>
+    </element>
     <element id="Observation.effective[x]:effectiveDateTime">
       <path value="Observation.effectiveDateTime" />
       <sliceName value="effectiveDateTime" />
-      <label value="dateTime" />
       <type>
         <code value="dateTime" />
         <profile value="http://hl7.org/fhir/StructureDefinition/dateTime" />
       </type>
     </element>
-    <element id="Observation.value[x]:valueCount">
+    <element id="Observation.value[x]:GlasgowComaScaleScore">
       <path value="Observation.valueCount" />
       <sliceName value="valueCount" />
-      <label value="GlasgowComaScaleScore" />
       <type>
         <code value="Count" />
         <profile value="http://hl7.org/fhir/StructureDefinition/Count" />
       </type>
     </element>
-    <element id="valueCount:valueCount.value">
-      <path value="Observation.valueCount.value" />
-      <label value="GlasgowComaScaleScoreValue" />
+    <element id="Observation.comment">
+      <path value="Observation.comment" />
       <type>
-        <code value="decimal" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/decimal" />
+        <code value="string" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
       </type>
     </element>
     <element id="Observation.component">
@@ -46,7 +77,7 @@
       <slicing>
         <discriminator>
           <type value="value" />
-          <path value="code" />
+          <path value="code.coding.code" />
         </discriminator>
         <rules value="open" />
       </slicing>
@@ -54,140 +85,221 @@
     <element id="Observation.component:EyeOpening">
       <path value="Observation.component" />
       <sliceName value="EyeOpening" />
-      <label value="EyeOpening" />
     </element>
-    <element id="Observation.component:EyeOpening.code">
-      <path value="Observation.component.code" />
+    <element id="code.coding">
+      <path value="Observation.component.code.coding" />
       <type>
-        <code value="CodeableConcept" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/CodeableConcept" />
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
       </type>
-      <fixedCodeableConcept>
-        <coding>
-          <system value="http://loinc.org" />
-          <version value="2.61" />
-          <code value="9267-6" />
-          <display value="Glasgow coma score eye opening" />
-        </coding>
-        <text value="Glasgow coma score eye opening" />
-      </fixedCodeableConcept>
+      <fixedCoding>
+        <system value="LOINC" />
+        <code value="9267-6" />
+        <display value="Glasgow coma score eye opening" />
+      </fixedCoding>
     </element>
     <element id="Observation.component:EyeOpening.value[x]:valueCodeableConcept">
       <path value="Observation.component.valueCodeableConcept" />
       <sliceName value="valueCodeableConcept" />
       <type>
         <code value="CodeableConcept" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/CodeableConcept" />
       </type>
-      <fixedCodeableConcept>
-        <coding>
-          <display value="1 = None" />
-        </coding>
-        <coding>
-          <display value="2 = To pressure" />
-        </coding>
-        <coding>
-          <display value="3 = To sound" />
-        </coding>
-        <coding>
-          <display value="4 = Spontaneous" />
-        </coding>
-      </fixedCodeableConcept>
+    </element>
+    <element id="Observation.component:EyeOpening.value[x]:eyeOpening.coding">
+      <path value="Observation.component.valueCodeableConcept.coding" />
+      <type>
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
+      </type>
+    </element>
+    <element id="Observation.component:EyeOpening.value[x]:valueCodeableConcept.coding.extension">
+      <path value="Observation.component.valueCodeableConcept.coding.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Observation.component:EyeOpening.value[x]:valueCodeableConcept.coding.extension:eyeOpeningOrdinalValue">
+      <path value="Observation.component.valueCodeableConcept.coding.extension" />
+      <sliceName value="eyeOpeningOrdinalValue" />
+      <code>
+        <system value="LOINC" />
+        <code value="1" />
+        <display value="LA6553-7:No eye opening" />
+      </code>
+      <code>
+        <system value="LOINC" />
+        <code value="2" />
+        <display value="LA6554-5:Eye opening to pain" />
+      </code>
+      <code>
+        <system value="LOINC" />
+        <code value="3" />
+        <display value="LA6555-2:Eye opening to verbal command" />
+      </code>
+      <code>
+        <system value="LOINC" />
+        <code value="4" />
+        <display value="LA6556-0:Eyes open spontaneously    " />
+      </code>
+      <type>
+        <code value="Extension" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/iso21090-CO-value" />
+      </type>
     </element>
     <element id="Observation.component:BestVerbalResponse">
       <path value="Observation.component" />
       <sliceName value="BestVerbalResponse" />
-      <label value="BestVerbalResponse" />
     </element>
-    <element id="Observation.component:BestVerbalResponse.code">
-      <path value="Observation.component.code" />
+    <element id="code.coding">
+      <path value="Observation.component.code.coding" />
       <type>
-        <code value="CodeableConcept" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/CodeableConcept" />
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
       </type>
-      <fixedCodeableConcept>
-        <coding>
-          <system value="http://loinc.org" />
-          <version value="2.61" />
-          <code value="9270-0" />
-          <display value="Glasgow coma score verbal" />
-        </coding>
-        <text value="Glasgow coma score verbal" />
-      </fixedCodeableConcept>
+      <fixedCoding>
+        <system value="LOINC" />
+        <code value="9270-0" />
+        <display value="Glasgow coma score verbal" />
+      </fixedCoding>
     </element>
     <element id="Observation.component:BestVerbalResponse.value[x]:valueCodeableConcept">
       <path value="Observation.component.valueCodeableConcept" />
       <sliceName value="valueCodeableConcept" />
       <type>
         <code value="CodeableConcept" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/CodeableConcept" />
       </type>
-      <fixedCodeableConcept>
-        <coding>
-          <display value="1 = None" />
-        </coding>
-        <coding>
-          <display value="2 = Sounds" />
-        </coding>
-        <coding>
-          <display value="3 = Words" />
-        </coding>
-        <coding>
-          <display value="4 = Confused" />
-        </coding>
-        <coding>
-          <display value="5 = Orientated" />
-        </coding>
-      </fixedCodeableConcept>
+    </element>
+    <element id="Observation.component:BestVerbalResponse.value[x]:bestVerbalResponse.coding">
+      <path value="Observation.component.valueCodeableConcept.coding" />
+      <type>
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
+      </type>
+    </element>
+    <element id="Observation.component:BestVerbalResponse.value[x]:valueCodeableConcept.coding.extension">
+      <path value="Observation.component.valueCodeableConcept.coding.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Observation.component:BestVerbalResponse.value[x]:valueCodeableConcept.coding.extension:bestVerbalResponseOrdinalValue">
+      <path value="Observation.component.valueCodeableConcept.coding.extension" />
+      <sliceName value="bestVerbalResponseOrdinalValue" />
+      <code>
+        <system value="LOINC" />
+        <code value="1" />
+        <display value="LA6557-8:No verbal response (&gt;2 yrs); no vocal response (&lt;=2 yrs)" />
+      </code>
+      <code>
+        <system value="LOINC" />
+        <code value="2" />
+        <display value="LA6558-6:Incomprehensible sounds" />
+      </code>
+      <code>
+        <system value="LOINC" />
+        <code value="3" />
+        <display value="LA6559-4:Inappropriate words" />
+      </code>
+      <code>
+        <system value="LOINC" />
+        <code value="4" />
+        <display value="LA6560-2:Confused" />
+      </code>
+      <code>
+        <system value="LOINC" />
+        <code value="5" />
+        <display value="LA6561-0:Oriented" />
+      </code>
+      <type>
+        <code value="Extension" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/iso21090-CO-value" />
+      </type>
     </element>
     <element id="Observation.component:BestMotorResponse">
       <path value="Observation.component" />
       <sliceName value="BestMotorResponse" />
-      <label value="BestMotorResponse" />
     </element>
-    <element id="Observation.component:BestMotorResponse.code">
-      <path value="Observation.component.code" />
+    <element id="code.coding">
+      <path value="Observation.component.code.coding" />
       <type>
-        <code value="CodeableConcept" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/CodeableConcept" />
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
       </type>
-      <fixedCodeableConcept>
-        <coding>
-          <system value="http://loinc.org" />
-          <version value="2.61" />
-          <code value="9268-4" />
-          <display value="Glasgow coma score motor" />
-        </coding>
-        <text value="Glasgow coma score motor" />
-      </fixedCodeableConcept>
+      <fixedCoding>
+        <system value="LOINC" />
+        <code value="9268-4" />
+        <display value="Glasgow coma scale motor" />
+      </fixedCoding>
     </element>
     <element id="Observation.component:BestMotorResponse.value[x]:valueCodeableConcept">
       <path value="Observation.component.valueCodeableConcept" />
       <sliceName value="valueCodeableConcept" />
       <type>
         <code value="CodeableConcept" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/CodeableConcept" />
       </type>
-      <fixedCodeableConcept>
-        <coding>
-          <display value="1 = None" />
-        </coding>
-        <coding>
-          <display value="2 = Extension" />
-        </coding>
-        <coding>
-          <display value="3 = Abnormal flexion" />
-        </coding>
-        <coding>
-          <display value="4 = Normal flexion" />
-        </coding>
-        <coding>
-          <display value="5 = Localising" />
-        </coding>
-        <coding>
-          <display value="6 = Obeys commands" />
-        </coding>
-      </fixedCodeableConcept>
+    </element>
+    <element id="Observation.component:BestMotorResponse.value[x]:bestMotorResponseOrdinalValue.coding">
+      <path value="Observation.component.valueCodeableConcept.coding" />
+      <type>
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
+      </type>
+    </element>
+    <element id="Observation.component:BestMotorResponse.value[x]:valueCodeableConcept.coding.extension">
+      <path value="Observation.component.valueCodeableConcept.coding.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Observation.component:BestMotorResponse.value[x]:valueCodeableConcept.coding.extension:bestMotorResponseOrdinalValue">
+      <path value="Observation.component.valueCodeableConcept.coding.extension" />
+      <sliceName value="bestMotorResponseOrdinalValue" />
+      <code>
+        <system value="LOINC" />
+        <code value="1" />
+        <display value="LA6562-8:No motor response  " />
+      </code>
+      <code>
+        <system value="LOINC" />
+        <code value="2" />
+        <display value="LA6563-6:Extension to pain" />
+      </code>
+      <code>
+        <system value="LOINC" />
+        <code value="3" />
+        <display value="LA6564-4:Flexion to pain" />
+      </code>
+      <code>
+        <system value="LOINC" />
+        <code value="4" />
+        <display value="LA6565-1:Withdrawal from pain" />
+      </code>
+      <code>
+        <system value="LOINC" />
+        <code value="5" />
+        <display value="LA6566-9:Localizing pain" />
+      </code>
+      <code>
+        <system value="LOINC" />
+        <code value="6" />
+        <display value="LA6567-7:Obeys commands" />
+      </code>
+      <type>
+        <code value="Extension" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/iso21090-CO-value" />
+      </type>
     </element>
   </differential>
 </StructureDefinition>
