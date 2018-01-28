@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="FHIR-STU3-OBSERVATION.blood_pressure.v0" />
   <meta>
-    <lastUpdated value="2018-01-18T23:41:33.103+01:00" />
+    <lastUpdated value="2018-01-26T23:02:01.346+01:00" />
   </meta>
   <url value="https://tools.cambiocds.com/FHIR/StructureDefinition/FHIR-STU3-OBSERVATION.blood_pressure.v0" />
   <name value="FHIR-STU3-OBSERVATION.blood_pressure.v0" />
@@ -33,9 +33,9 @@
         <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
       </type>
       <fixedCoding>
-        <system value="SNOMED-CT" />
-        <code value="118227000" />
-        <display value="Vital signs finding" />
+        <system value="LOINC" />
+        <code value="8716-3" />
+        <display value="Vital signs" />
       </fixedCoding>
     </element>
     <element id="code.coding">
@@ -58,32 +58,54 @@
         <profile value="http://hl7.org/fhir/StructureDefinition/dateTime" />
       </type>
     </element>
-    <element id="Observation.value[x]:bloodPressure">
+    <element id="Observation.value[x]:bloodPressureValue">
       <path value="Observation.valueRatio" />
       <sliceName value="valueRatio" />
       <type>
         <code value="Ratio" />
       </type>
     </element>
-    <element id="Observation.value[x]:bloodPressure.numerator">
+    <element id="Observation.value[x]:bloodPressureValue.numerator">
       <path value="Observation.valueRatio.numerator" />
       <type>
         <code value="Quantity" />
         <profile value="http://hl7.org/fhir/StructureDefinition/Quantity" />
       </type>
-      <fixedQuantity>
-        <unit value="mm[Hg]" />
-      </fixedQuantity>
     </element>
-    <element id="Observation.value[x]:bloodPressure.denominator">
+    <element id="numerator.unit">
+      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
+        <valueBoolean value="true" />
+      </extension>
+      <path value="Observation.valueRatio.numerator.unit" />
+      <code>
+        <code value="0" />
+      </code>
+      <type>
+        <code value="string" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
+      </type>
+      <fixedString value="mm[Hg]" />
+    </element>
+    <element id="Observation.value[x]:bloodPressureValue.denominator">
       <path value="Observation.valueRatio.denominator" />
       <type>
         <code value="Quantity" />
         <profile value="http://hl7.org/fhir/StructureDefinition/Quantity" />
       </type>
-      <fixedQuantity>
-        <unit value="mm[Hg]" />
-      </fixedQuantity>
+    </element>
+    <element id="Observation.value[x]:bloodPressureValue.denominator.unit">
+      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
+        <valueBoolean value="true" />
+      </extension>
+      <path value="Observation.valueRatio.denominator.unit" />
+      <code>
+        <code value="0" />
+      </code>
+      <type>
+        <code value="string" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
+      </type>
+      <fixedString value="mm[Hg]" />
     </element>
     <element id="Observation.comment">
       <path value="Observation.comment" />
@@ -97,7 +119,7 @@
       <slicing>
         <discriminator>
           <type value="value" />
-          <path value="code" />
+          <path value="code.coding.code" />
         </discriminator>
         <rules value="open" />
       </slicing>
@@ -121,14 +143,24 @@
     <element id="Observation.component:SystolicBloodPressure.value[x]:systolicBloodPressure">
       <path value="Observation.component.valueQuantity" />
       <sliceName value="valueQuantity" />
-      <label value="SystolicBloodPressure" />
       <type>
         <code value="Quantity" />
         <profile value="http://hl7.org/fhir/StructureDefinition/Quantity" />
       </type>
-      <fixedQuantity>
-        <unit value="mm[Hg]" />
-      </fixedQuantity>
+    </element>
+    <element id="Observation.component:SystolicBloodPressure.value[x]:systolicBloodPressure.unit">
+      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
+        <valueBoolean value="true" />
+      </extension>
+      <path value="Observation.component.valueQuantity.unit" />
+      <code>
+        <code value="0" />
+      </code>
+      <type>
+        <code value="string" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
+      </type>
+      <fixedString value="mm[Hg]" />
     </element>
     <element id="Observation.component:DiastolicBloodPressure">
       <path value="Observation.component" />
@@ -153,9 +185,20 @@
         <code value="Quantity" />
         <profile value="http://hl7.org/fhir/StructureDefinition/Quantity" />
       </type>
-      <fixedQuantity>
-        <unit value="mm[Hg]" />
-      </fixedQuantity>
+    </element>
+    <element id="Observation.component:DiastolicBloodPressure.value[x]:diastolicBloodPressure.unit">
+      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
+        <valueBoolean value="true" />
+      </extension>
+      <path value="Observation.component.valueQuantity.unit" />
+      <code>
+        <code value="0" />
+      </code>
+      <type>
+        <code value="string" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
+      </type>
+      <fixedString value="mm[Hg]" />
     </element>
   </differential>
 </StructureDefinition>
