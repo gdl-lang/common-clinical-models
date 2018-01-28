@@ -58,7 +58,7 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 
-### [CDS Summer App Challenge](https://github.com/gdl-lang/common-clinical-models#cds-summer-app-challenge)
+[CDS Summer App Challenge](https://github.com/gdl-lang/common-clinical-models#cds-summer-app-challenge)
 
 ----------
 
@@ -455,9 +455,9 @@ _Select a medical specialty below to view the available apps._
 ### CDS Summer App Challenge
 
 ----------
-* [Combined Critical Illness Recognition in All Ages] - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Peds_Sirs2.v1.dsv?token=506564735f53697273322e7631:1517702400000:584320fb9a34f5e5542651d43202123f&language=en)))
-* [HIV and Malaria Co-Infection Medication] - ([_ENG_]https://common-clinical-models.cambiocds.com/km/views/execution/HIV_Malaria.v1.dsv?token=4849565f4d616c617269612e7631:1517702400000:a3d0d2fcad66514bb9a0c8327a9ecf59&language=en)))
-* [Estimated Glomerular Filtration Rate LM-Rev] - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/eGFR_LM_Rev.v1.dsv?token=654746525f4c4d5f5265762e7631:1517702400000:44281deac8da59a090142a9a289066fd&language=en)))
+* [Combined Critical Illness Recognition in All Ages](https://common-clinical-models.cambiocds.com/km/views/execution/Peds_Sirs2.v1.dsv?token=506564735f53697273322e7631:1517702400000:584320fb9a34f5e5542651d43202123f&language=en)
+* [HIV and Malaria Co-Infection Medication](https://common-clinical-models.cambiocds.com/km/views/execution/HIV_Malaria.v1.dsv?token=4849565f4d616c617269612e7631:1517702400000:a3d0d2fcad66514bb9a0c8327a9ecf59&language=en)
+* [Estimated Glomerular Filtration Rate LM-Rev](https://common-clinical-models.cambiocds.com/km/views/execution/eGFR_LM_Rev.v1.dsv?token=654746525f4c4d5f5265762e7631:1517702400000:44281deac8da59a090142a9a289066fd&language=en)
 ----------
 ### Disclaimer
 
