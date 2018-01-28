@@ -58,7 +58,7 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 
-[CDS Summer App Challenge](https://github.com/gdl-lang/common-clinical-models#cds-summer-app-challenge)
+[CDS Summer App Challenge 2017](https://github.com/gdl-lang/common-clinical-models#cds-summer-app-challenge)
 
 ----------
 
@@ -452,7 +452,7 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 
-### CDS Summer App Challenge
+### CDS Summer App Challenge 2017
 
 ----------
 * [Combined Critical Illness Recognition in All Ages](https://common-clinical-models.cambiocds.com/km/views/execution/Peds_Sirs2.v1.dsv?token=506564735f53697273322e7631:1517702400000:584320fb9a34f5e5542651d43202123f&language=en)
