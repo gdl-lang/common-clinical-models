@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="FHIR-STU3-OBSERVATION.alcohol_use.v0" />
+  <meta>
+    <lastUpdated value="2018-02-02T14:08:29.237+01:00" />
+  </meta>
+  <url value="https://tools.cambiocds.com/FHIR/StructureDefinition/FHIR-STU3-OBSERVATION.alcohol_use.v0" />
+  <name value="FHIR-STU3-OBSERVATION.alcohol_use.v0" />
+  <status value="draft" />
+  <date value="2017-12-19T12:38:12.39+01:00" />
+  <fhirVersion value="3.0.1" />
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="Observation" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Observation" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Observation.status">
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-display-hint">
+        <valueString value="default: final" />
+      </extension>
+      <path value="Observation.status" />
+      <type>
+        <code value="code" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/code" />
+      </type>
+      <fixedCode value="registered | preliminary | final | amended | corrected | cancelled | entered-in-error | unknown" />
+    </element>
+    <element id="category.coding">
+      <path value="Observation.category.coding" />
+      <type>
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
+      </type>
+      <fixedCoding>
+        <system value="SNOMED-CT" />
+        <code value="160476009" />
+        <display value="Social history" />
+      </fixedCoding>
+    </element>
+    <element id="code.coding">
+      <path value="Observation.code.coding" />
+      <type>
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
+      </type>
+      <fixedCoding>
+        <system value="LOINC" />
+        <code value="11331-6" />
+        <display value="Alcohol use" />
+      </fixedCoding>
+    </element>
+    <element id="Observation.effective[x]:effectiveDateTime">
+      <path value="Observation.effectiveDateTime" />
+      <sliceName value="effectiveDateTime" />
+      <type>
+        <code value="dateTime" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/dateTime" />
+      </type>
+    </element>
+    <element id="Observation.value[x]:alcoholUse">
+      <path value="Observation.valueBoolean" />
+      <sliceName value="valueBoolean" />
+      <type>
+        <code value="boolean" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/boolean" />
+      </type>
+    </element>
+    <element id="Observation.comment">
+      <path value="Observation.comment" />
+      <label value="Comment" />
+      <type>
+        <code value="string" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
+      </type>
+    </element>
+    <element id="Observation.component">
+      <path value="Observation.component" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="code.coding.code" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Observation.component:AlcoholUseFrequency">
+      <path value="Observation.component" />
+      <sliceName value="AlcoholUseFrequency" />
+    </element>
+    <element id="Observation.component:AlcoholUseFrequency.code.coding">
+      <path value="Observation.component.code.coding" />
+      <type>
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
+      </type>
+      <fixedCoding>
+        <system value="SNOMED-CT" />
+        <code value="228273003" />
+        <display value="Alcohol drinking behavior" />
+      </fixedCoding>
+    </element>
+    <element id="Observation.component:AlcoholUseFrequency.value[x]:drinkingQuantity">
+      <path value="Observation.component.valueQuantity" />
+      <sliceName value="valueQuantity" />
+      <type>
+        <code value="Quantity" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Quantity" />
+      </type>
+    </element>
+    <element id="Observation.component:AlcoholUseFrequency.value[x]:drinkingQuantity.unit">
+      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
+        <valueBoolean value="true" />
+      </extension>
+      <path value="Observation.component.valueQuantity.unit" />
+      <type>
+        <code value="string" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
+      </type>
+      <fixedString value="/d" />
+    </element>
+  </differential>
+</StructureDefinition>
