@@ -1,13 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="FHIR-STU3-OBSERVATION.hba1c_targets.v0" />
-  <meta>
-    <lastUpdated value="2018-02-18T20:46:34.742+01:00" />
-  </meta>
-  <url value="https://tools.cambiocds.com/FHIR/StructureDefinition/FHIR-STU3-OBSERVATION.hba1c_targets.v0" />
-  <name value="FHIR-STU3-OBSERVATION.hba1c_targets.v0" />
+  <id value="FHIR-STU3-Observation.hba1c_targets.v0" />
+  <url value="https://tools.cambiocds.com/FHIR/StructureDefinition/FHIR-STU3-Observation.hba1c_targets.v0" />
+  <name value="org.hl7.fhir.dstu3.model.Observation" />
   <status value="draft" />
-  <date value="2018-02-18T19:48:38.62+01:00" />
+  <date value="2018-05-05T17:25:38.685+02:00" />
   <fhirVersion value="3.0.1" />
   <kind value="resource" />
   <abstract value="false" />
@@ -26,29 +23,33 @@
       </type>
       <fixedCode value="registered | preliminary | final | amended | corrected | cancelled | entered-in-error | unknown" />
     </element>
-    <element id="category.coding">
-      <path value="Observation.category.coding" />
-      <type>
-        <code value="Coding" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
-      </type>
-      <fixedCoding>
-        <system value="LOINC" />
-        <code value="55454-3" />
-        <display value="Hemoglobin A1c in Blood" />
-      </fixedCoding>
-    </element>
     <element id="Observation.code.coding">
       <path value="Observation.code.coding" />
       <type>
         <code value="Coding" />
         <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
       </type>
-      <fixedCoding>
+    </element>
+    <element id="Observation.code.coding.code">
+      <path value="Observation.code.coding.code" />
+      <code>
         <system value="LOINC" />
-        <code value="86910-7" />
-        <display value="HbA1c Target" />
-      </fixedCoding>
+        <code value="55454-3" />
+      </code>
+      <type>
+        <code value="code" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/code" />
+      </type>
+    </element>
+    <element id="Observation.code.text">
+      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
+        <valueBoolean value="true" />
+      </extension>
+      <path value="Observation.code.text" />
+      <type>
+        <code value="string" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
+      </type>
     </element>
     <element id="Observation.effective[x]:effectiveDateTime">
       <path value="Observation.effectiveDateTime" />
@@ -65,6 +66,23 @@
         <profile value="http://hl7.org/fhir/StructureDefinition/string" />
       </type>
     </element>
+    <element id="Observation.method.coding">
+      <path value="Observation.method.coding" />
+      <type>
+        <code value="Coding" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
+      </type>
+    </element>
+    <element id="Observation.method.text">
+      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
+        <valueBoolean value="true" />
+      </extension>
+      <path value="Observation.method.text" />
+      <type>
+        <code value="string" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/string" />
+      </type>
+    </element>
     <element id="Observation.component">
       <path value="Observation.component" />
       <slicing>
@@ -75,11 +93,11 @@
         <rules value="open" />
       </slicing>
     </element>
-    <element id="Observation.component:HbA1c_Targets_C1">
+    <element id="Observation.component:frailOrReducedLifeExpectancy">
       <path value="Observation.component" />
-      <sliceName value="HbA1c_Targets_C1" />
+      <sliceName value="frailOrReducedLifeExpectancy" />
     </element>
-    <element id="Observation.component:HbA1c_Targets_C1.code.coding">
+    <element id="Observation.component:frailOrReducedLifeExpectancy.code.coding">
       <path value="Observation.component.code.coding" />
       <type>
         <code value="Coding" />
@@ -91,20 +109,20 @@
         <display value="If the patient is frail or has reduced life expectancy." />
       </fixedCoding>
     </element>
-    <element id="Observation.component:HbA1c_Targets_C1.value[x]:valueCode">
+    <element id="Observation.component:frailOrReducedLifeExpectancy.value[x]:valueCode">
       <path value="Observation.component.valueCode" />
       <sliceName value="valueCode" />
       <type>
         <code value="code" />
         <profile value="http://hl7.org/fhir/StructureDefinition/code" />
       </type>
-      <fixedCode value="No | Yes" />
+      <fixedCode value="False | True" />
     </element>
-    <element id="Observation.component:HbA1C_Targets_C2">
+    <element id="Observation.component:shortSurvivalRateOrTerminalCare">
       <path value="Observation.component" />
-      <sliceName value="HbA1C_Targets_C2" />
+      <sliceName value="shortSurvivalRateOrTerminalCare" />
     </element>
-    <element id="Observation.component:HbA1C_Targets_C2.code.coding">
+    <element id="Observation.component:shortSurvivalRateOrTerminalCare.code.coding">
       <path value="Observation.component.code.coding" />
       <type>
         <code value="Coding" />
@@ -113,42 +131,17 @@
       <fixedCoding>
         <system value="LOINC" />
         <code value="000000-2" />
-        <display value="Treatment risk of hypoglycemia OR eGFR&lt;45 OR the patient has chronic renal failure diagnosis (CKD Stage 4, CKD Stage 5)." />
+        <display value="If the patient has short expected survival rate or is on terminal care." />
       </fixedCoding>
     </element>
-    <element id="Observation.component:HbA1C_Targets_C2.value[x]:valueCode">
+    <element id="Observation.component:shortSurvivalRateOrTerminalCare.value[x]:valueCode">
       <path value="Observation.component.valueCode" />
       <sliceName value="valueCode" />
       <type>
         <code value="code" />
         <profile value="http://hl7.org/fhir/StructureDefinition/code" />
       </type>
-      <fixedCode value="No | Yes" />
-    </element>
-    <element id="Observation.component:HbA1C_Targets_C3">
-      <path value="Observation.component" />
-      <sliceName value="HbA1C_Targets_C3" />
-    </element>
-    <element id="Observation.component:HbA1C_Targets_C3.code.coding">
-      <path value="Observation.component.code.coding" />
-      <type>
-        <code value="Coding" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/Coding" />
-      </type>
-      <fixedCoding>
-        <system value="LOINC" />
-        <code value="000000-3" />
-        <display value="If the patient has short expected survival rate or on terminal care." />
-      </fixedCoding>
-    </element>
-    <element id="Observation.component:HbA1C_Targets_C3.value[x]:valueCode">
-      <path value="Observation.component.valueCode" />
-      <sliceName value="valueCode" />
-      <type>
-        <code value="code" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/code" />
-      </type>
-      <fixedCode value="No | Yes" />
+      <fixedCode value="False | True" />
     </element>
   </differential>
 </StructureDefinition>
