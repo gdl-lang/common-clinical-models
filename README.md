@@ -110,7 +110,7 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 
-### Clinical Chemistrys
+### Clinical Chemistry
 
 ----------
 * [Anion Gap](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#anion-gap) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/anion_gap.v1.dsv?token=616e696f6e5f6761702e7631:1527120000000:422cba97a82dceaf17b0dec594caa5b7&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/anion_gap.v1.dsv?token=616e696f6e5f6761702e7631:1527120000000:422cba97a82dceaf17b0dec594caa5b7&language=sv))
@@ -147,7 +147,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Glasgow-Imrie Criteria](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#glasgow-imrie-criteria) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Glasgow_imrie.v1.dsv?token=476c6173676f775f696d7269652e7631:1524614400000:90516741bd0a8f9e2e5a4f9968d96aaf&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Glasgow_imrie.v1.dsv?token=476c6173676f775f696d7269652e7631:1524614400000:90516741bd0a8f9e2e5a4f9968d96aaf&language=sv))
 
-* [HEART Score]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#heart-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/HEART_Score.v1.dsv?token=48454152545f53636f72652e7631:1524614400000:bc65690517cf3f83906f00201002ba03&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/HEART_Score.v1.dsv?token=48454152545f53636f72652e7631:1524614400000:bc65690517cf3f83906f00201002ba03&language=sv))
+* [HEART Score]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#heart-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/HEART_Score.v1.dsv?token=48454152545f53636f72652e7631:1527120000000:52bb6a00b1d193f36fad5ed925442e67&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/HEART_Score.v1.dsv?token=48454152545f53636f72652e7631:1527120000000:52bb6a00b1d193f36fad5ed925442e67&language=sv))
 
 * [Pittsburgh Knee Rules]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pittsburgh-knee-rules) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Pittsburgh_knee_rules.v1.dsv?token=506974747362757267685f6b6e65655f72756c65732e7631:1524614400000:35ee3698a56055929bd762528e58419c&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Pittsburgh_knee_rules.v1.dsv?token=506974747362757267685f6b6e65655f72756c65732e7631:1524614400000:35ee3698a56055929bd762528e58419c&language=sv))
 
