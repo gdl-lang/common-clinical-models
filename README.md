@@ -1,4 +1,4 @@
-<p align="center">
+﻿<p align="center">
   <img src="http://www.cambio.se/wp-content/themes/cambio/images/logotype.png"> 
 </p>
 
@@ -74,7 +74,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Corrected QT Interval (QTc) Calculator](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#corrected-qt-interval-qtc-calculator) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/QTc_calculation.v1.dsv?token=5154635f63616c63756c6174696f6e2e7631:1546214400000:2034f3f203aa213613b8080798c19084&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/QTc_calculation.v1.dsv?token=5154635f63616c63756c6174696f6e2e7631:1546214400000:2034f3f203aa213613b8080798c19084&language=sv))
 
-* [CRUSADE Score]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#crusade-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Crusade_score.v1.dsv?token=437275736164655f73636f72652e7631:1524614400000:5831bea008ce9c5bd1858dd9b175309b&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Crusade_score.v1.dsv?token=437275736164655f73636f72652e7631:1524614400000:5831bea008ce9c5bd1858dd9b175309b&language=sv))
+* [CRUSADE Score]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#crusade-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Crusade_score.v1.dsv?token=437275736164655f73636f72652e7631:1527120000000:41d9c06decd422d3441ddd6facbbbce2&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Crusade_score.v1.dsv?token=437275736164655f73636f72652e7631:1527120000000:41d9c06decd422d3441ddd6facbbbce2&language=sv))
 
 * [DASH Prediction Score for Recurrent VTE](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#dash-prediction-score-for-recurrent-vte) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/DASH_VTE.v1.dsv?token=444153485f5654452e7631:1546300799000:996a78952adc51ebdb054ebeba18be49&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/DASH_VTE.v1.dsv?token=444153485f5654452e7631:1546300799000:996a78952adc51ebdb054ebeba18be49&language=sv))
 
