@@ -1,0 +1,94 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.replacement_doses_of_vitamin_d.v0
+
+concept
+	[at0000]	-- Replacement doses of vitamin D
+language
+	original_language = <[ISO_639-1::hu]>
+description
+	original_author = <
+		["name"] = <"Aulia Zahrina Qashri">
+		["email"] = <"auliazahrina@yahoo.co.id">
+		["organisation"] = <"Karolinska Institutet">
+		["date"] = <"2018-09-28">
+	>
+	details = <
+		["hu"] = <
+			language = <[ISO_639-1::hu]>
+			purpose = <"To predict the required doses of daily vitamin D replacement for adult patients or elderly with vitamin D deficiency or insufficiency. ">
+			use = <"Use the recommended dose for adult patients or elderly in a 3 months period. ">
+			keywords = <"insufficiency ", "deficiency", "25-hydroxyvitamin D", "vitamin D", "replacement doses">
+			misuse = <"Not to be used for children under 18 years old. 
+
+Not to replace physician's recommendation if higher doses is needed for therapy. 
+
+Not to be used by patient without physician recommendation. 
+">
+			copyright = <"Aulia Zahrina Qashri">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Singh G, Bonham AJ. A predictive equation to guide vitamin D replacement dose in patients. J Am Board Fam Med. 2014 Jul-Aug;27(4):495-509. doi: 10.3122/jabfm.2014.04.130306
+">
+		["MD5-CAM-1.0.1"] = <"6F7EB49197D90CD9DD20DEC572F6DB6B">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Replacement doses of vitamin D
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Replacement Doses of Vitamin D
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::385]>
+												list = <
+													["1"] = <
+														units = <"IU">
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["hu"] = <
+			items = <
+				["at0000"] = <
+					text = <"Replacement doses of vitamin D">
+					description = <"Prediction of recommended daily replacement doses of vitamin D for adult patients and elderly. ">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Replacement Doses of Vitamin D">
+					description = <"*">
+				>
+			>
+		>
+	>
