@@ -467,8 +467,8 @@ _Select a medical specialty below to view the available apps._
 ### CDS Summer App Challenge 2018
 
 ----------
-* [Opioid Conversion to Morphine Milligram Equivalent](https://common-clinical-models.cambiocds.com/km/views/execution/opioid_conversion.v1.dsv?token=6f70696f69645f636f6e76657273696f6e2e7631:1545868800000:34d487de4babeb61ed010deb1f84de70&language=en)
-* [Replacement Doses of Vitamin D](https://common-clinical-models.cambiocds.com/km/views/execution/replacement_doses_vitamin_D.v1.dsv?token=7265706c6163656d656e745f646f7365735f766974616d696e5f442e7631:1545868800000:e1e3e04a83d6c99faff8f8606bff10eb&language=en)
+* [Opioid Conversion to Morphine Milligram Equivalent](https://common-clinical-models.cambiocds.com/km/views/execution/opioid_conversion.v1.dsv?token=6f70696f69645f636f6e76657273696f6e2e7631:1546473600000:cea65c2db8b98db5867d371592e71585&language=en)
+* [Replacement Doses of Vitamin D](https://common-clinical-models.cambiocds.com/km/views/execution/replacement_doses_vitamin_D.v1.dsv?token=7265706c6163656d656e745f646f7365735f766974616d696e5f442e7631:1546473600000:2a97f930dd0d758baa2d24acdbee7989&language=en)
 ----------
 ### Disclaimer
 
