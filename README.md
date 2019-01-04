@@ -460,15 +460,15 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 * [Combined Critical Illness Recognition in All Ages](https://common-clinical-models.cambiocds.com/km/views/execution/Peds_Sirs2.v1.dsv?token=506564735f53697273322e7631:1527120000000:3fb91dfe5fb741efc84f4c1689b494f7&language=en)
-* [HIV and Malaria Co-Infection Medication](https://common-clinical-models.cambiocds.com/km/views/execution/HIV_Malaria.v1.dsv?token=4849565f4d616c617269612e7631:1545350400000:1095b5eb8e7416c06fd0097e65522ee7&language=en)
+* [HIV and Malaria Co-Infection Medication](https://common-clinical-models.cambiocds.com/km/views/execution/HIV_Malaria.v1.dsv?token=4849565f4d616c617269612e7631:1547164800000:d206894cd9cecd10abbc661ec1068390&language=en)
 * [Estimated Glomerular Filtration Rate LM-Rev](https://common-clinical-models.cambiocds.com/km/views/execution/eGFR_LM_Rev.v1.dsv?token=654746525f4c4d5f5265762e7631:1527120000000:b437f6eb92054561a4f3df3594c6b219&language=en)
 ----------
 
 ### CDS Summer App Challenge 2018
 
 ----------
-* [Opioid Conversion to Morphine Milligram Equivalent](https://common-clinical-models.cambiocds.com/km/views/execution/opioid_conversion.v1.dsv?token=6f70696f69645f636f6e76657273696f6e2e7631:1546473600000:cea65c2db8b98db5867d371592e71585&language=en)
-* [Replacement Doses of Vitamin D](https://common-clinical-models.cambiocds.com/km/views/execution/replacement_doses_vitamin_D.v1.dsv?token=7265706c6163656d656e745f646f7365735f766974616d696e5f442e7631:1546473600000:2a97f930dd0d758baa2d24acdbee7989&language=en)
+* [Opioid Conversion to Morphine Milligram Equivalent](https://common-clinical-models.cambiocds.com/km/views/execution/opioid_conversion.v1.dsv?token=6f70696f69645f636f6e76657273696f6e2e7631:1547164800000:3232b5d6f7b6a362a54a5b8a92ddc395&language=en)
+* [Replacement Doses of Vitamin D](https://common-clinical-models.cambiocds.com/km/views/execution/replacement_doses_vitamin_D.v1.dsv?token=7265706c6163656d656e745f646f7365735f766974616d696e5f442e7631:1547164800000:f0c6fb4ff82fffbee1341be9b5b8e8f6&language=en)
 ----------
 ### Disclaimer
 
