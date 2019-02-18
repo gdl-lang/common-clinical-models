@@ -459,16 +459,16 @@ _Select a medical specialty below to view the available apps._
 ### CDS Summer App Challenge 2017
 
 ----------
-* [Combined Critical Illness Recognition in All Ages](https://common-clinical-models.cambiocds.com/km/views/execution/Peds_Sirs2.v1.dsv?token=506564735f53697273322e7631:1549324800000:64fdf6f8ffd897dc782bb6e00c034677&language=en)
-* [HIV and Malaria Co-Infection Medication](https://common-clinical-models.cambiocds.com/km/views/execution/HIV_Malaria.v1.dsv?token=4849565f4d616c617269612e7631:1549324800000:03aff4c0d42e116fa29664d8e456f862&language=en)
-* [Estimated Glomerular Filtration Rate LM-Rev](https://common-clinical-models.cambiocds.com/km/views/execution/eGFR_LM_Rev.v1.dsv?token=654746525f4c4d5f5265762e7631:1549324800000:a617fd86aab2d4a0c5260a0c92fa5269&language=en)
+* [Combined Critical Illness Recognition in All Ages](https://common-clinical-models.cambiocds.com/km/views/execution/Peds_Sirs2.v1.dsv?token=506564735f53697273322e7631:1551052800000:83ca12c15f30b9e9e380e51867604131&language=en)
+* [HIV and Malaria Co-Infection Medication](https://common-clinical-models.cambiocds.com/km/views/execution/HIV_Malaria.v1.dsv?token=4849565f4d616c617269612e7631:1551052800000:54c5eaa94b2e01f6090c9f1bea079ab9&language=en)
+* [Estimated Glomerular Filtration Rate LM-Rev](https://common-clinical-models.cambiocds.com/km/views/execution/eGFR_LM_Rev.v1.dsv?token=654746525f4c4d5f5265762e7631:1551052800000:3a162ae93f5d68d38797f87d06835400&language=en)
 ----------
 
 ### CDS Summer App Challenge 2018
 
 ----------
-* [Opioid Conversion to Morphine Milligram Equivalent](https://common-clinical-models.cambiocds.com/km/views/execution/opioid_conversion.v1.dsv?token=6f70696f69645f636f6e76657273696f6e2e7631:1549324800000:95e05620b69391de9cadcfd6e16aa442&language=en)
-* [Replacement Doses of Vitamin D](https://common-clinical-models.cambiocds.com/km/views/execution/replacement_doses_vitamin_D.v1.dsv?token=7265706c6163656d656e745f646f7365735f766974616d696e5f442e7631:1549324800000:e6ccef87d8f5099e2e8224a843e52f7a&language=en)
+* [Opioid Conversion to Morphine Milligram Equivalent](https://common-clinical-models.cambiocds.com/km/views/execution/opioid_conversion.v1.dsv?token=6f70696f69645f636f6e76657273696f6e2e7631:1551052800000:48a4e26f37e6b585d2f3632d4530b87d&language=en)
+* [Replacement Doses of Vitamin D](https://common-clinical-models.cambiocds.com/km/views/execution/replacement_doses_vitamin_D.v1.dsv?token=7265706c6163656d656e745f646f7365735f766974616d696e5f442e7631:1551052800000:39672d1affc23dd85541e79d5136d507&language=en)
 ----------
 ### Disclaimer
 
