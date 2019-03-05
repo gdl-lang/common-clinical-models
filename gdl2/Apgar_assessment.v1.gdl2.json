@@ -43,7 +43,7 @@
           "neonatology",
           "obstetrics"
         ],
-        "use": "To be used for assessment of score generated in accordance with Apgar Score. \n\nThe Apgar score is used as a simple, repeatable method to document the state of newborn infants immediately after birth. The clinical score is derived from assessment of respiratory effort, heart rate, reflex irritability, muscle tone and skin colour. \n\nThe score is recorded at 1, 5 and/or 10 minutes after birth, and further if needed. Score interpretation:\n\nScores ≥7; reassuring, normal\nScore of 4 to 6; moderately abnormal\nScores ≤3; critically low, intervention required",
+        "use": "To be used for assessment of score generated in accordance with Apgar Score. \n\nThe Apgar score is used as a simple, repeatable method to document the state of newborn infants immediately after birth. The clinical score is derived from assessment of respiratory effort, heart rate, reflex irritability, muscle tone and skin colour. \n\nThe score is recorded at 1, 5 and/or 10 minutes after birth, and further if needed. Score interpretation:\n\nScores ≥7; reassuring, normal\nScore of 4 to 6; moderately abnormal\nScores ≤ 3; critically low, intervention required",
         "copyright": "Cambio Healthcare Systems"
       }
     },
@@ -69,7 +69,7 @@
         "id": "gt0003",
         "model_id": "openEHR-EHR-OBSERVATION.apgar.v1",
         "template_id": "openEHR-EHR-OBSERVATION.apgar.v1",
-        "type": "OUTPUT",
+        "type": "INPUT",
         "elements": {
           "gt0004": {
             "id": "gt0004",
@@ -83,7 +83,7 @@
         "id": "gt0006",
         "priority": 3,
         "when": [
-          "$gt0004|Total score|.magnitude>=7"
+          "$gt0004|Total score|>=7"
         ],
         "then": [
           "$gt0005|Apgar assessment|=0|local::at0003|Normal|"
@@ -93,8 +93,8 @@
         "id": "gt0007",
         "priority": 2,
         "when": [
-          "$gt0004|Total score|.magnitude>=4",
-          "$gt0004|Total score|.magnitude<=6"
+          "$gt0004|Total score|>=4",
+          "$gt0004|Total score|<=6"
         ],
         "then": [
           "$gt0005|Apgar assessment|=1|local::at0004|Moderately abnormal|"
@@ -104,7 +104,7 @@
         "id": "gt0008",
         "priority": 1,
         "when": [
-          "$gt0004|Total score|.magnitude<=3"
+          "$gt0004|Total score|<=3"
         ],
         "then": [
           "$gt0005|Apgar assessment|=2|local::at0005|Critically low, intervention required|"
