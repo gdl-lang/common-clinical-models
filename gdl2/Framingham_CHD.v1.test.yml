@@ -1,0 +1,224 @@
+guidelines:
+  1: Framingham_CHD.v1
+test_cases:
+- id: Male, default rule
+  input:
+    1:
+      gt0004|Gender: local::at0005|Male|
+      gt0124|Event time: 2019-03-20T09:03Z
+  expected_output:
+    1:
+      'gt0030|Total score: men': 0
+      'gt0021|Smoker: women': 0|local::at0069|Non smoker|
+      'gt0076|Systolic BP: women': 0|local::at0100|< 120|
+      gt0029|Blood Pressure treated with medication: 0|local::at0053|No|
+      'gt0018|Age variable: men': 0|local::at0017|40-44|
+      gt0036|Smoker: 0|local::at0106|No|
+      'gt0024|HDL Cholesterol: men and women': 0|local::at0020|50-59|
+      'gt0020|Smoker: men': 0|local::at0034|Non-smoker |
+      'gt0075|Systolic BP: men': 0|local::at0046|< 120 or 120-129 if untreated|
+      'gt0019|Age variable: women': 0|local::at0061|40-44|
+      'gt0023|Total Cholesterol: women': 0|local::at0076|<160|
+      'gt0022|Total Cholesterol: men': 0|local::at0023|< 160 |
+- id: Female, age calculation 1, default rule
+  input:
+    1:
+      gt0003|Birthdate: 1997-03-04T10:11Z
+      gt0004|Gender: local::at0006|Female|
+      gt0124|Event time: 2019-03-05T10:11Z
+  expected_output:
+    1:
+      gt0006|Age: 22,a
+      'gt0021|Smoker: women': 0|local::at0069|Non smoker|
+      'gt0076|Systolic BP: women': 0|local::at0100|< 120|
+      gt0029|Blood Pressure treated with medication: 0|local::at0053|No|
+      'gt0018|Age variable: men': 0|local::at0017|40-44|
+      gt0036|Smoker: 0|local::at0106|No|
+      'gt0024|HDL Cholesterol: men and women': 0|local::at0020|50-59|
+      'gt0020|Smoker: men': 0|local::at0034|Non-smoker |
+      'gt0075|Systolic BP: men': 0|local::at0046|< 120 or 120-129 if untreated|
+      'gt0019|Age variable: women': -7|local::at0059|20-34|
+      'gt0023|Total Cholesterol: women': 0|local::at0076|<160|
+      'gt0022|Total Cholesterol: men': 0|local::at0023|< 160 |
+      'gt0031|Total score: women': -7
+- id: Female, age calculation 2, default rule
+  input:
+    1:
+      gt0003|Birthdate: 1944-02-26T12:11Z
+      gt0004|Gender: local::at0006|Female|
+      gt0127|Event time: 2019-03-20T12:11Z
+      gt0010|Systolic: 130,mm[Hg]
+      gt0126|Event time: 2019-03-19T12:20Z
+      gt0012|Total Cholesterol: 11,mg/dl
+      gt0013|HDL Cholesterol: 3,mg/dl
+      gt0125|Event time: 2019-03-26T12:33Z
+      gt0015|Smoker: 0|local::at0106|No|
+      gt0016|Blood Pressure treated with medication: 0|local::at0053|No|
+      gt0124|Event time: 2019-03-26T12:26Z
+  expected_output:
+    1:
+      gt0006|Age: 75,a
+      'gt0021|Smoker: women': 0|local::at0069|Non smoker|
+      'gt0076|Systolic BP: women': 2|local::at0102|130-139 if untreated|
+      gt0029|Blood Pressure treated with medication: 0|local::at0053|No|
+      gt0036|Smoker: 0|local::at0106|No|
+      'gt0024|HDL Cholesterol: men and women': 2|local::at0022|< 40|
+      'gt0019|Age variable: women': 16|local::at0068|75-79|
+      'gt0023|Total Cholesterol: women': 0|local::at0076|<160|
+      'gt0022|Total Cholesterol: men': 0|local::at0023|< 160 |
+      'gt0031|Total score: women': 20
+- id: Male >75, Prehypertension
+  input:
+    1:
+      gt0003|Birthdate: 1944-02-26T12:11Z
+      gt0004|Gender: local::at0005|Male|
+      gt0127|Event time: 2019-03-20T12:11Z
+      gt0010|Systolic: 130,mm[Hg]
+      gt0126|Event time: 2019-03-19T12:20Z
+      gt0012|Total Cholesterol: 11,mg/dl
+      gt0013|HDL Cholesterol: 3,mg/dl
+      gt0125|Event time: 2019-03-26T12:33Z
+      gt0015|Smoker: 0|local::at0106|No|
+      gt0016|Blood Pressure treated with medication: 0|local::at0053|No|
+      gt0124|Event time: 2019-03-26T12:26Z
+  expected_output:
+    1:
+      gt0006|Age: 75,a
+      'gt0030|Total score: men': 16
+      gt0029|Blood Pressure treated with medication: 0|local::at0053|No|
+      'gt0018|Age variable: men': 13|local::at0044|75-79|
+      gt0036|Smoker: 0|local::at0106|No|
+      'gt0024|HDL Cholesterol: men and women': 2|local::at0022|< 40|
+      'gt0020|Smoker: men': 0|local::at0034|Non-smoker |
+      'gt0075|Systolic BP: men': 1|local::at0047|120-129 if treated or 130-159 if untreated|
+      'gt0023|Total Cholesterol: women': 0|local::at0076|<160|
+      'gt0022|Total Cholesterol: men': 0|local::at0023|< 160 |
+- id: Male >75, Hypertension, no medication
+  input:
+    1:
+      gt0003|Birthdate: 1944-02-26T12:11Z
+      gt0004|Gender: local::at0005|Male|
+      gt0127|Event time: 2019-03-20T12:11Z
+      gt0010|Systolic: 150,mm[Hg]
+      gt0126|Event time: 2019-03-19T12:20Z
+      gt0012|Total Cholesterol: 11,mg/dl
+      gt0013|HDL Cholesterol: 3,mg/dl
+      gt0125|Event time: 2019-03-26T12:33Z
+      gt0015|Smoker: 0|local::at0106|No|
+      gt0016|Blood Pressure treated with medication: 0|local::at0053|No|
+      gt0124|Event time: 2019-03-26T12:26Z
+  expected_output:
+    1:
+      gt0006|Age: 75,a
+      'gt0030|Total score: men': 16
+      gt0029|Blood Pressure treated with medication: 0|local::at0053|No|
+      'gt0018|Age variable: men': 13|local::at0044|75-79|
+      gt0036|Smoker: 0|local::at0106|No|
+      'gt0024|HDL Cholesterol: men and women': 2|local::at0022|< 40|
+      'gt0020|Smoker: men': 0|local::at0034|Non-smoker |
+      'gt0075|Systolic BP: men': 1|local::at0047|120-129 if treated or 130-159 if untreated|
+      'gt0023|Total Cholesterol: women': 0|local::at0076|<160|
+      'gt0022|Total Cholesterol: men': 0|local::at0023|< 160 |
+- id: Male >75, Hypertension, with medication
+  input:
+    1:
+      gt0003|Birthdate: 1944-02-26T12:11Z
+      gt0004|Gender: local::at0005|Male|
+      gt0127|Event time: 2019-03-20T12:11Z
+      gt0010|Systolic: 140,mm[Hg]
+      gt0126|Event time: 2019-03-19T12:20Z
+      gt0012|Total Cholesterol: 11,mg/dl
+      gt0013|HDL Cholesterol: 3,mg/dl
+      gt0125|Event time: 2019-03-26T12:33Z
+      gt0015|Smoker: 0|local::at0106|No|
+      gt0016|Blood Pressure treated with medication: 1|local::at0054|Yes|
+      gt0124|Event time: 2019-03-26T12:26Z
+  expected_output:
+    1:
+      gt0006|Age: 75,a
+      'gt0030|Total score: men': 17
+      gt0029|Blood Pressure treated with medication: 1|local::at0054|Yes|
+      'gt0018|Age variable: men': 13|local::at0044|75-79|
+      gt0036|Smoker: 0|local::at0106|No|
+      'gt0024|HDL Cholesterol: men and women': 2|local::at0022|< 40|
+      'gt0020|Smoker: men': 0|local::at0034|Non-smoker |
+      'gt0075|Systolic BP: men': 2|local::at0048|130-159 if treated or ≥ 160 if untreated|
+      'gt0023|Total Cholesterol: women': 0|local::at0076|<160|
+      'gt0022|Total Cholesterol: men': 0|local::at0023|< 160 |
+- id: Middle-age smoker man, unhealthy cholesterol
+  input:
+    1:
+      gt0003|Birthdate: 1964-02-26T12:11Z
+      gt0004|Gender: local::at0005|Male|
+      gt0127|Event time: 2019-03-20T12:11Z
+      gt0010|Systolic: 201,mm[Hg]
+      gt0126|Event time: 2019-03-19T12:20Z
+      gt0012|Total Cholesterol: 11,mg/dl
+      gt0013|HDL Cholesterol: 51,mg/dl
+      gt0125|Event time: 2019-03-26T12:33Z
+      gt0015|Smoker: 1|local::at0107|Yes|
+      gt0016|Blood Pressure treated with medication: 1|local::at0054|Yes|
+      gt0124|Event time: 2019-03-26T12:26Z
+  expected_output:
+    1:
+      gt0006|Age: 55,a
+      'gt0030|Total score: men': 14
+      gt0029|Blood Pressure treated with medication: 1|local::at0054|Yes|
+      'gt0018|Age variable: men': 8|local::at0040|55-59|
+      gt0036|Smoker: 1|local::at0107|Yes|
+      'gt0024|HDL Cholesterol: men and women': 0|local::at0020|50-59|
+      'gt0020|Smoker: men': 3|local::at0036|Smoker - 50 -59|
+      'gt0075|Systolic BP: men': 3|local::at0049|≥ 160 if treated|
+      'gt0023|Total Cholesterol: women': 0|local::at0076|<160|
+      'gt0022|Total Cholesterol: men': 0|local::at0023|< 160 |
+- id: Healthy old lady
+  input:
+    1:
+      gt0003|Birthdate: 1948-02-26T12:11Z
+      gt0004|Gender: local::at0006|Female|
+      gt0127|Event time: 2019-03-20T12:11Z
+      gt0010|Systolic: 110,mm[Hg]
+      gt0126|Event time: 2019-03-19T12:20Z
+      gt0012|Total Cholesterol: 110,mg/dl
+      gt0013|HDL Cholesterol: 60,mg/dl
+      gt0125|Event time: 2019-03-26T12:33Z
+      gt0015|Smoker: 0|local::at0106|No|
+      gt0016|Blood Pressure treated with medication: 0|local::at0053|No|
+      gt0124|Event time: 2019-03-26T12:26Z
+  expected_output:
+    1:
+      gt0006|Age: 71,a
+      'gt0021|Smoker: women': 0|local::at0069|Non smoker|
+      'gt0076|Systolic BP: women': 0|local::at0100|< 120|
+      gt0029|Blood Pressure treated with medication: 0|local::at0053|No|
+      gt0036|Smoker: 0|local::at0106|No|
+      'gt0024|HDL Cholesterol: men and women': -1|local::at0019|≥60|
+      'gt0019|Age variable: women': 14|local::at0067|70-74|
+      'gt0023|Total Cholesterol: women': 0|local::at0076|<160|
+      'gt0022|Total Cholesterol: men': 0|local::at0023|< 160 |
+      'gt0031|Total score: women': 13
+- id: Unhealthy young man
+  input:
+    1:
+      gt0003|Birthdate: 1988-02-26T12:11Z
+      gt0004|Gender: local::at0005|Male|
+      gt0127|Event time: 2019-03-20T12:11Z
+      gt0010|Systolic: 160,mm[Hg]
+      gt0126|Event time: 2019-03-19T12:20Z
+      gt0012|Total Cholesterol: 260,mg/dl
+      gt0013|HDL Cholesterol: 40,mg/dl
+      gt0125|Event time: 2019-03-26T12:33Z
+      gt0015|Smoker: 1|local::at0107|Yes|
+      gt0016|Blood Pressure treated with medication: 0|local::at0053|No|
+      gt0124|Event time: 2019-03-26T12:26Z
+  expected_output:
+    1:
+      gt0006|Age: 31,a
+      'gt0030|Total score: men': 11
+      gt0029|Blood Pressure treated with medication: 0|local::at0053|No|
+      'gt0018|Age variable: men': -9|local::at0015|20-34|
+      gt0036|Smoker: 1|local::at0107|Yes|
+      'gt0024|HDL Cholesterol: men and women': 1|local::at0021|40-49|
+      'gt0020|Smoker: men': 8|local::at0038|Smoker - 20-39|
+      'gt0075|Systolic BP: men': 2|local::at0048|130-159 if treated or ≥ 160 if untreated|
+      'gt0022|Total Cholesterol: men': 9|local::at0032|240-279 (20-39 years)|
