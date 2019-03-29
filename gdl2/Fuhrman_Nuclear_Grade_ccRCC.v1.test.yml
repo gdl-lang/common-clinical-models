@@ -1,0 +1,58 @@
+guidelines:
+  1: Fuhrman_Nuclear_Grade_ccRCC.v1
+test_cases:
+- id: Small
+  input:
+    1:
+      gt0015|Nuclear diameter: 1|local::at0010|Small (~10µm)|
+      gt0032|Event time: 2019-03-26T19:35Z
+  expected_output:
+    1:
+      gt0020|Nuclear shape: 0|local::at0027|NA|
+      gt0022|Bizarre often multilobed nuclei and/or spindle cells: 0|local::at0008|No|
+      gt0023|Grade: 1|local::at0022|Grade I|
+      gt0021|Nucleoli: 0|local::at0028|NA|
+      gt0019|Nuclear diameter: 1|local::at0010|Small (~10µm)|
+- id: Larger
+  input:
+    1:
+      gt0015|Nuclear diameter: 2|local::at0011|Larger (~15µm)|
+      gt0032|Event time: 2019-03-26T19:35Z
+  expected_output:
+    1:
+      gt0020|Nuclear shape: 0|local::at0027|NA|
+      gt0022|Bizarre often multilobed nuclei and/or spindle cells: 0|local::at0008|No|
+      gt0023|Grade: 2|local::at0023|Grade II|
+      gt0021|Nucleoli: 0|local::at0028|NA|
+      gt0019|Nuclear diameter: 2|local::at0011|Larger (~15µm)|
+- id: Even larger, no  bizarre
+  input:
+    1:
+      gt0015|Nuclear diameter: 3|local::at0012|Even larger (~20µm)|
+      gt0016|Nuclear shape: 1|local::at0013|Round, uniform|
+      gt0017|Nucleoli: 1|local::at0016|Absent, inconspicuous|
+      gt0018|Bizarre often multilobed nuclei and/or spindle cells: 0|local::at0008|No|
+      gt0032|Event time: 2019-03-26T19:35Z
+  expected_output:
+    1:
+      gt0020|Nuclear shape: 1|local::at0013|Round, uniform|
+      gt0022|Bizarre often multilobed nuclei and/or spindle cells: 0|local::at0008|No|
+      gt0023|Grade: 3|local::at0024|Grade III|
+      gt0021|Nucleoli: 1|local::at0016|Absent, inconspicuous|
+      gt0019|Nuclear diameter: 3|local::at0012|Even larger (~20µm)|
+- id: Even larger, bizarre
+  input:
+    1:
+      gt0015|Nuclear diameter: 3|local::at0012|Even larger (~20µm)|
+      gt0016|Nuclear shape: 1|local::at0013|Round, uniform|
+      gt0017|Nucleoli: 1|local::at0016|Absent, inconspicuous|
+      gt0018|Bizarre often multilobed nuclei and/or spindle cells: 1|local::at0009|Yes|
+      gt0032|Event time: 2019-03-26T19:35Z
+  expected_output:
+    1:
+      gt0020|Nuclear shape: 1|local::at0013|Round, uniform|
+      gt0022|Bizarre often multilobed nuclei and/or spindle cells: 1|local::at0009|Yes|
+      gt0023|Grade: 4|local::at0025|Grade IV|
+      gt0021|Nucleoli: 1|local::at0016|Absent, inconspicuous|
+      gt0019|Nuclear diameter: 3|local::at0012|Even larger (~20µm)|
+
