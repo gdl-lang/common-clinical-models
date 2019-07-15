@@ -1,0 +1,510 @@
+guidelines:
+  1: HAS-BLED.v1
+test_cases:
+- id: All 0
+  input:
+    1:
+      gt0003|Systolic: 150,mm[Hg]
+      gt0064|Event time: 2019-06-30T07:55Z
+      gt0005|CR Result mircomol/L: 199,µmol/l
+      gt0065|Event time: 2019-06-30T07:55Z
+      gt0007|Total Bilirubin: 2,mg/dl
+      gt0066|Event time: 2019-06-30T07:55Z
+      gt0060|Birthdate: 1959-06-30T07:55Z
+      gt0067|Event time: 2019-06-30T07:55Z
+      gt0011|Standard Drinks: 7,/wk
+      gt0068|Event time: 2019-06-30T07:55Z
+      gt0013|Hypertension History: 0|local::at0014|No|
+      gt0014|Renal Disease: 0|local::at0014|No|
+      gt0015|Liver Disease: 0|local::at0014|No|
+      gt0016|Stroke History: 0|local::at0014|No|
+      gt0017|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0018|Labile INR: 0|local::at0014|No|
+      gt0020|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0021|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0069|Event time: 2019-06-30T07:55Z
+      gt0043|ALT Result: 120,U/l
+      gt0070|Event time: 2019-06-30T07:55Z
+      gt0042|ALP Result: 120,U/l
+      gt0072|Event time: 2019-06-30T07:55Z
+      gt0048|AST Result: 120,U/l
+      gt0071|Event time: 2019-06-30T07:55Z
+  expected_output:
+    1:
+      gt0024|Renal Disease: 0|local::at0014|No|
+      gt0029|Age > 65: 0|local::at0014|No|
+      gt0026|Stroke History: 0|local::at0014|No|
+      gt0031|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0030|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0032|Total score: 0
+      gt0028|Labile INR: 0|local::at0014|No|
+      gt0027|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0025|Liver Disease: 0|local::at0014|No|
+      gt0023|Hypertension History: 0|local::at0014|No|
+      gt0062|Age: 60,a
+
+
+- id: Systolic, CR
+  input:
+    1:
+      gt0003|Systolic: 170,mm[Hg]
+      gt0064|Event time: 2019-06-30T07:55Z
+      gt0005|CR Result mircomol/L: 201,µmol/l
+      gt0065|Event time: 2019-06-30T07:55Z
+      gt0007|Total Bilirubin: 2,mg/dl
+      gt0066|Event time: 2019-06-30T07:55Z
+      gt0060|Birthdate: 1959-06-30T07:55Z
+      gt0067|Event time: 2019-06-30T07:55Z
+      gt0011|Standard Drinks: 7,/wk
+      gt0068|Event time: 2019-06-30T07:55Z
+      gt0013|Hypertension History: 0|local::at0014|No|
+      gt0014|Renal Disease: 0|local::at0014|No|
+      gt0015|Liver Disease: 0|local::at0014|No|
+      gt0016|Stroke History: 0|local::at0014|No|
+      gt0017|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0018|Labile INR: 0|local::at0014|No|
+      gt0020|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0021|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0069|Event time: 2019-06-30T07:55Z
+      gt0043|ALT Result: 120,U/l
+      gt0070|Event time: 2019-06-30T07:55Z
+      gt0042|ALP Result: 120,U/l
+      gt0072|Event time: 2019-06-30T07:55Z
+      gt0048|AST Result: 120,U/l
+      gt0071|Event time: 2019-06-30T07:55Z
+  expected_output:
+    1:
+      gt0024|Renal Disease: 1|local::at0015|Yes|
+      gt0029|Age > 65: 0|local::at0014|No|
+      gt0026|Stroke History: 0|local::at0014|No|
+      gt0031|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0030|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0032|Total score: 2
+      gt0028|Labile INR: 0|local::at0014|No|
+      gt0027|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0025|Liver Disease: 0|local::at0014|No|
+      gt0023|Hypertension History: 1|local::at0015|Yes|
+      gt0062|Age: 60,a
+
+- id: Renal, HT history
+  input:
+    1:
+      gt0003|Systolic: 150,mm[Hg]
+      gt0064|Event time: 2019-06-30T07:55Z
+      gt0005|CR Result mircomol/L: 199,µmol/l
+      gt0065|Event time: 2019-06-30T07:55Z
+      gt0007|Total Bilirubin: 2,mg/dl
+      gt0066|Event time: 2019-06-30T07:55Z
+      gt0060|Birthdate: 1959-06-30T07:55Z
+      gt0067|Event time: 2019-06-30T07:55Z
+      gt0011|Standard Drinks: 7,/wk
+      gt0068|Event time: 2019-06-30T07:55Z
+      gt0013|Hypertension History: 1|local::at0015|Yes|
+      gt0014|Renal Disease: 1|local::at0015|Yes|
+      gt0015|Liver Disease: 0|local::at0014|No|
+      gt0016|Stroke History: 0|local::at0014|No|
+      gt0017|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0018|Labile INR: 0|local::at0014|No|
+      gt0020|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0021|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0069|Event time: 2019-06-30T07:55Z
+      gt0043|ALT Result: 120,U/l
+      gt0070|Event time: 2019-06-30T07:55Z
+      gt0042|ALP Result: 120,U/l
+      gt0072|Event time: 2019-06-30T07:55Z
+      gt0048|AST Result: 120,U/l
+      gt0071|Event time: 2019-06-30T07:55Z
+  expected_output:
+    1:
+      gt0024|Renal Disease: 1|local::at0015|Yes|
+      gt0029|Age > 65: 0|local::at0014|No|
+      gt0026|Stroke History: 0|local::at0014|No|
+      gt0031|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0030|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0032|Total score: 2
+      gt0028|Labile INR: 0|local::at0014|No|
+      gt0027|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0025|Liver Disease: 0|local::at0014|No|
+      gt0023|Hypertension History: 1|local::at0015|Yes|
+      gt0062|Age: 60,a
+
+- id: Both
+  input:
+    1:
+      gt0003|Systolic: 160,mm[Hg]
+      gt0064|Event time: 2019-06-30T07:55Z
+      gt0005|CR Result mircomol/L: 201,µmol/l
+      gt0065|Event time: 2019-06-30T07:55Z
+      gt0007|Total Bilirubin: 2,mg/dl
+      gt0066|Event time: 2019-06-30T07:55Z
+      gt0060|Birthdate: 1959-06-30T07:55Z
+      gt0067|Event time: 2019-06-30T07:55Z
+      gt0011|Standard Drinks: 7,/wk
+      gt0068|Event time: 2019-06-30T07:55Z
+      gt0013|Hypertension History: 1|local::at0015|Yes|
+      gt0014|Renal Disease: 1|local::at0015|Yes|
+      gt0015|Liver Disease: 0|local::at0014|No|
+      gt0016|Stroke History: 0|local::at0014|No|
+      gt0017|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0018|Labile INR: 0|local::at0014|No|
+      gt0020|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0021|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0069|Event time: 2019-06-30T07:55Z
+      gt0043|ALT Result: 120,U/l
+      gt0070|Event time: 2019-06-30T07:55Z
+      gt0042|ALP Result: 120,U/l
+      gt0072|Event time: 2019-06-30T07:55Z
+      gt0048|AST Result: 120,U/l
+      gt0071|Event time: 2019-06-30T07:55Z
+  expected_output:
+    1:
+      gt0024|Renal Disease: 1|local::at0015|Yes|
+      gt0029|Age > 65: 0|local::at0014|No|
+      gt0026|Stroke History: 0|local::at0014|No|
+      gt0031|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0030|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0032|Total score: 2
+      gt0028|Labile INR: 0|local::at0014|No|
+      gt0027|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0025|Liver Disease: 0|local::at0014|No|
+      gt0023|Hypertension History: 1|local::at0015|Yes|
+      gt0062|Age: 60,a
+
+- id: Stroke, Major bleeding, elderly, INR, medication, consumes alcohol but no abuse history
+  input:
+    1:
+      gt0003|Systolic: 160,mm[Hg]
+      gt0064|Event time: 2019-06-30T07:55Z
+      gt0005|CR Result mircomol/L: 201,µmol/l
+      gt0065|Event time: 2019-06-30T07:55Z
+      gt0007|Total Bilirubin: 2,mg/dl
+      gt0066|Event time: 2019-06-30T07:55Z
+      gt0060|Birthdate: 1939-06-30T07:55Z
+      gt0067|Event time: 2019-06-30T07:55Z
+      gt0011|Standard Drinks: 8,/wk
+      gt0068|Event time: 2019-06-30T07:55Z
+      gt0013|Hypertension History: 1|local::at0015|Yes|
+      gt0014|Renal Disease: 1|local::at0015|Yes|
+      gt0015|Liver Disease: 0|local::at0014|No|
+      gt0016|Stroke History: 1|local::at0015|Yes|
+      gt0017|Prior Major Bleeding or Predisposition to Bleeding: 1|local::at0015|Yes|
+      gt0018|Labile INR: 1|local::at0015|Yes|
+      gt0020|Medication Usage Predisposing to Bleeding: 1|local::at0015|Yes|
+      gt0021|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0069|Event time: 2019-06-30T07:55Z
+      gt0043|ALT Result: 120,U/l
+      gt0070|Event time: 2019-06-30T07:55Z
+      gt0042|ALP Result: 120,U/l
+      gt0072|Event time: 2019-06-30T07:55Z
+      gt0048|AST Result: 120,U/l
+      gt0071|Event time: 2019-06-30T07:55Z
+  expected_output:
+    1:
+      gt0024|Renal Disease: 1|local::at0015|Yes|
+      gt0029|Age > 65: 1|local::at0015|Yes|
+      gt0026|Stroke History: 1|local::at0015|Yes|
+      gt0031|Alcohol or Drug Usage History: 1|local::at0015|Yes|
+      gt0030|Medication Usage Predisposing to Bleeding: 1|local::at0015|Yes|
+      gt0032|Total score: 8
+      gt0028|Labile INR: 1|local::at0015|Yes|
+      gt0027|Prior Major Bleeding or Predisposition to Bleeding: 1|local::at0015|Yes|
+      gt0025|Liver Disease: 0|local::at0014|No|
+      gt0023|Hypertension History: 1|local::at0015|Yes|
+      gt0062|Age: 80,a
+
+- id: Doesn't consume, but has history
+  input:
+    1:
+      gt0003|Systolic: 160,mm[Hg]
+      gt0064|Event time: 2019-06-30T07:55Z
+      gt0005|CR Result mircomol/L: 201,µmol/l
+      gt0065|Event time: 2019-06-30T07:55Z
+      gt0007|Total Bilirubin: 2,mg/dl
+      gt0066|Event time: 2019-06-30T07:55Z
+      gt0060|Birthdate: 1939-06-30T07:55Z
+      gt0067|Event time: 2019-06-30T07:55Z
+      gt0011|Standard Drinks: 1,/wk
+      gt0068|Event time: 2019-06-30T07:55Z
+      gt0013|Hypertension History: 1|local::at0015|Yes|
+      gt0014|Renal Disease: 1|local::at0015|Yes|
+      gt0015|Liver Disease: 0|local::at0014|No|
+      gt0016|Stroke History: 1|local::at0015|Yes|
+      gt0017|Prior Major Bleeding or Predisposition to Bleeding: 1|local::at0015|Yes|
+      gt0018|Labile INR: 1|local::at0015|Yes|
+      gt0020|Medication Usage Predisposing to Bleeding: 1|local::at0015|Yes|
+      gt0021|Alcohol or Drug Usage History: 1|local::at0015|Yes|
+      gt0069|Event time: 2019-06-30T07:55Z
+      gt0043|ALT Result: 120,U/l
+      gt0070|Event time: 2019-06-30T07:55Z
+      gt0042|ALP Result: 120,U/l
+      gt0072|Event time: 2019-06-30T07:55Z
+      gt0048|AST Result: 120,U/l
+      gt0071|Event time: 2019-06-30T07:55Z
+  expected_output:
+    1:
+      gt0024|Renal Disease: 1|local::at0015|Yes|
+      gt0029|Age > 65: 1|local::at0015|Yes|
+      gt0026|Stroke History: 1|local::at0015|Yes|
+      gt0031|Alcohol or Drug Usage History: 1|local::at0015|Yes|
+      gt0030|Medication Usage Predisposing to Bleeding: 1|local::at0015|Yes|
+      gt0032|Total score: 8
+      gt0028|Labile INR: 1|local::at0015|Yes|
+      gt0027|Prior Major Bleeding or Predisposition to Bleeding: 1|local::at0015|Yes|
+      gt0025|Liver Disease: 0|local::at0014|No|
+      gt0023|Hypertension History: 1|local::at0015|Yes|
+      gt0062|Age: 80,a
+
+- id: Bilirubin
+  input:
+    1:
+      gt0003|Systolic: 120,mm[Hg]
+      gt0064|Event time: 2019-06-30T07:55Z
+      gt0005|CR Result mircomol/L: 170,µmol/l
+      gt0065|Event time: 2019-06-30T07:55Z
+      gt0007|Total Bilirubin: 3,mg/dl
+      gt0066|Event time: 2019-06-30T07:55Z
+      gt0060|Birthdate: 1959-06-30T07:55Z
+      gt0067|Event time: 2019-06-30T07:55Z
+      gt0011|Standard Drinks: 1,/wk
+      gt0068|Event time: 2019-06-30T07:55Z
+      gt0013|Hypertension History: 0|local::at0014|No|
+      gt0014|Renal Disease: 0|local::at0014|No|
+      gt0015|Liver Disease: 0|local::at0014|No|
+      gt0016|Stroke History: 0|local::at0014|No|
+      gt0017|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0018|Labile INR: 0|local::at0014|No|
+      gt0020|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0021|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0069|Event time: 2019-06-30T07:55Z
+      gt0043|ALT Result: 120,U/l
+      gt0070|Event time: 2019-06-30T07:55Z
+      gt0042|ALP Result: 120,U/l
+      gt0072|Event time: 2019-06-30T07:55Z
+      gt0048|AST Result: 120,U/l
+      gt0071|Event time: 2019-06-30T07:55Z
+  expected_output:
+    1:
+      gt0024|Renal Disease: 0|local::at0014|No|
+      gt0029|Age > 65: 0|local::at0014|No|
+      gt0026|Stroke History: 0|local::at0014|No|
+      gt0031|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0030|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0032|Total score: 0
+      gt0028|Labile INR: 0|local::at0014|No|
+      gt0027|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0025|Liver Disease: 0|local::at0014|No|
+      gt0023|Hypertension History: 0|local::at0014|No|
+      gt0062|Age: 60,a
+
+- id: AST
+  input:
+    1:
+      gt0003|Systolic: 120,mm[Hg]
+      gt0064|Event time: 2019-06-30T07:55Z
+      gt0005|CR Result mircomol/L: 170,µmol/l
+      gt0065|Event time: 2019-06-30T07:55Z
+      gt0007|Total Bilirubin: 2,mg/dl
+      gt0066|Event time: 2019-06-30T07:55Z
+      gt0060|Birthdate: 1959-06-30T07:55Z
+      gt0067|Event time: 2019-06-30T07:55Z
+      gt0011|Standard Drinks: 1,/wk
+      gt0068|Event time: 2019-06-30T07:55Z
+      gt0013|Hypertension History: 0|local::at0014|No|
+      gt0014|Renal Disease: 0|local::at0014|No|
+      gt0015|Liver Disease: 0|local::at0014|No|
+      gt0016|Stroke History: 0|local::at0014|No|
+      gt0017|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0018|Labile INR: 0|local::at0014|No|
+      gt0020|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0021|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0069|Event time: 2019-06-30T07:55Z
+      gt0043|ALT Result: 120,U/l
+      gt0070|Event time: 2019-06-30T07:55Z
+      gt0042|ALP Result: 120,U/l
+      gt0072|Event time: 2019-06-30T07:55Z
+      gt0048|AST Result: 145,U/l
+      gt0071|Event time: 2019-06-30T07:55Z
+  expected_output:
+    1:
+      gt0024|Renal Disease: 0|local::at0014|No|
+      gt0029|Age > 65: 0|local::at0014|No|
+      gt0026|Stroke History: 0|local::at0014|No|
+      gt0031|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0030|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0032|Total score: 0
+      gt0028|Labile INR: 0|local::at0014|No|
+      gt0027|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0025|Liver Disease: 0|local::at0014|No|
+      gt0023|Hypertension History: 0|local::at0014|No|
+      gt0062|Age: 60,a
+
+- id: ALP
+  input:
+    1:
+      gt0003|Systolic: 120,mm[Hg]
+      gt0064|Event time: 2019-06-30T07:55Z
+      gt0005|CR Result mircomol/L: 170,µmol/l
+      gt0065|Event time: 2019-06-30T07:55Z
+      gt0007|Total Bilirubin: 2,mg/dl
+      gt0066|Event time: 2019-06-30T07:55Z
+      gt0060|Birthdate: 1959-06-30T07:55Z
+      gt0067|Event time: 2019-06-30T07:55Z
+      gt0011|Standard Drinks: 1,/wk
+      gt0068|Event time: 2019-06-30T07:55Z
+      gt0013|Hypertension History: 0|local::at0014|No|
+      gt0014|Renal Disease: 0|local::at0014|No|
+      gt0015|Liver Disease: 0|local::at0014|No|
+      gt0016|Stroke History: 0|local::at0014|No|
+      gt0017|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0018|Labile INR: 0|local::at0014|No|
+      gt0020|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0021|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0069|Event time: 2019-06-30T07:55Z
+      gt0043|ALT Result: 120,U/l
+      gt0070|Event time: 2019-06-30T07:55Z
+      gt0042|ALP Result: 350,U/l
+      gt0072|Event time: 2019-06-30T07:55Z
+      gt0048|AST Result: 130,U/l
+      gt0071|Event time: 2019-06-30T07:55Z
+  expected_output:
+    1:
+      gt0024|Renal Disease: 0|local::at0014|No|
+      gt0029|Age > 65: 0|local::at0014|No|
+      gt0026|Stroke History: 0|local::at0014|No|
+      gt0031|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0030|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0032|Total score: 0
+      gt0028|Labile INR: 0|local::at0014|No|
+      gt0027|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0025|Liver Disease: 0|local::at0014|No|
+      gt0023|Hypertension History: 0|local::at0014|No|
+      gt0062|Age: 60,a
+
+
+- id: ALT
+  input:
+    1:
+      gt0003|Systolic: 120,mm[Hg]
+      gt0064|Event time: 2019-06-30T07:55Z
+      gt0005|CR Result mircomol/L: 170,µmol/l
+      gt0065|Event time: 2019-06-30T07:55Z
+      gt0007|Total Bilirubin: 2,mg/dl
+      gt0066|Event time: 2019-06-30T07:55Z
+      gt0060|Birthdate: 1959-06-30T07:55Z
+      gt0067|Event time: 2019-06-30T07:55Z
+      gt0011|Standard Drinks: 1,/wk
+      gt0068|Event time: 2019-06-30T07:55Z
+      gt0013|Hypertension History: 0|local::at0014|No|
+      gt0014|Renal Disease: 0|local::at0014|No|
+      gt0015|Liver Disease: 0|local::at0014|No|
+      gt0016|Stroke History: 0|local::at0014|No|
+      gt0017|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0018|Labile INR: 0|local::at0014|No|
+      gt0020|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0021|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0069|Event time: 2019-06-30T07:55Z
+      gt0043|ALT Result: 170,U/l
+      gt0070|Event time: 2019-06-30T07:55Z
+      gt0042|ALP Result: 200,U/l
+      gt0072|Event time: 2019-06-30T07:55Z
+      gt0048|AST Result: 130,U/l
+      gt0071|Event time: 2019-06-30T07:55Z
+  expected_output:
+    1:
+      gt0024|Renal Disease: 0|local::at0014|No|
+      gt0029|Age > 65: 0|local::at0014|No|
+      gt0026|Stroke History: 0|local::at0014|No|
+      gt0031|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0030|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0032|Total score: 0
+      gt0028|Labile INR: 0|local::at0014|No|
+      gt0027|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0025|Liver Disease: 0|local::at0014|No|
+      gt0023|Hypertension History: 0|local::at0014|No|
+      gt0062|Age: 60,a
+
+- id: Liver d history
+  input:
+    1:
+      gt0003|Systolic: 120,mm[Hg]
+      gt0064|Event time: 2019-06-30T07:55Z
+      gt0005|CR Result mircomol/L: 170,µmol/l
+      gt0065|Event time: 2019-06-30T07:55Z
+      gt0007|Total Bilirubin: 2,mg/dl
+      gt0066|Event time: 2019-06-30T07:55Z
+      gt0060|Birthdate: 1959-06-30T07:55Z
+      gt0067|Event time: 2019-06-30T07:55Z
+      gt0011|Standard Drinks: 1,/wk
+      gt0068|Event time: 2019-06-30T07:55Z
+      gt0013|Hypertension History: 0|local::at0014|No|
+      gt0014|Renal Disease: 0|local::at0014|No|
+      gt0015|Liver Disease: 1|local::at0015|Yes|
+      gt0016|Stroke History: 0|local::at0014|No|
+      gt0017|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0018|Labile INR: 0|local::at0014|No|
+      gt0020|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0021|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0069|Event time: 2019-06-30T07:55Z
+      gt0043|ALT Result: 160,U/l
+      gt0070|Event time: 2019-06-30T07:55Z
+      gt0042|ALP Result: 200,U/l
+      gt0072|Event time: 2019-06-30T07:55Z
+      gt0048|AST Result: 130,U/l
+      gt0071|Event time: 2019-06-30T07:55Z
+  expected_output:
+    1:
+      gt0024|Renal Disease: 0|local::at0014|No|
+      gt0029|Age > 65: 0|local::at0014|No|
+      gt0026|Stroke History: 0|local::at0014|No|
+      gt0031|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0030|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0032|Total score: 0
+      gt0028|Labile INR: 0|local::at0014|No|
+      gt0027|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0025|Liver Disease: 0|local::at0014|No|
+      gt0023|Hypertension History: 0|local::at0014|No|
+      gt0062|Age: 60,a
+
+
+- id: allneg
+  input:
+    1:
+      gt0003|Systolic: 120,mm[Hg]
+      gt0064|Event time: 2019-06-30T07:55Z
+      gt0005|CR Result mircomol/L: 170,µmol/l
+      gt0065|Event time: 2019-06-30T07:55Z
+      gt0007|Total Bilirubin: 2,mg/dl
+      gt0066|Event time: 2019-06-30T07:55Z
+      gt0060|Birthdate: 1959-06-30T07:55Z
+      gt0067|Event time: 2019-06-30T07:55Z
+      gt0011|Standard Drinks: 1,/wk
+      gt0068|Event time: 2019-06-30T07:55Z
+      gt0013|Hypertension History: 0|local::at0014|No|
+      gt0014|Renal Disease: 0|local::at0014|No|
+      gt0015|Liver Disease: 0|local::at0014|No|
+      gt0016|Stroke History: 0|local::at0014|No|
+      gt0017|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0018|Labile INR: 0|local::at0014|No|
+      gt0020|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0021|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0069|Event time: 2019-06-30T07:55Z
+      gt0043|ALT Result: 160,U/l
+      gt0070|Event time: 2019-06-30T07:55Z
+      gt0042|ALP Result: 200,U/l
+      gt0072|Event time: 2019-06-30T07:55Z
+      gt0048|AST Result: 130,U/l
+      gt0071|Event time: 2019-06-30T07:55Z
+  expected_output:
+    1:
+      gt0024|Renal Disease: 0|local::at0014|No|
+      gt0029|Age > 65: 0|local::at0014|No|
+      gt0026|Stroke History: 0|local::at0014|No|
+      gt0031|Alcohol or Drug Usage History: 0|local::at0014|No|
+      gt0030|Medication Usage Predisposing to Bleeding: 0|local::at0014|No|
+      gt0032|Total score: 0
+      gt0028|Labile INR: 0|local::at0014|No|
+      gt0027|Prior Major Bleeding or Predisposition to Bleeding: 0|local::at0014|No|
+      gt0025|Liver Disease: 0|local::at0014|No|
+      gt0023|Hypertension History: 0|local::at0014|No|
+      gt0062|Age: 60,a
+
