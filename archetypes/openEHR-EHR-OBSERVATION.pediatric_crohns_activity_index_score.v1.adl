@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.pediatric_crohns_activity_index_score.v1
 
 concept
-	[at0000]	-- Pediatric Crohns Activity Index score
+	[at0000]	-- Pediatric crohns activity index score
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -23,21 +23,6 @@ description
 		["date"] = <"2017-08-05">
 	>
 	details = <
-		["sv"] = <
-			language = <[ISO_639-1::sv]>
-			purpose = <"Pediatric Crohn's Disease Activity Index (PCDAI) är ett instrument för utvärdering av svårighetsgrad vid Crohns sjukdom hos barn.">
-			use = <"Instrumentet kan med fördel användas såväl tidigt i förloppet som vid uppföljning, i syfte att utvärdera allvarlighetsgrad. 
-
-Parametrarna är kategoriserade till Historik, Undersökning och Laboratorieprover. Maximal poäng uppgår till 105p och resultatet tolkas enligt:
-
-<10p: Remission
-10–27.5p: Mild Crohns sjukdom
-30–37.5p: Måttlig Crohns sjukdom
-≥40p: Svår Crohns sjukdom">
-			keywords = <"Pediatric Crohns Activity Index", "Crohns", "morbus Crohn", "Crohns sjukdom">
-			misuse = <"Ej avsedd för individer över 19 års ålder.">
-			copyright = <"© Cambio Healthcare Systems">
-		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"The Pediatric Crohn's Disease Activity Index (PCDAI) helps to assess the severity of Crohn’s disease in pediatric patients.">
@@ -57,6 +42,21 @@ Score ≥40: Severe Crohn’s Disease ">
 			misuse = <"Do not use this tool in patients over the age of 19 yrs.">
 			copyright = <"© Cambio Healthcare Systems">
 		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"Pediatric Crohn's Disease Activity Index (PCDAI) är ett instrument för utvärdering av svårighetsgrad vid Crohns sjukdom hos barn.">
+			use = <"Instrumentet kan med fördel användas såväl tidigt i förloppet som vid uppföljning, i syfte att utvärdera allvarlighetsgrad. 
+
+Parametrarna är kategoriserade till Historik, Undersökning och Laboratorieprover. Maximal poäng uppgår till 105p och resultatet tolkas enligt:
+
+<10p: Remission
+10–27.5p: Mild Crohns sjukdom
+30–37.5p: Måttlig Crohns sjukdom
+≥40p: Svår Crohns sjukdom">
+			keywords = <"Pediatric Crohns Activity Index", "Crohns", "morbus Crohn", "Crohns sjukdom">
+			misuse = <"Ej avsedd för individer över 19 års ålder.">
+			copyright = <"© Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -65,99 +65,99 @@ Score ≥40: Severe Crohn’s Disease ">
 
 Ref. 2: Hyams J, et al. Evaluation of the pediatric Crohn disease activity index: a prospective multicenter experience. J Pediatr Gastroenterol Nutr. 2005 Oct;41(4):416-21.
 ">
-		["MD5-CAM-1.0.1"] = <"1AB9BFBCEDC4540E59876C34242CD3A2">
+		["MD5-CAM-1.0.1"] = <"667E1463EA3CED80A69C6EB55AEB2BC4">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Pediatric Crohns Activity Index score
+	OBSERVATION[at0000] matches {	-- Pediatric crohns activity index score
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									CLUSTER[at0004] occurrences matches {0..1} matches {	-- Historik: Självrapporterat från senaste veckan
+									CLUSTER[at0004] occurrences matches {0..1} matches {	-- History: Based on recall from previous week
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Buksmärta
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Abdominal pain
 												value matches {
-													0|[local::at0022], 	-- Ingen
-													5|[local::at0023], 	-- Mild (kortvarig, påverkar inte aktivitet)
-													10|[local::at0024]  	-- Måttlig till svår (dagligen, varaktig, påverkar aktiviteter, eller nattlig smärta)
+													0|[local::at0022], 	-- None
+													5|[local::at0023], 	-- Mild (brief, does not interfere with activities)
+													10|[local::at0024]  	-- Moderate to severe (daily, longer lasting, affects activities, or nocturnal pain)
 												}
 											}
-											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Tarmtömning per dag
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Stools per day
 												value matches {
-													0|[local::at0025], 	-- 0–1 lösa avföringar, inget blod
-													5|[local::at0026], 	-- Lite blod upp till två gånger, eller 2-5 lösa avföringar
-													10|[local::at0027]  	-- Större blödning eller ≥6 lösa avföringar, eller nattlig diarré
+													0|[local::at0025], 	-- 0–1 liquid stools, no blood
+													5|[local::at0026], 	-- Up to 2 semi-formed stool with small blood, or 2–5 liquid stools
+													10|[local::at0027]  	-- Gross bleeding or ≥6 liquid stools, or nocturnal diarrhea
 												}
 											}
-											ELEMENT[at0006] occurrences matches {0..1} matches {	-- Allmäntillstånd
+											ELEMENT[at0006] occurrences matches {0..1} matches {	-- General well-being
 												value matches {
-													0|[local::at0028], 	-- Gott, opåverkat (ingen begränsning av aktiviteter)
-													5|[local::at0029], 	-- Påverkat (sporadiska svårigheter att upprätthålla åldersadekvata aktiviteter)
-													10|[local::at0030]  	-- Klart nedsatt (frekvent begränsning av aktivitet)
+													0|[local::at0028], 	-- Well (no limitation of activities)
+													5|[local::at0029], 	-- Below par (occasional difficulty in maintaining age-appropriate activities)
+													10|[local::at0030]  	-- Very poor (frequent limitation of activity)
 												}
 											}
 										}
 									}
-									CLUSTER[at0005] occurrences matches {0..1} matches {	-- Undersökning
+									CLUSTER[at0005] occurrences matches {0..1} matches {	-- Examination
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0014] occurrences matches {0..1} matches {	-- Vikt
+											ELEMENT[at0014] occurrences matches {0..1} matches {	-- Weight score
 												value matches {
-													0|[local::at0031], 	-- Viktuppgång, avsiktligt viktstabil, eller avsiktlig viktnedgång
-													5|[local::at0032], 	-- Oavsiktligt viktstabil, eller viktnedgång 1-9%
-													10|[local::at0033]  	-- Viktnedgång ≥10%
+													0|[local::at0031], 	-- Weight gain, weight voluntarily stable, or voluntary weight loss
+													5|[local::at0032], 	-- Weight involuntarily stable or weight loss 1–9%
+													10|[local::at0033]  	-- Weight loss ≥10%
 												}
 											}
-											ELEMENT[at0013] occurrences matches {0..1} matches {	-- Längd vid diagnos (eller uppföljning)
+											ELEMENT[at0013] occurrences matches {0..1} matches {	-- Height at diagnosis (or follow up) score
 												value matches {
-													0|[local::at0034], 	-- Vid diagnos: <1 -SD ELLER vid uppföljning: tillväxthastighet ≥-1SD
-													5|[local::at0035], 	-- Vid diagnos: 1 ≤ -SD < 2 ELLER vid uppföljning: -1SD > tillväxthastighet > -2SD
-													10|[local::at0036]  	-- Vid diagnos: ≥2 -SD ELLER vid uppföljning: tillväxthastighet ≤-2SD
+													0|[local::at0034], 	-- At diagnosis <1 channel decrease OR at follow-up Height velocity ≥-1SD
+													5|[local::at0035], 	-- At diagnosis 1 ≤ channel decrease < 2 OR at follow-up -1SD > height velocity > -2SD 
+													10|[local::at0036]  	-- At diagnosis ≥2 channel decrease OR at follow-up Height velocity ≤-2SD
 												}
 											}
-											ELEMENT[at0012] occurrences matches {0..1} matches {	-- Bukstatus
+											ELEMENT[at0012] occurrences matches {0..1} matches {	-- Abdomen
 												value matches {
-													0|[local::at0037], 	-- Ingen ömhet eller palpabel resistens
-													5|[local::at0038], 	-- Ömhet, eller icke ömmande palpabel resistens
-													10|[local::at0039]  	-- Ömhet, ofrivilligt muskelförsvar, eller tydlig palpabel resistens
+													0|[local::at0037], 	-- No tenderness, no mass
+													5|[local::at0038], 	-- Tenderness, or mass without tenderness
+													10|[local::at0039]  	-- Tenderness, involuntary guarding, or definite mass
 												}
 											}
-											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Peri-rektal sjukdom
+											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Peri-rectal disease
 												value matches {
-													0|[local::at0040], 	-- Ingen eller asymtomatisk
-													5|[local::at0041], 	-- 1-2 smärtfria fistlar, sparsam dränering, och icke ömmande
-													10|[local::at0042]  	-- Aktiv fistel, dränering, ömhet eller abscess
+													0|[local::at0040], 	-- None or asymptomatic tags
+													5|[local::at0041], 	-- 1–2 indolent fistulae, scant drainage, and no tenderness
+													10|[local::at0042]  	-- Active fistula, drainage, tenderness, or abscess
 												}
 											}
-											ELEMENT[at0010] occurrences matches {0..1} matches {	-- Extraintestinala manifestationer
+											ELEMENT[at0010] occurrences matches {0..1} matches {	-- Extra-intestinal manifestations
 												value matches {
-													0|[local::at0043], 	-- Ingen
+													0|[local::at0043], 	-- None
 													5|[local::at0044], 	-- 1
 													10|[local::at0045]  	-- ≥2
 												}
 											}
 										}
 									}
-									CLUSTER[at0009] occurrences matches {0..1} matches {	-- Laboratorieprover
+									CLUSTER[at0009] occurrences matches {0..1} matches {	-- Lab tests
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0019] occurrences matches {0..1} matches {	-- 2x Hematokrit
+											ELEMENT[at0019] occurrences matches {0..1} matches {	-- 2x HCT score
 												value matches {
-													0|[local::at0046], 	-- >33% beroende på ålder och kön
-													5|[local::at0048], 	-- 28-36% beroende på ålder och kön
-													10|[local::at0049]  	-- <32% beroende på ålder och kön
+													0|[local::at0046], 	-- >33% depending on age and sex
+													5|[local::at0048], 	-- 28-36% depending on age and sex
+													10|[local::at0049]  	-- <32% depending on age and sex
 												}
 											}
-											ELEMENT[at0018] occurrences matches {0..1} matches {	-- Sänkningsreaktion
+											ELEMENT[at0018] occurrences matches {0..1} matches {	-- ESR score
 												value matches {
 													0|[local::at0050], 	-- < 20
 													5|[local::at0051], 	-- 20-50
 													10|[local::at0052]  	-- > 50
 												}
 											}
-											ELEMENT[at0017] occurrences matches {0..1} matches {	-- Albumin
+											ELEMENT[at0017] occurrences matches {0..1} matches {	-- Albumin score
 												value matches {
 													0|[local::at0053], 	-- ≥3.5 (35)
 													5|[local::at0054], 	-- 3.1–3.4 (31–34)
@@ -166,7 +166,7 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0020] occurrences matches {0..1} matches {	-- Poäng
+									ELEMENT[at0020] occurrences matches {0..1} matches {	-- Total Score
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::380]>
@@ -180,7 +180,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -329,15 +329,15 @@ Interval (months) between heights. The measurements are either at diagnosis or a
 					description = <"*">
 				>
 				["at0034"] = <
-					text = <"At diagnosis: <1 channel decrease OR at follow-up: Height velocity ≥-1SD">
+					text = <"At diagnosis <1 channel decrease OR at follow-up Height velocity ≥-1SD">
 					description = <"*">
 				>
 				["at0035"] = <
-					text = <"At diagnosis: 1 ≤ channel decrease < 2 OR at follow-up: -1SD > height velocity > -2SD ">
+					text = <"At diagnosis 1 ≤ channel decrease < 2 OR at follow-up -1SD > height velocity > -2SD ">
 					description = <"*">
 				>
 				["at0036"] = <
-					text = <"At diagnosis: ≥2 channel decrease OR at follow-up: Height velocity ≤-2SD">
+					text = <"At diagnosis ≥2 channel decrease OR at follow-up Height velocity ≤-2SD">
 					description = <"*">
 				>
 				["at0037"] = <
@@ -436,11 +436,11 @@ helps to assess the severity of Crohn’s disease in pediatric patients.(en)">
 				>
 				["at0004"] = <
 					text = <"Historik: Självrapporterat från senaste veckan">
-					description = <"">
+					description = <"*">
 				>
 				["at0005"] = <
 					text = <"Undersökning">
-					description = <"">
+					description = <"*">
 				>
 				["at0006"] = <
 					text = <"Allmäntillstånd">
@@ -456,7 +456,7 @@ helps to assess the severity of Crohn’s disease in pediatric patients.(en)">
 				>
 				["at0009"] = <
 					text = <"Laboratorieprover">
-					description = <"">
+					description = <"*">
 				>
 				["at0010"] = <
 					text = <"Extraintestinala manifestationer">
@@ -501,99 +501,99 @@ x 12 = tillväxthastighet (cm/år).">
 				>
 				["at0022"] = <
 					text = <"Ingen">
-					description = <"">
+					description = <"*">
 				>
 				["at0023"] = <
 					text = <"Mild (kortvarig, påverkar inte aktivitet)">
-					description = <"">
+					description = <"*">
 				>
 				["at0024"] = <
 					text = <"Måttlig till svår (dagligen, varaktig, påverkar aktiviteter, eller nattlig smärta)">
-					description = <"">
+					description = <"*">
 				>
 				["at0025"] = <
 					text = <"0–1 lösa avföringar, inget blod">
-					description = <"">
+					description = <"*">
 				>
 				["at0026"] = <
 					text = <"Lite blod upp till två gånger, eller 2-5 lösa avföringar">
-					description = <"">
+					description = <"*">
 				>
 				["at0027"] = <
 					text = <"Större blödning eller ≥6 lösa avföringar, eller nattlig diarré">
-					description = <"">
+					description = <"*">
 				>
 				["at0028"] = <
 					text = <"Gott, opåverkat (ingen begränsning av aktiviteter)">
-					description = <"">
+					description = <"*">
 				>
 				["at0029"] = <
 					text = <"Påverkat (sporadiska svårigheter att upprätthålla åldersadekvata aktiviteter)">
-					description = <"">
+					description = <"*">
 				>
 				["at0030"] = <
 					text = <"Klart nedsatt (frekvent begränsning av aktivitet)">
-					description = <"">
+					description = <"*">
 				>
 				["at0031"] = <
 					text = <"Viktuppgång, avsiktligt viktstabil, eller avsiktlig viktnedgång">
-					description = <"">
+					description = <"*">
 				>
 				["at0032"] = <
 					text = <"Oavsiktligt viktstabil, eller viktnedgång 1-9%">
-					description = <"">
+					description = <"*">
 				>
 				["at0033"] = <
 					text = <"Viktnedgång ≥10%">
-					description = <"">
+					description = <"*">
 				>
 				["at0034"] = <
-					text = <"Vid diagnos: <1 -SD ELLER vid uppföljning: tillväxthastighet ≥-1SD">
-					description = <"">
+					text = <"Vid diagnos <1 -SD ELLER vid uppföljning tillväxthastighet ≥-1SD">
+					description = <"*">
 				>
 				["at0035"] = <
-					text = <"Vid diagnos: 1 ≤ -SD < 2 ELLER vid uppföljning: -1SD > tillväxthastighet > -2SD">
-					description = <"">
+					text = <"Vid diagnos 1 ≤ -SD < 2 ELLER vid uppföljning -1SD > tillväxthastighet > -2SD">
+					description = <"*">
 				>
 				["at0036"] = <
-					text = <"Vid diagnos: ≥2 -SD ELLER vid uppföljning: tillväxthastighet ≤-2SD">
-					description = <"">
+					text = <"Vid diagnos ≥2 -SD ELLER vid uppföljning tillväxthastighet ≤-2SD">
+					description = <"*">
 				>
 				["at0037"] = <
 					text = <"Ingen ömhet eller palpabel resistens">
-					description = <"">
+					description = <"*">
 				>
 				["at0038"] = <
 					text = <"Ömhet, eller icke ömmande palpabel resistens">
-					description = <"">
+					description = <"*">
 				>
 				["at0039"] = <
 					text = <"Ömhet, ofrivilligt muskelförsvar, eller tydlig palpabel resistens">
-					description = <"">
+					description = <"*">
 				>
 				["at0040"] = <
 					text = <"Ingen eller asymtomatisk">
-					description = <"">
+					description = <"*">
 				>
 				["at0041"] = <
 					text = <"1-2 smärtfria fistlar, sparsam dränering, och icke ömmande">
-					description = <"">
+					description = <"*">
 				>
 				["at0042"] = <
 					text = <"Aktiv fistel, dränering, ömhet eller abscess">
-					description = <"">
+					description = <"*">
 				>
 				["at0043"] = <
 					text = <"Ingen">
-					description = <"">
+					description = <"*">
 				>
 				["at0044"] = <
 					text = <"1">
-					description = <"">
+					description = <"*">
 				>
 				["at0045"] = <
 					text = <"≥2">
-					description = <"">
+					description = <"*">
 				>
 				["at0046"] = <
 					text = <">33% beroende på ålder och kön">
@@ -609,27 +609,27 @@ x 12 = tillväxthastighet (cm/år).">
 				>
 				["at0050"] = <
 					text = <"< 20">
-					description = <"">
+					description = <"*">
 				>
 				["at0051"] = <
 					text = <"20-50">
-					description = <"">
+					description = <"*">
 				>
 				["at0052"] = <
 					text = <"> 50">
-					description = <"">
+					description = <"*">
 				>
 				["at0053"] = <
 					text = <"≥3.5 (35)">
-					description = <"">
+					description = <"*">
 				>
 				["at0054"] = <
 					text = <"3.1–3.4 (31–34)">
-					description = <"">
+					description = <"*">
 				>
 				["at0055"] = <
 					text = <"≤3.0 (30)">
-					description = <"">
+					description = <"*">
 				>
 			>
 		>
