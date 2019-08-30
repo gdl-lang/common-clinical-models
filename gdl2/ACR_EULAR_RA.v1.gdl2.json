@@ -70,15 +70,8 @@
           "gt0006": {
             "id": "gt0006",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
-          },
-          "gt0020": {
-            "id": "gt0020",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0007": {
         "id": "gt0007",
@@ -86,22 +79,6 @@
         "template_id": "openEHR-EHR-OBSERVATION.acr_eular_ra_classification.v1",
         "type": "OUTPUT",
         "elements": {
-          "gt0008": {
-            "id": "gt0008",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
-          },
-          "gt0009": {
-            "id": "gt0009",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
-          },
-          "gt0010": {
-            "id": "gt0010",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
-          },
-          "gt0011": {
-            "id": "gt0011",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
-          },
           "gt0012": {
             "id": "gt0012",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
@@ -110,67 +87,17 @@
       }
     },
     "rules": {
-      "gt0013": {
-        "id": "gt0013",
-        "priority": 6,
-        "when": [
-          "$gt0008|Joint Distribution|==null",
-          "$gt0009|Serology|==null",
-          "$gt0010|Symptom Duration|==null",
-          "$gt0011|Acute Phase Reactants|==null"
-        ],
-        "then": [
-          "$gt0008|Joint Distribution|=0|local::at0010|1 large joint|",
-          "$gt0009|Serology|=0|local::at0015|Negative RF AND ACPA|",
-          "$gt0010|Symptom Duration|=0|local::at0018|<6 weeks|",
-          "$gt0011|Acute Phase Reactants|=0|local::at0020|Normal CRP AND ESR|"
-        ]
-      },
-      "gt0014": {
-        "id": "gt0014",
-        "priority": 5,
-        "when": [
-          "$gt0003|Joint Distribution|!=null"
-        ],
-        "then": [
-          "$gt0008|Joint Distribution|=$gt0003|Joint Distribution|"
-        ]
-      },
-      "gt0015": {
-        "id": "gt0015",
-        "priority": 4,
-        "when": [
-          "$gt0004|Serology|!=null"
-        ],
-        "then": [
-          "$gt0009|Serology|=$gt0004|Serology|"
-        ]
-      },
-      "gt0016": {
-        "id": "gt0016",
-        "priority": 3,
-        "when": [
-          "$gt0005|Symptom Duration|!=null"
-        ],
-        "then": [
-          "$gt0010|Symptom Duration|=$gt0005|Symptom Duration|"
-        ]
-      },
-      "gt0017": {
-        "id": "gt0017",
-        "priority": 2,
-        "when": [
-          "$gt0006|Acute Phase Reactants|!=null"
-        ],
-        "then": [
-          "$gt0011|Acute Phase Reactants|=$gt0006|Acute Phase Reactants|"
-        ]
-      },
       "gt0018": {
         "id": "gt0018",
         "priority": 1,
+        "when": [
+          "$gt0003|Joint Distribution|!=null",
+          "$gt0004|Serology|!=null",
+          "$gt0005|Symptom Duration|!=null",
+          "$gt0006|Acute Phase Reactants|!=null"
+        ],
         "then": [
-          "$gt0012|Score|.magnitude=(($gt0008.value+$gt0009.value)+$gt0010.value)+$gt0011.value"
+          "$gt0012|Score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value"
         ]
       }
     }
