@@ -1,7 +1,17 @@
 guidelines:
   1: AIR.v1
 test_cases:
-- id: 1 - Default values and lowest lab tests
+- id: 1 - Default values
+  input:
+    1: {}
+  expected_output:
+    1:
+      gt0021|White blood cell count: 0|local::at0031|<10|
+      gt0022|CRP: 0|local::at0034|<10|
+      gt0020|Neutrophils: 0|local::at0028|<70%|
+
+- id: 2 - Lowest lab tests
+  input:
   input:
     1:
       gt0007|White cell count: 10,10*9/l
@@ -9,18 +19,11 @@ test_cases:
       gt0006|CRP Result: 10,mg/l
   expected_output:
     1:
-      gt0019|Body temperature ≥38.5: 0|local::at0016|No|
-      gt0018|Rebound tenderness or muscular defense: 0|local::at0012|None|
-      gt0016|Vomiting: 0|local::at0008|No|
       gt0021|White blood cell count: 1|local::at0032|10-14,9|
-      gt0043|Total score: 4
-      gt0017|Pain in right inferior fossa: 0|local::at0010|No|
       gt0022|CRP: 1|local::at0035|10-49|
       gt0020|Neutrophils: 2|local::at0030|≥85%|
-      gt0047|Recommendation: 0|local::at0007|Consider outpatient follow-up if unaltered general condition|
-      gt0046|Probability: 0|local::at0004|Low probability|
 
-- id: 2 - Lowest values
+- id: 3 - Lowest values
   input:
     1:
       gt0009|Vomiting?: 0|local::at0008|No|
@@ -32,18 +35,14 @@ test_cases:
       gt0006|CRP Result: 10,mg/l
   expected_output:
     1:
-      gt0019|Body temperature ≥38.5: 0|local::at0016|No|
-      gt0018|Rebound tenderness or muscular defense: 0|local::at0012|None|
-      gt0016|Vomiting: 0|local::at0008|No|
       gt0021|White blood cell count: 1|local::at0032|10-14,9|
       gt0043|Total score: 4
-      gt0017|Pain in right inferior fossa: 0|local::at0010|No|
       gt0022|CRP: 1|local::at0035|10-49|
       gt0020|Neutrophils: 2|local::at0030|≥85%|
       gt0047|Recommendation: 0|local::at0007|Consider outpatient follow-up if unaltered general condition|
       gt0046|Probability: 0|local::at0004|Low probability|
 
-- id: 3 - Everything 1, lab test boundary values
+- id: 4 - Everything 1, lab test boundary values
   input:
     1:
       gt0009|Vomiting?: 1|local::at0009|Yes|
@@ -55,18 +54,14 @@ test_cases:
       gt0006|CRP Result: 49,mg/l
   expected_output:
     1:
-      gt0019|Body temperature ≥38.5: 1|local::at0017|Yes|
-      gt0018|Rebound tenderness or muscular defense: 1|local::at0013|Light|
-      gt0016|Vomiting: 1|local::at0009|Yes|
       gt0021|White blood cell count: 1|local::at0032|10-14,9|
       gt0043|Total score: 8
-      gt0017|Pain in right inferior fossa: 1|local::at0011|Yes|
       gt0022|CRP: 1|local::at0035|10-49|
       gt0020|Neutrophils: 2|local::at0030|≥85%|
       gt0047|Recommendation: 1|local::at0008|In-hospital active observation|
       gt0046|Probability: 1|local::at0005|Indeterminate group|
 
-- id: 4 - Rebound tenderness Medium, labb test boundary values
+- id: 5 - Rebound tenderness Medium, labb test boundary values
   input:
     1:
       gt0009|Vomiting?: 1|local::at0009|Yes|
@@ -78,18 +73,14 @@ test_cases:
       gt0006|CRP Result: 50,mg/l
   expected_output:
     1:
-      gt0019|Body temperature ≥38.5: 1|local::at0017|Yes|
-      gt0018|Rebound tenderness or muscular defense: 2|local::at0014|Medium|
-      gt0016|Vomiting: 1|local::at0009|Yes|
       gt0021|White blood cell count: 2|local::at0033|≥15|
       gt0043|Total score: 11
-      gt0017|Pain in right inferior fossa: 1|local::at0011|Yes|
       gt0022|CRP: 2|local::at0036|≥50|
       gt0020|Neutrophils: 2|local::at0030|≥85%|
       gt0047|Recommendation: 2|local::at0009|Consider surgical exploration|
       gt0046|Probability: 2|local::at0006|High probability|
 
-- id: 5 - Rebound tenderness Strong
+- id: 6 - Rebound tenderness Strong
   input:
     1:
       gt0009|Vomiting?: 1|local::at0009|Yes|
@@ -101,12 +92,8 @@ test_cases:
       gt0006|CRP Result: 80,mg/l
   expected_output:
     1:
-      gt0019|Body temperature ≥38.5: 1|local::at0017|Yes|
-      gt0018|Rebound tenderness or muscular defense: 3|local::at0015|Strong|
-      gt0016|Vomiting: 1|local::at0009|Yes|
       gt0021|White blood cell count: 2|local::at0033|≥15|
       gt0043|Total score: 12
-      gt0017|Pain in right inferior fossa: 1|local::at0011|Yes|
       gt0022|CRP: 2|local::at0036|≥50|
       gt0020|Neutrophils: 2|local::at0030|≥85%|
       gt0047|Recommendation: 2|local::at0009|Consider surgical exploration|
