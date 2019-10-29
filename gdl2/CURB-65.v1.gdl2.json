@@ -66,15 +66,8 @@
           "gt0009": {
             "id": "gt0009",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
-          },
-          "gt0035": {
-            "id": "gt0035",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0003": {
         "id": "gt0003",
@@ -82,26 +75,6 @@
         "template_id": "openEHR-EHR-OBSERVATION.curb_65.v1",
         "type": "OUTPUT",
         "elements": {
-          "gt0010": {
-            "id": "gt0010",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
-          },
-          "gt0011": {
-            "id": "gt0011",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
-          },
-          "gt0012": {
-            "id": "gt0012",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
-          },
-          "gt0013": {
-            "id": "gt0013",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
-          },
           "gt0015": {
             "id": "gt0015",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
@@ -130,129 +103,18 @@
       }
     },
     "rules": {
-      "gt0019": {
-        "id": "gt0019",
-        "priority": 16,
-        "when": [
-          "$gt0010|Confusion Score|==null",
-          "$gt0013|Respiratory rate Score|==null",
-          "$gt0011|Hypotension Score|==null",
-          "$gt0012|Age Score|==null",
-          "$gt0014|Blood urea nitrogen Score|==null"
-        ],
-        "then": [
-          "$gt0010|Confusion Score|=0|local::at0013|Absent|",
-          "$gt0013|Respiratory rate Score|=0|local::at0019|Absent|",
-          "$gt0011|Hypotension Score|=0|local::at0015|Absent|",
-          "$gt0012|Age Score|=0|local::at0017|Absent|",
-          "$gt0014|Blood urea nitrogen Score|=0|local::at0021|Absent|"
-        ]
-      },
-      "gt0020": {
-        "id": "gt0020",
-        "priority": 15,
-        "when": [
-          "$gt0005|Confusion?|==0|local::at0009|Absent|"
-        ],
-        "then": [
-          "$gt0010|Confusion Score|=0|local::at0013|Absent|"
-        ]
-      },
-      "gt0021": {
-        "id": "gt0021",
-        "priority": 14,
-        "when": [
-          "$gt0007|Systolic BP <90mmHg or diastolic BP ≤60mmHg?|==0|local::at0013|Absent|"
-        ],
-        "then": [
-          "$gt0011|Hypotension Score|=0|local::at0015|Absent|"
-        ]
-      },
-      "gt0022": {
-        "id": "gt0022",
-        "priority": 13,
-        "when": [
-          "$gt0006|Respiratory rate ≥30/min?|==0|local::at0011|Absent|"
-        ],
-        "then": [
-          "$gt0013|Respiratory rate Score|=0|local::at0019|Absent|"
-        ]
-      },
-      "gt0023": {
-        "id": "gt0023",
-        "priority": 12,
-        "when": [
-          "$gt0008|Age ≥ 65 years?|==0|local::at0015|Absent|"
-        ],
-        "then": [
-          "$gt0012|Age Score|=0|local::at0017|Absent|"
-        ]
-      },
-      "gt0024": {
-        "id": "gt0024",
-        "priority": 11,
-        "when": [
-          "$gt0009|Blood urea nitrogen level >19 mg/dL (>7 mmol/L)?|==0|local::at0017|Absent |"
-        ],
-        "then": [
-          "$gt0014|Blood urea nitrogen Score|=0|local::at0021|Absent|"
-        ]
-      },
-      "gt0025": {
-        "id": "gt0025",
-        "priority": 10,
-        "when": [
-          "$gt0005|Confusion?|==1|local::at0010|Present|"
-        ],
-        "then": [
-          "$gt0010|Confusion Score|=1|local::at0014|Present|"
-        ]
-      },
-      "gt0026": {
-        "id": "gt0026",
-        "priority": 9,
-        "when": [
-          "$gt0007|Systolic BP <90mmHg or diastolic BP ≤60mmHg?|==1|local::at0014|Present|"
-        ],
-        "then": [
-          "$gt0011|Hypotension Score|=1|local::at0016|Present|"
-        ]
-      },
-      "gt0027": {
-        "id": "gt0027",
-        "priority": 8,
-        "when": [
-          "$gt0006|Respiratory rate ≥30/min?|==1|local::at0012|Present|"
-        ],
-        "then": [
-          "$gt0013|Respiratory rate Score|=1|local::at0020|Present|"
-        ]
-      },
-      "gt0028": {
-        "id": "gt0028",
-        "priority": 7,
-        "when": [
-          "$gt0008|Age ≥ 65 years?|==1|local::at0016|Present|"
-        ],
-        "then": [
-          "$gt0012|Age Score|=1|local::at0018|Present|"
-        ]
-      },
-      "gt0029": {
-        "id": "gt0029",
-        "priority": 6,
-        "when": [
-          "$gt0009|Blood urea nitrogen level >19 mg/dL (>7 mmol/L)?|==1|local::at0018|Present|"
-        ],
-        "then": [
-          "$gt0014|Blood urea nitrogen Score|=1|local::at0022|Present|"
-        ]
-      },
       "gt0030": {
         "id": "gt0030",
         "priority": 5,
+        "when": [
+          "$gt0005|Confusion?|!=null",
+          "$gt0006|Respiratory rate ≥30/min?|!=null",
+          "$gt0007|Systolic BP <90mmHg or diastolic BP ≤60mmHg?|!=null",
+          "$gt0008|Age ≥ 65 years?|!=null",
+          "$gt0009|Blood urea nitrogen level >19 mg/dL (>7 mmol/L)?|!=null"
+        ],
         "then": [
-          "$gt0015|Total score|.magnitude=((($gt0010.value+$gt0011.value)+$gt0012.value)+$gt0013.value)+$gt0014.value"
+          "$gt0015|Total score|.magnitude=$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value"
         ]
       },
       "gt0031": {
@@ -340,31 +202,6 @@
             "text": "Ureahalt i blod >19 mg/dL (>7 mmol/L)?",
             "description": "*(en) *"
           },
-          "gt0010": {
-            "id": "gt0010",
-            "text": "Konfusion poäng",
-            "description": "*(en) *"
-          },
-          "gt0011": {
-            "id": "gt0011",
-            "text": "Hypotension poäng",
-            "description": "*(en) *"
-          },
-          "gt0012": {
-            "id": "gt0012",
-            "text": "Ålder poäng",
-            "description": "*(en) *"
-          },
-          "gt0013": {
-            "id": "gt0013",
-            "text": "Andningsfrekvens poäng",
-            "description": "*(en) *"
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "text": "Ureahalt i blod poäng",
-            "description": "*(en) *"
-          },
           "gt0015": {
             "id": "gt0015",
             "text": "Total poäng",
@@ -385,50 +222,6 @@
             "text": "30-dagars mortalitet",
             "description": "*(en) *"
           },
-          "gt0019": {
-            "id": "gt0019",
-            "text": "Sätt standard"
-          },
-          "gt0020": {
-            "id": "gt0020",
-            "text": "Sätt konfusion till 0"
-          },
-          "gt0021": {
-            "id": "gt0021",
-            "text": "Sätt hypotension till 0"
-          },
-          "gt0022": {
-            "id": "gt0022",
-            "text": "Sätt andningsfrekvens till 0"
-          },
-          "gt0023": {
-            "id": "gt0023",
-            "text": "Sätt ålder till 0"
-          },
-          "gt0024": {
-            "id": "gt0024",
-            "text": "Sätt ureahalt i blod till 0"
-          },
-          "gt0025": {
-            "id": "gt0025",
-            "text": "Sätt konfusion till 1"
-          },
-          "gt0026": {
-            "id": "gt0026",
-            "text": "Sätt hypotension till 1"
-          },
-          "gt0027": {
-            "id": "gt0027",
-            "text": "Sätt andningsfrekvens till 1"
-          },
-          "gt0028": {
-            "id": "gt0028",
-            "text": "Sätt ålder till 1"
-          },
-          "gt0029": {
-            "id": "gt0029",
-            "text": "Sätt ureahalt i blod till 1"
-          },
           "gt0030": {
             "id": "gt0030",
             "text": "Beräkna total poäng"
@@ -448,11 +241,6 @@
           "gt0034": {
             "id": "gt0034",
             "text": "Sätt risknivå till högst inkl. rekommendation och mortalitet"
-          },
-          "gt0035": {
-            "id": "gt0035",
-            "text": "*(en) Event time",
-            "description": "*(en) The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
           }
         }
       },
@@ -489,31 +277,6 @@
             "text": "Blood urea nitrogen level >19 mg/dL (>7 mmol/L)?",
             "description": "*"
           },
-          "gt0010": {
-            "id": "gt0010",
-            "text": "Confusion Score",
-            "description": "*"
-          },
-          "gt0011": {
-            "id": "gt0011",
-            "text": "Hypotension Score",
-            "description": "*"
-          },
-          "gt0012": {
-            "id": "gt0012",
-            "text": "Age Score",
-            "description": "*"
-          },
-          "gt0013": {
-            "id": "gt0013",
-            "text": "Respiratory rate Score",
-            "description": "*"
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "text": "Blood urea nitrogen Score",
-            "description": "*"
-          },
           "gt0015": {
             "id": "gt0015",
             "text": "Total score",
@@ -534,50 +297,6 @@
             "text": "30-day mortality",
             "description": "*"
           },
-          "gt0019": {
-            "id": "gt0019",
-            "text": "Set default"
-          },
-          "gt0020": {
-            "id": "gt0020",
-            "text": "Set confusion to 0"
-          },
-          "gt0021": {
-            "id": "gt0021",
-            "text": "Set hypotension to 0"
-          },
-          "gt0022": {
-            "id": "gt0022",
-            "text": "Set respiratory rate to 0"
-          },
-          "gt0023": {
-            "id": "gt0023",
-            "text": "Set age to 0"
-          },
-          "gt0024": {
-            "id": "gt0024",
-            "text": "Set blood urea nitrogen to 0"
-          },
-          "gt0025": {
-            "id": "gt0025",
-            "text": "Set confusion to 1"
-          },
-          "gt0026": {
-            "id": "gt0026",
-            "text": "Set hypotension to 1"
-          },
-          "gt0027": {
-            "id": "gt0027",
-            "text": "Set respiratory rate to 1"
-          },
-          "gt0028": {
-            "id": "gt0028",
-            "text": "Set age to 1"
-          },
-          "gt0029": {
-            "id": "gt0029",
-            "text": "Set blood urea nitrogen to 1"
-          },
           "gt0030": {
             "id": "gt0030",
             "text": "Calculate total score"
@@ -597,11 +316,6 @@
           "gt0034": {
             "id": "gt0034",
             "text": "Set risk level to highest risk incl. recommendation and mortality rate"
-          },
-          "gt0035": {
-            "id": "gt0035",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
           }
         }
       }
