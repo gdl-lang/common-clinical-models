@@ -48,15 +48,8 @@
           "gt0005": {
             "id": "gt0005",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
-          },
-          "gt0031": {
-            "id": "gt0031",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0006": {
         "id": "gt0006",
@@ -68,21 +61,9 @@
             "id": "gt0007",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
           },
-          "gt0008": {
-            "id": "gt0008",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
-          },
-          "gt0009": {
-            "id": "gt0009",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
-          },
           "gt0010": {
             "id": "gt0010",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
-          },
-          "gt0011": {
-            "id": "gt0011",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
           },
           "gt0012": {
             "id": "gt0012",
@@ -99,15 +80,8 @@
           "gt0014": {
             "id": "gt0014",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
-          },
-          "gt0032": {
-            "id": "gt0032",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0015": {
         "id": "gt0015",
@@ -130,21 +104,14 @@
           "gt0018": {
             "id": "gt0018",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0078.4]"
-          },
-          "gt0033": {
-            "id": "gt0033",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       }
     },
     "rules": {
       "gt0019": {
         "id": "gt0019",
-        "priority": 9,
+        "priority": 6,
         "when": [
           "$gt0014|Birthdate|!=null"
         ],
@@ -155,7 +122,7 @@
       },
       "gt0022": {
         "id": "gt0022",
-        "priority": 8,
+        "priority": 5,
         "when": [
           "$gt0016|Age|<=60,a"
         ],
@@ -165,7 +132,7 @@
       },
       "gt0023": {
         "id": "gt0023",
-        "priority": 7,
+        "priority": 4,
         "when": [
           "$gt0016|Age|>60,a"
         ],
@@ -175,7 +142,7 @@
       },
       "gt0020": {
         "id": "gt0020",
-        "priority": 6,
+        "priority": 3,
         "when": [
           "$gt0018|Haemoglobin|>=120,gm/l"
         ],
@@ -185,7 +152,7 @@
       },
       "gt0021": {
         "id": "gt0021",
-        "priority": 5,
+        "priority": 2,
         "when": [
           "$gt0018|Haemoglobin|<120,gm/l"
         ],
@@ -193,41 +160,18 @@
           "$gt0010|Hemoglobin <120 g/L or 12 g/dL|=1|local::at0012|Yes|"
         ]
       },
-      "gt0024": {
-        "id": "gt0024",
-        "priority": 4,
-        "when": [
-          "$gt0003|>4 nodal sites|!=null"
-        ],
-        "then": [
-          "$gt0008|>4 nodal sites|=$gt0003|>4 nodal sites|"
-        ]
-      },
-      "gt0026": {
-        "id": "gt0026",
-        "priority": 3,
-        "when": [
-          "$gt0004|LDH elevated|!=null"
-        ],
-        "then": [
-          "$gt0009|LDH elevated|=$gt0004|LDH elevated|"
-        ]
-      },
-      "gt0028": {
-        "id": "gt0028",
-        "priority": 2,
-        "when": [
-          "$gt0005|Stage III-IV|!=null"
-        ],
-        "then": [
-          "$gt0011|Stage III-IV|=$gt0005|Stage III-IV|"
-        ]
-      },
       "gt0030": {
         "id": "gt0030",
         "priority": 1,
+        "when": [
+          "$gt0003|>4 nodal sites|!=null",
+          "$gt0004|LDH elevated|!=null",
+          "$gt0005|Stage III-IV|!=null",
+          "$gt0007|Age > 60 years|!=null",
+          "$gt0010|Hemoglobin <120 g/L or 12 g/dL|!=null"
+        ],
         "then": [
-          "$gt0012|Total score|.magnitude=((($gt0010.value+$gt0011.value)+$gt0007.value)+$gt0008.value)+$gt0009.value"
+          "$gt0012|Total score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0007.value+$gt0010.value"
         ]
       }
     }
@@ -262,25 +206,10 @@
             "text": "Age > 60 years",
             "description": "Age > 60 years"
           },
-          "gt0008": {
-            "id": "gt0008",
-            "text": ">4 nodal sites",
-            "description": "See ref 1 for more information on nodal sites"
-          },
-          "gt0009": {
-            "id": "gt0009",
-            "text": "LDH elevated",
-            "description": "LDH elevated"
-          },
           "gt0010": {
             "id": "gt0010",
             "text": "Hemoglobin <120 g/L or 12 g/dL",
             "description": "Hemoglobin <120 g/L or 12 g/dL"
-          },
-          "gt0011": {
-            "id": "gt0011",
-            "text": "Stage III-IV",
-            "description": "Stage III: disease involves both sides of the diaphragm, including one organ or area near the lymph nodes or the spleen.\r\nStage IV: diffuse or disseminated involvement of one or more extranodal organs, with or without associated lymph node involvement."
           },
           "gt0012": {
             "id": "gt0012",
@@ -322,48 +251,9 @@
             "id": "gt0023",
             "text": "Set Age - Yes"
           },
-          "gt0024": {
-            "id": "gt0024",
-            "text": "Set > 4 nodal sites"
-          },
-          "gt0025": {
-            "id": "gt0025",
-            "text": "Set > 4 nodal sites - Yes"
-          },
-          "gt0026": {
-            "id": "gt0026",
-            "text": "Set LDH elevated "
-          },
-          "gt0027": {
-            "id": "gt0027",
-            "text": "Set LDH elevated - Yes"
-          },
-          "gt0028": {
-            "id": "gt0028",
-            "text": "Set Stage III-IV"
-          },
-          "gt0029": {
-            "id": "gt0029",
-            "text": "Set Stage III-IV - Yes"
-          },
           "gt0030": {
             "id": "gt0030",
             "text": "Calculate Total Score"
-          },
-          "gt0031": {
-            "id": "gt0031",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0032": {
-            "id": "gt0032",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0033": {
-            "id": "gt0033",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
           }
         }
       }
