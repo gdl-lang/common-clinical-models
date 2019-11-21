@@ -38,10 +38,6 @@
         "template_id": "openEHR-EHR-OBSERVATION.hepatic_encephalopathy_grades.v1",
         "type": "OUTPUT",
         "elements": {
-          "gt0005": {
-            "id": "gt0005",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
-          },
           "gt0006": {
             "id": "gt0006",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
@@ -57,33 +53,19 @@
           "gt0004": {
             "id": "gt0004",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
-          },
-          "gt0009": {
-            "id": "gt0009",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       }
     },
     "rules": {
-      "gt0007": {
-        "id": "gt0007",
-        "priority": 2,
+      "gt0008": {
+        "id": "gt0008",
+        "priority": 1,
         "when": [
           "$gt0004|Signs/Symptoms|!=null"
         ],
         "then": [
-          "$gt0005|Signs/Symptoms|=$gt0004|Signs/Symptoms|"
-        ]
-      },
-      "gt0008": {
-        "id": "gt0008",
-        "priority": 1,
-        "then": [
-          "$gt0006|Resulting score|.magnitude=$gt0005.value"
+          "$gt0006|Resulting score|.magnitude=$gt0004.value"
         ]
       }
     }
@@ -103,28 +85,14 @@
             "text": "Signs/Symptoms",
             "description": "Thw West Haven Criteria are used to categorise the signs and symptoms to interpret the grading for Hepatic Encephalopathy."
           },
-          "gt0005": {
-            "id": "gt0005",
-            "text": "Signs/Symptoms",
-            "description": "Thw West Haven Criteria are used to categorise the signs and symptoms to interpret the grading for Hepatic Encephalopathy."
-          },
           "gt0006": {
             "id": "gt0006",
             "text": "Resulting score",
             "description": "Score result is the score chosen from the 4 symptoms/signs groups. The score ranges from 1 to 4"
           },
-          "gt0007": {
-            "id": "gt0007",
-            "text": "Set signs"
-          },
           "gt0008": {
             "id": "gt0008",
             "text": "Calculate score"
-          },
-          "gt0009": {
-            "id": "gt0009",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
           }
         }
       }
