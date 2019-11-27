@@ -198,7 +198,7 @@ _Select a medical specialty below to view the available apps._
 ### Hematology
 ----------
 
-* [4Ts for Heparin Induced Thrombocytopenia (4Ts for HIT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#4-ts-for-heparin-inducerad-thrombocytopenia-4ts-for-hit)) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/4Ts_HIT.v1.dsv?token=3454735f4849542e7631:1549324800000:436c800fddf33e17ddbd0ef0867d6e2d&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/4Ts_HIT.v1.dsv?token=3454735f4849542e7631:1549324800000:436c800fddf33e17ddbd0ef0867d6e2d&language=sv))
+* [4Ts for Heparin Induced Thrombocytopenia (4Ts for HIT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#4-ts-for-heparin-inducerad-thrombocytopenia-4ts-for-hit)) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/4TS_HIT_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/4TS_HIT_combined/1?language=sv))
 
 ----------
 
