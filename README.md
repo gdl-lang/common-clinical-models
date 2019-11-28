@@ -226,7 +226,7 @@ _Select a medical specialty below to view the available apps._
 ### Nephrology
 
 ----------
-* [Albumin-Creatinine Ratio (ACR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#albumin-creatinine-ratio-acr) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ACR.v1.dsv?token=4143522e7631:1549324800000:c807d36541ec4aa1b744602ffb9ce58d&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ACR.v1.dsv?token=4143522e7631:1549324800000:c807d36541ec4aa1b744602ffb9ce58d&language=sv))
+* [Albumin-Creatinine Ratio (ACR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#albumin-creatinine-ratio-acr) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_Calculation_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_Calculation_combined/1?language=sv))
 
 * [Charlson Comorbidity Scoring System (CCI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#charlson-comorbidity-index-cci) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/CCI.v1.dsv?token=4343492e7631:1549324800000:74aaf83c9eb58fc97546f1453be18970&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/CCI.v1.dsv?token=4343492e7631:1549324800000:74aaf83c9eb58fc97546f1453be18970&language=sv))
 
