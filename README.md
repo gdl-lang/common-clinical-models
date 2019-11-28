@@ -243,7 +243,7 @@ _Select a medical specialty below to view the available apps._
 ### Neurology
 
 ----------
-* [ABCD2 Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abcd2-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ABCD2.v1.dsv?token=41424344322e7631:1549324800000:414355e4c2b65dbbbab3c809d4723b80&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ABCD2.v1.dsv?token=41424344322e7631:1549324800000:414355e4c2b65dbbbab3c809d4723b80&language=sv))
+* [ABCD2 Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abcd2-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABCD2_score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABCD2_score_combined/1?language=sv))
 
 * [Douleur Neuropathique 4 (DN4)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#douleur-neuropathique-4-questions-dn4) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/DN4.v1.dsv?token=444e342e7631:1549324800000:b41d5e679da30b30c62e21057a343ca2&language=en))
 
