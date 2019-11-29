@@ -70,7 +70,7 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 
-* [ATRIA Bleeding Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#atria-bleeding-risk-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ATRIA_bleeding_risk.v1.dsv?token=41545249415f626c656564696e675f7269736b2e7631:1549324800000:4860894d49043b66b9a80385e914b2b3&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ATRIA_bleeding_risk.v1.dsv?token=41545249415f626c656564696e675f7269736b2e7631:1549324800000:4860894d49043b66b9a80385e914b2b3&language=sv))
+* [ATRIA Bleeding Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#atria-bleeding-risk-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_bleeding_risk_score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_bleeding_risk_score_combined/1?language=sv))
 
 * [ATRIA Stroke Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#atria-stroke-risk-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ATRIA.v1.dsv?token=41545249412e7631:1549324800000:5be90a009d396b5a83020694a67f3ac8&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ATRIA.v1.dsv?token=41545249412e7631:1549324800000:5be90a009d396b5a83020694a67f3ac8&language=sv))
 
