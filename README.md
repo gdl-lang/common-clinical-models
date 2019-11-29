@@ -117,7 +117,7 @@ _Select a medical specialty below to view the available apps._
 ### Clinical Chemistry
 
 ----------
-* [Anion Gap](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#anion-gap) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/anion_gap.v1.dsv?token=616e696f6e5f6761702e7631:1549324800000:d04f14200f54f2568ecb0aabb124e0e0&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/anion_gap.v1.dsv?token=616e696f6e5f6761702e7631:1549324800000:d04f14200f54f2568ecb0aabb124e0e0&language=sv))
+* [Anion Gap](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#anion-gap) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Anion_gap_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Anion_gap_combined/1?language=sv))
 
 * [Bicarbonate Deficit Calculator](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bicarbonate-deficit-calculator) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Bicarbonate_deficit.v1.dsv?token=4269636172626f6e6174655f646566696369742e7631:1549324800000:a5071faa5d95f84f52806f2ac528d753&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Bicarbonate_deficit.v1.dsv?token=4269636172626f6e6174655f646566696369742e7631:1549324800000:a5071faa5d95f84f52806f2ac528d753&language=sv))
 
