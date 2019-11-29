@@ -135,7 +135,7 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 
-* [Alvarado Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#alvarado-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Alvarado.v1.dsv?token=416c76617261646f2e7631:1549324800000:e5e472587fc2180188ded60537da682a&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Alvarado.v1.dsv?token=416c76617261646f2e7631:1549324800000:e5e472587fc2180188ded60537da682a&language=sv))
+* [Alvarado Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#alvarado-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Alvarado_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Alvarado_combined/1?language=sv))
 
 * [Appendicitis Inflammatory Response Score (AIR Score)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#-appendicitis-inflammatory-response-score--air-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/AIR.v1.dsv?token=4149522e7631:1549324800000:f39c27ec69772a70161050a2d34ebd9c&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/AIR.v1.dsv?token=4149522e7631:1549324800000:f39c27ec69772a70161050a2d34ebd9c&language=sv))
 
