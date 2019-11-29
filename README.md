@@ -183,7 +183,7 @@ _Select a medical specialty below to view the available apps._
 ### Geriatrics
 
 ----------
-* [Abbey Pain Scale (APS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abbey-pain-scale-aps) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/APS.v1.dsv?token=4150532e7631:1549324800000:e6b039243c868e8891cf74d9df9616b4&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/APS.v1.dsv?token=4150532e7631:1549324800000:e6b039243c868e8891cf74d9df9616b4&language=sv))
+* [Abbey Pain Scale (APS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abbey-pain-scale-aps) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/APS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/APS_combined/1?language=sv))
 
 * [Downton Fall Risk Index (DFRI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#downton-fall-risk-index-dfri) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/DFRI.v1.dsv?token=444652492e7631:1549324800000:ac91b1dd04e8f8bf77cc6caf06a57398&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/DFRI.v1.dsv?token=444652492e7631:1549324800000:ac91b1dd04e8f8bf77cc6caf06a57398&language=sv))
 
