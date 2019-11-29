@@ -427,7 +427,7 @@ _Select a medical specialty below to view the available apps._
 ----------
 * [ACR EULAR Rheumatoid Arthritis](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#acreular-rheumatoid-arthritis) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_EULAR_RA_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_EULAR_RA_combined/1?language=sv))
 
-* [Acute Gout Diagnosis Rule](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#acute-gout-diagnosis-rule) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Acute_Gout.v1.dsv?token=41637574655f476f75742e7631:1549324800000:93b249155fe68a6f2df3839301ca6ee7&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Acute_Gout.v1.dsv?token=41637574655f476f75742e7631:1549324800000:93b249155fe68a6f2df3839301ca6ee7&language=sv))
+* [Acute Gout Diagnosis Rule](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#acute-gout-diagnosis-rule) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Acute_gout_diagnosis_rule_combined/1?language=en))
 
 * [Clinical Disease Activity Index (CDAI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#clinical-disease-activity-index-cdai) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/CDAI.v1.dsv?token=434441492e7631:1549324800000:29c26f94ca00dbfc391c46fb4a5bc4d4&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/CDAI.v1.dsv?token=434441492e7631:1549324800000:29c26f94ca00dbfc391c46fb4a5bc4d4&language=sv))
 
