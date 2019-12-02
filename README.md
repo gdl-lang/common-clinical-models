@@ -216,6 +216,8 @@ _Select a medical specialty below to view the available apps._
 
 * [Sequential Organ Failure Assessment (SOFA)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#sequential-organ-failure-assessment-sofa) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/SOFA.v1.dsv?token=534f46412e7631:1549324800000:6f6ab74aa5236ae230855f00576d60a3&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/SOFA.v1.dsv?token=534f46412e7631:1549324800000:6f6ab74aa5236ae230855f00576d60a3&language=sv))
 
+* [Behavioral Pain Scale (BPS) - intubated patients](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#behavioral-pain-scale-bps) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BPS_combined/1?language=en))
+
 ----------
 
 ### Neonatology
