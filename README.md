@@ -263,7 +263,7 @@ _Select a medical specialty below to view the available apps._
 ### Obstetrics
 
 ----------
-* [Bishop Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bishop-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Bishop.v1.dsv?token=426973686f702e7631:1549324800000:9139ca43227fa2990cc372ee87bd5a83&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Bishop.v1.dsv?token=426973686f702e7631:1549324800000:9139ca43227fa2990cc372ee87bd5a83&language=sv))
+* [Bishop Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bishop-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bishop-score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bishop-score_combined/1?language=sv))
 
 * [Pregnancy Due Date](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pregnancy-due-date) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Pregnancy_due_date.v1.dsv?token=507265676e616e63795f6475655f646174652e7631:1549324800000:74476e995feb7c97dfe7f5e180491c4a&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Pregnancy_due_date.v1.dsv?token=507265676e616e63795f6475655f646174652e7631:1549324800000:74476e995feb7c97dfe7f5e180491c4a&language=sv))
 
