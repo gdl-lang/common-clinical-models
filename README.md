@@ -247,7 +247,7 @@ _Select a medical specialty below to view the available apps._
 ----------
 * [ABCD2 Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abcd2-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABCD2_score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABCD2_score_combined/1?language=sv))
 
-* [Douleur Neuropathique 4 (DN4)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#douleur-neuropathique-4-questions-dn4) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/DN4.v1.dsv?token=444e342e7631:1549324800000:b41d5e679da30b30c62e21057a343ca2&language=en))
+* [Douleur Neuropathique 4 (DN4)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#douleur-neuropathique-4-questions-dn4) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DN4_combined/1?language=en))
 
 * [Intracerebral Haemorrhage Risk Tool (ICH)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#intracerebral-haemorrhage-risk-tool-ich) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ICH.v1.dsv?token=4943482e7631:1549324800000:02f7583874d7f7f0e2bbf152b309fc73&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ICH.v1.dsv?token=4943482e7631:1549324800000:02f7583874d7f7f0e2bbf152b309fc73&language=sv))
 
