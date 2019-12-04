@@ -261,6 +261,8 @@ _Select a medical specialty below to view the available apps._
 
 * [Neuropathy Pain Scale (NPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#neuropathy-pain-scale-nps) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/NPS.v1.dsv?token=4e50532e7631:1549324800000:d0b154f5ab88adb5472e1b499eade70c&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/NPS.v1.dsv?token=4e50532e7631:1549324800000:d0b154f5ab88adb5472e1b499eade70c&language=sv))
 
+* [Functional Outcome in Patients With Primary Intracerebral Hemorrhage (FUNC) Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#functional-outcome-in-patients-with-primary-intracerebral-hemorrhage-score-func) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FUNC_ICH_Score_combined/1?language=en))
+
 ----------
 ### Obstetrics
 
