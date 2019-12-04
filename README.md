@@ -386,7 +386,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Generalized Anxiety Disorder Score (GAD-7)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#generalized-anxiety-disorder-score-gad-7) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/GAD-7.v1.dsv?token=4741442d372e7631:1549324800000:1a6b5e82ade83c167eb8446d45a6853b&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/GAD-7.v1.dsv?token=4741442d372e7631:1549324800000:1a6b5e82ade83c167eb8446d45a6853b&language=sv))
 
-* [Hamilton Anxiety Scale (HAM-A)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#hamilton-anxiety-scale-ham-a) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/HAM-A.v1.dsv?token=48414d2d412e7631:1549324800000:f6ea2ecb0ee688206525613600245247&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/HAM-A.v1.dsv?token=48414d2d412e7631:1549324800000:f6ea2ecb0ee688206525613600245247&language=sv))
+* [Hamilton Anxiety Scale (HAM-A)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#hamilton-anxiety-scale-ham-a) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HAM-A_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HAM-A_combined/1?language=sv))
 
 * [Hospital Anxiety and Depression Scale (HAD)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#hospital-anxiety-and-depression-scale-had) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HAD_score_combined/1?language=en))
 
