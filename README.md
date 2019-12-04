@@ -178,6 +178,8 @@ _Select a medical specialty below to view the available apps._
 
 * [Model For End-Stage Liver Disease Score (MELD)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#model-for-end-stage-liver-disease-score-meld) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/MELD.v1.dsv?token=4d454c442e7631:1549324800000:52958c7acd7d1b24de54be9c41031bcd&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/MELD.v1.dsv?token=4d454c442e7631:1549324800000:52958c7acd7d1b24de54be9c41031bcd&language=sv))
 
+* [Hepatic encephalopathy grades](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#hepatic-encephalopathy-grades) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hepatic_encephalopathy_grades_combined/1?language=en))
+
 ----------
 
 ### Geriatrics
