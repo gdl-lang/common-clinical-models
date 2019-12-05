@@ -297,6 +297,8 @@ _Select a medical specialty below to view the available apps._
 
 * [TNM for Renal Cell Carcinoma](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#tnm-for-renal-cell-carcinoma) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/TNM_renal.v1.dsv?token=544e4d5f72656e616c2e7631:1549324800000:345665cf18e069cb0b1fa003856a5310&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/TNM_renal.v1.dsv?token=544e4d5f72656e616c2e7631:1549324800000:345665cf18e069cb0b1fa003856a5310&language=sv))
 
+* [Karnofsky Performance Status Scale](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#tnm-for-renal-cell-carcinoma) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Karnofsky_performance_status_combined/1?language=en))
+
 ----------
 
 ### Orthopedic Surgery
