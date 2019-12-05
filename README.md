@@ -304,7 +304,7 @@ _Select a medical specialty below to view the available apps._
 ### Orthopedic Surgery
 
 ----------
-* [Kocher Criteria](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#kocher-criteria) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Kocher_Criteria.v1.dsv?token=4b6f636865725f43726974657269612e7631:1549324800000:05d0981b1f8a1d355501a095f74816aa&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Kocher_Criteria.v1.dsv?token=4b6f636865725f43726974657269612e7631:1549324800000:05d0981b1f8a1d355501a095f74816aa&language=sv))
+* [Kocher Criteria](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#kocher-criteria) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kocher_Criteria_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kocher_Criteria_combined/1?language=sv))
 
 ----------
 
