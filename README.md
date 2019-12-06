@@ -155,7 +155,7 @@ _Select a medical specialty below to view the available apps._
 
 * [HEART Score]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#heart-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HEART_score_for_MACE_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HEART_score_for_MACE_combined/1?language=sv))
 
-* [Pittsburgh Knee Rules]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pittsburgh-knee-rules) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Pittsburgh_knee_rules.v1.dsv?token=506974747362757267685f6b6e65655f72756c65732e7631:1549324800000:432192e7aeedd00bb87cff580c85c966&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Pittsburgh_knee_rules.v1.dsv?token=506974747362757267685f6b6e65655f72756c65732e7631:1549324800000:432192e7aeedd00bb87cff580c85c966&language=sv))
+* [Pittsburgh Knee Rules]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pittsburgh-knee-rules) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pittsburgh_knee_rules_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pittsburgh_knee_rules_combined/1?language=sv))
 
 * [Pulmonary Embolism Severity Index (PESI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pulmonary-embolism-severity-index-pesi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PESI_combined/1?language=en))
 
