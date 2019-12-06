@@ -195,7 +195,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Mini Nutritional Assessment (MNA)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#mini-nutritional-assessment-mna) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/MNA.v1.dsv?token=4d4e412e7631:1549324800000:a50e2dfaac1c033d99d5f3109799e8bf&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/MNA.v1.dsv?token=4d4e412e7631:1549324800000:a50e2dfaac1c033d99d5f3109799e8bf&language=sv))
 
-* [Risk Assessment Pressure Sore Scale (RAPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#risk-assessment-pressure-sore-raps) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/RAPS.v1.dsv?token=524150532e7631:1549324800000:bcb8ce78e223e56022b693e0aacaea21&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/RAPS.v1.dsv?token=524150532e7631:1549324800000:bcb8ce78e223e56022b693e0aacaea21&language=sv))
+* [Risk Assessment Pressure Sore Scale (RAPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#risk-assessment-pressure-sore-raps) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAPS_Scale_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAPS_Scale_combined/1?language=sv))
 
 ----------
 
