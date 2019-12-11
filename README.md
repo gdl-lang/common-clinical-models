@@ -173,7 +173,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Wells Criteria for DVT (D-Dimer) ](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#wells-criteria-for-dvt-d-dimer) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wells_DVT_D_Dimer_US_combined/1?language=en))
 
-* [Wells Criteria for Pulmonary Embolism](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#wells-criteria-for-pulmonary-embolism) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Wells_Criteria_PE.v1.dsv?token=57656c6c735f43726974657269615f50452e7631:1549324800000:4944236d51b9a0de142bc5aa612a2bb2&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Wells_Criteria_PE.v1.dsv?token=57656c6c735f43726974657269615f50452e7631:1549324800000:4944236d51b9a0de142bc5aa612a2bb2&language=sv))
+* [Wells Criteria for Pulmonary Embolism](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#wells-criteria-for-pulmonary-embolism) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wells_Criteria_PE_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wells_Criteria_PE_combined/1?language=sv))
 
 ----------
 
