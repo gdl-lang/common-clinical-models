@@ -9,7 +9,7 @@
 		details = <
 			["en"] = (RESOURCE_DESCRIPTION_ITEM) <
 				misuse = <"This is not meant for developed countries with well established mechanisms for cervical cancer screening and well established EHRs and identity systems that can correctly assess the exact dates of birth of patients.">
-				purpose = <"This CDSS guidline is to help medical staff in identifying women elligible for VIA before it's too late. Previously the Malawi guideline was to screen women between the ages of 20 and 49 but that has as of late changed to 27 and 49. The preferred tagedt group is HIV positive women as they have a higher risk than the general population.">
+				purpose = <"This CDSS guidline is to help medical staff in identifying women elligible for VIA before it's too late. Previously the Malawi guideline was to screen women between the ages of 20 and 49 but that has as of late changed to 25 and 49. The preferred tagedt group is HIV positive women as they have a higher risk than the general population.">
 				use = <"The intended use is in low income countires where VIA  treatment  is done with  Cryotherapy or cold coagulation. In these low income countries there is usaully not enough trained personnel with knowledge of cervical cancer or established ways of identifying candidtes for screening; hence A CDSS tool like this one can brigde the gap in tow ways; firstly, providing assistance in hospitals without adequate trained personnel and secondly, ensuring that no one who is at high risk of cervical cancer misses a referral.
 
 From experience, such low income countries have no verified way of determining the exact date of birth of patients, coupled with illiteracy; most patients do not know  there exact date of birth hence medical personnel tend to prefer estimates in years as opposed to exact dates. This is why it made sense to use a new age (in years) architype as opposed to re-using the date of birth architype already found in the models. In other words, every aspect of design has taken into consideration the context in which the CDSS app will be deployed in.">
@@ -71,43 +71,43 @@ https://bmcpublichealth.biomedcentral.com/articles/10.1186/s12889-016-3530-y">
 		>
 		rules = <
 			["gt0004"] = (RULE) <
-				when = <"$gt0018==1|local::at0011|No|", "$gt0007<=49", "$gt0007>=27", "$gt0003==1|local::at0006|HIV positive|">
+				when = <"$gt0018==1|local::at0011|No|&&$gt0007<=49&&$gt0007>=25&&$gt0003==0|local::at0005|HIV Negative|||$gt0018==1|local::at0011|No|&&$gt0007<=49&&$gt0007>=25&&$gt0003==1|local::at0006|HIV positive|",...>
 				then = <"$gt0010=1|local::at0004|VIA Elligible|",...>
 				priority = <8>
 			>
 			["gt0011"] = (RULE) <
-				when = <"$gt0012>=2", "$gt0018==0|local::at0010|Yes|", "$gt0007>=27", "$gt0007<=49">
+				when = <"$gt0003==1|local::at0006|HIV positive|&&$gt0012>=2&&$gt0018==0|local::at0010|Yes|&&$gt0007>=25&&$gt0007<=49||$gt0003==0|local::at0005|HIV Negative|&&$gt0012>=3&&$gt0018==0|local::at0010|Yes|&&$gt0007>=25&&$gt0007<=49",...>
 				then = <"$gt0010=1|local::at0004|VIA Elligible|",...>
 				priority = <7>
 			>
 			["gt0013"] = (RULE) <
-				when = <"$gt0007<27",...>
+				when = <"$gt0007<25",...>
 				then = <"$gt0010=2|local::at0005|Screen Again when 25 years|",...>
 				priority = <6>
 			>
 			["gt0014"] = (RULE) <
-				when = <"$gt0007>49",...>
+				when = <"$gt0007>49||$gt0007<25",...>
 				then = <"$gt0010=0|local::at0003|VIA Inelligible|",...>
 				priority = <5>
 			>
-			["gt0015"] = (RULE) <
-				when = <"$gt0018==1|local::at0011|No|", "$gt0007>=27", "$gt0007<=49", "$gt0003==0|local::at0005|HIV Negative|">
+			["gt0016"] = (RULE) <
+				when = <"$gt0012>=2&&$gt0007<=49&&$gt0007>=25&&$gt0003==1|local::at0006|HIV positive|&&$gt0018==0|local::at0010|Yes|||$gt0012>=3&&$gt0007<=49&&$gt0007>=25&&$gt0003==0|local::at0005|HIV Negative|&&$gt0018==0|local::at0010|Yes|",...>
 				then = <"$gt0010=1|local::at0004|VIA Elligible|",...>
 				priority = <4>
 			>
-			["gt0016"] = (RULE) <
-				when = <"$gt0012>=3", "$gt0007<=49", "$gt0007>=27", "$gt0003==0|local::at0005|HIV Negative|", "$gt0018==0|local::at0010|Yes|">
-				then = <"$gt0010=1|local::at0004|VIA Elligible|",...>
+			["gt0017"] = (RULE) <
+				when = <"$gt0018==0|local::at0010|Yes|", "$gt0007<=49", "$gt0007>=25", "$gt0003==0|local::at0005|HIV Negative|", "$gt0012<3">
+				then = <"$gt0010=4|local::at0007|Rescreen after 3 years |",...>
 				priority = <3>
 			>
-			["gt0017"] = (RULE) <
-				when = <"$gt0018==0|local::at0010|Yes|", "$gt0007<=49", "$gt0007>=27", "$gt0003==0|local::at0005|HIV Negative|", "$gt0012<3">
-				then = <"$gt0010=4|local::at0007|Rescreen after 3 years |",...>
+			["gt0019"] = (RULE) <
+				when = <"$gt0003==0|local::at0005|HIV Negative|&&$gt0007<25&&$gt0007>49&&$gt0012>=0&&$gt0018==0|local::at0010|Yes|||$gt0003==0|local::at0005|HIV Negative|&&$gt0007<25&&$gt0007>49&&$gt0012>=0&&$gt0018==1|local::at0011|No|",...>
+				then = <"$gt0010=0|local::at0003|VIA Inelligible|",...>
 				priority = <2>
 			>
-			["gt0019"] = (RULE) <
-				when = <"$gt0007>=49", "$gt0003==0|local::at0005|HIV Negative|&&$gt0007<27&&$gt0007>49&&$gt0012>=0&&$gt0018==0|local::at0010|Yes|||$gt0003==0|local::at0005|HIV Negative|&&$gt0007<27&&$gt0007>50&&$gt0012>=0&&$gt0018==1|local::at0011|No|">
-				then = <"$gt0010=0|local::at0003|VIA Inelligible|",...>
+			["gt0020"] = (RULE) <
+				when = <"$gt0018==0|local::at0010|Yes|", "$gt0007<=49", "$gt0007>=25", "$gt0003==1|local::at0006|HIV positive|", "$gt0012<2">
+				then = <"$gt0010=3|local::at0006|Rescreen after 2 years|",...>
 				priority = <1>
 			>
 		>
@@ -129,7 +129,7 @@ https://bmcpublichealth.biomedcentral.com/articles/10.1186/s12889-016-3530-y">
 						description = <"HIV status of the patient">
 					>
 					["gt0004"] = (TERM) <
-						text = <"via">
+						text = <"VIA eliigible 1">
 					>
 					["gt0006"] = (TERM) <
 						text = <"Age">
@@ -164,7 +164,7 @@ https://bmcpublichealth.biomedcentral.com/articles/10.1186/s12889-016-3530-y">
 						text = <"Elligible Neg">
 					>
 					["gt0016"] = (TERM) <
-						text = <"Elligible Neg2">
+						text = <"VIA Elligible 3">
 					>
 					["gt0017"] = (TERM) <
 						text = <"Inelligible Age 3">
@@ -175,6 +175,9 @@ https://bmcpublichealth.biomedcentral.com/articles/10.1186/s12889-016-3530-y">
 					>
 					["gt0019"] = (TERM) <
 						text = <"Inelligible4">
+					>
+					["gt0020"] = (TERM) <
+						text = <"Inelligible 5">
 					>
 				>
 			>
