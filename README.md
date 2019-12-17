@@ -56,6 +56,8 @@ _Select a medical specialty below to view the available apps._
 
 [Trauma Care](https://github.com/gdl-lang/common-clinical-models#trauma-care)
 
+[Urology](https://github.com/gdl-lang/common-clinical-models#urology)
+
 ----------
 
 [CDS Summer App Challenge 2017](https://github.com/gdl-lang/common-clinical-models#cds-summer-app-challenge-2017)
