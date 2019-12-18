@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 153*
+### *Published Apps: 170*
 
 ----------
 
@@ -458,13 +458,13 @@ _Select a medical specialty below to view the available apps._
 
 * [Acute Gout Diagnosis Rule](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#acute-gout-diagnosis-rule) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Acute_gout_diagnosis_rule_combined/1?language=en))
 
-* [Clinical Disease Activity Index (CDAI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#clinical-disease-activity-index-cdai) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/CDAI.v1.dsv?token=434441492e7631:1549324800000:29c26f94ca00dbfc391c46fb4a5bc4d4&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/CDAI.v1.dsv?token=434441492e7631:1549324800000:29c26f94ca00dbfc391c46fb4a5bc4d4&language=sv))
+* [Clinical Disease Activity Index (CDAI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#clinical-disease-activity-index-cdai) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CDAI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CDAI_combined/1?language=sv))
 
 * [Disease Activity Score 28-CRP (DAS28-CRP)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#disease-activity-score-28-crp-das28-crp) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAS28-CRP_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAS28-CRP_combined/1?language=sv))
 
 * [Disease Activity Score 28-ESR (DAS28-ESR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#disease-activity-score-28-esr-das28-esr) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAS28-ESR_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAS28-ESR_combined/1?language=sv))
 
-* [Simplified Disease Activity Index (SDAI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#simplified-disease-activity-index-sdai) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/SDAI.v1.dsv?token=534441492e7631:1549324800000:2b93ba8dcaea027e93041283df068bb6&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/SDAI.v1.dsv?token=534441492e7631:1549324800000:2b93ba8dcaea027e93041283df068bb6&language=sv))
+* [Simplified Disease Activity Index (SDAI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#simplified-disease-activity-index-sdai) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SDAI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SDAI_combined/1?language=sv))
 
 ----------
 
