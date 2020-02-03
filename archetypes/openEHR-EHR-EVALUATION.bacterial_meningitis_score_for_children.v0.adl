@@ -1,0 +1,90 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.bacterial_meningitis_score_for_children.v0
+
+concept
+	[at0000]	-- Bacterial meningitis score for children
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Bacterial meningitis incidence has dramatically decreased since the advent of highly effective vaccines against the more common causes (H. flu, S. pneumo), making it more challenging to determine which patients should be admitted and observed while awaiting CSF culture results.
+Helps stratify which patients do not necessarily require observation, due to higher likelihood of aseptic (i.e., spontaneously resolving) meningitis.
+Helps avoid financial burden and health risk associated with hospitalization for observation and parenteral antibiotic administration.">
+			use = <"Pediatric patients (aged 29 days to 19 years) with suspected meningitis.">
+			misuse = <"Do NOT use if the patient:
+
+Is critically ill, requiring respiratory or vasopressor support.
+Received antibiotics <72 hours prior to lumbar puncture.
+Has a VP shunt or recent neurosurgery.
+Is immunosuppressed.
+Has proof of another bacterial infection (e.g. UTI, bone infection, known bacteremia) that warrants inpatient antibiotic therapy.
+Has known active Lyme Disease.">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"B9F72BABA9A3A30DDB3B8B74715CBF85">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Bacterial meningitis score for children
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Evaluation
+						value matches {
+							0|[local::at0003], 	-- Very low risk for bacterial meningitis.
+							1|[local::at0004], 	-- NOT very low risk for bacterial meningitis.
+							2|[local::at0005], 	-- Your age makes you ineligible for assessment
+							3|[local::at0006]  	-- Your CSF WBC levels make you ineligible for assessment
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Bacterial meningitis score for children">
+					description = <"The Bacterial Meningitis Score (BMS) predicts bacterial vs. aseptic etiology in pediatric patients (aged 29 days to 19 years) with suspected meningitis.  
+Can help determine if the patient will require admission for parenteral antibiotics while awaiting CSF culture results.
+Higher score indicates higher likelihood of bacterial meningitis.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Evaluation">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Very low risk for bacterial meningitis.">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"NOT very low risk for bacterial meningitis.">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Your age makes you ineligible for assessment">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Your CSF WBC levels make you ineligible for assessment">
+					description = <"*">
+				>
+			>
+		>
+	>
