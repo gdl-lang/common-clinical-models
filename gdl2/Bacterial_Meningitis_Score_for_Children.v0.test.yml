@@ -1,0 +1,78 @@
+guidelines:
+  1: new_guideline.v0
+test_cases:
+- id: case_1
+  input:
+    1:
+      gt0003|Birthdate: 1988-02-15T23:34+01:00[Europe/Berlin]
+      gt0008|CSF WBC: 10,uL
+      gt0009|CSF ANC ≥1,000 cells/µL: 0|local::at0010|No|
+      gt0010|CSF protein ≥80 mg/dL (800 mg/L): 0|local::at0012|No|
+      gt0011|Seizure at (or prior to) initial presentation: 1|local::at0018|Yes|
+      gt0012|CSF Gram stain positive: 0|local::at0007|No|
+      gt0013|Peripheral blood ANC ≥10,000 cells/µL: 0|local::at0015|No|
+  expected_output:
+    1:
+      gt0006|Evaluation: 2|local::at0005|Your age makes you ineligible for assessment|
+      gt0015|Age: 11677
+
+- id: case_2
+  input:
+    1:
+      gt0003|Birthdate: 2020-02-03T23:34+01:00[Europe/Berlin]
+      gt0008|CSF WBC: 10,uL
+      gt0009|CSF ANC ≥1,000 cells/µL: 0|local::at0010|No|
+      gt0010|CSF protein ≥80 mg/dL (800 mg/L): 0|local::at0012|No|
+      gt0011|Seizure at (or prior to) initial presentation: 1|local::at0018|Yes|
+      gt0012|CSF Gram stain positive: 0|local::at0007|No|
+      gt0013|Peripheral blood ANC ≥10,000 cells/µL: 0|local::at0015|No|
+  expected_output:
+    1:
+      gt0006|Evaluation: 2|local::at0005|Your age makes you ineligible for assessment|
+      gt0015|Age: 1
+
+- id: case_3
+  input:
+    1:
+      gt0003|Birthdate: 2018-02-06T23:34+01:00[Europe/Berlin]
+      gt0008|CSF WBC: 1,uL
+      gt0009|CSF ANC ≥1,000 cells/µL: 0|local::at0010|No|
+      gt0010|CSF protein ≥80 mg/dL (800 mg/L): 0|local::at0012|No|
+      gt0011|Seizure at (or prior to) initial presentation: 1|local::at0018|Yes|
+      gt0012|CSF Gram stain positive: 0|local::at0007|No|
+      gt0013|Peripheral blood ANC ≥10,000 cells/µL: 0|local::at0015|No|
+  expected_output:
+    1:
+      gt0006|Evaluation: 3|local::at0006|Your CSF WBC levels make you ineligible for assessment|
+
+- id: case_4
+  input:
+    1:
+      gt0003|Birthdate: 2018-02-06T23:34+01:00[Europe/Berlin]
+      gt0008|CSF WBC: 10,uL
+      gt0009|CSF ANC ≥1,000 cells/µL: 0|local::at0010|No|
+      gt0010|CSF protein ≥80 mg/dL (800 mg/L): 0|local::at0012|No|
+      gt0011|Seizure at (or prior to) initial presentation: 1|local::at0018|Yes|
+      gt0012|CSF Gram stain positive: 0|local::at0007|No|
+      gt0013|Peripheral blood ANC ≥10,000 cells/µL: 0|local::at0015|No|
+  expected_output:
+    1:
+      gt0006|Evaluation: 1|local::at0004|NOT very low risk for bacterial meningitis.|
+      gt0015|Age: 728
+
+- id: case_5
+  input:
+    1:
+      gt0003|Birthdate: 2018-02-06T23:34+01:00[Europe/Berlin]
+      gt0008|CSF WBC: 10,uL
+      gt0009|CSF ANC ≥1,000 cells/µL: 0|local::at0010|No|
+      gt0010|CSF protein ≥80 mg/dL (800 mg/L): 0|local::at0012|No|
+      gt0011|Seizure at (or prior to) initial presentation: 0|local::at0017|No|
+      gt0012|CSF Gram stain positive: 0|local::at0007|No|
+      gt0013|Peripheral blood ANC ≥10,000 cells/µL: 0|local::at0015|No|
+  expected_output:
+    1:
+      gt0006|Evaluation: 0|local::at0003|Very low risk for bacterial meningitis.|
+      gt0015|Age: 728
+
+ 

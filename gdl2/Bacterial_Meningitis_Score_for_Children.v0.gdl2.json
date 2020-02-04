@@ -1,0 +1,374 @@
+{
+  "id": "new_guideline.v0",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2020-02-04",
+      "name": "Jack Msonkho",
+      "organisation": "Cambio",
+      "email": "jacksonhieghts@gmail.com"
+    },
+    "lifecycle_state": "Not set",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "Helps stratify which patients do not necessarily require observation, due to higher likelihood of aseptic (i.e., spontaneously resolving) meningitis.\nHelps avoid financial burden and health risk associated with hospitalization for observation and parenteral antibiotic administration.",
+        "keywords": [
+          "Bacterial",
+          "Meningitis",
+          "Children"
+        ],
+        "use": "Use in patients aged 29 days to 19 years with CSF WBC ≥10 cells/μL",
+        "misuse": "Do NOT use if the patient:\n\nIs critically ill, requiring respiratory or vasopressor support.\nReceived antibiotics <72 hours prior to lumbar puncture.\nHas a VP shunt or recent neurosurgery.\nIs immunosuppressed.\nHas proof of another bacterial infection (e.g. UTI, bone infection, known bacteremia) that warrants inpatient antibiotic therapy.\nHas known active Lyme Disease."
+      }
+    },
+    "other_details": {
+      "references": "https://www.ncbi.nlm.nih.gov/pubmed/17200475\nhttps://www.ncbi.nlm.nih.gov/pubmed/22764093\nhttps://www.ncbi.nlm.nih.gov/pubmed/12359784\nhttps://www.ncbi.nlm.nih.gov/pubmed/23910166"
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0002": {
+        "id": "gt0002",
+        "model_id": "openEHR-EHR-OBSERVATION.hiv_diagnosis_adults.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.hiv_diagnosis_adults.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0003": {
+            "id": "gt0003",
+            "path": "/data[at0001]/events[at0049]/data[at0003]/items[at0027]/items[at0025]"
+          }
+        }
+      },
+      "gt0004": {
+        "id": "gt0004",
+        "model_id": "openEHR-EHR-OBSERVATION.bacterial_meningitis_score_for_children.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.bacterial_meningitis_score_for_children.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0008": {
+            "id": "gt0008",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0011]"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0016]"
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
+          }
+        }
+      },
+      "gt0005": {
+        "id": "gt0005",
+        "model_id": "openEHR-EHR-EVALUATION.bacterial_meningitis_score_for_children.v0",
+        "template_id": "openEHR-EHR-EVALUATION.bacterial_meningitis_score_for_children.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/items[at0002]"
+          }
+        }
+      },
+      "gt0014": {
+        "id": "gt0014",
+        "model_id": "openEHR-EHR-EVALUATION.age.v0",
+        "template_id": "openEHR-EHR-EVALUATION.age.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0015": {
+            "id": "gt0015",
+            "path": "/data[at0001]/items[at0002]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0007": {
+        "id": "gt0007",
+        "priority": 13,
+        "when": [
+          "$gt0008|CSF WBC|==10,uL"
+        ],
+        "then": [
+          "$gt0015|Age|.magnitude=($currentDateTime-$gt0003)/1,d"
+        ]
+      },
+      "gt0020": {
+        "id": "gt0020",
+        "priority": 10,
+        "when": [
+          "$gt0010|CSF protein ≥80 mg/dL (800 mg/L)|==0|local::at0012|No|"
+        ],
+        "then": [
+          "$gt0006|Evaluation|=0|local::at0003|Very low risk for bacterial meningitis.|"
+        ]
+      },
+      "gt0021": {
+        "id": "gt0021",
+        "priority": 9,
+        "when": [
+          "$gt0009|CSF ANC ≥1,000 cells/µL|==0|local::at0010|No|"
+        ],
+        "then": [
+          "$gt0006|Evaluation|=0|local::at0003|Very low risk for bacterial meningitis.|"
+        ]
+      },
+      "gt0022": {
+        "id": "gt0022",
+        "priority": 8,
+        "when": [
+          "$gt0011|Seizure at (or prior to) initial presentation|==0|local::at0017|No|"
+        ],
+        "then": [
+          "$gt0006|Evaluation|=0|local::at0003|Very low risk for bacterial meningitis.|"
+        ]
+      },
+      "gt0025": {
+        "id": "gt0025",
+        "priority": 7,
+        "when": [
+          "$gt0012|CSF Gram stain positive|==0|local::at0007|No|"
+        ],
+        "then": [
+          "$gt0006|Evaluation|=0|local::at0003|Very low risk for bacterial meningitis.|"
+        ]
+      },
+      "gt0026": {
+        "id": "gt0026",
+        "priority": 6,
+        "when": [
+          "$gt0013|Peripheral blood ANC ≥10,000 cells/µL|==0|local::at0015|No|"
+        ],
+        "then": [
+          "$gt0006|Evaluation|=0|local::at0003|Very low risk for bacterial meningitis.|"
+        ]
+      },
+      "gt0027": {
+        "id": "gt0027",
+        "priority": 5,
+        "when": [
+          "$gt0010|CSF protein ≥80 mg/dL (800 mg/L)|==1|local::at0013|Yes|"
+        ],
+        "then": [
+          "$gt0006|Evaluation|=1|local::at0004|NOT very low risk for bacterial meningitis.|"
+        ]
+      },
+      "gt0028": {
+        "id": "gt0028",
+        "priority": 4,
+        "when": [
+          "$gt0009|CSF ANC ≥1,000 cells/µL|==1|local::at0019|Yes|"
+        ],
+        "then": [
+          "$gt0006|Evaluation|=1|local::at0004|NOT very low risk for bacterial meningitis.|"
+        ]
+      },
+      "gt0029": {
+        "id": "gt0029",
+        "priority": 3,
+        "when": [
+          "$gt0011|Seizure at (or prior to) initial presentation|==1|local::at0018|Yes|"
+        ],
+        "then": [
+          "$gt0006|Evaluation|=1|local::at0004|NOT very low risk for bacterial meningitis.|"
+        ]
+      },
+      "gt0016": {
+        "id": "gt0016",
+        "priority": 2,
+        "when": [
+          "$gt0015|Age|<'23'"
+        ],
+        "then": [
+          "$gt0006|Evaluation|=2|local::at0005|Your age makes you ineligible for assessment|"
+        ]
+      },
+      "gt0030": {
+        "id": "gt0030",
+        "priority": 2,
+        "when": [
+          "$gt0012|CSF Gram stain positive|==1|local::at0008|Yes|"
+        ],
+        "then": [
+          "$gt0006|Evaluation|=1|local::at0004|NOT very low risk for bacterial meningitis.|"
+        ]
+      },
+      "gt0017": {
+        "id": "gt0017",
+        "priority": 1,
+        "when": [
+          "$gt0015|Age|>'6935'"
+        ],
+        "then": [
+          "$gt0006|Evaluation|=2|local::at0005|Your age makes you ineligible for assessment|"
+        ]
+      },
+      "gt0018": {
+        "id": "gt0018",
+        "priority": 1,
+        "when": [
+          "$gt0008|CSF WBC|<10,uL"
+        ],
+        "then": [
+          "$gt0006|Evaluation|=3|local::at0006|Your CSF WBC levels make you ineligible for assessment|"
+        ]
+      },
+      "gt0031": {
+        "id": "gt0031",
+        "priority": 1,
+        "when": [
+          "$gt0013|Peripheral blood ANC ≥10,000 cells/µL|==1|local::at0020|Yes|"
+        ],
+        "then": [
+          "$gt0006|Evaluation|=1|local::at0004|NOT very low risk for bacterial meningitis.|"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "Bacterial Meningitis Score for Children",
+            "description": "Bacterial meningitis incidence has dramatically decreased since the advent of highly effective vaccines against the more common causes (H. flu, S. pneumo), making it more challenging to determine which patients should be admitted and observed while awaiting CSF culture results."
+          },
+          "gt0003": {
+            "id": "gt0003",
+            "text": "Birthdate",
+            "description": "*"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Evaluation",
+            "description": "*"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "text": "Rule 1"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "CSF WBC",
+            "description": "*"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "text": "CSF ANC ≥1,000 cells/µL",
+            "description": "*"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "CSF protein ≥80 mg/dL (800 mg/L)",
+            "description": "*"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "Seizure at (or prior to) initial presentation",
+            "description": "*"
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "text": "CSF Gram stain positive",
+            "description": "*"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "Peripheral blood ANC ≥10,000 cells/µL",
+            "description": "*"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "Age",
+            "description": "*"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "text": "Rule 2"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "Rule 3"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "Rule 4"
+          },
+          "gt0019": {
+            "id": "gt0019",
+            "text": "Rule 5"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Rule 5"
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "Rule 6"
+          },
+          "gt0022": {
+            "id": "gt0022",
+            "text": "Rule 7"
+          },
+          "gt0023": {
+            "id": "gt0023",
+            "text": "Rule 8"
+          },
+          "gt0024": {
+            "id": "gt0024",
+            "text": "Rule 9"
+          },
+          "gt0025": {
+            "id": "gt0025",
+            "text": "Rule 8"
+          },
+          "gt0026": {
+            "id": "gt0026",
+            "text": "Rule 9"
+          },
+          "gt0027": {
+            "id": "gt0027",
+            "text": "Rule 10"
+          },
+          "gt0028": {
+            "id": "gt0028",
+            "text": "Rule 11"
+          },
+          "gt0029": {
+            "id": "gt0029",
+            "text": "Rule 12"
+          },
+          "gt0030": {
+            "id": "gt0030",
+            "text": "Rule 13"
+          },
+          "gt0031": {
+            "id": "gt0031",
+            "text": "Rule 14"
+          }
+        }
+      }
+    }
+  }
+}
