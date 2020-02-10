@@ -1,0 +1,121 @@
+{
+  "id": "new_guideline.v0",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2020-02-10",
+      "name": "Maryam Razavi",
+      "organisation": "Cambio CDS",
+      "email": "maryam.razavi2009@gmail.com"
+    },
+    "lifecycle_state": "Not set",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "The SAS can often predict the risk of complication more objectively than clinician gestalt; in one study, it correlated well with admission to an ICU setting (when not initially admitted to an intensive care setting).",
+        "keywords": [
+          "Surgical Apgar",
+          "Score",
+          "Postoperative"
+        ],
+        "use": "The SAS can be applied to any patient who is postop from major surgery.",
+        "misuse": "The “Apgar Score for Surgery“ (or “Surgical Apgar Score“) was developed by Gawande et. al in 2007 to try to predict risk of complication and poor outcome after major surgery, instead of using subjective measures to gauge risk (as is often done by surgeons). They wanted to develop a simple score that could be quickly and easily calculated “to grade the condition of patients at the end of any general or vascular surgery procedure.“ It is named after the APGAR Score used by obstetricians to rate neonatal outcome.\n\nIt was developed by collecting and analyzing 99 pre-, intra-, and post-operative variables in patients undergoing major general or vascular surgery.\nIt was developed first in two cohorts of colectomy patients (chosen due to the procedure's known high risk of complications) and then validated in a cohort of general and vascular surgery patients (n = 767).\nThe Surgical Apgar Score correlates directly with outcome -- the higher the score, the lower the risk of complication.\nScoring was developed without the use of an electronic anesthesia record, which may document more fluctuations in vital signs; the authors report they are currently developing a model for use with electronic anesthesia records."
+      }
+    },
+    "other_details": {
+      "references": "\n  Gawande, A. A., Kwaan, M. R., Regenbogen, S. E., Lipsitz, S. A., & Zinner, M. J. (2007). An Apgar Score for Surgery. Journal of the American College of Surgeons, 204(2), 201–208. https://doi.org/10.1016/j.jamcollsurg.2006.11.011"
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0002": {
+        "id": "gt0002",
+        "model_id": "openEHR-EHR-OBSERVATION.surgical_apgar_score.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.surgical_apgar_score.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
+          }
+        }
+      },
+      "gt0003": {
+        "id": "gt0003",
+        "model_id": "openEHR-EHR-OBSERVATION.surgical_apgar_score.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.surgical_apgar_score.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0007": {
+            "id": "gt0007",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0025]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0008": {
+        "id": "gt0008",
+        "priority": 1,
+        "when": [
+          "$gt0004|Estimated blood loss (mL)|!=null",
+          "$gt0005|Lowest mean arterial pressure (mmHg)|!=null",
+          "$gt0006|Lowest heart rate (beats / min)|!=null"
+        ],
+        "then": [
+          "$gt0007|Points|.magnitude=$gt0004.value+$gt0005.value+$gt0006.value"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "Surgical Apgar Score (SAS) for Postoperative Risk",
+            "description": "Surgical Apgar Score (SAS) for Postoperative Risk: Predicts postoperative risk of major complication, including death."
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "Estimated blood loss (mL)",
+            "description": "*"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "Lowest mean arterial pressure (mmHg)",
+            "description": "*"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Lowest heart rate (beats / min)",
+            "description": "*"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "text": "Points",
+            "description": "*"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "SAS interpretation "
+          }
+        }
+      }
+    }
+  }
+}
