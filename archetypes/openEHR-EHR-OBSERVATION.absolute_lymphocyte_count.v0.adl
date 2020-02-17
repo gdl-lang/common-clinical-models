@@ -9,28 +9,30 @@ description
 	original_author = <
 		["name"] = <"Jack Msonkho">
 		["email"] = <"models@cambiocds.com ">
-		["organisation"] = <"Cambio">
-		["date"] = <"2020-02-10">
+		["organisation"] = <"Camnio CDS">
+		["date"] = <"2020-02-17">
 	>
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"Serves as a surrogate for CD4 count in HIV patients who are naive to antiretroviral therapy in resource-limited areas.">
+			purpose = <"Serves as a surrogate for CD4 count in HIV patients who are naive to antiretroviral therapy in resource-limited areas.
+
+">
 			use = <"Frequently used in the ED setting because CD4 tests take longer to come back and need patient consent.
 
 Used in limited-resource settings where CD4 tests are costly or unavailable.">
 			keywords = <"Lymphocyte", "HIV">
 			misuse = <"This is not a tool to diagnose HIV nor is it intedned for use in HIV negative patients">
-			copyright = <"Cambio">
+			copyright = <"@Cambio">
 		>
 	>
 	lifecycle_state = <"0">
 	other_contributors = <>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"70041EB05C0E8A8F74DD0C681608FD2C">
 		["references"] = <"Shapiro, NI, Karras, DJ, Leech, SH, & Heilpern, KL (nd). Absolute lymphocyte count as a predictor of CD4 count. Annals of Emergency Medicine: Journal of the American College of Emergency Physicians. , 32 (3 Pt 1), 323–328. https://doi.org/10.1016/s0196-0644(98)70008-3">
-		["current_contact"] = <"models@cambiocds.com ">
-		["custodian_organisation"] = <"Cambio">
+		["custodian_organisation"] = <"Cambio CDS">
+		["licence"] = <"Cambio CDS">
+		["MD5-CAM-1.0.1"] = <"1FADE837B07E7EE216E75324065A000B">
 	>
 
 definition
@@ -42,42 +44,34 @@ definition
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									CLUSTER[at0004] occurrences matches {0..1} matches {	-- cluster
-										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Lymphocytes
-												name matches {
-													DV_TEXT matches {*}
-												}
-												value matches {
-													C_DV_QUANTITY <
-														property = <[openehr::507]>
-														list = <
-															["1"] = <
-																units = <"%">
-																precision = <|3|>
-															>
-														>
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Lymphochytes
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														precision = <|3|>
 													>
-												}
-											}
-											ELEMENT[at0006] occurrences matches {0..1} matches {	-- White Blood Cell Count
-												value matches {
-													C_DV_QUANTITY <
-														property = <[openehr::129]>
-														list = <
-															["1"] = <
-																units = <"uL">
-																precision = <|3|>
-															>
-														>
+												>
+											>
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- White Blood Cell Count
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::119]>
+												list = <
+													["1"] = <
+														units = <"10*3/uL">
 													>
-												}
-											}
-											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Absolute Lymphocyte Count
-												value matches {
-													DV_COUNT matches {*}
-												}
-											}
+												>
+											>
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Absolute Lymphocyte Count
+										value matches {
+											DV_COUNT matches {*}
 										}
 									}
 								}
@@ -109,12 +103,8 @@ ontology
 					text = <"Tree">
 					description = <"@ internal @">
 				>
-				["at0004"] = <
-					text = <"cluster">
-					description = <"*">
-				>
 				["at0005"] = <
-					text = <"Lymphocytes">
+					text = <"Lymphochytes">
 					description = <"*">
 				>
 				["at0006"] = <
