@@ -22,9 +22,9 @@ Attributes                                       0                              
 
 Serum urea                     <5mmol/l or <14mg/dl           5-8 mmol/l or 14-23 mg/dl             >8 mmol/l or > 23 mg/dl
 Age                                            < 50 yrs                                              50-70 yrs                                             > 70 yrs
-Purulent pleural fluid                   No                                                     Yes                       
+Purulent pleural fluid                   Yes                                                    No                       
 Infection source                 Community acquired                    Hospital acquired
-Serum albumin                          > 27 g/l                                             < 27 g/l
+Serum albumin                          >= 27 g/l                                             < 27 g/l
 
 This is used in confirmed cases of bacterial pleural infection">
 			keywords = <"RAPID Score", "Serum Urea", "Serum albumin", "pleural infection">
@@ -35,12 +35,12 @@ This is used in confirmed cases of bacterial pleural infection">
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"1E61EC909E2D5716B3F6110F1E9B42B6">
 		["references"] = <"1. A Clinical Score (RAPID) to Identify Those at Risk for Poor Outcome at Presentation in Patients With Pleural Infection. Chest. 2014 Apr 1;145(4):848–55. 
 
 2. White HD, Henry C, Stock EM, Arroliga AC, Ghamande S. Predicting Long-Term Outcomes in Pleural Infections. RAPID Score for Risk Stratification. Annals ATS. 2015 Jul 20;12(9):1310–6. 
 
 ">
+		["MD5-CAM-1.0.1"] = <"A62FDDAA9C119338CFC60C55F56CFCFF">
 	>
 
 definition
@@ -52,12 +52,6 @@ definition
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- RAPID Score
-										value matches {
-											C_DV_ORDINAL <
-											>
-										}
-									}
 									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Age
 										value matches {
 											0|[local::at0011], 	-- < 50 years
@@ -67,8 +61,8 @@ definition
 									}
 									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Purulent pleural fluid
 										value matches {
-											0|[local::at0014], 	-- No 
-											1|[local::at0015]  	-- Yes
+											0|[local::at0014], 	-- Yes
+											1|[local::at0015]  	-- No
 										}
 									}
 									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Infection source
@@ -86,7 +80,7 @@ definition
 									}
 									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Serum Albumin
 										value matches {
-											0|[local::at0026], 	-- > 27 g/l
+											0|[local::at0026], 	-- >= 27 g/l
 											1|[local::at0027]  	-- < 27 g/l
 										}
 									}
@@ -133,10 +127,6 @@ ontology
 					text = <"Tree">
 					description = <"@ internal @">
 				>
-				["at0006"] = <
-					text = <"RAPID Score">
-					description = <"Rapid score is a risk assessment model for pleural infection">
-				>
 				["at0008"] = <
 					text = <"Age">
 					description = <"The age of the patient is recorded and the points are given accordingly.">
@@ -162,11 +152,11 @@ ontology
 					description = <"2 points is given for age > 70 years">
 				>
 				["at0014"] = <
-					text = <"No ">
+					text = <"Yes">
 					description = <"The plueritic fluid is not purulent">
 				>
 				["at0015"] = <
-					text = <"Yes">
+					text = <"No">
 					description = <"The pleuritic fluid is purulent">
 				>
 				["at0016"] = <
@@ -202,7 +192,7 @@ ontology
 					description = <"High levels of serum urea">
 				>
 				["at0026"] = <
-					text = <"> 27 g/l">
+					text = <">= 27 g/l">
 					description = <"Normal serum albumin levels">
 				>
 				["at0027"] = <
