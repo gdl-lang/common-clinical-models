@@ -1,0 +1,38 @@
+guidelines:
+  1: Bacterial Meningitis Score for Children.v0
+test_cases:
+- id: Not very low risk test
+  input:
+    1:
+      gt0003|CSF protein ≥80 mg/dL (800 mg/L): 0|local::at0012|No|
+      gt0004|CSF Gram stain positive: 1|local::at0008|Yes|
+      gt0005|CSF ANC ≥1,000 cells/µL: 0|local::at0010|No|
+      gt0006|Seizure at (or prior to) initial presentation: 1|local::at0018|Yes|
+      gt0007|Peripheral blood ANC ≥10,000 cells/µL: 0|local::at0015|No|
+  expected_output:
+    1:
+      gt0009|Evaluation: 2|local::at0004|NOT very low risk for bacterial meningitis.|
+      gt0017|CSF Gram stain positive: 1|local::at0008|Yes|
+      gt0020|CSF ANC ≥1,000 cells/µL: 0|local::at0010|No|
+      gt0011|Total Score: 2
+      gt0014|CSF protein ≥80 mg/dL (800 mg/L): 0|local::at0012|No|
+      gt0023|Seizure at (or prior to) initial presentation: 1|local::at0018|Yes|
+      gt0025|Peripheral blood ANC ≥10,000 cells/µL: 0|local::at0015|No|
+
+- id: Very low risk test
+  input:
+    1:
+      gt0003|CSF protein ≥80 mg/dL (800 mg/L): 0|local::at0012|No|
+      gt0004|CSF Gram stain positive: 0|local::at0007|No|
+      gt0005|CSF ANC ≥1,000 cells/µL: 0|local::at0010|No|
+      gt0006|Seizure at (or prior to) initial presentation: 0|local::at0017|No|
+      gt0007|Peripheral blood ANC ≥10,000 cells/µL: 0|local::at0015|No|
+  expected_output:
+    1:
+      gt0009|Evaluation: 1|local::at0003|Very low risk for bacterial meningitis.|
+      gt0017|CSF Gram stain positive: 0|local::at0007|No|
+      gt0020|CSF ANC ≥1,000 cells/µL: 0|local::at0010|No|
+      gt0011|Total Score: 0
+      gt0014|CSF protein ≥80 mg/dL (800 mg/L): 0|local::at0012|No|
+      gt0023|Seizure at (or prior to) initial presentation: 0|local::at0017|No|
+      gt0025|Peripheral blood ANC ≥10,000 cells/µL: 0|local::at0015|No|
