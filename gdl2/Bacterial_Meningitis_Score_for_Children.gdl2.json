@@ -1,5 +1,5 @@
 {
-  "id": "new_guideline.v0",
+  "id": "Bacterial_Meningitis_Score_for_Children",
   "gdl_version": "2.0",
   "concept": "gt0001",
   "language": {
@@ -112,115 +112,32 @@
       }
     },
     "rules": {
-      "gt0012": {
-        "id": "gt0012",
-        "priority": 12,
-        "when": [
-          "$gt0003|CSF protein ≥80 mg/dL (800 mg/L)|==1|local::at0013|Yes|"
-        ],
-        "then": [
-          "$gt0014|CSF protein ≥80 mg/dL (800 mg/L)|=1|local::at0013|Yes|"
-        ]
-      },
-      "gt0015": {
-        "id": "gt0015",
-        "priority": 11,
-        "when": [
-          "$gt0003|CSF protein ≥80 mg/dL (800 mg/L)|==0|local::at0012|No|"
-        ],
-        "then": [
-          "$gt0014|CSF protein ≥80 mg/dL (800 mg/L)|=0|local::at0012|No|"
-        ]
-      },
-      "gt0016": {
-        "id": "gt0016",
-        "priority": 10,
-        "when": [
-          "$gt0004|CSF Gram stain positive|==1|local::at0008|Yes|"
-        ],
-        "then": [
-          "$gt0017|CSF Gram stain positive|=1|local::at0008|Yes|"
-        ]
-      },
-      "gt0018": {
-        "id": "gt0018",
-        "priority": 9,
-        "when": [
-          "$gt0004|CSF Gram stain positive|==0|local::at0007|No|"
-        ],
-        "then": [
-          "$gt0017|CSF Gram stain positive|=0|local::at0007|No|"
-        ]
-      },
-      "gt0019": {
-        "id": "gt0019",
-        "priority": 8,
-        "when": [
-          "$gt0005|CSF ANC ≥1,000 cells/µL|==1|local::at0019|Yes|"
-        ],
-        "then": [
-          "$gt0020|CSF ANC ≥1,000 cells/µL|=1|local::at0019|Yes|"
-        ]
-      },
-      "gt0021": {
-        "id": "gt0021",
-        "priority": 7,
-        "when": [
-          "$gt0005|CSF ANC ≥1,000 cells/µL|==0|local::at0010|No|"
-        ],
-        "then": [
-          "$gt0020|CSF ANC ≥1,000 cells/µL|=0|local::at0010|No|"
-        ]
-      },
-      "gt0022": {
-        "id": "gt0022",
-        "priority": 6,
-        "when": [
-          "$gt0006|Seizure at (or prior to) initial presentation|==1|local::at0018|Yes|"
-        ],
-        "then": [
-          "$gt0023|Seizure at (or prior to) initial presentation|=1|local::at0018|Yes|"
-        ]
-      },
-      "gt0024": {
-        "id": "gt0024",
-        "priority": 5,
-        "when": [
-          "$gt0007|Peripheral blood ANC ≥10,000 cells/µL|==1|local::at0020|Yes|"
-        ],
-        "then": [
-          "$gt0025|Peripheral blood ANC ≥10,000 cells/µL|=1|local::at0020|Yes|"
-        ]
-      },
-      "gt0026": {
-        "id": "gt0026",
-        "priority": 4,
-        "when": [
-          "$gt0007|Peripheral blood ANC ≥10,000 cells/µL|==0|local::at0015|No|"
-        ],
-        "then": [
-          "$gt0025|Peripheral blood ANC ≥10,000 cells/µL|=0|local::at0015|No|"
-        ]
-      },
       "gt0027": {
         "id": "gt0027",
         "priority": 3,
+        "when": [
+          "$gt0003|CSF protein ≥80 mg/dL (800 mg/L)|!=null",
+          "$gt0004|CSF Gram stain positive|!=null",
+          "$gt0005|CSF ANC ≥1,000 cells/µL|!=null",
+          "$gt0006|Seizure at (or prior to) initial presentation|!=null",
+          "$gt0007|Peripheral blood ANC ≥10,000 cells/µL|!=null"
+        ],
         "then": [
           "$gt0011|Total Score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value"
         ]
       },
-      "gt0028": {
-        "id": "gt0028",
+      "gt0012": {
+        "id": "gt0012",
         "priority": 2,
         "when": [
-          "$gt0011|Total Score|<1"
+          "$gt0011|Total Score|==0"
         ],
         "then": [
           "$gt0009|Evaluation|=1|local::at0003|Very low risk for bacterial meningitis.|"
         ]
       },
-      "gt0029": {
-        "id": "gt0029",
+      "gt0030": {
+        "id": "gt0030",
         "priority": 1,
         "when": [
           "$gt0011|Total Score|>0"
@@ -278,7 +195,7 @@
           },
           "gt0012": {
             "id": "gt0012",
-            "text": "CSF protein assign 1"
+            "text": "Total Score Equals 0"
           },
           "gt0014": {
             "id": "gt0014",
@@ -339,7 +256,7 @@
           },
           "gt0027": {
             "id": "gt0027",
-            "text": "Calculate Total Score"
+            "text": "Total Score"
           },
           "gt0028": {
             "id": "gt0028",
@@ -348,6 +265,10 @@
           "gt0029": {
             "id": "gt0029",
             "text": "Evaluate Score not very low risk"
+          },
+          "gt0030": {
+            "id": "gt0030",
+            "text": "Total Score greater than 0"
           }
         }
       }
