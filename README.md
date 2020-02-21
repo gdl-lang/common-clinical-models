@@ -214,7 +214,7 @@ _Select a medical specialty below to view the available apps._
 
 * [4Ts for Heparin Induced Thrombocytopenia (4Ts for HIT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#4-ts-for-heparin-inducerad-thrombocytopenia-4ts-for-hit)) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/4TS_HIT_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/4TS_HIT_combined/1?language=sv))
 
-* [Absolute Neutrophil Count (ANC)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#4-ts-for-heparin-inducerad-thrombocytopenia-4ts-for-hit)) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ANC/1?language=en))
+* [Absolute Neutrophil Count (ANC)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#absolute-neutrophil-count-anc)) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ANC/1?language=en))
 
 ----------
 
