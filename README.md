@@ -50,7 +50,7 @@ _Select a medical specialty below to view the available apps._
 
 [Psychiatry](https://github.com/gdl-lang/common-clinical-models#psychiatry)
 
-[Pulmonology](https://github.com/gdl-lang/common-clinical-models#psychiatry)
+[Pulmonology](https://github.com/gdl-lang/common-clinical-models#pulmonology)
 
 [Rheumatology](https://github.com/gdl-lang/common-clinical-models#rheumatology)
 
