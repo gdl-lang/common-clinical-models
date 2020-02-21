@@ -1,0 +1,74 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.harmless_acute_pancreatitis_score.v0
+
+concept
+	[at0000]	-- Harmless acute pancreatitis score
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Jack Msonkho">
+		["email"] = <"models@cambiocds.com ">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2020-02-21">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Identifying low risk patients with pancreatitis is notoriously difficult; a scoring system may help.">
+			use = <"Patients with pancreatitis, particularly early in course.">
+			keywords = <"pancreatitis", ...>
+			misuse = <"">
+			copyright = <"@Cambio CDS">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Lankisch, P. G., Weber-Dany, B., Hebel, K., Maisonneuve, P., & Lowenfels, A. B. (n.d.). The harmless acute pancreatitis score: a clinical algorithm for rapid initial stratification of nonsevere disease. Clinical Gastroenterology and Hepatology., 7(6), 702–5; quiz 607. https://doi.org/10.1016/j.cgh.2009.02.020">
+		["MD5-CAM-1.0.1"] = <"904B412274EE7039F9CF89FF75F14F08">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Harmless acute pancreatitis score
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Severity
+						value matches {
+							0|[local::at0003], 	-- Non-severe pancreatitis
+							1|[local::at0004]  	-- Do not rule out a harmful first attack of acute pancreatitis. Consider further testing and possible admission to the ICU.
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Harmless acute pancreatitis score">
+					description = <"Score to Identifying low risk patients with pancreatitis ">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Severity">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Non-severe pancreatitis">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Do not rule out a harmful first attack of acute pancreatitis. Consider further testing and possible admission to the ICU.">
+					description = <"*">
+				>
+			>
+		>
+	>
