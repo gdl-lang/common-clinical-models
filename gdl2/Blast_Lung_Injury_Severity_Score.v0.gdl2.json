@@ -7,7 +7,7 @@
   },
   "description": {
     "original_author": {
-      "date": "2020-02-20",
+      "date": "2020-02-21",
       "name": "Jack Msonkho",
       "organisation": "Cambio CDS",
       "email": "models@cambiocds.com"
@@ -19,105 +19,106 @@
         "purpose": "Stratifies primary blast lung injuries into three categories to guide ventilator treatment.",
         "keywords": [
           "Lung",
-          "Injury"
+          "Injury",
+          "Blast"
         ],
-        "use": "Use in patients who have sustained blast injury and have respiratory symptoms (e.g. cough, cyanosis, dyspnea, hemoptysis).\n\nUseful in guiding triage decisions in the setting of mass casualties, determining ventilation treatment, and predicting outcomes.\n\nBLI severity correlates with the likelihood of developing acute respiratory distress syndrome (ARDS), and can be helpful to delineate patients who will require more aggressive and potentially unconventional respiratory care (e.g. nitric oxide, high-frequency jet ventilation, independent lung ventilation, or extracorporeal membrane oxygenation).\n",
+        "use": "Use in patients who have sustained blast injury and have respiratory symptoms (e.g. cough, cyanosis, dyspnea, hemoptysis).\n\nUseful in guiding triage decisions in the setting of mass casualties, determining ventilation treatment, and predicting outcomes.\n\nBLI severity correlates with the likelihood of developing acute respiratory distress syndrome (ARDS), and can be helpful to delineate patients who will require more aggressive and potentially unconventional respiratory care (e.g. nitric oxide, high-frequency jet ventilation, independent lung ventilation, or extracorporeal membrane oxygenation).\n\n",
         "copyright": "@Cambio CDS"
       }
     },
     "other_details": {
-      "references": "R Pizov;A Oppenheim-Eden;I Matot;Y G Weiss;L A Eidelman;A I Rivkind;C L Sprung\nISSN: 0012-3692 , 1931-3543; DOI: 10.1378/chest.115.1.165\nChest. , 1999, Vol.115(1), p.165-172"
+      "references": "Blast lung injury from an explosion on a civilian bus.\nR Pizov;A Oppenheim-Eden;I Matot;Y G Weiss;L A Eidelman;A I Rivkind;C L Sprung\nISSN: 0012-3692 , 1931-3543; DOI: 10.1378/chest.115.1.165\nChest. , 1999, Vol.115(1), p.165-172"
     }
   },
   "definition": {
     "data_bindings": {
-      "gt0004": {
-        "id": "gt0004",
+      "gt0002": {
+        "id": "gt0002",
         "model_id": "openEHR-EHR-OBSERVATION.blast_lung_injury_severity_score.v0",
         "template_id": "openEHR-EHR-OBSERVATION.blast_lung_injury_severity_score.v0",
         "type": "INPUT",
         "elements": {
+          "gt0003": {
+            "id": "gt0003",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0012]"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          },
           "gt0005": {
             "id": "gt0005",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
-          },
-          "gt0006": {
-            "id": "gt0006",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0012]"
-          },
+          }
+        }
+      },
+      "gt0006": {
+        "id": "gt0006",
+        "model_id": "openEHR-EHR-EVALUATION.blast_lung_injury_severity_score.v0",
+        "template_id": "openEHR-EHR-EVALUATION.blast_lung_injury_severity_score.v0",
+        "type": "OUTPUT",
+        "elements": {
           "gt0007": {
             "id": "gt0007",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+            "path": "/data[at0001]/items[at0002]"
           }
         }
       },
       "gt0008": {
         "id": "gt0008",
-        "model_id": "openEHR-EHR-EVALUATION.blast_lung_injury_severity_score.v0",
-        "template_id": "openEHR-EHR-EVALUATION.blast_lung_injury_severity_score.v0",
-        "type": "OUTPUT",
-        "elements": {
-          "gt0009": {
-            "id": "gt0009",
-            "path": "/data[at0001]/items[at0002]"
-          }
-        }
-      },
-      "gt0010": {
-        "id": "gt0010",
         "model_id": "openEHR-EHR-OBSERVATION.blast_lung_injury_severity_score.v0",
         "template_id": "openEHR-EHR-OBSERVATION.blast_lung_injury_severity_score.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0011": {
-            "id": "gt0011",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0015]"
+          "gt0009": {
+            "id": "gt0009",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0016]"
           }
         }
       }
     },
     "rules": {
-      "gt0012": {
-        "id": "gt0012",
+      "gt0010": {
+        "id": "gt0010",
         "priority": 4,
         "when": [
+          "$gt0003|Bronchial pleural fistula|!=null",
           "$gt0005|Chest x-ray|!=null",
-          "$gt0006|Bronchial pleural fistula|!=null",
-          "$gt0007|PaO₂/FiO₂|!=null"
+          "$gt0004|PaO₂/FiO₂|!=null"
         ],
         "then": [
-          "$gt0011|Total Score|.magnitude=$gt0006.value+$gt0005.value+$gt0007.value"
+          "$gt0009|Total Score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value"
+        ]
+      },
+      "gt0011": {
+        "id": "gt0011",
+        "priority": 3,
+        "when": [
+          "$gt0009|Total Score|==0"
+        ],
+        "then": [
+          "$gt0007|Severity|=0|local::at0003|Mild|"
+        ]
+      },
+      "gt0012": {
+        "id": "gt0012",
+        "priority": 2,
+        "when": [
+          "$gt0009|Total Score|>=1",
+          "$gt0009|Total Score|<=4"
+        ],
+        "then": [
+          "$gt0007|Severity|=1|local::at0004|Moderate|"
         ]
       },
       "gt0013": {
         "id": "gt0013",
-        "priority": 3,
-        "when": [
-          "$gt0011|Total Score|=='0'"
-        ],
-        "then": [
-          "$gt0009|Evaluate|=0|local::at0003|Mild|"
-        ]
-      },
-      "gt0014": {
-        "id": "gt0014",
-        "priority": 2,
-        "when": [
-          "$gt0011|Total Score|>='1'",
-          "$gt0011|Total Score|<='4'"
-        ],
-        "then": [
-          "$gt0009|Evaluate|=1|local::at0004|Moderate|"
-        ]
-      },
-      "gt0015": {
-        "id": "gt0015",
         "priority": 1,
         "when": [
-          "$gt0011|Total Score|>='5'"
+          "$gt0009|Total Score|==5"
         ],
         "then": [
-          "$gt0009|Evaluate|=2|local::at0005|Severe|"
+          "$gt0007|Severity|=2|local::at0005|Severe|"
         ]
       }
     }
@@ -129,49 +130,49 @@
         "terms": {
           "gt0001": {
             "id": "gt0001",
-            "text": "Blast Lung Injury Severity Score",
-            "description": "Stratifies primary blast lung injuries into three categories to guide ventilator treatment."
+            "text": "Blast lung injury severity score",
+            "description": "Blast lung injury severity score used to Stratify primary blast lung injuries into three categories to guide ventilator treatment."
+          },
+          "gt0003": {
+            "id": "gt0003",
+            "text": "Bronchial pleural fistula",
+            "description": "*"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "PaO₂/FiO₂",
+            "description": "*"
           },
           "gt0005": {
             "id": "gt0005",
             "text": "Chest x-ray",
             "description": "*"
           },
-          "gt0006": {
-            "id": "gt0006",
-            "text": "Bronchial pleural fistula",
-            "description": "*"
-          },
           "gt0007": {
             "id": "gt0007",
-            "text": "PaO₂/FiO₂",
+            "text": "Severity",
             "description": "*"
           },
           "gt0009": {
             "id": "gt0009",
-            "text": "Evaluate",
-            "description": "*"
-          },
-          "gt0011": {
-            "id": "gt0011",
             "text": "Total Score",
             "description": "*"
           },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "Total Score"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "BLI Score 0"
+          },
           "gt0012": {
             "id": "gt0012",
-            "text": "Total Score"
+            "text": "BLI Score 1 to 4"
           },
           "gt0013": {
             "id": "gt0013",
-            "text": "BLI Score 0"
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "text": "BLI Score 1 to 4"
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "text": "BLI Score Greater than 5"
+            "text": "BLI Score 5"
           }
         }
       }
