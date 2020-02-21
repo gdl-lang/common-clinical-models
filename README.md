@@ -28,7 +28,7 @@ _Select a medical specialty below to view the available apps._
 
 [Geriatrics](https://github.com/gdl-lang/common-clinical-models#geriatrics)
 
-[Hematology](https://github.com/gdl-lang/common-clinical-models/wiki/CDS-Apps-Overview#hematology)
+[Hematology](https://github.com/gdl-lang/common-clinical-models#hematology)
 
 [Intensive Care](https://github.com/gdl-lang/common-clinical-models#intensive-care)
 
