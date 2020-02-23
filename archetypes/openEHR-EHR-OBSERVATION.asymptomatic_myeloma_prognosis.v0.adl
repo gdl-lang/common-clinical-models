@@ -1,0 +1,116 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.asymptomatic_myeloma_prognosis.v0
+
+concept
+	[at0000]	-- Asymptomatic myeloma prognosis
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Jack Msonkho">
+		["email"] = <"models@cambiocds.com ">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2020-02-23">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Predicts risk of progression of asymptomatic (smoldering) multiple myeloma to active myeloma or amyloidosis.">
+			use = <"Newly diagnosed multiple myeloma (MM) patients meeting International Myeloma Working Group criteria for smoldering or asymptomatic MM (see Pearls/Pitfalls for criteria).
+
+Provides prognostic information for patients.
+Suggests patients who may need closer follow up.
+Allows for stratification of patients on clinical trials potentially evaluating newer, targeted myeloma therapies.
+Does not require FISH studies, cytogenetic, or MRI bone studies, which may add further discrimination but are not widely available; hence, generalizability is preserved in settings with limited availability of these studies.">
+			keywords = <"Myeloma", "smoldering">
+			misuse = <"">
+			copyright = <"@Cambio CDS">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Clinical course and prognosis of smoldering (asymptomatic) multiple myeloma.
+Robert A Kyle;Ellen D Remstein;Terry M Therneau;Angela Dispenzieri;Paul J Kurtin;Janice M Hodnefield;Dirk R Larson;Matthew F Plevak;Diane F Jelinek;Rafael Fonseca;Lee Joseph Melton;S Vincent Rajkumar
+ISSN: 0028-4793 , 1533-4406; DOI: 10.1056/NEJMoa070389
+The New England journal of medicine. , 2007, Vol.356(25), p.2582-2590">
+		["MD5-CAM-1.0.1"] = <"89B985CB2D409C785DC42469BC6CA661">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Asymptomatic myeloma prognosis
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Bone marrow plasmacytosis
+										value matches {
+											0|[local::at0005], 	--  ≥10% 
+											1|[local::at0007]  	-- <10% 
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Serum monoclonal protein, g/dL
+										value matches {
+											0|[local::at0008], 	--  ≥3 g/dL
+											1|[local::at0009]  	-- <3 g/dL
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Asymptomatic myeloma prognosis">
+					description = <"Predicts risk of progression of asymptomatic (smoldering) multiple myeloma to active myeloma or amyloidosis.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Bone marrow plasmacytosis">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <" ≥10% ">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Serum monoclonal protein, g/dL">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"<10% ">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <" ≥3 g/dL">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"<3 g/dL">
+					description = <"*">
+				>
+			>
+		>
+	>
