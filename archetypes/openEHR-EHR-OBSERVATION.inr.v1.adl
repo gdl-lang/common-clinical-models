@@ -1,8 +1,8 @@
 archetype (adl_version=1.4)
-	openEHR-EHR-OBSERVATION.abic_score.v0
+	openEHR-EHR-OBSERVATION.inr.v1
 
 concept
-	[at0000]	-- Abic score
+	[at0000]	-- International Normalized Ratio (INR)
 language
 	original_language = <[ISO_639-1::hu]>
 	translations = <
@@ -29,34 +29,27 @@ description
 		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To store the ABIC Score predicting survival for Alcoholic Hepatitis">
-			use = <"ABIC score is used to calculate survival rates for patients with alcoholic hepatitis. It performs similarly to Maddrey's Discriminant Function at predicting mortality, and better than the MELD Score and Lille Model, in one retrospective study (Garcia-Saenz-de-Sicilia 2017).
+			purpose = <"Used as a standardized indicator for a patient's prothrombin time (mainly during warfarin therapy).">
+			use = <"The INR was devised to standardize  prothrombin time measurement varying according to the type of analytical system employed. Each manufacturer assigns an ISI value (International Sensitivity Index) for any tissue factor they manufacture. The ISI value indicates how a particular batch of tissue factor compares to an international reference tissue factor. The ISI is usually between 0.94 and 1.4 for more sensitive and 2.0–3.0 for less sensitive thromboplastins.
 
-ABIC score is calculated as:
-ABIC Score = (Age, years × 0.1) + (Serum Bilirubin, mg/dL × 0.08) + (INR × 0.8) + (Serum Creatinine, mg/dL × 0.3) .
+INR is calculated using the following formula:
+INR = ((Prothrombin Time [Test])/(Prothrombin Time [Normal]))^ISI
 
-It is interpreted as:
-ABIC Score	Risk group	Survival at 90 days	Survival at 1 year
-<6.71	Low	100%			97.1%
-6.71 to <9.00	Intermediate	70%			64.3%
-≥9.00	High	25%			33.3%">
-			keywords = <"ABIC", "hepatitis", "alcohol abuse", "alcoholic hepatitis">
-			misuse = <"Olny use for alcoholic hepatitis patients">
+The normal range for a healthy person not using warfarin is 0.8–1.2, and for people on warfarin therapy an INR of 2.0–3.0 is usually targeted, although the target INR may be higher in particular situations, such as for those with a mechanical heart valve.">
+			keywords = <"INR", "Prothrombin Time">
+			misuse = <"">
 			copyright = <"">
 		>
 	>
 	lifecycle_state = <"0">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"[1] Dominguez M, Rincón D, Abraldes JG, et al. A new scoring system for prognostic stratification of patients with alcoholic hepatitis. Am J Gastroenterol. 2008;103(11):2747-56.
-[2] Papastergiou V, Tsochatzis EA, Pieri G, et al. Nine scoring models for short-term mortality in alcoholic hepatitis: cross-validation in a biopsy-proven cohort. Aliment Pharmacol Ther. 2014;39(7):721-32.
-[3] Garcia-saenz-de-sicilia M, Duvoor C, Altamirano J, et al. A Day-4 Lille Model Predicts Response to Corticosteroids and Mortality in Severe Alcoholic Hepatitis. Am J Gastroenterol. 2017;112(2):306-315.
-[4] Lafferty H, Stanley AJ, Forrest EH. The management of alcoholic hepatitis: a prospective comparison of scoring systems. Aliment Pharmacol Ther. 2013;38(6):603-10.">
-		["MD5-CAM-1.0.1"] = <"64310F7067386F91D26CC449A44C16FE">
+		["references"] = <"[1] Hirsh, Jack, and Leon Poller. \"The international normalized ratio: a guide to understanding and correcting its problems.\" Archives of internal medicine 154.3 (1994): 282-288.">
+		["MD5-CAM-1.0.1"] = <"7440FE0CA7811F766374F4D3EB58C4B5">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Abic score
+	OBSERVATION[at0000] matches {	-- International Normalized Ratio (INR)
 		data matches {
 			HISTORY[at0001] matches {	-- *Event Series(hu)
 				events cardinality matches {1..*; unordered} matches {
@@ -64,7 +57,7 @@ definition
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- ABIC score
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- INR
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::380]>
@@ -90,7 +83,7 @@ ontology
 		["hu"] = <
 			items = <
 				["at0000"] = <
-					text = <"Abic score">
+					text = <"INR">
 					description = <"unknown">
 				>
 				["at0001"] = <
@@ -114,8 +107,8 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Abic score">
-					description = <"ABIC Score predicting survival for Alcoholic Hepatitis">
+					text = <"International Normalized Ratio (INR)">
+					description = <"International Normalized Ratio (INR) calculated from standardized prothrombin time">
 				>
 				["at0001"] = <
 					text = <"*Event Series(hu)">
@@ -130,7 +123,7 @@ ontology
 					description = <"@ internal @">
 				>
 				["at0004"] = <
-					text = <"ABIC score">
+					text = <"INR">
 					description = <"*">
 				>
 			>
