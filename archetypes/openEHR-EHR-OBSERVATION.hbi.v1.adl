@@ -1,5 +1,5 @@
 archetype (adl_version=1.4)
-	openEHR-EHR-OBSERVATION.hbi.v0
+	openEHR-EHR-OBSERVATION.hbi.v1
 
 concept
 	[at0000]	-- Harvey-Bradshaw Index
@@ -21,33 +21,6 @@ description
 		["date"] = <"2020-01-16">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To register the Harvey-Bradshaw Index (HBI) for Crohn's Disease patients.">
-			use = <"Allows recording the Harvey-Bradshaw Index (HBI) which is used to stratify Crohn's Disease patients. 
-
-HBI is simpler than the Crohn's Disease Activity Index (CDAI), which requires symptoms over the past 7 days, however, it is shown to have 93% correlation with the CDAI in the original study (Harvey 1980), a figure that has been duplicated in subsequent studies (Gomes 1986).
-
-Harvey-Bradshaw Index is calculated by adding the selected points:
-General well-being*                       0-4p
-Abdominal pain*                           0-3p
-Number of liquid/soft stools*     1p per stool
-Abdominal mass                            0-3p
-Complications**                            1p each
-*For the previous day, as reported by the patient. 
-**Complications are: Artharalgia, uveitis, erythema nodosum, aphtous ulcers, pyoderna gangrenosum, anal fissures, new fistula, abscess
-
-
-The Harvey-Bradshaw index can be interpreted as:
-HBI                           Severity
-<5                             Remission
-5-7                            Mild disease
-8-16                          Moderate disease
->16                           Severe disease">
-			keywords = <"Crohn's disease", "*CDAI", "*HBI", "*Harvey-Bradshaw Index", "*Harvey-Bradshaw">
-			misuse = <"Not to be used for patient's without Crohn's Disease.">
-			copyright = <"*">
-		>
 		["nl"] = <
 			language = <[ISO_639-1::nl]>
 			purpose = <"To register the Harvey-Bradshaw Index (HBI) for Crohn's Disease patients.">
@@ -75,6 +48,33 @@ HBI                           Severity
 			misuse = <"Not to be used for patient's without Crohn's Disease.">
 			copyright = <"">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To register the Harvey-Bradshaw Index (HBI) for Crohn's Disease patients.">
+			use = <"Allows recording the Harvey-Bradshaw Index (HBI) which is used to stratify Crohn's Disease patients. 
+
+HBI is simpler than the Crohn's Disease Activity Index (CDAI), which requires symptoms over the past 7 days, however, it is shown to have 93% correlation with the CDAI in the original study (Harvey 1980), a figure that has been duplicated in subsequent studies (Gomes 1986).
+
+Harvey-Bradshaw Index is calculated by adding the selected points:
+General well-being*                       0-4p
+Abdominal pain*                           0-3p
+Number of liquid/soft stools*     1p per stool
+Abdominal mass                            0-3p
+Complications**                            1p each
+*For the previous day, as reported by the patient. 
+**Complications are: Artharalgia, uveitis, erythema nodosum, aphtous ulcers, pyoderna gangrenosum, anal fissures, new fistula, abscess
+
+
+The Harvey-Bradshaw index can be interpreted as:
+HBI                           Severity
+<5                             Remission
+5-7                            Mild disease
+8-16                          Moderate disease
+>16                           Severe disease">
+			keywords = <"Crohn's disease", "*CDAI", "*HBI", "*Harvey-Bradshaw Index", "*Harvey-Bradshaw">
+			misuse = <"Not to be used for patient's without Crohn's Disease.">
+			copyright = <"*">
+		>
 	>
 	lifecycle_state = <"0">
 	other_contributors = <>
@@ -83,17 +83,17 @@ HBI                           Severity
 [2] Gomes P, Du Boulay C, Smith CL, Holdstock G. Relationship between disease activity indices and colonoscopic findings in patients with colonic inflammatory bowel disease. Gut. 1986;27(1):92-5.
 [3] National Clinical Guideline Centre (UK). Crohn's Disease: Management in Adults, Children and Young People. London: Royal College of Physicians (UK); 2012 Oct 10.
 [4] Peyrin-Biroulet L, Panés J, Sandborn WJ, et al. Defining Disease Severity in Inflammatory Bowel Diseases: Current and Future Directions. Clin Gastroenterol Hepatol. 2016;14(3):348-354.e17.">
-		["MD5-CAM-1.0.1"] = <"EF7B1CA8CB19CDB52146ADD42D138F6A">
+		["MD5-CAM-1.0.1"] = <"A3FA54D37E139CF7FED02F96270CB273">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- *Harvey-Bradshaw Index
+	OBSERVATION[at0000] matches {	-- Harvey-Bradshaw Index
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
 									ELEMENT[at0006] occurrences matches {0..1} matches {	-- General well-being
 										value matches {
@@ -124,7 +124,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0018] occurrences matches {0..1} matches {	-- *Abdominal mass
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Abdominal mass
 										value matches {
 											0|[local::at0019], 	-- None
 											1|[local::at0020], 	-- Dubious
@@ -398,7 +398,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"">
+					description = <"*">
 				>
 				["at0003"] = <
 					text = <"Tree">

@@ -1,5 +1,5 @@
 archetype (adl_version=1.4)
-	openEHR-EHR-EVALUATION.hbi_assessment.v0
+	openEHR-EHR-EVALUATION.hbi_assessment.v1
 
 concept
 	[at0000]	-- Harvey-Bradshaw Index Assessment
@@ -83,26 +83,26 @@ HBI                           Severity
 [2] Gomes P, Du Boulay C, Smith CL, Holdstock G. Relationship between disease activity indices and colonoscopic findings in patients with colonic inflammatory bowel disease. Gut. 1986;27(1):92-5.
 [3] National Clinical Guideline Centre (UK). Crohn's Disease: Management in Adults, Children and Young People. London: Royal College of Physicians (UK); 2012 Oct 10.
 [4] Peyrin-Biroulet L, Panés J, Sandborn WJ, et al. Defining Disease Severity in Inflammatory Bowel Diseases: Current and Future Directions. Clin Gastroenterol Hepatol. 2016;14(3):348-354.e17.">
-		["MD5-CAM-1.0.1"] = <"D472CB7AD5ABC3A46D93495E7C5A0851">
+		["MD5-CAM-1.0.1"] = <"435B94BE2D8BC67DD1A140DA8A4E865C">
 	>
 
 definition
 	EVALUATION[at0000] matches {	-- Harvey-Bradshaw Index Assessment
-			data matches {
-							ITEM_TREE[at0001] matches {	-- Tree
-								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Severity
-										value matches {
-											0|[local::at0005], 	-- Remission
-											1|[local::at0006], 	-- Mild disease
-											2|[local::at0007], 	-- Moderate disease
-											3|[local::at0008]  	-- Severe disease
-										}
-									}
-								}
-							}
+		data matches {
+			ITEM_TREE[at0001] matches {	-- *Event Series(hu)
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- Severity
+						value matches {
+							0|[local::at0005], 	-- Remission
+							1|[local::at0006], 	-- Mild disease
+							2|[local::at0007], 	-- Moderate disease
+							3|[local::at0008]  	-- Severe disease
 						}
 					}
+				}
+			}
+		}
+	}
 
 ontology
 	term_definitions = <
@@ -115,14 +115,6 @@ ontology
 				["at0001"] = <
 					text = <"Event Series">
 					description = <"@ internal @">
-				>
-				["at0002"] = <
-					text = <"Any event">
-					description = <"*">
-				>
-				["at0003"] = <
-					text = <"*Tree(hu)">
-					description = <"*@ internal @(hu)">
 				>
 				["at0004"] = <
 					text = <"*New element(hu)">
@@ -155,14 +147,6 @@ ontology
 				["at0001"] = <
 					text = <"*Event Series(hu)">
 					description = <"*@ internal @(hu)">
-				>
-				["at0002"] = <
-					text = <"*Any event(hu)">
-					description = <"**(hu)">
-				>
-				["at0003"] = <
-					text = <"Tree">
-					description = <"@ internal @">
 				>
 				["at0004"] = <
 					text = <"Severity">
