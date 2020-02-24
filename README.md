@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 173*
+### *Published Apps: 174*
 
 ----------
 
@@ -75,6 +75,8 @@ _Select a medical specialty below to view the available apps._
 * [ATRIA Bleeding Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#atria-bleeding-risk-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_bleeding_risk_score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_bleeding_risk_score_combined/1?language=sv))
 
 * [ATRIA Stroke Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#atria-stroke-risk-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_stroke_risk_score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_stroke_risk_score_combined/1?language=sv))
+
+* [CHADS2 Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#cha2ds2-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHADS2_combined/1?language=en))
 
 * [CHA2DS2-VASc Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#cha2ds2-vasc-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/CHA2DS2-VASc.v1.dsv?token=434841324453322d564153632e7631:1549324800000:52588aa520f5c53c6656a89e48abb97c&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/CHA2DS2-VASc.v1.dsv?token=434841324453322d564153632e7631:1549324800000:52588aa520f5c53c6656a89e48abb97c&language=sv))
 
