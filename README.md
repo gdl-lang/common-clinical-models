@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 177*
+### *Published Apps: 178*
 
 ----------
 
@@ -391,6 +391,8 @@ _Select a medical specialty below to view the available apps._
 * [ROME III for IBS](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rome-iii-for-ibs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_III_IBS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_III_IBS_combined/1?language=sv))
 
 * [ROME IV for Constipation](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rome-iv-for-constipation) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_IV_constipation/1?language=en))
+
+* [ROME IV for IBS](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rome-iv-for-ibs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_IV_IBS/1?language=en))
 
 * [Stress and Crisis Inventory 93 (SCI-93)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#stress-and-crisis-inventory-93-sci-93) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/SCI-93.v1.dsv?token=5343492d39332e7631:1549324800000:45b6d1135d8afe7d953b75837f15ddea&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/SCI-93.v1.dsv?token=5343492d39332e7631:1549324800000:45b6d1135d8afe7d953b75837f15ddea&language=sv))
 
