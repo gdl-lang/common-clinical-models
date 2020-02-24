@@ -269,6 +269,8 @@ _Select a medical specialty below to view the available apps._
 ----------
 * [ABCD2 Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abcd2-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABCD2_score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABCD2_score_combined/1?language=sv))
 
+* [ABC/2 Formula for Intracerebral Hemorrhage Volume](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abc2-formula-for-intracerebral-hemorrhage-volume) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABC_div_2/1?language=en))
+
 * [Douleur Neuropathique 4 (DN4)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#douleur-neuropathique-4-questions-dn4) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DN4_combined/1?language=en))
 
 * [Functional Outcome in Patients With Primary Intracerebral Hemorrhage (FUNC) Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#functional-outcome-in-patients-with-primary-intracerebral-hemorrhage-score-func) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FUNC_ICH_Score_combined/1?language=en))
