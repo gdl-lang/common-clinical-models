@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 175*
+### *Published Apps: 176*
 
 ----------
 
@@ -191,6 +191,7 @@ _Select a medical specialty below to view the available apps._
 
 ### Gastroenterology
 ----------
+* [Harvey-Bradshaw Index for Crohn's Disease (HBI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#harvey-bradshaw-index-for-crohns-disease-hbi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HBI/1?language=en))
 
 * [Hepatic encephalopathy grades](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#hepatic-encephalopathy-grades) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hepatic_encephalopathy_grades_combined/1?language=en))
 
