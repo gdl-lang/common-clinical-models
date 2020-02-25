@@ -19,32 +19,60 @@ description
 	original_author = <
 		["name"] = <"Winner Ng">
 		["email"] = <"dokter.winner@gmail.com">
-		["organisation"] = <"Karolinska Instituet">
+		["organisation"] = <"Cambio CDS">
 		["date"] = <"2019-11-12">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"The tool for predicting 30-day readmission.">
-			use = <"To record and predict 30-day of potentially avoidable readmission on adult patient, both for medical and surgical cases.">
-			keywords = <"readmission", "prediction", "score", "hospital">
-			misuse = <"Not to be used in pediatric patient.">
-			copyright = <"">
-		>
 		["id"] = <
 			language = <[ISO_639-1::id]>
 			purpose = <"Alat bantu untuk memprediksi readmisi dalam 30 hari pasca pemulangan.">
-			use = <"Untuk mencatat dan merekam potensi readmisi yang dapat dihindari dalam 30 hari pasca pemulangan pada pasien dewasa, untuk kasus medis dan bedah.">
-			keywords = <"*readmission(en)", "*prediction(en)", "*score(en)", "*hospital(en)">
+			use = <"Untuk mencatat dan merekam potensi readmisi yang dapat dihindari dalam 30 hari pasca pemulangan pada pasien dewasa, untuk kasus medis dan bedah. Kriterianya antara lain:
+
+- (H) - kadar Hemoglobin saat pemulangan <12g/dL: 1 poin
+
+- (O) - pemulangan dari layanan Onkologi: 2 poin
+
+- (S) - kadar Sodium (Natrium)
+ saat pemulangan <135mmol/L: 1 poin
+- (P) - Prosedur yang dijalani selama perawatan: 1 poin
+
+- (IT) - Indeks Tipe admisi, jika urgensi atau emergensi: 1poin
+
+- (A) - jumlah Admisi dalam tahun sebelumnya
+,0-1: 0 poin, 2-5: 2 poin, >5: 5 poin
+- (L) - Lama hari perawatan >=5 hari, 2 poin">
+			keywords = <"readmisi", "prediksi", "skor HOSPITAL">
 			misuse = <"Tidak untuk digunakan pada pasien pediatrik.">
-			copyright = <"*(en)">
+			copyright = <"@Cambio CDS">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The tool for predicting 30-day readmission.">
+			use = <"To record and predict 30-day of potentially avoidable readmission on adult patient, both for medical and surgical cases. The score was calculated based on the following criteria:
+
+- (H) - Haemoglobin level at discharge <12g/dL: 1 point
+
+- (O) - discharge from an Oncology service
+: 2 points
+- (S) - Sodium level at discharge <135 mmol/L: 1 point
+
+- (P) - Procedure during hospital stay: 1 point
+
+- (IT) - Index of admission Type, if urgent or emergent: 1 point
+
+- (A) - number of hospital Admission in the previous year, 0-1: 0 point, 2-5: 2 points, >5: 5 points
+
+- (L) - Length of stay >=5 days: 2 points">
+			keywords = <"readmission", "prediction", "HOSPITAL score">
+			misuse = <"Not to be used in pediatric patient.">
+			copyright = <"@Cambio CDS">
 		>
 	>
 	lifecycle_state = <"0">
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Donzé JD, Williams MV, Robinson EJ, Zimlichman E, Aujesky D, Vasilevskis EE, et al. International Validity of the HOSPITAL Score to Predict 30-Day Potentially Avoidable Hospital Readmissions. JAMA Internal Medicine. 2016;176(4):496–502.">
-		["MD5-CAM-1.0.1"] = <"9B1E8DCFD476AFF9511BE35BDED8B575">
+		["MD5-CAM-1.0.1"] = <"055F67A0C9F5B8B2ED2C535D332E6D88">
 	>
 
 definition
@@ -61,7 +89,7 @@ definition
 					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Pemulangan dari layanan Onkologi
 						value matches {
 							0|[local::at0007], 	-- Tidak
-							1|[local::at0006]  	-- Ya
+							2|[local::at0006]  	-- Ya
 						}
 					}
 					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Kadar Sodium (Natrium) saat pemulangan < 135 mmol/L
