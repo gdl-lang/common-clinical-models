@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 184*
+### *Published Apps: 185*
 
 ----------
 
@@ -237,6 +237,8 @@ _Select a medical specialty below to view the available apps._
 ### Intensive Care
 
 ----------
+* [Apfel Score for Postoperative Nausea and Vomiting](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#apfel-score-for-postoperative-nausea-and-vomiting) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Apfel_Score_for_Postoperative_Nausea_and_Vomiting/1?language=en))
+
 * [AVPU](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#avpu) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AVPU/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AVPU/1?language=sv))
 
 * [Basal Metabolic Rate (BMR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#basal-metabolic-rate-calculator-bmr) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/BMR_Calculation.v1.dsv?token=424d525f43616c63756c6174696f6e2e7631:1549324800000:e03ffc88085b3b27dff64234fc87ddae&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/BMR_Calculation.v1.dsv?token=424d525f43616c63756c6174696f6e2e7631:1549324800000:e03ffc88085b3b27dff64234fc87ddae&language=sv))
