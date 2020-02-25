@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 180*
+### *Published Apps: 182*
 
 ----------
 
@@ -462,11 +462,15 @@ _Select a medical specialty below to view the available apps._
 ----------
 * [du Bois Score for Idiopathic Pulmonary Fibrosis (IPF) Mortality](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#du-bois-score-for-idiopathic-pulmonary-fibrosis-ipf-mortality) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/du_Bois_IPF_combined/1?language=en))
 
+* [COPD Assessment Test (CAT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#copd-assessment-test-cat) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CAT_COPD_Assessment_Test/1?language=en))
+
 * [GAP Index](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#gap-index-for-idiopathic-pulmonary-fibrosis-mortality) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/GAP_Index.v1.dsv?token=4741505f496e6465782e7631:1549324800000:9980cf333b9e44d0130cc072e82c92c6&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/GAP_Index.v1.dsv?token=4741505f496e6465782e7631:1549324800000:9980cf333b9e44d0130cc072e82c92c6&language=sv))
 
 * [Manchester Score for small cell lung cancer](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#manchester-score-for-small-cell-lung-cancer) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Manchester_Score_SCC_lung_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Manchester_Score_SCC_lung_combined/1?language=sv))
 
 * [PERC Rule for Pulmonary Embolism](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#perc-rule-for-pulmonary-embolism) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PERC/1?language=en))
+
+* [RAPID Score for Pleural Infection](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rapid-score-for-pleural-infection) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rapid_Score/0?language=en))
 
 ----------
 
