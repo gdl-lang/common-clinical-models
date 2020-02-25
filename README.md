@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 182*
+### *Published Apps: 183*
 
 ----------
 
@@ -23,6 +23,8 @@ _Select a medical specialty below to view the available apps._
 [Clinical Chemistry](https://github.com/gdl-lang/common-clinical-models#clinical-chemistry)
 
 [Emergency Medicine](https://github.com/gdl-lang/common-clinical-models#emergency-medicine)
+
+[Endocrinology](https://github.com/gdl-lang/common-clinical-models#endocrinology)
 
 [Gastroenterology](https://github.com/gdl-lang/common-clinical-models#gastroenterology)
 
@@ -187,6 +189,11 @@ _Select a medical specialty below to view the available apps._
 
 * [Wells Criteria for Pulmonary Embolism](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#wells-criteria-for-pulmonary-embolism) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wells_Criteria_PE_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wells_Criteria_PE_combined/1?language=sv))
 
+----------
+
+### Endocrinology
+----------
+* [PEDIS Score for Diabetic Foot Ulcers](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pedis-score-for-diabetic-foot-ulcers) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEDIS_Score/0?language=en))
 ----------
 
 ### Gastroenterology
