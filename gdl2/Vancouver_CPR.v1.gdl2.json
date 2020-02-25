@@ -14,7 +14,8 @@
     },
     "other_contributors": [
       "Dennis Forslund",
-      "Jimmy Axelsson"
+      "Jimmy Axelsson",
+	  "Linda Guttormsdottir"
     ],
     "lifecycle_state": "Author draft",
     "details": {
@@ -58,15 +59,8 @@
           "gt0003": {
             "id": "gt0003",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
-          },
-          "gt0037": {
-            "id": "gt0037",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0004": {
         "id": "gt0004",
@@ -105,15 +99,8 @@
           "gt0011": {
             "id": "gt0011",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
-          },
-          "gt0038": {
-            "id": "gt0038",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0012": {
         "id": "gt0012",
@@ -136,56 +123,14 @@
           "gt0016": {
             "id": "gt0016",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0012]"
-          },
-          "gt0027": {
-            "id": "gt0027",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
-          },
-          "gt0028": {
-            "id": "gt0028",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
-          },
-          "gt0029": {
-            "id": "gt0029",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
-          },
-          "gt0030": {
-            "id": "gt0030",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
-          },
-          "gt0031": {
-            "id": "gt0031",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
           }
         }
       }
     },
     "rules": {
-      "gt0017": {
-        "id": "gt0017",
-        "priority": 15,
-        "when": [
-          "$gt0031|Does pain radiate to neck, jaw, or left arm|==null",
-          "$gt0030|Does palpation reproduce pain?|==null",
-          "$gt0027|Abnormal intial EKG?|==null",
-          "$gt0028|Positive troponin at 2 hours?|==null",
-          "$gt0029|Prior ACS (Acute Coronary Syndrome) or nitrate use?|==null",
-          "$gt0013|Age ≥ 50?|==null",
-          "$gt0014|Step 1 result|==null"
-        ],
-        "then": [
-          "$gt0027|Abnormal intial EKG?|=0|local::at0020|False|",
-          "$gt0028|Positive troponin at 2 hours?|=0|local::at0022|False|",
-          "$gt0029|Prior ACS (Acute Coronary Syndrome) or nitrate use?|=0|local::at0024|False|",
-          "$gt0030|Does palpation reproduce pain?|=0|local::at0026|False|",
-          "$gt0031|Does pain radiate to neck, jaw, or left arm|=0|local::at0030|False|",
-          "$gt0013|Age ≥ 50?|=0|local::at0028|False|",
-          "$gt0014|Step 1 result|=0|local::at0016|Go to step 2|"
-        ]
-      },
       "gt0026": {
         "id": "gt0026",
-        "priority": 14,
+        "priority": 9,
         "when": [
           "$gt0003|Birthdate|!=null"
         ],
@@ -194,39 +139,9 @@
           "$gt0005|Age|.unit='a'"
         ]
       },
-      "gt0020": {
-        "id": "gt0020",
-        "priority": 13,
-        "when": [
-          "$gt0007|Abnormal intial EKG?|!=null"
-        ],
-        "then": [
-          "$gt0027|Abnormal intial EKG?|=$gt0007|Abnormal intial EKG?|"
-        ]
-      },
-      "gt0021": {
-        "id": "gt0021",
-        "priority": 12,
-        "when": [
-          "$gt0008|Positive troponin at 2 hours?|!=null"
-        ],
-        "then": [
-          "$gt0028|Positive troponin at 2 hours?|=$gt0008|Positive troponin at 2 hours?|"
-        ]
-      },
-      "gt0022": {
-        "id": "gt0022",
-        "priority": 11,
-        "when": [
-          "$gt0009|Prior ACS (Acute Coronary Syndrome) or nitrate use?|!=null"
-        ],
-        "then": [
-          "$gt0029|Prior ACS (Acute Coronary Syndrome) or nitrate use?|=$gt0009|Prior ACS (Acute Coronary Syndrome) or nitrate use?|"
-        ]
-      },
       "gt0023": {
         "id": "gt0023",
-        "priority": 10,
+        "priority": 8,
         "when": [
           "$gt0005|Age|!=null",
           "$gt0005|Age|>=50,a"
@@ -237,7 +152,7 @@
       },
       "gt0032": {
         "id": "gt0032",
-        "priority": 9,
+        "priority": 7,
         "when": [
           "$gt0005|Age|!=null",
           "$gt0005|Age|<50,a"
@@ -246,31 +161,11 @@
           "$gt0013|Age ≥ 50?|=0|local::at0028|False|"
         ]
       },
-      "gt0024": {
-        "id": "gt0024",
-        "priority": 8,
-        "when": [
-          "$gt0010|Does palpation reproduce pain?|!=null"
-        ],
-        "then": [
-          "$gt0030|Does palpation reproduce pain?|=$gt0010|Does palpation reproduce pain?|"
-        ]
-      },
-      "gt0025": {
-        "id": "gt0025",
-        "priority": 7,
-        "when": [
-          "$gt0011|Does pain radiate to neck, jaw, or left arm|!=null"
-        ],
-        "then": [
-          "$gt0031|Does pain radiate to neck, jaw, or left arm|=$gt0011|Does pain radiate to neck, jaw, or left arm|"
-        ]
-      },
       "gt0018": {
         "id": "gt0018",
         "priority": 6,
         "when": [
-          "($gt0028|Positive troponin at 2 hours?|==1|local::at0023|True|)||(($gt0027|Abnormal intial EKG?|==1|local::at0021|True|)||($gt0029|Prior ACS (Acute Coronary Syndrome) or nitrate use?|==1|local::at0025|True|))"
+          "($gt0008|Positive troponin at 2 hours?|==1|local::at0023|True|)||(($gt0007|Abnormal intial EKG?|==1|local::at0021|True|)||($gt0009|Prior ACS (Acute Coronary Syndrome) or nitrate use?|==1|local::at0025|True|))"
         ],
         "then": [
           "$gt0014|Step 1 result|=1|local::at0017|Not safe to discharge|"
@@ -280,9 +175,9 @@
         "id": "gt0019",
         "priority": 5,
         "when": [
-          "$gt0027|Abnormal intial EKG?|==0|local::at0020|False|",
-          "$gt0028|Positive troponin at 2 hours?|==0|local::at0022|False|",
-          "$gt0029|Prior ACS (Acute Coronary Syndrome) or nitrate use?|==0|local::at0024|False|"
+          "$gt0007|Abnormal intial EKG?|==0|local::at0020|False|",
+          "$gt0008|Positive troponin at 2 hours?|==0|local::at0022|False|",
+          "$gt0009|Prior ACS (Acute Coronary Syndrome) or nitrate use?|==0|local::at0024|False|"
         ],
         "then": [
           "$gt0014|Step 1 result|=0|local::at0016|Go to step 2|"
@@ -292,8 +187,8 @@
         "id": "gt0033",
         "priority": 4,
         "when": [
-          "$gt0030|Does palpation reproduce pain?|!=null",
-          "$gt0030|Does palpation reproduce pain?|==1|local::at0027|True|"
+          "$gt0010|Does palpation reproduce pain?|!=null",
+          "$gt0010|Does palpation reproduce pain?|==1|local::at0027|True|"
         ],
         "then": [
           "$gt0015|Step 2 result|=0|local::at0018|Safe to discharge|"
@@ -303,8 +198,8 @@
         "id": "gt0034",
         "priority": 3,
         "when": [
-          "$gt0030|Does palpation reproduce pain?|!=null",
-          "$gt0030|Does palpation reproduce pain?|==0|local::at0026|False|"
+          "$gt0010|Does palpation reproduce pain?|!=null",
+          "$gt0010|Does palpation reproduce pain?|==0|local::at0026|False|"
         ],
         "then": [
           "$gt0015|Step 2 result|=1|local::at0019|Go to 3|"
@@ -314,7 +209,7 @@
         "id": "gt0035",
         "priority": 2,
         "when": [
-          "(($gt0013|Age ≥ 50?|!=null)&&($gt0013|Age ≥ 50?|==1|local::at0029|True|))||($gt0031|Does pain radiate to neck, jaw, or left arm|==1|local::at0031|True|)"
+          "(($gt0013|Age ≥ 50?|!=null)&&($gt0013|Age ≥ 50?|==1|local::at0029|True|))||($gt0011|Does pain radiate to neck, jaw, or left arm|==1|local::at0031|True|)"
         ],
         "then": [
           "$gt0016|Step 3 result|=1|local::at0015|Not safe to discharge|"
@@ -325,7 +220,7 @@
         "priority": 1,
         "when": [
           "$gt0013|Age ≥ 50?|==0|local::at0028|False|",
-          "$gt0031|Does pain radiate to neck, jaw, or left arm|==0|local::at0030|False|"
+          "$gt0011|Does pain radiate to neck, jaw, or left arm|==0|local::at0030|False|"
         ],
         "then": [
           "$gt0016|Step 3 result|=0|local::at0014|Safe to discharge|"
@@ -398,10 +293,6 @@
             "text": "Steg 3 - resultat",
             "description": "*(en) If any is True - do not discharge otherwise it is safe to discharge."
           },
-          "gt0017": {
-            "id": "gt0017",
-            "text": "CDS standard"
-          },
           "gt0018": {
             "id": "gt0018",
             "text": "CDS steg 1: om föreliggande"
@@ -410,58 +301,13 @@
             "id": "gt0019",
             "text": "CDS steg 1: om frånvarande"
           },
-          "gt0020": {
-            "id": "gt0020",
-            "text": "CDS patologiskt EKG"
-          },
-          "gt0021": {
-            "id": "gt0021",
-            "text": "CDS positivt troponin"
-          },
-          "gt0022": {
-            "id": "gt0022",
-            "text": "CDS kranskärlssjukdom"
-          },
           "gt0023": {
             "id": "gt0023",
             "text": "CDS Ålder ≥ 50"
           },
-          "gt0024": {
-            "id": "gt0024",
-            "text": "CDS palpation reproducerar smärta"
-          },
-          "gt0025": {
-            "id": "gt0025",
-            "text": "Utstrålande smärta"
-          },
           "gt0026": {
             "id": "gt0026",
             "text": "Beräkna ålder"
-          },
-          "gt0027": {
-            "id": "gt0027",
-            "text": "Patologiskt EKG vid ankomst?",
-            "description": "*(en) Step 1: do not disharge if this question is true."
-          },
-          "gt0028": {
-            "id": "gt0028",
-            "text": "Positivt troponin efter 2 timmar?",
-            "description": "*(en) Step 1: do not disharge if this question is true."
-          },
-          "gt0029": {
-            "id": "gt0029",
-            "text": "Tidigare akut kranskärlssjukdom eller ordinerat nitrat?",
-            "description": "*(en) Step 1: do not disharge if this question is true."
-          },
-          "gt0030": {
-            "id": "gt0030",
-            "text": "Kan smärtan reproduceras genom palpation?",
-            "description": "*(en) Step 2: do not disharge if this question is false but go to step 3"
-          },
-          "gt0031": {
-            "id": "gt0031",
-            "text": "Strålar smärtan ut i nacke, käke eller vänster arm?",
-            "description": "*(en) Step 3: do not disharge if this question is true."
           },
           "gt0032": {
             "id": "gt0032",
@@ -482,16 +328,6 @@
           "gt0036": {
             "id": "gt0036",
             "text": "CDS steg 3 - frånvarande"
-          },
-          "gt0037": {
-            "id": "gt0037",
-            "text": "*(en) Event time",
-            "description": "*(en) The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0038": {
-            "id": "gt0038",
-            "text": "*(en) Event time",
-            "description": "*(en) The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
           }
         }
       },
@@ -558,10 +394,6 @@
             "text": "Step 3 result",
             "description": "If any is True - do not discharge otherwise it is safe to discharge."
           },
-          "gt0017": {
-            "id": "gt0017",
-            "text": "Default"
-          },
           "gt0018": {
             "id": "gt0018",
             "text": "Set Step 1: if any true"
@@ -570,58 +402,13 @@
             "id": "gt0019",
             "text": "Set Step 1: if all false"
           },
-          "gt0020": {
-            "id": "gt0020",
-            "text": "Set Abnormal EKG"
-          },
-          "gt0021": {
-            "id": "gt0021",
-            "text": "Set Positive troponin"
-          },
-          "gt0022": {
-            "id": "gt0022",
-            "text": "Set Prior ACS"
-          },
           "gt0023": {
             "id": "gt0023",
             "text": "Set Age ≥ 50"
           },
-          "gt0024": {
-            "id": "gt0024",
-            "text": "Set Palpation produce pain"
-          },
-          "gt0025": {
-            "id": "gt0025",
-            "text": "Pain radiate to neck"
-          },
           "gt0026": {
             "id": "gt0026",
             "text": "Calculate Age"
-          },
-          "gt0027": {
-            "id": "gt0027",
-            "text": "Abnormal intial EKG?",
-            "description": "Step 1: do not disharge if this question is true."
-          },
-          "gt0028": {
-            "id": "gt0028",
-            "text": "Positive troponin at 2 hours?",
-            "description": "Step 1: do not disharge if this question is true."
-          },
-          "gt0029": {
-            "id": "gt0029",
-            "text": "Prior ACS (Acute Coronary Syndrome) or nitrate use?",
-            "description": "Step 1: do not disharge if this question is true."
-          },
-          "gt0030": {
-            "id": "gt0030",
-            "text": "Does palpation reproduce pain?",
-            "description": "Step 2: do not disharge if this question is false but go to step 3"
-          },
-          "gt0031": {
-            "id": "gt0031",
-            "text": "Does pain radiate to neck, jaw, or left arm",
-            "description": "Step 3: do not disharge if this question is true."
           },
           "gt0032": {
             "id": "gt0032",
@@ -642,16 +429,6 @@
           "gt0036": {
             "id": "gt0036",
             "text": "Set Step 3: If all false"
-          },
-          "gt0037": {
-            "id": "gt0037",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0038": {
-            "id": "gt0038",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
           }
         }
       }

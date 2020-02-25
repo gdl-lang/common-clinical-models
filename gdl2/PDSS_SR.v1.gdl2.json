@@ -15,7 +15,8 @@
     "other_contributors": [
       "Eneimi Allwell-Brown",
       "Dennis Forslund",
-      "Jimmy Axelsson"
+      "Jimmy Axelsson",
+	  "Linda Guttormsdottir"
     ],
     "lifecycle_state": "Author draft",
     "details": {
@@ -82,15 +83,8 @@
           "gt0009": {
             "id": "gt0009",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
-          },
-          "gt0034": {
-            "id": "gt0034",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0010": {
         "id": "gt0010",
@@ -98,34 +92,6 @@
         "template_id": "openEHR-EHR-OBSERVATION.pdss_sr.v1",
         "type": "OUTPUT",
         "elements": {
-          "gt0011": {
-            "id": "gt0011",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
-          },
-          "gt0012": {
-            "id": "gt0012",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
-          },
-          "gt0013": {
-            "id": "gt0013",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
-          },
-          "gt0016": {
-            "id": "gt0016",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
-          },
-          "gt0017": {
-            "id": "gt0017",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
-          },
           "gt0019": {
             "id": "gt0019",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
@@ -138,110 +104,36 @@
       }
     },
     "rules": {
-      "gt0020": {
-        "id": "gt0020",
-        "priority": 10,
-        "when": [
-          "$gt0011|Q1. No of attacks|==null",
-          "$gt0012|Q2. Degree of distress|==null",
-          "$gt0013|Q3. Fear of another attack|==null",
-          "$gt0014|Q4. Phyiscal avoidance due to fear of another attack|==null",
-          "$gt0015|Q5. Other avoidance|==null",
-          "$gt0016|Q6. Interference with personal life|==null",
-          "$gt0017|Q7. Interference with social life|==null"
-        ],
-        "then": [
-          "$gt0011|Q1. No of attacks|=0|local::at0014|No panic or limited symptom episodes|",
-          "$gt0012|Q2. Degree of distress|=0|local::at0019|Not at all distressing|",
-          "$gt0013|Q3. Fear of another attack|=0|local::at0024|Not at all|",
-          "$gt0014|Q4. Phyiscal avoidance due to fear of another attack|=0|local::at0029|None|",
-          "$gt0015|Q5. Other avoidance|=0|local::at0034|No fear or avoidance|",
-          "$gt0016|Q6. Interference with personal life|=0|local::at0039|No interference|",
-          "$gt0017|Q7. Interference with social life|=0|local::at0044|No interference|"
-        ]
-      },
-      "gt0021": {
-        "id": "gt0021",
-        "priority": 9,
-        "when": [
-          "$gt0003|Q1. No of attacks|!=null"
-        ],
-        "then": [
-          "$gt0011|Q1. No of attacks|=$gt0003|Q1. No of attacks|"
-        ]
-      },
-      "gt0022": {
-        "id": "gt0022",
-        "priority": 8,
-        "when": [
-          "$gt0004|Q2. Degree of distress|!=null"
-        ],
-        "then": [
-          "$gt0012|Q2. Degree of distress|=$gt0004|Q2. Degree of distress|"
-        ]
-      },
-      "gt0023": {
-        "id": "gt0023",
-        "priority": 7,
-        "when": [
-          "$gt0005|Q3. Fear of another attack|!=null"
-        ],
-        "then": [
-          "$gt0013|Q3. Fear of another attack|=$gt0005|Q3. Fear of another attack|"
-        ]
-      },
-      "gt0024": {
-        "id": "gt0024",
-        "priority": 6,
-        "when": [
-          "$gt0006|Q4. Phyiscal avoidance due to fear of another attack|!=null"
-        ],
-        "then": [
-          "$gt0014|Q4. Phyiscal avoidance due to fear of another attack|=$gt0006|Q4. Phyiscal avoidance due to fear of another attack|"
-        ]
-      },
-      "gt0025": {
-        "id": "gt0025",
-        "priority": 5,
-        "when": [
-          "$gt0007|Q5. Other avoidance|!=null"
-        ],
-        "then": [
-          "$gt0015|Q5. Other avoidance|=$gt0007|Q5. Other avoidance|"
-        ]
-      },
-      "gt0026": {
-        "id": "gt0026",
-        "priority": 4,
-        "when": [
-          "$gt0008|Q6. Interference with personal life|!=null"
-        ],
-        "then": [
-          "$gt0016|Q6. Interference with personal life|=$gt0008|Q6. Interference with personal life|"
-        ]
-      },
-      "gt0027": {
-        "id": "gt0027",
-        "priority": 3,
-        "when": [
-          "$gt0009|Q7. Interference with social life|!=null"
-        ],
-        "then": [
-          "$gt0017|Q7. Interference with social life|=$gt0009|Q7. Interference with social life|"
-        ]
-      },
       "gt0028": {
         "id": "gt0028",
         "priority": 2,
+        "when": [
+          "$gt0003|Q1. No of attacks|!=null",
+          "$gt0004|Q2. Degree of distress|!=null",
+          "$gt0005|Q3. Fear of another attack|!=null",
+          "$gt0006|Q4. Phyiscal avoidance due to fear of another attack|!=null",
+          "$gt0007|Q5. Other avoidance|!=null",
+          "$gt0008|Q6. Interference with personal life|!=null",
+          "$gt0009|Q7. Interference with social life|!=null"
+        ],
         "then": [
-          "$gt0033|Total raw score|.magnitude=((((($gt0011.value+$gt0012.value)+$gt0013.value)+$gt0014.value)+$gt0015.value)+$gt0016.value)+$gt0017.value"
+          "$gt0033|Total raw score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value"
         ]
       },
       "gt0029": {
         "id": "gt0029",
         "priority": 1,
+        "when": [
+          "$gt0003|Q1. No of attacks|!=null",
+          "$gt0004|Q2. Degree of distress|!=null",
+          "$gt0005|Q3. Fear of another attack|!=null",
+          "$gt0006|Q4. Phyiscal avoidance due to fear of another attack|!=null",
+          "$gt0007|Q5. Other avoidance|!=null",
+          "$gt0008|Q6. Interference with personal life|!=null",
+          "$gt0009|Q7. Interference with social life|!=null"
+        ],
         "then": [
-          "$gt0019|Total composite score|.magnitude=(((((($gt0011.value+$gt0012.value)+$gt0013.value)+$gt0014.value)+$gt0015.value)+$gt0016.value)+$gt0017.value)/7"
+          "$gt0019|Total composite score|.magnitude=($gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value)/7"
         ]
       }
     }
@@ -291,77 +183,10 @@
             "text": "7. Påverkan på socialt liv",
             "description": "*(en) During the past week, how much did panic and limited symptom attacks, worry about attacks and fear of\nsituations and activities because of attacks interfere with your social life? (If you didn’t have many opportunities\nto socialize this past week, answer how you think you would have done if you did have opportunities.)"
           },
-          "gt0011": {
-            "id": "gt0011",
-            "text": "1. Antal attacker under senaste veckan",
-            "description": "*(en) How many panic and limited symptoms attacks did you have during the week?"
-          },
-          "gt0012": {
-            "id": "gt0012",
-            "text": "2. Påfrestning av attacker",
-            "description": "*(en) If you had any panic attacks during the past week, how distressing (uncomfortable, frightening) were they\nwhile they were happening? (If you had more than one, give an average rating. If you didn’t have any\npanic attacks but did have limited symptom attacks, answer for the limited symptom attacks.)"
-          },
-          "gt0013": {
-            "id": "gt0013",
-            "text": "3. Oro för ytterligare attack",
-            "description": "*(en) During the past week, how much have you worried or felt anxious about when your next panic attack would\noccur or about fears related to the attacks (for example, that they could mean you have physical or mental\nhealth problems or could cause you social embarrassment)?"
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "text": "4. Beteendeförändring platser och situationer",
-            "description": "*(en) During the past week were there any places or situations (e.g., public transportation, movie theaters, crowds,\nbridges, tunnels, shopping malls, being alone) you avoided, or felt afraid of (uncomfortable in, wanted to avoid\nor leave), because of fear of having a panic attack? Are there any other situations that you would have avoided\nor been afraid of if they had come up during the week, for the same reason? If yes to either question, please\nrate your level of fear and avoidance this past week."
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "text": "5. Beteendeförändring aktiviteter",
-            "description": "*(en) During the past week, were there any activities (e.g., physical exertion, sexual relations, taking a hot shower or\nbath, drinking coffee, watching an exciting or scary movie) that you avoided, or felt afraid of (uncomfortable\ndoing, wanted to avoid or stop), because they caused physical sensations like those you feel during panic\nattacks or that you were afraid might trigger a panic attack? Are there any other activities that you would have\navoided or been afraid of if they had come up during the week for that reason? If yes to either question, please\nrate your level of fear and avoidance of those activities this past week."
-          },
-          "gt0016": {
-            "id": "gt0016",
-            "text": "6. Påverkan på dagliga livet",
-            "description": "*(en) During the past week, how much did the above symptoms altogether (panic and limited symptom attacks,\nworry about attacks, and fear of situations and activities because of attacks) interfere with your ability to work\nor carry out your responsibilities at home? (If your work or home responsibilities were less than usual this past\nweek, answer how you think you would have done if the responsibilities had been usual.)"
-          },
-          "gt0017": {
-            "id": "gt0017",
-            "text": "7. Påverkan på socialt liv",
-            "description": "*(en) During the past week, how much did panic and limited symptom attacks, worry about attacks and fear of\nsituations and activities because of attacks interfere with your social life? (If you didn’t have many opportunities\nto socialize this past week, answer how you think you would have done if you did have opportunities.)"
-          },
           "gt0019": {
             "id": "gt0019",
             "text": "Genomsnittlig poäng",
             "description": "*(en) The average score across the 7 questions"
-          },
-          "gt0020": {
-            "id": "gt0020",
-            "text": "Sätt standard"
-          },
-          "gt0021": {
-            "id": "gt0021",
-            "text": "Sättt Q1"
-          },
-          "gt0022": {
-            "id": "gt0022",
-            "text": "Sätt Q2"
-          },
-          "gt0023": {
-            "id": "gt0023",
-            "text": "Sätt Q3"
-          },
-          "gt0024": {
-            "id": "gt0024",
-            "text": "Sätt Q4"
-          },
-          "gt0025": {
-            "id": "gt0025",
-            "text": "Sätt Q5"
-          },
-          "gt0026": {
-            "id": "gt0026",
-            "text": "Sätt Q6"
-          },
-          "gt0027": {
-            "id": "gt0027",
-            "text": "Sätt Q7"
           },
           "gt0028": {
             "id": "gt0028",
@@ -375,11 +200,6 @@
             "id": "gt0033",
             "text": "Total poäng",
             "description": "*(en) The raw sum of all the scores over the 7 questions"
-          },
-          "gt0034": {
-            "id": "gt0034",
-            "text": "*(en) Event time",
-            "description": "*(en) The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
           }
         }
       },
@@ -426,77 +246,10 @@
             "text": "Q7. Interference with social life",
             "description": "During the past week, how much did panic and limited symptom attacks, worry about attacks and fear of\nsituations and activities because of attacks interfere with your social life? (If you didn’t have many opportunities\nto socialize this past week, answer how you think you would have done if you did have opportunities.)"
           },
-          "gt0011": {
-            "id": "gt0011",
-            "text": "Q1. No of attacks",
-            "description": "How many panic and limited symptoms attacks did you have during the week?"
-          },
-          "gt0012": {
-            "id": "gt0012",
-            "text": "Q2. Degree of distress",
-            "description": "If you had any panic attacks during the past week, how distressing (uncomfortable, frightening) were they\nwhile they were happening? (If you had more than one, give an average rating. If you didn’t have any\npanic attacks but did have limited symptom attacks, answer for the limited symptom attacks.)"
-          },
-          "gt0013": {
-            "id": "gt0013",
-            "text": "Q3. Fear of another attack",
-            "description": "During the past week, how much have you worried or felt anxious about when your next panic attack would\noccur or about fears related to the attacks (for example, that they could mean you have physical or mental\nhealth problems or could cause you social embarrassment)?"
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "text": "Q4. Phyiscal avoidance due to fear of another attack",
-            "description": "During the past week were there any places or situations (e.g., public transportation, movie theaters, crowds,\nbridges, tunnels, shopping malls, being alone) you avoided, or felt afraid of (uncomfortable in, wanted to avoid\nor leave), because of fear of having a panic attack? Are there any other situations that you would have avoided\nor been afraid of if they had come up during the week, for the same reason? If yes to either question, please\nrate your level of fear and avoidance this past week."
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "text": "Q5. Other avoidance",
-            "description": "During the past week, were there any activities (e.g., physical exertion, sexual relations, taking a hot shower or\nbath, drinking coffee, watching an exciting or scary movie) that you avoided, or felt afraid of (uncomfortable\ndoing, wanted to avoid or stop), because they caused physical sensations like those you feel during panic\nattacks or that you were afraid might trigger a panic attack? Are there any other activities that you would have\navoided or been afraid of if they had come up during the week for that reason? If yes to either question, please\nrate your level of fear and avoidance of those activities this past week."
-          },
-          "gt0016": {
-            "id": "gt0016",
-            "text": "Q6. Interference with personal life",
-            "description": "During the past week, how much did the above symptoms altogether (panic and limited symptom attacks,\nworry about attacks, and fear of situations and activities because of attacks) interfere with your ability to work\nor carry out your responsibilities at home? (If your work or home responsibilities were less than usual this past\nweek, answer how you think you would have done if the responsibilities had been usual.)"
-          },
-          "gt0017": {
-            "id": "gt0017",
-            "text": "Q7. Interference with social life",
-            "description": "During the past week, how much did panic and limited symptom attacks, worry about attacks and fear of\nsituations and activities because of attacks interfere with your social life? (If you didn’t have many opportunities\nto socialize this past week, answer how you think you would have done if you did have opportunities.)"
-          },
           "gt0019": {
             "id": "gt0019",
             "text": "Total composite score",
             "description": "The average score across the 7 questions"
-          },
-          "gt0020": {
-            "id": "gt0020",
-            "text": "Set Default"
-          },
-          "gt0021": {
-            "id": "gt0021",
-            "text": "Set Q1"
-          },
-          "gt0022": {
-            "id": "gt0022",
-            "text": "Set Q2"
-          },
-          "gt0023": {
-            "id": "gt0023",
-            "text": "Set Q3"
-          },
-          "gt0024": {
-            "id": "gt0024",
-            "text": "Set Q4"
-          },
-          "gt0025": {
-            "id": "gt0025",
-            "text": "Set Q5"
-          },
-          "gt0026": {
-            "id": "gt0026",
-            "text": "Set Q6"
-          },
-          "gt0027": {
-            "id": "gt0027",
-            "text": "Set Q7"
           },
           "gt0028": {
             "id": "gt0028",
@@ -510,11 +263,6 @@
             "id": "gt0033",
             "text": "Total raw score",
             "description": "The raw sum of all the scores over the 7 questions"
-          },
-          "gt0034": {
-            "id": "gt0034",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
           }
         }
       }

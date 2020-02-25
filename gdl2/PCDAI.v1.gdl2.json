@@ -13,7 +13,8 @@
       "email": "models@cambiocds.com"
     },
     "other_contributors": [
-      "Dennis Forslund, Cambio Healthcare Systems"
+      "Dennis Forslund, Cambio Healthcare Systems",
+	  "Linda Guttormsdottir"
     ],
     "lifecycle_state": "Author draft",
     "details": {
@@ -85,15 +86,8 @@
           "gt0040": {
             "id": "gt0040",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]/items[at0014]"
-          },
-          "gt0059": {
-            "id": "gt0059",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0003": {
         "id": "gt0003",
@@ -101,34 +95,6 @@
         "template_id": "openEHR-EHR-OBSERVATION.pediatric_crohns_activity_index_score.v1",
         "type": "OUTPUT",
         "elements": {
-          "gt0004": {
-            "id": "gt0004",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0008]"
-          },
-          "gt0005": {
-            "id": "gt0005",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0007]"
-          },
-          "gt0006": {
-            "id": "gt0006",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0006]"
-          },
-          "gt0008": {
-            "id": "gt0008",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]/items[at0013]"
-          },
-          "gt0009": {
-            "id": "gt0009",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]/items[at0012]"
-          },
-          "gt0010": {
-            "id": "gt0010",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]/items[at0011]"
-          },
-          "gt0011": {
-            "id": "gt0011",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]/items[at0010]"
-          },
           "gt0012": {
             "id": "gt0012",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]/items[at0019]"
@@ -144,10 +110,6 @@
           "gt0015": {
             "id": "gt0015",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0020]"
-          },
-          "gt0039": {
-            "id": "gt0039",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]/items[at0014]"
           }
         }
       },
@@ -160,15 +122,8 @@
           "gt0025": {
             "id": "gt0025",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0078.3]"
-          },
-          "gt0060": {
-            "id": "gt0060",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0026": {
         "id": "gt0026",
@@ -183,15 +138,8 @@
           "gt0029": {
             "id": "gt0029",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0078.11]"
-          },
-          "gt0061": {
-            "id": "gt0061",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0053": {
         "id": "gt0053",
@@ -206,15 +154,8 @@
           "gt0057": {
             "id": "gt0057",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
-          },
-          "gt0062": {
-            "id": "gt0062",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0054": {
         "id": "gt0054",
@@ -233,16 +174,6 @@
         }
       }
     },
-    "default_actions": [
-      "$gt0039|Weight score|=0|local::at0031|Weight gain, weight voluntarily stable, or voluntary weight loss|",
-      "$gt0004|Abdominal pain|=0|local::at0022|None|",
-      "$gt0005|Stools per day|=0|local::at0025|0–1 liquid stools, no blood|",
-      "$gt0006|General well-being|=0|local::at0028|Well (no limitation of activities)|",
-      "$gt0008|Height at diagnosis (or follow up) score|=0|local::at0034|At diagnosis <1 channel decrease OR at follow-up Height velocity ≥-1SD|",
-      "$gt0009|Abdomen|=0|local::at0037|No tenderness, no mass|",
-      "$gt0010|Peri-rectal disease|=0|local::at0040|None or asymptomatic tags|",
-      "$gt0011|Extra-intestinal manifestations|=0|local::at0043|None|"
-    ],
     "rules": {
       "gt0045": {
         "id": "gt0045",
@@ -256,93 +187,13 @@
       },
       "gt0044": {
         "id": "gt0044",
-        "priority": 19,
+        "priority": 11,
         "when": [
           "$gt0057|Birthdate|!=null"
         ],
         "then": [
           "$gt0058|Age|.unit='a'",
           "$gt0058|Age|.magnitude=$currentDateTime.year-$gt0057.year"
-        ]
-      },
-      "gt0031": {
-        "id": "gt0031",
-        "priority": 18,
-        "when": [
-          "$gt0016|Abdominal pain|!=null"
-        ],
-        "then": [
-          "$gt0004|Abdominal pain|=$gt0016|Abdominal pain|"
-        ]
-      },
-      "gt0032": {
-        "id": "gt0032",
-        "priority": 17,
-        "when": [
-          "$gt0017|Stools per day|!=null"
-        ],
-        "then": [
-          "$gt0005|Stools per day|=$gt0017|Stools per day|"
-        ]
-      },
-      "gt0033": {
-        "id": "gt0033",
-        "priority": 16,
-        "when": [
-          "$gt0018|General well-being|!=null"
-        ],
-        "then": [
-          "$gt0006|General well-being|=$gt0018|General well-being|"
-        ]
-      },
-      "gt0034": {
-        "id": "gt0034",
-        "priority": 15,
-        "when": [
-          "$gt0040|Weight score|!=null"
-        ],
-        "then": [
-          "$gt0039|Weight score|=$gt0040|Weight score|"
-        ]
-      },
-      "gt0035": {
-        "id": "gt0035",
-        "priority": 14,
-        "when": [
-          "$gt0020|Height at diagnosis (or follow up) score|!=null"
-        ],
-        "then": [
-          "$gt0008|Height at diagnosis (or follow up) score|=$gt0020|Height at diagnosis (or follow up) score|"
-        ]
-      },
-      "gt0036": {
-        "id": "gt0036",
-        "priority": 13,
-        "when": [
-          "$gt0021|Abdomen|!=null"
-        ],
-        "then": [
-          "$gt0009|Abdomen|=$gt0021|Abdomen|"
-        ]
-      },
-      "gt0037": {
-        "id": "gt0037",
-        "priority": 12,
-        "when": [
-          "$gt0022|Peri-rectal disease|!=null"
-        ],
-        "then": [
-          "$gt0010|Peri-rectal disease|=$gt0022|Peri-rectal disease|"
-        ]
-      },
-      "gt0038": {
-        "id": "gt0038",
-        "priority": 11,
-        "when": [
-          "$gt0023|Extra-intestinal manifestations|!=null"
-        ],
-        "then": [
-          "$gt0011|Extra-intestinal manifestations|=$gt0023|Extra-intestinal manifestations|"
         ]
       },
       "gt0041": {
@@ -440,9 +291,22 @@
       "gt0052": {
         "id": "gt0052",
         "priority": 1,
+        "when": [
+          "$gt0022|Peri-rectal disease|!=null",
+          "$gt0016|Abdominal pain|!=null",
+          "$gt0017|Stools per day|!=null",
+          "$gt0018|General well-being|!=null",
+          "$gt0020|Height at diagnosis (or follow up) score|!=null",
+          "$gt0021|Abdomen|!=null",
+          "$gt0023|Extra-intestinal manifestations|!=null",
+          "$gt0040|Weight score|!=null",
+          "$gt0012|2x HCT score|!=null",
+          "$gt0013|ESR score|!=null",
+          "$gt0014|Albumin score|!=null"
+        ],
         "then": [
           "$gt0015|Total Score|.precision=2",
-          "$gt0015|Total Score|.magnitude=((((((((($gt0010.value+$gt0011.value)+($gt0012.value/2.0))+$gt0013.value)+$gt0008.value)+$gt0009.value)+$gt0014.value)+$gt0004.value)+$gt0005.value)+$gt0006.value)+$gt0039.value"
+          "$gt0015|Total Score|.magnitude=$gt0022.value+$gt0023.value+$gt0012.value/2+$gt0013.value+$gt0020.value+$gt0021.value+$gt0014.value+$gt0016.value+$gt0017.value+$gt0018.value+$gt0040.value"
         ]
       }
     }
@@ -456,46 +320,6 @@
             "id": "gt0001",
             "text": "PCDAI",
             "description": "Pediatric Crohn's Disease Activity Index (PCDAI) är ett instrument för utvärdering av svårighetsgrad vid Crohns sjukdom hos barn."
-          },
-          "gt0004": {
-            "id": "gt0004",
-            "text": "Buksmärta",
-            "description": "Förekomst och karaktär av buksmärta."
-          },
-          "gt0005": {
-            "id": "gt0005",
-            "text": "Tarmtömning per dag",
-            "description": "Avföringsfrekvens och konsistens, samt förekomst av blod i avföring."
-          },
-          "gt0006": {
-            "id": "gt0006",
-            "text": "Allmäntillstånd",
-            "description": "Allmäntillstånd och aktivitetsnivå."
-          },
-          "gt0007": {
-            "id": "gt0007",
-            "text": "Vikt",
-            "description": "Jämförelse med mätning minst 4-6 månader tidigare."
-          },
-          "gt0008": {
-            "id": "gt0008",
-            "text": "Längd vid diagnos (eller uppföljning)",
-            "description": "Tillväxthastighet används – för att beräkna denna; (aktuell längd – längd 6-12 månader tidigare)   x 12 = tillväxthastighet (cm/år)"
-          },
-          "gt0009": {
-            "id": "gt0009",
-            "text": "Bukstatus",
-            "description": "Bukundersökning."
-          },
-          "gt0010": {
-            "id": "gt0010",
-            "text": "Peri-rektal sjukdom",
-            "description": "Förekomst av peri-rektal sjukdom."
-          },
-          "gt0011": {
-            "id": "gt0011",
-            "text": "Extraintestinala manifestationer",
-            "description": "Antal extraintestinala manifestationer: feber ≥38.5ºC (101.3ºF) under minst tre dagar senaste veckan, artrit, uveit, erythema nodosum eller pyoderma gangrenosum"
           },
           "gt0012": {
             "id": "gt0012",
@@ -532,11 +356,6 @@
             "text": "Allmäntillstånd",
             "description": "Allmäntillstånd och aktivitetsnivå."
           },
-          "gt0019": {
-            "id": "gt0019",
-            "text": "Vikt",
-            "description": "Jämförelse med mätning minst 4-6 månader tidigare."
-          },
           "gt0020": {
             "id": "gt0020",
             "text": "Längd vid diagnos (eller uppföljning)",
@@ -562,9 +381,6 @@
             "text": "S-Albumin",
             "description": "S-Albumin, uttryckt i g/dL (g/L)"
           },
-          "gt0027": {
-            "id": "gt0027"
-          },
           "gt0028": {
             "id": "gt0028",
             "text": "Hematokrit",
@@ -574,46 +390,6 @@
             "id": "gt0029",
             "text": "Sänkningsreaktion",
             "description": "Sänkningsreaktion (SR), uttryckt i  mm/h"
-          },
-          "gt0030": {
-            "id": "gt0030"
-          },
-          "gt0031": {
-            "id": "gt0031",
-            "text": "CDS Buksmärta"
-          },
-          "gt0032": {
-            "id": "gt0032",
-            "text": "CDS Tarmtömning per dag"
-          },
-          "gt0033": {
-            "id": "gt0033",
-            "text": "CDS Allmäntillstånd"
-          },
-          "gt0034": {
-            "id": "gt0034",
-            "text": "CDS Vikt"
-          },
-          "gt0035": {
-            "id": "gt0035",
-            "text": "CDS Längd vid diagnos (eller uppföljning)"
-          },
-          "gt0036": {
-            "id": "gt0036",
-            "text": "CDS Bukstatus"
-          },
-          "gt0037": {
-            "id": "gt0037",
-            "text": "CDS Peri-rektal sjukdom"
-          },
-          "gt0038": {
-            "id": "gt0038",
-            "text": "CDS Extraintestinala manifestationer"
-          },
-          "gt0039": {
-            "id": "gt0039",
-            "text": "Vikt poäng",
-            "description": "Jämförelse med mätning minst 4-6 månader tidigare."
           },
           "gt0040": {
             "id": "gt0040",
@@ -687,26 +463,6 @@
             "id": "gt0058",
             "text": "Ålder",
             "description": "Patientens ålder"
-          },
-          "gt0059": {
-            "id": "gt0059",
-            "text": "*(en) Event time",
-            "description": "*(en) The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0060": {
-            "id": "gt0060",
-            "text": "*(en) Event time",
-            "description": "*(en) The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0061": {
-            "id": "gt0061",
-            "text": "*(en) Event time",
-            "description": "*(en) The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0062": {
-            "id": "gt0062",
-            "text": "*(en) Event time",
-            "description": "*(en) The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
           }
         }
       },
@@ -717,46 +473,6 @@
             "id": "gt0001",
             "text": "PCDAI",
             "description": "The Pediatric Crohn's Disease Activity Index helps to assess the severity of Crohn’s disease in pediatric patients."
-          },
-          "gt0004": {
-            "id": "gt0004",
-            "text": "Abdominal pain",
-            "description": "Presence and character of abominal pain"
-          },
-          "gt0005": {
-            "id": "gt0005",
-            "text": "Stools per day",
-            "description": "Number and character of stools per day and presence of blood if any"
-          },
-          "gt0006": {
-            "id": "gt0006",
-            "text": "General well-being",
-            "description": "State of general well-being and activity level"
-          },
-          "gt0007": {
-            "id": "gt0007",
-            "text": "Weigh score",
-            "description": "Based on previous measurement at least 4-6 months earlier"
-          },
-          "gt0008": {
-            "id": "gt0008",
-            "text": "Height at diagnosis (or follow up) score",
-            "description": "Height velocity is used. Calculating height velocity: (Present height –height 6-12 months previously)  \nx 12 = Height velocity (cm/year)\nInterval (months) between heights. The measurements are either at diagnosis or at follow up"
-          },
-          "gt0009": {
-            "id": "gt0009",
-            "text": "Abdomen",
-            "description": "Abdominal signs of tenderness or mass"
-          },
-          "gt0010": {
-            "id": "gt0010",
-            "text": "Peri-rectal disease",
-            "description": "Presence of peri-rectal disease"
-          },
-          "gt0011": {
-            "id": "gt0011",
-            "text": "Extra-intestinal manifestations",
-            "description": "Number of signs present: fever ≥38.5ºC (101.3ºF) for 3 days over past week, arthritis, uveitis, erythema nodosum, or pyoderma gangrenosum"
           },
           "gt0012": {
             "id": "gt0012",
@@ -793,11 +509,6 @@
             "text": "General well-being",
             "description": "State of general well-being and activity level"
           },
-          "gt0019": {
-            "id": "gt0019",
-            "text": "Weigh score",
-            "description": "Based on previous measurement at least 4-6 months earlier"
-          },
           "gt0020": {
             "id": "gt0020",
             "text": "Height at diagnosis (or follow up) score",
@@ -823,9 +534,6 @@
             "text": "Serum albumin",
             "description": "Serum albumin level in this specimen."
           },
-          "gt0027": {
-            "id": "gt0027"
-          },
           "gt0028": {
             "id": "gt0028",
             "text": "Packed cell volume (PCV)",
@@ -835,46 +543,6 @@
             "id": "gt0029",
             "text": "Erythrocyte sedimentation rate (ESR)",
             "description": "The velocity of sedimentation of red cells in the first hour"
-          },
-          "gt0030": {
-            "id": "gt0030"
-          },
-          "gt0031": {
-            "id": "gt0031",
-            "text": "Set Abdominal pain"
-          },
-          "gt0032": {
-            "id": "gt0032",
-            "text": "Set Stools per day"
-          },
-          "gt0033": {
-            "id": "gt0033",
-            "text": "Set General well-being"
-          },
-          "gt0034": {
-            "id": "gt0034",
-            "text": "Set Weight score"
-          },
-          "gt0035": {
-            "id": "gt0035",
-            "text": "Set Height at diagnosis or follow up"
-          },
-          "gt0036": {
-            "id": "gt0036",
-            "text": "Set Abdomen"
-          },
-          "gt0037": {
-            "id": "gt0037",
-            "text": "Set Peri-rectal disease"
-          },
-          "gt0038": {
-            "id": "gt0038",
-            "text": "Set Extra-intestinal manifestations"
-          },
-          "gt0039": {
-            "id": "gt0039",
-            "text": "Weight score",
-            "description": "Based on previous measurement at least 4-6 months earlier"
           },
           "gt0040": {
             "id": "gt0040",
@@ -948,26 +616,6 @@
             "id": "gt0058",
             "text": "Age",
             "description": "Age in years, and for babies: months, weeks or days"
-          },
-          "gt0059": {
-            "id": "gt0059",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0060": {
-            "id": "gt0060",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0061": {
-            "id": "gt0061",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0062": {
-            "id": "gt0062",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
           }
         }
       }

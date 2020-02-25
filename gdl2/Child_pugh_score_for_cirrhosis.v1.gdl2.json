@@ -12,6 +12,9 @@
       "organisation": "Cambio Healthcare Systems",
       "email": "models@cambiocds.com"
     },
+    "other_contributors": [
+	  "Linda Guttormsdottir"
+    ],
     "lifecycle_state": "Author draft",
     "details": {
       "en": {
@@ -41,15 +44,8 @@
           "gt0003": {
             "id": "gt0003",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0091]"
-          },
-          "gt0032": {
-            "id": "gt0032",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0004": {
         "id": "gt0004",
@@ -60,15 +56,8 @@
           "gt0005": {
             "id": "gt0005",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0078.3]"
-          },
-          "gt0033": {
-            "id": "gt0033",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0008": {
         "id": "gt0008",
@@ -87,15 +76,8 @@
           "gt0031": {
             "id": "gt0031",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
-          },
-          "gt0034": {
-            "id": "gt0034",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0011": {
         "id": "gt0011",
@@ -111,18 +93,6 @@
             "id": "gt0013",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
           },
-          "gt0014": {
-            "id": "gt0014",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
-          },
-          "gt0017": {
-            "id": "gt0017",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
-          },
           "gt0018": {
             "id": "gt0018",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
@@ -133,7 +103,7 @@
     "rules": {
       "gt0019": {
         "id": "gt0019",
-        "priority": 10,
+        "priority": 7,
         "when": [
           "$gt0003|Total Bilirubin|<2,mg/dl"
         ],
@@ -143,7 +113,7 @@
       },
       "gt0020": {
         "id": "gt0020",
-        "priority": 9,
+        "priority": 6,
         "when": [
           "$gt0003|Total Bilirubin|<=3,mg/dl",
           "$gt0003|Total Bilirubin|>=2,mg/dl"
@@ -154,7 +124,7 @@
       },
       "gt0021": {
         "id": "gt0021",
-        "priority": 8,
+        "priority": 5,
         "when": [
           "$gt0003|Total Bilirubin|>3,mg/dl"
         ],
@@ -164,7 +134,7 @@
       },
       "gt0022": {
         "id": "gt0022",
-        "priority": 7,
+        "priority": 4,
         "when": [
           "$gt0005|Serum albumin|>3.5,gm/dl"
         ],
@@ -174,7 +144,7 @@
       },
       "gt0023": {
         "id": "gt0023",
-        "priority": 6,
+        "priority": 3,
         "when": [
           "$gt0005|Serum albumin|<=3.5,gm/dl",
           "$gt0005|Serum albumin|>=2.8,gm/dl"
@@ -185,7 +155,7 @@
       },
       "gt0024": {
         "id": "gt0024",
-        "priority": 5,
+        "priority": 2,
         "when": [
           "$gt0005|Serum albumin|<2.8,gm/dl"
         ],
@@ -193,41 +163,18 @@
           "$gt0013|Albumin Score|=3|local::at0020|<2.8 g/dL (<28 g/L)|"
         ]
       },
-      "gt0025": {
-        "id": "gt0025",
-        "priority": 4,
-        "when": [
-          "$gt0031|INR Score|!=null"
-        ],
-        "then": [
-          "$gt0014|INR Score|=$gt0031|INR Score|"
-        ]
-      },
-      "gt0028": {
-        "id": "gt0028",
-        "priority": 3,
-        "when": [
-          "$gt0009|Ascites Score|!=null"
-        ],
-        "then": [
-          "$gt0015|Ascites Score|=$gt0009|Ascites Score|"
-        ]
-      },
-      "gt0029": {
-        "id": "gt0029",
-        "priority": 2,
-        "when": [
-          "$gt0010|Encephalopathy Score|!=null"
-        ],
-        "then": [
-          "$gt0017|Encephalopathy Score|=$gt0010|Encephalopathy Score|"
-        ]
-      },
       "gt0030": {
         "id": "gt0030",
         "priority": 1,
+        "when": [
+          "$gt0009|Ascites Score|!=null",
+          "$gt0010|Encephalopathy Score|!=null",
+          "$gt0031|INR Score|!=null",
+          "$gt0012|Total Bilirubin Score|!=null",
+          "$gt0013|Albumin Score|!=null"
+        ],
         "then": [
-          "$gt0018|Total Score|.magnitude=((($gt0012.value+$gt0013.value)+$gt0014.value)+$gt0015.value)+$gt0017.value"
+          "$gt0018|Total Score|.magnitude=$gt0009.value+$gt0010.value+$gt0031.value+$gt0012.value+$gt0013.value"
         ]
       }
     }
@@ -277,26 +224,6 @@
             "text": "Albumin Score",
             "description": "Albumin Score"
           },
-          "gt0014": {
-            "id": "gt0014",
-            "text": "INR Score",
-            "description": "INR Score"
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "text": "Ascites Score",
-            "description": "Ascites Score"
-          },
-          "gt0016": {
-            "id": "gt0016",
-            "text": "Ascites Score",
-            "description": "Ascites Score"
-          },
-          "gt0017": {
-            "id": "gt0017",
-            "text": "Encephalopathy Score",
-            "description": "Encephalopathy Score"
-          },
           "gt0018": {
             "id": "gt0018",
             "text": "Total Score",
@@ -326,26 +253,6 @@
             "id": "gt0024",
             "text": "Set Albumin: Score 3"
           },
-          "gt0025": {
-            "id": "gt0025",
-            "text": "Set INR: Score"
-          },
-          "gt0026": {
-            "id": "gt0026",
-            "text": "Set INR: Score 2"
-          },
-          "gt0027": {
-            "id": "gt0027",
-            "text": "Set INR: Score 3"
-          },
-          "gt0028": {
-            "id": "gt0028",
-            "text": "Set Ascites Score"
-          },
-          "gt0029": {
-            "id": "gt0029",
-            "text": "Set Encephalopathy Score"
-          },
           "gt0030": {
             "id": "gt0030",
             "text": "Calculate Total Score"
@@ -354,21 +261,6 @@
             "id": "gt0031",
             "text": "INR Score",
             "description": "INR Score"
-          },
-          "gt0032": {
-            "id": "gt0032",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0033": {
-            "id": "gt0033",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0034": {
-            "id": "gt0034",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
           }
         }
       }

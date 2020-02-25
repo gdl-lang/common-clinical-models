@@ -5,253 +5,176 @@ test_cases:
   input:
     1:
       gt0034|Birthdate: 2000-04-07T14:01Z
-      gt0037|Event time: 2019-04-09T14:01Z
       gt0006|Admission from scene: 0|local::at0015|No|
       gt0007|Traffic accident or fall: 0|local::at0017|No|
       gt0009|Pelvic ring disruption: 0|local::at0022|No|
       gt0010|FAST/abdominal free fluid: 0|local::at0024|No|
-      gt0038|Event time: 2019-04-09T14:01Z
       gt0012|Systolic: 140,mm[Hg]
-      gt0039|Event time: 2019-04-09T14:02Z
   expected_output:
     1:
-      gt0016|Traffic accident or fall: 0|local::at0017|No|
       gt0017|Sys BP: 0|local::at0021|>120 mmHg|
-      gt0018|Pelvic ring disruption: 0|local::at0022|No|
       gt0014|Age: 0|local::at0012|Below 20 yrs|
       gt0032|Total score: 0.0
-      gt0015|Admission from scene: 0|local::at0015|No|
       gt0035|Calc Age: 19,a
-      gt0019|FAST/abdominal free fluid: 0|local::at0024|No|
 
 - id: case_2:age>20, Sys.bp >120 and min score = 0.5 score
   input:
     1:
       gt0034|Birthdate: 1987-04-08T14:01Z
-      gt0037|Event time: 2019-04-09T14:01Z
       gt0006|Admission from scene: 0|local::at0015|No|
       gt0007|Traffic accident or fall: 0|local::at0017|No|
       gt0009|Pelvic ring disruption: 0|local::at0022|No|
       gt0010|FAST/abdominal free fluid: 0|local::at0024|No|
-      gt0038|Event time: 2019-04-09T14:01Z
       gt0012|Systolic: 140,mm[Hg]
-      gt0039|Event time: 2019-04-09T14:02Z
   expected_output:
     1:
-      gt0016|Traffic accident or fall: 0|local::at0017|No|
       gt0017|Sys BP: 0|local::at0021|>120 mmHg|
-      gt0018|Pelvic ring disruption: 0|local::at0022|No|
       gt0014|Age: 1|local::at0013|20 - 60 yrs|
       gt0032|Total score: 0.5
-      gt0015|Admission from scene: 0|local::at0015|No|
       gt0035|Calc Age: 32,a
-      gt0019|FAST/abdominal free fluid: 0|local::at0024|No|
 
 - id: case_3:Age<20, Sys.bp >120 and min score = 1.5 score 
   input:
     1:
       gt0034|Birthdate: 2001-04-18T14:01Z
-      gt0037|Event time: 2019-04-09T14:01Z
       gt0006|Admission from scene: 0|local::at0015|No|
       gt0007|Traffic accident or fall: 0|local::at0017|No|
       gt0009|Pelvic ring disruption: 0|local::at0022|No|
       gt0010|FAST/abdominal free fluid: 0|local::at0024|No|
-      gt0038|Event time: 2019-04-09T14:01Z
       gt0012|Systolic: 110,mm[Hg]
-      gt0039|Event time: 2019-04-09T14:02Z
   expected_output:
     1:
-      gt0016|Traffic accident or fall: 0|local::at0017|No|
       gt0017|Sys BP: 3|local::at0020|SBP 90 to 120 mmHg|
-      gt0018|Pelvic ring disruption: 0|local::at0022|No|
       gt0014|Age: 0|local::at0012|Below 20 yrs|
       gt0032|Total score: 1.5
-      gt0015|Admission from scene: 0|local::at0015|No|
       gt0035|Calc Age: 18,a
-      gt0019|FAST/abdominal free fluid: 0|local::at0024|No|
 
 - id: case_4:Age<20, Sys.bp >90 and min score = 2.5 score 
   input:
     1:
       gt0034|Birthdate: 2001-04-18T14:01Z
-      gt0037|Event time: 2019-04-09T14:01Z
       gt0006|Admission from scene: 0|local::at0015|No|
       gt0007|Traffic accident or fall: 0|local::at0017|No|
       gt0009|Pelvic ring disruption: 0|local::at0022|No|
       gt0010|FAST/abdominal free fluid: 0|local::at0024|No|
-      gt0038|Event time: 2019-04-09T14:01Z
       gt0012|Systolic: 80,mm[Hg]
-      gt0039|Event time: 2019-04-09T14:02Z
   expected_output:
     1:
-      gt0016|Traffic accident or fall: 0|local::at0017|No|
       gt0017|Sys BP: 5|local::at0019|SBP 0 to 90 mmHg|
-      gt0018|Pelvic ring disruption: 0|local::at0022|No|
       gt0014|Age: 0|local::at0012|Below 20 yrs|
       gt0032|Total score: 2.5
-      gt0015|Admission from scene: 0|local::at0015|No|
       gt0035|Calc Age: 18,a
-      gt0019|FAST/abdominal free fluid: 0|local::at0024|No|
 
 - id: case_5:Age<20, Sys.bp >90 and max score = 8.0 score
   input:
     1:
       gt0034|Birthdate: 2001-04-18T14:01Z
-      gt0037|Event time: 2019-04-09T14:01Z
       gt0006|Admission from scene: 2|local::at0016|Yes|
       gt0007|Traffic accident or fall: 2|local::at0018|Yes|
       gt0009|Pelvic ring disruption: 3|local::at0023|Yes|
       gt0010|FAST/abdominal free fluid: 4|local::at0025|Yes|
-      gt0038|Event time: 2019-04-09T14:01Z
       gt0012|Systolic: 80,mm[Hg]
-      gt0039|Event time: 2019-04-09T14:02Z
   expected_output:
     1:
-      gt0016|Traffic accident or fall: 2|local::at0018|Yes|
       gt0017|Sys BP: 5|local::at0019|SBP 0 to 90 mmHg|
-      gt0018|Pelvic ring disruption: 3|local::at0023|Yes|
       gt0014|Age: 0|local::at0012|Below 20 yrs|
       gt0032|Total score: 8.0
-      gt0015|Admission from scene: 2|local::at0016|Yes|
       gt0035|Calc Age: 18,a
-      gt0019|FAST/abdominal free fluid: 4|local::at0025|Yes|
 
 - id: case_6:Age 20-60, Sys.bp>120 and min score= 0.5 score
   input:
     1:
       gt0034|Birthdate: 1984-04-09T14:01Z
-      gt0037|Event time: 2019-04-09T14:01Z
       gt0006|Admission from scene: 0|local::at0015|No|
       gt0007|Traffic accident or fall: 0|local::at0017|No|
       gt0009|Pelvic ring disruption: 0|local::at0022|No|
       gt0010|FAST/abdominal free fluid: 0|local::at0024|No|
-      gt0038|Event time: 2019-04-09T14:01Z
       gt0012|Systolic: 130,mm[Hg]
-      gt0039|Event time: 2019-04-09T14:02Z
   expected_output:
     1:
-      gt0016|Traffic accident or fall: 0|local::at0017|No|
       gt0017|Sys BP: 0|local::at0021|>120 mmHg|
-      gt0018|Pelvic ring disruption: 0|local::at0022|No|
       gt0014|Age: 1|local::at0013|20 - 60 yrs|
       gt0032|Total score: 0.5
-      gt0015|Admission from scene: 0|local::at0015|No|
       gt0035|Calc Age: 35,a
-      gt0019|FAST/abdominal free fluid: 0|local::at0024|No|
 
 - id: case_7:Age 20-60, Sys.bp <90 and min score= 3 score
   input:
     1:
       gt0034|Birthdate: 1984-04-09T14:01Z
-      gt0037|Event time: 2019-04-09T14:01Z
       gt0006|Admission from scene: 0|local::at0015|No|
       gt0007|Traffic accident or fall: 0|local::at0017|No|
       gt0009|Pelvic ring disruption: 0|local::at0022|No|
       gt0010|FAST/abdominal free fluid: 0|local::at0024|No|
-      gt0038|Event time: 2019-04-09T14:01Z
       gt0012|Systolic: 80,mm[Hg]
-      gt0039|Event time: 2019-04-09T14:02Z
   expected_output:
     1:
-      gt0016|Traffic accident or fall: 0|local::at0017|No|
       gt0017|Sys BP: 5|local::at0019|SBP 0 to 90 mmHg|
-      gt0018|Pelvic ring disruption: 0|local::at0022|No|
       gt0014|Age: 1|local::at0013|20 - 60 yrs|
       gt0032|Total score: 3.0
-      gt0015|Admission from scene: 0|local::at0015|No|
       gt0035|Calc Age: 35,a
-      gt0019|FAST/abdominal free fluid: 0|local::at0024|No|
 
 - id: case_8:Age 20-60, Sys.bp <90 and max score= 8.5 score
   input:
     1:
       gt0034|Birthdate: 1984-04-09T14:01Z
-      gt0037|Event time: 2019-04-09T14:01Z
       gt0006|Admission from scene: 2|local::at0016|Yes|
       gt0007|Traffic accident or fall: 2|local::at0018|Yes|
       gt0009|Pelvic ring disruption: 3|local::at0023|Yes|
       gt0010|FAST/abdominal free fluid: 4|local::at0025|Yes|
-      gt0038|Event time: 2019-04-09T14:01Z
       gt0012|Systolic: 80,mm[Hg]
-      gt0039|Event time: 2019-04-09T14:02Z
   expected_output:
     1:
-      gt0016|Traffic accident or fall: 2|local::at0018|Yes|
       gt0017|Sys BP: 5|local::at0019|SBP 0 to 90 mmHg|
-      gt0018|Pelvic ring disruption: 3|local::at0023|Yes|
       gt0014|Age: 1|local::at0013|20 - 60 yrs|
       gt0032|Total score: 8.5
-      gt0015|Admission from scene: 2|local::at0016|Yes|
       gt0035|Calc Age: 35,a
-      gt0019|FAST/abdominal free fluid: 4|local::at0025|Yes|
 
 - id: case_9:Age>60, Sys.bp>120 and min score= 1.5
   input:
     1:
       gt0034|Birthdate: 1947-04-21T14:01Z
-      gt0037|Event time: 2019-04-09T14:01Z
       gt0006|Admission from scene: 0|local::at0015|No|
       gt0007|Traffic accident or fall: 0|local::at0017|No|
       gt0009|Pelvic ring disruption: 0|local::at0022|No|
       gt0010|FAST/abdominal free fluid: 0|local::at0024|No|
-      gt0038|Event time: 2019-04-09T14:01Z
       gt0012|Systolic: 130,mm[Hg]
-      gt0039|Event time: 2019-04-09T14:02Z
   expected_output:
     1:
-      gt0016|Traffic accident or fall: 0|local::at0017|No|
       gt0017|Sys BP: 0|local::at0021|>120 mmHg|
-      gt0018|Pelvic ring disruption: 0|local::at0022|No|
       gt0014|Age: 3|local::at0014|>60 yrs|
       gt0032|Total score: 1.5
-      gt0015|Admission from scene: 0|local::at0015|No|
       gt0035|Calc Age: 72,a
-      gt0019|FAST/abdominal free fluid: 0|local::at0024|No|
 
 - id: case_10:Age>60, Sys.bp<80 and min score = 4.0 
   input:
     1:
       gt0034|Birthdate: 1947-04-21T14:01Z
-      gt0037|Event time: 2019-04-09T14:01Z
       gt0006|Admission from scene: 0|local::at0015|No|
       gt0007|Traffic accident or fall: 0|local::at0017|No|
       gt0009|Pelvic ring disruption: 0|local::at0022|No|
       gt0010|FAST/abdominal free fluid: 0|local::at0024|No|
-      gt0038|Event time: 2019-04-09T14:01Z
       gt0012|Systolic: 80,mm[Hg]
-      gt0039|Event time: 2019-04-09T14:02Z
   expected_output:
     1:
-      gt0016|Traffic accident or fall: 0|local::at0017|No|
       gt0017|Sys BP: 5|local::at0019|SBP 0 to 90 mmHg|
-      gt0018|Pelvic ring disruption: 0|local::at0022|No|
       gt0014|Age: 3|local::at0014|>60 yrs|
       gt0032|Total score: 4.0
-      gt0015|Admission from scene: 0|local::at0015|No|
       gt0035|Calc Age: 72,a
-      gt0019|FAST/abdominal free fluid: 0|local::at0024|No|
 
 - id: case_11:Age>60, Sys.bp<80 and max score = 9.5 (max possible score)
   input:
     1:
       gt0034|Birthdate: 1947-04-21T14:01Z
-      gt0037|Event time: 2019-04-09T14:01Z
       gt0006|Admission from scene: 2|local::at0016|Yes|
       gt0007|Traffic accident or fall: 2|local::at0018|Yes|
       gt0009|Pelvic ring disruption: 3|local::at0023|Yes|
       gt0010|FAST/abdominal free fluid: 4|local::at0025|Yes|
-      gt0038|Event time: 2019-04-09T14:01Z
       gt0012|Systolic: 80,mm[Hg]
-      gt0039|Event time: 2019-04-09T14:02Z
   expected_output:
     1:
-      gt0016|Traffic accident or fall: 2|local::at0018|Yes|
       gt0017|Sys BP: 5|local::at0019|SBP 0 to 90 mmHg|
-      gt0018|Pelvic ring disruption: 3|local::at0023|Yes|
       gt0014|Age: 3|local::at0014|>60 yrs|
       gt0032|Total score: 9.5
-      gt0015|Admission from scene: 2|local::at0016|Yes|
       gt0035|Calc Age: 72,a
-      gt0019|FAST/abdominal free fluid: 4|local::at0025|Yes|
 
 

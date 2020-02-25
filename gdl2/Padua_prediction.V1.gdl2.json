@@ -1,5 +1,5 @@
 {
-  "id": "Padua_prediction.V1",
+  "id": "Padua_prediction.v1",
   "gdl_version": "2.0",
   "concept": "gt0001",
   "language": {
@@ -14,7 +14,8 @@
     },
     "other_contributors": [
       "Dennis Forslund",
-      "Jimmy Axelsson"
+      "Jimmy Axelsson",
+	  "Linda Guttormsdottir"
     ],
     "lifecycle_state": "Author draft",
     "details": {
@@ -92,15 +93,8 @@
           "gt0011": {
             "id": "gt0011",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
-          },
-          "gt0047": {
-            "id": "gt0047",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0012": {
         "id": "gt0012",
@@ -108,49 +102,13 @@
         "template_id": "openEHR-EHR-OBSERVATION.padua_prediction_score.v1",
         "type": "OUTPUT",
         "elements": {
-          "gt0013": {
-            "id": "gt0013",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
-          },
-          "gt0016": {
-            "id": "gt0016",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
-          },
-          "gt0017": {
-            "id": "gt0017",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
-          },
           "gt0018": {
             "id": "gt0018",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
           },
-          "gt0019": {
-            "id": "gt0019",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
-          },
-          "gt0020": {
-            "id": "gt0020",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0011]"
-          },
-          "gt0021": {
-            "id": "gt0021",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0012]"
-          },
           "gt0022": {
             "id": "gt0022",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
-          },
-          "gt0023": {
-            "id": "gt0023",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
           },
           "gt0024": {
             "id": "gt0024",
@@ -171,15 +129,8 @@
           "gt0026": {
             "id": "gt0026",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
-          },
-          "gt0048": {
-            "id": "gt0048",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0027": {
         "id": "gt0027",
@@ -190,138 +141,11 @@
           "gt0028": {
             "id": "gt0028",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
-          },
-          "gt0049": {
-            "id": "gt0049",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       }
     },
     "rules": {
-      "gt0029": {
-        "id": "gt0029",
-        "priority": 16,
-        "when": [
-          "$gt0023|Ongoing hormonal treatment|==null",
-          "$gt0022|Obesity (BMI>= 30)|==null",
-          "$gt0021|Acute infection +/- rheumatological disorder|==null",
-          "$gt0020|Acure MI +/- stroke|==null",
-          "$gt0019|Heart +/- respiratory failure|==null",
-          "$gt0018|Elderly (>= 70 yrs)|==null",
-          "$gt0017|Recent (<= 1 month trauma +/- surgery)|==null",
-          "$gt0016|Known thrombophilic condition|==null",
-          "$gt0015|Reduced mobility|==null",
-          "$gt0014|Previous VTE|==null",
-          "$gt0013|Active cancer|==null"
-        ],
-        "then": [
-          "$gt0023|Ongoing hormonal treatment|=0|local::at0035|No|",
-          "$gt0022|Obesity (BMI>= 30)|=0|local::at0033|No|",
-          "$gt0021|Acute infection +/- rheumatological disorder|=0|local::at0031|No|",
-          "$gt0020|Acure MI +/- stroke|=0|local::at0029|No|",
-          "$gt0019|Heart +/- respiratory failure|=0|local::at0027|No|",
-          "$gt0018|Elderly (>= 70 yrs)|=0|local::at0025|No|",
-          "$gt0017|Recent (<= 1 month trauma +/- surgery)|=0|local::at0023|No|",
-          "$gt0016|Known thrombophilic condition|=0|local::at0021|No|",
-          "$gt0015|Reduced mobility|=0|local::at0019|No|",
-          "$gt0014|Previous VTE|=0|local::at0017|No|",
-          "$gt0013|Active cancer|=0|local::at0015|No|"
-        ]
-      },
-      "gt0030": {
-        "id": "gt0030",
-        "priority": 15,
-        "when": [
-          "$gt0003|Active cancer|!=null"
-        ],
-        "then": [
-          "$gt0013|Active cancer|=$gt0003|Active cancer|"
-        ]
-      },
-      "gt0031": {
-        "id": "gt0031",
-        "priority": 14,
-        "when": [
-          "$gt0004|Previous VTE|!=null"
-        ],
-        "then": [
-          "$gt0014|Previous VTE|=$gt0004|Previous VTE|"
-        ]
-      },
-      "gt0032": {
-        "id": "gt0032",
-        "priority": 13,
-        "when": [
-          "$gt0005|Reduced mobility|!=null"
-        ],
-        "then": [
-          "$gt0015|Reduced mobility|=$gt0005|Reduced mobility|"
-        ]
-      },
-      "gt0033": {
-        "id": "gt0033",
-        "priority": 12,
-        "when": [
-          "$gt0006|Known thrombophilic condition|!=null"
-        ],
-        "then": [
-          "$gt0016|Known thrombophilic condition|=$gt0006|Known thrombophilic condition|"
-        ]
-      },
-      "gt0034": {
-        "id": "gt0034",
-        "priority": 11,
-        "when": [
-          "$gt0007|Recent (<= 1 month trauma +/- surgery)|!=null"
-        ],
-        "then": [
-          "$gt0017|Recent (<= 1 month trauma +/- surgery)|=$gt0007|Recent (<= 1 month trauma +/- surgery)|"
-        ]
-      },
-      "gt0040": {
-        "id": "gt0040",
-        "priority": 10,
-        "when": [
-          "$gt0008|Heart +/- respiratory failure|!=null"
-        ],
-        "then": [
-          "$gt0019|Heart +/- respiratory failure|=$gt0008|Heart +/- respiratory failure|"
-        ]
-      },
-      "gt0041": {
-        "id": "gt0041",
-        "priority": 9,
-        "when": [
-          "$gt0009|Acure MI +/- stroke|!=null"
-        ],
-        "then": [
-          "$gt0020|Acure MI +/- stroke|=$gt0009|Acure MI +/- stroke|"
-        ]
-      },
-      "gt0042": {
-        "id": "gt0042",
-        "priority": 8,
-        "when": [
-          "$gt0010|Acute infection +/- rheumatological disorder|!=null"
-        ],
-        "then": [
-          "$gt0021|Acute infection +/- rheumatological disorder|=$gt0010|Acute infection +/- rheumatological disorder|"
-        ]
-      },
-      "gt0044": {
-        "id": "gt0044",
-        "priority": 7,
-        "when": [
-          "$gt0011|Ongoing hormonal treatment|!=null"
-        ],
-        "then": [
-          "$gt0023|Ongoing hormonal treatment|=$gt0011|Ongoing hormonal treatment|"
-        ]
-      },
       "gt0043": {
         "id": "gt0043",
         "priority": 6,
@@ -382,8 +206,21 @@
       "gt0046": {
         "id": "gt0046",
         "priority": 1,
+        "when": [
+          "$gt0003|Active cancer|!=null",
+          "$gt0004|Previous VTE|!=null",
+          "$gt0005|Reduced mobility|!=null",
+          "$gt0006|Known thrombophilic condition|!=null",
+          "$gt0007|Recent (<= 1 month trauma +/- surgery)|!=null",
+          "$gt0008|Heart +/- respiratory failure|!=null",
+          "$gt0009|Acure MI +/- stroke|!=null",
+          "$gt0010|Acute infection +/- rheumatological disorder|!=null",
+          "$gt0011|Ongoing hormonal treatment|!=null",
+          "$gt0018|Elderly (>= 70 yrs)|!=null",
+          "$gt0022|Obesity (BMI>= 30)|!=null"
+        ],
         "then": [
-          "$gt0024|Total Score|.magnitude=((((((((($gt0013.value+$gt0014.value)+$gt0015.value)+$gt0016.value)+$gt0017.value)+$gt0018.value)+$gt0019.value)+$gt0020.value)+$gt0021.value)+$gt0022.value)+$gt0023.value"
+          "$gt0024|Total Score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0018.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0022.value+$gt0011.value"
         ]
       }
     }
@@ -443,59 +280,14 @@
             "text": "Pågående hormonell behandling",
             "description": "*(en) *"
           },
-          "gt0013": {
-            "id": "gt0013",
-            "text": "Aktiv cancer",
-            "description": "*(en) *"
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "text": "Tidigare tromboembolism",
-            "description": "*(en) Excluding superficial vein thrombosis"
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "text": "Nedsatt mobilitet",
-            "description": "*(en) *"
-          },
-          "gt0016": {
-            "id": "gt0016",
-            "text": "Känd trombofili",
-            "description": "*(en) *"
-          },
-          "gt0017": {
-            "id": "gt0017",
-            "text": "Nyligen (1 månad) genomgånget trauma och/eller kirurgi",
-            "description": "*(en) *"
-          },
           "gt0018": {
             "id": "gt0018",
             "text": "Ålder ≥ 70år ",
             "description": "*(en) *"
           },
-          "gt0019": {
-            "id": "gt0019",
-            "text": "Hjärtsvikt +/-respirationssvikt",
-            "description": "*(en) *"
-          },
-          "gt0020": {
-            "id": "gt0020",
-            "text": "Hjärtinfarkt +/- stroke",
-            "description": "*(en) *"
-          },
-          "gt0021": {
-            "id": "gt0021",
-            "text": "Akut infektion +/- rheumatisk sjukdom",
-            "description": "*(en) *"
-          },
           "gt0022": {
             "id": "gt0022",
             "text": "BMI ≥30",
-            "description": "*(en) *"
-          },
-          "gt0023": {
-            "id": "gt0023",
-            "text": "Pågående hormonell behandling",
             "description": "*(en) *"
           },
           "gt0024": {
@@ -513,30 +305,6 @@
             "text": "Body Mass Index",
             "description": "*(en) Index describing ratio of weight to height."
           },
-          "gt0029": {
-            "id": "gt0029",
-            "text": "Standard"
-          },
-          "gt0030": {
-            "id": "gt0030",
-            "text": "CDS aktiv cancer"
-          },
-          "gt0031": {
-            "id": "gt0031",
-            "text": "CDS Tidigare tromboembolism"
-          },
-          "gt0032": {
-            "id": "gt0032",
-            "text": "CDS mobilitet"
-          },
-          "gt0033": {
-            "id": "gt0033",
-            "text": "CDS Känd trombofili"
-          },
-          "gt0034": {
-            "id": "gt0034",
-            "text": "CDS Nyligen (1 månad) genomgånget trauma och/eller kirurgi"
-          },
           "gt0035": {
             "id": "gt0035",
             "text": "CDS ålder"
@@ -550,34 +318,13 @@
             "id": "gt0037",
             "text": "CDS ålder ≥ 70år  - nej"
           },
-          "gt0038": {
-            "id": "gt0038",
-            "text": "Ålder",
-            "description": "*(en) Placeholder for calculated age"
-          },
           "gt0039": {
             "id": "gt0039",
             "text": "CDS ålder ≥ 70år  - ja"
           },
-          "gt0040": {
-            "id": "gt0040",
-            "text": "CDS hjärtsvikt, respirationssvikt"
-          },
-          "gt0041": {
-            "id": "gt0041",
-            "text": "CDS hjärtinfarkt, stroke"
-          },
-          "gt0042": {
-            "id": "gt0042",
-            "text": "CDS Akut infektion +/- rheumatisk sjukdom"
-          },
           "gt0043": {
             "id": "gt0043",
             "text": "CDS BMI ≥30 - ja"
-          },
-          "gt0044": {
-            "id": "gt0044",
-            "text": "CDS pågående hormonbehandling"
           },
           "gt0045": {
             "id": "gt0045",
@@ -586,21 +333,6 @@
           "gt0046": {
             "id": "gt0046",
             "text": "Beräkna resultat"
-          },
-          "gt0047": {
-            "id": "gt0047",
-            "text": "*(en) Event time",
-            "description": "*(en) The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0048": {
-            "id": "gt0048",
-            "text": "*(en) Event time",
-            "description": "*(en) The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0049": {
-            "id": "gt0049",
-            "text": "*(en) Event time",
-            "description": "*(en) The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
           }
         }
       },
@@ -657,59 +389,14 @@
             "text": "Ongoing hormonal treatment",
             "description": "*"
           },
-          "gt0013": {
-            "id": "gt0013",
-            "text": "Active cancer",
-            "description": "*"
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "text": "Previous VTE",
-            "description": "Excluding superficial vein thrombosis"
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "text": "Reduced mobility",
-            "description": "*"
-          },
-          "gt0016": {
-            "id": "gt0016",
-            "text": "Known thrombophilic condition",
-            "description": "*"
-          },
-          "gt0017": {
-            "id": "gt0017",
-            "text": "Recent (<= 1 month trauma +/- surgery)",
-            "description": "*"
-          },
           "gt0018": {
             "id": "gt0018",
             "text": "Elderly (>= 70 yrs)",
             "description": "*"
           },
-          "gt0019": {
-            "id": "gt0019",
-            "text": "Heart +/- respiratory failure",
-            "description": "*"
-          },
-          "gt0020": {
-            "id": "gt0020",
-            "text": "Acure MI +/- stroke",
-            "description": "*"
-          },
-          "gt0021": {
-            "id": "gt0021",
-            "text": "Acute infection +/- rheumatological disorder",
-            "description": "*"
-          },
           "gt0022": {
             "id": "gt0022",
             "text": "Obesity (BMI>= 30)",
-            "description": "*"
-          },
-          "gt0023": {
-            "id": "gt0023",
-            "text": "Ongoing hormonal treatment",
             "description": "*"
           },
           "gt0024": {
@@ -727,30 +414,6 @@
             "text": "Body Mass Index",
             "description": "Index describing ratio of weight to height."
           },
-          "gt0029": {
-            "id": "gt0029",
-            "text": "Default"
-          },
-          "gt0030": {
-            "id": "gt0030",
-            "text": "Set Active cancer"
-          },
-          "gt0031": {
-            "id": "gt0031",
-            "text": "Set Prev VTE"
-          },
-          "gt0032": {
-            "id": "gt0032",
-            "text": "Set mobility"
-          },
-          "gt0033": {
-            "id": "gt0033",
-            "text": "Set Known thrombo"
-          },
-          "gt0034": {
-            "id": "gt0034",
-            "text": "Set Recent trauma"
-          },
           "gt0035": {
             "id": "gt0035",
             "text": "Set Age"
@@ -764,34 +427,13 @@
             "id": "gt0037",
             "text": "Set elderly: no"
           },
-          "gt0038": {
-            "id": "gt0038",
-            "text": "Age",
-            "description": "Placeholder for calculated age"
-          },
           "gt0039": {
             "id": "gt0039",
             "text": "Set elderly: yes"
           },
-          "gt0040": {
-            "id": "gt0040",
-            "text": "Set HF/RF"
-          },
-          "gt0041": {
-            "id": "gt0041",
-            "text": "Set Acute MI/Stroke"
-          },
-          "gt0042": {
-            "id": "gt0042",
-            "text": "Set Acute infection/rheumatology"
-          },
           "gt0043": {
             "id": "gt0043",
             "text": "Set Obsesity: yes"
-          },
-          "gt0044": {
-            "id": "gt0044",
-            "text": "Set ongoing hormone Tx"
           },
           "gt0045": {
             "id": "gt0045",
@@ -800,21 +442,6 @@
           "gt0046": {
             "id": "gt0046",
             "text": "Calculate total score"
-          },
-          "gt0047": {
-            "id": "gt0047",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0048": {
-            "id": "gt0048",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0049": {
-            "id": "gt0049",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
           }
         }
       }

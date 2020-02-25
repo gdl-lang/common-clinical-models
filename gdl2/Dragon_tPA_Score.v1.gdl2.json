@@ -12,6 +12,9 @@
       "organisation": "Cambio Healthcare Systems",
       "email": "models@cambiocds.com"
     },
+    "other_contributors": [
+	  "Linda Guttormsdottir"
+    ],
     "lifecycle_state": "Author draft",
     "details": {
       "en": {
@@ -40,10 +43,6 @@
         "template_id": "openEHR-EHR-OBSERVATION.dragon_score_for_post_tpa_stroke_outcome.v1",
         "type": "OUTPUT",
         "elements": {
-          "gt0006": {
-            "id": "gt0006",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
-          },
           "gt0007": {
             "id": "gt0007",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
@@ -55,10 +54,6 @@
           "gt0009": {
             "id": "gt0009",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
-          },
-          "gt0010": {
-            "id": "gt0010",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
           },
           "gt0011": {
             "id": "gt0011",
@@ -83,15 +78,8 @@
           "gt0005": {
             "id": "gt0005",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
-          },
-          "gt0043": {
-            "id": "gt0043",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0013": {
         "id": "gt0013",
@@ -102,15 +90,8 @@
           "gt0014": {
             "id": "gt0014",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
-          },
-          "gt0044": {
-            "id": "gt0044",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0015": {
         "id": "gt0015",
@@ -133,15 +114,8 @@
           "gt0020": {
             "id": "gt0020",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0078]"
-          },
-          "gt0045": {
-            "id": "gt0045",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0021": {
         "id": "gt0021",
@@ -152,15 +126,8 @@
           "gt0022": {
             "id": "gt0022",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0021]"
-          },
-          "gt0047": {
-            "id": "gt0047",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0041": {
         "id": "gt0041",
@@ -171,25 +138,14 @@
           "gt0042": {
             "id": "gt0042",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
-          },
-          "gt0048": {
-            "id": "gt0048",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       }
     },
-    "default_actions": [
-      "$gt0006|HyperDense Cerebral Artery / Early Infarct on CT|=0|local::at0013|No|",
-      "$gt0010|Onset of GlucoseTreatment >90 minutes|=0|local::at0023|No|"
-    ],
     "rules": {
       "gt0025": {
         "id": "gt0025",
-        "priority": 15,
+        "priority": 13,
         "when": [
           "$gt0014|Birthdate|!=null"
         ],
@@ -198,19 +154,9 @@
           "$gt0016|Age|.magnitude=$currentDateTime.year-$gt0014.year"
         ]
       },
-      "gt0023": {
-        "id": "gt0023",
-        "priority": 14,
-        "when": [
-          "$gt0004|HyperDense Cerebral Artery / Early Infarct on CT|!=null"
-        ],
-        "then": [
-          "$gt0006|HyperDense Cerebral Artery / Early Infarct on CT|=$gt0004|HyperDense Cerebral Artery / Early Infarct on CT|"
-        ]
-      },
       "gt0024": {
         "id": "gt0024",
-        "priority": 13,
+        "priority": 12,
         "when": [
           "$gt0042|mRS total score|<=1"
         ],
@@ -220,7 +166,7 @@
       },
       "gt0026": {
         "id": "gt0026",
-        "priority": 12,
+        "priority": 11,
         "when": [
           "$gt0042|mRS total score|>1"
         ],
@@ -230,7 +176,7 @@
       },
       "gt0027": {
         "id": "gt0027",
-        "priority": 11,
+        "priority": 10,
         "when": [
           "$gt0016|Age|<65,a"
         ],
@@ -240,7 +186,7 @@
       },
       "gt0028": {
         "id": "gt0028",
-        "priority": 10,
+        "priority": 9,
         "when": [
           "$gt0016|Age|>=65,a",
           "$gt0016|Age|<=79,a"
@@ -251,7 +197,7 @@
       },
       "gt0029": {
         "id": "gt0029",
-        "priority": 9,
+        "priority": 8,
         "when": [
           "$gt0016|Age|>=80,a"
         ],
@@ -261,7 +207,7 @@
       },
       "gt0030": {
         "id": "gt0030",
-        "priority": 8,
+        "priority": 7,
         "when": [
           "$gt0020|Glucose at Baseline|<=144,mg/dl"
         ],
@@ -271,22 +217,12 @@
       },
       "gt0031": {
         "id": "gt0031",
-        "priority": 7,
+        "priority": 6,
         "when": [
           "$gt0020|Glucose at Baseline|>144,mg/dl"
         ],
         "then": [
           "$gt0009|Glucose at Baseline>144 mg/dL (8 mmol/L)|=1|local::at0022|Yes|"
-        ]
-      },
-      "gt0032": {
-        "id": "gt0032",
-        "priority": 6,
-        "when": [
-          "$gt0005|Onset of GlucoseTreatment >90 minutes|!=null"
-        ],
-        "then": [
-          "$gt0010|Onset of GlucoseTreatment >90 minutes|=$gt0005|Onset of GlucoseTreatment >90 minutes|"
         ]
       },
       "gt0034": {
@@ -334,8 +270,16 @@
       "gt0038": {
         "id": "gt0038",
         "priority": 1,
+        "when": [
+          "$gt0004|HyperDense Cerebral Artery / Early Infarct on CT|!=null",
+          "$gt0005|Onset of GlucoseTreatment >90 minutes|!=null",
+          "$gt0007|Modified Rankin Scale >1, prestroke|!=null",
+          "$gt0008|Age Score|!=null",
+          "$gt0009|Glucose at Baseline>144 mg/dL (8 mmol/L)|!=null",
+          "$gt0011|Baseline NIH Stroke Scale score|!=null"
+        ],
         "then": [
-          "$gt0012|Total Score|.magnitude=(((($gt0010.value+$gt0011.value)+$gt0007.value)+$gt0008.value)+$gt0009.value)+$gt0006.value"
+          "$gt0012|Total Score|.magnitude=$gt0004.value+$gt0005.value+$gt0011.value+$gt0007.value+$gt0008.value+$gt0009.value"
         ]
       }
     }
@@ -360,11 +304,6 @@
             "text": "Onset of GlucoseTreatment >90 minutes",
             "description": "Onset of GlucoseTreatment >90 minutes"
           },
-          "gt0006": {
-            "id": "gt0006",
-            "text": "HyperDense Cerebral Artery / Early Infarct on CT",
-            "description": "HyperDense Cerebral Artery / Early Infarct on CT"
-          },
           "gt0007": {
             "id": "gt0007",
             "text": "Modified Rankin Scale >1, prestroke",
@@ -379,11 +318,6 @@
             "id": "gt0009",
             "text": "Glucose at Baseline>144 mg/dL (8 mmol/L)",
             "description": "Glucose at Baseline>144 mg/dL (8 mmol/L)"
-          },
-          "gt0010": {
-            "id": "gt0010",
-            "text": "Onset of GlucoseTreatment >90 minutes",
-            "description": "Onset of GlucoseTreatment >90 minutes"
           },
           "gt0011": {
             "id": "gt0011",
@@ -405,11 +339,6 @@
             "text": "Age",
             "description": "Age in years, and for babies: months, weeks or days"
           },
-          "gt0018": {
-            "id": "gt0018",
-            "text": "Patient's Baseline Activity",
-            "description": "Patient's Baseline Activity\nChoose best fit of patient's ability"
-          },
           "gt0020": {
             "id": "gt0020",
             "text": "Glucose at Baseline",
@@ -419,10 +348,6 @@
             "id": "gt0022",
             "text": "Total NIHSS score",
             "description": "Sum of all factors."
-          },
-          "gt0023": {
-            "id": "gt0023",
-            "text": "Set HyperDense Cerebral Artery"
           },
           "gt0024": {
             "id": "gt0024",
@@ -456,14 +381,6 @@
             "id": "gt0031",
             "text": "Set Glucose at baseline: Yes"
           },
-          "gt0032": {
-            "id": "gt0032",
-            "text": "Set Onset of Glucose treatment"
-          },
-          "gt0033": {
-            "id": "gt0033",
-            "text": "Set Onset of Glucose treatment:Yes"
-          },
           "gt0034": {
             "id": "gt0034",
             "text": "Set Baseline NIHSS: Score 0"
@@ -484,45 +401,10 @@
             "id": "gt0038",
             "text": "Calculate Total Score"
           },
-          "gt0040": {
-            "id": "gt0040",
-            "text": "mRS - Patient's Baseline Activity",
-            "description": "Patient's Baseline Activity\nChoose best fit of patient's ability"
-          },
           "gt0042": {
             "id": "gt0042",
             "text": "mRS total score",
             "description": "Score value of the patient's baseline activity"
-          },
-          "gt0043": {
-            "id": "gt0043",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0044": {
-            "id": "gt0044",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0045": {
-            "id": "gt0045",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0046": {
-            "id": "gt0046",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0047": {
-            "id": "gt0047",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0048": {
-            "id": "gt0048",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
           }
         }
       }

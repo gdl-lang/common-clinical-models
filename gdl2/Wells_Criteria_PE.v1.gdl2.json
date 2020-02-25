@@ -14,7 +14,8 @@
     },
     "other_contributors": [
       "Dennis Forslund",
-      "Jimmy Axelsson"
+      "Jimmy Axelsson",
+	  "Linda Guttormsdottir"
     ],
     "lifecycle_state": "Not set",
     "details": {
@@ -59,15 +60,8 @@
           "gt0003": {
             "id": "gt0003",
             "path": "/data[at0002]/events[at0003]/data[at0001]/items[at0004]"
-          },
-          "gt0032": {
-            "id": "gt0032",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0004": {
         "id": "gt0004",
@@ -98,15 +92,8 @@
           "gt0011": {
             "id": "gt0011",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
-          },
-          "gt0033": {
-            "id": "gt0033",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       },
       "gt0013": {
         "id": "gt0013",
@@ -114,33 +101,9 @@
         "template_id": "openEHR-EHR-OBSERVATION.wells_criteria_for_pulmonary_embolism.v1",
         "type": "OUTPUT",
         "elements": {
-          "gt0014": {
-            "id": "gt0014",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
-          },
           "gt0016": {
             "id": "gt0016",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
-          },
-          "gt0017": {
-            "id": "gt0017",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
-          },
-          "gt0018": {
-            "id": "gt0018",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
-          },
-          "gt0019": {
-            "id": "gt0019",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
-          },
-          "gt0020": {
-            "id": "gt0020",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
           },
           "gt0021": {
             "id": "gt0021",
@@ -150,31 +113,9 @@
       }
     },
     "rules": {
-      "gt0022": {
-        "id": "gt0022",
-        "priority": 10,
-        "when": [
-          "$gt0017|Immobilization at least 3 days OR surgery in the Previous 4 weeks?|==null",
-          "$gt0014|Clinical signs and symptoms of DVT?|==null",
-          "$gt0015|Is PE the number one diagnosis OR equally likely?|==null",
-          "$gt0016|Heart rate > 100 BPM?|==null",
-          "$gt0018|Previous, objectively diagnosed PE or DVT?|==null",
-          "$gt0019|Hemoptysis?|==null",
-          "$gt0020|Malignancy w/ treatment within 6 months or palliative?|==null"
-        ],
-        "then": [
-          "$gt0014|Clinical signs and symptoms of DVT?|=0|local::at0013|No|",
-          "$gt0015|Is PE the number one diagnosis OR equally likely?|=0|local::at0015|No|",
-          "$gt0016|Heart rate > 100 BPM?|=0|local::at0017|No|",
-          "$gt0017|Immobilization at least 3 days OR surgery in the Previous 4 weeks?|=0|local::at0019|No|",
-          "$gt0018|Previous, objectively diagnosed PE or DVT?|=0|local::at0021|No|",
-          "$gt0019|Hemoptysis?|=0|local::at0023|No|",
-          "$gt0020|Malignancy w/ treatment within 6 months or palliative?|=0|local::at0025|No|"
-        ]
-      },
       "gt0023": {
         "id": "gt0023",
-        "priority": 9,
+        "priority": 3,
         "when": [
           "$gt0003|Heart Rate|!=null",
           "$gt0003|Heart Rate|>100,/min"
@@ -185,7 +126,7 @@
       },
       "gt0024": {
         "id": "gt0024",
-        "priority": 8,
+        "priority": 2,
         "when": [
           "$gt0003|Heart Rate|!=null",
           "$gt0003|Heart Rate|<=100,/min"
@@ -194,72 +135,21 @@
           "$gt0016|Heart rate > 100 BPM?|=0|local::at0017|No|"
         ]
       },
-      "gt0025": {
-        "id": "gt0025",
-        "priority": 7,
-        "when": [
-          "$gt0005|Clinical signs and symptoms of DVT?|!=null"
-        ],
-        "then": [
-          "$gt0014|Clinical signs and symptoms of DVT?|=$gt0005|Clinical signs and symptoms of DVT?|"
-        ]
-      },
-      "gt0026": {
-        "id": "gt0026",
-        "priority": 6,
-        "when": [
-          "$gt0006|Is PE the number one diagnosis OR equally likely?|!=null"
-        ],
-        "then": [
-          "$gt0015|Is PE the number one diagnosis OR equally likely?|=$gt0006|Is PE the number one diagnosis OR equally likely?|"
-        ]
-      },
-      "gt0027": {
-        "id": "gt0027",
-        "priority": 5,
-        "when": [
-          "$gt0008|Immobilization at least 3 days OR surgery in the Previous 4 weeks?|!=null"
-        ],
-        "then": [
-          "$gt0017|Immobilization at least 3 days OR surgery in the Previous 4 weeks?|=$gt0008|Immobilization at least 3 days OR surgery in the Previous 4 weeks?|"
-        ]
-      },
-      "gt0028": {
-        "id": "gt0028",
-        "priority": 4,
-        "when": [
-          "$gt0009|Previous, objectively diagnosed PE or DVT?|!=null"
-        ],
-        "then": [
-          "$gt0018|Previous, objectively diagnosed PE or DVT?|=$gt0009|Previous, objectively diagnosed PE or DVT?|"
-        ]
-      },
-      "gt0029": {
-        "id": "gt0029",
-        "priority": 3,
-        "when": [
-          "$gt0010|Hemoptysis?|!=null"
-        ],
-        "then": [
-          "$gt0019|Hemoptysis?|=$gt0010|Hemoptysis?|"
-        ]
-      },
-      "gt0030": {
-        "id": "gt0030",
-        "priority": 2,
-        "when": [
-          "$gt0011|Malignancy with treatment within 6 months or palliative?|!=null"
-        ],
-        "then": [
-          "$gt0020|Malignancy w/ treatment within 6 months or palliative?|=$gt0011|Malignancy with treatment within 6 months or palliative?|"
-        ]
-      },
       "gt0031": {
         "id": "gt0031",
         "priority": 1,
+        "when": [
+          "$gt0005|Clinical signs and symptoms of DVT?|!=null",
+          "$gt0006|Is PE the number one diagnosis OR equally likely?|!=null",
+          "$gt0008|Immobilization at least 3 days OR surgery in the Previous 4 weeks?|!=null",
+          "$gt0009|Previous, objectively diagnosed PE or DVT?|!=null",
+          "$gt0010|Hemoptysis?|!=null",
+          "$gt0011|Malignancy with treatment within 6 months or palliative?|!=null",
+          "$gt0016|Heart rate > 100 BPM?|!=null"
+        ],
         "then": [
           "$gt0021|Total score|.precision=1",
-          "$gt0021|Total score|.magnitude=(((((($gt0014.value+$gt0015.value)+$gt0016.value)+$gt0017.value)+$gt0018.value)+$gt0019.value)+$gt0020.value)/2.0"
+          "$gt0021|Total score|.magnitude=($gt0005.value+$gt0006.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0011.value+$gt0016.value)/2"
         ]
       }
     }
@@ -314,52 +204,15 @@
             "text": "Cancer?",
             "description": "*(en) *"
           },
-          "gt0012": {
-            "id": "gt0012"
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "text": "Kliniska tecken och symtom på DVT?",
-            "description": "*(en) *"
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "text": "Är lungemboli lika eller mer sannolik än annan diagnos?",
-            "description": "*(en) *"
-          },
           "gt0016": {
             "id": "gt0016",
             "text": "Hjärtfrekvens >100?",
-            "description": "*(en) *"
-          },
-          "gt0017": {
-            "id": "gt0017",
-            "text": "Immobiliserad >2 dagar eller kirurgi senaste 4v?",
-            "description": "*(en) *"
-          },
-          "gt0018": {
-            "id": "gt0018",
-            "text": "Tidigare objektivt verifierad DVT eller lungemboli?",
-            "description": "*(en) *"
-          },
-          "gt0019": {
-            "id": "gt0019",
-            "text": "Hemoptys?",
-            "description": "*(en) *"
-          },
-          "gt0020": {
-            "id": "gt0020",
-            "text": "Cancer?",
             "description": "*(en) *"
           },
           "gt0021": {
             "id": "gt0021",
             "text": "Total poäng",
             "description": "*(en) The total score of each individual item is added and then halved (as the individual scores have been doubled to handle decimal numbers"
-          },
-          "gt0022": {
-            "id": "gt0022",
-            "text": "CDS standard"
           },
           "gt0023": {
             "id": "gt0023",
@@ -369,43 +222,9 @@
             "id": "gt0024",
             "text": "CDS Hjärtfrekvens !> 100"
           },
-          "gt0025": {
-            "id": "gt0025",
-            "text": "CDS Kliniska tecken och symtom på DVT"
-          },
-          "gt0026": {
-            "id": "gt0026",
-            "text": "CDS Är lungemboli lika eller mer sannolik än annan diagnos"
-          },
-          "gt0027": {
-            "id": "gt0027",
-            "text": "CDS Immobiliserad >2 dagar eller kirurgi senaste 4v"
-          },
-          "gt0028": {
-            "id": "gt0028",
-            "text": "CDS Tidigare objektivt verifierad DVT eller lungemboli"
-          },
-          "gt0029": {
-            "id": "gt0029",
-            "text": "CDS Hemoptys"
-          },
-          "gt0030": {
-            "id": "gt0030",
-            "text": "CDS Cancer"
-          },
           "gt0031": {
             "id": "gt0031",
             "text": "Beräkna resultat"
-          },
-          "gt0032": {
-            "id": "gt0032",
-            "text": "*(en) Event time",
-            "description": "*(en) The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0033": {
-            "id": "gt0033",
-            "text": "*(en) Event time",
-            "description": "*(en) The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
           }
         }
       },
@@ -457,52 +276,15 @@
             "text": "Malignancy with treatment within 6 months or palliative?",
             "description": "*"
           },
-          "gt0012": {
-            "id": "gt0012"
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "text": "Clinical signs and symptoms of DVT?",
-            "description": "*"
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "text": "Is PE the number one diagnosis OR equally likely?",
-            "description": "*"
-          },
           "gt0016": {
             "id": "gt0016",
             "text": "Heart rate > 100 BPM?",
-            "description": "*"
-          },
-          "gt0017": {
-            "id": "gt0017",
-            "text": "Immobilization at least 3 days OR surgery in the Previous 4 weeks?",
-            "description": "*"
-          },
-          "gt0018": {
-            "id": "gt0018",
-            "text": "Previous, objectively diagnosed PE or DVT?",
-            "description": "*"
-          },
-          "gt0019": {
-            "id": "gt0019",
-            "text": "Hemoptysis?",
-            "description": "*"
-          },
-          "gt0020": {
-            "id": "gt0020",
-            "text": "Malignancy w/ treatment within 6 months or palliative?",
             "description": "*"
           },
           "gt0021": {
             "id": "gt0021",
             "text": "Total score",
             "description": "The total score of each individual item is added and then halved (as the individual scores have been doubled to handle decimal numbers"
-          },
-          "gt0022": {
-            "id": "gt0022",
-            "text": "Set default"
           },
           "gt0023": {
             "id": "gt0023",
@@ -512,43 +294,9 @@
             "id": "gt0024",
             "text": "Set Heart rate !> 100 bpm"
           },
-          "gt0025": {
-            "id": "gt0025",
-            "text": "Set Clinical signs"
-          },
-          "gt0026": {
-            "id": "gt0026",
-            "text": "Set Is PE number 1?"
-          },
-          "gt0027": {
-            "id": "gt0027",
-            "text": "Set Immobilisation at least 3 days"
-          },
-          "gt0028": {
-            "id": "gt0028",
-            "text": "Set previous PE"
-          },
-          "gt0029": {
-            "id": "gt0029",
-            "text": "Set Hemoptysis"
-          },
-          "gt0030": {
-            "id": "gt0030",
-            "text": "Set Malignancy"
-          },
           "gt0031": {
             "id": "gt0031",
             "text": "Calculate score"
-          },
-          "gt0032": {
-            "id": "gt0032",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
-          },
-          "gt0033": {
-            "id": "gt0033",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
           }
         }
       }

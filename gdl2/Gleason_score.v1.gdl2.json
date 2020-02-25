@@ -13,7 +13,8 @@
       "email": "models@cambiocds.com"
     },
     "other_contributors": [
-      "Dennis Forslund, Cambio Healthcare Systems"
+      "Dennis Forslund, Cambio Healthcare Systems",
+	  "Daniel Keszthelyi"
     ],
     "lifecycle_state": "Author draft",
     "details": {
@@ -56,18 +57,6 @@
         "template_id": "openEHR-EHR-OBSERVATION.gleason_score_for_prostate_cancer.v1",
         "type": "OUTPUT",
         "elements": {
-          "gt0007": {
-            "id": "gt0007",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0007]"
-          },
-          "gt0008": {
-            "id": "gt0008",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]/items[at0008]"
-          },
-          "gt0009": {
-            "id": "gt0009",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]/items[at0009]"
-          },
           "gt0010": {
             "id": "gt0010",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0028]"
@@ -91,58 +80,20 @@
           "gt0006": {
             "id": "gt0006",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]/items[at0009]"
-          },
-          "gt0016": {
-            "id": "gt0016",
-            "path": "/data/events/time"
           }
-        },
-        "predicates": [
-          "max(/data/events/time)"
-        ]
+        }
       }
     },
-    "default_actions": [
-      "$gt0007|Primary|=0|local::at0010|N/A|",
-      "$gt0008|Secondary|=0|local::at0016|N/A|",
-      "$gt0009|Tertiary|=0|local::at0022|N/A|"
-    ],
     "rules": {
-      "gt0011": {
-        "id": "gt0011",
-        "priority": 4,
-        "when": [
-          "$gt0004|Primary|!=null"
-        ],
-        "then": [
-          "$gt0007|Primary|=$gt0004|Primary|"
-        ]
-      },
-      "gt0012": {
-        "id": "gt0012",
-        "priority": 3,
-        "when": [
-          "$gt0005|Secondary|!=null"
-        ],
-        "then": [
-          "$gt0008|Secondary|=$gt0005|Secondary|"
-        ]
-      },
-      "gt0013": {
-        "id": "gt0013",
-        "priority": 2,
-        "when": [
-          "$gt0006|Tertiary|!=null"
-        ],
-        "then": [
-          "$gt0009|Tertiary|=$gt0006|Tertiary|"
-        ]
-      },
       "gt0014": {
         "id": "gt0014",
         "priority": 1,
+        "when": [
+          "$gt0004|Primary|!=null",
+          "$gt0005|Secondary|!=null"
+        ],
         "then": [
-          "$gt0010|Total score of First 2 Grades|.magnitude=$gt0007.value+$gt0008.value"
+          "$gt0010|Total score of First 2 Grades|.magnitude=$gt0004.value+$gt0005.value"
         ]
       }
     }
@@ -172,46 +123,14 @@
             "text": "Tertiär",
             "description": ""
           },
-          "gt0007": {
-            "id": "gt0007",
-            "text": "Primär",
-            "description": ""
-          },
-          "gt0008": {
-            "id": "gt0008",
-            "text": "Sekundär",
-            "description": ""
-          },
-          "gt0009": {
-            "id": "gt0009",
-            "text": "Tertiär",
-            "description": ""
-          },
           "gt0010": {
             "id": "gt0010",
             "text": "Gleasonsumma",
             "description": "Baseras på primär och sekundär gradering."
           },
-          "gt0011": {
-            "id": "gt0011",
-            "text": "CDS Primär gradering"
-          },
-          "gt0012": {
-            "id": "gt0012",
-            "text": "CDS Sekundär gradering"
-          },
-          "gt0013": {
-            "id": "gt0013",
-            "text": "CDS Tertiär gradering"
-          },
           "gt0014": {
             "id": "gt0014",
             "text": "Beräkna Gleasonsumma"
-          },
-          "gt0016": {
-            "id": "gt0016",
-            "text": "*(en) Event time",
-            "description": "*(en) The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
           }
         }
       },
@@ -238,46 +157,14 @@
             "text": "Tertiary",
             "description": "*"
           },
-          "gt0007": {
-            "id": "gt0007",
-            "text": "Primary",
-            "description": "*"
-          },
-          "gt0008": {
-            "id": "gt0008",
-            "text": "Secondary",
-            "description": "*"
-          },
-          "gt0009": {
-            "id": "gt0009",
-            "text": "Tertiary",
-            "description": "*"
-          },
           "gt0010": {
             "id": "gt0010",
             "text": "Total score of First 2 Grades",
             "description": "Only the Primary and Secondary grades are summed for the score. They way they are scored also matters which is reflected in the interpretation model. The range is from 2 to 10."
           },
-          "gt0011": {
-            "id": "gt0011",
-            "text": "Set Primary grade"
-          },
-          "gt0012": {
-            "id": "gt0012",
-            "text": "Set Secondary grade"
-          },
-          "gt0013": {
-            "id": "gt0013",
-            "text": "Set Tertiary grade"
-          },
           "gt0014": {
             "id": "gt0014",
             "text": "Calculate total score"
-          },
-          "gt0016": {
-            "id": "gt0016",
-            "text": "Event time",
-            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
           }
         }
       }
