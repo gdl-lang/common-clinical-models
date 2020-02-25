@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 183*
+### *Published Apps: 184*
 
 ----------
 
@@ -468,6 +468,8 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 * [du Bois Score for Idiopathic Pulmonary Fibrosis (IPF) Mortality](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#du-bois-score-for-idiopathic-pulmonary-fibrosis-ipf-mortality) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/du_Bois_IPF_combined/1?language=en))
+
+* [Bova Score for Pulmonary Embolism Complications](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bova-score-for-pulmonary-embolism-complications) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bova_Score/1?language=en))
 
 * [COPD Assessment Test (CAT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#copd-assessment-test-cat) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CAT_COPD_Assessment_Test/1?language=en))
 
