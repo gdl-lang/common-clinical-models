@@ -550,9 +550,9 @@ _Select a medical specialty below to view the available apps._
 ### CDS App Challenge 2019
 
 ----------
-* [Holliday-Segar Fluid and Electrolyte Maintenance Formula]([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Holliday-Segar_fluid_and_electrolyte_maintenance_formula/1?language=en))/([_IND_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Holliday-Segar_fluid_and_electrolyte_maintenance_formula/1?language=id))
+* [Holliday-Segar Fluid and Electrolyte Maintenance Formula] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Holliday-Segar_fluid_and_electrolyte_maintenance_formula/1?language=en))/([_IND_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Holliday-Segar_fluid_and_electrolyte_maintenance_formula/1?language=id))
 
-* [HOSPITAL Score Readmission Risk]([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HOSPITAL_score_readmission_risk/1?language=en))/([_IND_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HOSPITAL_score_readmission_risk/1?language=id))
+* [HOSPITAL Score Readmission Risk] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HOSPITAL_score_readmission_risk/1?language=en))/([_IND_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HOSPITAL_score_readmission_risk/1?language=id))
 
 * [ISTH DIC Score](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DIC_Score/0?language=en)
 ----------
