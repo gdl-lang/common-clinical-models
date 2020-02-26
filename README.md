@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 191*
+### *Published Apps: 192*
 
 ----------
 
@@ -516,6 +516,8 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 * [ABC Score for massive transfusion](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#abc-score-for-massive-transfusion) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ABC_massive_transfusion.v1.dsv?token=4142435f6d6173736976655f7472616e73667573696f6e2e7631:1549324800000:0c66090063a4bd19b060fa8c0db35cb4&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ABC_massive_transfusion.v1.dsv?token=4142435f6d6173736976655f7472616e73667573696f6e2e7631:1549324800000:0c66090063a4bd19b060fa8c0db35cb4&language=sv))
+
+* [Blast Lung Injury Severity Score (BLI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#blast-lung-injury-severity-score-bli) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Blast_Lung_Injury_Severity_Score/1?language=en))
 
 * [Canadian C-Spine Rule (CCR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#canadian-c-spine-rule-ccr) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/CCR.v1.dsv?token=4343522e7631:1549324800000:92965ab20aab78799c6e5dfcbf4d5606&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/CCR.v1.dsv?token=4343522e7631:1549324800000:92965ab20aab78799c6e5dfcbf4d5606&language=sv))
 
