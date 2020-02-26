@@ -535,16 +535,19 @@ _Select a medical specialty below to view the available apps._
 ### CDS Summer App Challenge 2017
 
 ----------
-* [Combined Critical Illness Recognition in All Ages](https://common-clinical-models.cambiocds.com/km/views/execution/Peds_Sirs2.v1.dsv?token=506564735f53697273322e7631:1551052800000:83ca12c15f30b9e9e380e51867604131&language=en)
-* [HIV and Malaria Co-Infection Medication](https://common-clinical-models.cambiocds.com/km/views/execution/HIV_Malaria.v1.dsv?token=4849565f4d616c617269612e7631:1551052800000:54c5eaa94b2e01f6090c9f1bea079ab9&language=en)
-* [Estimated Glomerular Filtration Rate LM-Rev](https://common-clinical-models.cambiocds.com/km/views/execution/eGFR_LM_Rev.v1.dsv?token=654746525f4c4d5f5265762e7631:1551052800000:3a162ae93f5d68d38797f87d06835400&language=en)
+* [Combined Critical Illness Recognition in All Ages] - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Peds_Sirs2.v1.dsv?token=506564735f53697273322e7631:1551052800000:83ca12c15f30b9e9e380e51867604131&language=en))
+
+* [HIV and Malaria Co-Infection Medication] - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/HIV_Malaria.v1.dsv?token=4849565f4d616c617269612e7631:1551052800000:54c5eaa94b2e01f6090c9f1bea079ab9&language=en))
+
+* [Estimated Glomerular Filtration Rate LM-Rev] - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/eGFR_LM_Rev.v1.dsv?token=654746525f4c4d5f5265762e7631:1551052800000:3a162ae93f5d68d38797f87d06835400&language=en))
 ----------
 
 ### CDS Summer App Challenge 2018
 
 ----------
-* [Opioid Conversion to Morphine Milligram Equivalent](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MorphineEquivalentScore/1?language=en)
-* [Replacement Doses of Vitamin D](https://common-clinical-models.cambiocds.com/km/views/execution/replacement_doses_vitamin_D.v1.dsv?token=7265706c6163656d656e745f646f7365735f766974616d696e5f442e7631:1551052800000:39672d1affc23dd85541e79d5136d507&language=en)
+* [Opioid Conversion to Morphine Milligram Equivalent] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MorphineEquivalentScore/1?language=en))
+
+* [Replacement Doses of Vitamin D] - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/replacement_doses_vitamin_D.v1.dsv?token=7265706c6163656d656e745f646f7365735f766974616d696e5f442e7631:1551052800000:39672d1affc23dd85541e79d5136d507&language=en))
 ----------
 
 ### CDS App Challenge 2019
@@ -554,7 +557,7 @@ _Select a medical specialty below to view the available apps._
 
 * [HOSPITAL Score Readmission Risk] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HOSPITAL_score_readmission_risk/1?language=en))/([_IND_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HOSPITAL_score_readmission_risk/1?language=id))
 
-* [ISTH DIC Score](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DIC_Score/0?language=en)
+* [ISTH DIC Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DIC_Score/0?language=en))
 ----------
 
 ### Disclaimer
