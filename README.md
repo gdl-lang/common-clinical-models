@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 195*
+### *Published Apps: 196*
 
 ----------
 
@@ -92,7 +92,7 @@ _Select a medical specialty below to view the available apps._
 
 * [DASH Prediction Score for Recurrent VTE](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#dash-prediction-score-for-recurrent-vte) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/DASH_VTE.v1.dsv?token=444153485f5654452e7631:1549324800000:2db53b550310eea19b6b0b61cffea237&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/DASH_VTE.v1.dsv?token=444153485f5654452e7631:1549324800000:2db53b550310eea19b6b0b61cffea237&language=sv))
 
-* [Duke Criteria](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#duke-criteria) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Duke_Criteria.v1.dsv?token=44756b655f43726974657269612e7631:1549324800000:684b389951a0e66d0589af5636f62548&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Duke_Criteria.v1.dsv?token=44756b655f43726974657269612e7631:1549324800000:684b389951a0e66d0589af5636f62548&language=sv))
+* [Duke Criteria](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#duke-criteria) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Duke_Criteria_for_IE/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Duke_Criteria_for_IE/1?language=sv))
 
 * [Emergency Department Assessment of Chest Pain Score (EDACS-ADP)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#emergency-department-assessment-of-chest-pain-score-edacs-adp) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/EDACS-ADP.v1.dsv?token=45444143532d4144502e7631:1549324800000:4187ca4c0aa735f5130621ce424ee83b&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/EDACS-ADP.v1.dsv?token=45444143532d4144502e7631:1549324800000:4187ca4c0aa735f5130621ce424ee83b&language=sv))
 
@@ -327,6 +327,8 @@ _Select a medical specialty below to view the available apps._
 ----------
 * [ECOG Performance Status](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ecog-performance-status) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ECOG_performance_status/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ECOG_performance_status/1?language=sv))
 
+* [ECOG Zubrod Performance Status](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ecog-zubrod-performance-status) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/ECOG_zubrod_combined/1?language=en))
+
 * [EORTC QLQ C30](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#eortc-qlq-c30) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EORTC_QLQ_C30_Version3/1?language=en))
 
 * [Fuhrman Nuclear Grade for Clear Cell Renal Cell Carcinoma](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#fuhrman-nuclear-grade-for-clear-cell-renal-cell-carcinoma) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Fuhrman_Nuclear_Grade_ccRCC.v1.dsv?token=467568726d616e5f4e75636c6561725f47726164655f63635243432e7631:1549324800000:4a78c34b5696baa635f32bec34ab14a1&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Fuhrman_Nuclear_Grade_ccRCC.v1.dsv?token=467568726d616e5f4e75636c6561725f47726164655f63635243432e7631:1549324800000:4a78c34b5696baa635f32bec34ab14a1&language=sv))
@@ -525,7 +527,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Blast Lung Injury Severity Score (BLI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#blast-lung-injury-severity-score-bli) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Blast_Lung_Injury_Severity_Score/1?language=en))
 
-* [Canadian C-Spine Rule (CCR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#canadian-c-spine-rule-ccr) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/CCR.v1.dsv?token=4343522e7631:1549324800000:92965ab20aab78799c6e5dfcbf4d5606&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/CCR.v1.dsv?token=4343522e7631:1549324800000:92965ab20aab78799c6e5dfcbf4d5606&language=sv))
+* [Canadian C-Spine Rule (CCR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#canadian-c-spine-rule-ccr) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CCR_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CCR_combined/1?language=sv))
 
 * [Injury Severity Score (ISS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#injury-severity-score-iss) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ISS.v1.dsv?token=4953532e7631:1549324800000:a4313d0d3cd44e3c4b432c73942eb55e&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ISS.v1.dsv?token=4953532e7631:1549324800000:a4313d0d3cd44e3c4b432c73942eb55e&language=sv))
 
