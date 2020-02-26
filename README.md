@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 188*
+### *Published Apps: 189*
 
 ----------
 
@@ -501,6 +501,8 @@ _Select a medical specialty below to view the available apps._
 * [Disease Activity Score 28-CRP (DAS28-CRP)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#disease-activity-score-28-crp-das28-crp) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAS28-CRP_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAS28-CRP_combined/1?language=sv))
 
 * [Disease Activity Score 28-ESR (DAS28-ESR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#disease-activity-score-28-esr-das28-esr) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAS28-ESR_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAS28-ESR_combined/1?language=sv))
+
+* [Jones Criteria for Acute Rheumatic Fever Diagnosis](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#jones-criteria-for-acute-rheumatic-fever-diagnosis) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/JonesCriteria/1?language=en))
 
 * [Simplified Disease Activity Index (SDAI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#simplified-disease-activity-index-sdai) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SDAI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SDAI_combined/1?language=sv))
 
