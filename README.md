@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 193*
+### *Published Apps: 194*
 
 ----------
 
@@ -243,6 +243,8 @@ _Select a medical specialty below to view the available apps._
 ### Intensive Care
 
 ----------
+* [APACHE II Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#apache-ii-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/APACHE_II/1?language=en))
+
 * [Apfel Score for Postoperative Nausea and Vomiting](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#apfel-score-for-postoperative-nausea-and-vomiting) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Apfel_Score_for_Postoperative_Nausea_and_Vomiting/1?language=en))
 
 * [AVPU](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#avpu) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AVPU/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AVPU/1?language=sv))
@@ -430,7 +432,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Affective Self Rating Scale (AS-18)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#affective-self-rating-scale-as-18) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AS-18_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AS-18_combined/1?language=sv))
 
-* [Alcohol Use Disorders Identification Test Consumption (AUDIT-C)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#alcohol-use-disorders-identification-test-consumption-audit-c) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/AUDIT-C.v1.dsv?token=41554449542d432e7631:1549324800000:bab2649a2768c1d31c60110d3aac613f&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/AUDIT-C.v1.dsv?token=41554449542d432e7631:1549324800000:bab2649a2768c1d31c60110d3aac613f&language=sv))
+* [Alcohol Use Disorders Identification Test Consumption (AUDIT-C)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#alcohol-use-disorders-identification-test-consumption-audit-c) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/AUDIT-C_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/AUDIT-C_combined/1?language=sv))
 
 * [CAGE](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#cage) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CAGE_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CAGE_combined/1?language=sv))
 
@@ -517,7 +519,7 @@ _Select a medical specialty below to view the available apps._
 ### Trauma Care
 
 ----------
-* [ABC Score for massive transfusion](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#abc-score-for-massive-transfusion) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ABC_massive_transfusion.v1.dsv?token=4142435f6d6173736976655f7472616e73667573696f6e2e7631:1549324800000:0c66090063a4bd19b060fa8c0db35cb4&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ABC_massive_transfusion.v1.dsv?token=4142435f6d6173736976655f7472616e73667573696f6e2e7631:1549324800000:0c66090063a4bd19b060fa8c0db35cb4&language=sv))
+* [ABC Score for massive transfusion](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abc-score-for-massive-transfusion) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABC_score_massive_transfusion_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABC_score_massive_transfusion_combined/1?language=sv))
 
 * [Blast Lung Injury Severity Score (BLI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#blast-lung-injury-severity-score-bli) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Blast_Lung_Injury_Severity_Score/1?language=en))
 
