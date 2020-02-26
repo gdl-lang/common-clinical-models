@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 190*
+### *Published Apps: 191*
 
 ----------
 
@@ -288,6 +288,8 @@ _Select a medical specialty below to view the available apps._
 * [ABCD2 Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abcd2-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABCD2_score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABCD2_score_combined/1?language=sv))
 
 * [ABC/2 Formula for Intracerebral Hemorrhage Volume](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abc2-formula-for-intracerebral-hemorrhage-volume) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABC_div_2/1?language=en))
+
+* [Bacterial Meningitis Score for Children](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bacterial-meningitis-score-for-children) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bacterial_Meningitis_Score_for_Children/1?language=en))
 
 * [Douleur Neuropathique 4 (DN4)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#douleur-neuropathique-4-questions-dn4) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DN4_combined/1?language=en))
 
