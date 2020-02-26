@@ -1,5 +1,5 @@
 archetype (adl_version=1.4)
-	openEHR-EHR-OBSERVATION.dic_score.v0
+	openEHR-EHR-OBSERVATION.dic_score.v1
 
 concept
 	[at0000]	-- ISTH DIC Score
@@ -36,7 +36,7 @@ This scoring system is applicable only when the patient has been diagnosed with 
 
 
 ">
-		["MD5-CAM-1.0.1"] = <"30F9ADCF295892AA5A58DBCBF11A3560">
+		["MD5-CAM-1.0.1"] = <"E7550A62EACB2D428A47560DAF7E6DF4">
 	>
 
 definition
@@ -52,7 +52,7 @@ definition
 										value matches {
 											0|[local::at0005], 	-- >=100*10^9 / L
 											1|[local::at0006], 	-- 50* 10^9  to <100 * 10^9 /L
-											2|[local::at0007]  	-- 50 * 10^9 /L
+											2|[local::at0007]  	-- <50 * 10^9 /L
 										}
 									}
 									ELEMENT[at0008] occurrences matches {0..1} matches {	-- D-Dimer
@@ -80,6 +80,18 @@ definition
 											DV_COUNT matches {
 												magnitude matches {|0..8|}
 											}
+										}
+									}
+									ELEMENT[at0020] occurrences matches {0..1} matches {	-- DIC Score Assessment
+										value matches {
+											0|[local::at0021], 	-- Not suggestive of Overt DIC, may be non-overt DIC
+											1|[local::at0022]  	-- Compatible with Overt DIC
+										}
+									}
+									ELEMENT[at0023] occurrences matches {0..1} matches {	-- Recommendation
+										value matches {
+											0|[local::at0024], 	-- Repeat scoring within next 1-2 days and manage clinically as appropriate
+											1|[local::at0025]  	-- Treat for DIC as appropriate and repeat scoring daily
 										}
 									}
 								}
@@ -113,7 +125,7 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Platelet Count">
-					description = <"* Observation of the lab blood test result of the platelet count, a component of coagulation profile">
+					description = <"Observation of the lab blood test result of the platelet count, a component of coagulation profile">
 				>
 				["at0005"] = <
 					text = <">=100*10^9 / L">
@@ -124,7 +136,7 @@ ontology
 					description = <"low platelet count">
 				>
 				["at0007"] = <
-					text = <"50 * 10^9 /L">
+					text = <"<50 * 10^9 /L">
 					description = <"very low platelet count">
 				>
 				["at0008"] = <
@@ -174,6 +186,30 @@ ontology
 				["at0019"] = <
 					text = <"Total score">
 					description = <"*The sum of the 4 ordinal scores for each component parameter.">
+				>
+				["at0020"] = <
+					text = <"DIC Score Assessment">
+					description = <"Assessing the total DIC score obtained and determining the presence of overt or non overt DIC in patients diagnosed with pre disposing disease">
+				>
+				["at0021"] = <
+					text = <"Not suggestive of Overt DIC, may be non-overt DIC">
+					description = <"Total Score <5">
+				>
+				["at0022"] = <
+					text = <"Compatible with Overt DIC">
+					description = <"Total Score >=5">
+				>
+				["at0023"] = <
+					text = <"Recommendation">
+					description = <"Assessing the total DIC score obtained and determining the presence of overt or non overt DIC in patients diagnosed with pre disposing disease">
+				>
+				["at0024"] = <
+					text = <"Repeat scoring within next 1-2 days and manage clinically as appropriate">
+					description = <"Total Score <5">
+				>
+				["at0025"] = <
+					text = <"Treat for DIC as appropriate and repeat scoring daily">
+					description = <"*">
 				>
 			>
 		>
