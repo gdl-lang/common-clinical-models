@@ -90,7 +90,7 @@ _Select a medical specialty below to view the available apps._
 
 * [CRUSADE Score]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#crusade-score) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CRUSADE_for_post-MI_bleeding_risk_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CRUSADE_for_post-MI_bleeding_risk_combined/1?language=sv))
 
-* [DASH Prediction Score for Recurrent VTE](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#dash-prediction-score-for-recurrent-vte) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/DASH_VTE.v1.dsv?token=444153485f5654452e7631:1549324800000:2db53b550310eea19b6b0b61cffea237&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/DASH_VTE.v1.dsv?token=444153485f5654452e7631:1549324800000:2db53b550310eea19b6b0b61cffea237&language=sv))
+* [DASH Prediction Score for Recurrent VTE](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#dash-prediction-score-for-recurrent-vte) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/DASH_for_recurrent_VTE_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/DASH_for_recurrent_VTE_combined/1?language=sv))
 
 * [Duke Criteria](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#duke-criteria) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Duke_Criteria_for_IE/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Duke_Criteria_for_IE/1?language=sv))
 
@@ -415,7 +415,7 @@ _Select a medical specialty below to view the available apps._
 
 * [FeverPAIN](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#feverpain) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FeverPAIN_Strep_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FeverPAIN_Strep_combined/1?language=sv))
 
-* [Ideal Body Weight (IBW)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#ideal-body-weight-ibw) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/IBW.v1.dsv?token=4942572e7631:1549324800000:64c736bcd7c4401b320bf01a3b97e845&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/IBW.v1.dsv?token=4942572e7631:1549324800000:64c736bcd7c4401b320bf01a3b97e845&language=sv))
+* [Ideal Body Weight (IBW)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#ideal-body-weight-ibw) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/IBW/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/IBW/1?language=sv))
 
 * [International Prostate Symptom Score (IPSS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#international-prostate-symptom-score-ipss) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IPSS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IPSS_combined/1?language=sv))
 
@@ -503,7 +503,7 @@ _Select a medical specialty below to view the available apps._
 
 * [COPD Assessment Test (CAT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#copd-assessment-test-cat) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CAT_COPD_Assessment_Test/1?language=en))
 
-* [GAP Index](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#gap-index-for-idiopathic-pulmonary-fibrosis-mortality) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/GAP_Index.v1.dsv?token=4741505f496e6465782e7631:1549324800000:9980cf333b9e44d0130cc072e82c92c6&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/GAP_Index.v1.dsv?token=4741505f496e6465782e7631:1549324800000:9980cf333b9e44d0130cc072e82c92c6&language=sv))
+* [GAP Index](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#gap-index-for-idiopathic-pulmonary-fibrosis-mortality) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Gap_index_for_IPF_mortality_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Gap_index_for_IPF_mortality_combined/1?language=sv))
 
 * [Manchester Score for small cell lung cancer](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#manchester-score-for-small-cell-lung-cancer) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Manchester_Score_SCC_lung_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Manchester_Score_SCC_lung_combined/1?language=sv))
 
@@ -547,7 +547,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Simplified Motor Score (SMS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#simplified-motor-score-sms) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SMS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SMS_combined/1?language=sv))
 
-* [Trauma Associated Severe Hemorrhage (TASH)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#trauma-associated-severe-hemorrhage-tash) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/TASH.v1.dsv?token=544153482e7631:1549324800000:809b236f4d9556bc75958049c22a34d7&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/TASH.v1.dsv?token=544153482e7631:1549324800000:809b236f4d9556bc75958049c22a34d7&language=sv))
+* [Trauma Associated Severe Hemorrhage (TASH)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#trauma-associated-severe-hemorrhage-tash) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/TASH_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/TASH_combined/1?language=sv))
 
 * [Canadian CT head injury rule (CCHR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#canadian-ct-head-injurytrauma-rule-cchr) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Canadian_CT_head_injury_rule_combined/1?language=en))
 
