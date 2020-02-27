@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 196*
+### *Published Apps: 197*
 
 ----------
 
@@ -97,6 +97,8 @@ _Select a medical specialty below to view the available apps._
 * [Emergency Department Assessment of Chest Pain Score (EDACS-ADP)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#emergency-department-assessment-of-chest-pain-score-edacs-adp) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/EDACS-ADP/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/EDACS-ADP/1?language=sv))
 
 * [Emergency Heart Failure Mortality Risk Grade (EHMRG)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#emergency-heart-failure-mortality-risk-grade-ehmrg) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EHMRG/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EHMRG/1?language=sv))
+
+* [EuroSCORE II](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#euroscore-ii) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/EuroSCORE_II/1?language=en))
 
 * [Framingham CHD Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#framingham-chd-risk-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Framingham_CHD.v1.dsv?token=4672616d696e6768616d5f4348442e7631:1549324800000:e9b03edabd1910fd9614522e33441fac&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Framingham_CHD.v1.dsv?token=4672616d696e6768616d5f4348442e7631:1549324800000:e9b03edabd1910fd9614522e33441fac&language=sv))
 
