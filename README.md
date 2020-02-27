@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 200*
+### *Published Apps: 201*
 
 ----------
 
@@ -183,7 +183,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Revised Geneva Score (rGeneva)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#revised-geneva-score-rgeneva) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rGeneva_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rGeneva_combined/1?language=sv))
 
-* [San Francisco Syncope Rule (SFSR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#san-francisco-syncope-rule-sfsr) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/SFSR.v1.dsv?token=534653522e7631:1549324800000:6d5ad2c3d431106a29c0ce6d5a3169f3&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/SFSR.v1.dsv?token=534653522e7631:1549324800000:6d5ad2c3d431106a29c0ce6d5a3169f3&language=sv))
+* [San Francisco Syncope Rule (SFSR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#san-francisco-syncope-rule-sfsr) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/SFSR/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/SFSR/1?language=sv))
 
 * [Simplified Pulmonary Embolism Severity Index (sPESI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#simplified-pulmonary-embolism-severity-index-spesi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_PESI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_PESI_combined/1?language=sv))
 
@@ -353,6 +353,8 @@ _Select a medical specialty below to view the available apps._
 
 * [TNM for Renal Cell Carcinoma](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#tnm-for-renal-cell-carcinoma) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/TNM_renal.v1.dsv?token=544e4d5f72656e616c2e7631:1549324800000:345665cf18e069cb0b1fa003856a5310&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/TNM_renal.v1.dsv?token=544e4d5f72656e616c2e7631:1549324800000:345665cf18e069cb0b1fa003856a5310&language=sv))
 
+* [UCSF-CAPRA Score for Prostate Cancer Risk](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ucsf-capra-score-for-prostate-cancer-risk) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/UCSF_CAPRA_prostate_cancer_risk_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/UCSF_CAPRA_prostate_cancer_risk_combined/1?language=sv))
+
 ----------
 
 ### Orthopedic Surgery
@@ -383,7 +385,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Pediatric ins and outs](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pediatric-ins-and-outs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_ins_and_outs/1?language=en))
 
-* [STRONGkids Nutritional Risk Screening](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#strongkids-nutritional-risk-screening) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/STRONGkids.v1.dsv?token=5354524f4e476b6964732e7631:1549324800000:3e395b5ca2ab443c4b88277e76ef6a24&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/STRONGkids.v1.dsv?token=5354524f4e476b6964732e7631:1549324800000:3e395b5ca2ab443c4b88277e76ef6a24&language=sv))
+* [STRONGkids Nutritional Risk Screening](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#strongkids-nutritional-risk-screening) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/STRONGkids_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/STRONGkids_combined/1?language=sv))
 ----------
 
 ### Primary care
