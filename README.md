@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 198*
+### *Published Apps: 199*
 
 ----------
 
@@ -308,6 +308,8 @@ _Select a medical specialty below to view the available apps._
 * [Modified Fatigue Impact Scale (MFIS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#modified-fatigue-impact-scale-mfis) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS/1?language=sv))
 
 * [Modified Fatigue Impact Scale - shortened (MFIS-s)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#modified-fatigue-impact-scale---shortened-version) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS_shortened/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS_shortened/1?language=sv))
+
+* [Modified Fisher Scale for SAH](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#modified-fisher-scale-for-sah) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Modified_Fisher_Scale_SAH_combined/1?language=en))
 
 * [Modified National Institutes of Health Stroke Scale (mNIHSS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#modified-national-institutes-of-health-stroke-scale-mnihss) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mNIHSS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mNIHSS/1?language=sv))
 
