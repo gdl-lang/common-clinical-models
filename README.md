@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 201*
+### *Published Apps: 202*
 
 ----------
 
@@ -84,7 +84,7 @@ _Select a medical specialty below to view the available apps._
 
 * [CHADS2 Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#cha2ds2-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHADS2_combined/1?language=en))
 
-* [CHA2DS2-VASc Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#cha2ds2-vasc-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/CHA2DS2-VASc.v1.dsv?token=434841324453322d564153632e7631:1549324800000:52588aa520f5c53c6656a89e48abb97c&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/CHA2DS2-VASc.v1.dsv?token=434841324453322d564153632e7631:1549324800000:52588aa520f5c53c6656a89e48abb97c&language=sv))
+* [CHA2DS2-VASc Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#cha2ds2-vasc-score) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CHA2DS2-VASc_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CHA2DS2-VASc_combined/1?language=sv))
 
 * [Corrected QT Interval (QTc) Calculator](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#corrected-qt-interval-qtc-calculator) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/QTc_calculation.v1.dsv?token=5154635f63616c63756c6174696f6e2e7631:1549324800000:bb9cd2c353ce2b3667d0500facc950af&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/QTc_calculation.v1.dsv?token=5154635f63616c63756c6174696f6e2e7631:1549324800000:bb9cd2c353ce2b3667d0500facc950af&language=sv))
 
@@ -187,7 +187,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Simplified Pulmonary Embolism Severity Index (sPESI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#simplified-pulmonary-embolism-severity-index-spesi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_PESI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_PESI_combined/1?language=sv))
 
-* [Vancouver Chest Pain Rule (VCPR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#vancouver-chest-pain-rule-vcpr) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Vancouver_CPR.v1.dsv?token=56616e636f757665725f4350522e7631:1549324800000:2d08e15ec8b056d915d1924ae7591940&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Vancouver_CPR.v1.dsv?token=56616e636f757665725f4350522e7631:1549324800000:2d08e15ec8b056d915d1924ae7591940&language=sv))
+* [Vancouver Chest Pain Rule (VCPR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#vancouver-chest-pain-rule-vcpr) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Vancouver_CPR/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Vancouver_CPR/1?language=sv))
 
 * [Wells Criteria for Deep Vein Thrombosis (DVT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#wells-criteria-for-dvt) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wells_DVT_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wells_DVT_combined/1?language=sv))
 
@@ -277,6 +277,8 @@ _Select a medical specialty below to view the available apps._
 * [Albumin-Creatinine Ratio (ACR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#albumin-creatinine-ratio-acr) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_Calculation_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_Calculation_combined/1?language=sv))
 
 * [Charlson Comorbidity Scoring System (CCI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#charlson-comorbidity-index-cci) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/CCI.v1.dsv?token=4343492e7631:1549324800000:74aaf83c9eb58fc97546f1453be18970&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/CCI.v1.dsv?token=4343492e7631:1549324800000:74aaf83c9eb58fc97546f1453be18970&language=sv))
+
+* [CKD Classification](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ckd-classification) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CKD_classification/1?language=en))
 
 * [Fractional Excretion of Sodium (FENa)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#fractional-excretion-of-sodium-fena) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fractional_sodium_excretion_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fractional_sodium_excretion_combined/1?language=sv))
 
@@ -393,7 +395,7 @@ _Select a medical specialty below to view the available apps._
 ----------
 * [ACR EULAR Gout](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#acr-eular-gout) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ACR_EULAR_Gout.v1.dsv?token=4143525f45554c41525f476f75742e7631:1549324800000:d314992b05d39de49393a74eb65750df&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ACR_EULAR_Gout.v1.dsv?token=4143525f45554c41525f476f75742e7631:1549324800000:d314992b05d39de49393a74eb65750df&language=sv))
 
-* [ASSIGN Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#assign-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ASSIGN.v1.dsv?token=41535349474e2e7631:1549324800000:6485de30df0ed7f7a91d70c469d798d6&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ASSIGN.v1.dsv?token=41535349474e2e7631:1549324800000:6485de30df0ed7f7a91d70c469d798d6&language=sv))
+* [ASSIGN Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#assign-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/ASSIGN_original/1?language=en))
 
 * [Body Mass Index (BMI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#body-mass-index-bmi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BMI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BMI_combined/1?language=sv))
 
