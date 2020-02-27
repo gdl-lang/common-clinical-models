@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 199*
+### *Published Apps: 200*
 
 ----------
 
@@ -422,6 +422,8 @@ _Select a medical specialty below to view the available apps._
 * [ROME III for IBS](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rome-iii-for-ibs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_III_IBS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_III_IBS_combined/1?language=sv))
 
 * [ROME IV for Constipation](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rome-iv-for-constipation) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_IV_constipation/1?language=en))
+
+* [ROME IV for Dyspepsia](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rome-iv-for-dyspepsia) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Rome_IV_dyspepsia/1?language=en))
 
 * [ROME IV for IBS](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rome-iv-for-ibs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_IV_IBS/1?language=en))
 
