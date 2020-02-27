@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 197*
+### *Published Apps: 198*
 
 ----------
 
@@ -301,6 +301,8 @@ _Select a medical specialty below to view the available apps._
 
 * [Functional Outcome in Patients With Primary Intracerebral Hemorrhage (FUNC) Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#functional-outcome-in-patients-with-primary-intracerebral-hemorrhage-score-func) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FUNC_ICH_Score_combined/1?language=en))
 
+* [Hunt & Hess Classification of Subarachnoid Hemorrhage](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#hunt--hess-classification-of-subarachnoid-hemorrhage) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Hunt_and_Hess_Classification_SAH_combined/1?language=en))
+
 * [Intracerebral Haemorrhage Risk Tool (ICH)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#intracerebral-haemorrhage-risk-tool-ich) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ICH_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ICH_combined/1?language=sv))
 
 * [Modified Fatigue Impact Scale (MFIS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#modified-fatigue-impact-scale-mfis) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS/1?language=sv))
@@ -333,7 +335,7 @@ _Select a medical specialty below to view the available apps._
 
 * [EORTC QLQ C30](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#eortc-qlq-c30) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EORTC_QLQ_C30_Version3/1?language=en))
 
-* [Fuhrman Nuclear Grade for Clear Cell Renal Cell Carcinoma](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#fuhrman-nuclear-grade-for-clear-cell-renal-cell-carcinoma) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Fuhrman_Nuclear_Grade_ccRCC.v1.dsv?token=467568726d616e5f4e75636c6561725f47726164655f63635243432e7631:1549324800000:4a78c34b5696baa635f32bec34ab14a1&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Fuhrman_Nuclear_Grade_ccRCC.v1.dsv?token=467568726d616e5f4e75636c6561725f47726164655f63635243432e7631:1549324800000:4a78c34b5696baa635f32bec34ab14a1&language=sv))
+* [Fuhrman Nuclear Grade for Clear Cell Renal Cell Carcinoma](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#fuhrman-nuclear-grade-for-clear-cell-renal-cell-carcinoma) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Fuhrman_Nuclear_Grade_ccRCC_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Fuhrman_Nuclear_Grade_ccRCC_combined/1?language=sv))
 
 * [Gleason Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#gleason-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Gleason_score.v1.dsv?token=476c6561736f6e5f73636f72652e7631:1549324800000:3ae295107362a17d8120114861fb75f0&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Gleason_score.v1.dsv?token=476c6561736f6e5f73636f72652e7631:1549324800000:3ae295107362a17d8120114861fb75f0&language=sv))
 
