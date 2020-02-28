@@ -1,0 +1,79 @@
+guidelines:
+  1: SIPA.v1
+test_cases:
+- id: case_1 Age group 4-6 yrs, Normal SIPA
+  input:
+    1:
+      gt0004|Age ( 4 -16 years only): 4,a
+      gt0006|Maximum Heart rate: 70,/min
+      gt0008|Minimum Systolic BP: 100,mm[Hg]
+  expected_output:
+    1:
+      gt0014|SIPA Assessment: 0|local::at0016|Normal|
+      gt0013|Maximum normal SIPA: 0|local::at0007|1.22|
+      gt0012|Pediatric Age-adjusted Shock Index (SIPA): 0.70
+
+- id: case_2 Age group 4-6 yrs, Elevated SIPA
+  input:
+    1:
+      gt0004|Age ( 4 -16 years only): 4,a
+      gt0006|Maximum Heart rate: 110,/min
+      gt0008|Minimum Systolic BP: 80,mm[Hg]
+  expected_output:
+    1:
+      gt0014|SIPA Assessment: 1|local::at0017|Elevated|
+      gt0013|Maximum normal SIPA: 0|local::at0007|1.22|
+      gt0015|Risk of blunt injury if SIPA is elevated: 0|local::at0011|22.0%|
+      gt0012|Pediatric Age-adjusted Shock Index (SIPA): 1.38
+
+- id: case_3 Age group 7-12 yrs, Normal SIPA
+  input:
+    1:
+      gt0004|Age ( 4 -16 years only): 8,a
+      gt0006|Maximum Heart rate: 60,/min
+      gt0008|Minimum Systolic BP: 100,mm[Hg]
+  expected_output:
+    1:
+      gt0014|SIPA Assessment: 0|local::at0016|Normal|
+      gt0013|Maximum normal SIPA: 1|local::at0008|1.00|
+      gt0012|Pediatric Age-adjusted Shock Index (SIPA): 0.60
+
+- id: case_4 Age group 7-12 yrs, Elevated SIPA
+  input:
+    1:
+      gt0004|Age ( 4 -16 years only): 8,a
+      gt0006|Maximum Heart rate: 110,/min
+      gt0008|Minimum Systolic BP: 90,mm[Hg]
+  expected_output:
+    1:
+      gt0014|SIPA Assessment: 1|local::at0017|Elevated|
+      gt0013|Maximum normal SIPA: 1|local::at0008|1.00|
+      gt0015|Risk of blunt injury if SIPA is elevated: 1|local::at0012|25.1%|
+      gt0012|Pediatric Age-adjusted Shock Index (SIPA): 1.22
+
+- id: case_5 Age group 13-16 yrs, Normal SIPA
+  input:
+    1:
+      gt0004|Age ( 4 -16 years only): 14,a
+      gt0006|Maximum Heart rate: 60,/min
+      gt0008|Minimum Systolic BP: 120,mm[Hg]
+  expected_output:
+    1:
+      gt0014|SIPA Assessment: 0|local::at0016|Normal|
+      gt0013|Maximum normal SIPA: 2|local::at0009|0.90|
+      gt0012|Pediatric Age-adjusted Shock Index (SIPA): 0.50
+
+- id: case_6 Age group 13-16 yrs, Elevated SIPA
+  input:
+    1:
+      gt0004|Age ( 4 -16 years only): 14,a
+      gt0006|Maximum Heart rate: 100,/min
+      gt0008|Minimum Systolic BP: 80,mm[Hg]
+  expected_output:
+    1:
+      gt0014|SIPA Assessment: 1|local::at0017|Elevated|
+      gt0013|Maximum normal SIPA: 2|local::at0009|0.90|
+      gt0015|Risk of blunt injury if SIPA is elevated: 2|local::at0013|32.0%|
+      gt0012|Pediatric Age-adjusted Shock Index (SIPA): 1.25
+
+
