@@ -22,7 +22,8 @@
           "Incontinence ",
           "Scale"
         ],
-        "use": "Can be used for any patient with urinary incontinence.",
+        "use": "Therapeutic area: Female Urogenital Diseases and Pregnancy Complications, Pathological Conditions, Signs and Symptoms. Male Urogenital Diseases\nTherapeutic indication. \nRevised Urinary Incontinence Scale (RUIS): Scoring Guide\nConsider the last 4 weeks. Do you experience and, if so, how much are you bothered by:\n1. Urine leakage related to the feeling of urgency\nNot at all 0\nSlightly 1\nModerately 2\nGreatly 3\n2. Urine leakage related to physical activity, coughing or sneezing\nNot at all 0\nSlightly 1\nModerately 2\nGreatly 3\n3. Small amounts of urine leakage (drops)\nNot at all 0\nSlightly 1\nModerately 2\nGreatly 3\n4. How often do you experience urine leakage?\nNever 0\nLess than once a month 1\nA few times a month 2\nA few times a week 3\nEvery day and/or night 4\n5. How much urine do you lose each time?\nNone 0\nDrops 1\nSmall splashes 2\nMore 3\nThe RUIS total score is calculated by adding a person’s score for each question. Adding the score\nfor the five questions results in a possible score range from 0 – 16.\n\nThe RUIS score distributions, clinician and patient severity ratings and other indicators of severity\nwere examined to provide the following RUIS score ranges as an aide to interpretation:\npercentile of the\nclinical sample.\n0-3: no urinary incontinence or extremely mild (‘slight’) or occasional (‘rare’) incontinence\n4-8: mild urinary incontinence\n9-12: moderate urinary incontinence\n13-16: severe urinary incontinence (scores of 15 – 16 could be considered very severe).\n\n",
+        "misuse": "Can be used in \"Urinary Incontinence\" not in other indications. Users should check that each question has a response option selected in order to avoid\nany missing data. ",
         "copyright": "copy right: ©Cambio Health care Systems "
       }
     },
@@ -71,12 +72,24 @@
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0031]"
           }
         }
+      },
+      "gt0011": {
+        "id": "gt0011",
+        "model_id": "openEHR-EHR-EVALUATION.revised_urinary_incontinence_scale_ruis.v0",
+        "template_id": "openEHR-EHR-EVALUATION.revised_urinary_incontinence_scale_ruis.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0012": {
+            "id": "gt0012",
+            "path": "/data[at0001]/items[at0003]"
+          }
+        }
       }
     },
     "rules": {
       "gt0010": {
         "id": "gt0010",
-        "priority": 1,
+        "priority": 5,
         "when": [
           "$gt0004|Urine leakage relate to the feeling of urgency|!=null",
           "$gt0005|Urine leakage related to physical activity, coughing or sneezing|!=null",
@@ -86,6 +99,49 @@
         ],
         "then": [
           "$gt0009|Points|.magnitude=$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value"
+        ]
+      },
+      "gt0013": {
+        "id": "gt0013",
+        "priority": 4,
+        "when": [
+          "$gt0009|Points|<=3"
+        ],
+        "then": [
+          "$gt0012|Score interpretation|=1|local::at0004|no urinary incontinence or extremely mild (‘slight’) or occasional (‘rare’) incontinence|"
+        ]
+      },
+      "gt0014": {
+        "id": "gt0014",
+        "priority": 3,
+        "when": [
+          "$gt0009|Points|>=4",
+          "$gt0009|Points|<=8"
+        ],
+        "then": [
+          "$gt0012|Score interpretation|=2|local::at0005|mild urinary incontinence|"
+        ]
+      },
+      "gt0015": {
+        "id": "gt0015",
+        "priority": 2,
+        "when": [
+          "$gt0009|Points|>=9",
+          "$gt0009|Points|<=12"
+        ],
+        "then": [
+          "$gt0012|Score interpretation|=3|local::at0006|moderate urinary incontinence|"
+        ]
+      },
+      "gt0016": {
+        "id": "gt0016",
+        "priority": 1,
+        "when": [
+          "$gt0009|Points|>=13",
+          "$gt0009|Points|<=16"
+        ],
+        "then": [
+          "$gt0012|Score interpretation|=4|local::at0007| severe urinary incontinence (scores of 15 – 16 could be considered very severe).|"
         ]
       }
     }
@@ -98,7 +154,7 @@
           "gt0001": {
             "id": "gt0001",
             "text": "Revised Urinary Incontinence Scale (RUIS)",
-            "description": "Assesses urinary incontinence symptoms and monitors outcomes with treatment.\nINSTRUCTIONS:\nAfter asking: Do you experience and if so how much are you bothered by:"
+            "description": "To assess urinary incontinence and to monitor patient outcomes following treatment.\n"
           },
           "gt0004": {
             "id": "gt0004",
@@ -133,6 +189,27 @@
           "gt0010": {
             "id": "gt0010",
             "text": "Revised Urinary Incontinence Scale"
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "text": "Score interpretation",
+            "description": "*"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "interpretation: no urinary incontinence"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "Intrepretation:mild urinary incontinence"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "Interpretation: moderate urinary incontinence"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "text": "Interpretation: severe urinary incontinence"
           }
         }
       }
