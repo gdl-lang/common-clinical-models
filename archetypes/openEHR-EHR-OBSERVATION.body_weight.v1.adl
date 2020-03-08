@@ -2,7 +2,7 @@
 	openEHR-EHR-OBSERVATION.body_weight.v1
 
 concept
-	[at0000]	-- Kroppsvikt
+	[at0000]	-- Body weight
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -261,36 +261,38 @@ Not to be used to record the weight of an object or body part.">
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <"Marja Buur-Krom, Medisch Centrum Alkmaar, Netherlands", "Rong Chen, Cambio Healthcare Systems, Sweden", "Hans Demski, Helmholtz Zentrum München, Germany", "Paul Donaldson, Nursing Informatics Australia, Australia", "Sebastian Garde, Ocean Informatics, Germany", "Heather Grain, Llewelyn Grain Informatics, Australia", "Anne Harbison, CPCER, Australia", "Sam Heard, Ocean Informatics, Australia", "Andrew James, University of Toronto, Canada", "Heather Leslie, Ocean Informatics, Australia (Editor)", "Rikard Lovstrom, Swedish Medical Association, Sweden", "Ian McNicoll, Ocean Informatics, United Kingdom", "Jeroen Meintjens, Medisch Centrum Alkmaar, Netherlands", "Soon Ghee Yap, Singapore Health Services Pte Ltd, Singapore">
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"313DA3BECC1CE5A5225DF3D873BBE116">
+		["MD5-CAM-1.0.1"] = <"0DD900DCD07968A830ABD03559E05B13">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Kroppsvikt
+	OBSERVATION[at0000] matches {	-- Body weight
 		data matches {
-			HISTORY[at0002] matches {	-- Historia
+			HISTORY[at0002] matches {	-- history
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0003] occurrences matches {0..*} matches {	-- Vilken händelse som helst
+					EVENT[at0003] occurrences matches {0..*} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0001] matches {	-- Träd
+							ITEM_TREE[at0001] matches {	-- Simple
 								items cardinality matches {1..*; unordered} matches {
-									ELEMENT[at0004] matches {	-- Vikt
+									ELEMENT[at0004] matches {	-- Weight
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::124]>
 												list = <
 													["1"] = <
 														units = <"kg">
-														magnitude = <|0.0..1000.0|>
+														magnitude = <|>0.0..1000.0|>
+														precision = <|2|>
 													>
 													["2"] = <
 														units = <"lb">
-														magnitude = <|0.0..2000.0|>
+														magnitude = <|>0.0..2000.0|>
+														precision = <|2|>
 													>
 												>
 											>
 										}
 									}
-									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -299,23 +301,23 @@ definition
 							}
 						}
 						state matches {
-							ITEM_TREE[at0008] matches {	-- Träd
+							ITEM_TREE[at0008] matches {	-- state structure
 								items cardinality matches {0..*; ordered} matches {
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Klädsel
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- State of Dress
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0011, 	-- Lätt klädd / underkläder
-													at0013, 	-- Naken
-													at0010, 	-- Fullt klädd, inklusive skor
-													at0017; 	-- Blöja
+													at0011, 	-- Lightly clothed/underwear
+													at0013, 	-- Naked
+													at0010, 	-- Fully clothed, including shoes
+													at0017; 	-- Nappy/diaper
 													at0011]	-- assumed value
 												}
 											}
 										}
 									}
-									ELEMENT[at0025] occurrences matches {0..*} matches {	-- Andra påverkande faktorer
+									ELEMENT[at0025] occurrences matches {0..*} matches {	-- Confounding Factors
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -328,9 +330,9 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0015] matches {	-- Träd
+			ITEM_TREE[at0015] matches {	-- protocol structure
 				items cardinality matches {0..*; ordered} matches {
-					allow_archetype CLUSTER[at0020] occurrences matches {0..1} matches {	-- Enhet
+					allow_archetype CLUSTER[at0020] occurrences matches {0..1} matches {	-- Device
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.device(-[a-zA-Z0-9_]+)*\.v1/}
 					}
