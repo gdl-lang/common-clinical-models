@@ -214,7 +214,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Hepatic encephalopathy grades](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#hepatic-encephalopathy-grades) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hepatic_encephalopathy_grades_combined/1?language=en))
 
-* [Model For End-Stage Liver Disease Score (MELD)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#model-for-end-stage-liver-disease-score-meld) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/MELD.v1.dsv?token=4d454c442e7631:1549324800000:52958c7acd7d1b24de54be9c41031bcd&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/MELD.v1.dsv?token=4d454c442e7631:1549324800000:52958c7acd7d1b24de54be9c41031bcd&language=sv))
+* [Model For End-Stage Liver Disease Score (MELD)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#model-for-end-stage-liver-disease-score-meld) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MELD_score_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MELD_score_combined/1?language=sv))
 
 * [Ranson's Criteria for Pancreatitis Mortality](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ransons-criteria-for-pancreatitis-mortality) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality_combined/1?language=sv))
 
@@ -589,7 +589,7 @@ _Select a medical specialty below to view the available apps._
 ----------
 * Opioid Conversion to Morphine Milligram Equivalent - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MorphineEquivalentScore/1?language=en))
 
-* Replacement Doses of Vitamin D - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/replacement_doses_vitamin_D.v1.dsv?token=7265706c6163656d656e745f646f7365735f766974616d696e5f442e7631:1551052800000:39672d1affc23dd85541e79d5136d507&language=en))
+* Replacement Doses of Vitamin D - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Replacement_Doses_of_Vitamin_D/2?language=en))
 ----------
 
 ### CDS App Challenge 2019
