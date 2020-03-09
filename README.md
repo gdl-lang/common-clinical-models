@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 208*
+### *Published Apps: 209*
 
 ----------
 
@@ -182,6 +182,8 @@ _Select a medical specialty below to view the available apps._
 * [quick Sepsis Related Organ Failure Assessment (qSOFA)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#quick-sepsis-organ-failure-assessment-qsofa) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/qSOFA/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/qSOFA/1?language=sv))
 
 * [Revised Geneva Score (rGeneva)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#revised-geneva-score-rgeneva) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rGeneva_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rGeneva_combined/1?language=sv))
+
+* [Rapid emergency medicine score (REMS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rapid-emergency-medicine-score-rems) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/REMS/1?language=en))
 
 * [San Francisco Syncope Rule (SFSR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#san-francisco-syncope-rule-sfsr) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/SFSR/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/SFSR/1?language=sv))
 
