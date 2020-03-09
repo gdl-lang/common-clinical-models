@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 211*
+### *Published Apps: 212*
 
 ----------
 
@@ -123,6 +123,8 @@ _Select a medical specialty below to view the available apps._
 * [Rated Perceived Exertion Scale](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rated-perceived-exertion-scale) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rated_perceived_exertion_scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rated_perceived_exertion_scale/1?language=sv))
 
 * [Revised Cardiac Risk Index (RCRI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#revised-cardiac-risk-index-rcri) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RCRI/1?language=en))
+
+* [THRIVE Score for Stroke Outcome](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#thrive-score-for-stroke-outcome) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/THRIVE_for_Stroke_combined/1?language=en))
 
 * [TIMI Risk Index (TRI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#timi-risk-index-tri) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TRI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TRI_combined/1?language=sv))
 
