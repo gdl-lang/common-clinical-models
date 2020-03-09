@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 204*
+### *Published Apps: 205*
 
 ----------
 
@@ -342,6 +342,8 @@ _Select a medical specialty below to view the available apps._
 * [ECOG Zubrod Performance Status](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ecog-zubrod-performance-status) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/ECOG_zubrod_combined/1?language=en))
 
 * [EORTC QLQ C30](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#eortc-qlq-c30) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EORTC_QLQ_C30_Version3/1?language=en))
+
+* [Follicular Lymphoma International Prognostic Index (FLIPI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#follicular-lymphoma-international-prognostic-index-flipi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FLIPI_combined/1?language=en))
 
 * [Fuhrman Nuclear Grade for Clear Cell Renal Cell Carcinoma](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#fuhrman-nuclear-grade-for-clear-cell-renal-cell-carcinoma) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Fuhrman_Nuclear_Grade_ccRCC_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Fuhrman_Nuclear_Grade_ccRCC_combined/1?language=sv))
 
