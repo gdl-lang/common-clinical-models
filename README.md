@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 209*
+### *Published Apps: 210*
 
 ----------
 
@@ -224,6 +224,8 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 * [4A's Test for Delirium Screening](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#4as-test-for-delirium-screening) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/4As_test/1?language=en))
+
+* [Abbreviated Mental Test 4 (AMT-4)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abbreviated-mental-test-4-amt-4) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/amt-4/1?language=en))
 
 * [Abbey Pain Scale (APS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abbey-pain-scale-aps) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/APS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/APS_combined/1?language=sv))
 
