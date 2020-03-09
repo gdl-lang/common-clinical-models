@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 212*
+### *Published Apps: 213*
 
 ----------
 
@@ -93,6 +93,8 @@ _Select a medical specialty below to view the available apps._
 * [DASH Prediction Score for Recurrent VTE](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#dash-prediction-score-for-recurrent-vte) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/DASH_for_recurrent_VTE_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/DASH_for_recurrent_VTE_combined/1?language=sv))
 
 * [Duke Criteria](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#duke-criteria) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Duke_Criteria_for_IE/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Duke_Criteria_for_IE/1?language=sv))
+
+* [Emergency Department Assessment of Chest Pain Score (EDACS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#emergency-department-assessment-of-chest-pain-score-edacs) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Emergency_department_assessment_of_chest_pain_score/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Emergency_department_assessment_of_chest_pain_score/1?language=sv))
 
 * [Emergency Department Assessment of Chest Pain Score (EDACS-ADP)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#emergency-department-assessment-of-chest-pain-score-edacs-adp) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/EDACS-ADP/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/EDACS-ADP/1?language=sv))
 
