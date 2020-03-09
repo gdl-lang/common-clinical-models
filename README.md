@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 214*
+### *Published Apps: 213*
 
 ----------
 
@@ -408,8 +408,6 @@ _Select a medical specialty below to view the available apps._
 
 * [Pediatric ins and outs](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pediatric-ins-and-outs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_ins_and_outs/1?language=en))
 
-* [Pediatric SIRS 2](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pediatric-sirs-2) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatrics_Sirs2/1?language=en))
-
 * [STRONGkids Nutritional Risk Screening](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#strongkids-nutritional-risk-screening) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/STRONGkids_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/STRONGkids_combined/1?language=sv))
 ----------
 
@@ -586,7 +584,7 @@ _Select a medical specialty below to view the available apps._
 ### CDS Summer App Challenge 2017
 
 ----------
-* Combined Critical Illness Recognition in All Ages - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Peds_Sirs2.v1.dsv?token=506564735f53697273322e7631:1551052800000:83ca12c15f30b9e9e380e51867604131&language=en))
+* Combined Critical Illness Recognition in All Ages - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatrics_Sirs2/1?language=en))
 
 * HIV and Malaria Co-Infection Medication - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/HIV_Malaria.v1.dsv?token=4849565f4d616c617269612e7631:1551052800000:54c5eaa94b2e01f6090c9f1bea079ab9&language=en))
 
