@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 206*
+### *Published Apps: 207*
 
 ----------
 
@@ -394,6 +394,8 @@ _Select a medical specialty below to view the available apps._
 * [Pediatric Glasgow Coma Scale (pGCS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pediatric-glasgow-coma-scale-pgcs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_glasgow_coma_scale_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_glasgow_coma_scale_combined/1?language=sv))
 
 * [Pediatric ins and outs](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pediatric-ins-and-outs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_ins_and_outs/1?language=en))
+
+* [Pediatric SIRS 2](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pediatric-sirs-2) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatrics_Sirs2/1?language=en))
 
 * [STRONGkids Nutritional Risk Screening](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#strongkids-nutritional-risk-screening) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/STRONGkids_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/STRONGkids_combined/1?language=sv))
 ----------
