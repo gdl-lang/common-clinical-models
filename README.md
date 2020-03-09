@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 203*
+### *Published Apps: 204*
 
 ----------
 
@@ -302,6 +302,8 @@ _Select a medical specialty below to view the available apps._
 * [Bacterial Meningitis Score for Children](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bacterial-meningitis-score-for-children) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bacterial_Meningitis_Score_for_Children/1?language=en))
 
 * [Douleur Neuropathique 4 (DN4)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#douleur-neuropathique-4-questions-dn4) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DN4_combined/1?language=en))
+
+* [DRAGON Score for Post-TPA Stroke Outcome](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#dragon-score-for-post-tpa-stroke-outcome) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Dragon_tPA_Score_combined/1?language=en))
 
 * [Functional Outcome in Patients With Primary Intracerebral Hemorrhage (FUNC) Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#functional-outcome-in-patients-with-primary-intracerebral-hemorrhage-score-func) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FUNC_ICH_Score_combined/1?language=en))
 
