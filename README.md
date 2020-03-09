@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 210*
+### *Published Apps: 211*
 
 ----------
 
@@ -264,6 +264,8 @@ _Select a medical specialty below to view the available apps._
 * [Behavioral Pain Scale (BPS) - intubated patients](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#behavioral-pain-scale-bps) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BPS_combined/1?language=en))
 
 * [Cardiac Arrest Risk Triage Score (CART)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#cardiac-arrest-risk-triage-score-cart) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CART_score_cardiac_arrest_risk/1?language=en))
+
+* [Critical Care Pain Observation Tool (CPOT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#critical-care-pain-observation-tool-cpot) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CPOT_combined/1?language=en))
 
 * [Modified Early Warning Score (MEWS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#modified-early-warning-score-mews) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MEWS.v1/1.1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MEWS.v1/1.1?language=sv))
 
