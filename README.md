@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 213*
+### *Published Apps: 214*
 
 ----------
 
@@ -77,6 +77,7 @@ _Select a medical specialty below to view the available apps._
 ### Cardiology
 
 ----------
+* [ABC Stroke Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abc-stroke-risk-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABC_stroke_risk_score_combined/1?language=en))
 
 * [ATRIA Bleeding Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#atria-bleeding-risk-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_bleeding_risk_score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_bleeding_risk_score_combined/1?language=sv))
 
@@ -263,7 +264,7 @@ _Select a medical specialty below to view the available apps._
 
 * [AVPU](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#avpu) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AVPU/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AVPU/1?language=sv))
 
-* [Basal Metabolic Rate (BMR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#basal-metabolic-rate-calculator-bmr) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/BMR_Calculation.v1.dsv?token=424d525f43616c63756c6174696f6e2e7631:1549324800000:e03ffc88085b3b27dff64234fc87ddae&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/BMR_Calculation.v1.dsv?token=424d525f43616c63756c6174696f6e2e7631:1549324800000:e03ffc88085b3b27dff64234fc87ddae&language=sv))
+* [Basal Metabolic Rate (BMR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#basal-metabolic-rate-calculator-bmr) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BMR_Calculation/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BMR_Calculation/1?language=sv))
 
 * [Behavioral Pain Scale (BPS) - intubated patients](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#behavioral-pain-scale-bps) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BPS_combined/1?language=en))
 
@@ -335,7 +336,7 @@ _Select a medical specialty below to view the available apps._
 
 * [National Institutes of Health Stroke Scale (NIHSS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#national-institutes-of-health-stroke-scale-nihss) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NIHSS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NIHSS/1?language=sv))
 
-* [Neuropathy Pain Scale (NPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#neuropathy-pain-scale-nps) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/NPS.v1.dsv?token=4e50532e7631:1549324800000:d0b154f5ab88adb5472e1b499eade70c&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/NPS.v1.dsv?token=4e50532e7631:1549324800000:d0b154f5ab88adb5472e1b499eade70c&language=sv))
+* [Neuropathy Pain Scale (NPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#neuropathy-pain-scale-nps) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neuropathy_pain_scale/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neuropathy_pain_scale/1?language=sv))
 
 ----------
 ### Obstetrics
@@ -361,7 +362,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Fuhrman Nuclear Grade for Clear Cell Renal Cell Carcinoma](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#fuhrman-nuclear-grade-for-clear-cell-renal-cell-carcinoma) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Fuhrman_Nuclear_Grade_ccRCC_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Fuhrman_Nuclear_Grade_ccRCC_combined/1?language=sv))
 
-* [Gleason Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#gleason-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Gleason_score.v1.dsv?token=476c6561736f6e5f73636f72652e7631:1549324800000:3ae295107362a17d8120114861fb75f0&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Gleason_score.v1.dsv?token=476c6561736f6e5f73636f72652e7631:1549324800000:3ae295107362a17d8120114861fb75f0&language=sv))
+* [Gleason Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#gleason-score) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gleason_score_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gleason_score_combined/1?language=sv))
 
 * [Heng Score]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#heng-score-for-metastatic-renal-cell-carcinoma-prognosis) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Heng_mRCC_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Heng_mRCC_combined/1?language=sv))
 
