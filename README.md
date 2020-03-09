@@ -439,7 +439,7 @@ _Select a medical specialty below to view the available apps._
 
 * [LDL Calculated](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#ldl-calculated) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LDL/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LDL/1?language=sv))
 
-* [Opioid Risk Tool (ORT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#opioid-risk-tool-ort) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ORT.v1.dsv?token=4f52542e7631:1549324800000:22a5e1c2ad7ca488dcdeb2b633331180&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ORT.v1.dsv?token=4f52542e7631:1549324800000:22a5e1c2ad7ca488dcdeb2b633331180&language=sv))
+* [Opioid Risk Tool (ORT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#opioid-risk-tool-ort) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ORT_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ORT_combined/1?language=sv))
 
 * [ROME III for IBS](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rome-iii-for-ibs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_III_IBS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_III_IBS_combined/1?language=sv))
 
@@ -449,7 +449,7 @@ _Select a medical specialty below to view the available apps._
 
 * [ROME IV for IBS](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rome-iv-for-ibs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_IV_IBS/1?language=en))
 
-* [Stress and Crisis Inventory 93 (SCI-93)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#stress-and-crisis-inventory-93-sci-93) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/SCI-93.v1.dsv?token=5343492d39332e7631:1549324800000:45b6d1135d8afe7d953b75837f15ddea&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/SCI-93.v1.dsv?token=5343492d39332e7631:1549324800000:45b6d1135d8afe7d953b75837f15ddea&language=sv))
+* [Stress and Crisis Inventory 93 (SCI-93)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#stress-and-crisis-inventory-93-sci-93) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCI-93_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCI-93_combined/1?language=sv))
 
 * [World Health Organization Disability Assessment Schedule 2.0 - 12 item version (WHODAS 2.0)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#world-health-organization-disability-assessment-schedule-20---12-item-version-whodas-20) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/WHODAS_2.0_12_item_score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/WHODAS_2.0_12_item_score_combined/1?language=sv))
 
