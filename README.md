@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 205*
+### *Published Apps: 206*
 
 ----------
 
@@ -289,6 +289,8 @@ _Select a medical specialty below to view the available apps._
 * [Glomerular Filtration Rate (CKD-EPI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#glomerular-filtration-rate-ckd-epi) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CKD-EPI_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CKD-EPI_combined/1?language=sv))
 
 * [Glomerular Filtration Rate (Cockcroft-Gault)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#glomerular-filtration-rate-cockcroft-gault) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_GFR_Cockcroft_Gault_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_GFR_Cockcroft_Gault_combined/1?language=sv))
+
+* [Revised Lund-Malmö eGFR](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#revised-lund-malm%C3%B6-egfr) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LM_Revised_eGFR/0?language=en))
 
 ----------
 
