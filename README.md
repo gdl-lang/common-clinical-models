@@ -571,7 +571,7 @@ _Select a medical specialty below to view the available apps._
 
 * HIV and Malaria Co-Infection Medication - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/HIV_Malaria.v1.dsv?token=4849565f4d616c617269612e7631:1551052800000:54c5eaa94b2e01f6090c9f1bea079ab9&language=en))
 
-* Estimated Glomerular Filtration Rate LM-Rev - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/eGFR_LM_Rev.v1.dsv?token=654746525f4c4d5f5265762e7631:1551052800000:3a162ae93f5d68d38797f87d06835400&language=en))
+* Estimated Glomerular Filtration Rate LM-Rev - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_GFR_LM_Revised/1?language=en))
 ----------
 
 ### CDS Summer App Challenge 2018
