@@ -116,7 +116,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Mean Arterial Pressure (MAP)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#mean-arterial-pressure-map) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MAP/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MAP/1?language=sv))
 
-* [New York Heart Association Functional Classification (NYHA)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#new-york-heart-association-functional-classification-nyha) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/NYHA.v1.dsv?token=4e5948412e7631:1549324800000:597ee3d0cfa88de1b10dd4be5273662a&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/NYHA.v1.dsv?token=4e5948412e7631:1549324800000:597ee3d0cfa88de1b10dd4be5273662a&language=sv))
+* [New York Heart Association Functional Classification (NYHA)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#new-york-heart-association-functional-classification-nyha) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NYHA/1?language=en))
 
 * [Padua Prediction Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#padua-prediction-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Padua_prediction_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Padua_prediction_combined/1?language=sv))
 
@@ -476,7 +476,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Drug Use Disorders Identification Test (DUDIT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#drug-use-disorders-identification-test-dudit) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DUDIT_score_combined/1?language=en))
 
-* [Generalized Anxiety Disorder Score (GAD-7)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#generalized-anxiety-disorder-score-gad-7) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/GAD-7.v1.dsv?token=4741442d372e7631:1549324800000:1a6b5e82ade83c167eb8446d45a6853b&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/GAD-7.v1.dsv?token=4741442d372e7631:1549324800000:1a6b5e82ade83c167eb8446d45a6853b&language=sv))
+* [Generalized Anxiety Disorder Score (GAD-7)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#generalized-anxiety-disorder-score-gad-7) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GAD-7_combined/1?language=en))
 
 * [Hamilton Anxiety Scale (HAM-A)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#hamilton-anxiety-scale-ham-a) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HAM-A_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HAM-A_combined/1?language=sv))
 
@@ -559,7 +559,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Canadian C-Spine Rule (CCR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#canadian-c-spine-rule-ccr) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CCR_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CCR_combined/1?language=sv))
 
-* [Injury Severity Score (ISS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#injury-severity-score-iss) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ISS.v1.dsv?token=4953532e7631:1549324800000:a4313d0d3cd44e3c4b432c73942eb55e&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ISS.v1.dsv?token=4953532e7631:1549324800000:a4313d0d3cd44e3c4b432c73942eb55e&language=sv))
+* [Injury Severity Score (ISS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#injury-severity-score-iss) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ISS/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ISS/1?language=sv))
 
 * [Revised Trauma Score (RTS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#revised-trauma-score-rts) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RTS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RTS_combined/1?language=sv))
 
