@@ -171,7 +171,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Glasgow-Blatchford Bleeding Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#glasgow-blatchford-bleeding-score) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GBS_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GBS_combined/1?language=sv))
 
-* [Glasgow Coma Scale (GCS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#glasgow-coma-scale-gcs) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/GCS.v1.dsv?token=4743532e7631:1549324800000:1397764f6c321864347ac38https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GCS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GCS/1?language=sv))
+* [Glasgow Coma Scale (GCS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#glasgow-coma-scale-gcs) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GCS/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GCS/1?language=sv))
 
 * [Glasgow-Imrie Criteria](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#glasgow-imrie-criteria) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Glasgow-Imrie_Criteria_for_Acute_Pancreatitis_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Glasgow-Imrie_Criteria_for_Acute_Pancreatitis_combined/1?language=sv))
 
