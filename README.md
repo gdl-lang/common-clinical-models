@@ -100,7 +100,7 @@ _Select a medical specialty below to view the available apps._
 
 * [EuroSCORE II](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#euroscore-ii) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/EuroSCORE_II/1?language=en))
 
-* [Framingham CHD Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#framingham-chd-risk-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Framingham_CHD.v1.dsv?token=4672616d696e6768616d5f4348442e7631:1549324800000:e9b03edabd1910fd9614522e33441fac&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Framingham_CHD.v1.dsv?token=4672616d696e6768616d5f4348442e7631:1549324800000:e9b03edabd1910fd9614522e33441fac&language=sv))
+* [Framingham CHD Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#framingham-chd-risk-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Framingham_CHD_combined/1?language=en))
 
 * [Get With The Guidelines in Heart Failure Risk Score (GWTG-HF)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#get-with-the-guidelines-in-heart-failure-risk-score-gwtg-hf) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GWTG_HF/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GWTG_HF/1?language=sv))
 
@@ -128,7 +128,7 @@ _Select a medical specialty below to view the available apps._
 
 * [TIMI Risk Score for Unstable Angina and NSTEMI](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#timi-risk-score-for-unstable-angina-and-nstemi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TIMI_UA_NSTEMI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TIMI_UA_NSTEMI_combined/1?language=sv))
 
-* [TIMI Score for STEMI](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#timi-score-for-stemi) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/TIMI_STEMI.v1.dsv?token=54494d495f5354454d492e7631:1549324800000:0f677d84f5cdf71d135871e75d5ac620&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/TIMI_STEMI.v1.dsv?token=54494d495f5354454d492e7631:1549324800000:0f677d84f5cdf71d135871e75d5ac620&language=sv))
+* [TIMI Score for STEMI](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#timi-score-for-stemi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TIMI_STEMI_combined/1?language=en))
 
 ----------
 
@@ -167,11 +167,11 @@ _Select a medical specialty below to view the available apps._
 
 * [Emergency Transfusion Score (ETS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#emergency-transfusion-score-ets) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ETS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ETS_combined/1?language=sv))
 
-* [Glasgow-Blatchford Bleeding Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#glasgow-blatchford-bleeding-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Glasgow-Blatchford.v1.dsv?token=476c6173676f772d426c61746368666f72642e7631:1549324800000:e1432193038d06e5d9118e4065156253&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Glasgow-Blatchford.v1.dsv?token=476c6173676f772d426c61746368666f72642e7631:1549324800000:e1432193038d06e5d9118e4065156253&language=sv))
+* [Glasgow-Blatchford Bleeding Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#glasgow-blatchford-bleeding-score) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GBS_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GBS_combined/1?language=sv))
 
 * [Glasgow Coma Scale (GCS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#glasgow-coma-scale-gcs) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/GCS.v1.dsv?token=4743532e7631:1549324800000:1397764f6c321864347ac38https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GCS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GCS/1?language=sv))
 
-* [Glasgow-Imrie Criteria](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#glasgow-imrie-criteria) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Glasgow_imrie.v1.dsv?token=476c6173676f775f696d7269652e7631:1549324800000:ac7473e95294a02513249da97f422be7&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Glasgow_imrie.v1.dsv?token=476c6173676f775f696d7269652e7631:1549324800000:ac7473e95294a02513249da97f422be7&language=sv))
+* [Glasgow-Imrie Criteria](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#glasgow-imrie-criteria) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Glasgow-Imrie_Criteria_for_Acute_Pancreatitis_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Glasgow-Imrie_Criteria_for_Acute_Pancreatitis_combined/1?language=sv))
 
 * [HEART Score]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#heart-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HEART_score_for_MACE_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HEART_score_for_MACE_combined/1?language=sv))
 
@@ -343,7 +343,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Gleason Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#gleason-score) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Gleason_score.v1.dsv?token=476c6561736f6e5f73636f72652e7631:1549324800000:3ae295107362a17d8120114861fb75f0&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Gleason_score.v1.dsv?token=476c6561736f6e5f73636f72652e7631:1549324800000:3ae295107362a17d8120114861fb75f0&language=sv))
 
-* [Heng Score]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#heng-score-for-metastatic-renal-cell-carcinoma-prognosis) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Heng_score.v1.dsv?token=48656e675f73636f72652e7631:1549324800000:abcd910d4c8e969ea54fd628e3f6216b&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Heng_score.v1.dsv?token=48656e675f73636f72652e7631:1549324800000:abcd910d4c8e969ea54fd628e3f6216b&language=sv))
+* [Heng Score]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#heng-score-for-metastatic-renal-cell-carcinoma-prognosis) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Heng_mRCC_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Heng_mRCC_combined/1?language=sv))
 
 * [Karnofsky Performance Status Scale](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#tnm-for-renal-cell-carcinoma) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Karnofsky_performance_status_combined/1?language=en))
 
@@ -379,7 +379,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Lansky Play-Performance Scale](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#lansky-play-performance-scale) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Lansky_play_performance_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Lansky_play_performance_combined/1?language=sv))
 
-* [Pediatric Crohn's Disease Activity Index (PCDAI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pediatric-crohns-disease-activity-index-pcdai) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/PCDAI.v1.dsv?token=50434441492e7631:1549324800000:048afc2bc46e5a38782a5fba307c1d48&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/PCDAI.v1.dsv?token=50434441492e7631:1549324800000:048afc2bc46e5a38782a5fba307c1d48&language=sv))
+* [Pediatric Crohn's Disease Activity Index (PCDAI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pediatric-crohns-disease-activity-index-pcdai) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PCDAI_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PCDAI_combined/1?language=sv))
 
 * [Pediatric Early Warning Score (PEWS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#strongkids-nutritional-risk-screening) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEWS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEWS_combined/1?language=sv))
 
@@ -393,7 +393,7 @@ _Select a medical specialty below to view the available apps._
 ### Primary care
 
 ----------
-* [ACR EULAR Gout](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#acr-eular-gout) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/ACR_EULAR_Gout.v1.dsv?token=4143525f45554c41525f476f75742e7631:1549324800000:d314992b05d39de49393a74eb65750df&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/ACR_EULAR_Gout.v1.dsv?token=4143525f45554c41525f476f75742e7631:1549324800000:d314992b05d39de49393a74eb65750df&language=sv))
+* [ACR EULAR Gout](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#acr-eular-gout) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_EULAR_Gout_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_EULAR_Gout_combined/1?language=sv))
 
 * [ASSIGN Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#assign-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/ASSIGN_original/1?language=en))
 
