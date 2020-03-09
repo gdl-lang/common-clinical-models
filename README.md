@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 207*
+### *Published Apps: 208*
 
 ----------
 
@@ -213,6 +213,8 @@ _Select a medical specialty below to view the available apps._
 * [Hepatic encephalopathy grades](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#hepatic-encephalopathy-grades) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hepatic_encephalopathy_grades_combined/1?language=en))
 
 * [Model For End-Stage Liver Disease Score (MELD)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#model-for-end-stage-liver-disease-score-meld) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/MELD.v1.dsv?token=4d454c442e7631:1549324800000:52958c7acd7d1b24de54be9c41031bcd&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/MELD.v1.dsv?token=4d454c442e7631:1549324800000:52958c7acd7d1b24de54be9c41031bcd&language=sv))
+
+* [Ranson's Criteria for Pancreatitis Mortality](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ransons-criteria-for-pancreatitis-mortality) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality_combined/1?language=sv))
 
 ----------
 
