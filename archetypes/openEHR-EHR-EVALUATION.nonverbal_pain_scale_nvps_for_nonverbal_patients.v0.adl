@@ -23,9 +23,9 @@ The scores for each of the five NVPS components are summed for a total score of 
 Score interpretation:
 
 Scores ≤2 indicate no pain.
-Scores 3-6 indicate moderate pain.*
-Scores ≥6 indicate severe pain.*
-*Note: Scores ≥3 indicate possible need for analgesia.
+Scores 3-<6 indicate moderate pain.
+Scores ≥6 indicate severe pain.
+Note: Scores ≥3 indicate possible need for analgesia.
 
 This assessment is normally documented every 4 hours on nursing flow sheets and completed before and after interventions.
 
@@ -40,7 +40,9 @@ Sepsis, hypovolemia, and hypoxia need to be resolved prior to interventions.">
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"076466AFEA5EA64B3AEF6CF3B1FAD4E8">
+		["MD5-CAM-1.0.1"] = <"731C885E643C944DF078FCB0895ECA64">
+		["references"] = <"Odhner, M., Wegman, D., Freeland, N., Steinmetz, A., and Ingersoll, G. L. (2003). Assessing pain control in nonverbal critically ill adults. Dimensions of Critical Care Nursing, 22(6), 260-267.
+McGuire, D. B., Kaiser, K. S., Haisfield-Wolfe, M. E., and Iyamu, F. (2016). Pain Assessment in Noncommunicative Adult Palliative Care Patients. The Nursing clinics of North America, 51(3), 397–431. https://doi.org/10.1016/j.cnur.2016.05.009">
 	>
 
 definition
@@ -50,9 +52,14 @@ definition
 				items cardinality matches {0..*; unordered} matches {
 					ELEMENT[at0002] occurrences matches {0..1} matches {	-- score interpretation
 						value matches {
-							0|[local::at0003], 	-- no pain
-							1|[local::at0004], 	-- moderate pain
-							2|[local::at0005]  	--  severe pain
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0006, 	-- No pain
+									at0007, 	-- Moderate pain
+									at0008]	-- Severe pain
+								}
+							}
 						}
 					}
 				}
@@ -80,16 +87,16 @@ This assessment is normally documented every 4 hours on nursing flow sheets and 
 
 Sepsis, hypovolemia, and hypoxia need to be resolved prior to interventions.">
 				>
-				["at0003"] = <
-					text = <"no pain">
+				["at0006"] = <
+					text = <"No pain">
 					description = <"*">
 				>
-				["at0004"] = <
-					text = <"moderate pain">
+				["at0007"] = <
+					text = <"Moderate pain">
 					description = <"*">
 				>
-				["at0005"] = <
-					text = <" severe pain">
+				["at0008"] = <
+					text = <"Severe pain">
 					description = <"*">
 				>
 			>
