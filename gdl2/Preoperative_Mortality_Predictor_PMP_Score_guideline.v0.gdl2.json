@@ -1,5 +1,5 @@
 {
-  "id": "PMP_guideline.v0",
+  "id": "Preoperative_Mortality_Predictor_PMP_Score_guideline.v0",
   "gdl_version": "2.0",
   "concept": "gt0001",
   "language": {
@@ -7,9 +7,9 @@
   },
   "description": {
     "original_author": {
-      "date": "2020-02-15",
+      "date": "2020-03-17",
       "name": "Maryam Razavi",
-      "organisation": "©Cambio Health care Systems ",
+      "organisation": "CambioCDS",
       "email": "Maryam.razavi2009@gmail.com"
     },
     "lifecycle_state": "Author draft",
@@ -22,11 +22,12 @@
           "Mortality"
         ],
         "use": "Use in patients ≥18 years old undergoing general surgery (elective or emergent).",
-        "misuse": "- Study looked at ACS NSQIP data for 7 operations: open pancreas, open/laparoscopic colorectal, hernia (ventral, umbilical, or inguinal), and gallbladder surgeries.\n- Similar to POSSUM and APACHE II scoring systems, though with fewer variables. We are not aware of any head-to-head studies comparing this score to the others."
+        "misuse": "- Study looked at ACS NSQIP data for 7 operations: open pancreas, open/laparoscopic colorectal, hernia (ventral, umbilical, or inguinal), and gallbladder surgeries.\n- Similar to POSSUM and APACHE II scoring systems, though with fewer variables. We are not aware of any head-to-head studies comparing this score to the others.",
+        "copyright": "@CambioCDS"
       }
     },
     "other_details": {
-      "references": "Vaid, S., Bell, T., Grim, R., & Ahuja, V. (2012). Predicting risk of death in general surgery patients on the basis of preoperative variables using American College of Surgeons National Surgical Quality Improvement Program data. The Permanente journal, 16(4), 10."
+      "references": "Vaid, S., Bell, T., Grim, R., and Ahuja, V. (2012). Predicting risk of death in general surgery patients on the basis of preoperative variables using American College of Surgeons National Surgical Quality Improvement Program data. The Permanente journal, 16(4), 10."
     }
   },
   "definition": {
@@ -106,12 +107,24 @@
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0046]"
           }
         }
+      },
+      "gt0031": {
+        "id": "gt0031",
+        "model_id": "openEHR-EHR-EVALUATION.preoperative_mortality_predictor_pmp_score.v0",
+        "template_id": "openEHR-EHR-EVALUATION.preoperative_mortality_predictor_pmp_score.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0032": {
+            "id": "gt0032",
+            "path": "/data[at0001]/items[at0002]"
+          }
+        }
       }
     },
     "rules": {
       "gt0020": {
         "id": "gt0020",
-        "priority": 1,
+        "priority": 12,
         "when": [
           "$gt0005|Inpatient|!=null",
           "$gt0006|Sepsis|!=null",
@@ -129,7 +142,72 @@
           "$gt0019|Obesity|!=null"
         ],
         "then": [
-          "$gt0004|Score|.magnitude=$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+($gt0009.value/2)+$gt0010.value+$gt0011.value+$gt0012.value+$gt0013.value+$gt0014.value+$gt0017.value+$gt0018.value+$gt0019.value"
+          "$gt0004|Score|.magnitude=$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+($gt0009.value/2)+$gt0010.value+$gt0011.value+$gt0012.value+$gt0013.value+$gt0014.value+$gt0016.value+$gt0017.value+$gt0018.value+$gt0019.value"
+        ]
+      },
+      "gt0034": {
+        "id": "gt0034",
+        "priority": 6,
+        "when": [
+          "$gt0004|Score|>=26",
+          "$gt0004|Score|<=30"
+        ],
+        "then": [
+          "$gt0032|score interpretation|=local::at0021|Risk of perioperative mortality 40.0%|"
+        ]
+      },
+      "gt0035": {
+        "id": "gt0035",
+        "priority": 5,
+        "when": [
+          "$gt0004|Score|>=21",
+          "$gt0004|Score|<=25"
+        ],
+        "then": [
+          "$gt0032|score interpretation|=local::at0020|Risk of perioperative mortality 37.5%|"
+        ]
+      },
+      "gt0036": {
+        "id": "gt0036",
+        "priority": 4,
+        "when": [
+          "$gt0004|Score|>=16",
+          "$gt0004|Score|<=20"
+        ],
+        "then": [
+          "$gt0032|score interpretation|=local::at0019|Risk of perioperative mortality 12.6%|"
+        ]
+      },
+      "gt0037": {
+        "id": "gt0037",
+        "priority": 3,
+        "when": [
+          "$gt0004|Score|>=11",
+          "$gt0004|Score|<=15"
+        ],
+        "then": [
+          "$gt0032|score interpretation|=local::at0018|Risk of perioperative mortality 2.4%|"
+        ]
+      },
+      "gt0038": {
+        "id": "gt0038",
+        "priority": 2,
+        "when": [
+          "$gt0004|Score|>=6",
+          "$gt0004|Score|<=10"
+        ],
+        "then": [
+          "$gt0032|score interpretation|=local::at0017|Risk of perioperative mortality 0.6%|"
+        ]
+      },
+      "gt0039": {
+        "id": "gt0039",
+        "priority": 1,
+        "when": [
+          "$gt0004|Score|<=5"
+        ],
+        "then": [
+          "$gt0032|score interpretation|=local::at0016|Risk of perioperative mortality 0.1%|"
         ]
       }
     }
@@ -227,6 +305,73 @@
           "gt0020": {
             "id": "gt0020",
             "text": "PMP Score"
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "Mortality rate 6-10"
+          },
+          "gt0023": {
+            "id": "gt0023",
+            "text": "score interpretation",
+            "description": "*"
+          },
+          "gt0025": {
+            "id": "gt0025",
+            "text": "score interpretation",
+            "description": "*"
+          },
+          "gt0026": {
+            "id": "gt0026",
+            "text": "Mortality risk score 6-10"
+          },
+          "gt0027": {
+            "id": "gt0027",
+            "text": "Mortality risk score 11-15"
+          },
+          "gt0028": {
+            "id": "gt0028",
+            "text": "Mortality risk score 16-20"
+          },
+          "gt0029": {
+            "id": "gt0029",
+            "text": "Mortality risk score 21-25"
+          },
+          "gt0030": {
+            "id": "gt0030",
+            "text": "Mortality risk score 26-30"
+          },
+          "gt0032": {
+            "id": "gt0032",
+            "text": "score interpretation",
+            "description": "*"
+          },
+          "gt0033": {
+            "id": "gt0033",
+            "text": "Risk 0.1%"
+          },
+          "gt0034": {
+            "id": "gt0034",
+            "text": "risk 40%"
+          },
+          "gt0035": {
+            "id": "gt0035",
+            "text": "risk 37.5%"
+          },
+          "gt0036": {
+            "id": "gt0036",
+            "text": "risk 12.6%"
+          },
+          "gt0037": {
+            "id": "gt0037",
+            "text": "risk 2.4%"
+          },
+          "gt0038": {
+            "id": "gt0038",
+            "text": "risk 0.6%"
+          },
+          "gt0039": {
+            "id": "gt0039",
+            "text": "risk 0.1%"
           }
         }
       }
