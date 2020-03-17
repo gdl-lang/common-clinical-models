@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 213*
+### *Published Apps: 215*
 
 ----------
 
@@ -607,6 +607,10 @@ _Select a medical specialty below to view the available apps._
 * HOSPITAL Score Readmission Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HOSPITAL_score_readmission_risk/1?language=en))/([_IND_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HOSPITAL_score_readmission_risk/1?language=id))
 
 * ISTH DIC Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DIC_Score/0?language=en))
+
+* NAS Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Finnegan_Neonatal_Abstinence_Score/0?language=en))
+
+* VIA Screening - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/VIA_Screening/0?language=en))
 ----------
 
 ### Disclaimer
