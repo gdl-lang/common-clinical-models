@@ -1,0 +1,121 @@
+{
+  "id": "Pediatric_Trauma_BIG_Score.v0",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2020-02-29",
+      "name": "Jack Msonkho",
+      "organisation": "@Cambio CDS",
+      "email": "models@cambiocds.com"
+    },
+    "lifecycle_state": "Not set",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "The Pediatric Trauma BIG Score was developed by Borgman et al in 2011 to rapidly assess the severity of illness and predict mortality in pediatric trauma patients. Stratifies severity of illness and predicts mortality in pediatric patients after trauma.",
+        "keywords": [
+          "Base Deficit",
+          "INR",
+          "GCS"
+        ],
+        "use": "Pediatric patients under 18 years of age, after blunt or penetrating trauma or penetrating blast injury. \nBIG is an acronym for the components of the score: base deficit, INR, and GCS.\n\nThree variables, the base deficit, international normalized ratio (INR), and Glasgow Coma Scale (GCS) were found to be independently predictive of mortality. A model score was then derived using data from 707 pediatric patients and evaluated for mortality by using a receiver-operating curve (ROC) analysis. In the guidleine the three variables are used to predict mortality by using the formula: Pediatric BIG Score = (base deficit) + (2.5 × INR) + (15 - GCS). The resultant score is output as a percentage.\n\nNote: Pediatric BIG Score of 26 (i.e., base deficit 10, INR 3.6, GCS 8) predicts a mortality of 50% with a positive predictive value of 65%, negative predictive value of 93%, and specificity of 99% (Borgman 2011).\n\nThe GCS scre is:\nSimple, rapid, and accurate scoring system to evaluate the severity of illness and predict mortality in children.\n\nCan be applied to both blunt and penetrating traumatic injuries.\n\nUseful in quantifying degree of physiological derangement beyond clinical appearance and GCS alone. Base deficit and INR are physiologic measures of hypoperfusion and trauma-induced coagulopathy, respectively, and both play critical roles in trauma-related mortality.\n\nMisuse:\nBIG Score alone should not direct clinical care because patients with BIG Scores <16 still require intensive care and trauma surgery services and should receive care at level 1 pediatric trauma centers (Davis 2015).\n",
+        "misuse": "BIG Score alone should not direct clinical care because patients with BIG Scores <16 still require intensive care and trauma surgery services and should receive care at level 1 pediatric trauma centers (Davis 2015).\n"
+      }
+    },
+    "other_details": {
+      "references": "Borgman MA, Maegele M, Wade CE, Blackbourne LH, Spinella PC. Pediatric Trauma BIG Score: Predicting Mortality in Children After Military and Civilian Trauma. Pediatrics. 2011 Apr;127(4):e892-7.\t\t\n\nValidation\nDavis AL, Wales PW, Malik T, Stephens D, Razik F, Schuh S. The BIG Score and Prediction of Mortality in Pediatric Blunt Trauma. J Pediatr. 2015 Sep;167(3):593-8. \n\nGrandjean-blanchet C, Emeriaud G, Beaudin M, Gravel J. Retrospective evaluation of the BIG score to predict mortality in pediatric blunt trauma. CJEM. 2017:1-8."
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0002": {
+        "id": "gt0002",
+        "model_id": "openEHR-EHR-OBSERVATION.pediatric_trauma_big_score.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.pediatric_trauma_big_score.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0003": {
+            "id": "gt0003",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
+          }
+        }
+      },
+      "gt0006": {
+        "id": "gt0006",
+        "model_id": "openEHR-EHR-EVALUATION.pediatric_trauma_big_score.v0",
+        "template_id": "openEHR-EHR-EVALUATION.pediatric_trauma_big_score.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0007": {
+            "id": "gt0007",
+            "path": "/data[at0001]/items[at0002]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0008": {
+        "id": "gt0008",
+        "priority": 1,
+        "when": [
+          "$gt0003|Base Deficit|!=null",
+          "$gt0004|INR|!=null",
+          "$gt0005|GCS|!=null"
+        ],
+        "then": [
+          "$gt0007|PTB Score|.magnitude=$gt0003+($gt0004*2.5)+(15-$gt0005)"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "Pediatric Trauma BIG Score",
+            "description": "Stratifies severity of illness and predicts mortality in pediatric patients after trauma"
+          },
+          "gt0003": {
+            "id": "gt0003",
+            "text": "Base Deficit",
+            "description": "*"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "INR",
+            "description": "*"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "GCS",
+            "description": "*"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "text": "PTB Score",
+            "description": "*"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "Calculate Score"
+          }
+        }
+      }
+    }
+  }
+}

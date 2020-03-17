@@ -1,0 +1,80 @@
+guidelines:
+  1: Modified_SOAR_Score_for_Stroke.v0
+test_cases:
+- id: mSOAR Score less than 1
+  input:
+    1:
+      gt0003|Oxfordshire Community Stroke Project classification: 0|local::at0008|LACS/PACS|
+      gt0004|Age: 0|local::at0012|≤65|
+      gt0006|Pre-stroke disability (Modified Rankin Score): 0|local::at0016|0–2|
+      gt0007|Stroke type: 0|local::at0005|Infarct|
+      gt0008|NIH Stroke Scale Score: 1|local::at0021|5-10|
+  expected_output:
+    1:
+      gt0010|Inpatient mortality: 0|local::at0003|1.0% Inpatient mortality|
+      gt0013|Total Score: 1
+
+- id: mSOAR Score 2
+  input:
+    1:
+      gt0003|Oxfordshire Community Stroke Project classification: 1|local::at0009|POCS|
+      gt0004|Age: 0|local::at0012|≤65|
+      gt0006|Pre-stroke disability (Modified Rankin Score): 0|local::at0016|0–2|
+      gt0007|Stroke type: 0|local::at0005|Infarct|
+      gt0008|NIH Stroke Scale Score: 1|local::at0021|5-10|
+  expected_output:
+    1:
+      gt0010|Inpatient mortality: 1|local::at0004|1.5% Inpatient mortality|
+      gt0013|Total Score: 2
+
+- id: mSOAR Score 3
+  input:
+    1:
+      gt0003|Oxfordshire Community Stroke Project classification: 1|local::at0009|POCS|
+      gt0004|Age: 1|local::at0013|66–85|
+      gt0006|Pre-stroke disability (Modified Rankin Score): 0|local::at0016|0–2|
+      gt0007|Stroke type: 0|local::at0005|Infarct|
+      gt0008|NIH Stroke Scale Score: 1|local::at0021|5-10|
+  expected_output:
+    1:
+      gt0010|Inpatient mortality: 2|local::at0005|6.5% Inpatient mortality|
+      gt0013|Total Score: 3
+
+- id: mSOAR Score 4
+  input:
+    1:
+      gt0003|Oxfordshire Community Stroke Project classification: 1|local::at0009|POCS|
+      gt0004|Age: 1|local::at0013|66–85|
+      gt0006|Pre-stroke disability (Modified Rankin Score): 0|local::at0016|0–2|
+      gt0007|Stroke type: 1|local::at0006|Hermorrage|
+      gt0008|NIH Stroke Scale Score: 1|local::at0021|5-10|
+  expected_output:
+    1:
+      gt0010|Inpatient mortality: 3|local::at0006|9.2% Inpatient mortality|
+
+- id:  mSOAR Score 5
+  input:
+    1:
+      gt0003|Oxfordshire Community Stroke Project classification: 1|local::at0009|POCS|
+      gt0004|Age: 1|local::at0013|66–85|
+      gt0006|Pre-stroke disability (Modified Rankin Score): 1|local::at0017|3–4|
+      gt0007|Stroke type: 1|local::at0006|Hermorrage|
+      gt0008|NIH Stroke Scale Score: 1|local::at0021|5-10|
+  expected_output:
+    1:
+      gt0010|Inpatient mortality: 4|local::at0007|19.5% Inpatient mortality|
+      gt0013|Total Score: 5
+
+- id:  mSOAR Score 6
+  input:
+    1:
+      gt0003|Oxfordshire Community Stroke Project classification: 1|local::at0009|POCS|
+      gt0004|Age: 1|local::at0013|66–85|
+      gt0006|Pre-stroke disability (Modified Rankin Score): 1|local::at0017|3–4|
+      gt0007|Stroke type: 1|local::at0006|Hermorrage|
+      gt0008|NIH Stroke Scale Score: 2|local::at0022|≥11|
+  expected_output:
+    1:
+      gt0010|Inpatient mortality: 5|local::at0008|26.2% Inpatient mortality|
+      gt0013|Total Score: 6
+
