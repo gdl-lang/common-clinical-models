@@ -1,0 +1,269 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.contact.v1
+
+concept
+	[at0000]	-- Contact
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"?">
+			>
+		>
+	>
+description
+	original_author = <
+		["name"] = <"Rong Chen">
+		["email"] = <"Rong.Chen@cambio.se">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2013-01-01">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record basic information about a healthcare contact">
+			use = <"For recording information about a healthcare process in the form of a contact.">
+			keywords = <"contact", ...>
+			misuse = <"">
+			copyright = <"Cambio Healthcare Systems">
+		>
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"För att registrera grundläggande information om en vårdkontakt">
+			use = <"För registrering av information om en vårdprocess i form av en kontakt.">
+			keywords = <"kontakt", ...>
+			misuse = <"">
+			copyright = <"Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"1DD2F1400E7C9CBD61845C5C42498BE4">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Contact
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Contact ID
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Start time
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- End time
+						value matches {
+							DV_DATE_TIME matches {*}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Responsible medical unit
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0010] occurrences matches {0..1} matches {	-- Responsible medical unit ID
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Contact type
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0007, 	-- Inpatient
+									at0008]	-- Outpatient
+								}
+							}
+						}
+					}
+					ELEMENT[at0009] occurrences matches {0..1} matches {	-- Reason for contact
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0011] occurrences matches {0..1} matches {	-- Primary care visit
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0012, 	-- Absent
+									at0013]	-- Present
+								}
+							}
+						}
+					}
+					ELEMENT[at0014] occurrences matches {0..1} matches {	-- Attended by a doctor
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0012, 	-- Absent
+									at0013]	-- Present
+								}
+							}
+						}
+					}
+					ELEMENT[at0015] occurrences matches {0..1} matches {	-- Administrative contact
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0012, 	-- Absent
+									at0013]	-- Present
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Contact">
+					description = <"A contact represents a healthcare process initiated by a clinician and contains basic information such as the start and end time of the contact, as well as the reason for initiating the healthcare process.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Contact ID">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Start time">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"End time">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Responsible medical unit">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Contact type">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Inpatient">
+					description = <"Inpatient care contact">
+				>
+				["at0008"] = <
+					text = <"Outpatient">
+					description = <"Outpatient care contact">
+				>
+				["at0009"] = <
+					text = <"Reason for contact">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Responsible medical unit ID">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Primary care visit">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Absent">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Present">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Attended by a doctor">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Administrative contact">
+					description = <"*">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Kontakt">
+					description = <"En kontakt representerar en vårdprocess som initierats av en kliniker och innehåller grundläggande information såsom start och sluttid för kontakten, liksom orsaken till att initiera vårdprocessen.">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"Kontakt ID">
+					description = <"**(en)">
+				>
+				["at0003"] = <
+					text = <"Starttid">
+					description = <"**(en)">
+				>
+				["at0004"] = <
+					text = <"Sluttid">
+					description = <"**(en)">
+				>
+				["at0005"] = <
+					text = <"Medicinskt ansvarig enhet">
+					description = <"**(en)">
+				>
+				["at0006"] = <
+					text = <"Kontakttyp">
+					description = <"**(en)">
+				>
+				["at0007"] = <
+					text = <"Slutenvård">
+					description = <"*Inpatient care contact(en)">
+				>
+				["at0008"] = <
+					text = <"Öppenvård">
+					description = <"*Outpatient care contact(en)">
+				>
+				["at0009"] = <
+					text = <"Orsak till kontakt">
+					description = <"**(en)">
+				>
+				["at0010"] = <
+					text = <"Medicinskt ansvarig enhet ID">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Primärvårdsbesök">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Nej">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Ja">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Vårdkontakt läkare">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Administrativ kontakt">
+					description = <"*">
+				>
+			>
+		>
+	>
