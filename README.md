@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 219*
+### *Published Apps: 220*
 
 ----------
 
@@ -569,15 +569,17 @@ _Select a medical specialty below to view the available apps._
 
 * [Canadian C-Spine Rule (CCR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#canadian-c-spine-rule-ccr) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CCR_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CCR_combined/1?language=sv))
 
+* [Canadian CT head injury rule (CCHR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#canadian-ct-head-injurytrauma-rule-cchr) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Canadian_CT_head_injury_rule_combined/1?language=en))
+
 * [Injury Severity Score (ISS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#injury-severity-score-iss) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ISS/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ISS/1?language=sv))
 
 * [Revised Trauma Score (RTS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#revised-trauma-score-rts) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RTS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RTS_combined/1?language=sv))
 
 * [Simplified Motor Score (SMS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#simplified-motor-score-sms) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SMS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SMS_combined/1?language=sv))
 
-* [Trauma Associated Severe Hemorrhage (TASH)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#trauma-associated-severe-hemorrhage-tash) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/TASH_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/TASH_combined/1?language=sv))
+* [Trauma Associated Severe Hemorrhage (TASH.v1)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#trauma-associated-severe-hemorrhage-tashv1) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/TASH_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/TASH_combined/1?language=sv))
 
-* [Canadian CT head injury rule (CCHR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#canadian-ct-head-injurytrauma-rule-cchr) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Canadian_CT_head_injury_rule_combined/1?language=en))
+* [Trauma Associated Severe Hemorrhage (TASH.v2)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#trauma-associated-severe-hemorrhage-tashv2) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TASh_Score/2?language=en))
 
 ----------
 
