@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 217*
+### *Published Apps: 218*
 
 ----------
 
@@ -529,6 +529,8 @@ _Select a medical specialty below to view the available apps._
 * [Manchester Score for small cell lung cancer](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#manchester-score-for-small-cell-lung-cancer) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Manchester_Score_SCC_lung_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Manchester_Score_SCC_lung_combined/1?language=sv))
 
 * [PERC Rule for Pulmonary Embolism](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#perc-rule-for-pulmonary-embolism) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PERC/1?language=en))
+
+* [PSI/PORT Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#psiport-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PSI-PORT_Pneumonia_Risk_Stratification/1?language=en))
 
 * [RAPID Score for Pleural Infection](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rapid-score-for-pleural-infection) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rapid_Score/0?language=en))
 
