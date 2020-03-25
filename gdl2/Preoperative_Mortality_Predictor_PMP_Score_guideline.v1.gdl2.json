@@ -1,5 +1,5 @@
 {
-  "id": "Preoperative_Mortality_Predictor_PMP_Score_guideline.v0",
+  "id": "Preoperative_Mortality_Predictor_PMP_Score_guideline.v1",
   "gdl_version": "2.0",
   "concept": "gt0001",
   "language": {
@@ -104,18 +104,30 @@
         "elements": {
           "gt0004": {
             "id": "gt0004",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
+          }
+        }
+      },
+      "gt0040": {
+        "id": "gt0040",
+        "model_id": "openEHR-EHR-OBSERVATION.preoperative_mortality_predictor_pmp_score.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.preoperative_mortality_predictor_pmp_score.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0041": {
+            "id": "gt0041",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0046]"
           }
         }
       },
-      "gt0031": {
-        "id": "gt0031",
+      "gt0046": {
+        "id": "gt0046",
         "model_id": "openEHR-EHR-EVALUATION.preoperative_mortality_predictor_pmp_score.v0",
         "template_id": "openEHR-EHR-EVALUATION.preoperative_mortality_predictor_pmp_score.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0032": {
-            "id": "gt0032",
+          "gt0047": {
+            "id": "gt0047",
             "path": "/data[at0001]/items[at0002]"
           }
         }
@@ -142,72 +154,8 @@
           "$gt0019|Obesity|!=null"
         ],
         "then": [
-          "$gt0004|Score|.magnitude=$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+($gt0009.value/2)+$gt0010.value+$gt0011.value+$gt0012.value+$gt0013.value+$gt0014.value+$gt0016.value+$gt0017.value+$gt0018.value+$gt0019.value"
-        ]
-      },
-      "gt0034": {
-        "id": "gt0034",
-        "priority": 6,
-        "when": [
-          "$gt0004|Score|>=26",
-          "$gt0004|Score|<=30"
-        ],
-        "then": [
-          "$gt0032|score interpretation|=local::at0021|Risk of perioperative mortality 40.0%|"
-        ]
-      },
-      "gt0035": {
-        "id": "gt0035",
-        "priority": 5,
-        "when": [
-          "$gt0004|Score|>=21",
-          "$gt0004|Score|<=25"
-        ],
-        "then": [
-          "$gt0032|score interpretation|=local::at0020|Risk of perioperative mortality 37.5%|"
-        ]
-      },
-      "gt0036": {
-        "id": "gt0036",
-        "priority": 4,
-        "when": [
-          "$gt0004|Score|>=16",
-          "$gt0004|Score|<=20"
-        ],
-        "then": [
-          "$gt0032|score interpretation|=local::at0019|Risk of perioperative mortality 12.6%|"
-        ]
-      },
-      "gt0037": {
-        "id": "gt0037",
-        "priority": 3,
-        "when": [
-          "$gt0004|Score|>=11",
-          "$gt0004|Score|<=15"
-        ],
-        "then": [
-          "$gt0032|score interpretation|=local::at0018|Risk of perioperative mortality 2.4%|"
-        ]
-      },
-      "gt0038": {
-        "id": "gt0038",
-        "priority": 2,
-        "when": [
-          "$gt0004|Score|>=6",
-          "$gt0004|Score|<=10"
-        ],
-        "then": [
-          "$gt0032|score interpretation|=local::at0017|Risk of perioperative mortality 0.6%|"
-        ]
-      },
-      "gt0039": {
-        "id": "gt0039",
-        "priority": 1,
-        "when": [
-          "$gt0004|Score|<=5"
-        ],
-        "then": [
-          "$gt0032|score interpretation|=local::at0016|Risk of perioperative mortality 0.1%|"
+          "$gt0041|Score|.precision=1",
+          "$gt0041|Score|.magnitude=$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+($gt0009.value/2)+$gt0010.value+$gt0011.value+$gt0012.value+$gt0013.value+$gt0014.value+$gt0016.value+$gt0017.value+$gt0018.value+$gt0019.value"
         ]
       }
     }
@@ -224,7 +172,7 @@
           },
           "gt0004": {
             "id": "gt0004",
-            "text": "Score",
+            "text": "Age, year",
             "description": "*"
           },
           "gt0005": {
@@ -372,6 +320,33 @@
           "gt0039": {
             "id": "gt0039",
             "text": "risk 0.1%"
+          },
+          "gt0041": {
+            "id": "gt0041",
+            "text": "Score",
+            "description": "*"
+          },
+          "gt0043": {
+            "id": "gt0043",
+            "text": "score interpretation",
+            "description": "*"
+          },
+          "gt0044": {
+            "id": "gt0044",
+            "text": "Age"
+          },
+          "gt0045": {
+            "id": "gt0045",
+            "text": "-1 to -5"
+          },
+          "gt0047": {
+            "id": "gt0047",
+            "text": "score interpretation",
+            "description": "*"
+          },
+          "gt0048": {
+            "id": "gt0048",
+            "text": "-1 to -5"
           }
         }
       }
