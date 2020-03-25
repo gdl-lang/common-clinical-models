@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 215*
+### *Published Apps: 217*
 
 ----------
 
@@ -532,6 +532,9 @@ _Select a medical specialty below to view the available apps._
 
 * [RAPID Score for Pleural Infection](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rapid-score-for-pleural-infection) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rapid_Score/0?language=en))
 
+* [Respiratory ECMO Survival Prediction (RESP) Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#respiratory-ecmo-survival-prediction-resp-score-) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RESP_score_respiratory_ecmo_survival_prediction/1?language=en))
+
+* [SMART-COP Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#smart-cop-score-) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SMART-COP_Score/1?language=en))
 ----------
 
 ### Rheumatology
