@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 218*
+### *Published Apps: 219*
 
 ----------
 
@@ -516,6 +516,8 @@ _Select a medical specialty below to view the available apps._
 ### Pulmonology
 
 ----------
+* [ARISCAT](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ariscat) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ARISCAT/1?language=en))
+
 * [du Bois Score for Idiopathic Pulmonary Fibrosis (IPF) Mortality](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#du-bois-score-for-idiopathic-pulmonary-fibrosis-ipf-mortality) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/du_Bois_IPF_combined/1?language=en))
 
 * [BODE Index for COPD Survival](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bode-index-for-copd-survival) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/BODE_Index_COPD_survival/1?language=en))
