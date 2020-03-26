@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 221*
+### *Published Apps: 225*
 
 ----------
 
@@ -190,6 +190,8 @@ _Select a medical specialty below to view the available apps._
 
 * [Rapid emergency medicine score (REMS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rapid-emergency-medicine-score-rems) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/REMS/1?language=en))
 
+* [Shock Index](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#shock-index) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Shock_Index/1?language=en))
+
 * [San Francisco Syncope Rule (SFSR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#san-francisco-syncope-rule-sfsr) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/SFSR/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/SFSR/1?language=sv))
 
 * [Simplified Pulmonary Embolism Severity Index (sPESI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#simplified-pulmonary-embolism-severity-index-spesi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_PESI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_PESI_combined/1?language=sv))
@@ -214,6 +216,8 @@ _Select a medical specialty below to view the available apps._
 * [ABIC Score for Alcoholic Hepatitis](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abic-score-for-alcoholic-hepatitis) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABIC/1?language=en))
 
 * [Child Pugh Score for Cirrhosis Mortality](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#child-pugh-score-for-cirrhosis-mortality) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Child_pugh_score_for_cirrhosis_combined/1?language=en))
+
+* [Harmless Acute Pancreatitis Score (HAPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#harmless-acute-pancreatitis-score-haps) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Harmless_Acute_Pancreatitis_Score/1?language=en))
 
 * [Harvey-Bradshaw Index for Crohn's Disease (HBI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#harvey-bradshaw-index-for-crohns-disease-hbi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HBI/1?language=en))
 
@@ -402,6 +406,8 @@ _Select a medical specialty below to view the available apps._
 
 * [Lansky Play-Performance Scale](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#lansky-play-performance-scale) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Lansky_play_performance_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Lansky_play_performance_combined/1?language=sv))
 
+* [Pediatric Asthma Score (PAS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pediatric-asthma-score-pas) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PAS/1?language=en))
+
 * [Pediatric Crohn's Disease Activity Index (PCDAI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pediatric-crohns-disease-activity-index-pcdai) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PCDAI_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PCDAI_combined/1?language=sv))
 
 * [Pediatric Early Warning Score (PEWS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#strongkids-nutritional-risk-screening) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEWS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEWS_combined/1?language=sv))
@@ -443,6 +449,8 @@ _Select a medical specialty below to view the available apps._
 * [International Prostate Symptom Score (IPSS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#international-prostate-symptom-score-ipss) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IPSS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IPSS_combined/1?language=sv))
 
 * [LDL Calculated](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#ldl-calculated) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LDL/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LDL/1?language=sv))
+
+* [Manning Criteria for IBS](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#manning-criteria-for-ibs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Manning_Criteria_for_IBS/1?language=en))
 
 * [Opioid Risk Tool (ORT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#opioid-risk-tool-ort) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ORT_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ORT_combined/1?language=sv))
 
