@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 220*
+### *Published Apps: 221*
 
 ----------
 
@@ -352,6 +352,8 @@ _Select a medical specialty below to view the available apps._
 ### Oncology
 
 ----------
+* [Asymptomatic Myeloma Prognosis](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#asymptomatic-myeloma-prognosis) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Asymptomatic_Myeloma_Prognosis/1?language=en))
+
 * [ECOG Performance Status](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ecog-performance-status) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ECOG_performance_status/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ECOG_performance_status/1?language=sv))
 
 * [ECOG Zubrod Performance Status](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ecog-zubrod-performance-status) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/ECOG_zubrod_combined/1?language=en))
