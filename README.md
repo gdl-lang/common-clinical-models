@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 227*
+### *Published Apps: 233*
 
 ----------
 
@@ -79,6 +79,8 @@ _Select a medical specialty below to view the available apps._
 ----------
 * [ABC Stroke Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abc-stroke-risk-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABC_stroke_risk_score_combined/1?language=en))
 
+* [ACEF II Risk Score for Cardiac Surgery](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#acef-ii-risk-score-for-cardiac-surgery) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACEF-II_Score/1?language=en))
+
 * [ADAPT Protocol for Cardiac Event Risk](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#adapt-protocol-for-cardiac-event-risk) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ADAPT/1?language=en))
 
 * [ATRIA Bleeding Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#atria-bleeding-risk-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_bleeding_risk_score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_bleeding_risk_score_combined/1?language=sv))
@@ -120,6 +122,8 @@ _Select a medical specialty below to view the available apps._
 * [Infective Endocarditis Mortality Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#infective-endocarditis-mortality-risk-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Infective_endocarditis_mortality_risk_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Infective_endocarditis_mortality_risk_combined/1?language=sv))
 
 * [Mean Arterial Pressure (MAP)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#mean-arterial-pressure-map) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MAP/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MAP/1?language=sv))
+
+* [Modified SOAR Score for Stroke](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#modified-soar-score-for-stroke) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_SOAR_Score_for_Stroke/1?language=en))
 
 * [New York Heart Association Functional Classification (NYHA)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#new-york-heart-association-functional-classification-nyha) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NYHA/1?language=en))
 
@@ -284,6 +288,9 @@ _Select a medical specialty below to view the available apps._
 
 * [Parkland Formula for Burns](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#parkland-formula) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Parkland_formula/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Parkland_formula/1?language=sv))
 
+* [Richmond Agitation Sedation Scale (RASS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#richmond-agitation-sedation-scale-rass) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Richmond_Agitation_Sedation_Scale/1?language=en))
+
+
 * [Sequential Organ Failure Assessment (SOFA)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#sequential-organ-failure-assessment-sofa) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SOFA_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SOFA_combined/1?language=sv))
 ----------
 
@@ -308,6 +315,8 @@ _Select a medical specialty below to view the available apps._
 * [Glomerular Filtration Rate (CKD-EPI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#glomerular-filtration-rate-ckd-epi) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CKD-EPI_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CKD-EPI_combined/1?language=sv))
 
 * [Glomerular Filtration Rate (Cockcroft-Gault)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#glomerular-filtration-rate-cockcroft-gault) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_GFR_Cockcroft_Gault_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_GFR_Cockcroft_Gault_combined/1?language=sv))
+
+* [MDRD GFR Equation](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#mdrd-gfr-equation) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MDRD_GFR_equation/1?language=en))
 
 * [Revised Lund-Malmö eGFR](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#revised-lund-malm%C3%B6-egfr) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LM_Revised_eGFR/0?language=en))
 
@@ -359,6 +368,8 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 * [Asymptomatic Myeloma Prognosis](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#asymptomatic-myeloma-prognosis) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Asymptomatic_Myeloma_Prognosis/1?language=en))
+
+* [Dynamic International Prognostic Scoring System for Myelofibrosis (DIPSS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#dynamic-international-prognostic-scoring-system-for-myelofibrosis-dipss) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Dynamic_International_Prognostic_Scoring_System_for_Myelofibrosis/1?language=en))
 
 * [ECOG Performance Status](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ecog-performance-status) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ECOG_performance_status/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ECOG_performance_status/1?language=sv))
 
@@ -455,6 +466,8 @@ _Select a medical specialty below to view the available apps._
 * [Manning Criteria for IBS](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#manning-criteria-for-ibs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Manning_Criteria_for_IBS/1?language=en))
 
 * [Opioid Risk Tool (ORT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#opioid-risk-tool-ort) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ORT_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ORT_combined/1?language=sv))
+
+* [Prediction of Alcohol Withdrawal Severity Scale](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#prediction-of-alcohol-withdrawal-severity-scale) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prediction_of_Alcohol_Withdrawal_Severity_Scale/1?language=en))
 
 * [ROME III for IBS](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rome-iii-for-ibs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_III_IBS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_III_IBS_combined/1?language=sv))
 
