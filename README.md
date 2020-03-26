@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 225*
+### *Published Apps: 227*
 
 ----------
 
@@ -78,6 +78,8 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 * [ABC Stroke Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abc-stroke-risk-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABC_stroke_risk_score_combined/1?language=en))
+
+* [ADAPT Protocol for Cardiac Event Risk](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#adapt-protocol-for-cardiac-event-risk) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ADAPT/1?language=en))
 
 * [ATRIA Bleeding Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#atria-bleeding-risk-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_bleeding_risk_score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_bleeding_risk_score_combined/1?language=sv))
 
@@ -535,6 +537,8 @@ _Select a medical specialty below to view the available apps._
 * [Bova Score for Pulmonary Embolism Complications](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bova-score-for-pulmonary-embolism-complications) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bova_Score/1?language=en))
 
 * [COPD Assessment Test (CAT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#copd-assessment-test-cat) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CAT_COPD_Assessment_Test/1?language=en))
+
+* [DECAF Score for Acute Exacerbation of COPD](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#decaf-score-for-acute-exacerbation-of-copd) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DECAF_score_COPD/1?language=en))
 
 * [GAP Index](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#gap-index-for-idiopathic-pulmonary-fibrosis-mortality) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Gap_index_for_IPF_mortality_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Gap_index_for_IPF_mortality_combined/1?language=sv))
 
