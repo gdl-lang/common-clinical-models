@@ -10,13 +10,15 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 233*
+### *Published Apps: 240*
 
 ----------
 
 ### Categories by specialty
 
 _Select a medical specialty below to view the available apps._
+
+[Anesthesia](https://github.com/gdl-lang/common-clinical-models#anesthesia)
 
 [Cardiology](https://github.com/gdl-lang/common-clinical-models#cardiology)
 
@@ -56,6 +58,8 @@ _Select a medical specialty below to view the available apps._
 
 [Rheumatology](https://github.com/gdl-lang/common-clinical-models#rheumatology)
 
+[Surgery](https://github.com/gdl-lang/common-clinical-models#surgery)
+
 [Trauma Care](https://github.com/gdl-lang/common-clinical-models#trauma-care)
 
 [Urology](https://github.com/gdl-lang/common-clinical-models#urology)
@@ -74,10 +78,19 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 
+### Anesthesia
+
+----------
+* [El-Ganzouri Risk Index for Difficult Airway (EGRI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#el-ganzouri-risk-index-for-difficult-airway-egri) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EGRI/1?language=en))
+
+----------
+
 ### Cardiology
 
 ----------
 * [ABC Stroke Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abc-stroke-risk-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABC_stroke_risk_score_combined/1?language=en))
+
+* [ACC/AHA Heart Failure Staging](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#accaha-heart-failure-staging) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACC-AHA_Heart_Failure_Staging/1?language=en))
 
 * [ACEF II Risk Score for Cardiac Surgery](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#acef-ii-risk-score-for-cardiac-surgery) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACEF-II_Score/1?language=en))
 
@@ -128,6 +141,8 @@ _Select a medical specialty below to view the available apps._
 * [New York Heart Association Functional Classification (NYHA)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#new-york-heart-association-functional-classification-nyha) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NYHA/1?language=en))
 
 * [Padua Prediction Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#padua-prediction-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Padua_prediction_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Padua_prediction_combined/1?language=sv))
+
+* [Rapid Arterial oCclusion Evaluation Scale for Stroke (RACE)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rapid-arterial-occlusion-evaluation-scale-for-stroke-race) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RACE/1?language=en))
 
 * [Rated Perceived Exertion Scale](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rated-perceived-exertion-scale) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rated_perceived_exertion_scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rated_perceived_exertion_scale/1?language=sv))
 
@@ -233,6 +248,8 @@ _Select a medical specialty below to view the available apps._
 
 * [Ranson's Criteria for Pancreatitis Mortality](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ransons-criteria-for-pancreatitis-mortality) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality_combined/1?language=sv))
 
+* [Simplified Autoimmune Hepatitis (AIH) Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#simplified-autoimmune-hepatitis-aih-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_Autoimmune_Hepatitis_AIH_Score_guideline/1?language=en))
+
 ----------
 
 ### Geriatrics
@@ -262,6 +279,8 @@ _Select a medical specialty below to view the available apps._
 * [Absolute Lymphocyte Count (ALC)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#absolute-lymphocyte-count-alc)) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Absolute_Lymphocyte_Count/1?language=en))
 
 * [Absolute Neutrophil Count (ANC)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#absolute-neutrophil-count-anc)) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ANC/1?language=en))
+
+* [Ganzoni Equation for Iron Deficiency Anemia](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ganzoni-equation-for-iron-deficiency-anemia)) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ganzoni_equation_for_iron_deficiency_anemia/1?language=en))
 
 ----------
 
@@ -447,6 +466,8 @@ _Select a medical specialty below to view the available apps._
 
 * [Centor Criteria](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#centor-criteria) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Centor_Criteria/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Centor_Criteria/1?language=sv))
 
+* [Denver HIV Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#denver-hiv-risk-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Denver_HIV_Risk_Score_guideline/1?language=en))
+
 * [Dutch Lipid Clinic Network Criteria (DLCN)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#dutch-lipid-clinic-network-criteria-dlcn) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DLCN_score_combined/1?language=en))
 
 * [Electronic Frailty Index](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#electronic-frailty-index-efi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Electronic_Frailty_Index_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Electronic_Frailty_Index_combined/1?language=sv))
@@ -584,6 +605,13 @@ _Select a medical specialty below to view the available apps._
 * [Jones Criteria for Acute Rheumatic Fever Diagnosis](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#jones-criteria-for-acute-rheumatic-fever-diagnosis) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/JonesCriteria/1?language=en))
 
 * [Simplified Disease Activity Index (SDAI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#simplified-disease-activity-index-sdai) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SDAI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SDAI_combined/1?language=sv))
+
+----------
+
+### Surgery
+
+----------
+* [Surgical Apgar Score for Postoperative Risk (SAS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#surgical-apgar-score-for-postoperative-risk-sas) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Surgical_Apgar_Score_SAS_for_Postoperative_Risk/1?language=en))
 
 ----------
 
