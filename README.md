@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 240*
+### *Published Apps: 247*
 
 ----------
 
@@ -305,6 +305,10 @@ _Select a medical specialty below to view the available apps._
 
 * [National Early Warning Score (NEWS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#national-early-warning-score-news) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEWS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEWS_combined/1?language=sv))
 
+* [National Early Warning Score 2 (NEWS2)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#national-early-warning-score-2-news2) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEWS2/1?language=en))
+
+* [Nonverbal Pain Scale (NVPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#nonverbal-pain-scale-nvps) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Nonverbal_Pain_Scale_NVPS_for_Nonverbal_Patients_guideline/1?language=en))
+
 * [Parkland Formula for Burns](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#parkland-formula) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Parkland_formula/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Parkland_formula/1?language=sv))
 
 * [Richmond Agitation Sedation Scale (RASS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#richmond-agitation-sedation-scale-rass) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Richmond_Agitation_Sedation_Scale/1?language=en))
@@ -348,6 +352,8 @@ _Select a medical specialty below to view the available apps._
 
 * [ABC/2 Formula for Intracerebral Hemorrhage Volume](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abc2-formula-for-intracerebral-hemorrhage-volume) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABC_div_2/1?language=en))
 
+* [ASTRAL Score for Ischemic Stroke](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#astral-score-for-ischemic-stroke) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASTRAL_Score_for_Ischemic_Stroke_guideline/1?language=en))
+
 * [Bacterial Meningitis Score for Children](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bacterial-meningitis-score-for-children) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bacterial_Meningitis_Score_for_Children/1?language=en))
 
 * [Douleur Neuropathique 4 (DN4)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#douleur-neuropathique-4-questions-dn4) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DN4_combined/1?language=en))
@@ -372,6 +378,7 @@ _Select a medical specialty below to view the available apps._
 
 * [Neuropathy Pain Scale (NPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#neuropathy-pain-scale-nps) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neuropathy_pain_scale/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neuropathy_pain_scale/1?language=sv))
 
+* [Webster Rating Scale for Parkinson’s Disease](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#webster-rating-scale-for-parkinsons-disease) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Webster_Rating_Scale_for_Parkinsons_Disease_guideline/1?language=en))
 ----------
 ### Obstetrics
 
@@ -480,11 +487,15 @@ _Select a medical specialty below to view the available apps._
 
 * [Ideal Body Weight (IBW)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#ideal-body-weight-ibw) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/IBW/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/IBW/1?language=sv))
 
+* [INTERCHEST](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#interchest) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/INTERCHEST/1?language=en))
+
 * [International Prostate Symptom Score (IPSS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#international-prostate-symptom-score-ipss) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IPSS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IPSS_combined/1?language=sv))
 
 * [LDL Calculated](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#ldl-calculated) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LDL/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LDL/1?language=sv))
 
 * [Manning Criteria for IBS](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#manning-criteria-for-ibs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Manning_Criteria_for_IBS/1?language=en))
+
+* [Marburg Heart Score (MHS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#marburg-heart-score-mhs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Marburg_Heart_Score/1?language=en))
 
 * [Opioid Risk Tool (ORT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#opioid-risk-tool-ort) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ORT_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ORT_combined/1?language=sv))
 
@@ -641,6 +652,8 @@ _Select a medical specialty below to view the available apps._
 ### Urology
 
 ----------
+* [Revised Urinary Incontinence Scale (RUIS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#revised-urinary-incontinence-scale-ruis) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_urinary_incontinence_scale_ruis_guideline/1?language=en))
+
 * [Urine output fluid balance](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#urine-output-fluid-balance) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urine_output_fluid_balance_Calculation/1?language=en))
 
 ----------
