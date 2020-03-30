@@ -622,6 +622,8 @@ _Select a medical specialty below to view the available apps._
 ### Surgery
 
 ----------
+* [Preoperative Mortality Predictor Score (PMP)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#preoperative-mortality-predictor-score-pmp) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Preoperative_Mortality_Predictor_PMP_Score_guideline/1?language=en))
+
 * [Surgical Apgar Score for Postoperative Risk (SAS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#surgical-apgar-score-for-postoperative-risk-sas) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Surgical_Apgar_Score_SAS_for_Postoperative_Risk/1?language=en))
 
 ----------
