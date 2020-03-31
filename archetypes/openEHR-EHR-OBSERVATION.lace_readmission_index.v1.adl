@@ -32,7 +32,7 @@ The LACE Index takes into account these parameters:
 	other_details = <
 		["references"] = <"1. Van Walraven C, Dhalla IA, Bell C, et al. Derivation and validation of an index to predict early death or unplanned readmission after discharge from hospital to the community. CMAJ : Canadian Medical Association Journal. 2010;182(6):551-557. doi:10.1503/cmaj.091117.
 2. Gruneir A, Dhalla IA, van Walraven C, Fischer HD, Camacho X, Rochon PA, Anderson GM. Unplanned readmissions after hospital discharge among patients identified as being at high risk for readmission using a validated predictive algorithm. Open Med. 2011;5(2):e104-11.">
-		["MD5-CAM-1.0.1"] = <"0B9CF73C0929381933DB8F6505BCD4BB">
+		["MD5-CAM-1.0.1"] = <"BA236F713744B9E9A3E50DE6AFF19D78">
 	>
 
 definition
@@ -44,25 +44,15 @@ definition
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Length of Stay
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Length of Stay
 										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::128]>
-												list = <
-													["1"] = <
-														units = <"d">
-														magnitude = <|>=0.0|>
-														precision = <|0|>
-													>
-												>
-											>
-										}
-									}
-									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Length of Stay contribution points
-										value matches {
-											DV_COUNT matches {
-												magnitude matches {|>=0|}
-											}
+											0|[local::at0037], 	-- <1 day
+											1|[local::at0021], 	-- 1 day
+											2|[local::at0022], 	-- 2 days
+											3|[local::at0023], 	-- 3 days
+											4|[local::at0024], 	-- 4 - 6 days
+											5|[local::at0025], 	-- 7 - 13 days
+											7|[local::at0026]  	-- ≥14 days
 										}
 									}
 									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Admission type
@@ -71,18 +61,22 @@ definition
 											3|[local::at0009]  	-- Acute / Emergent
 										}
 									}
-									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Charlson Comorbidity Index
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Charlson Comorbidity Index
 										value matches {
-											DV_COUNT matches {
-												magnitude matches {|>=0|}
-											}
+											0|[local::at0027], 	-- 0 point
+											1|[local::at0028], 	-- 1 point
+											2|[local::at0029], 	-- 2 points
+											3|[local::at0030], 	-- 3 points
+											5|[local::at0031]  	-- ≥4 points
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Number of previous ED visits within 6 months
+									ELEMENT[at0020] occurrences matches {0..1} matches {	-- Number of previous ED visits within 6 months
 										value matches {
-											DV_COUNT matches {
-												magnitude matches {|>=0|}
-											}
+											0|[local::at0032], 	-- 0
+											1|[local::at0033], 	-- 1
+											2|[local::at0034], 	-- 2
+											3|[local::at0035], 	-- 3
+											4|[local::at0036]  	-- ≥4
 										}
 									}
 									ELEMENT[at0012] occurrences matches {0..1} matches {	-- LACE Index Score
@@ -135,20 +129,84 @@ ontology
 					text = <"LACE Index Score">
 					description = <"*">
 				>
-				["at0013"] = <
+				["at0018"] = <
 					text = <"Length of Stay">
-					description = <"Number of hospitalisation days starting from the admission date.">
+					description = <"*">
 				>
-				["at0014"] = <
-					text = <"Number of previous ED visits within 6 months">
-					description = <"Number of previous Emergency Department visits in the last 6 months, excluding the current admission.">
-				>
-				["at0015"] = <
+				["at0019"] = <
 					text = <"Charlson Comorbidity Index">
 					description = <"*">
 				>
-				["at0016"] = <
-					text = <"Length of Stay contribution points">
+				["at0020"] = <
+					text = <"Number of previous ED visits within 6 months">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"1 day">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"2 days">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"3 days">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"4 - 6 days">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"7 - 13 days">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"≥14 days">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"0 point">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"1 point">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"2 points">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"3 points">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"≥4 points">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"0">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"1">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"2">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"3">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"≥4">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"<1 day">
 					description = <"*">
 				>
 			>

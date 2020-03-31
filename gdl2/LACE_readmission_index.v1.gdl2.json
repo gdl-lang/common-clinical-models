@@ -35,55 +35,27 @@
   },
   "definition": {
     "data_bindings": {
-      "gt0002": {
-        "id": "gt0002",
-        "model_id": "openEHR-EHR-EVALUATION.contact.v1",
-        "template_id": "openEHR-EHR-EVALUATION.contact.v1",
-        "type": "INPUT",
-        "elements": {
-          "gt0003": {
-            "id": "gt0003",
-            "path": "/data[at0001]/items[at0003]"
-          },
-          "gt0036": {
-            "id": "gt0036",
-            "path": "/data[at0001]/items[at0004]"
-          }
-        }
-      },
       "gt0004": {
         "id": "gt0004",
         "model_id": "openEHR-EHR-OBSERVATION.lace_readmission_index.v1",
         "template_id": "openEHR-EHR-OBSERVATION.lace_readmission_index.v1",
         "type": "INPUT",
         "elements": {
+          "gt0068": {
+            "id": "gt0068",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0018]"
+          },
           "gt0005": {
             "id": "gt0005",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
-          }
-        }
-      },
-      "gt0006": {
-        "id": "gt0006",
-        "model_id": "openEHR-EHR-OBSERVATION.cci_scoring_system.v1",
-        "template_id": "openEHR-EHR-OBSERVATION.cci_scoring_system.v1",
-        "type": "INPUT",
-        "elements": {
-          "gt0007": {
-            "id": "gt0007",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0023]"
-          }
-        }
-      },
-      "gt0008": {
-        "id": "gt0008",
-        "model_id": "openEHR-EHR-OBSERVATION.lace_readmission_index.v1",
-        "template_id": "openEHR-EHR-OBSERVATION.lace_readmission_index.v1",
-        "type": "INPUT",
-        "elements": {
-          "gt0009": {
-            "id": "gt0009",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
+          },
+          "gt0067": {
+            "id": "gt0067",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0019]"
+          },
+          "gt0060": {
+            "id": "gt0060",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0020]"
           }
         }
       },
@@ -93,29 +65,9 @@
         "template_id": "openEHR-EHR-OBSERVATION.lace_readmission_index.v1",
         "type": "OUTPUT",
         "elements": {
-          "gt0013": {
-            "id": "gt0013",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0015]"
-          },
-          "gt0020": {
-            "id": "gt0020",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
-          },
-          "gt0021": {
-            "id": "gt0021",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
-          },
           "gt0028": {
             "id": "gt0028",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0012]"
-          },
-          "gt0030": {
-            "id": "gt0030",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0016]"
           }
         }
       },
@@ -137,122 +89,17 @@
       }
     },
     "rules": {
-      "gt0019": {
-        "id": "gt0019",
-        "priority": 33,
-        "when": [
-          "$gt0003|Date of admission|!=null",
-          "$gt0036|Date of discharge|!=null"
-        ],
-        "then": [
-          "$gt0013|Length of Stay|.magnitude=($gt0036-$gt0003)/1,d",
-          "$gt0013|Length of Stay|.precision=0",
-          "$gt0013|Length of Stay|.unit='d'"
-        ]
-      },
-      "gt0029": {
-        "id": "gt0029",
-        "priority": 32,
-        "when": [
-          "$gt0013|Length of Stay|<=3,d"
-        ],
-        "then": [
-          "$gt0030|Length of Stay contribution points|.magnitude=$gt0013.magnitude"
-        ]
-      },
-      "gt0031": {
-        "id": "gt0031",
-        "priority": 31,
-        "when": [
-          "$gt0013|Length of Stay|>=4,d",
-          "$gt0013|Length of Stay|<=6,d"
-        ],
-        "then": [
-          "$gt0030|Length of Stay contribution points|=4"
-        ]
-      },
-      "gt0032": {
-        "id": "gt0032",
-        "priority": 30,
-        "when": [
-          "$gt0013|Length of Stay|>=7,d",
-          "$gt0013|Length of Stay|<=13,d"
-        ],
-        "then": [
-          "$gt0030|Length of Stay contribution points|=5"
-        ]
-      },
-      "gt0033": {
-        "id": "gt0033",
-        "priority": 29,
-        "when": [
-          "$gt0013|Length of Stay|>=14,d"
-        ],
-        "then": [
-          "$gt0030|Length of Stay contribution points|=7"
-        ]
-      },
-      "gt0022": {
-        "id": "gt0022",
-        "priority": 28,
-        "when": [
-          "$gt0005|Admission type|!=null"
-        ],
-        "then": [
-          "$gt0020|Admission type|=$gt0005|Admission type|"
-        ]
-      },
-      "gt0023": {
-        "id": "gt0023",
-        "priority": 27,
-        "when": [
-          "$gt0007|Charlson Comorbidity Index|<4"
-        ],
-        "then": [
-          "$gt0015|CCI output|.magnitude=$gt0007*1"
-        ]
-      },
-      "gt0024": {
-        "id": "gt0024",
-        "priority": 26,
-        "when": [
-          "$gt0007|Charlson Comorbidity Index|>=4"
-        ],
-        "then": [
-          "$gt0015|CCI output|.magnitude=5"
-        ]
-      },
-      "gt0025": {
-        "id": "gt0025",
-        "priority": 25,
-        "when": [
-          "$gt0009|Number of previous ED visits within 6 months|<=3"
-        ],
-        "then": [
-          "$gt0021|Number of previous ED visits within 6 months|.magnitude=$gt0009*1"
-        ]
-      },
-      "gt0026": {
-        "id": "gt0026",
-        "priority": 24,
-        "when": [
-          "$gt0009|Number of previous ED visits within 6 months|>=4"
-        ],
-        "then": [
-          "$gt0021|Number of previous ED visits within 6 months|=4"
-        ]
-      },
       "gt0027": {
         "id": "gt0027",
         "priority": 23,
         "when": [
-          "$gt0013|Length of Stay|!=null",
-          "$gt0015|CCI output|!=null",
-          "$gt0020|Admission type|!=null",
-          "$gt0021|Number of previous ED visits within 6 months|!=null"
+          "$gt0068|Length of Stay|!=null",
+          "$gt0067|Charlson Comorbidity Index|!=null",
+          "$gt0005|Admission type|!=null",
+          "$gt0060|Number of previous ED visits within 6 months|!=null"
         ],
         "then": [
-          "$gt0028|LACE Index Score|.magnitude=$gt0030+$gt0020.value+$gt0015+$gt0021"
+          "$gt0028|LACE Index Score|.magnitude=$gt0068.value+$gt0005.value+$gt0067.value+$gt0060.value"
         ]
       },
       "gt0034": {
@@ -557,7 +404,7 @@
           },
           "gt0023": {
             "id": "gt0023",
-            "text": "Set CCI output if input <=3 points"
+            "text": "Set CCI output if input 0 point"
           },
           "gt0024": {
             "id": "gt0024",
@@ -582,7 +429,7 @@
           },
           "gt0029": {
             "id": "gt0029",
-            "text": "Set LOS contribution if LOS <=3 days"
+            "text": "Set LOS contribution if LOS 1 day"
           },
           "gt0030": {
             "id": "gt0030",
@@ -693,6 +540,60 @@
           "gt0056": {
             "id": "gt0056",
             "text": "Set expected risk LACE index 19"
+          },
+          "gt0057": {
+            "id": "gt0057",
+            "text": "Length of Stay",
+            "description": "*"
+          },
+          "gt0058": {
+            "id": "gt0058",
+            "text": "Charlson Comorbidity Index",
+            "description": "*"
+          },
+          "gt0059": {
+            "id": "gt0059",
+            "text": "Number of previous ED visits within 6 months",
+            "description": "*"
+          },
+          "gt0060": {
+            "id": "gt0060",
+            "text": "Number of previous ED visits within 6 months",
+            "description": "*"
+          },
+          "gt0061": {
+            "id": "gt0061",
+            "text": "Set LOS contribution if LOS 2 days"
+          },
+          "gt0062": {
+            "id": "gt0062",
+            "text": "Set LOS contribution if LOS 3 days"
+          },
+          "gt0063": {
+            "id": "gt0063",
+            "text": "Set CCI output if input 1 point"
+          },
+          "gt0064": {
+            "id": "gt0064",
+            "text": "Set CCI output if input 2 points"
+          },
+          "gt0065": {
+            "id": "gt0065",
+            "text": "Set CCI output if input 3 points"
+          },
+          "gt0066": {
+            "id": "gt0066",
+            "text": "Set LOS contribution if LOS <1 day"
+          },
+          "gt0067": {
+            "id": "gt0067",
+            "text": "Charlson Comorbidity Index",
+            "description": "*"
+          },
+          "gt0068": {
+            "id": "gt0068",
+            "text": "Length of Stay",
+            "description": "*"
           }
         }
       }
