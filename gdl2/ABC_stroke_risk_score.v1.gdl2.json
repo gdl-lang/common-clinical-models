@@ -1,0 +1,1987 @@
+{
+  "id": "ABC_stroke_risk_score.v1",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2016-11-18",
+      "name": "Eneimi Allwell-Brown",
+      "organisation": "Cambio Healthcare Systems",
+      "email": "models@cambiocds.com"
+    },
+    "other_contributors": [
+      "Dennis Forslund",
+      "Jimmy Axelsson",
+      "Daniel Keszthelyi"
+    ],
+    "lifecycle_state": "Author draft",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "Nomogram based calculation of the ABC-stroke risk score, for subsequent prediction of 1-year and 3-year risk of stroke or systemic embolism in individual's with atrial fibrillation. In contrast with CHA2DS2-VASc score that uses categorical irreversible risk factors, the ABC-stroke score includes specific cardiac-derived biomarkers that make it a more dynamic entity with continuous risk variables, more accurate, and providing more information about subclinical cardiovascular dysfunction and vascular vulnerability.",
+        "keywords": [
+          "atrial fibrillation",
+          "stroke risk",
+          "systemic embolism risk"
+        ],
+        "use": "Use to calculate the ABC-stroke score which is a nomogram based sum total of the points assigned for the presence or absence of a prior stroke/TIA in the individual, the age, and the plasma concentrations of the cardiac enzyme cTnT-hs and cardiac hormone NT-proBNP. \r\nValid age range = 44 - 90 (years)\r\nValid cTnT-hs range = 1 - 180 (ng/L)\r\nValid NT-proBNP range = 25 - 5900 (ng/L)\r\nABC-stroke score = (((cTnT-hs points + Age points) + NT-proBNP points) + Prior stroke or transient ischaemic attack points)\r\nMinimum ABC-stroke score = 0.0 and maximum = 30.0. The calculated score is further used to predict the 1-year and 3-year risk of stroke/SE. ",
+        "misuse": "Do not use this calculator if the individual does not have atrial fibrillation.",
+        "copyright": "© Cambio Healthcare Systems"
+      }
+    },
+    "other_details": {
+      "references": "Hijazi Z, Lindbäck J, Alexander JH, Hanna M, Held C, Hylek EM, Lopes RD, Oldgren J, Siegbahn A, Stewart RA, White HD. The ABC (age, biomarkers, clinical history) stroke risk score: a biomarker-based risk score for predicting stroke in atrial fibrillation. European heart journal. 2016 May 21;37(20):1582-90."
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0003": {
+        "id": "gt0003",
+        "model_id": "openEHR-EHR-OBSERVATION.history_prior_stroke_tia.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.history_prior_stroke_tia.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          }
+        }
+      },
+      "gt0005": {
+        "id": "gt0005",
+        "model_id": "openEHR-EHR-OBSERVATION.abc_stroke_risk_score.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.abc_stroke_risk_score.v1",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
+          },
+          "gt0033": {
+            "id": "gt0033",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
+          },
+          "gt0046": {
+            "id": "gt0046",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
+          },
+          "gt0082": {
+            "id": "gt0082",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
+          }
+        }
+      },
+      "gt0009": {
+        "id": "gt0009",
+        "model_id": "openEHR-EHR-OBSERVATION.lab_test-cardiac_enzymes.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.lab_test-cardiac_enzymes.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0010": {
+            "id": "gt0010",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0.91]"
+          }
+        }
+      },
+      "gt0031": {
+        "id": "gt0031",
+        "model_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0032": {
+            "id": "gt0032",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
+          }
+        }
+      },
+      "gt0044": {
+        "id": "gt0044",
+        "model_id": "openEHR-EHR-OBSERVATION.lab_test-cardiac_hormones.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.lab_test-cardiac_hormones.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0045": {
+            "id": "gt0045",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0.94]"
+          }
+        }
+      },
+      "gt0085": {
+        "id": "gt0085",
+        "model_id": "openEHR-EHR-EVALUATION.abc_stroke_risk.v1",
+        "template_id": "openEHR-EHR-EVALUATION.abc_stroke_risk.v1",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0086": {
+            "id": "gt0086",
+            "path": "/data[at0001]/items[at0002]"
+          },
+          "gt0087": {
+            "id": "gt0087",
+            "path": "/data[at0001]/items[at0003]"
+          },
+          "gt0088": {
+            "id": "gt0088",
+            "path": "/data[at0001]/items[at0004]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0002": {
+        "id": "gt0002",
+        "priority": 115,
+        "when": [
+          "$gt0004|Prior stroke/TIA|==0|local::at0007|No|"
+        ],
+        "then": [
+          "$gt0006|Prior stroke or transient ischaemic attack points|=0"
+        ]
+      },
+      "gt0007": {
+        "id": "gt0007",
+        "priority": 114,
+        "when": [
+          "$gt0004|Prior stroke/TIA|==1|local::at0008|Yes|"
+        ],
+        "then": [
+          "$gt0006|Prior stroke or transient ischaemic attack points|=5.5"
+        ]
+      },
+      "gt0008": {
+        "id": "gt0008",
+        "priority": 113,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude<=1"
+        ],
+        "then": [
+          "$gt0011|cTnT-hs points|.magnitude=0"
+        ]
+      },
+      "gt0012": {
+        "id": "gt0012",
+        "priority": 112,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude<=2",
+          "$gt0010|cTnT-hs concentration|.magnitude>1"
+        ],
+        "then": [
+          "$gt0011|cTnT-hs points|.magnitude=0.75"
+        ]
+      },
+      "gt0013": {
+        "id": "gt0013",
+        "priority": 111,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude<=5",
+          "$gt0010|cTnT-hs concentration|.magnitude>2"
+        ],
+        "then": [
+          "$gt0011|cTnT-hs points|.magnitude=1.75"
+        ]
+      },
+      "gt0014": {
+        "id": "gt0014",
+        "priority": 110,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude<=7.5",
+          "$gt0010|cTnT-hs concentration|.magnitude>5"
+        ],
+        "then": [
+          "$gt0011|cTnT-hs points|.magnitude=2.125"
+        ]
+      },
+      "gt0015": {
+        "id": "gt0015",
+        "priority": 109,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude<=10",
+          "$gt0010|cTnT-hs concentration|.magnitude>7.5"
+        ],
+        "then": [
+          "$gt0011|cTnT-hs points|.magnitude=2.5"
+        ]
+      },
+      "gt0016": {
+        "id": "gt0016",
+        "priority": 108,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude<=15",
+          "$gt0010|cTnT-hs concentration|.magnitude>10"
+        ],
+        "then": [
+          "$gt0011|cTnT-hs points|.magnitude=2.812"
+        ]
+      },
+      "gt0017": {
+        "id": "gt0017",
+        "priority": 107,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude<=20",
+          "$gt0010|cTnT-hs concentration|.magnitude>15"
+        ],
+        "then": [
+          "$gt0011|cTnT-hs points|.magnitude=3.125"
+        ]
+      },
+      "gt0018": {
+        "id": "gt0018",
+        "priority": 106,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude<=25",
+          "$gt0010|cTnT-hs concentration|.magnitude>20"
+        ],
+        "then": [
+          "$gt0011|cTnT-hs points|.magnitude=3.438"
+        ]
+      },
+      "gt0019": {
+        "id": "gt0019",
+        "priority": 105,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude<=30",
+          "$gt0010|cTnT-hs concentration|.magnitude>25"
+        ],
+        "then": [
+          "$gt0011|cTnT-hs points|.magnitude=3.75"
+        ]
+      },
+      "gt0020": {
+        "id": "gt0020",
+        "priority": 104,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude<=39",
+          "$gt0010|cTnT-hs concentration|.magnitude>30"
+        ],
+        "then": [
+          "$gt0011|cTnT-hs points|.magnitude=3.95"
+        ]
+      },
+      "gt0021": {
+        "id": "gt0021",
+        "priority": 103,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude<=48",
+          "$gt0010|cTnT-hs concentration|.magnitude>39"
+        ],
+        "then": [
+          "$gt0011|cTnT-hs points|.magnitude=4.15"
+        ]
+      },
+      "gt0022": {
+        "id": "gt0022",
+        "priority": 102,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude<=57",
+          "$gt0010|cTnT-hs concentration|.magnitude>48"
+        ],
+        "then": [
+          "$gt0011|cTnT-hs points|.magnitude=4.35"
+        ]
+      },
+      "gt0023": {
+        "id": "gt0023",
+        "priority": 101,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude<=66",
+          "$gt0010|cTnT-hs concentration|.magnitude>57"
+        ],
+        "then": [
+          "$gt0011|cTnT-hs points|.magnitude=4.55"
+        ]
+      },
+      "gt0024": {
+        "id": "gt0024",
+        "priority": 100,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude<=75",
+          "$gt0010|cTnT-hs concentration|.magnitude>66"
+        ],
+        "then": [
+          "$gt0011|cTnT-hs points|.magnitude=4.75"
+        ]
+      },
+      "gt0025": {
+        "id": "gt0025",
+        "priority": 99,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude<=96",
+          "$gt0010|cTnT-hs concentration|.magnitude>75"
+        ],
+        "then": [
+          "$gt0011|cTnT-hs points|.magnitude=4.95"
+        ]
+      },
+      "gt0026": {
+        "id": "gt0026",
+        "priority": 98,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude<=117",
+          "$gt0010|cTnT-hs concentration|.magnitude>96"
+        ],
+        "then": [
+          "$gt0011|cTnT-hs points|.magnitude=5.15"
+        ]
+      },
+      "gt0027": {
+        "id": "gt0027",
+        "priority": 97,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude<=138",
+          "$gt0010|cTnT-hs concentration|.magnitude>117"
+        ],
+        "then": [
+          "$gt0011|cTnT-hs points|.magnitude=5.35"
+        ]
+      },
+      "gt0028": {
+        "id": "gt0028",
+        "priority": 96,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude<=159",
+          "$gt0010|cTnT-hs concentration|.magnitude>138"
+        ],
+        "then": [
+          "$gt0011|cTnT-hs points|.magnitude=5.55"
+        ]
+      },
+      "gt0029": {
+        "id": "gt0029",
+        "priority": 95,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude<=180",
+          "$gt0010|cTnT-hs concentration|.magnitude>159"
+        ],
+        "then": [
+          "$gt0011|cTnT-hs points|.magnitude=5.75"
+        ]
+      },
+      "gt0030": {
+        "id": "gt0030",
+        "priority": 94,
+        "when": [
+          "$gt0032|Birthdate|>=($currentDateTime-44,a)"
+        ],
+        "then": [
+          "$gt0033|Age points|=0"
+        ]
+      },
+      "gt0034": {
+        "id": "gt0034",
+        "priority": 93,
+        "when": [
+          "$gt0032|Birthdate|<($currentDateTime-44,a)",
+          "$gt0032|Birthdate|>=($currentDateTime-50,a)"
+        ],
+        "then": [
+          "$gt0033|Age points|=0.375"
+        ]
+      },
+      "gt0035": {
+        "id": "gt0035",
+        "priority": 92,
+        "when": [
+          "$gt0032|Birthdate|<($currentDateTime-50,a)",
+          "$gt0032|Birthdate|>=($currentDateTime-55,a)"
+        ],
+        "then": [
+          "$gt0033|Age points|=0.75"
+        ]
+      },
+      "gt0036": {
+        "id": "gt0036",
+        "priority": 91,
+        "when": [
+          "$gt0032|Birthdate|<($currentDateTime-55,a)",
+          "$gt0032|Birthdate|>=($currentDateTime-60,a)"
+        ],
+        "then": [
+          "$gt0033|Age points|=1.062"
+        ]
+      },
+      "gt0037": {
+        "id": "gt0037",
+        "priority": 90,
+        "when": [
+          "$gt0032|Birthdate|<($currentDateTime-60,a)",
+          "$gt0032|Birthdate|>=($currentDateTime-65,a)"
+        ],
+        "then": [
+          "$gt0033|Age points|=1.375"
+        ]
+      },
+      "gt0038": {
+        "id": "gt0038",
+        "priority": 89,
+        "when": [
+          "$gt0032|Birthdate|<($currentDateTime-65,a)",
+          "$gt0032|Birthdate|>=($currentDateTime-70,a)"
+        ],
+        "then": [
+          "$gt0033|Age points|=1.75"
+        ]
+      },
+      "gt0039": {
+        "id": "gt0039",
+        "priority": 88,
+        "when": [
+          "$gt0032|Birthdate|<($currentDateTime-70,a)",
+          "$gt0032|Birthdate|>=($currentDateTime-75,a)"
+        ],
+        "then": [
+          "$gt0033|Age points|=2.125"
+        ]
+      },
+      "gt0040": {
+        "id": "gt0040",
+        "priority": 87,
+        "when": [
+          "$gt0032|Birthdate|<($currentDateTime-75,a)",
+          "$gt0032|Birthdate|>=($currentDateTime-80,a)"
+        ],
+        "then": [
+          "$gt0033|Age points|=2.458"
+        ]
+      },
+      "gt0041": {
+        "id": "gt0041",
+        "priority": 86,
+        "when": [
+          "$gt0032|Birthdate|<($currentDateTime-80,a)",
+          "$gt0032|Birthdate|>=($currentDateTime-85,a)"
+        ],
+        "then": [
+          "$gt0033|Age points|=2.791"
+        ]
+      },
+      "gt0042": {
+        "id": "gt0042",
+        "priority": 85,
+        "when": [
+          "$gt0032|Birthdate|<($currentDateTime-85,a)",
+          "$gt0032|Birthdate|>=($currentDateTime-90,a)"
+        ],
+        "then": [
+          "$gt0033|Age points|=3.125"
+        ]
+      },
+      "gt0043": {
+        "id": "gt0043",
+        "priority": 84,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=25,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=0"
+        ]
+      },
+      "gt0047": {
+        "id": "gt0047",
+        "priority": 83,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=30,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>25,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=0.263"
+        ]
+      },
+      "gt0048": {
+        "id": "gt0048",
+        "priority": 82,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=35,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>30,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=0.525"
+        ]
+      },
+      "gt0049": {
+        "id": "gt0049",
+        "priority": 81,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=40,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>35,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=0.787"
+        ]
+      },
+      "gt0050": {
+        "id": "gt0050",
+        "priority": 80,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=45,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>40,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=1.05"
+        ]
+      },
+      "gt0051": {
+        "id": "gt0051",
+        "priority": 79,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=50,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>45,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=1.312"
+        ]
+      },
+      "gt0052": {
+        "id": "gt0052",
+        "priority": 78,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=60,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>50,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=1.562"
+        ]
+      },
+      "gt0053": {
+        "id": "gt0053",
+        "priority": 77,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=70,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>60,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=1.812"
+        ]
+      },
+      "gt0054": {
+        "id": "gt0054",
+        "priority": 76,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=80,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>70,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=2.062"
+        ]
+      },
+      "gt0055": {
+        "id": "gt0055",
+        "priority": 75,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=90,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>80,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=2.312"
+        ]
+      },
+      "gt0056": {
+        "id": "gt0056",
+        "priority": 74,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=100,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>90,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=2.562"
+        ]
+      },
+      "gt0057": {
+        "id": "gt0057",
+        "priority": 73,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=125,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>100,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=2.875"
+        ]
+      },
+      "gt0058": {
+        "id": "gt0058",
+        "priority": 72,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=150,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>125,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=3.188"
+        ]
+      },
+      "gt0059": {
+        "id": "gt0059",
+        "priority": 71,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=175,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>150,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=3.5"
+        ]
+      },
+      "gt0060": {
+        "id": "gt0060",
+        "priority": 70,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=200,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>175,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=3.812"
+        ]
+      },
+      "gt0061": {
+        "id": "gt0061",
+        "priority": 69,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=250,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>200,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=4.141"
+        ]
+      },
+      "gt0062": {
+        "id": "gt0062",
+        "priority": 68,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=300,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>250,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=4.469"
+        ]
+      },
+      "gt0063": {
+        "id": "gt0063",
+        "priority": 67,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=350,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>300,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=4.797"
+        ]
+      },
+      "gt0064": {
+        "id": "gt0064",
+        "priority": 66,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=400,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>350,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=5.125"
+        ]
+      },
+      "gt0065": {
+        "id": "gt0065",
+        "priority": 65,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=500,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>400,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=5.438"
+        ]
+      },
+      "gt0066": {
+        "id": "gt0066",
+        "priority": 64,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=600,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>500,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=5.75"
+        ]
+      },
+      "gt0067": {
+        "id": "gt0067",
+        "priority": 63,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=700,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>600,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=6.062"
+        ]
+      },
+      "gt0068": {
+        "id": "gt0068",
+        "priority": 62,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=800,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>700,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=6.375"
+        ]
+      },
+      "gt0069": {
+        "id": "gt0069",
+        "priority": 61,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=975,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>800,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=6.656"
+        ]
+      },
+      "gt0070": {
+        "id": "gt0070",
+        "priority": 60,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=1150,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>975,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=6.938"
+        ]
+      },
+      "gt0071": {
+        "id": "gt0071",
+        "priority": 59,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=1325,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>1150,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=7.219"
+        ]
+      },
+      "gt0072": {
+        "id": "gt0072",
+        "priority": 58,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=1500,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>1325,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=7.5"
+        ]
+      },
+      "gt0073": {
+        "id": "gt0073",
+        "priority": 57,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=1875,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>1500,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=7.828"
+        ]
+      },
+      "gt0074": {
+        "id": "gt0074",
+        "priority": 56,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=2250,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>1875,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=8.156"
+        ]
+      },
+      "gt0075": {
+        "id": "gt0075",
+        "priority": 55,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=2625,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>2250,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=8.484"
+        ]
+      },
+      "gt0076": {
+        "id": "gt0076",
+        "priority": 54,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=3000,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>2625,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=8.812"
+        ]
+      },
+      "gt0077": {
+        "id": "gt0077",
+        "priority": 53,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=3725,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>3000,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=9.109"
+        ]
+      },
+      "gt0078": {
+        "id": "gt0078",
+        "priority": 52,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=4450,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>3725,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=9.406"
+        ]
+      },
+      "gt0079": {
+        "id": "gt0079",
+        "priority": 51,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=5175,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>4450,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=9.703"
+        ]
+      },
+      "gt0080": {
+        "id": "gt0080",
+        "priority": 50,
+        "when": [
+          "$gt0045|NT-proBNP concentration|<=5900,nanogm/l",
+          "$gt0045|NT-proBNP concentration|>5175,nanogm/l"
+        ],
+        "then": [
+          "$gt0046|NT-proBNP points|=10"
+        ]
+      },
+      "gt0081": {
+        "id": "gt0081",
+        "priority": 49,
+        "when": [
+          "$gt0010|cTnT-hs concentration|.magnitude.unit=='nanogm/l'",
+          "$gt0045|NT-proBNP concentration|.unit=='nanogm/l'",
+          "$gt0045|NT-proBNP concentration|!=null",
+          "$gt0032|Birthdate|!=null",
+          "$gt0010|cTnT-hs concentration|.magnitude!=null",
+          "$gt0004|Prior stroke/TIA|!=null"
+        ],
+        "then": [
+          "$gt0082|ABC stroke risk score|.precision=2",
+          "$gt0082|ABC stroke risk score|.magnitude=(($gt0011+$gt0033)+$gt0046)+$gt0006"
+        ]
+      },
+      "gt0089": {
+        "id": "gt0089",
+        "priority": 48,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=4.5"
+        ],
+        "then": [
+          "$gt0088|Comment|='3-year risk of stroke/SE less than 1 %'",
+          "$gt0088|Comment|='1-year risk of stroke/SE less than 1 %'"
+        ]
+      },
+      "gt0090": {
+        "id": "gt0090",
+        "priority": 47,
+        "when": [
+          "$gt0082|ABC stroke risk score|>4.5",
+          "$gt0082|ABC stroke risk score|<=5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=1.167,%",
+          "$gt0088|Comment|='1-year risk of stroke/SE less than 1 %'"
+        ]
+      },
+      "gt0091": {
+        "id": "gt0091",
+        "priority": 46,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=6",
+          "$gt0082|ABC stroke risk score|>5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=1.35,%",
+          "$gt0088|Comment|='1-year risk of stroke/SE less than 1 %'"
+        ]
+      },
+      "gt0092": {
+        "id": "gt0092",
+        "priority": 45,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=7",
+          "$gt0082|ABC stroke risk score|>6"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=1.583,%",
+          "$gt0088|Comment|='1-year risk of stroke/SE less than 1 %'"
+        ]
+      },
+      "gt0093": {
+        "id": "gt0093",
+        "priority": 44,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=8",
+          "$gt0082|ABC stroke risk score|>7"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=1.8,%",
+          "$gt0088|Comment|='1-year risk of stroke/SE less than 1 %'"
+        ]
+      },
+      "gt0094": {
+        "id": "gt0094",
+        "priority": 43,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=9",
+          "$gt0082|ABC stroke risk score|>8"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=2,%",
+          "$gt0088|Comment|='1-year risk of stroke/SE less than 1 %'"
+        ]
+      },
+      "gt0095": {
+        "id": "gt0095",
+        "priority": 42,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=9.5",
+          "$gt0082|ABC stroke risk score|>9"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=2.3,%",
+          "$gt0088|Comment|='1-year risk of stroke/SE less than 1 %'"
+        ]
+      },
+      "gt0096": {
+        "id": "gt0096",
+        "priority": 41,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=10",
+          "$gt0082|ABC stroke risk score|>9.5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=2.45,%",
+          "$gt0086|1-year risk of stroke/SE|=1,%"
+        ]
+      },
+      "gt0097": {
+        "id": "gt0097",
+        "priority": 40,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=10.5",
+          "$gt0082|ABC stroke risk score|>10"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=2.65,%",
+          "$gt0086|1-year risk of stroke/SE|=1.15,%"
+        ]
+      },
+      "gt0098": {
+        "id": "gt0098",
+        "priority": 39,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=11",
+          "$gt0082|ABC stroke risk score|>10.5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=2.8,%",
+          "$gt0086|1-year risk of stroke/SE|=1.2,%"
+        ]
+      },
+      "gt0099": {
+        "id": "gt0099",
+        "priority": 38,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=11.5",
+          "$gt0082|ABC stroke risk score|>11"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=3,%",
+          "$gt0086|1-year risk of stroke/SE|=1.33,%"
+        ]
+      },
+      "gt0100": {
+        "id": "gt0100",
+        "priority": 37,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=12",
+          "$gt0082|ABC stroke risk score|>11.5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=3.17,%",
+          "$gt0086|1-year risk of stroke/SE|=1.42,%"
+        ]
+      },
+      "gt0101": {
+        "id": "gt0101",
+        "priority": 36,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=12.5",
+          "$gt0082|ABC stroke risk score|>12"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=3.51,%",
+          "$gt0086|1-year risk of stroke/SE|=1.56,%"
+        ]
+      },
+      "gt0102": {
+        "id": "gt0102",
+        "priority": 35,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=13",
+          "$gt0082|ABC stroke risk score|>12.5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=3.85,%",
+          "$gt0086|1-year risk of stroke/SE|=1.667,%"
+        ]
+      },
+      "gt0103": {
+        "id": "gt0103",
+        "priority": 34,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=13.5",
+          "$gt0082|ABC stroke risk score|>13"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=4.17,%",
+          "$gt0086|1-year risk of stroke/SE|=1.778,%"
+        ]
+      },
+      "gt0104": {
+        "id": "gt0104",
+        "priority": 33,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=14",
+          "$gt0082|ABC stroke risk score|>13.5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=4.34,%",
+          "$gt0086|1-year risk of stroke/SE|=1.84,%"
+        ]
+      },
+      "gt0105": {
+        "id": "gt0105",
+        "priority": 32,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=14.5",
+          "$gt0082|ABC stroke risk score|>14"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=4.7,%",
+          "$gt0086|1-year risk of stroke/SE|=2,%"
+        ]
+      },
+      "gt0106": {
+        "id": "gt0106",
+        "priority": 31,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=15",
+          "$gt0082|ABC stroke risk score|>14.5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=5,%",
+          "$gt0086|1-year risk of stroke/SE|=2.15,%"
+        ]
+      },
+      "gt0107": {
+        "id": "gt0107",
+        "priority": 30,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=15.5",
+          "$gt0082|ABC stroke risk score|>15"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=5.42,%",
+          "$gt0086|1-year risk of stroke/SE|=2.35,%"
+        ]
+      },
+      "gt0108": {
+        "id": "gt0108",
+        "priority": 29,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=16",
+          "$gt0082|ABC stroke risk score|>15.5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=5.833,%",
+          "$gt0086|1-year risk of stroke/SE|=2.5,%"
+        ]
+      },
+      "gt0109": {
+        "id": "gt0109",
+        "priority": 28,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=16.5",
+          "$gt0082|ABC stroke risk score|>16"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=6.667,%",
+          "$gt0086|1-year risk of stroke/SE|=2.75,%"
+        ]
+      },
+      "gt0110": {
+        "id": "gt0110",
+        "priority": 27,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=17",
+          "$gt0082|ABC stroke risk score|>16.5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=7.08,%",
+          "$gt0086|1-year risk of stroke/SE|=2.9,%"
+        ]
+      },
+      "gt0111": {
+        "id": "gt0111",
+        "priority": 26,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=17.5",
+          "$gt0082|ABC stroke risk score|>17"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=7.708,%",
+          "$gt0086|1-year risk of stroke/SE|=3.09,%"
+        ]
+      },
+      "gt0112": {
+        "id": "gt0112",
+        "priority": 25,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=18",
+          "$gt0082|ABC stroke risk score|>17.5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=8.333,%",
+          "$gt0086|1-year risk of stroke/SE|=3.34,%"
+        ]
+      },
+      "gt0113": {
+        "id": "gt0113",
+        "priority": 24,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=18.5",
+          "$gt0082|ABC stroke risk score|>18"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=8.75,%",
+          "$gt0086|1-year risk of stroke/SE|=3.68,%"
+        ]
+      },
+      "gt0114": {
+        "id": "gt0114",
+        "priority": 23,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=19",
+          "$gt0082|ABC stroke risk score|>18.5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=9.2,%",
+          "$gt0086|1-year risk of stroke/SE|=4,%"
+        ]
+      },
+      "gt0115": {
+        "id": "gt0115",
+        "priority": 22,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=19.5",
+          "$gt0082|ABC stroke risk score|>19"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=9.583,%",
+          "$gt0086|1-year risk of stroke/SE|=4.34,%"
+        ]
+      },
+      "gt0116": {
+        "id": "gt0116",
+        "priority": 21,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=20",
+          "$gt0082|ABC stroke risk score|>19.5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=10.238,%",
+          "$gt0086|1-year risk of stroke/SE|=4.55,%"
+        ]
+      },
+      "gt0135": {
+        "id": "gt0135",
+        "priority": 20,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=20.5",
+          "$gt0082|ABC stroke risk score|>20"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=11.429,%",
+          "$gt0086|1-year risk of stroke/SE|=4.9,%"
+        ]
+      },
+      "gt0136": {
+        "id": "gt0136",
+        "priority": 19,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=21",
+          "$gt0082|ABC stroke risk score|>20.5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=12.143,%",
+          "$gt0086|1-year risk of stroke/SE|=5.167,%"
+        ]
+      },
+      "gt0117": {
+        "id": "gt0117",
+        "priority": 18,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=21.5",
+          "$gt0082|ABC stroke risk score|>21"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=13.094,%",
+          "$gt0086|1-year risk of stroke/SE|=5.833,%"
+        ]
+      },
+      "gt0118": {
+        "id": "gt0118",
+        "priority": 17,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=22",
+          "$gt0082|ABC stroke risk score|>21.5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=14.048,%",
+          "$gt0086|1-year risk of stroke/SE|=6.25,%"
+        ]
+      },
+      "gt0119": {
+        "id": "gt0119",
+        "priority": 16,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=22.5",
+          "$gt0082|ABC stroke risk score|>22"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=15,%",
+          "$gt0086|1-year risk of stroke/SE|=6.944,%"
+        ]
+      },
+      "gt0120": {
+        "id": "gt0120",
+        "priority": 15,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=23",
+          "$gt0082|ABC stroke risk score|>22.5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=15.952,%",
+          "$gt0086|1-year risk of stroke/SE|=7.5,%"
+        ]
+      },
+      "gt0121": {
+        "id": "gt0121",
+        "priority": 14,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=23.5",
+          "$gt0082|ABC stroke risk score|>23"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=17.143,%",
+          "$gt0086|1-year risk of stroke/SE|=7.917,%"
+        ]
+      },
+      "gt0122": {
+        "id": "gt0122",
+        "priority": 13,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=24",
+          "$gt0082|ABC stroke risk score|>23.5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=17.857,%",
+          "$gt0086|1-year risk of stroke/SE|=8.542,%"
+        ]
+      },
+      "gt0123": {
+        "id": "gt0123",
+        "priority": 12,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=24.5",
+          "$gt0082|ABC stroke risk score|>24"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=19.286,%",
+          "$gt0086|1-year risk of stroke/SE|=9.167,%"
+        ]
+      },
+      "gt0124": {
+        "id": "gt0124",
+        "priority": 11,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=25",
+          "$gt0082|ABC stroke risk score|>24.5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=20.5,%",
+          "$gt0086|1-year risk of stroke/SE|=9.444,%"
+        ]
+      },
+      "gt0125": {
+        "id": "gt0125",
+        "priority": 10,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=25.5",
+          "$gt0082|ABC stroke risk score|>25"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=22.5,%",
+          "$gt0086|1-year risk of stroke/SE|=10,%"
+        ]
+      },
+      "gt0126": {
+        "id": "gt0126",
+        "priority": 9,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=26",
+          "$gt0082|ABC stroke risk score|>25.5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=23.75,%",
+          "$gt0086|1-year risk of stroke/SE|=10.625,%"
+        ]
+      },
+      "gt0127": {
+        "id": "gt0127",
+        "priority": 8,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=26.5",
+          "$gt0082|ABC stroke risk score|>26"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=25.625,%",
+          "$gt0086|1-year risk of stroke/SE|=11.562,%"
+        ]
+      },
+      "gt0128": {
+        "id": "gt0128",
+        "priority": 7,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=27",
+          "$gt0082|ABC stroke risk score|>26.5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=26.875",
+          "$gt0086|1-year risk of stroke/SE|=12.5,%"
+        ]
+      },
+      "gt0129": {
+        "id": "gt0129",
+        "priority": 6,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=27.5",
+          "$gt0082|ABC stroke risk score|>27"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=28.75,%",
+          "$gt0086|1-year risk of stroke/SE|=13.125,%"
+        ]
+      },
+      "gt0130": {
+        "id": "gt0130",
+        "priority": 5,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=28",
+          "$gt0082|ABC stroke risk score|>27.5"
+        ],
+        "then": [
+          "$gt0087|3-year risk of stroke/SE|=30,%",
+          "$gt0086|1-year risk of stroke/SE|=13.7,%"
+        ]
+      },
+      "gt0131": {
+        "id": "gt0131",
+        "priority": 4,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=28.5",
+          "$gt0082|ABC stroke risk score|>28"
+        ],
+        "then": [
+          "$gt0088|Comment|='3-year risk of stroke/SE greater than 30 %'",
+          "$gt0088|Comment|='1-year risk of stroke/SE greater than 15 %'"
+        ]
+      },
+      "gt0132": {
+        "id": "gt0132",
+        "priority": 3,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=29",
+          "$gt0082|ABC stroke risk score|>28.5"
+        ],
+        "then": [
+          "$gt0088|Comment|='3-year risk of stroke/SE greater than 30 %'",
+          "$gt0088|Comment|='1-year risk of stroke/SE greater than 15 %'"
+        ]
+      },
+      "gt0133": {
+        "id": "gt0133",
+        "priority": 2,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=29.5",
+          "$gt0082|ABC stroke risk score|>29"
+        ],
+        "then": [
+          "$gt0088|Comment|='3-year risk of stroke/SE greater than 30 %'",
+          "$gt0088|Comment|='1-year risk of stroke/SE greater than 15 %'"
+        ]
+      },
+      "gt0134": {
+        "id": "gt0134",
+        "priority": 1,
+        "when": [
+          "$gt0082|ABC stroke risk score|<=30",
+          "$gt0082|ABC stroke risk score|>29.5"
+        ],
+        "then": [
+          "$gt0088|Comment|='3-year risk of stroke/SE greater than 30 %'",
+          "$gt0088|Comment|='1-year risk of stroke/SE greater than 15 %'"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "ABC Stroke (Risk) Score Calculator",
+            "description": "ABC-stroke score is a biomarker-based risk score for predicting stroke in individuals with atrial fibrillation. Points between 0.0 - 10.0 plotted on a nomogram are assigned to the individual based on each of A = the age (years), B = the plasma concentration of two biomarkers: cTnT-hs (cardiac troponin-T high-sensitivity) and NT-proBNP (N-terminal fragment B-type natriuretic peptide) both in ng/L, and C = a clinical history of prior stroke or transient ischaemic attack (TIA) answered as yes or no. The sum total of the points assigned for the four predictors is the ABC-stroke score and takes a value minimum = 0.0 and maximum = 30.0, and this score is used in predicting the 1-year and 3-year risk of stroke or systemic embolism (SE) in individuals with atrial fibrillation. An ABC-stroke score less than 4.0 predicts a 3-year risk of stroke/SE less than 1%; while the presence of a prior stroke or TIA implies a minimum score of 5.5 and 3-year risk of stroke/SE greater than 1%."
+          },
+          "gt0002": {
+            "id": "gt0002",
+            "text": "Set points for Prior stroke/TIA absent"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "Prior stroke/TIA",
+            "description": "Has the individual ever suffered a stroke or transient ischaemic attack?"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Prior stroke or transient ischaemic attack points",
+            "description": "Points assigned based on the presence or absence of a prior history of stroke or TIA in the individual."
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "text": "Set points for Prior stroke/TIA present"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "Set points for cTnT <=1"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "cTnT-hs concentration",
+            "description": "Concentration of cardiac troponin-T high-sensitivity present in this sample."
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "cTnT-hs points",
+            "description": "Points assigned based on the individual's plasma concentration of cardiac troponin-T high-sensitivity (or cardiac troponin-I high sensitivity)."
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "text": "Set points for cTnT <=2"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "Set points for cTnT <=5"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "Set points for cTnT <=7.5"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "Set points for cTnT <=10"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "text": "Set points for cTnT <=15"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "Set points for cTnT <=20"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "Set points for cTnT <=25"
+          },
+          "gt0019": {
+            "id": "gt0019",
+            "text": "Set points for cTnT <=30"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Set points for cTnT <=39"
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "Set points for cTnT <=48"
+          },
+          "gt0022": {
+            "id": "gt0022",
+            "text": "Set points for cTnT <=57"
+          },
+          "gt0023": {
+            "id": "gt0023",
+            "text": "Set points for cTnT <=66"
+          },
+          "gt0024": {
+            "id": "gt0024",
+            "text": "Set points for cTnT <=75"
+          },
+          "gt0025": {
+            "id": "gt0025",
+            "text": "Set points for cTnT <=96"
+          },
+          "gt0026": {
+            "id": "gt0026",
+            "text": "Set points for cTnT <=117"
+          },
+          "gt0027": {
+            "id": "gt0027",
+            "text": "Set points for cTnT <=138"
+          },
+          "gt0028": {
+            "id": "gt0028",
+            "text": "Set points for cTnT <=159"
+          },
+          "gt0029": {
+            "id": "gt0029",
+            "text": "Set points for cTnT <=180"
+          },
+          "gt0030": {
+            "id": "gt0030",
+            "text": "Set points for Age <=44 years"
+          },
+          "gt0032": {
+            "id": "gt0032",
+            "text": "Birthdate",
+            "description": "Date of birth of this individual."
+          },
+          "gt0033": {
+            "id": "gt0033",
+            "text": "Age points",
+            "description": "Points assigned based on the individual's age."
+          },
+          "gt0034": {
+            "id": "gt0034",
+            "text": "Set points for Age 45-50 years"
+          },
+          "gt0035": {
+            "id": "gt0035",
+            "text": "Set points for Age 51-55 years"
+          },
+          "gt0036": {
+            "id": "gt0036",
+            "text": "Set points for Age 56-60 years"
+          },
+          "gt0037": {
+            "id": "gt0037",
+            "text": "Set points for Age 61-65 years"
+          },
+          "gt0038": {
+            "id": "gt0038",
+            "text": "Set points for Age 66-70 years"
+          },
+          "gt0039": {
+            "id": "gt0039",
+            "text": "Set points for Age 71-75 years"
+          },
+          "gt0040": {
+            "id": "gt0040",
+            "text": "Set points for Age 76-80 years"
+          },
+          "gt0041": {
+            "id": "gt0041",
+            "text": "Set points for Age 81-85 years"
+          },
+          "gt0042": {
+            "id": "gt0042",
+            "text": "Set points for Age 86-90 years"
+          },
+          "gt0043": {
+            "id": "gt0043",
+            "text": "Set points for proBNP <=25"
+          },
+          "gt0045": {
+            "id": "gt0045",
+            "text": "NT-proBNP concentration",
+            "description": "Concentration of N-terminal fragment prohormone of brain natriuretic peptide in the sample."
+          },
+          "gt0046": {
+            "id": "gt0046",
+            "text": "NT-proBNP points",
+            "description": "Points assigned based on the individual's plasma concentration of N-terminal fragment B-type natriuretic peptide."
+          },
+          "gt0047": {
+            "id": "gt0047",
+            "text": "Set points for proBNP <=30"
+          },
+          "gt0048": {
+            "id": "gt0048",
+            "text": "Set points for proBNP <=35"
+          },
+          "gt0049": {
+            "id": "gt0049",
+            "text": "Set points for proBNP <=40"
+          },
+          "gt0050": {
+            "id": "gt0050",
+            "text": "Set points for proBNP <=45"
+          },
+          "gt0051": {
+            "id": "gt0051",
+            "text": "Set points for proBNP <=50"
+          },
+          "gt0052": {
+            "id": "gt0052",
+            "text": "Set points for proBNP <=60"
+          },
+          "gt0053": {
+            "id": "gt0053",
+            "text": "Set points for proBNP <=70"
+          },
+          "gt0054": {
+            "id": "gt0054",
+            "text": "Set points for proBNP <=80"
+          },
+          "gt0055": {
+            "id": "gt0055",
+            "text": "Set points for proBNP <=90"
+          },
+          "gt0056": {
+            "id": "gt0056",
+            "text": "Set points for proBNP <=100"
+          },
+          "gt0057": {
+            "id": "gt0057",
+            "text": "Set points for proBNP <=125"
+          },
+          "gt0058": {
+            "id": "gt0058",
+            "text": "Set points for proBNP <=150"
+          },
+          "gt0059": {
+            "id": "gt0059",
+            "text": "Set points for proBNP <=175"
+          },
+          "gt0060": {
+            "id": "gt0060",
+            "text": "Set points for proBNP <=200"
+          },
+          "gt0061": {
+            "id": "gt0061",
+            "text": "Set points for proBNP <=250"
+          },
+          "gt0062": {
+            "id": "gt0062",
+            "text": "Set points for proBNP <=300"
+          },
+          "gt0063": {
+            "id": "gt0063",
+            "text": "Set points for proBNP <=350"
+          },
+          "gt0064": {
+            "id": "gt0064",
+            "text": "Set points for proBNP <=400"
+          },
+          "gt0065": {
+            "id": "gt0065",
+            "text": "Set points for proBNP <=500"
+          },
+          "gt0066": {
+            "id": "gt0066",
+            "text": "Set points for proBNP <=600"
+          },
+          "gt0067": {
+            "id": "gt0067",
+            "text": "Set points for proBNP <=700"
+          },
+          "gt0068": {
+            "id": "gt0068",
+            "text": "Set points for proBNP <=800"
+          },
+          "gt0069": {
+            "id": "gt0069",
+            "text": "Set points for proBNP <=975"
+          },
+          "gt0070": {
+            "id": "gt0070",
+            "text": "Set points for proBNP <=1150"
+          },
+          "gt0071": {
+            "id": "gt0071",
+            "text": "Set points for proBNP <=1325"
+          },
+          "gt0072": {
+            "id": "gt0072",
+            "text": "Set points for proBNP <=1500"
+          },
+          "gt0073": {
+            "id": "gt0073",
+            "text": "Set points for proBNP <=1875"
+          },
+          "gt0074": {
+            "id": "gt0074",
+            "text": "Set points for proBNP <=2250"
+          },
+          "gt0075": {
+            "id": "gt0075",
+            "text": "Set points for proBNP <=2625"
+          },
+          "gt0076": {
+            "id": "gt0076",
+            "text": "Set points for proBNP <=3000"
+          },
+          "gt0077": {
+            "id": "gt0077",
+            "text": "Set points for proBNP <=3725"
+          },
+          "gt0078": {
+            "id": "gt0078",
+            "text": "Set points for proBNP <=4450"
+          },
+          "gt0079": {
+            "id": "gt0079",
+            "text": "Set points for proBNP <=5175"
+          },
+          "gt0080": {
+            "id": "gt0080",
+            "text": "Set points for proBNP <=5900"
+          },
+          "gt0081": {
+            "id": "gt0081",
+            "text": "Calculate ABC stroke score (Total points)"
+          },
+          "gt0082": {
+            "id": "gt0082",
+            "text": "ABC stroke risk score",
+            "description": "Sum total of points assigned based on the 4 (four) ABC stroke risk criteria."
+          },
+          "gt0086": {
+            "id": "gt0086",
+            "text": "1-year risk of stroke/SE",
+            "description": "Predicted risk of developing a stroke or systemic embolism within 1 year based on ABC stroke score calculation."
+          },
+          "gt0087": {
+            "id": "gt0087",
+            "text": "3-year risk of stroke/SE",
+            "description": "Predicted risk of developing a stroke or systemic embolism within 3 years based on ABC stroke score calculation."
+          },
+          "gt0088": {
+            "id": "gt0088",
+            "text": "Comment",
+            "description": "Additional information about the stroke risk prediction."
+          },
+          "gt0089": {
+            "id": "gt0089",
+            "text": "Estimate stroke risk when stroke score <=4.5"
+          },
+          "gt0090": {
+            "id": "gt0090",
+            "text": "Estimate stroke risk when stroke score <=5"
+          },
+          "gt0091": {
+            "id": "gt0091",
+            "text": "Estimate stroke risk when stroke score <=6"
+          },
+          "gt0092": {
+            "id": "gt0092",
+            "text": "Estimate stroke risk when stroke score <=7"
+          },
+          "gt0093": {
+            "id": "gt0093",
+            "text": "Estimate stroke risk when stroke score <=8"
+          },
+          "gt0094": {
+            "id": "gt0094",
+            "text": "Estimate stroke risk when stroke score <=9"
+          },
+          "gt0095": {
+            "id": "gt0095",
+            "text": "Estimate stroke risk when stroke score <=9.5"
+          },
+          "gt0096": {
+            "id": "gt0096",
+            "text": "Estimate stroke risk when stroke score <=10"
+          },
+          "gt0097": {
+            "id": "gt0097",
+            "text": "Estimate stroke risk when stroke score <=10.5"
+          },
+          "gt0098": {
+            "id": "gt0098",
+            "text": "Estimate stroke risk when stroke score <=11"
+          },
+          "gt0099": {
+            "id": "gt0099",
+            "text": "Estimate stroke risk when stroke score <=11.5"
+          },
+          "gt0100": {
+            "id": "gt0100",
+            "text": "Estimate stroke risk when stroke score <=12"
+          },
+          "gt0101": {
+            "id": "gt0101",
+            "text": "Estimate stroke risk when stroke score <=12.5"
+          },
+          "gt0102": {
+            "id": "gt0102",
+            "text": "Estimate stroke risk when stroke score <=13"
+          },
+          "gt0103": {
+            "id": "gt0103",
+            "text": "Estimate stroke risk when stroke score <=13.5"
+          },
+          "gt0104": {
+            "id": "gt0104",
+            "text": "Estimate stroke risk when stroke score <=14"
+          },
+          "gt0105": {
+            "id": "gt0105",
+            "text": "Estimate stroke risk when stroke score <=14.5"
+          },
+          "gt0106": {
+            "id": "gt0106",
+            "text": "Estimate stroke risk when stroke score <=15"
+          },
+          "gt0107": {
+            "id": "gt0107",
+            "text": "Estimate stroke risk when stroke score <=15.5"
+          },
+          "gt0108": {
+            "id": "gt0108",
+            "text": "Estimate stroke risk when stroke score <=16"
+          },
+          "gt0109": {
+            "id": "gt0109",
+            "text": "Estimate stroke risk when stroke score <=16.5"
+          },
+          "gt0110": {
+            "id": "gt0110",
+            "text": "Estimate stroke risk when stroke score <=17"
+          },
+          "gt0111": {
+            "id": "gt0111",
+            "text": "Estimate stroke risk when stroke score <=17.5"
+          },
+          "gt0112": {
+            "id": "gt0112",
+            "text": "Estimate stroke risk when stroke score <=18"
+          },
+          "gt0113": {
+            "id": "gt0113",
+            "text": "Estimate stroke risk when stroke score <=18.5"
+          },
+          "gt0114": {
+            "id": "gt0114",
+            "text": "Estimate stroke risk when stroke score <=19"
+          },
+          "gt0115": {
+            "id": "gt0115",
+            "text": "Estimate stroke risk when stroke score <=19.5"
+          },
+          "gt0116": {
+            "id": "gt0116",
+            "text": "Estimate stroke risk when stroke score <=20"
+          },
+          "gt0117": {
+            "id": "gt0117",
+            "text": "Estimate stroke risk when stroke score <=21.5"
+          },
+          "gt0118": {
+            "id": "gt0118",
+            "text": "Estimate stroke risk when stroke score <=22"
+          },
+          "gt0119": {
+            "id": "gt0119",
+            "text": "Estimate stroke risk when stroke score <=22.5"
+          },
+          "gt0120": {
+            "id": "gt0120",
+            "text": "Estimate stroke risk when stroke score <=23"
+          },
+          "gt0121": {
+            "id": "gt0121",
+            "text": "Estimate stroke risk when stroke score <=23.5"
+          },
+          "gt0122": {
+            "id": "gt0122",
+            "text": "Estimate stroke risk when stroke score <=24"
+          },
+          "gt0123": {
+            "id": "gt0123",
+            "text": "Estimate stroke risk when stroke score <=24.5"
+          },
+          "gt0124": {
+            "id": "gt0124",
+            "text": "Estimate stroke risk when stroke score <=25"
+          },
+          "gt0125": {
+            "id": "gt0125",
+            "text": "Estimate stroke risk when stroke score <=25.5"
+          },
+          "gt0126": {
+            "id": "gt0126",
+            "text": "Estimate stroke risk when stroke score <=26"
+          },
+          "gt0127": {
+            "id": "gt0127",
+            "text": "Estimate stroke risk when stroke score <=26.5"
+          },
+          "gt0128": {
+            "id": "gt0128",
+            "text": "Estimate stroke risk when stroke score <=27"
+          },
+          "gt0129": {
+            "id": "gt0129",
+            "text": "Estimate stroke risk when stroke score <=27.5"
+          },
+          "gt0130": {
+            "id": "gt0130",
+            "text": "Estimate stroke risk when stroke score <=28"
+          },
+          "gt0131": {
+            "id": "gt0131",
+            "text": "Estimate stroke risk when stroke score <=28.5"
+          },
+          "gt0132": {
+            "id": "gt0132",
+            "text": "Estimate stroke risk when stroke score <=29"
+          },
+          "gt0133": {
+            "id": "gt0133",
+            "text": "Estimate stroke risk when stroke score <=29.5"
+          },
+          "gt0134": {
+            "id": "gt0134",
+            "text": "Estimate stroke risk when stroke score <=30"
+          },
+          "gt0135": {
+            "id": "gt0135",
+            "text": "Estimate stroke risk when stroke score <=20.5"
+          },
+          "gt0136": {
+            "id": "gt0136",
+            "text": "Estimate stroke risk when stroke score <=21"
+          }
+        }
+      }
+    }
+  }
+}
