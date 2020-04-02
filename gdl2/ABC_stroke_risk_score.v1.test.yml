@@ -1,0 +1,483 @@
+current_datetime: '2019-11-28T00:00:00+01:00'
+guidelines:
+  1: ABC_stroke_risk_score.v1
+test_cases:
+- id: had stroke
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 1|local::at0008|Yes|
+      gt0010|cTnT-hs concentration: 32,nanogm/l
+      gt0032|Birthdate: 1950-04-28T23:51Z
+      gt0045|NT-proBNP concentration: 99,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 13.76
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 5.5
+      gt0033|Age points: 1.75
+      gt0046|NT-proBNP points: 2.562
+      gt0087|3-year risk of stroke/SE: 4.34,%
+      gt0086|1-year risk of stroke/SE: 1.84,%
+
+- id: no troponin
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 0.1,nanogm/l
+      gt0032|Birthdate: 1950-04-30T23:51Z
+      gt0045|NT-proBNP concentration: 0,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 1.75
+      gt0011|cTnT-hs points: 0
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.75
+      gt0046|NT-proBNP points: 0
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+
+- id: Troponin rel. low
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 3,nanogm/l
+      gt0032|Birthdate: 1950-04-30T23:51Z
+      gt0045|NT-proBNP concentration: 0,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 3.50
+      gt0011|cTnT-hs points: 1.75
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.75
+      gt0046|NT-proBNP points: 0
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+
+- id: Troponin 10 ng
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 10,nanogm/l
+      gt0032|Birthdate: 1950-04-30T23:51Z
+      gt0045|NT-proBNP concentration: 0,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 4.25
+      gt0011|cTnT-hs points: 2.5
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.75
+      gt0046|NT-proBNP points: 0
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+
+- id: Troponin 50 ng
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 50,nanogm/l
+      gt0032|Birthdate: 1950-04-30T23:51Z
+      gt0045|NT-proBNP concentration: 0,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 6.10
+      gt0011|cTnT-hs points: 4.35
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.75
+      gt0046|NT-proBNP points: 0
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+      gt0087|3-year risk of stroke/SE: 1.583,%
+
+- id: Troponin 100 ng
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 100,nanogm/l
+      gt0032|Birthdate: 1950-04-30T23:51Z
+      gt0045|NT-proBNP concentration: 0,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 6.90
+      gt0011|cTnT-hs points: 5.15
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.75
+      gt0046|NT-proBNP points: 0
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+      gt0087|3-year risk of stroke/SE: 1.583,%
+
+- id: Troponin 140 ng
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 140,nanogm/l
+      gt0032|Birthdate: 1950-04-30T23:51Z
+      gt0045|NT-proBNP concentration: 0,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 7.30
+      gt0011|cTnT-hs points: 5.55
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.75
+      gt0046|NT-proBNP points: 0
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+      gt0087|3-year risk of stroke/SE: 1.8,%
+
+- id:  NT-proBNP 20
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1950-04-30T23:51Z
+      gt0045|NT-proBNP concentration: 20,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 5.70
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.75
+      gt0046|NT-proBNP points: 0
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+      gt0087|3-year risk of stroke/SE: 1.35,%
+
+- id:  NT-proBNP 36
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1950-04-30T23:51Z
+      gt0045|NT-proBNP concentration: 36,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 6.49
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.75
+      gt0046|NT-proBNP points: 0.787
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+      gt0087|3-year risk of stroke/SE: 1.583,%
+
+
+- id:  NT-proBNP 50
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1950-04-30T23:51Z
+      gt0045|NT-proBNP concentration: 50,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 7.01
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.75
+      gt0046|NT-proBNP points: 1.312
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+      gt0087|3-year risk of stroke/SE: 1.8,%
+
+- id:  NT-proBNP 70
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1950-04-30T23:51Z
+      gt0045|NT-proBNP concentration: 70,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 7.51
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.75
+      gt0046|NT-proBNP points: 1.812
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+      gt0087|3-year risk of stroke/SE: 1.8,%
+
+- id:  NT-proBNP 100
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1950-04-30T23:51Z
+      gt0045|NT-proBNP concentration: 100,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 8.26
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.75
+      gt0046|NT-proBNP points: 2.562
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+      gt0087|3-year risk of stroke/SE: 2,%
+
+- id:  NT-proBNP 200
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1950-04-30T23:51Z
+      gt0045|NT-proBNP concentration: 200,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 9.51
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.75
+      gt0046|NT-proBNP points: 3.812
+      gt0087|3-year risk of stroke/SE: 2.45,%
+      gt0086|1-year risk of stroke/SE: 1,%
+
+- id:  NT-proBNP 360
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1950-04-30T23:51Z
+      gt0045|NT-proBNP concentration: 360,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 10.82
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.75
+      gt0046|NT-proBNP points: 5.125
+      gt0087|3-year risk of stroke/SE: 2.8,%
+      gt0086|1-year risk of stroke/SE: 1.2,%
+
+
+- id:  NT-proBNP 500
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1950-04-30T23:51Z
+      gt0045|NT-proBNP concentration: 500,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 11.14
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.75
+      gt0046|NT-proBNP points: 5.438
+      gt0087|3-year risk of stroke/SE: 3,%
+      gt0086|1-year risk of stroke/SE: 1.33,%
+
+- id:  NT-proBNP 700
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1950-04-30T23:51Z
+      gt0045|NT-proBNP concentration: 700,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 11.76
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.75
+      gt0046|NT-proBNP points: 6.062
+      gt0087|3-year risk of stroke/SE: 3.17,%
+      gt0086|1-year risk of stroke/SE: 1.42,%
+
+- id:  NT-proBNP 1000
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1950-04-30T23:51Z
+      gt0045|NT-proBNP concentration: 1000,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 12.64
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.75
+      gt0046|NT-proBNP points: 6.938
+      gt0087|3-year risk of stroke/SE: 3.85,%
+      gt0086|1-year risk of stroke/SE: 1.667,%
+
+- id:  NT-proBNP 3000
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1950-04-30T23:51Z
+      gt0045|NT-proBNP concentration: 3000,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 14.51
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.75
+      gt0046|NT-proBNP points: 8.812
+      gt0087|3-year risk of stroke/SE: 5,%
+      gt0086|1-year risk of stroke/SE: 2.15,%
+
+
+- id: age less than 45
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1994-04-30T23:51Z
+      gt0045|NT-proBNP concentration: 70,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 5.76
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 0
+      gt0046|NT-proBNP points: 1.812
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+      gt0087|3-year risk of stroke/SE: 1.35,%
+
+- id: age 45-50
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1970-04-30T23:51Z
+      gt0045|NT-proBNP concentration: 70,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 6.14
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 0.375
+      gt0046|NT-proBNP points: 1.812
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+      gt0087|3-year risk of stroke/SE: 1.583,%
+
+- id: age 50-55
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1964-12-20T23:51Z
+      gt0045|NT-proBNP concentration: 70,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 6.51
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 0.75
+      gt0046|NT-proBNP points: 1.812
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+      gt0087|3-year risk of stroke/SE: 1.583,%
+
+- id: age 55-60
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1959-11-30T23:51Z
+      gt0045|NT-proBNP concentration: 70,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 6.82
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.062
+      gt0046|NT-proBNP points: 1.812
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+      gt0087|3-year risk of stroke/SE: 1.583,%
+
+- id: age 60-64
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1954-11-30T23:51Z
+      gt0045|NT-proBNP concentration: 70,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 7.14
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.375
+      gt0046|NT-proBNP points: 1.812
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+      gt0087|3-year risk of stroke/SE: 1.8,%
+
+- id: age 65-70
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1949-11-30T23:51Z
+      gt0045|NT-proBNP concentration: 70,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 7.51
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 1.75
+      gt0046|NT-proBNP points: 1.812
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+      gt0087|3-year risk of stroke/SE: 1.8,%
+
+- id: age 71-75
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1949-04-27T23:51Z
+      gt0045|NT-proBNP concentration: 70,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 7.89
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 2.125
+      gt0046|NT-proBNP points: 1.812
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+      gt0087|3-year risk of stroke/SE: 1.8,%
+
+
+- id: age 76-80
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1944-04-27T23:51Z
+      gt0045|NT-proBNP concentration: 70,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 8.22
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 2.458
+      gt0046|NT-proBNP points: 1.812
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+      gt0087|3-year risk of stroke/SE: 2,%
+
+
+- id: age 81-85
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1939-04-27T23:51Z
+      gt0045|NT-proBNP concentration: 70,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 8.55
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 2.791
+      gt0046|NT-proBNP points: 1.812
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+      gt0087|3-year risk of stroke/SE: 2,%
+
+
+
+- id: age 86-90
+  input:
+    1:
+      gt0004|Prior stroke/TIA: 0|local::at0007|No|
+      gt0010|cTnT-hs concentration: 33,nanogm/l
+      gt0032|Birthdate: 1934-04-27T23:51Z
+      gt0045|NT-proBNP concentration: 70,nanogm/l
+  expected_output:
+    1:
+      gt0082|ABC stroke risk score: 8.89
+      gt0011|cTnT-hs points: 3.95
+      gt0006|Prior stroke or transient ischaemic attack points: 0
+      gt0033|Age points: 3.125
+      gt0046|NT-proBNP points: 1.812
+      gt0088|Comment: 1-year risk of stroke/SE less than 1 %
+      gt0087|3-year risk of stroke/SE: 2,%
