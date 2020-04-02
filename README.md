@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 247*
+### *Published Apps: 248*
 
 ----------
 
@@ -44,7 +44,7 @@ _Select a medical specialty below to view the available apps._
 
 [Obstetrics](https://github.com/gdl-lang/common-clinical-models#obstetrics)
 
-[Oncology](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#oncology)
+[Oncology](oncology)
 
 [Orthopedic Surgery](https://github.com/gdl-lang/common-clinical-models#orthopedic-surgery)
 
@@ -81,101 +81,101 @@ _Select a medical specialty below to view the available apps._
 ### Anesthesia
 
 ----------
-* [El-Ganzouri Risk Index for Difficult Airway (EGRI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#el-ganzouri-risk-index-for-difficult-airway-egri) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EGRI/1?language=en))
+* [El-Ganzouri Risk Index for Difficult Airway (EGRI)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EGRI/1?language=en))
 
 ----------
 
 ### Cardiology
 
 ----------
-* [ABC Stroke Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abc-stroke-risk-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABC_stroke_risk_score_combined/1?language=en))
+* [ABC Stroke Risk Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABC_stroke_risk_score_combined/1?language=en))
 
-* [ACC/AHA Heart Failure Staging](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#accaha-heart-failure-staging) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACC-AHA_Heart_Failure_Staging/1?language=en))
+* [ACC/AHA Heart Failure Staging] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACC-AHA_Heart_Failure_Staging/1?language=en))
 
-* [ACEF II Risk Score for Cardiac Surgery](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#acef-ii-risk-score-for-cardiac-surgery) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACEF-II_Score/1?language=en))
+* [ACEF II Risk Score for Cardiac Surgery] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACEF-II_Score/1?language=en))
 
-* [ADAPT Protocol for Cardiac Event Risk](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#adapt-protocol-for-cardiac-event-risk) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ADAPT/1?language=en))
+* [ADAPT Protocol for Cardiac Event Risk] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ADAPT/1?language=en))
 
-* [ATRIA Bleeding Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#atria-bleeding-risk-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_bleeding_risk_score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_bleeding_risk_score_combined/1?language=sv))
+* [ATRIA Bleeding Risk Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_bleeding_risk_score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_bleeding_risk_score_combined/1?language=sv))
 
-* [ATRIA Stroke Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#atria-stroke-risk-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_stroke_risk_score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_stroke_risk_score_combined/1?language=sv))
+* [ATRIA Stroke Risk Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_stroke_risk_score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_stroke_risk_score_combined/1?language=sv))
 
-* [CHADS2 Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#cha2ds2-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHADS2_combined/1?language=en))
+* [CHADS2 Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHADS2_combined/1?language=en))
 
-* [CHA2DS2-VASc Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#cha2ds2-vasc-score) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CHA2DS2-VASc_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CHA2DS2-VASc_combined/1?language=sv))
+* [CHA2DS2-VASc Score] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CHA2DS2-VASc_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CHA2DS2-VASc_combined/1?language=sv))
 
-* [Corrected QT Interval (QTc) Calculator](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#corrected-qt-interval-qtc-calculator) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QTc_Calculation/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QTc_Calculation/1?language=sv))
+* [Corrected QT Interval (QTc) Calculator] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QTc_Calculation/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QTc_Calculation/1?language=sv))
 
-* [CRUSADE Score]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#crusade-score) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CRUSADE_for_post-MI_bleeding_risk_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CRUSADE_for_post-MI_bleeding_risk_combined/1?language=sv))
+* [CRUSADE Score] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CRUSADE_for_post-MI_bleeding_risk_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CRUSADE_for_post-MI_bleeding_risk_combined/1?language=sv))
 
-* [DASH Prediction Score for Recurrent VTE](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#dash-prediction-score-for-recurrent-vte) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/DASH_for_recurrent_VTE_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/DASH_for_recurrent_VTE_combined/1?language=sv))
+* [DASH Prediction Score for Recurrent VTE] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/DASH_for_recurrent_VTE_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/DASH_for_recurrent_VTE_combined/1?language=sv))
 
-* [Duke Criteria](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#duke-criteria) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Duke_Criteria_for_IE/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Duke_Criteria_for_IE/1?language=sv))
+* [Duke Criteria] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Duke_Criteria_for_IE/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Duke_Criteria_for_IE/1?language=sv))
 
-* [Emergency Department Assessment of Chest Pain Score (EDACS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#emergency-department-assessment-of-chest-pain-score-edacs) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Emergency_department_assessment_of_chest_pain_score/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Emergency_department_assessment_of_chest_pain_score/1?language=sv))
+* [Emergency Department Assessment of Chest Pain Score (EDACS)] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Emergency_department_assessment_of_chest_pain_score/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Emergency_department_assessment_of_chest_pain_score/1?language=sv))
 
-* [Emergency Department Assessment of Chest Pain Score (EDACS-ADP)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#emergency-department-assessment-of-chest-pain-score-edacs-adp) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/EDACS-ADP/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/EDACS-ADP/1?language=sv))
+* [Emergency Department Assessment of Chest Pain Score (EDACS-ADP)] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/EDACS-ADP/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/EDACS-ADP/1?language=sv))
 
-* [Emergency Heart Failure Mortality Risk Grade (EHMRG)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#emergency-heart-failure-mortality-risk-grade-ehmrg) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EHMRG/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EHMRG/1?language=sv))
+* [Emergency Heart Failure Mortality Risk Grade (EHMRG)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EHMRG/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EHMRG/1?language=sv))
 
-* [EuroSCORE II](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#euroscore-ii) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/EuroSCORE_II/1?language=en))
+* [EuroSCORE II] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/EuroSCORE_II/1?language=en))
 
-* [Framingham CHD Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#framingham-chd-risk-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Framingham_CHD_combined/1?language=en))
+* [Framingham CHD Risk Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Framingham_CHD_combined/1?language=en))
 
-* [Get With The Guidelines in Heart Failure Risk Score (GWTG-HF)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#get-with-the-guidelines-in-heart-failure-risk-score-gwtg-hf) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GWTG_HF/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GWTG_HF/1?language=sv))
+* [Get With The Guidelines in Heart Failure Risk Score (GWTG-HF)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GWTG_HF/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GWTG_HF/1?language=sv))
 
-* [Global Registry of Acute Coronary Events (GRACE)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#global-registry-of-acute-coronary-events-grace) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GRACE_ACS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GRACE_ACS/1?language=sv))
+* [Global Registry of Acute Coronary Events (GRACE)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GRACE_ACS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GRACE_ACS/1?language=sv))
 
-* [HAS-BLED Bleeding Risk Score (HAS-BLED)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#has-bled-bleeding-risk-score-has-bled) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HAS-BLED_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HAS-BLED_combined/1?language=sv))
+* [HAS-BLED Bleeding Risk Score (HAS-BLED)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HAS-BLED_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HAS-BLED_combined/1?language=sv))
 
-* [HEMORR2HAGES Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#hemorr2hages-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Haemorr2hages/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Haemorr2hages/1?language=sv))
+* [HEMORR2HAGES Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Haemorr2hages/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Haemorr2hages/1?language=sv))
 
-* [Hemorrhage After Thrombolysis (HAT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#hemorrhage-after-thrombolysis-hat) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hemorrhage_After_Thrombolysis_combined/1?language=en))
+* [Hemorrhage After Thrombolysis (HAT)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hemorrhage_After_Thrombolysis_combined/1?language=en))
 
-* [Infective Endocarditis Mortality Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#infective-endocarditis-mortality-risk-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Infective_endocarditis_mortality_risk_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Infective_endocarditis_mortality_risk_combined/1?language=sv))
+* [Infective Endocarditis Mortality Risk Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Infective_endocarditis_mortality_risk_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Infective_endocarditis_mortality_risk_combined/1?language=sv))
 
-* [Mean Arterial Pressure (MAP)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#mean-arterial-pressure-map) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MAP/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MAP/1?language=sv))
+* [Mean Arterial Pressure (MAP)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MAP/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MAP/1?language=sv))
 
-* [Modified SOAR Score for Stroke](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#modified-soar-score-for-stroke) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_SOAR_Score_for_Stroke/1?language=en))
+* [Modified SOAR Score for Stroke] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_SOAR_Score_for_Stroke/1?language=en))
 
-* [New York Heart Association Functional Classification (NYHA)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#new-york-heart-association-functional-classification-nyha) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NYHA/1?language=en))
+* [New York Heart Association Functional Classification (NYHA)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NYHA/1?language=en))
 
-* [Padua Prediction Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#padua-prediction-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Padua_prediction_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Padua_prediction_combined/1?language=sv))
+* [Padua Prediction Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Padua_prediction_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Padua_prediction_combined/1?language=sv))
 
-* [Rapid Arterial oCclusion Evaluation Scale for Stroke (RACE)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rapid-arterial-occlusion-evaluation-scale-for-stroke-race) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RACE/1?language=en))
+* [Rapid Arterial oCclusion Evaluation Scale for Stroke (RACE)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RACE/1?language=en))
 
-* [Rated Perceived Exertion Scale](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rated-perceived-exertion-scale) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rated_perceived_exertion_scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rated_perceived_exertion_scale/1?language=sv))
+* [Rated Perceived Exertion Scale] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rated_perceived_exertion_scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rated_perceived_exertion_scale/1?language=sv))
 
-* [Revised Cardiac Risk Index (RCRI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#revised-cardiac-risk-index-rcri) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RCRI/1?language=en))
+* [Revised Cardiac Risk Index (RCRI)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RCRI/1?language=en))
 
-* [THRIVE Score for Stroke Outcome](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#thrive-score-for-stroke-outcome) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/THRIVE_for_Stroke_combined/1?language=en))
+* [THRIVE Score for Stroke Outcome] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/THRIVE_for_Stroke_combined/1?language=en))
 
-* [TIMI Risk Index (TRI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#timi-risk-index-tri) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TRI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TRI_combined/1?language=sv))
+* [TIMI Risk Index (TRI)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TRI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TRI_combined/1?language=sv))
 
-* [TIMI Risk Score for Unstable Angina and NSTEMI](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#timi-risk-score-for-unstable-angina-and-nstemi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TIMI_UA_NSTEMI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TIMI_UA_NSTEMI_combined/1?language=sv))
+* [TIMI Risk Score for Unstable Angina and NSTEMI] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TIMI_UA_NSTEMI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TIMI_UA_NSTEMI_combined/1?language=sv))
 
-* [TIMI Score for STEMI](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#timi-score-for-stemi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TIMI_STEMI_combined/1?language=en))
+* [TIMI Score for STEMI] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TIMI_STEMI_combined/1?language=en))
 
 ----------
 
 ### Clinical Chemistry
 
 ----------
-* [Anion Gap](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#anion-gap) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Anion_gap_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Anion_gap_combined/1?language=sv))
+* [Anion Gap] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Anion_gap_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Anion_gap_combined/1?language=sv))
 
-* [Arterial Blood Gas Analyser (ABG)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#anion-gap) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABG/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABG/1?language=sv))
+* [Arterial Blood Gas Analyser (ABG)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABG/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABG/1?language=sv))
 
-* [Bicarbonate Deficit Calculator](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bicarbonate-deficit-calculator) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bicarbonate_Deficit/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bicarbonate_Deficit/1?language=sv))
+* [Bicarbonate Deficit Calculator] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bicarbonate_Deficit/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bicarbonate_Deficit/1?language=sv))
 
-* [Corrected Calcium](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#corrected-calcium) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Calcium_corrected/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Calcium_corrected/1?language=sv))
+* [Corrected Calcium] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Calcium_corrected/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Calcium_corrected/1?language=sv))
 
-* [Creatinine Clearance Cockcraft-Gault](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#creatinine-clearance-cockcraft-gault) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Creatinine_Clearance_Cockcroft_Gault/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Creatinine_Clearance_Cockcroft_Gault/1?language=sv))
+* [Creatinine Clearance Cockcraft-Gault] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Creatinine_Clearance_Cockcroft_Gault/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Creatinine_Clearance_Cockcroft_Gault/1?language=sv))
 
-* [Estimated Average Glucose (eAG)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#estimated-average-glucose-eag) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_Average_Glucose/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_Average_Glucose/1?language=sv))
+* [Estimated Average Glucose (eAG)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_Average_Glucose/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_Average_Glucose/1?language=sv))
 
-* [Sodium correction for Hyperglycemia](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#sodium-correction-for-hyperglycemia) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_for_Hyperglycemia/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_for_Hyperglycemia/1?language=sv))
+* [Sodium correction for Hyperglycemia] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_for_Hyperglycemia/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_for_Hyperglycemia/1?language=sv))
 
-* [Winter Formula](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#winter-formula) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Winters_Metabolic_Acidosis_Compensation/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Winters_Metabolic_Acidosis_Compensation/1?language=sv))
+* [Winter Formula] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Winters_Metabolic_Acidosis_Compensation/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Winters_Metabolic_Acidosis_Compensation/1?language=sv))
 
 ----------
 
@@ -183,480 +183,480 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 
-* [Alvarado Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#alvarado-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Alvarado_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Alvarado_combined/1?language=sv))
+* [Alvarado Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Alvarado_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Alvarado_combined/1?language=sv))
 
-* [Appendicitis Inflammatory Response Score (AIR Score)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#-appendicitis-inflammatory-response-score--air-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AIR/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AIR/1?language=sv))
+* [Appendicitis Inflammatory Response Score (AIR Score)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AIR/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AIR/1?language=sv))
 
-* [CRB-65](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#crb-65) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CRB-65/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CRB-65/1?language=sv))
+* [CRB-65] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CRB-65/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CRB-65/1?language=sv))
 
-* [CURB-65](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#curb-65) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CURB-65/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CURB-65/1?language=sv))
+* [CURB-65] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CURB-65/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CURB-65/1?language=sv))
 
-* [Emergency Transfusion Score (ETS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#emergency-transfusion-score-ets) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ETS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ETS_combined/1?language=sv))
+* [Emergency Transfusion Score (ETS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ETS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ETS_combined/1?language=sv))
 
-* [Glasgow-Blatchford Bleeding Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#glasgow-blatchford-bleeding-score) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GBS_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GBS_combined/1?language=sv))
+* [Glasgow-Blatchford Bleeding Score] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GBS_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GBS_combined/1?language=sv))
 
-* [Glasgow Coma Scale (GCS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#glasgow-coma-scale-gcs) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GCS/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GCS/1?language=sv))
+* [Glasgow Coma Scale (GCS)] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GCS/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GCS/1?language=sv))
 
-* [Glasgow-Imrie Criteria](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#glasgow-imrie-criteria) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Glasgow-Imrie_Criteria_for_Acute_Pancreatitis_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Glasgow-Imrie_Criteria_for_Acute_Pancreatitis_combined/1?language=sv))
+* [Glasgow-Imrie Criteria] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Glasgow-Imrie_Criteria_for_Acute_Pancreatitis_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Glasgow-Imrie_Criteria_for_Acute_Pancreatitis_combined/1?language=sv))
 
-* [HEART Score]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#heart-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HEART_score_for_MACE_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HEART_score_for_MACE_combined/1?language=sv))
+* [HEART Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HEART_score_for_MACE_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HEART_score_for_MACE_combined/1?language=sv))
 
-* [Pittsburgh Knee Rules]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pittsburgh-knee-rules) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pittsburgh_knee_rules_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pittsburgh_knee_rules_combined/1?language=sv))
+* [Pittsburgh Knee Rules] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pittsburgh_knee_rules_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pittsburgh_knee_rules_combined/1?language=sv))
 
-* [Pulmonary Embolism Severity Index (PESI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pulmonary-embolism-severity-index-pesi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PESI_combined/1?language=en))
+* [Pulmonary Embolism Severity Index (PESI)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PESI_combined/1?language=en))
 
-* [quick Sepsis Related Organ Failure Assessment (qSOFA)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#quick-sepsis-organ-failure-assessment-qsofa) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/qSOFA/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/qSOFA/1?language=sv))
+* [quick Sepsis Related Organ Failure Assessment (qSOFA)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/qSOFA/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/qSOFA/1?language=sv))
 
-* [Revised Geneva Score (rGeneva)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#revised-geneva-score-rgeneva) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rGeneva_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rGeneva_combined/1?language=sv))
+* [Revised Geneva Score (rGeneva)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rGeneva_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rGeneva_combined/1?language=sv))
 
-* [Rapid emergency medicine score (REMS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rapid-emergency-medicine-score-rems) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/REMS/1?language=en))
+* [Rapid emergency medicine score (REMS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/REMS/1?language=en))
 
-* [Shock Index](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#shock-index) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Shock_Index/1?language=en))
+* [Shock Index] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Shock_Index/1?language=en))
 
-* [San Francisco Syncope Rule (SFSR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#san-francisco-syncope-rule-sfsr) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/SFSR/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/SFSR/1?language=sv))
+* [San Francisco Syncope Rule (SFSR)] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/SFSR/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/SFSR/1?language=sv))
 
-* [Simplified Pulmonary Embolism Severity Index (sPESI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#simplified-pulmonary-embolism-severity-index-spesi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_PESI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_PESI_combined/1?language=sv))
+* [Simplified Pulmonary Embolism Severity Index (sPESI)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_PESI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_PESI_combined/1?language=sv))
 
-* [Vancouver Chest Pain Rule (VCPR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#vancouver-chest-pain-rule-vcpr) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Vancouver_CPR/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Vancouver_CPR/1?language=sv))
+* [Vancouver Chest Pain Rule (VCPR)] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Vancouver_CPR/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Vancouver_CPR/1?language=sv))
 
-* [Wells Criteria for Deep Vein Thrombosis (DVT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#wells-criteria-for-dvt) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wells_DVT_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wells_DVT_combined/1?language=sv))
+* [Wells Criteria for Deep Vein Thrombosis (DVT)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wells_DVT_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wells_DVT_combined/1?language=sv))
 
-* [Wells Criteria for DVT (D-Dimer) ](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#wells-criteria-for-dvt-d-dimer) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wells_DVT_D_Dimer_US_combined/1?language=en))
+* [Wells Criteria for DVT (D-Dimer) ] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wells_DVT_D_Dimer_US_combined/1?language=en))
 
-* [Wells Criteria for Pulmonary Embolism](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#wells-criteria-for-pulmonary-embolism) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wells_Criteria_PE_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wells_Criteria_PE_combined/1?language=sv))
+* [Wells Criteria for Pulmonary Embolism] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wells_Criteria_PE_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wells_Criteria_PE_combined/1?language=sv))
 
 ----------
 
 ### Endocrinology
 ----------
-* [PEDIS Score for Diabetic Foot Ulcers](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pedis-score-for-diabetic-foot-ulcers) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEDIS_Score/0?language=en))
+* [PEDIS Score for Diabetic Foot Ulcers] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEDIS_Score/0?language=en))
 ----------
 
 ### Gastroenterology
 ----------
-* [ABIC Score for Alcoholic Hepatitis](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abic-score-for-alcoholic-hepatitis) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABIC/1?language=en))
+* [ABIC Score for Alcoholic Hepatitis] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABIC/1?language=en))
 
-* [Child Pugh Score for Cirrhosis Mortality](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#child-pugh-score-for-cirrhosis-mortality) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Child_pugh_score_for_cirrhosis_combined/1?language=en))
+* [Child Pugh Score for Cirrhosis Mortality] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Child_pugh_score_for_cirrhosis_combined/1?language=en))
 
-* [Harmless Acute Pancreatitis Score (HAPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#harmless-acute-pancreatitis-score-haps) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Harmless_Acute_Pancreatitis_Score/1?language=en))
+* [Harmless Acute Pancreatitis Score (HAPS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Harmless_Acute_Pancreatitis_Score/1?language=en))
 
-* [Harvey-Bradshaw Index for Crohn's Disease (HBI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#harvey-bradshaw-index-for-crohns-disease-hbi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HBI/1?language=en))
+* [Harvey-Bradshaw Index for Crohn's Disease (HBI)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HBI/1?language=en))
 
-* [Hepatic encephalopathy grades](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#hepatic-encephalopathy-grades) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hepatic_encephalopathy_grades_combined/1?language=en))
+* [Hepatic encephalopathy grades] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hepatic_encephalopathy_grades_combined/1?language=en))
 
-* [Model For End-Stage Liver Disease Score (MELD)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#model-for-end-stage-liver-disease-score-meld) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MELD_score_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MELD_score_combined/1?language=sv))
+* [Model For End-Stage Liver Disease Score (MELD)] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MELD_score_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MELD_score_combined/1?language=sv))
 
-* [Ranson's Criteria for Pancreatitis Mortality](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ransons-criteria-for-pancreatitis-mortality) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality_combined/1?language=sv))
+* [Ranson's Criteria for Pancreatitis Mortality] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality_combined/1?language=sv))
 
-* [Simplified Autoimmune Hepatitis (AIH) Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#simplified-autoimmune-hepatitis-aih-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_Autoimmune_Hepatitis_AIH_Score_guideline/1?language=en))
+* [Simplified Autoimmune Hepatitis (AIH) Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_Autoimmune_Hepatitis_AIH_Score_guideline/1?language=en))
 
 ----------
 
 ### Geriatrics
 
 ----------
-* [4A's Test for Delirium Screening](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#4as-test-for-delirium-screening) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/4As_test/1?language=en))
+* [4A's Test for Delirium Screening] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/4As_test/1?language=en))
 
-* [Abbreviated Mental Test 4 (AMT-4)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abbreviated-mental-test-4-amt-4) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/amt-4/1?language=en))
+* [Abbreviated Mental Test 4 (AMT-4)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/amt-4/1?language=en))
 
-* [Abbey Pain Scale (APS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abbey-pain-scale-aps) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/APS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/APS_combined/1?language=sv))
+* [Abbey Pain Scale (APS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/APS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/APS_combined/1?language=sv))
 
-* [Downton Fall Risk Index (DFRI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#downton-fall-risk-index-dfri) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DFRI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DFRI_combined/1?language=sv))
+* [Downton Fall Risk Index (DFRI)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DFRI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DFRI_combined/1?language=sv))
 
-* [Modified Norton Scale (MNS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#modified-norton-scale-mns) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MNS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MNS/1?language=sv))
+* [Modified Norton Scale (MNS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MNS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MNS/1?language=sv))
 
-* [Mini Nutritional Assessment (MNA)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#mini-nutritional-assessment-mna) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/MNA.v1.dsv?token=4d4e412e7631:1549324800000:a50e2dfaac1c033d99d5f3109799e8bf&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/MNA.v1.dsv?token=4d4e412e7631:1549324800000:a50e2dfaac1c033d99d5f3109799e8bf&language=sv))
+* [Mini Nutritional Assessment (MNA)] - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/MNA.v1.dsv?token=4d4e412e7631:1549324800000:a50e2dfaac1c033d99d5f3109799e8bf&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/MNA.v1.dsv?token=4d4e412e7631:1549324800000:a50e2dfaac1c033d99d5f3109799e8bf&language=sv))
 
-* [Risk Assessment Pressure Sore Scale (RAPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#risk-assessment-pressure-sore-raps) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAPS_Scale_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAPS_Scale_combined/1?language=sv))
+* [Risk Assessment Pressure Sore Scale (RAPS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAPS_Scale_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAPS_Scale_combined/1?language=sv))
 
 ----------
 
 ### Hematology
 ----------
 
-* [4Ts for Heparin Induced Thrombocytopenia (4Ts for HIT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#4-ts-for-heparin-inducerad-thrombocytopenia-4ts-for-hit)) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/4TS_HIT_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/4TS_HIT_combined/1?language=sv))
+* [4Ts for Heparin Induced Thrombocytopenia (4Ts for HIT)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/4TS_HIT_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/4TS_HIT_combined/1?language=sv))
 
-* [Absolute Lymphocyte Count (ALC)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#absolute-lymphocyte-count-alc)) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Absolute_Lymphocyte_Count/1?language=en))
+* [Absolute Lymphocyte Count (ALC)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Absolute_Lymphocyte_Count/1?language=en))
 
-* [Absolute Neutrophil Count (ANC)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#absolute-neutrophil-count-anc)) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ANC/1?language=en))
+* [Absolute Neutrophil Count (ANC)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ANC/1?language=en))
 
-* [Ganzoni Equation for Iron Deficiency Anemia](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ganzoni-equation-for-iron-deficiency-anemia)) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ganzoni_equation_for_iron_deficiency_anemia/1?language=en))
+* [Ganzoni Equation for Iron Deficiency Anemia] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ganzoni_equation_for_iron_deficiency_anemia/1?language=en))
 
 ----------
 
 ### Intensive Care
 
 ----------
-* [APACHE II Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#apache-ii-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/APACHE_II/1?language=en))
+* [APACHE II Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/APACHE_II/1?language=en))
 
-* [Apfel Score for Postoperative Nausea and Vomiting](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#apfel-score-for-postoperative-nausea-and-vomiting) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Apfel_Score_for_Postoperative_Nausea_and_Vomiting/1?language=en))
+* [Apfel Score for Postoperative Nausea and Vomiting] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Apfel_Score_for_Postoperative_Nausea_and_Vomiting/1?language=en))
 
-* [AVPU](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#avpu) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AVPU/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AVPU/1?language=sv))
+* [AVPU] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AVPU/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AVPU/1?language=sv))
 
-* [Basal Metabolic Rate (BMR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#basal-metabolic-rate-calculator-bmr) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BMR_Calculation/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BMR_Calculation/1?language=sv))
+* [Basal Metabolic Rate (BMR)] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BMR_Calculation/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BMR_Calculation/1?language=sv))
 
-* [Behavioral Pain Scale (BPS) - intubated patients](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#behavioral-pain-scale-bps) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BPS_combined/1?language=en))
+* [Behavioral Pain Scale (BPS) - intubated patients] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BPS_combined/1?language=en))
 
-* [Cardiac Arrest Risk Triage Score (CART)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#cardiac-arrest-risk-triage-score-cart) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CART_score_cardiac_arrest_risk/1?language=en))
+* [Cardiac Arrest Risk Triage Score (CART)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CART_score_cardiac_arrest_risk/1?language=en))
 
-* [Critical Care Pain Observation Tool (CPOT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#critical-care-pain-observation-tool-cpot) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CPOT_combined/1?language=en))
+* [Critical Care Pain Observation Tool (CPOT)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CPOT_combined/1?language=en))
 
-* [Modified Early Warning Score (MEWS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#modified-early-warning-score-mews) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MEWS.v1/1.1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MEWS.v1/1.1?language=sv))
+* [Modified Early Warning Score (MEWS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MEWS.v1/1.1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MEWS.v1/1.1?language=sv))
 
-* [National Early Warning Score (NEWS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#national-early-warning-score-news) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEWS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEWS_combined/1?language=sv))
+* [National Early Warning Score (NEWS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEWS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEWS_combined/1?language=sv))
 
-* [National Early Warning Score 2 (NEWS2)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#national-early-warning-score-2-news2) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEWS2/1?language=en))
+* [National Early Warning Score 2 (NEWS2)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEWS2/1?language=en))
 
-* [Nonverbal Pain Scale (NVPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#nonverbal-pain-scale-nvps) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Nonverbal_Pain_Scale_NVPS_for_Nonverbal_Patients_guideline/1?language=en))
+* [Nonverbal Pain Scale (NVPS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Nonverbal_Pain_Scale_NVPS_for_Nonverbal_Patients_guideline/1?language=en))
 
-* [Parkland Formula for Burns](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#parkland-formula) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Parkland_formula/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Parkland_formula/1?language=sv))
+* [Parkland Formula for Burns] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Parkland_formula/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Parkland_formula/1?language=sv))
 
-* [Richmond Agitation Sedation Scale (RASS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#richmond-agitation-sedation-scale-rass) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Richmond_Agitation_Sedation_Scale/1?language=en))
+* [Richmond Agitation Sedation Scale (RASS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Richmond_Agitation_Sedation_Scale/1?language=en))
 
 
-* [Sequential Organ Failure Assessment (SOFA)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#sequential-organ-failure-assessment-sofa) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SOFA_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SOFA_combined/1?language=sv))
+* [Sequential Organ Failure Assessment (SOFA)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SOFA_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SOFA_combined/1?language=sv))
 ----------
 
 ### Neonatology
 ----------
-* [Apgar Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#apgar-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Apgar_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Apgar_combined/1?language=sv))
+* [Apgar Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Apgar_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Apgar_combined/1?language=sv))
 
 ----------
 ### Nephrology
 
 ----------
-* [Albumin-Creatinine Ratio (ACR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#albumin-creatinine-ratio-acr) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_Calculation_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_Calculation_combined/1?language=sv))
+* [Albumin-Creatinine Ratio (ACR)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_Calculation_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_Calculation_combined/1?language=sv))
 
-* [Charlson Comorbidity Scoring System (CCI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#charlson-comorbidity-index-cci) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CCI/1?language=en))
+* [Charlson Comorbidity Scoring System (CCI)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CCI/1?language=en))
 
-* [CKD Classification](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ckd-classification) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CKD_classification/1?language=en))
+* [CKD Classification] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CKD_classification/1?language=en))
 
-* [Fractional Excretion of Sodium (FENa)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#fractional-excretion-of-sodium-fena) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fractional_sodium_excretion_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fractional_sodium_excretion_combined/1?language=sv))
+* [Fractional Excretion of Sodium (FENa)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fractional_sodium_excretion_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fractional_sodium_excretion_combined/1?language=sv))
 
-* [Fractional Excretion of Urea (FEUrea)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#fractional-excretion-of-urea-feurea) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fractional_urea_excretion_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fractional_urea_excretion_combined/1?language=sv))
+* [Fractional Excretion of Urea (FEUrea)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fractional_urea_excretion_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fractional_urea_excretion_combined/1?language=sv))
 
-* [Glomerular Filtration Rate (CKD-EPI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#glomerular-filtration-rate-ckd-epi) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CKD-EPI_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CKD-EPI_combined/1?language=sv))
+* [Glomerular Filtration Rate (CKD-EPI)] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CKD-EPI_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CKD-EPI_combined/1?language=sv))
 
-* [Glomerular Filtration Rate (Cockcroft-Gault)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#glomerular-filtration-rate-cockcroft-gault) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_GFR_Cockcroft_Gault_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_GFR_Cockcroft_Gault_combined/1?language=sv))
+* [Glomerular Filtration Rate (Cockcroft-Gault)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_GFR_Cockcroft_Gault_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_GFR_Cockcroft_Gault_combined/1?language=sv))
 
-* [MDRD GFR Equation](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#mdrd-gfr-equation) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MDRD_GFR_equation/1?language=en))
+* [MDRD GFR Equation] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MDRD_GFR_equation/1?language=en))
 
-* [Revised Lund-Malmö eGFR](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#revised-lund-malm%C3%B6-egfr) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LM_Revised_eGFR/0?language=en))
+* [Revised Lund-Malmö eGFR] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LM_Revised_eGFR/0?language=en))
 
 ----------
 
 ### Neurology
 
 ----------
-* [ABCD2 Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abcd2-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABCD2_score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABCD2_score_combined/1?language=sv))
+* [ABCD2 Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABCD2_score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABCD2_score_combined/1?language=sv))
 
-* [ABC/2 Formula for Intracerebral Hemorrhage Volume](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abc2-formula-for-intracerebral-hemorrhage-volume) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABC_div_2/1?language=en))
+* [ABC/2 Formula for Intracerebral Hemorrhage Volume] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABC_div_2/1?language=en))
 
-* [ASTRAL Score for Ischemic Stroke](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#astral-score-for-ischemic-stroke) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASTRAL_Score_for_Ischemic_Stroke_guideline/1?language=en))
+* [ASTRAL Score for Ischemic Stroke] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASTRAL_Score_for_Ischemic_Stroke_guideline/1?language=en))
 
-* [Bacterial Meningitis Score for Children](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bacterial-meningitis-score-for-children) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bacterial_Meningitis_Score_for_Children/1?language=en))
+* [Bacterial Meningitis Score for Children] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bacterial_Meningitis_Score_for_Children/1?language=en))
 
-* [Douleur Neuropathique 4 (DN4)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#douleur-neuropathique-4-questions-dn4) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DN4_combined/1?language=en))
+* [Douleur Neuropathique 4 (DN4)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DN4_combined/1?language=en))
 
-* [DRAGON Score for Post-TPA Stroke Outcome](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#dragon-score-for-post-tpa-stroke-outcome) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Dragon_tPA_Score_combined/1?language=en))
+* [DRAGON Score for Post-TPA Stroke Outcome] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Dragon_tPA_Score_combined/1?language=en))
 
-* [Functional Outcome in Patients With Primary Intracerebral Hemorrhage (FUNC) Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#functional-outcome-in-patients-with-primary-intracerebral-hemorrhage-score-func) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FUNC_ICH_Score_combined/1?language=en))
+* [Functional Outcome in Patients With Primary Intracerebral Hemorrhage (FUNC) Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FUNC_ICH_Score_combined/1?language=en))
 
-* [Hunt & Hess Classification of Subarachnoid Hemorrhage](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#hunt--hess-classification-of-subarachnoid-hemorrhage) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Hunt_and_Hess_Classification_SAH_combined/1?language=en))
+* [Hunt & Hess Classification of Subarachnoid Hemorrhage] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Hunt_and_Hess_Classification_SAH_combined/1?language=en))
 
-* [Intracerebral Haemorrhage Risk Tool (ICH)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#intracerebral-haemorrhage-risk-tool-ich) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ICH_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ICH_combined/1?language=sv))
+* [Intracerebral Haemorrhage Risk Tool (ICH)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ICH_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ICH_combined/1?language=sv))
 
-* [Modified Fatigue Impact Scale (MFIS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#modified-fatigue-impact-scale-mfis) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS/1?language=sv))
+* [Modified Fatigue Impact Scale (MFIS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS/1?language=sv))
 
-* [Modified Fatigue Impact Scale - shortened (MFIS-s)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#modified-fatigue-impact-scale---shortened-version) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS_shortened/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS_shortened/1?language=sv))
+* [Modified Fatigue Impact Scale - shortened (MFIS-s)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS_shortened/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS_shortened/1?language=sv))
 
-* [Modified Fisher Scale for SAH](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#modified-fisher-scale-for-sah) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Modified_Fisher_Scale_SAH_combined/1?language=en))
+* [Modified Fisher Scale for SAH] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Modified_Fisher_Scale_SAH_combined/1?language=en))
 
-* [Modified National Institutes of Health Stroke Scale (mNIHSS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#modified-national-institutes-of-health-stroke-scale-mnihss) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mNIHSS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mNIHSS/1?language=sv))
+* [Modified National Institutes of Health Stroke Scale (mNIHSS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mNIHSS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mNIHSS/1?language=sv))
 
-* [National Institutes of Health Stroke Scale (NIHSS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#national-institutes-of-health-stroke-scale-nihss) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NIHSS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NIHSS/1?language=sv))
+* [National Institutes of Health Stroke Scale (NIHSS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NIHSS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NIHSS/1?language=sv))
 
-* [Neuropathy Pain Scale (NPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#neuropathy-pain-scale-nps) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neuropathy_pain_scale/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neuropathy_pain_scale/1?language=sv))
+* [Neuropathy Pain Scale (NPS)] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neuropathy_pain_scale/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neuropathy_pain_scale/1?language=sv))
 
-* [Webster Rating Scale for Parkinson’s Disease](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#webster-rating-scale-for-parkinsons-disease) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Webster_Rating_Scale_for_Parkinsons_Disease_guideline/1?language=en))
+* [Webster Rating Scale for Parkinson’s Disease] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Webster_Rating_Scale_for_Parkinsons_Disease_guideline/1?language=en))
 ----------
 ### Obstetrics
 
 ----------
-* [Bishop Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bishop-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bishop-score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bishop-score_combined/1?language=sv))
+* [Bishop Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bishop-score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bishop-score_combined/1?language=sv))
 
-* [Pregnancy Due Date](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pregnancy-due-date) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Pregnancy_due_date.v1.dsv?token=507265676e616e63795f6475655f646174652e7631:1549324800000:74476e995feb7c97dfe7f5e180491c4a&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Pregnancy_due_date.v1.dsv?token=507265676e616e63795f6475655f646174652e7631:1549324800000:74476e995feb7c97dfe7f5e180491c4a&language=sv))
+* [Pregnancy Due Date] - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Pregnancy_due_date.v1.dsv?token=507265676e616e63795f6475655f646174652e7631:1549324800000:74476e995feb7c97dfe7f5e180491c4a&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Pregnancy_due_date.v1.dsv?token=507265676e616e63795f6475655f646174652e7631:1549324800000:74476e995feb7c97dfe7f5e180491c4a&language=sv))
 
-* [VBAC Risk Score for Successful Vaginal Delivery (VBAC)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#vbac-risk-score-for-successful-vaginal-delivery-vbac) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/VBAC_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/VBAC_combined/1?language=sv))
+* [VBAC Risk Score for Successful Vaginal Delivery (VBAC)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/VBAC_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/VBAC_combined/1?language=sv))
 ----------
 
 ### Oncology
 
 ----------
-* [Asymptomatic Myeloma Prognosis](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#asymptomatic-myeloma-prognosis) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Asymptomatic_Myeloma_Prognosis/1?language=en))
+* [Asymptomatic Myeloma Prognosis] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Asymptomatic_Myeloma_Prognosis/1?language=en))
 
-* [Dynamic International Prognostic Scoring System for Myelofibrosis (DIPSS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#dynamic-international-prognostic-scoring-system-for-myelofibrosis-dipss) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Dynamic_International_Prognostic_Scoring_System_for_Myelofibrosis/1?language=en))
+* [Dynamic International Prognostic Scoring System for Myelofibrosis (DIPSS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Dynamic_International_Prognostic_Scoring_System_for_Myelofibrosis/1?language=en))
 
-* [ECOG Performance Status](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ecog-performance-status) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ECOG_performance_status/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ECOG_performance_status/1?language=sv))
+* [ECOG Performance Status] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ECOG_performance_status/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ECOG_performance_status/1?language=sv))
 
-* [ECOG Zubrod Performance Status](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ecog-zubrod-performance-status) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/ECOG_zubrod_combined/1?language=en))
+* [ECOG Zubrod Performance Status] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/ECOG_zubrod_combined/1?language=en))
 
-* [EORTC QLQ C30](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#eortc-qlq-c30) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EORTC_QLQ_C30_Version3/1?language=en))
+* [EORTC QLQ C30] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EORTC_QLQ_C30_Version3/1?language=en))
 
-* [Follicular Lymphoma International Prognostic Index (FLIPI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#follicular-lymphoma-international-prognostic-index-flipi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FLIPI_combined/1?language=en))
+* [Follicular Lymphoma International Prognostic Index (FLIPI)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FLIPI_combined/1?language=en))
 
-* [Fuhrman Nuclear Grade for Clear Cell Renal Cell Carcinoma](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#fuhrman-nuclear-grade-for-clear-cell-renal-cell-carcinoma) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Fuhrman_Nuclear_Grade_ccRCC_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Fuhrman_Nuclear_Grade_ccRCC_combined/1?language=sv))
+* [Fuhrman Nuclear Grade for Clear Cell Renal Cell Carcinoma] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Fuhrman_Nuclear_Grade_ccRCC_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Fuhrman_Nuclear_Grade_ccRCC_combined/1?language=sv))
 
-* [Gleason Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#gleason-score) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gleason_score_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gleason_score_combined/1?language=sv))
+* [Gleason Score] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gleason_score_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gleason_score_combined/1?language=sv))
 
-* [Heng Score]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#heng-score-for-metastatic-renal-cell-carcinoma-prognosis) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Heng_mRCC_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Heng_mRCC_combined/1?language=sv))
+* [Heng Score] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Heng_mRCC_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Heng_mRCC_combined/1?language=sv))
 
-* [Karnofsky Performance Status Scale](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#tnm-for-renal-cell-carcinoma) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Karnofsky_performance_status_combined/1?language=en))
+* [Karnofsky Performance Status Scale] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Karnofsky_performance_status_combined/1?language=en))
 
-* [SSIGN Score for Clear Cell Renal Cell Carcinoma](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ssign-score-for-clear-cell-renal-cell-carcinoma) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SSIGN_ccRCC_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SSIGN_ccRCC_combined/1?language=sv))
+* [SSIGN Score for Clear Cell Renal Cell Carcinoma] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SSIGN_ccRCC_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SSIGN_ccRCC_combined/1?language=sv))
 
-* [TNM for Breast Cancer](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#tnm-for-breast-cancer) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_Breast_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_Breast_combined/1?language=sv))
+* [TNM for Breast Cancer] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_Breast_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_Breast_combined/1?language=sv))
 
-* [TNM for Pancreatic Cancer](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#tnm-for-pancreatic-cancer) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_Pancreas_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_Pancreas_combined/1?language=sv))
+* [TNM for Pancreatic Cancer] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_Pancreas_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_Pancreas_combined/1?language=sv))
 
-* [TNM for Renal Cell Carcinoma](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#tnm-for-renal-cell-carcinoma) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_RCC_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_RCC_combined/1?language=sv))
+* [TNM for Renal Cell Carcinoma] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_RCC_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_RCC_combined/1?language=sv))
 
-* [UCSF-CAPRA Score for Prostate Cancer Risk](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ucsf-capra-score-for-prostate-cancer-risk) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/UCSF_CAPRA_prostate_cancer_risk_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/UCSF_CAPRA_prostate_cancer_risk_combined/1?language=sv))
+* [UCSF-CAPRA Score for Prostate Cancer Risk] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/UCSF_CAPRA_prostate_cancer_risk_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/UCSF_CAPRA_prostate_cancer_risk_combined/1?language=sv))
 
 ----------
 
 ### Orthopedic Surgery
 
 ----------
-* [Kocher Criteria](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#kocher-criteria) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kocher_Criteria_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kocher_Criteria_combined/1?language=sv))
+* [Kocher Criteria] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kocher_Criteria_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kocher_Criteria_combined/1?language=sv))
 
 ----------
 
 ### Pediatrics
 
 ----------
-* [Asthma Predictive Index (API)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#asthma-predictive-index-api) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Asthma_predictive_index_combined/1?language=en))
+* [Asthma Predictive Index (API)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Asthma_predictive_index_combined/1?language=en))
 
-* [Behavioral Observational Pain Scale (BOPS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#behavioral-observational-pain-scale-bops) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BOPS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BOPS_combined/1?language=sv))
+* [Behavioral Observational Pain Scale (BOPS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BOPS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BOPS_combined/1?language=sv))
 
-* [Children's Hospital of Eastern Ontario Pain Scale (CHEOPS)]( https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#childrens-hospital-of-eastern-ontario-pain-scale-cheops) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cheops_for_post_op_pediatric_pain_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cheops_for_post_op_pediatric_pain_combined/1?language=sv))
+* [Children's Hospital of Eastern Ontario Pain Scale (CHEOPS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cheops_for_post_op_pediatric_pain_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cheops_for_post_op_pediatric_pain_combined/1?language=sv))
 
-* [Height Potential](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#height-potential) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Height_potential/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Height_potential/1?language=sv))
+* [Height Potential] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Height_potential/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Height_potential/1?language=sv))
 
-* [Lansky Play-Performance Scale](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#lansky-play-performance-scale) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Lansky_play_performance_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Lansky_play_performance_combined/1?language=sv))
+* [Lansky Play-Performance Scale] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Lansky_play_performance_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Lansky_play_performance_combined/1?language=sv))
 
-* [Pediatric Asthma Score (PAS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pediatric-asthma-score-pas) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PAS/1?language=en))
+* [Pediatric Asthma Score (PAS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PAS/1?language=en))
 
-* [Pediatric Crohn's Disease Activity Index (PCDAI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pediatric-crohns-disease-activity-index-pcdai) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PCDAI_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PCDAI_combined/1?language=sv))
+* [Pediatric Crohn's Disease Activity Index (PCDAI)] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PCDAI_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PCDAI_combined/1?language=sv))
 
-* [Pediatric Early Warning Score (PEWS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#strongkids-nutritional-risk-screening) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEWS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEWS_combined/1?language=sv))
+* [Pediatric Early Warning Score (PEWS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEWS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEWS_combined/1?language=sv))
 
-* [Pediatric Glasgow Coma Scale (pGCS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pediatric-glasgow-coma-scale-pgcs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_glasgow_coma_scale_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_glasgow_coma_scale_combined/1?language=sv))
+* [Pediatric Glasgow Coma Scale (pGCS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_glasgow_coma_scale_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_glasgow_coma_scale_combined/1?language=sv))
 
-* [Pediatric ins and outs](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#pediatric-ins-and-outs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_ins_and_outs/1?language=en))
+* [Pediatric ins and outs] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_ins_and_outs/1?language=en))
 
-* [STRONGkids Nutritional Risk Screening](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#strongkids-nutritional-risk-screening) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/STRONGkids_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/STRONGkids_combined/1?language=sv))
+* [STRONGkids Nutritional Risk Screening] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/STRONGkids_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/STRONGkids_combined/1?language=sv))
 ----------
 
 ### Primary care
 
 ----------
-* [ACR EULAR Gout](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#acr-eular-gout) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_EULAR_Gout_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_EULAR_Gout_combined/1?language=sv))
+* [ACR EULAR Gout] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_EULAR_Gout_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_EULAR_Gout_combined/1?language=sv))
 
-* [ASSIGN Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#assign-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/ASSIGN_original/1?language=en))
+* [ASSIGN Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/ASSIGN_original/1?language=en))
 
-* [Body Mass Index (BMI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#body-mass-index-bmi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BMI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BMI_combined/1?language=sv))
+* [Body Mass Index (BMI)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BMI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BMI_combined/1?language=sv))
 
-* [Body Surface Area Dubois (BSA-Dubois)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#body-surface-area-dubois-bsa-dubois) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BSA_Dubois/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BSA_Dubois/1?language=sv))
+* [Body Surface Area Dubois (BSA-Dubois)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BSA_Dubois/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BSA_Dubois/1?language=sv))
 
-* [Body Surface Area Mosteller (BSA-Mosteller)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#body-surface-area-mosteller-bsa-mosteller) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BSA_Mosteller/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BSA_Mosteller/1?language=sv))
+* [Body Surface Area Mosteller (BSA-Mosteller)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BSA_Mosteller/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BSA_Mosteller/1?language=sv))
 
-* [Centor Criteria](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#centor-criteria) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Centor_Criteria/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Centor_Criteria/1?language=sv))
+* [Centor Criteria] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Centor_Criteria/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Centor_Criteria/1?language=sv))
 
-* [Denver HIV Risk Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#denver-hiv-risk-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Denver_HIV_Risk_Score_guideline/1?language=en))
+* [Denver HIV Risk Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Denver_HIV_Risk_Score_guideline/1?language=en))
 
-* [Dutch Lipid Clinic Network Criteria (DLCN)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#dutch-lipid-clinic-network-criteria-dlcn) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DLCN_score_combined/1?language=en))
+* [Dutch Lipid Clinic Network Criteria (DLCN)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DLCN_score_combined/1?language=en))
 
-* [Electronic Frailty Index](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#electronic-frailty-index-efi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Electronic_Frailty_Index_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Electronic_Frailty_Index_combined/1?language=sv))
+* [Electronic Frailty Index] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Electronic_Frailty_Index_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Electronic_Frailty_Index_combined/1?language=sv))
 
-* [Epworth Sleepiness Scale](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#epworth-sleepiness-scale) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ESS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ESS_combined/1?language=sv))
+* [Epworth Sleepiness Scale] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ESS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ESS_combined/1?language=sv))
 
-* [Estimated PEF-value](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#estimated-pef-value) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEFR_estimated/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEFR_estimated/1?language=sv))
+* [Estimated PEF-value] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEFR_estimated/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEFR_estimated/1?language=sv))
 
-* [FeverPAIN](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#feverpain) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FeverPAIN_Strep_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FeverPAIN_Strep_combined/1?language=sv))
+* [FeverPAIN] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FeverPAIN_Strep_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FeverPAIN_Strep_combined/1?language=sv))
 
-* [Ideal Body Weight (IBW)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#ideal-body-weight-ibw) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/IBW/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/IBW/1?language=sv))
+* [Ideal Body Weight (IBW)] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/IBW/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/IBW/1?language=sv))
 
-* [INTERCHEST](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#interchest) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/INTERCHEST/1?language=en))
+* [INTERCHEST] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/INTERCHEST/1?language=en))
 
-* [International Prostate Symptom Score (IPSS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#international-prostate-symptom-score-ipss) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IPSS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IPSS_combined/1?language=sv))
+* [International Prostate Symptom Score (IPSS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IPSS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IPSS_combined/1?language=sv))
 
-* [LDL Calculated](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#ldl-calculated) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LDL/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LDL/1?language=sv))
+* [LDL Calculated] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LDL/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LDL/1?language=sv))
 
-* [Manning Criteria for IBS](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#manning-criteria-for-ibs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Manning_Criteria_for_IBS/1?language=en))
+* [Manning Criteria for IBS] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Manning_Criteria_for_IBS/1?language=en))
 
-* [Marburg Heart Score (MHS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#marburg-heart-score-mhs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Marburg_Heart_Score/1?language=en))
+* [Marburg Heart Score (MHS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Marburg_Heart_Score/1?language=en))
 
-* [Opioid Risk Tool (ORT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#opioid-risk-tool-ort) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ORT_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ORT_combined/1?language=sv))
+* [Opioid Risk Tool (ORT)] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ORT_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ORT_combined/1?language=sv))
 
-* [Prediction of Alcohol Withdrawal Severity Scale](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#prediction-of-alcohol-withdrawal-severity-scale) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prediction_of_Alcohol_Withdrawal_Severity_Scale/1?language=en))
+* [Prediction of Alcohol Withdrawal Severity Scale] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prediction_of_Alcohol_Withdrawal_Severity_Scale/1?language=en))
 
-* [ROME III for IBS](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rome-iii-for-ibs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_III_IBS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_III_IBS_combined/1?language=sv))
+* [ROME III for IBS] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_III_IBS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_III_IBS_combined/1?language=sv))
 
-* [ROME IV for Constipation](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rome-iv-for-constipation) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_IV_constipation/1?language=en))
+* [ROME IV for Constipation] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_IV_constipation/1?language=en))
 
-* [ROME IV for Dyspepsia](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rome-iv-for-dyspepsia) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Rome_IV_dyspepsia/1?language=en))
+* [ROME IV for Dyspepsia] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Rome_IV_dyspepsia/1?language=en))
 
-* [ROME IV for IBS](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rome-iv-for-ibs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_IV_IBS/1?language=en))
+* [ROME IV for IBS] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_IV_IBS/1?language=en))
 
-* [Stress and Crisis Inventory 93 (SCI-93)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#stress-and-crisis-inventory-93-sci-93) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCI-93_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCI-93_combined/1?language=sv))
+* [Stress and Crisis Inventory 93 (SCI-93)] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCI-93_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCI-93_combined/1?language=sv))
 
-* [World Health Organization Disability Assessment Schedule 2.0 - 12 item version (WHODAS 2.0)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#world-health-organization-disability-assessment-schedule-20---12-item-version-whodas-20) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/WHODAS_2.0_12_item_score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/WHODAS_2.0_12_item_score_combined/1?language=sv))
+* [World Health Organization Disability Assessment Schedule 2.0 - 12 item version (WHODAS 2.0)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/WHODAS_2.0_12_item_score_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/WHODAS_2.0_12_item_score_combined/1?language=sv))
 
-* [World Health Organization Disability Assessment Schedule 2.0 - full 36 item version (WHODAS 2.0)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#world-health-organization-disability-assessment-schedule-20---full-36-item-version-whodas-20) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/WHODAS_2.0_36_item_scores_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/WHODAS_2.0_36_item_scores_combined/1?language=sv))
+* [World Health Organization Disability Assessment Schedule 2.0 - full 36 item version (WHODAS 2.0)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/WHODAS_2.0_36_item_scores_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/WHODAS_2.0_36_item_scores_combined/1?language=sv))
 
 ----------
 
 ### Psychiatry
 
 ----------
-* [Adult Self Rating Scale for ADHD (ASRS-ADHD)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#adult-self-rating-scale-for-adhd-asrs-adhd) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASRS_ADHD_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASRS_ADHD_combined/1?language=sv))
+* [Adult Self Rating Scale for ADHD (ASRS-ADHD)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASRS_ADHD_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASRS_ADHD_combined/1?language=sv))
 
-* [Affective Self Rating Scale (AS-18)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#affective-self-rating-scale-as-18) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AS-18_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AS-18_combined/1?language=sv))
+* [Affective Self Rating Scale (AS-18)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AS-18_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AS-18_combined/1?language=sv))
 
-* [Alcohol Use Disorders Identification Test Consumption (AUDIT-C)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#alcohol-use-disorders-identification-test-consumption-audit-c) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/AUDIT-C_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/AUDIT-C_combined/1?language=sv))
+* [Alcohol Use Disorders Identification Test Consumption (AUDIT-C)] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/AUDIT-C_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/AUDIT-C_combined/1?language=sv))
 
-* [CAGE](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#cage) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CAGE_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CAGE_combined/1?language=sv))
+* [CAGE] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CAGE_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CAGE_combined/1?language=sv))
 
-* [Credibility and Expectancy Questionnaire (CEQ)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#credibility-and-expectancy-questionnaire-ceq) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CEQ/1?language=en))
+* [Credibility and Expectancy Questionnaire (CEQ)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CEQ/1?language=en))
 
-* [Clinical Institute Withdrawal Assessment for alcohol scale - revised (CIWA-Ar)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#clinical-institute-withdrawal-assessment-for-alcohol-scale---revised-ciwa-ar) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CIWA-Ar_combined/1?language=sv))
+* [Clinical Institute Withdrawal Assessment for alcohol scale - revised (CIWA-Ar)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CIWA-Ar_combined/1?language=sv))
 
-* [Clinical Opiate Withdrawal Score (COWS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#clinical-opiate-withdrawal-score-cows) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/COWS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/COWS/1?language=sv))
+* [Clinical Opiate Withdrawal Score (COWS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/COWS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/COWS/1?language=sv))
 
-* [Drug Use Disorders Identification Test (DUDIT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#drug-use-disorders-identification-test-dudit) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DUDIT_score_combined/1?language=en))
+* [Drug Use Disorders Identification Test (DUDIT)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DUDIT_score_combined/1?language=en))
 
-* [Generalized Anxiety Disorder Score (GAD-7)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#generalized-anxiety-disorder-score-gad-7) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GAD-7_combined/1?language=en))
+* [Generalized Anxiety Disorder Score (GAD-7)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GAD-7_combined/1?language=en))
 
-* [Hamilton Anxiety Scale (HAM-A)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#hamilton-anxiety-scale-ham-a) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HAM-A_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HAM-A_combined/1?language=sv))
+* [Hamilton Anxiety Scale (HAM-A)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HAM-A_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HAM-A_combined/1?language=sv))
 
-* [Hospital Anxiety and Depression Scale (HAD)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#hospital-anxiety-and-depression-scale-had) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HAD_score_combined/1?language=en))
+* [Hospital Anxiety and Depression Scale (HAD)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HAD_score_combined/1?language=en))
 
-* [Impact of Event Scale - Revised (IES-R)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#impact-of-event-scale---revised-ies-r) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IES-R/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IES-R/1?language=sv))
+* [Impact of Event Scale - Revised (IES-R)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IES-R/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IES-R/1?language=sv))
 
-* [Major Depression Inventory (MDI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#major-depression-inventory-mdi) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MDI/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MDI/1?language=sv))
+* [Major Depression Inventory (MDI)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MDI/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MDI/1?language=sv))
 
-* [Medical Outcomes Study - Social Support Survey (MOS-SSS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#medical-outcomes-study---social-support-survey-mos-sss) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MOS-SSS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MOS-SSS/1?language=sv))
+* [Medical Outcomes Study - Social Support Survey (MOS-SSS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MOS-SSS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MOS-SSS/1?language=sv))
 
-* [Montgomery Åsberg Depression Rating Scale (MADRS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#montgomery-%C3%85sberg-depression-rating-scale-madrs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MADRS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MADRS_combined/1?language=sv))
+* [Montgomery Åsberg Depression Rating Scale (MADRS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MADRS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MADRS_combined/1?language=sv))
 
-* [Montgomery Åsberg Depression Rating Scale Self-rated (MADRS-S)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#montgomery-%C3%85sberg-depression-rating-scale---self-rated-madrs-s) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MADRS-S_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MADRS-S_combined/1?language=sv))
+* [Montgomery Åsberg Depression Rating Scale Self-rated (MADRS-S)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MADRS-S_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MADRS-S_combined/1?language=sv))
 
-* [Obsessive-Compulsive Inventory - revised (OCI-r)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#obsessive-compulsive-inventory---revised-oci-r) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OCI-R_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OCI-R_combined/1?language=sv))
+* [Obsessive-Compulsive Inventory - revised (OCI-r)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OCI-R_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OCI-R_combined/1?language=sv))
 
-* [Panic Disorder Severity Scale Self-Rated (PDSS-SR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#panic-disorder-severity-scale---self-rated-pdss-sr) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PDSS_SR_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PDSS_SR_combined/1?language=sv))
+* [Panic Disorder Severity Scale Self-Rated (PDSS-SR)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PDSS_SR_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PDSS_SR_combined/1?language=sv))
 
-* [Patient Health Questionnaire-9 (PHQ-9)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#patient-health-questionnaire-9-phq-9) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PHQ9_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PHQ9_combined/1?language=sv))
+* [Patient Health Questionnaire-9 (PHQ-9)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PHQ9_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PHQ9_combined/1?language=sv))
 
-* [Quick Inventory of Depressive Symptomology (QIDS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#quick-inventory-of-depressive-symptomology-qids) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QIDS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QIDS_combined/1?language=sv))
+* [Quick Inventory of Depressive Symptomology (QIDS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QIDS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QIDS_combined/1?language=sv))
 
-* [Ritvo Autism and Asperger Diagnostic Scale 14 (RAADS-14)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ritvo-autism-and-asperger-diagnostic-scale-14-raads-14) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAADS-14/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAADS-14/1?language=sv))
+* [Ritvo Autism and Asperger Diagnostic Scale 14 (RAADS-14)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAADS-14/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAADS-14/1?language=sv))
 
-* [Social Phobia Inventory (SPIN)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#social-phobia-inventory-spin) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPIN_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPIN_combined/1?language=sv))
+* [Social Phobia Inventory (SPIN)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPIN_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPIN_combined/1?language=sv))
 
-* [Yale-Brown Obsessive Compulsive Scale (Y-BOCS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#yale-brown-obsessive-compulsive-scale-y-bocs) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/YBOCS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/YBOCS_combined/1?language=sv))
+* [Yale-Brown Obsessive Compulsive Scale (Y-BOCS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/YBOCS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/YBOCS_combined/1?language=sv))
 
-* [Young Mania Rating Scale (YMRS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#young-mania-rating-scale-ymrs) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/YMRS_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/YMRS_combined/1?language=sv))
+* [Young Mania Rating Scale (YMRS)]( - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/YMRS_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/YMRS_combined/1?language=sv))
 
 ----------
 
 ### Pulmonology
 
 ----------
-* [ARISCAT](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#ariscat) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ARISCAT/1?language=en))
+* [ARISCAT] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ARISCAT/1?language=en))
 
-* [du Bois Score for Idiopathic Pulmonary Fibrosis (IPF) Mortality](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#du-bois-score-for-idiopathic-pulmonary-fibrosis-ipf-mortality) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/du_Bois_IPF_combined/1?language=en))
+* [du Bois Score for Idiopathic Pulmonary Fibrosis (IPF) Mortality] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/du_Bois_IPF_combined/1?language=en))
 
-* [BODE Index for COPD Survival](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bode-index-for-copd-survival) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/BODE_Index_COPD_survival/1?language=en))
+* [BODE Index for COPD Survival] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/BODE_Index_COPD_survival/1?language=en))
 
-* [Bova Score for Pulmonary Embolism Complications](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#bova-score-for-pulmonary-embolism-complications) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bova_Score/1?language=en))
+* [Bova Score for Pulmonary Embolism Complications] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bova_Score/1?language=en))
 
-* [COPD Assessment Test (CAT)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#copd-assessment-test-cat) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CAT_COPD_Assessment_Test/1?language=en))
+* [COPD Assessment Test (CAT)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CAT_COPD_Assessment_Test/1?language=en))
 
-* [DECAF Score for Acute Exacerbation of COPD](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#decaf-score-for-acute-exacerbation-of-copd) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DECAF_score_COPD/1?language=en))
+* [DECAF Score for Acute Exacerbation of COPD] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DECAF_score_COPD/1?language=en))
 
-* [GAP Index](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#gap-index-for-idiopathic-pulmonary-fibrosis-mortality) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Gap_index_for_IPF_mortality_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Gap_index_for_IPF_mortality_combined/1?language=sv))
+* [GAP Index] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Gap_index_for_IPF_mortality_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Gap_index_for_IPF_mortality_combined/1?language=sv))
 
-* [Manchester Score for small cell lung cancer](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#manchester-score-for-small-cell-lung-cancer) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Manchester_Score_SCC_lung_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Manchester_Score_SCC_lung_combined/1?language=sv))
+* [Manchester Score for small cell lung cancer]- ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Manchester_Score_SCC_lung_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Manchester_Score_SCC_lung_combined/1?language=sv))
 
-* [PERC Rule for Pulmonary Embolism](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#perc-rule-for-pulmonary-embolism) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PERC/1?language=en))
+* [PERC Rule for Pulmonary Embolism] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PERC/1?language=en))
 
-* [PSI/PORT Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#psiport-score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PSI-PORT_Pneumonia_Risk_Stratification/1?language=en))
+* [PSI/PORT Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PSI-PORT_Pneumonia_Risk_Stratification/1?language=en))
 
-* [RAPID Score for Pleural Infection](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#rapid-score-for-pleural-infection) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rapid_Score/0?language=en))
+* [RAPID Score for Pleural Infection] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rapid_Score/0?language=en))
 
-* [Respiratory ECMO Survival Prediction (RESP) Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#respiratory-ecmo-survival-prediction-resp-score-) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RESP_score_respiratory_ecmo_survival_prediction/1?language=en))
+* [Respiratory ECMO Survival Prediction (RESP) Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RESP_score_respiratory_ecmo_survival_prediction/1?language=en))
 
-* [SMART-COP Score](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#smart-cop-score-) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SMART-COP_Score/1?language=en))
+* [SMART-COP Score] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SMART-COP_Score/1?language=en))
 ----------
 
 ### Rheumatology
 
 ----------
-* [ACR EULAR Rheumatoid Arthritis](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#acreular-rheumatoid-arthritis) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_EULAR_RA_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_EULAR_RA_combined/1?language=sv))
+* [ACR EULAR Rheumatoid Arthritis] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_EULAR_RA_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_EULAR_RA_combined/1?language=sv))
 
-* [Acute Gout Diagnosis Rule](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#acute-gout-diagnosis-rule) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Acute_gout_diagnosis_rule_combined/1?language=en))
+* [Acute Gout Diagnosis Rule] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Acute_gout_diagnosis_rule_combined/1?language=en))
 
-* [Clinical Disease Activity Index (CDAI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#clinical-disease-activity-index-cdai) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CDAI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CDAI_combined/1?language=sv))
+* [Clinical Disease Activity Index (CDAI)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CDAI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CDAI_combined/1?language=sv))
 
-* [Disease Activity Score 28-CRP (DAS28-CRP)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#disease-activity-score-28-crp-das28-crp) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAS28-CRP_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAS28-CRP_combined/1?language=sv))
+* [Disease Activity Score 28-CRP (DAS28-CRP)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAS28-CRP_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAS28-CRP_combined/1?language=sv))
 
-* [Disease Activity Score 28-ESR (DAS28-ESR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#disease-activity-score-28-esr-das28-esr) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAS28-ESR_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAS28-ESR_combined/1?language=sv))
+* [Disease Activity Score 28-ESR (DAS28-ESR)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAS28-ESR_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAS28-ESR_combined/1?language=sv))
 
-* [Jones Criteria for Acute Rheumatic Fever Diagnosis](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#jones-criteria-for-acute-rheumatic-fever-diagnosis) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/JonesCriteria/1?language=en))
+* [Jones Criteria for Acute Rheumatic Fever Diagnosis] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/JonesCriteria/1?language=en))
 
-* [Simplified Disease Activity Index (SDAI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#simplified-disease-activity-index-sdai) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SDAI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SDAI_combined/1?language=sv))
+* [Simplified Disease Activity Index (SDAI)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SDAI_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SDAI_combined/1?language=sv))
 
 ----------
 
 ### Surgery
 
 ----------
-* [Preoperative Mortality Predictor Score (PMP)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#preoperative-mortality-predictor-score-pmp) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Preoperative_Mortality_Predictor_PMP_Score_guideline/1?language=en))
+* [Preoperative Mortality Predictor Score (PMP)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Preoperative_Mortality_Predictor_PMP_Score_guideline/1?language=en))
 
-* [Surgical Apgar Score for Postoperative Risk (SAS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#surgical-apgar-score-for-postoperative-risk-sas) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Surgical_Apgar_Score_SAS_for_Postoperative_Risk/1?language=en))
+* [Surgical Apgar Score for Postoperative Risk (SAS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Surgical_Apgar_Score_SAS_for_Postoperative_Risk/1?language=en))
 
 ----------
 
 ### Trauma Care
 
 ----------
-* [ABC Score for massive transfusion](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#abc-score-for-massive-transfusion) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABC_score_massive_transfusion_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABC_score_massive_transfusion_combined/1?language=sv))
+* [ABC Score for massive transfusion] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABC_score_massive_transfusion_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABC_score_massive_transfusion_combined/1?language=sv))
 
-* [Blast Lung Injury Severity Score (BLI)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#blast-lung-injury-severity-score-bli) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Blast_Lung_Injury_Severity_Score/1?language=en))
+* [Blast Lung Injury Severity Score (BLI)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Blast_Lung_Injury_Severity_Score/1?language=en))
 
-* [Canadian C-Spine Rule (CCR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#canadian-c-spine-rule-ccr) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CCR_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CCR_combined/1?language=sv))
+* [Canadian C-Spine Rule (CCR)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CCR_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CCR_combined/1?language=sv))
 
-* [Canadian CT head injury rule (CCHR)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#canadian-ct-head-injurytrauma-rule-cchr) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Canadian_CT_head_injury_rule_combined/1?language=en))
+* [Canadian CT head injury rule (CCHR)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Canadian_CT_head_injury_rule_combined/1?language=en))
 
-* [Injury Severity Score (ISS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-guideline-library#injury-severity-score-iss) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ISS/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ISS/1?language=sv))
+* [Injury Severity Score (ISS)] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ISS/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ISS/1?language=sv))
 
-* [Revised Trauma Score (RTS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#revised-trauma-score-rts) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RTS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RTS_combined/1?language=sv))
+* [Revised Trauma Score (RTS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RTS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RTS_combined/1?language=sv))
 
-* [Simplified Motor Score (SMS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#simplified-motor-score-sms) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SMS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SMS_combined/1?language=sv))
+* [Simplified Motor Score (SMS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SMS_combined/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SMS_combined/1?language=sv))
 
-* [Trauma Associated Severe Hemorrhage (TASH.v1)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#trauma-associated-severe-hemorrhage-tashv1) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/TASH_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/TASH_combined/1?language=sv))
+* [Trauma Associated Severe Hemorrhage (TASH.v1)] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/TASH_combined/1?language=en))/([SWE](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/TASH_combined/1?language=sv))
 
-* [Trauma Associated Severe Hemorrhage (TASH.v2)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#trauma-associated-severe-hemorrhage-tashv2) - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TASh_Score/2?language=en))
+* [Trauma Associated Severe Hemorrhage (TASH.v2)] - ([ENG](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TASh_Score/2?language=en))
 
 ----------
 
 ### Urology
 
 ----------
-* [Revised Urinary Incontinence Scale (RUIS)](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#revised-urinary-incontinence-scale-ruis) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_urinary_incontinence_scale_ruis_guideline/1?language=en))
+* [Revised Urinary Incontinence Scale (RUIS)] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_urinary_incontinence_scale_ruis_guideline/1?language=en))
 
-* [Urine output fluid balance](https://github.com/gdl-lang/common-clinical-models/wiki/Public-Guideline-Library#urine-output-fluid-balance) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urine_output_fluid_balance_Calculation/1?language=en))
+* [Urine output fluid balance] - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urine_output_fluid_balance_Calculation/1?language=en))
 
 ----------
 
