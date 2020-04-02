@@ -81,7 +81,7 @@ _Select a medical specialty below to view the available apps._
 ### Anesthesia
 
 ----------
-* El-Ganzouri Risk Index for Difficult Airway (EGRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EGRI/1?language=en)){target="_blank"}
+* El-Ganzouri Risk Index for Difficult Airway (EGRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EGRI/1?language=en))
 
 ----------
 
