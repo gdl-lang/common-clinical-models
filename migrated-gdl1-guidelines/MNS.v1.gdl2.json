@@ -1,0 +1,237 @@
+{
+  "id": "MNS.v1",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2019-06-26",
+      "name": "Konstantinos Kalliamvakos",
+      "organisation": "Cambio Healthcare Systems",
+      "email": "Konstantinos.Kalliamvakos@cambio.se"
+    },
+    "other_contributors": [
+      "Oskar Nielsen",
+      "Jimmy Axelsson",
+      "Syeeda S Farruque",
+	  "Daniel Keszthelyi"
+    ],
+    "lifecycle_state": "Author draft",
+    "details": {
+      "sv": {
+        "id": "sv",
+        "purpose": "För att räkna ut den totala poängen i MNS.",
+        "keywords": [
+          "MNS",
+          "Modified",
+          "Norton",
+          "Skala",
+          "Trycksår"
+        ],
+        "use": ""
+      },
+      "en": {
+        "id": "en",
+        "purpose": "To calculate the total score for Modified Norton Scale.",
+        "keywords": [
+          "Modified Norton Scale",
+          "mNs",
+          "ulcer",
+          "pressure",
+          "wound",
+          "sore"
+        ],
+        "use": "Whenever an assessment of risks of acquiring pressure ulcers among new inpatients, especially those who are elderly and/or infirm.\r\n\r\nThere are 7 questions answered on a range of 1 to 4. These relate to the following 7 aspects:\r\n\r\nMental condition\r\nPhysical activity\r\nFood intake\r\nFluid intake\r\nIncontinence\r\nPhysical condition\r\n\r\nThe individual score ranges from 1 to 4 with a higher score relating to a lower risk and visa versa so the maximum score of 28 indicates a healthy patient whilst a minimum of 7 indicates a seriously poor score.\r\n[Scores below 7 are not valid as one of the questions may not have been answered so that it scored 0 = N/A]\r\n",
+        "misuse": "Should be used as a risk identificaiton tool only. Not diagnostic on its own.",
+        "copyright": "© Cambio Healthcare Systems"
+      }
+    },
+    "other_details": {
+      "references": "Ref.1: Ek AC, Unosson M, Bjurulf P. The modified Norton scale and the nutritional state. Scandinavian Journal of Caring Sciences. 1989 Dec 1;3(4):183-7."
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0002": {
+        "id": "gt0002",
+        "model_id": "openEHR-EHR-OBSERVATION.mns.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.mns.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0003": {
+            "id": "gt0003",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0019]"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0024]"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0029]"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0034]"
+          }
+        }
+      },
+      "gt0010": {
+        "id": "gt0010",
+        "model_id": "openEHR-EHR-OBSERVATION.mns.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.mns.v1",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0018": {
+            "id": "gt0018",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0039]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0042": {
+        "id": "gt0042",
+        "priority": 1,
+        "when": [
+          "$gt0003|Mental condition|!=null",
+          "$gt0004|Physical activity|!=null",
+          "$gt0005|Mobility|!=null",
+          "$gt0006|Food intake|!=null",
+          "$gt0007|Fluid intake|!=null",
+          "$gt0008|Incontinence|!=null",
+          "$gt0009|Physical condition|!=null"
+        ],
+        "then": [
+          "$gt0018|Modified Norton Scale score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "sv": {
+        "id": "sv",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "MNS Beräkning",
+            "description": "Modified Norton Scale är ett specialinstrument för riskbedömning för att utvärdera om en person löper risk att utveckla trycksår. Maximal total poäng är 28 och minsta möjliga är 7, där lägre poäng innebär en större risk för en person för att utveckla trycksår. Observera att den modifierade Nortonskalan bör användas som ett komplement till den kliniska bedömningen."
+          },
+          "gt0003": {
+            "id": "gt0003",
+            "text": "*Mental condition (en)",
+            "description": "** (en)"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "*Physical activity (en)",
+            "description": "** (en)"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "*Mobility (en)",
+            "description": "** (en)"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "*Food intake (en)",
+            "description": "** (en)"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "text": "*Fluid intake (en)",
+            "description": "** (en)"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "*Incontinence (en)",
+            "description": "** (en)"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "text": "*Physical condition (en)",
+            "description": "** (en)"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "*Modified Norton Scale score (en)",
+            "description": "** (en)"
+          },
+          "gt0042": {
+            "id": "gt0042",
+            "text": "Beräkna total poäng"
+          }
+        }
+      },
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "Modified Norton Scale",
+            "description": "Modified Norton Scale is a special instrument designed for risk assessment in order to evaluate if a person is at risk for developing pressure ulcers. The maximum total score is 28 and the minimum is 7, where lower scores mean a greater risk for developing pressure ulcers. Note that the modified Norton scale should be used as a complement to clinical judgment."
+          },
+          "gt0003": {
+            "id": "gt0003",
+            "text": "Mental condition",
+            "description": "*"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "Physical activity",
+            "description": "*"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "Mobility",
+            "description": "*"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Food intake",
+            "description": "*"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "text": "Fluid intake",
+            "description": "*"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "Incontinence",
+            "description": "*"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "text": "Physical condition",
+            "description": "*"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "Modified Norton Scale score",
+            "description": "*"
+          },
+          "gt0042": {
+            "id": "gt0042",
+            "text": "Calculate total score"
+          }
+        }
+      }
+    }
+  }
+}
