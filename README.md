@@ -265,7 +265,7 @@ _Select a medical specialty below to view the available apps._
 
 * Modified Norton Scale (MNS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MNS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MNS/1?language=sv))
 
-* Mini Nutritional Assessment (MNA) - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/MNA.v1.dsv?token=4d4e412e7631:1549324800000:a50e2dfaac1c033d99d5f3109799e8bf&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/MNA.v1.dsv?token=4d4e412e7631:1549324800000:a50e2dfaac1c033d99d5f3109799e8bf&language=sv))
+* Mini Nutritional Assessment (MNA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MNA/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MNA/1?language=sv))
 
 * Risk Assessment Pressure Sore Scale (RAPS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAPS_Scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAPS_Scale/1?language=sv))
 
