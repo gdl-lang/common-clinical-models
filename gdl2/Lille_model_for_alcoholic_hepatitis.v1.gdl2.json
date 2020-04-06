@@ -72,25 +72,9 @@
         "template_id": "openEHR-EHR-OBSERVATION.lille_model_for_alcoholic_hepatitis.v1",
         "type": "INPUT",
         "elements": {
-          "gt0008": {
-            "id": "gt0008",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
-          },
           "gt0009": {
             "id": "gt0009",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
-          },
-          "gt0010": {
-            "id": "gt0010",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
-          },
-          "gt0011": {
-            "id": "gt0011",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0011]"
-          },
-          "gt0012": {
-            "id": "gt0012",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
           }
         }
       },
@@ -123,6 +107,14 @@
           "gt0019": {
             "id": "gt0019",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
+          },
+          "gt0045": {
+            "id": "gt0045",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0019]"
+          },
+          "gt0046": {
+            "id": "gt0046",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0020]"
           }
         }
       },
@@ -132,14 +124,6 @@
         "template_id": "openEHR-EHR-EVALUATION.lille_model_for_alcoholic_hepatitis.v1",
         "type": "OUTPUT",
         "elements": {
-          "gt0021": {
-            "id": "gt0021",
-            "path": "/data[at0001]/items[at0013]"
-          },
-          "gt0022": {
-            "id": "gt0022",
-            "path": "/data[at0001]/items[at0002]"
-          },
           "gt0023": {
             "id": "gt0023",
             "path": "/data[at0001]/items[at0007]"
@@ -153,6 +137,54 @@
             "path": "/data[at0001]/items[at0010]"
           }
         }
+      },
+      "gt0040": {
+        "id": "gt0040",
+        "model_id": "openEHR-EHR-OBSERVATION.lab_test-liver_function.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.lab_test-liver_function.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0041": {
+            "id": "gt0041",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0078.4]"
+          }
+        }
+      },
+      "gt0043": {
+        "id": "gt0043",
+        "model_id": "openEHR-EHR-OBSERVATION.lab_test-coagulation_profile.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.lab_test-coagulation_profile.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0044": {
+            "id": "gt0044",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0.91]"
+          }
+        }
+      },
+      "gt0047": {
+        "id": "gt0047",
+        "model_id": "openEHR-EHR-OBSERVATION.lab_test-liver_function.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.lab_test-liver_function.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0048": {
+            "id": "gt0048",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0078.7]"
+          }
+        }
+      },
+      "gt0049": {
+        "id": "gt0049",
+        "model_id": "openEHR-EHR-OBSERVATION.lab_test_creatinine.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.lab_test_creatinine.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0050": {
+            "id": "gt0050",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
+          }
+        }
       }
     },
     "pre_conditions": [
@@ -162,41 +194,41 @@
     "rules": {
       "gt0026": {
         "id": "gt0026",
-        "priority": 14,
+        "priority": 15,
         "when": [
           "$gt0006|Birthdate|!=null"
         ],
         "then": [
-          "$gt0014|Age|.magnitude=($currentDateTime-$gt0006)/(1000*60*60*24*365)",
+          "$gt0014|Age|.magnitude=($currentDateTime-$gt0006)/1,a",
           "$gt0014|Age|.precision=0",
           "$gt0014|Age|.unit='a'"
         ]
       },
       "gt0027": {
         "id": "gt0027",
-        "priority": 13,
+        "priority": 14,
         "when": [
-          "$gt0008|Initial Bilirubin|.unit=='mg/dl'"
+          "$gt0041|Initial bilirubin|.unit=='mg/dl'"
         ],
         "then": [
-          "$gt0015|Initial Bilirubin|.magnitude=$gt0008.magnitude*17.1",
+          "$gt0015|Initial Bilirubin|.magnitude=$gt0041.magnitude*17.1",
           "$gt0015|Initial Bilirubin|.precision=2",
           "$gt0015|Initial Bilirubin|.unit='umol/l'"
         ]
       },
       "gt0028": {
         "id": "gt0028",
-        "priority": 12,
+        "priority": 13,
         "when": [
-          "$gt0008|Initial Bilirubin|.unit=='umol/l'"
+          "$gt0041|Initial bilirubin|.unit=='µmol/l'"
         ],
         "then": [
-          "$gt0015|Initial Bilirubin|=$gt0008|Initial Bilirubin|"
+          "$gt0015|Initial Bilirubin|=$gt0041|Initial bilirubin|"
         ]
       },
       "gt0029": {
         "id": "gt0029",
-        "priority": 11,
+        "priority": 12,
         "when": [
           "$gt0009|Bilirubin day-7|.unit=='mg/dl'"
         ],
@@ -208,7 +240,7 @@
       },
       "gt0030": {
         "id": "gt0030",
-        "priority": 10,
+        "priority": 11,
         "when": [
           "$gt0009|Bilirubin day-7|.unit=='umol/l'"
         ],
@@ -216,56 +248,68 @@
           "$gt0016|Bilirubin day-7|=$gt0009|Bilirubin day-7|"
         ]
       },
-      "gt0031": {
-        "id": "gt0031",
-        "priority": 9,
-        "when": [
-          "$gt0010|Albumin|.unit=='gm/dl'"
-        ],
-        "then": [
-          "$gt0017|Albumin|.magnitude=$gt0010.magnitude*10",
-          "$gt0017|Albumin|.precision=2",
-          "$gt0017|Albumin|.unit='gm/l'"
-        ]
-      },
       "gt0032": {
         "id": "gt0032",
-        "priority": 8,
+        "priority": 10,
         "when": [
-          "$gt0010|Albumin|.unit=='gm/l'"
+          "$gt0048|Albumin|!=null"
         ],
         "then": [
-          "$gt0017|Albumin|=$gt0010|Albumin|"
+          "$gt0017|Albumin|=$gt0048|Albumin|"
         ]
       },
-      "gt0033": {
-        "id": "gt0033",
+      "gt0034": {
+        "id": "gt0034",
+        "priority": 9,
+        "when": [
+          "$gt0050|Creatinine|.unit=='mg/dl'",
+          "$gt0050|Creatinine|.magnitude<=1.3"
+        ],
+        "then": [
+          "$gt0018|Renal Insuficiency|=0|local::at0008|Cr ≤1.3 mg/dL or 115 µmol/L)|"
+        ]
+      },
+      "gt0051": {
+        "id": "gt0051",
+        "priority": 8,
+        "when": [
+          "$gt0050|Creatinine|.unit=='µmol/l'",
+          "$gt0050|Creatinine|.magnitude<=115"
+        ],
+        "then": [
+          "$gt0018|Renal Insuficiency|=0|local::at0008|Cr ≤1.3 mg/dL or 115 µmol/L)|"
+        ]
+      },
+      "gt0052": {
+        "id": "gt0052",
         "priority": 7,
         "when": [
-          "(($gt0011|Creatinine|.magnitude>1.3)&&($gt0011|Creatinine|.unit=='mg/dl'))||(($gt0011|Creatinine|.magnitude>115)&&($gt0011|Creatinine|.unit=='umol/l'))"
+          "$gt0050|Creatinine|.unit=='mg/dl'",
+          "$gt0050|Creatinine|.magnitude>1.3"
         ],
         "then": [
           "$gt0018|Renal Insuficiency|=1|local::at0009| Cr >1.3 mg/dL or 115 µmol/L|"
         ]
       },
-      "gt0034": {
-        "id": "gt0034",
+      "gt0053": {
+        "id": "gt0053",
         "priority": 6,
         "when": [
-          "(($gt0011|Creatinine|.magnitude<=1.3)&&($gt0011|Creatinine|.unit=='mg/dl'))||(($gt0011|Creatinine|.magnitude<=115)&&($gt0011|Creatinine|.unit=='umol/l'))"
+          "$gt0050|Creatinine|.unit=='µmol/l'",
+          "$gt0050|Creatinine|.magnitude>115"
         ],
         "then": [
-          "$gt0018|Renal Insuficiency|=0|local::at0008|Cr ≤1.3 mg/dL or 115 µmol/L)|"
+          "$gt0018|Renal Insuficiency|=1|local::at0009| Cr >1.3 mg/dL or 115 µmol/L|"
         ]
       },
       "gt0035": {
         "id": "gt0035",
         "priority": 5,
         "when": [
-          "$gt0012|PT|!=null"
+          "$gt0044|PT|!=null"
         ],
         "then": [
-          "$gt0019|PT|=$gt0012|PT|"
+          "$gt0019|PT|=$gt0044|PT|"
         ]
       },
       "gt0036": {
@@ -273,33 +317,33 @@
         "priority": 4,
         "when": [
           "$gt0014|Age|!=null",
-          "$gt0015|Initial Bilirubin|!=null",
-          "$gt0016|Bilirubin day-7|!=null",
-          "$gt0017|Albumin|!=null",
+          "$gt0041|Initial bilirubin|!=null",
+          "$gt0009|Bilirubin day-7|!=null",
+          "$gt0048|Albumin|!=null",
           "$gt0018|Renal Insuficiency|!=null",
-          "$gt0019|PT|!=null"
+          "$gt0044|PT|!=null"
         ],
         "then": [
-          "$gt0021|R|.magnitude=3.19-(0.101*$gt0014.magnitude)+(0.147*$gt0017.magnitude)+(0.0165*($gt0015.magnitude-$gt0016.magnitude))-(0.206*$gt0018.value)-(0.0065*$gt0015.magnitude)-(0.0096*$gt0019.magnitude)",
-          "$gt0021|R|.precision=4"
+          "$gt0045|R|.magnitude=3.19-(0.101*$gt0014.magnitude)+(0.147*$gt0017.magnitude)+(0.0165*($gt0015.magnitude-$gt0016.magnitude))-(0.206*$gt0018.value)-(0.0065*$gt0015.magnitude)-(0.0096*$gt0019.magnitude)",
+          "$gt0045|R|.precision=4"
         ]
       },
       "gt0037": {
         "id": "gt0037",
         "priority": 3,
         "when": [
-          "$gt0021|R|!=null"
+          "$gt0045|R|!=null"
         ],
         "then": [
-          "$gt0022|Lille model score|.magnitude=(1/(2.71828183^$gt0021.magnitude))/(1+(1/(2.71828183^$gt0021.magnitude)))",
-          "$gt0022|Lille model score|.precision=3"
+          "$gt0046|Lille Model Score|.magnitude=(1/(2.71828183^$gt0045.magnitude))/(1+(1/(2.71828183^$gt0045.magnitude)))",
+          "$gt0046|Lille Model Score|.precision=3"
         ]
       },
       "gt0038": {
         "id": "gt0038",
         "priority": 2,
         "when": [
-          "$gt0022|Lille model score|<'0.45'"
+          "$gt0046|Lille Model Score|<'0.45'"
         ],
         "then": [
           "$gt0023|Prognosis|=1|local::at0009|Good prognosis.|",
@@ -311,7 +355,7 @@
         "id": "gt0039",
         "priority": 1,
         "when": [
-          "$gt0022|Lille model score|>'0.45'"
+          "$gt0046|Lille Model Score|>'0.45'"
         ],
         "then": [
           "$gt0023|Prognosis|=0|local::at0008|Poor prognosis.|",
@@ -460,7 +504,7 @@
           },
           "gt0034": {
             "id": "gt0034",
-            "text": "Set renal insufficienty - no value"
+            "text": "Set renal insufficiency no for cr in mg/dl"
           },
           "gt0035": {
             "id": "gt0035",
@@ -481,6 +525,53 @@
           "gt0039": {
             "id": "gt0039",
             "text": "Set interpretation for Lille model Score >0.45"
+          },
+          "gt0041": {
+            "id": "gt0041",
+            "text": "Initial bilirubin",
+            "description": "Concentration of bilirubin (conjugated and unconjugated) in the serum."
+          },
+          "gt0042": {
+            "id": "gt0042",
+            "text": "Albumin",
+            "description": "Albumin level in the sample."
+          },
+          "gt0044": {
+            "id": "gt0044",
+            "text": "PT",
+            "description": "Prothrombin time."
+          },
+          "gt0045": {
+            "id": "gt0045",
+            "text": "R",
+            "description": "*"
+          },
+          "gt0046": {
+            "id": "gt0046",
+            "text": "Lille Model Score",
+            "description": "*"
+          },
+          "gt0048": {
+            "id": "gt0048",
+            "text": "Albumin",
+            "description": "Albumin level in the sample."
+          },
+          "gt0050": {
+            "id": "gt0050",
+            "text": "Creatinine",
+            "description": "Creatinine value"
+          },
+          "gt0051": {
+            "id": "gt0051",
+            "text": "Set renal insufficiency no for cr in umol/l"
+          },
+          "gt0052": {
+            "id": "gt0052",
+            "text": "Set renal insufficiency yes for cr in mg/dl"
+          },
+          "gt0053": {
+            "id": "gt0053",
+            "text": "Set renal insufficiency yes for cr in umol/l"
           }
         }
       }

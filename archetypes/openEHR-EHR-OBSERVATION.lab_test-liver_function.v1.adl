@@ -4,7 +4,7 @@ specialize
 	openEHR-EHR-OBSERVATION.lab_test.v1
 
 concept
-	[at0000.1]	-- Leverprover
+	[at0000.1]	-- Liver function tests
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -24,15 +24,6 @@ description
 		["date"] = <"2009-11-07">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To record the result of tests of liver function.
-">
-			use = <"Will normally be reported back to the requesting clinician within the context of an overall Composition-based laboratory report.">
-			keywords = <"lab", "pathology", "biochemistry", "laboratory", "liver", "hepatic">
-			misuse = <"">
-			copyright = <"copyright (c) 2010 openEHR foundation">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Registrering av provresultat för leverprover.">
@@ -44,6 +35,15 @@ Rapporteras vanligen tillbaka till beställande kliniker som del i övergripande
 			misuse = <"">
 			copyright = <"copyright (c) 2010 openEHR foundation">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the result of tests of liver function.
+">
+			use = <"Will normally be reported back to the requesting clinician within the context of an overall Composition-based laboratory report.">
+			keywords = <"lab", "pathology", "biochemistry", "laboratory", "liver", "hepatic">
+			misuse = <"">
+			copyright = <"copyright (c) 2010 openEHR foundation">
+		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
@@ -52,50 +52,50 @@ Rapporteras vanligen tillbaka till beställande kliniker som del i övergripande
 
 IHE. IHE, Laboratory Technical Framework, Volume 3 Content [Internet]. 2008;Available from: http://www.ihe.net/Technical_Framework/upload/ihe_lab_TF_rel2_1-Vol-3_FT_2008-08-08.pdf
 ">
-		["MD5-CAM-1.0.1"] = <"F96CAD7C78171D583FDB39FB144819F7">
+		["MD5-CAM-1.0.1"] = <"795D614700C29BF503AB2820C47D7D8B">
 	>
 
 definition
-	OBSERVATION[at0000.1] matches {	-- Leverprover
+	OBSERVATION[at0000.1] matches {	-- Liver function tests
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- *Test name(en)
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Test name
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0077] occurrences matches {0..1} matches {	-- *Diagnostic service(en)
+									ELEMENT[at0077] occurrences matches {0..1} matches {	-- Diagnostic service
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0073] occurrences matches {0..1} matches {	-- *Test status(en)
+									ELEMENT[at0073] occurrences matches {0..1} matches {	-- Test status
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0037, 	-- *Interim(en)
-													at0038, 	-- *Final(en)
-													at0039, 	-- *Supplementary(en)
-													at0040, 	-- *Corrected (amended)(en)
-													at0074, 	-- *Aborted(en)
-													at0079]	-- *Never performed(en)
+													at0037, 	-- Interim
+													at0038, 	-- Final
+													at0039, 	-- Supplementary
+													at0040, 	-- Corrected (amended)
+													at0074, 	-- Aborted
+													at0079]	-- Never performed
 												}
 											}
 										}
 									}
-									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- *Specimen detail(en)
+									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- Specimen detail
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.specimen\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
-									ELEMENT[at0078.2] occurrences matches {0..1} matches {	-- Alkaliskt fosfatas (ALP)
+									ELEMENT[at0078.2] occurrences matches {0..1} matches {	-- Alkaline phosphatase (ALP)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -108,7 +108,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.4] occurrences matches {0..1} matches {	-- Bilirubin - totalt
+									ELEMENT[at0078.4] occurrences matches {0..1} matches {	-- Total bilirubin
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -116,6 +116,7 @@ definition
 													["1"] = <
 														units = <"µmol/l">
 														magnitude = <|>=0.0|>
+														precision = <|2|>
 													>
 													["2"] = <
 														units = <"mg/dl">
@@ -125,7 +126,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.11] occurrences matches {0..1} matches {	-- Bilirubin - konjugerat
+									ELEMENT[at0078.11] occurrences matches {0..1} matches {	-- Direct bilirubin
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -138,7 +139,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.9] occurrences matches {0..1} matches {	-- Bilirubin - okonjugerat
+									ELEMENT[at0078.9] occurrences matches {0..1} matches {	-- Indirect bilirubin
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -151,7 +152,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.1] occurrences matches {0..1} matches {	-- Alaninaminotransferas (ALAT)
+									ELEMENT[at0078.1] occurrences matches {0..1} matches {	-- Alanine aminotransferase (ALT)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -164,7 +165,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.3] occurrences matches {0..1} matches {	-- Aspartataminotransferas (ASAT)
+									ELEMENT[at0078.3] occurrences matches {0..1} matches {	-- Aspartate aminotransferase (AST)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -177,7 +178,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.5] occurrences matches {0..1} matches {	-- Gamma-glutamyltransferas (gamma-GT)
+									ELEMENT[at0078.5] occurrences matches {0..1} matches {	-- Gamm glutamyl transferase (GGT)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -190,7 +191,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.6] occurrences matches {0..1} matches {	-- Laktatdehydrogenas (LD)
+									ELEMENT[at0078.6] occurrences matches {0..1} matches {	-- Lactate dehydrogenase (LD)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -216,7 +217,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.8] occurrences matches {0..1} matches {	-- *Globulins(en)
+									ELEMENT[at0078.8] occurrences matches {0..1} matches {	-- Globulins
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -229,7 +230,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.10] occurrences matches {0..1} matches {	-- Totalt protein
+									ELEMENT[at0078.10] occurrences matches {0..1} matches {	-- Total protein
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -242,18 +243,18 @@ definition
 											>
 										}
 									}
-									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- *Per-result annotation(en)
+									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- Per-result annotation
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.lab_result_annotation(-[a-zA-Z0-9_]+)*\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
-									ELEMENT[at0057] occurrences matches {0..1} matches {	-- *Overall interpretation(en)
+									ELEMENT[at0057] occurrences matches {0..1} matches {	-- Overall interpretation
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..*} matches {	-- *Multimedia representation(en)
+									ELEMENT[at0010] occurrences matches {0..*} matches {	-- Multimedia representation
 										value matches {
 											DV_MULTIMEDIA matches {
 												media_type matches {[openEHR::]}
@@ -268,34 +269,34 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0004] matches {	-- *Tree(en)
+			ITEM_TREE[at0004] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0062] occurrences matches {0..1} matches {	-- *Requestor order identifier(en)
+					ELEMENT[at0062] occurrences matches {0..1} matches {	-- Requestor order identifier
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					allow_archetype CLUSTER[at0090] occurrences matches {0..*} matches {	-- *Requestor (en)
+					allow_archetype CLUSTER[at0090] occurrences matches {0..*} matches {	-- Requestor 
 						include
 							archetype_id/value matches {/.*/}
 					}
-					ELEMENT[at0063] occurrences matches {0..1} matches {	-- *Receiver order Identifier(en)
+					ELEMENT[at0063] occurrences matches {0..1} matches {	-- Receiver order Identifier
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- *Receiving laboratory (en)
+					allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- Receiving laboratory 
 						include
 							archetype_id/value matches {/openEHR-EHR-CLUSTER\.organisation\.v1/}
 						exclude
 							archetype_id/value matches {/.*/}
 					}
-					ELEMENT[at0068] occurrences matches {0..1} matches {	-- *Laboratory test result identifier(en)
+					ELEMENT[at0068] occurrences matches {0..1} matches {	-- Laboratory test result identifier
 						value matches {
 							DV_TEXT matches {*}
 						}
 					}
-					ELEMENT[at0075] occurrences matches {0..1} matches {	-- *Datetime result issued(en)
+					ELEMENT[at0075] occurrences matches {0..1} matches {	-- Datetime result issued
 						value matches {
 							DV_DATE_TIME matches {*}
 						}
