@@ -67,11 +67,9 @@
     "rules": {
       "gt0014": {
         "id": "gt0014",
-        "priority": 6,
+        "priority": 3,
         "when": [
-          "($gt0012|Severity of ideation (select most severe in the past month)|==1|local::at0006|Wish to be dead|)||($gt0012|Severity of ideation (select most severe in the past month)|==2|local::at0007|Nonspecific active suicidal thoughts|)",
-          "$gt0011|Suicidal behavior (select most severe in lifetime)|==null",
-          "$gt0013|Was this behavior within the past three months?|==null"
+          "($gt0012|Severity of ideation (select most severe in the past month)|==1|local::at0006|Wish to be dead|)||($gt0012|Severity of ideation (select most severe in the past month)|==2|local::at0007|Nonspecific active suicidal thoughts|)"
         ],
         "then": [
           "$gt0007|Risk Level|=0|local::at0003|Low Risk|"
@@ -79,68 +77,22 @@
       },
       "gt0015": {
         "id": "gt0015",
-        "priority": 5,
-        "when": [
-          "$gt0012|Severity of ideation (select most severe in the past month)|==3|local::at0008|Active suicidal ideation with any methods (not plan) without intent to act|",
-          "$gt0011|Suicidal behavior (select most severe in lifetime)|==null",
-          "$gt0013|Was this behavior within the past three months?|==null"
-        ],
-        "then": [
-          "$gt0007|Risk Level|=1|local::at0004|Moderate Risk|"
-        ]
-      },
-      "gt0016": {
-        "id": "gt0016",
-        "priority": 4,
-        "when": [
-          "($gt0012|Severity of ideation (select most severe in the past month)|==4|local::at0009|Active suicidal ideation with some intent to act, without specific plan|)||($gt0012|Severity of ideation (select most severe in the past month)|==5|local::at0010|Active suicidal ideation with specific plan and intent|)",
-          "$gt0011|Suicidal behavior (select most severe in lifetime)|==null",
-          "$gt0013|Was this behavior within the past three months?|==null"
-        ],
-        "then": [
-          "$gt0007|Risk Level|=2|local::at0005|High Risk|"
-        ]
-      },
-      "gt0017": {
-        "id": "gt0017",
-        "priority": 3,
-        "when": [
-          "($gt0012|Severity of ideation (select most severe in the past month)|==1|local::at0006|Wish to be dead|)||($gt0012|Severity of ideation (select most severe in the past month)|==2|local::at0007|Nonspecific active suicidal thoughts|)",
-          "$gt0011|Suicidal behavior (select most severe in lifetime)|!=null",
-          "$gt0013|Was this behavior within the past three months?|!=null",
-          "$gt0011|Suicidal behavior (select most severe in lifetime)|!=0|local::at0012|No reported suicidal behavior|",
-          "$gt0013|Was this behavior within the past three months?|==0|local::at0019|No|"
-        ],
-        "then": [
-          "$gt0007|Risk Level|=1|local::at0004|Moderate Risk|"
-        ]
-      },
-      "gt0018": {
-        "id": "gt0018",
         "priority": 2,
         "when": [
-          "$gt0011|Suicidal behavior (select most severe in lifetime)|!=null",
-          "$gt0012|Severity of ideation (select most severe in the past month)|!=null",
-          "$gt0013|Was this behavior within the past three months?|!=null",
-          "$gt0011|Suicidal behavior (select most severe in lifetime)|!=0|local::at0012|No reported suicidal behavior|",
-          "$gt0012|Severity of ideation (select most severe in the past month)|!=0|local::at0005|No reported suicidal ideation|",
-          "$gt0013|Was this behavior within the past three months?|==1|local::at0020|Yes|"
-        ],
-        "then": [
-          "$gt0007|Risk Level|=2|local::at0005|High Risk|"
-        ]
-      },
-      "gt0019": {
-        "id": "gt0019",
-        "priority": 1,
-        "when": [
-          "$gt0012|Severity of ideation (select most severe in the past month)|==3|local::at0008|Active suicidal ideation with any methods (not plan) without intent to act|",
-          "$gt0011|Suicidal behavior (select most severe in lifetime)|!=null",
-          "$gt0013|Was this behavior within the past three months?|!=null",
-          "$gt0013|Was this behavior within the past three months?|==0|local::at0019|No|"
+          "($gt0012|Severity of ideation (select most severe in the past month)|==3|local::at0008|Active suicidal ideation with any methods (not plan) without intent to act|)||($gt0011|Suicidal behavior (select most severe in lifetime)|>0|local::at0012|No reported suicidal behavior|)"
         ],
         "then": [
           "$gt0007|Risk Level|=1|local::at0004|Moderate Risk|"
+        ]
+      },
+      "gt0020": {
+        "id": "gt0020",
+        "priority": 1,
+        "when": [
+          "(($gt0012|Severity of ideation (select most severe in the past month)|==4|local::at0009|Active suicidal ideation with some intent to act, without specific plan|)||($gt0012|Severity of ideation (select most severe in the past month)|==5|local::at0010|Active suicidal ideation with specific plan and intent|))||($gt0013|Was this behavior within the past three months?|==1|local::at0020|Yes|)"
+        ],
+        "then": [
+          "$gt0007|Risk Level|=2|local::at0005|High Risk|"
         ]
       }
     }
@@ -218,6 +170,10 @@
           "gt0019": {
             "id": "gt0019",
             "text": "Moderate Risk 3"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "High Risk"
           }
         }
       }
