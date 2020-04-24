@@ -1,0 +1,96 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.herdoo2_rule_for_discontinuing_anticoagulation_in_unprovoked_vte.v0
+
+concept
+	[at0000]	-- Herdoo2 rule for discontinuing anticoagulation in unprovoked vte
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Jack Msonkho">
+		["email"] = <" models@cambiocds.com">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2020-04-24">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <" Identifies low-risk women who can safely discontinue VTE treatment.">
+			use = <"Indefinite anticoagulation is burdensome and associated with bleeding risk. The HERDOO2 Rule can identify patients who have very low risk of recurrent VTE and can therefore safely stop anticoagulation in the short term.
+
+When to Use:
+Women ≥18 years old with unprovoked VTE. Inclusion criteria in the original study:
+
+Patients diagnosed 5–7 months before enrollment.
+On heparin or low molecular weight heparin (LMWH) for ≥5 days and oral anticoagulation for 5–7 months after the event.
+Without recurrent VTE during the treatment period.
+Noncompressible segment on compression ultrasound of popliteal (or more proximal) leg vein, high-probability V/Q scan, or segmental (or larger) artery filling defect on spiral CT.
+Exclusion criteria:
+
+Leg fracture.
+Lower-extremity plaster cast.
+Immobilization for >3 days.
+General anesthetic <3 months before index event.
+Cancer diagnosis within 5 years.
+
+">
+			keywords = <"Anticoagulation", ...>
+			misuse = <"">
+			copyright = <"@Cambio CDS">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Rodger MA, Kahn SR, Wells PS, et al. Identifying unprovoked thromboembolism patients at low risk for recurrence who can discontinue anticoagulant therapy. CMAJ. 2008;179(5):417-26.
+
+Validation
+Rodger MA, Le gal G, Anderson DR, et al. Validating the HERDOO2 rule to guide treatment duration for women with unprovoked venous thrombosis: multinational prospective cohort management study. BMJ. 2017;356:j1065.
+
+">
+		["MD5-CAM-1.0.1"] = <"26FD4F3B838FF086F164E0B196A74AF2">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Herdoo2 rule for discontinuing anticoagulation in unprovoked vte
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Risk Group
+						value matches {
+							0|[local::at0003], 	-- Low
+							1|[local::at0004]  	-- Not Low
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Herdoo2 rule for discontinuing anticoagulation in unprovoked vte">
+					description = <"HERDOO2 Rule for Discontinuing Anticoagulation in Unprovoked VTE Identifies low-risk women who can safely discontinue VTE treatment.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Risk Group">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Low">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Not Low">
+					description = <"*">
+				>
+			>
+		>
+	>
