@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 250*
+### *Published Apps: 251*
 
 ----------
 
@@ -592,6 +592,8 @@ _Select a medical specialty below to view the available apps._
 * GAP Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Gap_index_for_IPF_mortality/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Gap_index_for_IPF_mortality/1?language=sv))
 
 * Manchester Score for small cell lung cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Manchester_Score_SCC_lung/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Manchester_Score_SCC_lung/1?language=sv))
+
+* MuLBSTA Score for Viral Pneumonia Mortality  - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mulbsta/1?language=en))
 
 * PERC Rule for Pulmonary Embolism - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PERC/1?language=en))
 
