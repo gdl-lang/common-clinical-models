@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 252*
+### *Published Apps: 253*
 
 ----------
 
@@ -412,6 +412,8 @@ _Select a medical specialty below to view the available apps._
 * Heng Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Heng_mRCC/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Heng_mRCC/1?language=sv))
 
 * Karnofsky Performance Status Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Karnofsky_performance_status/1?language=en))
+
+* Modified Glasgow Prognostic Score (mGPS) for Cancer Outcomes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Glasgow_Prognostic_Score/1?language=en))
 
 * SSIGN Score for Clear Cell Renal Cell Carcinoma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SSIGN_ccRCC/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SSIGN_ccRCC/1?language=sv))
 
