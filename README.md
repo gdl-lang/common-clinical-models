@@ -471,7 +471,7 @@ _Select a medical specialty below to view the available apps._
 
 * Pediatric ins and outs - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_ins_and_outs/1?language=en))
 
-* Pediatric Respiratory Assessment Measure (PRAM) for Asthma Exacerbation Severity - ([_ENG_]https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Respiratory_Assessment_Measure_PRAM_for_Asthma_Exacerbation_Severity_guideline/1?language=en))
+* Pediatric Respiratory Assessment Measure (PRAM) for Asthma Exacerbation Severity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Respiratory_Assessment_Measure_PRAM_for_Asthma_Exacerbation_Severity_guideline/1?language=en))
 
 * Pediatric SIRS2 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatrics_Sirs2/1?language=en))
 
