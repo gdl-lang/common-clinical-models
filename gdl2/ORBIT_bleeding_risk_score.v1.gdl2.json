@@ -24,8 +24,8 @@
           "anticoagulation",
           "atrial fibrillation"
         ],
-        "use": "To be use when considering anticoagulation for patient with atrial fibrillation, by assessing the presence of the following variables (ORBIT):\n- O : Older age \n- R : Reduced hemoglobin or hematocrit level (anaemia), noted that different normal range apply for male and female gender\n- B : Bleeding history (history of gastrointestinal bleeding, intracranial bleeding, or hemorrhagic stroke)\n- I : Insufficient kidney function, based on the Glomerular Filtration Rate (GFR)\n- T: Treatment with antiplatelet agents\n\nEvery point contributed by the variable will be summed into the ORBIT score. Score 0-2 represents the low risk group, score 3 represents the medium risk group, and score 4-7 represents the high risk group.",
-        "misuse": "Not taking into account the choice of anticoagulant agents.",
+        "use": "To be use when considering anticoagulation for patient with atrial fibrillation, by assessing the presence of the following variables (ORBIT):\n- O : Older age (1 point if age >74 years)\n- R : Reduced hemoglobin or hematocrit level (anaemia), hemoglobin (<13 mg/dL for males and <12 mg/dL for females) or hematocrit (<40% for males and <36% for females). Noted that different normal range apply for male and female gender (2 points if present)\n- B : Bleeding history (history of gastrointestinal bleeding, intracranial bleeding, or hemorrhagic stroke) (2 points if present)\n- I : Insufficient kidney function, based on the Glomerular Filtration Rate (GFR) (1 point if GFR < 60mL/min/1.73m2)\n- T: Treatment with antiplatelet agents (1 point if present)\n\nEvery point contributed by the variable will be summed into the ORBIT score. \n- Score 0-2 represents the low risk group with 2.4 events of bleed per 100 patient-years.\n- Score 3 represents the medium risk group with with 4.7 events of bleed per 100 patient-years.\n- Score 4-7 represents the high risk group with 8.1 events of bleed per 100 patient-years.\n\nPatient-years is the number of incident cases divided by the amount of person-time at risk.",
+        "misuse": "ORBIT score does not take into account the choice of anticoagulant agents and the time in therapeutic range.",
         "copyright": "@CambioCDS"
       }
     },
@@ -185,7 +185,8 @@
         "id": "gt0025",
         "priority": 8,
         "when": [
-          "$gt0004|Age|>74,a"
+          "$gt0004|Age|>74,a",
+          "$gt0004|Age|.unit=='a'"
         ],
         "then": [
           "$gt0015|Age|=1|local::at0009|> 74 years|"
@@ -195,7 +196,8 @@
         "id": "gt0026",
         "priority": 7,
         "when": [
-          "$gt0004|Age|<=74,a"
+          "$gt0004|Age|<=74,a",
+          "$gt0004|Age|.unit=='a'"
         ],
         "then": [
           "$gt0015|Age|=0|local::at0008|<= 74 years|"
