@@ -44,7 +44,7 @@ _Select a medical specialty below to view the available apps._
 
 [Obstetrics](https://github.com/gdl-lang/common-clinical-models#obstetrics)
 
-[Oncology](oncology)
+[Oncology](https://github.com/gdl-lang/common-clinical-models#oncology)
 
 [Orthopedic Surgery](https://github.com/gdl-lang/common-clinical-models#orthopedic-surgery)
 
