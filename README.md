@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 258*
+### *Published Apps: 259*
 
 ----------
 
@@ -450,6 +450,8 @@ _Select a medical specialty below to view the available apps._
 * Asthma Predictive Index (API) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Asthma_predictive_index/1?language=en))
 
 * Behavioral Observational Pain Scale (BOPS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BOPS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BOPS/1?language=sv))
+
+* CATCH (Canadian Assessment of Tomography for Childhood Head injury) Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CATCH_childhood_head_injury_rule/1?language=en))
 
 * Children's Hospital of Eastern Ontario Pain Scale (CHEOPS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cheops_for_post_op_pediatric_pain/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cheops_for_post_op_pediatric_pain/1?language=sv))
 
