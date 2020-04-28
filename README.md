@@ -362,6 +362,8 @@ _Select a medical specialty below to view the available apps._
 
 * DRAGON Score for Post-TPA Stroke Outcome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Dragon_tPA_Score/1?language=en))
 
+* Embolic Stroke of Undetermined Source (ESUS) Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Embolic_Stroke_of_Undetermined_Source_ESUS_Criteria_guideline/1?language=en))
+
 * Functional Outcome in Patients With Primary Intracerebral Hemorrhage (FUNC) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FUNC_ICH_Score/1?language=en))
 
 * Hunt & Hess Classification of Subarachnoid Hemorrhage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Hunt_and_Hess_Classification_SAH/1?language=en))
