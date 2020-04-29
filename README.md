@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 262*
+### *Published Apps: 263*
 
 ----------
 
@@ -308,6 +308,8 @@ _Select a medical specialty below to view the available apps._
 * Cardiac Arrest Risk Triage Score (CART) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CART_score_cardiac_arrest_risk/1?language=en))
 
 * Critical Care Pain Observation Tool (CPOT) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CPOT/1?language=en))
+
+* Infusion Factors - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Infusion_factors/1?language=en))
 
 * Modified Early Warning Score (MEWS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MEWS.v1/1.1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MEWS.v1/1.1?language=sv))
 
