@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 263*
+### *Published Apps: 264*
 
 ----------
 
@@ -652,6 +652,8 @@ _Select a medical specialty below to view the available apps._
 ### Surgery
 
 ----------
+* LACE Index for Readmission - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LACE_readmission_index/1?language=en))
+
 * Preoperative Mortality Predictor Score (PMP) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Preoperative_Mortality_Predictor_PMP_Score_guideline/1?language=en))
 
 * Surgical Apgar Score for Postoperative Risk (SAS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Surgical_Apgar_Score_SAS_for_Postoperative_Risk/1?language=en))
