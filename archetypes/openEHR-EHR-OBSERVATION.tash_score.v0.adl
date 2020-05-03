@@ -1,0 +1,327 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.tash_score.v0
+
+concept
+	[at0000]	-- TASH Score
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Rashmi Damodaran">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2020-02-24">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The TASH score is obtained by adding up the scores of each of the 8 attributes; Sex, Hemoglobin, Base excess, Systolic blood pressure, Positive FAST (Focused Assessment with Sonography in Trauma) for Intra-Abdominal Fluid, Clinically Unstable Pelvic Fracture, Open or Dislocated Femur Fracture. The scores range from 0-31. Each score corresponds to the probability of need for massive transfusion.">
+			use = <"TASH score is used to predict when to initiate the massive transfusion protocol for a severely injured patient with massive hemorrhage. It is based on 8 attributes which includes both clinical assessment and laboratory tests.
+Massive transfusion protocols are institution-specific, but often are 1:1:1 or 1:1:2 for fresh frozen plasma, platelets, and packed red blood cells
+
+Variables                                                                  Points
+
+Sex                              Female                                    0
+                                    Male                                        1
+Hemoglobin             >=12g/dl                                 0
+                                    <12g/dl                                   2 
+                                    < 11g/dl                                  3
+                                   < 10g/dl                                   4
+                                   <9g/dl                                      6
+                                   <7g/dl                                      8
+Base excess               >= - 2 mmol/L                       0
+                                   < -2mmol/L                            1
+                                   < - 6 mmol/L                          3
+                                   < - 10 mmol/l                         4
+Systolic BP                 >= 120 mmHg                       0
+                                     < 120 mmHg                        1
+                                     < 100 mmHg                         4
+Heart Rate                   <=120 bpm                           0
+                                      > 120 bpm                            2
+
+Positive FAST for              No                                     0                                    
+Intra-Abdominal             Yes                                     3
+Fluid
+
+Clinically Unstable           No                                    0
+Pelvic Fracture                  Yes                                   6
+
+Open or Dislocated          No                                   0
+Femur Fracture                 Yes                                   3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+">
+			keywords = <"TASH Score", "Trauma", "Severe Hemorrhage", "Pelvic fracture", "Femur fracture", "FAST", "Massive Transfusion">
+			misuse = <"The TASH Score is strictly for determining when to initiate Massive Transfusions. It must not be used for determining other blood transfusions.">
+			copyright = <"@CambioCDS">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["licence"] = <"@CambioCDS">
+		["references"] = <"1. Yücel N, Lefering R, Maegele M, Vorweg M, Tjardes T, Ruchholtz S, et al. Trauma Associated Severe Hemorrhage (TASH)-Score: Probability of Mass Transfusion as Surrogate for Life Threatening Hemorrhage after Multiple Trauma. Journal of Trauma and Acute Care Surgery. 2006 Jun;60(6):1228–1237. 
+
+2. Maegele M, Lefering R, Wafaisade A, Theodorou P, Wutzler S, Fischer P, et al. Revalidation and update of the TASH-Score: a scoring system to predict the probability for massive transfusion as a surrogate for life-threatening haemorrhage after severe injury. Vox Sanguinis. 2011;100(2):231–8. 
+
+3.   Holcomb JB, Tilley BC, Baraniuk S, Fox EE, Wade CE, Podbielski JM, et al. Transfusion of  plasma, platelets, and red blood cells in a 1:1:1 vs a 1:1:2 ratio and mortality in patients with severe trauma: the PROPPR randomized clinical trial. JAMA. 2015 Feb 3;313(5):471–82. 
+
+">
+		["MD5-CAM-1.0.1"] = <"31F7398EE13984637A27EE57537C96B0">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- TASH Score
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Sex
+										value matches {
+											0|[local::at0006], 	-- Female
+											1|[local::at0007]  	-- Male
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Hemoglobin
+										value matches {
+											0|[local::at0009], 	-- >=12 g/dl
+											2|[local::at0010], 	-- <12 g/dl
+											3|[local::at0011], 	-- <11 g/dl
+											4|[local::at0012], 	-- <10 g/dl
+											6|[local::at0013], 	-- < 9 g/dl
+											8|[local::at0014]  	-- < 7 g/dl
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Base Excess
+										value matches {
+											0|[local::at0016], 	--  >= - 2 mmol/L
+											1|[local::at0017], 	-- < -  2 mmol/L
+											3|[local::at0018], 	-- < - 6 mmol/L
+											4|[local::at0019]  	-- < - 10 mmol/L
+										}
+									}
+									ELEMENT[at0020] occurrences matches {0..1} matches {	-- Systolic Blood Pressure
+										value matches {
+											0|[local::at0021], 	-- >= 120 mm Hg
+											1|[local::at0022], 	-- < 120 mm Hg
+											4|[local::at0023]  	-- < 100 mmHg
+										}
+									}
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Heart Rate
+										value matches {
+											0|[local::at0025], 	-- <=120 bpm
+											2|[local::at0026]  	-- > 120 bpm
+										}
+									}
+									ELEMENT[at0027] occurrences matches {0..1} matches {	-- Positive FAST for Intra-Abdominal Fluid
+										value matches {
+											0|[local::at0028], 	-- No
+											3|[local::at0029]  	-- Yes
+										}
+									}
+									ELEMENT[at0030] occurrences matches {0..1} matches {	-- Clinically Unstable Pelvic Fracture
+										value matches {
+											0|[local::at0031], 	-- No 
+											6|[local::at0032]  	-- Yes
+										}
+									}
+									ELEMENT[at0033] occurrences matches {0..1} matches {	-- Open or Dislocated Femur Fracture
+										value matches {
+											0|[local::at0034], 	-- No
+											3|[local::at0035]  	-- Yes
+										}
+									}
+									ELEMENT[at0036] occurrences matches {0..1} matches {	-- Total Score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..31|}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0004] matches {*}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"TASH Score">
+					description = <"TASH Score helps in determining the need for massive transfusion in trauma patients with severe hemorrhage. The score is based on clinical signs and laboratory test results. This score therefore helps in reducing the risk of morbidity and mortality in trauma patients caused either by delaying the initiation of massive transfusion or by transfusing blood products unnecessarily">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0005"] = <
+					text = <"Sex">
+					description = <"Records the sex of the patient">
+				>
+				["at0006"] = <
+					text = <"Female">
+					description = <"This is a female patient">
+				>
+				["at0007"] = <
+					text = <"Male">
+					description = <"This is a male patient">
+				>
+				["at0008"] = <
+					text = <"Hemoglobin">
+					description = <"Records the blood hemoglobin values and their corresponding points.">
+				>
+				["at0009"] = <
+					text = <">=12 g/dl">
+					description = <"Normal hemoglobin levels">
+				>
+				["at0010"] = <
+					text = <"<12 g/dl">
+					description = <"2 points for hemoglobin levels < 12 g/dl">
+				>
+				["at0011"] = <
+					text = <"<11 g/dl">
+					description = <"3  points for hemoglobin levels < 11 g/dl">
+				>
+				["at0012"] = <
+					text = <"<10 g/dl">
+					description = <"4 points for hemoglobin levels < 10 g/dl">
+				>
+				["at0013"] = <
+					text = <"< 9 g/dl">
+					description = <"6 points for hemoglobin levels < 9 g/dl">
+				>
+				["at0014"] = <
+					text = <"< 7 g/dl">
+					description = <"8 points for hemoglobin levels < 7 g/dl ">
+				>
+				["at0015"] = <
+					text = <"Base Excess">
+					description = <"This records the base excess and their corresponding points. Base excess refers to an excess in the amount of base present in the blood">
+				>
+				["at0016"] = <
+					text = <" >= - 2 mmol/L">
+					description = <"0 points is given to  base excess >= - 2mmol/L">
+				>
+				["at0017"] = <
+					text = <"< -  2 mmol/L">
+					description = <"1 point is given to  base excess  < - 2mmol/L">
+				>
+				["at0018"] = <
+					text = <"< - 6 mmol/L">
+					description = <" 3 points is given to  base excess  < - 6mmol/L">
+				>
+				["at0019"] = <
+					text = <"< - 10 mmol/L">
+					description = <"4 points is given to  base excess  < - 10mmol/L">
+				>
+				["at0020"] = <
+					text = <"Systolic Blood Pressure">
+					description = <"Records the systoloic blood pressure and their corresponding points. ">
+				>
+				["at0021"] = <
+					text = <">= 120 mm Hg">
+					description = <"0 points is given for sBP >= 120 mmHg">
+				>
+				["at0022"] = <
+					text = <"< 120 mm Hg">
+					description = <"1 point is given for sBP < 120 mmHg">
+				>
+				["at0023"] = <
+					text = <"< 100 mmHg">
+					description = <"4 points is given for sBP < 100 mmHg">
+				>
+				["at0024"] = <
+					text = <"Heart Rate">
+					description = <"Records the Heart Rate and its corresponding points ">
+				>
+				["at0025"] = <
+					text = <"<=120 bpm">
+					description = <"0 points is given for HR <= 120 bpm">
+				>
+				["at0026"] = <
+					text = <"> 120 bpm">
+					description = <"2 points is given for HR > 120 bpm">
+				>
+				["at0027"] = <
+					text = <"Positive FAST for Intra-Abdominal Fluid">
+					description = <"Records if the patient has Positive FAST (Focused Assessment with Sonography in Trauma) for Intra-Abdominal Fluid">
+				>
+				["at0028"] = <
+					text = <"No">
+					description = <" Negative FAST (Focused Assessment with Sonography in Trauma) for Intra-Abdominal Fluid">
+				>
+				["at0029"] = <
+					text = <"Yes">
+					description = <"Positive FAST (Focused Assessment with Sonography in Trauma) for Intra-Abdominal Fluid">
+				>
+				["at0030"] = <
+					text = <"Clinically Unstable Pelvic Fracture">
+					description = <"Records if there is clinically unstable Pelvic Fracture">
+				>
+				["at0031"] = <
+					text = <"No ">
+					description = <"There is no Clinically Unstable Pelvic Fracture">
+				>
+				["at0032"] = <
+					text = <"Yes">
+					description = <"There is Clinically Unstable Pelvic Fracture">
+				>
+				["at0033"] = <
+					text = <"Open or Dislocated Femur Fracture">
+					description = <"Records if there is any Open or Dislocated Femur Fracture">
+				>
+				["at0034"] = <
+					text = <"No">
+					description = <"There is no Open or Dislocated Femur Fracture">
+				>
+				["at0035"] = <
+					text = <"Yes">
+					description = <"There is Open or Dislocated Femur Fracture">
+				>
+				["at0036"] = <
+					text = <"Total Score">
+					description = <"Total Score (TASH Score) is ibtained by adding up the scores of all the 8 attributes.">
+				>
+			>
+		>
+	>

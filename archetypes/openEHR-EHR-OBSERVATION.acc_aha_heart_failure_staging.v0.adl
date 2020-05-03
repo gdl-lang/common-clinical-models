@@ -1,0 +1,252 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.acc_aha_heart_failure_staging.v0
+
+concept
+	[at0000]	-- ACC AHA Heart Failure Staging
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Maryam Razavi">
+		["email"] = <"maryam.razavi2009@gmail.com">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2020-02-15">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the observations of ACC/AHA Heart Failure Staging, including the stage of heart failure. ">
+			use = <"Patients with known heart failure.
+Patients at risk for heart failure.
+
+Stage A: High risk for developing HF but no structural disorder of the heart
+Stage B: Structural disorder of the heart but has never developed symptoms of HF
+Stage C: Past or current symptoms of HF associated with underlying structural heart disease
+Stage D: End-stage disease requiring specialized treatment strategies such as mechanical circulatory support, continuous inotropic infusions, cardiac transplantation, or hospice care">
+			keywords = <"Heart Failure", "Staging">
+			misuse = <" Developed jointly by the American College of Cardiology (ACC) and American Heart Association (AHA) to complement, but not replace, the more widely-used New York Heart Association (NYHA) functional classification.">
+			copyright = <"©CambioCDS">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <"Isabelle Jensen", ...>
+	other_details = <
+		["references"] = <"Hunt, S. A., Baker, D. W., Chin, M. H., Cinquegrani, M. P., Feldman, A. M., Francis, G. S., ... & Noble, R. J. (2001). ACC/AHA guidelines for the evaluation and management of chronic heart failure in the adult: executive summary: A report of the american college of cardiology/american heart association task force on practice guidelines (committee to revise the 1995 guidelines for the evaluation and management of heart failure) developed in collaboration with the international society for heart and lung transplantation endorsed by the heart failure society of america. Journal of the American College of Cardiology, 38(7), 2101-2113.">
+		["MD5-CAM-1.0.1"] = <"A7D19FD48EA3B8C597A987D8B686589C">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- ACC AHA Heart Failure Staging
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Q1.Patient with history of hypertension, coronary artery disease, OR diabetes (If yes go to Q4)
+										value matches {
+											0|[local::at0005], 	-- No
+											1|[local::at0006], 	-- Yes
+											2|[local::at0007]  	-- N/A
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Q2.Patient using cardiotoxins
+										value matches {
+											0|[local::at0009], 	-- No
+											1|[local::at0010], 	-- Yes
+											2|[local::at0011]  	-- N/A
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Q3.Patient with family history of cardiomyopathy
+										value matches {
+											0|[local::at0013], 	-- No
+											1|[local::at0014], 	-- Yes
+											2|[local::at0015]  	-- N/A
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Q4.Patient with previous MI, LV systolic dysfunction, or asymptomatic valvular disease(If yes go to Q5)
+										value matches {
+											0|[local::at0020], 	-- No
+											1|[local::at0021], 	-- Yes
+											2|[local::at0022]  	-- N/A
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Q5.Patient with known structural heart disease, shortness of breath and fatigue(Reduced exercise tolerance) (If yes go to Q6)
+										value matches {
+											0|[local::at0023], 	-- No
+											1|[local::at0024], 	-- Yes
+											2|[local::at0025]  	-- N/A
+										}
+									}
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Q6.Patient with marked heart failure symptoms at rest, despite maximum therapy(Those who are recurrently hospitalized or cannot be safely discharged from the hospital without specialized intervention.)
+										value matches {
+											0|[local::at0026], 	-- No
+											1|[local::at0027], 	-- Yes
+											2|[local::at0028]  	-- N/A
+										}
+									}
+									ELEMENT[at0030] occurrences matches {0..1} matches {	-- Stage
+										value matches {
+											0|[local::at0031], 	-- Patient does not have substantial risk of HF based ACC AHA staging guidelines.
+											1|[local::at0032], 	-- A- High risk for developing HF but no structural disorder of the heart
+											2|[local::at0033], 	-- B-Structural disorder of the heart but has never developed symptoms of HF
+											3|[local::at0034], 	-- C-Past or current symptoms of HF associated with underlying structural heart disease
+											4|[local::at0035]  	-- D-End-stage disease requiring specialized treatment strategies such as mechanical circulatory support, continuous inotropic infusions, cardiac transplantation, or hospice care.
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"ACC AHA Heart Failure Staging">
+					description = <"Describes stages of heart failure. ">
+					comment = <"Heart failure (HF) is a major public health problem in the United States. Nearly 5 million patients in this country have HF, and nearly 500,000 patients are diagnosed with HF for the first time each year. The disorder is the underlying reason for 12 to 15 million office visits and 6.5 million hospital days each year.HFs primarily a disease of the elderly (3). Approximately 6% to 10% of people older than 65 years have HF (4), and approximately 80% of patients hospitalized with HF are more than 65 years old (2). HF is the most common Medicare diagnosis-related group, and more Medicare dollars are spent for the diagnosis and treatment of HF than for any other diagnosis (5). The total inpatient and outpatient costs for HF in 1991 were approximately $38.1 billion, which was approximately 5.4% of the healthcare budget that year (1). In the United States, approximately $500 million annually is spent on drugs for the treatment of HF.
+
+The American College of Cardiology (ACC) and the American Heart Association (AHA) first published guidelines for the evaluation and management of HF in 1995 (6). Since that time, a great deal of progress has been made in the development of both pharmacological and nonpharmacological approaches to treatment for this common, costly, disabling, and generally fatal disorder. For this reason, the 2 organizations believed that the time was right to reassess and update these guidelines, fully recognizing that the optimal therapy of HF remains a work in progress and that future guidelines will supersede these.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Q1.Patient with history of hypertension, coronary artery disease, OR diabetes (If yes go to Q4)">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"N/A">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Q2.Patient using cardiotoxins">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"N/A">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Q3.Patient with family history of cardiomyopathy">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"N/A">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Q4.Patient with previous MI, LV systolic dysfunction, or asymptomatic valvular disease(If yes go to Q5)">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Q5.Patient with known structural heart disease, shortness of breath and fatigue(Reduced exercise tolerance) (If yes go to Q6)">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Q6.Patient with marked heart failure symptoms at rest, despite maximum therapy(Those who are recurrently hospitalized or cannot be safely discharged from the hospital without specialized intervention.)">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"N/A">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"N/A">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"N/A">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Stage">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Patient does not have substantial risk of HF based ACC AHA staging guidelines.">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"A- High risk for developing HF but no structural disorder of the heart">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"B-Structural disorder of the heart but has never developed symptoms of HF">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"C-Past or current symptoms of HF associated with underlying structural heart disease">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"D-End-stage disease requiring specialized treatment strategies such as mechanical circulatory support, continuous inotropic infusions, cardiac transplantation, or hospice care.">
+					description = <"*">
+				>
+			>
+		>
+	>
