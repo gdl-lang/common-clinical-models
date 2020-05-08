@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 266*
+### *Published Apps: 267*
 
 ----------
 
@@ -563,6 +563,8 @@ _Select a medical specialty below to view the available apps._
 * Clinical Opiate Withdrawal Score (COWS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/COWS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/COWS/1?language=sv))
 
 * Drug Use Disorders Identification Test (DUDIT) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DUDIT_score/1?language=en))
+
+* DSM-5 Criteria for Major Depressive Disorder - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DSM_5_Criteria_for_Major_Depressive_Disorder_guideline/1?language=en))
 
 * Generalized Anxiety Disorder Score (GAD-7) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GAD-7/1?language=en))
 
