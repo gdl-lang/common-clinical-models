@@ -1,0 +1,96 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.dsm_5_criteria_for_posttraumatic_stress_disorder.v0
+
+concept
+	[at0000]	-- Dsm 5 criteria for posttraumatic stress disorder
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Maryam Razavi">
+		["email"] = <"maryam.razavi2009@gmail.com">
+		["organisation"] = <"CambioCDS">
+		["date"] = <"2020-04-17">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Record the result of  PTSD assessment.">
+			use = <"FORMULA
+DSM-5 Criteria for Posttraumatic Stress Disorder (must have all A-H below):
+
+Criteria:
+A. Exposure. Exposure to actual or threatened death, serious injury, or sexual violence in ≥1 of the following ways (may be multiple events):
+
+B. Intrusion symptoms. ≥1 of the criteria associated with the traumatic event, beginning after the traumatic event occurred.
+
+C. Avoidance. Persistent avoidance of stimuli associated with the traumatic event, beginning after the traumatic event occurred, as evidenced by ≥1 of the criteria.
+
+D. Altered mood. Negative alterations in cognitions and mood associated with the traumatic event, beginning or worsening after the traumatic event occurred, as evidenced by ≥2 of the criteria.
+
+E. Altered reactivity. Marked alterations in arousal and reactivity associated with the traumatic event, beginning or worsening after the traumatic event occurred, as evidenced by ≥2 of the criteria.
+
+
+Additional required criteria: Must have all 3 criteria, plus criteria above.
+
+">
+			keywords = <"DSM-5", "PTSD", "Posttraumatic", "Stress", "Disorder">
+			misuse = <"Cannot be used in children <6 years of age.">
+			copyright = <"@CambioCDS">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"American Psychiatric Association: Desk Reference to the Diagnostic Criteria From DSM-5. Arlington,VA, American Psychiatric Association. ">
+		["MD5-CAM-1.0.1"] = <"2F3AC749849B3EBE76A68482355A8391">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Dsm 5 criteria for posttraumatic stress disorder
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Diagnosis
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0003, 	-- Not PTSD- Diagnosis of PTSD by DSM-5 Criteria
+									at0004]	-- PTSD- Diagnosis of PTSD by DSM-5 Criteria
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Dsm 5 criteria for posttraumatic stress disorder">
+					description = <"Posttraumatic stress disorder (PTSD) is a psychiatric disorder that can occur in people who have experienced or witnessed a traumatic event such as a natural disaster, a serious accident, a terrorist act, war/combat, rape or other violent personal assault. DSM-5 Criteria for Posttraumatic Stress Disorder can assist PTSD diagnosis .">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Diagnosis">
+					description = <"posttraumatic stress disorder (PTSD)">
+				>
+				["at0003"] = <
+					text = <"Not PTSD- Diagnosis of PTSD by DSM-5 Criteria">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"PTSD- Diagnosis of PTSD by DSM-5 Criteria">
+					description = <"posttraumatic stress disorder (PTSD).">
+				>
+			>
+		>
+	>
