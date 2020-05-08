@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 267*
+### *Published Apps: 268*
 
 ----------
 
@@ -632,6 +632,8 @@ _Select a medical specialty below to view the available apps._
 * RAPID Score for Pleural Infection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rapid_Score/0?language=en))
 
 * Respiratory ECMO Survival Prediction (RESP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RESP_score_respiratory_ecmo_survival_prediction/1?language=en))
+
+* REVEAL Registry Risk Score for Pulmonary Arterial Hypertension (PAH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/REVEAL_score/1?language=en))
 
 * SMART-COP Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SMART-COP_Score/1?language=en))
 ----------
