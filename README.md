@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 264*
+### *Published Apps: 265*
 
 ----------
 
@@ -612,6 +612,8 @@ _Select a medical specialty below to view the available apps._
 * DECAF Score for Acute Exacerbation of COPD - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DECAF_score_COPD/1?language=en))
 
 * GAP Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Gap_index_for_IPF_mortality/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Gap_index_for_IPF_mortality/1?language=sv))
+
+* Global Initiative for Obstructive Lung Disease (GOLD) Criteria for COPD - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Global_Initiative_for_Obstructive_Lung_Disease_GOLD_Criteria_for_COPD_guideline/1?language=en))
 
 * Manchester Score for small cell lung cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Manchester_Score_SCC_lung/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Manchester_Score_SCC_lung/1?language=sv))
 
