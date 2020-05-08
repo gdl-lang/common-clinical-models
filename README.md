@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 265*
+### *Published Apps: 266*
 
 ----------
 
@@ -127,6 +127,8 @@ _Select a medical specialty below to view the available apps._
 * Global Registry of Acute Coronary Events (GRACE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GRACE_ACS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GRACE_ACS/1?language=sv))
 
 * HAS-BLED Bleeding Risk Score (HAS-BLED) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HAS-BLED/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HAS-BLED/1?language=sv))
+
+* HEART Pathway for Early Discharge in Acute Chest Pain - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HEART_Pathway_for_Early_Discharge_in_Acute_Chest_Pain_guideline/1?language=en))
 
 * HEMORR2HAGES Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Haemorr2hages/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Haemorr2hages/1?language=sv))
 
