@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 270*
+### *Published Apps: 271*
 
 ----------
 
@@ -141,6 +141,8 @@ _Select a medical specialty below to view the available apps._
 * Modified SOAR Score for Stroke - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_SOAR_Score_for_Stroke/1?language=en))
 
 * New York Heart Association Functional Classification (NYHA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NYHA/1?language=en))
+
+* ORBIT Bleeding Risk Score for Atrial Fibrillation  - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ORBIT_bleeding_risk_score/1?language=en))
 
 * Padua Prediction Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Padua_prediction/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Padua_prediction/1?language=sv))
 
