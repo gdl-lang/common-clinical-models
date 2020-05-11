@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 272*
+### *Published Apps: 273*
 
 ----------
 
@@ -272,6 +272,8 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 * 4A's Test for Delirium Screening - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/4As_test/1?language=en))
+
+* 6 Minute Walk Distance  - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Six_Minute_Walk_Distance/1?language=en))
 
 * Abbreviated Mental Test 4 (AMT-4) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/amt-4/1?language=en))
 
