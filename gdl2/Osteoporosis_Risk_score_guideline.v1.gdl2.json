@@ -88,6 +88,10 @@
           "gt0018": {
             "id": "gt0018",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0020]"
+          },
+          "gt0023": {
+            "id": "gt0023",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0021]"
           }
         }
       },
@@ -107,7 +111,7 @@
     "rules": {
       "gt0019": {
         "id": "gt0019",
-        "priority": 4,
+        "priority": 8,
         "when": [
           "$gt0003|Age|.unit=='a'",
           "$gt0010|Weight|.unit=='lb'",
@@ -119,15 +123,15 @@
           "$gt0010|Weight|!=null"
         ],
         "then": [
-          "$gt0018|Score|.magnitude=$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+(3*$gt0003.magnitude/10)-($gt0010.magnitude/10)"
+          "$gt0018|Risk Score|.magnitude=$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+(3*$gt0003.magnitude/10)-($gt0010.magnitude/10)"
         ]
       },
       "gt0020": {
         "id": "gt0020",
-        "priority": 3,
+        "priority": 7,
         "when": [
-          "$gt0018|Score|>=0",
-          "$gt0018|Score|<=6"
+          "$gt0018|Risk Score|>=0",
+          "$gt0018|Risk Score|<=6"
         ],
         "then": [
           "$gt0016|Score interpretation|=0|local::at0003|Low Risk|"
@@ -135,10 +139,10 @@
       },
       "gt0021": {
         "id": "gt0021",
-        "priority": 2,
+        "priority": 6,
         "when": [
-          "$gt0018|Score|>=7",
-          "$gt0018|Score|<=15"
+          "$gt0018|Risk Score|>=7",
+          "$gt0018|Risk Score|<=15"
         ],
         "then": [
           "$gt0016|Score interpretation|=1|local::at0004|Moderate Risk|"
@@ -146,10 +150,60 @@
       },
       "gt0022": {
         "id": "gt0022",
+        "priority": 5,
+        "when": [
+          "$gt0018|Risk Score|>=16",
+          "$gt0018|Risk Score|<=50"
+        ],
+        "then": [
+          "$gt0016|Score interpretation|=2|local::at0005|High Risk|"
+        ]
+      },
+      "gt0024": {
+        "id": "gt0024",
+        "priority": 4,
+        "when": [
+          "$gt0003|Age|.unit=='a'",
+          "$gt0010|Weight|.unit=='kg'",
+          "$gt0005|Race|!=null",
+          "$gt0006|Rhumatoid Artheritis History|!=null",
+          "$gt0007|Fracture History|!=null",
+          "$gt0008|Estrogen|!=null",
+          "$gt0003|Age|!=null",
+          "$gt0010|Weight|!=null"
+        ],
+        "then": [
+          "$gt0023|Risk Score |.magnitude=$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+(3*$gt0003.magnitude/10)-(($gt0010.magnitude*2.205)/10)"
+        ]
+      },
+      "gt0025": {
+        "id": "gt0025",
+        "priority": 3,
+        "when": [
+          "$gt0023|Risk Score |>=0",
+          "$gt0023|Risk Score |<=6"
+        ],
+        "then": [
+          "$gt0016|Score interpretation|=0|local::at0003|Low Risk|"
+        ]
+      },
+      "gt0026": {
+        "id": "gt0026",
+        "priority": 2,
+        "when": [
+          "$gt0023|Risk Score |>=7",
+          "$gt0023|Risk Score |<=15"
+        ],
+        "then": [
+          "$gt0016|Score interpretation|=1|local::at0004|Moderate Risk|"
+        ]
+      },
+      "gt0027": {
+        "id": "gt0027",
         "priority": 1,
         "when": [
-          "$gt0018|Score|>=16",
-          "$gt0018|Score|<=50"
+          "$gt0023|Risk Score |>=16",
+          "$gt0023|Risk Score |<=50"
         ],
         "then": [
           "$gt0016|Score interpretation|=2|local::at0005|High Risk|"
@@ -164,7 +218,7 @@
         "terms": {
           "gt0001": {
             "id": "gt0001",
-            "text": "Osteoporosis Risk SCORE (Simple Calculated Osteoporosis Risk Estimation)",
+            "text": "Osteoporosis Risk Score (Simple Calculated Osteoporosis Risk Estimation)",
             "description": "Osteoporosis Risk Score can be used to evaluate osteoporosis risk based on individual factors that are weighted separately in a study based formula.\nweighting method in the Osteoporosis risk score calculator:\nAge: included in the formula as years\nWeight: Included in formulas as Kg\nEstrogen:Prior use (0), No prior use (1)\nRace: Black (0), Non-Black (5)\nRheumatoid arthritis: Present (4), Absent (0)\nFormula to calculate Osteoporosis Risk Score:\nRace + Rheumatoid Arthritis + Fracture history + Estrogen + (3 x Age / 10) - (Weight in lbs / 10)\nTo evaluate osteoporosis risk based on individual factors that are weighted separately in a study based formula.\n\nThe three risk categories for likelihood of developing osteoporosis are:\n\n Low: scores of 6 and below;\n\nModerate: scores between 7 and 15;\n\nHigh: scores of 16 and above."
           },
           "gt0003": {
@@ -223,12 +277,12 @@
           },
           "gt0018": {
             "id": "gt0018",
-            "text": "Score",
+            "text": "Risk Score",
             "description": "*"
           },
           "gt0019": {
             "id": "gt0019",
-            "text": "Set Osteoporosis Risk Score"
+            "text": "Set Osteoporosis Risk Score lb"
           },
           "gt0020": {
             "id": "gt0020",
@@ -241,6 +295,27 @@
           "gt0022": {
             "id": "gt0022",
             "text": "Set score Interpretation High Risk"
+          },
+          "gt0023": {
+            "id": "gt0023",
+            "text": "Risk Score ",
+            "description": "*"
+          },
+          "gt0024": {
+            "id": "gt0024",
+            "text": "Set Osteoporosis Risk Score kg"
+          },
+          "gt0025": {
+            "id": "gt0025",
+            "text": "Set score Interpretation Low risk kg"
+          },
+          "gt0026": {
+            "id": "gt0026",
+            "text": "Set score Interpretation Moderate Risk kg"
+          },
+          "gt0027": {
+            "id": "gt0027",
+            "text": "Set score Interpretation High Risk kg"
           }
         }
       }
