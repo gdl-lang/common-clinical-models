@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 273*
+### *Published Apps: 274*
 
 ----------
 
@@ -47,6 +47,8 @@ _Select a medical specialty below to view the available apps._
 [Oncology](https://github.com/gdl-lang/common-clinical-models#oncology)
 
 [Orthopedic Surgery](https://github.com/gdl-lang/common-clinical-models#orthopedic-surgery)
+
+[Osteoporosis](https://github.com/gdl-lang/common-clinical-models#osteoporosis)
 
 [Pediatrics](https://github.com/gdl-lang/common-clinical-models#pediatrics) 
 
@@ -457,6 +459,12 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 * Kocher Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kocher_Criteria/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kocher_Criteria/1?language=sv))
+
+----------
+
+### Osteoporosis
+
+* Kocher Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OST-Score/1?language=en))
 
 ----------
 
