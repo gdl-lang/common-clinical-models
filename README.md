@@ -464,7 +464,7 @@ _Select a medical specialty below to view the available apps._
 
 ### Osteoporosis
 
-* Kocher Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OST-Score/1?language=en))
+* Osteoporosis Self Assessment Tool for Women (OST) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OST-Score/1?language=en))
 
 ----------
 
