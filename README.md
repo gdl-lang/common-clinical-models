@@ -464,7 +464,7 @@ _Select a medical specialty below to view the available apps._
 
 ### Osteoporosis
 
-* Osteoporosis Index of Risk (OSIRIS) - ([(https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OSIRIS_score/1?language=en))
+* Osteoporosis Index of Risk (OSIRIS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OSIRIS_score/1?language=en))
 
 * Osteoporosis Risk Assessment Instrument (ORAI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Osteoporosis_risk_assessment_instrument_ORAI/1?language=en))
 
