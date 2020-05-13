@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 277*
+### *Published Apps: 278*
 
 ----------
 
@@ -463,6 +463,9 @@ _Select a medical specialty below to view the available apps._
 ----------
 
 ### Osteoporosis
+
+----------
+* Mirels’ Criteria for Prophylactic Fixation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mirels_Fracture_Risk_Score/1?language=en))
 
 * Osteoporosis Index of Risk (OSIRIS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OSIRIS_score/1?language=en))
 
