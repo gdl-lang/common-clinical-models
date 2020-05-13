@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 276*
+### *Published Apps: 277*
 
 ----------
 
@@ -469,6 +469,8 @@ _Select a medical specialty below to view the available apps._
 * Osteoporosis Risk Assessment Instrument (ORAI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Osteoporosis_risk_assessment_instrument_ORAI/1?language=en))
 
 * Osteoporosis Self Assessment Tool for Women (OST) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OST-Score/1?language=en))
+
+* Simple Calculated Osteoporosis Risk Estimation (SCORE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Osteoporosis_Risk_score_guideline/1?language=en))
 
 ----------
 
