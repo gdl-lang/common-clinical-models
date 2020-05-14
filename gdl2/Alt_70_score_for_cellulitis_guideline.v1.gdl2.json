@@ -1,0 +1,327 @@
+{
+  "id": "Alt_70_score_for_cellulitis_guideline.v1",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2020-05-14",
+      "name": "Maryam Razavi",
+      "organisation": "CambioCDS",
+      "email": "maryam.razavi2009@gmail.com"
+    },
+    "lifecycle_state": "Author draft",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "Predicts likelihood of lower extremity cellulitis over other diagnoses.\n",
+        "keywords": [
+          " cellulitis",
+          "Alt 70"
+        ],
+        "use": "Adult patients presenting to the ED(Emergency Department) with a red leg and clinical concern for cellulitis.",
+        "misuse": "Can not be used in any of the following conditions:\nVisible abscess/fluctuance.\nPenetrating trauma.\nBurn.\nDiabetic ulcer.\nImplanted hardware/device.\nPost-operative patient.\nRecent (within 48 hours) IV antibiotic use.",
+        "copyright": "@CambioCDS"
+      }
+    },
+    "other_details": {
+      "references": "Primary reference\nRaff, A. B., Weng, Q. Y., Cohen, J. M., Gunasekera, N., Okhovat, J. P., Vedak, P., ... and Mostaghimi, A. (2017). A predictive model for diagnosis of lower extremity cellulitis: a cross-sectional study. Journal of the American Academy of Dermatology, 76(4), 618-625.\nValidation\nLi, D. G., Dewan, A. K., Di Xia, F., Khosravi, H., Joyce, C., & Mostaghimi, A. (2018). The ALT-70 predictive model outperforms thermal imaging for the diagnosis of lower extremity cellulitis: A prospective evaluation. Journal of the American Academy of Dermatology, 79(6), 1076-1080.\n\nSinger, S., Li, D. G., Gunasekera, N., Okhovat, J. P., Vedak, P., Weng, C., ... & Mostaghimi, A. (2019). The ALT-70 cellulitis model maintains predictive value at 24 and 48 hours after presentation. Journal of the American Academy of Dermatology, 81(6), 1252-1256."
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0003": {
+        "id": "gt0003",
+        "model_id": "openEHR-EHR-OBSERVATION.alt_70_score_for_cellulitis.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.alt_70_score_for_cellulitis.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          }
+        }
+      },
+      "gt0005": {
+        "id": "gt0005",
+        "model_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
+          }
+        }
+      },
+      "gt0007": {
+        "id": "gt0007",
+        "model_id": "openEHR-EHR-OBSERVATION.lab_test-full_blood_count.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.lab_test-full_blood_count.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0008": {
+            "id": "gt0008",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0078.13]"
+          }
+        }
+      },
+      "gt0009": {
+        "id": "gt0009",
+        "model_id": "openEHR-EHR-OBSERVATION.pulse.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.pulse.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0010": {
+            "id": "gt0010",
+            "path": "/data[at0002]/events[at0003]/data[at0001]/items[at0004]"
+          }
+        }
+      },
+      "gt0011": {
+        "id": "gt0011",
+        "model_id": "openEHR-EHR-OBSERVATION.alt_70_score_for_cellulitis.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.alt_70_score_for_cellulitis.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0012": {
+            "id": "gt0012",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0016]"
+          }
+        }
+      },
+      "gt0016": {
+        "id": "gt0016",
+        "model_id": "openEHR-EHR-EVALUATION.alt_70_score_for_cellulitis.v0",
+        "template_id": "openEHR-EHR-EVALUATION.alt_70_score_for_cellulitis.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0017": {
+            "id": "gt0017",
+            "path": "/data[at0001]/items[at0002]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0018": {
+        "id": "gt0018",
+        "priority": 10,
+        "when": [
+          "$gt0006|Age|>=70,a"
+        ],
+        "then": [
+          "$gt0012|Age ≥70 years|=2|local::at0009|Yes|"
+        ]
+      },
+      "gt0019": {
+        "id": "gt0019",
+        "priority": 9,
+        "when": [
+          "$gt0006|Age|<70,a"
+        ],
+        "then": [
+          "$gt0012|Age ≥70 years|=0|local::at0008|No|"
+        ]
+      },
+      "gt0020": {
+        "id": "gt0020",
+        "priority": 8,
+        "when": [
+          "$gt0008|White cell count|>=10,10*9/l"
+        ],
+        "then": [
+          "$gt0013|WBC in ED ≥10,000/µL|=1|local::at0012|Yes|"
+        ]
+      },
+      "gt0021": {
+        "id": "gt0021",
+        "priority": 7,
+        "when": [
+          "$gt0008|White cell count|<10,10*9/l"
+        ],
+        "then": [
+          "$gt0013|WBC in ED ≥10,000/µL|=0|local::at0011|No|"
+        ]
+      },
+      "gt0022": {
+        "id": "gt0022",
+        "priority": 6,
+        "when": [
+          "$gt0010|Heart rate|>=90,/min"
+        ],
+        "then": [
+          "$gt0014|HR in ED ≥90 bpm|=1|local::at0015|Yes|"
+        ]
+      },
+      "gt0023": {
+        "id": "gt0023",
+        "priority": 5,
+        "when": [
+          "$gt0010|Heart rate|<90,/min"
+        ],
+        "then": [
+          "$gt0014|HR in ED ≥90 bpm|=0|local::at0014|No|"
+        ]
+      },
+      "gt0024": {
+        "id": "gt0024",
+        "priority": 4,
+        "when": [
+          "$gt0004|Asymmetric|!=null",
+          "$gt0006|Age|!=null",
+          "$gt0008|White cell count|!=null",
+          "$gt0010|Heart rate|!=null"
+        ],
+        "then": [
+          "$gt0015|ALT-70 Score|.magnitude=$gt0004.value+$gt0012.value+$gt0013.value+$gt0014.value"
+        ]
+      },
+      "gt0025": {
+        "id": "gt0025",
+        "priority": 3,
+        "when": [
+          "$gt0015|ALT-70 Score|<3"
+        ],
+        "then": [
+          "$gt0017|Recommendations|=0|local::at0003|Reassess (>83.3% likelihood of pseudocellulitis)|"
+        ]
+      },
+      "gt0026": {
+        "id": "gt0026",
+        "priority": 2,
+        "when": [
+          "$gt0015|ALT-70 Score|>=3",
+          "$gt0015|ALT-70 Score|<5"
+        ],
+        "then": [
+          "$gt0017|Recommendations|=1|local::at0004|Consult dermatology and/or infectious disease|"
+        ]
+      },
+      "gt0027": {
+        "id": "gt0027",
+        "priority": 1,
+        "when": [
+          "$gt0015|ALT-70 Score|>=5",
+          "$gt0015|ALT-70 Score|<=7"
+        ],
+        "then": [
+          "$gt0017|Recommendations|=2|local::at0005|Treat (>82.2% likelihood of true cellulitis)|"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "Alt 70 score for cellulitis",
+            "description": "Developed to assist with evaluation of lower extremity redness, which may be inappropriately diagnosed as cellulitis (versus mimickers, or “pseudocellulitis”).  \nMost patients with cellulitis have acute onset, unilateral involvement (usually one leg), and are sick with an elevated white blood cell count, tachycardia, and/or a fever.\nPredicts likelihood of lower extremity cellulitis over other diagnoses.\nAdult patients presenting to the ED with a red leg and clinical concern for cellulitis.\nVariable and points: \nAsymmetric: no=0, yes= 3\nAge ≥70 years: no=0, yes= 2\nWBC in ED ≥10,000/µL: no=0, yes= 1\nHR in ED ≥90 bpm: no=0, yes= 1\n\nAlt 70 score for cellulitis=Addition of the selected points\n\nInterpretation:\nALT-70 Scores and related recommendations:\n0-2=Reassess (>83.3% likelihood of pseudocellulitis)\n3-4=Consult dermatology and/or infectious disease\n5-7=Treat (>82.2% likelihood of true cellulitis)"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "Asymmetric",
+            "description": "Not symmetric; denoting a lack of symmetry between two or more like parts."
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Age",
+            "description": "Age in years, and for babies: months, weeks or days"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "White cell count",
+            "description": "The number of white cells per litre"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "Heart rate",
+            "description": "The rate, measured in beats per minute."
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "text": "Age ≥70 years",
+            "description": "*"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "WBC in ED ≥10,000/µL",
+            "description": "*"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "HR in ED ≥90 bpm",
+            "description": "*"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "ALT-70 Score",
+            "description": "*"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "Recommendations",
+            "description": "*"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "Set Age >=70"
+          },
+          "gt0019": {
+            "id": "gt0019",
+            "text": "Set Age <=70"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Set WBC>=10000"
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "Set WBC<=10000"
+          },
+          "gt0022": {
+            "id": "gt0022",
+            "text": "Set HR>=90"
+          },
+          "gt0023": {
+            "id": "gt0023",
+            "text": "Set HR<=90"
+          },
+          "gt0024": {
+            "id": "gt0024",
+            "text": "Set ALT70 Score"
+          },
+          "gt0025": {
+            "id": "gt0025",
+            "text": "Set interpretation score 0-2"
+          },
+          "gt0026": {
+            "id": "gt0026",
+            "text": "Set interpretation score 3-4"
+          },
+          "gt0027": {
+            "id": "gt0027",
+            "text": "Set interpretation score 5-7"
+          }
+        }
+      }
+    }
+  }
+}
