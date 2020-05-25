@@ -56,10 +56,6 @@
         "template_id": "openEHR-EHR-OBSERVATION.albi_score.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0006": {
-            "id": "gt0006",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
-          },
           "gt0007": {
             "id": "gt0007",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
@@ -84,37 +80,29 @@
       }
     },
     "rules": {
-      "gt0011": {
-        "id": "gt0011",
-        "priority": 6,
-        "when": [
-          "$gt0003|Total bilirubin|.unit=='mg/dl'"
-        ],
-        "then": [
-          "$gt0006|Bilirubin|.magnitude=$gt0003.magnitude*17.1",
-          "$gt0006|Bilirubin|.precision=2",
-          "$gt0006|Bilirubin|.unit='umol/l'"
-        ]
-      },
-      "gt0012": {
-        "id": "gt0012",
+      "gt0013": {
+        "id": "gt0013",
         "priority": 5,
         "when": [
+          "$gt0003|Total bilirubin|!=null",
+          "$gt0004|Albumin|!=null",
           "$gt0003|Total bilirubin|.unit=='µmol/l'"
         ],
         "then": [
-          "$gt0006|Bilirubin|=$gt0003|Total bilirubin|"
+          "$gt0007|ALBI score|.magnitude=(log10($gt0003.magnitude)*0.66)+($gt0004.magnitude*'-0.085')",
+          "$gt0007|ALBI score|.precision=2"
         ]
       },
-      "gt0013": {
-        "id": "gt0013",
+      "gt0017": {
+        "id": "gt0017",
         "priority": 4,
         "when": [
-          "$gt0006|Bilirubin|!=null",
-          "$gt0004|Albumin|!=null"
+          "$gt0003|Total bilirubin|!=null",
+          "$gt0004|Albumin|!=null",
+          "$gt0003|Total bilirubin|.unit=='mg/dl'"
         ],
         "then": [
-          "$gt0007|ALBI score|.magnitude=(log10($gt0006.magnitude)*0.66)+($gt0004.magnitude*'-0.085')",
+          "$gt0007|ALBI score|.magnitude=(log10($gt0003.magnitude*17.1)*0.66)+($gt0004.magnitude*'-0.085')",
           "$gt0007|ALBI score|.precision=2"
         ]
       },
@@ -204,7 +192,7 @@
           },
           "gt0013": {
             "id": "gt0013",
-            "text": "Calculate ALBI score"
+            "text": "Calculate ALBI score (bilirubin in umol/L)"
           },
           "gt0014": {
             "id": "gt0014",
@@ -217,6 +205,10 @@
           "gt0016": {
             "id": "gt0016",
             "text": "Set ALBI Grade 3"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "Calculate ALBI score (bilirubin in mg/dL)"
           }
         }
       }
