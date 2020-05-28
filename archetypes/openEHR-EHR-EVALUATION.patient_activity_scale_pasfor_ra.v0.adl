@@ -37,12 +37,25 @@ PAS score 8.00-10.00 = Disease activity is High/severe">
 		["references"] = <"Wolfe, F., Michaud, K., & Pincus, T. (2005). A composite disease activity scale for clinical practice, observational studies, and clinical trials: the patient activity scale (PAS/PAS-II). The Journal of rheumatology, 32(12), 2410-2415.
 
 Anderson, J., Caplan, L., Yazdany, J., Robbins, M. L., Neogi, T., Michaud, K., ... & Kazi, S. (2012). Rheumatoid arthritis disease activity measures: American College of Rheumatology recommendations for use in clinical practice. Arthritis care & research, 64(5), 640-647.">
-		["MD5-CAM-1.0.1"] = <"A07EDE23688EB6DC2A3324B5BCF22B87">
+		["MD5-CAM-1.0.1"] = <"B4826EE053E09E4127B141B598F6CAC8">
 	>
 
 definition
 	EVALUATION[at0000] matches {	-- Patient activity scale pas for ra
-		data matches {*}
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Disease Activity
+						value matches {
+							1|[local::at0003], 	-- Remission
+							2|[local::at0004], 	-- Low/Minimal
+							3|[local::at0005], 	-- Moderate
+							4|[local::at0006]  	-- High/Sever
+						}
+					}
+				}
+			}
+		}
 	}
 
 ontology
@@ -52,6 +65,30 @@ ontology
 				["at0000"] = <
 					text = <"Patient activity scale pas for ra">
 					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Disease Activity">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Remission">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Low/Minimal">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Moderate">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"High/Sever">
+					description = <"*">
 				>
 			>
 		>
