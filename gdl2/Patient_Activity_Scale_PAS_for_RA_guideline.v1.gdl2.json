@@ -1,5 +1,5 @@
 {
-  "id": "PAS_for_RA_guideline.v1",
+  "id": "Patient_Activity_Scale_PAS_for_RA_guideline.v1",
   "gdl_version": "2.0",
   "concept": "gt0001",
   "language": {
@@ -7,15 +7,32 @@
   },
   "description": {
     "original_author": {
-      "date": "2020-05-21"
+      "date": "2020-05-29",
+      "name": "Maryam Razavi",
+      "organisation": "CambioCDS",
+      "email": "maryam.razavi2009@gmail.com"
     },
-    "lifecycle_state": "Not set",
+    "lifecycle_state": "Author draft",
     "details": {
       "en": {
-        "id": "en"
+        "id": "en",
+        "purpose": "Quantifies severity of rheumatoid arthritis (RA) using patient-reported symptoms.",
+        "keywords": [
+          "Rheumatoid Arthritis (RA)",
+          "Patient Activity Scale",
+          "PAS",
+          "visual analog scale (VAS)",
+          "Health Assessment Questionnaire (HAQ)",
+          " Patient Global Assessment of Disease Activity"
+        ],
+        "use": "PAS can be used for patients with rheumatoid arthritis(RA). ",
+        "misuse": "PAS cannot be used for patients for whom treatment changed because of side effects since disease activity status is indeterminate.",
+        "copyright": "@CambioCDS"
       }
     },
-    "other_details": {}
+    "other_details": {
+      "references": "Primary Reference\nWolfe F, Michaud K, Pincus T. A composite disease activity scale for clinical practice, observational studies, and clinical trials: the patient activity scale (PAS/PAS-II). The Journal of rheumatology. 2005 Dec 1;32(12):2410-5.\nOther References\nAnderson J, Caplan L, Yazdany J, Robbins ML, Neogi T, Michaud K, Saag KG, O'dell JR, Kazi S. Rheumatoid arthritis disease activity measures: American College of Rheumatology recommendations for use in clinical practice. Arthritis care & research. 2012 May;64(5):640-7.\n\n"
+    }
   },
   "definition": {
     "data_bindings": {
@@ -222,12 +239,24 @@
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0185]"
           }
         }
+      },
+      "gt0143": {
+        "id": "gt0143",
+        "model_id": "openEHR-EHR-EVALUATION.patient_activity_scale_pasfor_ra.v0",
+        "template_id": "openEHR-EHR-EVALUATION.patient_activity_scale_pasfor_ra.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0144": {
+            "id": "gt0144",
+            "path": "/data[at0001]/items[at0002]"
+          }
+        }
       }
     },
     "rules": {
       "gt0081": {
         "id": "gt0081",
-        "priority": 41,
+        "priority": 46,
         "when": [
           "($gt0004|Self-dress, including shoelaces and buttons|==3|local::at0009|Unable|)||($gt0005|Shampoo hair|==3|local::at0014|Unable|)"
         ],
@@ -237,7 +266,7 @@
       },
       "gt0080": {
         "id": "gt0080",
-        "priority": 40,
+        "priority": 45,
         "when": [
           "!fired($gt0081)",
           "($gt0004|Self-dress, including shoelaces and buttons|==2|local::at0008|With much difficulty|)||($gt0005|Shampoo hair|==2|local::at0013|With much difficulty|)"
@@ -248,7 +277,7 @@
       },
       "gt0079": {
         "id": "gt0079",
-        "priority": 39,
+        "priority": 44,
         "when": [
           "!fired($gt0081)",
           "!fired($gt0080)",
@@ -260,7 +289,7 @@
       },
       "gt0082": {
         "id": "gt0082",
-        "priority": 38,
+        "priority": 43,
         "when": [
           "!fired($gt0081)",
           "!fired($gt0080)",
@@ -273,7 +302,7 @@
       },
       "gt0083": {
         "id": "gt0083",
-        "priority": 37,
+        "priority": 42,
         "when": [
           "($gt0010|Stand up from a straight chair|==3|local::at0025|Unable|)||($gt0011|Get in and out of bed|==3|local::at0021|Unable|)"
         ],
@@ -283,7 +312,7 @@
       },
       "gt0084": {
         "id": "gt0084",
-        "priority": 36,
+        "priority": 41,
         "when": [
           "!fired($gt0083)",
           "($gt0010|Stand up from a straight chair|==2|local::at0024|With much difficulty|)||($gt0011|Get in and out of bed|==2|local::at0020|With much difficulty|)"
@@ -294,7 +323,7 @@
       },
       "gt0085": {
         "id": "gt0085",
-        "priority": 35,
+        "priority": 40,
         "when": [
           "!fired($gt0083)",
           "!fired($gt0084)",
@@ -306,7 +335,7 @@
       },
       "gt0086": {
         "id": "gt0086",
-        "priority": 34,
+        "priority": 39,
         "when": [
           "!fired($gt0083)",
           "!fired($gt0084)",
@@ -319,7 +348,7 @@
       },
       "gt0075": {
         "id": "gt0075",
-        "priority": 33,
+        "priority": 38,
         "when": [
           "($gt0018|Cut own meat|==3|local::at0033|Unable|)||(($gt0019|Lift a full cup or glass to mouth|==3|local::at0037|Unable|)||($gt0020|Open a new milk carton|==3|local::at0041|Unable|))"
         ],
@@ -329,7 +358,7 @@
       },
       "gt0076": {
         "id": "gt0076",
-        "priority": 32,
+        "priority": 37,
         "when": [
           "!fired($gt0075)",
           "($gt0018|Cut own meat|==2|local::at0032|With much difficulty|)||(($gt0019|Lift a full cup or glass to mouth|==2|local::at0036|With much difficulty|)||($gt0020|Open a new milk carton|==2|local::at0040|With much difficulty|))"
@@ -340,7 +369,7 @@
       },
       "gt0077": {
         "id": "gt0077",
-        "priority": 31,
+        "priority": 36,
         "when": [
           "!fired($gt0075)",
           "!fired($gt0076)",
@@ -352,7 +381,7 @@
       },
       "gt0078": {
         "id": "gt0078",
-        "priority": 30,
+        "priority": 35,
         "when": [
           "!fired($gt0075)",
           "!fired($gt0076)",
@@ -365,7 +394,7 @@
       },
       "gt0087": {
         "id": "gt0087",
-        "priority": 29,
+        "priority": 34,
         "when": [
           "($gt0030|Walk outdoors on flat ground|==3|local::at0052|Unable|)||($gt0031|Climb up five steps|==3|local::at0048|Unable|)"
         ],
@@ -375,7 +404,7 @@
       },
       "gt0088": {
         "id": "gt0088",
-        "priority": 28,
+        "priority": 33,
         "when": [
           "!fired($gt0087)",
           "($gt0030|Walk outdoors on flat ground|==2|local::at0051|With much difficulty|)||($gt0031|Climb up five steps|==2|local::at0047|With much difficulty|)"
@@ -386,7 +415,7 @@
       },
       "gt0089": {
         "id": "gt0089",
-        "priority": 27,
+        "priority": 32,
         "when": [
           "!fired($gt0087)",
           "!fired($gt0088)",
@@ -398,7 +427,7 @@
       },
       "gt0109": {
         "id": "gt0109",
-        "priority": 26,
+        "priority": 31,
         "when": [
           "!fired($gt0087)",
           "!fired($gt0088)",
@@ -411,7 +440,7 @@
       },
       "gt0090": {
         "id": "gt0090",
-        "priority": 25,
+        "priority": 30,
         "when": [
           "($gt0036|Wash and dry body|==3|local::at0064|Unable|)||(($gt0037|Take a tub bath|==3|local::at0068|Unable|)||($gt0038|Get on and off toilet|==3|local::at0060|Unable|))"
         ],
@@ -421,7 +450,7 @@
       },
       "gt0091": {
         "id": "gt0091",
-        "priority": 24,
+        "priority": 29,
         "when": [
           "!fired($gt0090)",
           "($gt0036|Wash and dry body|==2|local::at0063|With much difficulty|)||(($gt0037|Take a tub bath|==2|local::at0067|With much difficulty|)||($gt0038|Get on and off toilet|==2|local::at0059|With much difficulty|))"
@@ -432,10 +461,10 @@
       },
       "gt0092": {
         "id": "gt0092",
-        "priority": 23,
+        "priority": 28,
         "when": [
           "!fired($gt0090)",
-          "fired($gt0091)",
+          "!fired($gt0091)",
           "($gt0036|Wash and dry body|==1|local::at0062|With some difficulty|)||(($gt0037|Take a tub bath|==1|local::at0066|With some difficulty|)||($gt0038|Get on and off toilet|==1|local::at0058|With some difficulty|))"
         ],
         "then": [
@@ -444,7 +473,7 @@
       },
       "gt0093": {
         "id": "gt0093",
-        "priority": 22,
+        "priority": 27,
         "when": [
           "!fired($gt0090)",
           "!fired($gt0091)",
@@ -457,7 +486,7 @@
       },
       "gt0094": {
         "id": "gt0094",
-        "priority": 21,
+        "priority": 26,
         "when": [
           "($gt0045|Reach and get down a 5-pound object (such as a bag of sugar) from above head|==3|local::at0074|Unable|)||($gt0046|Bend down to pick up clothing from floor|==3|local::at0079|Unable|)"
         ],
@@ -467,7 +496,7 @@
       },
       "gt0095": {
         "id": "gt0095",
-        "priority": 20,
+        "priority": 25,
         "when": [
           "!fired($gt0094)",
           "($gt0045|Reach and get down a 5-pound object (such as a bag of sugar) from above head|==2|local::at0073|With much difficulty|)||($gt0046|Bend down to pick up clothing from floor|==2|local::at0078|With much difficulty|)"
@@ -478,7 +507,7 @@
       },
       "gt0096": {
         "id": "gt0096",
-        "priority": 19,
+        "priority": 24,
         "when": [
           "!fired($gt0094)",
           "!fired($gt0095)",
@@ -490,7 +519,7 @@
       },
       "gt0097": {
         "id": "gt0097",
-        "priority": 18,
+        "priority": 23,
         "when": [
           "!fired($gt0094)",
           "!fired($gt0095)",
@@ -503,7 +532,7 @@
       },
       "gt0098": {
         "id": "gt0098",
-        "priority": 17,
+        "priority": 22,
         "when": [
           "($gt0051|Open car doors|==3|local::at0085|Unable|)||(($gt0052|Open previously opened jars|==3|local::at0090|Unable|)||($gt0053|Turn faucets on and off|==3|local::at0095|Unable|))"
         ],
@@ -513,7 +542,7 @@
       },
       "gt0099": {
         "id": "gt0099",
-        "priority": 16,
+        "priority": 21,
         "when": [
           "!fired($gt0098)",
           "($gt0051|Open car doors|==2|local::at0084|With much difficulty|)||(($gt0052|Open previously opened jars|==2|local::at0089|With much difficulty|)||($gt0053|Turn faucets on and off|==2|local::at0094|With much difficulty|))"
@@ -524,7 +553,7 @@
       },
       "gt0100": {
         "id": "gt0100",
-        "priority": 15,
+        "priority": 20,
         "when": [
           "!fired($gt0098)",
           "!fired($gt0099)",
@@ -536,7 +565,7 @@
       },
       "gt0101": {
         "id": "gt0101",
-        "priority": 14,
+        "priority": 19,
         "when": [
           "!fired($gt0098)",
           "!fired($gt0099)",
@@ -549,7 +578,7 @@
       },
       "gt0102": {
         "id": "gt0102",
-        "priority": 13,
+        "priority": 18,
         "when": [
           "($gt0058|Run errands and shop|==3|local::at0102|Unable|)||(($gt0059|Get in and out of car|==3|local::at0101|Unable|)||($gt0060|Do chores such as vacuuming or yard work|==3|local::at0100|Unable|))"
         ],
@@ -559,7 +588,7 @@
       },
       "gt0114": {
         "id": "gt0114",
-        "priority": 12,
+        "priority": 17,
         "when": [
           "!fired($gt0102)",
           "($gt0058|Run errands and shop|==2|local::at0103|With much difficulty|)||(($gt0059|Get in and out of car|==2|local::at0104|With much difficulty|)||($gt0060|Do chores such as vacuuming or yard work|==2|local::at0105|With much difficulty|))"
@@ -570,7 +599,7 @@
       },
       "gt0115": {
         "id": "gt0115",
-        "priority": 11,
+        "priority": 16,
         "when": [
           "!fired($gt0102)",
           "!fired($gt0114)",
@@ -582,7 +611,7 @@
       },
       "gt0116": {
         "id": "gt0116",
-        "priority": 10,
+        "priority": 15,
         "when": [
           "!fired($gt0102)",
           "!fired($gt0114)",
@@ -595,7 +624,7 @@
       },
       "gt0132": {
         "id": "gt0132",
-        "priority": 9,
+        "priority": 14,
         "when": [
           "(fired($gt0082))||(fired($gt0079))",
           "($gt0117|Devices for dressing|==1|local::at0199|Yes|)||($gt0124|Dressing and grooming|==1|local::at0128|Yes|)"
@@ -606,7 +635,7 @@
       },
       "gt0133": {
         "id": "gt0133",
-        "priority": 8,
+        "priority": 13,
         "when": [
           "(fired($gt0086))||(fired($gt0085))",
           "($gt0118|Devices for arising|==1|local::at0214|Yes|)||($gt0125|Arising|==1|local::at0226|Yes|)"
@@ -617,7 +646,7 @@
       },
       "gt0134": {
         "id": "gt0134",
-        "priority": 7,
+        "priority": 12,
         "when": [
           "(fired($gt0078))||(fired($gt0077))",
           "($gt0119|Devices for eating|==1|local::at0216|Yes|)||($gt0126|Eating|==1|local::at0228|Yes|)"
@@ -628,7 +657,7 @@
       },
       "gt0135": {
         "id": "gt0135",
-        "priority": 6,
+        "priority": 11,
         "when": [
           "(fired($gt0109))||(fired($gt0089))",
           "($gt0120|Devices for walking|==1|local::at0218|Yes|)||($gt0127|Walking|==1|local::at0230|Yes|)"
@@ -639,7 +668,7 @@
       },
       "gt0136": {
         "id": "gt0136",
-        "priority": 5,
+        "priority": 10,
         "when": [
           "(fired($gt0093))||(fired($gt0092))",
           "($gt0121|Devices for hygiene activities|==1|local::at0220|Yes|)||($gt0128|Hygiene activities|==1|local::at0232|Yes|)"
@@ -650,7 +679,7 @@
       },
       "gt0137": {
         "id": "gt0137",
-        "priority": 4,
+        "priority": 9,
         "when": [
           "(fired($gt0097))||(fired($gt0096))",
           "($gt0122|Devices for reaching|==1|local::at0222|Yes|)||($gt0129|Reaching|==1|local::at0234|Yes|)"
@@ -661,7 +690,7 @@
       },
       "gt0138": {
         "id": "gt0138",
-        "priority": 3,
+        "priority": 8,
         "when": [
           "(fired($gt0101))||(fired($gt0100))",
           "($gt0123|Devices for gripping|==1|local::at0224|Yes|)||($gt0130|Gripping and opening things|==1|local::at0236|Yes|)"
@@ -672,7 +701,7 @@
       },
       "gt0139": {
         "id": "gt0139",
-        "priority": 2,
+        "priority": 7,
         "when": [
           "(fired($gt0116))||(fired($gt0115))",
           "$gt0131|Errands and chores|==1|local::at0238|Yes|"
@@ -683,7 +712,7 @@
       },
       "gt0140": {
         "id": "gt0140",
-        "priority": 1,
+        "priority": 6,
         "when": [
           "$gt0006|Dress and gromm Score|!=null",
           "$gt0012|Rise Score|!=null",
@@ -712,6 +741,61 @@
         "then": [
           "$gt0067|HAQ-DI Score|.magnitude=($gt0006+$gt0012+$gt0021+$gt0032+$gt0039+$gt0047+$gt0054+$gt0061)/8"
         ]
+      },
+      "gt0141": {
+        "id": "gt0141",
+        "priority": 5,
+        "when": [
+          "$gt0067|HAQ-DI Score|!=null",
+          "$gt0072|Ask patient to rate pain |!=null",
+          "$gt0073|Ask patient to rate how well they are doing in the past week considering all the ways their disease affects them|!=null"
+        ],
+        "then": [
+          "$gt0069|PAS Score|.magnitude=(($gt0067*3.33)+$gt0072.value+$gt0073.value)/3",
+          "$gt0069|PAS Score|.precision=2"
+        ]
+      },
+      "gt0145": {
+        "id": "gt0145",
+        "priority": 4,
+        "when": [
+          "$gt0069|PAS Score|.magnitude<0.26"
+        ],
+        "then": [
+          "$gt0144|Disease Activity|=1|local::at0003|Remission|"
+        ]
+      },
+      "gt0146": {
+        "id": "gt0146",
+        "priority": 3,
+        "when": [
+          "$gt0069|PAS Score|.magnitude>=0.26",
+          "$gt0069|PAS Score|.magnitude<3.71"
+        ],
+        "then": [
+          "$gt0144|Disease Activity|=2|local::at0004|Low/Minimal|"
+        ]
+      },
+      "gt0147": {
+        "id": "gt0147",
+        "priority": 2,
+        "when": [
+          "$gt0069|PAS Score|.magnitude>=3.71",
+          "$gt0069|PAS Score|.magnitude<8.0"
+        ],
+        "then": [
+          "$gt0144|Disease Activity|=3|local::at0005|Moderate|"
+        ]
+      },
+      "gt0148": {
+        "id": "gt0148",
+        "priority": 1,
+        "when": [
+          "$gt0069|PAS Score|.magnitude>=8.0"
+        ],
+        "then": [
+          "$gt0144|Disease Activity|=4|local::at0006|High/Sever|"
+        ]
       }
     }
   },
@@ -721,7 +805,9 @@
         "id": "en",
         "terms": {
           "gt0001": {
-            "id": "gt0001"
+            "id": "gt0001",
+            "text": "Patient Activity Scale (PAS) for RA",
+            "description": "Rheumatoid arthritis (RA) is a chronic and progressive disease. PAS is a self-report disease activity scale for patients with rheumatoid arthritis. \nThe Patient Activity Scale (PAS) is a composite index of disease activity status that combines the Health Assessment Questionnaire-DI (HAQ-DI) and a visual analog scale (VAS) for pain and patient global assessment.\nPAS = (HAQ-II x 3.33 + VAS + Patient Global Assessment of Disease Activity) / 3, where:\n\nHealth Assessment Questionnaire Disability Index (HAQ-DI)=  Averaging selected points for the following variables:\nHAQ-DI variables: \n\nIs patient able to dress and groom?\n- Self-dress, including shoelaces and buttons:\n-Shampoo hair:\n\nIs patient able to arise:\n- Stand up from a straight chair\n- Get in and out of bed\n\nIs patient able to eat: \n- Cut own meat\n- Lift a full cup or glass to mouth\n- Open a new milk carton\n\nIs patient able to walk: \n- Walk outdoors on flat ground\n- Climb up five steps\n\nIs patient able to perform hygiene activities:\n- Wash and dry body\n- Take a tub bath\n- Get on and off toilet\n\nIs patient able to reach:\n- Reach and get down a 5-pound object (such as a bag of sugar) from above head\n- Bend down to pick up clothing from floor\n\nIs patient able to grip: \n- Open car doors\n- Open previously opened jars\n- Turn faucets on and off\n\nIn each category and every answer has 4 possible values from 0 to 3. \nValues for answers: \n- Without any difficulty=0\n- With some difficulty=1\n- With much difficulty=2\n- Unable=3\n\n\nPain Visual Analog Scale (VAS): Patient will be asked to rate pain on a scale of 0-10, where 10 is the worst pain imaginable.\n\nPatient Global Assessment of Disease Activity: Patient will be asked to rate how well they are doing in the past week considering all the ways their disease affects them on a scale of 0-10, where 10 is the worst. \n\n\nIf patient uses any aids or devices and/or requires help from another person for any given category,\n the score for that category is adjusted upward to 2. If the categorical score is already ≥2, the score remains unchanged.\n\nAids or devices used by patient:\nDevices for dressing (Button hook, zipper pull)?\nDevices for arising(Special or built up chair)?\nDevices for eating (Built up or special utensils)?\nDevices for walking (Cane, walker, crutches, wheelchair)?\nDevices for hygiene activities (Raised toilet seat, bathtub seat, bathtub bar, long-handled appliances in bathroom)?\nDevices for reaching (Long-handled appliances for reach)?\nDevices for gripping (Jar opener (for jars previously opened))?\nAnswer for above questions will be rated as: Yes=1, No=0\n\nPatient needs help from another person: \nDressing and grooming\nArising\nEating\nWalking\nHygiene activities\nReaching\nGripping and opening things\nErrands and chores\nAnswer for above questions will be rated as Yes=1, No=0\n\nProvide recommendations related to PAS scores obtained in patient assessment.\nInterpretation:\n\nPAS  score 0.00-0.25 = Disease activity is Remission\n\nPAS  score 0.26-3.70 = Disease activity is Low/minimal\n\nPAS  score 3.71-7.99 = Disease activity is Moderate\n\nPAS score 8.00-10.00 = Disease activity is High/severe"
           },
           "gt0004": {
             "id": "gt0004",
@@ -1320,6 +1406,31 @@
           "gt0140": {
             "id": "gt0140",
             "text": "Set HAQ-DI"
+          },
+          "gt0141": {
+            "id": "gt0141",
+            "text": "Set PAS score"
+          },
+          "gt0144": {
+            "id": "gt0144",
+            "text": "Disease Activity",
+            "description": "*"
+          },
+          "gt0145": {
+            "id": "gt0145",
+            "text": "Set Disease activity to Remission"
+          },
+          "gt0146": {
+            "id": "gt0146",
+            "text": "Set Disease activity to Low/minimal"
+          },
+          "gt0147": {
+            "id": "gt0147",
+            "text": "Set Disease activity to Moderate"
+          },
+          "gt0148": {
+            "id": "gt0148",
+            "text": "Set Disease activity to High/severe"
           }
         }
       }
