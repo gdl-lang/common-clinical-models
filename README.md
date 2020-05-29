@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 281*
+### *Published Apps: 282*
 
 ----------
 
@@ -397,6 +397,8 @@ _Select a medical specialty below to view the available apps._
 * Modified Fatigue Impact Scale - shortened (MFIS-s) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS_shortened/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS_shortened/1?language=sv))
 
 * Modified Fisher Scale for SAH - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Modified_Fisher_Scale_SAH/1?language=en))
+
+* Modified Hoehn and Yahr Scale for Parkinson’s Disease - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Hoehn_and_Yahr_Scale_for_Parkinsons_Disease/1?language=en))
 
 * Modified National Institutes of Health Stroke Scale (mNIHSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mNIHSS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mNIHSS/1?language=sv))
 
