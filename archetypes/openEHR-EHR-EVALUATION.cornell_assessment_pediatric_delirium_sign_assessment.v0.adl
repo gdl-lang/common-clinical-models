@@ -1,0 +1,358 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.cornell_assessment_pediatric_delirium_sign_assessment.v0
+
+concept
+	[at0000]	-- Cornell Assessment of Pediatric Delirium sign assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Daniel Keszthelyi">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2020-05-15">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the signs to be monitored for Cornell Assessment of Pediatric Delirium (CAPD), a score developed to screen for pediatric delirium given an age category.">
+			use = <"Use in critically ill pediatric patients aged 0-21 years to help to identify signs to monitor fo delirium. As in adults, hospitalized children, particularly those in the PICU, are at high risk of developing delirium. Pediatric delirium often presents differently than that of adults. Children may be more likely to have a catatonia-like presentation, with general listlessness and paucity of speech. In turn, delirium in children is associated with complications such as increased length of stay, post-traumatic stress symptoms, and possible long-term neurodevelopmental issues.
+
+May be used in both developmentally normal and delayed patients. Children with developmental delay are at higher risk of developing delirium than non-delayed children, and therefore should be monitored more closely for delirium symptoms.
+
+The signs to be looked for depends on the age of the patient. There are predefined age categories (newborn, 4 weeks, 6 weeks, 8 weeks, 28 weeks, 1 year, and 2 years) use the closest to the patient's age.">
+			keywords = <"Delirium", "PICU", "Pediatric Intensive Care", "Cornell", "CAPD", "Pediatric delirium">
+			misuse = <"Do not use in patients with Richmond Agitation-Sedation Scale (RASS) ≤-4 (deep sedation: no response to voice, but movement or eye opening to physical stimulation, or unarousable: no response to voice or physical stimulation).">
+			copyright = <"Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"79A5A733C9FA1598858A8019023FAA32">
+		["references"] = <"[1] Traube C, Silver G, Kearney J, et al. Cornell Assessment of Pediatric Delirium: a valid, rapid, observational tool for screening delirium in the PICU*. Crit Care Med. 2014;42(3):656-63.
+[2] Silver G, Kearney J, Traube C, Hertzig M. Delirium screening anchored in child development: The Cornell Assessment for Pediatric Delirium. Palliat Support Care. 2015;13(4):1005-11.
+[3] Daoud A, Duff JP, Joffe AR. Diagnostic accuracy of delirium diagnosis in pediatric intensive care: a systematic review. Crit Care. 2014;18(5):489.">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Cornell Assessment of Pediatric Delirium sign assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0009] occurrences matches {0..1} matches {	-- Makes eye contact with the caregiver
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0010, 	-- Fixates on face
+									at0011, 	-- Holds gaze briefly, follows 90°
+									at0012, 	-- Holds gaze
+									at0013, 	-- Follows moving object/caregiver past midline, regards examiner’s hand holding object, focused attention
+									at0014]	-- Holds gaze, prefers primary parent, looks at speaker
+								}
+							}
+						}
+					}
+					ELEMENT[at0015] occurrences matches {0..1} matches {	-- Actions are purposeful
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0016, 	-- Moves head to side, dominated by primitive reflexes
+									at0017, 	-- Reaches (with some discoordination).
+									at0018, 	-- Reaches. 
+									at0019, 	-- Symmetric movements, will passively grasp handed object.
+									at0020, 	-- Reaches with coordinated smooth movement.
+									at0021, 	-- Reaches and manipulates objects, tries to change position, if mobile, may try to get up.
+									at0022]	-- Reaches and manipulates objects, tries to change position, if mobile, may try to get up and walk.
+								}
+							}
+						}
+					}
+					ELEMENT[at0023] occurrences matches {0..1} matches {	-- Aware of surroundings
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0050, 	-- Calm awake time.
+									at0051, 	-- Awake alert time, turns to primary caretaker’s voice, may turn to smell of primary caretaker.
+									at0052, 	-- Increasing awake alert time, turns to primary caretaker’s voice, may turn to smell of primary caretaker.
+									at0053, 	-- Facial brightening or smile in response to nodding head, frown to bell, coos.
+									at0054, 	-- Strongly prefers mother, then other familiars, differentiates between novel and familiar objects.
+									at0055]	-- Prefers primary parent, then other familiars, upset when separated from preferred caretakers, comforted by familiar objects especially favorite blanket or stuffed animal.
+								}
+							}
+						}
+					}
+					ELEMENT[at0024] occurrences matches {0..1} matches {	-- Communication needs and wants
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0046, 	-- Cries when hungry or uncomfortable.
+									at0047, 	-- Vocalizes/indicates about needs, e.g. hunger, discomfort, curiosity in objects, or surroundings.
+									at0048, 	-- Uses single words, or signs.
+									at0049]	-- Uses 3-4 word sentences, or signs, may indicate toilet needs, calls self or me.
+								}
+							}
+						}
+					}
+					ELEMENT[at0025] occurrences matches {0..1} matches {	-- Restless
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {[local::at0045]}		-- No sustained awake alert state.
+							}
+						}
+					}
+					ELEMENT[at0026] occurrences matches {0..1} matches {	-- Inconsolable
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0042, 	-- Not soothed by parental rocking, singing, feeding, comforting actions.
+									at0043, 	-- Not soothed by usual methods, e.g. singing, holding, talking.
+									at0044]	-- Not soothed by usual methods, e.g. singing, holding, talking, reading (may tantrum, but can organize).
+								}
+							}
+						}
+					}
+					ELEMENT[at0027] occurrences matches {0..1} matches {	-- Underactive (very little movement while awake)
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0035, 	-- Little if any flexed and then relaxed state with primitive reflexes (child should be sleeping comfortably most of the time).
+									at0036, 	-- Little if any reaching, kicking, grasping (still may be somewhat discoordinated).
+									at0037, 	-- Little if any reaching, kicking, grasping (may begin to be more coordinated).
+									at0038, 	-- Little if any purposive grasping, control of head and arm movements, such as pushing things that are noxious away.
+									at0039, 	-- Little if any reaching, grasping, moving around in bed, pushing things away.
+									at0040, 	-- Little if any play, efforts to sit up, pull up, and if mobile, crawl or walk around.
+									at0041]	-- Little if any more elaborate play, efforts to sit up and move around, and if able to stand, walk or jump.
+								}
+							}
+						}
+					}
+					ELEMENT[at0028] occurrences matches {0..1} matches {	-- Takes long time to respond to interactions
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0029, 	-- Not making sounds or reflexes active as expected (grasp, suck, moro).
+									at0030, 	-- Not kicking or crying with noxious stimuli.
+									at0031, 	-- Not cooing, smiling, or focusing gaze in response to interactions.
+									at0032, 	-- Not babbling or smiling/laughing in social interactions (or even actively rejecting an interaction). 
+									at0033, 	-- Not following simple directions, if verbal, not engaging in simple dialogue with words or jargon.
+									at0034]	-- Not following 1-2 step simple commands, if verbal, not engaging in more complex dialogue.
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Cornell Assessment of Pediatric Delirium sign assessment">
+					description = <"The required signs to be monitored for Cornell Assessment of Pediatric Delirium (CAPD). Depending on age different signs to be monitored on pediatric patients for CAPD score. CAPD is a score developed to screen for pediatric delirium.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0009"] = <
+					text = <"Makes eye contact with the caregiver">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Fixates on face">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Holds gaze briefly, follows 90°">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Holds gaze">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Follows moving object/caregiver past midline, regards examiner’s hand holding object, focused attention">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Holds gaze, prefers primary parent, looks at speaker">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Actions are purposeful">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Moves head to side, dominated by primitive reflexes">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Reaches (with some discoordination).">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Reaches. ">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Symmetric movements, will passively grasp handed object.">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Reaches with coordinated smooth movement.">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Reaches and manipulates objects, tries to change position, if mobile, may try to get up.">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Reaches and manipulates objects, tries to change position, if mobile, may try to get up and walk.">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Aware of surroundings">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Communication needs and wants">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Restless">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Inconsolable">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Underactive (very little movement while awake)">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Takes long time to respond to interactions">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Not making sounds or reflexes active as expected (grasp, suck, moro).">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Not kicking or crying with noxious stimuli.">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Not cooing, smiling, or focusing gaze in response to interactions.">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Not babbling or smiling/laughing in social interactions (or even actively rejecting an interaction). ">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Not following simple directions, if verbal, not engaging in simple dialogue with words or jargon.">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"Not following 1-2 step simple commands, if verbal, not engaging in more complex dialogue.">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Little if any flexed and then relaxed state with primitive reflexes (child should be sleeping comfortably most of the time).">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Little if any reaching, kicking, grasping (still may be somewhat discoordinated).">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Little if any reaching, kicking, grasping (may begin to be more coordinated).">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"Little if any purposive grasping, control of head and arm movements, such as pushing things that are noxious away.">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Little if any reaching, grasping, moving around in bed, pushing things away.">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"Little if any play, efforts to sit up, pull up, and if mobile, crawl or walk around.">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"Little if any more elaborate play, efforts to sit up and move around, and if able to stand, walk or jump.">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"Not soothed by parental rocking, singing, feeding, comforting actions.">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"Not soothed by usual methods, e.g. singing, holding, talking.">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Not soothed by usual methods, e.g. singing, holding, talking, reading (may tantrum, but can organize).">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"No sustained awake alert state.">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"Cries when hungry or uncomfortable.">
+					description = <"*">
+				>
+				["at0047"] = <
+					text = <"Vocalizes/indicates about needs, e.g. hunger, discomfort, curiosity in objects, or surroundings.">
+					description = <"*">
+				>
+				["at0048"] = <
+					text = <"Uses single words, or signs.">
+					description = <"*">
+				>
+				["at0049"] = <
+					text = <"Uses 3-4 word sentences, or signs, may indicate toilet needs, calls self or me.">
+					description = <"*">
+				>
+				["at0050"] = <
+					text = <"Calm awake time.">
+					description = <"*">
+				>
+				["at0051"] = <
+					text = <"Awake alert time, turns to primary caretaker’s voice, may turn to smell of primary caretaker.">
+					description = <"*">
+				>
+				["at0052"] = <
+					text = <"Increasing awake alert time, turns to primary caretaker’s voice, may turn to smell of primary caretaker.">
+					description = <"*">
+				>
+				["at0053"] = <
+					text = <"Facial brightening or smile in response to nodding head, frown to bell, coos.">
+					description = <"*">
+				>
+				["at0054"] = <
+					text = <"Strongly prefers mother, then other familiars, differentiates between novel and familiar objects.">
+					description = <"*">
+				>
+				["at0055"] = <
+					text = <"Prefers primary parent, then other familiars, upset when separated from preferred caretakers, comforted by familiar objects especially favorite blanket or stuffed animal.">
+					description = <"*">
+				>
+			>
+		>
+	>

@@ -1,0 +1,114 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.cornell_assessment_pediatric_delirium_assessment.v0
+
+concept
+	[at0000]	-- Cornell Assessment of Pediatric Delirium assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Daniel Keszthelyi">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2020-05-15">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the result of assessment made by Cornell Assessment of Pediatric Delirium (CAPD), a score developed to screen for pediatric delirium.">
+			use = <"Use in critically ill pediatric patients aged 0-21 years to identify delirium. As in adults, hospitalized children, particularly those in the PICU, are at high risk of developing delirium. Pediatric delirium often presents differently than that of adults. Children may be more likely to have a catatonia-like presentation, with general listlessness and paucity of speech. In turn, delirium in children is associated with complications such as increased length of stay, post-traumatic stress symptoms, and possible long-term neurodevelopmental issues.
+
+May be used in both developmentally normal and delayed patients. Children with developmental delay are at higher risk of developing delirium than non-delayed children, and therefore should be monitored more closely for delirium symptoms.
+
+Cornell assessment of pediatric delirium can be interpreted as:
+CAPD Score	Delirium	Recommendation
+
+≥9	Present	Investigate and treat underlying medical condition(s) causing delirium, consider interventions with parents and child life services, and/or consult to psychiatry or palliative care as appropriate, consider medications like melatonin or QUEtiapine (SEROquel) in select cases
+
+<9	Absent	Continue usual care and monitoring">
+			keywords = <"Delirium", "PICU", "Pediatric Intensive Care", "Cornell", "CAPD", "Pediatric delirium">
+			misuse = <"Do not use in patients with Richmond Agitation-Sedation Scale (RASS) ≤-4 (deep sedation: no response to voice, but movement or eye opening to physical stimulation, or unarousable: no response to voice or physical stimulation).
+Adapt the categories to the development stage of the child. Signs to look for can be seen in the Cornell Assessment of Pediatric Delirium Signs guideline.">
+			copyright = <"Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"94EBF19ED12796F8C3797C1D102344B6">
+		["references"] = <"[1] Traube C, Silver G, Kearney J, et al. Cornell Assessment of Pediatric Delirium: a valid, rapid, observational tool for screening delirium in the PICU*. Crit Care Med. 2014;42(3):656-63.
+[2] Silver G, Kearney J, Traube C, Hertzig M. Delirium screening anchored in child development: The Cornell Assessment for Pediatric Delirium. Palliat Support Care. 2015;13(4):1005-11.
+[3] Daoud A, Duff JP, Joffe AR. Diagnostic accuracy of delirium diagnosis in pediatric intensive care: a systematic review. Crit Care. 2014;18(5):489.">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Cornell Assessment of Pediatric Delirium assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Delirium
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0003, 	-- Absent
+									at0004]	-- Present
+								}
+							}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Recommendation
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0006, 	-- Investigate and treat underlying medical condition(s) causing delirium, consider interventions with parents and child life services, and/or consult to psychiatry or palliative care as appropriate, consider medications like melatonin or QUEtiapine (SEROquel) in select cases
+									at0007]	-- Continue usual care and monitoring
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Cornell Assessment of Pediatric Delirium assessment">
+					description = <"Cornell Assessment of Pediatric Delirium is a score developed to screen for pediatric delirium">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Delirium">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Absent">
+					description = <"Absent">
+				>
+				["at0004"] = <
+					text = <"Present">
+					description = <"Present">
+				>
+				["at0005"] = <
+					text = <"Recommendation">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Investigate and treat underlying medical condition(s) causing delirium, consider interventions with parents and child life services, and/or consult to psychiatry or palliative care as appropriate, consider medications like melatonin or QUEtiapine (SEROquel) in select cases">
+					description = <"Investigate and treat underlying medical condition(s) causing delirium, consider interventions with parents and child life services, and/or consult to psychiatry or palliative care as appropriate, consider medications like melatonin or QUEtiapine (SEROquel) in select cases">
+				>
+				["at0007"] = <
+					text = <"Continue usual care and monitoring">
+					description = <"Continue usual care and monitoring">
+				>
+			>
+		>
+	>

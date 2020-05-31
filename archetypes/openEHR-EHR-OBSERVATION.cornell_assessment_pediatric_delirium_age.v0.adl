@@ -1,0 +1,121 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.cornell_assessment_pediatric_delirium_age.v0
+
+concept
+	[at0000]	-- Cornell Assessment of Pediatric Delirium Age
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Daniel Keszthelyi">
+		["email"] = <"models@cambiocds.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2020-05-14">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the age group of tha patient relevant to Cornell Assessment of Pediatric Delirium (CAPD), a score developed to screen for pediatric delirium.">
+			use = <"Use in critically ill pediatric patients aged 0-21 years to help to identify signs to monitor fo delirium. As in adults, hospitalized children, particularly those in the PICU, are at high risk of developing delirium. Pediatric delirium often presents differently than that of adults. Children may be more likely to have a catatonia-like presentation, with general listlessness and paucity of speech. In turn, delirium in children is associated with complications such as increased length of stay, post-traumatic stress symptoms, and possible long-term neurodevelopmental issues.
+
+May be used in both developmentally normal and delayed patients. Children with developmental delay are at higher risk of developing delirium than non-delayed children, and therefore should be monitored more closely for delirium symptoms.
+
+The signs to be looked for depends on the age of the patient. There are predefined age categories (newborn, 4 weeks, 6 weeks, 8 weeks, 28 weeks, 1 year, and 2 years) use the closest to the patient's age.">
+			keywords = <"Delirium", "PICU", "Pediatric Intensive Care Unit", "Cornell", "Pediatric dellirium", "CAPD">
+			misuse = <"Do not use in patients with Richmond Agitation-Sedation Scale (RASS) ≤-4 (deep sedation: no response to voice, but movement or eye opening to physical stimulation, or unarousable: no response to voice or physical stimulation).">
+			copyright = <"Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"C1AD58B61D15FE97AC84A327985882BE">
+		["references"] = <"[1] Traube C, Silver G, Kearney J, et al. Cornell Assessment of Pediatric Delirium: a valid, rapid, observational tool for screening delirium in the PICU*. Crit Care Med. 2014;42(3):656-63.
+[2] Silver G, Kearney J, Traube C, Hertzig M. Delirium screening anchored in child development: The Cornell Assessment for Pediatric Delirium. Palliat Support Care. 2015;13(4):1005-11.
+[3] Daoud A, Duff JP, Joffe AR. Diagnostic accuracy of delirium diagnosis in pediatric intensive care: a systematic review. Crit Care. 2014;18(5):489.">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Cornell Assessment of Pediatric Delirium Age
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0053] occurrences matches {0..1} matches {	-- Age
+										value matches {
+											0|[local::at0054], 	-- Newborn
+											1|[local::at0055], 	-- 4 weeks
+											2|[local::at0056], 	-- 6 weeks
+											3|[local::at0057], 	-- 8 weeks
+											4|[local::at0058], 	-- 28 weeks
+											5|[local::at0059], 	-- 1 year
+											6|[local::at0060]  	-- 2 years
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Cornell Assessment of Pediatric Delirium Age">
+					description = <"The age group of the patient undergoing Cornell Assessment of Pediatric Delirium (CAPD). Depending on age different signs to be monitored on pediatric patients for CAPD score. CAPD is a score developed to screen for pediatric delirium.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0053"] = <
+					text = <"Age">
+					description = <"*">
+				>
+				["at0054"] = <
+					text = <"Newborn">
+					description = <"*">
+				>
+				["at0055"] = <
+					text = <"4 weeks">
+					description = <"*">
+				>
+				["at0056"] = <
+					text = <"6 weeks">
+					description = <"*">
+				>
+				["at0057"] = <
+					text = <"8 weeks">
+					description = <"*">
+				>
+				["at0058"] = <
+					text = <"28 weeks">
+					description = <"*">
+				>
+				["at0059"] = <
+					text = <"1 year">
+					description = <"*">
+				>
+				["at0060"] = <
+					text = <"2 years">
+					description = <"*">
+				>
+			>
+		>
+	>

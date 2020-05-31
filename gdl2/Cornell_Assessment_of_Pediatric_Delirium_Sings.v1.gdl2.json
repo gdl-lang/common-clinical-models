@@ -1,0 +1,308 @@
+{
+  "id": "Cornell_Assessment_of_Pediatric_Delirium_Sings.v1",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2020-05-30",
+      "name": "Daniel Keszthelyi",
+      "organisation": "Cambio Healthcare Systems",
+      "email": "models@cambiocds.com"
+    },
+    "lifecycle_state": "Author draft",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "To identify the required signs to be monitored for Cornell Assessment of Pediatric Delirium (CAPD). Depending on age different signs to be monitored on pediatric patients for CAPD score. CAPD is a score developed to screen for pediatric delirium.",
+        "keywords": [
+          "PICU",
+          "Pediatric Intensive Care Unit",
+          "Delirium",
+          "Cornell",
+          "CAPD",
+          "Pediatric Delirium"
+        ],
+        "use": "Use in critically ill pediatric patients aged 0-21 years to help to identify signs to monitor fo delirium. As in adults, hospitalized children, particularly those in the PICU, are at high risk of developing delirium. Pediatric delirium often presents differently than that of adults. Children may be more likely to have a catatonia-like presentation, with general listlessness and paucity of speech. In turn, delirium in children is associated with complications such as increased length of stay, post-traumatic stress symptoms, and possible long-term neurodevelopmental issues.\n\nMay be used in both developmentally normal and delayed patients. Children with developmental delay are at higher risk of developing delirium than non-delayed children, and therefore should be monitored more closely for delirium symptoms.\n\nThe signs to be looked for depends on the age of the patient. There are predefined age categories (newborn, 4 weeks, 6 weeks, 8 weeks, 28 weeks, 1 year, and 2 years) use the closest to the patient's age.",
+        "misuse": "Do not use in patients with Richmond Agitation-Sedation Scale (RASS) ≤-4 (deep sedation: no response to voice, but movement or eye opening to physical stimulation, or unarousable: no response to voice or physical stimulation).",
+        "copyright": "Cambio Healthcare Systems"
+      }
+    },
+    "other_details": {
+      "references": "[1] Traube C, Silver G, Kearney J, et al. Cornell Assessment of Pediatric Delirium: a valid, rapid, observational tool for screening delirium in the PICU*. Crit Care Med. 2014;42(3):656-63.\n[2] Silver G, Kearney J, Traube C, Hertzig M. Delirium screening anchored in child development: The Cornell Assessment for Pediatric Delirium. Palliat Support Care. 2015;13(4):1005-11.\n[3] Daoud A, Duff JP, Joffe AR. Diagnostic accuracy of delirium diagnosis in pediatric intensive care: a systematic review. Crit Care. 2014;18(5):489."
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0002": {
+        "id": "gt0002",
+        "model_id": "openEHR-EHR-OBSERVATION.cornell_assessment_pediatric_delirium_age.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.cornell_assessment_pediatric_delirium_age.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0003": {
+            "id": "gt0003",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0053]"
+          }
+        }
+      },
+      "gt0004": {
+        "id": "gt0004",
+        "model_id": "openEHR-EHR-EVALUATION.cornell_assessment_pediatric_delirium_sign_assessment.v0",
+        "template_id": "openEHR-EHR-EVALUATION.cornell_assessment_pediatric_delirium_sign_assessment.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0005": {
+            "id": "gt0005",
+            "path": "/data[at0001]/items[at0009]"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/items[at0015]"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "path": "/data[at0001]/items[at0023]"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "path": "/data[at0001]/items[at0024]"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "path": "/data[at0001]/items[at0025]"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "path": "/data[at0001]/items[at0026]"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "path": "/data[at0001]/items[at0027]"
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "path": "/data[at0001]/items[at0028]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0013": {
+        "id": "gt0013",
+        "priority": 7,
+        "when": [
+          "$gt0003|Age|!=null",
+          "$gt0003|Age|==0|local::at0054|Newborn|"
+        ],
+        "then": [
+          "$gt0005|Makes eye contact with the caregiver|=local::at0010|Fixates on face|",
+          "$gt0006|Actions are purposeful|=local::at0016|Moves head to side, dominated by primitive reflexes|",
+          "$gt0007|Aware of surroundings|=local::at0050|Calm awake time.|",
+          "$gt0008|Communication needs and wants|=local::at0046|Cries when hungry or uncomfortable.|",
+          "$gt0009|Restless|=local::at0045|No sustained awake alert state.|",
+          "$gt0010|Inconsolable|=local::at0042|Not soothed by parental rocking, singing, feeding, comforting actions.|",
+          "$gt0011|Underactive (very little movement while awake)|=local::at0035|Little if any flexed and then relaxed state with primitive reflexes (child should be sleeping comfortably most of the time).|",
+          "$gt0012|Takes long time to respond to interactions|=local::at0029|Not making sounds or reflexes active as expected (grasp, suck, moro).|"
+        ]
+      },
+      "gt0014": {
+        "id": "gt0014",
+        "priority": 6,
+        "when": [
+          "$gt0003|Age|!=null",
+          "$gt0003|Age|==1|local::at0055|4 weeks|"
+        ],
+        "then": [
+          "$gt0005|Makes eye contact with the caregiver|=local::at0011|Holds gaze briefly, follows 90°|",
+          "$gt0006|Actions are purposeful|=local::at0017|Reaches (with some discoordination).|",
+          "$gt0007|Aware of surroundings|=local::at0051|Awake alert time, turns to primary caretaker’s voice, may turn to smell of primary caretaker.|",
+          "$gt0008|Communication needs and wants|=local::at0046|Cries when hungry or uncomfortable.|",
+          "$gt0009|Restless|=local::at0045|No sustained awake alert state.|",
+          "$gt0010|Inconsolable|=local::at0042|Not soothed by parental rocking, singing, feeding, comforting actions.|",
+          "$gt0011|Underactive (very little movement while awake)|=local::at0036|Little if any reaching, kicking, grasping (still may be somewhat discoordinated).|",
+          "$gt0012|Takes long time to respond to interactions|=local::at0029|Not making sounds or reflexes active as expected (grasp, suck, moro).|"
+        ]
+      },
+      "gt0015": {
+        "id": "gt0015",
+        "priority": 5,
+        "when": [
+          "$gt0003|Age|!=null",
+          "$gt0003|Age|==2|local::at0056|6 weeks|"
+        ],
+        "then": [
+          "$gt0005|Makes eye contact with the caregiver|=local::at0012|Holds gaze|",
+          "$gt0006|Actions are purposeful|=local::at0018|Reaches. |",
+          "$gt0007|Aware of surroundings|=local::at0052|Increasing awake alert time, turns to primary caretaker’s voice, may turn to smell of primary caretaker.|",
+          "$gt0008|Communication needs and wants|=local::at0046|Cries when hungry or uncomfortable.|",
+          "$gt0009|Restless|=local::at0045|No sustained awake alert state.|",
+          "$gt0010|Inconsolable|=local::at0042|Not soothed by parental rocking, singing, feeding, comforting actions.|",
+          "$gt0011|Underactive (very little movement while awake)|=local::at0037|Little if any reaching, kicking, grasping (may begin to be more coordinated).|",
+          "$gt0012|Takes long time to respond to interactions|=local::at0030|Not kicking or crying with noxious stimuli.|"
+        ]
+      },
+      "gt0016": {
+        "id": "gt0016",
+        "priority": 4,
+        "when": [
+          "$gt0003|Age|!=null",
+          "$gt0003|Age|==3|local::at0057|8 weeks|"
+        ],
+        "then": [
+          "$gt0005|Makes eye contact with the caregiver|=local::at0013|Follows moving object/caregiver past midline, regards examiner’s hand holding object, focused attention|",
+          "$gt0006|Actions are purposeful|=local::at0019|Symmetric movements, will passively grasp handed object.|",
+          "$gt0007|Aware of surroundings|=local::at0053|Facial brightening or smile in response to nodding head, frown to bell, coos.|",
+          "$gt0008|Communication needs and wants|=local::at0046|Cries when hungry or uncomfortable.|",
+          "$gt0009|Restless|=local::at0045|No sustained awake alert state.|",
+          "$gt0010|Inconsolable|=local::at0042|Not soothed by parental rocking, singing, feeding, comforting actions.|",
+          "$gt0011|Underactive (very little movement while awake)|=local::at0038|Little if any purposive grasping, control of head and arm movements, such as pushing things that are noxious away.|",
+          "$gt0012|Takes long time to respond to interactions|=local::at0031|Not cooing, smiling, or focusing gaze in response to interactions.|"
+        ]
+      },
+      "gt0017": {
+        "id": "gt0017",
+        "priority": 3,
+        "when": [
+          "$gt0003|Age|!=null",
+          "$gt0003|Age|==4|local::at0058|28 weeks|"
+        ],
+        "then": [
+          "$gt0005|Makes eye contact with the caregiver|=local::at0014|Holds gaze, prefers primary parent, looks at speaker|",
+          "$gt0006|Actions are purposeful|=local::at0020|Reaches with coordinated smooth movement.|",
+          "$gt0007|Aware of surroundings|=local::at0054|Strongly prefers mother, then other familiars, differentiates between novel and familiar objects.|",
+          "$gt0008|Communication needs and wants|=local::at0047|Vocalizes/indicates about needs, e.g. hunger, discomfort, curiosity in objects, or surroundings.|",
+          "$gt0009|Restless|=local::at0045|No sustained awake alert state.|",
+          "$gt0010|Inconsolable|=local::at0043|Not soothed by usual methods, e.g. singing, holding, talking.|",
+          "$gt0011|Underactive (very little movement while awake)|=local::at0039|Little if any reaching, grasping, moving around in bed, pushing things away.|",
+          "$gt0012|Takes long time to respond to interactions|=local::at0032|Not babbling or smiling/laughing in social interactions (or even actively rejecting an interaction). |"
+        ]
+      },
+      "gt0018": {
+        "id": "gt0018",
+        "priority": 2,
+        "when": [
+          "$gt0003|Age|!=null",
+          "$gt0003|Age|==5|local::at0059|1 year|"
+        ],
+        "then": [
+          "$gt0005|Makes eye contact with the caregiver|=local::at0014|Holds gaze, prefers primary parent, looks at speaker|",
+          "$gt0006|Actions are purposeful|=local::at0021|Reaches and manipulates objects, tries to change position, if mobile, may try to get up.|",
+          "$gt0007|Aware of surroundings|=local::at0055|Prefers primary parent, then other familiars, upset when separated from preferred caretakers, comforted by familiar objects especially favorite blanket or stuffed animal.|",
+          "$gt0008|Communication needs and wants|=local::at0048|Uses single words, or signs.|",
+          "$gt0009|Restless|=local::at0045|No sustained awake alert state.|",
+          "$gt0010|Inconsolable|=local::at0044|Not soothed by usual methods, e.g. singing, holding, talking, reading (may tantrum, but can organize).|",
+          "$gt0011|Underactive (very little movement while awake)|=local::at0040|Little if any play, efforts to sit up, pull up, and if mobile, crawl or walk around.|",
+          "$gt0012|Takes long time to respond to interactions|=local::at0033|Not following simple directions, if verbal, not engaging in simple dialogue with words or jargon.|"
+        ]
+      },
+      "gt0019": {
+        "id": "gt0019",
+        "priority": 1,
+        "when": [
+          "$gt0003|Age|!=null",
+          "$gt0003|Age|==6|local::at0060|2 years|"
+        ],
+        "then": [
+          "$gt0005|Makes eye contact with the caregiver|=local::at0014|Holds gaze, prefers primary parent, looks at speaker|",
+          "$gt0006|Actions are purposeful|=local::at0022|Reaches and manipulates objects, tries to change position, if mobile, may try to get up and walk.|",
+          "$gt0007|Aware of surroundings|=local::at0055|Prefers primary parent, then other familiars, upset when separated from preferred caretakers, comforted by familiar objects especially favorite blanket or stuffed animal.|",
+          "$gt0008|Communication needs and wants|=local::at0049|Uses 3-4 word sentences, or signs, may indicate toilet needs, calls self or me.|",
+          "$gt0009|Restless|=local::at0045|No sustained awake alert state.|",
+          "$gt0010|Inconsolable|=local::at0044|Not soothed by usual methods, e.g. singing, holding, talking, reading (may tantrum, but can organize).|",
+          "$gt0011|Underactive (very little movement while awake)|=local::at0041|Little if any more elaborate play, efforts to sit up and move around, and if able to stand, walk or jump.|",
+          "$gt0012|Takes long time to respond to interactions|=local::at0034|Not following 1-2 step simple commands, if verbal, not engaging in more complex dialogue.|"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "Cornell Assessment of Pediatric Delirium Signs",
+            "description": "The required signs to be monitored for Cornell Assessment of Pediatric Delirium (CAPD). Depending on age different signs to be monitored on pediatric patients for CAPD score. CAPD is a score developed to screen for pediatric delirium."
+          },
+          "gt0003": {
+            "id": "gt0003",
+            "text": "Age",
+            "description": "*"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "Makes eye contact with the caregiver",
+            "description": "*"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Actions are purposeful",
+            "description": "*"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "text": "Aware of surroundings",
+            "description": "*"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "Communication needs and wants",
+            "description": "*"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "text": "Restless",
+            "description": "*"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "Inconsolable",
+            "description": "*"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "Underactive (very little movement while awake)",
+            "description": "*"
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "text": "Takes long time to respond to interactions",
+            "description": "*"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "Newborn"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "4 weeks"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "6 weeks"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "text": "8 weeks"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "28 weeks"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "1 year"
+          },
+          "gt0019": {
+            "id": "gt0019",
+            "text": "2 years"
+          }
+        }
+      }
+    }
+  }
+}

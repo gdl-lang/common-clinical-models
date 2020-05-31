@@ -1,0 +1,35 @@
+guidelines:
+  1: Cornell_Assessment_of_Pediatric_Delirium.v1
+test_cases:
+- id: Absent
+  input:
+    1:
+      gt0021|Makes eye contact with caregiver: 0|local::at0012|Always|
+      gt0022|Actions are purposeful: 0|local::at0017|Always|
+      gt0023|Aware of surroundings: 0|local::at0022|Always|
+      gt0024|Communicates needs and wants: 1|local::at0028|Often|
+      gt0025|Restless: 1|local::at0033|Rarely|
+      gt0026|Inconsolable: 1|local::at0038|Rarely|
+      gt0027|Underactive (very little movement while awake): 2|local::at0044|Sometimes|
+      gt0028|Takes long time to respond to interactions: 0|local::at0047|Never|
+  expected_output:
+    1:
+      gt0030|CAPD Score: 5
+      gt0033|Recommendation: local::at0007|Continue usual care and monitoring|
+      gt0032|Delirium: local::at0003|Absent|
+- id: Present
+  input:
+    1:
+      gt0021|Makes eye contact with caregiver: 0|local::at0012|Always|
+      gt0022|Actions are purposeful: 0|local::at0017|Always|
+      gt0023|Aware of surroundings: 0|local::at0022|Always|
+      gt0024|Communicates needs and wants: 3|local::at0030|Rarely|
+      gt0025|Restless: 1|local::at0033|Rarely|
+      gt0026|Inconsolable: 1|local::at0038|Rarely|
+      gt0027|Underactive (very little movement while awake): 2|local::at0044|Sometimes|
+      gt0028|Takes long time to respond to interactions: 4|local::at0051|Always|
+  expected_output:
+    1:
+      gt0030|CAPD Score: 11
+      gt0033|Recommendation: local::at0006|Investigate and treat underlying medical condition(s) causing delirium, consider interventions with parents and child life services, and/or consult to psychiatry or palliative care as appropriate, consider medications like melatonin or QUEtiapine (SEROquel) in select cases|
+      gt0032|Delirium: local::at0004|Present|
