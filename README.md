@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 285*
+### *Published Apps: 286*
 
 ----------
 
@@ -153,6 +153,8 @@ _Select a medical specialty below to view the available apps._
 * Rated Perceived Exertion Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rated_perceived_exertion_scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rated_perceived_exertion_scale/1?language=sv))
 
 * Revised Cardiac Risk Index (RCRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RCRI/1?language=en))
+
+* Reynolds Risk Score for Cardiovascular Risk in Women - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Reynolds_Risk_Score_for_CardiovascularRisk_in_Women_guideline/1?language=en))
 
 * THRIVE Score for Stroke Outcome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/THRIVE_for_Stroke/1?language=en))
 
