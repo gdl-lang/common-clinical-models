@@ -7,16 +7,29 @@
   },
   "description": {
     "original_author": {
-      "date": "2020-05-30",
-      "name": "Maryam Razavi"
+      "date": "2020-06-03",
+      "name": "Maryam Razavi",
+      "organisation": "CambioCDS",
+      "email": "maryam.razavi2009@gmail.com"
     },
     "lifecycle_state": "Author draft",
     "details": {
       "en": {
-        "id": "en"
+        "id": "en",
+        "purpose": "Diagnoses axial spondyloarthritis according to assessment of Spondyloarthritis International Society (ASAS) criteria.\n",
+        "keywords": [
+          "Assessment of the SpondyloArthritis international Society (ASAS)",
+          "Axial Spondyloarthritis",
+          "Ankylosing spondylitis (AS)"
+        ],
+        "use": "ASAS Criteria for Axial Spondyloarthritis (SpA) can be used in patients who have had chronic back pain (for more than equal  3 months) of unknown origin (no definite diagnosis) that began before 45 years of age. ",
+        "misuse": "ASAS criteria for axial spondyloarthritis (SpA) can not be used for patients who do not meet entry criteria and required criteria.  ",
+        "copyright": "@CambioCDS"
       }
     },
-    "other_details": {}
+    "other_details": {
+      "references": "Primary Reference: \nRudwaleit M, Van Der Heijde D, Landewé R, Listing J, Akkoc N, Brandt J, Braun J, Chou CT, Collantes-Estevez E, Dougados M, Huang F. The development of Assessment of SpondyloArthritis international Society classification criteria for axial spondyloarthritis (part II): validation and final selection. Annals of the rheumatic diseases. 2009 Jun 1;68(6):777-83.\nClinical Practice Guidelines:\nWard MM, Deodhar A, Akl EA, Lui A, Ermann J, Gensler LS, Smith JA, Borenstein D, Hiratzka J, Weiss PF, Inman RD. American College of Rheumatology/Spondylitis Association of America/Spondyloarthritis Research and Treatment Network 2015 recommendations for the treatment of ankylosing spondylitis and nonradiographic axial spondyloarthritis. Arthritis & Rheumatology. 2016 Feb;68(2):282-98.\nOther references:\nLinden SV, Valkenburg HA, Cats A. Evaluation of diagnostic criteria for ankylosing spondylitis. Arthritis & Rheumatism. 1984 Apr;27(4):361-8."
+    }
   },
   "definition": {
     "data_bindings": {
@@ -155,7 +168,10 @@
           "$gt0051|Good response to NSAIDs|!=null",
           "$gt0052|Family history of SpA|!=null",
           "$gt0053|HLA-B27|!=null",
-          "$gt0054|Elevated CRP|!=null"
+          "$gt0054|Elevated CRP|!=null",
+          "fired($gt0055)",
+          "$gt0042|Sacroiliitis on imaging|==1|local::at0015|Yes|",
+          "$gt0043|HLA-B27|==0|local::at0017|No|"
         ],
         "then": [
           "$gt0035|Sacroiliitis Score|.magnitude=$gt0044.value+$gt0045.value+$gt0046.value+$gt0047.value+$gt0048.value+$gt0049.value+$gt0050.value+$gt0051.value+$gt0052.value+$gt0053.value+$gt0054.value"
@@ -174,46 +190,45 @@
           "$gt0050|Crohn’s disease or ulcerative colitis|!=null",
           "$gt0051|Good response to NSAIDs|!=null",
           "$gt0052|Family history of SpA|!=null",
-          "$gt0054|Elevated CRP|!=null"
+          "$gt0054|Elevated CRP|!=null",
+          "fired($gt0055)",
+          "$gt0043|HLA-B27|==1|local::at0018|Yes|",
+          "$gt0042|Sacroiliitis on imaging|==0|local::at0014|No|"
         ],
         "then": [
           "$gt0036|HLA-B27|.magnitude=$gt0044.value+$gt0045.value+$gt0046.value+$gt0047.value+$gt0048.value+$gt0049.value+$gt0050.value+$gt0051.value+$gt0052.value+$gt0054.value"
         ]
       },
-      "gt0059": {
-        "id": "gt0059",
+      "gt0063": {
+        "id": "gt0063",
         "priority": 3,
         "when": [
           "fired($gt0055)",
-          "$gt0042|Sacroiliitis on imaging|==1|local::at0015|Yes|",
-          "$gt0035|Sacroiliitis Score|>=1",
-          "$gt0043|HLA-B27|==0|local::at0017|No|"
-        ],
-        "then": [
-          "$gt0026|Diagnostic Result|=1|local::at0004|Axial SpA|"
-        ]
-      },
-      "gt0060": {
-        "id": "gt0060",
-        "priority": 2,
-        "when": [
-          "fired($gt0055)",
-          "$gt0043|HLA-B27|==1|local::at0018|Yes|",
-          "$gt0036|HLA-B27|>=2",
-          "$gt0042|Sacroiliitis on imaging|==0|local::at0014|No|"
-        ],
-        "then": [
-          "$gt0026|Diagnostic Result|=1|local::at0004|Axial SpA|"
-        ]
-      },
-      "gt0063": {
-        "id": "gt0063",
-        "priority": 1,
-        "when": [
-          "!fired($gt0055)"
+          "($gt0042|Sacroiliitis on imaging|==1|local::at0015|Yes|)||($gt0043|HLA-B27|==1|local::at0018|Yes|)",
+          "($gt0035|Sacroiliitis Score|<1)||($gt0036|HLA-B27|<2)"
         ],
         "then": [
           "$gt0026|Diagnostic Result|=0|local::at0003|Not axial SpA|"
+        ]
+      },
+      "gt0064": {
+        "id": "gt0064",
+        "priority": 2,
+        "when": [
+          "$gt0035|Sacroiliitis Score|>=1"
+        ],
+        "then": [
+          "$gt0026|Diagnostic Result|=1|local::at0004|Axial SpA|"
+        ]
+      },
+      "gt0065": {
+        "id": "gt0065",
+        "priority": 1,
+        "when": [
+          "$gt0036|HLA-B27|>=2"
+        ],
+        "then": [
+          "$gt0026|Diagnostic Result|=1|local::at0004|Axial SpA|"
         ]
       }
     }
@@ -225,7 +240,8 @@
         "terms": {
           "gt0001": {
             "id": "gt0001",
-            "text": "ASAS Criteria for Axial Spondyloarthritis (SpA)"
+            "text": "ASAS Criteria for Axial Spondyloarthritis (SpA)",
+            "description": "ASAS refers to the assessment of the SpondyloArthritis international Society. Ankylosing spondylitis (AS) is a form of chronic inflammatory arthritis characterized by sacroiliitis, enthesitis, and a marked propensity for sacroiliac joint and spinal fusion.  AS is a condition in the spondyloarthritis (SpA) family of disease and distinguished by universal involvement with joint inflammation or fusion, and more prevalent spinal ankylosis. \nASAS criteria for axial spondyloarthritis (SpA) can be used for patients who meet entry criteria and required criteria.  \nEntry criteria: patients who have had chronic back pain (for more than equal  3 months) of unknown origin (no definite diagnosis) that began before 45 years of age. \n\nRequired criteria: Sacroiliitis on imaging (Note) plus ≥1 SpA feature, or\nHLA-B27 plus ≥2 additional SpA features. \n\nSpA features are including:  Inflammatory back pain, Arthritis, Enthesitis (heel), Uveitis, Dactylitis, Psoriasis, Crohn’s disease or ulcerative colitis, Good response to NSAIDs, Family history of SpA, HLA-B27, Elevated CRP. \n\nNote: \nSacroiliitis by radiographs refers to bilateral grade 2–4 or unilateral grade 3–4 sacroiliitis on plain radiographs, according to the modified New York criteria.\nSacroiliitis by MRI refers to active (acute) inflammatory lesions of sacroiliac joints with definite bone marrow oedema/osteitis, suggestive of sacroiliitis associated with SpA.\n\nASA classification for axial SpA and Diagnostic result:\n\npatient with back pain >=3 months and age <45 years= Yes, Sarcroiliitis on imaging=Yes , Diagnostic result= Not axial SpA\n\npatient with back pain >=3 months and age <45 years= Yes, Sarcroiliitis on imaging=Yes,  ≥1 SpA features= Yes, Diagnostic result= Axial SpA\n\npatient with back pain >=3 months and age <45 years= Yes, HLA-B27=Yes, Diagnostic result= Not axial SpA\n\npatient with back pain >=3 months and age <45 years= Yes, HLA-B27=Yes,  ≥2 SpA features other than HLA-B27 positive= Yes, Diagnostic result= Axial SpA\n\n\n\n"
           },
           "gt0003": {
             "id": "gt0003",
@@ -482,6 +498,14 @@
           "gt0063": {
             "id": "gt0063",
             "text": "Set Not Axial"
+          },
+          "gt0064": {
+            "id": "gt0064",
+            "text": "Set Axial SpA to Sacroiliitis on imaging"
+          },
+          "gt0065": {
+            "id": "gt0065",
+            "text": "Set Axial SpA to HLA-B27"
           }
         }
       }
