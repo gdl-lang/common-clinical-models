@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 286*
+### *Published Apps: 287*
 
 ----------
 
@@ -512,6 +512,8 @@ _Select a medical specialty below to view the available apps._
 * Pediatric Crohn's Disease Activity Index (PCDAI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PCDAI/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PCDAI/1?language=sv))
 
 * Pediatric Early Warning Score (PEWS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEWS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEWS/1?language=sv))
+
+* Pediatric Early Warning Score (PEWS2) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEWS2_for0to3months/1?language=en))
 
 * Pediatric Glasgow Coma Scale (pGCS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_glasgow_coma_scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_glasgow_coma_scale/1?language=sv))
 
