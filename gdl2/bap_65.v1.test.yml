@@ -1,0 +1,150 @@
+guidelines:
+  1: bap_65.v1
+test_cases:
+- id: test_preconditions (negative test)
+  input:
+    1:
+      gt0007|Age: 40,a
+  expected_output: {}
+
+- id: test_default_actions_preconditions
+  input:
+    1:
+      gt0007|Age: 41,a
+  expected_output:
+    1:
+      gt0014|BUN ≥ 25mg/dL (8.9 mmol/L): 0|local::at0003|No|
+      gt0011|Pulse ≥109 beats/min: 0|local::at0009|No|
+
+- id: Set BUN to Yes (mg/dL)
+  input:
+    1:
+      gt0003|BUN: 25,mg/dL
+      gt0007|Age: 41,a
+  expected_output:
+    1:
+      gt0014|BUN ≥ 25mg/dL (8.9 mmol/L): 1|local::at0004|Yes|
+
+- id: Set BUN to Yes (mmol/L)
+  input:
+    1:
+      gt0003|BUN: 9,mmol/L
+      gt0007|Age: 41,a
+  expected_output:
+    1:
+      gt0014|BUN ≥ 25mg/dL (8.9 mmol/L): 1|local::at0004|Yes|
+
+- id: Set Pulse to Yes
+  input:
+    1:
+      gt0005|Pulse: 150,/min
+      gt0007|Age: 41,a
+  expected_output:
+    1:
+      gt0011|Pulse ≥109 beats/min: 1|local::at0010|Yes|
+
+- id: Set Age to 41-64
+  input:
+    1:
+      gt0007|Age: 41,a
+  expected_output:
+    1:
+      gt0012|Age, years: local::at0012|41-64|
+
+- id: Set Age to >= 65
+  input:
+    1:
+      gt0007|Age: 66,a
+  expected_output:
+    1:
+      gt0012|Age, years: local::at0013|≥ 65|
+
+- id: Set score to 3
+  input:
+    1:
+      gt0003|BUN: 30,mg/dL
+      gt0005|Pulse: 150,/min
+      gt0007|Age: 80,a
+      gt0009|Altered mental status: 1|local::at0007|Yes|
+  expected_output:
+    1:
+      gt0014|BUN ≥ 25mg/dL (8.9 mmol/L): 1|local::at0004|Yes|
+      gt0012|Age, years: local::at0013|≥ 65|
+      gt0013|BAP-65 Score: 3
+      gt0011|Pulse ≥109 beats/min: 1|local::at0010|Yes|
+      gt0016|BAP class: local::at0007|V|
+      gt0019|Recommendation: "Consider early non-invasive ventilation and/or ICU care"
+      gt0018|In-hospital mortality: 14.1,%
+      gt0017|Need for mechanical ventilation within 48 hours: 12.4,%
+
+- id: Set score to 2
+  input:
+    1:
+      gt0003|BUN: 30,mg/dL
+      gt0005|Pulse: 150,/min
+      gt0007|Age: 80,a
+      gt0009|Altered mental status: 0|local::at0006|No|
+  expected_output:
+    1:
+      gt0014|BUN ≥ 25mg/dL (8.9 mmol/L): 1|local::at0004|Yes|
+      gt0012|Age, years: local::at0013|≥ 65|
+      gt0013|BAP-65 Score: 2
+      gt0011|Pulse ≥109 beats/min: 1|local::at0010|Yes|
+      gt0016|BAP class: local::at0006|IV|
+      gt0019|Recommendation: "Consider early non-invasive ventilation and/or ICU care"
+      gt0018|In-hospital mortality: 6.4,%
+      gt0017|Need for mechanical ventilation within 48 hours: 5.5,%
+
+- id: Set score to 1
+  input:
+    1:
+      gt0003|BUN: 30,mg/dL
+      gt0005|Pulse: 90,/min
+      gt0007|Age: 80,a
+      gt0009|Altered mental status: 0|local::at0006|No|
+  expected_output:
+    1:
+      gt0014|BUN ≥ 25mg/dL (8.9 mmol/L): 1|local::at0004|Yes|
+      gt0012|Age, years: local::at0013|≥ 65|
+      gt0013|BAP-65 Score: 1
+      gt0011|Pulse ≥109 beats/min: 0|local::at0009|No|
+      gt0016|BAP class: local::at0005|III|
+      gt0019|Recommendation: "Consider early non-invasive ventilation and/or ICU care"
+      gt0018|In-hospital mortality: 2.2,%
+      gt0017|Need for mechanical ventilation within 48 hours: 1.2,%
+
+- id: Set score to 0 and class to II
+  input:
+    1:
+      gt0003|BUN: 20,mg/dL
+      gt0005|Pulse: 90,/min
+      gt0007|Age: 80,a
+      gt0009|Altered mental status: 0|local::at0006|No|
+  expected_output:
+    1:
+      gt0014|BUN ≥ 25mg/dL (8.9 mmol/L): 0|local::at0003|No|
+      gt0012|Age, years: local::at0013|≥ 65|
+      gt0013|BAP-65 Score: 0
+      gt0011|Pulse ≥109 beats/min: 0|local::at0009|No|
+      gt0016|BAP class: local::at0004|II|
+      gt0019|Recommendation: "Routine management of COPD exacerbation"
+      gt0018|In-hospital mortality: 1,%
+      gt0017|Need for mechanical ventilation within 48 hours: 0.2,%
+
+- id: Set score to 0 and class to I
+  input:
+    1:
+      gt0003|BUN: 20,mg/dL
+      gt0005|Pulse: 90,/min
+      gt0007|Age: 42,a
+      gt0009|Altered mental status: 0|local::at0006|No|
+  expected_output:
+    1:
+      gt0014|BUN ≥ 25mg/dL (8.9 mmol/L): 0|local::at0003|No|
+      gt0012|Age, years: local::at0012|41-64|
+      gt0013|BAP-65 Score: 0
+      gt0011|Pulse ≥109 beats/min: 0|local::at0009|No|
+      gt0016|BAP class: local::at0003|I|
+      gt0019|Recommendation: "Routine management of COPD exacerbation"
+      gt0018|In-hospital mortality: 0.3,%
+      gt0017|Need for mechanical ventilation within 48 hours: 0.3,%
