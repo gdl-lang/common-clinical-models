@@ -1,0 +1,145 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.bap_65_score.v0
+
+concept
+	[at0000]	-- BAP-65 score
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Konstantinos Kalliamvakos">
+		["email"] = <"konstantinos.kalliamvakos@cambio.se">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2020-06-12">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the score of BAP-65.">
+			use = <"Use to Predict mortality in acute COPD exacerbation.">
+			keywords = <"BAP", "blood", "urea", "nitrogen", "altered", "mental", "status", "pulse", "age", "score">
+			misuse = <"">
+			copyright = <"Cambio CDS">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"1. Tabak YP, Sun X, Johannes RS, Gupta V, Shorr AF. Mortality and Need for Mechanical Ventilation in Acute Exacerbations of Chronic Obstructive Pulmonary Disease: Development and Validation of a Simple Risk Score. Arch Intern Med [Internet]. 2009 Sep 28;169(17):1595–602.">
+		["current_contact"] = <"Konstantinos Kalliamvakos, Cambio CDS<konstantinos.kalliamvakos@cambio.se>">
+		["MD5-CAM-1.0.1"] = <"A91207AED63D6C4131F910157007C126">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- BAP-65 score
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- BUN ≥ 25mg/dL (8.9 mmol/L)
+						value matches {
+							0|[local::at0003], 	-- No
+							1|[local::at0004]  	-- Yes
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Altered mental status
+						value matches {
+							0|[local::at0006], 	-- No
+							1|[local::at0007]  	-- Yes
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Pulse ≥109 beats/min
+						value matches {
+							0|[local::at0009], 	-- No
+							1|[local::at0010]  	-- Yes
+						}
+					}
+					ELEMENT[at0011] occurrences matches {0..1} matches {	-- Age, years
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0012, 	-- 41-64
+									at0013]	-- ≥ 65
+								}
+							}
+						}
+					}
+					ELEMENT[at0014] occurrences matches {0..1} matches {	-- BAP-65 Score
+						value matches {
+							DV_COUNT matches {
+								magnitude matches {|0..3|}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"BAP-65 score">
+					description = <"BAP-65 Score for Acute Exacerbation of COPD.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"BUN ≥ 25mg/dL (8.9 mmol/L)">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Altered mental status">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Pulse ≥109 beats/min">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Age, years">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"41-64">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"≥ 65">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"BAP-65 Score">
+					description = <"*">
+				>
+			>
+		>
+	>
