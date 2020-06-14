@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 287*
+### *Published Apps: 288*
 
 ----------
 
@@ -287,6 +287,8 @@ _Select a medical specialty below to view the available apps._
 * Abbreviated Mental Test 4 (AMT-4) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/amt-4/1?language=en))
 
 * Abbey Pain Scale (APS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/APS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/APS/1?language=sv))
+
+* Clinical Dementia Rating (CDR) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_Dementia_Rating/1?language=en))
 
 * Downton Fall Risk Index (DFRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DFRI/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DFRI/1?language=sv))
 
