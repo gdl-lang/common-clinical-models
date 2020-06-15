@@ -1,0 +1,158 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.bisap_score.v0
+
+concept
+	[at0000]	-- Bisap score
+language
+	original_language = <[ISO_639-1::sv]>
+description
+	original_author = <
+		["name"] = <"Therese Lindberg">
+		["email"] = <"therese.lindberg@cambio.se">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2020-06-15">
+	>
+	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"To record the score of BISAP. ">
+			use = <"Use to predict mortality in pancreatitis. Data should be taken from the first 24 hours of the patient's evaluation.">
+			keywords = <"BISAP", "blood", "urea", "nitrogen", "impaired mental status", "SIRS", "Pleural effusion ", "score", "pancreatitis", "mortality">
+			misuse = <"Only use with data taken from the first 24 hours of the patient's evaluation.">
+			copyright = <"Cambio CDS">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"1. Wu BU, Johannes RS, Sun X, Tabak Y, Conwell DL, Banks PA. The early prediction of mortality in acute pancreatitis: a large population-based study. Gut. 2008;57(12):1698-703.">
+		["MD5-CAM-1.0.1"] = <"B0A27E5F59A7890B9335EBB9B7610221">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Bisap score
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Träd
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- BUN>= 25 mg/dL (8.9 mmol/L)
+						value matches {
+							0|[local::at0008], 	-- No
+							1|[local::at0009]  	-- Yes
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Imparied mental status
+						value matches {
+							0|[local::at0018], 	-- No
+							1|[local::at0019]  	-- Yes
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- Age>60 years
+						value matches {
+							0|[local::at0012], 	-- No
+							1|[local::at0013]  	-- Yes
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Pleural effusion
+						value matches {
+							0|[local::at0014], 	-- No
+							1|[local::at0015]  	-- Yes
+						}
+					}
+					ELEMENT[at0006] occurrences matches {0..1} matches {	-- SIRS Critera
+						value matches {
+							0|[local::at0016], 	-- No
+							1|[local::at0017]  	-- Yes
+						}
+					}
+					ELEMENT[at0007] occurrences matches {0..1} matches {	-- BISAP score
+						value matches {
+							DV_COUNT matches {
+								magnitude matches {|0..5|}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"Bisap score">
+					description = <"BISAP score predicts mortality risk of pancreatitis.
+">
+				>
+				["at0001"] = <
+					text = <"Träd">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"BUN>= 25 mg/dL (8.9 mmol/L)">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Imparied mental status">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Age>60 years">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Pleural effusion">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"SIRS Critera">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"BISAP score">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+			>
+		>
+	>
