@@ -72,13 +72,20 @@
       "$gt0019|Maximum value|=0"
     ],
     "rules": {
+      "gt0016": {
+        "id": "gt0016",
+        "priority": 7,
+        "when": [
+          "$gt0014|Renal replacement therapy|==3|local::at0016|Yes|"
+        ],
+        "then": [
+          "$gt0021|Stage|=local::at0007|AKI Stage 3|"
+        ]
+      },
       "gt0009": {
         "id": "gt0009",
-        "priority": 8,
+        "priority": 6,
         "when": [
-          "$gt0007|Urine output|!=null",
-          "$gt0014|Renal replacement therapy|!=null",
-          "$gt0008|Creatinine|!=null",
           "$gt0014|Renal replacement therapy|==0|local::at0015|No|",
           "$gt0007|Urine output|.value>=$gt0008.value"
         ],
@@ -88,45 +95,13 @@
       },
       "gt0015": {
         "id": "gt0015",
-        "priority": 7,
+        "priority": 5,
         "when": [
-          "$gt0007|Urine output|!=null",
-          "$gt0014|Renal replacement therapy|!=null",
-          "$gt0008|Creatinine|!=null",
           "$gt0014|Renal replacement therapy|==0|local::at0015|No|",
           "$gt0007|Urine output|.value<$gt0008.value"
         ],
         "then": [
           "$gt0019|Maximum value|=$gt0008.value"
-        ]
-      },
-      "gt0016": {
-        "id": "gt0016",
-        "priority": 6,
-        "when": [
-          "$gt0007|Urine output|!=null",
-          "$gt0014|Renal replacement therapy|!=null",
-          "$gt0008|Creatinine|!=null",
-          "$gt0014|Renal replacement therapy|==3|local::at0016|Yes|",
-          "($gt0007|Urine output|.value>0)||($gt0008|Creatinine|.value>0)"
-        ],
-        "then": [
-          "$gt0021|Stage|=local::at0007|AKI Stage 3|"
-        ]
-      },
-      "gt0022": {
-        "id": "gt0022",
-        "priority": 5,
-        "when": [
-          "$gt0007|Urine output|!=null",
-          "$gt0014|Renal replacement therapy|!=null",
-          "$gt0008|Creatinine|!=null",
-          "$gt0014|Renal replacement therapy|==3|local::at0016|Yes|",
-          "$gt0007|Urine output|==0|local::at0007|≥0.5 mL/kg per hour for >6 hours|",
-          "$gt0008|Creatinine|==0|local::at0017|Normal creatinine, or <1.5x from baseline|"
-        ],
-        "then": [
-          "$gt0021|Stage|=local::at0004|No AKI according AKIN|"
         ]
       },
       "gt0026": {
@@ -149,7 +124,6 @@
         "when": [
           "$gt0007|Urine output|!=null",
           "$gt0008|Creatinine|!=null",
-          "$gt0014|Renal replacement therapy|!=null",
           "$gt0014|Renal replacement therapy|==0|local::at0015|No|",
           "$gt0019|Maximum value|==2"
         ],
@@ -161,9 +135,6 @@
         "id": "gt0031",
         "priority": 2,
         "when": [
-          "$gt0007|Urine output|!=null",
-          "$gt0008|Creatinine|!=null",
-          "$gt0014|Renal replacement therapy|!=null",
           "$gt0019|Maximum value|==3"
         ],
         "then": [
