@@ -127,6 +127,18 @@
             "path": "/data/events/time"
           }
         }
+      },
+      "gt0036": {
+        "id": "gt0036",
+        "model_id": "openEHR-EHR-EVALUATION.bard_score_for_nafld_fibrosis_assessment.v0",
+        "template_id": "openEHR-EHR-EVALUATION.bard_score_for_nafld_fibrosis_assessment.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0037": {
+            "id": "gt0037",
+            "path": "/data[at0001]/items[at0002]"
+          }
+        }
       }
     },
     "default_actions": [
@@ -136,7 +148,7 @@
     "rules": {
       "gt0035": {
         "id": "gt0035",
-        "priority": 6,
+        "priority": 8,
         "when": [
           "$gt0006|BMI >= 28|==null",
           "$gt0012|Diabetes mellitus|==null",
@@ -150,7 +162,7 @@
       },
       "gt0007": {
         "id": "gt0007",
-        "priority": 5,
+        "priority": 7,
         "when": [
           "$gt0003|Body Mass Index|>=28,kg/m2"
         ],
@@ -160,7 +172,7 @@
       },
       "gt0020": {
         "id": "gt0020",
-        "priority": 4,
+        "priority": 6,
         "when": [
           "$gt0011|Diabetes Mellitus|==1|local::at0008|Yes|"
         ],
@@ -170,7 +182,7 @@
       },
       "gt0023": {
         "id": "gt0023",
-        "priority": 3,
+        "priority": 5,
         "when": [
           "$gt0014|ALT|.unit=='U/l'",
           "$gt0016|AST|.unit=='U/l'"
@@ -181,7 +193,7 @@
       },
       "gt0034": {
         "id": "gt0034",
-        "priority": 2,
+        "priority": 4,
         "when": [
           "$gt0033|AST/ALT ratio|>=0.8,U/l"
         ],
@@ -191,9 +203,29 @@
       },
       "gt0008": {
         "id": "gt0008",
-        "priority": 1,
+        "priority": 3,
         "then": [
           "$gt0005|BARD Score|.magnitude=$gt0006.value+$gt0011.value+$gt0017.value"
+        ]
+      },
+      "gt0038": {
+        "id": "gt0038",
+        "priority": 2,
+        "when": [
+          "$gt0005|BARD Score|<=2"
+        ],
+        "then": [
+          "$gt0037|BARD score assesment|=0|local::at0003|Low risk|"
+        ]
+      },
+      "gt0039": {
+        "id": "gt0039",
+        "priority": 1,
+        "when": [
+          "$gt0005|BARD Score|>=3"
+        ],
+        "then": [
+          "$gt0037|BARD score assesment|=1|local::at0004|High risk|"
         ]
       }
     }
@@ -327,6 +359,19 @@
           "gt0035": {
             "id": "gt0035",
             "text": "Set defaults"
+          },
+          "gt0037": {
+            "id": "gt0037",
+            "text": "BARD score assesment",
+            "description": "*"
+          },
+          "gt0038": {
+            "id": "gt0038",
+            "text": "Low risk"
+          },
+          "gt0039": {
+            "id": "gt0039",
+            "text": "High risk"
           }
         }
       }
