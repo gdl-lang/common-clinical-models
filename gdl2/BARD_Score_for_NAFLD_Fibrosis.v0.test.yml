@@ -1,120 +1,101 @@
 guidelines:
   1: BARD_Score_for_NAFLD_Fibrosis.v0
 test_cases:
-- id: default no values
+- id: default
   input:
-    1:
-      gt0011|Diabetes Mellitus: 0|local::at0007|No|
+    1: {}
   expected_output:
     1:
-      gt0005|BARD Score: 0
+      gt0012|Diabetes mellitus calc: 0|local::at0009|No|
       gt0006|BMI >= 28: 0|local::at0007|No|
-      gt0012|Diabetes mellitus: 0|local::at0009|No|
       gt0017|AST/ALT ratio > 0.8: 0|local::at0011|No|
 
 - id: BMI below 28
   input:
     1:
-      gt0003|Body Mass Index: 27,kg/m2
-      gt0011|Diabetes Mellitus: 0|local::at0007|No|
+      gt0003|Body Mass Index: 25,kg/m2
   expected_output:
     1:
-      gt0005|BARD Score: 0
+      gt0012|Diabetes mellitus calc: 0|local::at0009|No|
       gt0006|BMI >= 28: 0|local::at0007|No|
-      gt0012|Diabetes mellitus: 0|local::at0009|No|
       gt0017|AST/ALT ratio > 0.8: 0|local::at0011|No|
 
 - id: BMI above 29
   input:
     1:
       gt0003|Body Mass Index: 29,kg/m2
-      gt0011|Diabetes Mellitus: 0|local::at0007|No|
   expected_output:
     1:
-      gt0005|BARD Score: 1
+      gt0012|Diabetes mellitus calc: 0|local::at0009|No|
       gt0006|BMI >= 28: 1|local::at0008|Yes|
-      gt0012|Diabetes mellitus: 0|local::at0009|No|
       gt0017|AST/ALT ratio > 0.8: 0|local::at0011|No|
 
 - id: BMI and Diabetes no ALT or AST
   input:
     1:
       gt0003|Body Mass Index: 29,kg/m2
-      gt0011|Diabetes Mellitus: 1|local::at0008|Yes|
+      gt0042|Diabetes mellitus: 1|local::at0010|Yes|
   expected_output:
     1:
-      gt0005|BARD Score: 2
+      gt0012|Diabetes mellitus calc: 1|local::at0010|Yes|
       gt0006|BMI >= 28: 1|local::at0008|Yes|
-      gt0012|Diabetes mellitus: 1|local::at0010|Yes|
+      gt0017|AST/ALT ratio > 0.8: 0|local::at0011|No|
+
+- id: No AST
+  input:
+    1:
+      gt0003|Body Mass Index: 29,kg/m2
+      gt0014|ALT: 25,U/l
+      gt0042|Diabetes mellitus: 1|local::at0010|Yes|
+  expected_output:
+    1:
+      gt0012|Diabetes mellitus calc: 1|local::at0010|Yes|
+      gt0006|BMI >= 28: 1|local::at0008|Yes|
+      gt0017|AST/ALT ratio > 0.8: 0|local::at0011|No|
+
+- id: No ALT
+  input:
+    1:
+      gt0003|Body Mass Index: 29,kg/m2
+      gt0016|AST: 36,U/l
+      gt0042|Diabetes mellitus: 1|local::at0010|Yes|
+  expected_output:
+    1:
+      gt0012|Diabetes mellitus calc: 1|local::at0010|Yes|
+      gt0006|BMI >= 28: 1|local::at0008|Yes|
       gt0017|AST/ALT ratio > 0.8: 0|local::at0011|No|
 
 - id: AST/ALT ratio below 0.8
   input:
     1:
       gt0003|Body Mass Index: 29,kg/m2
-      gt0011|Diabetes Mellitus: 1|local::at0008|Yes|
-      gt0014|ALT: 21,U/l
-      gt0016|AST: 20,U/l
+      gt0014|ALT: 25,U/l
+      gt0016|AST: 19,U/l
+      gt0042|Diabetes mellitus: 1|local::at0010|Yes|
   expected_output:
     1:
+      gt0012|Diabetes mellitus calc: 1|local::at0010|Yes|
       gt0005|BARD Score: 2
       gt0006|BMI >= 28: 1|local::at0008|Yes|
-      gt0033|AST/ALT ratio: 0
-      gt0012|Diabetes mellitus: 1|local::at0010|Yes|
-      gt0017|AST/ALT ratio > 0.8: 0|local::at0011|No|
-
-- id: AST/ALT ratio above 0.8
-  input:
-    1:
-      gt0003|Body Mass Index: 29,kg/m2
-      gt0011|Diabetes Mellitus: 1|local::at0008|Yes|
-      gt0014|ALT: 21,U/l
-      gt0016|AST: 30,U/l
-  expected_output:
-    1:
-      gt0005|BARD Score: 4
-      gt0006|BMI >= 28: 1|local::at0008|Yes|
-      gt0033|AST/ALT ratio: 1
-      gt0012|Diabetes mellitus: 1|local::at0010|Yes|
-      gt0017|AST/ALT ratio > 0.8: 2|local::at0012|Yes|
-
-- id: ALT missing
-  input:
-    1:
-      gt0003|Body Mass Index: 27,lb/in2
-      gt0011|Diabetes Mellitus: 1|local::at0008|Yes|
-      gt0016|AST: 9,U/l
-  expected_output:
-    1:
-      gt0005|BARD Score: 1
-      gt0006|BMI >= 28: 0|local::at0007|No|
-      gt0012|Diabetes mellitus: 1|local::at0010|Yes|
-      gt0017|AST/ALT ratio > 0.8: 0|local::at0011|No|
-
-- id: AST missing
-  input:
-    1:
-      gt0003|Body Mass Index: 27,lb/in2
-      gt0011|Diabetes Mellitus: 1|local::at0008|Yes|
-      gt0014|ALT: 10,U/l
-  expected_output:
-    1:
-      gt0005|BARD Score: 1
-      gt0006|BMI >= 28: 0|local::at0007|No|
-      gt0012|Diabetes mellitus: 1|local::at0010|Yes|
+      gt0033|AST/ALT ratio: 0.76
+      gt0040|BARD score assessment: local::at0025|Low risk|
       gt0017|AST/ALT ratio > 0.8: 0|local::at0011|No|
 
 - id: Maximum points
   input:
     1:
-      gt0003|Body Mass Index: 30,kg/m2
-      gt0011|Diabetes Mellitus: 1|local::at0008|Yes|
-      gt0014|ALT: 1,U/l
-      gt0016|AST: 3,U/l
+      gt0003|Body Mass Index: 29,kg/m2
+      gt0014|ALT: 25,U/l
+      gt0016|AST: 25,U/l
+      gt0042|Diabetes mellitus: 1|local::at0010|Yes|
   expected_output:
     1:
+      gt0012|Diabetes mellitus calc: 1|local::at0010|Yes|
       gt0005|BARD Score: 4
       gt0006|BMI >= 28: 1|local::at0008|Yes|
-      gt0033|AST/ALT ratio: 3
-      gt0012|Diabetes mellitus: 1|local::at0010|Yes|
+      gt0033|AST/ALT ratio: 1.0
+      gt0040|BARD score assessment: local::at0024|High risk|
       gt0017|AST/ALT ratio > 0.8: 2|local::at0012|Yes|
+
+
+

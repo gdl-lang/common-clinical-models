@@ -15,9 +15,9 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record the BARD score for NAFLD fibrosis">
-			use = <"Patients with suspected NAFLD">
-			keywords = <"BARD", "NAFLD", "Fibrosis", "ALT", "AST", "Diabetes">
+			purpose = <"To record the BARD score for NAFLD fibrosis.">
+			use = <"Patients with suspected NAFLD.">
+			keywords = <"BARD", "NAFLD", "fibrosis", "diabetes", "aspartate aminotransferase", "alanine aminotransferase", "BMI">
 			misuse = <"">
 			copyright = <"Cambio CDS">
 		>
@@ -25,9 +25,9 @@ description
 	lifecycle_state = <"0">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"Harrison SA, Oliver D, Arnold HL, Gogia S, Neuschwander-Tetri BA. Development and validation of a simple NAFLD clinical scoring system for identifying patients without advanced disease. Gut. 2008 Oct 1;57(10):1441-7.">
+		["references"] = <"1.Harrison SA, Oliver D, Arnold HL, Gogia S, Neuschwander-Tetri BA. Development and validation of a simple NAFLD clinical scoring system for identifying patients without advanced disease. Gut. 2008 Oct 1;57(10):1441-7.">
 		["current_contact"] = <"Henrik Honkanen, Cambio CDS<henrik.honkanen@stud.ki.se>">
-		["MD5-CAM-1.0.1"] = <"723941A7A7BBD9D631C37F1883F5D73D">
+		["MD5-CAM-1.0.1"] = <"9CFA61029EF70A4901330C41C7BBE4CF">
 	>
 
 definition
@@ -63,14 +63,25 @@ definition
 					ELEMENT[at0018] occurrences matches {0..1} matches {	-- AST/ALT ratio
 						value matches {
 							C_DV_QUANTITY <
-								property = <[openehr::119]>
+								property = <[openehr::380]>
 								list = <
 									["1"] = <
-										units = <"U/l">
+										units = <"1">
 										precision = <|2|>
 									>
 								>
 							>
+						}
+					}
+					ELEMENT[at0023] occurrences matches {0..1} matches {	-- BARD score assessment
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0024, 	-- High risk
+									at0025]	-- Low risk
+								}
+							}
 						}
 					}
 				}
@@ -84,7 +95,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Bard score for nafld fibrosis">
-					description = <"BARD score NAFLD fibrosis">
+					description = <"BARD score NAFLD fibrosis.">
 				>
 				["at0001"] = <
 					text = <"Tree">
@@ -132,6 +143,18 @@ ontology
 				>
 				["at0018"] = <
 					text = <"AST/ALT ratio">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"BARD score assessment">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"High risk">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Low risk">
 					description = <"*">
 				>
 			>
