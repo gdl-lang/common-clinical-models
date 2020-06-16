@@ -1,5 +1,5 @@
 {
-  "id": "BISAP_Score.v1",
+  "id": "BISAP_score.v1",
   "gdl_version": "2.0",
   "concept": "gt0001",
   "language": {
@@ -7,8 +7,9 @@
   },
   "description": {
     "original_author": {
-      "date": "2020-06-15",
-      "name": "Therese Lindberg",
+      "date": "2020-06-16",
+      "name": "Therese Lindberg ",
+      "organisation": "Cambio CDS",
       "email": "therese.lindberg@cambio.se"
     },
     "lifecycle_state": "Initial",
@@ -21,145 +22,145 @@
           "score",
           "mortality",
           "SIRS",
+          "pancreatitis",
+          "impaired mental status",
           "BUN",
-          "pleural effusion",
-          "mental status",
-          "pancreatitis"
+          "age"
         ],
         "use": "Use to predict mortality in pancreatitis. Data should be taken from the first 24 hours of the patient's evaluation.",
-        "misuse": "Only use with data taken from the first 24 hours of the patient's evaluation.",
+        "misuse": "Only use with data taken from the first 24 hours of the patient's evaluation.\n",
         "copyright": "Cambio CDS"
       }
     },
     "other_details": {
-      "references": "1. Wu BU, Johannes RS, Sun X, Tabak Y, Conwell DL, Banks PA. The early prediction of mortality in acute pancreatitis: a large population-based study. Gut. 2008;57(12):1698-703.\n"
+      "references": "1. Wu BU, Johannes RS, Sun X, Tabak Y, Conwell DL, Banks PA. The early prediction of mortality in acute pancreatitis: a large population-based study. Gut. 2008;57(12):1698-703."
     }
   },
   "definition": {
     "data_bindings": {
-      "gt0004": {
-        "id": "gt0004",
+      "gt0002": {
+        "id": "gt0002",
         "model_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
         "template_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
         "type": "INPUT",
         "elements": {
-          "gt0005": {
-            "id": "gt0005",
+          "gt0003": {
+            "id": "gt0003",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
           }
         }
       },
-      "gt0014": {
-        "id": "gt0014",
+      "gt0004": {
+        "id": "gt0004",
+        "model_id": "openEHR-EHR-EVALUATION.bisap_score.v1",
+        "template_id": "openEHR-EHR-EVALUATION.bisap_score.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0005": {
+            "id": "gt0005",
+            "path": "/data[at0001]/items[at0003]"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/items[at0005]"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "path": "/data[at0001]/items[at0007]"
+          }
+        }
+      },
+      "gt0008": {
+        "id": "gt0008",
         "model_id": "openEHR-EHR-OBSERVATION.laboratory_test_result.v1",
         "template_id": "openEHR-EHR-OBSERVATION.laboratory_test_result.v1",
         "type": "INPUT",
         "elements": {
-          "gt0015": {
-            "id": "gt0015",
+          "gt0009": {
+            "id": "gt0009",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.bun_result.v0]/items[at0001]"
           }
         }
       },
-      "gt0017": {
-        "id": "gt0017",
+      "gt0010": {
+        "id": "gt0010",
         "model_id": "openEHR-EHR-EVALUATION.bisap_score.v1",
         "template_id": "openEHR-EHR-EVALUATION.bisap_score.v1",
         "type": "OUTPUT",
         "elements": {
-          "gt0018": {
-            "id": "gt0018",
-            "path": "/data[at0001]/items[at0007]"
+          "gt0011": {
+            "id": "gt0011",
+            "path": "/data[at0001]/items[at0003]"
           },
-          "gt0019": {
-            "id": "gt0019",
-            "path": "/data[at0001]/items[at0005]"
-          },
-          "gt0020": {
-            "id": "gt0020",
-            "path": "/data[at0001]/items[at0006]"
-          },
-          "gt0021": {
-            "id": "gt0021",
+          "gt0012": {
+            "id": "gt0012",
             "path": "/data[at0001]/items[at0002]"
           },
-          "gt0022": {
-            "id": "gt0022",
-            "path": "/data[at0001]/items[at0003]"
+          "gt0013": {
+            "id": "gt0013",
+            "path": "/data[at0001]/items[at0006]"
           },
-          "gt0023": {
-            "id": "gt0023",
+          "gt0014": {
+            "id": "gt0014",
             "path": "/data[at0001]/items[at0004]"
-          }
-        }
-      },
-      "gt0024": {
-        "id": "gt0024",
-        "model_id": "openEHR-EHR-EVALUATION.bisap_score.v1",
-        "template_id": "openEHR-EHR-EVALUATION.bisap_score.v1",
-        "type": "INPUT",
-        "elements": {
-          "gt0025": {
-            "id": "gt0025",
-            "path": "/data[at0001]/items[at0007]"
           },
-          "gt0026": {
-            "id": "gt0026",
-            "path": "/data[at0001]/items[at0003]"
-          },
-          "gt0031": {
-            "id": "gt0031",
+          "gt0015": {
+            "id": "gt0015",
             "path": "/data[at0001]/items[at0005]"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "path": "/data[at0001]/items[at0007]"
           }
         }
       }
     },
     "default_actions": [
-      "$gt0021|BUN>=25mg/dL (8.9mmol/L)|=0|local::at0008|No|"
+      "$gt0012|BUN>25mg/dL (8.92mmol/L)|=0|local::at0008|No|"
     ],
     "rules": {
-      "gt0027": {
-        "id": "gt0027",
+      "gt0017": {
+        "id": "gt0017",
         "priority": 4,
         "when": [
-          "($gt0015|BUN|>=25,mg/dL)||($gt0015|BUN|>=8.9,mmol/L)"
+          "($gt0009|BUN|>25,mg/dL)||($gt0009|BUN|>8.92,mmol/L)"
         ],
         "then": [
-          "$gt0021|BUN>=25mg/dL (8.9mmol/L)|=1|local::at0009|Yes|"
+          "$gt0012|BUN>25mg/dL (8.92mmol/L)|=1|local::at0009|Yes|"
         ]
       },
-      "gt0028": {
-        "id": "gt0028",
+      "gt0018": {
+        "id": "gt0018",
         "priority": 3,
         "when": [
-          "$gt0005|Age|>60,a"
+          "$gt0003|Age|>60,a"
         ],
         "then": [
-          "$gt0023|Age>60 years|=1|local::at0013|Yes|"
+          "$gt0014|Age>60 years|=1|local::at0013|Yes|"
         ]
       },
-      "gt0029": {
-        "id": "gt0029",
+      "gt0019": {
+        "id": "gt0019",
         "priority": 2,
         "when": [
-          "$gt0005|Age|<=60,a"
+          "$gt0003|Age|<=60,a"
         ],
         "then": [
-          "$gt0023|Age>60 years|=0|local::at0012|No|"
+          "$gt0014|Age>60 years|=0|local::at0012|No|"
         ]
       },
-      "gt0032": {
-        "id": "gt0032",
+      "gt0020": {
+        "id": "gt0020",
         "priority": 1,
         "when": [
-          "$gt0026|Impaired mental status|!=null",
-          "$gt0023|Age>60 years|!=null",
-          "$gt0021|BUN>=25mg/dL (8.9mmol/L)|!=null",
-          "$gt0025|SIRS Criteria>=2|!=null",
-          "$gt0031|Pleural effusion present|!=null"
+          "$gt0005|Impaired mental status|!=null",
+          "$gt0014|Age>60 years|!=null",
+          "$gt0012|BUN>25mg/dL (8.92mmol/L)|!=null",
+          "$gt0006|Pleural effusion present|!=null",
+          "$gt0007|SIRS Criteria>=2|!=null"
         ],
         "then": [
-          "$gt0020|BISAP score|.magnitude=$gt0021.value+$gt0023.value+$gt0018.value+$gt0022.value+$gt0019.value"
+          "$gt0013|BISAP score|.magnitude=$gt0005.value+$gt0006.value+$gt0007.value+$gt0012.value+$gt0014.value"
         ]
       }
     }
@@ -172,111 +173,77 @@
           "gt0001": {
             "id": "gt0001",
             "text": "BISAP_score",
-            "description": "Record of the BISAP score "
+            "description": ""
           },
-          "gt0005": {
-            "id": "gt0005",
+          "gt0003": {
+            "id": "gt0003",
             "text": "Age",
             "description": "Age in years, and for babies: months, weeks or days"
           },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "Impaired mental status",
+            "description": "*"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Pleural effusion present",
+            "description": "*"
+          },
           "gt0007": {
             "id": "gt0007",
-            "text": "Element",
-            "description": ""
-          },
-          "gt0008": {
-            "id": "gt0008",
-            "text": "Element",
-            "description": ""
+            "text": "SIRS Criteria>=2",
+            "description": "*"
           },
           "gt0009": {
             "id": "gt0009",
-            "text": "Element",
-            "description": ""
-          },
-          "gt0010": {
-            "id": "gt0010",
-            "text": "Element",
-            "description": ""
-          },
-          "gt0011": {
-            "id": "gt0011",
-            "text": "Element",
-            "description": ""
-          },
-          "gt0012": {
-            "id": "gt0012",
-            "text": "Element",
-            "description": ""
-          },
-          "gt0015": {
-            "id": "gt0015",
             "text": "BUN",
             "description": "*"
           },
-          "gt0018": {
-            "id": "gt0018",
-            "text": "SIRS Criteria>=2",
+          "gt0011": {
+            "id": "gt0011",
+            "text": "Impaired mental status",
             "description": "*"
           },
-          "gt0019": {
-            "id": "gt0019",
-            "text": "Pleural effusion present",
+          "gt0012": {
+            "id": "gt0012",
+            "text": "BUN>25mg/dL (8.92mmol/L)",
             "description": "*"
           },
-          "gt0020": {
-            "id": "gt0020",
+          "gt0013": {
+            "id": "gt0013",
             "text": "BISAP score",
             "description": "*"
           },
-          "gt0021": {
-            "id": "gt0021",
-            "text": "BUN>=25mg/dL (8.9mmol/L)",
-            "description": "*"
-          },
-          "gt0022": {
-            "id": "gt0022",
-            "text": "Impaired mental status",
-            "description": "*"
-          },
-          "gt0023": {
-            "id": "gt0023",
+          "gt0014": {
+            "id": "gt0014",
             "text": "Age>60 years",
             "description": "*"
           },
-          "gt0025": {
-            "id": "gt0025",
-            "text": "SIRS Criteria>=2",
-            "description": "*"
-          },
-          "gt0026": {
-            "id": "gt0026",
-            "text": "Impaired mental status",
-            "description": "*"
-          },
-          "gt0027": {
-            "id": "gt0027",
-            "text": "BUN>=25 mg/dL (8.9 mmol/L) to Yes"
-          },
-          "gt0028": {
-            "id": "gt0028",
-            "text": "Age>60 years to Yes"
-          },
-          "gt0029": {
-            "id": "gt0029",
-            "text": "Age >60 years to No"
-          },
-          "gt0030": {
-            "id": "gt0030",
-            "text": "Set BISAP score"
-          },
-          "gt0031": {
-            "id": "gt0031",
+          "gt0015": {
+            "id": "gt0015",
             "text": "Pleural effusion present",
             "description": "*"
           },
-          "gt0032": {
-            "id": "gt0032",
+          "gt0016": {
+            "id": "gt0016",
+            "text": "SIRS Criteria>=2",
+            "description": "*"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "BUN>25 mg/dL (8.92 mmol/L) to Yes"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "Age > 60 to Yes"
+          },
+          "gt0019": {
+            "id": "gt0019",
+            "text": "Age > 60 to No"
+          },
+          "gt0020": {
+            "id": "gt0020",
             "text": "Set BISAP score"
           }
         }
