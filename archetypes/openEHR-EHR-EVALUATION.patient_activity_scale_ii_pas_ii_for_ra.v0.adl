@@ -1,0 +1,110 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.patient_activity_scale_ii_pas_ii_for_ra.v0
+
+concept
+	[at0000]	-- Patient activity scale two pas two for ra
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Maryam Razavi">
+		["email"] = <"maryam.razavi2009@gmail.com">
+		["organisation"] = <"CambioCDS">
+		["date"] = <"2020-04-22">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the result of the Patient Activity Scale II (PAS II) assessment">
+			use = <"Interpretation:
+
+PAS II score 0.00-0.25 = Disease activity is Remission
+
+PAS II score 0.26-3.70 = Disease activity is Low/minimal
+
+PAS II score 3.71-7.99 = Disease activity is Moderate
+
+PAS II score 8.00-10.00 = Disease activity is High/severe
+
+
+
+
+
+
+
+
+
+
+
+">
+			keywords = <"Patient Activity Scale (PAS)", "Remission", "Severe">
+			misuse = <"Patient Activity Scale II (PAS II) cannot be used for patients for whom treatment changed because of side effects since disease activity status is indeterminate.">
+			copyright = <"@CambioCDS">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"F947E5D22C75B5EA0C6390656A2DC25B">
+		["references"] = <"Parekh K, Taylor WJ. The patient activity scale-II is a generic indicator of active disease in patients with rheumatic disorders. The Journal of rheumatology. 2010 Sep 1;37(9):1932-4.
+Anderson J, Caplan L, Yazdany J, Robbins ML, Neogi T, Michaud K, Saag KG, O'dell JR, Kazi S. Rheumatoid arthritis disease activity measures: American College of Rheumatology recommendations for use in clinical practice. Arthritis care & research. 2012 May;64(5):640-7.">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Patient activity scale two pas two for ra
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Disease activity
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0003, 	-- Remission
+									at0004, 	-- Low/minimal
+									at0005, 	-- Moderate
+									at0006]	-- High/severe
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Patient activity scale two pas two for ra">
+					description = <"The Patient Activity Scale-II (PAS-II) is a composite index of disease activity status that combines the Health Assessment Questionnaire-II (HAQ-II) and a 10 cm visual analog scale (VAS) for pain and patient global assessment. PAS-II defines levels of clinical activity that adequately predict treatment change and mortality in patients with rheumatoid arthritis (RA).">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Disease activity">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Remission">
+					description = <"PAS II score 0.00-0.25 is considered as remission.">
+				>
+				["at0004"] = <
+					text = <"Low/minimal">
+					description = <"PAS II score 0.26-3.70 is considered as Low/minimal.">
+				>
+				["at0005"] = <
+					text = <"Moderate">
+					description = <"PAS II score 3.71-7.99 is considered as Moderate.">
+				>
+				["at0006"] = <
+					text = <"High/severe">
+					description = <"PAS II score 8.00-10.00 in cinsidered as High/Severe. ">
+				>
+			>
+		>
+	>

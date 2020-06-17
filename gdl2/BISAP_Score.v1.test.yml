@@ -1,0 +1,148 @@
+guidelines:
+  1: BISAP_score.v1
+test_cases:
+- id: Default
+  input:
+    1: {}
+  expected_output:
+    1:
+      gt0012|BUN>25mg/dL (8.92mmol/L): 0|local::at0008|No|
+      
+- id: Set BUN to Yes (mg/dL) 
+  input:
+    1:
+      gt0009|BUN: 26,mg/dL
+  expected_output:
+    1:
+      gt0012|BUN>25mg/dL (8.92mmol/L): 1|local::at0009|Yes|
+
+- id: Set BUN to Yes (mmol/L)
+  input:
+    1:
+      gt0009|BUN: 9,mmol/L
+  expected_output:
+    1:
+      gt0012|BUN > 25mg/dL (8.92 mmol/L): 1|local::at0009|Yes|
+
+- id: Set Age>60 to Yes
+  input:
+    1:
+      gt0003|Age: 61,a
+  expected_output:
+    1:
+      gt0014|Age>60 years: 1|local::at0013|Yes|
+      gt0012|BUN>25mg/dL (8.92mmol/L): 0|local::at0008|No|
+
+- id: Set Age>60 to No
+  input:
+    1:
+      gt0003|Age: 60,a
+  expected_output:
+    1:
+      gt0012|BUN>25mg/dL (8.92mmol/L): 0|local::at0008|No|
+      gt0014|Age>60 years: 0|local::at0012|No|
+      
+- id: Set Score to 5
+  input:
+    1:
+      gt0003|Age: 61,a
+      gt0005|Impaired mental status: 1|local::at0011|Yes|
+      gt0006|Pleural effusion present: 1|local::at0015|Yes|
+      gt0007|SIRS Criteria>=2: 1|local::at0017|Yes|
+      gt0009|BUN: 26,mg/dL
+  expected_output:
+    1:
+      gt0012|BUN>25mg/dL (8.92mmol/L): 1|local::at0009|Yes|
+      gt0021|BISAP score text: Patients with a BISAP Score >0 had an increasing risk
+        of mortality, with mortality increasing significantly with a score of 3
+        or greater. A score of 5 had a mortality rate of 22%.
+      gt0014|Age>60 years: 1|local::at0013|Yes|
+      gt0013|BISAP score: 5
+
+- id: Set Score to 4
+  input:
+    1:
+      gt0003|Age: 61,a
+      gt0005|Impaired mental status: 1|local::at0011|Yes|
+      gt0006|Pleural effusion present: 1|local::at0015|Yes|
+      gt0007|SIRS Criteria>=2: 1|local::at0017|Yes|
+      gt0009|BUN: 25,mg/dL
+  expected_output:
+    1:
+      gt0012|BUN>25mg/dL (8.92mmol/L): 0|local::at0008|No|
+      gt0021|BISAP score text: Patients with a BISAP Score >0 had an increasing risk
+        of mortality, with mortality increasing significantly with a score of 3
+        or greater. A score of 5 had a mortality rate of 22%.
+      gt0014|Age>60 years: 1|local::at0013|Yes|
+      gt0013|BISAP score: 4
+
+- id: Set score to 3
+  input:
+    1:
+      gt0003|Age: 61,a
+      gt0005|Impaired mental status: 0|local::at0010|No|
+      gt0006|Pleural effusion present: 1|local::at0015|Yes|
+      gt0007|SIRS Criteria>=2: 1|local::at0017|Yes|
+      gt0009|BUN: 25,mg/dL
+  expected_output:
+    1:
+      gt0012|BUN>25mg/dL (8.92mmol/L): 0|local::at0008|No|
+      gt0021|BISAP score text: Patients with a BISAP Score >0 had an increasing risk
+        of mortality, with mortality increasing significantly with a score of 3
+        or greater. A score of 5 had a mortality rate of 22%.
+      gt0014|Age>60 years: 1|local::at0013|Yes|
+      gt0013|BISAP score: 3
+
+- id: Set score to 2
+  input:
+    1:
+      gt0003|Age: 61,a
+      gt0005|Impaired mental status: 0|local::at0010|No|
+      gt0006|Pleural effusion present: 0|local::at0014|No|
+      gt0007|SIRS Criteria>=2: 1|local::at0017|Yes|
+      gt0009|BUN: 25,mg/dL
+  expected_output:
+    1:
+      gt0012|BUN>25mg/dL (8.92mmol/L): 0|local::at0008|No|
+      gt0021|BISAP score text: Patients with a BISAP Score >0 had an increasing risk
+        of mortality, with mortality increasing significantly with a score of 3
+        or greater. A score of 5 had a mortality rate of 22%.
+      gt0014|Age>60 years: 1|local::at0013|Yes|
+      gt0013|BISAP score: 2
+
+- id: Set score to 1
+  input:
+    1:
+      gt0003|Age: 61,a
+      gt0005|Impaired mental status: 0|local::at0010|No|
+      gt0006|Pleural effusion present: 0|local::at0014|No|
+      gt0007|SIRS Criteria>=2: 0|local::at0016|No|
+      gt0009|BUN: 25,mg/dL
+  expected_output:
+    1:
+      gt0012|BUN>25mg/dL (8.92mmol/L): 0|local::at0008|No|
+      gt0021|BISAP score text: Patients with a BISAP Score >0 had an increasing risk
+        of mortality, with mortality increasing significantly with a score of 3
+        or greater. A score of 5 had a mortality rate of 22%.
+      gt0014|Age>60 years: 1|local::at0013|Yes|
+      gt0013|BISAP score: 1
+
+- id: Set score to 0
+  input:
+    1:
+      gt0003|Age: 60,a
+      gt0005|Impaired mental status: 0|local::at0010|No|
+      gt0006|Pleural effusion present: 0|local::at0014|No|
+      gt0007|SIRS Criteria>=2: 0|local::at0016|No|
+      gt0009|BUN: 25,mg/dL
+  expected_output:
+    1:
+      gt0012|BUN>25mg/dL (8.92mmol/L): 0|local::at0008|No|
+      gt0021|BISAP score text: Patients with a BISAP Score of 0 had <1% risk of mortality,
+        and one study stratified patients with a score ≤2, given a mortality risk
+        of 1.9%.
+      gt0014|Age>60 years: 0|local::at0012|No|
+      gt0013|BISAP score: 0
+
+
+      

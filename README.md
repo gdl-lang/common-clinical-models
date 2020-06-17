@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 278*
+### *Published Apps: 289*
 
 ----------
 
@@ -154,6 +154,8 @@ _Select a medical specialty below to view the available apps._
 
 * Revised Cardiac Risk Index (RCRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RCRI/1?language=en))
 
+* Reynolds Risk Score for Cardiovascular Risk in Women - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Reynolds_Risk_Score_for_CardiovascularRisk_in_Women_guideline/1?language=en))
+
 * THRIVE Score for Stroke Outcome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/THRIVE_for_Stroke/1?language=en))
 
 * TIMI Risk Index (TRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TRI/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TRI/1?language=sv))
@@ -188,10 +190,13 @@ _Select a medical specialty below to view the available apps._
 ### Emergency Medicine
 
 ----------
+* ALT-70 Score for Cellulitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Alt_70_score_for_cellulitis_guideline/1?language=en))
 
 * Alvarado Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Alvarado/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Alvarado/1?language=sv))
 
 * Appendicitis Inflammatory Response Score (AIR Score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AIR/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AIR/1?language=sv))
+
+* AWOL Score for Delirium - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AWOL_Score_for_Delirium_guideline/1?language=en))
 
 * CRB-65 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CRB-65/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CRB-65/1?language=sv))
 
@@ -248,6 +253,10 @@ _Select a medical specialty below to view the available apps._
 ----------
 * ABIC Score for Alcoholic Hepatitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABIC/1?language=en))
 
+* AST to Platelet Ratio Index (APRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/APRI_AST_to_platelet_ratio_index/1?language=en))
+
+* BARD Score for NAFLD Fibrosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BARD_Score_for_NAFLD_Fibrosis/0?language=en))
+
 * Child Pugh Score for Cirrhosis Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Child_pugh_score_for_cirrhosis/1?language=en))
 
 * Glasgow Alcoholic Hepatitis Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Glasgow_alcoholic_hepatitis_score/1?language=en))
@@ -281,11 +290,15 @@ _Select a medical specialty below to view the available apps._
 
 * Abbey Pain Scale (APS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/APS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/APS/1?language=sv))
 
+* Clinical Dementia Rating (CDR) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_Dementia_Rating/1?language=en))
+
 * Downton Fall Risk Index (DFRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DFRI/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DFRI/1?language=sv))
 
 * Modified Norton Scale (MNS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MNS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MNS/1?language=sv))
 
 * Mini Nutritional Assessment (MNA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MNA/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MNA/1?language=sv))
+
+* Pain Assessment in Advanced Dementia Scale (PAINAD) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pain_Assessment_in_Advanced_Dementia_Scale/1?language=en))
 
 * Risk Assessment Pressure Sore Scale (RAPS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAPS_Scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAPS_Scale/1?language=sv))
 
@@ -396,6 +409,8 @@ _Select a medical specialty below to view the available apps._
 
 * Modified Fisher Scale for SAH - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Modified_Fisher_Scale_SAH/1?language=en))
 
+* Modified Hoehn and Yahr Scale for Parkinson’s Disease - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Hoehn_and_Yahr_Scale_for_Parkinsons_Disease/1?language=en))
+
 * Modified National Institutes of Health Stroke Scale (mNIHSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mNIHSS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mNIHSS/1?language=sv))
 
 * Modified Rankin Scale for Neurologic Disability  - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Rankin_Scale_for_Neurologic_Disability/1?language=en))
@@ -403,6 +418,8 @@ _Select a medical specialty below to view the available apps._
 * National Institutes of Health Stroke Scale (NIHSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NIHSS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NIHSS/1?language=sv))
 
 * Neuropathy Pain Scale (NPS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neuropathy_pain_scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neuropathy_pain_scale/1?language=sv))
+
+* Ottawa Subarachnoid Hemorrhage (SAH) Rule for Headache Evaluation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ottawa_Subarachnoid_Hemorrhage_Rule_for_Headache_Evaluation/1?language=en))
 
 * Webster Rating Scale for Parkinson’s Disease - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Webster_Rating_Scale_for_Parkinsons_Disease_guideline/1?language=en))
 ----------
@@ -419,6 +436,8 @@ _Select a medical specialty below to view the available apps._
 ### Oncology
 
 ----------
+* ALBI (Albumin-Bilirubin) Grade for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ALBI_albumin_bilirubin_score/1?language=en))
+
 * Asymptomatic Myeloma Prognosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Asymptomatic_Myeloma_Prognosis/1?language=en))
 
 * Dynamic International Prognostic Scoring System for Myelofibrosis (DIPSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Dynamic_International_Prognostic_Scoring_System_for_Myelofibrosis/1?language=en))
@@ -497,6 +516,8 @@ _Select a medical specialty below to view the available apps._
 * Pediatric Crohn's Disease Activity Index (PCDAI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PCDAI/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PCDAI/1?language=sv))
 
 * Pediatric Early Warning Score (PEWS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEWS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEWS/1?language=sv))
+
+* Pediatric Early Warning Score (PEWS2) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEWS2_for0to3months/1?language=en))
 
 * Pediatric Glasgow Coma Scale (pGCS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_glasgow_coma_scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_glasgow_coma_scale/1?language=sv))
 
