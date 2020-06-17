@@ -15,7 +15,7 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record information relevant to the Patient Activity Scale (PAS) for RA assessment.">
+			purpose = <"To record information relevant to the Patient Activity Scale (PAS) for RA assessment and result of the Patient Activity Scale  (PAS) for RA assessment.">
 			use = <"Quantifies severity of rheumatoid arthritis (RA) using patient-reported symptoms.
 
 The Patient Activity Scale (PAS) is a composite index of disease activity status that combines the Health Assessment Questionnaire-DI (HAQ-DI) and a visual analog scale (VAS) for pain and patient global assessment.
@@ -92,6 +92,15 @@ Gripping and opening things
 Errands and chores
 Answer for above questions will be rated as: Yes=1, No=0
 
+Interpretation:
+
+PAS  score 0.00-0.25 = Disease activity is Remission
+
+PAS  score 0.26-3.70 = Disease activity is Low/minimal
+
+PAS  score 3.71-7.99 = Disease activity is Moderate
+
+PAS score 8.00-10.00 = Disease activity is High/severe
 
 
 
@@ -115,7 +124,7 @@ Other References
 Anderson J, Caplan L, Yazdany J, Robbins ML, Neogi T, Michaud K, Saag KG, O'dell JR, Kazi S. Rheumatoid arthritis disease activity measures: American College of Rheumatology recommendations for use in clinical practice. Arthritis care & research. 2012 May;64(5):640-7.
 
 ">
-		["MD5-CAM-1.0.1"] = <"AF75F34175EC61AFE42C413C7BA57A98">
+		["MD5-CAM-1.0.1"] = <"BFAB79648F4073B7ACE9E16D70EF9848">
 	>
 
 definition
@@ -127,7 +136,6 @@ definition
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									CLUSTER[at0184] occurrences matches {0..1} matches {*}
 									CLUSTER[at0004] occurrences matches {0..1} matches {	-- Dress and groom-is the patient able to:
 										items cardinality matches {1..*; unordered} matches {
 											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Self-dress, including shoelaces and buttons
@@ -518,6 +526,14 @@ definition
 													>
 												>
 											>
+										}
+									}
+									ELEMENT[at0245] occurrences matches {0..1} matches {	-- Disease Activity
+										value matches {
+											1|[local::at0246], 	-- Remission
+											2|[local::at0247], 	-- Low/minimal
+											3|[local::at0248], 	-- Moderate
+											4|[local::at0249]  	-- High/Severe
 										}
 									}
 								}
@@ -1109,10 +1125,6 @@ ontology
 					text = <"10">
 					description = <"*">
 				>
-				["at0184"] = <
-					text = <"Health Assessment Questionnaire Disability Index">
-					description = <"*">
-				>
 				["at0185"] = <
 					text = <"PAS Score">
 					description = <"*">
@@ -1315,6 +1327,26 @@ ontology
 				>
 				["at0238"] = <
 					text = <"Yes">
+					description = <"*">
+				>
+				["at0245"] = <
+					text = <"Disease Activity">
+					description = <"*">
+				>
+				["at0246"] = <
+					text = <"Remission">
+					description = <"*">
+				>
+				["at0247"] = <
+					text = <"Low/minimal">
+					description = <"*">
+				>
+				["at0248"] = <
+					text = <"Moderate">
+					description = <"*">
+				>
+				["at0249"] = <
+					text = <"High/Severe">
 					description = <"*">
 				>
 			>
