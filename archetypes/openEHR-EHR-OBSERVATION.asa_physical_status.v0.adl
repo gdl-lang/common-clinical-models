@@ -1,0 +1,211 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.asa_physical_status.v0
+
+concept
+	[at0000]	-- Asa physical status
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Maryam Razavi">
+		["email"] = <"maryam.razavi2009@gmail.com">
+		["organisation"] = <"CambioCDS">
+		["date"] = <"2020-06-16">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record information relevant to the ASA Physical Status assessment and the result of the ASA Physical Status assessment.">
+			use = <"ASA Physical Status or ASA Classification classifies the health of patients before surgery. The purpose of the system is to assess and communicate a patient’s pre-anesthesia medical co-morbidities.
+ASA Physical Status can be used with other factors (eg, type of surgery, frailty, level of deconditioning) to predicte the perioperative risks.
+ ASA Classification and Description: 
+ASA 1: Normal healthy patient
+ASA 2: Patient with mild systemic disease
+ASA 3: Patient with severe systemic disease
+ASA 4: Patient with severe systemic disease that is a constant threat to life
+ASA 5: Moribund patient not expected to survive without the operation
+ASA 6: Declared brain-dead patient whose organs are being removed for donor purposes
+for emergency surgery, a suffix \"E\" will be added to the ASA Classifications. ">
+			keywords = <"Physical Status classification", "ASA", "Surgery">
+			misuse = <"The classification system alone cannot be used to predict perioperative risks.
+The classification system are not necessarily applicable to pediatric or obstetric patients. ">
+			copyright = <"@CambioCDS">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Meyer Saklad; GRADING OF PATIENTS FOR SURGICAL PROCEDURES. Anesthesiology 1941;2(3):281-284.
+
+American Society of Anesthesiologists.ASA Physical Status Classification System [Internet]. USA:American Society of Anesthesiologists; 2014,Available from: URL from: https://www.asahq.org/standards-and-guidelines/asa-physical-status-classification-system
+
+">
+		["MD5-CAM-1.0.1"] = <"32B98325F4365A1E5E895A6DD5E2BF8E">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Asa physical status
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Description
+										value matches {
+											1|[local::at0008], 	-- Normal healthy patient
+											2|[local::at0009], 	-- Patient with mild systemic disease
+											3|[local::at0010], 	-- Patient with severe systemic disease
+											4|[local::at0011], 	-- Patient with severe systemic disease that is a constant threat to life
+											5|[local::at0012], 	-- Moribund patient not expected to survive without the operation
+											6|[local::at0013]  	-- Declared brain-dead patient whose organs are being removed for donor purposes
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Emergency surgery
+										value matches {
+											0|[local::at0006], 	-- No
+											1|[local::at0007]  	-- Yes
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- ASA Classification
+										value matches {
+											1|[local::at0015], 	-- ASA1
+											2|[local::at0016], 	-- ASA 2
+											3|[local::at0017], 	-- ASA 3
+											4|[local::at0018], 	-- ASA 4
+											5|[local::at0019], 	-- ASA 5
+											6|[local::at0020], 	-- ASA 6
+											7|[local::at0021], 	-- ASA 1E
+											8|[local::at0022], 	-- ASA 2E
+											9|[local::at0023], 	-- ASA 3E
+											10|[local::at0024], 	-- ASA 4E
+											11|[local::at0025], 	-- ASA 5E
+											12|[local::at0026]  	-- ASA 6E
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Asa physical status">
+					description = <"The ASA Physical Status Classification System is using to assess and communicate a patient’s pre-anesthesia medical co-morbidities.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Description">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Emergency surgery">
+					description = <"An emergency is defined as existing when delay in treatment of the patient would lead to a significant
+increase in the threat to life or body part.">
+				>
+				["at0006"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Normal healthy patient">
+					description = <"Examples (not comprehensive): Healthy, nonsmoker, minimal or no alcohol use.">
+				>
+				["at0009"] = <
+					text = <"Patient with mild systemic disease">
+					description = <"Examples (not comprehensive): Mild disease(s) without functional limitations, e.g. current smoker, social alcohol use, pregnant, obesity, well-controlled diabetes or hypertension, mild lung disease.">
+				>
+				["at0010"] = <
+					text = <"Patient with severe systemic disease">
+					description = <"Examples (not comprehensive):Substantive functional limitations, ≥1 moderate to severe diseases, e.g. poorly controlled diabetes or hypertension, COPD, morbid obesity, active hepatitis, alcohol dependence or abuse, implanted pacemaker, moderately reduced ejection fraction, ESRD on dialysis, premature infant <60 weeks post-conceptional age, history (>3 months) of MI, CVA/TIA, or CAD/stents.">
+				>
+				["at0011"] = <
+					text = <"Patient with severe systemic disease that is a constant threat to life">
+					description = <"Examples (not comprehensive): Recent (within 3 months) MI, CVA/TIA, or CAD/stents, ongoing cardiac ischemia or severe valve dysfunction, severely reduced ejection fraction, sepsis, DIC, ARD, or ESRD not undergoing regularly scheduled dialysis.">
+				>
+				["at0012"] = <
+					text = <"Moribund patient not expected to survive without the operation">
+					description = <"Examples (not comprehensive): Ruptured abdominal/thoracic aneurysm, massive trauma, intracranial bleed with mass effect, ischemic bowel with cardiac pathology, or multiple organ/system dysfunction.">
+				>
+				["at0013"] = <
+					text = <"Declared brain-dead patient whose organs are being removed for donor purposes">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"ASA Classification">
+					description = <"for emergency surgery, add suffix E. Emergency = delay would lead to “significant increase in the threat to life or body part”.">
+				>
+				["at0015"] = <
+					text = <"ASA1">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"ASA 2">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"ASA 3">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"ASA 4">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"ASA 5">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"ASA 6">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"ASA 1E">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"ASA 2E">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"ASA 3E">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"ASA 4E">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"ASA 5E">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"ASA 6E">
+					description = <"*">
+				>
+			>
+		>
+	>
