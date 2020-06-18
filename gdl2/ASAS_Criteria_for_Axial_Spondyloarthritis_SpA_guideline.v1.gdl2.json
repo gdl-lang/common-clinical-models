@@ -62,18 +62,10 @@
           "gt0036": {
             "id": "gt0036",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0054]"
-          }
-        }
-      },
-      "gt0025": {
-        "id": "gt0025",
-        "model_id": "openEHR-EHR-EVALUATION.asas_criteria_for_axial_spondyloarthritis_spa.v0",
-        "template_id": "openEHR-EHR-EVALUATION.asas_criteria_for_axial_spondyloarthritis_spa.v0",
-        "type": "OUTPUT",
-        "elements": {
-          "gt0026": {
-            "id": "gt0026",
-            "path": "/data[at0001]/items[at0002]"
+          },
+          "gt0066": {
+            "id": "gt0066",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0061]"
           }
         }
       },
@@ -142,18 +134,11 @@
         }
       }
     },
+    "pre_conditions": [
+      "$gt0003|Age at onset|<45,a",
+      "$gt0041|Back pain|==1|local::at0010|>=3 months|"
+    ],
     "rules": {
-      "gt0055": {
-        "id": "gt0055",
-        "priority": 6,
-        "when": [
-          "$gt0003|Age at onset|<45,a",
-          "$gt0041|Back pain|==1|local::at0010|>=3 months|"
-        ],
-        "then": [
-          "$gt0030|Entry Criterion Score|=1|local::at0057|Yes|"
-        ]
-      },
       "gt0057": {
         "id": "gt0057",
         "priority": 5,
@@ -169,7 +154,6 @@
           "$gt0052|Family history of SpA|!=null",
           "$gt0053|HLA-B27|!=null",
           "$gt0054|Elevated CRP|!=null",
-          "fired($gt0055)",
           "$gt0042|Sacroiliitis on imaging|==1|local::at0015|Yes|",
           "$gt0043|HLA-B27|==0|local::at0017|No|"
         ],
@@ -191,7 +175,6 @@
           "$gt0051|Good response to NSAIDs|!=null",
           "$gt0052|Family history of SpA|!=null",
           "$gt0054|Elevated CRP|!=null",
-          "fired($gt0055)",
           "$gt0043|HLA-B27|==1|local::at0018|Yes|",
           "$gt0042|Sacroiliitis on imaging|==0|local::at0014|No|"
         ],
@@ -203,12 +186,11 @@
         "id": "gt0063",
         "priority": 3,
         "when": [
-          "fired($gt0055)",
           "($gt0042|Sacroiliitis on imaging|==1|local::at0015|Yes|)||($gt0043|HLA-B27|==1|local::at0018|Yes|)",
           "($gt0035|Sacroiliitis Score|<1)||($gt0036|HLA-B27|<2)"
         ],
         "then": [
-          "$gt0026|Diagnostic Result|=0|local::at0003|Not axial SpA|"
+          "$gt0066|Diagnostic Result|=0|local::at0062|Not axial SpA|"
         ]
       },
       "gt0064": {
@@ -218,7 +200,7 @@
           "$gt0035|Sacroiliitis Score|>=1"
         ],
         "then": [
-          "$gt0026|Diagnostic Result|=1|local::at0004|Axial SpA|"
+          "$gt0066|Diagnostic Result|=1|local::at0063|Axial SpA|"
         ]
       },
       "gt0065": {
@@ -228,7 +210,7 @@
           "$gt0036|HLA-B27|>=2"
         ],
         "then": [
-          "$gt0026|Diagnostic Result|=1|local::at0004|Axial SpA|"
+          "$gt0066|Diagnostic Result|=1|local::at0063|Axial SpA|"
         ]
       }
     }
@@ -506,6 +488,11 @@
           "gt0065": {
             "id": "gt0065",
             "text": "Set Axial SpA to HLA-B27"
+          },
+          "gt0066": {
+            "id": "gt0066",
+            "text": "Diagnostic Result",
+            "description": "*"
           }
         }
       }
