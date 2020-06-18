@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 289*
+### *Published Apps: 290*
 
 ----------
 
@@ -360,6 +360,8 @@ _Select a medical specialty below to view the available apps._
 ### Nephrology
 
 ----------
+* AKIN Classification for Acute Kidney Injury (AKI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/akin_classification_for_acute_kidney_injury/1?language=en))
+
 * Albumin-Creatinine Ratio (ACR) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_Calculation/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_Calculation/1?language=sv))
 
 * Charlson Comorbidity Scoring System (CCI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CCI/1?language=en))
