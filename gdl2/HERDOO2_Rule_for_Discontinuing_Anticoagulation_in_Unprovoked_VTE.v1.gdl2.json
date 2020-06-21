@@ -20,7 +20,8 @@
         "keywords": [
           "Anticoagulation"
         ],
-        "use": "Indefinite anticoagulation is burdensome and associated with bleeding risk. The HERDOO2 Rule can identify patients who have very low risk of recurrent VTE and can therefore safely stop anticoagulation in the short term.\n\nWhen to Use:\nWomen ≥18 years old with unprovoked VTE. Inclusion criteria in the original study:\n\nPatients diagnosed 5–7 months before enrollment.\nOn heparin or low molecular weight heparin (LMWH) for ≥5 days and oral anticoagulation for 5–7 months after the event.\nWithout recurrent VTE during the treatment period.\nNoncompressible segment on compression ultrasound of popliteal (or more proximal) leg vein, high-probability V/Q scan, or segmental (or larger) artery filling defect on spiral CT.\nExclusion criteria:\n\nLeg fracture.\nLower-extremity plaster cast.\nImmobilization for >3 days.\nGeneral anesthetic <3 months before index event.\nCancer diagnosis within 5 years.\n",
+        "use": "The HERDOO2 Rule can identify patients who have very low risk of recurrent VTE and can therefore safely stop anticoagulation in the short term.\n\nWhen to Use:\nWomen ≥18 years old with unprovoked VTE. Inclusion criteria in the original study:\n\nPatients diagnosed 5–7 months before enrollment.\nOn heparin or low molecular weight heparin (LMWH) for ≥5 days and oral anticoagulation for 5–7 months after the event.\nWithout recurrent VTE during the treatment period.\nNoncompressible segment on compression ultrasound of popliteal (or more proximal) leg vein, high-probability V/Q scan, or segmental (or larger) artery filling defect on spiral CT.\nExclusion criteria:\n\nLeg fracture.\nLower-extremity plaster cast.\nImmobilization for >3 days.\nGeneral anesthetic <3 months before index event.\nCancer diagnosis within 5 years.\n",
+        "misuse": "Do not use in patients with any of the following at the time of VTE diagnosis: leg fracture, lower-extremity plaster cast, immobilization >3 days, general anesthesia <3 months before, or cancer diagnosis within 5 years.",
         "copyright": "@Cambio CDS"
       }
     },
@@ -54,18 +55,6 @@
           }
         }
       },
-      "gt0007": {
-        "id": "gt0007",
-        "model_id": "openEHR-EHR-EVALUATION.herdoo2_rule_for_discontinuing_anticoagulation_in_unprovoked_vte.v0",
-        "template_id": "openEHR-EHR-EVALUATION.herdoo2_rule_for_discontinuing_anticoagulation_in_unprovoked_vte.v0",
-        "type": "OUTPUT",
-        "elements": {
-          "gt0008": {
-            "id": "gt0008",
-            "path": "/data[at0001]/items[at0002]"
-          }
-        }
-      },
       "gt0009": {
         "id": "gt0009",
         "model_id": "openEHR-EHR-OBSERVATION.herdoo2_rule_for_discontinuing_anticoagulation_in_unprovoked_vte.v0",
@@ -77,12 +66,28 @@
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0016]"
           }
         }
+      },
+      "gt0014": {
+        "id": "gt0014",
+        "model_id": "openEHR-EHR-EVALUATION.herdoo2_rule_for_discontinuing_anticoagulation_in_unprovoked_vte.v0",
+        "template_id": "openEHR-EHR-EVALUATION.herdoo2_rule_for_discontinuing_anticoagulation_in_unprovoked_vte.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0015": {
+            "id": "gt0015",
+            "path": "/data[at0001]/items[at0005]"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "path": "/data[at0001]/items[at0002]"
+          }
+        }
       }
     },
     "rules": {
       "gt0011": {
         "id": "gt0011",
-        "priority": 3,
+        "priority": 5,
         "when": [
           "$gt0003|Post-thrombotic signs|!=null",
           "$gt0004|D-dimer level|!=null",
@@ -93,24 +98,44 @@
           "$gt0010|Total Score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value"
         ]
       },
-      "gt0012": {
-        "id": "gt0012",
+      "gt0017": {
+        "id": "gt0017",
+        "priority": 4,
+        "when": [
+          "$gt0010|Total Score|<=1"
+        ],
+        "then": [
+          "$gt0015|VTE|=0|local::at0006|3%|"
+        ]
+      },
+      "gt0018": {
+        "id": "gt0018",
+        "priority": 3,
+        "when": [
+          "$gt0010|Total Score|>1"
+        ],
+        "then": [
+          "$gt0015|VTE|=1|local::at0007|7.4%|"
+        ]
+      },
+      "gt0019": {
+        "id": "gt0019",
         "priority": 2,
         "when": [
           "$gt0010|Total Score|<=1"
         ],
         "then": [
-          "$gt0008|Risk Group|=0|local::at0003|Low|"
+          "$gt0016|Risk Group|=0|local::at0003|Low|"
         ]
       },
-      "gt0013": {
-        "id": "gt0013",
+      "gt0021": {
+        "id": "gt0021",
         "priority": 1,
         "when": [
           "$gt0010|Total Score|>1"
         ],
         "then": [
-          "$gt0008|Risk Group|=1|local::at0004|Not Low|"
+          "$gt0016|Risk Group|=1|local::at0004|Not Low|"
         ]
       }
     }
@@ -123,7 +148,7 @@
           "gt0001": {
             "id": "gt0001",
             "text": "HERDOO2 Rule for Discontinuing Anticoagulation in Unprovoked VTE",
-            "description": "HERDOO2 Rule for Discontinuing Anticoagulation in Unprovoked VTE Identifies low-risk women who can safely discontinue VTE treatment."
+            "description": "Indefinite anticoagulation is burdensome and associated with bleeding risk. The HERDOO2 Rule for Discontinuing Anticoagulation in Unprovoked VTE Identifies low-risk women who can safely discontinue VTE treatment."
           },
           "gt0003": {
             "id": "gt0003",
@@ -166,6 +191,36 @@
           "gt0013": {
             "id": "gt0013",
             "text": "Not Low Risk Group"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "VTE",
+            "description": "*"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "text": "Risk Group",
+            "description": "*"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "Low VTE"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "High VTE"
+          },
+          "gt0019": {
+            "id": "gt0019",
+            "text": "Low Risk"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Not Low Risk"
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "Not Low Risk"
           }
         }
       }
