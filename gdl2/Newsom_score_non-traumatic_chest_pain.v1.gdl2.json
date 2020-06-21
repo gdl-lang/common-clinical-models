@@ -1,5 +1,5 @@
 {
-  "id": "Newsom_score_non-traumatic_chest_pain.v0",
+  "id": "Newsom_score_non-traumatic_chest_pain.v1",
   "gdl_version": "2.0",
   "concept": "gt0001",
   "language": {
@@ -199,13 +199,19 @@
       "gt0031": {
         "id": "gt0031",
         "priority": 9,
+        "when": [
+          "(($gt0012|Body Temperature|.magnitude>=38)&&($gt0012|Body Temperature|.unit=='°C'))||(($gt0012|Body Temperature|.magnitude>=100.4)&&($gt0012|Body Temperature|.unit=='°F'))"
+        ],
         "then": [
           "$gt0022|Fever ≥ 100.4°F (38°C)|=1|local::at0027|Yes|"
         ]
       },
-      "gt0032": {
-        "id": "gt0032",
+      "gt0041": {
+        "id": "gt0041",
         "priority": 8,
+        "when": [
+          "(($gt0012|Body Temperature|.magnitude<38)&&($gt0012|Body Temperature|.unit=='°C'))||(($gt0012|Body Temperature|.magnitude<100.4)&&($gt0012|Body Temperature|.unit=='°F'))"
+        ],
         "then": [
           "$gt0022|Fever ≥ 100.4°F (38°C)|=0|local::at0026|No|"
         ]
@@ -268,7 +274,7 @@
           "$gt0019|Rales|!=null"
         ],
         "then": [
-          "$gt0025|Total score|.magnitude=$gt0021.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0022.value+$gt0023.value+$gt0018.value+$gt0019.value"
+          "$gt0025|Total score|.magnitude=$gt0021.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0022.value+$gt0023.value+$gt0024.value+$gt0018.value+$gt0019.value"
         ]
       },
       "gt0038": {
@@ -443,6 +449,14 @@
           "gt0039": {
             "id": "gt0039",
             "text": "Set not low risk output"
+          },
+          "gt0040": {
+            "id": "gt0040",
+            "text": "Set body temp  <100.4°F (38°C)"
+          },
+          "gt0041": {
+            "id": "gt0041",
+            "text": "Set body temp  <100.4°F (38°C)"
           }
         }
       }
