@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 292*
+### *Published Apps: 295*
 
 ----------
 
@@ -657,6 +657,12 @@ _Select a medical specialty below to view the available apps._
 ### Pulmonology
 
 ----------
+* A-a O₂ Gradient - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Aa_O2_gradient/1?language=en))
+
+* A-a O₂ Gradient (simplified) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Aa_O2_gradient_simplified/1?language=en))
+
+* A-a O₂ Gradient (complex) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/aa_o2_gradient_complex/1?language=en))
+
 * ARISCAT - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ARISCAT/1?language=en))
 
 * du Bois Score for Idiopathic Pulmonary Fibrosis (IPF) Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/du_Bois_IPF/1?language=en))
