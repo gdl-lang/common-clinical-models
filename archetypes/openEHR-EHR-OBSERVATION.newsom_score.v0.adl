@@ -16,17 +16,17 @@ description
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record the parameters necessary for assessing the necessity of a chest x-ray examination based on the Newsom score. ">
-			use = <"To be used  in patients presenting with non-traumatic chest pain at emergency setting.
+			use = <"To be used in patients presenting with non-traumatic chest pain in an emergency setting.
 The assessment criteria are:
 - Patient reported history of Congestive Heart Failure (CHF), smoking, Tuberculosis, thromboembolic,  prior/current alcohol abuse
 - Age ≥ 60 years
 - Hemoptysis
 - Fever ≥100.4°F (38°C)
 - Oxygen saturation < 90%
-- Respiratory rate > 24 per mintue
-- On chest ausculation: diminished breath sounds or rales
+- Respiratory rate > 24 per minute
+- On chest auscultation: diminished breath sounds or rales
 
-Any presence of the mentioned criteria indicate the patient at a condition risk of requiring a chest x-ray examination.">
+Any presence of the mentioned criteria indicates the patient at a condition risk of requiring a chest x-ray examination.">
 			keywords = <"chest pain", "x-ray", "non traumatic", "newsom">
 			misuse = <"Not to be used in the presence of traumatic chest pain.">
 			copyright = <"@CambioCDS">
@@ -38,7 +38,7 @@ Any presence of the mentioned criteria indicate the patient at a condition risk 
 		["references"] = <"1. Newsom C, Jeanmonod R, Woolley W, et al. Prospective Validation and Refinement of a Decision Rule to Obtain Chest X-ray in Patients With Nontraumatic Chest Pain in the Emergency Department. Acad Emerg Med. 2018;25(6):650-656.
 2. Rothrock SG, Green SM, Costanzo KA, Fanelli JM, Cruzen ES, Pagane JR. High yield criteria for obtaining non-trauma chest radiography in the adult emergency department population. J Emerg Med. 2002;23(2):117-24.
 3. Newsom C, Jeanmonod R, Weller K, Boutros K, Reiter M, Jeanomonod D. Validation of a decision rule and derivation of a modified rule to obtain chest radiograph in patients with nontraumatic chest pain in the emergency department. Adv Emerg Med. 2014.">
-		["MD5-CAM-1.0.1"] = <"0D3023568F3A70B09E1F062666F0FB02">
+		["MD5-CAM-1.0.1"] = <"2A5174A49ED4A5AF21FDCD3C6701FEF8">
 	>
 
 definition
@@ -50,6 +50,12 @@ definition
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0041] occurrences matches {0..1} matches {	-- Non-traumatic chest pain
+										value matches {
+											0|[local::at0042], 	-- No
+											1|[local::at0043]  	-- Yes
+										}
+									}
 									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Age ≥ 60 years
 										value matches {
 											0|[local::at0005], 	-- No
@@ -120,13 +126,6 @@ definition
 										value matches {
 											0|[local::at0038], 	-- No
 											1|[local::at0039]  	-- Yes
-										}
-									}
-									ELEMENT[at0040] occurrences matches {0..1} matches {	-- Total score
-										value matches {
-											DV_COUNT matches {
-												magnitude matches {|>=0|}
-											}
 										}
 									}
 								}
@@ -302,8 +301,16 @@ ontology
 					text = <"Yes">
 					description = <"*">
 				>
-				["at0040"] = <
-					text = <"Total score">
+				["at0041"] = <
+					text = <"Non-traumatic chest pain">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"Yes">
 					description = <"*">
 				>
 			>
