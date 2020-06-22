@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 295*
+### *Published Apps: 296*
 
 ----------
 
@@ -46,7 +46,7 @@ _Select a medical specialty below to view the available apps._
 
 [Oncology](https://github.com/gdl-lang/common-clinical-models#oncology)
 
-[Orthopedic Surgery](https://github.com/gdl-lang/common-clinical-models#orthopedic-surgery)
+[Orthopedics](https://github.com/gdl-lang/common-clinical-models#orthopedic-surgery)
 
 [Osteoporosis](https://github.com/gdl-lang/common-clinical-models#osteoporosis)
 
@@ -478,9 +478,11 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 
-### Orthopedic Surgery
+### Orthopedics
 
 ----------
+* ASAS Criteria for Peripheral SpondyloArthritis (SpA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASAS_criteria_for_Peripherial_SpA/1?language=en))
+
 * Kocher Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kocher_Criteria/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kocher_Criteria/1?language=sv))
 
 ----------
