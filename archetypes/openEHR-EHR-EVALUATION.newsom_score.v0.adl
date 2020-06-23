@@ -38,7 +38,7 @@ Any presence of the mentioned criteria indicate the patient at a condition risk 
 		["references"] = <"1. Newsom C, Jeanmonod R, Woolley W, et al. Prospective Validation and Refinement of a Decision Rule to Obtain Chest X-ray in Patients With Nontraumatic Chest Pain in the Emergency Department. Acad Emerg Med. 2018;25(6):650-656.
 2. Rothrock SG, Green SM, Costanzo KA, Fanelli JM, Cruzen ES, Pagane JR. High yield criteria for obtaining non-trauma chest radiography in the adult emergency department population. J Emerg Med. 2002;23(2):117-24.
 3. Newsom C, Jeanmonod R, Weller K, Boutros K, Reiter M, Jeanomonod D. Validation of a decision rule and derivation of a modified rule to obtain chest radiograph in patients with nontraumatic chest pain in the emergency department. Adv Emerg Med. 2014.">
-		["MD5-CAM-1.0.1"] = <"BEB9021CB19046C8FF476553B74931AF">
+		["MD5-CAM-1.0.1"] = <"6539DCEF4EBECFB0163C9B2820059741">
 	>
 
 definition
@@ -46,16 +46,26 @@ definition
 		data matches {
 			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Risk
+					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Risk
 						value matches {
-							0|[local::at0003], 	-- Low risk
-							1|[local::at0004]  	-- Not low risk
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0009, 	-- Low risk
+									at0010]	-- Not low risk
+								}
+							}
 						}
 					}
-					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Recommendation
+					ELEMENT[at0011] occurrences matches {0..1} matches {	-- Recommendation
 						value matches {
-							0|[local::at0006], 	-- Chest x-ray not necessary
-							1|[local::at0007]  	-- Consider chest x-ray
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0012, 	-- Chest X-ray may not be necessary
+									at0013]	-- Chest X-ray should be considered
+								}
+							}
 						}
 					}
 				}
@@ -75,28 +85,28 @@ ontology
 					text = <"Tree">
 					description = <"@ internal @">
 				>
-				["at0002"] = <
+				["at0008"] = <
 					text = <"Risk">
 					description = <"*">
 				>
-				["at0003"] = <
+				["at0009"] = <
 					text = <"Low risk">
 					description = <"*">
 				>
-				["at0004"] = <
+				["at0010"] = <
 					text = <"Not low risk">
 					description = <"*">
 				>
-				["at0005"] = <
+				["at0011"] = <
 					text = <"Recommendation">
 					description = <"*">
 				>
-				["at0006"] = <
-					text = <"Chest x-ray not necessary">
+				["at0012"] = <
+					text = <"Chest X-ray may not be necessary">
 					description = <"*">
 				>
-				["at0007"] = <
-					text = <"Consider chest x-ray">
+				["at0013"] = <
+					text = <"Chest X-ray should be considered">
 					description = <"*">
 				>
 			>
