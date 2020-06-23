@@ -10,14 +10,14 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 298*
+### *Published Apps: 299*
 
 ----------
 
 ### Latest added
 
 1. ASA Physical Status/ASA Classification  - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASA_Physical_Status_guideline/1?language=en))
-2. 
+2. ATLAS Score for Clostridium Difficile Infection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATLAS_score_for_C_difficile_infection/1?language=en))
 3. 
 4. 
 5. 
@@ -271,6 +271,8 @@ _Select a medical specialty below to view the available apps._
 * ABIC Score for Alcoholic Hepatitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABIC/1?language=en))
 
 * AST to Platelet Ratio Index (APRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/APRI_AST_to_platelet_ratio_index/1?language=en))
+
+* ATLAS Score for Clostridium Difficile Infection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATLAS_score_for_C_difficile_infection/1?language=en))
 
 * BARD Score for NAFLD Fibrosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BARD_Score_for_NAFLD_Fibrosis/0?language=en))
 
