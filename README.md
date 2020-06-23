@@ -14,6 +14,21 @@ If you would like to test an app, simply click on "ENG" to access the English ve
 
 ----------
 
+### Latest added
+
+1. ASA Physical Status/ASA Classification  - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASA_Physical_Status_guideline/1?language=en))
+2. 
+3. 
+4. 
+5. 
+6. 
+7. 
+8. 
+9. 
+10. 
+
+----------
+
 ### Categories by specialty
 
 _Select a medical specialty below to view the available apps._
