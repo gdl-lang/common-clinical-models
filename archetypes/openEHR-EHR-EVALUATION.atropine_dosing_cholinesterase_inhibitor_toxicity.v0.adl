@@ -50,7 +50,7 @@ Not for use in AtroPen Atropine Auto-Injector dosing.">
 	other_details = <
 		["references"] = <"1. Howland, MA Antidotes in Depth: Atropine. In: Hoffman R, Howland MA, Lewin N et al. Goldfrank's Toxicologic Emergencies, Tenth Edition. McGraw-Hill Education / Medical; 2014.">
 		["current_contact"] = <"Therese Lindberg, Cambio CDS<therese.lindberg@cambio.se>">
-		["MD5-CAM-1.0.1"] = <"B664AD6B8ACD4E55C753E9404C366E8D">
+		["MD5-CAM-1.0.1"] = <"BB596BD795D4A46E7F4A775978B52B56">
 	>
 
 definition
@@ -58,12 +58,6 @@ definition
 		data matches {
 			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Adult / Pediatric
-						value matches {
-							0|[local::at0003], 	-- Adult
-							1|[local::at0004]  	-- Pediatric
-						}
-					}
 					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Weight
 						value matches {
 							C_DV_QUANTITY <
@@ -77,10 +71,15 @@ definition
 							>
 						}
 					}
-					ELEMENT[at0007] occurrences matches {0..1} matches {	-- Severity
+					ELEMENT[at0012] occurrences matches {0..1} matches {	-- Adult / Pediatric
 						value matches {
-							0|[local::at0008], 	-- Mild
-							1|[local::at0009]  	-- Severe
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0013, 	-- Adult
+									at0014]	-- Pediatric
+								}
+							}
 						}
 					}
 					ELEMENT[at0010] occurrences matches {0..1} matches {	-- Dose information
@@ -102,6 +101,17 @@ definition
 							>
 						}
 					}
+					ELEMENT[at0015] occurrences matches {0..1} matches {	-- Severity
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0016, 	-- Mild
+									at0017]	-- Severe
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -119,32 +129,8 @@ ontology
 					text = <"Tree">
 					description = <"@ internal @">
 				>
-				["at0002"] = <
-					text = <"Adult / Pediatric">
-					description = <"*">
-				>
-				["at0003"] = <
-					text = <"Adult">
-					description = <"*">
-				>
-				["at0004"] = <
-					text = <"Pediatric">
-					description = <"*">
-				>
 				["at0005"] = <
 					text = <"Weight">
-					description = <"*">
-				>
-				["at0007"] = <
-					text = <"Severity">
-					description = <"*">
-				>
-				["at0008"] = <
-					text = <"Mild">
-					description = <"*">
-				>
-				["at0009"] = <
-					text = <"Severe">
 					description = <"*">
 				>
 				["at0010"] = <
@@ -154,6 +140,30 @@ ontology
 				["at0011"] = <
 					text = <"Dose">
 					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Adult / Pediatric">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Adult">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Pediatric">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Severity">
+					description = <"Severe = hemodynamic compromise, unconsciousness">
+				>
+				["at0016"] = <
+					text = <"Mild">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Severe">
+					description = <"Severe = hemodynamic compromise, unconsciousness">
 				>
 			>
 		>
