@@ -10,16 +10,16 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 300*
+### *Published Apps: 301*
 
 ----------
 
 ### Latest added
 
-1. Newsom Score for Non-traumatic Chest Pain - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Newsom_score_non-traumatic_chest_pain/1?language=en))
-2. ATLAS Score for Clostridium Difficile Infection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATLAS_score_for_C_difficile_infection/1?language=en))
-3. ASA Physical Status/ASA Classification  - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASA_Physical_Status_guideline/1?language=en))
-4. 
+1. Abbreviated Mental Test (AMT-10) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Abbreviated_mental_test_AMT_10/0?language=en))
+2. Newsom Score for Non-traumatic Chest Pain - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Newsom_score_non-traumatic_chest_pain/1?language=en))
+3. ATLAS Score for Clostridium Difficile Infection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATLAS_score_for_C_difficile_infection/1?language=en))
+4. ASA Physical Status/ASA Classification  - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASA_Physical_Status_guideline/1?language=en))
 5. 
 6. 
 7. 
@@ -623,6 +623,8 @@ _Select a medical specialty below to view the available apps._
 ### Psychiatry
 
 ----------
+* Abbreviated Mental Test (AMT-10) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Abbreviated_mental_test_AMT_10/0?language=en))
+
 * Adult Self Rating Scale for ADHD (ASRS-ADHD) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASRS_ADHD/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASRS_ADHD/1?language=sv))
 
 * Affective Self Rating Scale (AS-18) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AS-18/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AS-18/1?language=sv))
