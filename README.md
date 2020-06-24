@@ -10,7 +10,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 299*
+### *Published Apps: 300*
 
 ----------
 
@@ -18,7 +18,7 @@ If you would like to test an app, simply click on "ENG" to access the English ve
 
 1. ASA Physical Status/ASA Classification  - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASA_Physical_Status_guideline/1?language=en))
 2. ATLAS Score for Clostridium Difficile Infection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATLAS_score_for_C_difficile_infection/1?language=en))
-3. 
+3. Newsom Score for Non-traumatic Chest Pain - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Newsom_score_non-traumatic_chest_pain/1?language=en))
 4. 
 5. 
 6. 
@@ -232,6 +232,8 @@ _Select a medical specialty below to view the available apps._
 * GO-FAR (Good Outcome Following Attempted Resuscitation) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GO_FAR_Good_Outcome_Following_Attempted_Resuscitation_Score_guideline/1?language=en))
 
 * HEART Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HEART_score_for_MACE/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HEART_score_for_MACE/1?language=sv))
+
+* Newsom Score for Non-traumatic Chest Pain - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Newsom_score_non-traumatic_chest_pain/1?language=en))
 
 * Pittsburgh Knee Rules - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pittsburgh_knee_rules/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pittsburgh_knee_rules/1?language=sv))
 
