@@ -10,19 +10,19 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 303*
+### *Published Apps: 304*
 
 ----------
 
 ### Latest added
 
-1. ASAS Criteria for Axial Spondyloarthritis (SpA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASAS_Criteria_for_Axial_Spondyloarthritis_SpA_guideline/1?language=en))
-2. Patient Activity Scale (PAS) for RA - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Patient_Activity_Scale_PAS_for_RA_guideline/1?language=en))
-3. Abbreviated Mental Test (AMT-10) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Abbreviated_mental_test_AMT_10/0?language=en))
-4. Newsom Score for Non-traumatic Chest Pain - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Newsom_score_non-traumatic_chest_pain/1?language=en))
-5. ATLAS Score for Clostridium Difficile Infection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATLAS_score_for_C_difficile_infection/1?language=en))
-6. ASA Physical Status/ASA Classification  - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASA_Physical_Status_guideline/1?language=en))
-7. 
+1. Atropine Dosing for Cholinesterase Inhibitor Toxicity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Atropine_dosing_cholinesterase_inhibitor_toxicity/0?language=en))
+2. ASAS Criteria for Axial Spondyloarthritis (SpA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASAS_Criteria_for_Axial_Spondyloarthritis_SpA_guideline/1?language=en))
+3. Patient Activity Scale (PAS) for RA - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Patient_Activity_Scale_PAS_for_RA_guideline/1?language=en))
+4. Abbreviated Mental Test (AMT-10) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Abbreviated_mental_test_AMT_10/0?language=en))
+5. Newsom Score for Non-traumatic Chest Pain - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Newsom_score_non-traumatic_chest_pain/1?language=en))
+6. ATLAS Score for Clostridium Difficile Infection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATLAS_score_for_C_difficile_infection/1?language=en))
+7. ASA Physical Status/ASA Classification  - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASA_Physical_Status_guideline/1?language=en))
 8. 
 9. 
 10. 
@@ -66,6 +66,8 @@ _Select a medical specialty below to view the available apps._
 [Osteoporosis](https://github.com/gdl-lang/common-clinical-models#osteoporosis)
 
 [Pediatrics](https://github.com/gdl-lang/common-clinical-models#pediatrics) 
+
+[Pharmacology](https://github.com/gdl-lang/common-clinical-models#pharmacology) 
 
 [Primary Care](https://github.com/gdl-lang/common-clinical-models#primary-care)
 
@@ -563,6 +565,12 @@ _Select a medical specialty below to view the available apps._
 * Shock Index Pediatric Age-Adjusted (SIPA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SIPA/1?language=en))
 
 * STRONGkids Nutritional Risk Screening - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/STRONGkids/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/STRONGkids/1?language=sv))
+----------
+
+### Pharmacology
+
+----------
+* Atropine Dosing for Cholinesterase Inhibitor Toxicity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Atropine_dosing_cholinesterase_inhibitor_toxicity/0?language=en))
 ----------
 
 ### Primary care
