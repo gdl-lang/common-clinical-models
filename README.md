@@ -1,5 +1,5 @@
 ﻿<p align="center">
-  <img src="http://www.cambio.se/wp-content/themes/cambio/images/logotype.png"> 
+  <img src="img/cambio-cds.png"> 
 </p>
 
 ### Introduction
@@ -10,7 +10,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 297*
+### *Published Apps: 305*
+
+----------
+
+### Latest added
+
+1. Ankylosing Spondylitis Disease Activity Score with ESR (ASDAS-ESR) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASDAS-ESR/1?language=en))
+2. Atropine Dosing for Cholinesterase Inhibitor Toxicity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Atropine_dosing_cholinesterase_inhibitor_toxicity/0?language=en))
+3. ASAS Criteria for Axial Spondyloarthritis (SpA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASAS_Criteria_for_Axial_Spondyloarthritis_SpA_guideline/1?language=en))
+4. Patient Activity Scale (PAS) for RA - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Patient_Activity_Scale_PAS_for_RA_guideline/1?language=en))
+5. Abbreviated Mental Test (AMT-10) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Abbreviated_mental_test_AMT_10/0?language=en))
+6. Newsom Score for Non-traumatic Chest Pain - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Newsom_score_non-traumatic_chest_pain/1?language=en))
+7. ATLAS Score for Clostridium Difficile Infection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATLAS_score_for_C_difficile_infection/1?language=en))
+8. ASA Physical Status/ASA Classification  - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASA_Physical_Status_guideline/1?language=en))
+9. 
+10. 
 
 ----------
 
@@ -51,6 +66,8 @@ _Select a medical specialty below to view the available apps._
 [Osteoporosis](https://github.com/gdl-lang/common-clinical-models#osteoporosis)
 
 [Pediatrics](https://github.com/gdl-lang/common-clinical-models#pediatrics) 
+
+[Pharmacology](https://github.com/gdl-lang/common-clinical-models#pharmacology) 
 
 [Primary Care](https://github.com/gdl-lang/common-clinical-models#primary-care)
 
@@ -218,6 +235,8 @@ _Select a medical specialty below to view the available apps._
 
 * HEART Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HEART_score_for_MACE/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HEART_score_for_MACE/1?language=sv))
 
+* Newsom Score for Non-traumatic Chest Pain - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Newsom_score_non-traumatic_chest_pain/1?language=en))
+
 * Pittsburgh Knee Rules - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pittsburgh_knee_rules/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pittsburgh_knee_rules/1?language=sv))
 
 * Pulmonary Embolism Severity Index (PESI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PESI/1?language=en))
@@ -256,6 +275,8 @@ _Select a medical specialty below to view the available apps._
 * ABIC Score for Alcoholic Hepatitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABIC/1?language=en))
 
 * AST to Platelet Ratio Index (APRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/APRI_AST_to_platelet_ratio_index/1?language=en))
+
+* ATLAS Score for Clostridium Difficile Infection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATLAS_score_for_C_difficile_infection/1?language=en))
 
 * BARD Score for NAFLD Fibrosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BARD_Score_for_NAFLD_Fibrosis/0?language=en))
 
@@ -483,9 +504,15 @@ _Select a medical specialty below to view the available apps._
 ----------
 * Ankylosing Spondylitis Disease Activity Score with CRP (ASDAS-CRP) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASDAS-CRP/1?language=en))
 
+* Ankylosing Spondylitis Disease Activity Score with ESR (ASDAS-ESR) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASDAS-ESR/1?language=en))
+
+* ASAS Criteria for Axial Spondyloarthritis (SpA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASAS_Criteria_for_Axial_Spondyloarthritis_SpA_guideline/1?language=en))
+
 * ASAS Criteria for Peripheral SpondyloArthritis (SpA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASAS_criteria_for_Peripherial_SpA/1?language=en))
 
 * Kocher Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kocher_Criteria/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kocher_Criteria/1?language=sv))
+
+* Patient Activity Scale (PAS) for RA - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Patient_Activity_Scale_PAS_for_RA_guideline/1?language=en))
 
 ----------
 
@@ -540,6 +567,12 @@ _Select a medical specialty below to view the available apps._
 * Shock Index Pediatric Age-Adjusted (SIPA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SIPA/1?language=en))
 
 * STRONGkids Nutritional Risk Screening - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/STRONGkids/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/STRONGkids/1?language=sv))
+----------
+
+### Pharmacology
+
+----------
+* Atropine Dosing for Cholinesterase Inhibitor Toxicity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Atropine_dosing_cholinesterase_inhibitor_toxicity/0?language=en))
 ----------
 
 ### Primary care
@@ -604,6 +637,8 @@ _Select a medical specialty below to view the available apps._
 ### Psychiatry
 
 ----------
+* Abbreviated Mental Test (AMT-10) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Abbreviated_mental_test_AMT_10/0?language=en))
+
 * Adult Self Rating Scale for ADHD (ASRS-ADHD) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASRS_ADHD/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASRS_ADHD/1?language=sv))
 
 * Affective Self Rating Scale (AS-18) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AS-18/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AS-18/1?language=sv))
@@ -724,6 +759,8 @@ _Select a medical specialty below to view the available apps._
 ### Surgery
 
 ----------
+* ASA Physical Status/ASA Classification  - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASA_Physical_Status_guideline/1?language=en))
+
 * LACE Index for Readmission - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LACE_readmission_index/1?language=en))
 
 * Preoperative Mortality Predictor Score (PMP) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Preoperative_Mortality_Predictor_PMP_Score_guideline/1?language=en))
