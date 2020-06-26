@@ -1,5 +1,5 @@
 archetype (adl_version=1.4)
-	openEHR-EHR-OBSERVATION.brugada_criteria_for_ventricular_tachycardia.v0
+	openEHR-EHR-EVALUATION.brugada_criteria_for_ventricular_tachycardia.v0
 
 concept
 	[at0000]	-- Brugada criteria for ventricular tachycardia
@@ -15,16 +15,17 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record information relevant to the Brugada criteria assessment.">
+			purpose = <"To record the result of the Brugada criteria assessment.">
 			use = <"Brugada criteria for ventricular tachycardia can be used for patients who have complete 12-lead electrocardiograms with wide QRS-complex tachycardias (WCT).
 Brugada criteria for ventricular tachycardia and diagnosis: 
 When an RS complex cannot be identified in any precordial leads, the diagnosis of ventricular tachycardia (VT) is made. If an RS complex is present in one or more precordial leads, the longest RS interval is measured. If the RS interval is longer than 100 msec in one precordial, the diagnosis of VT is made. If shorter than 100 msec, the next step of the algorithm is considered: whether atrioventricular dissociation is present. If present, the diagnosis of VT is made. If absent, the morphology criteria for VT are analyzed in precordial leads V1-2 and V6.  If both precordial leads V1-2 and V6 fulfill the criteria for VT, the diagnosis of VT is made. If not, the diagnosis of supraventricular tachycardia (SVT) is made by the exclusion of VT.
 Recommendations: 
 VT= ACLS protocol recommends amiodarone and preparing for synchronized cardioversion
 SVT= Refer to ACLS protocol for treatment options (see Next Steps).
-
-">
-			keywords = <"Ventricular Tachycardia (VT)", "QRS Complex", "Brugada criteria", "supraventricular tachycardia (SVT)", "wide QRS-complex tachycardias (WCT)">
+Recommendations: 
+VT= ACLS protocol recommends amiodarone and preparing for synchronized cardioversion
+SVT= Refer to ACLS protocol for treatment options (see Next Steps).">
+			keywords = <"wide QRS-complex tachycardias (WCT)", "ventricular tachycardia (VT)", "supraventricular tachycardia (SVT)", "Brugada criteria">
 			misuse = <"Brugada criteria for ventricular tachycardia cannot be used in patients who are receiving antiarrhythmic drugs. ">
 			copyright = <"@CambioCDS">
 		>
@@ -40,42 +41,32 @@ Baxi RP, Hart KW, Vereckei A, Miller J, Chung S, Chang W, Gottesman B, Hunt M, C
 Garner JB, Miller JM. Wide complex tachycardia–ventricular tachycardia or not ventricular tachycardia, that remains the question. Arrhythmia & Electrophysiology Review. 2013 Apr;2(1):23.
 Grimm W, Menz V, Hoffmann J, Maisch B. Value of old and new electrocardiography criteria for differential diagnosis between ventricular tachycardia and supraventricular tachycardia with bundle branch block. Zeitschrift fur Kardiologie. 1996 Dec;85(12):932-42.
 Jastrzebski M, Sasaki K, Kukla P, Fijorek K, Stec S, Czarnecka D. The ventricular tachycardia score: a novel approach to electrocardiographic diagnosis of ventricular tachycardia. Europace. 2016 Apr 1;18(4):578-84.">
-		["MD5-CAM-1.0.1"] = <"692146ABF0BF108DF5DFC029C8AA25C0">
+		["MD5-CAM-1.0.1"] = <"6635A0A15CE271667F275CEC32B3A211">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Brugada criteria for ventricular tachycardia
+	EVALUATION[at0000] matches {	-- Brugada criteria for ventricular tachycardia
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
-				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
-						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
-								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Absence of an RS complex in all precordial leads
-										value matches {
-											0|[local::at0005], 	-- No
-											1|[local::at0006]  	-- Yes
-										}
-									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- R to S interval >100 ms in one precordial lead
-										value matches {
-											0|[local::at0008], 	-- No
-											1|[local::at0009]  	-- Yes
-										}
-									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Atrioventricular dissociation
-										value matches {
-											0|[local::at0011], 	-- No
-											1|[local::at0012]  	-- Yes
-										}
-									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Morphology criteria for VT present in both precordial leads V1-2 and V6
-										value matches {
-											0|[local::at0014], 	-- No
-											1|[local::at0015]  	-- Yes
-										}
-									}
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Diagnosis
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0003, 	-- VT
+									at0004]	-- SVT
+								}
+							}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Recommendations
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0006, 	-- ACLS protocol recommends amiodarone and preparing for synchronized cardioversion
+									at0007]	-- Refer to ACLS protocol for treatment options (see Next Steps)
 								}
 							}
 						}
@@ -94,63 +85,31 @@ ontology
 					description = <"Brugada criteria for ventricular tachycardia distinguish ventricular tachycardia from supraventricular tachycardia.">
 				>
 				["at0001"] = <
-					text = <"Event Series">
-					description = <"@ internal @">
-				>
-				["at0002"] = <
-					text = <"Any event">
-					description = <"*">
-				>
-				["at0003"] = <
 					text = <"Tree">
 					description = <"@ internal @">
 				>
+				["at0002"] = <
+					text = <"Diagnosis">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"VT">
+					description = <"Ventricular Tachicardia">
+				>
 				["at0004"] = <
-					text = <"Absence of an RS complex in all precordial leads">
-					description = <"All QRS complexes completely upright or completely downward in precordial leads">
+					text = <"SVT">
+					description = <"Supraventricular Tachicardia">
 				>
 				["at0005"] = <
-					text = <"No">
+					text = <"Recommendations">
 					description = <"*">
 				>
 				["at0006"] = <
-					text = <"Yes">
+					text = <"ACLS protocol recommends amiodarone and preparing for synchronized cardioversion">
 					description = <"*">
 				>
 				["at0007"] = <
-					text = <"R to S interval >100 ms in one precordial lead">
-					description = <"Distance between R and S waves in each precordial lead">
-				>
-				["at0008"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0009"] = <
-					text = <"Yes">
-					description = <"*">
-				>
-				["at0010"] = <
-					text = <"Atrioventricular dissociation">
-					description = <"P waves seen at different rates than QRS complex">
-				>
-				["at0011"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0012"] = <
-					text = <"Yes">
-					description = <"*">
-				>
-				["at0013"] = <
-					text = <"Morphology criteria for VT present in both precordial leads V1-2 and V6">
-					description = <"VT is frequently either in a right bundle branch block pattern (upright in V1) or a left bundle branch block pattern (downward in V1)">
-				>
-				["at0014"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0015"] = <
-					text = <"Yes">
+					text = <"Refer to ACLS protocol for treatment options (see Next Steps)">
 					description = <"*">
 				>
 			>

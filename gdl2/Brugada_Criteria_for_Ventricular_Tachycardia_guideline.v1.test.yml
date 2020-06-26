@@ -1,0 +1,56 @@
+guidelines:
+  1: Brugada_Criteria_for_Ventricular_Tachycardia_guideline.v1
+test_cases:
+- id: VT, Absence of an RS complex
+  input:
+    1:
+      gt0004|Absence of an RS complex in all precordial leads: 1|local::at0006|Yes|
+  expected_output:
+    1:
+      gt0014|Diagnosis.: local::at0003|VT|
+      gt0015|Recommendations.: local::at0006|ACLS protocol recommends amiodarone and preparing for synchronized cardioversion|
+
+- id: VT, Absence of an RS complex No, R to S interval >100 No, Atrioventricular dissociation Yes
+  input:
+    1:
+      gt0004|Absence of an RS complex in all precordial leads: 0|local::at0005|No|
+      gt0005|R to S interval >100 ms in one precordial lead: 1|local::at0009|Yes|
+  expected_output:
+    1:
+      gt0014|Diagnosis.: local::at0003|VT|
+      gt0015|Recommendations.: local::at0006|ACLS protocol recommends amiodarone and preparing for synchronized cardioversion|
+
+- id: VT, Absence of an RS complex No, R to S interval >100 No, Atrioventricular dissociation Yes
+  input:
+    1:
+      gt0004|Absence of an RS complex in all precordial leads: 0|local::at0005|No|
+      gt0005|R to S interval >100 ms in one precordial lead: 0|local::at0008|No|
+      gt0006|Atrioventricular dissociation: 1|local::at0012|Yes|
+  expected_output:
+    1:
+      gt0014|Diagnosis.: local::at0003|VT|
+      gt0015|Recommendations.: local::at0006|ACLS protocol recommends amiodarone and preparing for synchronized cardioversion|
+
+- id: VT, Absence of an RS complex No, R to S interval >100 No, Atrioventricular dissociation No, Morphology Yes
+  input:
+    1:
+      gt0004|Absence of an RS complex in all precordial leads: 0|local::at0005|No|
+      gt0005|R to S interval >100 ms in one precordial lead: 0|local::at0008|No|
+      gt0006|Atrioventricular dissociation: 0|local::at0011|No|
+      gt0007|Morphology criteria for VT present in both precordial leads V1-2 and V6: 1|local::at0015|Yes|
+  expected_output:
+    1:
+      gt0014|Diagnosis.: local::at0003|VT|
+      gt0015|Recommendations.: local::at0006|ACLS protocol recommends amiodarone and preparing for synchronized cardioversion|
+
+- id: SVT, All criteria No
+  input:
+    1:
+      gt0004|Absence of an RS complex in all precordial leads: 0|local::at0005|No|
+      gt0005|R to S interval >100 ms in one precordial lead: 0|local::at0008|No|
+      gt0006|Atrioventricular dissociation: 0|local::at0011|No|
+      gt0007|Morphology criteria for VT present in both precordial leads V1-2 and V6: 0|local::at0014|No|
+  expected_output:
+    1:
+      gt0014|Diagnosis.: local::at0004|SVT|
+      gt0015|Recommendations.: local::at0007|Refer to ACLS protocol for treatment options (see Next Steps)|
