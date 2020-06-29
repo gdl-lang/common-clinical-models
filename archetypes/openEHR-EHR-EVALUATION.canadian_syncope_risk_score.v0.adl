@@ -25,7 +25,7 @@ Predicts 30-day serious adverse events in patients presenting with syncope.">
 	other_contributors = <>
 	other_details = <
 		["references"] = <"1. Thiruganasambandamoorthy V, Kwong K, Wells GA, et al. Development of the Canadian Syncope Risk Score to predict serious adverse events after emergency department assessment of syncope. CMAJ. 2016;188(12):E289-98.">
-		["MD5-CAM-1.0.1"] = <"1E679ADD98DFD468853CBB3B1C2FE150">
+		["MD5-CAM-1.0.1"] = <"60567213B12706FFC6FEC833EA8EF763">
 	>
 
 definition
@@ -82,16 +82,17 @@ definition
 							2|[local::at0026]  	-- Cardiac Syncope
 						}
 					}
-					ELEMENT[at0028] occurrences matches {0..1} matches {	-- Risk Score
+					ELEMENT[at0036] occurrences matches {0..1} matches {	-- Risk Score
 						value matches {
-							DV_COUNT matches {
-								magnitude matches {|-3..11|}
-							}
-						}
-					}
-					ELEMENT[at0029] occurrences matches {0..1} matches {	-- Risk Score comment
-						value matches {
-							DV_TEXT matches {*}
+							C_DV_QUANTITY <
+								property = <[openehr::380]>
+								list = <
+									["1"] = <
+										units = <"1">
+										magnitude = <|-3.0..11.0|>
+									>
+								>
+							>
 						}
 					}
 					ELEMENT[at0030] occurrences matches {0..1} matches {	-- Risk Score assessment
@@ -106,6 +107,11 @@ definition
 									at0035]	-- Very high risk
 								}
 							}
+						}
+					}
+					ELEMENT[at0029] occurrences matches {0..1} matches {	-- Risk Score comment
+						value matches {
+							DV_TEXT matches {*}
 						}
 					}
 				}
@@ -225,10 +231,6 @@ ontology
 					text = <"Neither">
 					description = <"*">
 				>
-				["at0028"] = <
-					text = <"Risk Score">
-					description = <"*">
-				>
 				["at0029"] = <
 					text = <"Risk Score comment">
 					description = <"*">
@@ -256,6 +258,10 @@ ontology
 				["at0035"] = <
 					text = <"Very high risk">
 					description = <"6 ≤ Risk Score ≤ 11">
+				>
+				["at0036"] = <
+					text = <"Risk Score">
+					description = <"*">
 				>
 			>
 		>
