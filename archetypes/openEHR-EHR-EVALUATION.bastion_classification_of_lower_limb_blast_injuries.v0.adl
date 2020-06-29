@@ -1,0 +1,208 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.bastion_classification_of_lower_limb_blast_injuries.v0
+
+concept
+	[at0000]	-- Bastion classification of lower limb blast injuries
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Henrik Honkanen">
+		["email"] = <"henrik.honkanen@stud.ki.se">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2020-06-29">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Stratifies blast injuries of lower limbs to guide treatment.">
+			use = <"Intended use is for patients with lower extremity injuries after explosions resulting in complex blast wounds. The constellation of injuries may include blunt or crush injuries, traumatic amputations, and compartment syndrome, as well as associated neurologic, thoracic, gastrointestinal, and genitourinary injuries. The primary aim of the proposed classification is to provide a pragmatic, comprehensive, and clinically relevant system to better facilitate the transfer of information.
+
+Recommendation:
+1: Initial debridement and/or amputation: Debridement ± plaster of paris (PoP) splintage. Method of vascular control: None required
+1S: Initial debridement and/or amputation: PoP splintage ± debridement. Method of vascular control: At most, tourniquet application
+2: Initial debridement and/or amputation: Most likely low or high transtibial amputation. Method of vascular control: Tourniquet at any level; 1 had intraperitoneal iliac vessel control
+2S: Initial debridement and/or amputation: Combination of debridement, PoP splintage, and external-fixation. Method of vascular control: At most, tourniquet application
+3: Initial debridement and/or amputation: Most likely through-knee or low transfemoral amputation. Method of vascular control: Tourniquet; may require intra- or less commonly extra-peritoneal vessel control
+3S: Initial debridement and/or amputation: Majority required debridement only; also included PoP splintage, external-fixation, or low transfemoral amputation. Method of vascular control: Tourniquet at any level; may require extra- or intra-peritoneal iliac vessel control
+4: Initial debridement and/or amputation: Most likely high transfemoral amputation. Method of vascular control: Intra-peritoneal iliac vessel control; less likely extra-peritoneal control
+4S: Initial debridement and/or amputation: Majority required debridement only; also included high transtibial or transfemoral amputation. Method of vascular control: Tourniquet, femoral vessel or intra-peritoneal iliac vessel control
+5: Initial debridement and/or amputation: Most likely high transfemoral amputation. Method of vascular control: Intra-peritoneal iliac vessel control; less likely extra-peritoneal control or tourniquet
+5S: Initial debridement and/or amputation: Debridement only. Method of vascular control: Extra-peritoneal vessel control">
+			keywords = <"lower limb", "blast injury", "Bastion classification">
+			misuse = <"">
+			copyright = <"Cambio CDS">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"1. Jacobs N, Rourke K, Rutherford J, Hicks A, Smith SR, Templeton P, Adams SA, Jansen JO. Lower limb injuries caused by improvised explosive devices: proposed ‘Bastion classification’and prospective validation. Injury. 2014 Sep 1;45(9):1422-8.">
+		["current_contact"] = <"Henrik Honkanen, Cambio CDS<henrik.honkanen@stud.ki.se>">
+		["MD5-CAM-1.0.1"] = <"B6048A02BCC00ED6C33E677EB7E18E19">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Bastion classification of lower limb blast injuries
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Bastion class
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0005, 	-- 1 - Injury confined to foot
+									at0006, 	-- 2 - Injury involving lower leg permitting effective below-knee tourniquet application
+									at0007, 	-- 3 - Injury involving proximal lower leg or thigh, permitting effective above-knee tourniquet application
+									at0008, 	-- 4 - Proximal thigh injury, preventing effective tourniquet application
+									at0009]	-- 5 - Any injury with buttock involvement
+								}
+							}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Suffix
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0010, 	-- Suffix S - Associated segmental injury (presence of potentially viable tissue distal to the most proximal injury)
+									at0011, 	-- Suffix A - Associated intraperitoneal abdominal injury
+									at0012, 	-- Suffix B - Associated genitalia and perineal injury
+									at0013, 	-- Suffix C - Associated pelvic ring injury
+									at0014]	-- Suffix D - Associated upper limb injury
+								}
+							}
+						}
+					}
+					ELEMENT[at0004] occurrences matches {0..1} matches {	-- Recommendation
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0015, 	-- Initial debridement and/or amputation: Debridement ± plaster of paris (PoP) splintage. Method of vascular control: None required
+									at0017, 	-- Initial debridement and/or amputation: PoP splintage ± debridement. Method of vascular control: At most, tourniquet application
+									at0018, 	-- Initial debridement and/or amputation: Most likely low or high transtibial amputation. Method of vascular control: Tourniquet at any level; 1 had intraperitoneal iliac vessel control
+									at0019, 	-- Initial debridement and/or amputation: Combination of debridement, PoP splintage, and external-fixation. Method of vascular control: At most, tourniquet application
+									at0020, 	-- Initial debridement and/or amputation: Most likely through-knee or low transfemoral amputation. Method of vascular control: Tourniquet; may require intra- or less commonly extra-peritoneal vessel control
+									at0021, 	-- Initial debridement and/or amputation: Majority required debridement only; also included PoP splintage, external-fixation, or low transfemoral amputation. Method of vascular control: Tourniquet at any level; may require extra- or intra-peritoneal iliac vessel control
+									at0022, 	-- Initial debridement and/or amputation: Most likely high transfemoral amputation. Method of vascular control: Intra-peritoneal iliac vessel control; less likely extra-peritoneal control
+									at0023, 	-- Initial debridement and/or amputation: Majority required debridement only; also included high transtibial or transfemoral amputation. Method of vascular control: Tourniquet, femoral vessel or intra-peritoneal iliac vessel control
+									at0024, 	-- Initial debridement and/or amputation: Most likely high transfemoral amputation. Method of vascular control: Intra-peritoneal iliac vessel control; less likely extra-peritoneal control or tourniquet
+									at0025]	-- Initial debridement and/or amputation: Debridement only. Method of vascular control: Extra-peritoneal vessel control
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Bastion classification of lower limb blast injuries">
+					description = <"Stratifies blast injuries of lower limbs to guide treatment.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Bastion class">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Suffix">
+					description = <"*Because not all injuries involve complete traumatic amputation of a limb, this classification is supplemented by the suffix “S” to denote a segmental injury, defined as the presence of potentially viable tissue distal to the most proximal injury.">
+				>
+				["at0004"] = <
+					text = <"Recommendation">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"1 - Injury confined to foot">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"2 - Injury involving lower leg permitting effective below-knee tourniquet application">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"3 - Injury involving proximal lower leg or thigh, permitting effective above-knee tourniquet application">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"4 - Proximal thigh injury, preventing effective tourniquet application">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"5 - Any injury with buttock involvement">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Suffix S - Associated segmental injury (presence of potentially viable tissue distal to the most proximal injury)">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Suffix A - Associated intraperitoneal abdominal injury">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Suffix B - Associated genitalia and perineal injury">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Suffix C - Associated pelvic ring injury">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Suffix D - Associated upper limb injury">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Initial debridement and/or amputation: Debridement ± plaster of paris (PoP) splintage. Method of vascular control: None required">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Initial debridement and/or amputation: PoP splintage ± debridement. Method of vascular control: At most, tourniquet application">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Initial debridement and/or amputation: Most likely low or high transtibial amputation. Method of vascular control: Tourniquet at any level; 1 had intraperitoneal iliac vessel control">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Initial debridement and/or amputation: Combination of debridement, PoP splintage, and external-fixation. Method of vascular control: At most, tourniquet application">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Initial debridement and/or amputation: Most likely through-knee or low transfemoral amputation. Method of vascular control: Tourniquet; may require intra- or less commonly extra-peritoneal vessel control">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Initial debridement and/or amputation: Majority required debridement only; also included PoP splintage, external-fixation, or low transfemoral amputation. Method of vascular control: Tourniquet at any level; may require extra- or intra-peritoneal iliac vessel control">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Initial debridement and/or amputation: Most likely high transfemoral amputation. Method of vascular control: Intra-peritoneal iliac vessel control; less likely extra-peritoneal control">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Initial debridement and/or amputation: Majority required debridement only; also included high transtibial or transfemoral amputation. Method of vascular control: Tourniquet, femoral vessel or intra-peritoneal iliac vessel control">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Initial debridement and/or amputation: Most likely high transfemoral amputation. Method of vascular control: Intra-peritoneal iliac vessel control; less likely extra-peritoneal control or tourniquet">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Initial debridement and/or amputation: Debridement only. Method of vascular control: Extra-peritoneal vessel control">
+					description = <"*">
+				>
+			>
+		>
+	>
