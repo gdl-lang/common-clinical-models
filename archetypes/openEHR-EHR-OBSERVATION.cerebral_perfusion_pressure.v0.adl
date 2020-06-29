@@ -18,9 +18,9 @@ description
 			purpose = <"Calculates blood flow to the brain.">
 			use = <"Use in patients with an intracranial pressure monitoring device. Use in supine patients with elevated intracranial pressure (e.g. from hemorrhage, edema, mass).
 
-The celebral perfusion pressure is calculated with the following formula: 
+The cerebral perfusion pressure is calculated with the following formula: 
 CPP = MAP – ICP
-Where MAP=mean arterial pressure and ICP=intercranial pressure. 
+Where MAP=mean arterial pressure and ICP=intercranial pressure. Low CPP (<60 mmHg), Normal CPP (60–70 mmHg), High CPP (>70 mmHg). 
 
 Requires invasive intracranial pressure (ICP) monitoring. 
 
@@ -37,7 +37,7 @@ The definition of normal ICP changes with posture and age. It also varies slight
 	other_details = <
 		["references"] = <"1. Steiner LA, Andrews PJ. Monitoring the injured brain: ICP and CBF. Br J Anaesth. 2006;97(1):26-38.">
 		["current_contact"] = <"Therese Lindberg, Cambio CDS<therese.lindberg@cambio.se>">
-		["MD5-CAM-1.0.1"] = <"54C4287E62174DB436917A6910B91990">
+		["MD5-CAM-1.0.1"] = <"8BE8622F9B925C05E9D57EB45588DA09">
 	>
 
 definition
@@ -56,9 +56,33 @@ definition
 												list = <
 													["1"] = <
 														units = <"mm[Hg]">
+														magnitude = <|>=0.0|>
 													>
 												>
 											>
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- ICP
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::125]>
+												list = <
+													["1"] = <
+														units = <"mm[Hg]">
+														magnitude = <|>=0.0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Warning
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
 										}
 									}
 								}
@@ -93,6 +117,18 @@ ontology
 				["at0004"] = <
 					text = <"CPP">
 					description = <"Cerebral perfusion pressure. ">
+				>
+				["at0005"] = <
+					text = <"ICP">
+					description = <"Intercranial pressure">
+				>
+				["at0006"] = <
+					text = <"Warning">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Comment">
+					description = <"*">
 				>
 			>
 		>
