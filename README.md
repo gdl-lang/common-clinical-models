@@ -10,22 +10,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 320*
+### *Published Apps: 321*
 
 ----------
 
 ### Latest added
 
-1. Australian Type 2 Diabetes Risk (AUSDRISK) Assessment Tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Australian_type_2_diabetes_risk_ausdrisk_assessment_tool/1?language=en))
-2. Braden Score for Pressure Ulcers - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/braden_score_pressure_ulcers/1?language=en))
-3. Basal Energy Expenditure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Basal_energy_expenditure/1?language=en))
-4. CKD Prediction in HIV+ Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CKD_Prediction_in_HIV_positive_Patients/1?language=en))
-5. Bristol Stool Form Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bristol_stool_form_scale/1?language=en))
-6. Aortic Dissection Detection Risk Score (ADD-RS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Aortic_Dissection_Detection_Risk_Score_guideline/1?language=en))
-7. Brugada Criteria for Ventricular Tachycardia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Brugada_Criteria_for_Ventricular_Tachycardia_guideline/1?language=en))
-8. Binet Staging System for Chronic Lymphocytic Leukemia (CLL) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Binet_staging_system_for_chronic_lymphocytic_leukemia_cll/0?language=en))
-9. Age-Adjusted D-dimer for Venous Thromboembolism (VTE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Age_adjusted_d_dimer_for_venous_thromboembolism_vte/0?language=en))
-10. Alberta Stroke Program Early CT Score (ASPECTS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASPECTS/1?language=en))
+1. Barnes Jewish Hospital Stroke Dysphagia Screen - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Barnes_Jewish_Hospital_Stroke_Dysphagia_Screen/1?language=en))
+2. Australian Type 2 Diabetes Risk (AUSDRISK) Assessment Tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Australian_type_2_diabetes_risk_ausdrisk_assessment_tool/1?language=en))
+3. Braden Score for Pressure Ulcers - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/braden_score_pressure_ulcers/1?language=en))
+4. Basal Energy Expenditure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Basal_energy_expenditure/1?language=en))
+5. CKD Prediction in HIV+ Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CKD_Prediction_in_HIV_positive_Patients/1?language=en))
+6. Bristol Stool Form Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bristol_stool_form_scale/1?language=en))
+7. Aortic Dissection Detection Risk Score (ADD-RS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Aortic_Dissection_Detection_Risk_Score_guideline/1?language=en))
+8. Brugada Criteria for Ventricular Tachycardia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Brugada_Criteria_for_Ventricular_Tachycardia_guideline/1?language=en))
+9. Binet Staging System for Chronic Lymphocytic Leukemia (CLL) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Binet_staging_system_for_chronic_lymphocytic_leukemia_cll/0?language=en))
+10. Age-Adjusted D-dimer for Venous Thromboembolism (VTE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Age_adjusted_d_dimer_for_venous_thromboembolism_vte/0?language=en))
 
 ----------
 
@@ -438,6 +438,8 @@ _Select a medical specialty below to view the available apps._
 * ASTRAL Score for Ischemic Stroke - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASTRAL_Score_for_Ischemic_Stroke_guideline/1?language=en))
 
 * Bacterial Meningitis Score for Children - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bacterial_Meningitis_Score_for_Children/1?language=en))
+
+* Barnes Jewish Hospital Stroke Dysphagia Screen - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Barnes_Jewish_Hospital_Stroke_Dysphagia_Screen/1?language=en))
 
 * Barthel Index for Activities of Daily Living (ADL) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/barthel_index_ADL/1?language=en))
 
