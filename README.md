@@ -10,22 +10,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 311*
+### *Published Apps: 313*
 
 ----------
 
 ### Latest added
 
-1. Alberta Stroke Program Early CT Score (ASPECTS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASPECTS/1?language=en))
-2. Absolute Reticulocyte Count & Reticulocyte Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Absolute_Reticulocyte_Count_Index/1?language=en))
-3. HERDOO2 Rule for Discontinuing Anticoagulation in Unprovoked VTE - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HERDOO2_Rule_for_Discontinuing_Anticoagulation_in_Unprovoked_VTE/1?language=en))
-4. Barthel Index for Activities of Daily Living (ADL) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/barthel_index_ADL/1?language=en))
-5. Antivenom Dosing Algorithm - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/antivenom_dosing_algorithm/1?language=en))
-6. American Diabetes Association (ADA) Risk Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/American_diabetes_association_ADA_risk_calculator/1?language=en))
-7. Ankylosing Spondylitis Disease Activity Score with ESR (ASDAS-ESR) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASDAS-ESR/1?language=en))
-8. Atropine Dosing for Cholinesterase Inhibitor Toxicity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Atropine_dosing_cholinesterase_inhibitor_toxicity/0?language=en))
-9. ASAS Criteria for Axial Spondyloarthritis (SpA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASAS_Criteria_for_Axial_Spondyloarthritis_SpA_guideline/1?language=en))
-10. Patient Activity Scale (PAS) for RA - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Patient_Activity_Scale_PAS_for_RA_guideline/1?language=en))
+1. Binet Staging System for Chronic Lymphocytic Leukemia (CLL) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Binet_staging_system_for_chronic_lymphocytic_leukemia_cll/0?language=en))
+2. Age-Adjusted D-dimer for Venous Thromboembolism (VTE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Age_adjusted_d_dimer_for_venous_thromboembolism_vte/0?language=en))
+3. Alberta Stroke Program Early CT Score (ASPECTS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASPECTS/1?language=en))
+4. Absolute Reticulocyte Count & Reticulocyte Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Absolute_Reticulocyte_Count_Index/1?language=en))
+5. HERDOO2 Rule for Discontinuing Anticoagulation in Unprovoked VTE - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HERDOO2_Rule_for_Discontinuing_Anticoagulation_in_Unprovoked_VTE/1?language=en))
+6. Barthel Index for Activities of Daily Living (ADL) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/barthel_index_ADL/1?language=en))
+7. Antivenom Dosing Algorithm - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/antivenom_dosing_algorithm/1?language=en))
+8. American Diabetes Association (ADA) Risk Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/American_diabetes_association_ADA_risk_calculator/1?language=en))
+9. Ankylosing Spondylitis Disease Activity Score with ESR (ASDAS-ESR) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASDAS-ESR/1?language=en))
+10. Atropine Dosing for Cholinesterase Inhibitor Toxicity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Atropine_dosing_cholinesterase_inhibitor_toxicity/0?language=en))
 
 ----------
 
@@ -209,6 +209,8 @@ _Select a medical specialty below to view the available apps._
 ----------
 * ACTION ICU Score for Intensive Care in NSTEMI - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACTION_ICU_score/1?language=en))
 
+* Age-Adjusted D-dimer for Venous Thromboembolism (VTE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Age_adjusted_d_dimer_for_venous_thromboembolism_vte/0?language=en))
+
 * ALT-70 Score for Cellulitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Alt_70_score_for_cellulitis_guideline/1?language=en))
 
 * Alvarado Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Alvarado/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Alvarado/1?language=sv))
@@ -338,6 +340,8 @@ _Select a medical specialty below to view the available apps._
 * Absolute Lymphocyte Count (ALC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Absolute_Lymphocyte_Count/1?language=en))
 
 * Absolute Neutrophil Count (ANC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ANC/1?language=en))
+
+* Binet Staging System for Chronic Lymphocytic Leukemia (CLL) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Binet_staging_system_for_chronic_lymphocytic_leukemia_cll/0?language=en))
 
 * Ganzoni Equation for Iron Deficiency Anemia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ganzoni_equation_for_iron_deficiency_anemia/1?language=en))
 
