@@ -1,0 +1,175 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.cardiac_output_ficks_formula.v0
+
+concept
+	[at0000]	-- Cardiac output ficks formula
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"04369105588D3F8AA78CDD85BC5DCFF1">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Cardiac output ficks formula
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- SvO₂
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::507]>
+												list = <
+													["1"] = <
+														units = <"%">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Age
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0007, 	-- <70 years
+													at0008]	-- ≥70 years
+												}
+											}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- BSA Score
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::335]>
+												list = <
+													["1"] = <
+														units = <"m2">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- VO2
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Cardiac Output
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Cardiac Index
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::118]>
+											>
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Stroke Volume
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Cardiac output ficks formula">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0005"] = <
+					text = <"SvO₂">
+					description = <"measured on mixed venous gas from pulmonary arthery catheter (PAC)">
+				>
+				["at0006"] = <
+					text = <"Age">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"<70 years">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"≥70 years">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"BSA Score">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"VO2">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Cardiac Output">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Cardiac Index">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Stroke Volume">
+					description = <"*">
+				>
+			>
+		>
+	>
