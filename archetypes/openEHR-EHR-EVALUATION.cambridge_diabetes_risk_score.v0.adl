@@ -51,7 +51,7 @@ medication
 	other_details = <
 		["references"] = <"1. Griffin SJ, Little PS, Hales CN, Kinmonth AL, Wareham NJ. Diabetes risk score: towards earlier detection of type 2 diabetes in general practice. Diabetes Metab Res Rev. 2000;16(3):164-71.">
 		["current_contact"] = <"Therese Lindberg, Cambio CDS<therese.lindberg@cambio.se>">
-		["MD5-CAM-1.0.1"] = <"882F117B5D0EE8CAA0800FE51172BB0B">
+		["MD5-CAM-1.0.1"] = <"93140566C92901577151AA14BF8DC68A">
 	>
 
 definition
@@ -71,17 +71,20 @@ definition
 							1|[local::at0038]  	-- Yes
 						}
 					}
-					ELEMENT[at0041] occurrences matches {0..1} matches {	-- Gender constant
-						value matches {
-							C_DV_QUANTITY <
-								property = <[openehr::380]>
-								list = <
-									["1"] = <
-										units = <"1">
-										magnitude = <|>=0.0|>
+					CLUSTER[at0049] occurrences matches {0..1} matches {	-- Gender
+						items cardinality matches {1..*; unordered} matches {
+							ELEMENT[at0041] occurrences matches {0..1} matches {	-- Gender constant
+								value matches {
+									C_DV_QUANTITY <
+										property = <[openehr::380]>
+										list = <
+											["1"] = <
+												units = <"1">
+											>
+										>
 									>
-								>
-							>
+								}
+							}
 						}
 					}
 					CLUSTER[at0044] occurrences matches {0..1} matches {	-- BMI
@@ -106,7 +109,6 @@ definition
 										list = <
 											["1"] = <
 												units = <"1">
-												magnitude = <|>=0.0|>
 											>
 										>
 									>
@@ -135,7 +137,6 @@ definition
 										list = <
 											["1"] = <
 												units = <"1">
-												magnitude = <|>=0.0|>
 											>
 										>
 									>
@@ -164,7 +165,6 @@ definition
 										list = <
 											["1"] = <
 												units = <"1">
-												magnitude = <|>=0.0|>
 											>
 										>
 									>
@@ -179,7 +179,6 @@ definition
 								list = <
 									["1"] = <
 										units = <"%">
-										magnitude = <|0.0..100.0|>
 									>
 								>
 							>
@@ -334,6 +333,10 @@ ontology
 				>
 				["at0047"] = <
 					text = <"Exponential expression">
+					description = <"*">
+				>
+				["at0049"] = <
+					text = <"Gender">
 					description = <"*">
 				>
 			>
