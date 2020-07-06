@@ -62,13 +62,17 @@
             "id": "gt0006",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
           },
-          "gt0011": {
-            "id": "gt0011",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
-          },
           "gt0018": {
             "id": "gt0018",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
+          },
+          "gt0022": {
+            "id": "gt0022",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
           }
         }
       },
@@ -86,97 +90,99 @@
       }
     },
     "rules": {
+      "gt0014": {
+        "id": "gt0014",
+        "priority": 11,
+        "when": [
+          "$gt0004|Mean arterial pressure|>210,mm[Hg]"
+        ],
+        "then": [
+          "$gt0022|MAP Warning|='Too high MAP; please change to proceed.'"
+        ]
+      },
+      "gt0015": {
+        "id": "gt0015",
+        "priority": 10,
+        "when": [
+          "$gt0009|ICP|>50,mm[Hg]"
+        ],
+        "then": [
+          "$gt0011|ICP Warning|='Too high ICP; please change to proceed.'"
+        ]
+      },
+      "gt0013": {
+        "id": "gt0013",
+        "priority": 9,
+        "when": [
+          "$gt0004|Mean arterial pressure|>180,mm[Hg]",
+          "$gt0004|Mean arterial pressure|<=210,mm[Hg]"
+        ],
+        "then": [
+          "$gt0022|MAP Warning|='Very high MAP; double-check.'"
+        ]
+      },
+      "gt0016": {
+        "id": "gt0016",
+        "priority": 8,
+        "when": [
+          "$gt0009|ICP|>20,mm[Hg]",
+          "$gt0009|ICP|<=50,mm[Hg]"
+        ],
+        "then": [
+          "$gt0011|ICP Warning|='Very high ICP; double-check.'"
+        ]
+      },
+      "gt0012": {
+        "id": "gt0012",
+        "priority": 7,
+        "when": [
+          "$gt0004|Mean arterial pressure|<40,mm[Hg]"
+        ],
+        "then": [
+          "$gt0022|MAP Warning|='Very low MAP; double-check.'"
+        ]
+      },
+      "gt0010": {
+        "id": "gt0010",
+        "priority": 6,
+        "when": [
+          "$gt0004|Mean arterial pressure|<0,mm[Hg]"
+        ],
+        "then": [
+          "$gt0022|MAP Warning|='Too low MAP; please change to proceed.'"
+        ]
+      },
+      "gt0017": {
+        "id": "gt0017",
+        "priority": 5,
+        "when": [
+          "$gt0009|ICP|<0,mm[Hg]"
+        ],
+        "then": [
+          "$gt0011|ICP Warning|='Too low ICP; please change to proceed.'"
+        ]
+      },
       "gt0007": {
         "id": "gt0007",
-        "priority": 11,
+        "priority": 4,
         "when": [
           "$gt0004|Mean arterial pressure|!=null",
           "$gt0009|ICP|!=null",
-          "$gt0004|Mean arterial pressure|.magnitude>=0",
-          "$gt0004|Mean arterial pressure|.magnitude<=210",
-          "$gt0009|ICP|.magnitude>=0",
-          "$gt0009|ICP|.magnitude<=50"
+          "!fired($gt0014)",
+          "!fired($gt0015)",
+          "!fired($gt0010)",
+          "!fired($gt0017)"
         ],
         "then": [
           "$gt0006|CPP|.magnitude=$gt0004.magnitude-$gt0009.magnitude",
           "$gt0006|CPP|.unit='mm[Hg]'"
         ]
       },
-      "gt0014": {
-        "id": "gt0014",
-        "priority": 10,
-        "when": [
-          "$gt0004|Mean arterial pressure|.magnitude>210"
-        ],
-        "then": [
-          "$gt0011|Warning|='Too high; please change to proceed.'"
-        ]
-      },
-      "gt0015": {
-        "id": "gt0015",
-        "priority": 9,
-        "when": [
-          "$gt0009|ICP|.magnitude>50"
-        ],
-        "then": [
-          "$gt0011|Warning|='Too high; please change to proceed.'"
-        ]
-      },
-      "gt0013": {
-        "id": "gt0013",
-        "priority": 8,
-        "when": [
-          "$gt0004|Mean arterial pressure|.magnitude>180"
-        ],
-        "then": [
-          "$gt0011|Warning|='Very high; double-check.'"
-        ]
-      },
-      "gt0016": {
-        "id": "gt0016",
-        "priority": 7,
-        "when": [
-          "$gt0009|ICP|.magnitude>20"
-        ],
-        "then": [
-          "$gt0011|Warning|='Very high; double-check.'"
-        ]
-      },
-      "gt0012": {
-        "id": "gt0012",
-        "priority": 6,
-        "when": [
-          "$gt0004|Mean arterial pressure|.magnitude<40"
-        ],
-        "then": [
-          "$gt0011|Warning|='Very low; double-check.'"
-        ]
-      },
-      "gt0010": {
-        "id": "gt0010",
-        "priority": 5,
-        "when": [
-          "$gt0004|Mean arterial pressure|.magnitude<0"
-        ],
-        "then": [
-          "$gt0011|Warning|='Too low; please change to proceed.'"
-        ]
-      },
-      "gt0017": {
-        "id": "gt0017",
-        "priority": 4,
-        "when": [
-          "$gt0009|ICP|.magnitude<0"
-        ],
-        "then": [
-          "$gt0011|Warning|='Too low; please change to proceed.'"
-        ]
-      },
       "gt0020": {
         "id": "gt0020",
         "priority": 3,
         "when": [
-          "$gt0006|CPP|.magnitude>=71"
+          "$gt0006|CPP|.magnitude>70"
         ],
         "then": [
           "$gt0018|Comment|='High CPP. Consider weaning pressors if MAP is adequate.'"
@@ -245,7 +251,7 @@
           },
           "gt0011": {
             "id": "gt0011",
-            "text": "Warning",
+            "text": "ICP Warning",
             "description": "*"
           },
           "gt0012": {
@@ -288,6 +294,11 @@
           "gt0021": {
             "id": "gt0021",
             "text": "Low CPP"
+          },
+          "gt0022": {
+            "id": "gt0022",
+            "text": "MAP Warning",
+            "description": "*"
           }
         }
       }
