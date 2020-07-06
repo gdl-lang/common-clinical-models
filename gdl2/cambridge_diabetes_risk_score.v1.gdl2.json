@@ -91,14 +91,6 @@
             "id": "gt0013",
             "path": "/data[at0001]/items[at0036]"
           },
-          "gt0015": {
-            "id": "gt0015",
-            "path": "/data[at0001]/items[at0041]"
-          },
-          "gt0022": {
-            "id": "gt0022",
-            "path": "/data[at0001]/items[at0039]"
-          },
           "gt0023": {
             "id": "gt0023",
             "path": "/data[at0001]/items[at0044]/items[at0040]"
@@ -114,28 +106,22 @@
           "gt0038": {
             "id": "gt0038",
             "path": "/data[at0001]/items[at0047]"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "path": "/data[at0001]/items[at0041]"
+          },
+          "gt0022": {
+            "id": "gt0022",
+            "path": "/data[at0001]/items[at0039]"
           }
         }
       }
     },
     "rules": {
-      "gt0036": {
-        "id": "gt0036",
-        "priority": 14,
-        "then": [
-          "$gt0038|Exponential expression|.magnitude=6.322-$gt0015.magnitude-(1.222*$gt0007.value)-(2.191*$gt0008.value)-(0.063*$gt0004.magnitude)-$gt0023.magnitude-$gt0030.magnitude-$gt0029.magnitude"
-        ]
-      },
-      "gt0037": {
-        "id": "gt0037",
-        "priority": 13,
-        "then": [
-          "$gt0022|Risk Score|.magnitude=1/(1+e^$gt0038.magnitude)"
-        ]
-      },
       "gt0016": {
         "id": "gt0016",
-        "priority": 12,
+        "priority": 14,
         "when": [
           "$gt0003|Gender|==local::at0005|Male|"
         ],
@@ -145,17 +131,17 @@
       },
       "gt0017": {
         "id": "gt0017",
-        "priority": 11,
+        "priority": 13,
         "when": [
           "$gt0003|Gender|==local::at0006|Female|"
         ],
         "then": [
-          "$gt0015|Gender constant|"
+          "$gt0015|Gender constant|=1,1"
         ]
       },
       "gt0024": {
         "id": "gt0024",
-        "priority": 10,
+        "priority": 12,
         "when": [
           "$gt0014|BMI, kg/m2|==local::at0024|<25|"
         ],
@@ -165,17 +151,17 @@
       },
       "gt0025": {
         "id": "gt0025",
-        "priority": 9,
+        "priority": 11,
         "when": [
           "$gt0014|BMI, kg/m2|==local::at0025| ≥25 and <27.5|"
         ],
         "then": [
-          "$gt0023|BMI constant|=0.699,1"
+          "$gt0023|BMI constant|.magnitude=0.699"
         ]
       },
       "gt0026": {
         "id": "gt0026",
-        "priority": 8,
+        "priority": 10,
         "when": [
           "$gt0014|BMI, kg/m2|==local::at0026|≥27.5 and <30|"
         ],
@@ -185,7 +171,7 @@
       },
       "gt0027": {
         "id": "gt0027",
-        "priority": 7,
+        "priority": 9,
         "when": [
           "$gt0014|BMI, kg/m2|==local::at0027|≥30|"
         ],
@@ -195,7 +181,7 @@
       },
       "gt0028": {
         "id": "gt0028",
-        "priority": 6,
+        "priority": 8,
         "when": [
           "$gt0006|Family history|==local::at0029|No diabetic 1st-degree relative|"
         ],
@@ -205,7 +191,7 @@
       },
       "gt0031": {
         "id": "gt0031",
-        "priority": 5,
+        "priority": 7,
         "when": [
           "$gt0006|Family history|==local::at0030|Parent or sibling with diabetes|"
         ],
@@ -215,7 +201,7 @@
       },
       "gt0032": {
         "id": "gt0032",
-        "priority": 4,
+        "priority": 6,
         "when": [
           "$gt0006|Family history|==local::at0031|Parent and sibling with diabetes|"
         ],
@@ -225,7 +211,7 @@
       },
       "gt0033": {
         "id": "gt0033",
-        "priority": 3,
+        "priority": 5,
         "when": [
           "$gt0009|Smoking history|==local::at0033|Non-smoker|"
         ],
@@ -233,24 +219,43 @@
           "$gt0029|Smoking history constant|=0,1"
         ]
       },
-      "gt0034": {
-        "id": "gt0034",
-        "priority": 2,
-        "when": [
-          "$gt0009|Smoking history|==local::at0034|Ex-smoker|"
-        ],
-        "then": [
-          "$gt0029|Smoking history constant|"
-        ]
-      },
       "gt0035": {
         "id": "gt0035",
-        "priority": 1,
+        "priority": 4,
         "when": [
           "$gt0009|Smoking history|==local::at0035|Current smoker|"
         ],
         "then": [
           "$gt0029|Smoking history constant|=0.855,1"
+        ]
+      },
+      "gt0034": {
+        "id": "gt0034",
+        "priority": 3,
+        "when": [
+          "$gt0009|Smoking history|==local::at0034|Ex-smoker|"
+        ],
+        "then": [
+          "$gt0029|Smoking history constant|=2,1"
+        ]
+      },
+      "gt0036": {
+        "id": "gt0036",
+        "priority": 2,
+        "then": [
+          "$gt0038|Exponential expression|.magnitude=$gt0015.magnitude+($gt0007.value*1.222)+($gt0004.magnitude*0.063)+$gt0023.magnitude+$gt0030.magnitude+$gt0029.magnitude",
+          "$gt0038|Exponential expression|.precision=2"
+        ]
+      },
+      "gt0037": {
+        "id": "gt0037",
+        "priority": 1,
+        "when": [
+          "$gt0038|Exponential expression|!=null"
+        ],
+        "then": [
+          "$gt0022|Risk Score|.magnitude=1/(1+(e^$gt0038.magnitude))",
+          "$gt0022|Risk Score|.precision=2"
         ]
       }
     }
