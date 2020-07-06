@@ -15,7 +15,11 @@ description
 			purpose = <"Syncope is a common, often benign presenting complaint in emergency departments, that sometimes has life-threatening underlying causes. The Canadian Syncope Risk Score identifies patients with syncope who are at higher risk of adverse outcomes.
 Can potentially avoid unnecessary investigation and/or admission. 
 Predicts 30-day serious adverse events in patients presenting with syncope.">
-			use = <"Applicable to patients ≥16 years old presenting ≤24 hours of syncope.">
+			use = <"Applicable to patients ≥16 years old presenting ≤24 hours of syncope.
+
+The risk score is calculated by the following formula: 
+CPP = MAP – ICP
+Where MAP is the mean arterial pressure and ICP is the intracranial pressure.">
 			keywords = <"canadian syncope", "risk", "score", "heart", "BP", "troponin", "QRS", "duration", "ED">
 			misuse = <"Do not use if: prolonged (>5 min) LOC, change in mental status from baseline, obvious witnessed seizure, major trauma, intoxication, language barrier, or head trauma causing LOC.">
 			copyright = <"Cambio CDS">
@@ -25,7 +29,7 @@ Predicts 30-day serious adverse events in patients presenting with syncope.">
 	other_contributors = <>
 	other_details = <
 		["references"] = <"1. Thiruganasambandamoorthy V, Kwong K, Wells GA, et al. Development of the Canadian Syncope Risk Score to predict serious adverse events after emergency department assessment of syncope. CMAJ. 2016;188(12):E289-98.">
-		["MD5-CAM-1.0.1"] = <"60567213B12706FFC6FEC833EA8EF763">
+		["MD5-CAM-1.0.1"] = <"2A3504705CDC264D62DD1FD80618C8DB">
 	>
 
 definition
@@ -33,10 +37,27 @@ definition
 		data matches {
 			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Predisposition to vasovagal symptoms
+					ELEMENT[at0042] occurrences matches {0..1} matches {	-- Predisposition to vasovagal symptoms
 						value matches {
-							-1|[local::at0004], 	-- Yes -1
-							0|[local::at0003]  	-- No +0
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0043, 	-- Yes -1
+									at0044]	-- No +0
+								}
+							}
+						}
+					}
+					ELEMENT[at0045] occurrences matches {0..1} matches {	-- Predisposition to vasovagal symptoms number
+						value matches {
+							C_DV_QUANTITY <
+								property = <[openehr::380]>
+								list = <
+									["1"] = <
+										units = <"1">
+									>
+								>
+							>
 						}
 					}
 					ELEMENT[at0005] occurrences matches {0..1} matches {	-- Heart disease history
@@ -75,11 +96,28 @@ definition
 							2|[local::at0022]  	-- Yes +2
 						}
 					}
-					ELEMENT[at0024] occurrences matches {0..1} matches {	-- ED diagnosis
+					ELEMENT[at0037] occurrences matches {0..1} matches {	-- ED diagnosis
 						value matches {
-							-2|[local::at0025], 	-- Vasovagal syncope -2
-							0|[local::at0027], 	-- Neither
-							2|[local::at0026]  	-- Cardiac Syncope
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0038, 	-- Vasovagal syncope -2
+									at0039, 	-- Neither +0
+									at0040]	-- Cardiac Syncope +2
+								}
+							}
+						}
+					}
+					ELEMENT[at0041] occurrences matches {0..1} matches {	-- ED diagnosis number
+						value matches {
+							C_DV_QUANTITY <
+								property = <[openehr::380]>
+								list = <
+									["1"] = <
+										units = <"1">
+									>
+								>
+							>
 						}
 					}
 					ELEMENT[at0036] occurrences matches {0..1} matches {	-- Risk Score
@@ -130,18 +168,6 @@ ontology
 				["at0001"] = <
 					text = <"Tree">
 					description = <"@ internal @">
-				>
-				["at0002"] = <
-					text = <"Predisposition to vasovagal symptoms">
-					description = <"Triggered by being in a warm crowded place, prolonged standing, fear, emotion, or pain.">
-				>
-				["at0003"] = <
-					text = <"No +0">
-					description = <"*">
-				>
-				["at0004"] = <
-					text = <"Yes -1">
-					description = <"*">
 				>
 				["at0005"] = <
 					text = <"Heart disease history">
@@ -215,22 +241,6 @@ ontology
 					text = <"Yes +2">
 					description = <"*">
 				>
-				["at0024"] = <
-					text = <"ED diagnosis">
-					description = <"Based on ED evaluation.">
-				>
-				["at0025"] = <
-					text = <"Vasovagal syncope -2">
-					description = <"*">
-				>
-				["at0026"] = <
-					text = <"Cardiac Syncope">
-					description = <"*">
-				>
-				["at0027"] = <
-					text = <"Neither">
-					description = <"*">
-				>
 				["at0029"] = <
 					text = <"Risk Score comment">
 					description = <"*">
@@ -261,6 +271,42 @@ ontology
 				>
 				["at0036"] = <
 					text = <"Risk Score">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"ED diagnosis">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"Vasovagal syncope -2">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Neither +0">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"Cardiac Syncope +2">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"ED diagnosis number">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"Predisposition to vasovagal symptoms">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"Yes -1">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"No +0">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"Predisposition to vasovagal symptoms number">
 					description = <"*">
 				>
 			>
