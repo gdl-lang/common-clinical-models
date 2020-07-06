@@ -28,7 +28,7 @@
           "duration",
           "ED"
         ],
-        "use": "Applicable to patients ≥16 years old presenting ≤24 hours of syncope.",
+        "use": "Applicable to patients ≥16 years old presenting ≤24 hours of syncope. The risk score is calculated by the following formula: CPP = MAP – ICP. Where MAP is the mean arterial pressure and ICP is the intracranial pressure.",
         "misuse": "Do not use if: prolonged (>5 min) LOC, change in mental status from baseline, obvious witnessed seizure, major trauma, intoxication, language barrier, or head trauma causing LOC.",
         "copyright": "Cambio CDS"
       }
@@ -49,17 +49,9 @@
             "id": "gt0003",
             "path": "/data[at0001]/items[at0008]"
           },
-          "gt0004": {
-            "id": "gt0004",
-            "path": "/data[at0001]/items[at0024]"
-          },
           "gt0005": {
             "id": "gt0005",
             "path": "/data[at0001]/items[at0020]"
-          },
-          "gt0006": {
-            "id": "gt0006",
-            "path": "/data[at0001]/items[at0002]"
           },
           "gt0007": {
             "id": "gt0007",
@@ -68,6 +60,14 @@
           "gt0008": {
             "id": "gt0008",
             "path": "/data[at0001]/items[at0014]"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/items[at0037]"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/items[at0042]"
           }
         }
       },
@@ -120,18 +120,27 @@
           "gt0019": {
             "id": "gt0019",
             "path": "/data[at0001]/items[at0011]"
+          },
+          "gt0042": {
+            "id": "gt0042",
+            "path": "/data[at0001]/items[at0041]"
+          },
+          "gt0043": {
+            "id": "gt0043",
+            "path": "/data[at0001]/items[at0045]"
           }
         }
       }
     },
     "default_actions": [
       "$gt0018|QRS duration >130 ms|=0|local::at0018|No +0|",
-      "$gt0019|sBP <90 or >180 mmHg|=0|local::at0012|No +0|"
+      "$gt0019|sBP <90 or >180 mmHg|=0|local::at0012|No +0|",
+      "$gt0043|Predisposition to vasovagal symptoms number|=0,1"
     ],
     "rules": {
       "gt0020": {
         "id": "gt0020",
-        "priority": 21,
+        "priority": 25,
         "when": [
           "$gt0010|QRS duration|>130,millisec"
         ],
@@ -141,12 +150,52 @@
       },
       "gt0021": {
         "id": "gt0021",
-        "priority": 20,
+        "priority": 24,
         "when": [
           "($gt0012|Systolic BP|<90,mm[Hg])||($gt0012|Systolic BP|>180,mm[Hg])"
         ],
         "then": [
           "$gt0019|sBP <90 or >180 mmHg|=2|local::at0013|Yes +2|"
+        ]
+      },
+      "gt0044": {
+        "id": "gt0044",
+        "priority": 23,
+        "when": [
+          "$gt0006|Predisposition to vasovagal symptoms|==local::at0043|Yes -1|"
+        ],
+        "then": [
+          "$gt0043|Predisposition to vasovagal symptoms number|=(-1),1"
+        ]
+      },
+      "gt0045": {
+        "id": "gt0045",
+        "priority": 22,
+        "when": [
+          "$gt0004|ED diagnosis|==local::at0038|Vasovagal syncope -2|"
+        ],
+        "then": [
+          "$gt0042|ED diagnosis number|=(-2),1"
+        ]
+      },
+      "gt0046": {
+        "id": "gt0046",
+        "priority": 21,
+        "when": [
+          "$gt0004|ED diagnosis|==local::at0040|Cardiac Syncope +2|"
+        ],
+        "then": [
+          "$gt0042|ED diagnosis number|=2,1"
+        ]
+      },
+      "gt0047": {
+        "id": "gt0047",
+        "priority": 20,
+        "when": [
+          "$gt0004|ED diagnosis|==local::at0039|Neither +0|"
+        ],
+        "then": [
+          "$gt0042|ED diagnosis number|=0,1"
         ]
       },
       "gt0022": {
@@ -161,14 +210,15 @@
           "$gt0008|Abnormal QRS axis|!=null"
         ],
         "then": [
-          "$gt0015|Risk Score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0018.value+$gt0019.value"
+          "$gt0015|Risk Score|.magnitude=$gt0003.value+$gt0042.magnitude+$gt0005.value+$gt0043.magnitude+$gt0007.value+$gt0008.value+$gt0018.value+$gt0019.value",
+          "$gt0015|Risk Score|.unit='1'"
         ]
       },
       "gt0023": {
         "id": "gt0023",
         "priority": 18,
         "when": [
-          "$gt0015|Risk Score|.magnitude==11"
+          "$gt0015|Risk Score|==11,1"
         ],
         "then": [
           "$gt0016|Risk Score assessment|=local::at0035|Very high risk|",
@@ -179,7 +229,7 @@
         "id": "gt0024",
         "priority": 17,
         "when": [
-          "$gt0015|Risk Score|.magnitude==10"
+          "$gt0015|Risk Score|==10,1"
         ],
         "then": [
           "$gt0016|Risk Score assessment|=local::at0035|Very high risk|",
@@ -190,7 +240,7 @@
         "id": "gt0025",
         "priority": 16,
         "when": [
-          "$gt0015|Risk Score|.magnitude==9"
+          "$gt0015|Risk Score|==9,1"
         ],
         "then": [
           "$gt0016|Risk Score assessment|=local::at0035|Very high risk|",
@@ -201,7 +251,7 @@
         "id": "gt0026",
         "priority": 15,
         "when": [
-          "$gt0015|Risk Score|.magnitude==8"
+          "$gt0015|Risk Score|==8,1"
         ],
         "then": [
           "$gt0016|Risk Score assessment|=local::at0035|Very high risk|",
@@ -212,7 +262,7 @@
         "id": "gt0027",
         "priority": 14,
         "when": [
-          "$gt0015|Risk Score|.magnitude==7"
+          "$gt0015|Risk Score|==7,1"
         ],
         "then": [
           "$gt0016|Risk Score assessment|=local::at0035|Very high risk|",
@@ -223,7 +273,7 @@
         "id": "gt0028",
         "priority": 13,
         "when": [
-          "$gt0015|Risk Score|.magnitude==6"
+          "$gt0015|Risk Score|==6,1"
         ],
         "then": [
           "$gt0016|Risk Score assessment|=local::at0035|Very high risk|",
@@ -234,7 +284,7 @@
         "id": "gt0029",
         "priority": 12,
         "when": [
-          "$gt0015|Risk Score|.magnitude==5"
+          "$gt0015|Risk Score|==5,1"
         ],
         "then": [
           "$gt0016|Risk Score assessment|=local::at0034|High risk|",
@@ -245,7 +295,7 @@
         "id": "gt0030",
         "priority": 11,
         "when": [
-          "$gt0015|Risk Score|.magnitude==4"
+          "$gt0015|Risk Score|==4,1"
         ],
         "then": [
           "$gt0016|Risk Score assessment|=local::at0034|High risk|",
@@ -256,7 +306,7 @@
         "id": "gt0031",
         "priority": 10,
         "when": [
-          "$gt0015|Risk Score|.magnitude==3"
+          "$gt0015|Risk Score|==3,1"
         ],
         "then": [
           "$gt0016|Risk Score assessment|=local::at0033|Medium risk|",
@@ -267,7 +317,7 @@
         "id": "gt0032",
         "priority": 9,
         "when": [
-          "$gt0015|Risk Score|.magnitude==2"
+          "$gt0015|Risk Score|==2,1"
         ],
         "then": [
           "$gt0016|Risk Score assessment|=local::at0033|Medium risk|",
@@ -278,7 +328,7 @@
         "id": "gt0033",
         "priority": 8,
         "when": [
-          "$gt0015|Risk Score|.magnitude==1"
+          "$gt0015|Risk Score|==1,1"
         ],
         "then": [
           "$gt0016|Risk Score assessment|=local::at0033|Medium risk|",
@@ -289,44 +339,44 @@
         "id": "gt0034",
         "priority": 7,
         "when": [
-          "$gt0015|Risk Score|.magnitude==0"
+          "$gt0015|Risk Score|==0,1"
         ],
         "then": [
           "$gt0016|Risk Score assessment|=local::at0032|Low risk|",
           "$gt0014|Risk Score comment|='1.9% risk of 30-day serious adverse event (death, arrhythmia, MI — full list in Evidence)'"
         ]
       },
-      "gt0038": {
-        "id": "gt0038",
-        "priority": 3,
+	  "gt0035": {
+        "id": "gt0035",
+        "priority": 6,
         "when": [
-          "$gt0015|Risk Score|.magnitude==(-1)"
+          "$gt0015|Risk Score|==(-1),1"
         ],
         "then": [
           "$gt0016|Risk Score assessment|=local::at0032|Low risk|",
           "$gt0014|Risk Score comment|='1.2% risk of 30-day serious adverse event (death, arrhythmia, MI — full list in Evidence)'"
         ]
       },
-      "gt0039": {
-        "id": "gt0039",
-        "priority": 2,
+	  "gt0036": {
+        "id": "gt0036",
+        "priority": 5,
         "when": [
-          "$gt0015|Risk Score|.magnitude==(-2)"
+          "$gt0015|Risk Score|==(-2),1"
         ],
         "then": [
           "$gt0016|Risk Score assessment|=local::at0031|Very low risk|",
           "$gt0014|Risk Score comment|='0.7% risk of 30-day serious adverse event (death, arrhythmia, MI — full list in Evidence)'"
         ]
       },
-      "gt0041": {
-        "id": "gt0041",
-        "priority": 1,
+	  "gt0037": {
+        "id": "gt0037",
+        "priority": 4,
         "when": [
-          "$gt0015|Risk Score|.magnitude==(-3)"
+          "$gt0015|Risk Score|==(-3),1"
         ],
         "then": [
           "$gt0016|Risk Score assessment|=local::at0031|Very low risk|",
-          "$gt0014|Risk Score comment|='0.4% risk of 30-day serious adverse event (death, arrhythmia, MI — full list in Evidence) '"
+          "$gt0014|Risk Score comment|='0.4% risk of 30-day serious adverse event (death, arrhythmia, MI — full list in Evidence)'"
         ]
       }
     }
@@ -481,6 +531,32 @@
           "gt0041": {
             "id": "gt0041",
             "text": "Risk Score= -3"
+          },
+          "gt0042": {
+            "id": "gt0042",
+            "text": "ED diagnosis number",
+            "description": "*"
+          },
+          "gt0043": {
+            "id": "gt0043",
+            "text": "Predisposition to vasovagal symptoms number",
+            "description": "*"
+          },
+          "gt0044": {
+            "id": "gt0044",
+            "text": "Set Predisposition to vasovagal symptoms to Yes"
+          },
+          "gt0045": {
+            "id": "gt0045",
+            "text": "Set ED diagnosis to Vasovagal syncope"
+          },
+          "gt0046": {
+            "id": "gt0046",
+            "text": "Set ED diagnosis to Cardiac Syncope"
+          },
+          "gt0047": {
+            "id": "gt0047",
+            "text": "Set ED diagnosis to Neither"
           }
         }
       }
