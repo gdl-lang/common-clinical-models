@@ -2,30 +2,48 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.cardiac_output_ficks_formula.v0
 
 concept
-	[at0000]	-- Cardiac output ficks formula
+	[at0000]	--Cardiac output Fick's formula
 language
 	original_language = <[ISO_639-1::en]>
 description
 	original_author = <
-		["name"] = <"">
+		["name"] = <"Maryam Razavi">
+		["email"] = <"maryam.razavi2009@gmail.com">
+		["organisation"] = <"CambioCDS">
+		["date"] = <"2020-07-06">
 	>
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"">
-			use = <"">
-			misuse = <"">
-			copyright = <"">
+			purpose = <"To record information relevant to the Cardiac output Fick’s formula assessment.">
+			use = <"Cardiac output Fick's formula can be used for patients with suspected cardiogenic shock and a pulmonary artery catheter in place and, patients undergoing right or left heart catheterization.
+Fick's formula for determining cardiac output, cardiac index, and stroke volume is: 
+Cardiac Output (CO), L/min=  O2 consumption/ (A-V) O2 content difference
+where: 
+in patients <70 years, VO2   mL/min/m2= 125 mL O2/min * BSA, 
+in patients >=70 years, VO2  mL/min/m2= 110 mL O2/min * BSA
+Body Surface Area (BSA), m2= [(Height, cm x Weight, kg)/ 3,600 ]^0.5
+(A-V) O2 content difference= (SaO2-SvO2)*Hb*13.4
+
+CI (Cardiac Index), L/min/m2 = CO/BSA
+SV (Stroke Volume), mL/beat = CO/HR
+
+SaO2 should be acquired by arterial blood gas measurement. SvO2 should be acquired by mixed venous gas from pulmonary artery catheter. Formula assumes decimal values, not percentages.">
+			keywords = <"Cardiac Output", "Cardiac Index", "Stroke Volume", "BSA">
+			misuse = <"Cardiac output Fick's formula cannot be used in the presence of intracardiac shunts. ">
+			copyright = <"@CambioCDS">
 		>
 	>
-	lifecycle_state = <"0">
+	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"04369105588D3F8AA78CDD85BC5DCFF1">
+		["MD5-CAM-1.0.1"] = <"717BC64D232C35C9BF5F86692AB43CB5">
+		["references"] = <"Ragosta M. Textbook of Clinical Hemodynamics. Elsevier; 2017.
+Lafarge CG, Miettinen OS. The estimation of oxygen consumption. Cardiovasc Res. 1970;4(1):23-30.">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Cardiac output ficks formula
+	OBSERVATION[at0000] matches {	-- Cardiac output fick's formula
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
@@ -71,10 +89,10 @@ definition
 									ELEMENT[at0010] occurrences matches {0..1} matches {	-- VO2
 										value matches {
 											C_DV_QUANTITY <
-												property = <[openehr::380]>
+												property = <[openehr::126]>
 												list = <
 													["1"] = <
-														units = <"1">
+														units = <"ml/min/m2">
 													>
 												>
 											>
@@ -83,10 +101,10 @@ definition
 									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Cardiac Output
 										value matches {
 											C_DV_QUANTITY <
-												property = <[openehr::380]>
+												property = <[openehr::126]>
 												list = <
 													["1"] = <
-														units = <"1">
+														units = <"l/min">
 													>
 												>
 											>
@@ -95,13 +113,36 @@ definition
 									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Cardiac Index
 										value matches {
 											C_DV_QUANTITY <
-												property = <[openehr::118]>
+												property = <[openehr::126]>
+												list = <
+													["1"] = <
+														units = <"l/min/m2">
+													>
+												>
 											>
 										}
 									}
 									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Stroke Volume
 										value matches {
 											C_DV_QUANTITY <
+												property = <[openehr::126]>
+												list = <
+													["1"] = <
+														units = <"ml/beat">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- A-V O2 content difference
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
 											>
 										}
 									}
@@ -119,8 +160,8 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Cardiac output ficks formula">
-					description = <"unknown">
+					text = <"Cardiac output fick's formula">
+					description = <"Cardiac Output (Fick’s Formula) calculates cardiac output, cardiac index, and stroke volume.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -168,6 +209,10 @@ ontology
 				>
 				["at0013"] = <
 					text = <"Stroke Volume">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"A-V O2 content difference">
 					description = <"*">
 				>
 			>
