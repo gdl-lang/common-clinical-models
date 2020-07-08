@@ -79,12 +79,22 @@
       }
     },
     "rules": {
+      "gt0014": {
+        "id": "gt0014",
+        "priority": 3,
+        "when": [
+          "$gt0003|RASS ≥ -3|==local::at0017|No|"
+        ],
+        "then": [
+          "$gt0011|Interpretation|=local::at0032|Patient is too sedated - Complete CAM-ICU at a later time|"
+        ]
+      },
       "gt0013": {
         "id": "gt0013",
         "priority": 2,
         "when": [
           "$gt0003|RASS ≥ -3|==local::at0018|Yes|",
-          "(($gt0004|Patient with fluctuating mental status in past 24 hours by fluctuation of level of consciousness/sedation|==local::at0020|Yes|)&&($gt0005|Patient different than baseline, pre-hospital mental status|==local::at0021|No|))||(($gt0004|Patient with fluctuating mental status in past 24 hours by fluctuation of level of consciousness/sedation|==local::at0019|No|)&&($gt0005|Patient different than baseline, pre-hospital mental status|==local::at0022|Yes|))",
+          "($gt0004|Patient with fluctuating mental status in past 24 hours by fluctuation of level of consciousness/sedation|==local::at0020|Yes|)||($gt0005|Patient different than baseline, pre-hospital mental status|==local::at0022|Yes|)",
           "$gt0006|Letters attention test with >2 errors|==local::at0024|Yes|",
           "($gt0007|RASS is not 0 (alert and calm)|==local::at0026|Yes|)||($gt0008|Combined number of errors to questions and commands >1|==local::at0028|Yes|)"
         ],
@@ -96,7 +106,8 @@
         "id": "gt0012",
         "priority": 1,
         "when": [
-          "($gt0003|RASS ≥ -3|==local::at0017|No|)||((($gt0004|Patient with fluctuating mental status in past 24 hours by fluctuation of level of consciousness/sedation|==local::at0019|No|)&&($gt0005|Patient different than baseline, pre-hospital mental status|==local::at0021|No|))||(($gt0006|Letters attention test with >2 errors|==local::at0023|No|)||(($gt0007|RASS is not 0 (alert and calm)|==local::at0025|No|)&&($gt0008|Combined number of errors to questions and commands >1|==local::at0027|No|))))"
+          "!fired($gt0013)",
+          "!fired($gt0014)"
         ],
         "then": [
           "$gt0011|Interpretation|=local::at0030|CAM-ICU negative - Delirium absent|"
@@ -156,6 +167,14 @@
           "gt0013": {
             "id": "gt0013",
             "text": "Positive result"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "RASS no - Patient too sedated"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "Copy of Negative result"
           }
         }
       }
