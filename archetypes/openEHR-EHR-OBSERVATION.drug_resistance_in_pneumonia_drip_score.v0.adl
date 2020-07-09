@@ -15,7 +15,7 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"Predicts risk for community-acquired pneumonia due to drug-resistant pathogens.">
+			purpose = <"Used to predict risk for community-acquired pneumonia due to drug-resistant pathogens.">
 			use = <"Patients with community acquired pneumonia. Should be utilized only for bacterial causes of pneumonia.
 False negatives can be seen in the following situations: MRSA or P. aeruginosa infection, severe COPD (requiring O₂ and steroids), IV drug use, psychiatric conditions, and homelessness.
 
@@ -32,7 +32,7 @@ Score interpretation:
 	other_details = <
 		["references"] = <"1. Webb BJ, Dascomb K, Stenehjem E, Vikram HR, Agrwal N, Sakata K, Williams K, Bockorny B, Bagavathy K, Mirza S, Metersky M. Derivation and multicenter validation of the drug resistance in pneumonia clinical prediction score. Antimicrobial agents and chemotherapy. 2016 May 1;60(5):2652-63.">
 		["current_contact"] = <"Henrik Honkanen, Cambio CDS<henrik.honkanen@stud.ki.se>">
-		["MD5-CAM-1.0.1"] = <"0C23D01BEBB02DC0996A0FA5AF82BF0D">
+		["MD5-CAM-1.0.1"] = <"988EFCEDACB4A2E9106D220176F69074">
 	>
 
 definition
@@ -112,7 +112,7 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Total DRIP score
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..14|}
@@ -126,6 +126,19 @@ definition
 													[local::
 													at0019, 	-- Low risk. Scores <4 were associated with lower risk of drug-resistant pneumonia. Consider treating without extended-spectrum antibiotics.
 													at0020]	-- High risk. Scores ≥4 were associated with higher risk of drug-resistant pneumonia. Extended-spectrum antibiotics likely necessary.
+												}
+											}
+										}
+									}
+									ELEMENT[at0041] occurrences matches {0..1} matches {	-- Is this a COVID-19 patient?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0042, 	-- Confirmed positive
+													at0043, 	-- Suspected
+													at0044, 	-- Unlikely
+													at0045]	-- Confirmed negative
 												}
 											}
 										}
@@ -208,7 +221,7 @@ ontology
 					description = <"*">
 				>
 				["at0017"] = <
-					text = <"Total score">
+					text = <"Total DRIP score">
 					description = <"*">
 				>
 				["at0018"] = <
@@ -301,6 +314,26 @@ ontology
 				>
 				["at0040"] = <
 					text = <"Yes">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"Is this a COVID-19 patient?">
+					description = <"*For research purposes only; answer does NOT impact results.">
+				>
+				["at0042"] = <
+					text = <"Confirmed positive">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"Suspected">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Unlikely">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"Confirmed negative">
 					description = <"*">
 				>
 			>
