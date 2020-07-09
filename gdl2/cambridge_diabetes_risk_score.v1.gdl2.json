@@ -91,6 +91,10 @@
             "id": "gt0013",
             "path": "/data[at0001]/items[at0036]"
           },
+          "gt0022": {
+            "id": "gt0022",
+            "path": "/data[at0001]/items[at0039]"
+          },
           "gt0023": {
             "id": "gt0023",
             "path": "/data[at0001]/items[at0044]/items[at0040]"
@@ -107,13 +111,25 @@
             "id": "gt0038",
             "path": "/data[at0001]/items[at0047]"
           },
-          "gt0015": {
-            "id": "gt0015",
-            "path": "/data[at0001]/items[at0041]"
+          "gt0042": {
+            "id": "gt0042",
+            "path": "/data[at0001]/items[at0052]"
           },
-          "gt0022": {
-            "id": "gt0022",
-            "path": "/data[at0001]/items[at0039]"
+          "gt0046": {
+            "id": "gt0046",
+            "path": "/data[at0001]/items[at0053]"
+          }
+        }
+      },
+      "gt0047": {
+        "id": "gt0047",
+        "model_id": "openEHR-EHR-OBSERVATION.body_mass_index.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.body_mass_index.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0048": {
+            "id": "gt0048",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
           }
         }
       }
@@ -121,29 +137,29 @@
     "rules": {
       "gt0016": {
         "id": "gt0016",
-        "priority": 14,
+        "priority": 18,
         "when": [
           "$gt0003|Gender|==local::at0005|Male|"
         ],
         "then": [
-          "$gt0015|Gender constant|=0,1"
+          "$gt0046|Gender constant|=0,1"
         ]
       },
       "gt0017": {
         "id": "gt0017",
-        "priority": 13,
+        "priority": 17,
         "when": [
           "$gt0003|Gender|==local::at0006|Female|"
         ],
         "then": [
-          "$gt0015|Gender constant|=1,1"
+          "$gt0046|Gender constant|=(-0.879),1"
         ]
       },
       "gt0024": {
         "id": "gt0024",
-        "priority": 12,
+        "priority": 16,
         "when": [
-          "$gt0014|BMI, kg/m2|==local::at0024|<25|"
+          "$gt0048|Body Mass Index|<25,kg/m2"
         ],
         "then": [
           "$gt0023|BMI constant|=0,1"
@@ -151,19 +167,21 @@
       },
       "gt0025": {
         "id": "gt0025",
-        "priority": 11,
+        "priority": 15,
         "when": [
-          "$gt0014|BMI, kg/m2|==local::at0025| ≥25 and <27.5|"
+          "$gt0048|Body Mass Index|>=25,kg/m2",
+          "$gt0048|Body Mass Index|<27.5,kg/m2"
         ],
         "then": [
-          "$gt0023|BMI constant|.magnitude=0.699"
+          "$gt0023|BMI constant|=0.699,1"
         ]
       },
       "gt0026": {
         "id": "gt0026",
-        "priority": 10,
+        "priority": 14,
         "when": [
-          "$gt0014|BMI, kg/m2|==local::at0026|≥27.5 and <30|"
+          "$gt0048|Body Mass Index|>=27.5,kg/m2",
+          "$gt0048|Body Mass Index|<30,kg/m2"
         ],
         "then": [
           "$gt0023|BMI constant|=1.97,1"
@@ -171,9 +189,9 @@
       },
       "gt0027": {
         "id": "gt0027",
-        "priority": 9,
+        "priority": 13,
         "when": [
-          "$gt0014|BMI, kg/m2|==local::at0027|≥30|"
+          "$gt0048|Body Mass Index|>=30,kg/m2"
         ],
         "then": [
           "$gt0023|BMI constant|=2.518,1"
@@ -181,7 +199,7 @@
       },
       "gt0028": {
         "id": "gt0028",
-        "priority": 8,
+        "priority": 12,
         "when": [
           "$gt0006|Family history|==local::at0029|No diabetic 1st-degree relative|"
         ],
@@ -191,7 +209,7 @@
       },
       "gt0031": {
         "id": "gt0031",
-        "priority": 7,
+        "priority": 11,
         "when": [
           "$gt0006|Family history|==local::at0030|Parent or sibling with diabetes|"
         ],
@@ -201,7 +219,7 @@
       },
       "gt0032": {
         "id": "gt0032",
-        "priority": 6,
+        "priority": 10,
         "when": [
           "$gt0006|Family history|==local::at0031|Parent and sibling with diabetes|"
         ],
@@ -211,7 +229,7 @@
       },
       "gt0033": {
         "id": "gt0033",
-        "priority": 5,
+        "priority": 9,
         "when": [
           "$gt0009|Smoking history|==local::at0033|Non-smoker|"
         ],
@@ -219,9 +237,19 @@
           "$gt0029|Smoking history constant|=0,1"
         ]
       },
+      "gt0034": {
+        "id": "gt0034",
+        "priority": 8,
+        "when": [
+          "$gt0009|Smoking history|==local::at0034|Ex-smoker|"
+        ],
+        "then": [
+          "$gt0029|Smoking history constant|=(-0.218),1"
+        ]
+      },
       "gt0035": {
         "id": "gt0035",
-        "priority": 4,
+        "priority": 7,
         "when": [
           "$gt0009|Smoking history|==local::at0035|Current smoker|"
         ],
@@ -229,22 +257,55 @@
           "$gt0029|Smoking history constant|=0.855,1"
         ]
       },
-      "gt0034": {
-        "id": "gt0034",
-        "priority": 3,
+      "gt0043": {
+        "id": "gt0043",
+        "priority": 6,
         "when": [
-          "$gt0009|Smoking history|==local::at0034|Ex-smoker|"
+          "$gt0004|Age|>120,a"
         ],
         "then": [
-          "$gt0029|Smoking history constant|=2,1"
+          "$gt0042|Warning Age|='Too high; please change to proceed.'"
         ]
       },
-      "gt0036": {
-        "id": "gt0036",
-        "priority": 2,
+      "gt0044": {
+        "id": "gt0044",
+        "priority": 5,
+        "when": [
+          "$gt0004|Age|<=0,a"
+        ],
         "then": [
-          "$gt0038|Exponential expression|.magnitude=$gt0015.magnitude+($gt0007.value*1.222)+($gt0004.magnitude*0.063)+$gt0023.magnitude+$gt0030.magnitude+$gt0029.magnitude",
-          "$gt0038|Exponential expression|.precision=2"
+          "$gt0042|Warning Age|='Too low; please change to proceed.'"
+        ]
+      },
+      "gt0045": {
+        "id": "gt0045",
+        "priority": 3,
+        "when": [
+          "$gt0004|Age|>100,a",
+          "$gt0004|Age|<=120,a"
+        ],
+        "then": [
+          "$gt0042|Warning Age|='Very high; double-check.'"
+        ]
+      },
+      "gt0041": {
+        "id": "gt0041",
+        "priority": 2,
+        "when": [
+          "$gt0004|Age|!=null",
+          "$gt0006|Family history|!=null",
+          "$gt0009|Smoking history|!=null",
+          "$gt0007|Prescribed antihypertensive medication|!=null",
+          "$gt0008|Prescribed steroids |!=null",
+          "$gt0003|Gender|!=null",
+          "$gt0048|Body Mass index|!=null",
+          "!fired($gt0043)",
+          "!fired($gt0044)"
+        ],
+        "then": [
+          "$gt0038|Exponential expression|.magnitude=6.322-$gt0046.magnitude-(1.222*$gt0007.value)-(2.191*$gt0008.value)-(0.063*$gt0004.magnitude)-$gt0023.magnitude-$gt0030.magnitude-$gt0029.magnitude",
+          "$gt0038|Exponential expression|.unit='%'",
+          "$gt0038|Exponential expression|.precision=3"
         ]
       },
       "gt0037": {
@@ -254,8 +315,10 @@
           "$gt0038|Exponential expression|!=null"
         ],
         "then": [
-          "$gt0022|Risk Score|.magnitude=1/(1+(e^$gt0038.magnitude))",
-          "$gt0022|Risk Score|.precision=2"
+          "$gt0022|Probability of T2DM in previously undiagnosed patient|.magnitude=100/(1+(e^$gt0038.magnitude))",
+          "$gt0022|Probability of T2DM in previously undiagnosed patient|.unit='%'",
+          "$gt0022|Probability of T2DM in previously undiagnosed patient|.precision=1",
+          "$gt0013|Comment|='Risk scores >11% are 85% sensitive for identifying diabetes (HgbA1c ≥7.0%)'"
         ]
       }
     }
@@ -310,11 +373,6 @@
             "text": "BMI, kg/m2",
             "description": "*"
           },
-          "gt0015": {
-            "id": "gt0015",
-            "text": "Gender constant",
-            "description": "*"
-          },
           "gt0016": {
             "id": "gt0016",
             "text": "Gender- Male"
@@ -329,7 +387,7 @@
           },
           "gt0022": {
             "id": "gt0022",
-            "text": "Risk Score",
+            "text": "Probability of T2DM in previously undiagnosed patient",
             "description": "*"
           },
           "gt0023": {
@@ -387,18 +445,45 @@
             "id": "gt0035",
             "text": "Smoking history- Current smoker"
           },
-          "gt0036": {
-            "id": "gt0036",
-            "text": "Calculate exponential expression"
-          },
           "gt0037": {
             "id": "gt0037",
-            "text": "Calculate Risk Score"
+            "text": "Calculate Probability of T2DM in previously undiagnosed patient"
           },
           "gt0038": {
             "id": "gt0038",
             "text": "Exponential expression",
             "description": "*"
+          },
+          "gt0041": {
+            "id": "gt0041",
+            "text": "Calculate exponential expression"
+          },
+          "gt0042": {
+            "id": "gt0042",
+            "text": "Warning Age",
+            "description": "*"
+          },
+          "gt0043": {
+            "id": "gt0043",
+            "text": "Warning Age Too high"
+          },
+          "gt0044": {
+            "id": "gt0044",
+            "text": "Warning Age Too low"
+          },
+          "gt0045": {
+            "id": "gt0045",
+            "text": "Warning Age Very high"
+          },
+          "gt0046": {
+            "id": "gt0046",
+            "text": "Gender constant",
+            "description": "*"
+          },
+          "gt0048": {
+            "id": "gt0048",
+            "text": "Body Mass Index",
+            "description": "Index describing ratio of weight to height."
           }
         }
       }
