@@ -51,7 +51,7 @@ medication
 	other_details = <
 		["references"] = <"1. Griffin SJ, Little PS, Hales CN, Kinmonth AL, Wareham NJ. Diabetes risk score: towards earlier detection of type 2 diabetes in general practice. Diabetes Metab Res Rev. 2000;16(3):164-71.">
 		["current_contact"] = <"Therese Lindberg, Cambio CDS<therese.lindberg@cambio.se>">
-		["MD5-CAM-1.0.1"] = <"93140566C92901577151AA14BF8DC68A">
+		["MD5-CAM-1.0.1"] = <"989D606B74B3ABEEA939A764820F06E5">
 	>
 
 definition
@@ -71,49 +71,28 @@ definition
 							1|[local::at0038]  	-- Yes
 						}
 					}
-					CLUSTER[at0049] occurrences matches {0..1} matches {	-- Gender
-						items cardinality matches {1..*; unordered} matches {
-							ELEMENT[at0041] occurrences matches {0..1} matches {	-- Gender constant
-								value matches {
-									C_DV_QUANTITY <
-										property = <[openehr::380]>
-										list = <
-											["1"] = <
-												units = <"1">
-											>
-										>
+					ELEMENT[at0053] occurrences matches {0..1} matches {	-- Gender constant
+						value matches {
+							C_DV_QUANTITY <
+								property = <[openehr::380]>
+								list = <
+									["1"] = <
+										units = <"1">
 									>
-								}
-							}
+								>
+							>
 						}
 					}
-					CLUSTER[at0044] occurrences matches {0..1} matches {	-- BMI
-						items cardinality matches {1..*; unordered} matches {
-							ELEMENT[at0023] occurrences matches {0..1} matches {	-- BMI, kg/m2
-								value matches {
-									DV_CODED_TEXT matches {
-										defining_code matches {
-											[local::
-											at0024, 	-- <25
-											at0025, 	--  ≥25 and <27.5
-											at0026, 	-- ≥27.5 and <30
-											at0027]	-- ≥30
-										}
-									}
-								}
-							}
-							ELEMENT[at0040] occurrences matches {0..1} matches {	-- BMI constant
-								value matches {
-									C_DV_QUANTITY <
-										property = <[openehr::380]>
-										list = <
-											["1"] = <
-												units = <"1">
-											>
-										>
+					ELEMENT[at0040] occurrences matches {0..1} matches {	-- BMI constant
+						value matches {
+							C_DV_QUANTITY <
+								property = <[openehr::380]>
+								list = <
+									["1"] = <
+										units = <"1">
 									>
-								}
-							}
+								>
+							>
 						}
 					}
 					CLUSTER[at0045] occurrences matches {0..1} matches {	-- Smoking history
@@ -137,6 +116,7 @@ definition
 										list = <
 											["1"] = <
 												units = <"1">
+												magnitude = <|>=0.0|>
 											>
 										>
 									>
@@ -172,7 +152,7 @@ definition
 							}
 						}
 					}
-					ELEMENT[at0039] occurrences matches {0..1} matches {	-- Risk Score
+					ELEMENT[at0039] occurrences matches {0..1} matches {	-- Probability of T2DM in previously undiagnosed patient
 						value matches {
 							C_DV_QUANTITY <
 								property = <[openehr::507]>
@@ -197,6 +177,11 @@ definition
 						}
 					}
 					ELEMENT[at0036] occurrences matches {0..1} matches {	-- Comment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0052] occurrences matches {0..1} matches {	-- Warning Age
 						value matches {
 							DV_TEXT matches {*}
 						}
@@ -233,26 +218,6 @@ ontology
 				>
 				["at0008"] = <
 					text = <"Yes">
-					description = <"*">
-				>
-				["at0023"] = <
-					text = <"BMI, kg/m2">
-					description = <"*">
-				>
-				["at0024"] = <
-					text = <"<25">
-					description = <"*">
-				>
-				["at0025"] = <
-					text = <" ≥25 and <27.5">
-					description = <"*">
-				>
-				["at0026"] = <
-					text = <"≥27.5 and <30">
-					description = <"*">
-				>
-				["at0027"] = <
-					text = <"≥30">
 					description = <"*">
 				>
 				["at0028"] = <
@@ -300,15 +265,11 @@ ontology
 					description = <"*">
 				>
 				["at0039"] = <
-					text = <"Risk Score">
+					text = <"Probability of T2DM in previously undiagnosed patient">
 					description = <"*">
 				>
 				["at0040"] = <
 					text = <"BMI constant">
-					description = <"*">
-				>
-				["at0041"] = <
-					text = <"Gender constant">
 					description = <"*">
 				>
 				["at0042"] = <
@@ -317,10 +278,6 @@ ontology
 				>
 				["at0043"] = <
 					text = <"Family history constant">
-					description = <"*">
-				>
-				["at0044"] = <
-					text = <"BMI">
 					description = <"*">
 				>
 				["at0045"] = <
@@ -335,8 +292,12 @@ ontology
 					text = <"Exponential expression">
 					description = <"*">
 				>
-				["at0049"] = <
-					text = <"Gender">
+				["at0052"] = <
+					text = <"Warning Age">
+					description = <"*">
+				>
+				["at0053"] = <
+					text = <"Gender constant">
 					description = <"*">
 				>
 			>
