@@ -1,4 +1,4 @@
-﻿<p style="float: left; width: 30%; margin-right: 1%>
+<p style="float: left; width: 30%; margin-right: 1%>
   <img src="img/cambio-cds.png">
 </p>
 
