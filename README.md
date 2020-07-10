@@ -10,22 +10,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 331*
+### *Published Apps: 332*
 
 ----------
 
 ### Latest added
 
-1. Canadian Syncope Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/canadian_syncope_risk_score/1?language=en))
-2. AIMS65 Score for Upper GI Bleeding Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Aims65_score_for_upper_gi_bleeding_mortality/0?language=en))
-3. Age-Adjusted ESR/CRP for Rheumatoid Arthritis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/age-adjusted_ESR_CRP_for_RA/1?language=en))
-4. Brain Metastasis Velocity (BMV) Model - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BMV_model/1?language=en))
-5. Duke Treadmill Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Duke_Treadmill_Score/1?language=en))
-6. Drug Resistance in Pneumonia (DRIP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Drug_Resistance_in_Pneumonia_DRIP_Score/0?language=en))
-7. Caprini Score for Venous Thromboembolism (2005) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Caprini_Score_for_Venous_Thromboembolism_2005_guideline/1?language=en))
-8. Cardiac Anesthesia Risk Evaluation Score (CARE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cardiac_Anesthesia_Risk_Evaluation_Score_CARE/0?language=en))
-9. Mangled Extremity Severity Score (MESS Score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MESS_Score/1?language=en))
-10. Bush-Francis Catatonia Rating Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bush_francis_catatonia_rating_scale/1?language=en))
+1. Cerebral Perfusion Pressure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cerebral_Perfusion_Pressure/1?language=en))
+2. Canadian Syncope Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/canadian_syncope_risk_score/1?language=en))
+3. AIMS65 Score for Upper GI Bleeding Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Aims65_score_for_upper_gi_bleeding_mortality/0?language=en))
+4. Age-Adjusted ESR/CRP for Rheumatoid Arthritis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/age-adjusted_ESR_CRP_for_RA/1?language=en))
+5. Brain Metastasis Velocity (BMV) Model - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BMV_model/1?language=en))
+6. Duke Treadmill Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Duke_Treadmill_Score/1?language=en))
+7. Drug Resistance in Pneumonia (DRIP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Drug_Resistance_in_Pneumonia_DRIP_Score/0?language=en))
+8. Caprini Score for Venous Thromboembolism (2005) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Caprini_Score_for_Venous_Thromboembolism_2005_guideline/1?language=en))
+9. Cardiac Anesthesia Risk Evaluation Score (CARE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cardiac_Anesthesia_Risk_Evaluation_Score_CARE/0?language=en))
+10. Mangled Extremity Severity Score (MESS Score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MESS_Score/1?language=en))
 
 ----------
 
@@ -452,6 +452,8 @@ _Select a medical specialty below to view the available apps._
 * Barthel Index for Activities of Daily Living (ADL) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/barthel_index_ADL/1?language=en))
 
 * Bush-Francis Catatonia Rating Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bush_francis_catatonia_rating_scale/1?language=en))
+
+* Cerebral Perfusion Pressure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cerebral_Perfusion_Pressure/1?language=en))
 
 * Douleur Neuropathique 4 (DN4) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DN4/1?language=en))
 
