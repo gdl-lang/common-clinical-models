@@ -2,7 +2,7 @@
   <img src="img/cambio-cds.png">
 </p>
 <p align="right">
-   <img src="img/openehr_logo_rgb.svg"> 
+   <img src="img/openehr_logo_rgb.svg" height="118" width="450"> 
 </p>
 
 ### Introduction
