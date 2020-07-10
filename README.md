@@ -1,5 +1,6 @@
 <p>
-  <img src="img/openehr_logo_rgb.svg" height="118" width="450"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <img src="img/cambio-cds.png"> 
+  <img src="img/openehr_logo_rgb.svg" height="106" width="405"> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+  <img src="img/cambio-cds.png"> 
 </p>
 
 ### Introduction
