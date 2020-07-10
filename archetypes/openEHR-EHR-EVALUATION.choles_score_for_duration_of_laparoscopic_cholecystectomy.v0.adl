@@ -1,0 +1,101 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.choles_score_for_duration_of_laparoscopic_cholecystectomy.v0
+
+concept
+	[at0000]	-- CholeS Score for Duration of Laparoscopic Cholecystectomy
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Henrik Honkanen">
+		["email"] = <"henrik.honkanen@stud.ki.se">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2020-07-10">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Used to predict operative time of laparoscopic cholecystectomy.">
+			use = <"Use in patients undergoing elective cholecystectomy. The CholeS score consists of 10 questions, each will reward a different amount of points towards the final score (max 20 points).
+
+CholeS score interpretation:
+-Score: 0-3.5. Low risk group. Likelihood of operative time >90 minutes is 5.1%
+-Score: 4-8. Intermediate risk group. Likelihood of operative time >90 minutes is 5.1-41.8%
+-Score: >8. High risk group. Likelihood of operative time >90 minutes is 41.8%">
+			keywords = <"laparoscopic cholecystectomy", "operative time", "risk group", "gallbladder">
+			misuse = <"Do not use for emergency cases.">
+			copyright = <"Cambio CDS">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"1. Best WR, Becktel JM, Singleton JW, Kern Jr F. Development of a Crohn's disease activity index: National Cooperative Crohn's Disease Study. Gastroenterology. 1976 Mar 1;70(3):439-44.">
+		["current_contact"] = <"Henrik Honkanen, Cambio CDS<henrik.honkanen@stud.ki.se>">
+		["MD5-CAM-1.0.1"] = <"E71854FD716A247389789512DED7EB5E">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- CholeS Score for Duration of Laparoscopic Cholecystectomy
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- CholeS total score
+						value matches {
+							DV_COUNT matches {
+								magnitude matches {|0..20|}
+							}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- CholeS total score interpretation
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0004, 	-- Score 0-3.5. Low risk group. Likelihood of operative time >90 minutes is 5.1%.
+									at0005, 	-- Score 4-8. Intermediate risk group. Likelihood of operative time >90 minutes is 5.1-41.8%
+									at0006]	-- Score >8. High risk group. Likelihood of operative time >90 minutes is 41.8%
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"CholeS Score for Duration of Laparoscopic Cholecystectomy">
+					description = <"Predicts operative time of laparoscopic cholecystectomy.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"CholeS total score">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"CholeS total score interpretation">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Score 0-3.5. Low risk group. Likelihood of operative time >90 minutes is 5.1%.">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Score 4-8. Intermediate risk group. Likelihood of operative time >90 minutes is 5.1-41.8%">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Score >8. High risk group. Likelihood of operative time >90 minutes is 41.8%">
+					description = <"*">
+				>
+			>
+		>
+	>
