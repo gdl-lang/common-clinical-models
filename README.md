@@ -5,7 +5,7 @@
 
 ### Introduction
 
-Welcome to the overview page of the clinical decision support (CDS) apps.
+Welcome to the overview page of the clinical decision support (CDS) apps that are built as openEHR archetypes and guidelines.
 
 We've gathered all of the available applications in one place and organized them by medical specialty. Please note that the apps have been published for **demonstration purposes** only and should **NOT** be used to make medical decisions in their current state.
 
