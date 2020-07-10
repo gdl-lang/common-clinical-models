@@ -10,22 +10,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 326*
+### *Published Apps: 327*
 
 ----------
 
 ### Latest added
 
-1. Drug Resistance in Pneumonia (DRIP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Drug_Resistance_in_Pneumonia_DRIP_Score/0?language=en))
-2. Caprini Score for Venous Thromboembolism (2005) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Caprini_Score_for_Venous_Thromboembolism_2005_guideline/1?language=en))
-3. Cardiac Anesthesia Risk Evaluation Score (CARE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cardiac_Anesthesia_Risk_Evaluation_Score_CARE/0?language=en))
-4. Mangled Extremity Severity Score (MESS Score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MESS_Score/1?language=en))
-5. Bush-Francis Catatonia Rating Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bush_francis_catatonia_rating_scale/1?language=en))
-6. Barnes Jewish Hospital Stroke Dysphagia Screen - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Barnes_Jewish_Hospital_Stroke_Dysphagia_Screen/1?language=en))
-7. Australian Type 2 Diabetes Risk (AUSDRISK) Assessment Tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Australian_type_2_diabetes_risk_ausdrisk_assessment_tool/1?language=en))
-8. Braden Score for Pressure Ulcers - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/braden_score_pressure_ulcers/1?language=en))
-9. Basal Energy Expenditure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Basal_energy_expenditure/1?language=en))
-10. CKD Prediction in HIV+ Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CKD_Prediction_in_HIV_positive_Patients/1?language=en))
+1. Duke Treadmill Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Duke_Treadmill_Score/1?language=en))
+2. Drug Resistance in Pneumonia (DRIP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Drug_Resistance_in_Pneumonia_DRIP_Score/0?language=en))
+3. Caprini Score for Venous Thromboembolism (2005) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Caprini_Score_for_Venous_Thromboembolism_2005_guideline/1?language=en))
+4. Cardiac Anesthesia Risk Evaluation Score (CARE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cardiac_Anesthesia_Risk_Evaluation_Score_CARE/0?language=en))
+5. Mangled Extremity Severity Score (MESS Score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MESS_Score/1?language=en))
+6. Bush-Francis Catatonia Rating Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bush_francis_catatonia_rating_scale/1?language=en))
+7. Barnes Jewish Hospital Stroke Dysphagia Screen - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Barnes_Jewish_Hospital_Stroke_Dysphagia_Screen/1?language=en))
+8. Australian Type 2 Diabetes Risk (AUSDRISK) Assessment Tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Australian_type_2_diabetes_risk_ausdrisk_assessment_tool/1?language=en))
+9. Braden Score for Pressure Ulcers - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/braden_score_pressure_ulcers/1?language=en))
+10. Basal Energy Expenditure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Basal_energy_expenditure/1?language=en))
 
 ----------
 
@@ -136,6 +136,8 @@ _Select a medical specialty below to view the available apps._
 * DASH Prediction Score for Recurrent VTE - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/DASH_for_recurrent_VTE/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/DASH_for_recurrent_VTE/1?language=sv))
 
 * Duke Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Duke_Criteria_for_IE/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Duke_Criteria_for_IE/1?language=sv))
+
+* Duke Treadmill Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Duke_Treadmill_Score/1?language=en))
 
 * Emergency Department Assessment of Chest Pain Score (EDACS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Emergency_department_assessment_of_chest_pain_score/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Emergency_department_assessment_of_chest_pain_score/1?language=sv))
 
