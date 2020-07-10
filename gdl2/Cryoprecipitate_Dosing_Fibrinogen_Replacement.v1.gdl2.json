@@ -43,10 +43,6 @@
         "template_id": "openEHR-EHR-OBSERVATION.cryoprecipitate_dosing_fibrinogen_replacement.v0",
         "type": "INPUT",
         "elements": {
-          "gt0003": {
-            "id": "gt0003",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
-          },
           "gt0004": {
             "id": "gt0004",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
@@ -92,6 +88,18 @@
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
           }
         }
+      },
+      "gt0018": {
+        "id": "gt0018",
+        "model_id": "openEHR-EHR-OBSERVATION.lab_test_fibrinogen.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.lab_test_fibrinogen.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0019": {
+            "id": "gt0019",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          }
+        }
       }
     },
     "default_actions": [
@@ -135,13 +143,13 @@
         "when": [
           "!fired($gt0014)",
           "!fired($gt0015)",
-          "$gt0003|Initial fibrinogen|!=null",
+          "$gt0019|Initial fibrinogen|!=null",
           "$gt0004|Plasma volume|!=null",
           "$gt0005|Goal fibrinogen|!=null",
           "$gt0006|Fibrinogen content of unit|!=null"
         ],
         "then": [
-          "$gt0011|Cryoprecipitate dose|.magnitude=(($gt0005.magnitude-$gt0003.magnitude)*($gt0004.magnitude/100))/$gt0006.magnitude"
+          "$gt0011|Cryoprecipitate dose|.magnitude=(($gt0005.magnitude-$gt0019.magnitude)*($gt0004.magnitude/100))/$gt0006.magnitude"
         ]
       }
     }
@@ -155,11 +163,6 @@
             "id": "gt0001",
             "text": "Cryoprecipitate Dosing for Fibrinogen Replacement",
             "description": "Cryoprecipitate dosing fibrinogen replacement estimates volume of cryoprecipitate recommended for fibrinogen replacement."
-          },
-          "gt0003": {
-            "id": "gt0003",
-            "text": "Initial fibrinogen",
-            "description": "Norm: 150-400."
           },
           "gt0004": {
             "id": "gt0004",
@@ -221,6 +224,21 @@
             "id": "gt0017",
             "text": "Fibrinogen content of unit",
             "description": "Norm: 150-400."
+          },
+          "gt0019": {
+            "id": "gt0019",
+            "text": "Initial fibrinogen",
+            "description": "Result of the laboratory test of fibrinogen. "
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Goal fibrinogen",
+            "description": "Result of the laboratory test of fibrinogen. "
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "Fibrinogen content of unit",
+            "description": "Result of the laboratory test of fibrinogen. "
           }
         }
       }
