@@ -10,22 +10,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 327*
+### *Published Apps: 328*
 
 ----------
 
 ### Latest added
 
-1. Duke Treadmill Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Duke_Treadmill_Score/1?language=en))
-2. Drug Resistance in Pneumonia (DRIP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Drug_Resistance_in_Pneumonia_DRIP_Score/0?language=en))
-3. Caprini Score for Venous Thromboembolism (2005) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Caprini_Score_for_Venous_Thromboembolism_2005_guideline/1?language=en))
-4. Cardiac Anesthesia Risk Evaluation Score (CARE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cardiac_Anesthesia_Risk_Evaluation_Score_CARE/0?language=en))
-5. Mangled Extremity Severity Score (MESS Score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MESS_Score/1?language=en))
-6. Bush-Francis Catatonia Rating Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bush_francis_catatonia_rating_scale/1?language=en))
-7. Barnes Jewish Hospital Stroke Dysphagia Screen - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Barnes_Jewish_Hospital_Stroke_Dysphagia_Screen/1?language=en))
-8. Australian Type 2 Diabetes Risk (AUSDRISK) Assessment Tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Australian_type_2_diabetes_risk_ausdrisk_assessment_tool/1?language=en))
-9. Braden Score for Pressure Ulcers - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/braden_score_pressure_ulcers/1?language=en))
-10. Basal Energy Expenditure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Basal_energy_expenditure/1?language=en))
+1. Brain Metastasis Velocity (BMV) Model - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BMV_model/1?language=en))
+2. Duke Treadmill Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Duke_Treadmill_Score/1?language=en))
+3. Drug Resistance in Pneumonia (DRIP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Drug_Resistance_in_Pneumonia_DRIP_Score/0?language=en))
+4. Caprini Score for Venous Thromboembolism (2005) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Caprini_Score_for_Venous_Thromboembolism_2005_guideline/1?language=en))
+5. Cardiac Anesthesia Risk Evaluation Score (CARE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cardiac_Anesthesia_Risk_Evaluation_Score_CARE/0?language=en))
+6. Mangled Extremity Severity Score (MESS Score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MESS_Score/1?language=en))
+7. Bush-Francis Catatonia Rating Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bush_francis_catatonia_rating_scale/1?language=en))
+8. Barnes Jewish Hospital Stroke Dysphagia Screen - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Barnes_Jewish_Hospital_Stroke_Dysphagia_Screen/1?language=en))
+9. Australian Type 2 Diabetes Risk (AUSDRISK) Assessment Tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Australian_type_2_diabetes_risk_ausdrisk_assessment_tool/1?language=en))
+10. Braden Score for Pressure Ulcers - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/braden_score_pressure_ulcers/1?language=en))
 
 ----------
 
@@ -497,6 +497,8 @@ _Select a medical specialty below to view the available apps._
 * ALBI (Albumin-Bilirubin) Grade for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ALBI_albumin_bilirubin_score/1?language=en))
 
 * Asymptomatic Myeloma Prognosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Asymptomatic_Myeloma_Prognosis/1?language=en))
+
+* Brain Metastasis Velocity (BMV) Model - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BMV_model/1?language=en))
 
 * Dynamic International Prognostic Scoring System for Myelofibrosis (DIPSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Dynamic_International_Prognostic_Scoring_System_for_Myelofibrosis/1?language=en))
 
