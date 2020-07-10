@@ -10,22 +10,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 328*
+### *Published Apps: 329*
 
 ----------
 
 ### Latest added
 
-1. Brain Metastasis Velocity (BMV) Model - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BMV_model/1?language=en))
-2. Duke Treadmill Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Duke_Treadmill_Score/1?language=en))
-3. Drug Resistance in Pneumonia (DRIP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Drug_Resistance_in_Pneumonia_DRIP_Score/0?language=en))
-4. Caprini Score for Venous Thromboembolism (2005) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Caprini_Score_for_Venous_Thromboembolism_2005_guideline/1?language=en))
-5. Cardiac Anesthesia Risk Evaluation Score (CARE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cardiac_Anesthesia_Risk_Evaluation_Score_CARE/0?language=en))
-6. Mangled Extremity Severity Score (MESS Score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MESS_Score/1?language=en))
-7. Bush-Francis Catatonia Rating Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bush_francis_catatonia_rating_scale/1?language=en))
-8. Barnes Jewish Hospital Stroke Dysphagia Screen - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Barnes_Jewish_Hospital_Stroke_Dysphagia_Screen/1?language=en))
-9. Australian Type 2 Diabetes Risk (AUSDRISK) Assessment Tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Australian_type_2_diabetes_risk_ausdrisk_assessment_tool/1?language=en))
-10. Braden Score for Pressure Ulcers - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/braden_score_pressure_ulcers/1?language=en))
+1. Age-Adjusted ESR/CRP for Rheumatoid Arthritis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/age-adjusted_ESR_CRP_for_RA/1?language=en))
+2. Brain Metastasis Velocity (BMV) Model - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BMV_model/1?language=en))
+3. Duke Treadmill Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Duke_Treadmill_Score/1?language=en))
+4. Drug Resistance in Pneumonia (DRIP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Drug_Resistance_in_Pneumonia_DRIP_Score/0?language=en))
+5. Caprini Score for Venous Thromboembolism (2005) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Caprini_Score_for_Venous_Thromboembolism_2005_guideline/1?language=en))
+6. Cardiac Anesthesia Risk Evaluation Score (CARE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cardiac_Anesthesia_Risk_Evaluation_Score_CARE/0?language=en))
+7. Mangled Extremity Severity Score (MESS Score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MESS_Score/1?language=en))
+8. Bush-Francis Catatonia Rating Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bush_francis_catatonia_rating_scale/1?language=en))
+9. Barnes Jewish Hospital Stroke Dysphagia Screen - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Barnes_Jewish_Hospital_Stroke_Dysphagia_Screen/1?language=en))
+10. Australian Type 2 Diabetes Risk (AUSDRISK) Assessment Tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Australian_type_2_diabetes_risk_ausdrisk_assessment_tool/1?language=en))
 
 ----------
 
@@ -784,6 +784,8 @@ _Select a medical specialty below to view the available apps._
 * ACR EULAR Rheumatoid Arthritis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_EULAR_RA/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_EULAR_RA/1?language=sv))
 
 * Acute Gout Diagnosis Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Acute_gout_diagnosis_rule/1?language=en))
+
+* Age-Adjusted ESR/CRP for Rheumatoid Arthritis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/age-adjusted_ESR_CRP_for_RA/1?language=en))
 
 * Clinical Disease Activity Index (CDAI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CDAI/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CDAI/1?language=sv))
 
