@@ -16,7 +16,7 @@
     "details": {
       "en": {
         "id": "en",
-        "purpose": "Used to predict risk for community-acquired pneumonia due to drug-resistant pathogens.",
+        "purpose": "To calculate DRIP Score and predict the risk for community-acquired pneumonia due to drug-resistant pathogens.",
         "keywords": [
           "pneumonia",
           "community acquired pneumonia",
@@ -119,14 +119,14 @@
           "$gt0012|MRSA colonization within 1 year|!=null"
         ],
         "then": [
-          "$gt0014|Total score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0011.value+$gt0012.value"
+          "$gt0014|DRIP score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0011.value+$gt0012.value"
         ]
       },
       "gt0017": {
         "id": "gt0017",
         "priority": 2,
         "when": [
-          "$gt0014|Total score|.magnitude>=4"
+          "$gt0014|DRIP score|.magnitude>=4"
         ],
         "then": [
           "$gt0015|Score interpretation|=local::at0020|High risk. Scores ≥4 were associated with higher risk of drug-resistant pneumonia. Extended-spectrum antibiotics likely necessary.|"
@@ -136,7 +136,7 @@
         "id": "gt0018",
         "priority": 1,
         "when": [
-          "$gt0014|Total score|.magnitude<4"
+          "$gt0014|DRIP score|.magnitude<4"
         ],
         "then": [
           "$gt0015|Score interpretation|=local::at0019|Low risk. Scores <4 were associated with lower risk of drug-resistant pneumonia. Consider treating without extended-spectrum antibiotics.|"
@@ -206,7 +206,7 @@
           },
           "gt0014": {
             "id": "gt0014",
-            "text": "Total score",
+            "text": "DRIP score",
             "description": "*"
           },
           "gt0015": {
