@@ -1,7 +1,9 @@
-﻿<p align="left">
+﻿<p style="float: left; width: 30%; margin-right: 1%>
   <img src="img/cambio-cds.png">
 </p>
-<p align="right">
+
+
+<p style="float: right; width: 30%; margin-right: 1%>
    <img src="img/openehr_logo_rgb.svg" height="118" width="450"> 
 </p>
 
