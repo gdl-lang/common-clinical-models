@@ -10,22 +10,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 324*
+### *Published Apps: 325*
 
 ----------
 
 ### Latest added
 
-1. Cardiac Anesthesia Risk Evaluation Score (CARE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cardiac_Anesthesia_Risk_Evaluation_Score_CARE/0?language=en))
-2. Mangled Extremity Severity Score (MESS Score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MESS_Score/1?language=en))
-3. Bush-Francis Catatonia Rating Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bush_francis_catatonia_rating_scale/1?language=en))
-4. Barnes Jewish Hospital Stroke Dysphagia Screen - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Barnes_Jewish_Hospital_Stroke_Dysphagia_Screen/1?language=en))
-5. Australian Type 2 Diabetes Risk (AUSDRISK) Assessment Tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Australian_type_2_diabetes_risk_ausdrisk_assessment_tool/1?language=en))
-6. Braden Score for Pressure Ulcers - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/braden_score_pressure_ulcers/1?language=en))
-7. Basal Energy Expenditure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Basal_energy_expenditure/1?language=en))
-8. CKD Prediction in HIV+ Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CKD_Prediction_in_HIV_positive_Patients/1?language=en))
-9. Bristol Stool Form Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bristol_stool_form_scale/1?language=en))
-10. Aortic Dissection Detection Risk Score (ADD-RS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Aortic_Dissection_Detection_Risk_Score_guideline/1?language=en))
+1. Caprini Score for Venous Thromboembolism (2005) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Caprini_Score_for_Venous_Thromboembolism_2005_guideline/1?language=en))
+2. Cardiac Anesthesia Risk Evaluation Score (CARE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cardiac_Anesthesia_Risk_Evaluation_Score_CARE/0?language=en))
+3. Mangled Extremity Severity Score (MESS Score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MESS_Score/1?language=en))
+4. Bush-Francis Catatonia Rating Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bush_francis_catatonia_rating_scale/1?language=en))
+5. Barnes Jewish Hospital Stroke Dysphagia Screen - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Barnes_Jewish_Hospital_Stroke_Dysphagia_Screen/1?language=en))
+6. Australian Type 2 Diabetes Risk (AUSDRISK) Assessment Tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Australian_type_2_diabetes_risk_ausdrisk_assessment_tool/1?language=en))
+7. Braden Score for Pressure Ulcers - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/braden_score_pressure_ulcers/1?language=en))
+8. Basal Energy Expenditure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Basal_energy_expenditure/1?language=en))
+9. CKD Prediction in HIV+ Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CKD_Prediction_in_HIV_positive_Patients/1?language=en))
+10. Bristol Stool Form Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bristol_stool_form_scale/1?language=en))
 
 ----------
 
@@ -122,6 +122,8 @@ _Select a medical specialty below to view the available apps._
 * ATRIA Stroke Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_stroke_risk_score/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_stroke_risk_score/1?language=sv))
 
 * Brugada Criteria for Ventricular Tachycardia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Brugada_Criteria_for_Ventricular_Tachycardia_guideline/1?language=en))
+
+* Caprini Score for Venous Thromboembolism (2005) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Caprini_Score_for_Venous_Thromboembolism_2005_guideline/1?language=en))
 
 * CHADS2 Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHADS2/1?language=en))
 
