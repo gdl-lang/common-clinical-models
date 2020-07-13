@@ -1,0 +1,183 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.corrected_count_increment_cci_for_platelet_transfusion.v0
+
+concept
+	[at0000]	-- Corrected count increment cci for platelet transfusion
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"9285C35CFEF679EEA4327825C7B886BE">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Corrected count increment cci for platelet transfusion
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Pre-transfusion platelet count
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"10^3">
+													>
+													["2"] = <
+														units = <"10^9">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Post-transfusion platelet count
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"10^3">
+													>
+													["2"] = <
+														units = <"10^9">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Time after transfusion
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0007, 	-- 1-hour
+													at0008]	-- 20-hour
+												}
+											}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Platelet unit content
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"10^9">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- CCI 
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Interpretation
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0012, 	-- Successful transfusion
+													at0013]	-- Repeat transfusion. Two CCIs below the cutoff indicate refractoriness
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Corrected count increment cci for platelet transfusion">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Pre-transfusion platelet count">
+					description = <"One apheresis unit is ~3.0 x 10¹¹ plts; one pooled unit is ~0.55 x 10¹¹ plts">
+				>
+				["at0005"] = <
+					text = <"Post-transfusion platelet count">
+					description = <"Collect at either 1 or 20 hours after transfusion">
+				>
+				["at0006"] = <
+					text = <"Time after transfusion">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"1-hour">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"20-hour">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Platelet unit content">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"CCI ">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Interpretation">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Successful transfusion">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Repeat transfusion. Two CCIs below the cutoff indicate refractoriness">
+					description = <"*">
+				>
+			>
+		>
+	>
