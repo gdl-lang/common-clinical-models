@@ -1,0 +1,57 @@
+guidelines:
+  1: Horowitz_Index_for_Lung_Function_P_F_Ratio.v0
+test_cases:
+- id: 1. Index over 300mmHg with kPa
+  input:
+    1:
+      gt0003|PaO2: 29,kPa
+      gt0004|FiO2: 21,%
+      gt0005|Is this a COVID-19 patient?: local::at0007|Confirmed positive|
+  expected_output:
+    1:
+      gt0007|Calculate Horowitz Index (P/F ratio): 1035
+      gt0008|Horowitz index interpretation: local::at0014|Horowitz Index (P/F Ratio) >300mmHg. Not ARDS. Mortality undefined.|
+
+- id: 2. Index over 300mmHg with mmHg
+  input:
+    1:
+      gt0003|PaO2: 200,mm[Hg]
+      gt0004|FiO2: 21,%
+      gt0005|Is this a COVID-19 patient?: local::at0007|Confirmed positive|
+  expected_output:
+    1:
+      gt0007|Calculate Horowitz Index (P/F ratio): 952
+      gt0008|Horowitz index interpretation: local::at0014|Horowitz Index (P/F Ratio) >300mmHg. Not ARDS. Mortality undefined.|
+
+- id: 3. Mild ARDS
+  input:
+    1:
+      gt0003|PaO2: 50,mm[Hg]
+      gt0004|FiO2: 21,%
+      gt0005|Is this a COVID-19 patient?: local::at0007|Confirmed positive|
+  expected_output:
+    1:
+      gt0007|Calculate Horowitz Index (P/F ratio): 238
+      gt0008|Horowitz index interpretation: local::at0015|Horowitz Index (P/F Ratio) >200-300mmHg. Mild ARDS. Mortality 27%.|
+
+- id: 4. Moderate ARDS
+  input:
+    1:
+      gt0003|PaO2: 40,mm[Hg]
+      gt0004|FiO2: 21,%
+      gt0005|Is this a COVID-19 patient?: local::at0007|Confirmed positive|
+  expected_output:
+    1:
+      gt0007|Calculate Horowitz Index (P/F ratio): 190
+      gt0008|Horowitz index interpretation: local::at0016|Horowitz Index (P/F Ratio) >100-200mmHg. Moderate ARDS. Mortality 32%.|
+
+- id: 5. Severe ARDS
+  input:
+    1:
+      gt0003|PaO2: 20,mm[Hg]
+      gt0004|FiO2: 21,%
+      gt0005|Is this a COVID-19 patient?: local::at0007|Confirmed positive|
+  expected_output:
+    1:
+      gt0007|Calculate Horowitz Index (P/F ratio): 95
+      gt0008|Horowitz index interpretation: local::at0017|Horowitz Index (P/F Ratio) ≤100mmHg. Severe ARDS. Mortality 45%.|
