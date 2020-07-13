@@ -78,10 +78,13 @@
         }
       }
     },
+    "default_actions": [
+      "$gt0011|Interpretation|=local::at0030|CAM-ICU negative - Delirium absent|"
+    ],
     "rules": {
       "gt0014": {
         "id": "gt0014",
-        "priority": 3,
+        "priority": 2,
         "when": [
           "$gt0003|RASS ≥ -3|==local::at0017|No|"
         ],
@@ -91,7 +94,7 @@
       },
       "gt0013": {
         "id": "gt0013",
-        "priority": 2,
+        "priority": 1,
         "when": [
           "$gt0003|RASS ≥ -3|==local::at0018|Yes|",
           "($gt0004|Patient with fluctuating mental status in past 24 hours by fluctuation of level of consciousness/sedation|==local::at0020|Yes|)||($gt0005|Patient different than baseline, pre-hospital mental status|==local::at0022|Yes|)",
@@ -100,17 +103,6 @@
         ],
         "then": [
           "$gt0011|Interpretation|=local::at0031|CAM-ICU positive - Delirium present|"
-        ]
-      },
-      "gt0012": {
-        "id": "gt0012",
-        "priority": 1,
-        "when": [
-          "!fired($gt0013)",
-          "!fired($gt0014)"
-        ],
-        "then": [
-          "$gt0011|Interpretation|=local::at0030|CAM-ICU negative - Delirium absent|"
         ]
       }
     }
@@ -170,7 +162,7 @@
           },
           "gt0014": {
             "id": "gt0014",
-            "text": "RASS no - Patient too sedated"
+            "text": "RASS >= -3 = No or RASS < -3"
           },
           "gt0015": {
             "id": "gt0015",
