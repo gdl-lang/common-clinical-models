@@ -7,89 +7,110 @@
   },
   "description": {
     "original_author": {
-      "date": "2020-07-10"
+      "date": "2020-07-13",
+      "name": "Maryam Razavi",
+      "organisation": "Cambio CDS",
+      "email": "maryam.razavi2009@gmail.com"
     },
-    "lifecycle_state": "Not set",
+    "lifecycle_state": "Author draft",
     "details": {
       "en": {
-        "id": "en"
+        "id": "en",
+        "purpose": "DigiFab (Digibind) dosing for Digoxin poisoning doses DigiFab in patients with confirmed digoxin poisoning or overdose.",
+        "keywords": [
+          "Digibind",
+          "DigiFab",
+          "Digoxin toxicity",
+          "Digoxin "
+        ],
+        "use": "Use in patients with acute, acute on chronic, or chronic digoxin toxicity and poisoning with cardioactive steroid.  ",
+        "misuse": "Do not use to assist drug calculation. ",
+        "copyright": "@Cambio CDS"
       }
     },
-    "other_details": {}
+    "other_details": {
+      "references": "Lapostolle F, Borron SW, Verdier C, Taboulet P, Guerrier G, Adnet F, Clemessy JL, Bismuth C, Baud FJ. Digoxin-specific Fab fragments as single first-line therapy in digitalis poisoning. Crit Care Med. 2008 Nov;36(11):3014-8. doi: 10.1097/CCM.0b013e31818b341c.\n\nAntman EM, Wenger TL, Butler VP Jr, Haber E, Smith TW. Treatment of 150 cases of Life-Threatening Digitalis Intoxication With Digoxin-Specific Fab Antibody Fragments: Final Report of a Multicenter Study. Circulation. 1990;81:1744-52.\n\nBismuth C, Gaultier M, Conso F, Efthymiou ML. Hyperkalemia in Acute Digitalis Poisoning: Prognostic Significance and Therapeutic Implications. Clin Toxicol. 1973;6(2):153-62.\n\nDigibind® Injection Information, Manufacturer's Guidelines\n\nHack JB. Cardioactive Steroids. In: Hoffman R, Howland MA, Lewin N et al. Goldfrank's Toxicologic Emergencies, Tenth Edition. McGraw-Hill Education / Medical; 2014.\n\nHowland MA. Digoxin-Specific Antibody Fragments. In: Hoffman R, Howland MA, Lewin N et al. Goldfrank's Toxicologic Emergencies, Tenth Edition. McGraw-Hill Education / Medical; 2014.\n"
+    }
   },
   "definition": {
     "data_bindings": {
-      "gt0002": {
-        "id": "gt0002",
+      "gt0003": {
+        "id": "gt0003",
         "model_id": "openEHR-EHR-OBSERVATION.digifab_digibind_dosing_for_digoxin_poisoning.v0",
         "template_id": "openEHR-EHR-OBSERVATION.digifab_digibind_dosing_for_digoxin_poisoning.v0",
         "type": "INPUT",
         "elements": {
-          "gt0003": {
-            "id": "gt0003",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
-          },
           "gt0006": {
             "id": "gt0006",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
           },
           "gt0007": {
             "id": "gt0007",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
           }
         }
       },
-      "gt0004": {
-        "id": "gt0004",
+      "gt0009": {
+        "id": "gt0009",
         "model_id": "openEHR-EHR-OBSERVATION.body_weight.v1",
         "template_id": "openEHR-EHR-OBSERVATION.body_weight.v1",
         "type": "INPUT",
         "elements": {
-          "gt0005": {
-            "id": "gt0005",
+          "gt0010": {
+            "id": "gt0010",
             "path": "/data[at0002]/events[at0003]/data[at0001]/items[at0004]"
           }
         }
       },
-      "gt0008": {
-        "id": "gt0008",
+      "gt0011": {
+        "id": "gt0011",
         "model_id": "openEHR-EHR-OBSERVATION.digifab_digibind_dosing_for_digoxin_poisoning.v0",
         "template_id": "openEHR-EHR-OBSERVATION.digifab_digibind_dosing_for_digoxin_poisoning.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0009": {
-            "id": "gt0009",
+          "gt0012": {
+            "id": "gt0012",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
           }
         }
       }
     },
     "rules": {
-      "gt0010": {
-        "id": "gt0010",
+      "gt0013": {
+        "id": "gt0013",
         "priority": 2,
         "when": [
-          "$gt0003|Choose available data|==local::at0005|Serum digoxin level|",
-          "$gt0005|Weight|!=null",
-          "$gt0005|Weight|.unit=='kg'",
-          "$gt0006|Serum digoxin level|!=null",
-          "$gt0006|Serum digoxin level|.unit=='nanomol'"
+          "$gt0006|Choose available data|==local::at0005|Serum digoxin level|",
+          "$gt0010|Weight|!=null",
+          "$gt0010|Weight|.unit=='kg'",
+          "$gt0008|Serum digoxin level|!=null",
+          "$gt0008|Serum digoxin level|.unit=='ng/mL'"
         ],
         "then": [
-          "$gt0009|Vials|.magnitude=round($gt0006.magnitude*$gt0005.magnitude/100)",
-          "$gt0009|Vials|.precision=1"
+          "$gt0012|Number of vials|.magnitude=$gt0008.magnitude*$gt0010.magnitude/100",
+          "$gt0012|Number of vials|.precision=1",
+          "$gt0016|Digifab Dose|='each vial contains 40 mg and number of vials should always be rounded up to the next whole number.'"
         ]
       },
-      "gt0011": {
-        "id": "gt0011",
+      "gt0015": {
+        "id": "gt0015",
         "priority": 1,
         "when": [
-          "$gt0003|Choose available data|==local::at0006|Amount ingested|",
+          "$gt0006|Choose available data|==local::at0006|Amount ingested|",
           "$gt0007|Amount ingested|!=null"
         ],
         "then": [
-          "$gt0009|Vials|.magnitude=round(($gt0007.magnitude/0.5)*0.8)",
-          "$gt0009|Vials|.precision=1"
+          "$gt0012|Number of vials|.magnitude=($gt0007.magnitude/0.5)*0.8",
+          "$gt0012|Number of vials|.precision=1",
+          "$gt0016|Digifab Dose|='each vial contains 40 mg and number of vials should always be rounded up to the next whole number.'"
         ]
       }
     }
@@ -101,21 +122,22 @@
         "terms": {
           "gt0001": {
             "id": "gt0001",
-            "text": "DigiFab (Digibind) Dosing for Digoxin Poisoning"
+            "text": "DigiFab (Digibind) Dosing for Digoxin Poisoning",
+            "description": "Formula to calulate number of vials: \nThe number of vials=  ( serum digoxin level, ng/mL x patient weight, kg ) / 100\nOR\nNumber of vials = ( amount ingested, mg / 0.5 mg/vial ) x 80% bioavailability\n"
           },
-          "gt0003": {
-            "id": "gt0003",
-            "text": "Choose available data",
+          "gt0004": {
+            "id": "gt0004",
+            "text": "Serum digoxin level",
             "description": "*"
           },
           "gt0005": {
             "id": "gt0005",
-            "text": "Weight",
-            "description": "The weight of the individual."
+            "text": "Amount ingested",
+            "description": "*"
           },
           "gt0006": {
             "id": "gt0006",
-            "text": "Serum digoxin level",
+            "text": "Choose available data",
             "description": "*"
           },
           "gt0007": {
@@ -123,18 +145,37 @@
             "text": "Amount ingested",
             "description": "*"
           },
-          "gt0009": {
-            "id": "gt0009",
-            "text": "Vials",
+          "gt0008": {
+            "id": "gt0008",
+            "text": "Serum digoxin level",
             "description": "*"
           },
           "gt0010": {
             "id": "gt0010",
-            "text": "Set Serum digoxin level"
+            "text": "Weight",
+            "description": "The weight of the individual."
           },
-          "gt0011": {
-            "id": "gt0011",
-            "text": "Set Amount ingested"
+          "gt0012": {
+            "id": "gt0012",
+            "text": "Number of vials",
+            "description": "*"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "Set Number of vial for serum dig level"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "Set Number of vial for serum dig level, nmol/L"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "Set Number of vials for amount ingested"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "text": "Digifab Dose",
+            "description": "*"
           }
         }
       }
