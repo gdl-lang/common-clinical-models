@@ -26,7 +26,7 @@ CPIS variables and points:
 (4) Oxygenation, PaO₂/FiO₂ mm Hg: >240 or ARDS=0, ≤240 and no ARDS=2;
 (5) Pulmonary radiography: No infiltrate=0, Diffuse or patchy infiltrate, Localized infiltrate=2;
 (6) Culture of tracheal aspirate specimen: Pathogenic bacteria cultured ≤1 or no growth=0, Pathogenic bacteria cultured >1+=1, Pathogenic bacteria cultured >1+ plus same pathogenic bacteria on gram stain >1+.
-
+Question about COVID-19 is for research purposes only; the answer does NOT impact results.
 Interpretation and interventions: 
 Scores >6: May indicate higher likelihood of VAP and need for BAL or mini-BAL.
 Scores <= 6: If the clinical suspicion for VAP is LOW, do NOT culture sputum. Evaluate for other potential sources of infection. If the clinical suspicion for VAP is HIGH, perform bronchoalveolar lavage (BAL) or mini-BAL.
@@ -47,7 +47,7 @@ Shan J, Chen HL, Zhu JH. Diagnostic accuracy of clinical pulmonary infection sco
 Other references:
 Parks NA, Magnotti LJ, Weinberg JA, et al. Use of the clinical pulmonary infection score to guide therapy for ventilator-associated pneumonia risks antibiotic overexposure in patients with trauma. J Trauma Acute Care Surg. 2012;73(1):52-59. doi:10.1097/TA.0b013e31825ac37b
 Zilberberg MD, Shorr AF. Ventilator-Associated Pneumonia: The Clinical Pulmonary Infection Score as a Surrogate for Diagnostics and Outcome. Clinical Infectious Diseases 2010; 51(S1):S131–S135">
-		["MD5-CAM-1.0.1"] = <"829F368A52EC5EABEA2708A6FEBE3357">
+		["MD5-CAM-1.0.1"] = <"44A567D59A2E22B0BAB5945642577C34">
 	>
 
 definition
@@ -114,6 +114,19 @@ definition
 									ELEMENT[at0033] occurrences matches {0..1} matches {	-- CPIS score
 										value matches {
 											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0035] occurrences matches {0..1} matches {	-- Is this a COVID-19 patient?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0036, 	-- Confirmed positive
+													at0037, 	-- Suspected
+													at0038, 	-- Unlikely
+													at0039]	-- Confirmed negative
+												}
+											}
 										}
 									}
 								}
@@ -251,6 +264,26 @@ ontology
 				>
 				["at0034"] = <
 					text = <"Perform bronchoalveolar lavage (BAL) or mini-BAL.">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Is this a COVID-19 patient?">
+					description = <"For research purposes only; answer does NOT impact results.">
+				>
+				["at0036"] = <
+					text = <"Confirmed positive">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Suspected">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"Unlikely">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Confirmed negative">
 					description = <"*">
 				>
 			>
