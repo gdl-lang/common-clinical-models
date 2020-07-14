@@ -1,0 +1,179 @@
+{
+  "id": "HIV_Needle_Stick_Risk_Assessment_Stratification_Protocol _guideline.v1",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2020-07-14"
+    },
+    "lifecycle_state": "Not set",
+    "details": {
+      "en": {
+        "id": "en"
+      }
+    },
+    "other_details": {}
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0002": {
+        "id": "gt0002",
+        "model_id": "openEHR-EHR-OBSERVATION.hiv_needle_stick_risk_assessment_stratification_protocol_rasp.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.hiv_needle_stick_risk_assessment_stratification_protocol_rasp.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0003": {
+            "id": "gt0003",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0021]"
+          }
+        }
+      },
+      "gt0007": {
+        "id": "gt0007",
+        "model_id": "openEHR-EHR-OBSERVATION.hiv_needle_stick_risk_assessment_stratification_protocol_rasp.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.hiv_needle_stick_risk_assessment_stratification_protocol_rasp.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0008": {
+            "id": "gt0008",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0027]"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0028]"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0029]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0011": {
+        "id": "gt0011",
+        "priority": 4,
+        "when": [
+          "$gt0003|Source population|!=null",
+          "$gt0004|Inoculum type|!=null",
+          "$gt0005|Method of transmission|!=null"
+        ],
+        "then": [
+          "$gt0008|Basic risk|.magnitude=1/($gt0003.value*$gt0004.value*$gt0005.value)",
+          "$gt0008|Basic risk|.precision=9"
+        ]
+      },
+      "gt0012": {
+        "id": "gt0012",
+        "priority": 3,
+        "when": [
+          "$gt0006|Volume of inoculum|!=null",
+          "fired($gt0011)"
+        ],
+        "then": [
+          "$gt0009|Total risk|.magnitude=$gt0008.magnitude*$gt0006.value",
+          "$gt0009|Total risk|.precision=7"
+        ]
+      },
+      "gt0013": {
+        "id": "gt0013",
+        "priority": 2,
+        "when": [
+          "$gt0009|Total risk|.magnitude<0.001"
+        ],
+        "then": [
+          "$gt0010|Suggested treatment|=local::at0030|Definitely indicated|"
+        ]
+      },
+      "gt0014": {
+        "id": "gt0014",
+        "priority": 1,
+        "when": [
+          "$gt0009|Total risk|.magnitude>=0.001",
+          "$gt0009|Total risk|.magnitude<=1.0E-4"
+        ],
+        "then": [
+          "$gt0010|Suggested treatment|=local::at0031|Recommended but optional|"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001"
+          },
+          "gt0003": {
+            "id": "gt0003",
+            "text": "Source population",
+            "description": "*"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "Inoculum type",
+            "description": "*"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "Method of transmission",
+            "description": "*"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Volume of inoculum",
+            "description": "*"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "Basic risk",
+            "description": "*"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "text": "Total risk",
+            "description": "*"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "Suggested treatment",
+            "description": "*"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "Set Basic Risk "
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "text": "Set Total Risk "
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "Set Recomendation for < 1/1000"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "Set Recomendation for >= 1/1000, <=1/10000"
+          }
+        }
+      }
+    }
+  }
+}
