@@ -1,0 +1,48 @@
+guidelines:
+  1: FIGO_Staging_for_Ovarian_Cancer_2014.v0
+test_cases:
+- id: 1. Stage IA
+  input:
+    1:
+      'gt0012|Stage I: Tumor confined to ovaries': local::at0008|IA - Tumor limited to 1 ovary, capsule intact, no tumor on surface, negative washings|
+  expected_output:
+    1:
+      gt0004|Stage Interpretation: local::at0032|Stage - IA|
+
+- id: 2. Stage IC
+  input:
+    1:
+      'gt0012|Stage I: Tumor confined to ovaries': local::at0010|IC - Tumor limited to 1 or both ovaries|
+      gt0013|IC - Tumor limited to 1 or both ovaries: local::at0012|IC1 - Surgical spill|
+  expected_output:
+    1:
+      gt0004|Stage Interpretation: local::at0034|Stage - IC1|
+
+- id: 3. Stage IIA
+  input:
+    1:
+      'gt0014|Stage II: Tumor involves 1 or both ovaries with pelvic extension (below the pelvic brim) or primary peritoneal cancer': local::at0018|IIA - Extension and/or implant on uterus and/or fallopian tubes|
+  expected_output:
+    1:
+      gt0004|Stage Interpretation: local::at0037|Stage - IIA|
+
+- id: 4. Stage IIIA2
+  input:
+    1:
+      ? 'gt0015|Stage III: Tumor involves 1 or both ovaries with cytologically or
+        histologically confirmed spread to the peritoneum outside the pelvis and/or
+        metastasis to the retroperitoneal lymph nodes'
+      : local::at0021|IIIA - Positive retroperitoneal lymph nodes and/or microscopic metastasis beyond the pelvis|
+      gt0016|IIIA Positive retroperitoneal lymph nodes and/or microscopic metastasis beyond the pelvis: local::at0026|IIIA2 - Microscopic, extrapelvic (above the brim) peritoneal involvement ± positive retroperitoneal lymph nodes|
+      gt0017|IIIA1 - Positive retroperitoneal lymph nodes only: local::at0025|IIIA1(ii) - Metastasis >10 mm|
+  expected_output:
+    1:
+      gt0004|Stage Interpretation: local::at0041|Stage - IIIA2|
+
+- id: 5. Stage IVA
+  input:
+    1:
+      'gt0018|Stage IV: Distant metastasis excluding peritoneal metastasis': local::at0029|IVA - Pleural effusion with positive cytology|
+  expected_output:
+    1:
+      gt0004|Stage Interpretation: local::at0044|Stage - IVA|
