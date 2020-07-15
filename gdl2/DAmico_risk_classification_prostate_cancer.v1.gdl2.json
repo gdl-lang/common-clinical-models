@@ -26,7 +26,7 @@
           "gleason score"
         ],
         "use": "Developed in 1998, estimates risk of prostate cancer recurrence (low, medium or high) from PSA level, Gleason Score, and tumor stage. May be less accurate in men with multiple risk factors.\n\nLow risk: \nGleason Score < 6 and\nPSA < 10 ng/ml and\nClinical stage T1c or T2a\n\nIntermediate risk: \nGleason Score of 7 or\nPSA of 10-20 ng/ml\nClinical stage T2b\n\nHigh risk: \nGleason Score > 8 or\nPSA > 20 ng/ml or\nClinical stage T2c or T3",
-        "copyright": "Cambio CDS"
+        "copyright": "@CambioCDS"
       }
     },
     "other_details": {
@@ -162,7 +162,10 @@
         "id": "gt0023",
         "priority": 3,
         "when": [
-          "(($gt0026|Gleason Score|==local::at0017|≥8|)||($gt0020|PSA level|==local::at0012|>20 ng/mL|))||($gt0018|Clinical stage|==local::at0025|≥T2c|)"
+          "(($gt0026|Gleason Score|==local::at0017|≥8|)||($gt0020|PSA level|==local::at0012|>20 ng/mL|))||($gt0018|Clinical stage|==local::at0025|≥T2c|)",
+          "$gt0003|PSA value|!=null",
+          "$gt0026|Gleason Score|!=null",
+          "$gt0008|T stage|!=null"
         ],
         "then": [
           "$gt0012|D'Amico Risk|=local::at0022|High risk|",
@@ -174,7 +177,10 @@
         "priority": 2,
         "when": [
           "(($gt0026|Gleason Score|==local::at0016|7|)||($gt0020|PSA level|==local::at0011|10-20 ng/mL|))||($gt0018|Clinical stage|==local::at0024|T2b|)",
-          "!fired($gt0023)"
+          "!fired($gt0023)",
+          "$gt0003|PSA value|!=null",
+          "$gt0008|T stage|!=null",
+          "$gt0026|Gleason Score|!=null"
         ],
         "then": [
           "$gt0012|D'Amico Risk|=local::at0021|Intermediate risk|",
@@ -189,7 +195,10 @@
           "$gt0020|PSA level|==local::at0010|<10ng/mL|",
           "$gt0018|Clinical stage|==local::at0023|T1-T2a|",
           "!fired($gt0022)",
-          "!fired($gt0023)"
+          "!fired($gt0023)",
+          "$gt0003|PSA value|!=null",
+          "$gt0008|T stage|!=null",
+          "$gt0026|Gleason Score|!=null"
         ],
         "then": [
           "$gt0012|D'Amico Risk|=local::at0020|Low risk|",
@@ -318,7 +327,7 @@
           },
           "gt0033": {
             "id": "gt0033",
-            "text": "Set Clinival stage ≥T2c"
+            "text": "Set Clinical stage ≥T2c"
           }
         }
       }
