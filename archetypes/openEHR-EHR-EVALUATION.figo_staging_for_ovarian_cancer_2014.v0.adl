@@ -17,7 +17,7 @@ description
 			language = <[ISO_639-1::en]>
 			purpose = <"Used to stages cancer of the ovary, fallopian tube, and peritoneum.">
 			use = <"Use postoperatively in patients with histologically-proven ovarian cancer (surgical pathology is needed in order to stage). Stages range from I-IV.">
-			keywords = <"FIGO staging", "ovarian cancer", "fallopian tube", "peritoneum">
+			keywords = <"FIGO staging", "ovarian cancer", "fallopian tube", "peritoneum", "metastasis">
 			misuse = <"">
 			copyright = <"Cambio CDS">
 		>
@@ -27,7 +27,7 @@ description
 	other_details = <
 		["references"] = <"1. Prat J, FIGO Committee on Gynecologic Oncology. Staging classification for cancer of the ovary, fallopian tube, and peritoneum. International Journal of Gynecology & Obstetrics. 2014 Jan;124(1):1-5.">
 		["current_contact"] = <"Henrik Honkanen, Cambio CDS<henrik.honkanen@stud.ki.se>">
-		["MD5-CAM-1.0.1"] = <"1706F1A6CC0C7ED72BC728663EA12DEE">
+		["MD5-CAM-1.0.1"] = <"B7DA69518D78412C4FA8D1179FF417C6">
 	>
 
 definition
@@ -35,106 +35,6 @@ definition
 		data matches {
 			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					CLUSTER[at0006] occurrences matches {0..1} matches {	-- FIGO stage
-						items cardinality matches {1..*; unordered} matches {
-							CLUSTER[at0007] occurrences matches {0..1} matches {	-- Stage I: Tumor confined to ovaries
-								items cardinality matches {1..*; unordered} matches {
-									ELEMENT[at0002] occurrences matches {0..1} matches {	-- Stage I: Tumor confined to ovaries
-										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0008, 	-- IA - Tumor limited to 1 ovary, capsule intact, no tumor on surface, negative washings
-													at0009, 	-- IB - Tumor involves both ovaries otherwise like IA
-													at0010]	-- IC - Tumor limited to 1 or both ovaries
-												}
-											}
-										}
-									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- IC - Tumor limited to 1 or both ovaries
-										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0012, 	-- IC1 - Surgical spill
-													at0013, 	-- IC2 - Capsule rupture before surgery or tumor on ovarian surface
-													at0014]	-- IC3 - Malignant cells in the ascites or peritoneal washings
-												}
-											}
-										}
-									}
-								}
-							}
-							CLUSTER[at0015] occurrences matches {0..1} matches {	-- Stage II: Tumor involves 1 or both ovaries with pelvic extension (below the pelvic brim) or primary peritoneal cancer
-								items cardinality matches {1..*; unordered} matches {
-									ELEMENT[at0003] occurrences matches {0..1} matches {	-- Stage II: Tumor involves 1 or both ovaries with pelvic extension (below the pelvic brim) or primary peritoneal cancer
-										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0018, 	-- IIA - Extension and/or implant on uterus and/or fallopian tubes
-													at0019]	-- IIB - Extension to other pelvic intraperitoneal tissues
-												}
-											}
-										}
-									}
-								}
-							}
-							CLUSTER[at0016] occurrences matches {0..1} matches {	-- Stage III: Tumor involves 1 or both ovaries with cytologically or histologically confirmed spread to the peritoneum outside the pelvis and/or metastasis to the retroperitoneal lymph nodes
-								items cardinality matches {1..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Stage III: Tumor involves 1 or both ovaries with cytologically or histologically confirmed spread to the peritoneum outside the pelvis and/or metastasis to the retroperitoneal lymph nodes
-										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0021, 	-- IIIA - Positive retroperitoneal lymph nodes and/or microscopic metastasis beyond the pelvis
-													at0027, 	-- IIIB - Macroscopic, extrapelvic, peritoneal metastasis ≤2 cm ± positive retroperitoneal lymph nodes; includes extension to capsule of liver/spleen
-													at0028]	-- IIIC - Macroscopic, extrapelvic, peritoneal metastasis >2 cm ± positive retroperitoneal lymph nodes; includes extension to capsule of liver/spleen
-												}
-											}
-										}
-									}
-									ELEMENT[at0020] occurrences matches {0..1} matches {	-- IIIA Positive retroperitoneal lymph nodes and/or microscopic metastasis beyond the pelvis
-										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0022, 	-- IIIA1 - Positive retroperitoneal lymph nodes only
-													at0026]	-- IIIA2 - Microscopic, extrapelvic (above the brim) peritoneal involvement ± positive retroperitoneal lymph nodes
-												}
-											}
-										}
-									}
-									ELEMENT[at0023] occurrences matches {0..1} matches {	-- IIIA1 - Positive retroperitoneal lymph nodes only
-										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0024, 	-- IIIA1(i) - Metastasis ≤10 mm
-													at0025]	-- IIIA1(ii) - Metastasis >10 mm
-												}
-											}
-										}
-									}
-								}
-							}
-							CLUSTER[at0017] occurrences matches {0..1} matches {	-- Stage IV: Distant metastasis excluding peritoneal metastasis
-								items cardinality matches {1..*; unordered} matches {
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Stage IV: Distant metastasis excluding peritoneal metastasis
-										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0029, 	-- IVA - Pleural effusion with positive cytology
-													at0030]	-- IVB - Hepatic and/or splenic parenchymal metastasis, metastasis to extra-abdominal organs (including inguinal lymph nodes and lymph nodes outside of the abdominal cavity)
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
 					ELEMENT[at0031] occurrences matches {0..1} matches {	-- Stage Interpretation
 						value matches {
 							DV_CODED_TEXT matches {
@@ -158,6 +58,99 @@ definition
 							}
 						}
 					}
+					ELEMENT[at0046] occurrences matches {0..1} matches {	-- Tumor location
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0047, 	-- Tumor confined to ovaries
+									at0048, 	-- Tumor involves 1 or both ovaries with pelvic extension (below the pelvic brim) or primary peritoneal cancer
+									at0049, 	-- Tumor involves 1 or both ovaries with cytologically or histologically confirmed spread to the peritoneum outside the pelvis and/or metastasis to the retroperitoneal lymph nodes
+									at0050]	-- Distant metastasis excluding peritoneal metastasis
+								}
+							}
+						}
+					}
+					ELEMENT[at0051] occurrences matches {0..1} matches {	-- Tumor confined to ovaries
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0052, 	-- Tumor limited to 1 ovary, capsule intact, no tumor on surface, negative washings
+									at0053, 	-- Tumor involves both ovaries otherwise like above
+									at0054]	-- Tumor limited to 1 or both ovaries
+								}
+							}
+						}
+					}
+					ELEMENT[at0055] occurrences matches {0..1} matches {	-- Tumor limited to 1 or both ovaries
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0056, 	-- Surgical spill
+									at0057, 	-- Capsule rupture before surgery or tumor on ovarian surface
+									at0058]	-- Malignant cells in the ascites or peritoneal washings
+								}
+							}
+						}
+					}
+					ELEMENT[at0059] occurrences matches {0..1} matches {	-- Tumor involves 1 or both ovaries with pelvic extension (below the pelvic brim) or primary peritoneal cancer
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0060, 	-- Extension and/or implant on uterus and/or fallopian tubes
+									at0061]	-- Extension to other pelvic intraperitoneal tissues
+								}
+							}
+						}
+					}
+					ELEMENT[at0062] occurrences matches {0..1} matches {	-- Tumor involves 1 or both ovaries with cytologically or histologically confirmed spread to the peritoneum outside the pelvis and/or metastasis to the retroperitoneal lymph nodes
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0063, 	-- Positive retroperitoneal lymph nodes and/or microscopic metastasis beyond the pelvis
+									at0064, 	-- Macroscopic, extrapelvic, peritoneal metastasis ≤2 cm ± positive retroperitoneal lymph nodes; includes extension to capsule of liver/spleen
+									at0065]	-- Macroscopic, extrapelvic, peritoneal metastasis >2 cm ± positive retroperitoneal lymph nodes; includes extension to capsule of liver/spleen
+								}
+							}
+						}
+					}
+					ELEMENT[at0066] occurrences matches {0..1} matches {	-- Positive retroperitoneal lymph nodes and/or microscopic metastasis beyond the pelvis
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0067, 	-- Positive retroperitoneal lymph nodes only
+									at0068]	-- Microscopic, extrapelvic (above the brim) peritoneal involvement ± positive retroperitoneal lymph nodes
+								}
+							}
+						}
+					}
+					ELEMENT[at0069] occurrences matches {0..1} matches {	-- Metastasis
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0070, 	-- Metastasis ≤10 mm
+									at0071]	-- Metastasis >10 mm
+								}
+							}
+						}
+					}
+					ELEMENT[at0072] occurrences matches {0..1} matches {	-- Distant metastasis excluding peritoneal metastasis
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0073, 	-- Pleural effusion with positive cytology
+									at0074]	-- Hepatic and/or splenic parenchymal metastasis, metastasis to extra-abdominal organs (including inguinal lymph nodes and lymph nodes outside of the abdominal cavity)
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -174,122 +167,6 @@ ontology
 				["at0001"] = <
 					text = <"Tree">
 					description = <"@ internal @">
-				>
-				["at0002"] = <
-					text = <"Stage I: Tumor confined to ovaries">
-					description = <"*">
-				>
-				["at0003"] = <
-					text = <"Stage II: Tumor involves 1 or both ovaries with pelvic extension (below the pelvic brim) or primary peritoneal cancer">
-					description = <"*">
-				>
-				["at0004"] = <
-					text = <"Stage III: Tumor involves 1 or both ovaries with cytologically or histologically confirmed spread to the peritoneum outside the pelvis and/or metastasis to the retroperitoneal lymph nodes">
-					description = <"*">
-				>
-				["at0005"] = <
-					text = <"Stage IV: Distant metastasis excluding peritoneal metastasis">
-					description = <"*">
-				>
-				["at0006"] = <
-					text = <"FIGO stage">
-					description = <"*">
-				>
-				["at0007"] = <
-					text = <"Stage I: Tumor confined to ovaries">
-					description = <"*">
-				>
-				["at0008"] = <
-					text = <"IA - Tumor limited to 1 ovary, capsule intact, no tumor on surface, negative washings">
-					description = <"*">
-				>
-				["at0009"] = <
-					text = <"IB - Tumor involves both ovaries otherwise like IA">
-					description = <"*">
-				>
-				["at0010"] = <
-					text = <"IC - Tumor limited to 1 or both ovaries">
-					description = <"*">
-				>
-				["at0011"] = <
-					text = <"IC - Tumor limited to 1 or both ovaries">
-					description = <"*">
-				>
-				["at0012"] = <
-					text = <"IC1 - Surgical spill">
-					description = <"*">
-				>
-				["at0013"] = <
-					text = <"IC2 - Capsule rupture before surgery or tumor on ovarian surface">
-					description = <"*">
-				>
-				["at0014"] = <
-					text = <"IC3 - Malignant cells in the ascites or peritoneal washings">
-					description = <"*">
-				>
-				["at0015"] = <
-					text = <"Stage II: Tumor involves 1 or both ovaries with pelvic extension (below the pelvic brim) or primary peritoneal cancer">
-					description = <"*">
-				>
-				["at0016"] = <
-					text = <"Stage III: Tumor involves 1 or both ovaries with cytologically or histologically confirmed spread to the peritoneum outside the pelvis and/or metastasis to the retroperitoneal lymph nodes">
-					description = <"*">
-				>
-				["at0017"] = <
-					text = <"Stage IV: Distant metastasis excluding peritoneal metastasis">
-					description = <"*">
-				>
-				["at0018"] = <
-					text = <"IIA - Extension and/or implant on uterus and/or fallopian tubes">
-					description = <"*">
-				>
-				["at0019"] = <
-					text = <"IIB - Extension to other pelvic intraperitoneal tissues">
-					description = <"*">
-				>
-				["at0020"] = <
-					text = <"IIIA Positive retroperitoneal lymph nodes and/or microscopic metastasis beyond the pelvis">
-					description = <"*">
-				>
-				["at0021"] = <
-					text = <"IIIA - Positive retroperitoneal lymph nodes and/or microscopic metastasis beyond the pelvis">
-					description = <"*">
-				>
-				["at0022"] = <
-					text = <"IIIA1 - Positive retroperitoneal lymph nodes only">
-					description = <"*">
-				>
-				["at0023"] = <
-					text = <"IIIA1 - Positive retroperitoneal lymph nodes only">
-					description = <"*">
-				>
-				["at0024"] = <
-					text = <"IIIA1(i) - Metastasis ≤10 mm">
-					description = <"*">
-				>
-				["at0025"] = <
-					text = <"IIIA1(ii) - Metastasis >10 mm">
-					description = <"*">
-				>
-				["at0026"] = <
-					text = <"IIIA2 - Microscopic, extrapelvic (above the brim) peritoneal involvement ± positive retroperitoneal lymph nodes">
-					description = <"*">
-				>
-				["at0027"] = <
-					text = <"IIIB - Macroscopic, extrapelvic, peritoneal metastasis ≤2 cm ± positive retroperitoneal lymph nodes; includes extension to capsule of liver/spleen">
-					description = <"*">
-				>
-				["at0028"] = <
-					text = <"IIIC - Macroscopic, extrapelvic, peritoneal metastasis >2 cm ± positive retroperitoneal lymph nodes; includes extension to capsule of liver/spleen">
-					description = <"*">
-				>
-				["at0029"] = <
-					text = <"IVA - Pleural effusion with positive cytology">
-					description = <"*">
-				>
-				["at0030"] = <
-					text = <"IVB - Hepatic and/or splenic parenchymal metastasis, metastasis to extra-abdominal organs (including inguinal lymph nodes and lymph nodes outside of the abdominal cavity)">
-					description = <"*">
 				>
 				["at0031"] = <
 					text = <"Stage Interpretation">
@@ -349,6 +226,122 @@ ontology
 				>
 				["at0045"] = <
 					text = <"Stage - IVB">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"Tumor location">
+					description = <"*">
+				>
+				["at0047"] = <
+					text = <"Tumor confined to ovaries">
+					description = <"*">
+				>
+				["at0048"] = <
+					text = <"Tumor involves 1 or both ovaries with pelvic extension (below the pelvic brim) or primary peritoneal cancer">
+					description = <"*">
+				>
+				["at0049"] = <
+					text = <"Tumor involves 1 or both ovaries with cytologically or histologically confirmed spread to the peritoneum outside the pelvis and/or metastasis to the retroperitoneal lymph nodes">
+					description = <"*">
+				>
+				["at0050"] = <
+					text = <"Distant metastasis excluding peritoneal metastasis">
+					description = <"*">
+				>
+				["at0051"] = <
+					text = <"Tumor confined to ovaries">
+					description = <"*">
+				>
+				["at0052"] = <
+					text = <"Tumor limited to 1 ovary, capsule intact, no tumor on surface, negative washings">
+					description = <"*">
+				>
+				["at0053"] = <
+					text = <"Tumor involves both ovaries otherwise like above">
+					description = <"*">
+				>
+				["at0054"] = <
+					text = <"Tumor limited to 1 or both ovaries">
+					description = <"*">
+				>
+				["at0055"] = <
+					text = <"Tumor limited to 1 or both ovaries">
+					description = <"*">
+				>
+				["at0056"] = <
+					text = <"Surgical spill">
+					description = <"*">
+				>
+				["at0057"] = <
+					text = <"Capsule rupture before surgery or tumor on ovarian surface">
+					description = <"*">
+				>
+				["at0058"] = <
+					text = <"Malignant cells in the ascites or peritoneal washings">
+					description = <"*">
+				>
+				["at0059"] = <
+					text = <"Tumor involves 1 or both ovaries with pelvic extension (below the pelvic brim) or primary peritoneal cancer">
+					description = <"*">
+				>
+				["at0060"] = <
+					text = <"Extension and/or implant on uterus and/or fallopian tubes">
+					description = <"*">
+				>
+				["at0061"] = <
+					text = <"Extension to other pelvic intraperitoneal tissues">
+					description = <"*">
+				>
+				["at0062"] = <
+					text = <"Tumor involves 1 or both ovaries with cytologically or histologically confirmed spread to the peritoneum outside the pelvis and/or metastasis to the retroperitoneal lymph nodes">
+					description = <"*">
+				>
+				["at0063"] = <
+					text = <"Positive retroperitoneal lymph nodes and/or microscopic metastasis beyond the pelvis">
+					description = <"*">
+				>
+				["at0064"] = <
+					text = <"Macroscopic, extrapelvic, peritoneal metastasis ≤2 cm ± positive retroperitoneal lymph nodes; includes extension to capsule of liver/spleen">
+					description = <"*">
+				>
+				["at0065"] = <
+					text = <"Macroscopic, extrapelvic, peritoneal metastasis >2 cm ± positive retroperitoneal lymph nodes; includes extension to capsule of liver/spleen">
+					description = <"*">
+				>
+				["at0066"] = <
+					text = <"Positive retroperitoneal lymph nodes and/or microscopic metastasis beyond the pelvis">
+					description = <"*">
+				>
+				["at0067"] = <
+					text = <"Positive retroperitoneal lymph nodes only">
+					description = <"*">
+				>
+				["at0068"] = <
+					text = <"Microscopic, extrapelvic (above the brim) peritoneal involvement ± positive retroperitoneal lymph nodes">
+					description = <"*">
+				>
+				["at0069"] = <
+					text = <"Metastasis">
+					description = <"*">
+				>
+				["at0070"] = <
+					text = <"Metastasis ≤10 mm">
+					description = <"*">
+				>
+				["at0071"] = <
+					text = <"Metastasis >10 mm">
+					description = <"*">
+				>
+				["at0072"] = <
+					text = <"Distant metastasis excluding peritoneal metastasis">
+					description = <"*">
+				>
+				["at0073"] = <
+					text = <"Pleural effusion with positive cytology">
+					description = <"*">
+				>
+				["at0074"] = <
+					text = <"Hepatic and/or splenic parenchymal metastasis, metastasis to extra-abdominal organs (including inguinal lymph nodes and lymph nodes outside of the abdominal cavity)">
 					description = <"*">
 				>
 			>
