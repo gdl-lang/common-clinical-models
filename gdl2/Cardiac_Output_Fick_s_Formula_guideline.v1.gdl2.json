@@ -147,6 +147,26 @@
           "gt0030": {
             "id": "gt0030",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
+          },
+          "gt0045": {
+            "id": "gt0045",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0016]"
+          },
+          "gt0046": {
+            "id": "gt0046",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0017]"
+          },
+          "gt0047": {
+            "id": "gt0047",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0018]"
+          },
+          "gt0048": {
+            "id": "gt0048",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0019]"
+          },
+          "gt0049": {
+            "id": "gt0049",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0020]"
           }
         }
       }
@@ -154,7 +174,7 @@
     "rules": {
       "gt0028": {
         "id": "gt0028",
-        "priority": 7,
+        "priority": 16,
         "when": [
           "$gt0003|Weight|!=null",
           "$gt0005|Height/Length|!=null",
@@ -169,10 +189,9 @@
       },
       "gt0026": {
         "id": "gt0026",
-        "priority": 6,
+        "priority": 15,
         "when": [
-          "$gt0017|Age|<70,a",
-          "$gt0017|Age|.unit=='a'"
+          "$gt0017|Age|<70,a"
         ],
         "then": [
           "$gt0022|VO2|.magnitude=125*$gt0020.magnitude",
@@ -181,10 +200,9 @@
       },
       "gt0027": {
         "id": "gt0027",
-        "priority": 5,
+        "priority": 14,
         "when": [
-          "$gt0017|Age|>=70,a",
-          "$gt0017|Age|.unit=='a'"
+          "$gt0017|Age|>=70,a"
         ],
         "then": [
           "$gt0022|VO2|.magnitude=$gt0020.magnitude*110",
@@ -193,7 +211,7 @@
       },
       "gt0031": {
         "id": "gt0031",
-        "priority": 4,
+        "priority": 13,
         "when": [
           "$gt0009|SaO2|!=null",
           "$gt0011|SvO₂|!=null",
@@ -207,7 +225,7 @@
       },
       "gt0032": {
         "id": "gt0032",
-        "priority": 3,
+        "priority": 12,
         "when": [
           "fired($gt0031)"
         ],
@@ -219,7 +237,7 @@
       },
       "gt0033": {
         "id": "gt0033",
-        "priority": 2,
+        "priority": 11,
         "when": [
           "fired($gt0032)"
         ],
@@ -231,7 +249,7 @@
       },
       "gt0035": {
         "id": "gt0035",
-        "priority": 1,
+        "priority": 10,
         "when": [
           "fired($gt0032)",
           "$gt0015|Heart rate|!=null"
@@ -239,6 +257,98 @@
         "then": [
           "$gt0025|Stroke Volume|.magnitude=($gt0023.magnitude*1000)/$gt0015.magnitude",
           "$gt0025|Stroke Volume|.unit='ml/beat'"
+        ]
+      },
+      "gt0037": {
+        "id": "gt0037",
+        "priority": 9,
+        "when": [
+          "$gt0009|SaO2|>100,%"
+        ],
+        "then": [
+          "$gt0045|SaO2 Warning|='Too high; please change to proceed.'"
+        ]
+      },
+      "gt0038": {
+        "id": "gt0038",
+        "priority": 8,
+        "when": [
+          "$gt0009|SaO2|<70,%"
+        ],
+        "then": [
+          "$gt0045|SaO2 Warning|='Very low; double-check.'"
+        ]
+      },
+      "gt0043": {
+        "id": "gt0043",
+        "priority": 7,
+        "when": [
+          "$gt0011|SvO₂|>100,%"
+        ],
+        "then": [
+          "$gt0046|SvO2 Warning|='Too high; please change to proceed.'"
+        ]
+      },
+      "gt0039": {
+        "id": "gt0039",
+        "priority": 6,
+        "when": [
+          "$gt0011|SvO₂|>80,%",
+          "$gt0011|SvO₂|<=100,%"
+        ],
+        "then": [
+          "$gt0046|SvO2 Warning|='Very high; double-check.'"
+        ]
+      },
+      "gt0040": {
+        "id": "gt0040",
+        "priority": 5,
+        "when": [
+          "$gt0011|SvO₂|<40,%"
+        ],
+        "then": [
+          "$gt0046|SvO2 Warning|='Very low; double-check.'"
+        ]
+      },
+      "gt0041": {
+        "id": "gt0041",
+        "priority": 4,
+        "when": [
+          "$gt0013|Haemoglobin|>25,gm/dl"
+        ],
+        "then": [
+          "$gt0047|Hb Warning|='Too high; please change to proceed.'"
+        ]
+      },
+      "gt0050": {
+        "id": "gt0050",
+        "priority": 3,
+        "when": [
+          "$gt0013|Haemoglobin|>20,gm/dl",
+          "$gt0013|Haemoglobin|<=25,gm/dl"
+        ],
+        "then": [
+          "$gt0047|Hb Warning|='Very high; double-check.'"
+        ]
+      },
+      "gt0051": {
+        "id": "gt0051",
+        "priority": 2,
+        "when": [
+          "$gt0013|Haemoglobin|<4,gm/dl"
+        ],
+        "then": [
+          "$gt0047|Hb Warning|='Very low; double-check.'"
+        ]
+      },
+      "gt0052": {
+        "id": "gt0052",
+        "priority": 1,
+        "when": [
+          "$gt0009|SaO2|<40,%"
+        ],
+        "then": [
+          "$gt0045|SaO2 Warning|='Too low; please change to proceed.'"
         ]
       }
     }
@@ -363,6 +473,80 @@
           "gt0035": {
             "id": "gt0035",
             "text": "Set Stroke Volume"
+          },
+          "gt0036": {
+            "id": "gt0036",
+            "text": "Check validation",
+            "description": "*"
+          },
+          "gt0037": {
+            "id": "gt0037",
+            "text": "Set  SaO₂ warning too high"
+          },
+          "gt0038": {
+            "id": "gt0038",
+            "text": "Set SaO₂ warning very low"
+          },
+          "gt0039": {
+            "id": "gt0039",
+            "text": "Set  SvO₂ warning very high"
+          },
+          "gt0040": {
+            "id": "gt0040",
+            "text": "Set SvO₂ warning very low"
+          },
+          "gt0041": {
+            "id": "gt0041",
+            "text": "Set Hb warning too high"
+          },
+          "gt0042": {
+            "id": "gt0042",
+            "text": "Set Check validation Hb>25"
+          },
+          "gt0043": {
+            "id": "gt0043",
+            "text": "Set SvO₂ warning too high"
+          },
+          "gt0044": {
+            "id": "gt0044",
+            "text": "Set Check validation SaO₂>70"
+          },
+          "gt0045": {
+            "id": "gt0045",
+            "text": "SaO2 Warning",
+            "description": "*"
+          },
+          "gt0046": {
+            "id": "gt0046",
+            "text": "SvO2 Warning",
+            "description": "*"
+          },
+          "gt0047": {
+            "id": "gt0047",
+            "text": "Hb Warning",
+            "description": "*"
+          },
+          "gt0048": {
+            "id": "gt0048",
+            "text": "Height tWarning",
+            "description": "*"
+          },
+          "gt0049": {
+            "id": "gt0049",
+            "text": "Hear rate Warning",
+            "description": "*"
+          },
+          "gt0050": {
+            "id": "gt0050",
+            "text": "Set Hb warning very high"
+          },
+          "gt0051": {
+            "id": "gt0051",
+            "text": "Set Hb warning very low"
+          },
+          "gt0052": {
+            "id": "gt0052",
+            "text": "Set SaO₂ warning too low"
           }
         }
       }
