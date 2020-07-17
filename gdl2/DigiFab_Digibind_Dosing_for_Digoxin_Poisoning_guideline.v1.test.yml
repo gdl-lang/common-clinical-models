@@ -1,47 +1,55 @@
 guidelines:
   1: DigiFab_Digibind_Dosing_for_Digoxin_Poisoning_guideline.v1
 test_cases:
-- id: W=50 kg, Dig level=2
+- id: 2.8 ng/ml dig level, 2 vial 
   input:
     1:
       gt0006|Choose available data: local::at0005|Serum digoxin level|
-      gt0008|Serum digoxin level: 2,ng/mL
-      gt0010|Weight: 50,kg
+      gt0008|Serum digoxin level: 2.8,ng/mL
+      gt0010|Weight: 40,kg
   expected_output:
     1:
-      gt0012|Number of vials: 1.0
-      gt0016|Digifab Dose: each vial contains 40 mg and number of vials should always be rounded up to the next whole number.
-
-- id: 6mg ingested
+      gt0012|Number of vials: 2
+      gt0016|Digifab Dose: each vial contains 40 mg
+- id: Ingested 6mg, Vial 10
   input:
     1:
       gt0006|Choose available data: local::at0006|Amount ingested|
       gt0007|Amount ingested: 6,mg
+      gt0010|Weight: 80,kg
   expected_output:
     1:
-      gt0012|Number of vials: 9.6
-      gt0016|Digifab Dose: each vial contains 40 mg and number of vials should always be rounded up to the next whole number.
+      gt0012|Number of vials: 10
+      gt0016|Digifab Dose: each vial contains 40 mg
 
-
-- id: W=50kg, Dig level=2.5
+- id: Ingested 2mg, Vial 4
+  input:
+    1:
+      gt0006|Choose available data: local::at0006|Amount ingested|
+      gt0007|Amount ingested: 2,mg
+  expected_output:
+    1:
+      gt0012|Number of vials: 4
+      gt0016|Digifab Dose: each vial contains 40 mg
+- id: 0 ng/ml dig level, 0 vial
   input:
     1:
       gt0006|Choose available data: local::at0005|Serum digoxin level|
-      gt0008|Serum digoxin level: 3,ng/mL
-      gt0010|Weight: 50,kg
+      gt0008|Serum digoxin level: 0,ng/mL
+      gt0010|Weight: 90,kg
   expected_output:
     1:
-      gt0012|Number of vials: 1.5
-      gt0016|Digifab Dose: each vial contains 40 mg and number of vials should always be rounded up to the next whole number.
-
-
-- id: W=50kg,Dig level=2.3
+      gt0012|Number of vials: 0
+      gt0016|Digifab Dose: each vial contains 40 mg
+- id: Check high value
   input:
     1:
-      gt0006|Choose available data: local::at0005|Serum digoxin level|
-      gt0008|Serum digoxin level: 2,ng/mL
-      gt0010|Weight: 50,kg
+      gt0006|Choose available data: local::at0006|Amount ingested|
+      gt0007|Amount ingested: 11,mg
+      gt0008|Serum digoxin level: 4,ng/mL
+      gt0010|Weight: 80,kg
   expected_output:
     1:
-      gt0012|Number of vials: 1.0
-      gt0016|Digifab Dose: each vial contains 40 mg and number of vials should always be rounded up to the next whole number.
+      gt0012|Number of vials: 18
+      gt0017|Check value: Amount ingested is very high; double-check.
+      gt0016|Digifab Dose: each vial contains 40 mg

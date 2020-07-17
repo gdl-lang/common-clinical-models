@@ -79,6 +79,10 @@
           "gt0016": {
             "id": "gt0016",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0011]"
           }
         }
       }
@@ -86,7 +90,7 @@
     "rules": {
       "gt0013": {
         "id": "gt0013",
-        "priority": 2,
+        "priority": 4,
         "when": [
           "$gt0006|Choose available data|==local::at0005|Serum digoxin level|",
           "$gt0010|Weight|!=null",
@@ -95,22 +99,40 @@
           "$gt0008|Serum digoxin level|.unit=='ng/mL'"
         ],
         "then": [
-          "$gt0012|Number of vials|.magnitude=$gt0008.magnitude*$gt0010.magnitude/100",
-          "$gt0012|Number of vials|.precision=1",
-          "$gt0016|Digifab Dose|='each vial contains 40 mg and number of vials should always be rounded up to the next whole number.'"
+          "$gt0012|Number of vials|.magnitude=ceil($gt0008.magnitude*$gt0010.magnitude/100)",
+          "$gt0016|Digifab Dose|='each vial contains 40 mg'"
         ]
       },
       "gt0015": {
         "id": "gt0015",
-        "priority": 1,
+        "priority": 3,
         "when": [
           "$gt0006|Choose available data|==local::at0006|Amount ingested|",
           "$gt0007|Amount ingested|!=null"
         ],
         "then": [
-          "$gt0012|Number of vials|.magnitude=($gt0007.magnitude/0.5)*0.8",
-          "$gt0012|Number of vials|.precision=1",
-          "$gt0016|Digifab Dose|='each vial contains 40 mg and number of vials should always be rounded up to the next whole number.'"
+          "$gt0012|Number of vials|.magnitude=ceil(($gt0007.magnitude/0.5)*0.8)",
+          "$gt0016|Digifab Dose|='each vial contains 40 mg'"
+        ]
+      },
+      "gt0018": {
+        "id": "gt0018",
+        "priority": 2,
+        "when": [
+          "$gt0008|Serum digoxin level|>3,ng/mL"
+        ],
+        "then": [
+          "$gt0017|Check value|='Serum digoxin level is very high; double-check.'"
+        ]
+      },
+      "gt0019": {
+        "id": "gt0019",
+        "priority": 1,
+        "when": [
+          "$gt0007|Amount ingested|>10,mg"
+        ],
+        "then": [
+          "$gt0017|Check value|='Amount ingested is very high; double-check.'"
         ]
       }
     }
@@ -124,16 +146,6 @@
             "id": "gt0001",
             "text": "DigiFab (Digibind) Dosing for Digoxin Poisoning",
             "description": "Formula to calulate number of vials: \nThe number of vials=  ( serum digoxin level, ng/mL x patient weight, kg ) / 100\nOR\nNumber of vials = ( amount ingested, mg / 0.5 mg/vial ) x 80% bioavailability\n"
-          },
-          "gt0004": {
-            "id": "gt0004",
-            "text": "Serum digoxin level",
-            "description": "*"
-          },
-          "gt0005": {
-            "id": "gt0005",
-            "text": "Amount ingested",
-            "description": "*"
           },
           "gt0006": {
             "id": "gt0006",
@@ -176,6 +188,19 @@
             "id": "gt0016",
             "text": "Digifab Dose",
             "description": "*"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "Check value",
+            "description": "*"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "Set check value serum dig level"
+          },
+          "gt0019": {
+            "id": "gt0019",
+            "text": "Set check value amount ingested"
           }
         }
       }
