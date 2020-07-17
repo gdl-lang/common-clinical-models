@@ -30,7 +30,7 @@ y = -9.1917 + 0.0451 x age + 0.1307 x BMI + 0.0859 x E/e' ratio + 0.0520 x pulmo
 	other_details = <
 		["references"] = <"1. Reddy YN, Carter RE, Obokata M, Redfield MM, Borlaug BA. A simple, evidence-based approach to help guide diagnosis of heart failure with preserved ejection fraction. Circulation. 2018 Aug 28;138(9):861-70.">
 		["current_contact"] = <"Henrik Honkanen, Cambio CDS<henrik.honkanen@stud.ki.se>">
-		["MD5-CAM-1.0.1"] = <"18C87E3078824BC9AB8E83ECFFB3C516">
+		["MD5-CAM-1.0.1"] = <"DD9011B08064C22319C3F178CE4E070B">
 	>
 
 definition
@@ -66,15 +66,39 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Atrial fibrillation
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Atrial fibrillation
 										value matches {
-											0|[local::at0007], 	-- No
-											1|[local::at0009]  	-- Yes
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0014, 	-- No
+													at0015]	-- Yes
+												}
+											}
 										}
 									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Probability of heart failure with preserved EF
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Calculate Y
 										value matches {
-											DV_COUNT matches {*}
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Probability of heart failure with preserved EF
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
 										}
 									}
 								}
@@ -114,19 +138,23 @@ ontology
 					text = <"Pulmonary artery systolic pressure">
 					description = <"*As estimated from echo">
 				>
-				["at0006"] = <
-					text = <"Atrial fibrillation">
-					description = <"*From clinical history and EKG">
-				>
-				["at0007"] = <
-					text = <"No">
+				["at0010"] = <
+					text = <"Calculate Y">
 					description = <"*">
 				>
-				["at0008"] = <
+				["at0011"] = <
 					text = <"Probability of heart failure with preserved EF">
 					description = <"*">
 				>
-				["at0009"] = <
+				["at0013"] = <
+					text = <"Atrial fibrillation">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0015"] = <
 					text = <"Yes">
 					description = <"*">
 				>
