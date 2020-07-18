@@ -82,9 +82,13 @@
             "id": "gt0010",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
           },
-          "gt0011": {
-            "id": "gt0011",
+          "gt0022": {
+            "id": "gt0022",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0012]"
+          },
+          "gt0023": {
+            "id": "gt0023",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0017]"
           }
         }
       }
@@ -92,22 +96,119 @@
     "rules": {
       "gt0012": {
         "id": "gt0012",
-        "priority": 5,
+        "priority": 12,
         "when": [
           "$gt0005|% alcohol|!=null",
           "$gt0006|Amount ingested|!=null"
         ],
         "then": [
           "$gt0009|Calculate dose|.precision=1",
-          "$gt0009|Calculate dose|.magnitude=($gt0005.magnitude/100)*$gt0006.magnitude"
+          "$gt0009|Calculate dose|.magnitude=($gt0005.magnitude/100)*$gt0006.magnitude",
+          "$gt0009|Calculate dose|.unit='gm'"
         ]
       },
       "gt0014": {
         "id": "gt0014",
-        "priority": 4,
+        "priority": 11,
+        "when": [
+          "$gt0003|Weight|!=null",
+          "$gt0009|Calculate dose|!=null",
+          "$gt0007|Type of alcohol|==local::at0007|Ethanol|"
+        ],
         "then": [
-          "$gt0011|Estimated serum concentration|.precision=1",
-          "$gt0011|Estimated serum concentration|.magnitude=($gt0009.magnitude*1000/(0.6*$gt0003.magnitude))/10"
+          "$gt0022|Estimated serum concentration mg/dl|.precision=1",
+          "$gt0022|Estimated serum concentration mg/dl|.magnitude=($gt0009.magnitude*1000/(0.6*$gt0003.magnitude))/10"
+        ]
+      },
+      "gt0021": {
+        "id": "gt0021",
+        "priority": 10,
+        "when": [
+          "$gt0003|Weight|!=null",
+          "$gt0009|Calculate dose|!=null",
+          "$gt0007|Type of alcohol|==local::at0007|Ethanol|"
+        ],
+        "then": [
+          "$gt0023|Estimated serum concentration in mmol/L|.precision=1",
+          "$gt0023|Estimated serum concentration in mmol/L|.magnitude=(($gt0009.magnitude*1000/(0.6*$gt0003.magnitude))/10)/4.6"
+        ]
+      },
+      "gt0025": {
+        "id": "gt0025",
+        "priority": 9,
+        "when": [
+          "$gt0003|Weight|!=null",
+          "$gt0009|Calculate dose|!=null",
+          "$gt0007|Type of alcohol|==local::at0008|Methanol|"
+        ],
+        "then": [
+          "$gt0023|Estimated serum concentration in mmol/L|.precision=1",
+          "$gt0023|Estimated serum concentration in mmol/L|.magnitude=(($gt0009.magnitude*1000/(0.6*$gt0003.magnitude))/10)/3.2"
+        ]
+      },
+      "gt0024": {
+        "id": "gt0024",
+        "priority": 8,
+        "when": [
+          "$gt0003|Weight|!=null",
+          "$gt0009|Calculate dose|!=null",
+          "$gt0007|Type of alcohol|==local::at0008|Methanol|"
+        ],
+        "then": [
+          "$gt0022|Estimated serum concentration mg/dl|.precision=1",
+          "$gt0022|Estimated serum concentration mg/dl|.magnitude=($gt0009.magnitude*1000/(0.6*$gt0003.magnitude))/10"
+        ]
+      },
+      "gt0026": {
+        "id": "gt0026",
+        "priority": 7,
+        "when": [
+          "$gt0003|Weight|!=null",
+          "$gt0009|Calculate dose|!=null",
+          "$gt0007|Type of alcohol|==local::at0009|Ethylene glycol|"
+        ],
+        "then": [
+          "$gt0022|Estimated serum concentration mg/dl|.precision=1",
+          "$gt0022|Estimated serum concentration mg/dl|.magnitude=($gt0009.magnitude*1000/(0.6*$gt0003.magnitude))/10"
+        ]
+      },
+      "gt0027": {
+        "id": "gt0027",
+        "priority": 6,
+        "when": [
+          "$gt0003|Weight|!=null",
+          "$gt0009|Calculate dose|!=null",
+          "$gt0007|Type of alcohol|==local::at0009|Ethylene glycol|"
+        ],
+        "then": [
+          "$gt0023|Estimated serum concentration in mmol/L|.precision=1",
+          "$gt0023|Estimated serum concentration in mmol/L|.magnitude=(($gt0009.magnitude*1000/(0.6*$gt0003.magnitude))/10)/6.2"
+        ]
+      },
+      "gt0028": {
+        "id": "gt0028",
+        "priority": 5,
+        "when": [
+          "$gt0003|Weight|!=null",
+          "$gt0009|Calculate dose|!=null",
+          "$gt0007|Type of alcohol|==local::at0010|Diethylene glycol|"
+        ],
+        "then": [
+          "$gt0022|Estimated serum concentration mg/dl|.precision=1",
+          "$gt0022|Estimated serum concentration mg/dl|.magnitude=($gt0009.magnitude*1000/(0.6*$gt0003.magnitude))/10"
+        ]
+      },
+      "gt0029": {
+        "id": "gt0029",
+        "priority": 4,
+        "when": [
+          "$gt0003|Weight|!=null",
+          "$gt0009|Calculate dose|!=null",
+          "$gt0007|Type of alcohol|==local::at0010|Diethylene glycol|"
+        ],
+        "then": [
+          "$gt0023|Estimated serum concentration in mmol/L|.precision=1",
+          "$gt0023|Estimated serum concentration in mmol/L|.magnitude=($gt0009.magnitude*1000/(0.6*$gt0003.magnitude))/10"
         ]
       },
       "gt0016": {
@@ -197,7 +298,7 @@
           },
           "gt0014": {
             "id": "gt0014",
-            "text": "Calculate serum concentration mmol/L Ethanol"
+            "text": "Calculate serum concentration mg/dl Ethanol"
           },
           "gt0015": {
             "id": "gt0015",
@@ -218,6 +319,52 @@
           "gt0019": {
             "id": "gt0019",
             "text": "Copy of Copy of Treatment recommendation Methanol"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Copy of Calculate serum concentration mmol/L Ethanol"
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "Calculate serum concentration mmol/L Ethanol"
+          },
+          "gt0022": {
+            "id": "gt0022",
+            "text": "Estimated serum concentration mg/dl",
+            "description": "*"
+          },
+          "gt0023": {
+            "id": "gt0023",
+            "text": "Estimated serum concentration in mmol/L",
+            "description": "*"
+          },
+          "gt0024": {
+            "id": "gt0024",
+            "text": "Calculate serum concentration mg/dl Methanol"
+          },
+          "gt0025": {
+            "id": "gt0025",
+            "text": "Calculate serum concentration mmol/L Methanol"
+          },
+          "gt0026": {
+            "id": "gt0026",
+            "text": "Calculate serum concentration mg/dl Etylene glycol"
+          },
+          "gt0027": {
+            "id": "gt0027",
+            "text": "Calculate serum concentration mmol/L Etylene glycol"
+          },
+          "gt0028": {
+            "id": "gt0028",
+            "text": "Calculate serum concentration mg/dl Dietylene glycol"
+          },
+          "gt0029": {
+            "id": "gt0029",
+            "text": "Calculate serum concentration mmol/L Dietylene glycol"
+          },
+          "gt0030": {
+            "id": "gt0030",
+            "text": "Copy of Copy of Calculate serum concentration mmol/L Etylene glycol"
           }
         }
       }
