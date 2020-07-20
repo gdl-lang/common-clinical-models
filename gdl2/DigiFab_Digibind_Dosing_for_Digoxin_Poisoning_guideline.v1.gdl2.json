@@ -88,36 +88,9 @@
       }
     },
     "rules": {
-      "gt0013": {
-        "id": "gt0013",
-        "priority": 4,
-        "when": [
-          "$gt0006|Choose available data|==local::at0005|Serum digoxin level|",
-          "$gt0010|Weight|!=null",
-          "$gt0010|Weight|.unit=='kg'",
-          "$gt0008|Serum digoxin level|!=null",
-          "$gt0008|Serum digoxin level|.unit=='ng/mL'"
-        ],
-        "then": [
-          "$gt0012|Number of vials|.magnitude=ceil($gt0008.magnitude*$gt0010.magnitude/100)",
-          "$gt0016|Digifab Dose|='each vial contains 40 mg'"
-        ]
-      },
-      "gt0015": {
-        "id": "gt0015",
-        "priority": 3,
-        "when": [
-          "$gt0006|Choose available data|==local::at0006|Amount ingested|",
-          "$gt0007|Amount ingested|!=null"
-        ],
-        "then": [
-          "$gt0012|Number of vials|.magnitude=ceil(($gt0007.magnitude/0.5)*0.8)",
-          "$gt0016|Digifab Dose|='each vial contains 40 mg'"
-        ]
-      },
       "gt0018": {
         "id": "gt0018",
-        "priority": 2,
+        "priority": 4,
         "when": [
           "$gt0008|Serum digoxin level|>3,ng/mL"
         ],
@@ -125,14 +98,42 @@
           "$gt0017|Check value|='Serum digoxin level is very high; double-check.'"
         ]
       },
+      "gt0013": {
+        "id": "gt0013",
+        "priority": 3,
+        "when": [
+          "$gt0006|Choose available data|==local::at0005|Serum digoxin level|",
+          "$gt0010|Weight|!=null",
+          "$gt0010|Weight|.unit=='kg'",
+          "$gt0008|Serum digoxin level|!=null",
+          "$gt0008|Serum digoxin level|.unit=='ng/mL'",
+          "!fired($gt0018)"
+        ],
+        "then": [
+          "$gt0012|Number of vials|.magnitude=ceil($gt0008.magnitude*$gt0010.magnitude/100)",
+          "$gt0016|Digifab Dose|='each vial contains 40 mg'"
+        ]
+      },
       "gt0019": {
         "id": "gt0019",
-        "priority": 1,
+        "priority": 2,
         "when": [
           "$gt0007|Amount ingested|>10,mg"
         ],
         "then": [
           "$gt0017|Check value|='Amount ingested is very high; double-check.'"
+        ]
+      },
+      "gt0015": {
+        "id": "gt0015",
+        "priority": 1,
+        "when": [
+          "$gt0006|Choose available data|==local::at0006|Amount ingested|",
+          "$gt0007|Amount ingested|!=null"
+        ],
+        "then": [
+          "$gt0012|Number of vials|.magnitude=ceil(($gt0007.magnitude/0.5)*0.8)",
+          "$gt0016|Digifab Dose|='each vial contains 40 mg'"
         ]
       }
     }
