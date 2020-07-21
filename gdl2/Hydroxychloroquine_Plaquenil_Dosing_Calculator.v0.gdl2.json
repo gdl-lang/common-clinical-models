@@ -72,10 +72,6 @@
             "id": "gt0008",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0017]"
           },
-          "gt0009": {
-            "id": "gt0009",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
-          },
           "gt0010": {
             "id": "gt0010",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0011]"
@@ -84,34 +80,46 @@
             "id": "gt0011",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0012]"
           },
-          "gt0012": {
-            "id": "gt0012",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
+          "gt0024": {
+            "id": "gt0024",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
+          }
+        }
+      },
+      "gt0022": {
+        "id": "gt0022",
+        "model_id": "openEHR-EHR-OBSERVATION.body_weight.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.body_weight.v1",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0023": {
+            "id": "gt0023",
+            "path": "/data[at0002]/events[at0003]/data[at0001]/items[at0004]"
           }
         }
       }
     },
     "rules": {
-      "gt0013": {
-        "id": "gt0013",
-        "priority": 6,
-        "when": [
-          "$gt0003|Weight|.unit=='kg'"
-        ],
-        "then": [
-          "$gt0010|Calculate Maximum daily dose of hydroxychloroquine|.magnitude=$gt0003.magnitude*5",
-          "$gt0012|Maximum daily dose of hydroxychloroquine interpretation|=local::at0016|Maximum daily dose of hydroxychloroquine|"
-        ]
-      },
       "gt0014": {
         "id": "gt0014",
-        "priority": 5,
+        "priority": 6,
         "when": [
           "$gt0003|Weight|.unit=='lb'"
         ],
         "then": [
-          "$gt0010|Calculate Maximum daily dose of hydroxychloroquine|.magnitude=$gt0003.magnitude*5*0.45359237",
-          "$gt0012|Maximum daily dose of hydroxychloroquine interpretation|=local::at0016|Maximum daily dose of hydroxychloroquine|"
+          "$gt0023|Weight|.magnitude=$gt0003.magnitude*0.45359237",
+          "$gt0023|Weight|.unit='kg'"
+        ]
+      },
+      "gt0013": {
+        "id": "gt0013",
+        "priority": 5,
+        "when": [
+          "$gt0003|Weight|!=null"
+        ],
+        "then": [
+          "$gt0010|Calculate Maximum daily dose of hydroxychloroquine|.magnitude=$gt0003.magnitude*5",
+          "$gt0010|Calculate Maximum daily dose of hydroxychloroquine|.unit='mg'"
         ]
       },
       "gt0015": {
@@ -121,17 +129,19 @@
           "$gt0005|Current daily dose|!=null"
         ],
         "then": [
-          "$gt0009|Calculate if dose is within recommended daily dose of ≤5 mg/kg|.magnitude=$gt0005.magnitude/$gt0003.magnitude"
+          "$gt0024|Current daily dose calculation|.magnitude=$gt0005.magnitude/$gt0003.magnitude",
+          "$gt0024|Current daily dose calculation|.precision=1",
+          "$gt0024|Current daily dose calculation|.unit='mg/kg'"
         ]
       },
       "gt0016": {
         "id": "gt0016",
         "priority": 3,
         "when": [
-          "$gt0009|Calculate if dose is within recommended daily dose of ≤5 mg/kg|.magnitude>5"
+          "$gt0024|Current daily dose calculation|.magnitude>5"
         ],
         "then": [
-          "$gt0011|Daily dose score interpretation|=local::at0014|Warning: this is greater than the recommended daily dose of ≤5 mg/kg. Consider lowering dose|",
+          "$gt0011|Daily dose interpretation|=local::at0014|Warning: this is greater than the recommended daily dose of ≤5 mg/kg. Consider lowering dose|",
           "$gt0008|Retinopathy risk interpretation|=local::at0019|10-year risk of retinopathy 10% and 20-year risk of retinopathy 40%|"
         ]
       },
@@ -139,18 +149,18 @@
         "id": "gt0017",
         "priority": 2,
         "when": [
-          "$gt0009|Calculate if dose is within recommended daily dose of ≤5 mg/kg|.magnitude<=5"
+          "$gt0024|Current daily dose calculation|.magnitude<=5"
         ],
         "then": [
-          "$gt0011|Daily dose score interpretation|=local::at0015|Dose is within recommended daily dose of ≤5 mg/kg|"
+          "$gt0011|Daily dose interpretation|=local::at0015|Dose is within recommended daily dose of ≤5 mg/kg|"
         ]
       },
       "gt0018": {
         "id": "gt0018",
         "priority": 1,
         "when": [
-          "$gt0009|Calculate if dose is within recommended daily dose of ≤5 mg/kg|.magnitude>=4",
-          "$gt0009|Calculate if dose is within recommended daily dose of ≤5 mg/kg|.magnitude<=5"
+          "$gt0024|Current daily dose calculation|.magnitude>=4",
+          "$gt0024|Current daily dose calculation|.magnitude<=5"
         ],
         "then": [
           "$gt0008|Retinopathy risk interpretation|=local::at0018|10-year risk of retinopathy 2% and 20-year risk of retinopathy 20%|"
@@ -200,7 +210,7 @@
           },
           "gt0011": {
             "id": "gt0011",
-            "text": "Daily dose score interpretation",
+            "text": "Daily dose interpretation",
             "description": "*"
           },
           "gt0012": {
@@ -231,6 +241,21 @@
           "gt0018": {
             "id": "gt0018",
             "text": "Risk interpretation low risk"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Current daily dose",
+            "description": "Current daily dose"
+          },
+          "gt0023": {
+            "id": "gt0023",
+            "text": "Weight",
+            "description": "Weight"
+          },
+          "gt0024": {
+            "id": "gt0024",
+            "text": "Current daily dose calculation",
+            "description": "*"
           }
         }
       }

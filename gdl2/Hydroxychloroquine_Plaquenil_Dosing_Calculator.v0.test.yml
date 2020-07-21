@@ -7,8 +7,8 @@ test_cases:
       gt0003|Weight: 60,kg
   expected_output:
     1:
-      gt0010|Calculate Maximum daily dose of hydroxychloroquine: 300
-      gt0012|Maximum daily dose of hydroxychloroquine interpretation: local::at0016|Maximum daily dose of hydroxychloroquine|
+      gt0010|Calculate Maximum daily dose of hydroxychloroquine: 300,mg
+      gt0023|Weight: 60,kg
 
 - id: 2. Calculate result form lb
   input:
@@ -16,47 +16,49 @@ test_cases:
       gt0003|Weight: 120,lb
   expected_output:
     1:
-      gt0010|Calculate Maximum daily dose of hydroxychloroquine: 272
-      gt0012|Maximum daily dose of hydroxychloroquine interpretation: local::at0016|Maximum daily dose of hydroxychloroquine|
+      gt0010|Calculate Maximum daily dose of hydroxychloroquine: 600,mg
+      gt0023|Weight: 54,kg
 
-- id: 3. Dose within recommended daily dose 2mg/kg
+- id: 3. Dose below 3mg/kg
   input:
     1:
       gt0003|Weight: 70,kg
       gt0005|Current daily dose: 200,mg
-      gt0006|Is this a COVID-19 patient?: local::at0009|Confirmed negative|
+      gt0006|Is this a COVID-19 patient?: local::at0008|Unlikely|
   expected_output:
     1:
-      gt0010|Calculate Maximum daily dose of hydroxychloroquine: 350
-      gt0011|Daily dose score interpretation: local::at0015|Dose is within recommended daily dose of ≤5 mg/kg|
-      gt0012|Maximum daily dose of hydroxychloroquine interpretation: local::at0016|Maximum daily dose of hydroxychloroquine|
-      gt0009|Calculate if dose is within recommended daily dose of ≤5 mg/kg: 2
+      gt0010|Calculate Maximum daily dose of hydroxychloroquine: 350,mg
+      gt0011|Daily dose interpretation: local::at0015|Dose is within recommended daily dose of ≤5 mg/kg|
+      gt0024|Current daily dose calculation: 2.9,mg/kg
+      gt0023|Weight: 70,kg
 
-- id: 4. Dose within recommended daily dose 4mg/kg
+
+- id: 4. Dose within 4mg/kg-5mg/kg
   input:
     1:
       gt0003|Weight: 70,kg
       gt0005|Current daily dose: 300,mg
-      gt0006|Is this a COVID-19 patient?: local::at0009|Confirmed negative|
+      gt0006|Is this a COVID-19 patient?: local::at0008|Unlikely|
   expected_output:
     1:
-      gt0010|Calculate Maximum daily dose of hydroxychloroquine: 350
+      gt0010|Calculate Maximum daily dose of hydroxychloroquine: 350,mg
+      gt0011|Daily dose interpretation: local::at0015|Dose is within recommended daily dose of ≤5 mg/kg|
       gt0008|Retinopathy risk interpretation: local::at0018|10-year risk of retinopathy 2% and 20-year risk of retinopathy 20%|
-      gt0011|Daily dose score interpretation: local::at0015|Dose is within recommended daily dose of ≤5 mg/kg|
-      gt0012|Maximum daily dose of hydroxychloroquine interpretation: local::at0016|Maximum daily dose of hydroxychloroquine|
-      gt0009|Calculate if dose is within recommended daily dose of ≤5 mg/kg: 4
+      gt0024|Current daily dose calculation: 4.3,mg/kg
+      gt0023|Weight: 70,kg
 
-- id: 5. Dose above recommended daily dose 7mg/kg
+- id: 5. Dose above 5mg/kg
   input:
     1:
       gt0003|Weight: 70,kg
       gt0005|Current daily dose: 500,mg
-      gt0006|Is this a COVID-19 patient?: local::at0009|Confirmed negative|
+      gt0006|Is this a COVID-19 patient?: local::at0008|Unlikely|
   expected_output:
     1:
-      gt0010|Calculate Maximum daily dose of hydroxychloroquine: 350
+      gt0010|Calculate Maximum daily dose of hydroxychloroquine: 350,mg
+      gt0011|Daily dose interpretation: 'local::at0014|Warning: this is greater than the recommended daily dose of ≤5 mg/kg. Consider lowering dose|'
       gt0008|Retinopathy risk interpretation: local::at0019|10-year risk of retinopathy 10% and 20-year risk of retinopathy 40%|
-      gt0011|Daily dose score interpretation: 'local::at0014|Warning: this is greater than the recommended daily dose of ≤5 mg/kg. Consider lowering dose|'
-      gt0012|Maximum daily dose of hydroxychloroquine interpretation: local::at0016|Maximum daily dose of hydroxychloroquine|
-      gt0009|Calculate if dose is within recommended daily dose of ≤5 mg/kg: 7
+      gt0024|Current daily dose calculation: 7.1,mg/kg
+      gt0023|Weight: 70,kg
+
 
