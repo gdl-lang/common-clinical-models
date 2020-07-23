@@ -16,14 +16,15 @@
     "details": {
       "en": {
         "id": "en",
-        "purpose": "Predicts large vessel occlusion (LVO) and severe stroke in patients with stroke symptoms.",
+        "purpose": "Used to predict large vessel occlusion (LVO) and severe stroke in patients with stroke symptoms.",
         "keywords": [
           "large vessel occlusion",
           "severe stroke",
           "acute ischemic stroke",
           "NIH stroke scale score"
         ],
-        "use": "Use in a hospital setting in patients with signs and symptoms of acute ischemic stroke. May be used to determine both severity of stroke, as quantified by NIHSS ≥15 (nih stroke scale score), and presence of LVO. \n\nInterpretation CP-SSS LVO and NIHSS:\n-Score: 0–1 LVO and NIHSS ≥15 less likely\n-Score: 2–4 LVO and NIHSS ≥15 likely. Consider initiating full workup and treatment for LVO as appropriate, including CT angiogram.",
+        "use": "Use in a hospital setting in patients with signs and symptoms of acute ischemic stroke. May be used to determine both severity of stroke, as quantified by NIHSS ≥15 (nih stroke scale score), and presence of LVO. The scale consists of four different questions each giving points towards the final score.\n\nInterpretation CP-SSS LVO and NIHSS:\n-Score: 0–1 LVO and NIHSS ≥15 less likely\n-Score: 2–4 LVO and NIHSS ≥15 likely. Consider initiating full workup and treatment for LVO as appropriate, including CT angiogram.",
+        "misuse": "Accuracy at detecting LVO or severe stroke has not been evaluated when administered by EMS providers. Should not be used as a substitute for clinical judgment, and is intended for use as an adjunct to medical decision-making. ",
         "copyright": "@Cambio CDS"
       }
     },
@@ -81,7 +82,7 @@
     "rules": {
       "gt0011": {
         "id": "gt0011",
-        "priority": 5,
+        "priority": 6,
         "when": [
           "($gt0004|Ask patient age and current month|==local::at0021|One correct|)||($gt0004|Ask patient age and current month|==local::at0022|Neither correct|)",
           "($gt0005|Ask patient to close eyes and open/close hand|==local::at0018|Follows one command|)||($gt0005|Ask patient to close eyes and open/close hand|==local::at0019|Follows neither command|)"
@@ -92,13 +93,23 @@
       },
       "gt0012": {
         "id": "gt0012",
-        "priority": 4,
+        "priority": 5,
         "when": [
-          "$gt0005|Ask patient to close eyes and open/close hand|==local::at0017|Follows both commands|",
-          "($gt0004|Ask patient age and current month|==local::at0020|Both correct|)||($gt0005|Ask patient to close eyes and open/close hand|==local::at0017|Follows both commands|)"
+          "$gt0004|Ask patient age and current month|==local::at0020|Both correct|",
+          "($gt0005|Ask patient to close eyes and open/close hand|==local::at0019|Follows neither command|)||(($gt0005|Ask patient to close eyes and open/close hand|==local::at0018|Follows one command|)||($gt0005|Ask patient to close eyes and open/close hand|==local::at0017|Follows both commands|))"
         ],
         "then": [
           "$gt0009|Ask patient question points|=0|local::at0015|Zero points|"
+        ]
+      },
+      "gt0016": {
+        "id": "gt0016",
+        "priority": 4,
+        "when": [
+          "(($gt0005|Ask patient to close eyes and open/close hand|==local::at0017|Follows both commands|)&&($gt0004|Ask patient age and current month|==local::at0021|One correct|))||(($gt0004|Ask patient age and current month|==local::at0022|Neither correct|)&&($gt0005|Ask patient to close eyes and open/close hand|==local::at0017|Follows both commands|))"
+        ],
+        "then": [
+          "$gt0009|Ask patient question points|=0|local::at0015|local # at0015 # null|"
         ]
       },
       "gt0010": {
@@ -185,7 +196,7 @@
           },
           "gt0012": {
             "id": "gt0012",
-            "text": "Ask patient score 0 points"
+            "text": "Ask patient score 0 points 1"
           },
           "gt0013": {
             "id": "gt0013",
@@ -199,6 +210,10 @@
           "gt0015": {
             "id": "gt0015",
             "text": "Score 2-4"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "text": "Ask patient score 0 points 2"
           }
         }
       }
