@@ -74,13 +74,21 @@
             "id": "gt0010",
             "path": "/data[at0001]/items[at0004]"
           },
-          "gt0036": {
-            "id": "gt0036",
-            "path": "/data[at0001]/items[at0026]"
-          },
           "gt0037": {
             "id": "gt0037",
             "path": "/data[at0001]/items[at0027]"
+          }
+        }
+      },
+      "gt0039": {
+        "id": "gt0039",
+        "model_id": "openEHR-EHR-OBSERVATION.bastion_classification_of_lower_limb_blast_injuries.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.bastion_classification_of_lower_limb_blast_injuries.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0040": {
+            "id": "gt0040",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0025]"
           }
         }
       }
@@ -93,7 +101,7 @@
           "$gt0003|Classification|==local::at0005|Injury confined to foot|"
         ],
         "then": [
-          "$gt0036|Bastion class|='1'"
+          "$gt0040|Bastion class|.value=1"
         ]
       },
       "gt0019": {
@@ -103,7 +111,7 @@
           "$gt0003|Classification|==local::at0006|Injury involving lower leg permitting effective below-knee tourniquet application|"
         ],
         "then": [
-          "$gt0036|Bastion class|='2'"
+          "$gt0040|Bastion class|.value=2"
         ]
       },
       "gt0020": {
@@ -113,7 +121,7 @@
           "$gt0003|Classification|==local::at0007|Injury involving proximal lower leg or thigh, permitting effective above-knee tourniquet application|"
         ],
         "then": [
-          "$gt0036|Bastion class|='3'"
+          "$gt0040|Bastion class|.value=3"
         ]
       },
       "gt0021": {
@@ -123,7 +131,7 @@
           "$gt0003|Classification|==local::at0008|Proximal thigh injury, preventing effective tourniquet application|"
         ],
         "then": [
-          "$gt0036|Bastion class|='4'"
+          "$gt0040|Bastion class|.value=4"
         ]
       },
       "gt0022": {
@@ -133,62 +141,62 @@
           "$gt0003|Classification|==local::at0009|Any injury with buttock involvement|"
         ],
         "then": [
-          "$gt0036|Bastion class|='5'"
+          "$gt0040|Bastion class|.value=5"
         ]
       },
-      "gt0014": {
-        "id": "gt0014",
+      "gt0041": {
+        "id": "gt0041",
         "priority": 15,
         "when": [
           "$gt0003|Classification|!=null",
           "$gt0005|Associated intraperitoneal abdominal injury|==local::at0018|Yes|"
         ],
         "then": [
-          "$gt0036|Bastion class|.value=$gt0036+'A'"
+          "$gt0040|Bastion class|.value=$gt0040+'A'"
         ]
       },
-      "gt0015": {
-        "id": "gt0015",
+      "gt0042": {
+        "id": "gt0042",
         "priority": 14,
         "when": [
           "$gt0003|Classification|!=null",
           "$gt0006|Associated genitalia and perineal injury|==local::at0020|Yes|"
         ],
         "then": [
-          "$gt0036|Bastion class|.value=$gt0036+'B'"
+          "$gt0040|Bastion class|.value=$gt0040+'B'"
         ]
       },
-      "gt0016": {
-        "id": "gt0016",
+      "gt0043": {
+        "id": "gt0043",
         "priority": 13,
         "when": [
           "$gt0003|Classification|!=null",
           "$gt0007|Associated pelvic ring injury|==local::at0022|Yes|"
         ],
         "then": [
-          "$gt0036|Bastion class|.value=$gt0036+'C'"
+          "$gt0040|Bastion class|.value=$gt0040+'C'"
         ]
       },
-      "gt0017": {
-        "id": "gt0017",
+      "gt0044": {
+        "id": "gt0044",
         "priority": 12,
         "when": [
           "$gt0003|Classification|!=null",
           "$gt0008|Associated upper limb injury|==local::at0024|Yes|"
         ],
         "then": [
-          "$gt0036|Bastion class|.value=$gt0036+'D'"
+          "$gt0040|Bastion class|.value=$gt0040+'D'"
         ]
       },
-      "gt0013": {
-        "id": "gt0013",
+      "gt0045": {
+        "id": "gt0045",
         "priority": 11,
         "when": [
           "$gt0003|Classification|!=null",
           "$gt0004|Associated segmental injury (presence of potentially viable tissue distal to the most proximal injury)|==local::at0012|Yes|"
         ],
         "then": [
-          "$gt0036|Bastion class|.value=$gt0036+'S'"
+          "$gt0040|Bastion class|.value=$gt0040+'S'"
         ]
       },
       "gt0023": {
@@ -207,7 +215,7 @@
         "priority": 9,
         "when": [
           "fired($gt0018)",
-          "fired($gt0013)"
+          "fired($gt0045)"
         ],
         "then": [
           "$gt0010|Initial debridement and/or amputation|=local::at0017|PoP splintage +/- debridement|",
@@ -230,7 +238,7 @@
         "priority": 7,
         "when": [
           "fired($gt0019)",
-          "fired($gt0013)"
+          "fired($gt0045)"
         ],
         "then": [
           "$gt0010|Initial debridement and/or amputation|=local::at0019|Combination of debridement, PoP splintage, and external-fixation|",
@@ -253,7 +261,7 @@
         "priority": 5,
         "when": [
           "fired($gt0020)",
-          "fired($gt0013)"
+          "fired($gt0045)"
         ],
         "then": [
           "$gt0010|Initial debridement and/or amputation|=local::at0021|Majority required debridement only; also included PoP splintage, external-fixation, or low transfemoral amputation|",
@@ -276,7 +284,7 @@
         "priority": 3,
         "when": [
           "fired($gt0021)",
-          "fired($gt0013)"
+          "fired($gt0045)"
         ],
         "then": [
           "$gt0010|Initial debridement and/or amputation|=local::at0023|Majority required debridement only; also included high transtibial or transfemoral amputation|",
@@ -299,7 +307,7 @@
         "priority": 1,
         "when": [
           "fired($gt0022)",
-          "fired($gt0013)"
+          "fired($gt0045)"
         ],
         "then": [
           "$gt0010|Initial debridement and/or amputation|=local::at0025|Debridement only|",
@@ -465,6 +473,36 @@
             "id": "gt0037",
             "text": "Method of vascular control",
             "description": "*Interpretation of vascular control method"
+          },
+          "gt0038": {
+            "id": "gt0038",
+            "text": "Bastion class",
+            "description": "**This is used for making the combination of ABCDS bastion classes"
+          },
+          "gt0040": {
+            "id": "gt0040",
+            "text": "Bastion class",
+            "description": "Bastion class"
+          },
+          "gt0041": {
+            "id": "gt0041",
+            "text": "Set suffix A"
+          },
+          "gt0042": {
+            "id": "gt0042",
+            "text": "Set suffix B"
+          },
+          "gt0043": {
+            "id": "gt0043",
+            "text": "Set suffix C"
+          },
+          "gt0044": {
+            "id": "gt0044",
+            "text": "Set suffix D"
+          },
+          "gt0045": {
+            "id": "gt0045",
+            "text": "Set suffix S"
           }
         }
       }
