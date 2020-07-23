@@ -99,6 +99,9 @@
         }
       }
     },
+    "default_actions": [
+      "$gt0025|Conversion Factor|=1"
+    ],
     "rules": {
       "gt0014": {
         "id": "gt0014",
@@ -107,8 +110,7 @@
           "$gt0003|Weight|.unit=='lb'"
         ],
         "then": [
-          "$gt0023|Weight|.magnitude=$gt0003.magnitude*0.45359237",
-          "$gt0023|Weight|.unit='kg'"
+          "$gt0025|Conversion Factor|=0.453592"
         ]
       },
       "gt0013": {
@@ -118,7 +120,7 @@
           "$gt0003|Weight|!=null"
         ],
         "then": [
-          "$gt0010|Calculate Maximum daily dose of hydroxychloroquine|.magnitude=$gt0003.magnitude*5",
+          "$gt0010|Calculate Maximum daily dose of hydroxychloroquine|.magnitude=$gt0003.magnitude*5*$gt0025",
           "$gt0010|Calculate Maximum daily dose of hydroxychloroquine|.unit='mg'"
         ]
       },
@@ -129,7 +131,7 @@
           "$gt0005|Current daily dose|!=null"
         ],
         "then": [
-          "$gt0024|Current daily dose calculation|.magnitude=$gt0005.magnitude/$gt0003.magnitude",
+          "$gt0024|Current daily dose calculation|.magnitude=$gt0005.magnitude/($gt0003.magnitude*$gt0025)",
           "$gt0024|Current daily dose calculation|.precision=1",
           "$gt0024|Current daily dose calculation|.unit='mg/kg'"
         ]
@@ -220,11 +222,11 @@
           },
           "gt0013": {
             "id": "gt0013",
-            "text": "Calculate daily dose for kg"
+            "text": "Calculate daily dose "
           },
           "gt0014": {
             "id": "gt0014",
-            "text": "Calculate daily dose for lb"
+            "text": "Set Conversion factor for weight in lbs"
           },
           "gt0015": {
             "id": "gt0015",
@@ -256,6 +258,11 @@
             "id": "gt0024",
             "text": "Current daily dose calculation",
             "description": "*"
+          },
+          "gt0025": {
+            "id": "gt0025",
+            "text": "Conversion Factor",
+            "description": ""
           }
         }
       }
