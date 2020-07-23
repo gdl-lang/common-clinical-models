@@ -90,24 +90,35 @@
     "rules": {
       "gt0018": {
         "id": "gt0018",
-        "priority": 4,
+        "priority": 6,
         "when": [
-          "$gt0008|Serum digoxin level|>3,ng/mL"
+          "$gt0008|Serum digoxin level ng/mL|>4,ng/mL",
+          "$gt0008|Serum digoxin level ng/mL|<13,ng/mL"
         ],
         "then": [
-          "$gt0017|Check value|='Serum digoxin level is very high; double-check.'"
+          "$gt0017|Warning|='Serum digoxin level is very high; double-check.'"
+        ]
+      },
+      "gt0020": {
+        "id": "gt0020",
+        "priority": 5,
+        "when": [
+          "$gt0008|Serum digoxin level ng/mL|>=13,ng/mL"
+        ],
+        "then": [
+          "$gt0017|Warning|='Serum digoxin level is too high; please change to proceed.'"
         ]
       },
       "gt0013": {
         "id": "gt0013",
-        "priority": 3,
+        "priority": 4,
         "when": [
           "$gt0006|Choose available data|==local::at0005|Serum digoxin level|",
           "$gt0010|Weight|!=null",
           "$gt0010|Weight|.unit=='kg'",
-          "$gt0008|Serum digoxin level|!=null",
-          "$gt0008|Serum digoxin level|.unit=='ng/mL'",
-          "!fired($gt0018)"
+          "$gt0008|Serum digoxin level ng/mL|!=null",
+          "$gt0008|Serum digoxin level ng/mL|.unit=='ng/mL'",
+          "!fired($gt0020)"
         ],
         "then": [
           "$gt0012|Number of vials|.magnitude=ceil($gt0008.magnitude*$gt0010.magnitude/100)",
@@ -116,12 +127,23 @@
       },
       "gt0019": {
         "id": "gt0019",
-        "priority": 2,
+        "priority": 3,
         "when": [
-          "$gt0007|Amount ingested|>10,mg"
+          "$gt0007|Amount ingested|>10,mg",
+          "$gt0007|Amount ingested|<21,mg"
         ],
         "then": [
-          "$gt0017|Check value|='Amount ingested is very high; double-check.'"
+          "$gt0017|Warning|='Amount ingested is very high; double-check.'"
+        ]
+      },
+      "gt0021": {
+        "id": "gt0021",
+        "priority": 2,
+        "when": [
+          "$gt0007|Amount ingested|>=21,mg"
+        ],
+        "then": [
+          "$gt0017|Warning|='Amount ingested is too high; please change to proceed.'"
         ]
       },
       "gt0015": {
@@ -129,7 +151,8 @@
         "priority": 1,
         "when": [
           "$gt0006|Choose available data|==local::at0006|Amount ingested|",
-          "$gt0007|Amount ingested|!=null"
+          "$gt0007|Amount ingested|!=null",
+          "!fired($gt0021)"
         ],
         "then": [
           "$gt0012|Number of vials|.magnitude=ceil(($gt0007.magnitude/0.5)*0.8)",
@@ -160,7 +183,7 @@
           },
           "gt0008": {
             "id": "gt0008",
-            "text": "Serum digoxin level",
+            "text": "Serum digoxin level ng/mL",
             "description": "*"
           },
           "gt0010": {
@@ -192,16 +215,24 @@
           },
           "gt0017": {
             "id": "gt0017",
-            "text": "Check value",
+            "text": "Warning",
             "description": "*"
           },
           "gt0018": {
             "id": "gt0018",
-            "text": "Set check value serum dig level"
+            "text": "Set check value serum dig level, very high"
           },
           "gt0019": {
             "id": "gt0019",
-            "text": "Set check value amount ingested"
+            "text": "Set check value amount ingested, Very high"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Set check value serum dig level, Too high"
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "Set check value amount ingested, Too high"
           }
         }
       }
