@@ -179,7 +179,7 @@
           "$gt0005|Height/Length|>203,cm"
         ],
         "then": [
-          "$gt0048|Height tWarning|='Very high; double-check.'"
+          "$gt0048|Height Warning|='Very high; double-check.'"
         ]
       },
       "gt0058": {
@@ -189,7 +189,7 @@
           "$gt0005|Height/Length|<=12,cm"
         ],
         "then": [
-          "$gt0048|Height tWarning|='Very high; double-check.'"
+          "$gt0048|Height Warning|='Very high; double-check.'"
         ]
       },
       "gt0028": {
@@ -199,9 +199,7 @@
           "$gt0003|Weight|!=null",
           "$gt0005|Height/Length|!=null",
           "$gt0003|Weight|.unit=='kg'",
-          "$gt0005|Height/Length|.unit=='cm'",
-          "!fired($gt0058)",
-          "!fired($gt0057)"
+          "$gt0005|Height/Length|.unit=='cm'"
         ],
         "then": [
           "$gt0020|BSA Score|.magnitude=($gt0005.magnitude*$gt0003.magnitude/3600)^0.5",
@@ -298,14 +296,12 @@
         "when": [
           "$gt0009|SaO2|!=null",
           "$gt0011|SvO₂|!=null",
-          "$gt0013|Haemoglobin|!=null",
-          "$gt0013|Haemoglobin|.unit=='gm/dl'",
+          "$gt0013|Hb gm/dl|!=null",
+          "$gt0013|Hb gm/dl|.unit=='gm/dl'",
           "!fired($gt0037)",
-          "!fired($gt0038)",
           "!fired($gt0052)",
           "!fired($gt0043)",
-          "!fired($gt0039)",
-          "!fired($gt0040)"
+          "!fired($gt0041)"
         ],
         "then": [
           "$gt0030|A-V O2 content difference|.magnitude=($gt0009.magnitude/100-$gt0011.magnitude/100)*$gt0013.magnitude*13.6",
@@ -316,7 +312,7 @@
         "id": "gt0041",
         "priority": 10,
         "when": [
-          "$gt0013|Haemoglobin|>25,gm/dl"
+          "$gt0013|Hb gm/dl|>25,gm/dl"
         ],
         "then": [
           "$gt0047|Hb Warning|='Too high; please change to proceed.'"
@@ -326,8 +322,8 @@
         "id": "gt0050",
         "priority": 9,
         "when": [
-          "$gt0013|Haemoglobin|>20,gm/dl",
-          "$gt0013|Haemoglobin|<=25,gm/dl"
+          "$gt0013|Hb gm/dl|>20,gm/dl",
+          "$gt0013|Hb gm/dl|<=25,gm/dl"
         ],
         "then": [
           "$gt0047|Hb Warning|='Very high; double-check.'"
@@ -337,7 +333,7 @@
         "id": "gt0051",
         "priority": 8,
         "when": [
-          "$gt0013|Haemoglobin|<4,gm/dl"
+          "$gt0013|Hb gm/dl|<4,gm/dl"
         ],
         "then": [
           "$gt0047|Hb Warning|='Very low; double-check.'"
@@ -388,13 +384,11 @@
         "id": "gt0032",
         "priority": 3,
         "when": [
+          "fired($gt0026)",
+          "fired($gt0027)",
           "fired($gt0031)",
           "!fired($gt0041)",
-          "!fired($gt0050)",
-          "!fired($gt0051)",
           "!fired($gt0053)",
-          "!fired($gt0054)",
-          "!fired($gt0055)",
           "!fired($gt0056)"
         ],
         "then": [
@@ -407,6 +401,7 @@
         "id": "gt0033",
         "priority": 2,
         "when": [
+          "fired($gt0028)",
           "fired($gt0032)"
         ],
         "then": [
@@ -461,7 +456,7 @@
           },
           "gt0013": {
             "id": "gt0013",
-            "text": "Haemoglobin",
+            "text": "Hb gm/dl",
             "description": "The mass concentration of haemoglobin"
           },
           "gt0015": {
@@ -604,7 +599,7 @@
           },
           "gt0048": {
             "id": "gt0048",
-            "text": "Height tWarning",
+            "text": "Height Warning",
             "description": "*"
           },
           "gt0049": {
