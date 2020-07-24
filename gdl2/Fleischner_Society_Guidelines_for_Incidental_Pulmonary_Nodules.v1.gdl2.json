@@ -1,5 +1,5 @@
 {
-  "id": "Fleischner_Society_Guidelines_for_Incidental_Pulmonary_Nodules.v0",
+  "id": "Fleischner_Society_Guidelines_for_Incidental_Pulmonary_Nodules.v1",
   "gdl_version": "2.0",
   "concept": "gt0001",
   "language": {
@@ -16,14 +16,14 @@
     "details": {
       "en": {
         "id": "en",
-        "purpose": "Used to provide guidelines for management of solid and subsolid pulmonary nodules.",
+        "purpose": "The Fleischner guideline guidelines are used for management of solid and subsolid pulmonary nodules.",
         "keywords": [
           "solid pulmonary nodules",
           "subsolid pulmonary nodules",
           "computerized tomography",
           "acute pulmonary embolism"
         ],
-        "use": "Use in hemodynamically stable patients with acute pulmonary embolism (PE). Use in patients ≥35 years old with incidental pulmonary nodules on CT imaging. Use most suspicious nodule as guide to management.",
+        "use": "Use in hemodynamically stable patients with acute pulmonary embolism (PE). Use in patients ≥35 years old with incidental pulmonary nodules on CT imaging. Use most suspicious nodule as guide to management. The guideline consists of questions regarding nodule type, size, number and risk type. The combination of these will give the final recommendation which can range from no routine follow-up needed to CT scan at 3-6 months, then at 18-24 months.",
         "misuse": "Do not use for lung cancer screening or in patients with known primary cancer or immunosuppression.",
         "copyright": "@Cambio CDS"
       }
@@ -86,12 +86,12 @@
     "rules": {
       "gt0002": {
         "id": "gt0002",
-        "priority": 18,
+        "priority": 12,
         "when": [
           "$gt0004|Nodule type|==local::at0006|Solid|",
-          "$gt0005|Number of nodules|==local::at0034|Single|",
           "$gt0006|Risk level (if solid)|==local::at0009|Low|",
-          "$gt0007|Size (if solid)|==local::at0012|<6 mm (<100 mm³)|"
+          "$gt0007|Size (if solid)|==local::at0012|<6 mm (<100 mm³)|",
+          "($gt0005|Number of nodules|==local::at0034|Single|)||($gt0005|Number of nodules|==local::at0035|Multiple|)"
         ],
         "then": [
           "$gt0012|Solid nodule interpretation|=local::at0028|No routine follow-up|"
@@ -99,7 +99,7 @@
       },
       "gt0013": {
         "id": "gt0013",
-        "priority": 17,
+        "priority": 11,
         "when": [
           "$gt0004|Nodule type|==local::at0006|Solid|",
           "$gt0005|Number of nodules|==local::at0034|Single|",
@@ -112,72 +112,33 @@
       },
       "gt0014": {
         "id": "gt0014",
-        "priority": 16,
+        "priority": 10,
         "when": [
           "$gt0004|Nodule type|==local::at0006|Solid|",
           "$gt0005|Number of nodules|==local::at0034|Single|",
-          "$gt0006|Risk level (if solid)|==local::at0009|Low|",
-          "$gt0007|Size (if solid)|==local::at0013|6-8 mm (100-250 mm³)|"
+          "$gt0007|Size (if solid)|==local::at0013|6-8 mm (100-250 mm³)|",
+          "($gt0006|Risk level (if solid)|==local::at0010|High|)||($gt0006|Risk level (if solid)|==local::at0009|Low|)"
         ],
         "then": [
           "$gt0012|Solid nodule interpretation|=local::at0029|CT at 6-12 months, then consider CT at 18-24 months|"
-        ]
-      },
-      "gt0015": {
-        "id": "gt0015",
-        "priority": 15,
-        "when": [
-          "$gt0004|Nodule type|==local::at0006|Solid|",
-          "$gt0005|Number of nodules|==local::at0034|Single|",
-          "$gt0006|Risk level (if solid)|==local::at0010|High|",
-          "$gt0007|Size (if solid)|==local::at0013|6-8 mm (100-250 mm³)|"
-        ],
-        "then": [
-          "$gt0012|Solid nodule interpretation|=local::at0029|CT at 6-12 months, then consider CT at 18-24 months|"
-        ]
-      },
-      "gt0016": {
-        "id": "gt0016",
-        "priority": 14,
-        "when": [
-          "$gt0004|Nodule type|==local::at0006|Solid|",
-          "$gt0005|Number of nodules|==local::at0034|Single|",
-          "$gt0006|Risk level (if solid)|==local::at0009|Low|",
-          "$gt0007|Size (if solid)|==local::at0014|>8 mm (>250 mm³)|"
-        ],
-        "then": [
-          "$gt0012|Solid nodule interpretation|=local::at0030|Consider CT at 3 months, PET/CT, or tissue sampling|"
         ]
       },
       "gt0017": {
         "id": "gt0017",
-        "priority": 13,
+        "priority": 9,
         "when": [
           "$gt0004|Nodule type|==local::at0006|Solid|",
           "$gt0005|Number of nodules|==local::at0034|Single|",
-          "$gt0006|Risk level (if solid)|==local::at0010|High|",
-          "$gt0007|Size (if solid)|==local::at0014|>8 mm (>250 mm³)|"
+          "$gt0007|Size (if solid)|==local::at0014|>8 mm (>250 mm³)|",
+          "($gt0006|Risk level (if solid)|==local::at0010|High|)||($gt0006|Risk level (if solid)|==local::at0009|Low|)"
         ],
         "then": [
           "$gt0012|Solid nodule interpretation|=local::at0030|Consider CT at 3 months, PET/CT, or tissue sampling|"
         ]
       },
-      "gt0018": {
-        "id": "gt0018",
-        "priority": 12,
-        "when": [
-          "$gt0004|Nodule type|==local::at0006|Solid|",
-          "$gt0005|Number of nodules|==local::at0035|Multiple|",
-          "$gt0006|Risk level (if solid)|==local::at0010|High|",
-          "$gt0007|Size (if solid)|==local::at0012|<6 mm (<100 mm³)|"
-        ],
-        "then": [
-          "$gt0012|Solid nodule interpretation|=local::at0028|No routine follow-up|"
-        ]
-      },
       "gt0024": {
         "id": "gt0024",
-        "priority": 11,
+        "priority": 8,
         "when": [
           "$gt0004|Nodule type|==local::at0006|Solid|",
           "$gt0005|Number of nodules|==local::at0035|Multiple|",
@@ -190,12 +151,12 @@
       },
       "gt0025": {
         "id": "gt0025",
-        "priority": 10,
+        "priority": 7,
         "when": [
           "$gt0004|Nodule type|==local::at0006|Solid|",
           "$gt0005|Number of nodules|==local::at0035|Multiple|",
           "$gt0006|Risk level (if solid)|==local::at0009|Low|",
-          "$gt0007|Size (if solid)|==local::at0013|6-8 mm (100-250 mm³)|"
+          "($gt0007|Size (if solid)|==local::at0013|6-8 mm (100-250 mm³)|)||($gt0007|Size (if solid)|==local::at0014|>8 mm (>250 mm³)|)"
         ],
         "then": [
           "$gt0012|Solid nodule interpretation|=local::at0032|CT at 3-6 months, then consider CT at 18-24 months|"
@@ -203,38 +164,12 @@
       },
       "gt0026": {
         "id": "gt0026",
-        "priority": 9,
+        "priority": 6,
         "when": [
           "$gt0004|Nodule type|==local::at0006|Solid|",
           "$gt0005|Number of nodules|==local::at0035|Multiple|",
           "$gt0006|Risk level (if solid)|==local::at0010|High|",
-          "$gt0007|Size (if solid)|==local::at0013|6-8 mm (100-250 mm³)|"
-        ],
-        "then": [
-          "$gt0012|Solid nodule interpretation|=local::at0033|CT at 3-6 months, then at 18-24 months|"
-        ]
-      },
-      "gt0027": {
-        "id": "gt0027",
-        "priority": 8,
-        "when": [
-          "$gt0004|Nodule type|==local::at0006|Solid|",
-          "$gt0005|Number of nodules|==local::at0035|Multiple|",
-          "$gt0006|Risk level (if solid)|==local::at0009|Low|",
-          "$gt0007|Size (if solid)|==local::at0014|>8 mm (>250 mm³)|"
-        ],
-        "then": [
-          "$gt0012|Solid nodule interpretation|=local::at0032|CT at 3-6 months, then consider CT at 18-24 months|"
-        ]
-      },
-      "gt0028": {
-        "id": "gt0028",
-        "priority": 7,
-        "when": [
-          "$gt0004|Nodule type|==local::at0006|Solid|",
-          "$gt0005|Number of nodules|==local::at0035|Multiple|",
-          "$gt0006|Risk level (if solid)|==local::at0010|High|",
-          "$gt0007|Size (if solid)|==local::at0014|>8 mm (>250 mm³)|"
+          "($gt0007|Size (if solid)|==local::at0013|6-8 mm (100-250 mm³)|)||($gt0007|Size (if solid)|==local::at0014|>8 mm (>250 mm³)|)"
         ],
         "then": [
           "$gt0012|Solid nodule interpretation|=local::at0033|CT at 3-6 months, then at 18-24 months|"
@@ -242,25 +177,12 @@
       },
       "gt0029": {
         "id": "gt0029",
-        "priority": 6,
-        "when": [
-          "$gt0004|Nodule type|==local::at0007|Subsolid|",
-          "$gt0005|Number of nodules|==local::at0034|Single|",
-          "$gt0008|Additional features (if subsolid and single)|==local::at0016|Ground glass|",
-          "$gt0009|Size (if subsolid)|==local::at0019|<6 mm (<100 mm³)|"
-        ],
-        "then": [
-          "$gt0011|Subsolid nodule interpretation|=local::at0022|No routine follow-up|"
-        ]
-      },
-      "gt0030": {
-        "id": "gt0030",
         "priority": 5,
         "when": [
           "$gt0004|Nodule type|==local::at0007|Subsolid|",
           "$gt0005|Number of nodules|==local::at0034|Single|",
-          "$gt0008|Additional features (if subsolid and single)|==local::at0017|Part solid|",
-          "$gt0009|Size (if subsolid)|==local::at0019|<6 mm (<100 mm³)|"
+          "$gt0009|Size (if subsolid)|==local::at0019|<6 mm (<100 mm³)|",
+          "($gt0008|Additional features (if subsolid and single)|==local::at0016|Ground glass|)||($gt0008|Additional features (if subsolid and single)|==local::at0017|Part solid|)"
         ],
         "then": [
           "$gt0011|Subsolid nodule interpretation|=local::at0022|No routine follow-up|"
@@ -330,7 +252,7 @@
           },
           "gt0002": {
             "id": "gt0002",
-            "text": "Solid nodule, single, low risk and <6 mm"
+            "text": "Solid nodule, single/multiple, low risk and <6 mm"
           },
           "gt0004": {
             "id": "gt0004",
@@ -378,7 +300,7 @@
           },
           "gt0014": {
             "id": "gt0014",
-            "text": "Solid nodule, single, low risk and 6-8 mm"
+            "text": "Solid nodule, single, low/high risk and 6-8 mm"
           },
           "gt0015": {
             "id": "gt0015",
@@ -390,7 +312,7 @@
           },
           "gt0017": {
             "id": "gt0017",
-            "text": "Solid nodule, single, high risk and >8 mm"
+            "text": "Solid nodule, single, low/high risk and >8 mm"
           },
           "gt0018": {
             "id": "gt0018",
@@ -422,11 +344,11 @@
           },
           "gt0025": {
             "id": "gt0025",
-            "text": "Solid nodule, multiple, low risk and 6-8 mm"
+            "text": "Solid nodule, multiple, low risk and 6-8 mm/>8mm"
           },
           "gt0026": {
             "id": "gt0026",
-            "text": "Solid nodule, multiple, high risk and 6-8 mm"
+            "text": "Solid nodule, multiple, high risk and 6-8 mm/>8mm"
           },
           "gt0027": {
             "id": "gt0027",
@@ -438,7 +360,7 @@
           },
           "gt0029": {
             "id": "gt0029",
-            "text": "Subsolid nodule, single, ground glass and <6 mm"
+            "text": "Subsolid nodule, single, ground glass/part solid and <6 mm"
           },
           "gt0030": {
             "id": "gt0030",
