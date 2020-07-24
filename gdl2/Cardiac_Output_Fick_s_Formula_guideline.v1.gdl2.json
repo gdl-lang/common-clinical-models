@@ -290,9 +290,40 @@
           "$gt0046|SvO2 Warning|='Very low; double-check.'"
         ]
       },
+      "gt0041": {
+        "id": "gt0041",
+        "priority": 11,
+        "when": [
+          "$gt0013|Hb gm/dl|>25,gm/dl"
+        ],
+        "then": [
+          "$gt0047|Hb Warning|='Too high; please change to proceed.'"
+        ]
+      },
+      "gt0050": {
+        "id": "gt0050",
+        "priority": 10,
+        "when": [
+          "$gt0013|Hb gm/dl|>20,gm/dl",
+          "$gt0013|Hb gm/dl|<=25,gm/dl"
+        ],
+        "then": [
+          "$gt0047|Hb Warning|='Very high; double-check.'"
+        ]
+      },
+      "gt0051": {
+        "id": "gt0051",
+        "priority": 9,
+        "when": [
+          "$gt0013|Hb gm/dl|<4,gm/dl"
+        ],
+        "then": [
+          "$gt0047|Hb Warning|='Very low; double-check.'"
+        ]
+      },
       "gt0031": {
         "id": "gt0031",
-        "priority": 11,
+        "priority": 8,
         "when": [
           "$gt0009|SaO2|!=null",
           "$gt0011|SvO₂|!=null",
@@ -306,37 +337,6 @@
         "then": [
           "$gt0030|A-V O2 content difference|.magnitude=($gt0009.magnitude/100-$gt0011.magnitude/100)*$gt0013.magnitude*13.6",
           "$gt0030|A-V O2 content difference|.precision=2"
-        ]
-      },
-      "gt0041": {
-        "id": "gt0041",
-        "priority": 10,
-        "when": [
-          "$gt0013|Hb gm/dl|>25,gm/dl"
-        ],
-        "then": [
-          "$gt0047|Hb Warning|='Too high; please change to proceed.'"
-        ]
-      },
-      "gt0050": {
-        "id": "gt0050",
-        "priority": 9,
-        "when": [
-          "$gt0013|Hb gm/dl|>20,gm/dl",
-          "$gt0013|Hb gm/dl|<=25,gm/dl"
-        ],
-        "then": [
-          "$gt0047|Hb Warning|='Very high; double-check.'"
-        ]
-      },
-      "gt0051": {
-        "id": "gt0051",
-        "priority": 8,
-        "when": [
-          "$gt0013|Hb gm/dl|<4,gm/dl"
-        ],
-        "then": [
-          "$gt0047|Hb Warning|='Very low; double-check.'"
         ]
       },
       "gt0053": {
@@ -384,10 +384,10 @@
         "id": "gt0032",
         "priority": 3,
         "when": [
-          "!fired($gt0041)",
           "(fired($gt0026))||(fired($gt0027))",
           "!fired($gt0053)",
-          "!fired($gt0056)"
+          "!fired($gt0056)",
+          "fired($gt0031)"
         ],
         "then": [
           "$gt0023|Cardiac Output|.magnitude=$gt0022.magnitude/$gt0030.magnitude",
@@ -619,19 +619,19 @@
           },
           "gt0053": {
             "id": "gt0053",
-            "text": "Set Hear rate warning too high"
+            "text": "Set Heart rate warning too high"
           },
           "gt0054": {
             "id": "gt0054",
-            "text": "Set Hear rate warning very high"
+            "text": "Set Heart rate warning very high"
           },
           "gt0055": {
             "id": "gt0055",
-            "text": "Set Hear rate warning very low"
+            "text": "Set Heart rate warning very low"
           },
           "gt0056": {
             "id": "gt0056",
-            "text": "Set Hear rate warning too low"
+            "text": "Set Heart rate warning too low"
           },
           "gt0057": {
             "id": "gt0057",
