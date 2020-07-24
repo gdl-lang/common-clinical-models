@@ -1,0 +1,407 @@
+{
+  "id": "expanded_disability_status_scale_functional_system_score.v1",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2020-07-24",
+      "name": "Therese Lindberg",
+      "organisation": "Cambio CDS",
+      "email": "therese.lindberg@cambio.se"
+    },
+    "lifecycle_state": "Initial",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "To describe severity of disability in patients with MS.",
+        "keywords": [
+          "disability",
+          "status",
+          "scale",
+          "EDSS",
+          "FSS"
+        ],
+        "use": "Formula:\nEDSS: Points assigned based on level of disability.\nFSS: Addition of selected points within body system.\n\n\nScore of 1.0 to 4.5 -- Normal ambulation.\nScore of 5.0 to 9.5 -- Impaired ambulation.",
+        "copyright": "@CambioCDS"
+      }
+    },
+    "other_details": {
+      "references": "1. Kurtzke JF. Rating neurologic impairment in multiple sclerosis: an expanded disability status scale (EDSS). Neurology. 1983 Nov;33(11):1444-52."
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0002": {
+        "id": "gt0002",
+        "model_id": "openEHR-EHR-EVALUATION.expanded_disability_status_scale_functional_systems_score.v0",
+        "template_id": "openEHR-EHR-EVALUATION.expanded_disability_status_scale_functional_systems_score.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0003": {
+            "id": "gt0003",
+            "path": "/data[at0001]/items[at0004]/items[at0025]"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/items[at0003]/items[at0002]"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "path": "/data[at0001]/items[at0004]/items[at0026]"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/items[at0004]/items[at0022]"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "path": "/data[at0001]/items[at0004]/items[at0021]"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "path": "/data[at0001]/items[at0004]/items[at0024]"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "path": "/data[at0001]/items[at0004]/items[at0023]"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "path": "/data[at0001]/items[at0004]/items[at0019]"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "path": "/data[at0001]/items[at0004]/items[at0020]"
+          }
+        }
+      },
+      "gt0012": {
+        "id": "gt0012",
+        "model_id": "openEHR-EHR-EVALUATION.expanded_disability_status_scale_functional_systems_score.v0",
+        "template_id": "openEHR-EHR-EVALUATION.expanded_disability_status_scale_functional_systems_score.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0013": {
+            "id": "gt0013",
+            "path": "/data[at0001]/items[at0075]"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "path": "/data[at0001]/items[at0076]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0015": {
+        "id": "gt0015",
+        "priority": 16,
+        "when": [
+          "$gt0004|Ambulation|==local::at0005|0-Fully ambulatory|"
+        ],
+        "then": [
+          "$gt0013|Ambulation Score|=0,1"
+        ]
+      },
+      "gt0016": {
+        "id": "gt0016",
+        "priority": 15,
+        "when": [
+          "$gt0004|Ambulation|==local::at0006|4.0-Fully ambulatory, self-sufficient, up 12 hours a day despite relatively severe disability. Able to walk ≥500 meters without aid/rest.|"
+        ],
+        "then": [
+          "$gt0013|Ambulation Score|=4,1"
+        ]
+      },
+      "gt0020": {
+        "id": "gt0020",
+        "priority": 14,
+        "when": [
+          "$gt0004|Ambulation|==local::at0007|4.5-Fully ambulatory, able to work a full day, may require minimal assistance. Able to walk ≥300 meters without aid/rest.|"
+        ],
+        "then": [
+          "$gt0013|Ambulation Score|=4.5,1"
+        ]
+      },
+      "gt0017": {
+        "id": "gt0017",
+        "priority": 13,
+        "when": [
+          "$gt0004|Ambulation|==local::at0008|5.0-Ambulatory for 200 meters without aid/rest; disability that impairs full daily activities (eg, to work full day without special provisions).|"
+        ],
+        "then": [
+          "$gt0013|Ambulation Score|=5,1"
+        ]
+      },
+      "gt0018": {
+        "id": "gt0018",
+        "priority": 12,
+        "when": [
+          "$gt0004|Ambulation|==local::at0009|5.5-Ambulatory for 100 meters without aid/rest; disability precludes full daily activities.|"
+        ],
+        "then": [
+          "$gt0013|Ambulation Score|=5.5,1",
+          "$gt0013|Ambulation Score|.precision=1"
+        ]
+      },
+      "gt0019": {
+        "id": "gt0019",
+        "priority": 11,
+        "when": [
+          "$gt0004|Ambulation|==local::at0010|6.0-Intermittent or unilateral constant assistance required to walk 100 meters, with/without resting.|"
+        ],
+        "then": [
+          "$gt0013|Ambulation Score|=6,1"
+        ]
+      },
+      "gt0021": {
+        "id": "gt0021",
+        "priority": 10,
+        "when": [
+          "$gt0004|Ambulation|==local::at0011|6.5-Constant bilateral assistance (canes, crutches, or braces) required to walk 20 meters without resting.|"
+        ],
+        "then": [
+          "$gt0013|Ambulation Score|=6.5,1"
+        ]
+      },
+      "gt0022": {
+        "id": "gt0022",
+        "priority": 9,
+        "when": [
+          "$gt0004|Ambulation|==local::at0012|7.0-Unable to walk >5 meters even with aid; (restricted to wheelchair); wheels self in standard wheelchair and transfers alone.|"
+        ],
+        "then": [
+          "$gt0013|Ambulation Score|=7,1"
+        ]
+      },
+      "gt0023": {
+        "id": "gt0023",
+        "priority": 8,
+        "when": [
+          "$gt0004|Ambulation|==local::at0013|7.5-Unable to take more than steps; restricted to wheelchair; may need aid in transfer; wheels self but cannot use standard wheelchair a full day; may require motorized wheelchair.|"
+        ],
+        "then": [
+          "$gt0013|Ambulation Score|=7.5,1"
+        ]
+      },
+      "gt0024": {
+        "id": "gt0024",
+        "priority": 7,
+        "when": [
+          "$gt0004|Ambulation|==local::at0014|8.0-Restricted to bed/chair or perambulated in wheelchair, but may be out of bed itself much of the day; retains many self-care functions; generally has effective use of arms.|"
+        ],
+        "then": [
+          "$gt0013|Ambulation Score|=8,1"
+        ]
+      },
+      "gt0025": {
+        "id": "gt0025",
+        "priority": 6,
+        "when": [
+          "$gt0004|Ambulation|==local::at0015|8.5-Restricted to bed much of the day; has some effective use of arms; retains some self-care functions.|"
+        ],
+        "then": [
+          "$gt0013|Ambulation Score|=8.5,1"
+        ]
+      },
+      "gt0026": {
+        "id": "gt0026",
+        "priority": 5,
+        "when": [
+          "$gt0004|Ambulation|==local::at0016|9.0-Helpless bed patient; can communicate and eat.|"
+        ],
+        "then": [
+          "$gt0013|Ambulation Score|=9,1"
+        ]
+      },
+      "gt0027": {
+        "id": "gt0027",
+        "priority": 4,
+        "when": [
+          "$gt0004|Ambulation|==local::at0017|9.5-Totally helpless bed patient; unable to communicate effectively or eat/swallow.|"
+        ],
+        "then": [
+          "$gt0013|Ambulation Score|=9.5,1"
+        ]
+      },
+      "gt0028": {
+        "id": "gt0028",
+        "priority": 3,
+        "when": [
+          "$gt0004|Ambulation|==local::at0018|10.0-Death due to MS.|"
+        ],
+        "then": [
+          "$gt0013|Ambulation Score|=10,1"
+        ]
+      },
+      "gt0029": {
+        "id": "gt0029",
+        "priority": 2,
+        "when": [
+          "$gt0003|Cerebral|==0|local::at0067|Normal +0|",
+          "$gt0005|Other|==0|local::at0073|Normal +0|",
+          "$gt0006|Sensory|==0|local::at0046|Normal +0|",
+          "$gt0007|Brainstem|==0|local::at0040|Normal +0|",
+          "$gt0008|Visual|==0|local::at0060|\r\n\r\nNormal +0|",
+          "$gt0010|Pyramidal|==0|local::at0027|Normal +0|",
+          "$gt0009|Bowel and bladder|==0|local::at0053|Normal +0|",
+          "$gt0011|Cerebellar|==0|local::at0034|Normal +0|"
+        ],
+        "then": [
+          "$gt0014|Functional System Score|=0,1"
+        ]
+      },
+      "gt0030": {
+        "id": "gt0030",
+        "priority": 1,
+        "when": [
+          "(((((($gt0005|Other|==1|local::at0074|Any other neurologic findings attributed to MS +1|)||($gt0006|Sensory|==1|local::at0047|Vibration or figure-writing decrease only, in 1-2 limbs +1|))||($gt0007|Brainstem|==1|local::at0041|Signs only +1|))||($gt0008|Visual|==1|local::at0061|Scotoma with visual acuity (corrected) better than 20/30 +1|))||($gt0009|Bowel and bladder|==1|local::at0054|Mild urinary hesitancy, urgency, or retention +1|))||($gt0010|Pyramidal|==1|local::at0028|Abnormal signs without disability +1|))||($gt0011|Cerebellar|==1|local::at0035|Abnormal signs without disability +1|)",
+          "$gt0003|Cerebral|==0|local::at0067|Normal +0|"
+        ],
+        "then": [
+          "$gt0014|Functional System Score|=1,1"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "Expanded Disability Status Scale/ Functional Systems Score",
+            "description": "Expanded Disability Status Scale (EDSS) / Functional Systems Score (FSS) describes severity of disability in patients with MS."
+          },
+          "gt0003": {
+            "id": "gt0003",
+            "text": "Cerebral",
+            "description": "*"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "Ambulation",
+            "description": "*"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "Other",
+            "description": "*"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Sensory",
+            "description": "*"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "text": "Brainstem",
+            "description": "*"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "Visual",
+            "description": "*"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "text": "Bowel and bladder",
+            "description": "*"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "Pyramidal",
+            "description": "*"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "Cerebellar",
+            "description": "*"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "Ambulation Score",
+            "description": "*"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "Functional System Score",
+            "description": "*"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "Ambulation: 0"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "text": "Ambulation: 4"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "Ambulation: 5"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "Ambulation: 5.5"
+          },
+          "gt0019": {
+            "id": "gt0019",
+            "text": "Ambulation: 6"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Ambulation: 4.5"
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "Ambulation: 6.5"
+          },
+          "gt0022": {
+            "id": "gt0022",
+            "text": "Ambulation: 7"
+          },
+          "gt0023": {
+            "id": "gt0023",
+            "text": "Ambulation: 7.5"
+          },
+          "gt0024": {
+            "id": "gt0024",
+            "text": "Ambulation: 8"
+          },
+          "gt0025": {
+            "id": "gt0025",
+            "text": "Ambulation: 8.5"
+          },
+          "gt0026": {
+            "id": "gt0026",
+            "text": "Ambulation: 9"
+          },
+          "gt0027": {
+            "id": "gt0027",
+            "text": "Ambulation: 9.5"
+          },
+          "gt0028": {
+            "id": "gt0028",
+            "text": "Ambulation: 10"
+          },
+          "gt0029": {
+            "id": "gt0029",
+            "text": "Functional System Score: 0"
+          },
+          "gt0030": {
+            "id": "gt0030",
+            "text": "Functional System Score: 1"
+          },
+          "gt0031": {
+            "id": "gt0031",
+            "text": "Functional System Score: 1.5"
+          }
+        }
+      }
+    }
+  }
+}
