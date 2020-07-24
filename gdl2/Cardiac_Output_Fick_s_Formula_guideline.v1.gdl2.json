@@ -339,54 +339,11 @@
           "$gt0030|A-V O2 content difference|.precision=2"
         ]
       },
-      "gt0053": {
-        "id": "gt0053",
-        "priority": 7,
-        "when": [
-          "$gt0015|Heart rate|>300,/min"
-        ],
-        "then": [
-          "$gt0049|Hear rate Warning|='Too high; please change to proceed.'"
-        ]
-      },
-      "gt0054": {
-        "id": "gt0054",
-        "priority": 6,
-        "when": [
-          "$gt0015|Heart rate|<=300,/min",
-          "$gt0015|Heart rate|>200,/min"
-        ],
-        "then": [
-          "$gt0049|Hear rate Warning|='Very high; double-check.'"
-        ]
-      },
-      "gt0055": {
-        "id": "gt0055",
-        "priority": 5,
-        "when": [
-          "$gt0015|Heart rate|<20,/min"
-        ],
-        "then": [
-          "$gt0049|Hear rate Warning|='Very low; double-check.'"
-        ]
-      },
-      "gt0056": {
-        "id": "gt0056",
-        "priority": 4,
-        "when": [
-          "$gt0015|Heart rate|<10,/min"
-        ],
-        "then": [
-          "$gt0049|Hear rate Warning|='Too low; please change to proceed.'"
-        ]
-      },
       "gt0032": {
         "id": "gt0032",
-        "priority": 3,
+        "priority": 7,
         "when": [
           "(fired($gt0026))||(fired($gt0027))",
-          "!fired($gt0053)",
-          "!fired($gt0056)",
           "fired($gt0031)"
         ],
         "then": [
@@ -397,7 +354,7 @@
       },
       "gt0033": {
         "id": "gt0033",
-        "priority": 2,
+        "priority": 6,
         "when": [
           "fired($gt0028)",
           "fired($gt0032)"
@@ -408,12 +365,55 @@
           "$gt0024|Cardiac Index|.unit='l/min/m2'"
         ]
       },
+      "gt0053": {
+        "id": "gt0053",
+        "priority": 5,
+        "when": [
+          "$gt0015|Heart rate|>300,/min"
+        ],
+        "then": [
+          "$gt0049|Hear rate Warning|='Too high; please change to proceed.'"
+        ]
+      },
+      "gt0054": {
+        "id": "gt0054",
+        "priority": 4,
+        "when": [
+          "$gt0015|Heart rate|<=300,/min",
+          "$gt0015|Heart rate|>200,/min"
+        ],
+        "then": [
+          "$gt0049|Hear rate Warning|='Very high; double-check.'"
+        ]
+      },
+      "gt0056": {
+        "id": "gt0056",
+        "priority": 3,
+        "when": [
+          "$gt0015|Heart rate|<10,/min"
+        ],
+        "then": [
+          "$gt0049|Hear rate Warning|='Too low; please change to proceed.'"
+        ]
+      },
+      "gt0055": {
+        "id": "gt0055",
+        "priority": 2,
+        "when": [
+          "$gt0015|Heart rate|<20,/min"
+        ],
+        "then": [
+          "$gt0049|Hear rate Warning|='Very low; double-check.'"
+        ]
+      },
       "gt0035": {
         "id": "gt0035",
         "priority": 1,
         "when": [
           "fired($gt0032)",
-          "$gt0015|Heart rate|!=null"
+          "$gt0015|Heart rate|!=null",
+          "!fired($gt0053)",
+          "!fired($gt0056)"
         ],
         "then": [
           "$gt0025|Stroke Volume|.magnitude=($gt0023.magnitude*1000)/$gt0015.magnitude",
