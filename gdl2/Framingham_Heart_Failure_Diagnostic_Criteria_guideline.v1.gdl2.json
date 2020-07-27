@@ -111,6 +111,62 @@
           }
         }
       }
+    },
+    "rules": {
+      "gt0023": {
+        "id": "gt0023",
+        "priority": 4,
+        "when": [
+          "$gt0004|Paroxysmal nocturnal dyspnea or orthopnea?|!=null",
+          "$gt0005|Neck vein distention?|!=null",
+          "$gt0006|Rales?|!=null",
+          "$gt0007|Cardiomegaly?|!=null",
+          "$gt0008|Acute pulmonary edema?|!=null",
+          "$gt0009|Third heart sound (S3 gallop rhythm)?|!=null",
+          "$gt0010|Increased venous pressure >16 cm H2O?|!=null",
+          "$gt0011|Hepatojugular reflux?|!=null",
+          "$gt0012|Weight loss >=4.5 kg in 5 days in response to treatment?|!=null"
+        ],
+        "then": [
+          "$gt0020|Major criteria score|.magnitude=$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0011.value+$gt0012.value"
+        ]
+      },
+      "gt0024": {
+        "id": "gt0024",
+        "priority": 3,
+        "when": [
+          "$gt0013|Ankle edema?|!=null",
+          "$gt0014|Nocturnal cough?|!=null",
+          "$gt0015|Dyspnea on exertion?|!=null",
+          "$gt0016|Hepatomegaly?|!=null",
+          "$gt0017|Pleural effusion?|!=null",
+          "$gt0018|Decrease in Vital Capacity by 1/3 from Maximum recorded?|!=null",
+          "$gt0019|Tachycardia (HR >120)?|!=null"
+        ],
+        "then": [
+          "$gt0021|Minor criteria score|.magnitude=$gt0013.value+$gt0014.value+$gt0015.value+$gt0016.value+$gt0017.value+$gt0018.value+$gt0019.value"
+        ]
+      },
+      "gt0026": {
+        "id": "gt0026",
+        "priority": 2,
+        "when": [
+          "($gt0020|Major criteria score|>=2)||(($gt0020|Major criteria score|==1)&&($gt0021|Minor criteria score|>=2))"
+        ],
+        "then": [
+          "$gt0022|Diagnostic Result|='POSITIVE Diagnosis for Heart Failure'"
+        ]
+      },
+      "gt0027": {
+        "id": "gt0027",
+        "priority": 1,
+        "when": [
+          "!fired($gt0026)"
+        ],
+        "then": [
+          "$gt0022|Diagnostic Result|='NEGATIVE Diagnosis of Heart Failure'"
+        ]
+      }
     }
   },
   "ontology": {
@@ -216,6 +272,26 @@
             "id": "gt0022",
             "text": "Diagnostic Result",
             "description": "*"
+          },
+          "gt0023": {
+            "id": "gt0023",
+            "text": "Set Major Criteria Score"
+          },
+          "gt0024": {
+            "id": "gt0024",
+            "text": "Set Minor Criteria Score"
+          },
+          "gt0025": {
+            "id": "gt0025",
+            "text": "Copy of Set Minor Criteria score"
+          },
+          "gt0026": {
+            "id": "gt0026",
+            "text": "Set Positive Diagnosis"
+          },
+          "gt0027": {
+            "id": "gt0027",
+            "text": "Set Negative Diagnosis"
           }
         }
       }
