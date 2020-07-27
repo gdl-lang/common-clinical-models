@@ -1,5 +1,5 @@
 {
-  "id": "CholeS Score_for_Duration_of_Laparoscopic_Cholecystectomy.v1",
+  "id": "CholeS_Score_for_Duration_of_Laparoscopic_Cholecystectomy.v1",
   "gdl_version": "2.0",
   "concept": "gt0001",
   "language": {
@@ -106,26 +106,6 @@
           }
         }
       },
-      "gt0016": {
-        "id": "gt0016",
-        "model_id": "openEHR-EHR-EVALUATION.choles_score_for_duration_of_laparoscopic_cholecystectomy.v0",
-        "template_id": "openEHR-EHR-EVALUATION.choles_score_for_duration_of_laparoscopic_cholecystectomy.v0",
-        "type": "OUTPUT",
-        "elements": {
-          "gt0017": {
-            "id": "gt0017",
-            "path": "/data[at0001]/items[at0002]"
-          },
-          "gt0018": {
-            "id": "gt0018",
-            "path": "/data[at0001]/items[at0003]"
-          },
-          "gt0052": {
-            "id": "gt0052",
-            "path": "/data[at0001]/items[at0007]"
-          }
-        }
-      },
       "gt0019": {
         "id": "gt0019",
         "model_id": "openEHR-EHR-OBSERVATION.choles_score_for_duration_of_laparoscopic_cholecystectomy.v0",
@@ -159,6 +139,30 @@
           "gt0033": {
             "id": "gt0033",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
+          }
+        }
+      },
+      "gt0052": {
+        "id": "gt0052",
+        "model_id": "openEHR-EHR-EVALUATION.choles_score_for_duration_of_laparoscopic_cholecystectomy.v0",
+        "template_id": "openEHR-EHR-EVALUATION.choles_score_for_duration_of_laparoscopic_cholecystectomy.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0053": {
+            "id": "gt0053",
+            "path": "/data[at0001]/items[at0008]"
+          },
+          "gt0054": {
+            "id": "gt0054",
+            "path": "/data[at0001]/items[at0009]"
+          },
+          "gt0055": {
+            "id": "gt0055",
+            "path": "/data[at0001]/items[at0003]"
+          },
+          "gt0056": {
+            "id": "gt0056",
+            "path": "/data[at0001]/items[at0007]"
           }
         }
       }
@@ -358,40 +362,61 @@
       "gt0048": {
         "id": "gt0048",
         "priority": 4,
+        "when": [
+          "$gt0003|Age|!=null",
+          "$gt0006|Indication|!=null",
+          "$gt0047|Gender|!=null",
+          "$gt0008|Body Mass Index|!=null",
+          "$gt0010|Common bile duct diameter|!=null",
+          "$gt0011|Gallbladder wall|!=null",
+          "$gt0012|Pre-operative CT done|!=null",
+          "$gt0013|Intra-op cholangiogram planned|!=null",
+          "$gt0014|Number of previous surgical admissions|!=null",
+          "$gt0015|ASA Class|!=null"
+        ],
         "then": [
-          "$gt0052|CholeS total score quantity|.precision=1",
-          "$gt0052|CholeS total score quantity|.magnitude=$gt0020.magnitude+$gt0021.magnitude+$gt0022.magnitude+$gt0023.magnitude+$gt0024.magnitude+$gt0025.magnitude+$gt0047.value+$gt0010.value+$gt0013.value+$gt0033.value"
+          "$gt0056|CholeS total score quantity|.magnitude=$gt0024.magnitude+$gt0047.value+$gt0010.value+$gt0013.value+$gt0020.magnitude+$gt0021.magnitude+$gt0022.magnitude+$gt0023.magnitude+$gt0025.magnitude+$gt0033.value",
+          "$gt0056|CholeS total score quantity|.precision=1"
         ]
       },
       "gt0051": {
         "id": "gt0051",
         "priority": 3,
         "when": [
-          "$gt0052|CholeS total score quantity|.magnitude>8"
+          "$gt0056|CholeS total score quantity|.precision==1",
+          "$gt0056|CholeS total score quantity|.magnitude>8"
         ],
         "then": [
-          "$gt0018|CholeS total score interpretation|=local::at0006|Score >8. High risk group. Likelihood of operative time >90 minutes is 41.8%|"
+          "$gt0055|CholeS total score|=local::at0006|Score >8|",
+          "$gt0053|Risk group|=local::at0012|High risk group|",
+          "$gt0054|Score intepretation|=local::at0015|Likelihood of operative time >90 minutes is 41.8%|"
         ]
       },
       "gt0050": {
         "id": "gt0050",
         "priority": 2,
         "when": [
-          "$gt0052|CholeS total score quantity|.magnitude>=4",
-          "$gt0052|CholeS total score quantity|.magnitude<=8"
+          "$gt0056|CholeS total score quantity|.precision==1",
+          "$gt0056|CholeS total score quantity|.magnitude<=8",
+          "$gt0056|CholeS total score quantity|.magnitude>=4"
         ],
         "then": [
-          "$gt0018|CholeS total score interpretation|=local::at0005|Score 4-8. Intermediate risk group. Likelihood of operative time >90 minutes is 5.1-41.8%|"
+          "$gt0055|CholeS total score|=local::at0005|Score 4-8|",
+          "$gt0053|Risk group|=local::at0011|Intermediate risk group|",
+          "$gt0054|Score intepretation|=local::at0014|Likelihood of operative time >90 minutes is 5.1-41.8%|"
         ]
       },
       "gt0049": {
         "id": "gt0049",
         "priority": 1,
         "when": [
-          "$gt0052|CholeS total score quantity|.magnitude<=3.5"
+          "$gt0056|CholeS total score quantity|.precision==1",
+          "$gt0056|CholeS total score quantity|.magnitude<4"
         ],
         "then": [
-          "$gt0018|CholeS total score interpretation|=local::at0004|Score 0-3.5. Low risk group. Likelihood of operative time >90 minutes is 5.1%.|"
+          "$gt0055|CholeS total score|=local::at0004|Score 0-3.5|",
+          "$gt0053|Risk group|=local::at0010|Low risk group|",
+          "$gt0054|Score intepretation|=local::at0013|Likelihood of operative time >90 minutes is 5.1%|"
         ]
       }
     }
@@ -598,18 +623,25 @@
             "id": "gt0051",
             "text": "CholeS Score above 8 interpretation"
           },
-          "gt0052": {
-            "id": "gt0052",
-            "text": "CholeS total score quantity",
-            "description": "*"
-          },
           "gt0053": {
             "id": "gt0053",
-            "text": "Calculate CholeS total score"
+            "text": "Risk group",
+            "description": "*"
           },
           "gt0054": {
             "id": "gt0054",
-            "text": "Copy of Copy of Calculate CholeS total score for ordinals"
+            "text": "Score intepretation",
+            "description": "*"
+          },
+          "gt0055": {
+            "id": "gt0055",
+            "text": "CholeS total score",
+            "description": "*"
+          },
+          "gt0056": {
+            "id": "gt0056",
+            "text": "CholeS total score quantity",
+            "description": "*"
           }
         }
       }
