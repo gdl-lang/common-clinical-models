@@ -30,9 +30,9 @@ CholeS score interpretation:
 	lifecycle_state = <"0">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Best WR, Becktel JM, Singleton JW, Kern Jr F. Development of a Crohn's disease activity index: National Cooperative Crohn's Disease Study. Gastroenterology. 1976 Mar 1;70(3):439-44.">
+		["references"] = <"1. Bharamgoudar R, Sonsale A, Hodson J, Griffiths E, CholeS Study Group, West Midlands Research Collaborative. The development and validation of a scoring tool to predict the operative duration of elective laparoscopic cholecystectomy. Surgical endoscopy. 2018 Jul 1;32(7):3149-57.">
 		["current_contact"] = <"Henrik Honkanen, Cambio CDS<henrik.honkanen@stud.ki.se>">
-		["MD5-CAM-1.0.1"] = <"8990ACABCABC0428FA47AE1A610BCDC7">
+		["MD5-CAM-1.0.1"] = <"17EA6C805F73DF45AC534B3B826043F9">
 	>
 
 definition
@@ -40,13 +40,6 @@ definition
 		data matches {
 			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- CholeS total score
-						value matches {
-							DV_COUNT matches {
-								magnitude matches {|0..20|}
-							}
-						}
-					}
 					ELEMENT[at0007] occurrences matches {0..1} matches {	-- CholeS total score quantity
 						value matches {
 							C_DV_QUANTITY <
@@ -59,14 +52,38 @@ definition
 							>
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- CholeS total score interpretation
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- CholeS total score
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
-									at0004, 	-- Score 0-3.5. Low risk group. Likelihood of operative time >90 minutes is 5.1%.
-									at0005, 	-- Score 4-8. Intermediate risk group. Likelihood of operative time >90 minutes is 5.1-41.8%
-									at0006]	-- Score >8. High risk group. Likelihood of operative time >90 minutes is 41.8%
+									at0004, 	-- Score 0-3.5
+									at0005, 	-- Score 4-8
+									at0006]	-- Score >8
+								}
+							}
+						}
+					}
+					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Risk group
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0010, 	-- Low risk group
+									at0011, 	-- Intermediate risk group
+									at0012]	-- High risk group
+								}
+							}
+						}
+					}
+					ELEMENT[at0009] occurrences matches {0..1} matches {	-- Score intepretation
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0013, 	-- Likelihood of operative time >90 minutes is 5.1%
+									at0014, 	-- Likelihood of operative time >90 minutes is 5.1-41.8%
+									at0015]	-- Likelihood of operative time >90 minutes is 41.8%
 								}
 							}
 						}
@@ -88,28 +105,56 @@ ontology
 					text = <"Tree">
 					description = <"@ internal @">
 				>
-				["at0002"] = <
+				["at0003"] = <
 					text = <"CholeS total score">
 					description = <"*">
 				>
-				["at0003"] = <
-					text = <"CholeS total score interpretation">
-					description = <"*">
-				>
 				["at0004"] = <
-					text = <"Score 0-3.5. Low risk group. Likelihood of operative time >90 minutes is 5.1%.">
+					text = <"Score 0-3.5">
 					description = <"*">
 				>
 				["at0005"] = <
-					text = <"Score 4-8. Intermediate risk group. Likelihood of operative time >90 minutes is 5.1-41.8%">
+					text = <"Score 4-8">
 					description = <"*">
 				>
 				["at0006"] = <
-					text = <"Score >8. High risk group. Likelihood of operative time >90 minutes is 41.8%">
+					text = <"Score >8">
 					description = <"*">
 				>
 				["at0007"] = <
 					text = <"CholeS total score quantity">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Risk group">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Score intepretation">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Low risk group">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Intermediate risk group">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"High risk group">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Likelihood of operative time >90 minutes is 5.1%">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Likelihood of operative time >90 minutes is 5.1-41.8%">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Likelihood of operative time >90 minutes is 41.8%">
 					description = <"*">
 				>
 			>
