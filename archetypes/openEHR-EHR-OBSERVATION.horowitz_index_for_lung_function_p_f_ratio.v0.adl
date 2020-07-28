@@ -40,7 +40,7 @@ The following can be used for estimating FiO₂ from oxygen flow/delivery rates.
 	other_details = <
 		["references"] = <"1. Horovitz JH, Carrico CJ, Shires GT. Pulmonary response to major injury. Archives of Surgery. 1974 Mar 1;108(3):349-55.">
 		["current_contact"] = <"Henrik Honkanen, Cambio CDS<henrik.honkanen@stud.ki.se>">
-		["MD5-CAM-1.0.1"] = <"6C759237AFFF95C1A69E90CF73C20DBB">
+		["MD5-CAM-1.0.1"] = <"23408A6EABD12567BA03B32042295908">
 	>
 
 definition
@@ -109,10 +109,36 @@ definition
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0014, 	-- Horowitz Index (P/F Ratio) >300mmHg. Not ARDS. Mortality undefined.
-													at0015, 	-- Horowitz Index (P/F Ratio) >200-300mmHg. Mild ARDS. Mortality 27%.
-													at0016, 	-- Horowitz Index (P/F Ratio) >100-200mmHg. Moderate ARDS. Mortality 32%.
-													at0017]	-- Horowitz Index (P/F Ratio) ≤100mmHg. Severe ARDS. Mortality 45%.
+													at0014, 	-- Horowitz Index (P/F Ratio) >300mmHg
+													at0015, 	-- Horowitz Index (P/F Ratio) >200-300mmHg
+													at0016, 	-- Horowitz Index (P/F Ratio) >100-200mmHg
+													at0017]	-- Horowitz Index (P/F Ratio) ≤100mmHg
+												}
+											}
+										}
+									}
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- ARDS interpretation
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0025, 	-- Not ARDS
+													at0026, 	-- Mild ARDS
+													at0027, 	-- Moderate ARDS
+													at0028]	-- Severe ARDS
+												}
+											}
+										}
+									}
+									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Mortality interpretation
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0020, 	-- Mortality undefined
+													at0021, 	-- Mortality 27%
+													at0022, 	-- Mortality 32%
+													at0023]	-- Mortality 45%
 												}
 											}
 										}
@@ -179,24 +205,64 @@ ontology
 					description = <"*">
 				>
 				["at0014"] = <
-					text = <"Horowitz Index (P/F Ratio) >300mmHg. Not ARDS. Mortality undefined.">
+					text = <"Horowitz Index (P/F Ratio) >300mmHg">
 					description = <"*">
 				>
 				["at0015"] = <
-					text = <"Horowitz Index (P/F Ratio) >200-300mmHg. Mild ARDS. Mortality 27%.">
+					text = <"Horowitz Index (P/F Ratio) >200-300mmHg">
 					description = <"*">
 				>
 				["at0016"] = <
-					text = <"Horowitz Index (P/F Ratio) >100-200mmHg. Moderate ARDS. Mortality 32%.">
+					text = <"Horowitz Index (P/F Ratio) >100-200mmHg">
 					description = <"*">
 				>
 				["at0017"] = <
-					text = <"Horowitz Index (P/F Ratio) ≤100mmHg. Severe ARDS. Mortality 45%.">
+					text = <"Horowitz Index (P/F Ratio) ≤100mmHg">
 					description = <"*">
 				>
 				["at0018"] = <
 					text = <"Calculate Horowitz Index (P/F ratio)">
 					description = <"*Horowitz Index (P/F Ratio), mmHg = PaO2 / FiO2">
+				>
+				["at0019"] = <
+					text = <"Mortality interpretation">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Mortality undefined">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Mortality 27%">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Mortality 32%">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Mortality 45%">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"ARDS interpretation">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Not ARDS">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Mild ARDS">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Moderate ARDS">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Severe ARDS">
+					description = <"*">
 				>
 			>
 		>
