@@ -91,10 +91,6 @@
         "template_id": "openEHR-EHR-OBSERVATION.free_water_deficit_hypernatremia.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0012": {
-            "id": "gt0012",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
-          },
           "gt0013": {
             "id": "gt0013",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
@@ -114,6 +110,10 @@
           "gt0032": {
             "id": "gt0032",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
           }
         }
       }
@@ -215,10 +215,8 @@
         "when": [
           "$gt0003|Sex|==local::at0005|Male|",
           "$gt0010|Age range|==local::at0007|Adult|",
-          "$gt0003|Sex|!=null",
           "$gt0005|Weight|!=null",
           "$gt0007|Sodium (Use only if sodium >140)|!=null",
-          "$gt0010|Age range|!=null",
           "$gt0033|Sodium desired|!=null",
           "!fired($gt0035)",
           "!fired($gt0038)",
@@ -237,10 +235,8 @@
         "when": [
           "$gt0003|Sex|==local::at0006|Female|",
           "$gt0010|Age range|==local::at0007|Adult|",
-          "$gt0003|Sex|!=null",
           "$gt0005|Weight|!=null",
           "$gt0007|Sodium (Use only if sodium >140)|!=null",
-          "$gt0010|Age range|!=null",
           "$gt0033|Sodium desired|!=null",
           "!fired($gt0035)",
           "!fired($gt0038)",
@@ -259,10 +255,8 @@
         "when": [
           "$gt0003|Sex|==local::at0005|Male|",
           "$gt0010|Age range|==local::at0008|Elderly|",
-          "$gt0003|Sex|!=null",
           "$gt0005|Weight|!=null",
           "$gt0007|Sodium (Use only if sodium >140)|!=null",
-          "$gt0010|Age range|!=null",
           "$gt0033|Sodium desired|!=null",
           "!fired($gt0035)",
           "!fired($gt0038)",
@@ -281,10 +275,8 @@
         "when": [
           "$gt0003|Sex|==local::at0006|Female|",
           "$gt0010|Age range|==local::at0008|Elderly|",
-          "$gt0003|Sex|!=null",
           "$gt0005|Weight|!=null",
           "$gt0007|Sodium (Use only if sodium >140)|!=null",
-          "$gt0010|Age range|!=null",
           "$gt0033|Sodium desired|!=null",
           "!fired($gt0035)",
           "!fired($gt0038)",
@@ -302,10 +294,8 @@
         "priority": 4,
         "when": [
           "$gt0010|Age range|==local::at0006|Child|",
-          "$gt0003|Sex|!=null",
           "$gt0005|Weight|!=null",
           "$gt0007|Sodium (Use only if sodium >140)|!=null",
-          "$gt0010|Age range|!=null",
           "$gt0033|Sodium desired|!=null",
           "!fired($gt0035)",
           "!fired($gt0038)",
@@ -324,7 +314,6 @@
         "when": [
           "$gt0005|Weight|.unit=='kg'",
           "$gt0003|Sex|!=null",
-          "$gt0005|Weight|!=null",
           "$gt0007|Sodium (Use only if sodium >140)|!=null",
           "$gt0010|Age range|!=null",
           "$gt0033|Sodium desired|!=null"
@@ -339,7 +328,6 @@
         "when": [
           "$gt0005|Weight|.unit=='lb'",
           "$gt0003|Sex|!=null",
-          "$gt0005|Weight|!=null",
           "$gt0007|Sodium (Use only if sodium >140)|!=null",
           "$gt0010|Age range|!=null",
           "$gt0033|Sodium desired|!=null"
@@ -367,7 +355,8 @@
         ],
         "then": [
           "$gt0012|Free water deficit|.magnitude=($gt0017.magnitude/100)*$gt0032.magnitude*(($gt0007.magnitude/$gt0033.magnitude)-1)",
-          "$gt0012|Free water deficit|.precision=1"
+          "$gt0012|Free water deficit|.precision=1",
+          "$gt0012|Free water deficit|.unit='l'"
         ]
       }
     }
