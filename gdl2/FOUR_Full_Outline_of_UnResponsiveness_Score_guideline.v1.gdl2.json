@@ -1,0 +1,237 @@
+{
+  "id": "FOUR_Full_Outline_of_UnResponsiveness_Score_guideline.v1",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2020-07-28"
+    },
+    "lifecycle_state": "Not set",
+    "details": {
+      "en": {
+        "id": "en"
+      }
+    },
+    "other_details": {}
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0003": {
+        "id": "gt0003",
+        "model_id": "openEHR-EHR-OBSERVATION.full_outline_of_unresponsiveness_four_score.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.full_outline_of_unresponsiveness_four_score.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0016]"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0022]"
+          }
+        }
+      },
+      "gt0008": {
+        "id": "gt0008",
+        "model_id": "openEHR-EHR-OBSERVATION.full_outline_of_unresponsiveness_four_score.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.full_outline_of_unresponsiveness_four_score.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0009": {
+            "id": "gt0009",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0028]"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0029]"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0030]"
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0031]"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0032]"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0033]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0015": {
+        "id": "gt0015",
+        "priority": 6,
+        "when": [
+          "$gt0004|Eye response|!=null",
+          "$gt0005|Motor response (upper extremities)|!=null",
+          "$gt0006|Brainstem reflexes|!=null",
+          "$gt0007|Respiration pattern|!=null"
+        ],
+        "then": [
+          "$gt0009|FOUR score|.magnitude=$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value",
+          "$gt0010|Comment|='Lower scores indicate higher coma severity.'"
+        ]
+      },
+      "gt0017": {
+        "id": "gt0017",
+        "priority": 5,
+        "when": [
+          "$gt0004|Eye response|==0|local::at0009|Eyelids remain closed with pain|"
+        ],
+        "then": [
+          "$gt0011|Eye response|='E0'"
+        ]
+      },
+      "gt0018": {
+        "id": "gt0018",
+        "priority": 4,
+        "when": [
+          "$gt0004|Eye response|==1|local::at0008|Eyelids closed but open to pain|"
+        ],
+        "then": [
+          "$gt0011|Eye response|='E1'"
+        ]
+      },
+      "gt0019": {
+        "id": "gt0019",
+        "priority": 3,
+        "when": [
+          "$gt0004|Eye response|==2|local::at0007|Eyelids closed but open to loud voice|"
+        ],
+        "then": [
+          "$gt0011|Eye response|='E2'"
+        ]
+      },
+      "gt0020": {
+        "id": "gt0020",
+        "priority": 2,
+        "when": [
+          "$gt0004|Eye response|==3|local::at0006|Eyelids open but not tracking|"
+        ],
+        "then": [
+          "$gt0011|Eye response|='E3'"
+        ]
+      },
+      "gt0021": {
+        "id": "gt0021",
+        "priority": 1,
+        "when": [
+          "$gt0004|Eye response|==4|local::at0005|Eyelids open or opened, tracking, or blinking to command|"
+        ],
+        "then": [
+          "$gt0011|Eye response|='E4'"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "FOUR (Full Outline of UnResponsiveness) Score"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "Eye response",
+            "description": "*"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "Motor response (upper extremities)",
+            "description": "*"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Brainstem reflexes",
+            "description": "*"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "text": "Respiration pattern",
+            "description": "*"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "text": "FOUR score",
+            "description": "*"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "Comment",
+            "description": "*"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "Eye response",
+            "description": "*"
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "text": "Motor response",
+            "description": "*"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "Brainstem reflex",
+            "description": "*"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "Respiration pattern",
+            "description": "*"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "Set FOUR score"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "text": "Set comment"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "Set Eye code 0"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "Set Eye code 1"
+          },
+          "gt0019": {
+            "id": "gt0019",
+            "text": "Set Eye code 2"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Set Eye code 3"
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "Set Eye code 4"
+          }
+        }
+      }
+    }
+  }
+}
