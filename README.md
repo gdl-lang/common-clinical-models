@@ -110,6 +110,8 @@ _Select a medical specialty below to view the available apps._
 ----------
 * ABC Stroke Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABC_stroke_risk_score/1?language=en))
 
+* ETT - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/guideline/ETT_depth_tidal_volume_calculator?version=1&languageCode=en))
+
 * ACC/AHA Heart Failure Staging - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACC-AHA_Heart_Failure_Staging/1?language=en))
 
 * ACEF II Risk Score for Cardiac Surgery - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACEF-II_Score/1?language=en))
