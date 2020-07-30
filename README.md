@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 339*
+### *Published Apps: 340*
 
 ----------
 
 ### Latest added
 
-1. Cryoprecipitate Dosing for Fibrinogen Replacement - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cryoprecipitate_Dosing_Fibrinogen_Replacement/1?language=en))
-2. DigiFab (Digibind) Dosing for Digoxin Poisoning - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DigiFab_Digibind_Dosing_for_Digoxin_Poisoning_guideline/1?language=en))
-3. Clinical Index of Stable Febrile Neutropenia (CISNE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CISNE/1?language=en))
-4. Burch-Wartofsky Point Scale (BWPS) for Thyrotoxicosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Burch-Wartofsky_Point_Scale_BWPS_for_thyrotoxicosis/1?language=en))
-5. Fetal Biophysical Profile (BPP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fetal_Biophysical_Profile_BPP_Score/1?language=en))
-6. Dual Antiplatelet Therapy (DAPT) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAPT_score/1?language=en))
-7. CHALICE (Children's Head injury ALgorithm for the prediction of Important Clinical Events) Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHALICE_rule/1?language=en))
-8. Cerebral Perfusion Pressure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cerebral_Perfusion_Pressure/1?language=en))
-9. Canadian Syncope Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/canadian_syncope_risk_score/1?language=en))
-10. AIMS65 Score for Upper GI Bleeding Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Aims65_score_for_upper_gi_bleeding_mortality/0?language=en))
+1. Fomepizole Dosing - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fomepizole_dosing/1?language=en))
+2. Cryoprecipitate Dosing for Fibrinogen Replacement - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cryoprecipitate_Dosing_Fibrinogen_Replacement/1?language=en))
+3. DigiFab (Digibind) Dosing for Digoxin Poisoning - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DigiFab_Digibind_Dosing_for_Digoxin_Poisoning_guideline/1?language=en))
+4. Clinical Index of Stable Febrile Neutropenia (CISNE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CISNE/1?language=en))
+5. Burch-Wartofsky Point Scale (BWPS) for Thyrotoxicosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Burch-Wartofsky_Point_Scale_BWPS_for_thyrotoxicosis/1?language=en))
+6. Fetal Biophysical Profile (BPP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fetal_Biophysical_Profile_BPP_Score/1?language=en))
+7. Dual Antiplatelet Therapy (DAPT) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAPT_score/1?language=en))
+8. CHALICE (Children's Head injury ALgorithm for the prediction of Important Clinical Events) Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHALICE_rule/1?language=en))
+9. Cerebral Perfusion Pressure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cerebral_Perfusion_Pressure/1?language=en))
+10. Canadian Syncope Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/canadian_syncope_risk_score/1?language=en))
 
 ----------
 
@@ -137,8 +137,6 @@ _Select a medical specialty below to view the available apps._
 * CRUSADE Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CRUSADE_for_post-MI_bleeding_risk/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CRUSADE_for_post-MI_bleeding_risk/1?language=sv))
 
 * DASH Prediction Score for Recurrent VTE - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/DASH_for_recurrent_VTE/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/DASH_for_recurrent_VTE/1?language=sv))
-
-* DigiFab (Digibind) Dosing for Digoxin Poisoning - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DigiFab_Digibind_Dosing_for_Digoxin_Poisoning_guideline/1?language=en))
 
 * Dual Antiplatelet Therapy (DAPT) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAPT_score/1?language=en))
 
@@ -371,8 +369,6 @@ _Select a medical specialty below to view the available apps._
 * Binet Staging System for Chronic Lymphocytic Leukemia (CLL) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Binet_staging_system_for_chronic_lymphocytic_leukemia_cll/0?language=en))
 
 * Clinical Index of Stable Febrile Neutropenia (CISNE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CISNE/1?language=en))
-
-* Cryoprecipitate Dosing for Fibrinogen Replacement - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cryoprecipitate_Dosing_Fibrinogen_Replacement/1?language=en))
 
 * Ganzoni Equation for Iron Deficiency Anemia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ganzoni_equation_for_iron_deficiency_anemia/1?language=en))
 
@@ -631,6 +627,12 @@ _Select a medical specialty below to view the available apps._
 * Antivenom Dosing Algorithm - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/antivenom_dosing_algorithm/1?language=en))
 
 * Atropine Dosing for Cholinesterase Inhibitor Toxicity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Atropine_dosing_cholinesterase_inhibitor_toxicity/0?language=en))
+
+* Cryoprecipitate Dosing for Fibrinogen Replacement - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cryoprecipitate_Dosing_Fibrinogen_Replacement/1?language=en))
+
+* DigiFab (Digibind) Dosing for Digoxin Poisoning - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DigiFab_Digibind_Dosing_for_Digoxin_Poisoning_guideline/1?language=en))
+
+* Fomepizole Dosing - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fomepizole_dosing/1?language=en))
 
 * HERDOO2 Rule for Discontinuing Anticoagulation in Unprovoked VTE - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HERDOO2_Rule_for_Discontinuing_Anticoagulation_in_Unprovoked_VTE/1?language=en))
 ----------
