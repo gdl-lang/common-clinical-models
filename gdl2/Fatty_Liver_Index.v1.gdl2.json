@@ -114,16 +114,6 @@
       }
     },
     "rules": {
-      "gt0025": {
-        "id": "gt0025",
-        "priority": 7,
-        "when": [
-          "$gt0009|Triglycerides (mg/dl)|.unit=='mmol/l'"
-        ],
-        "then": [
-          "$gt0026|Conversion factor|=88.5"
-        ]
-      },
       "gt0010": {
         "id": "gt0010",
         "priority": 6,
@@ -135,7 +125,7 @@
         ],
         "then": [
           "$gt0019|Value Y|.precision=4",
-          "$gt0019|Value Y|.magnitude=0.953*log($gt0026)+0.139*$gt0003.magnitude+0.718*log($gt0007.magnitude)+0.053*$gt0005.magnitude-15.745"
+          "$gt0019|Value Y|.magnitude=0.953*log($gt0009.magnitude*88.5)+0.139*$gt0003.magnitude+0.718*log($gt0007.magnitude)+0.053*$gt0005.magnitude-15.745"
         ]
       },
       "gt0027": {
@@ -162,7 +152,6 @@
           "$gt0009|Triglycerides (mg/dl)|!=null"
         ],
         "then": [
-          "$gt0013|Calculate Fatty Liver Index (FLI)|.precision=1",
           "$gt0013|Calculate Fatty Liver Index (FLI)|.magnitude=(2.72^$gt0019.magnitude/(1+2.72^$gt0019.magnitude))*100"
         ]
       },
