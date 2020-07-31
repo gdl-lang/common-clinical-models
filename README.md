@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 343*
+### *Published Apps: 346*
 
 ----------
 
 ### Latest added
 
-1. EGSYS (Evaluation of Guidelines in SYncope Study) Score for Syncope - [_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EGSYS_Score_Syncope/1?language=en))
-2. D'Amico Risk Classification for Prostate Cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAmico_risk_classification_prostate_cancer/1?language=en))
-3. Clinical Pulmonary Infection Score (CPIS) for Ventilator-Associated Pneumonia (VAP) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_Pulmonary_Infection_Score_CPIS_for_Ventilator_Associated_Pneumonia_guideline/1?language=en))
-4. Fomepizole Dosing - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fomepizole_dosing/1?language=en))
-5. Cryoprecipitate Dosing for Fibrinogen Replacement - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cryoprecipitate_Dosing_Fibrinogen_Replacement/1?language=en))
-6. DigiFab (Digibind) Dosing for Digoxin Poisoning - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DigiFab_Digibind_Dosing_for_Digoxin_Poisoning_guideline/1?language=en))
-7. Clinical Index of Stable Febrile Neutropenia (CISNE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CISNE/1?language=en))
-8. Burch-Wartofsky Point Scale (BWPS) for Thyrotoxicosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Burch-Wartofsky_Point_Scale_BWPS_for_thyrotoxicosis/1?language=en))
-9. Fetal Biophysical Profile (BPP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fetal_Biophysical_Profile_BPP_Score/1?language=en))
-10. Dual Antiplatelet Therapy (DAPT) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAPT_score/1?language=en))
+1. Cambridge Diabetes Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/cambridge_diabetes_risk_score/1?language=en))
+2. Geneva Risk Score for Venous Thromboembolism (VTE) Prophylaxis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Geneva_risk_score_venous_thromboembolism_prohylaxis/1?language=en))
+3. DIRE Score for Opioid Treatment - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DIRE_score_opioid_treatment/1?language=en))
+4. EGSYS (Evaluation of Guidelines in SYncope Study) Score for Syncope - [_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EGSYS_Score_Syncope/1?language=en))
+5. D'Amico Risk Classification for Prostate Cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAmico_risk_classification_prostate_cancer/1?language=en))
+6. Clinical Pulmonary Infection Score (CPIS) for Ventilator-Associated Pneumonia (VAP) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_Pulmonary_Infection_Score_CPIS_for_Ventilator_Associated_Pneumonia_guideline/1?language=en))
+7. Fomepizole Dosing - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fomepizole_dosing/1?language=en))
+8. Cryoprecipitate Dosing for Fibrinogen Replacement - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cryoprecipitate_Dosing_Fibrinogen_Replacement/1?language=en))
+9. DigiFab (Digibind) Dosing for Digoxin Poisoning - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DigiFab_Digibind_Dosing_for_Digoxin_Poisoning_guideline/1?language=en))
+10. Clinical Index of Stable Febrile Neutropenia (CISNE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CISNE/1?language=en))
 
 ----------
 
@@ -290,6 +290,8 @@ _Select a medical specialty below to view the available apps._
 
 * Burch-Wartofsky Point Scale (BWPS) for Thyrotoxicosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Burch-Wartofsky_Point_Scale_BWPS_for_thyrotoxicosis/1?language=en))
 
+* Cambridge Diabetes Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/cambridge_diabetes_risk_score/1?language=en))
+
 * PEDIS Score for Diabetic Foot Ulcers - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEDIS_Score/0?language=en))
 ----------
 
@@ -390,6 +392,8 @@ _Select a medical specialty below to view the available apps._
 * Cardiac Arrest Risk Triage Score (CART) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CART_score_cardiac_arrest_risk/1?language=en))
 
 * Critical Care Pain Observation Tool (CPOT) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CPOT/1?language=en))
+
+* Geneva Risk Score for Venous Thromboembolism (VTE) Prophylaxis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Geneva_risk_score_venous_thromboembolism_prohylaxis/1?language=en))
 
 * Infusion Factors - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Infusion_factors/1?language=en))
 
@@ -657,6 +661,8 @@ _Select a medical specialty below to view the available apps._
 * Centor Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Centor_Criteria/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Centor_Criteria/1?language=sv))
 
 * Denver HIV Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Denver_HIV_Risk_Score_guideline/1?language=en))
+
+* DIRE Score for Opioid Treatment - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DIRE_score_opioid_treatment/1?language=en))
 
 * Drug Resistance in Pneumonia (DRIP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Drug_Resistance_in_Pneumonia_DRIP_Score/0?language=en))
 
