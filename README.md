@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 340*
+### *Published Apps: 342*
 
 ----------
 
 ### Latest added
 
-1. Fomepizole Dosing - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fomepizole_dosing/1?language=en))
-2. Cryoprecipitate Dosing for Fibrinogen Replacement - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cryoprecipitate_Dosing_Fibrinogen_Replacement/1?language=en))
-3. DigiFab (Digibind) Dosing for Digoxin Poisoning - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DigiFab_Digibind_Dosing_for_Digoxin_Poisoning_guideline/1?language=en))
-4. Clinical Index of Stable Febrile Neutropenia (CISNE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CISNE/1?language=en))
-5. Burch-Wartofsky Point Scale (BWPS) for Thyrotoxicosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Burch-Wartofsky_Point_Scale_BWPS_for_thyrotoxicosis/1?language=en))
-6. Fetal Biophysical Profile (BPP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fetal_Biophysical_Profile_BPP_Score/1?language=en))
-7. Dual Antiplatelet Therapy (DAPT) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAPT_score/1?language=en))
-8. CHALICE (Children's Head injury ALgorithm for the prediction of Important Clinical Events) Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHALICE_rule/1?language=en))
-9. Cerebral Perfusion Pressure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cerebral_Perfusion_Pressure/1?language=en))
-10. Canadian Syncope Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/canadian_syncope_risk_score/1?language=en))
+1. D'Amico Risk Classification for Prostate Cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAmico_risk_classification_prostate_cancer/1?language=en))
+2. Clinical Pulmonary Infection Score (CPIS) for Ventilator-Associated Pneumonia (VAP) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_Pulmonary_Infection_Score_CPIS_for_Ventilator_Associated_Pneumonia_guideline/1?language=en))
+3. Fomepizole Dosing - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fomepizole_dosing/1?language=en))
+4. Cryoprecipitate Dosing for Fibrinogen Replacement - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cryoprecipitate_Dosing_Fibrinogen_Replacement/1?language=en))
+5. DigiFab (Digibind) Dosing for Digoxin Poisoning - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DigiFab_Digibind_Dosing_for_Digoxin_Poisoning_guideline/1?language=en))
+6. Clinical Index of Stable Febrile Neutropenia (CISNE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CISNE/1?language=en))
+7. Burch-Wartofsky Point Scale (BWPS) for Thyrotoxicosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Burch-Wartofsky_Point_Scale_BWPS_for_thyrotoxicosis/1?language=en))
+8. Fetal Biophysical Profile (BPP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fetal_Biophysical_Profile_BPP_Score/1?language=en))
+9. Dual Antiplatelet Therapy (DAPT) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAPT_score/1?language=en))
+10. CHALICE (Children's Head injury ALgorithm for the prediction of Important Clinical Events) Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHALICE_rule/1?language=en))
 
 ----------
 
@@ -517,6 +517,8 @@ _Select a medical specialty below to view the available apps._
 
 * Brain Metastasis Velocity (BMV) Model - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BMV_model/1?language=en))
 
+* D'Amico Risk Classification for Prostate Cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAmico_risk_classification_prostate_cancer/1?language=en))
+
 * Dynamic International Prognostic Scoring System for Myelofibrosis (DIPSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Dynamic_International_Prognostic_Scoring_System_for_Myelofibrosis/1?language=en))
 
 * ECOG Performance Status - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ECOG_performance_status/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ECOG_performance_status/1?language=sv))
@@ -773,6 +775,8 @@ _Select a medical specialty below to view the available apps._
 * BODE Index for COPD Survival - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/BODE_Index_COPD_survival/1?language=en))
 
 * Bova Score for Pulmonary Embolism Complications - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bova_Score/1?language=en))
+
+* Clinical Pulmonary Infection Score (CPIS) for Ventilator-Associated Pneumonia (VAP) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_Pulmonary_Infection_Score_CPIS_for_Ventilator_Associated_Pneumonia_guideline/1?language=en))
 
 * COPD Assessment Test (CAT) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CAT_COPD_Assessment_Test/1?language=en))
 
