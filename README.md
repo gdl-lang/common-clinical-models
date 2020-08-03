@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 358*
+### *Published Apps: 359*
 
 ----------
 
 ### Latest added
 
-1. Hydroxychloroquine (Plaquenil) Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hydroxychloroquine_Plaquenil_Dosing_Calculator/1?language=en))
-2. FINDRISC (Finnish Diabetes Risk Score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FINDRISC_Finnish_Diabetes_Risk_Score/1?language=en))
-3. Duval/CIBMTR Score for Acute Myelogenous Leukemia (AML) Survival - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Duval_CIBMTR_Score_for_Acute_Myelogenous_Leukemia_AML_Survival/1?language=en))
-4. CholeS Score for Duration of Laparoscopic Cholecystectomy - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CholeS_Score_for_Duration_of_Laparoscopic_Cholecystectomy/1?language=en))
-5. Fleischner Society Guidelines for Incidental Pulmonary Nodules - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fleischner_Society_Guidelines_for_Incidental_Pulmonary_Nodules/1?language=en))
-6. Disease Steps for Multiple Sclerosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Disease_Steps_for_Multiple_Sclerosis/1?language=en))
-7. Blood Volume Calculation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Blood_Volume_Calculation_guideline/1?language=en))
-8. Horowitz Index for Lung Function (P/F Ratio) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Horowitz_Index_for_Lung_Function_P_F_Ratio/1?language=en))
-9. H2FPEF Score for Heart Failure with Preserved Ejection Fraction - [_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/H2FPEF_Score_for_Heart_Failure_with_Preserved_Ejection_Fraction/1?language=en))
-10. Benzodiazepine Conversion Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Benzodiazepine_Conversion_Calculator/1?language=en))
+1. Modified Asthma Predictive Index (mAPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Asthma_Predictive_Index_mAPI/1?language=en))
+2. Hydroxychloroquine (Plaquenil) Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hydroxychloroquine_Plaquenil_Dosing_Calculator/1?language=en))
+3. FINDRISC (Finnish Diabetes Risk Score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FINDRISC_Finnish_Diabetes_Risk_Score/1?language=en))
+4. Duval/CIBMTR Score for Acute Myelogenous Leukemia (AML) Survival - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Duval_CIBMTR_Score_for_Acute_Myelogenous_Leukemia_AML_Survival/1?language=en))
+5. CholeS Score for Duration of Laparoscopic Cholecystectomy - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CholeS_Score_for_Duration_of_Laparoscopic_Cholecystectomy/1?language=en))
+6. Fleischner Society Guidelines for Incidental Pulmonary Nodules - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fleischner_Society_Guidelines_for_Incidental_Pulmonary_Nodules/1?language=en))
+7. Disease Steps for Multiple Sclerosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Disease_Steps_for_Multiple_Sclerosis/1?language=en))
+8. Blood Volume Calculation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Blood_Volume_Calculation_guideline/1?language=en))
+9. Horowitz Index for Lung Function (P/F Ratio) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Horowitz_Index_for_Lung_Function_P_F_Ratio/1?language=en))
+10. H2FPEF Score for Heart Failure with Preserved Ejection Fraction - [_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/H2FPEF_Score_for_Heart_Failure_with_Preserved_Ejection_Fraction/1?language=en))
 
 ----------
 
@@ -617,6 +617,8 @@ _Select a medical specialty below to view the available apps._
 * Height Potential - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Height_potential/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Height_potential/1?language=sv))
 
 * Lansky Play-Performance Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Lansky_play_performance/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Lansky_play_performance/1?language=sv))
+
+* Modified Asthma Predictive Index (mAPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Asthma_Predictive_Index_mAPI/1?language=en))
 
 * Pediatric Asthma Score (PAS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PAS/1?language=en))
 
