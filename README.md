@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 354*
+### *Published Apps: 358*
 
 ----------
 
 ### Latest added
 
-1. Fleischner Society Guidelines for Incidental Pulmonary Nodules - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fleischner_Society_Guidelines_for_Incidental_Pulmonary_Nodules/1?language=en))
-2. Disease Steps for Multiple Sclerosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Disease_Steps_for_Multiple_Sclerosis/1?language=en))
-3. Blood Volume Calculation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Blood_Volume_Calculation_guideline/1?language=en))
-4. Horowitz Index for Lung Function (P/F Ratio) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Horowitz_Index_for_Lung_Function_P_F_Ratio/1?language=en))
-5. H2FPEF Score for Heart Failure with Preserved Ejection Fraction - [_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/H2FPEF_Score_for_Heart_Failure_with_Preserved_Ejection_Fraction/1?language=en))
-6. Benzodiazepine Conversion Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Benzodiazepine_Conversion_Calculator/1?language=en))
-7. Hestia Criteria for Outpatient Pulmonary Embolism Treatment - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hestia_Criteria_for_Outpatient_Pulmonary_Embolism_Treatment/1?language=en))
-8. Fisher Grading Scale for Subarachnoid Hemorrhage (SAH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Fisher_Scale_SAH/1?language=en))
-9. Cambridge Diabetes Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/cambridge_diabetes_risk_score/1?language=en))
-10. Geneva Risk Score for Venous Thromboembolism (VTE) Prophylaxis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Geneva_risk_score_venous_thromboembolism_prohylaxis/1?language=en))
+1. Hydroxychloroquine (Plaquenil) Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hydroxychloroquine_Plaquenil_Dosing_Calculator/1?language=en))
+2. FINDRISC (Finnish Diabetes Risk Score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FINDRISC_Finnish_Diabetes_Risk_Score/1?language=en))
+3. Duval/CIBMTR Score for Acute Myelogenous Leukemia (AML) Survival - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Duval_CIBMTR_Score_for_Acute_Myelogenous_Leukemia_AML_Survival/1?language=en))
+4. CholeS Score for Duration of Laparoscopic Cholecystectomy - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CholeS_Score_for_Duration_of_Laparoscopic_Cholecystectomy/1?language=en))
+5. Fleischner Society Guidelines for Incidental Pulmonary Nodules - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fleischner_Society_Guidelines_for_Incidental_Pulmonary_Nodules/1?language=en))
+6. Disease Steps for Multiple Sclerosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Disease_Steps_for_Multiple_Sclerosis/1?language=en))
+7. Blood Volume Calculation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Blood_Volume_Calculation_guideline/1?language=en))
+8. Horowitz Index for Lung Function (P/F Ratio) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Horowitz_Index_for_Lung_Function_P_F_Ratio/1?language=en))
+9. H2FPEF Score for Heart Failure with Preserved Ejection Fraction - [_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/H2FPEF_Score_for_Heart_Failure_with_Preserved_Ejection_Fraction/1?language=en))
+10. Benzodiazepine Conversion Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Benzodiazepine_Conversion_Calculator/1?language=en))
 
 ----------
 
@@ -294,6 +294,8 @@ _Select a medical specialty below to view the available apps._
 
 * Cambridge Diabetes Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/cambridge_diabetes_risk_score/1?language=en))
 
+* FINDRISC (Finnish Diabetes Risk Score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FINDRISC_Finnish_Diabetes_Risk_Score/1?language=en))
+
 * PEDIS Score for Diabetic Foot Ulcers - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEDIS_Score/0?language=en))
 ----------
 
@@ -533,6 +535,8 @@ _Select a medical specialty below to view the available apps._
 
 * D'Amico Risk Classification for Prostate Cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAmico_risk_classification_prostate_cancer/1?language=en))
 
+* Duval/CIBMTR Score for Acute Myelogenous Leukemia (AML) Survival - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Duval_CIBMTR_Score_for_Acute_Myelogenous_Leukemia_AML_Survival/1?language=en))
+
 * Dynamic International Prognostic Scoring System for Myelofibrosis (DIPSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Dynamic_International_Prognostic_Scoring_System_for_Myelofibrosis/1?language=en))
 
 * ECOG Performance Status - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ECOG_performance_status/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ECOG_performance_status/1?language=sv))
@@ -653,6 +657,8 @@ _Select a medical specialty below to view the available apps._
 * Fomepizole Dosing - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fomepizole_dosing/1?language=en))
 
 * HERDOO2 Rule for Discontinuing Anticoagulation in Unprovoked VTE - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HERDOO2_Rule_for_Discontinuing_Anticoagulation_in_Unprovoked_VTE/1?language=en))
+
+* Hydroxychloroquine (Plaquenil) Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hydroxychloroquine_Plaquenil_Dosing_Calculator/1?language=en))
 ----------
 
 ### Primary care
@@ -856,6 +862,8 @@ _Select a medical specialty below to view the available apps._
 * ASA Physical Status/ASA Classification - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASA_Physical_Status_guideline/1?language=en))
 
 * Cardiac Anesthesia Risk Evaluation Score (CARE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cardiac_Anesthesia_Risk_Evaluation_Score_CARE/0?language=en))
+
+* CholeS Score for Duration of Laparoscopic Cholecystectomy - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CholeS_Score_for_Duration_of_Laparoscopic_Cholecystectomy/1?language=en))
 
 * LACE Index for Readmission - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LACE_readmission_index/1?language=en))
 
