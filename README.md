@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 370*
+### *Published Apps: 371*
 
 ----------
 
 ### Latest added
 
-1.  Revised Cardiac Risk Index for Pre-Operative Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_cardiac_risk_index_for_pre_operative_risk/1?language=en))
-2. Glomerular Filtration Rate (GFR) Assessment - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GFR_assessment/1?language=en))
-3. Endotracheal Tube (ETT) Depth and Tidal Volume Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ETT_depth_tidal_volume_calculator/1?language=en))
-4. Cincinnati Prehospital Stroke Severity Scale (CP-SSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cincinnati_Prehospital_Stroke_Severity_Scale_CP_SSS/1?language=en))
-5. FIGO Staging for Ovarian Cancer (2014) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FIGO_Staging_for_Ovarian_Cancer_2014/1?language=en))
-6. Cardiac Output (Fick’s Formula) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cardiac_Output_Ficks_Formula_guideline/1?language=en))
-7. Estimated Ethanol (and Toxic Alcohol) Serum Concentration Based on Ingestion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_Ethanol_and_Toxic_Alcohol_Serum_Concentration_Based_on_Ingestion/1?language=en))
-8. Cytokine Release Syndrome (CRS) Grading - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cytokine_Release_Syndrome_CRS_Grading/1?language=en))
-9. Duke Activity Status Index (DASI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Duke_Activity_Status_Index_DASI/1?language=en))
-10. CASPAR Criteria for Psoriatic Arthritis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CASPAR_Criteria_for_Psoriatic_Arthritis/1?language=en))
+1. Self-administered comorbidity questionnaire (SCQ) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCQ/1?language=en))
+2. Revised Cardiac Risk Index for Pre-Operative Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_cardiac_risk_index_for_pre_operative_risk/1?language=en))
+3. Glomerular Filtration Rate (GFR) Assessment - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GFR_assessment/1?language=en))
+4. Endotracheal Tube (ETT) Depth and Tidal Volume Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ETT_depth_tidal_volume_calculator/1?language=en))
+5. Cincinnati Prehospital Stroke Severity Scale (CP-SSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cincinnati_Prehospital_Stroke_Severity_Scale_CP_SSS/1?language=en))
+6. FIGO Staging for Ovarian Cancer (2014) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FIGO_Staging_for_Ovarian_Cancer_2014/1?language=en))
+7. Cardiac Output (Fick’s Formula) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cardiac_Output_Ficks_Formula_guideline/1?language=en))
+8. Estimated Ethanol (and Toxic Alcohol) Serum Concentration Based on Ingestion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_Ethanol_and_Toxic_Alcohol_Serum_Concentration_Based_on_Ingestion/1?language=en))
+9. Cytokine Release Syndrome (CRS) Grading - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cytokine_Release_Syndrome_CRS_Grading/1?language=en))
+10. Duke Activity Status Index (DASI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Duke_Activity_Status_Index_DASI/1?language=en))
 
 ----------
 
@@ -736,6 +736,8 @@ _Select a medical specialty below to view the available apps._
 * ROME IV for Dyspepsia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Rome_IV_dyspepsia/1?language=en))
 
 * ROME IV for IBS - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_IV_IBS/1?language=en))
+
+* Self-administered comorbidity questionnaire (SCQ) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCQ/1?language=en))
 
 * Stress and Crisis Inventory 93 (SCI-93) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCI-93/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCI-93/1?language=sv))
 
