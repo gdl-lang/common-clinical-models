@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 365*
+### *Published Apps: 368*
 
 ----------
 
 ### Latest added
 
-1. Cardiac Output (Fick’s Formula) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cardiac_Output_Ficks_Formula_guideline/1?language=en))
-2. Estimated Ethanol (and Toxic Alcohol) Serum Concentration Based on Ingestion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_Ethanol_and_Toxic_Alcohol_Serum_Concentration_Based_on_Ingestion/1?language=en))
-3. Cytokine Release Syndrome (CRS) Grading - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cytokine_Release_Syndrome_CRS_Grading/1?language=en))
-4. Duke Activity Status Index (DASI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Duke_Activity_Status_Index_DASI/1?language=en))
-5. CASPAR Criteria for Psoriatic Arthritis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CASPAR_Criteria_for_Psoriatic_Arthritis/1?language=en))
-6. Confusion Assessment Method for the ICU (CAM-ICU) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Confusion_Assessment_Method_for_the_ICU_CAM_ICU/1?language=en))
-7. Modified Asthma Predictive Index (mAPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Asthma_Predictive_Index_mAPI/1?language=en))
-8. Hydroxychloroquine (Plaquenil) Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hydroxychloroquine_Plaquenil_Dosing_Calculator/1?language=en))
-9. FINDRISC (Finnish Diabetes Risk Score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FINDRISC_Finnish_Diabetes_Risk_Score/1?language=en))
-10. Duval/CIBMTR Score for Acute Myelogenous Leukemia (AML) Survival - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Duval_CIBMTR_Score_for_Acute_Myelogenous_Leukemia_AML_Survival/1?language=en))
+1. Endotracheal Tube (ETT) Depth and Tidal Volume Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ETT_depth_tidal_volume_calculator/1?language=en)
+2. Cincinnati Prehospital Stroke Severity Scale (CP-SSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cincinnati_Prehospital_Stroke_Severity_Scale_CP_SSS/1?language=en))
+3. FIGO Staging for Ovarian Cancer (2014) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FIGO_Staging_for_Ovarian_Cancer_2014/1?language=en))
+4. Cardiac Output (Fick’s Formula) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cardiac_Output_Ficks_Formula_guideline/1?language=en))
+5. Estimated Ethanol (and Toxic Alcohol) Serum Concentration Based on Ingestion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_Ethanol_and_Toxic_Alcohol_Serum_Concentration_Based_on_Ingestion/1?language=en))
+6. Cytokine Release Syndrome (CRS) Grading - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cytokine_Release_Syndrome_CRS_Grading/1?language=en))
+7. Duke Activity Status Index (DASI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Duke_Activity_Status_Index_DASI/1?language=en))
+8. CASPAR Criteria for Psoriatic Arthritis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CASPAR_Criteria_for_Psoriatic_Arthritis/1?language=en))
+9. Confusion Assessment Method for the ICU (CAM-ICU) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Confusion_Assessment_Method_for_the_ICU_CAM_ICU/1?language=en))
+10. Modified Asthma Predictive Index (mAPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Asthma_Predictive_Index_mAPI/1?language=en))
 
 ----------
 
@@ -102,6 +102,8 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 * El-Ganzouri Risk Index for Difficult Airway (EGRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EGRI/1?language=en))
+
+* Endotracheal Tube (ETT) Depth and Tidal Volume Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ETT_depth_tidal_volume_calculator/1?language=en))
 
 ----------
 
@@ -480,6 +482,8 @@ _Select a medical specialty below to view the available apps._
 
 * CHALICE (Children's Head injury ALgorithm for the prediction of Important Clinical Events) Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHALICE_rule/1?language=en))
 
+* Cincinnati Prehospital Stroke Severity Scale (CP-SSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cincinnati_Prehospital_Stroke_Severity_Scale_CP_SSS/1?language=en))
+
 * Disease Steps for Multiple Sclerosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Disease_Steps_for_Multiple_Sclerosis/1?language=en))
 
 * Douleur Neuropathique 4 (DN4) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DN4/1?language=en))
@@ -518,6 +522,7 @@ _Select a medical specialty below to view the available apps._
 
 * Webster Rating Scale for Parkinson’s Disease - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Webster_Rating_Scale_for_Parkinsons_Disease_guideline/1?language=en))
 ----------
+
 ### Obstetrics
 
 ----------
@@ -553,6 +558,8 @@ _Select a medical specialty below to view the available apps._
 
 * EORTC QLQ C30 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EORTC_QLQ_C30_Version3/1?language=en))
 
+* FIGO Staging for Ovarian Cancer (2014) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FIGO_Staging_for_Ovarian_Cancer_2014/1?language=en))
+ - 
 * Follicular Lymphoma International Prognostic Index (FLIPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FLIPI/1?language=en))
 
 * Fong Clinical Risk Score for Colorectal Cancer Recurrence - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fong_Clinical_Risk_Score_for_Colorectal_Cancer_Recurrence/1?language=en))
