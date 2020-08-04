@@ -559,7 +559,7 @@ _Select a medical specialty below to view the available apps._
 * EORTC QLQ C30 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EORTC_QLQ_C30_Version3/1?language=en))
 
 * FIGO Staging for Ovarian Cancer (2014) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FIGO_Staging_for_Ovarian_Cancer_2014/1?language=en))
- - 
+
 * Follicular Lymphoma International Prognostic Index (FLIPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FLIPI/1?language=en))
 
 * Fong Clinical Risk Score for Colorectal Cancer Recurrence - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fong_Clinical_Risk_Score_for_Colorectal_Cancer_Recurrence/1?language=en))
