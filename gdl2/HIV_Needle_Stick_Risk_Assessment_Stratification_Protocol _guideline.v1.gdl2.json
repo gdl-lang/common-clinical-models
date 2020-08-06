@@ -7,7 +7,8 @@
   },
   "description": {
     "original_author": {
-      "date": "2020-07-14"
+      "date": "2020-07-14",
+      "name": "Maryam"
     },
     "lifecycle_state": "Not set",
     "details": {
@@ -67,7 +68,7 @@
     "rules": {
       "gt0011": {
         "id": "gt0011",
-        "priority": 4,
+        "priority": 6,
         "when": [
           "$gt0003|Source population|!=null",
           "$gt0004|Inoculum type|!=null",
@@ -80,21 +81,21 @@
       },
       "gt0012": {
         "id": "gt0012",
-        "priority": 3,
+        "priority": 5,
         "when": [
           "$gt0006|Volume of inoculum|!=null",
           "fired($gt0011)"
         ],
         "then": [
-          "$gt0009|Total risk|.magnitude=$gt0008.magnitude*$gt0006.value",
-          "$gt0009|Total risk|.precision=7"
+          "$gt0009|Total risk|.magnitude=($gt0008.magnitude*$gt0006.value)*100",
+          "$gt0009|Total risk|.precision=5"
         ]
       },
       "gt0013": {
         "id": "gt0013",
-        "priority": 2,
+        "priority": 4,
         "when": [
-          "$gt0009|Total risk|.magnitude<0.001"
+          "$gt0009|Total risk|.magnitude>=0.1"
         ],
         "then": [
           "$gt0010|Suggested treatment|=local::at0030|Definitely indicated|"
@@ -102,13 +103,34 @@
       },
       "gt0014": {
         "id": "gt0014",
-        "priority": 1,
+        "priority": 3,
         "when": [
-          "$gt0009|Total risk|.magnitude>=0.001",
-          "$gt0009|Total risk|.magnitude<=1.0E-4"
+          "$gt0009|Total risk|.magnitude>=1/100",
+          "$gt0009|Total risk|.magnitude<1/10"
         ],
         "then": [
           "$gt0010|Suggested treatment|=local::at0031|Recommended but optional|"
+        ]
+      },
+      "gt0015": {
+        "id": "gt0015",
+        "priority": 2,
+        "when": [
+          "$gt0009|Total risk|.magnitude>=0.001",
+          "$gt0009|Total risk|.magnitude<0.01"
+        ],
+        "then": [
+          "$gt0010|Suggested treatment|=local::at0032|Optional but not recommended|"
+        ]
+      },
+      "gt0016": {
+        "id": "gt0016",
+        "priority": 1,
+        "when": [
+          "$gt0009|Total risk|.magnitude<0.001"
+        ],
+        "then": [
+          "$gt0010|Suggested treatment|=local::at0033|Not indicated|"
         ]
       }
     }
@@ -119,7 +141,8 @@
         "id": "en",
         "terms": {
           "gt0001": {
-            "id": "gt0001"
+            "id": "gt0001",
+            "text": "HIV_Needle"
           },
           "gt0003": {
             "id": "gt0003",
@@ -166,11 +189,19 @@
           },
           "gt0013": {
             "id": "gt0013",
-            "text": "Set Recomendation for < 1/1000"
+            "text": "Set Recomendation for >=1/1000"
           },
           "gt0014": {
             "id": "gt0014",
-            "text": "Set Recomendation for >= 1/1000, <=1/10000"
+            "text": "Set Recomendation for < 1/1000, >=1/10000"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "Set Recommendation for >=1/100000, <1/10000"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "text": "Set Recommendation for <1/100000"
           }
         }
       }
