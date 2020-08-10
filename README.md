@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 377*
+### *Published Apps: 378*
 
 ----------
 
 ### Latest added
 
-1. Canadian Cardiovascular Society (CCS) Angina Grade - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Canadian_Cardiovascular_Society_CCS_Angina_Grade_guideline/1?language=en))
-2. Hypoglycemia Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hypoglycemia_Risk_Score/1?language=en))
-3. GCS-Pupils Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/gcs_pupils_score/1?language=en))
-4. Free Water Deficit in Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Free_water_deficit_hypernatremia/1?language=en))
-5. V-Risk (Violence-Risk) 10 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/V-RISK_10/1?language=en))
-6. Vitamin-D Doses Range Recommendation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Vitamin_D_Doses_Range_Recommendation/0?language=en))
-7. Self-administered comorbidity questionnaire (SCQ) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCQ/1?language=en))
-8. Revised Cardiac Risk Index for Pre-Operative Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_cardiac_risk_index_for_pre_operative_risk/1?language=en))
-9. Glomerular Filtration Rate (GFR) Assessment - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GFR_assessment/1?language=en))
-10. Endotracheal Tube (ETT) Depth and Tidal Volume Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ETT_depth_tidal_volume_calculator/1?language=en))
+1. Forrest Classification of Upper GI Bleeding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/forrest_classification_upper_gi_bleeding/1?language=en))
+2. Canadian Cardiovascular Society (CCS) Angina Grade - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Canadian_Cardiovascular_Society_CCS_Angina_Grade_guideline/1?language=en))
+3. Hypoglycemia Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hypoglycemia_Risk_Score/1?language=en))
+4. GCS-Pupils Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/gcs_pupils_score/1?language=en))
+5. Free Water Deficit in Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Free_water_deficit_hypernatremia/1?language=en))
+6. V-Risk (Violence-Risk) 10 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/V-RISK_10/1?language=en))
+7. Vitamin-D Doses Range Recommendation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Vitamin_D_Doses_Range_Recommendation/0?language=en))
+8. Self-administered comorbidity questionnaire (SCQ) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCQ/1?language=en))
+9. Revised Cardiac Risk Index for Pre-Operative Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_cardiac_risk_index_for_pre_operative_risk/1?language=en))
+10. Glomerular Filtration Rate (GFR) Assessment - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GFR_assessment/1?language=en))
 
 ----------
 
@@ -328,6 +328,8 @@ _Select a medical specialty below to view the available apps._
 * Bristol Stool Form Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bristol_stool_form_scale/1?language=en))
 
 * Child Pugh Score for Cirrhosis Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Child_pugh_score_for_cirrhosis/1?language=en))
+
+* Forrest Classification of Upper GI Bleeding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/forrest_classification_upper_gi_bleeding/1?language=en))
 
 * Glasgow Alcoholic Hepatitis Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Glasgow_alcoholic_hepatitis_score/1?language=en))
 
