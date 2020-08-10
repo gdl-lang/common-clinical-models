@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 376*
+### *Published Apps: 377*
 
 ----------
 
 ### Latest added
 
-1. Hypoglycemia Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hypoglycemia_Risk_Score/1?language=en))
-2. GCS-Pupils Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/gcs_pupils_score/1?language=en))
-3. Free Water Deficit in Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Free_water_deficit_hypernatremia/1?language=en))
-4. V-Risk (Violence-Risk) 10 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/V-RISK_10/1?language=en))
-5. Vitamin-D Doses Range Recommendation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Vitamin_D_Doses_Range_Recommendation/0?language=en))
-6. Self-administered comorbidity questionnaire (SCQ) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCQ/1?language=en))
-7. Revised Cardiac Risk Index for Pre-Operative Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_cardiac_risk_index_for_pre_operative_risk/1?language=en))
-8. Glomerular Filtration Rate (GFR) Assessment - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GFR_assessment/1?language=en))
-9. Endotracheal Tube (ETT) Depth and Tidal Volume Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ETT_depth_tidal_volume_calculator/1?language=en))
-10. Cincinnati Prehospital Stroke Severity Scale (CP-SSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cincinnati_Prehospital_Stroke_Severity_Scale_CP_SSS/1?language=en))
+1. Canadian Cardiovascular Society (CCS) Angina Grade - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Canadian_Cardiovascular_Society_CCS_Angina_Grade_guideline/1?language=en))
+2. Hypoglycemia Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hypoglycemia_Risk_Score/1?language=en))
+3. GCS-Pupils Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/gcs_pupils_score/1?language=en))
+4. Free Water Deficit in Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Free_water_deficit_hypernatremia/1?language=en))
+5. V-Risk (Violence-Risk) 10 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/V-RISK_10/1?language=en))
+6. Vitamin-D Doses Range Recommendation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Vitamin_D_Doses_Range_Recommendation/0?language=en))
+7. Self-administered comorbidity questionnaire (SCQ) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCQ/1?language=en))
+8. Revised Cardiac Risk Index for Pre-Operative Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_cardiac_risk_index_for_pre_operative_risk/1?language=en))
+9. Glomerular Filtration Rate (GFR) Assessment - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GFR_assessment/1?language=en))
+10. Endotracheal Tube (ETT) Depth and Tidal Volume Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ETT_depth_tidal_volume_calculator/1?language=en))
 
 ----------
 
@@ -125,6 +125,8 @@ _Select a medical specialty below to view the available apps._
 * ATRIA Stroke Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_stroke_risk_score/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_stroke_risk_score/1?language=sv))
 
 * Brugada Criteria for Ventricular Tachycardia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Brugada_Criteria_for_Ventricular_Tachycardia_guideline/1?language=en))
+
+* Canadian Cardiovascular Society (CCS) Angina Grade - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Canadian_Cardiovascular_Society_CCS_Angina_Grade_guideline/1?language=en))
 
 * Canadian Syncope Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/canadian_syncope_risk_score/1?language=en))
 
