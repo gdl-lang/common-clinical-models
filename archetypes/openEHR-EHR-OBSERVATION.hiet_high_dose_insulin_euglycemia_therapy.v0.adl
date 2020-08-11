@@ -7,21 +7,29 @@ language
 	original_language = <[ISO_639-1::en]>
 description
 	original_author = <
-		["name"] = <"">
+		["name"] = <"Maryam Razavi">
+		["email"] = <"maryam.razavi@cambio.se">
+		["organisation"] = <"CambioCDS">
+		["date"] = <"2020-08-11">
 	>
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"">
-			use = <"">
-			misuse = <"">
-			copyright = <"">
+			purpose = <"To record information relevant to the HIET assessment and it's results. ">
+			use = <"Use to record insulin dosage and dextrose infusion in patients with cardiac drug-induced myocardial depression (cardiogenic shock).">
+			keywords = <"Insulin", "Euglycemia", "Insulin Euglycemia Therapy", "Dextrose", "Regular Insulin">
+			misuse = <"Not to use to provide comprehensive or definitive drug information. ">
+			copyright = <"@CambioCDS">
 		>
 	>
-	lifecycle_state = <"0">
+	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"110645195EEF00754067FA318BC6E61D">
+		["MD5-CAM-1.0.1"] = <"99DD330A165098673929576AAFF7B178">
+		["references"] = <"1. Kerns, W. Antidotes in Depth (A18): Insulin-Euglycemia Therapy. Goldfrank’s Toxicologic Emergencies 2015, 10th e. L. S. Nelson, N. A. Lewin, M. Howland et al. New York, NY, McGraw-Hill. 
+2. Holger JS, Stellpflug SJ, Cole JB, Harris CR, Engebretsen KM. High-dose insulin: a consecutive case series in toxin-induced cardiogenic shock. Clin Toxicol (Phila). 2011;49(7):653-8.
+3. Greene SL, Gawarammana I, Wood DM, Jones AL, Dargan PI. Relative safety of hyperinsulinaemia/euglycaemia therapy in the management of calcium channel blocker overdose: a prospective observational study. Intensive Care Med. 2007;33(11):2019-24.
+4. Lugassy DM et al. The Critically Ill Poisoned Patient. Emergency Department Resuscitation of the Critically Ill 2015. M. E. Winters, American College of Emergency Physicians.">
 	>
 
 definition
@@ -35,7 +43,14 @@ definition
 								items cardinality matches {0..*; unordered} matches {
 									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Dextrose replacement for infusion
 										value matches {
-											DV_TEXT matches {*}
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0008, 	-- D50
+													at0009, 	-- D25
+													at0010]	-- D10
+												}
+											}
 										}
 									}
 									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Regular Insulin Bolus
@@ -74,6 +89,28 @@ definition
 											>
 										}
 									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Comment Regular Insulin
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Comment Dextrose infusion
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Dextrose boluse
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::129]>
+												list = <
+													["1"] = <
+														units = <"cc">
+													>
+												>
+											>
+										}
+									}
 								}
 							}
 						}
@@ -89,7 +126,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Hiet high dose insulin euglycemia therapy">
-					description = <"unknown">
+					description = <"High-dose Insulin Euglycemia Therapy (HIET) doses insulin for calcium-channel blocker or beta blocker overdose.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -117,6 +154,30 @@ ontology
 				>
 				["at0007"] = <
 					text = <"Dextrose Infusion">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"D50">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"D25">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"D10">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Comment Regular Insulin">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Comment Dextrose infusion">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Dextrose boluse">
 					description = <"*">
 				>
 			>
