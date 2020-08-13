@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 380*
+### *Published Apps: 381*
 
 ----------
 
 ### Latest added
 
-1. Hematopoietic Cell Transplantation-specific Comorbidity Index (HCT-CI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HCT-CI/1?language=en))
-2. HIT Expert Probability (HEP) Score for Heparin-Induced Thrombocytopenia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HEP_Score_for_Heparin_Induced_Thrombocytopenia_guideline/1?language=en))
-3. Forrest Classification of Upper GI Bleeding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/forrest_classification_upper_gi_bleeding/1?language=en))
-4. Canadian Cardiovascular Society (CCS) Angina Grade - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Canadian_Cardiovascular_Society_CCS_Angina_Grade_guideline/1?language=en))
-5. Hypoglycemia Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hypoglycemia_Risk_Score/1?language=en))
-6. GCS-Pupils Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/gcs_pupils_score/1?language=en))
-7. Free Water Deficit in Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Free_water_deficit_hypernatremia/1?language=en))
-8. V-Risk (Violence-Risk) 10 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/V-RISK_10/1?language=en))
-9. Vitamin-D Doses Range Recommendation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Vitamin_D_Doses_Range_Recommendation/0?language=en))
-10. Self-administered comorbidity questionnaire (SCQ) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCQ/1?language=en))
+1. FOUR (Full Outline of UnResponsiveness) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FOUR_Full_Outline_of_UnResponsiveness_Score_guideline/1?language=en))
+2. Hematopoietic Cell Transplantation-specific Comorbidity Index (HCT-CI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HCT-CI/1?language=en))
+3. HIT Expert Probability (HEP) Score for Heparin-Induced Thrombocytopenia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HEP_Score_for_Heparin_Induced_Thrombocytopenia_guideline/1?language=en))
+4. Forrest Classification of Upper GI Bleeding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/forrest_classification_upper_gi_bleeding/1?language=en))
+5. Canadian Cardiovascular Society (CCS) Angina Grade - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Canadian_Cardiovascular_Society_CCS_Angina_Grade_guideline/1?language=en))
+6. Hypoglycemia Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hypoglycemia_Risk_Score/1?language=en))
+7. GCS-Pupils Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/gcs_pupils_score/1?language=en))
+8. Free Water Deficit in Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Free_water_deficit_hypernatremia/1?language=en))
+9. V-Risk (Violence-Risk) 10 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/V-RISK_10/1?language=en))
+10. Vitamin-D Doses Range Recommendation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Vitamin_D_Doses_Range_Recommendation/0?language=en))
 
 ----------
 
@@ -251,6 +251,9 @@ _Select a medical specialty below to view the available apps._
 * Emergency Transfusion Score (ETS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ETS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ETS/1?language=sv))
 
 * Estimated Ethanol (and Toxic Alcohol) Serum Concentration Based on Ingestion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_Ethanol_and_Toxic_Alcohol_Serum_Concentration_Based_on_Ingestion/1?language=en))
+))
+
+* FOUR (Full Outline of UnResponsiveness) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FOUR_Full_Outline_of_UnResponsiveness_Score_guideline/1?language=en))
 
 * GCS-Pupils Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/gcs_pupils_score/1?language=en))
 
