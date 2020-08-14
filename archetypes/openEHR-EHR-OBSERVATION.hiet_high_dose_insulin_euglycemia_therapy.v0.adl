@@ -25,11 +25,11 @@ description
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"99DD330A165098673929576AAFF7B178">
 		["references"] = <"1. Kerns, W. Antidotes in Depth (A18): Insulin-Euglycemia Therapy. Goldfrank’s Toxicologic Emergencies 2015, 10th e. L. S. Nelson, N. A. Lewin, M. Howland et al. New York, NY, McGraw-Hill. 
 2. Holger JS, Stellpflug SJ, Cole JB, Harris CR, Engebretsen KM. High-dose insulin: a consecutive case series in toxin-induced cardiogenic shock. Clin Toxicol (Phila). 2011;49(7):653-8.
 3. Greene SL, Gawarammana I, Wood DM, Jones AL, Dargan PI. Relative safety of hyperinsulinaemia/euglycaemia therapy in the management of calcium channel blocker overdose: a prospective observational study. Intensive Care Med. 2007;33(11):2019-24.
 4. Lugassy DM et al. The Critically Ill Poisoned Patient. Emergency Department Resuscitation of the Critically Ill 2015. M. E. Winters, American College of Emergency Physicians.">
+		["MD5-CAM-1.0.1"] = <"873907935F6D86D0111691FDCF8A8293">
 	>
 
 definition
@@ -65,13 +65,30 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Regular Insulin Continuous Infusion
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Comment Regular Insulin
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Min Regular Insulin Continuous Infusion
 										value matches {
 											C_DV_QUANTITY <
-												property = <[openehr::124]>
+												property = <[openehr::382]>
 												list = <
 													["1"] = <
-														units = <"u">
+														units = <"1/h">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Max Regular Insulin Continuous Infusion
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::382]>
+												list = <
+													["1"] = <
+														units = <"1/h">
 													>
 												>
 											>
@@ -80,18 +97,13 @@ definition
 									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Dextrose Infusion
 										value matches {
 											C_DV_QUANTITY <
-												property = <[openehr::129]>
+												property = <[openehr::382]>
 												list = <
 													["1"] = <
-														units = <"cc">
+														units = <"1/h">
 													>
 												>
 											>
-										}
-									}
-									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Comment Regular Insulin
-										value matches {
-											DV_TEXT matches {*}
 										}
 									}
 									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Comment Dextrose infusion
@@ -99,16 +111,33 @@ definition
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Dextrose boluse
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Dextrose bolus Max
 										value matches {
 											C_DV_QUANTITY <
-												property = <[openehr::129]>
+												property = <[openehr::382]>
 												list = <
 													["1"] = <
-														units = <"cc">
+														units = <"1/h">
 													>
 												>
 											>
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Dextrose bolus Min
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::382]>
+												list = <
+													["1"] = <
+														units = <"1/h">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Continuous monitoring
+										value matches {
+											DV_TEXT matches {*}
 										}
 									}
 								}
@@ -149,7 +178,7 @@ ontology
 					description = <"*">
 				>
 				["at0006"] = <
-					text = <"Regular Insulin Continuous Infusion">
+					text = <"Min Regular Insulin Continuous Infusion">
 					description = <"*">
 				>
 				["at0007"] = <
@@ -177,7 +206,19 @@ ontology
 					description = <"*">
 				>
 				["at0013"] = <
-					text = <"Dextrose boluse">
+					text = <"Dextrose bolus Max">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Dextrose bolus Min">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Max Regular Insulin Continuous Infusion">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Continuous monitoring">
 					description = <"*">
 				>
 			>
