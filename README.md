@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 382*
+### *Published Apps: 383*
 
 ----------
 
 ### Latest added
 
-1. Focused Assessment with Sonography for Trauma (FAST) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FAST/1?language=en))
-2. FOUR (Full Outline of UnResponsiveness) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FOUR_Full_Outline_of_UnResponsiveness_Score_guideline/1?language=en))
-3. Hematopoietic Cell Transplantation-specific Comorbidity Index (HCT-CI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HCT-CI/1?language=en))
-4. HIT Expert Probability (HEP) Score for Heparin-Induced Thrombocytopenia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HEP_Score_for_Heparin_Induced_Thrombocytopenia_guideline/1?language=en))
-5. Forrest Classification of Upper GI Bleeding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/forrest_classification_upper_gi_bleeding/1?language=en))
-6. Canadian Cardiovascular Society (CCS) Angina Grade - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Canadian_Cardiovascular_Society_CCS_Angina_Grade_guideline/1?language=en))
-7. Hypoglycemia Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hypoglycemia_Risk_Score/1?language=en))
-8. GCS-Pupils Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/gcs_pupils_score/1?language=en))
-9. Free Water Deficit in Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Free_water_deficit_hypernatremia/1?language=en))
-10. V-Risk (Violence-Risk) 10 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/V-RISK_10/1?language=en))
+1. Framingham Heart Failure Diagnostic Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Framingham_Heart_Failure_Diagnostic_Criteria_guideline/1?language=en))
+2. Focused Assessment with Sonography for Trauma (FAST) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FAST/1?language=en))
+3. FOUR (Full Outline of UnResponsiveness) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FOUR_Full_Outline_of_UnResponsiveness_Score_guideline/1?language=en))
+4. Hematopoietic Cell Transplantation-specific Comorbidity Index (HCT-CI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HCT-CI/1?language=en))
+5. HIT Expert Probability (HEP) Score for Heparin-Induced Thrombocytopenia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HEP_Score_for_Heparin_Induced_Thrombocytopenia_guideline/1?language=en))
+6. Forrest Classification of Upper GI Bleeding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/forrest_classification_upper_gi_bleeding/1?language=en))
+7. Canadian Cardiovascular Society (CCS) Angina Grade - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Canadian_Cardiovascular_Society_CCS_Angina_Grade_guideline/1?language=en))
+8. Hypoglycemia Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hypoglycemia_Risk_Score/1?language=en))
+9. GCS-Pupils Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/gcs_pupils_score/1?language=en))
+10. Free Water Deficit in Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Free_water_deficit_hypernatremia/1?language=en))
 
 ----------
 
@@ -159,6 +159,8 @@ _Select a medical specialty below to view the available apps._
 * EuroSCORE II - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EuroSCORE_II/1?language=en))
 
 * Framingham CHD Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Framingham_CHD/1?language=en))
+
+* Framingham Heart Failure Diagnostic Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Framingham_Heart_Failure_Diagnostic_Criteria_guideline/1?language=en))
 
 * Get With The Guidelines in Heart Failure Risk Score (GWTG-HF) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GWTG_HF/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GWTG_HF/1?language=sv))
 
