@@ -22,8 +22,7 @@
           "score",
           "spleen",
           "CML",
-          "chronic",
-          "myelogenous",
+          "chronic myelogenous leukemia",
           "leukemia",
           "basophil",
           "risk"
@@ -136,7 +135,7 @@
         "id": "gt0019",
         "priority": 7,
         "when": [
-          "(($gt0003|Spleen size|>10,cm&&$gt0003|Spleen size|<=20,cm)||($gt0003|Spleen size|>3,in&&$gt0003|Spleen size|<=7,in))"
+          "(($gt0003|Spleen size|>10,cm)&&($gt0003|Spleen size|<=20,cm))||(($gt0003|Spleen size|>3,in)&&($gt0003|Spleen size|<=7,in))"
         ],
         "then": [
           "$gt0017|Warning- Spleen Size |='Very high; double-check.'"
@@ -182,32 +181,32 @@
         "when": [
           "$gt0003|Spleen size|!=null",
           "$gt0004|% basophils|!=null",
-		  "$gt0003|Spleen size|.unit=='cm'",
-		  "!fired($gt0020)",
+          "$gt0003|Spleen size|.unit=='cm'",
+          "!fired($gt0020)",
           "!fired($gt0021)",
           "!fired($gt0022)",
           "!fired($gt0023)"
         ],
         "then": [
-          "$gt0008|Likelihood of NOT achieving CCyR|.magnitude=(100*(e^(((-1)*2.1007)+(0.0700*$gt0004.magnitude)+(0.0402*$gt0003.magnitude))))/(1+(e^(((-1)*2.1007)+(0.0700*$gt0004.magnitude)+(0.0402*$gt0003.magnitude))))",
-		  "$gt0008|Likelihood of NOT achieving CCyR|.unit='%'"
+          "$gt0008|Likelihood of NOT achieving CCyR|.magnitude=floor(100*((e^((0.07*$gt0004.magnitude)+(0.0402*$gt0003.magnitude)-2.1007))/(1+(e^((0.07*$gt0004.magnitude)+(0.0402*$gt0003.magnitude)-2.1007)))))",
+          "$gt0008|Likelihood of NOT achieving CCyR|.unit='%'"
         ]
       },
-	  "gt0016": {
+      "gt0016": {
         "id": "gt0016",
         "priority": 3,
         "when": [
           "$gt0003|Spleen size|!=null",
           "$gt0004|% basophils|!=null",
-		  "$gt0003|Spleen size|.unit=='in'",
-		  "!fired($gt0020)",
+          "$gt0003|Spleen size|.unit=='in'",
+          "!fired($gt0020)",
           "!fired($gt0021)",
           "!fired($gt0022)",
           "!fired($gt0023)"
         ],
         "then": [
-          "$gt0008|Likelihood of NOT achieving CCyR|.magnitude=(100*(e^(((-1)*2.1007)+(0.0700*$gt0004.magnitude)+((0.0402/0.39370079)*$gt0003.magnitude))))/(1+(e^(((-1)*2.1007)+(0.0700*$gt0004.magnitude)+((0.0402/0.39370079)*$gt0003.magnitude))))",
-		  "$gt0008|Likelihood of NOT achieving CCyR|.unit='%'"
+          "$gt0008|Likelihood of NOT achieving CCyR|.magnitude=floor(100*((e^((0.07*$gt0004.magnitude)+((0.0402/0.3937)*$gt0003.magnitude)-2.1007))/(1+(e^((0.07*$gt0004.magnitude)+((0.0402/0.3937)*$gt0003.magnitude)-2.1007)))))",
+          "$gt0008|Likelihood of NOT achieving CCyR|.unit='%'"
         ]
       },
       "gt0013": {
@@ -243,7 +242,7 @@
         "terms": {
           "gt0001": {
             "id": "gt0001",
-            "text": "EUTOS score CML",
+            "text": "EUTOS score for CML",
             "description": "EUTOS Score for Chronic Myelogenous Leukemia (CML) predicts outcomes after CML treatments, specifically adjusted for tyrosine kinase treatments."
           },
           "gt0003": {
