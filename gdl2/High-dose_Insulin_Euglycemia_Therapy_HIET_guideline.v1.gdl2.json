@@ -119,13 +119,13 @@
     "rules": {
       "gt0031": {
         "id": "gt0031",
-        "priority": 9,
+        "priority": 7,
         "when": [
           "$gt0004|Weight|!=null",
           "$gt0004|Weight|.unit=='kg'",
-          "$gt0007|Glucose result|!=null",
-          "$gt0007|Glucose result|.unit=='mg/dl'",
-          "$gt0011|Dextrose replacement for infusion|!=null"
+          "$gt0007|Serum Glucose |!=null",
+          "$gt0011|Dextrose replacement for infusion|!=null",
+          "($gt0007|Serum Glucose |.unit=='mg/dl')||($gt0007|Serum Glucose |.unit=='mmol/l')"
         ],
         "then": [
           "$gt0013|Regular Insulin Bolus|.magnitude=$gt0004.magnitude",
@@ -134,56 +134,31 @@
       },
       "gt0030": {
         "id": "gt0030",
-        "priority": 8,
+        "priority": 6,
         "when": [
-          "$gt0007|Glucose result|<250,mg/dl"
+          "$gt0007|Serum Glucose |<250,mg/dl"
         ],
         "then": [
           "$gt0029|Dextrose bolus Max|.magnitude=$gt0004.magnitude*2",
+          "$gt0034|Dextrose bolus Min|.attribute=$gt0004.magnitude",
           "$gt0029|Dextrose bolus Max|.unit='cc'",
           "$gt0021|Comment Regular Insulin|='1-2 cc/kg D50 bolus (since serum glucose is <250 mg/dL or 13.9 mmol/L)'"
         ]
       },
-      "gt0032": {
-        "id": "gt0032",
-        "priority": 7,
-        "when": [
-          "$gt0007|Glucose result|<250,mg/dl"
-        ],
-        "then": [
-          "$gt0034|Dextrose bolus Min|.magnitude=$gt0004.magnitude",
-          "$gt0034|Dextrose bolus Min|.unit='cc'",
-          "$gt0021|Comment Regular Insulin|='D50 bolus (since serum glucose is <250 mg/dL or 13.9 mmol/L)'"
-        ]
-      },
       "gt0025": {
         "id": "gt0025",
-        "priority": 6,
-        "when": [
-          "$gt0004|Weight|!=null",
-          "$gt0004|Weight|.unit=='kg'",
-          "$gt0007|Glucose result|!=null",
-          "$gt0007|Glucose result|.unit=='mg/dl'",
-          "$gt0011|Dextrose replacement for infusion|!=null"
-        ],
-        "then": [
-          "$gt0014|Min Regular Insulin Continuous Infusion|.magnitude=$gt0004.magnitude*0.5",
-          "$gt0014|Min Regular Insulin Continuous Infusion|.unit='units/h'"
-        ]
-      },
-      "gt0035": {
-        "id": "gt0035",
         "priority": 5,
         "when": [
           "$gt0004|Weight|!=null",
           "$gt0004|Weight|.unit=='kg'",
-          "$gt0007|Glucose result|!=null",
-          "$gt0007|Glucose result|.unit=='mg/dl'",
-          "$gt0011|Dextrose replacement for infusion|!=null"
+          "$gt0007|Serum Glucose |!=null",
+          "$gt0011|Dextrose replacement for infusion|!=null",
+          "($gt0007|Serum Glucose |.unit=='mg/dl')||($gt0007|Serum Glucose |.unit=='mmol/l')"
         ],
         "then": [
-          "$gt0033|Max Regular Insulin Continuous Infusion|.magnitude=$gt0004.magnitude*1",
-          "$gt0033|Max Regular Insulin Continuous Infusion|.unit='units/h'"
+          "$gt0014|Min Regular Insulin Continuous Infusion|.magnitude=$gt0004.magnitude*0.5",
+          "$gt0033|Max Regular Insulin Continuous Infusion|.magnitude=$gt0004.magnitude",
+          "$gt0014|Min Regular Insulin Continuous Infusion|.unit='units/h'"
         ]
       },
       "gt0017": {
@@ -254,7 +229,7 @@
           },
           "gt0007": {
             "id": "gt0007",
-            "text": "Glucose result",
+            "text": "Serum Glucose ",
             "description": "The result of the test."
           },
           "gt0011": {
@@ -301,7 +276,7 @@
           },
           "gt0025": {
             "id": "gt0025",
-            "text": "Set Min Regular Insulin continuous infusion"
+            "text": "Set Min and Max Regular Insulin continuous infusion"
           },
           "gt0029": {
             "id": "gt0029",
@@ -310,15 +285,11 @@
           },
           "gt0030": {
             "id": "gt0030",
-            "text": "Set D50 bolus Max Dose"
+            "text": "Set D50 bolus Max and Min Dose"
           },
           "gt0031": {
             "id": "gt0031",
             "text": "Set Regular Insulin Bolus"
-          },
-          "gt0032": {
-            "id": "gt0032",
-            "text": "Set D50 bolus Min Dose"
           },
           "gt0033": {
             "id": "gt0033",
@@ -329,10 +300,6 @@
             "id": "gt0034",
             "text": "Dextrose bolus Min",
             "description": "*"
-          },
-          "gt0035": {
-            "id": "gt0035",
-            "text": "Set Max Regular Insulin continuous infusion"
           },
           "gt0036": {
             "id": "gt0036",
