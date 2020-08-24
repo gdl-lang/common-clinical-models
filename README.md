@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 385*
+### *Published Apps: 386*
 
 ----------
 
 ### Latest added
 
-1. BAP-65 Score for Acute Exacerbation of COPD - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/bap_65/1?language=en))
-2. EUTOS Score for Chronic Myelogenous Leukemia (CML) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EUTOS_score_CML/1?language=en))
-3. Framingham Heart Failure Diagnostic Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Framingham_Heart_Failure_Diagnostic_Criteria_guideline/1?language=en))
-4. Focused Assessment with Sonography for Trauma (FAST) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FAST/1?language=en))
-5. FOUR (Full Outline of UnResponsiveness) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FOUR_Full_Outline_of_UnResponsiveness_Score_guideline/1?language=en))
-6. Hematopoietic Cell Transplantation-specific Comorbidity Index (HCT-CI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HCT-CI/1?language=en))
-7. HIT Expert Probability (HEP) Score for Heparin-Induced Thrombocytopenia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HEP_Score_for_Heparin_Induced_Thrombocytopenia_guideline/1?language=en))
-8. Forrest Classification of Upper GI Bleeding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/forrest_classification_upper_gi_bleeding/1?language=en))
-9. Canadian Cardiovascular Society (CCS) Angina Grade - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Canadian_Cardiovascular_Society_CCS_Angina_Grade_guideline/1?language=en))
-10. Hypoglycemia Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hypoglycemia_Risk_Score/1?language=en))
+1. Ottawa COPD Risk Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ottawa_COPD_Risk_Scale_guideline/1?language=en))
+2. BAP-65 Score for Acute Exacerbation of COPD - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/bap_65/1?language=en))
+3. EUTOS Score for Chronic Myelogenous Leukemia (CML) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EUTOS_score_CML/1?language=en))
+4. Framingham Heart Failure Diagnostic Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Framingham_Heart_Failure_Diagnostic_Criteria_guideline/1?language=en))
+5. Focused Assessment with Sonography for Trauma (FAST) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FAST/1?language=en))
+6. FOUR (Full Outline of UnResponsiveness) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FOUR_Full_Outline_of_UnResponsiveness_Score_guideline/1?language=en))
+7. Hematopoietic Cell Transplantation-specific Comorbidity Index (HCT-CI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HCT-CI/1?language=en))
+8. HIT Expert Probability (HEP) Score for Heparin-Induced Thrombocytopenia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HEP_Score_for_Heparin_Induced_Thrombocytopenia_guideline/1?language=en))
+9. Forrest Classification of Upper GI Bleeding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/forrest_classification_upper_gi_bleeding/1?language=en))
+10. Canadian Cardiovascular Society (CCS) Angina Grade - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Canadian_Cardiovascular_Society_CCS_Angina_Grade_guideline/1?language=en))
 
 ----------
 
@@ -871,6 +871,8 @@ _Select a medical specialty below to view the available apps._
 * MuLBSTA Score for Viral Pneumonia Mortality  - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mulbsta/1?language=en))
 
 * Murray Score for Acute Lung Injury  - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/murray_score/1?language=en))
+
+* Ottawa COPD Risk Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ottawa_COPD_Risk_Scale_guideline/1?language=en))
 
 * PERC Rule for Pulmonary Embolism - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PERC/1?language=en))
 
