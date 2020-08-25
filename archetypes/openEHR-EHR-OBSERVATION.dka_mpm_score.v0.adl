@@ -15,19 +15,16 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"Provides information regarding mortality in patients presenting with DKA.">
+			purpose = <"Used to store observations relevant to the calculation of the DKA MPM score. The DKA MPM score rovides information regarding mortality in patients presenting with DKA.">
 			use = <"Patients with DKA. Study population included patients with  serum glucose >250 mg/dL (14.1 mmol/L), positive urine ketones, and metabolic acidosis (arterial blood pH <7.30 and HCO₃ <15 mEq/L (15 mmol/L).
 
-
-
-DKA MPM Score:         Risk:             In-hospital mortality:
-
-0-14                           Low               0.86%
-
-15-18                         High              20.8%
-
-19-25                         Very high       93.3%
-
+DKA MPM Score is calculated by the addition of selected points:
+- At presentation: Severe commodities* - 6 points if yes; pH <7.0 - 4 points if yes.
+- At 12 hr after presentation: >50 units regular insulin required over 12 hr - 4 points if yes, Serum glucose >300 mg/dL (16.7 mmol/L) after 12 hr - 4 points if yes.
+- At 24 hr after presentation: Depressed mental state** - 4 points if yes, Fever*** - 3 points if yes.
+*Immunosuppression, previous MI, COPD, cirrhosis, CHF, and/or previous stroke.
+**As determined by examiner.
+***Axillary temp ≥38°C (100.4ºF).
 ">
 			keywords = <"diabetic", "ketoacidosis", "mortality", "prediction", "model", "score", "DKA", "MPM", "glucose", "fever", "mental state", "ph">
 			misuse = <"This calculator is not externally validated and should be used with caution. It is not intended to routinely disposition patients. The APACHE II Score may be a better mortality predictor.">
@@ -39,7 +36,7 @@ DKA MPM Score:         Risk:             In-hospital mortality:
 	other_details = <
 		["references"] = <"1. Efstathiou SP, Tsiakou AG, Tsioulos DI, et al. A mortality prediction model in diabetic ketoacidosis. Clin Endocrinol (Oxf). 2002;57(5):595-601.">
 		["current_contact"] = <"Therese Lindberg, Cambio CDS<therese.lindberg@cambio.se>">
-		["MD5-CAM-1.0.1"] = <"EC29A5F419D852B0735D5432AD8BDC78">
+		["MD5-CAM-1.0.1"] = <"7B1185AB7CDFD523ABEDFC0C37EE0CBA">
 	>
 
 definition
@@ -89,6 +86,12 @@ definition
 												value matches {
 													0|[local::at0021], 	-- No +0
 													3|[local::at0022]  	-- Yes +3
+												}
+											}
+											ELEMENT[at0023] occurrences matches {0..1} matches {	-- Depressed mental state (after 24 hr)
+												value matches {
+													0|[local::at0024], 	-- No +0
+													4|[local::at0025]  	-- Yes +4
 												}
 											}
 										}
@@ -203,6 +206,18 @@ ontology
 				>
 				["at0022"] = <
 					text = <"Yes +3">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Depressed mental state (after 24 hr)">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"No +0">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Yes +4">
 					description = <"*">
 				>
 			>
