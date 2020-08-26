@@ -1,0 +1,197 @@
+{
+  "id": "History_and_Electrocardiogram_only_Manchester_Acute_Coronary_Syndromes_guideline.v1",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2020-07-23"
+    },
+    "lifecycle_state": "Not set",
+    "details": {
+      "en": {
+        "id": "en"
+      }
+    },
+    "other_details": {}
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0002": {
+        "id": "gt0002",
+        "model_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0003": {
+            "id": "gt0003",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
+          }
+        }
+      },
+      "gt0004": {
+        "id": "gt0004",
+        "model_id": "openEHR-EHR-OBSERVATION.history_and_electrocardiogram_only_manchester_acute_coronary_syndromes.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.history_and_electrocardiogram_only_manchester_acute_coronary_syndromes.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0005": {
+            "id": "gt0005",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0016]"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0019]"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0022]"
+          }
+        }
+      },
+      "gt0012": {
+        "id": "gt0012",
+        "model_id": "openEHR-EHR-OBSERVATION.history_and_electrocardiogram_only_manchester_acute_coronary_syndromes.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.history_and_electrocardiogram_only_manchester_acute_coronary_syndromes.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0013": {
+            "id": "gt0013",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0025]"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0026]"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0027]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0016": {
+        "id": "gt0016",
+        "priority": 2,
+        "when": [
+          "$gt0003|Age|!=null",
+          "$gt0005|Sex|!=null",
+          "$gt0006|Sweating observed|!=null",
+          "$gt0007|Acute EKG ischemia|!=null",
+          "$gt0008|Pain radiating to the right arm or shoulder|!=null",
+          "$gt0009|Vomiting associated with pain|!=null",
+          "$gt0010|Systolic BP <100 mmHg|!=null",
+          "$gt0011|Current tobacco smoker|!=null",
+          "$gt0003|Age|.unit=='a'"
+        ],
+        "then": [
+          "$gt0014|X|.magnitude=((1.426*$gt0006.value)+(1.838*$gt0007.value)+(0.734*$gt0008.value)+(0.996*$gt0009.value)+(1.353*$gt0010.value)+(0.675*$gt0011.value)+(0.024*$gt0003.magnitude)+(0.462*$gt0005.value)-4.416)*"
+        ]
+      },
+      "gt0017": {
+        "id": "gt0017",
+        "priority": 1,
+        "when": [
+          "fired($gt0016)"
+        ],
+        "then": [
+          "$gt0013|Probability of ACS |.magnitude=1/(1+(e^$gt0014.magnitude))"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001"
+          },
+          "gt0003": {
+            "id": "gt0003",
+            "text": "Age",
+            "description": "Age in years, and for babies: months, weeks or days"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "Sex",
+            "description": "*"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Sweating observed",
+            "description": "*"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "text": "Acute EKG ischemia",
+            "description": "*"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "Pain radiating to the right arm or shoulder",
+            "description": "*"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "text": "Vomiting associated with pain",
+            "description": "*"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "Systolic BP <100 mmHg",
+            "description": "*"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "Current tobacco smoker",
+            "description": "*"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "Probability of ACS ",
+            "description": "*"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "X",
+            "description": "*"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "Risk group",
+            "description": "*"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "text": "Set X"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "Set ACS"
+          }
+        }
+      }
+    }
+  }
+}
