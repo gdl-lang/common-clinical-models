@@ -77,6 +77,10 @@
           "gt0041": {
             "id": "gt0041",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0020]"
+          },
+          "gt0048": {
+            "id": "gt0048",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0025]"
           }
         }
       }
@@ -84,7 +88,7 @@
     "rules": {
       "gt0042": {
         "id": "gt0042",
-        "priority": 3,
+        "priority": 4,
         "when": [
           "$gt0033|Arterial pH < 7.30|!=null",
           "$gt0034|INR > 6.5 (PT > 100 sec)|!=null",
@@ -97,22 +101,32 @@
       },
       "gt0045": {
         "id": "gt0045",
-        "priority": 2,
+        "priority": 3,
         "when": [
           "($gt0033|Arterial pH < 7.30|==1|local::at0006|Yes|)||((($gt0034|INR > 6.5 (PT > 100 sec)|==1|local::at0009|Yes|)&&($gt0035|Creatinine 3.4 mg/dL (300 µmol/L)|==1|local::at0012|Yes|))&&($gt0036|Grade III or IV hepatic encephalopathy|==1|local::at0015|Yes|))"
         ],
         "then": [
-          "$gt0041|Interpretation |='Referral/ Transfer to a transplant center and list for a liver transplantation.'"
+          "$gt0041|Management|='Referral/ Transfer to a transplant center and list for a liver transplantation.'"
         ]
       },
       "gt0046": {
         "id": "gt0046",
-        "priority": 1,
+        "priority": 2,
         "when": [
           "!fired($gt0045)"
         ],
         "then": [
-          "$gt0041|Interpretation |='Does not meet transplant or referral criteria.'"
+          "$gt0041|Management|='Does not meet transplant or referral criteria.'"
+        ]
+      },
+      "gt0047": {
+        "id": "gt0047",
+        "priority": 1,
+        "when": [
+          "($gt0039|Lactate > 3.5 mmol/L after fluid resuscitation (<4 hrs) OR lactate > 3 mmol/L after full fluid resuscitation (12 hours)|==1|local::at0022|Yes|)||($gt0040|Phosphate > 3.75 mg/dL (1.2 mmol/L) at 48-96 hours|==1|local::at0024|Yes|)"
+        ],
+        "then": [
+          "$gt0048|Comment|='While not part of the King’s Criteria, hyperlactatemia and hyperphosphatemia are strong predictors of poor prognosis for survival without transplantation.'"
         ]
       }
     }
@@ -183,6 +197,15 @@
           "gt0046": {
             "id": "gt0046",
             "text": "Set interpretation to not transfer to transplant center"
+          },
+          "gt0047": {
+            "id": "gt0047",
+            "text": "Set a comment to Lactate and Phosphate"
+          },
+          "gt0048": {
+            "id": "gt0048",
+            "text": "Comment",
+            "description": "*"
           }
         }
       }
