@@ -45,18 +45,6 @@
   },
   "definition": {
     "data_bindings": {
-      "gt0011": {
-        "id": "gt0011",
-        "model_id": "openEHR-EHR-OBSERVATION.laboratory_test_result.v1",
-        "template_id": "openEHR-EHR-OBSERVATION.laboratory_test_result.v1",
-        "type": "INPUT",
-        "elements": {
-          "gt0012": {
-            "id": "gt0012",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.ph_result.v0]/items[at0001]"
-          }
-        }
-      },
       "gt0021": {
         "id": "gt0021",
         "model_id": "openEHR-EHR-OBSERVATION.dka_mpm_score.v0",
@@ -82,6 +70,10 @@
           "gt0036": {
             "id": "gt0036",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0018]/items[at0023]"
+          },
+          "gt0037": {
+            "id": "gt0037",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0008]"
           }
         }
       },
@@ -107,10 +99,6 @@
         "template_id": "openEHR-EHR-OBSERVATION.dka_mpm_score.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0033": {
-            "id": "gt0033",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0008]"
-          },
           "gt0034": {
             "id": "gt0034",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0020]"
@@ -118,30 +106,18 @@
         }
       }
     },
-    "default_actions": [
-      "$gt0010|pH <7.0|=0|local::at0006|No +0|"
-    ],
     "rules": {
-      "gt0016": {
-        "id": "gt0016",
-        "priority": 5,
-        "when": [
-          "$gt0012|pH|<7,1"
-        ],
-        "then": [
-          "$gt0033|pH <7.0|=4|local::at0010|Yes +4|"
-        ]
-      },
       "gt0017": {
         "id": "gt0017",
         "priority": 4,
         "when": [
           "$gt0022|Serum glucose >300 mg/dL (16.7 mmol/L) after 12 hr|!=null",
           "$gt0023|Severe comorbidities|!=null",
-          "$gt0024|Fever (Axillary temp ≥38°C (100.4ºF) after 24 hr)|!=null"
+          "$gt0024|Fever (Axillary temp ≥38°C (100.4ºF) after 24 hr)|!=null",
+          "$gt0037|pH <7.0|!=null"
         ],
         "then": [
-          "$gt0034|DKA MPM Score|.magnitude=$gt0022.value+$gt0023.value+$gt0024.value+$gt0025.value+$gt0036.value+$gt0033.value"
+          "$gt0034|DKA MPM Score|.magnitude=$gt0022.value+$gt0023.value+$gt0024.value+$gt0025.value+$gt0036.value+$gt0037.value"
         ]
       },
       "gt0018": {
@@ -212,25 +188,10 @@
             "text": ">50 units regular insulin required over 12 hr",
             "description": "*"
           },
-          "gt0007": {
-            "id": "gt0007",
-            "text": "pH <7.0",
-            "description": "*"
-          },
           "gt0008": {
             "id": "gt0008",
             "text": "Depressed mental state",
             "description": "As determined by examiner."
-          },
-          "gt0010": {
-            "id": "gt0010",
-            "text": "pH <7.0",
-            "description": "*"
-          },
-          "gt0012": {
-            "id": "gt0012",
-            "text": "pH",
-            "description": "*"
           },
           "gt0013": {
             "id": "gt0013",
@@ -246,10 +207,6 @@
             "id": "gt0015",
             "text": "In-hospital mortality ",
             "description": "*"
-          },
-          "gt0016": {
-            "id": "gt0016",
-            "text": "pH <7.0"
           },
           "gt0017": {
             "id": "gt0017",
@@ -297,11 +254,6 @@
             "text": "In-hospital mortality ",
             "description": "*"
           },
-          "gt0033": {
-            "id": "gt0033",
-            "text": "pH <7.0",
-            "description": "*"
-          },
           "gt0034": {
             "id": "gt0034",
             "text": "DKA MPM Score",
@@ -310,6 +262,11 @@
           "gt0036": {
             "id": "gt0036",
             "text": "Depressed mental state (after 24 hr)",
+            "description": "*"
+          },
+          "gt0037": {
+            "id": "gt0037",
+            "text": "pH <7.0",
             "description": "*"
           }
         }
