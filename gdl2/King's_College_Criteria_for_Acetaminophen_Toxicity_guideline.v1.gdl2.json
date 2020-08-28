@@ -88,7 +88,7 @@
     "rules": {
       "gt0042": {
         "id": "gt0042",
-        "priority": 4,
+        "priority": 5,
         "when": [
           "$gt0033|Arterial pH < 7.30|!=null",
           "$gt0034|INR > 6.5 (PT > 100 sec)|!=null",
@@ -99,34 +99,45 @@
           "$gt0038|Criteria|.magnitude=$gt0033.value+$gt0034.value+$gt0035.value+$gt0036.value"
         ]
       },
-      "gt0045": {
-        "id": "gt0045",
-        "priority": 3,
-        "when": [
-          "($gt0033|Arterial pH < 7.30|==1|local::at0006|Yes|)||((($gt0034|INR > 6.5 (PT > 100 sec)|==1|local::at0009|Yes|)&&($gt0035|Creatinine 3.4 mg/dL (300 µmol/L)|==1|local::at0012|Yes|))&&($gt0036|Grade III or IV hepatic encephalopathy|==1|local::at0015|Yes|))"
-        ],
-        "then": [
-          "$gt0041|Management|='Referral/ Transfer to a transplant center and list for a liver transplantation.'"
-        ]
-      },
-      "gt0046": {
-        "id": "gt0046",
-        "priority": 2,
-        "when": [
-          "!fired($gt0045)"
-        ],
-        "then": [
-          "$gt0041|Management|='Does not meet transplant or referral criteria.'"
-        ]
-      },
       "gt0047": {
         "id": "gt0047",
-        "priority": 1,
+        "priority": 4,
         "when": [
           "($gt0039|Lactate > 3.5 mmol/L after fluid resuscitation (<4 hrs) OR lactate > 3 mmol/L after full fluid resuscitation (12 hours)|==1|local::at0022|Yes|)||($gt0040|Phosphate > 3.75 mg/dL (1.2 mmol/L) at 48-96 hours|==1|local::at0024|Yes|)"
         ],
         "then": [
           "$gt0048|Comment|='While not part of the King’s Criteria, hyperlactatemia and hyperphosphatemia are strong predictors of poor prognosis for survival without transplantation.'"
+        ]
+      },
+      "gt0052": {
+        "id": "gt0052",
+        "priority": 3,
+        "when": [
+          "$gt0033|Arterial pH < 7.30|==1|local::at0006|Yes|"
+        ],
+        "then": [
+          "$gt0041|Management|='Transfer to transplant center and list for transplant.'"
+        ]
+      },
+      "gt0053": {
+        "id": "gt0053",
+        "priority": 2,
+        "when": [
+          "!fired($gt0052)",
+          "$gt0038|Criteria|==3"
+        ],
+        "then": [
+          "$gt0041|Management|='Transfer to transplant center and list for transplant if INR, Creatinine, and Encephalopathy indicators all present in a 24 hour period.'"
+        ]
+      },
+      "gt0054": {
+        "id": "gt0054",
+        "priority": 1,
+        "when": [
+          "((!fired($gt0052))&&($gt0038|Criteria|<3))||($gt0038|Criteria|==0)"
+        ],
+        "then": [
+          "$gt0041|Management|='Does not meet transplant or referral criteria.'"
         ]
       }
     }
@@ -190,14 +201,6 @@
             "id": "gt0042",
             "text": "Set King's criteria calculation"
           },
-          "gt0045": {
-            "id": "gt0045",
-            "text": "Set interpretation to transfer to transplant center"
-          },
-          "gt0046": {
-            "id": "gt0046",
-            "text": "Set interpretation to not transfer to transplant center"
-          },
           "gt0047": {
             "id": "gt0047",
             "text": "Set a comment to Lactate and Phosphate"
@@ -206,6 +209,18 @@
             "id": "gt0048",
             "text": "Comment",
             "description": "*"
+          },
+          "gt0052": {
+            "id": "gt0052",
+            "text": "Set interpretation to pH<7.30 Yes"
+          },
+          "gt0053": {
+            "id": "gt0053",
+            "text": "Set interpretation to pH<7.30 No and criteria =3"
+          },
+          "gt0054": {
+            "id": "gt0054",
+            "text": "Set interpretation to pH<7.30 No and criteria<3 or 0"
           }
         }
       }
