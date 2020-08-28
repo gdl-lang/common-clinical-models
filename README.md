@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 395*
+### *Published Apps: 401*
 
 ----------
 
 ### Latest added
 
-1. Quick COVID-19 Severity Index (qCSI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Quick_COVID-19_Severity_Index_qCSI_guideline/1?language=en))
-2. Gupta Postoperative Respiratory Failure Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gupta_Postoperative_Respiratory_Failure_Risk_guideline/1?language=en))
-3. Oxygenation Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Oxygenation_Index/1?language=en))
-4. mMRC (Modified Medical Research Council) Dyspnea Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mMRC_Dyspnea_Scale/1?language=en))
-5. Pediatric Asthma Severity Score (PASS) for Asthma Exacerbation Severity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Asthma_Severity_Score_Asthma_Exacerbation_Severity/1?language=en))
-6. Risk Score for Asthma Exacerbation (RSE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Risk_Score_Asthma_Exacerbation/1?language=en))
-7. High-dose Insulin Euglycemia Therapy (HIET) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/High-dose_Insulin_Euglycemia_Therapy_HIET_guideline/1?language=en))
-8. Glasgow Prognostic Score (GPS) for Cancer Outcomes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Glasgow_Prognostic_Score_GPS_for_Cancer_Outcomes_guideline/1?language=en))
-9. IMDC (International Metastatic RCC Database Consortium) Risk Model for Metastatic Renal Cell Carcinoma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IMDC_risk_model_metastiatic_renal_cell_carcinoma/0?language=en))
-10. Ottawa COPD Risk Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ottawa_COPD_Risk_Scale_guideline/1?language=en))
+1. Diabetic Ketoacidosis Mortality Prediction Model (DKA MPM) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DKA_MPM_Score/1?language=en))
+2. Abbreviated Injury Score (AIS) for Inhalation Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Abbreviated_Injury_Score_for_Inhalation_Injury/1?language=en))
+3. Cumulative Illness Rating Scale-Geriatric (CIRS-G) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cumulative_Illness_Rating_Scale_Geriatric_CIRS_G/1?language=en))
+4. Crohn's Disease Activity Index (CDAI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Crohns_Disease_Activity_Index_CDAI/1?language=en)) 
+5. Columbia Suicide Severity Rating Scale (C-SSRS Screener) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Columbia_Suicide_Severity_Rating_Scale/1?language=en))
+6. King's College Criteria for Acetaminophen Toxicity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kings_College_Criteria_for_Acetaminophen_Toxicity_guideline/1?language=en))
+7. Quick COVID-19 Severity Index (qCSI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Quick_COVID-19_Severity_Index_qCSI_guideline/1?language=en))
+8. Gupta Postoperative Respiratory Failure Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gupta_Postoperative_Respiratory_Failure_Risk_guideline/1?language=en))
+9. Oxygenation Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Oxygenation_Index/1?language=en))
+10. mMRC (Modified Medical Research Council) Dyspnea Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mMRC_Dyspnea_Scale/1?language=en))
 
 ----------
 
@@ -234,6 +234,8 @@ _Select a medical specialty below to view the available apps._
 ### Emergency Medicine
 
 ----------
+* Abbreviated Injury Score (AIS) for Inhalation Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Abbreviated_Injury_Score_for_Inhalation_Injury/1?language=en))
+
 * ACTION ICU Score for Intensive Care in NSTEMI - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACTION_ICU_score/1?language=en))
 
 * Age-Adjusted D-dimer for Venous Thromboembolism (VTE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Age_adjusted_d_dimer_for_venous_thromboembolism_vte/0?language=en))
@@ -348,6 +350,8 @@ _Select a medical specialty below to view the available apps._
 
 * Child Pugh Score for Cirrhosis Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Child_pugh_score_for_cirrhosis/1?language=en))
 
+* Crohn's Disease Activity Index (CDAI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Crohns_Disease_Activity_Index_CDAI/1?language=en)) 
+
 * Forrest Classification of Upper GI Bleeding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/forrest_classification_upper_gi_bleeding/1?language=en))
 
 * Glasgow Alcoholic Hepatitis Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Glasgow_alcoholic_hepatitis_score/1?language=en))
@@ -357,6 +361,8 @@ _Select a medical specialty below to view the available apps._
 * Harvey-Bradshaw Index for Crohn's Disease (HBI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HBI/1?language=en))
 
 * Hepatic encephalopathy grades - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hepatic_encephalopathy_grades/1?language=en))
+
+* King's College Criteria for Acetaminophen Toxicity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kings_College_Criteria_for_Acetaminophen_Toxicity_guideline/1?language=en))
 
 * Kruis Score for Diagnosis of Irritable Bowel Syndrome (IBS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kruis_score_IBS/1?language=en))
 
@@ -384,6 +390,8 @@ _Select a medical specialty below to view the available apps._
 * Braden Score for Pressure Ulcers - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/braden_score_pressure_ulcers/1?language=en))
 
 * Clinical Dementia Rating (CDR) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_Dementia_Rating/1?language=en))
+
+* Cumulative Illness Rating Scale-Geriatric (CIRS-G) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cumulative_Illness_Rating_Scale_Geriatric_CIRS_G/1?language=en))
 
 * Downton Fall Risk Index (DFRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DFRI/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DFRI/1?language=sv))
 
@@ -437,6 +445,8 @@ _Select a medical specialty below to view the available apps._
 * Confusion Assessment Method for the ICU (CAM-ICU) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Confusion_Assessment_Method_for_the_ICU_CAM_ICU/1?language=en))
 
 * Critical Care Pain Observation Tool (CPOT) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CPOT/1?language=en))
+
+* Diabetic Ketoacidosis Mortality Prediction Model (DKA MPM) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DKA_MPM_Score/1?language=en))
 
 * Geneva Risk Score for Venous Thromboembolism (VTE) Prophylaxis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Geneva_risk_score_venous_thromboembolism_prohylaxis/1?language=en))
 
@@ -801,11 +811,13 @@ _Select a medical specialty below to view the available apps._
 
 * CAGE - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CAGE/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CAGE/1?language=sv))
 
-* Credibility and Expectancy Questionnaire (CEQ) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CEQ/1?language=en))
-
 * Clinical Institute Withdrawal Assessment for alcohol scale - revised (CIWA-Ar) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CIWA-Ar/1?language=sv))
 
 * Clinical Opiate Withdrawal Score (COWS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/COWS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/COWS/1?language=sv))
+
+* Columbia Suicide Severity Rating Scale (C-SSRS Screener) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Columbia_Suicide_Severity_Rating_Scale/1?language=en))
+
+* Credibility and Expectancy Questionnaire (CEQ) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CEQ/1?language=en))
 
 * Drug Use Disorders Identification Test (DUDIT) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DUDIT_score/1?language=en))
 
