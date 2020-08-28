@@ -11,12 +11,13 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 392*
+### *Published Apps: 393*
 
 ----------
 
 ### Latest added
 
+1. Oxygenation Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Oxygenation_Index/1?language=en))
 1. mMRC (Modified Medical Research Council) Dyspnea Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mMRC_Dyspnea_Scale/1?language=en))
 2. Pediatric Asthma Severity Score (PASS) for Asthma Exacerbation Severity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Asthma_Severity_Score_Asthma_Exacerbation_Severity/1?language=en))
 3. Risk Score for Asthma Exacerbation (RSE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Risk_Score_Asthma_Exacerbation/1?language=en))
@@ -274,6 +275,8 @@ _Select a medical specialty below to view the available apps._
 * mMRC (Modified Medical Research Council) Dyspnea Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mMRC_Dyspnea_Scale/1?language=en))
 
 * Newsom Score for Non-traumatic Chest Pain - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Newsom_score_non-traumatic_chest_pain/1?language=en))
+
+* Oxygenation Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Oxygenation_Index/1?language=en))
 
 * Pediatric Asthma Severity Score (PASS) for Asthma Exacerbation Severity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Asthma_Severity_Score_Asthma_Exacerbation_Severity/1?language=en))
 
