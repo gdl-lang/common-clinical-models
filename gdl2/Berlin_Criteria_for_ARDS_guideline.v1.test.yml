@@ -1,0 +1,105 @@
+guidelines:
+  1: new_guideline.v0
+test_cases:
+- id: Not Positive 1
+  input:
+    1:
+      gt0004|Timing within 1 week of clinical insult or new/worsening respiratory symptoms: 1|local::at0007|Yes|
+      gt0005|Chest XR shows bilateral opacities not fully explained by effusions, lobar/lung collapse, or nodules: 1|local::at0010|Yes|
+      gt0006|Respiratory failure not fully explained by cardiac failure/fluid overload: 1|local::at0013|Yes|
+      gt0007|Risk factor: local::at0045|None of the above|
+      gt0008|Severity based on oxygenation: local::at0047|Moderate PaO₂/FiO₂ >100 to ≤200 mmHg with PEEP ≥5 cm H₂O|
+      gt0016|Is this a COVID-19 patient?: local::at0031|Confirmed positive|
+  expected_output:
+    1:
+      gt0011|Diagnostic Result: Not positive for ARDS by Berlin Criteria
+- id: Not positive 2
+  input:
+    1:
+      gt0004|Timing within 1 week of clinical insult or new/worsening respiratory symptoms: 1|local::at0007|Yes|
+      gt0005|Chest XR shows bilateral opacities not fully explained by effusions, lobar/lung collapse, or nodules: 1|local::at0010|Yes|
+      gt0006|Respiratory failure not fully explained by cardiac failure/fluid overload: 1|local::at0013|Yes|
+      gt0007|Risk factor: local::at0045|None of the above|
+      gt0008|Severity based on oxygenation: local::at0049|None of the above|
+      gt0016|Is this a COVID-19 patient?: local::at0031|Confirmed positive|
+  expected_output:
+    1:
+      gt0011|Diagnostic Result: Not positive for ARDS by Berlin Criteria
+- id: Positive echo severe
+  input:
+    1:
+      gt0004|Timing within 1 week of clinical insult or new/worsening respiratory symptoms: 1|local::at0007|Yes|
+      gt0005|Chest XR shows bilateral opacities not fully explained by effusions, lobar/lung collapse, or nodules: 1|local::at0010|Yes|
+      gt0006|Respiratory failure not fully explained by cardiac failure/fluid overload: 1|local::at0013|Yes|
+      gt0007|Risk factor: local::at0044|Objective assessment (Echo) excludes hydrostatic edema if no risk factor present|
+      gt0008|Severity based on oxygenation: local::at0048|Severe PaO₂/FiO₂ ≤100 mmHg with PEEP ≥5 cm H₂O|
+      gt0016|Is this a COVID-19 patient?: local::at0031|Confirmed positive|
+  expected_output:
+    1:
+      gt0012|ARDS severity: Severe ARDS
+      gt0011|Diagnostic Result: Positive
+- id: Positive echo moderate
+  input:
+    1:
+      gt0004|Timing within 1 week of clinical insult or new/worsening respiratory symptoms: 1|local::at0007|Yes|
+      gt0005|Chest XR shows bilateral opacities not fully explained by effusions, lobar/lung collapse, or nodules: 1|local::at0010|Yes|
+      gt0006|Respiratory failure not fully explained by cardiac failure/fluid overload: 1|local::at0013|Yes|
+      gt0007|Risk factor: local::at0044|Objective assessment (Echo) excludes hydrostatic edema if no risk factor present|
+      gt0008|Severity based on oxygenation: local::at0047|Moderate PaO₂/FiO₂ >100 to ≤200 mmHg with PEEP ≥5 cm H₂O|
+      gt0016|Is this a COVID-19 patient?: local::at0031|Confirmed positive|
+  expected_output:
+    1:
+      gt0012|ARDS severity: Moderate ARDS
+      gt0011|Diagnostic Result: Positive
+- id: Positive echo mild
+  input:
+    1:
+      gt0004|Timing within 1 week of clinical insult or new/worsening respiratory symptoms: 1|local::at0007|Yes|
+      gt0005|Chest XR shows bilateral opacities not fully explained by effusions, lobar/lung collapse, or nodules: 1|local::at0010|Yes|
+      gt0006|Respiratory failure not fully explained by cardiac failure/fluid overload: 1|local::at0013|Yes|
+      gt0007|Risk factor: local::at0044|Objective assessment (Echo) excludes hydrostatic edema if no risk factor present|
+      gt0008|Severity based on oxygenation: local::at0046|Mild PaO₂/FiO₂ >200 to ≤300 mmHg with PEEP OR CPAP ≥5 cm H₂O|
+      gt0016|Is this a COVID-19 patient?: local::at0031|Confirmed positive|
+  expected_output:
+    1:
+      gt0012|ARDS severity: Mild ARDS
+      gt0011|Diagnostic Result: Positive
+- id: Positive risk ards mild
+  input:
+    1:
+      gt0004|Timing within 1 week of clinical insult or new/worsening respiratory symptoms: 1|local::at0007|Yes|
+      gt0005|Chest XR shows bilateral opacities not fully explained by effusions, lobar/lung collapse, or nodules: 1|local::at0010|Yes|
+      gt0006|Respiratory failure not fully explained by cardiac failure/fluid overload: 1|local::at0013|Yes|
+      gt0007|Risk factor: local::at0043|Risk factor for ARDS present (e.g. pneumonia, trauma, sepsis, pancreatitis)|
+      gt0008|Severity based on oxygenation: local::at0046|Mild PaO₂/FiO₂ >200 to ≤300 mmHg with PEEP OR CPAP ≥5 cm H₂O|
+      gt0016|Is this a COVID-19 patient?: local::at0031|Confirmed positive|
+  expected_output:
+    1:
+      gt0012|ARDS severity: Mild ARDS
+      gt0011|Diagnostic Result: Positive
+- id: Positive risk ards moderate
+  input:
+    1:
+      gt0004|Timing within 1 week of clinical insult or new/worsening respiratory symptoms: 1|local::at0007|Yes|
+      gt0005|Chest XR shows bilateral opacities not fully explained by effusions, lobar/lung collapse, or nodules: 1|local::at0010|Yes|
+      gt0006|Respiratory failure not fully explained by cardiac failure/fluid overload: 1|local::at0013|Yes|
+      gt0007|Risk factor: local::at0043|Risk factor for ARDS present (e.g. pneumonia, trauma, sepsis, pancreatitis)|
+      gt0008|Severity based on oxygenation: local::at0047|Moderate PaO₂/FiO₂ >100 to ≤200 mmHg with PEEP ≥5 cm H₂O|
+      gt0016|Is this a COVID-19 patient?: local::at0032|Suspected|
+  expected_output:
+    1:
+      gt0012|ARDS severity: Moderate ARDS
+      gt0011|Diagnostic Result: Positive
+- id: Positive risk ards severe
+  input:
+    1:
+      gt0004|Timing within 1 week of clinical insult or new/worsening respiratory symptoms: 1|local::at0007|Yes|
+      gt0005|Chest XR shows bilateral opacities not fully explained by effusions, lobar/lung collapse, or nodules: 1|local::at0010|Yes|
+      gt0006|Respiratory failure not fully explained by cardiac failure/fluid overload: 1|local::at0013|Yes|
+      gt0007|Risk factor: local::at0043|Risk factor for ARDS present (e.g. pneumonia, trauma, sepsis, pancreatitis)|
+      gt0008|Severity based on oxygenation: local::at0048|Severe PaO₂/FiO₂ ≤100 mmHg with PEEP ≥5 cm H₂O|
+      gt0016|Is this a COVID-19 patient?: local::at0032|Suspected|
+  expected_output:
+    1:
+      gt0012|ARDS severity: Severe ARDS
+      gt0011|Diagnostic Result: Positive
