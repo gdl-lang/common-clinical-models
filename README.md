@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 401*
+### *Published Apps: 402*
 
 ----------
 
 ### Latest added
 
-1. Diabetic Ketoacidosis Mortality Prediction Model (DKA MPM) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DKA_MPM_Score/1?language=en))
-2. Abbreviated Injury Score (AIS) for Inhalation Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Abbreviated_Injury_Score_for_Inhalation_Injury/1?language=en))
-3. Cumulative Illness Rating Scale-Geriatric (CIRS-G) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cumulative_Illness_Rating_Scale_Geriatric_CIRS_G/1?language=en))
-4. Crohn's Disease Activity Index (CDAI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Crohns_Disease_Activity_Index_CDAI/1?language=en)) 
-5. Columbia Suicide Severity Rating Scale (C-SSRS Screener) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Columbia_Suicide_Severity_Rating_Scale/1?language=en))
-6. King's College Criteria for Acetaminophen Toxicity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kings_College_Criteria_for_Acetaminophen_Toxicity_guideline/1?language=en))
-7. Quick COVID-19 Severity Index (qCSI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Quick_COVID-19_Severity_Index_qCSI_guideline/1?language=en))
-8. Gupta Postoperative Respiratory Failure Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gupta_Postoperative_Respiratory_Failure_Risk_guideline/1?language=en))
-9. Oxygenation Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Oxygenation_Index/1?language=en))
-10. mMRC (Modified Medical Research Council) Dyspnea Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mMRC_Dyspnea_Scale/1?language=en))
+1. Intraoperative Fluid Dosing in Adult Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Intraoperative_Fluid_Dosing_Adult_Patients/1?language=en))
+2. Diabetic Ketoacidosis Mortality Prediction Model (DKA MPM) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DKA_MPM_Score/1?language=en))
+3. Abbreviated Injury Score (AIS) for Inhalation Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Abbreviated_Injury_Score_for_Inhalation_Injury/1?language=en))
+4. Cumulative Illness Rating Scale-Geriatric (CIRS-G) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cumulative_Illness_Rating_Scale_Geriatric_CIRS_G/1?language=en))
+5. Crohn's Disease Activity Index (CDAI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Crohns_Disease_Activity_Index_CDAI/1?language=en)) 
+6. Columbia Suicide Severity Rating Scale (C-SSRS Screener) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Columbia_Suicide_Severity_Rating_Scale/1?language=en))
+7. King's College Criteria for Acetaminophen Toxicity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kings_College_Criteria_for_Acetaminophen_Toxicity_guideline/1?language=en))
+8. Quick COVID-19 Severity Index (qCSI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Quick_COVID-19_Severity_Index_qCSI_guideline/1?language=en))
+9. Gupta Postoperative Respiratory Failure Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gupta_Postoperative_Respiratory_Failure_Risk_guideline/1?language=en))
+10. Oxygenation Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Oxygenation_Index/1?language=en))
 
 ----------
 
@@ -106,6 +106,8 @@ _Select a medical specialty below to view the available apps._
 * Endotracheal Tube (ETT) Depth and Tidal Volume Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ETT_depth_tidal_volume_calculator/1?language=en))
 
 * Gupta Postoperative Respiratory Failure Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gupta_Postoperative_Respiratory_Failure_Risk_guideline/1?language=en))
+
+* Intraoperative Fluid Dosing in Adult Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Intraoperative_Fluid_Dosing_Adult_Patients/1?language=en))
 
 ----------
 
