@@ -35,7 +35,7 @@ The study used 0 points to define low risk for major bleeding events (0.1% risk 
 	other_details = <
 		["references"] = <"1. Ruíz-Giménez N, Suárez C, González R, Nieto JA, Todolí JA, Samperiz AL, Monreal M; RIETE Investigators. Predictive variables for major bleeding events in patients presenting with documented acute venous thromboembolism. Findings from the RIETE Registry.Thromb Haemost. 2008 Jul;100(1):26-31.">
 		["current_contact"] = <"Therese Lindberg, Cambio CDS<therese.lindberg@cambio.se>">
-		["MD5-CAM-1.0.1"] = <"339B0F3C299490F37759DF4045E0B264">
+		["MD5-CAM-1.0.1"] = <"FB2BA25BED7C66414A822807E618911C">
 	>
 
 definition
@@ -79,13 +79,6 @@ definition
 							1|[local::at0019]  	-- Yes +1
 						}
 					}
-					ELEMENT[at0020] occurrences matches {0..1} matches {	-- RIETE Score
-						value matches {
-							DV_COUNT matches {
-								magnitude matches {|0..8|}
-							}
-						}
-					}
 					ELEMENT[at0021] occurrences matches {0..1} matches {	-- Risk of Major Bleeding
 						value matches {
 							DV_CODED_TEXT matches {
@@ -101,6 +94,19 @@ definition
 					ELEMENT[at0025] occurrences matches {0..1} matches {	-- Comment
 						value matches {
 							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0026] occurrences matches {0..1} matches {	-- RIETE Score
+						value matches {
+							C_DV_QUANTITY <
+								property = <[openehr::380]>
+								list = <
+									["1"] = <
+										units = <"1">
+										magnitude = <|0.0..8.0|>
+									>
+								>
+							>
 						}
 					}
 				}
@@ -192,10 +198,6 @@ ontology
 					text = <"Yes +1">
 					description = <"*">
 				>
-				["at0020"] = <
-					text = <"RIETE Score">
-					description = <"*">
-				>
 				["at0021"] = <
 					text = <"Risk of Major Bleeding">
 					description = <"*">
@@ -214,6 +216,10 @@ ontology
 				>
 				["at0025"] = <
 					text = <"Comment">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"RIETE Score">
 					description = <"*">
 				>
 			>
