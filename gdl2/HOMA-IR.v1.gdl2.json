@@ -86,7 +86,7 @@
     "rules": {
       "gt0013": {
         "id": "gt0013",
-        "priority": 8,
+        "priority": 9,
         "when": [
           "$gt0003|Insulin|>100,mIU/l"
         ],
@@ -96,7 +96,7 @@
       },
       "gt0015": {
         "id": "gt0015",
-        "priority": 7,
+        "priority": 8,
         "when": [
           "($gt0006|Glucose|>88,mmol/l)||($gt0006|Glucose|>1600,mg/dl)"
         ],
@@ -106,7 +106,7 @@
       },
       "gt0017": {
         "id": "gt0017",
-        "priority": 6,
+        "priority": 7,
         "when": [
           "$gt0003|Insulin|<0,mIU/l"
         ],
@@ -116,7 +116,7 @@
       },
       "gt0018": {
         "id": "gt0018",
-        "priority": 5,
+        "priority": 6,
         "when": [
           "($gt0006|Glucose|<=0,mmol/l)||($gt0006|Glucose|<=0,mg/dl)"
         ],
@@ -126,7 +126,7 @@
       },
       "gt0016": {
         "id": "gt0016",
-        "priority": 4,
+        "priority": 5,
         "when": [
           "(($gt0006|Glucose|<=100,mmol/l)&&($gt0006|Glucose|>55,mmol/l))||(($gt0006|Glucose|<=1600,mg/dl)&&($gt0006|Glucose|>1000,mg/dl))"
         ],
@@ -136,7 +136,7 @@
       },
       "gt0014": {
         "id": "gt0014",
-        "priority": 3,
+        "priority": 4,
         "when": [
           "$gt0003|Insulin|>50,mIU/l",
           "$gt0003|Insulin|<=100,mIU/l"
@@ -147,7 +147,7 @@
       },
       "gt0019": {
         "id": "gt0019",
-        "priority": 2,
+        "priority": 3,
         "when": [
           "(($gt0006|Glucose|<50,mg/dl)&&($gt0006|Glucose|>0,mg/dl))||(($gt0006|Glucose|<2.8,mmol/l)&&($gt0006|Glucose|>0,mmol/l))"
         ],
@@ -157,6 +157,25 @@
       },
       "gt0010": {
         "id": "gt0010",
+        "priority": 2,
+        "when": [
+          "$gt0003|Insulin|!=null",
+          "$gt0006|Glucose|!=null",
+          "!fired($gt0013)",
+          "!fired($gt0015)",
+          "!fired($gt0017)",
+          "!fired($gt0018)",
+          "$gt0006|Glucose|.unit=='mg/dl'"
+        ],
+        "then": [
+          "$gt0008|HOMA-IR Score|.magnitude=($gt0003.magnitude*$gt0006.magnitude)/405",
+          "$gt0008|HOMA-IR Score|.unit='mg/dl'",
+          "$gt0008|HOMA-IR Score|.precision=1",
+          "$gt0009|Comment|='Several studies suggest a cut-off of >2 for any insulin resistance, but \"normal\" values appear to vary greatly by population.'"
+        ]
+      },
+      "gt0020": {
+        "id": "gt0020",
         "priority": 1,
         "when": [
           "$gt0003|Insulin|!=null",
@@ -164,10 +183,11 @@
           "!fired($gt0013)",
           "!fired($gt0015)",
           "!fired($gt0017)",
-          "!fired($gt0018)"
+          "!fired($gt0018)",
+          "$gt0006|Glucose|.unit=='mmol/l'"
         ],
         "then": [
-          "$gt0008|HOMA-IR Score|.magnitude=($gt0003.magnitude*$gt0006.magnitude)/405",
+          "$gt0008|HOMA-IR Score|.magnitude=($gt0003.magnitude*$gt0006.magnitude)/(405*0.055)",
           "$gt0008|HOMA-IR Score|.unit='mg/dl'",
           "$gt0008|HOMA-IR Score|.precision=1",
           "$gt0009|Comment|='Several studies suggest a cut-off of >2 for any insulin resistance, but \"normal\" values appear to vary greatly by population.'"
@@ -207,7 +227,7 @@
           },
           "gt0010": {
             "id": "gt0010",
-            "text": "Calculate HOMA-IR"
+            "text": "Calculate HOMA-IR (Glucose [mg/dl])"
           },
           "gt0011": {
             "id": "gt0011",
@@ -246,6 +266,10 @@
           "gt0019": {
             "id": "gt0019",
             "text": "Warning Glucose Very Low"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Calculate HOMA-IR (Glucose [mmol/L])"
           }
         }
       }
