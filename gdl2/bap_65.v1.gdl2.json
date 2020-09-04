@@ -12,6 +12,9 @@
       "organisation": "Cambio CDS",
       "email": "konstantinos.kalliamvakos@cambio.se"
     },
+    "other_contributors": [
+      "Therese Lindberg"
+    ],
     "lifecycle_state": "Initial",
     "details": {
       "en": {
@@ -33,6 +36,8 @@
           "mortality",
           "mechanical ventilation"
         ],
+        "use": "Use in patients >40 years of age presenting to the emergency department with acute COPD exacerbation.\n\nFormula\nAddition of the selected points, then class assigned by age:\n\n Variables                                           0 points               1 point\nBUN ≥25 mg/dL (8.9 mmol/L)               No                        Yes\nAltered mental status*                           No                        Yes\nPulse ≥109 beats/min                           No                         Yes\n\n*Initial GCS<14, or disorientation, stupor, or coma as determined by the physician.\n\nClass                       BAP Score                          Age\n  I                                  0                                     <65 yrs\n  II                                 0                                     >=65 yrs\n  III                                1                                      Any age\n  IV                                2                                     Any age\n  V                                 3                                     Any age\n\nBAP-65 Class               In-hospital mortality                     Need for mechanical ventilation within 48 hours                         Recommendation\n  I                                          0.3%                                                             0.3%                                                           Routine management of COPD exacerbation\n  II                                         1.0%                                                             0.2%                                                                                           \n  III                                        2.2%                                                             1.2%                                                           Consider early non-invasive ventilation and/or ICU care\n  IV                                        6.4%                                                             5.5%                                                           \n  V                                        14.1%                                                           12.4%                                       \t\n\n                                       \t\n\n\n\n",
+        "misuse": "Do not use in patients ≤40 years old, as asthma is a confounder in this population.",
         "copyright": "Cambio CDS"
       }
     },
@@ -42,18 +47,6 @@
   },
   "definition": {
     "data_bindings": {
-      "gt0002": {
-        "id": "gt0002",
-        "model_id": "openEHR-EHR-OBSERVATION.laboratory_test_result.v1",
-        "template_id": "openEHR-EHR-OBSERVATION.laboratory_test_result.v1",
-        "type": "INPUT",
-        "elements": {
-          "gt0003": {
-            "id": "gt0003",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.bun_result.v0]/items[at0001]"
-          }
-        }
-      },
       "gt0004": {
         "id": "gt0004",
         "model_id": "openEHR-EHR-OBSERVATION.pulse.v1",
@@ -87,6 +80,10 @@
           "gt0009": {
             "id": "gt0009",
             "path": "/data[at0001]/items[at0005]"
+          },
+          "gt0030": {
+            "id": "gt0030",
+            "path": "/data[at0001]/items[at0002]"
           }
         }
       },
@@ -107,10 +104,6 @@
           "gt0013": {
             "id": "gt0013",
             "path": "/data[at0001]/items[at0014]"
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "path": "/data[at0001]/items[at0002]"
           }
         }
       },
@@ -143,20 +136,9 @@
       "$gt0007|Age|>40,a"
     ],
     "default_actions": [
-      "$gt0014|BUN ≥ 25mg/dL (8.9 mmol/L)|=0|local::at0003|No|",
       "$gt0011|Pulse ≥109 beats/min|=0|local::at0009|No|"
     ],
     "rules": {
-      "gt0020": {
-        "id": "gt0020",
-        "priority": 10,
-        "when": [
-          "($gt0003|BUN|>=25,mg/dL)||($gt0003|BUN|>=8.9,mmol/L)"
-        ],
-        "then": [
-          "$gt0014|BUN ≥ 25mg/dL (8.9 mmol/L)|=1|local::at0004|Yes|"
-        ]
-      },
       "gt0021": {
         "id": "gt0021",
         "priority": 9,
@@ -194,11 +176,11 @@
         "when": [
           "$gt0009|Altered mental status|!=null",
           "$gt0011|Pulse ≥109 beats/min|!=null",
-          "$gt0014|BUN ≥ 25mg/dL (8.9 mmol/L)|!=null",
+          "$gt0030|BUN ≥ 25mg/dL (8.9 mmol/L)|!=null",
           "$gt0012|Age, years|!=null"
         ],
         "then": [
-          "$gt0013|BAP-65 Score|.magnitude=$gt0011.value+$gt0014.value+$gt0009.value"
+          "$gt0013|BAP-65 Score|.magnitude=$gt0011.value+$gt0009.value+$gt0030.value"
         ]
       },
       "gt0025": {
@@ -280,11 +262,6 @@
             "text": "BAP-65",
             "description": "BAP-65 Score assessment for Acute Exacerbation of COPD."
           },
-          "gt0003": {
-            "id": "gt0003",
-            "text": "BUN",
-            "description": "*"
-          },
           "gt0005": {
             "id": "gt0005",
             "text": "Pulse",
@@ -315,11 +292,6 @@
             "text": "BAP-65 Score",
             "description": "*"
           },
-          "gt0014": {
-            "id": "gt0014",
-            "text": "BUN ≥ 25mg/dL (8.9 mmol/L)",
-            "description": "*"
-          },
           "gt0016": {
             "id": "gt0016",
             "text": "BAP class",
@@ -339,10 +311,6 @@
             "id": "gt0019",
             "text": "Recommendation",
             "description": "*"
-          },
-          "gt0020": {
-            "id": "gt0020",
-            "text": "BUN ≥25 mg/dL (8.9 mmol/L) to Yes"
           },
           "gt0021": {
             "id": "gt0021",
@@ -379,6 +347,11 @@
           "gt0029": {
             "id": "gt0029",
             "text": "Set BAP class to I"
+          },
+          "gt0030": {
+            "id": "gt0030",
+            "text": "BUN ≥ 25mg/dL (8.9 mmol/L)",
+            "description": "*"
           }
         }
       }
