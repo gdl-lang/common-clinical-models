@@ -7,15 +7,28 @@
   },
   "description": {
     "original_author": {
-      "date": "2020-09-04"
+      "date": "2020-09-04",
+      "name": " Maryam Razavi",
+      "organisation": "@CambioCDS",
+      "email": "maryam.razavi@cambio.se"
     },
-    "lifecycle_state": "Not set",
+    "lifecycle_state": "Author draft",
     "details": {
       "en": {
-        "id": "en"
+        "id": "en",
+        "purpose": "To assess, trend, and treatment recommendations in patients with confirmed/presumed COVID-19 pneumonia. ",
+        "keywords": [
+          "Respiratory",
+          "COVID",
+          "COVID-19"
+        ],
+        "use": "Use to recommend increasing treatment recommendations, simplify the clinical summary of a patient’s status, compare patients to one another, monitor patients nearing a critical action point more closely, and trend patients’ levels over time.\nUse in patients who have COVID-19 pneumonia OR have had COVID-19 symptoms for ≥7 days AND are either PCR+ OR high clinical suspicion for COVID-19.",
+        "copyright": "@@CambioCDS"
       }
     },
-    "other_details": {}
+    "other_details": {
+      "references": "1. Italian Society of Infectious and Tropical Diseases (SIMIT). Guidelines on therapeutic and supportive management for patients with COVID-19 coronavirus infection. 2020."
+    }
   },
   "definition": {
     "data_bindings": {
@@ -116,6 +129,10 @@
           "gt0023": {
             "id": "gt0023",
             "path": "/data[at0001]/items[at0006]"
+          },
+          "gt0036": {
+            "id": "gt0036",
+            "path": "/data[at0001]/items[at0008]"
           }
         }
       }
@@ -127,7 +144,7 @@
     "rules": {
       "gt0024": {
         "id": "gt0024",
-        "priority": 10,
+        "priority": 11,
         "when": [
           "$gt0007|Patient wheezing OR unable to speak in full sentences while at rest/with minimal effort|!=null",
           "$gt0008|Respiratory rate >22|!=null",
@@ -140,7 +157,7 @@
       },
       "gt0025": {
         "id": "gt0025",
-        "priority": 9,
+        "priority": 10,
         "when": [
           "$gt0017|Tesing criteria score|==0"
         ],
@@ -152,7 +169,7 @@
       },
       "gt0026": {
         "id": "gt0026",
-        "priority": 8,
+        "priority": 9,
         "when": [
           "$gt0017|Tesing criteria score|==1"
         ],
@@ -164,7 +181,7 @@
       },
       "gt0027": {
         "id": "gt0027",
-        "priority": 7,
+        "priority": 8,
         "when": [
           "$gt0017|Tesing criteria score|==2"
         ],
@@ -172,21 +189,32 @@
           "$gt0019|Level|='2'",
           "$gt0020|Management|='Perform CXR and ABG. Provide supplemental O2. Keep patient monitored with pulse oximetry and clinical evaluation.'",
           "$gt0021|Medications|='Lopinavir/ritonavir. Consider dexamethasone'",
-          "$gt0022|Note 1|=local::at0007|Consider age/comorbidities, cognitive decline.|"
+          "$gt0022|Medication consideration|=local::at0007|Consider age/comorbidities, cognitive decline.|"
         ]
       },
       "gt0028": {
         "id": "gt0028",
-        "priority": 6,
+        "priority": 7,
         "when": [
-          "$gt0017|Tesing criteria score|>2"
+          "$gt0017|Tesing criteria score|>=3"
         ],
         "then": [
           "$gt0019|Level|='3'",
           "$gt0020|Management|='Trial of non-invasive ventilation (CPAP/BiPAP) or high-flow nasal canula (HFNC) recommended. If above clinical criteria worsening or patient clinically worsening despite this trial, intubation recommended. Otherwise, perform CXR every 2 days and ABG twice a day.'",
           "$gt0021|Medications|='Lopinavir/ritonavir. Consider dexamethasone and consider starting Tocilizumab.'",
-          "$gt0022|Note 1|=local::at0007|Consider age/comorbidities, cognitive decline.|",
+          "$gt0022|Medication consideration|=local::at0007|Consider age/comorbidities, cognitive decline.|",
           "$gt0023|Inclusion criteria for tocilizumab|='First, End of the initial phase of high viral load of COVID-19 (e.g. apyretic from >72h and/or elapsed ≥7 days after the onset of symptoms). Second, worsening of respiratory exchanges, such as to require non-invasive or invasive support from ventilation (Level ≥3). Third, High levels of IL-6 (>40 pg/mL); alternatively high levels of d-dimer, CRP, ferritin, and/or fibrinogen progressively increasing.'"
+        ]
+      },
+      "gt0035": {
+        "id": "gt0035",
+        "priority": 6,
+        "when": [
+          "$gt0017|Tesing criteria score|>2",
+          "$gt0011|Does patient still have >2 criteria despite NIV/HFNC?|==local::at0033|No|"
+        ],
+        "then": [
+          "$gt0036|Comment|='Re-select number of criteria present and follow management.'"
         ]
       },
       "gt0030": {
@@ -194,13 +222,14 @@
         "priority": 5,
         "when": [
           "$gt0017|Tesing criteria score|>2",
+          "$gt0011|Does patient still have >2 criteria despite NIV/HFNC?|==local::at0032|Yes|",
           "$gt0012|Is the intubated patient on CMV?|==local::at0036|No|"
         ],
         "then": [
           "$gt0019|Level|='4'",
           "$gt0020|Management|='Follow ICU protocols; use local ventilator weaning protocol.'",
           "$gt0021|Medications|='Remdesivir (if not available, lopinavir/ritonavir) PLUS considering dexamethasone and tocilizumab.'",
-          "$gt0022|Note 1|=local::at0007|Consider age/comorbidities, cognitive decline.|",
+          "$gt0022|Medication consideration|=local::at0007|Consider age/comorbidities, cognitive decline.|",
           "$gt0023|Inclusion criteria for tocilizumab|='First, End of the initial phase of high viral load of COVID-19 (e.g. apyretic from >72h and/or elapsed ≥7 days after the onset of symptoms). Second, worsening of respiratory exchanges, such as to require non-invasive or invasive support from ventilation (Level ≥3). Third, High levels of IL-6 (>40 pg/mL); alternatively high levels of d-dimer, CRP, ferritin, and/or fibrinogen progressively increasing.'"
         ]
       },
@@ -208,7 +237,6 @@
         "id": "gt0031",
         "priority": 4,
         "when": [
-          "$gt0017|Tesing criteria score|>2",
           "$gt0012|Is the intubated patient on CMV?|==local::at0035|Yes|",
           "$gt0013|PaO2/FiO2 <150 mmHg|==local::at0039|No|"
         ],
@@ -216,7 +244,7 @@
           "$gt0019|Level|='5'",
           "$gt0020|Management|='Try to minimize sedation (RASS -1 to 0). Perform SBT daily.'",
           "$gt0021|Medications|='Remdesivir (if not available, lopinavir/ritonavir) PLUS considering dexamethasone and tocilizumab.'",
-          "$gt0022|Note 1|=local::at0007|Consider age/comorbidities, cognitive decline.|",
+          "$gt0022|Medication consideration|=local::at0007|Consider age/comorbidities, cognitive decline.|",
           "$gt0023|Inclusion criteria for tocilizumab|='First, End of the initial phase of high viral load of COVID-19 (e.g. apyretic from >72h and/or elapsed ≥7 days after the onset of symptoms). Second, worsening of respiratory exchanges, such as to require non-invasive or invasive support from ventilation (Level ≥3). Third, High levels of IL-6 (>40 pg/mL); alternatively high levels of d-dimer, CRP, ferritin, and/or fibrinogen progressively increasing.'"
         ]
       },
@@ -233,7 +261,7 @@
           "$gt0019|Level|='6'",
           "$gt0020|Management|='Try to minimize sedation (RASS -1 to 0).'",
           "$gt0021|Medications|='Remdesivir (if not available, lopinavir/ritonavir) PLUS considering dexamethasone and tocilizumab.'",
-          "$gt0022|Note 1|=local::at0007|Consider age/comorbidities, cognitive decline.|",
+          "$gt0022|Medication consideration|=local::at0007|Consider age/comorbidities, cognitive decline.|",
           "$gt0023|Inclusion criteria for tocilizumab|='First, End of the initial phase of high viral load of COVID-19 (e.g. apyretic from >72h and/or elapsed ≥7 days after the onset of symptoms). Second, worsening of respiratory exchanges, such as to require non-invasive or invasive support from ventilation (Level ≥3). Third, High levels of IL-6 (>40 pg/mL); alternatively high levels of d-dimer, CRP, ferritin, and/or fibrinogen progressively increasing.'"
         ]
       },
@@ -251,7 +279,7 @@
           "$gt0019|Level|='7'",
           "$gt0020|Management|='Perform best PEEP and Compliance calculation. Try to suspend NMBA. Optimize volume status.'",
           "$gt0021|Medications|='Remdesivir (if not available, lopinavir/ritonavir) PLUS considering dexamethasone and tocilizumab.'",
-          "$gt0022|Note 1|=local::at0007|Consider age/comorbidities, cognitive decline.|",
+          "$gt0022|Medication consideration|=local::at0007|Consider age/comorbidities, cognitive decline.|",
           "$gt0023|Inclusion criteria for tocilizumab|='First, End of the initial phase of high viral load of COVID-19 (e.g. apyretic from >72h and/or elapsed ≥7 days after the onset of symptoms). Second, worsening of respiratory exchanges, such as to require non-invasive or invasive support from ventilation (Level ≥3). Third, High levels of IL-6 (>40 pg/mL); alternatively high levels of d-dimer, CRP, ferritin, and/or fibrinogen progressively increasing.'"
         ]
       },
@@ -269,7 +297,7 @@
           "$gt0019|Level|='8'",
           "$gt0020|Management|='Extreme level of medical complexity given failing other management options; defer to clinician expertise.'",
           "$gt0021|Medications|='Remdesivir (if not available, lopinavir/ritonavir) PLUS considering dexamethasone and tocilizumab.'",
-          "$gt0022|Note 1|=local::at0007|Consider age/comorbidities, cognitive decline.|",
+          "$gt0022|Medication consideration|=local::at0007|Consider age/comorbidities, cognitive decline.|",
           "$gt0023|Inclusion criteria for tocilizumab|='First, End of the initial phase of high viral load of COVID-19 (e.g. apyretic from >72h and/or elapsed ≥7 days after the onset of symptoms). Second, worsening of respiratory exchanges, such as to require non-invasive or invasive support from ventilation (Level ≥3). Third, High levels of IL-6 (>40 pg/mL); alternatively high levels of d-dimer, CRP, ferritin, and/or fibrinogen progressively increasing.'"
         ]
       }
@@ -282,7 +310,8 @@
         "terms": {
           "gt0001": {
             "id": "gt0001",
-            "text": "Brescia-COVID Respiratory Severity Scale (BCRSS)/Algorithm"
+            "text": "Brescia-COVID Respiratory Severity Scale (BCRSS)/Algorithm",
+            "description": "Brescia-COVID Respiratory Severity Scale (BCRSS)/Algorithm is a step-wise approach to managing patients with confirmed/presumed COVID-19 pneumonia. "
           },
           "gt0003": {
             "id": "gt0003",
@@ -418,6 +447,15 @@
           "gt0034": {
             "id": "gt0034",
             "text": "Set level, management and medication to level 8"
+          },
+          "gt0035": {
+            "id": "gt0035",
+            "text": "Set Does patient doesn't have >2 criteria despite NIV/HFNC"
+          },
+          "gt0036": {
+            "id": "gt0036",
+            "text": "Comment",
+            "description": "*"
           }
         }
       }
