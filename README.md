@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 409*
+### *Published Apps: 410*
 
 ----------
 
 ### Latest added
 
-1. Hamilton Depression Rating Scale (HAM-D) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hamilton_Depression_rating_scale/1?language=en))
-2. Groupe d'Etude des Lymphomes Folliculaires (GELF) Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GELF_criteria/1?language=en))
-3. Immune-Related Adverse Events for GI Toxicity - Colitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Immune_related_adverse_events_GI_toxicity_colitis/0?language=en))
-4. Killip Classification for Heart Failure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Killip_Classification_Heart_Failure/0?language=en))
-5. International Prognostic Index for Chronic Lymphocytic Leukemia (CLL-IPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/international_prognostic_index_chronic_lymphocytic_leukemia/0?language=en))
-6. Prevention and Incidence of Asthma and Mite Allergy (PIAMA) Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PIAMA_Risk_Score/1?language=en))
-7. Corrected Count Increment (CCI) for Platelet Transfusion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Corrected_Count_Increment_CCI_for_Platelet_Transfusion_guideline/1?language=en))
-8. Intraoperative Fluid Dosing in Adult Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Intraoperative_Fluid_Dosing_Adult_Patients/1?language=en))
-9. Diabetic Ketoacidosis Mortality Prediction Model (DKA MPM) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DKA_MPM_Score/1?language=en))
-10. Abbreviated Injury Score (AIS) for Inhalation Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Abbreviated_Injury_Score_for_Inhalation_Injury/1?language=en))
+1. COVID-GRAM Critical Illness Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/COVID-GRAM_Critical_Illness_Risk_Score_guideline/1?language=en))
+2. Hamilton Depression Rating Scale (HAM-D) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hamilton_Depression_rating_scale/1?language=en))
+3. Groupe d'Etude des Lymphomes Folliculaires (GELF) Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GELF_criteria/1?language=en))
+4. Immune-Related Adverse Events for GI Toxicity - Colitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Immune_related_adverse_events_GI_toxicity_colitis/0?language=en))
+5. Killip Classification for Heart Failure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Killip_Classification_Heart_Failure/0?language=en))
+6. International Prognostic Index for Chronic Lymphocytic Leukemia (CLL-IPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/international_prognostic_index_chronic_lymphocytic_leukemia/0?language=en))
+7. Prevention and Incidence of Asthma and Mite Allergy (PIAMA) Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PIAMA_Risk_Score/1?language=en))
+8. Corrected Count Increment (CCI) for Platelet Transfusion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Corrected_Count_Increment_CCI_for_Platelet_Transfusion_guideline/1?language=en))
+9. Intraoperative Fluid Dosing in Adult Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Intraoperative_Fluid_Dosing_Adult_Patients/1?language=en))
+10. Diabetic Ketoacidosis Mortality Prediction Model (DKA MPM) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DKA_MPM_Score/1?language=en))
 
 ----------
 
@@ -897,6 +897,8 @@ _Select a medical specialty below to view the available apps._
 * Clinical Pulmonary Infection Score (CPIS) for Ventilator-Associated Pneumonia (VAP) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_Pulmonary_Infection_Score_CPIS_for_Ventilator_Associated_Pneumonia_guideline/1?language=en))
 
 * COPD Assessment Test (CAT) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CAT_COPD_Assessment_Test/1?language=en))
+
+* COVID-GRAM Critical Illness Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/COVID-GRAM_Critical_Illness_Risk_Score_guideline/1?language=en))
 
 * DECAF Score for Acute Exacerbation of COPD - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DECAF_score_COPD/1?language=en))
 
