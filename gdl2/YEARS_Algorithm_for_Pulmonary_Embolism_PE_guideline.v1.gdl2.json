@@ -66,14 +66,6 @@
           "gt0024": {
             "id": "gt0024",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]/items[at0020]"
-          },
-          "gt0025": {
-            "id": "gt0025",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0023]/items[at0024]"
-          },
-          "gt0026": {
-            "id": "gt0026",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0023]/items[at0027]"
           }
         }
       },
@@ -90,6 +82,18 @@
           "gt0009": {
             "id": "gt0009",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0030]"
+          }
+        }
+      },
+      "gt0033": {
+        "id": "gt0033",
+        "model_id": "openEHR-EHR-OBSERVATION.lab_test_d_dimer.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.lab_test_d_dimer.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0034": {
+            "id": "gt0034",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
           }
         }
       }
@@ -115,9 +119,7 @@
         "id": "gt0028",
         "priority": 3,
         "when": [
-          "((($gt0020|Pregnant patient|==local::at0012|No|)&&($gt0008|YEARS score|>=1))&&($gt0026|D-dimer ≥500 ng/mL|==local::at0028|Yes|))||(((($gt0020|Pregnant patient|==local::at0012|No|)&&($gt0008|YEARS score|==0))&&($gt0025|D-dimer ≥1,000 ng/mL|==local::at0025|Yes|))||(((($gt0020|Pregnant patient|==local::at0011|Yes|)&&($gt0022|Clinical signs of DVT|==0|local::at0037|No|))&&($gt0025|D-dimer ≥1,000 ng/mL|==local::at0025|Yes|))||((($gt0020|Pregnant patient|==local::at0011|Yes|)&&($gt0022|Clinical signs of DVT|==1|local::at0038|Yes|))&&($gt0026|D-dimer ≥500 ng/mL|==local::at0028|Yes|))))",
-          "$gt0023|Hemoptysis|!=null",
-          "$gt0024|PE most likely diagnosis|!=null"
+          "((($gt0020|Pregnant patient|==local::at0012|No|)&&($gt0008|YEARS score|>=1))&&($gt0034|D-dimer value ng/ml|>=500,nanogm/ml))||(((($gt0020|Pregnant patient|==local::at0012|No|)&&($gt0008|YEARS score|==0))&&($gt0034|D-dimer value ng/ml|>=1000,nanogm/ml))||(((($gt0020|Pregnant patient|==local::at0011|Yes|)&&($gt0022|Clinical signs of DVT|==0|local::at0037|No|))&&($gt0034|D-dimer value ng/ml|>=1000,nanogm/ml))||((($gt0020|Pregnant patient|==local::at0011|Yes|)&&($gt0022|Clinical signs of DVT|==1|local::at0038|Yes|))&&($gt0034|D-dimer value ng/ml|>=500,nanogm/ml))))"
         ],
         "then": [
           "$gt0009|Recommendation|=local::at0031|PE not excluded. YEARS algorithm recommends CTPA|"
@@ -127,9 +129,7 @@
         "id": "gt0029",
         "priority": 2,
         "when": [
-          "((($gt0020|Pregnant patient|==local::at0012|No|)&&($gt0008|YEARS score|>=1))&&($gt0026|D-dimer ≥500 ng/mL|==local::at0029|No|))||(((($gt0020|Pregnant patient|==local::at0012|No|)&&($gt0008|YEARS score|==0))&&($gt0025|D-dimer ≥1,000 ng/mL|==local::at0026|No|))||(((($gt0020|Pregnant patient|==local::at0011|Yes|)&&($gt0022|Clinical signs of DVT|==0|local::at0037|No|))&&($gt0025|D-dimer ≥1,000 ng/mL|==local::at0026|No|))||((($gt0020|Pregnant patient|==local::at0011|Yes|)&&($gt0022|Clinical signs of DVT|==1|local::at0038|Yes|))&&($gt0026|D-dimer ≥500 ng/mL|==local::at0029|No|))))",
-          "$gt0023|Hemoptysis|!=null",
-          "$gt0024|PE most likely diagnosis|!=null"
+          "((($gt0020|Pregnant patient|==local::at0012|No|)&&($gt0008|YEARS score|>=1))&&($gt0034|D-dimer value ng/ml|<500,nanogm/ml))||(((($gt0020|Pregnant patient|==local::at0012|No|)&&($gt0008|YEARS score|==0))&&($gt0034|D-dimer value ng/ml|<1000,nanogm/ml))||(((($gt0020|Pregnant patient|==local::at0011|Yes|)&&($gt0022|Clinical signs of DVT|==0|local::at0037|No|))&&($gt0034|D-dimer value ng/ml|<1000,nanogm/ml))||((($gt0020|Pregnant patient|==local::at0011|Yes|)&&($gt0022|Clinical signs of DVT|==1|local::at0038|Yes|))&&($gt0034|D-dimer value ng/ml|<500,nanogm/ml))))"
         ],
         "then": [
           "$gt0009|Recommendation|=local::at0032|PE excluded. YEARS algorithm rules out PE (0.43% with symptomatic VTE during 3-month follow-up)|"
@@ -239,16 +239,6 @@
             "text": "PE most likely diagnosis",
             "description": "*"
           },
-          "gt0025": {
-            "id": "gt0025",
-            "text": "D-dimer ≥1,000 ng/mL",
-            "description": "*"
-          },
-          "gt0026": {
-            "id": "gt0026",
-            "text": "D-dimer ≥500 ng/mL",
-            "description": "*"
-          },
           "gt0027": {
             "id": "gt0027",
             "text": "Set YEARS score"
@@ -264,6 +254,11 @@
           "gt0032": {
             "id": "gt0032",
             "text": "Set interpretation to Initiate anticoagulant for pregnant"
+          },
+          "gt0034": {
+            "id": "gt0034",
+            "text": "D-dimer value ng/ml",
+            "description": "Lab test result of prostate-specific antigen (PSA)"
           }
         }
       }
