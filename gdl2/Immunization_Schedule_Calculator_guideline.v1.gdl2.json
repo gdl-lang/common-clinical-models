@@ -42,6 +42,309 @@
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
           }
         }
+      },
+      "gt0019": {
+        "id": "gt0019",
+        "model_id": "openEHR-EHR-OBSERVATION.immunization_schedule_calculator.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.immunization_schedule_calculator.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0020": {
+            "id": "gt0020",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0009]"
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0010]"
+          },
+          "gt0022": {
+            "id": "gt0022",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0011]"
+          },
+          "gt0023": {
+            "id": "gt0023",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0012]"
+          },
+          "gt0024": {
+            "id": "gt0024",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0013]"
+          },
+          "gt0025": {
+            "id": "gt0025",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0014]"
+          },
+          "gt0026": {
+            "id": "gt0026",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0015]"
+          },
+          "gt0027": {
+            "id": "gt0027",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0016]"
+          },
+          "gt0028": {
+            "id": "gt0028",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0017]"
+          },
+          "gt0029": {
+            "id": "gt0029",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0018]"
+          },
+          "gt0031": {
+            "id": "gt0031",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0021]"
+          },
+          "gt0032": {
+            "id": "gt0032",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0022]"
+          },
+          "gt0033": {
+            "id": "gt0033",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0020]"
+          },
+          "gt0034": {
+            "id": "gt0034",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0023]"
+          },
+          "gt0035": {
+            "id": "gt0035",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0024]"
+          },
+          "gt0036": {
+            "id": "gt0036",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0025]"
+          },
+          "gt0037": {
+            "id": "gt0037",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0027]"
+          },
+          "gt0038": {
+            "id": "gt0038",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0028]"
+          },
+          "gt0040": {
+            "id": "gt0040",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0029]"
+          },
+          "gt0041": {
+            "id": "gt0041",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0026]"
+          },
+          "gt0042": {
+            "id": "gt0042",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0030]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0043": {
+        "id": "gt0043",
+        "priority": 13,
+        "when": [
+          "$gt0007|Age|==0,mo"
+        ],
+        "then": [
+          "$gt0042|Comment|='Please enter an appropriate age range.'"
+        ]
+      },
+      "gt0044": {
+        "id": "gt0044",
+        "priority": 12,
+        "when": [
+          "$gt0007|Age|>=1,mo",
+          "$gt0007|Age|<2,mo"
+        ],
+        "then": [
+          "$gt0020|Hep B|='2nd dose (1st dose at birth)'"
+        ]
+      },
+      "gt0045": {
+        "id": "gt0045",
+        "priority": 11,
+        "when": [
+          "$gt0007|Age|>=2,mo",
+          "$gt0007|Age|<3,mo"
+        ],
+        "then": [
+          "$gt0020|Hep B|='2nd dose (if not yet given)'",
+          "$gt0021|Rotavirus (RV)|='1st dose'",
+          "$gt0022|DTaP (<7 yrs)|='1st dose'",
+          "$gt0023|H. flu (Hib)|='1st dose'",
+          "$gt0024|Pneumococcal (PCV13)|='1st dose'",
+          "$gt0025|Inactivated polio (IPV <18 yrs)|='1st dose'"
+        ]
+      },
+      "gt0046": {
+        "id": "gt0046",
+        "priority": 10,
+        "when": [
+          "$gt0007|Age|>=3,mo",
+          "$gt0007|Age|<4,mo"
+        ],
+        "then": [
+          "$gt0020|Hep B|='2nd dose (if not yet given)'",
+          "$gt0021|Rotavirus (RV)|='1st dose (if not yet given)'",
+          "$gt0022|DTaP (<7 yrs)|='1st dose (if not yet given)'",
+          "$gt0023|H. flu (Hib)|='1st dose (if not yet given)'",
+          "$gt0024|Pneumococcal (PCV13)|='1st dose (if not yet given)'",
+          "$gt0025|Inactivated polio (IPV <18 yrs)|='1st dose (if not yet given)'"
+        ]
+      },
+      "gt0047": {
+        "id": "gt0047",
+        "priority": 9,
+        "when": [
+          "$gt0007|Age|>=4,mo",
+          "$gt0007|Age|<5,mo"
+        ],
+        "then": [
+          "$gt0020|Hep B|='Catch-up dose (if 2nd dose not yet given)'",
+          "$gt0021|Rotavirus (RV)|='2nd dose'",
+          "$gt0022|DTaP (<7 yrs)|='2nd dose'",
+          "$gt0023|H. flu (Hib)|='2nd dose'",
+          "$gt0024|Pneumococcal (PCV13)|='2nd dose'",
+          "$gt0025|Inactivated polio (IPV <18 yrs)|='2nd dose'"
+        ]
+      },
+      "gt0048": {
+        "id": "gt0048",
+        "priority": 8,
+        "when": [
+          "$gt0007|Age|>=5,mo",
+          "$gt0007|Age|<6,mo"
+        ],
+        "then": [
+          "$gt0020|Hep B|='Catch-up dose (if 2nd dose not yet given)'",
+          "$gt0021|Rotavirus (RV)|='2nd dose (if not yet given)'",
+          "$gt0022|DTaP (<7 yrs)|='2nd dose (if not yet given)'",
+          "$gt0023|H. flu (Hib)|='2nd dose (if not yet given)'",
+          "$gt0024|Pneumococcal (PCV13)|='2nd dose (if not yet given)'",
+          "$gt0025|Inactivated polio (IPV <18 yrs)|='2nd dose (if not yet given)'"
+        ]
+      },
+      "gt0049": {
+        "id": "gt0049",
+        "priority": 7,
+        "when": [
+          "$gt0007|Age|>=6,mo",
+          "$gt0007|Age|<7,mo"
+        ],
+        "then": [
+          "$gt0020|Hep B|='3rd dose'",
+          "$gt0021|Rotavirus (RV)|='3rd dose (if RV5)'",
+          "$gt0022|DTaP (<7 yrs)|=' 3rd dose'",
+          "$gt0023|H. flu (Hib)|='3rd dose (if 3-dose primary series)'",
+          "$gt0024|Pneumococcal (PCV13)|='3rd dose'",
+          "$gt0025|Inactivated polio (IPV <18 yrs)|='3rd dose'",
+          "$gt0026|Influenza|='Annual vaccination (IIV only - 1 or 2 doses)'"
+        ]
+      },
+      "gt0050": {
+        "id": "gt0050",
+        "priority": 6,
+        "when": [
+          "$gt0007|Age|>=7,mo",
+          "$gt0007|Age|<8,mo"
+        ],
+        "then": [
+          "$gt0020|Hep B|='3rd dose (if not yet given)'",
+          "$gt0022|DTaP (<7 yrs)|='3rd dose (if not yet given)'",
+          "$gt0024|Pneumococcal (PCV13)|='3rd dose (if not yet given)'",
+          "$gt0025|Inactivated polio (IPV <18 yrs)|='3rd dose (if not yet given)'",
+          "$gt0026|Influenza|='Annual vaccination (IIV only - 1 or 2 doses)'"
+        ]
+      },
+      "gt0051": {
+        "id": "gt0051",
+        "priority": 5,
+        "when": [
+          "$gt0007|Age|>=8,mo",
+          "$gt0007|Age|<12,mo"
+        ],
+        "then": [
+          "$gt0020|Hep B|='3rd dose (if not yet given)'",
+          "$gt0022|DTaP (<7 yrs)|='Catch-up dose (if 3rd dose not yet given)'",
+          "$gt0023|H. flu (Hib)|='Catch-up dose (if 2nd dose not yet given)'",
+          "$gt0024|Pneumococcal (PCV13)|='Catch-up dose (if 3rd dose not yet given)'",
+          "$gt0025|Inactivated polio (IPV <18 yrs)|='3rd dose (if not yet given)'",
+          "$gt0026|Influenza|='Annual vaccination (IIV only - 1 or 2 doses)'"
+        ]
+      },
+      "gt0053": {
+        "id": "gt0053",
+        "priority": 4,
+        "when": [
+          "$gt0007|Age|>=12,mo",
+          "$gt0007|Age|<13,mo"
+        ],
+        "then": [
+          "$gt0020|Hep B|='3rd dose (if not yet given)'",
+          "$gt0022|DTaP (<7 yrs)|='Catch-up dose (if 3rd dose not yet given)'",
+          "$gt0023|H. flu (Hib)|='3rd or 4th dose (dependent on primary series)'",
+          "$gt0024|Pneumococcal (PCV13)|='4th dose'",
+          "$gt0025|Inactivated polio (IPV <18 yrs)|='3rd dose (if not yet given)'",
+          "$gt0026|Influenza|='Annual vaccination (IIV only - 1 or 2 doses)'",
+          "$gt0027|MMR|='1st dose'",
+          "$gt0028|Varicella (VAR)|='1st dose'",
+          "$gt0029|Hep A|='2 dose series (Initiate the 2-dose Hep A vaccine series at 12 through 23 months; separate the 2 doses by 6 to 18 months)'"
+        ]
+      },
+      "gt0054": {
+        "id": "gt0054",
+        "priority": 3,
+        "when": [
+          "$gt0007|Age|>=13,mo",
+          "$gt0007|Age|<=14,mo"
+        ],
+        "then": [
+          "$gt0020|Hep B|='3rd dose (if not yet given)'",
+          "$gt0022|DTaP (<7 yrs)|='Catch-up dose (if 3rd dose not yet given)'",
+          "$gt0023|H. flu (Hib)|='3rd or 4th dose (if not yet given- dependent on primary series)'",
+          "$gt0024|Pneumococcal (PCV13)|='4th dose (if not yet given)'",
+          "$gt0025|Inactivated polio (IPV <18 yrs)|='3rd dose (if not yet given)'",
+          "$gt0026|Influenza|='Annual vaccination (IIV only - 1 or 2 doses)'",
+          "$gt0027|MMR|='1st dose (if not yet given)'",
+          "$gt0028|Varicella (VAR)|='1st dose (if not yet given)'",
+          "$gt0029|Hep A|='2 dose series (Initiate the 2-dose Hep A vaccine series at 12 through 23 months and separate the 2 doses by 6 to 18 months)'"
+        ]
+      },
+      "gt0055": {
+        "id": "gt0055",
+        "priority": 2,
+        "when": [
+          "$gt0007|Age|>=13,mo",
+          "$gt0007|Age|<15,mo"
+        ],
+        "then": [
+          "$gt0020|Hep B|='3rd dose (if not yet given)'",
+          "$gt0022|DTaP (<7 yrs)|='4th dose'",
+          "$gt0023|H. flu (Hib)|='3rd or 4th dose (if not yet given- dependent on primary series)'",
+          "$gt0024|Pneumococcal (PCV13)|='4th dose (if not yet given)'",
+          "$gt0025|Inactivated polio (IPV <18 yrs)|='3rd dose (if not yet given)'",
+          "$gt0026|Influenza|='Annual vaccination (IIV only - 1 or 2 doses)'",
+          "$gt0027|MMR|='1st dose (if not yet given)'",
+          "$gt0028|Varicella (VAR)|='1st dose (if not yet given)'",
+          "$gt0029|Hep A|='2 dose series (Initiate the 2-dose Hep A vaccine series at 12 through 23 months and separate the 2 doses by 6 to 18 months)'"
+        ]
+      },
+      "gt0056": {
+        "id": "gt0056",
+        "priority": 1,
+        "when": [
+          "$gt0007|Age|>=16,mo",
+          "$gt0007|Age|<17,mo"
+        ],
+        "then": [
+          "$gt0020|Hep B|='3rd dose (if not yet given)'",
+          "$gt0022|DTaP (<7 yrs)|='4th dose (if not yet given)'",
+          "$gt0023|H. flu (Hib)|='Catch-up dose (if 4rd or 4th dose not yet given; dependent on primary series)'",
+          "$gt0024|Pneumococcal (PCV13)|='Catch-up dose (if 4th dose not yet given)'",
+          "$gt0025|Inactivated polio (IPV <18 yrs)|='3rd dose (if not yet given)'",
+          "$gt0026|Influenza|='Annual vaccination (IIV only - 1 or 2 doses)'",
+          "$gt0027|MMR|='Catch-up dose (if not yet given)'",
+          "$gt0028|Varicella (VAR)|='Catch-up dose (if not yet given)'",
+          "$gt0029|Hep A|='2 dose series (Initiate the 2-dose Hep A vaccine series at 12 through 23 months and separate the 2 doses by 6 to 18 months)'"
+        ]
       }
     }
   },
@@ -63,6 +366,163 @@
             "id": "gt0007",
             "text": "Age",
             "description": "Age in years, and for babies: months, weeks or days"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Hep B",
+            "description": "*"
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "Rotavirus (RV)",
+            "description": "*"
+          },
+          "gt0022": {
+            "id": "gt0022",
+            "text": "DTaP (<7 yrs)",
+            "description": "*"
+          },
+          "gt0023": {
+            "id": "gt0023",
+            "text": "H. flu (Hib)",
+            "description": "*"
+          },
+          "gt0024": {
+            "id": "gt0024",
+            "text": "Pneumococcal (PCV13)",
+            "description": "*"
+          },
+          "gt0025": {
+            "id": "gt0025",
+            "text": "Inactivated polio (IPV <18 yrs)",
+            "description": "*"
+          },
+          "gt0026": {
+            "id": "gt0026",
+            "text": "Influenza",
+            "description": "*"
+          },
+          "gt0027": {
+            "id": "gt0027",
+            "text": "MMR",
+            "description": "*"
+          },
+          "gt0028": {
+            "id": "gt0028",
+            "text": "Varicella (VAR)",
+            "description": "*"
+          },
+          "gt0029": {
+            "id": "gt0029",
+            "text": "Hep A",
+            "description": "*"
+          },
+          "gt0031": {
+            "id": "gt0031",
+            "text": "Meningococcal (MenACWY-D)",
+            "description": "*"
+          },
+          "gt0032": {
+            "id": "gt0032",
+            "text": "Tetanus- diphtheria- acellular pertussis (Tdap ≥7 yrs)",
+            "description": "*"
+          },
+          "gt0033": {
+            "id": "gt0033",
+            "text": "HPV (2vHPV for females only AND 4vHPV- 9vHPV for males and females)",
+            "description": "*"
+          },
+          "gt0034": {
+            "id": "gt0034",
+            "text": "Tetanus, diphtheria, pertussis (Td/Tdap)",
+            "description": "*"
+          },
+          "gt0035": {
+            "id": "gt0035",
+            "text": "HPV (Female)",
+            "description": "*"
+          },
+          "gt0036": {
+            "id": "gt0036",
+            "text": "HPV (Male)",
+            "description": "*"
+          },
+          "gt0037": {
+            "id": "gt0037",
+            "text": "Zoster",
+            "description": "*"
+          },
+          "gt0038": {
+            "id": "gt0038",
+            "text": "Pneumococcal 13-valent conjugate (PCV13)",
+            "description": "*"
+          },
+          "gt0040": {
+            "id": "gt0040",
+            "text": "Pneumococcal polysaccharide (PPSV23)",
+            "description": "*"
+          },
+          "gt0041": {
+            "id": "gt0041",
+            "text": "If high risk for any of the following, administer",
+            "description": "*"
+          },
+          "gt0042": {
+            "id": "gt0042",
+            "text": "Comment",
+            "description": "*"
+          },
+          "gt0043": {
+            "id": "gt0043",
+            "text": "Warning for Age 0"
+          },
+          "gt0044": {
+            "id": "gt0044",
+            "text": "Set Vaccination to Age 1 mo"
+          },
+          "gt0045": {
+            "id": "gt0045",
+            "text": "Set Vaccination to Age 2 mo"
+          },
+          "gt0046": {
+            "id": "gt0046",
+            "text": "Set Vaccination to Age 3 mo"
+          },
+          "gt0047": {
+            "id": "gt0047",
+            "text": "Set Vaccination to Age 4 mo"
+          },
+          "gt0048": {
+            "id": "gt0048",
+            "text": "Set Vaccination to Age 5 mo"
+          },
+          "gt0049": {
+            "id": "gt0049",
+            "text": "Set Vaccination to Age 6 mo"
+          },
+          "gt0050": {
+            "id": "gt0050",
+            "text": "Set Vaccination to Age 7 mo"
+          },
+          "gt0051": {
+            "id": "gt0051",
+            "text": "Set Vaccination to Age 8 and 11 mo"
+          },
+          "gt0053": {
+            "id": "gt0053",
+            "text": "Set Vaccination to Age 12 mo"
+          },
+          "gt0054": {
+            "id": "gt0054",
+            "text": "Set Vaccination to Age 13,14 mo"
+          },
+          "gt0055": {
+            "id": "gt0055",
+            "text": "Set Vaccination to Age 15 mo"
+          },
+          "gt0056": {
+            "id": "gt0056",
+            "text": "Set Vaccination to Age 16 mo"
           }
         }
       }
