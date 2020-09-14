@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 411*
+### *Published Apps: 416*
 
 ----------
 
 ### Latest added
 
-1. YEARS Algorithm for Pulmonary Embolism (PE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/YEARS_Algorithm_for_Pulmonary_Embolism_PE_guideline/1?language=en))
-2. COVID-GRAM Critical Illness Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/COVID-GRAM_Critical_Illness_Risk_Score_guideline/1?language=en))
-3. Hamilton Depression Rating Scale (HAM-D) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hamilton_Depression_rating_scale/1?language=en))
-4. Groupe d'Etude des Lymphomes Folliculaires (GELF) Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GELF_criteria/1?language=en))
-5. Immune-Related Adverse Events for GI Toxicity - Colitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Immune_related_adverse_events_GI_toxicity_colitis/0?language=en))
-6. Killip Classification for Heart Failure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Killip_Classification_Heart_Failure/0?language=en))
-7. International Prognostic Index for Chronic Lymphocytic Leukemia (CLL-IPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/international_prognostic_index_chronic_lymphocytic_leukemia/0?language=en))
-8. Prevention and Incidence of Asthma and Mite Allergy (PIAMA) Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PIAMA_Risk_Score/1?language=en))
-9. Corrected Count Increment (CCI) for Platelet Transfusion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Corrected_Count_Increment_CCI_for_Platelet_Transfusion_guideline/1?language=en))
-10. Intraoperative Fluid Dosing in Adult Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Intraoperative_Fluid_Dosing_Adult_Patients/1?language=en))
+1. HOMA-IR (Homeostatic Model Assessment for Insulin Resistance) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HOMA-IR/1?language=en))
+2. RIETE Score for Risk of Hemorrhage in Pulmonary Embolism Treatment - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIETE_Score_Risk_Hemorrhage_Pulmonary_Embolism_Treatment/1?language=en))
+3. Berlin Criteria for Acute Respiratory Distress Syndrome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Berlin_Criteria_for_ARDS_guideline/1?language=en))
+4. Brief Resolved Unexplained Events (BRUE) Criteria for Infants - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Brief_Resolved_Unexplained_Events_BRUE_Criteria_for_Infants_guideline/1?language=en))
+5. GALAD Model for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GALAD_Model_for_Hepatocellular_Carcinoma_HCC_guideline/1?language=en))
+6. YEARS Algorithm for Pulmonary Embolism (PE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/YEARS_Algorithm_for_Pulmonary_Embolism_PE_guideline/1?language=en))
+7. COVID-GRAM Critical Illness Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/COVID-GRAM_Critical_Illness_Risk_Score_guideline/1?language=en))
+8. Hamilton Depression Rating Scale (HAM-D) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hamilton_Depression_rating_scale/1?language=en))
+9. Groupe d'Etude des Lymphomes Folliculaires (GELF) Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GELF_criteria/1?language=en))
+10. Immune-Related Adverse Events for GI Toxicity - Colitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Immune_related_adverse_events_GI_toxicity_colitis/0?language=en))
 
 ----------
 
@@ -334,6 +334,8 @@ _Select a medical specialty below to view the available apps._
 
 * FINDRISC (Finnish Diabetes Risk Score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FINDRISC_Finnish_Diabetes_Risk_Score/1?language=en))
 
+* HOMA-IR (Homeostatic Model Assessment for Insulin Resistance) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HOMA-IR/1?language=en))
+
 * Hypoglycemia Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hypoglycemia_Risk_Score/1?language=en))
 
 * PEDIS Score for Diabetic Foot Ulcers - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEDIS_Score/0?language=en))
@@ -619,6 +621,8 @@ _Select a medical specialty below to view the available apps._
 
 * Fuhrman Nuclear Grade for Clear Cell Renal Cell Carcinoma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Fuhrman_Nuclear_Grade_ccRCC/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Fuhrman_Nuclear_Grade_ccRCC/1?language=sv)) - 
 
+* GALAD Model for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GALAD_Model_for_Hepatocellular_Carcinoma_HCC_guideline/1?language=en))
+
 * Glasgow Prognostic Score (GPS) for Cancer Outcomes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Glasgow_Prognostic_Score_GPS_for_Cancer_Outcomes_guideline/1?language=en))
 
 * Gleason Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gleason_score/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gleason_score/1?language=sv))
@@ -687,6 +691,8 @@ _Select a medical specialty below to view the available apps._
 * Asthma Predictive Index (API) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Asthma_predictive_index/1?language=en))
 
 * Behavioral Observational Pain Scale (BOPS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BOPS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BOPS/1?language=sv))
+
+* Brief Resolved Unexplained Events (BRUE) Criteria for Infants - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Brief_Resolved_Unexplained_Events_BRUE_Criteria_for_Infants_guideline/1?language=en))
 
 * CATCH (Canadian Assessment of Tomography for Childhood Head injury) Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CATCH_childhood_head_injury_rule/1?language=en))
 
@@ -888,6 +894,8 @@ _Select a medical specialty below to view the available apps._
 
 * BAP-65 Score for Acute Exacerbation of COPD - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/bap_65/1?language=en))
 
+* Berlin Criteria for Acute Respiratory Distress Syndrome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Berlin_Criteria_for_ARDS_guideline/1?language=en))
+
 * du Bois Score for Idiopathic Pulmonary Fibrosis (IPF) Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/du_Bois_IPF/1?language=en))
 
 * BODE Index for COPD Survival - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BODE_Index_COPD_survival/1?language=en))
@@ -931,6 +939,8 @@ _Select a medical specialty below to view the available apps._
 * Respiratory ECMO Survival Prediction (RESP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RESP_score_respiratory_ecmo_survival_prediction/1?language=en))
 
 * REVEAL Registry Risk Score for Pulmonary Arterial Hypertension (PAH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/REVEAL_score/1?language=en))
+
+* RIETE Score for Risk of Hemorrhage in Pulmonary Embolism Treatment - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIETE_Score_Risk_Hemorrhage_Pulmonary_Embolism_Treatment/1?language=en))
 
 * SMART-COP Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SMART-COP_Score/1?language=en))
 ----------
