@@ -34,7 +34,7 @@ High                   ≥3           6.7 - 7.1%">
 	other_details = <
 		["references"] = <"1. Khorana AA, et al. Development and validation of a predictive model for chemotherapy-associated thrombosis. Blood 2008;111:4902-7.">
 		["current_contact"] = <"Therese Lindberg, Cambio CDS<therese.lindberg@cambio.se>">
-		["MD5-CAM-1.0.1"] = <"034B434AD8FBD8A0452719393F2139B3">
+		["MD5-CAM-1.0.1"] = <"1C526B5FE9631F7E43860FC7CE8A8424">
 	>
 
 definition
@@ -42,35 +42,6 @@ definition
 		data matches {
 			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Cancer Type
-						value matches {
-							DV_CODED_TEXT matches {
-								defining_code matches {
-									[local::
-									at0004, 	-- Stomach +2
-									at0005, 	-- Pancreas +2
-									at0006, 	-- Lung +1
-									at0007, 	-- Lymphoma +1
-									at0008, 	-- Gynecologic +1
-									at0009, 	-- Bladder +1
-									at0010, 	-- Testicular +1
-									at0011]	-- Other +0
-								}
-							}
-						}
-					}
-					ELEMENT[at0034] occurrences matches {0..1} matches {	-- Cancer Type Constant
-						value matches {
-							C_DV_QUANTITY <
-								property = <[openehr::380]>
-								list = <
-									["1"] = <
-										units = <"1">
-									>
-								>
-							>
-						}
-					}
 					ELEMENT[at0012] occurrences matches {0..1} matches {	-- Pre-chemotherapy platelet count ≥350x10⁹/L
 						value matches {
 							0|[local::at0016], 	-- No +0
@@ -131,6 +102,18 @@ definition
 							DV_TEXT matches {*}
 						}
 					}
+					ELEMENT[at0035] occurrences matches {0..1} matches {	-- Cancer Type
+						value matches {
+							0|[local::at0036], 	-- Other
+							1|[local::at0037], 	-- Testicular
+							1|[local::at0039], 	-- Bladder
+							1|[local::at0040], 	-- Gynecologic
+							1|[local::at0041], 	-- Lymphoma
+							1|[local::at0042], 	-- Lung
+							2|[local::at0043], 	-- Pancreas
+							2|[local::at0044]  	-- Stomach
+						}
+					}
 				}
 			}
 		}
@@ -147,42 +130,6 @@ ontology
 				["at0001"] = <
 					text = <"Tree">
 					description = <"@ internal @">
-				>
-				["at0003"] = <
-					text = <"Cancer Type">
-					description = <"*">
-				>
-				["at0004"] = <
-					text = <"Stomach +2">
-					description = <"*">
-				>
-				["at0005"] = <
-					text = <"Pancreas +2">
-					description = <"*">
-				>
-				["at0006"] = <
-					text = <"Lung +1">
-					description = <"*">
-				>
-				["at0007"] = <
-					text = <"Lymphoma +1">
-					description = <"*">
-				>
-				["at0008"] = <
-					text = <"Gynecologic +1">
-					description = <"*">
-				>
-				["at0009"] = <
-					text = <"Bladder +1">
-					description = <"*">
-				>
-				["at0010"] = <
-					text = <"Testicular +1">
-					description = <"*">
-				>
-				["at0011"] = <
-					text = <"Other +0">
-					description = <"*">
 				>
 				["at0012"] = <
 					text = <"Pre-chemotherapy platelet count ≥350x10⁹/L">
@@ -272,8 +219,40 @@ ontology
 					text = <"Comment">
 					description = <"*">
 				>
-				["at0034"] = <
-					text = <"Cancer Type Constant">
+				["at0035"] = <
+					text = <"Cancer Type">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Other">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Testicular">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Bladder">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"Gynecologic">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"Lymphoma">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"Lung">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"Pancreas">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Stomach">
 					description = <"*">
 				>
 			>
