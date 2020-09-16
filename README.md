@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 416*
+### *Published Apps: 418*
 
 ----------
 
 ### Latest added
 
-1. HOMA-IR (Homeostatic Model Assessment for Insulin Resistance) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HOMA-IR/1?language=en))
-2. RIETE Score for Risk of Hemorrhage in Pulmonary Embolism Treatment - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIETE_Score_Risk_Hemorrhage_Pulmonary_Embolism_Treatment/1?language=en))
-3. Berlin Criteria for Acute Respiratory Distress Syndrome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Berlin_Criteria_for_ARDS_guideline/1?language=en))
-4. Brief Resolved Unexplained Events (BRUE) Criteria for Infants - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Brief_Resolved_Unexplained_Events_BRUE_Criteria_for_Infants_guideline/1?language=en))
-5. GALAD Model for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GALAD_Model_for_Hepatocellular_Carcinoma_HCC_guideline/1?language=en))
-6. YEARS Algorithm for Pulmonary Embolism (PE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/YEARS_Algorithm_for_Pulmonary_Embolism_PE_guideline/1?language=en))
-7. COVID-GRAM Critical Illness Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/COVID-GRAM_Critical_Illness_Risk_Score_guideline/1?language=en))
-8. Hamilton Depression Rating Scale (HAM-D) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hamilton_Depression_rating_scale/1?language=en))
-9. Groupe d'Etude des Lymphomes Folliculaires (GELF) Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GELF_criteria/1?language=en))
-10. Immune-Related Adverse Events for GI Toxicity - Colitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Immune_related_adverse_events_GI_toxicity_colitis/0?language=en))
+1. 5-year risk of cardiovascular disease for Type 1 Diabetes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ndr_type1_diabetes_cardiovascular_risk/1?language=en))
+2. 5-year risk of cardiovascular disease for Type 2 Diabetes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ndr_type2_diabetes_cardiovascular_risk/1?language=en))
+3. HOMA-IR (Homeostatic Model Assessment for Insulin Resistance) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HOMA-IR/1?language=en))
+4. RIETE Score for Risk of Hemorrhage in Pulmonary Embolism Treatment - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIETE_Score_Risk_Hemorrhage_Pulmonary_Embolism_Treatment/1?language=en))
+5. Berlin Criteria for Acute Respiratory Distress Syndrome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Berlin_Criteria_for_ARDS_guideline/1?language=en))
+6. Brief Resolved Unexplained Events (BRUE) Criteria for Infants - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Brief_Resolved_Unexplained_Events_BRUE_Criteria_for_Infants_guideline/1?language=en))
+7. GALAD Model for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/GALAD_Model_for_Hepatocellular_Carcinoma_HCC_guideline/1?language=en))
+8. YEARS Algorithm for Pulmonary Embolism (PE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/YEARS_Algorithm_for_Pulmonary_Embolism_PE_guideline/1?language=en))
+9. COVID-GRAM Critical Illness Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/COVID-GRAM_Critical_Illness_Risk_Score_guideline/1?language=en))
+10. Hamilton Depression Rating Scale (HAM-D) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hamilton_Depression_rating_scale/1?language=en))
 
 ----------
 
@@ -322,6 +322,10 @@ _Select a medical specialty below to view the available apps._
 
 ### Endocrinology
 ----------
+* 5-year risk of cardiovascular disease for Type 1 Diabetes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ndr_type1_diabetes_cardiovascular_risk/1?language=en))
+
+* 5-year risk of cardiovascular disease for Type 2 Diabetes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ndr_type2_diabetes_cardiovascular_risk/1?language=en))
+
 * American Diabetes Association (ADA) Risk Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/American_diabetes_association_ADA_risk_calculator/1?language=en))
 
 * Australian Type 2 Diabetes Risk (AUSDRISK) Assessment Tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Australian_type_2_diabetes_risk_ausdrisk_assessment_tool/1?language=en))
