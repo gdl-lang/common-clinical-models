@@ -29,7 +29,7 @@
       }
     },
     "other_details": {
-      "references": "1. Center forDisease Control and Prevention. (2020). Child and Adolescent Immunization Schedule. Dracunculiasis (guinea-worm disease). Retrieved 2020 September 14 from https://www.cdc.gov/vaccines/schedules/hcp/imz/child-adolescent.html"
+      "references": "1. Center for Disease Control and Prevention. (2020). Child and Adolescent Immunization Schedule. Dracunculiasis (guinea-worm disease). Retrieved 2020 September 14 from https://www.cdc.gov/vaccines/schedules/hcp/imz/child-adolescent.html"
     }
   },
   "definition": {
@@ -162,13 +162,24 @@
     "rules": {
       "gt0043": {
         "id": "gt0043",
-        "priority": 27,
+        "priority": 28,
         "when": [
           "$gt0003|Age Range|==local::at0006|<2 years|",
           "($gt0007|Age|==0,mo)||($gt0007|Age|==24,mo)"
         ],
         "then": [
-          "$gt0072|Comment|='Please enter an appropriate age range.'"
+          "$gt0072|warning|='Please enter an appropriate age range.'"
+        ]
+      },
+      "gt0086": {
+        "id": "gt0086",
+        "priority": 27,
+        "when": [
+          "$gt0003|Age Range|==local::at0005|≥2 years|",
+          "$gt0007|Age|<2,a"
+        ],
+        "then": [
+          "$gt0072|warning|='Please enter an appropriate age range.'"
         ]
       },
       "gt0044": {
@@ -347,8 +358,8 @@
         "priority": 16,
         "when": [
           "$gt0003|Age Range|==local::at0006|<2 years|",
-          "$gt0007|Age|>=13,mo",
-          "$gt0007|Age|<15,mo"
+          "$gt0007|Age|>=15,mo",
+          "$gt0007|Age|<16,mo"
         ],
         "then": [
           "$gt0020|Hep B|='3rd dose (if not yet given)'",
@@ -635,7 +646,7 @@
           "$gt0069|Pneumococcal 13-valent conjugate (PCV13)|='1 dose'",
           "$gt0070|Pneumococcal polysaccharide (PPSV23)|='1 dose'",
           "$gt0071|If high risk for any of the following, administer|='Hep A (2 or 3 doses)- Hep B (3 doses)- Meningococcal (MenACWY or MPSV4) (1 or more doses)- Meningococcal B (MenB) (2 or 3 doses), H. flu (Hib) (1 or 3 doses)'",
-          "$gt0072|Comment|='Age is very high double-check.'"
+          "$gt0072|warning|='Age is very high double-check.'"
         ]
       }
     }
@@ -922,6 +933,10 @@
           "gt0085": {
             "id": "gt0085",
             "text": "Set warning for Vaccination to Age >100 yrs"
+          },
+          "gt0086": {
+            "id": "gt0086",
+            "text": "Set Warning for Age>=2 yrs and Age<2yrs"
           }
         }
       }
