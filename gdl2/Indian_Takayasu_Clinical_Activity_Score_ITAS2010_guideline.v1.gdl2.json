@@ -7,15 +7,29 @@
   },
   "description": {
     "original_author": {
-      "date": "2020-09-18"
+      "date": "2020-09-18",
+      "name": "Maryam Razavi",
+      "organisation": "CambioCDS",
+      "email": "maryam.razavi@cambio.se"
     },
-    "lifecycle_state": "Not set",
+    "lifecycle_state": "Author draft",
     "details": {
       "en": {
-        "id": "en"
+        "id": "en",
+        "purpose": "To differentiate between active and inactive disease in Takayasu arteritis (TA).",
+        "keywords": [
+          "Takayasu arteritis",
+          "large vessel disease",
+          "large vessel vasculitis (LVV)"
+        ],
+        "use": "Use to quantify disease activity in Takayasu arteritis (TA) for treatment decisions. \nThere are seven ITAS2010 items [five cardiovascular systems (CVS) items together with stroke and hypertension] which scored 2, while all other items scored 1.",
+        "misuse": "Select feature only if an abnormality is present and new within the past 3 months AND ascribed to current active vasculitis.",
+        "copyright": "@CambioCDS"
       }
     },
-    "other_details": {}
+    "other_details": {
+      "references": "Misra R, Danda D, Rajappa SM, et al. Development and initial validation of the Indian Takayasu Clinical Activity Score (ITAS2010). Rheumatology (Oxford). 2013;52(10):1795-801."
+    }
   },
   "definition": {
     "data_bindings": {
@@ -223,7 +237,7 @@
     "rules": {
       "gt0050": {
         "id": "gt0050",
-        "priority": 1,
+        "priority": 3,
         "when": [
           "$gt0003|Malaise or weight loss >2 kg|!=null",
           "$gt0004|Myalgia, arthralgia, or arthritis|!=null",
@@ -237,33 +251,35 @@
           "$gt0012|Syncope|!=null",
           "$gt0013|Vertigo/dizziness|!=null",
           "$gt0014|Bruits|!=null",
-          "$gt0015|Carotid bruits-Right|!=null",
           "$gt0016|Pulse inequality|!=null",
           "$gt0017|New loss of pulses|!=null",
           "$gt0018|Claudication|!=null",
           "$gt0019|Carotidynia|!=null",
           "$gt0020|Aortic incompetence|!=null",
-          "$gt0021|Myocardial infarct/angina|!=null",
-          "$gt0023|Carotid bruits-Left|!=null",
-          "$gt0024|Subclavian bruits-Right|!=null",
-          "$gt0032|Subclavian pulse loss-Left|!=null",
-          "$gt0033|Brachial pulse loss-Right|!=null",
-          "$gt0034|Brachial pulse loss-Left|!=null",
-          "$gt0035|Radial pulse loss-Right|!=null",
-          "$gt0036|Radial pulse loss-Left|!=null",
-          "$gt0037|Femoral pulse loss-Right|!=null",
-          "$gt0038|Femoral pulse loss-Left|!=null",
-          "$gt0039|Popliteal pulse loss- Right|!=null",
-          "$gt0040|Popliteal pulse loss-Left|!=null",
-          "$gt0041|Posterior tibial pulse loss-Right|!=null",
-          "$gt0042|Posterior tibial pulse loss-Left|!=null",
-          "$gt0043|Dorsalis pedis pulse loss-Right|!=null",
-          "$gt0044|Dorsalis pedis pulse loss-Left|!=null",
-          "$gt0045|Arm claudication|!=null",
-          "$gt0046|Leg claudication|!=null"
+          "$gt0021|Myocardial infarct/angina|!=null"
         ],
         "then": [
-          "$gt0048|ITAS2010 Score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0011.value+$gt0012.value+$gt0013.value+$gt0014.value+$gt0015.value+$gt0016.value+$gt0017.value+$gt0018.value+$gt0019.value+$gt0020.value+$gt0021.value+$gt0022.value+$gt0023.value+$gt0024.value+$gt0025.value+$gt0026.value+$gt0027.value+$gt0028.value+$gt0029.value+$gt0030.value"
+          "$gt0048|ITAS2010 Score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0011.value+$gt0012.value+$gt0013.value+$gt0014.value+$gt0016.value+$gt0017.value+$gt0019.value+$gt0020.value+$gt0021.value+$gt0022.value+$gt0018.value"
+        ]
+      },
+      "gt0051": {
+        "id": "gt0051",
+        "priority": 2,
+        "when": [
+          "$gt0048|ITAS2010 Score|>=2"
+        ],
+        "then": [
+          "$gt0049|Disease activity|='Active TA'"
+        ]
+      },
+      "gt0052": {
+        "id": "gt0052",
+        "priority": 1,
+        "when": [
+          "$gt0048|ITAS2010 Score|<2"
+        ],
+        "then": [
+          "$gt0049|Disease activity|='Inactive TA'"
         ]
       }
     }
@@ -275,7 +291,8 @@
         "terms": {
           "gt0001": {
             "id": "gt0001",
-            "text": "Indian Takayasu Clinical Activity Score (ITAS2010)"
+            "text": "Indian Takayasu Clinical Activity Score (ITAS2010)",
+            "description": "Takayasu aortoarteritis is a rare form of large vessel vasculitis (LVV), more common in Asia, which presents with acute vascular occlusion or hypertension in younger age groups. "
           },
           "gt0003": {
             "id": "gt0003",
@@ -510,6 +527,14 @@
           "gt0050": {
             "id": "gt0050",
             "text": "Set  ITAS2010 Score calculation"
+          },
+          "gt0051": {
+            "id": "gt0051",
+            "text": "Set Diagnostic Result to Active TA"
+          },
+          "gt0052": {
+            "id": "gt0052",
+            "text": "Set Diagnostic Result to Inactive TA"
           }
         }
       }

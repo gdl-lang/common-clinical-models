@@ -17,8 +17,8 @@ description
 			language = <[ISO_639-1::en]>
 			purpose = <"To record information relevant to the Indian Takayasu Clinical Activity Score (ITAS2010) assessment and its results.">
 			use = <"Use to record the value for each component variable for the ITAS2010  score, their total sum, and interpretations.">
-			keywords = <"Takayasu arteritis (TA)", "Clinical Activity", "Inactive ">
-			misuse = <"Not to use for features that had occurred more than 3-month period.">
+			keywords = <"Takayasu arteritis (TA)", "Clinical Activity", "Inactive ", "large vessel disease">
+			misuse = <"Select feature only if an abnormality is present and new within the past 3 months AND ascribed to current active vasculitis.">
 			copyright = <"@CambioCDS">
 		>
 	>
@@ -26,7 +26,7 @@ description
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Misra R, Danda D, Rajappa SM, et al. Development and initial validation of the Indian Takayasu Clinical Activity Score (ITAS2010). Rheumatology (Oxford). 2013;52(10):1795-801.">
-		["MD5-CAM-1.0.1"] = <"8252D2B2485D697660D83555C007E339">
+		["MD5-CAM-1.0.1"] = <"D6D02311CFA63C48C550AAB9275899C9">
 	>
 
 definition
@@ -74,8 +74,8 @@ definition
 										items cardinality matches {1..*; unordered} matches {
 											ELEMENT[at0020] occurrences matches {0..1} matches {	-- Recent history of spontaneous abortion
 												value matches {
-													C_DV_ORDINAL <
-													>
+													0|[local::at0146], 	-- No
+													1|[local::at0147]  	-- Yes
 												}
 											}
 										}
@@ -212,8 +212,8 @@ definition
 											}
 											ELEMENT[at0102] occurrences matches {0..1} matches {	-- Brachial pulse loss-Right
 												value matches {
-													C_DV_ORDINAL <
-													>
+													0|[local::at0144], 	-- No
+													1|[local::at0145]  	-- Yes
 												}
 											}
 											ELEMENT[at0103] occurrences matches {0..1} matches {	-- Brachial pulse loss-Left
@@ -351,7 +351,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Indian takayasu clinical activity score itas2010">
-					description = <"unknown">
+					description = <"Indian Takayasu Clinical Activity Score (ITAS2010) differentiates between active and inactive disease in Takayasu arteritis (TA).">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -907,6 +907,22 @@ ontology
 				>
 				["at0143"] = <
 					text = <"Disease activity">
+					description = <"*">
+				>
+				["at0144"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0145"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0146"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0147"] = <
+					text = <"Yes">
 					description = <"*">
 				>
 			>
