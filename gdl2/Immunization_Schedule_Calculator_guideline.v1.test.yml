@@ -410,3 +410,45 @@ test_cases:
       gt0076|Varicella: 2 doses (if childhood doses not yet given)
       gt0071|If high risk for any of the following, administer: Hep A (2 or 3 doses)- Hep B (3 doses)- Meningococcal (MenACWY or MPSV4) (1 or more doses)- Meningococcal B (MenB) (2 or 3 doses), H. flu (Hib) (1 or 3 doses)
       gt0072|warning: Age is very high double-check.
+- id: 3 mo
+  input:
+    1:
+      gt0003|Age Range: local::at0006|<2 years, use Age in months|
+      gt0007|Age: 3,mo
+  expected_output:
+    1:
+      gt0023|H. flu (Hib): 1st dose (if not yet given)
+      gt0021|Rotavirus (RV): 1st dose (if not yet given)
+      gt0025|Inactivated polio (IPV <18 yrs): 1st dose (if not yet given)
+      gt0022|DTaP (<7 yrs): 1st dose (if not yet given)
+      gt0020|Hep B: 2nd dose (if not yet given)
+      gt0024|Pneumococcal (PCV13): 1st dose (if not yet given)
+- id: 5 mo
+  input:
+    1:
+      gt0003|Age Range: local::at0006|<2 years, use Age in months|
+      gt0007|Age: 5,mo
+  expected_output:
+    1:
+      gt0023|H. flu (Hib): 2nd dose (if not yet given)
+      gt0021|Rotavirus (RV): 2nd dose (if not yet given)
+      gt0025|Inactivated polio (IPV <18 yrs): 2nd dose (if not yet given)
+      gt0022|DTaP (<7 yrs): 2nd dose (if not yet given)
+      gt0020|Hep B: Catch-up dose (if 2nd dose not yet given)
+      gt0024|Pneumococcal (PCV13): 2nd dose (if not yet given)
+- id: warning Age >=24 in age range<2
+  input:
+    1:
+      gt0003|Age Range: local::at0006|<2 years, use Age in months|
+      gt0007|Age: 25,mo
+  expected_output:
+    1:
+      gt0072|warning: Please enter an appropriate age range.
+- id: warnin age <2 in age range>=2
+  input:
+    1:
+      gt0003|Age Range: local::at0005|≥2 years, use Age in years|
+      gt0007|Age: 1,a
+  expected_output:
+    1:
+      gt0072|warning: Please enter an appropriate age range.
