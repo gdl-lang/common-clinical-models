@@ -1,232 +1,233 @@
-{
-  "id": "ABIC_Score_for_Alcoholic_Hepatitis_guideline.v1",
-  "gdl_version": "2.0",
-  "concept": "gt0001",
-  "language": {
-    "original_language": "ISO_639-1::en"
-  },
-  "description": {
-    "original_author": {
-      "date": "2020-08-13",
-      "name": "Maryam Razavi",
-      "organisation": "@CambioCDS",
-      "email": "maryam.razavi@cambio.se"
-    },
-    "lifecycle_state": "Author draft",
-    "details": {
-      "en": {
-        "id": "en",
-        "purpose": "To predict mortality in 90 days and 1 year. ",
-        "keywords": [
-          "Alcoholic Hepatitis",
-          "Serum bilirubin",
-          "INR",
-          "Serum creatinine"
-        ],
-        "use": "ABIC score to detect risk group, survival at 90 days, and survival at 1 year in patients with alcoholic hepatitis.\nFormula:\nABIC Score = (Age, years × 0.1) + (Serum Bilirubin, mg/dL × 0.08) + (INR × 0.8) + (Serum Creatinine, mg/dL × 0.3) \nABIC Score<6.71= Risk group Low= Survival at 90 days 100%= Survival at 1 year 97.1%\nABIC Score≥6.71 to <9.00= Risk group Intermediate= Survival at 90 days 70%= Survival at 1 year 64.3%\nABIC Score≥9.00= Risk group High= Survival at 90 days 25%= Survival at 1 year 33.3%\n\n\n",
-        "copyright": "@CambioCDS"
-      }
-    },
-    "other_details": {
-      "references": "1.Dominguez M, Rincón D, Abraldes JG, et al. A new scoring system for prognostic stratification of patients with alcoholic hepatitis. Am J Gastroenterol. 2008;103(11):2747-56.\nValidation\n2. Papastergiou V, Tsochatzis EA, Pieri G, et al. Nine scoring models for short-term mortality in alcoholic hepatitis: cross-validation in a biopsy-proven cohort. Aliment Pharmacol Ther. 2014;39(7):721-32.\n3. Garcia-saenz-de-sicilia M, Duvoor C, Altamirano J, et al. A Day-4 Lille Model Predicts Response to Corticosteroids and Mortality in Severe Alcoholic Hepatitis. Am J Gastroenterol. 2017;112(2):306-315.\n4. Lafferty H, Stanley AJ, Forrest EH. The management of alcoholic hepatitis: a prospective comparison of scoring systems. Aliment Pharmacol Ther. 2013;38(6):603-10."
-    }
-  },
-  "definition": {
-    "data_bindings": {
-      "gt0002": {
-        "id": "gt0002",
-        "model_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
-        "template_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
-        "type": "INPUT",
-        "elements": {
-          "gt0003": {
-            "id": "gt0003",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
-          }
-        }
-      },
-      "gt0004": {
-        "id": "gt0004",
-        "model_id": "openEHR-EHR-OBSERVATION.lab_test-bilirubin.v1",
-        "template_id": "openEHR-EHR-OBSERVATION.lab_test-bilirubin.v1",
-        "type": "INPUT",
-        "elements": {
-          "gt0005": {
-            "id": "gt0005",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0092]"
-          }
-        }
-      },
-      "gt0006": {
-        "id": "gt0006",
-        "model_id": "openEHR-EHR-OBSERVATION.lab_test_creatinine.v1",
-        "template_id": "openEHR-EHR-OBSERVATION.lab_test_creatinine.v1",
-        "type": "INPUT",
-        "elements": {
-          "gt0007": {
-            "id": "gt0007",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
-          }
-        }
-      },
-      "gt0008": {
-        "id": "gt0008",
-        "model_id": "openEHR-EHR-OBSERVATION.lab_test-coagulation_profile.v1",
-        "template_id": "openEHR-EHR-OBSERVATION.lab_test-coagulation_profile.v1",
-        "type": "INPUT",
-        "elements": {
-          "gt0009": {
-            "id": "gt0009",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0.94]"
-          }
-        }
-      },
-      "gt0012": {
-        "id": "gt0012",
-        "model_id": "openEHR-EHR-EVALUATION.abic_score_for_alcoholic_hepatitis.v0",
-        "template_id": "openEHR-EHR-EVALUATION.abic_score_for_alcoholic_hepatitis.v0",
-        "type": "OUTPUT",
-        "elements": {
-          "gt0013": {
-            "id": "gt0013",
-            "path": "/data[at0001]/items[at0002]"
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "path": "/data[at0001]/items[at0003]"
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "path": "/data[at0001]/items[at0004]"
-          },
-          "gt0016": {
-            "id": "gt0016",
-            "path": "/data[at0001]/items[at0005]"
-          }
-        }
-      }
-    },
-    "rules": {
-      "gt0017": {
-        "id": "gt0017",
-        "priority": 4,
-        "when": [
-          "$gt0003|Age|!=null",
-          "$gt0005|Serum Bilirubin|!=null",
-          "$gt0007|Creatinine|!=null",
-          "$gt0009|INR|!=null"
-        ],
-        "then": [
-          "$gt0013|ABIC score|.magnitude=($gt0003.magnitude*0.1)+($gt0005.magnitude*0.08)+($gt0007.magnitude*0.3)+($gt0009.magnitude*0.8)"
-        ]
-      },
-      "gt0018": {
-        "id": "gt0018",
-        "priority": 3,
-        "when": [
-          "$gt0013|ABIC score|.magnitude<6.71"
-        ],
-        "then": [
-          "$gt0014|Risk group|='Low'",
-          "$gt0015|Survival at 90 days|='100%'",
-          "$gt0016|Survival at 1 year|='97.1%'"
-        ]
-      },
-      "gt0019": {
-        "id": "gt0019",
-        "priority": 2,
-        "when": [
-          "$gt0013|ABIC score|.magnitude>=6.71",
-          "$gt0013|ABIC score|.magnitude<9"
-        ],
-        "then": [
-          "$gt0014|Risk group|='Intermediate'",
-          "$gt0015|Survival at 90 days|='70%'",
-          "$gt0016|Survival at 1 year|='64.3%'"
-        ]
-      },
-      "gt0020": {
-        "id": "gt0020",
-        "priority": 1,
-        "when": [
-          "$gt0013|ABIC score|.magnitude>=9"
-        ],
-        "then": [
-          "$gt0014|Risk group|='High'",
-          "$gt0015|Survival at 90 days|='25%'",
-          "$gt0016|Survival at 1 year|='33.3%'"
-        ]
-      }
-    }
-  },
-  "ontology": {
-    "term_definitions": {
-      "en": {
-        "id": "en",
-        "terms": {
-          "gt0001": {
-            "id": "gt0001",
-            "text": "ABIC Score for Alcoholic Hepatitis",
-            "description": "ABIC Score for Alcoholic Hepatitis predicts survival in alcoholic hepatitis."
-          },
-          "gt0003": {
-            "id": "gt0003",
-            "text": "Age",
-            "description": "Age in years, and for babies: months, weeks or days"
-          },
-          "gt0005": {
-            "id": "gt0005",
-            "text": "Serum Bilirubin",
-            "description": "The separate test for Direct Bilirubin (BR) (conjugated) is useful to estimate the measure for unconjugated BR by taking it away from Total BR"
-          },
-          "gt0007": {
-            "id": "gt0007",
-            "text": "Creatinine",
-            "description": "Creatinine value"
-          },
-          "gt0009": {
-            "id": "gt0009",
-            "text": "INR",
-            "description": "International Normalized Ratio."
-          },
-          "gt0013": {
-            "id": "gt0013",
-            "text": "ABIC score",
-            "description": "*"
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "text": "Risk group",
-            "description": "*"
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "text": "Survival at 90 days",
-            "description": "*"
-          },
-          "gt0016": {
-            "id": "gt0016",
-            "text": "Survival at 1 year",
-            "description": "*"
-          },
-          "gt0017": {
-            "id": "gt0017",
-            "text": "Set ABIC score"
-          },
-          "gt0018": {
-            "id": "gt0018",
-            "text": "Set Interpretation ABIC<6.71"
-          },
-          "gt0019": {
-            "id": "gt0019",
-            "text": "Set Interpretation ABIC>=6.71, <9"
-          },
-          "gt0020": {
-            "id": "gt0020",
-            "text": "Set Interpretation ABIC>=9"
-          }
-        }
-      }
-    }
-  }
+﻿{
+	"id": "ABIC_Score_for_Alcoholic_Hepatitis_guideline.v1",
+	"gdl_version": "2.0",
+	"concept": "gt0001",
+	"language": {
+		"original_language": "ISO_639-1::en"
+	},
+	"description": {
+		"original_author": {
+			"date": "2020-08-13",
+			"name": "Maryam Razavi",
+			"organisation": "@CambioCDS",
+			"email": "maryam.razavi@cambio.se"
+		},
+		"lifecycle_state": "Author draft",
+		"details": {
+			"en": {
+				"id": "en",
+				"purpose": "To predict mortality in 90 days and 1 year. ",
+				"keywords": [
+					"Alcoholic Hepatitis",
+					"Serum bilirubin",
+					"INR",
+					"Serum creatinine"
+				],
+				"use": "ABIC score to detect risk group, survival at 90 days, and survival at 1 year in patients with alcoholic hepatitis.\nFormula:\nABIC Score = (Age, years × 0.1) + (Serum Bilirubin, mg/dL × 0.08) + (INR × 0.8) + (Serum Creatinine, mg/dL × 0.3) \nABIC Score<6.71= Risk group Low= Survival at 90 days 100%= Survival at 1 year 97.1%\nABIC Score≥6.71 to <9.00= Risk group Intermediate= Survival at 90 days 70%= Survival at 1 year 64.3%\nABIC Score≥9.00= Risk group High= Survival at 90 days 25%= Survival at 1 year 33.3%\n\n\n",
+				"copyright": "@CambioCDS"
+			}
+		},
+		"other_details": {
+			"references": "1.Dominguez M, Rincón D, Abraldes JG, et al. A new scoring system for prognostic stratification of patients with alcoholic hepatitis. Am J Gastroenterol. 2008;103(11):2747-56.\nValidation\n2. Papastergiou V, Tsochatzis EA, Pieri G, et al. Nine scoring models for short-term mortality in alcoholic hepatitis: cross-validation in a biopsy-proven cohort. Aliment Pharmacol Ther. 2014;39(7):721-32.\n3. Garcia-saenz-de-sicilia M, Duvoor C, Altamirano J, et al. A Day-4 Lille Model Predicts Response to Corticosteroids and Mortality in Severe Alcoholic Hepatitis. Am J Gastroenterol. 2017;112(2):306-315.\n4. Lafferty H, Stanley AJ, Forrest EH. The management of alcoholic hepatitis: a prospective comparison of scoring systems. Aliment Pharmacol Ther. 2013;38(6):603-10."
+		}
+	},
+	"definition": {
+		"data_bindings": {
+			"gt0002": {
+				"id": "gt0002",
+				"model_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+				"template_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+				"type": "INPUT",
+				"elements": {
+					"gt0003": {
+						"id": "gt0003",
+						"path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
+					}
+				}
+			},
+			"gt0004": {
+				"id": "gt0004",
+				"model_id": "openEHR-EHR-OBSERVATION.lab_test-bilirubin.v1",
+				"template_id": "openEHR-EHR-OBSERVATION.lab_test-bilirubin.v1",
+				"type": "INPUT",
+				"elements": {
+					"gt0005": {
+						"id": "gt0005",
+						"path": "/data[at0001]/events[at0002]/data[at0003]/items[at0092]"
+					}
+				}
+			},
+			"gt0006": {
+				"id": "gt0006",
+				"model_id": "openEHR-EHR-OBSERVATION.lab_test_creatinine.v1",
+				"template_id": "openEHR-EHR-OBSERVATION.lab_test_creatinine.v1",
+				"type": "INPUT",
+				"elements": {
+					"gt0007": {
+						"id": "gt0007",
+						"path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
+					}
+				}
+			},
+			"gt0008": {
+				"id": "gt0008",
+				"model_id": "openEHR-EHR-OBSERVATION.lab_test-coagulation_profile.v1",
+				"template_id": "openEHR-EHR-OBSERVATION.lab_test-coagulation_profile.v1",
+				"type": "INPUT",
+				"elements": {
+					"gt0009": {
+						"id": "gt0009",
+						"path": "/data[at0001]/events[at0002]/data[at0003]/items[at0.94]"
+					}
+				}
+			},
+			"gt0012": {
+				"id": "gt0012",
+				"model_id": "openEHR-EHR-EVALUATION.abic_score_for_alcoholic_hepatitis.v0",
+				"template_id": "openEHR-EHR-EVALUATION.abic_score_for_alcoholic_hepatitis.v0",
+				"type": "OUTPUT",
+				"elements": {
+					"gt0013": {
+						"id": "gt0013",
+						"path": "/data[at0001]/items[at0002]"
+					},
+					"gt0014": {
+						"id": "gt0014",
+						"path": "/data[at0001]/items[at0003]"
+					},
+					"gt0015": {
+						"id": "gt0015",
+						"path": "/data[at0001]/items[at0004]"
+					},
+					"gt0016": {
+						"id": "gt0016",
+						"path": "/data[at0001]/items[at0005]"
+					}
+				}
+			}
+		},
+		"rules": {
+			"gt0017": {
+				"id": "gt0017",
+				"priority": 4,
+				"when": [
+					"$gt0003|Age|!=null",
+					"$gt0005|Serum Bilirubin|!=null",
+					"$gt0007|Creatinine|!=null",
+					"$gt0009|INR|!=null"
+				],
+				"then": [
+					"$gt0013|ABIC score|.magnitude=($gt0003.magnitude*0.1)+($gt0005.magnitude*0.08)+($gt0007.magnitude*0.3)+($gt0009.magnitude*0.8)",
+					"$gt0013|ABIC score|.precision=2"
+				]
+			},
+			"gt0018": {
+				"id": "gt0018",
+				"priority": 3,
+				"when": [
+					"$gt0013|ABIC score|.magnitude<6.71"
+				],
+				"then": [
+					"$gt0014|Risk group|='Low'",
+					"$gt0015|Survival at 90 days|='100%'",
+					"$gt0016|Survival at 1 year|='97.1%'"
+				]
+			},
+			"gt0019": {
+				"id": "gt0019",
+				"priority": 2,
+				"when": [
+					"$gt0013|ABIC score|.magnitude>=6.71",
+					"$gt0013|ABIC score|.magnitude<9"
+				],
+				"then": [
+					"$gt0014|Risk group|='Intermediate'",
+					"$gt0015|Survival at 90 days|='70%'",
+					"$gt0016|Survival at 1 year|='64.3%'"
+				]
+			},
+			"gt0020": {
+				"id": "gt0020",
+				"priority": 1,
+				"when": [
+					"$gt0013|ABIC score|.magnitude>=9"
+				],
+				"then": [
+					"$gt0014|Risk group|='High'",
+					"$gt0015|Survival at 90 days|='25%'",
+					"$gt0016|Survival at 1 year|='33.3%'"
+				]
+			}
+		}
+	},
+	"ontology": {
+		"term_definitions": {
+			"en": {
+				"id": "en",
+				"terms": {
+					"gt0001": {
+						"id": "gt0001",
+						"text": "ABIC Score for Alcoholic Hepatitis",
+						"description": "ABIC Score for Alcoholic Hepatitis predicts survival in alcoholic hepatitis."
+					},
+					"gt0003": {
+						"id": "gt0003",
+						"text": "Age",
+						"description": "Age in years, and for babies: months, weeks or days"
+					},
+					"gt0005": {
+						"id": "gt0005",
+						"text": "Serum Bilirubin",
+						"description": "The separate test for Direct Bilirubin (BR) (conjugated) is useful to estimate the measure for unconjugated BR by taking it away from Total BR"
+					},
+					"gt0007": {
+						"id": "gt0007",
+						"text": "Creatinine",
+						"description": "Creatinine value"
+					},
+					"gt0009": {
+						"id": "gt0009",
+						"text": "INR",
+						"description": "International Normalized Ratio."
+					},
+					"gt0013": {
+						"id": "gt0013",
+						"text": "ABIC score",
+						"description": "*"
+					},
+					"gt0014": {
+						"id": "gt0014",
+						"text": "Risk group",
+						"description": "*"
+					},
+					"gt0015": {
+						"id": "gt0015",
+						"text": "Survival at 90 days",
+						"description": "*"
+					},
+					"gt0016": {
+						"id": "gt0016",
+						"text": "Survival at 1 year",
+						"description": "*"
+					},
+					"gt0017": {
+						"id": "gt0017",
+						"text": "Set ABIC score"
+					},
+					"gt0018": {
+						"id": "gt0018",
+						"text": "Set Interpretation ABIC<6.71"
+					},
+					"gt0019": {
+						"id": "gt0019",
+						"text": "Set Interpretation ABIC>=6.71, <9"
+					},
+					"gt0020": {
+						"id": "gt0020",
+						"text": "Set Interpretation ABIC>=9"
+					}
+				}
+			}
+		}
+	}
 }
