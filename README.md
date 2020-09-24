@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 422*
+### *Published Apps: 423*
 
 ----------
 
 ### Latest added
 
-1. International Prognostic Index for Diffuse Large B-cell Lymphoma (IPI and R-IPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/International_Prognostic_Index_for_Diffuse_Large_B_cell_Lymphoma_guideline/1?language=en))
-2. Brescia-COVID Respiratory Severity Scale (BCRSS)/Algorithm - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Brescia_COVID_Respiratory_Severity_Scale_BCRSS_Algorithm_guideline/1?language=en))
-3. CEDOCS Score for Emergency Department Overcrowding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CEDOCS_Score_Emergency_Department_Overcrowding/1?language=en))
-4. POMPE-C Tool for Pulmonary Embolism Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/POMPE-C_Tool_Pulmonary_Embolism_Mortality/1?language=en))
-5. 5-year risk of cardiovascular disease for Type 1 Diabetes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ndr_type1_diabetes_cardiovascular_risk/1?language=en))
-6. 5-year risk of cardiovascular disease for Type 2 Diabetes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ndr_type2_diabetes_cardiovascular_risk/1?language=en))
-7. HOMA-IR (Homeostatic Model Assessment for Insulin Resistance) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HOMA-IR/1?language=en))
-8. RIETE Score for Risk of Hemorrhage in Pulmonary Embolism Treatment - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIETE_Score_Risk_Hemorrhage_Pulmonary_Embolism_Treatment/1?language=en))
-9. Berlin Criteria for Acute Respiratory Distress Syndrome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Berlin_Criteria_for_ARDS_guideline/1?language=en))
-10. Brief Resolved Unexplained Events (BRUE) Criteria for Infants - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Brief_Resolved_Unexplained_Events_BRUE_Criteria_for_Infants_guideline/1?language=en))
+1. Khorana Risk Score for Venous Thromboembolism in Cancer Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Khorana_Risk_Score_Venous_Thromboembolism_Cancer_Patients/0?language=en))
+2. International Prognostic Index for Diffuse Large B-cell Lymphoma (IPI and R-IPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/International_Prognostic_Index_for_Diffuse_Large_B_cell_Lymphoma_guideline/1?language=en))
+3. Brescia-COVID Respiratory Severity Scale (BCRSS)/Algorithm - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Brescia_COVID_Respiratory_Severity_Scale_BCRSS_Algorithm_guideline/1?language=en))
+4. CEDOCS Score for Emergency Department Overcrowding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CEDOCS_Score_Emergency_Department_Overcrowding/1?language=en))
+5. POMPE-C Tool for Pulmonary Embolism Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/POMPE-C_Tool_Pulmonary_Embolism_Mortality/1?language=en))
+6. 5-year risk of cardiovascular disease for Type 1 Diabetes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ndr_type1_diabetes_cardiovascular_risk/1?language=en))
+7. 5-year risk of cardiovascular disease for Type 2 Diabetes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ndr_type2_diabetes_cardiovascular_risk/1?language=en))
+8. HOMA-IR (Homeostatic Model Assessment for Insulin Resistance) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HOMA-IR/1?language=en))
+9. RIETE Score for Risk of Hemorrhage in Pulmonary Embolism Treatment - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIETE_Score_Risk_Hemorrhage_Pulmonary_Embolism_Treatment/1?language=en))
+10. Berlin Criteria for Acute Respiratory Distress Syndrome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Berlin_Criteria_for_ARDS_guideline/1?language=en))
 
 ----------
 
@@ -650,6 +650,8 @@ _Select a medical specialty below to view the available apps._
 * International Prognostic Index for Diffuse Large B-cell Lymphoma (IPI and R-IPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/International_Prognostic_Index_for_Diffuse_Large_B_cell_Lymphoma_guideline/1?language=en))
 
 * Karnofsky Performance Status Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Karnofsky_performance_status/1?language=en))
+
+* Khorana Risk Score for Venous Thromboembolism in Cancer Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Khorana_Risk_Score_Venous_Thromboembolism_Cancer_Patients/0?language=en))
 
 * Modified Glasgow Prognostic Score (mGPS) for Cancer Outcomes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Glasgow_Prognostic_Score/1?language=en))
 
