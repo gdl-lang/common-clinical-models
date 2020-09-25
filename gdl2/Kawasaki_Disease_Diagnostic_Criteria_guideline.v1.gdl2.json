@@ -16,7 +16,7 @@
     "details": {
       "en": {
         "id": "en",
-        "purpose": "To diagnose Kawasaki Disease.",
+        "purpose": "To aid clinicians to diagnose Kawasaki Disease.",
         "keywords": [
           "Kawasaki ",
           "vasculitis",
@@ -83,6 +83,10 @@
           "gt0013": {
             "id": "gt0013",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0029]"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0030]"
           }
         }
       }
@@ -93,23 +97,39 @@
     "rules": {
       "gt0015": {
         "id": "gt0015",
+        "priority": 3,
+        "when": [
+          "$gt0006|Polymorphous exanthem|!=null",
+          "$gt0008|Bilateral bulbar conjunctival injection without exudate|!=null",
+          "$gt0009|Changes in lips and oral cavity|!=null",
+          "$gt0010|Cervical lymphadenopathy|!=null",
+          "$gt0004|Acute change in extremities|!=null",
+          "$gt0005|Subacute change in extremities|!=null"
+        ],
+        "then": [
+          "$gt0018|Points|.magnitude=$gt0004.value+$gt0006.value+$gt0008.value+$gt0009.value+$gt0010.value"
+        ]
+      },
+      "gt0020": {
+        "id": "gt0020",
         "priority": 2,
         "when": [
           "$gt0006|Polymorphous exanthem|!=null",
           "$gt0008|Bilateral bulbar conjunctival injection without exudate|!=null",
           "$gt0009|Changes in lips and oral cavity|!=null",
           "$gt0010|Cervical lymphadenopathy|!=null",
-          "($gt0004|Acute change in extremities|!=null)||($gt0005|Subacute change in extremities|!=null)"
+          "$gt0005|Subacute change in extremities|!=null",
+          "$gt0004|Acute change in extremities|!=null"
         ],
         "then": [
-          "$gt0016|Y|=$gt0004.value/2+$gt0005.value/2+$gt0006.value+$gt0008.value+$gt0009.value+$gt0010.value"
+          "$gt0018|Points|.magnitude=$gt0005.value+$gt0006.value+$gt0008.value+$gt0009.value+$gt0010.value"
         ]
       },
       "gt0017": {
         "id": "gt0017",
         "priority": 1,
         "when": [
-          "(($gt0003|Fever for ≥5 days|==1|local::at0013|Yes|)&&($gt0016|Y|>=4))||(((($gt0003|Fever for ≥5 days|==1|local::at0013|Yes|)&&($gt0011|Coronary artery disease detected by 2D echo or coronary angiogram|==1|local::at0027|Yes|))&&($gt0016|Y|<4))||(($gt0003|Fever for ≥5 days|==0|local::at0012|No|)&&($gt0016|Y|>=4)))"
+          "(($gt0003|Fever (days)|>=4,d)&&($gt0018|Points|>=4))||((($gt0003|Fever (days)|>=5,d)&&($gt0018|Points|<4))&&($gt0011|Coronary artery disease detected by 2D echo or coronary angiogram|==local::at0031|Yes|))"
         ],
         "then": [
           "$gt0013|Diagnostic Result|='Positive for Kawasaki Disease'"
@@ -129,7 +149,7 @@
           },
           "gt0003": {
             "id": "gt0003",
-            "text": "Fever for ≥5 days",
+            "text": "Fever (days)",
             "description": "*"
           },
           "gt0004": {
@@ -174,7 +194,7 @@
           },
           "gt0015": {
             "id": "gt0015",
-            "text": "Set points for principle criteria"
+            "text": "Set points for principle criteria Acute change in extremities exist"
           },
           "gt0016": {
             "id": "gt0016",
@@ -183,7 +203,16 @@
           },
           "gt0017": {
             "id": "gt0017",
-            "text": "Set positive kawasaki"
+            "text": "Set positive result for Kawasaki Disease"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "Points",
+            "description": "*"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Set points for principle criteria Sub-acute change in extremities exist"
           }
         }
       }
