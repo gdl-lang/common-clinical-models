@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 423*
+### *Published Apps: 425*
 
 ----------
 
 ### Latest added
 
-1. Khorana Risk Score for Venous Thromboembolism in Cancer Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Khorana_Risk_Score_Venous_Thromboembolism_Cancer_Patients/0?language=en))
-2. International Prognostic Index for Diffuse Large B-cell Lymphoma (IPI and R-IPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/International_Prognostic_Index_for_Diffuse_Large_B_cell_Lymphoma_guideline/1?language=en))
-3. Brescia-COVID Respiratory Severity Scale (BCRSS)/Algorithm - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Brescia_COVID_Respiratory_Severity_Scale_BCRSS_Algorithm_guideline/1?language=en))
-4. CEDOCS Score for Emergency Department Overcrowding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CEDOCS_Score_Emergency_Department_Overcrowding/1?language=en))
-5. POMPE-C Tool for Pulmonary Embolism Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/POMPE-C_Tool_Pulmonary_Embolism_Mortality/1?language=en))
-6. 5-year risk of cardiovascular disease for Type 1 Diabetes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ndr_type1_diabetes_cardiovascular_risk/1?language=en))
-7. 5-year risk of cardiovascular disease for Type 2 Diabetes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ndr_type2_diabetes_cardiovascular_risk/1?language=en))
-8. HOMA-IR (Homeostatic Model Assessment for Insulin Resistance) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HOMA-IR/1?language=en))
-9. RIETE Score for Risk of Hemorrhage in Pulmonary Embolism Treatment - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIETE_Score_Risk_Hemorrhage_Pulmonary_Embolism_Treatment/1?language=en))
-10. Berlin Criteria for Acute Respiratory Distress Syndrome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Berlin_Criteria_for_ARDS_guideline/1?language=en))
+1. Immunization Schedule Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Immunization_Schedule_Calculator_guideline/1?language=en))
+2. Indian Takayasu Clinical Activity Score (ITAS2010) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Indian_Takayasu_Clinical_Activity_Score_ITAS2010_guideline/1?language=en))
+3. Khorana Risk Score for Venous Thromboembolism in Cancer Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Khorana_Risk_Score_Venous_Thromboembolism_Cancer_Patients/0?language=en))
+4. International Prognostic Index for Diffuse Large B-cell Lymphoma (IPI and R-IPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/International_Prognostic_Index_for_Diffuse_Large_B_cell_Lymphoma_guideline/1?language=en))
+5. Brescia-COVID Respiratory Severity Scale (BCRSS)/Algorithm - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Brescia_COVID_Respiratory_Severity_Scale_BCRSS_Algorithm_guideline/1?language=en))
+6. CEDOCS Score for Emergency Department Overcrowding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CEDOCS_Score_Emergency_Department_Overcrowding/1?language=en))
+7. POMPE-C Tool for Pulmonary Embolism Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/POMPE-C_Tool_Pulmonary_Embolism_Mortality/1?language=en))
+8. 5-year risk of cardiovascular disease for Type 1 Diabetes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ndr_type1_diabetes_cardiovascular_risk/1?language=en))
+9. 5-year risk of cardiovascular disease for Type 2 Diabetes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ndr_type2_diabetes_cardiovascular_risk/1?language=en))
+10. HOMA-IR (Homeostatic Model Assessment for Insulin Resistance) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HOMA-IR/1?language=en))
 
 ----------
 
@@ -179,6 +179,8 @@ _Select a medical specialty below to view the available apps._
 * HEMORR2HAGES Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Haemorr2hages/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Haemorr2hages/1?language=sv))
 
 * Hemorrhage After Thrombolysis (HAT) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hemorrhage_After_Thrombolysis/1?language=en))
+
+* Indian Takayasu Clinical Activity Score (ITAS2010) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Indian_Takayasu_Clinical_Activity_Score_ITAS2010_guideline/1?language=en))
 
 * Infective Endocarditis Mortality Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Infective_endocarditis_mortality_risk/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Infective_endocarditis_mortality_risk/1?language=sv))
 
@@ -797,6 +799,8 @@ _Select a medical specialty below to view the available apps._
 * FeverPAIN - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FeverPAIN_Strep/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FeverPAIN_Strep/1?language=sv))
 
 * Ideal Body Weight (IBW) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IBW/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/IBW/1?language=sv))
+
+* Immunization Schedule Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Immunization_Schedule_Calculator_guideline/1?language=en))
 
 * INTERCHEST - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/INTERCHEST/1?language=en))
 
