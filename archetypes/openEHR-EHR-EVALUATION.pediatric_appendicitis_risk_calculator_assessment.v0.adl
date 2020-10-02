@@ -1,0 +1,207 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.pediatric_appendicitis_risk_calculator_assessment.v0
+
+concept
+	[at0000]	-- Pediatric appendicitis risk calculator assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Rashmi Damodaran">
+		["email"] = <"rashmi.damodaran@cambio.se">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2020-10-01">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess and stratify pediatric patients with suspected appendicitis to risk group and provide clinical recommendations based on the calculated pARC Score.">
+			use = <"Use in children ≥5 years old presenting to the emergency department or outpatient setting with acute abdominal pain (duration <96 hours). It uses 8 variables to calculate the pARC score in two different settings of Pediatric ED and Community setting (outpatient setting). 
+
+Interpretations: 
+
+Pediatric ED setting
+
+pARC Score (ED)                         Risk Group                            Clinical Recommendation
+
+≤5%                                             Ultra low                             Outpatient follow up appropriate if PCP evaluation                                                                                                    available within 24 hrs; no diagnostic imaging required  
+6-15%                                           Low                                      Consider ED observation for 6 hrs for serial exams; if                                                                                                           improved, ensure outpatient follow-up in 24 hrs; no                                                                                                            imaging required     
+16-25%                                Low-moderate                       If patients symptoms <24 hrs, consider observation for 12                                                                                                  hrs; if not improved, obtain ultrasound and repeat CBC; if                                                                                                   pain ≥24 hrs of symptoms, obtain ultrasound to evaluate                                                                                                   for appendicitis            
+26-50%                                  Moderate                                 Ultrasound recommended as first line imaging; admit for                                                                                                observation if ultrasound equivocal        
+51-75%                                    Moderate   	                     Ultrasound recommended as first line imaging; CT if                                                                                                 ultrasound equivocal
+76-90%                                   Moderate-high                     Consult surgery; consider imaging based on surgery                                                                                                 recommendations
+>90%                                        High                                      Consult surgery; imaging not required
+
+Community setting
+
+pARC Score (Community)                 Risk Group
+
+<5%                                                      Very low
+5-14%                                                   Low
+15-84%                                                 Intermediate
+≥85%                                                    High
+">
+			keywords = <"pediatric", "appendicitis", "risk score", "abdominal pain">
+			misuse = <"Not recommended for children < 5 years old, as Appendicitis is relatively rare in children this age group, and is more likely to present with atypical features not captured by this calculator.">
+			copyright = <"@ CambioCDS">
+		>
+	>
+	lifecycle_state = <"Initial">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"F557BD24D4C0892D6E97BD1870A92B06">
+		["references"] = <"1. Kharbanda AB, Vazquez-Benitez G, Ballard DW, Vinson DR, Chettipally UK, Kene MV, et al. Development and Validation of a Novel Pediatric Appendicitis Risk Calculator (pARC). Pediatrics [Internet]. 2018 Apr;141(4). Available from: http://dx.doi.org/10.1542/peds.2017-2699
+
+2. Cotton DM, Vinson DR, Vazquez-Benitez G, Margaret Warton E, Reed ME, Chettipally UK, et al. Validation of the Pediatric Appendicitis Risk Calculator (pARC) in a Community Emergency Department Setting [Internet]. Vol. 74, Annals of Emergency Medicine. 2019. p. 471–80. Available from: http://dx.doi.org/10.1016/j.annemergmed.2019.04.023">
+		["licence"] = <"Cambio CDS">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Pediatric appendicitis risk calculator assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Pediatric ED Setting Risk Group
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0003, 	-- Ultra low Risk
+									at0004, 	-- Low Risk
+									at0005, 	-- Low-moderate Risk
+									at0006, 	-- Moderate Risk
+									at0007, 	-- Moderate-high Risk
+									at0008]	-- High Risk
+								}
+							}
+						}
+					}
+					ELEMENT[at0009] occurrences matches {0..1} matches {	-- Clinical Recommendations in Pediatric ED Setting 
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0010, 	-- Outpatient follow up appropriate if PCP evaluation available within 24 hrs, no diagnostic imaging required
+									at0011, 	-- Consider ED observation for 6 hrs for serial exams. If improved, ensure outpatient follow-up in 24 hrs, no imaging required.
+									at0012, 	-- If patients symptoms <24 hrs, consider observation for 12 hrs. If not improved, obtain ultrasound and repeat CBC. If pain ≥24 hrs of symptoms, obtain ultrasound to evaluate for appendicitis
+									at0013, 	-- Ultrasound recommended as first line imaging. Admit for observation if ultrasound equivocal
+									at0014, 	-- Ultrasound recommended as first line imaging, CT if ultrasound equivocal
+									at0015, 	-- Consult surgery. Consider imaging based on surgery recommendations
+									at0016]	-- Consult surgery, imaging not required
+								}
+							}
+						}
+					}
+					ELEMENT[at0017] occurrences matches {0..1} matches {	-- Community Setting Risk Group
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0018, 	-- Very Low Risk
+									at0019, 	-- Low Risk
+									at0020, 	-- Intermediate Risk
+									at0021]	-- High Risk
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Pediatric appendicitis risk calculator assessment">
+					description = <"Quantifies appendicitis risk in pediatric patients with abdominal pain.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Pediatric ED Setting Risk Group">
+					description = <"Patient in the Pediatric ED setting is stratified into different risk groups based on the pediatric appendicitis risk claculated using pARC.">
+				>
+				["at0003"] = <
+					text = <"Ultra low Risk">
+					description = <"pARC - ≤5%">
+				>
+				["at0004"] = <
+					text = <"Low Risk">
+					description = <"pARC - 6-15%">
+				>
+				["at0005"] = <
+					text = <"Low-moderate Risk">
+					description = <"pARC - 16-25%">
+				>
+				["at0006"] = <
+					text = <"Moderate Risk">
+					description = <"pARC - 26-75%">
+				>
+				["at0007"] = <
+					text = <"Moderate-high Risk">
+					description = <"pARC - 76-90%">
+				>
+				["at0008"] = <
+					text = <"High Risk">
+					description = <"pARC - >90%">
+				>
+				["at0009"] = <
+					text = <"Clinical Recommendations in Pediatric ED Setting ">
+					description = <"Clinical recommendations given in the Pediatric ED Setting based on the  pARC.">
+				>
+				["at0010"] = <
+					text = <"Outpatient follow up appropriate if PCP evaluation available within 24 hrs, no diagnostic imaging required">
+					description = <"pARC Score ≤5%">
+				>
+				["at0011"] = <
+					text = <"Consider ED observation for 6 hrs for serial exams. If improved, ensure outpatient follow-up in 24 hrs, no imaging required.">
+					description = <"pARC Score 6-15%">
+				>
+				["at0012"] = <
+					text = <"If patients symptoms <24 hrs, consider observation for 12 hrs. If not improved, obtain ultrasound and repeat CBC. If pain ≥24 hrs of symptoms, obtain ultrasound to evaluate for appendicitis">
+					description = <"pARC Score 16-25%">
+				>
+				["at0013"] = <
+					text = <"Ultrasound recommended as first line imaging. Admit for observation if ultrasound equivocal">
+					description = <"26-50%">
+				>
+				["at0014"] = <
+					text = <"Ultrasound recommended as first line imaging, CT if ultrasound equivocal">
+					description = <"pARC Score 51-75%">
+				>
+				["at0015"] = <
+					text = <"Consult surgery. Consider imaging based on surgery recommendations">
+					description = <"pARC Score 76-90%">
+				>
+				["at0016"] = <
+					text = <"Consult surgery, imaging not required">
+					description = <"pARC Score >90%">
+				>
+				["at0017"] = <
+					text = <"Community Setting Risk Group">
+					description = <"Patient in the community setting is stratified into different risk groups based on the pediatric appendicitis risk claculated using pARC.">
+				>
+				["at0018"] = <
+					text = <"Very Low Risk">
+					description = <"pARC Score <5%">
+				>
+				["at0019"] = <
+					text = <"Low Risk">
+					description = <"pARC Score 5-14%">
+				>
+				["at0020"] = <
+					text = <"Intermediate Risk">
+					description = <"pARC Score 15 - 84%">
+				>
+				["at0021"] = <
+					text = <"High Risk">
+					description = <"pARC Score ≥85%">
+				>
+			>
+		>
+	>
