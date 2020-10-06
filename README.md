@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 428*
+### *Published Apps: 429*
 
 ----------
 
 ### Latest added
 
-1. Kidney Failure Risk Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kidney_Failure_Risk_Calculator_guideline/1?language=en))
-2. Kawasaki Disease Diagnostic Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kawasaki_Disease_Diagnostic_Criteria_guideline/1?language=en))
-3. Ideal Body Weight and Adjusted Body Weight - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ideal_Body_Weight_Adjusted_Body_Weight/0?language=en))
-4. Immunization Schedule Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Immunization_Schedule_Calculator_guideline/1?language=en))
-5. Indian Takayasu Clinical Activity Score (ITAS2010) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Indian_Takayasu_Clinical_Activity_Score_ITAS2010_guideline/1?language=en))
-6. Khorana Risk Score for Venous Thromboembolism in Cancer Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Khorana_Risk_Score_Venous_Thromboembolism_Cancer_Patients/0?language=en))
-7. International Prognostic Index for Diffuse Large B-cell Lymphoma (IPI and R-IPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/International_Prognostic_Index_for_Diffuse_Large_B_cell_Lymphoma_guideline/1?language=en))
-8. Brescia-COVID Respiratory Severity Scale (BCRSS)/Algorithm - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Brescia_COVID_Respiratory_Severity_Scale_BCRSS_Algorithm_guideline/1?language=en))
-9. CEDOCS Score for Emergency Department Overcrowding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CEDOCS_Score_Emergency_Department_Overcrowding/1?language=en))
-10. POMPE-C Tool for Pulmonary Embolism Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/POMPE-C_Tool_Pulmonary_Embolism_Mortality/1?language=en))
+1. Gupta Postoperative Pneumonia Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gupta_postoperative_pneumonia_risk/1?language=en))
+2. Kidney Failure Risk Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kidney_Failure_Risk_Calculator_guideline/1?language=en))
+3. Kawasaki Disease Diagnostic Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kawasaki_Disease_Diagnostic_Criteria_guideline/1?language=en))
+4. Ideal Body Weight and Adjusted Body Weight - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ideal_Body_Weight_Adjusted_Body_Weight/0?language=en))
+5. Immunization Schedule Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Immunization_Schedule_Calculator_guideline/1?language=en))
+6. Indian Takayasu Clinical Activity Score (ITAS2010) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Indian_Takayasu_Clinical_Activity_Score_ITAS2010_guideline/1?language=en))
+7. Khorana Risk Score for Venous Thromboembolism in Cancer Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Khorana_Risk_Score_Venous_Thromboembolism_Cancer_Patients/0?language=en))
+8. International Prognostic Index for Diffuse Large B-cell Lymphoma (IPI and R-IPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/International_Prognostic_Index_for_Diffuse_Large_B_cell_Lymphoma_guideline/1?language=en))
+9. Brescia-COVID Respiratory Severity Scale (BCRSS)/Algorithm - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Brescia_COVID_Respiratory_Severity_Scale_BCRSS_Algorithm_guideline/1?language=en))
+10. CEDOCS Score for Emergency Department Overcrowding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CEDOCS_Score_Emergency_Department_Overcrowding/1?language=en))
 
 ----------
 
@@ -939,6 +939,8 @@ _Select a medical specialty below to view the available apps._
 * GAP Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gap_index_for_IPF_mortality/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gap_index_for_IPF_mortality/1?language=sv))
 
 * Global Initiative for Obstructive Lung Disease (GOLD) Criteria for COPD - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Global_Initiative_for_Obstructive_Lung_Disease_GOLD_Criteria_for_COPD_guideline/1?language=en))
+
+* Gupta Postoperative Pneumonia Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gupta_postoperative_pneumonia_risk/1?language=en))
 
 * Hestia Criteria for Outpatient Pulmonary Embolism Treatment - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hestia_Criteria_for_Outpatient_Pulmonary_Embolism_Treatment/1?language=en))
 
