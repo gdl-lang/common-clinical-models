@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 430*
+### *Published Apps: 431*
 
 ----------
 
 ### Latest added
 
-1. HScore for Reactive Hemophagocytic Syndrome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HScore/1?language=en))
-2. Gupta Postoperative Pneumonia Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gupta_postoperative_pneumonia_risk/1?language=en))
-3. Kidney Failure Risk Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kidney_Failure_Risk_Calculator_guideline/1?language=en))
-4. Kawasaki Disease Diagnostic Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kawasaki_Disease_Diagnostic_Criteria_guideline/1?language=en))
-5. Ideal Body Weight and Adjusted Body Weight - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ideal_Body_Weight_Adjusted_Body_Weight/0?language=en))
-6. Immunization Schedule Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Immunization_Schedule_Calculator_guideline/1?language=en))
-7. Indian Takayasu Clinical Activity Score (ITAS2010) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Indian_Takayasu_Clinical_Activity_Score_ITAS2010_guideline/1?language=en))
-8. Khorana Risk Score for Venous Thromboembolism in Cancer Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Khorana_Risk_Score_Venous_Thromboembolism_Cancer_Patients/0?language=en))
-9. International Prognostic Index for Diffuse Large B-cell Lymphoma (IPI and R-IPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/International_Prognostic_Index_for_Diffuse_Large_B_cell_Lymphoma_guideline/1?language=en))
-10. Brescia-COVID Respiratory Severity Scale (BCRSS)/Algorithm - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Brescia_COVID_Respiratory_Severity_Scale_BCRSS_Algorithm_guideline/1?language=en))
+1. International Working Group (IWG) 2 Criteria for Alzheimer's Disease Diagnosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IWG2_criteria/1?language=en))
+2. HScore for Reactive Hemophagocytic Syndrome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HScore/1?language=en))
+3. Gupta Postoperative Pneumonia Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gupta_postoperative_pneumonia_risk/1?language=en))
+4. Kidney Failure Risk Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kidney_Failure_Risk_Calculator_guideline/1?language=en))
+5. Kawasaki Disease Diagnostic Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kawasaki_Disease_Diagnostic_Criteria_guideline/1?language=en))
+6. Ideal Body Weight and Adjusted Body Weight - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ideal_Body_Weight_Adjusted_Body_Weight/0?language=en))
+7. Immunization Schedule Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Immunization_Schedule_Calculator_guideline/1?language=en))
+8. Indian Takayasu Clinical Activity Score (ITAS2010) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Indian_Takayasu_Clinical_Activity_Score_ITAS2010_guideline/1?language=en))
+9. Khorana Risk Score for Venous Thromboembolism in Cancer Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Khorana_Risk_Score_Venous_Thromboembolism_Cancer_Patients/0?language=en))
+10. International Prognostic Index for Diffuse Large B-cell Lymphoma (IPI and R-IPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/International_Prognostic_Index_for_Diffuse_Large_B_cell_Lymphoma_guideline/1?language=en))
 
 ----------
 
@@ -570,6 +570,8 @@ _Select a medical specialty below to view the available apps._
 * Functional Outcome in Patients With Primary Intracerebral Hemorrhage (FUNC) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FUNC_ICH_Score/1?language=en))
 
 * Hunt & Hess Classification of Subarachnoid Hemorrhage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hunt_and_Hess_Classification_SAH/1?language=en))
+
+* International Working Group (IWG) 2 Criteria for Alzheimer's Disease Diagnosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IWG2_criteria/1?language=en))
 
 * Intracerebral Haemorrhage Risk Tool (ICH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ICH/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ICH/1?language=sv))
 
