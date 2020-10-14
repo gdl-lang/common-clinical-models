@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 432*
+### *Published Apps: 433*
 
 ----------
 
 ### Latest added
 
-1. Pediatric Appendicitis Risk Calculator (pARC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Appendicitis_Risk_Calculator_pARC/1?language=en))
-2. International Working Group (IWG) 2 Criteria for Alzheimer's Disease Diagnosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IWG2_criteria/1?language=en))
-3. HScore for Reactive Hemophagocytic Syndrome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HScore/1?language=en))
-4. Gupta Postoperative Pneumonia Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gupta_postoperative_pneumonia_risk/1?language=en))
-5. Kidney Failure Risk Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kidney_Failure_Risk_Calculator_guideline/1?language=en))
-6. Kawasaki Disease Diagnostic Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kawasaki_Disease_Diagnostic_Criteria_guideline/1?language=en))
-7. Ideal Body Weight and Adjusted Body Weight - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ideal_Body_Weight_Adjusted_Body_Weight/0?language=en))
-8. Immunization Schedule Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Immunization_Schedule_Calculator_guideline/1?language=en))
-9. Indian Takayasu Clinical Activity Score (ITAS2010) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Indian_Takayasu_Clinical_Activity_Score_ITAS2010_guideline/1?language=en))
-10. Khorana Risk Score for Venous Thromboembolism in Cancer Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Khorana_Risk_Score_Venous_Thromboembolism_Cancer_Patients/0?language=en))
+1. Fibrosis-4 (FIB-4) Index for Liver Fibrosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fibrosis-4_FIB-4_Index_for_Liver_Fibrosis_guideline/1?language=en))
+2. Pediatric Appendicitis Risk Calculator (pARC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Appendicitis_Risk_Calculator_pARC/1?language=en))
+3. International Working Group (IWG) 2 Criteria for Alzheimer's Disease Diagnosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IWG2_criteria/1?language=en))
+4. HScore for Reactive Hemophagocytic Syndrome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HScore/1?language=en))
+5. Gupta Postoperative Pneumonia Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Gupta_postoperative_pneumonia_risk/1?language=en))
+6. Kidney Failure Risk Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kidney_Failure_Risk_Calculator_guideline/1?language=en))
+7. Kawasaki Disease Diagnostic Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kawasaki_Disease_Diagnostic_Criteria_guideline/1?language=en))
+8. Ideal Body Weight and Adjusted Body Weight - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ideal_Body_Weight_Adjusted_Body_Weight/0?language=en))
+9. Immunization Schedule Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Immunization_Schedule_Calculator_guideline/1?language=en))
+10. Indian Takayasu Clinical Activity Score (ITAS2010) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Indian_Takayasu_Clinical_Activity_Score_ITAS2010_guideline/1?language=en))
 
 ----------
 
@@ -372,6 +372,8 @@ _Select a medical specialty below to view the available apps._
 * Child Pugh Score for Cirrhosis Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Child_pugh_score_for_cirrhosis/1?language=en))
 
 * Crohn's Disease Activity Index (CDAI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Crohns_Disease_Activity_Index_CDAI/1?language=en)) 
+
+* Fibrosis-4 (FIB-4) Index for Liver Fibrosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fibrosis-4_FIB-4_Index_for_Liver_Fibrosis_guideline/1?language=en))
 
 * Forrest Classification of Upper GI Bleeding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/forrest_classification_upper_gi_bleeding/1?language=en))
 
