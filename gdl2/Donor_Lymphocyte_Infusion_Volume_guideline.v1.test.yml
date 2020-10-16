@@ -1,0 +1,97 @@
+guidelines:
+  1: Donor_Lymphocyte_Infusion_Volume_guideline.v1
+test_cases:
+- id: Processed blood 16.9
+  input:
+    1:
+      gt0004|Recipient weight: 85,kg
+      gt0006|CD3+ infusion dose: 50,10*6 cells/kg
+      gt0007|Number of infusions to recipient: 2,doses
+      gt0008|Collection efficiency: 50,%
+      gt0009|Donor WBC: 6.2,10*9cells/L
+      gt0010|Donor total lymphocytes: 30,%
+      gt0011|Donor CD3+ lymphocytes: 54,%
+  expected_output:
+    1:
+      gt0014|Total CD3+ cells needed: 8500,1
+      gt0013|Absolute CD3+ lymphocyte count: 1004,cells/mL
+      gt0015|Total blood volume needed: 16.93,L
+- id: Processed blood 14.49
+  input:
+    1:
+      gt0004|Recipient weight: 160,lb
+      gt0006|CD3+ infusion dose: 50,10*6 cells/kg
+      gt0007|Number of infusions to recipient: 2,doses
+      gt0008|Collection efficiency: 50,%
+      gt0009|Donor WBC: 6.2,10*9cells/L
+      gt0010|Donor total lymphocytes: 30,%
+      gt0011|Donor CD3+ lymphocytes: 54,%
+  expected_output:
+    1:
+      gt0014|Total CD3+ cells needed: 7273,1
+      gt0013|Absolute CD3+ lymphocyte count: 1004,cells/mL
+      gt0015|Total blood volume needed: 14.49,L
+- id: Processed blood 14.49 (W lb and WBC 10^3 cells/MicroL)
+  input:
+    1:
+      gt0004|Recipient weight: 160,lb
+      gt0006|CD3+ infusion dose: 50,10*6 cells/kg
+      gt0007|Number of infusions to recipient: 2,doses
+      gt0008|Collection efficiency: 50,%
+      gt0009|Donor WBC: 6.2,10*3 cells/μL
+      gt0010|Donor total lymphocytes: 30,%
+      gt0011|Donor CD3+ lymphocytes: 54,%
+  expected_output:
+    1:
+      gt0014|Total CD3+ cells needed: 7273,1
+      gt0013|Absolute CD3+ lymphocyte count: 1004,cells/mL
+      gt0015|Total blood volume needed: 14.49,L
+- id: Warnings
+  input:
+    1:
+      gt0004|Recipient weight: 50,kg
+      gt0006|CD3+ infusion dose: 101,10*6 cells/kg
+      gt0007|Number of infusions to recipient: 11,doses
+      gt0008|Collection efficiency: 101,%
+      gt0009|Donor WBC: 501,10*3 cells/μL
+      gt0010|Donor total lymphocytes: 101,%
+      gt0011|Donor CD3+ lymphocytes: 101,%
+  expected_output:
+    1:
+      gt0014|Total CD3+ cells needed: 55550,1
+      gt0028|Warning collection efficiency: Too high please change to proceed.
+      gt0030|Warning donor total lymphocytes: Too high please change to proceed.
+      gt0027|Warning number of infusion: Too high please change to proceed.
+      gt0013|Absolute CD3+ lymphocyte count: 511070,cells/mL
+      gt0031|Warning donor CD3+ lymphocytes: Too high please change to proceed.
+- id: Warning very high for Donor WBC
+  input:
+    1:
+      gt0004|Recipient weight: 50,kg
+      gt0006|CD3+ infusion dose: 10,10*6 cells/kg
+      gt0007|Number of infusions to recipient: 9,doses
+      gt0008|Collection efficiency: 100,%
+      gt0009|Donor WBC: 500,10*9cells/L
+      gt0010|Donor total lymphocytes: 100,%
+      gt0011|Donor CD3+ lymphocytes: 100,%
+  expected_output:
+    1:
+      gt0014|Total CD3+ cells needed: 4500,1
+      gt0029|Warning donor WBC: Very high double-check.
+      gt0013|Absolute CD3+ lymphocyte count: 500000,cells/mL
+      gt0015|Total blood volume needed: 0.01,L
+- id: Warning donor WBC Too high
+  input:
+    1:
+      gt0004|Recipient weight: 50,kg
+      gt0006|CD3+ infusion dose: 10,10*6 cells/kg
+      gt0007|Number of infusions to recipient: 9,doses
+      gt0008|Collection efficiency: 100,%
+      gt0009|Donor WBC: 501,10*9cells/L
+      gt0010|Donor total lymphocytes: 100,%
+      gt0011|Donor CD3+ lymphocytes: 100,%
+  expected_output:
+    1:
+      gt0014|Total CD3+ cells needed: 4500,1
+      gt0029|Warning donor WBC: Too high please change to proceed.
+      gt0013|Absolute CD3+ lymphocyte count: 501000,cells/mL
