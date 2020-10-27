@@ -15,9 +15,34 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record information relevant to the SLICC Criteria assessment.">
-			use = <"">
-			keywords = <"Lupus Erythematosus (SLE)", ...>
+			purpose = <"To record information relevant to the SLICC Criteria assessment and its results. ">
+			use = <"Use to  record the value for each component for the SLICC Criteria and its results. 
+SLE diagnosis is positive if patient has:
+Biopsy-proven nephritis compatible with SLE and ANA or anti-dsDNA antibodies
+Or:
+≥4 of the criteria below at any time including at least one clinical criterion and one immunological criterion.
+Clinical criteria (≥1 must be present):
+- Acute cutaneous lupus: Lupus malar rash (not malar discoid), Bullous lupus, Toxic epidermal necrolysis variant of SLE, Maculopapular lupus rash, Photosensitive lupus rash (not dermatomyositis), Subacute cutaneous lupus (nonindurated psoriasiform and/or annular polycyclic lesions that resolve without scarring, although occasionally with postinflammatory dyspigmentation or telangiectasias)
+- Chronic cutaneous lupus: Localized (above the neck) and/or generalized (above and below the neck) classical discoid rash, Hypertrophic (verrucous) lupus, Lupus panniculitis (profundus), Mucosal lupus, Lupus erythematosus tumidus, Chilblains lupus
+, Discoid lupus/lichen planus overlap
+- Oral ulcers (in absence of other causes): Palate, buccal, tongue, or nasal ulcers; in absence of other causes
+- Nonscarring alopecia (in absence of other causes)
+- Synovitis involving ≥2 joints, characterized by swelling or effusion OR tenderness in ≥2 joints and 30 mins or more of morning stiffness
+- Serositis: Typical pleurisy for >1 day, pleural effusions, or pleural rub, typical pericardial pain for >1 day, pericardial effusion, pericardial rub, or pericarditis by EKG (in absence of other causes)
+- Renal: Urine protein/creatinine (or 24 hr urine protein) representing 500 mg of protein/24 hr, RBC casts
+- Neurologic: Seizures, psychosis, mononeuritis multiplex (in absence of other causes), myelitis, peripheral or cranial neuropathy (in absence of other causes), acute confusional state (in absence of other causes)
+- Hemolytic anemia in absence of other causes
+- Leukopenia or lymphopenia: <4,000/mm³ at least once (leukopenia) or <1,000/mm³ at least once (lymphopenia); in absence of other causes
+- Thrombocytopenia: <100,000/mm³ at least once; in absence of other causes
+
+Immunological criteria: 
+- ANA above laboratory reference range
+- Anti-dsDNA above laboratory reference range, except ELISA (2x above laboratory reference range)
+- Anti-Sm
+- Antiphospholipid antibody: Lupus anticoagulant, false positive RPR, medium or high titer anticardiolipin (IgA, IgG, or IgM), anti-β₂ glycoprotein (IgA, IgG, or IgM)
+- Low complement: Low C3, low C4, low CH50
+- Positive direct Coombs test: In the absence of hemolytic anemia">
+			keywords = <"Lupus Erythematosus (SLE)", "Lupus nephritis">
 			misuse = <"">
 			copyright = <"@CambioCDS">
 		>
@@ -27,7 +52,7 @@ description
 	other_details = <
 		["references"] = <"1. Petri M, Orbai A-M, Alarcón GS, et al. Derivation and Validation of Systemic Lupus International Collaborating Clinics Classification Criteria for Systemic Lupus Erythematosus. Arthritis and rheumatism. 2012;64(8):2677-2686.
 2. Inês L, Silva C, Galindo M, et al. Classification of Systemic Lupus Erythematosus: Systemic Lupus International Collaborating Clinics Versus American College of Rheumatology Criteria. A Comparative Study of 2,055 Patients From a Real-Life, International Systemic Lupus Erythematosus Cohort. Arthritis Care Res (Hoboken). 2015;67(8):1180-5.">
-		["MD5-CAM-1.0.1"] = <"A8FE70DA87A134E2C5BCC0BB6B6235CB">
+		["MD5-CAM-1.0.1"] = <"909CB0A41EFA688E61838C822A2CB0FC">
 	>
 
 definition
@@ -123,6 +148,11 @@ definition
 													1|[local::at0044]  	-- Yes
 												}
 											}
+											ELEMENT[at0065] occurrences matches {0..1} matches {	-- Clinical score
+												value matches {
+													DV_COUNT matches {*}
+												}
+											}
 										}
 									}
 									CLUSTER[at0045] occurrences matches {0..1} matches {	-- Immunological criteria
@@ -163,6 +193,21 @@ definition
 													1|[local::at0063]  	-- Yes
 												}
 											}
+											ELEMENT[at0064] occurrences matches {0..1} matches {	-- Immunological score
+												value matches {
+													DV_COUNT matches {*}
+												}
+											}
+										}
+									}
+									ELEMENT[at0066] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0067] occurrences matches {0..1} matches {	-- Diagnostic Result
+										value matches {
+											DV_TEXT matches {*}
 										}
 									}
 								}
@@ -432,6 +477,22 @@ ontology
 				>
 				["at0063"] = <
 					text = <"Yes">
+					description = <"*">
+				>
+				["at0064"] = <
+					text = <"Immunological score">
+					description = <"*">
+				>
+				["at0065"] = <
+					text = <"Clinical score">
+					description = <"*">
+				>
+				["at0066"] = <
+					text = <"Total score">
+					description = <"*">
+				>
+				["at0067"] = <
+					text = <"Diagnostic Result">
 					description = <"*">
 				>
 			>
