@@ -1,0 +1,222 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.nutric_score.v0
+
+concept
+	[at0000]	-- Nutric score
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"1FD114ECB8F6B38D1B8876667353FBA9">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Nutric score
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Age, years
+										value matches {
+											0|[local::at0005], 	-- <50
+											1|[local::at0006], 	-- 50–74
+											2|[local::at0007]  	-- ≥75
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- APACHE II
+										value matches {
+											0|[local::at0009], 	-- <15
+											1|[local::at0010], 	-- 15-19
+											2|[local::at0011], 	-- 20-27
+											3|[local::at0012]  	-- ≥28
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- SOFA Score
+										value matches {
+											0|[local::at0014], 	-- <6
+											1|[local::at0015], 	-- 6-9
+											2|[local::at0016]  	-- ≥10
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Number of comorbidities
+										value matches {
+											0|[local::at0018], 	-- 0-1
+											1|[local::at0019]  	-- ≥2
+										}
+									}
+									ELEMENT[at0020] occurrences matches {0..1} matches {	-- Days in hospital to ICU admit
+										value matches {
+											0|[local::at0021], 	-- 0
+											1|[local::at0022]  	-- ≥1
+										}
+									}
+									ELEMENT[at0023] occurrences matches {0..1} matches {	-- IL-6 (µ/mL)
+										value matches {
+											0|[local::at0024], 	-- 0–399
+											1|[local::at0025]  	-- ≥400
+										}
+									}
+									ELEMENT[at0026] occurrences matches {0..1} matches {	-- NUTRIC Score
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+									ELEMENT[at0027] occurrences matches {0..1} matches {	-- Risk
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+									ELEMENT[at0028] occurrences matches {0..1} matches {	-- 28-day mortality
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Nutric score">
+					description = <"Nutrition Risk in the Critically Ill (NUTRIC) Score">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Age, years">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"<50">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"50–74">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"≥75">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"APACHE II">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"<15">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"15-19">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"20-27">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"≥28">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"SOFA Score">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"<6">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"6-9">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"≥10">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Number of comorbidities">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"0-1">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"≥2">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Days in hospital to ICU admit">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"0">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"≥1">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"IL-6 (µ/mL)">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"0–399">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"≥400">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"NUTRIC Score">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Risk">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"28-day mortality">
+					description = <"*">
+				>
+			>
+		>
+	>
