@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 447*
+### *Published Apps: 450*
 
 ----------
 
 ### Latest added
 
-1. FRESH (Frail elderly support research group) screening for fragility  - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Frail_elderly_support_research_group_FRESH/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Frail_elderly_support_research_group_FRESH/1?language=sv))
-2. Tilburg frailty indicator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tilburg_frailty_indicator/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tilburg_frailty_indicator/1?language=sv))
-3. LENT Prognostic Score for Malignant Pleural Effusion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LENT_prognostic_score/1?language=en))
-4. Elixhauser Comorbidity Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Elixhauser-Comorbidity-Index-guideline/1?language=en))
-5. Acetaminophen Overdose and NAC Dosing - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Acetaminophen_Overdose_and_NAC_Dosing/1?language=en))
-6. Donor Lymphocyte Infusion (DLI) Volume - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Donor_Lymphocyte_Infusion_Volume_guideline/1?language=en))
-7. BWH Egg Freezing Counseling Tool (EFCT) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BWH_Egg_Freezing_Counseling_Tool_EFCT_guideline/1?language=en))
-8. SEDAN Score for Post-tPA Hemorrhage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SEDAN_Score_for_Post-tPA_Hemorrhage_guideline/1?language=en))
-9. STONE Score for Uncomplicated Ureteral Stone - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stone_score_for_uncomplicated_ureteral_stone_guideline/1?language=en))
-10. STONE Nephrolithometry Score for Renal Calculi - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/STONE_Nephrolithometry_Score_for_Renal_Calculi_guideline/1?language=en))
+1. RAPID Score for Acetabular Chondrolabral Disruption - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAPID_Score_for_Acetabular_Chondrolabral_Disruption_guideline/0?language=en))
+2. IV Drip Rate Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IV_drip_rate_calculator/1?language=en))
+3. PLASMIC Score for TTP - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PLASMIC_Score_for_TTP/1?language=en))
+4. FRESH (Frail elderly support research group) screening for fragility - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Frail_elderly_support_research_group_FRESH/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Frail_elderly_support_research_group_FRESH/1?language=sv))
+5. Tilburg frailty indicator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tilburg_frailty_indicator/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tilburg_frailty_indicator/1?language=sv))
+6. LENT Prognostic Score for Malignant Pleural Effusion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LENT_prognostic_score/1?language=en))
+7. Elixhauser Comorbidity Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Elixhauser-Comorbidity-Index-guideline/1?language=en))
+8. Acetaminophen Overdose and NAC Dosing - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Acetaminophen_Overdose_and_NAC_Dosing/1?language=en))
+9. Donor Lymphocyte Infusion (DLI) Volume - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Donor_Lymphocyte_Infusion_Volume_guideline/1?language=en))
+10. BWH Egg Freezing Counseling Tool (EFCT) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BWH_Egg_Freezing_Counseling_Tool_EFCT_guideline/1?language=en))
 
 ----------
 
@@ -464,6 +464,8 @@ _Select a medical specialty below to view the available apps._
 
 * Intrauterine RBC Transfusion Dosage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Intrauterine_RBC_Transfusion_Dosage_guideline/1?language=en))
 
+* PLASMIC Score for TTP - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PLASMIC_Score_for_TTP/1?language=en))
+
 ----------
 
 ### Intensive Care
@@ -490,6 +492,8 @@ _Select a medical specialty below to view the available apps._
 * Geneva Risk Score for Venous Thromboembolism (VTE) Prophylaxis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Geneva_risk_score_venous_thromboembolism_prohylaxis/1?language=en))
 
 * Infusion Factors - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Infusion_factors/1?language=en))
+
+* 1. IV Drip Rate Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IV_drip_rate_calculator/1?language=en))
 
 * Modified Early Warning Score (MEWS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MEWS.v1/1.1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MEWS.v1/1.1?language=sv))
 
