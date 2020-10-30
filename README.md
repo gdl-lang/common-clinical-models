@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 453*
+### *Published Apps: 454*
 
 ----------
 
 ### Latest added
 
-1. Fatty Liver Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fatty_Liver_Index/1?language=en))
-2. SLICC Criteria for Systemic Lupus Erythematosus (SLE) 2012 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SLICC_Criteria_for_Systemic_Lupus_Erythematosus_2012_guideline/1?language=en))
-3. NAFLD (Non-Alcoholic Fatty Liver Disease) Activity Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NAFLD_activity_score/1?language=en))
-4. RAPID Score for Acetabular Chondrolabral Disruption - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAPID_Score_for_Acetabular_Chondrolabral_Disruption_guideline/0?language=en))
-5. IV Drip Rate Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IV_drip_rate_calculator/1?language=en))
-6. PLASMIC Score for TTP - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PLASMIC_Score_for_TTP/1?language=en))
-7. FRESH (Frail elderly support research group) screening for fragility - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Frail_elderly_support_research_group_FRESH/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Frail_elderly_support_research_group_FRESH/1?language=sv))
-8. Tilburg frailty indicator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tilburg_frailty_indicator/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tilburg_frailty_indicator/1?language=sv))
-9. LENT Prognostic Score for Malignant Pleural Effusion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LENT_prognostic_score/1?language=en))
-10. Elixhauser Comorbidity Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Elixhauser-Comorbidity-Index-guideline/1?language=en))
+1. Naloxone Drip Dosing - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Naloxone_Drip_Dosing_guideline/1?language=en))
+2. Fatty Liver Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fatty_Liver_Index/1?language=en))
+3. SLICC Criteria for Systemic Lupus Erythematosus (SLE) 2012 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SLICC_Criteria_for_Systemic_Lupus_Erythematosus_2012_guideline/1?language=en))
+4. NAFLD (Non-Alcoholic Fatty Liver Disease) Activity Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NAFLD_activity_score/1?language=en))
+5. RAPID Score for Acetabular Chondrolabral Disruption - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAPID_Score_for_Acetabular_Chondrolabral_Disruption_guideline/0?language=en))
+6. IV Drip Rate Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IV_drip_rate_calculator/1?language=en))
+7. PLASMIC Score for TTP - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PLASMIC_Score_for_TTP/1?language=en))
+8. FRESH (Frail elderly support research group) screening for fragility - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Frail_elderly_support_research_group_FRESH/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Frail_elderly_support_research_group_FRESH/1?language=sv))
+9. Tilburg frailty indicator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tilburg_frailty_indicator/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tilburg_frailty_indicator/1?language=sv))
+10. LENT Prognostic Score for Malignant Pleural Effusion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LENT_prognostic_score/1?language=en))
 
 ----------
 
@@ -808,6 +808,8 @@ _Select a medical specialty below to view the available apps._
 * HERDOO2 Rule for Discontinuing Anticoagulation in Unprovoked VTE - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HERDOO2_Rule_for_Discontinuing_Anticoagulation_in_Unprovoked_VTE/1?language=en))
 
 * Hydroxychloroquine (Plaquenil) Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hydroxychloroquine_Plaquenil_Dosing_Calculator/1?language=en))
+
+* Naloxone Drip Dosing - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Naloxone_Drip_Dosing_guideline/1?language=en))
 
 * Vitamin-D Doses Range Recommendation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Vitamin_D_Doses_Range_Recommendation/0?language=en))
 ----------
