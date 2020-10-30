@@ -78,7 +78,7 @@
     "rules": {
       "gt0010": {
         "id": "gt0010",
-        "priority": 4,
+        "priority": 3,
         "when": [
           "$gt0003|Bolus dose (Total dose required in the first hour)|>10,mg",
           "$gt0003|Bolus dose (Total dose required in the first hour)|<=20,mg"
@@ -89,7 +89,7 @@
       },
       "gt0011": {
         "id": "gt0011",
-        "priority": 3,
+        "priority": 2,
         "when": [
           "$gt0003|Bolus dose (Total dose required in the first hour)|>20,mg"
         ],
@@ -99,7 +99,7 @@
       },
       "gt0012": {
         "id": "gt0012",
-        "priority": 2,
+        "priority": 1,
         "when": [
           "$gt0003|Bolus dose (Total dose required in the first hour)|!=null",
           "!fired($gt0011)"
@@ -107,17 +107,8 @@
         "then": [
           "$gt0007|Continuous IV infusion starting rate|.magnitude=2/3*$gt0003.magnitude",
           "$gt0007|Continuous IV infusion starting rate|.precision=1",
-          "$gt0007|Continuous IV infusion starting rate|.unit='mg/h'"
-        ]
-      },
-      "gt0013": {
-        "id": "gt0013",
-        "priority": 1,
-        "when": [
-          "$gt0007|Continuous IV infusion starting rate|!=null"
-        ],
-        "then": [
-          "$gt0008|Bolus dose after 15 min|.magnitude=1/2*$gt0003.magnitude",
+          "$gt0007|Continuous IV infusion starting rate|.unit='mg/h'",
+          "$gt0008|Bolus dose after 15 min|.magnitude=0.5*$gt0003.magnitude",
           "$gt0008|Bolus dose after 15 min|.unit='mg'",
           "$gt0008|Bolus dose after 15 min|.precision=1",
           "$gt0009|Note|='May give ½ bolus dose 15 mins after starting drip'"
@@ -176,10 +167,6 @@
           "gt0012": {
             "id": "gt0012",
             "text": "Set Continuous IV infusion starting rate"
-          },
-          "gt0013": {
-            "id": "gt0013",
-            "text": "Set second bolus dose after 15 min"
           }
         }
       }
