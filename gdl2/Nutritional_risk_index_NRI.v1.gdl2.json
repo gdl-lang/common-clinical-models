@@ -90,18 +90,29 @@
       }
     },
     "default_actions": [
-      "$gt0017|Weight conversion factor|=1",
-      "$gt0019|Serum Albumin conversion factor|=1"
+      "$gt0019|Serum Albumin conversion factor|=1",
+      "$gt0021|Usual weight conversion factor|=1",
+      "$gt0022|Present weight conversion factor|=1"
     ],
     "rules": {
+      "gt0023": {
+        "id": "gt0023",
+        "priority": 8,
+        "when": [
+          "$gt0005|Present Weight|.unit=='lb'"
+        ],
+        "then": [
+          "$gt0022|Present weight conversion factor|=0.45359237"
+        ]
+      },
       "gt0018": {
         "id": "gt0018",
         "priority": 7,
         "when": [
-          "($gt0003|Usual weight. Defined as stable body weight for last 6 months.|.unit=='lb')||($gt0005|Present Weight|.unit=='lb')"
+          "$gt0003|Usual weight. Defined as stable body weight for last 6 months.|.unit=='lb'"
         ],
         "then": [
-          "$gt0017|Weight conversion factor|=0.45359237"
+          "$gt0021|Usual weight conversion factor|=0.45359237"
         ]
       },
       "gt0020": {
@@ -123,7 +134,7 @@
           "$gt0012|Serum Albumin|!=null"
         ],
         "then": [
-          "$gt0007|NRI Score|.magnitude=(1.519*$gt0019*$gt0012.magnitude)+(($gt0005.magnitude*$gt0017)/($gt0003.magnitude*$gt0017))*41.7",
+          "$gt0007|NRI Score|.magnitude=(1.519*$gt0019*$gt0012.magnitude)+(($gt0005.magnitude*$gt0022)/($gt0003.magnitude*$gt0021))*41.7",
           "$gt0007|NRI Score|.unit='1'",
           "$gt0007|NRI Score|.precision=1"
         ]
@@ -239,7 +250,7 @@
           },
           "gt0018": {
             "id": "gt0018",
-            "text": "Set conversion factor [lbs] to [kg]"
+            "text": "Set Usual weight conversion factor [lbs] to [kg]"
           },
           "gt0019": {
             "id": "gt0019",
@@ -248,7 +259,21 @@
           },
           "gt0020": {
             "id": "gt0020",
-            "text": "Set conversion factor [g/dl] to [g/l]"
+            "text": "Set Serum Albumin conversion factor [g/dl] to [g/l]"
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "Usual weight conversion factor",
+            "description": ""
+          },
+          "gt0022": {
+            "id": "gt0022",
+            "text": "Present weight conversion factor",
+            "description": ""
+          },
+          "gt0023": {
+            "id": "gt0023",
+            "text": "Set Present weight conversion factor [lbs] to [kg]"
           }
         }
       }
