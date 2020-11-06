@@ -134,7 +134,7 @@
         "id": "gt0017",
         "priority": 10,
         "when": [
-          "$gt0005|Desired plasma dosage|<10,kg/ml"
+          "$gt0005|Desired plasma dosage|<10,ml/kg"
         ],
         "then": [
           "$gt0011|Warning to plasma dose|='Too Low please change to proceed.'"
@@ -144,7 +144,7 @@
         "id": "gt0018",
         "priority": 9,
         "when": [
-          "$gt0005|Desired plasma dosage|>20,kg/ml"
+          "$gt0005|Desired plasma dosage|>20,ml/kg"
         ],
         "then": [
           "$gt0011|Warning to plasma dose|='Too High please change to proceed.'"
@@ -154,8 +154,8 @@
         "id": "gt0013",
         "priority": 8,
         "when": [
-          "$gt0003|Weight|!=null",
-          "$gt0003|Weight|.unit=='kg'",
+          "$gt0003|Weight (kg)|!=null",
+          "$gt0003|Weight (kg)|.unit=='kg'",
           "$gt0005|Desired plasma dosage|!=null",
           "!fired($gt0014)",
           "!fired($gt0016)",
@@ -163,7 +163,8 @@
           "!fired($gt0018)"
         ],
         "then": [
-          "$gt0008|Total plasma dosage|.magnitude=$gt0003.magnitude*$gt0005.magnitude"
+          "$gt0008|Total plasma dose for transfusion|.magnitude=$gt0003.magnitude*$gt0005.magnitude",
+          "$gt0008|Total plasma dose for transfusion|.unit='ml'"
         ]
       },
       "gt0022": {
@@ -196,7 +197,8 @@
           "!fired($gt0022)"
         ],
         "then": [
-          "$gt0009|FFP units for transfusion|.magnitude=$gt0008.magnitude/$gt0006.magnitude"
+          "$gt0009|FFP units for transfusion|.magnitude=$gt0008.magnitude/$gt0006.magnitude",
+          "$gt0009|FFP units for transfusion|.unit='units'"
         ]
       },
       "gt0025": {
