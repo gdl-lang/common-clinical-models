@@ -1,0 +1,138 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.pediatric_endotracheal_tube_size.v0
+
+concept
+	[at0000]	-- Pediatric endotracheal tube size
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Maryam Razavi">
+		["email"] = <"maryam.razavi@cambio.se">
+		["organisation"] = <"CambioCDS">
+		["date"] = <"2020-11-09">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"">
+			use = <"">
+			keywords = <"Endotracheal Tube", "Size", "Tube", "ET tube size">
+			misuse = <"">
+			copyright = <"CambioCDS">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"1. Singh NC et al, Physiological responses to endotracheal and oral suctioning in paediatric patients: the influence of endotracheal tube sizes and suction pressures. Clin Intensive Care. 1991; 2: 345-350.
+2. A Synopsis of Anaesthesia by R.S.Atkinson, G.B.Bushman and J.Alfred Lee, Publishers John Wright. 1993.">
+		["MD5-CAM-1.0.1"] = <"DB5814286FDD2279CA3F2D4BA52BDC35">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Pediatric endotracheal tube size
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Is this a COVID-19 patient?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0005, 	-- Confirmed positive
+													at0006, 	-- Suspected
+													at0007, 	-- Unlikely
+													at0008]	-- Confirmed negative
+												}
+											}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Predicted Size Uncuffed Tube
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::122]>
+												list = <
+													["1"] = <
+														units = <"mm">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Predicted Size Cuffed Tube
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::122]>
+												list = <
+													["1"] = <
+														units = <"mm">
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Pediatric endotracheal tube size">
+					description = <"unknownPediatric Endotracheal Tube (ETT) Size estimates ET tube size based on age.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Is this a COVID-19 patient?">
+					description = <"For research purposes only; answer does NOT impact results.">
+				>
+				["at0005"] = <
+					text = <"Confirmed positive">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Suspected">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Unlikely">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Confirmed negative">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Predicted Size Uncuffed Tube">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Predicted Size Cuffed Tube">
+					description = <"*">
+				>
+			>
+		>
+	>
