@@ -7,15 +7,28 @@
   },
   "description": {
     "original_author": {
-      "date": "2020-11-09"
+      "date": "2020-11-09",
+      "name": "Maryam Razavi",
+      "organisation": "CambioCDS",
+      "email": "maryam.razavi@cambio.se"
     },
-    "lifecycle_state": "Not set",
+    "lifecycle_state": "Author draft",
     "details": {
       "en": {
-        "id": "en"
+        "id": "en",
+        "purpose": "To estimate ET tube size based on age.",
+        "keywords": [
+          "Endotracheal Tube (ETT) ",
+          "Pediatric"
+        ],
+        "use": "Use in pediatric patients who require intubation from 1 year old to 12 years old. \n\nVariables: \nAge: This formula typically is applicable to children ages 1-12.\n\nPediatric Endotracheal Tube (ETT) Size formula: \nPredicted Size Uncuffed Tube = (Age / 4) + 4\n\nPredicted Size Cuffed Tube = (Age / 4) + 3\n",
+        "misuse": "Not to use in patients under 1 year old or 12 years old. ",
+        "copyright": "CambioCDS"
       }
     },
-    "other_details": {}
+    "other_details": {
+      "references": "1. Singh NC et al, Physiological responses to endotracheal and oral suctioning in paediatric patients: the influence of endotracheal tube sizes and suction pressures. Clin Intensive Care. 1991; 2: 345-350.\n2. A Synopsis of Anaesthesia by R.S.Atkinson, G.B.Bushman and J.Alfred Lee, Publishers John Wright. 1993.\n3. Ecc Committee. (2005). 2005 American Heart Association guidelines for cardiopulmonary resuscitation and emergency cardiovascular care. Circulation, 112(24 Suppl), IV1."
+    }
   },
   "definition": {
     "data_bindings": {
@@ -44,6 +57,10 @@
           "gt0008": {
             "id": "gt0008",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0011]"
           }
         }
       },
@@ -61,30 +78,43 @@
       }
     },
     "rules": {
-      "gt0009": {
-        "id": "gt0009",
+      "gt0013": {
+        "id": "gt0013",
+        "priority": 3,
+        "when": [
+          "$gt0003|Age|==0,a"
+        ],
+        "then": [
+          "$gt0011|Note|='Too low please change to proceed.'"
+        ]
+      },
+      "gt0012": {
+        "id": "gt0012",
         "priority": 2,
         "when": [
+          "$gt0003|Age|>12,a"
+        ],
+        "then": [
+          "$gt0011|Note|='By age 12, most experts recommend switching to adult ETT sizes.'"
+        ]
+      },
+      "gt0009": {
+        "id": "gt0009",
+        "priority": 1,
+        "when": [
           "$gt0003|Age|!=null",
-          "$gt0003|Age|.unit=='a'"
+          "$gt0003|Age|.unit=='a'",
+          "!fired($gt0013)",
+          "!fired($gt0012)"
         ],
         "then": [
           "$gt0007|Predicted Size Uncuffed Tube|.magnitude=($gt0003.magnitude/4)+4",
           "$gt0007|Predicted Size Uncuffed Tube|.unit='mm'",
-          "$gt0007|Predicted Size Uncuffed Tube|.precision=1"
-        ]
-      },
-      "gt0010": {
-        "id": "gt0010",
-        "priority": 1,
-        "when": [
-          "$gt0003|Age|!=null",
-          "$gt0003|Age|.unit=='a'"
-        ],
-        "then": [
+          "$gt0007|Predicted Size Uncuffed Tube|.precision=1",
+          "$gt0011|Note|='In preparation for intubation with either a cuffed or an uncuffed endotracheal tube, confirm that tubes with an internal diameter (ID) 0.5 mm smaller and 0.5 mm larger than the estimated size are available. '",
           "$gt0008|Predicted Size Cuffed Tube|.magnitude=($gt0003.magnitude/4)+3",
-          "$gt0008|Predicted Size Cuffed Tube|.unit='mm'",
-          "$gt0008|Predicted Size Cuffed Tube|.precision=1"
+          "$gt0008|Predicted Size Cuffed Tube|.precision=1",
+          "$gt0008|Predicted Size Cuffed Tube|.unit='mm'"
         ]
       }
     }
@@ -96,7 +126,8 @@
         "terms": {
           "gt0001": {
             "id": "gt0001",
-            "text": "Pediatric Endotracheal Tube (ETT) Size"
+            "text": "Pediatric Endotracheal Tube (ETT) Size",
+            "description": "Pediatric Endotracheal Tube (ETT) Size estimates ET tube size based on age."
           },
           "gt0003": {
             "id": "gt0003",
@@ -122,9 +153,18 @@
             "id": "gt0009",
             "text": "Set Size Uncuffed Tube calculation"
           },
-          "gt0010": {
-            "id": "gt0010",
-            "text": "Set Size Cuffed Tube calculation"
+          "gt0011": {
+            "id": "gt0011",
+            "text": "Note",
+            "description": "*"
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "text": "Set Warning age>12"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "Set warning to age 0"
           }
         }
       }
