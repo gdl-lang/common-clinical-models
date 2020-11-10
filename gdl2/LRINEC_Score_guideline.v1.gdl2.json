@@ -139,28 +139,22 @@
           "gt0026": {
             "id": "gt0026",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0026]"
-          },
-          "gt0027": {
-            "id": "gt0027",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0027]"
           }
         }
       }
     },
+    "default_actions": [
+      "$gt0018|C-reactive protein|=0|local::at0005|<15 mg/dL (150 mg/L)|",
+      "$gt0019|White blood cell count (x10,000/µL)|=0|local::at0008|<15|",
+      "$gt0020|Hemoglobin (g/dL)|=0|local::at0012|>13.5|",
+      "$gt0021|Sodium (mEq/L)|=0|local::at0016|≥135|",
+      "$gt0022|Creatinine|=0|local::at0019|≤1.6 mg/dL (141 µmol/L)|",
+      "$gt0023|Glucose|=0|local::at0022|≤180 mg/dL (10 mmol/L)|"
+    ],
     "rules": {
-      "gt0028": {
-        "id": "gt0028",
-        "priority": 18,
-        "when": [
-          "($gt0003|CRP (mg/L)|<15,mg/dl)||($gt0003|CRP (mg/L)|<150,mg/l)"
-        ],
-        "then": [
-          "$gt0018|C-reactive protein|=0|local::at0005|<15 mg/dL (150 mg/L)|"
-        ]
-      },
       "gt0029": {
         "id": "gt0029",
-        "priority": 17,
+        "priority": 12,
         "when": [
           "($gt0003|CRP (mg/L)|>=15,mg/dl)||($gt0003|CRP (mg/L)|>=150,mg/l)"
         ],
@@ -168,19 +162,9 @@
           "$gt0018|C-reactive protein|=4|local::at0006|≥15 mg/dL (150 mg/L)|"
         ]
       },
-      "gt0030": {
-        "id": "gt0030",
-        "priority": 16,
-        "when": [
-          "$gt0005|WBC (per mm³)|<15,10*3/mm3"
-        ],
-        "then": [
-          "$gt0019|White blood cell count (x10,000/µL)|=0|local::at0008|<15|"
-        ]
-      },
       "gt0031": {
         "id": "gt0031",
-        "priority": 15,
+        "priority": 11,
         "when": [
           "$gt0005|WBC (per mm³)|>=15,10*3/mm3",
           "$gt0005|WBC (per mm³)|<=25,10*3/mm3"
@@ -191,7 +175,7 @@
       },
       "gt0032": {
         "id": "gt0032",
-        "priority": 14,
+        "priority": 10,
         "when": [
           "$gt0005|WBC (per mm³)|>25,10*3/mm3"
         ],
@@ -199,19 +183,9 @@
           "$gt0019|White blood cell count (x10,000/µL)|=2|local::at0010|>25|"
         ]
       },
-      "gt0033": {
-        "id": "gt0033",
-        "priority": 13,
-        "when": [
-          "$gt0007|Haemoglobin (g/dL)|>13.5,gm/dl"
-        ],
-        "then": [
-          "$gt0020|Hemoglobin (g/dL)|=0|local::at0012|>13.5|"
-        ]
-      },
       "gt0034": {
         "id": "gt0034",
-        "priority": 12,
+        "priority": 9,
         "when": [
           "$gt0007|Haemoglobin (g/dL)|>=11,gm/dl",
           "$gt0007|Haemoglobin (g/dL)|<=13.5,gm/dl"
@@ -222,7 +196,7 @@
       },
       "gt0035": {
         "id": "gt0035",
-        "priority": 11,
+        "priority": 8,
         "when": [
           "$gt0007|Haemoglobin (g/dL)|<11,gm/dl"
         ],
@@ -230,19 +204,9 @@
           "$gt0020|Hemoglobin (g/dL)|=2|local::at0014|<11|"
         ]
       },
-      "gt0036": {
-        "id": "gt0036",
-        "priority": 10,
-        "when": [
-          "$gt0010|Serum Sodium (mEq/L)|>=135,mEq/l"
-        ],
-        "then": [
-          "$gt0021|Sodium (mEq/L)|=0|local::at0016|≥135|"
-        ]
-      },
       "gt0037": {
         "id": "gt0037",
-        "priority": 9,
+        "priority": 7,
         "when": [
           "$gt0010|Serum Sodium (mEq/L)|<135,mEq/l"
         ],
@@ -250,34 +214,14 @@
           "$gt0021|Sodium (mEq/L)|=2|local::at0017|<135|"
         ]
       },
-      "gt0038": {
-        "id": "gt0038",
-        "priority": 8,
-        "when": [
-          "(($gt0014|Creatinine|.magnitude<=1.6)&&($gt0014|Creatinine|.unit=='mg/dl'))||(($gt0014|Creatinine|.magnitude<=141)&&($gt0014|Creatinine|.unit=='µmol/l'))"
-        ],
-        "then": [
-          "$gt0022|Creatinine|=0|local::at0019|≤1.6 mg/dL (141 µmol/L)|"
-        ]
-      },
       "gt0039": {
         "id": "gt0039",
-        "priority": 7,
+        "priority": 6,
         "when": [
           "(($gt0014|Creatinine|.magnitude>1.6)&&($gt0014|Creatinine|.unit=='mg/dl'))||(($gt0014|Creatinine|.magnitude>141)&&($gt0014|Creatinine|.unit=='µmol/l'))"
         ],
         "then": [
           "$gt0022|Creatinine|=2|local::at0020|>1.6 mg/dL (141 µmol/L)|"
-        ]
-      },
-      "gt0040": {
-        "id": "gt0040",
-        "priority": 6,
-        "when": [
-          "($gt0016|Glucose|<=180,mg/dl)||($gt0016|Glucose|<=10,mmol/l)"
-        ],
-        "then": [
-          "$gt0023|Glucose|=0|local::at0022|≤180 mg/dL (10 mmol/L)|"
         ]
       },
       "gt0041": {
@@ -325,8 +269,7 @@
         ],
         "then": [
           "$gt0025|Advice|='If high suspicion for necrotizing fasciitis through clinical history and physical exam, do not calculate a LRINEC score and go straight to operative debridement.'",
-          "$gt0026|Management|='Scores of 6 had a PPV of 92% and NPV of 96% for NSTIs. Intermediate Risk for Necrotizing Soft Tissue Infection.'",
-          "$gt0027|Critical Actions|='Consider urgent MRI, frozen section biopsy or finger test (manual probing of area in question under local anesthesia). If positive, emergent operative debridement. If negative, IV antibiotics, close observation, serial labs.'"
+          "$gt0026|Management|='Scores of 6 had a PPV of 92% and NPV of 96% for NSTIs. Intermediate Risk for Necrotizing Soft Tissue Infection. Consider urgent MRI, frozen section biopsy or finger test (manual probing of area in question under local anesthesia). If positive, emergent operative debridement. If negative, IV antibiotics, close observation, serial labs.'"
         ]
       },
       "gt0045": {
@@ -337,8 +280,7 @@
         ],
         "then": [
           "$gt0025|Advice|='If high suspicion for necrotizing fasciitis through clinical history and physical exam, do not calculate a LRINEC score and go straight to operative debridement.'",
-          "$gt0026|Management|='High Risk for Necrotizing Soft Tissue Infection. Scores of 8 had a PPV of 93.4% for NSTIs.'",
-          "$gt0027|Critical Actions|='Work-up as suggested or emergent operative debridement.'"
+          "$gt0026|Management|='High Risk for Necrotizing Soft Tissue Infection. Scores of 8 had a PPV of 93.4% for NSTIs.Work-up as suggested or emergent operative debridement.'"
         ]
       }
     }
@@ -428,22 +370,9 @@
             "text": "Management",
             "description": "*"
           },
-          "gt0027": {
-            "id": "gt0027",
-            "text": "Critical Actions",
-            "description": "*"
-          },
-          "gt0028": {
-            "id": "gt0028",
-            "text": "Set value 0 to CRP <15 mg/dL (150 mg/L)"
-          },
           "gt0029": {
             "id": "gt0029",
             "text": "Set value 4 to CRP >=15 mg/dL (150 mg/L)"
-          },
-          "gt0030": {
-            "id": "gt0030",
-            "text": "Set value 0  to WBC <15"
           },
           "gt0031": {
             "id": "gt0031",
@@ -453,10 +382,6 @@
             "id": "gt0032",
             "text": "Set value 2 to WBC >25"
           },
-          "gt0033": {
-            "id": "gt0033",
-            "text": "Set value 0 to Hb >13.5"
-          },
           "gt0034": {
             "id": "gt0034",
             "text": "Set value 1 to Hb 11-13.5"
@@ -465,25 +390,13 @@
             "id": "gt0035",
             "text": "Set value 2 to Hb< 11"
           },
-          "gt0036": {
-            "id": "gt0036",
-            "text": "Set value 0 Sedium >= 135"
-          },
           "gt0037": {
             "id": "gt0037",
             "text": "Set value 2 Sedium < 135"
           },
-          "gt0038": {
-            "id": "gt0038",
-            "text": "Set value 0 to Cr≤1.6 mg/dL (141 µmol/L)"
-          },
           "gt0039": {
             "id": "gt0039",
             "text": "Set value 2 to Cr> 1.6 mg/dL (141 µmol/L)"
-          },
-          "gt0040": {
-            "id": "gt0040",
-            "text": "Set value 0 to Glucose ≤180 mg/dL (10 mmol/L)"
           },
           "gt0041": {
             "id": "gt0041",
