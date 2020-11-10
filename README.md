@@ -11,23 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 457*
+### *Published Apps: 458*
 
 ----------
 
 ### Latest added
 
-1. Plasma Dosage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Plasma_Dosage_guideline/1?language=en))
-1. Nutritional Risk Index (NRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Nutritional_risk_index_NRI/1?language=en))
-2. Nutrition Risk in the Critically Ill (NUTRIC) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NUTRIC_score_guideline/1?language=en))
-3. Naloxone Drip Dosing - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Naloxone_Drip_Dosing_guideline/1?language=en))
-4. Fatty Liver Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fatty_Liver_Index/1?language=en))
-5. SLICC Criteria for Systemic Lupus Erythematosus (SLE) 2012 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SLICC_Criteria_for_Systemic_Lupus_Erythematosus_2012_guideline/1?language=en))
-6. NAFLD (Non-Alcoholic Fatty Liver Disease) Activity Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NAFLD_activity_score/1?language=en))
-7. RAPID Score for Acetabular Chondrolabral Disruption - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAPID_Score_for_Acetabular_Chondrolabral_Disruption_guideline/0?language=en))
-8. IV Drip Rate Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IV_drip_rate_calculator/1?language=en))
-9. PLASMIC Score for TTP - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PLASMIC_Score_for_TTP/1?language=en))
-10. FRESH (Frail elderly support research group) screening for fragility - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Frail_elderly_support_research_group_FRESH/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Frail_elderly_support_research_group_FRESH/1?language=sv))
+1. Nutrition Risk Screening 2002 (NRS-2002) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Nutrition_Risk_Screening_2002_NRS/1?language=en))
+2. Plasma Dosage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Plasma_Dosage_guideline/1?language=en))
+3. Nutritional Risk Index (NRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Nutritional_risk_index_NRI/1?language=en))
+4. Nutrition Risk in the Critically Ill (NUTRIC) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NUTRIC_score_guideline/1?language=en))
+5. Naloxone Drip Dosing - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Naloxone_Drip_Dosing_guideline/1?language=en))
+6. Fatty Liver Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fatty_Liver_Index/1?language=en))
+7. SLICC Criteria for Systemic Lupus Erythematosus (SLE) 2012 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SLICC_Criteria_for_Systemic_Lupus_Erythematosus_2012_guideline/1?language=en))
+8. NAFLD (Non-Alcoholic Fatty Liver Disease) Activity Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NAFLD_activity_score/1?language=en))
+9. RAPID Score for Acetabular Chondrolabral Disruption - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAPID_Score_for_Acetabular_Chondrolabral_Disruption_guideline/0?language=en))
+10. IV Drip Rate Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IV_drip_rate_calculator/1?language=en))
 
 ----------
 
@@ -512,10 +511,11 @@ _Select a medical specialty below to view the available apps._
 
 * Nutrition Risk in the Critically Ill (NUTRIC) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NUTRIC_score_guideline/1?language=en))
 
+* Nutrition Risk Screening 2002 (NRS-2002) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Nutrition_Risk_Screening_2002_NRS/1?language=en))
+
 * Parkland Formula for Burns - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Parkland_formula/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Parkland_formula/1?language=sv))
 
 * Richmond Agitation Sedation Scale (RASS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Richmond_Agitation_Sedation_Scale/1?language=en))
-
 
 * Sequential Organ Failure Assessment (SOFA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SOFA/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SOFA/1?language=sv))
 ----------
