@@ -16,7 +16,7 @@
     "details": {
       "en": {
         "id": "en",
-        "purpose": "To provides 5-year disease-free prognosis for localized and metastatic RCC.",
+        "purpose": "To provide 5-year disease-free prognosis for localized and metastatic RCC.",
         "keywords": [
           "Renal Cell Carcinoma",
           "T stage",
@@ -53,10 +53,6 @@
             "id": "gt0005",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
           },
-          "gt0006": {
-            "id": "gt0006",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0018]"
-          },
           "gt0007": {
             "id": "gt0007",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0034]"
@@ -64,6 +60,10 @@
           "gt0008": {
             "id": "gt0008",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0037]"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0018]"
           }
         }
       },
@@ -91,8 +91,8 @@
         "when": [
           "$gt0003|Type of disease present|==local::at0006|Localized|",
           "$gt0004|Localized disease - T stage|==local::at0009|T1|",
-          "$gt0006|ECOG Performance Status|==local::at0019|0|",
-          "$gt0005|Fuhrman nuclear grade|.value<=2"
+          "$gt0005|Fuhrman nuclear grade|.value<=2",
+          "$gt0020|ECOG Performance Status|.value==0"
         ],
         "then": [
           "$gt0010|Risk|=local::at0022|Low|",
@@ -104,7 +104,7 @@
         "priority": 5,
         "when": [
           "$gt0003|Type of disease present|==local::at0006|Localized|",
-          "((($gt0004|Localized disease - T stage|==local::at0009|T1|)&&($gt0006|ECOG Performance Status|==local::at0020|≥1|))&&($gt0005|Fuhrman nuclear grade|.value<=2))||(((($gt0004|Localized disease - T stage|==local::at0009|T1|)&&($gt0006|ECOG Performance Status|!=null))&&($gt0005|Fuhrman nuclear grade|.value>=3))||(((($gt0004|Localized disease - T stage|==local::at0010|T2|)&&($gt0005|Fuhrman nuclear grade|!=null))&&($gt0006|ECOG Performance Status|!=null))||(((($gt0004|Localized disease - T stage|==local::at0011|T3|)&&($gt0006|ECOG Performance Status|!=null))&&($gt0005|Fuhrman nuclear grade|.value==1))||((($gt0004|Localized disease - T stage|==local::at0011|T3|)&&($gt0006|ECOG Performance Status|==local::at0019|0|))&&($gt0005|Fuhrman nuclear grade|.value>1)))))"
+          "((($gt0004|Localized disease - T stage|==local::at0009|T1|)&&($gt0005|Fuhrman nuclear grade|.value<=2))&&($gt0020|ECOG Performance Status|.value>=1))||(((($gt0004|Localized disease - T stage|==local::at0009|T1|)&&($gt0005|Fuhrman nuclear grade|.value>=3))&&($gt0020|ECOG Performance Status|!=null))||(((($gt0004|Localized disease - T stage|==local::at0010|T2|)&&($gt0005|Fuhrman nuclear grade|!=null))&&($gt0020|ECOG Performance Status|!=null))||(((($gt0004|Localized disease - T stage|==local::at0011|T3|)&&($gt0005|Fuhrman nuclear grade|.value==1))&&($gt0020|ECOG Performance Status|!=null))||((($gt0004|Localized disease - T stage|==local::at0011|T3|)&&($gt0005|Fuhrman nuclear grade|.value>1))&&($gt0020|ECOG Performance Status|.value==0)))))"
         ],
         "then": [
           "$gt0010|Risk|=local::at0023|Intermediate|",
@@ -116,7 +116,7 @@
         "priority": 4,
         "when": [
           "$gt0003|Type of disease present|==local::at0006|Localized|",
-          "((($gt0004|Localized disease - T stage|==local::at0011|T3|)&&($gt0006|ECOG Performance Status|==local::at0020|≥1|))&&($gt0005|Fuhrman nuclear grade|.value>1))||($gt0004|Localized disease - T stage|==local::at0012|T4|)"
+          "((($gt0004|Localized disease - T stage|==local::at0011|T3|)&&($gt0005|Fuhrman nuclear grade|.value>1))&&($gt0020|ECOG Performance Status|.value>=1))||($gt0004|Localized disease - T stage|==local::at0012|T4|)"
         ],
         "then": [
           "$gt0010|Risk|=local::at0024|High|",
@@ -128,7 +128,7 @@
         "priority": 3,
         "when": [
           "$gt0003|Type of disease present|==local::at0005|Metastatic|",
-          "(((($gt0007|Metastatic disease - N stage|==local::at0035|N1|)&&($gt0008|Metastatic disease - M stage|==local::at0038|M0|))&&($gt0005|Fuhrman nuclear grade|!=null))&&($gt0006|ECOG Performance Status|!=null))||(((($gt0007|Metastatic disease - N stage|==local::at0036|N2|)&&($gt0008|Metastatic disease - M stage|!=null))&&($gt0006|ECOG Performance Status|==local::at0019|0|))&&($gt0005|Fuhrman nuclear grade|.value<=2))"
+          "(((($gt0007|Metastatic disease - N stage|==local::at0035|N1|)&&($gt0008|Metastatic disease - M stage|==local::at0038|M0|))&&($gt0005|Fuhrman nuclear grade|!=null))&&($gt0020|ECOG Performance Status|!=null))||(((($gt0007|Metastatic disease - N stage|==local::at0036|N2|)&&($gt0008|Metastatic disease - M stage|!=null))&&($gt0005|Fuhrman nuclear grade|.value<=2))&&($gt0020|ECOG Performance Status|==0|local::at0045|Asymptomatic|))"
         ],
         "then": [
           "$gt0010|Risk|=local::at0022|Low|",
@@ -142,7 +142,7 @@
           "$gt0003|Type of disease present|==local::at0005|Metastatic|",
           "$gt0007|Metastatic disease - N stage|==local::at0036|N2|",
           "$gt0008|Metastatic disease - M stage|!=null",
-          "(($gt0006|ECOG Performance Status|==local::at0020|≥1|)&&($gt0005|Fuhrman nuclear grade|.value<=2))||((($gt0006|ECOG Performance Status|!=null)&&($gt0005|Fuhrman nuclear grade|.value==3))||(($gt0006|ECOG Performance Status|==local::at0019|0|)&&($gt0005|Fuhrman nuclear grade|.value==4)))"
+          "(($gt0005|Fuhrman nuclear grade|.value<=2)&&($gt0020|ECOG Performance Status|.value>=1))||((($gt0005|Fuhrman nuclear grade|.value==3)&&($gt0020|ECOG Performance Status|!=null))||(($gt0005|Fuhrman nuclear grade|.value==4)&&($gt0020|ECOG Performance Status|.value==0)))"
         ],
         "then": [
           "$gt0010|Risk|=local::at0023|Intermediate|",
@@ -156,8 +156,8 @@
           "$gt0003|Type of disease present|==local::at0005|Metastatic|",
           "$gt0007|Metastatic disease - N stage|==local::at0036|N2|",
           "$gt0008|Metastatic disease - M stage|!=null",
-          "$gt0006|ECOG Performance Status|==local::at0020|≥1|",
-          "$gt0005|Fuhrman nuclear grade|.value==4"
+          "$gt0005|Fuhrman nuclear grade|.value==4",
+          "$gt0020|ECOG Performance Status|.value>=1"
         ],
         "then": [
           "$gt0010|Risk|=local::at0024|High|",
@@ -190,11 +190,6 @@
             "id": "gt0005",
             "text": "Fuhrman nuclear grade",
             "description": "Fuhrman Nuclear Grade for Clear Cell Renal Carcinoma provides prognostic grading system for tumor cells based on physical cellular appearance."
-          },
-          "gt0006": {
-            "id": "gt0006",
-            "text": "ECOG Performance Status",
-            "description": "*"
           },
           "gt0007": {
             "id": "gt0007",
@@ -239,6 +234,11 @@
           "gt0018": {
             "id": "gt0018",
             "text": "Set Metastatic disease to High risk and 0%  survival"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "ECOG Performance Status",
+            "description": "*"
           }
         }
       }

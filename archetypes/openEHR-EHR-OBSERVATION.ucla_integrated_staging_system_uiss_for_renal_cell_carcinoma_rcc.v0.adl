@@ -48,8 +48,9 @@ Disease Type: Metastatic Disease = High Risk Group= 0% Five-year disease-specifi
 	other_details = <
 		["references"] = <"1. Zisman A,Pantuck AJ,Wieder J, et al. Risk group assessment and clinical outcome algorithm to predict the natural history of patients with surgically resected renal cell carcinoma. J Clin Oncol. 2002; 20: 4559–4566.
 2. Patard J, et al. Use of the University of California Los Angeles Integrated Staging System to Predict Survival in Renal Cell Carcinoma: An International Multicenter Study. JCO Aug 15, 2004:3316-3322
-3. Escudier B, Eisen T, Porta C, et al. Renal cell carcinoma: ESMO clinical practice guidelines for diagnosis, treatment and follow-up. Ann Oncol, 2012; 23(suppl 7):vii65–vii71.">
-		["MD5-CAM-1.0.1"] = <"C8BA9D007ADBB0DAF0B09E77376A18F5">
+3. Escudier B, Eisen T, Porta C, et al. Renal cell carcinoma: ESMO clinical practice guidelines for diagnosis, treatment and follow-up. Ann Oncol, 2012; 23(suppl 7):vii65–vii71.
+4. Ecc Committee. (2005). 2005 American Heart Association guidelines for cardiopulmonary resuscitation and emergency cardiovascular care. Circulation, 112(24 Suppl), IV1.">
+		["MD5-CAM-1.0.1"] = <"8473E712E1EDA55E2779408C58166A3E">
 	>
 
 definition
@@ -117,13 +118,12 @@ definition
 									}
 									ELEMENT[at0018] occurrences matches {0..1} matches {	-- ECOG Performance Status
 										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0019, 	-- 0
-													at0020]	-- ≥1
-												}
-											}
+											0|[local::at0045], 	-- Asymptomatic
+											1|[local::at0046], 	-- Symptomatic but completely ambulatory
+											2|[local::at0047], 	-- Symptomatic, <50% in bed during the day
+											3|[local::at0048], 	-- Symptomatic, >50% in bed, but not bedbound
+											4|[local::at0049], 	-- Bedbound
+											5|[local::at0050]  	-- Death
 										}
 									}
 									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Risk
@@ -151,6 +151,11 @@ definition
 													at0031]	-- 0%
 												}
 											}
+										}
+									}
+									ELEMENT[at0044] occurrences matches {0..1} matches {	-- Note
+										value matches {
+											DV_TEXT matches {*}
 										}
 									}
 								}
@@ -220,14 +225,6 @@ ontology
 				>
 				["at0018"] = <
 					text = <"ECOG Performance Status">
-					description = <"*">
-				>
-				["at0019"] = <
-					text = <"0">
-					description = <"*">
-				>
-				["at0020"] = <
-					text = <"≥1">
 					description = <"*">
 				>
 				["at0021"] = <
@@ -312,6 +309,34 @@ ontology
 				>
 				["at0043"] = <
 					text = <"IV">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Note">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"Asymptomatic">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"Symptomatic but completely ambulatory">
+					description = <"*">
+				>
+				["at0047"] = <
+					text = <"Symptomatic, <50% in bed during the day">
+					description = <"*">
+				>
+				["at0048"] = <
+					text = <"Symptomatic, >50% in bed, but not bedbound">
+					description = <"*">
+				>
+				["at0049"] = <
+					text = <"Bedbound">
+					description = <"*">
+				>
+				["at0050"] = <
+					text = <"Death">
 					description = <"*">
 				>
 			>
