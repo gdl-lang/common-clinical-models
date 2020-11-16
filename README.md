@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 461*
+### *Published Apps: 462*
 
 ----------
 
 ### Latest added
 
-1. Paradise Criteria for Tonsillectomy in Children - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Paradise_Criteria_guideline/1?language=en))
-2. Pancreatic Fistula Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pancreatic_Fistula_Risk_Score_guideline/1?language=en))
-3. LRINEC Score for Necrotizing Soft Tissue Infection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LRINEC_Score_guideline/1?language=en))
-4. Nutrition Risk Screening 2002 (NRS-2002) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Nutrition_Risk_Screening_2002_NRS/1?language=en))
-5. Plasma Dosage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Plasma_Dosage_guideline/1?language=en))
-6. Nutritional Risk Index (NRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Nutritional_risk_index_NRI/1?language=en))
-7. Nutrition Risk in the Critically Ill (NUTRIC) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NUTRIC_score_guideline/1?language=en))
-8. Naloxone Drip Dosing - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Naloxone_Drip_Dosing_guideline/1?language=en))
-9. Fatty Liver Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fatty_Liver_Index/1?language=en))
-10. SLICC Criteria for Systemic Lupus Erythematosus (SLE) 2012 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SLICC_Criteria_for_Systemic_Lupus_Erythematosus_2012_guideline/1?language=en))
+1. Pediatric Endotracheal Tube (ETT) Size - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Endotracheal_Tube_Size_guideline/1?language=en))
+2. Paradise Criteria for Tonsillectomy in Children - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Paradise_Criteria_guideline/1?language=en))
+3. Pancreatic Fistula Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pancreatic_Fistula_Risk_Score_guideline/1?language=en))
+4. LRINEC Score for Necrotizing Soft Tissue Infection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LRINEC_Score_guideline/1?language=en))
+5. Nutrition Risk Screening 2002 (NRS-2002) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Nutrition_Risk_Screening_2002_NRS/1?language=en))
+6. Plasma Dosage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Plasma_Dosage_guideline/1?language=en))
+7. Nutritional Risk Index (NRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Nutritional_risk_index_NRI/1?language=en))
+8. Nutrition Risk in the Critically Ill (NUTRIC) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NUTRIC_score_guideline/1?language=en))
+9. Naloxone Drip Dosing - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Naloxone_Drip_Dosing_guideline/1?language=en))
+10. Fatty Liver Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fatty_Liver_Index/1?language=en))
 
 ----------
 
@@ -292,6 +292,8 @@ _Select a medical specialty below to view the available apps._
 * Oxygenation Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Oxygenation_Index/1?language=en))
 
 * Pediatric Asthma Severity Score (PASS) for Asthma Exacerbation Severity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Asthma_Severity_Score_Asthma_Exacerbation_Severity/1?language=en))
+
+* Pediatric Endotracheal Tube (ETT) Size - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Endotracheal_Tube_Size_guideline/1?language=en))
 
 * Pittsburgh Knee Rules - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pittsburgh_knee_rules/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pittsburgh_knee_rules/1?language=sv))
 
