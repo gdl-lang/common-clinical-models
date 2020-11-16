@@ -1,0 +1,19 @@
+guidelines:
+  1: new_guideline.v0
+test_cases:
+- id: None of Light’s criteria met
+  input:
+    1:
+      gt0003|Total Serum Protein: 100,gm/l
+      gt0004|Pleural fluid Protein: 10,gm/l
+      gt0006|Serum LDH: 100,u/l
+      gt0008|Pleural fluid LDH: 10,u/l
+      gt0009|Upper limit of normal serum LDH: 60,u/l
+      gt0010|Is this a COVID-19 patient?: local::at0015|Unlikely|
+  expected_output:
+    1:
+      gt0014|Warning to Total serum Protein: Very high double check.
+      gt0012|Pleural fluid protein / Serum protein: 0.1,1
+      gt0013|Pleural fluid LDH / Serum LDH: 0.1,1
+      gt0035|Diagnosis: None of Light’s criteria met; suggests likely transudative effusion
+      gt0037|2/3 Serum LDH Upper Limit of Normal: 40.0,1
