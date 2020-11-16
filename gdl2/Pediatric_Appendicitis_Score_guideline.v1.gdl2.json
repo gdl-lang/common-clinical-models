@@ -54,10 +54,6 @@
           "gt0021": {
             "id": "gt0021",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0078.13]"
-          },
-          "gt0022": {
-            "id": "gt0022",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0078.14]/items[at0078.15]"
           }
         }
       },
@@ -98,6 +94,10 @@
           "gt0030": {
             "id": "gt0030",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0023]"
+          },
+          "gt0050": {
+            "id": "gt0050",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0022]"
           }
         }
       },
@@ -115,10 +115,6 @@
             "id": "gt0033",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0019]"
           },
-          "gt0034": {
-            "id": "gt0034",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0022]"
-          },
           "gt0037": {
             "id": "gt0037",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0024]"
@@ -133,7 +129,7 @@
     "rules": {
       "gt0044": {
         "id": "gt0044",
-        "priority": 10,
+        "priority": 8,
         "when": [
           "(($gt0024|Temperature|.magnitude<38)&&($gt0024|Temperature|.unit=='°C'))||(($gt0024|Temperature|.magnitude<100.4)&&($gt0024|Temperature|.unit=='°F'))"
         ],
@@ -143,7 +139,7 @@
       },
       "gt0036": {
         "id": "gt0036",
-        "priority": 9,
+        "priority": 7,
         "when": [
           "(($gt0024|Temperature|.magnitude>=38)&&($gt0024|Temperature|.unit=='°C'))||(($gt0024|Temperature|.magnitude>=100.4)&&($gt0024|Temperature|.unit=='°F'))"
         ],
@@ -153,7 +149,7 @@
       },
       "gt0045": {
         "id": "gt0045",
-        "priority": 8,
+        "priority": 6,
         "when": [
           "$gt0021|White cell count 10^9/l|<10000,10*9/l"
         ],
@@ -163,32 +159,12 @@
       },
       "gt0038": {
         "id": "gt0038",
-        "priority": 7,
+        "priority": 5,
         "when": [
           "$gt0021|White cell count 10^9/l|>=10000,10*9/l"
         ],
         "then": [
           "$gt0033|Leukocytosis|=1|local::at0021|Yes|"
-        ]
-      },
-      "gt0046": {
-        "id": "gt0046",
-        "priority": 6,
-        "when": [
-          "$gt0022|Neutrophilia (ANC >7,500)|<=7500,10*9/l"
-        ],
-        "then": [
-          "$gt0034|Neutrophilia|=0|local::at0025|No|"
-        ]
-      },
-      "gt0039": {
-        "id": "gt0039",
-        "priority": 5,
-        "when": [
-          "$gt0022|Neutrophilia (ANC >7,500)|>7500,10*9/l"
-        ],
-        "then": [
-          "$gt0034|Neutrophilia|=1|local::at0026|Yes|"
         ]
       },
       "gt0042": {
@@ -197,16 +173,16 @@
         "when": [
           "$gt0019|Age|!=null",
           "$gt0021|White cell count 10^9/l|!=null",
-          "$gt0022|Neutrophilia (ANC >7,500)|!=null",
           "$gt0024|Temperature|!=null",
           "$gt0026|RLQ tenderness to cough, percussion, or hopping|!=null",
           "$gt0027|Anorexia|!=null",
           "$gt0028|Nausea or vomiting|!=null",
           "$gt0029|Tenderness over right iliac fossa|!=null",
-          "$gt0030|Migration of pain to RLQ|!=null"
+          "$gt0030|Migration of pain to RLQ|!=null",
+          "$gt0050|Neutrophilia (ANC 7,500)|!=null"
         ],
         "then": [
-          "$gt0037|PAS|.magnitude=$gt0026.value+$gt0027.value+$gt0028.value+$gt0029.value+$gt0030.value+$gt0032.value+$gt0033.value+$gt0034.value"
+          "$gt0037|PAS|.magnitude=$gt0026.value+$gt0027.value+$gt0028.value+$gt0029.value+$gt0030.value+$gt0032.value+$gt0033.value+$gt0050.value"
         ]
       },
       "gt0047": {
@@ -262,11 +238,6 @@
             "text": "White cell count 10^9/l",
             "description": "The number of white cells per litre"
           },
-          "gt0022": {
-            "id": "gt0022",
-            "text": "Neutrophilia (ANC >7,500)",
-            "description": "The number of neutrophils per litre"
-          },
           "gt0024": {
             "id": "gt0024",
             "text": "Temperature",
@@ -307,11 +278,6 @@
             "text": "Leukocytosis",
             "description": "WBC> 10000"
           },
-          "gt0034": {
-            "id": "gt0034",
-            "text": "Neutrophilia",
-            "description": "ANC> 7500"
-          },
           "gt0036": {
             "id": "gt0036",
             "text": "Set value 1 to fever>=38 c"
@@ -324,10 +290,6 @@
           "gt0038": {
             "id": "gt0038",
             "text": "Set value 1 to WBC>=10000"
-          },
-          "gt0039": {
-            "id": "gt0039",
-            "text": "Set value 1 ANC>7500"
           },
           "gt0042": {
             "id": "gt0042",
@@ -346,10 +308,6 @@
             "id": "gt0045",
             "text": "Set value 0 to WBC<10000"
           },
-          "gt0046": {
-            "id": "gt0046",
-            "text": "Set value 0 ANC<=7500"
-          },
           "gt0047": {
             "id": "gt0047",
             "text": "Set interpretation score<=3"
@@ -361,6 +319,11 @@
           "gt0049": {
             "id": "gt0049",
             "text": "Set interpretation score>=7"
+          },
+          "gt0050": {
+            "id": "gt0050",
+            "text": "Neutrophilia (ANC 7,500)",
+            "description": "ANC> 7500"
           }
         }
       }
