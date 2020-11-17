@@ -1,0 +1,243 @@
+{
+  "id": "Pediatric_NIH_Stroke_Scale_guideline.v1",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2020-11-17",
+      "name": "Maryam Razavi",
+      "organisation": "CambioCDS",
+      "email": "maryam.razavi@cambio.se"
+    },
+    "lifecycle_state": "Author draft",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "To quantify stroke severity using a child-specific version of the NIH Stroke Score.",
+        "copyright": "CambioCDS"
+      }
+    },
+    "other_details": {}
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0002": {
+        "id": "gt0002",
+        "model_id": "openEHR-EHR-OBSERVATION.pediatric_nih_stroke_scale.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.pediatric_nih_stroke_scale.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0003": {
+            "id": "gt0003",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0018]"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0022]"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0027]"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0032]"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0039]"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0046]"
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0053]"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0060]"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0064]"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0068]"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0073]"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0078]"
+          }
+        }
+      },
+      "gt0018": {
+        "id": "gt0018",
+        "model_id": "openEHR-EHR-OBSERVATION.pediatric_nih_stroke_scale.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.pediatric_nih_stroke_scale.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0019": {
+            "id": "gt0019",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0082]"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0083]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0021": {
+        "id": "gt0021",
+        "priority": 1,
+        "when": [
+          "$gt0003|1A. Level of consciousness|!=null",
+          "$gt0004|1B. Ask age and to point out family member  |!=null",
+          "$gt0005|1C. Command to blink eyes and touch nose|!=null",
+          "$gt0006|2. Horizontal extraocular movements|!=null",
+          "$gt0007|3. Visual fields|!=null",
+          "$gt0008|4. Facial palsy|!=null",
+          "$gt0009|5A. Left arm motor drift|!=null",
+          "$gt0010|5B. Right arm motor drift|!=null",
+          "$gt0011|6A. Left leg motor drift|!=null",
+          "$gt0012|6B. Right leg motor drift|!=null",
+          "$gt0013|7. Limb ataxia|!=null",
+          "$gt0014|8: Sensation|!=null",
+          "$gt0015|9. Best language|!=null",
+          "$gt0016|10. Dysarthria|!=null",
+          "$gt0017|11. Extinction and inattention|!=null"
+        ],
+        "then": [
+          "$gt0019|NIHSS|.value=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0011.value+$gt0012.value+$gt0013.value+$gt0014.value+$gt0015.value+$gt0016.value+$gt0017.value",
+          "$gt0020|Interpretation|='Higher scores correspond with worse prognosis'"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "Pediatric NIH Stroke Scale (NIHSS)",
+            "description": "Pediatric NIH Stroke Scale (NIHSS) quantifies stroke severity using a child-specific version of the NIH Stroke Score."
+          },
+          "gt0003": {
+            "id": "gt0003",
+            "text": "1A. Level of consciousness",
+            "description": "*"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "1B. Ask age and to point out family member  ",
+            "description": "Ask the child “how old are you?”, give credit if child states correct age or shows correct number of fingers for age; ask the child “where is X?” (X = parent or other familiar family member present), give credit if child correctly points/gazes purposefully in the direction of the family member "
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "1C. Command to blink eyes and touch nose",
+            "description": "*"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "2. Horizontal extraocular movements",
+            "description": "Only assess horizontal gaze"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "text": "3. Visual fields",
+            "description": "Use finger counting (if >6 years old) or visual threat (if 2-6 years old) as appropriate"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "4. Facial palsy",
+            "description": "*"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "text": "5A. Left arm motor drift",
+            "description": "Drift is scored if the arm falls before 10 sec; for children too young to follow precise directions or uncooperative, grade power by observation of spontaneous or elicited movement"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "5B. Right arm motor drift",
+            "description": "Drift is scored if the arm falls before 10 sec; for children too young to follow precise directions or uncooperative, grade power by observation of spontaneous or elicited movement"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "6A. Left leg motor drift",
+            "description": "Drift is scored if the leg falls before 5 sec; for children too young to follow precise directions or uncooperative, grade power by observation of spontaneous or elicited movement"
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "text": "6B. Right leg motor drift",
+            "description": "Drift is scored if the the leg falls before 5 sec; for children too young to follow precise directions or uncooperative, power in each limb should be graded by observation of spontaneous or elicited movement"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "7. Limb ataxia",
+            "description": "Ask child to reach for a toy, or ask child to kick a toy or the examiner’s hand in children <5 years or otherwise uncooperative for the standard exam"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "8: Sensation",
+            "description": "Pin-prick test; for children too young or otherwise uncooperative for reporting gradations of sensory loss, observe for any behavioral response to pin prick"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "9. Best language",
+            "description": "If age ≥6 years with normal language development before onset of stroke, ask child to describe picture, to name items, repeat words, read sentences; for children age 2-6 years, score item based on observations of language comprehension and speech during the examination"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "text": "10. Dysarthria",
+            "description": "Ask patient to read or repeat words"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "11. Extinction and inattention",
+            "description": "*"
+          },
+          "gt0019": {
+            "id": "gt0019",
+            "text": "NIHSS",
+            "description": "*"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Interpretation",
+            "description": "*"
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "Set NIHS score"
+          }
+        }
+      }
+    }
+  }
+}
