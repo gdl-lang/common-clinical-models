@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 463*
+### *Published Apps: 464*
 
 ----------
 
 ### Latest added
 
-1. McMahon Score for Rhabdomyolysis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/McMahon_Score_for_Rhabdomyolysis/1?language=en))
-2. Pediatric Endotracheal Tube (ETT) Size - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Endotracheal_Tube_Size_guideline/1?language=en))
-3. Paradise Criteria for Tonsillectomy in Children - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Paradise_Criteria_guideline/1?language=en))
-4. Pancreatic Fistula Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pancreatic_Fistula_Risk_Score_guideline/1?language=en))
-5. LRINEC Score for Necrotizing Soft Tissue Infection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LRINEC_Score_guideline/1?language=en))
-6. Nutrition Risk Screening 2002 (NRS-2002) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Nutrition_Risk_Screening_2002_NRS/1?language=en))
-7. Plasma Dosage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Plasma_Dosage_guideline/1?language=en))
-8. Nutritional Risk Index (NRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Nutritional_risk_index_NRI/1?language=en))
-9. Nutrition Risk in the Critically Ill (NUTRIC) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NUTRIC_score_guideline/1?language=en))
-10. Naloxone Drip Dosing - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Naloxone_Drip_Dosing_guideline/1?language=en))
+1. Pediatric Appendicitis Score (PAS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Appendicitis_Score_guideline/1?language=en))
+2. McMahon Score for Rhabdomyolysis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/McMahon_Score_for_Rhabdomyolysis/1?language=en))
+3. Pediatric Endotracheal Tube (ETT) Size - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Endotracheal_Tube_Size_guideline/1?language=en))
+4. Paradise Criteria for Tonsillectomy in Children - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Paradise_Criteria_guideline/1?language=en))
+5. Pancreatic Fistula Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pancreatic_Fistula_Risk_Score_guideline/1?language=en))
+6. LRINEC Score for Necrotizing Soft Tissue Infection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LRINEC_Score_guideline/1?language=en))
+7. Nutrition Risk Screening 2002 (NRS-2002) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Nutrition_Risk_Screening_2002_NRS/1?language=en))
+8. Plasma Dosage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Plasma_Dosage_guideline/1?language=en))
+9. Nutritional Risk Index (NRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Nutritional_risk_index_NRI/1?language=en))
+10. Nutrition Risk in the Critically Ill (NUTRIC) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NUTRIC_score_guideline/1?language=en))
 
 ----------
 
@@ -775,6 +775,8 @@ _Select a medical specialty below to view the available apps._
 * Paradise Criteria for Tonsillectomy in Children - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Paradise_Criteria_guideline/1?language=en))
 
 * Pediatric Appendicitis Risk Calculator (pARC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Appendicitis_Risk_Calculator_pARC/1?language=en))
+
+* Pediatric Appendicitis Score (PAS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Appendicitis_Score_guideline/1?language=en))
 
 * Pediatric Asthma Score (PAS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PAS/1?language=en))
 
