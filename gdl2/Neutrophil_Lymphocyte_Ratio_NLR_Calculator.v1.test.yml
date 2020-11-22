@@ -1,0 +1,53 @@
+guidelines:
+  1: Neutrophil_Lymphocyte_Ratio_NLR_Calculator.v1
+test_cases:
+- id: Physiologic stress level Severe
+  input:
+    1:
+      gt0003|Absolute or % neutrophil count: 40,10*9/l
+      gt0004|Absolute or % lymphocyte count: 2,10*9/l
+  expected_output:
+    1:
+      gt0007|Neutrophil-Lymphocyte Ratio: 20,1
+      gt0006|Physiologic stress level: local::at0007|Severe|
+
+- id: Physiologic stress level Moderate
+  input:
+    1:
+      gt0003|Absolute or % neutrophil count: 40,10*9/l
+      gt0004|Absolute or % lymphocyte count: 3,10*9/l
+  expected_output:
+    1:
+      gt0007|Neutrophil-Lymphocyte Ratio: 13,1
+      gt0006|Physiologic stress level: local::at0006|Moderate|
+
+- id: Physiologic stress level Mild
+  input:
+    1:
+      gt0003|Absolute or % neutrophil count: 33,%
+      gt0004|Absolute or % lymphocyte count: 4,%
+  expected_output:
+    1:
+      gt0007|Neutrophil-Lymphocyte Ratio: 8,1
+      gt0006|Physiologic stress level: local::at0005|Mild|
+
+- id: Physiologic stress level -
+  input:
+    1:
+      gt0003|Absolute or % neutrophil count: 22,%
+      gt0004|Absolute or % lymphocyte count: 6,%
+  expected_output:
+    1:
+      gt0007|Neutrophil-Lymphocyte Ratio: 4,1
+      gt0006|Physiologic stress level: local::at0004|-|
+
+
+- id: Physiologic stress level Normal
+  input:
+    1:
+      gt0003|Absolute or % neutrophil count: 22,%
+      gt0004|Absolute or % lymphocyte count: 9,%
+  expected_output:
+    1:
+      gt0007|Neutrophil-Lymphocyte Ratio: 2,1
+      gt0006|Physiologic stress level: local::at0003|Normal|
