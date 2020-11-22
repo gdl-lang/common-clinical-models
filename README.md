@@ -11,23 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 465*
+### *Published Apps: 466*
 
 ----------
 
 ### Latest added
 
-1. NEXUS Chest CT Decision Instrument for CT Imaging - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEXUS_Chest_CT_Decision_Instrument_for_CT_Imaging/1?language=en))
-1. Pediatric Appendicitis Score (PAS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Appendicitis_Score_guideline/1?language=en))
-2. McMahon Score for Rhabdomyolysis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/McMahon_Score_for_Rhabdomyolysis/1?language=en))
-3. Pediatric Endotracheal Tube (ETT) Size - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Endotracheal_Tube_Size_guideline/1?language=en))
-4. Paradise Criteria for Tonsillectomy in Children - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Paradise_Criteria_guideline/1?language=en))
-5. Pancreatic Fistula Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pancreatic_Fistula_Risk_Score_guideline/1?language=en))
-6. LRINEC Score for Necrotizing Soft Tissue Infection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LRINEC_Score_guideline/1?language=en))
-7. Nutrition Risk Screening 2002 (NRS-2002) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Nutrition_Risk_Screening_2002_NRS/1?language=en))
-8. Plasma Dosage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Plasma_Dosage_guideline/1?language=en))
-9. Nutritional Risk Index (NRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Nutritional_risk_index_NRI/1?language=en))
-10. Nutrition Risk in the Critically Ill (NUTRIC) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NUTRIC_score_guideline/1?language=en))
+1. Licurse Score for Renal Ultrasound - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Licurse_Score_guideline/1?language=en))
+2. NEXUS Chest CT Decision Instrument for CT Imaging - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEXUS_Chest_CT_Decision_Instrument_for_CT_Imaging/1?language=en))
+3. Pediatric Appendicitis Score (PAS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Appendicitis_Score_guideline/1?language=en))
+4. McMahon Score for Rhabdomyolysis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/McMahon_Score_for_Rhabdomyolysis/1?language=en))
+5. Pediatric Endotracheal Tube (ETT) Size - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Endotracheal_Tube_Size_guideline/1?language=en))
+6. Paradise Criteria for Tonsillectomy in Children - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Paradise_Criteria_guideline/1?language=en))
+7. Pancreatic Fistula Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pancreatic_Fistula_Risk_Score_guideline/1?language=en))
+8. LRINEC Score for Necrotizing Soft Tissue Infection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LRINEC_Score_guideline/1?language=en))
+9. Nutrition Risk Screening 2002 (NRS-2002) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Nutrition_Risk_Screening_2002_NRS/1?language=en))
+10. Plasma Dosage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Plasma_Dosage_guideline/1?language=en))
 
 ----------
 
@@ -554,6 +553,8 @@ _Select a medical specialty below to view the available apps._
 * Kidney Failure Risk Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kidney_Failure_Risk_Calculator_guideline/1?language=en))
 
 * Kinetic Estimated Glomerular Filtration Rate (keGFR) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kinetic_Estimated_Glomerular_Filtration_Rate/0?language=en))
+
+* Licurse Score for Renal Ultrasound - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Licurse_Score_guideline/1?language=en))
 
 * McMahon Score for Rhabdomyolysis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/McMahon_Score_for_Rhabdomyolysis/1?language=en))
 
