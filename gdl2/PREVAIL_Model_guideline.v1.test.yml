@@ -18,3 +18,76 @@ test_cases:
   expected_output:
     1:
       gt0020|Total score: 128,1
+- id: Warning Too high
+  input:
+    1:
+      gt0003|Treatment with enzalutamide planned: 1|local::at0006|No|
+      gt0005|PSA value: 6,ng/mL
+      gt0007|Time since diagnosis: 6,mo
+      gt0009|Serum Albumin: 30,gm/dl
+      gt0011|Hemoglobin: 26,gm/dl
+      gt0013|Neutrophil to lymphocyte ratio <2.5: 1|local::at0010|No|
+      gt0014|LDH below upper limit of normal: 1|local::at0013|No|
+      gt0015|Pain 0-1: 1|local::at0016|No|
+      gt0016|<10 bone metastases on bone scan: 1|local::at0019|No|
+      gt0017|Alkaline phosphatase less than upper limit of normal: 1|local::at0022|No|
+      gt0018|Pattern of spread: 0|local::at0024|No visceral liver metastases|
+  expected_output:
+    1:
+      gt0023|Warning Hemoglobin: Too high please change to proceed.
+      gt0022|Warning Albumin: Too high please change to proceed.
+- id: Albumin Very Low
+  input:
+    1:
+      gt0003|Treatment with enzalutamide planned: 1|local::at0006|No|
+      gt0005|PSA value: 6,ng/mL
+      gt0007|Time since diagnosis: 6,mo
+      gt0009|Serum Albumin: 0,gm/dl
+      gt0011|Hemoglobin: 1,gm/dl
+      gt0013|Neutrophil to lymphocyte ratio <2.5: 1|local::at0010|No|
+      gt0014|LDH below upper limit of normal: 1|local::at0013|No|
+      gt0015|Pain 0-1: 1|local::at0016|No|
+      gt0016|<10 bone metastases on bone scan: 1|local::at0019|No|
+      gt0017|Alkaline phosphatase less than upper limit of normal: 1|local::at0022|No|
+      gt0018|Pattern of spread: 0|local::at0024|No visceral liver metastases|
+  expected_output:
+    1:
+      gt0022|Warning Albumin: Very low double-check.
+      gt0020|Total score: 377,1
+- id: Hb Too Low
+  input:
+    1:
+      gt0003|Treatment with enzalutamide planned: 1|local::at0006|No|
+      gt0005|PSA value: 6,ng/mL
+      gt0007|Time since diagnosis: 6,mo
+      gt0009|Serum Albumin: 0,gm/dl
+      gt0011|Hemoglobin: 0,gm/dl
+      gt0013|Neutrophil to lymphocyte ratio <2.5: 1|local::at0010|No|
+      gt0014|LDH below upper limit of normal: 1|local::at0013|No|
+      gt0015|Pain 0-1: 1|local::at0016|No|
+      gt0016|<10 bone metastases on bone scan: 1|local::at0019|No|
+      gt0017|Alkaline phosphatase less than upper limit of normal: 1|local::at0022|No|
+      gt0018|Pattern of spread: 0|local::at0024|No visceral liver metastases|
+  expected_output:
+    1:
+      gt0023|Warning Hemoglobin: Too low please change to proceed.
+      gt0022|Warning Albumin: Very low double-check.
+- id: Warning Very High
+  input:
+    1:
+      gt0003|Treatment with enzalutamide planned: 1|local::at0006|No|
+      gt0005|PSA value: 6,ng/mL
+      gt0007|Time since diagnosis: 6,mo
+      gt0009|Serum Albumin: 7,gm/dl
+      gt0011|Hemoglobin: 24,gm/dl
+      gt0013|Neutrophil to lymphocyte ratio <2.5: 1|local::at0010|No|
+      gt0014|LDH below upper limit of normal: 1|local::at0013|No|
+      gt0015|Pain 0-1: 1|local::at0016|No|
+      gt0016|<10 bone metastases on bone scan: 1|local::at0019|No|
+      gt0017|Alkaline phosphatase less than upper limit of normal: 1|local::at0022|No|
+      gt0018|Pattern of spread: 0|local::at0024|No visceral liver metastases|
+  expected_output:
+    1:
+      gt0023|Warning Hemoglobin: Very high double-check.
+      gt0022|Warning Albumin: Very high double-check.
+      gt0020|Total score: 87,1
