@@ -1,0 +1,40 @@
+guidelines:
+  1: NEXUS_Chest_Decision_Instrument_for_Blunt_Chest_Trauma.v1
+test_cases:
+- id: Default
+  input:
+    1: {}
+  expected_output:
+    1: {}
+
+- id: NEXUS Score >1
+  input:
+    1:
+      gt0003|Rapid deceleration mechanism (Fall from >20 ft (>6m), MVC >40 mph (>64km/h)): 1|local::at0007|Yes|
+      gt0004|Chest pain: 1|local::at0010|Yes|
+      gt0005|Intoxication: 0|local::at0012|No|
+      gt0006|Altered mental status: 0|local::at0015|No|
+      gt0007|Distracting painful injury: 0|local::at0018|No|
+      gt0008|Tenderness to chest wall palpation: 1|local::at0022|Yes|
+      gt0010|Age: 65,a
+  expected_output:
+    1:
+      gt0013|NEXUS Score: 4
+      gt0014|Interpretation: local::at0026|In well-appearing patient with no evidence of multi-organ injury, consider Chest X-ray (CXR) only without CT. In ill-appearing patients and/or those who will receive workup for other serious injury, consider chest CT as well.|
+      gt0012|Age >60 years: 1|local::at0004|Yes|
+
+- id: NEXUS Score = 0
+  input:
+    1:
+      gt0003|Rapid deceleration mechanism (Fall from >20 ft (>6m), MVC >40 mph (>64km/h)): 0|local::at0006|No|
+      gt0004|Chest pain: 0|local::at0009|No|
+      gt0005|Intoxication: 0|local::at0012|No|
+      gt0006|Altered mental status: 0|local::at0015|No|
+      gt0007|Distracting painful injury: 0|local::at0018|No|
+      gt0008|Tenderness to chest wall palpation: 0|local::at0021|No|
+      gt0010|Age: 55,a
+  expected_output:
+    1:
+      gt0013|NEXUS Score: 0
+      gt0014|Interpretation: local::at0025|No thoracic imaging required. NEXUS Score is 99% sensitive for clinically significant thoracic injury.|
+      gt0012|Age >60 years: 0|local::at0003|No|
