@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 476*
+### *Published Apps: 477*
 
 ----------
 
 ### Latest added
 
-1. Phenytoin (Dilantin) Correction for Albumin / Renal Failure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Phenytoin_correction_for_albumin_renal_failure/1?language=en))
-2. Prostate Tumor Volume & Density - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prostate_Tumor_Volume_Density/1?language=en))
-3. Leiden Clinical Prediction Rule for Undifferentiated Arthritis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Leiden_Clinical_Prediction_Rule_guideline/1?language=en))
-4. Pack Years Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pack_Years_Calculator_guideline/1?language=en))
-5. Liver Decompensation Risk after Hepatectomy for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Liver_Decompensation_Risk_after_Hepatectomy_for_Hepatocellular_Carcinoma_HCC/1?language=en))
-6. NEXUS Criteria for C-Spine Imaging - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEXUS_Criteria_C-Spine_Imaging_guideline/1?language=en))
-7. Light's Criteria for Exudative Effusions - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Lights_Criteria_guideline/1?language=en))
-8. Neutrophil-Lymphocyte Ratio (NLR) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neutrophil_Lymphocyte_Ratio_NLR_Calculator/1?language=en))
-9. Pediatric NIH Stroke Scale (NIHSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_NIHSS_guideline/1?language=en))
-10. Maddrey's Discriminant Function for Alcoholic Hepatitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Maddrey_Score_guideline/1?language=en))
+1. Maximum Allowable Blood Loss (ABL) Without Transfusion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABL_Without_Transfusion_guideline/1?language=en))
+2. Phenytoin (Dilantin) Correction for Albumin / Renal Failure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Phenytoin_correction_for_albumin_renal_failure/1?language=en))
+3. Prostate Tumor Volume & Density - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prostate_Tumor_Volume_Density/1?language=en))
+4. Leiden Clinical Prediction Rule for Undifferentiated Arthritis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Leiden_Clinical_Prediction_Rule_guideline/1?language=en))
+5. Pack Years Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pack_Years_Calculator_guideline/1?language=en))
+6. Liver Decompensation Risk after Hepatectomy for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Liver_Decompensation_Risk_after_Hepatectomy_for_Hepatocellular_Carcinoma_HCC/1?language=en))
+7. NEXUS Criteria for C-Spine Imaging - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEXUS_Criteria_C-Spine_Imaging_guideline/1?language=en))
+8. Light's Criteria for Exudative Effusions - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Lights_Criteria_guideline/1?language=en))
+9. Neutrophil-Lymphocyte Ratio (NLR) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neutrophil_Lymphocyte_Ratio_NLR_Calculator/1?language=en))
+10. Pediatric NIH Stroke Scale (NIHSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_NIHSS_guideline/1?language=en))
 
 ----------
 
@@ -1088,6 +1088,8 @@ _Select a medical specialty below to view the available apps._
 * LACE Index for Readmission - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LACE_readmission_index/1?language=en))
 
 * LRINEC Score for Necrotizing Soft Tissue Infection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LRINEC_Score_guideline/1?language=en))
+
+* Maximum Allowable Blood Loss (ABL) Without Transfusion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABL_Without_Transfusion_guideline/1?language=en))
 
 * Pancreatic Fistula Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pancreatic_Fistula_Risk_Score_guideline/1?language=en))
 
