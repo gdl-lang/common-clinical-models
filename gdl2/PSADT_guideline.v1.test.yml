@@ -1,0 +1,31 @@
+guidelines:
+  1: PSADT_guideline.v1
+test_cases:
+- id: PSA 2.3 mo
+  input:
+    1:
+      gt0003|PSA1: 5,ng/mL
+      gt0013|PSA2: 10,nanogm/ml
+      gt0014|Time between PSA1 and PSA2 measurement: 2,mo
+  expected_output:
+    1:
+      gt0010|Slope PSA: 0.3,1
+      gt0009|PSA doubling time: 2.3,mo
+- id: warning psa2>psa1
+  input:
+    1:
+      gt0003|PSA1: 10,ng/mL
+      gt0013|PSA2: 5,nanogm/ml
+      gt0014|Time between PSA1 and PSA2 measurement: 2,mo
+  expected_output:
+    1:
+      gt0016|Warning: PSA value should be increasing over time
+- id: Warning psa2=psa1
+  input:
+    1:
+      gt0003|PSA1: 5,ng/mL
+      gt0013|PSA2: 5,nanogm/ml
+      gt0014|Time between PSA1 and PSA2 measurement: 2,mo
+  expected_output:
+    1:
+      gt0016|Warning: PSA value should be increasing over time

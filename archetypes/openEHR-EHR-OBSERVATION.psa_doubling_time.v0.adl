@@ -1,0 +1,166 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.psa_doubling_time.v0
+
+concept
+	[at0000]	-- Psa doubling time
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Maryam Razavi">
+		["email"] = <"maryam.razavi@cambio.se">
+		["organisation"] = <"CambioCDS">
+		["date"] = <"2020-12-10">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To register information regarding the assessment of PSADT.
+
+">
+			use = <"Use to record information regarding the assessment of PSADT. 
+Used in patients with prostate cancer who have undergone radical prostatectomy or definitive radiation therapy and have biochemical recurrence, defined as confirmed PSA ≥0.2 ng/mL if radical prostatectomy or confirmed PSA rise of ≥2 ng/mL above the nadir PSA level if radiation therapy.
+Note: PSA doubling time is considered to have a limited value in prostate cancer screening and diagnosis.
+
+Variables: 
+PSA1 (First (earliest) available PSA result) ng/mL
+PSA2  (Second available PSA result) ng/mL
+Time between PSA1 and PSA2 measurement month
+Formula: 
+PSA doubling time = ln (2) / PSA Slope
+PSA Slope = (ln (PSA level 2) – ln (PSA level 1)) / Time (no. of months)
+
+
+
+
+
+
+">
+			keywords = <"PSA:prostate specific antigen", "prostate", "cancer", "prostatectomy ">
+			misuse = <"">
+			copyright = <"CambioCDS">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"B3F1566C2D62C202A8B020982C7B1A97">
+		["references"] = <"1. Pound CR, Partin AW, Eisenberger MA, Chan DW, Pearson JD, Walsh PC. Natural history of progression after PSA elevation following radical prostatectomy. JAMA. 1999;281(17):1591-1597.
+2. Vickers AJ, Brewster SF. PSA Velocity and Doubling Time in Diagnosis and Prognosis of Prostate Cancer. Br J Med Surg Urol. 2012; 5(4):162-168.
+3. Ponholzer A, Popper N, Breitenecker F, et al. Proposal for a standardized PSA doubling-time calculation. Anticancer Res. 2010; 30(5):1633-1636.">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Psa doubling time
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- PSA2
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::119]>
+												list = <
+													["1"] = <
+														units = <"nanogm/ml">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Time between PSA1 and PSA2 measurement
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::128]>
+												list = <
+													["1"] = <
+														units = <"mo">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- PSA doubling time
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::128]>
+												list = <
+													["1"] = <
+														units = <"mo">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Slope PSA
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Warning
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Psa doubling time">
+					description = <"PSA Doubling Time (PSADT) Calculator">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0007"] = <
+					text = <"Time between PSA1 and PSA2 measurement">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"PSA doubling time">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Slope PSA">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"PSA2">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Warning">
+					description = <"*">
+				>
+			>
+		>
+	>
