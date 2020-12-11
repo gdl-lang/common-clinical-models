@@ -1,0 +1,155 @@
+{
+  "id": "McDonald_Criteria_guideline.v1",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2020-12-10",
+      "name": "Maryam Razavi",
+      "organisation": "CambioCDS",
+      "email": "maryam.razavi@cambio.se"
+    },
+    "lifecycle_state": "Not set",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "To assist clinicians to diagnose multiple sclerosis.",
+        "keywords": [
+          "Multiple Sclerosis",
+          "MRI criteria",
+          "dissemination in time (DIT)",
+          " Dissemination in space (DIS)"
+        ],
+        "use": "Use in patients with suspected MS who have undergone MRI.\nVariables: \n- Clinical attacks: Must have ≥1 clinical attack\n   Number of clinical attacks: (“Clinical attack” = monophasic clinical episode with patient-reported symptoms and objective findings reflecting inflammatory demyelinating CNS event (focal or multifocal), subacute or acute, for ≥24 hrs, with or without recovery, and no fever or infection present; attack, relapse, exacerbation, and clinically isolated syndrome (first episode) are all synonymous)\n\n\n- Lesions: Must have ≥1 lesion: \n   Number of lesions with objective clinical evidence: (“Objective clinical evidence” = abnormality on neurologic exam, imaging (MRI or optical coherence tomography), or visual evoked potentials, corresponding to anatomical location suggested by symptoms)\n\n\n- Historical evidence of a previous attack involving a lesion in a distinct anatomical location (Yes, No)\n\n\nAdditional data: (Yes, No)\n- Dissemination in time demonstrated by additional clinical attack or MRI, or presence of CSF-specific oligoclonal bands\n\n- Dissemination in space demonstrated by an additional clinical attack implicating a different CNS site or by MRI\n\nInterpretation: \nClinical attacks        Number of lesions with objective clinical evidence        Additional data needed for diagnosis of MS\n≥2                              ≥2                                                                                            No additional tests required to demonstrate dissemination in space and time\n≥2                               1 (as well as clear-cut historical evidence of a                  No additional tests required to demonstrate dissemination in space and time\n                                    previous attack involving a lesion in a distinct \n                                    anatomical location)\n≥2                                1                                                                                             Dissemination in space demonstrated by an additional clinical attack implicating a                                                                                                                                                                          different CNS site or by MRI\n\n\n1                                     ≥2                                                                                          Dissemination in time demonstrated by additional clinical attack or MRI, or presence of CSF-specific                                                                                                                                       oligoclonal bands\n",
+        "misuse": "Not to use to differentiate MS from other conditions.",
+        "copyright": "CambioCDS"
+      }
+    },
+    "other_details": {
+      "references": "1. Thompson AJ, Banwell BL, Barkhof F, et al. Diagnosis of multiple sclerosis: 2017 revisions of the McDonald criteria. Lancet Neurol. 2017."
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0002": {
+        "id": "gt0002",
+        "model_id": "openEHR-EHR-OBSERVATION.mcdonald_criteria_for_ms.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.mcdonald_criteria_for_ms.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0003": {
+            "id": "gt0003",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]/items[at0006]"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]/items[at0007]"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]/items[at0014]"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]/items[at0010]"
+          }
+        }
+      },
+      "gt0007": {
+        "id": "gt0007",
+        "model_id": "openEHR-EHR-OBSERVATION.mcdonald_criteria_for_ms.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.mcdonald_criteria_for_ms.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0008": {
+            "id": "gt0008",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0009": {
+        "id": "gt0009",
+        "priority": 2,
+        "when": [
+          "$gt0003|Number of clinical attacks|!=null",
+          "$gt0004|Number of lesions with objective clinical evidence|!=null",
+          "(($gt0003|Number of clinical attacks|>=2,1)&&($gt0004|Number of lesions with objective clinical evidence|>=2,1))||((((($gt0003|Number of clinical attacks|>=2,1)&&($gt0004|Number of lesions with objective clinical evidence|==1,1))&&($gt0005|Historical evidence of a previous attack involving a lesion in a distinct anatomical location|==local::at0009|Yes|))&&($gt0005|Historical evidence of a previous attack involving a lesion in a distinct anatomical location|!=null))||((((((($gt0003|Number of clinical attacks|>=2,1)&&($gt0004|Number of lesions with objective clinical evidence|==1,1))&&($gt0005|Historical evidence of a previous attack involving a lesion in a distinct anatomical location|==local::at0008|No|))&&($gt0011|Dissemination in space demonstrated by an additional clinical attack implicating a different CNS site or by MRI|==local::at0012|Yes|))&&($gt0005|Historical evidence of a previous attack involving a lesion in a distinct anatomical location|!=null))&&($gt0011|Dissemination in space demonstrated by an additional clinical attack implicating a different CNS site or by MRI|!=null))||((((($gt0003|Number of clinical attacks|==1,1)&&($gt0004|Number of lesions with objective clinical evidence|>=2,1))&&($gt0010|Dissemination in time demonstrated by additional clinical attack or MRI, or presence of CSF-specific oligoclonal bands|==local::at0016|Yes|))&&($gt0010|Dissemination in time demonstrated by additional clinical attack or MRI, or presence of CSF-specific oligoclonal bands|!=null))||(((($gt0003|Number of clinical attacks|==1,1)&&($gt0004|Number of lesions with objective clinical evidence|==1,1))&&($gt0010|Dissemination in time demonstrated by additional clinical attack or MRI, or presence of CSF-specific oligoclonal bands|==local::at0016|Yes|))&&($gt0011|Dissemination in space demonstrated by an additional clinical attack implicating a different CNS site or by MRI|==local::at0012|Yes|)))))"
+        ],
+        "then": [
+          "$gt0008|Diagnostic Result|='Definite MS based on 2017 McDonald Criteria for MS'"
+        ]
+      },
+      "gt0012": {
+        "id": "gt0012",
+        "priority": 1,
+        "when": [
+          "(((($gt0003|Number of clinical attacks|>=2,1)&&($gt0004|Number of lesions with objective clinical evidence|==1,1))&&($gt0005|Historical evidence of a previous attack involving a lesion in a distinct anatomical location|==local::at0008|No|))&&($gt0011|Dissemination in space demonstrated by an additional clinical attack implicating a different CNS site or by MRI|==local::at0011|No|))||(((($gt0003|Number of clinical attacks|==1,1)&&($gt0004|Number of lesions with objective clinical evidence|>=2,1))&&($gt0010|Dissemination in time demonstrated by additional clinical attack or MRI, or presence of CSF-specific oligoclonal bands|==local::at0015|No|))||((($gt0003|Number of clinical attacks|==1,1)&&($gt0004|Number of lesions with objective clinical evidence|==1,1))&&(($gt0010|Dissemination in time demonstrated by additional clinical attack or MRI, or presence of CSF-specific oligoclonal bands|==local::at0015|No|)||($gt0011|Dissemination in space demonstrated by an additional clinical attack implicating a different CNS site or by MRI|==local::at0011|No|))))"
+        ],
+        "then": [
+          "$gt0008|Diagnostic Result|='Not MS based on 2017 McDonald Criteria for MS'"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "McDonald Criteria",
+            "description": "McDonald Criteria for Multiple Sclerosis (2017 Revision)"
+          },
+          "gt0003": {
+            "id": "gt0003",
+            "text": "Number of clinical attacks",
+            "description": "“Clinical attack” = monophasic clinical episode with patient-reported symptoms and objective findings reflecting inflammatory demyelinating CNS event (focal or multifocal), subacute or acute, for ≥24 hrs, with or without recovery, and no fever or infection present; attack, relapse, exacerbation, and clinically isolated syndrome (first episode) are all synonymous"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "Number of lesions with objective clinical evidence",
+            "description": "“Objective clinical evidence” = abnormality on neurologic exam, imaging (MRI or optical coherence tomography), or visual evoked potentials, corresponding to anatomical location suggested by symptoms"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "Historical evidence of a previous attack involving a lesion in a distinct anatomical location",
+            "description": "*"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "Diagnostic Result",
+            "description": "*"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "text": "Definite MS"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "Dissemination in time demonstrated by additional clinical attack or MRI, or presence of CSF-specific oligoclonal bands",
+            "description": "*"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "Dissemination in space demonstrated by an additional clinical attack implicating a different CNS site or by MRI",
+            "description": "*"
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "text": "Not MS"
+          }
+        }
+      }
+    }
+  }
+}
