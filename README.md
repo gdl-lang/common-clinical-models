@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 478*
+### *Published Apps: 480*
 
 ----------
 
 ### Latest added
 
-1. Ocular Hypertension Treatment Study (OHTS) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ocular_Hypertension_Treatment_Study_OHTS_Calculator/1?language=en))
-2. Maximum Allowable Blood Loss (ABL) Without Transfusion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABL_Without_Transfusion_guideline/1?language=en))
-3. Phenytoin (Dilantin) Correction for Albumin / Renal Failure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Phenytoin_correction_for_albumin_renal_failure/1?language=en))
-4. Prostate Tumor Volume & Density - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prostate_Tumor_Volume_Density/1?language=en))
-5. Leiden Clinical Prediction Rule for Undifferentiated Arthritis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Leiden_Clinical_Prediction_Rule_guideline/1?language=en))
-6. Pack Years Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pack_Years_Calculator_guideline/1?language=en))
-7. Liver Decompensation Risk after Hepatectomy for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Liver_Decompensation_Risk_after_Hepatectomy_for_Hepatocellular_Carcinoma_HCC/1?language=en))
-8. NEXUS Criteria for C-Spine Imaging - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEXUS_Criteria_C-Spine_Imaging_guideline/1?language=en))
-9. Light's Criteria for Exudative Effusions - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Lights_Criteria_guideline/1?language=en))
-10. Neutrophil-Lymphocyte Ratio (NLR) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neutrophil_Lymphocyte_Ratio_NLR_Calculator/1?language=en))
+1. R Factor for Liver Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R_factor_for_liver_injury/1?language=en))
+2. OESIL Score for Syncope - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OESIL_Score_guideline/1?language=en))
+3. Ocular Hypertension Treatment Study (OHTS) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ocular_Hypertension_Treatment_Study_OHTS_Calculator/1?language=en))
+4. Maximum Allowable Blood Loss (ABL) Without Transfusion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABL_Without_Transfusion_guideline/1?language=en))
+5. Phenytoin (Dilantin) Correction for Albumin / Renal Failure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Phenytoin_correction_for_albumin_renal_failure/1?language=en))
+6. Prostate Tumor Volume & Density - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prostate_Tumor_Volume_Density/1?language=en))
+7. Leiden Clinical Prediction Rule for Undifferentiated Arthritis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Leiden_Clinical_Prediction_Rule_guideline/1?language=en))
+8. Pack Years Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pack_Years_Calculator_guideline/1?language=en))
+9. Liver Decompensation Risk after Hepatectomy for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Liver_Decompensation_Risk_after_Hepatectomy_for_Hepatocellular_Carcinoma_HCC/1?language=en))
+10. NEXUS Criteria for C-Spine Imaging - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEXUS_Criteria_C-Spine_Imaging_guideline/1?language=en))
 
 ----------
 
@@ -411,6 +411,8 @@ _Select a medical specialty below to view the available apps._
 
 * Ranson's Criteria for Pancreatitis Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality/1?language=sv))
 
+* R Factor for Liver Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R_factor_for_liver_injury/1?language=en))
+
 * Simplified Autoimmune Hepatitis (AIH) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_Autoimmune_Hepatitis_AIH_Score_guideline/1?language=en))
 ----------
 
@@ -638,6 +640,8 @@ _Select a medical specialty below to view the available apps._
 * National Institutes of Health Stroke Scale (NIHSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NIHSS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NIHSS/1?language=sv))
 
 * Neuropathy Pain Scale (NPS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neuropathy_pain_scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neuropathy_pain_scale/1?language=sv))
+
+* OESIL Score for Syncope - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OESIL_Score_guideline/1?language=en))
 
 * Ottawa Subarachnoid Hemorrhage (SAH) Rule for Headache Evaluation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ottawa_Subarachnoid_Hemorrhage_Rule_for_Headache_Evaluation/1?language=en))
 
