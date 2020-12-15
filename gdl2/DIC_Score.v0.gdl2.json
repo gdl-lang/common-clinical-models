@@ -68,10 +68,6 @@
             "id": "gt0014",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
           },
-          "gt0015": {
-            "id": "gt0015",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
-          },
           "gt0016": {
             "id": "gt0016",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0012]"
@@ -108,25 +104,9 @@
       }
     },
     "rules": {
-      "gt0021": {
-        "id": "gt0021",
-        "priority": 13,
-        "when": [
-          "$gt0014|Platelet Count Score|==null",
-          "$gt0015|D-Dimer Score|==null",
-          "$gt0016|PT Score|==null",
-          "$gt0017|Fibrinogen level Score|==null"
-        ],
-        "then": [
-          "$gt0014|Platelet Count Score|=0|local::at0005|>=100*10^9 / L|",
-          "$gt0015|D-Dimer Score|=0|local::at0009|No increase|",
-          "$gt0016|PT Score|=0|local::at0013|< 3 seconds|",
-          "$gt0017|Fibrinogen level Score|=0|local::at0017|>=1 g/L|"
-        ]
-      },
       "gt0023": {
         "id": "gt0023",
-        "priority": 12,
+        "priority": 11,
         "when": [
           "$gt0009|Platelet count|!=null",
           "$gt0009|Platelet count|.magnitude>=100",
@@ -138,7 +118,7 @@
       },
       "gt0024": {
         "id": "gt0024",
-        "priority": 11,
+        "priority": 10,
         "when": [
           "$gt0009|Platelet count|!=null",
           "$gt0009|Platelet count|.magnitude>=50",
@@ -151,7 +131,7 @@
       },
       "gt0025": {
         "id": "gt0025",
-        "priority": 10,
+        "priority": 9,
         "when": [
           "$gt0009|Platelet count|!=null",
           "$gt0009|Platelet count|.magnitude<50",
@@ -159,16 +139,6 @@
         ],
         "then": [
           "$gt0014|Platelet Count Score|=2|local::at0007|<50 * 10^9 /L|"
-        ]
-      },
-      "gt0026": {
-        "id": "gt0026",
-        "priority": 9,
-        "when": [
-          "$gt0029|D-Dimer|!=null"
-        ],
-        "then": [
-          "$gt0015|D-Dimer Score|=$gt0015|D-Dimer Score|"
         ]
       },
       "gt0030": {
@@ -235,8 +205,14 @@
       "gt0035": {
         "id": "gt0035",
         "priority": 3,
+        "when": [
+          "$gt0009|Platelet count|!=null",
+          "$gt0011|PT|!=null",
+          "$gt0022|Fibrinogen|!=null",
+          "$gt0029|D-Dimer|!=null"
+        ],
         "then": [
-          "$gt0018|DIC score|.magnitude=$gt0014.value+$gt0015.value+$gt0016.value+$gt0017.value"
+          "$gt0018|DIC score|.magnitude=$gt0014.value+$gt0016.value+$gt0017.value+$gt0029.value"
         ]
       },
       "gt0036": {
@@ -278,11 +254,6 @@
             "text": "Platelet count",
             "description": "The number of platelets per litre"
           },
-          "gt0005": {
-            "id": "gt0005",
-            "text": "D-dimer value",
-            "description": "Lab test result of prostate-specific antigen (PSA)"
-          },
           "gt0007": {
             "id": "gt0007",
             "text": "PT",
@@ -293,30 +264,15 @@
             "text": "Platelet count",
             "description": "Number of platelets per microliter of blood."
           },
-          "gt0010": {
-            "id": "gt0010",
-            "text": "D-dimer",
-            "description": "Concentration of D-dimer in the sample."
-          },
           "gt0011": {
             "id": "gt0011",
             "text": "PT",
             "description": "Prothrombin time."
           },
-          "gt0012": {
-            "id": "gt0012",
-            "text": "D-dimer",
-            "description": "Concentration of D-dimer in the sample."
-          },
           "gt0014": {
             "id": "gt0014",
             "text": "Platelet Count Score",
             "description": "Observation of the lab blood test result of the platelet count, a component of coagulation profile"
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "text": "D-Dimer Score",
-            "description": "*Observation of the lab blood test result of D-Dimer, a component of coagulation profile"
           },
           "gt0016": {
             "id": "gt0016",
@@ -343,10 +299,6 @@
             "text": "Recommendation",
             "description": "Assessing the total DIC score obtained and determining the presence of overt or non overt DIC in patients diagnosed with pre disposing disease"
           },
-          "gt0021": {
-            "id": "gt0021",
-            "text": "Default"
-          },
           "gt0022": {
             "id": "gt0022",
             "text": "Fibrinogen",
@@ -363,10 +315,6 @@
           "gt0025": {
             "id": "gt0025",
             "text": "Set PlateletCount to <50*10^9/L"
-          },
-          "gt0026": {
-            "id": "gt0026",
-            "text": "Set D-dimer "
           },
           "gt0029": {
             "id": "gt0029",
