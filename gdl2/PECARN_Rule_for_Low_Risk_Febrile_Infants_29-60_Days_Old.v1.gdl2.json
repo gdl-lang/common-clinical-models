@@ -24,6 +24,7 @@
           "risk"
         ],
         "use": "Formula:\n\nUrinalysis positive                                     Yes            No            No          No\nANC >4.090/uL                                          -              Yes            No          No\nSerum procalcitonin >1.71 ng/mL              -                -              Yes         No\nSBI Risk                                                  49.6%       6.0%          27.3%     0.2%",
+        "misuse": "Do not use in infants 28 days or younger AND Does not apply to ill-appearing infants.",
         "copyright": "@CambioCDS"
       }
     },
@@ -76,8 +77,24 @@
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
           }
         }
+      },
+      "gt0026": {
+        "id": "gt0026",
+        "model_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0027": {
+            "id": "gt0027",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
+          }
+        }
       }
     },
+    "pre_conditions": [
+      "$gt0027|Infant Age|>=29,d",
+      "$gt0027|Infant Age|<=60,d"
+    ],
     "default_actions": [
       "$gt0024|Serum procalcitonin >1.71 ng/mL|=0|local::at0009|No|"
     ],
@@ -193,6 +210,11 @@
             "id": "gt0025",
             "text": "ANC >4,090/μL",
             "description": "*"
+          },
+          "gt0027": {
+            "id": "gt0027",
+            "text": "Infant Age",
+            "description": "Age in years, and for babies: months, weeks or days"
           }
         }
       }
