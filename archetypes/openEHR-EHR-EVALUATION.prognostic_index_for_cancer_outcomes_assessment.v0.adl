@@ -1,0 +1,91 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.prognostic_index_for_cancer_outcomes_assessment.v0
+
+concept
+	[at0000]	-- Prognostic index for cancer outcomes assessment
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Therese Lindberg">
+		["email"] = <"therese.lindberg@cambio.se">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2020-12-17">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To assess prognostic Index for cancer outcomes.">
+			use = <"Only use with openEHR-EHR-OBSERVATION.prognostic_index_for_cancer_outcomes.v0. 
+
+Interpretation:
+Prognostic Index       Assessment
+0                             Good prognosis 
+1                             Intermediate prognosis
+2                             Poor prognosis">
+			keywords = <"prognostic index", "cancer", "outcomes", "assessment", "white blood cells", "CRP">
+			misuse = <"Do not use with any other archetype then openEHR-EHR-OBSERVATION.prognostic_index_for_cancer_outcomes.v0. ">
+			copyright = <"@CambioCDS">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"1. Kasymjanova G, MacDonald N, Agulnik JS, et al. The predictive value of pre-treatment inflammatory markers in advanced non-small-cell lung cancer. Current Oncology. 2010;17(4):52-58.">
+		["current_contact"] = <"Therese Lindberg, Cambio CDS<therese.lindberg@cambio.se>">
+		["MD5-CAM-1.0.1"] = <"34804F73CA36F04867DE0D8F058235B0">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Prognostic index for cancer outcomes assessment
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Prognostic index interpretation
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0003, 	-- Good prognosis
+									at0004, 	-- Intermediate prognosis
+									at0005]	-- Poor prognosis
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Prognostic index for cancer outcomes assessment">
+					description = <"Prognostic Index for Cancer Outcomes predicts cancer mortality from serum biomarkers. ">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Prognostic index interpretation">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Good prognosis">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"Intermediate prognosis">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Poor prognosis">
+					description = <"*">
+				>
+			>
+		>
+	>
