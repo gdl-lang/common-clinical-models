@@ -1,0 +1,220 @@
+{
+  "id": "Pediatric_NEXUS_II_Head_CT_Decision_guideline.v1",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2020-12-18",
+      "name": "Maryam Razavi",
+      "organisation": "CambioCDS",
+      "email": "maryam.razavi@cambio.se"
+    },
+    "lifecycle_state": "Not set",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "To predict need for head CT after pediatric blunt head injury.",
+        "keywords": [
+          "CT",
+          "Blunt Trauma",
+          "head trauma",
+          "Pediatric "
+        ],
+        "use": "Use in patients <18 years old who have sustained blunt head trauma within the past 24 hours and in whom head CT is being considered.\n\nFormula: Addition of selected points. \n\nCriteria and assigned points: \n- Evidence of skull fracture: No=0, Yes=1\n- Scalp hematoma: No=0, Yes=1\n- Neurologic deficit: No=0, Yes=1\n- Abnormal level of alertness: No=0, Yes=1\n- Abnormal behavior: No=0, Yes=1\n- Persistent vomiting: No=0, Yes=1\n- Coagulopathy: No=0, Yes=1\n\nInterpretation:\nscore 0= Low Risk of significant intracranial injuries= Recommendation: CT not necessary (100% sensitive for findings requiring neurosurgical intervention)\nscore>0= High Risk of significant intracranial injuries= Recommendation: Consider CT",
+        "misuse": "",
+        "copyright": "@CambioCDS"
+      }
+    },
+    "other_details": {
+      "references": "1. Mower WR, Hoffman JR, Herbert M, et al. Developing a decision instrument to guide computed tomographic imaging of blunt head injury patients. J Trauma. 2005;59(4):954-9.\n2. Oman JA, Cooper RJ, Holmes JF, et al. Performance of a decision rule to predict need for computed tomography among children with blunt head trauma. Pediatrics. 2006;117(2):e238-46.\n"
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0002": {
+        "id": "gt0002",
+        "model_id": "openEHR-EHR-OBSERVATION.pediatric_nexus_ii_head_ct_decision.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.pediatric_nexus_ii_head_ct_decision.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0003": {
+            "id": "gt0003",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0016]"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0019]"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0022]"
+          }
+        }
+      },
+      "gt0010": {
+        "id": "gt0010",
+        "model_id": "openEHR-EHR-OBSERVATION.pediatric_nexus_ii_head_ct_decision.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.pediatric_nexus_ii_head_ct_decision.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0011": {
+            "id": "gt0011",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0025]"
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0026]"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0029]"
+          }
+        }
+      },
+      "gt0015": {
+        "id": "gt0015",
+        "model_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0016": {
+            "id": "gt0016",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
+          }
+        }
+      }
+    },
+    "pre_conditions": [
+      "$gt0016|Age|<18,a"
+    ],
+    "default_actions": [
+      "$gt0012|Risk of significant intracranial injuries|=local::at0028|High|",
+      "$gt0013|Recommendation|=local::at0031|Consider CT|"
+    ],
+    "rules": {
+      "gt0014": {
+        "id": "gt0014",
+        "priority": 2,
+        "when": [
+          "$gt0003|Evidence of skull fracture|!=null",
+          "$gt0004|Scalp hematoma|!=null",
+          "$gt0005|Neurologic deficit|!=null",
+          "$gt0006|Abnormal level of alertness|!=null",
+          "$gt0007|Abnormal behavior|!=null",
+          "$gt0008|Persistent vomiting|!=null",
+          "$gt0009|Coagulopathy|!=null"
+        ],
+        "then": [
+          "$gt0011|NEXUS II score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value"
+        ]
+      },
+      "gt0017": {
+        "id": "gt0017",
+        "priority": 1,
+        "when": [
+          "$gt0011|NEXUS II score|==0"
+        ],
+        "then": [
+          "$gt0012|Risk of significant intracranial injuries|=local::at0027|Low|",
+          "$gt0013|Recommendation|=local::at0030|CT not necessary (100% sensitive for findings requiring neurosurgical intervention)|"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "Pediatric NEXUS II Head CT Decision",
+            "description": "Pediatric NEXUS II Head CT Decision Instrument for Blunt Trauma"
+          },
+          "gt0003": {
+            "id": "gt0003",
+            "text": "Evidence of skull fracture",
+            "description": "Basilar: e.g. periorbital or periauricular ecchymoses, hemotympanum, drainage of clear fluid from ears or nose\r\n\r\nDepressed/diastatic: palpable step-off, stellate laceration from a point source, or any injury produced by an object striking a localized region of the skull (e.g. baseball bat, club, pool cue, golf ball, baseball, pipe)"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "Scalp hematoma",
+            "description": "Injuries not involving calvarium (e.g. hematomas limited to the face/neck) are not considered scalp hematomas"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "Neurologic deficit",
+            "description": "Any abnormal neurologic finding revealed by detailed exam, e.g. motor or sensory deficits (abnormal weakness/sensation in ≥1 extremity; cranial nerve abnormality (particularly II through XII); cerebellar abnormality as manifested by ataxia, dysmetria, dysdiadokinesis, or other impairment of cerebellar function (as determined by systematic testing of cerebellar function, including tests of ataxia and finger-nose-finger, heel-to-shin, and rapid alternating movements); gait abnormality or inability to walk normally due to inadequate strength, loss of balance, or ataxia; perform systematic testing of gait, including tandem and heel-to-toe walking, and Romberg testing); or any other impairment of neurologic function"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Abnormal level of alertness",
+            "description": "e.g. GCS ≤14; delayed or inappropriate response to external stimuli; excessive somnolence; disorientation to person, place, time, or events; inability to remember three objects at 5 mins; perseverating speech"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "text": "Abnormal behavior",
+            "description": "Any inappropriate action, e.g. excessive agitation, inconsolability, refusal to cooperate, lack of affective response to questions or events, violent activity"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "Persistent vomiting",
+            "description": "Recurrent projectile or forceful emesis (>1 episode), either observed or by history, after trauma"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "text": "Coagulopathy",
+            "description": "Any clotting impairment, e.g. hemophilia, secondary to medications (Coumadin, heparin, aspirin, etc), hepatic insufficiency"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "NEXUS II score",
+            "description": "*"
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "text": "Risk of significant intracranial injuries",
+            "description": "*"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "Recommendation",
+            "description": "*"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "NEXUS II score"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "text": "Age",
+            "description": "Age in years, and for babies: months, weeks or days"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "interpretation for score 0"
+          }
+        }
+      }
+    }
+  }
+}
