@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 484*
+### *Published Apps: 486*
 
 ----------
 
 ### Latest added
 
-1. Subaxial Injury Classification and Severity Scale (SLICS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Subaxial_Injury_Classification_and_Severity_Scale_SLICS/1?language=en))
-2. Local Anesthetic Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Local_Anesthetic_Dosing_Calculator_guideline/1?language=en))
-3. PECARN Rule for Low Risk Febrile Infants 29-60 Days Old - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PECARN_Rule_for_Low_Risk_Febrile_Infants_29-60_Days_Old/1?language=en))
-4. Maternal-Fetal Hemorrhage Rh(D) Immune Globulin Dosage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Maternal_Fetal_Hemorrhage_RhD_Immune_Globulin_Dosage/1?language=en))
-5. R Factor for Liver Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R_factor_for_liver_injury/1?language=en))
-6. OESIL Score for Syncope - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OESIL_Score_guideline/1?language=en))
-7. Ocular Hypertension Treatment Study (OHTS) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ocular_Hypertension_Treatment_Study_OHTS_Calculator/1?language=en))
-8. Maximum Allowable Blood Loss (ABL) Without Transfusion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABL_Without_Transfusion_guideline/1?language=en))
-9. Phenytoin (Dilantin) Correction for Albumin / Renal Failure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Phenytoin_correction_for_albumin_renal_failure/1?language=en))
-10. Prostate Tumor Volume & Density - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prostate_Tumor_Volume_Density/1?language=en))
+1. Oakland Score for Safe Discharge After Lower GI Bleed - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Oakland_Score_for_Safe_Discharge_After_Lower_GI_Bleed/1?language=en)
+2. Rapid Shallow Breathing Index (RSBI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rapid_Shallow_Breathing_Index_RSBI/1?language=en))
+3. Subaxial Injury Classification and Severity Scale (SLICS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Subaxial_Injury_Classification_and_Severity_Scale_SLICS/1?language=en))
+4. Local Anesthetic Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Local_Anesthetic_Dosing_Calculator_guideline/1?language=en))
+5. PECARN Rule for Low Risk Febrile Infants 29-60 Days Old - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PECARN_Rule_for_Low_Risk_Febrile_Infants_29-60_Days_Old/1?language=en))
+6. Maternal-Fetal Hemorrhage Rh(D) Immune Globulin Dosage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Maternal_Fetal_Hemorrhage_RhD_Immune_Globulin_Dosage/1?language=en))
+7. R Factor for Liver Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R_factor_for_liver_injury/1?language=en))
+8. OESIL Score for Syncope - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OESIL_Score_guideline/1?language=en))
+9. Ocular Hypertension Treatment Study (OHTS) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ocular_Hypertension_Treatment_Study_OHTS_Calculator/1?language=en))
+10. Maximum Allowable Blood Loss (ABL) Without Transfusion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABL_Without_Transfusion_guideline/1?language=en))
 
 ----------
 
@@ -410,6 +410,8 @@ _Select a medical specialty below to view the available apps._
 
 * NAFLD (Non-Alcoholic Fatty Liver Disease) Activity Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NAFLD_activity_score/1?language=en))
 
+* Oakland Score for Safe Discharge After Lower GI Bleed - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Oakland_Score_for_Safe_Discharge_After_Lower_GI_Bleed/1?language=en)
+
 * Ranson's Criteria for Pancreatitis Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality/1?language=sv))
 
 * R Factor for Liver Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R_factor_for_liver_injury/1?language=en))
@@ -529,6 +531,8 @@ _Select a medical specialty below to view the available apps._
 * Nutrition Risk Screening 2002 (NRS-2002) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Nutrition_Risk_Screening_2002_NRS/1?language=en))
 
 * Parkland Formula for Burns - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Parkland_formula/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Parkland_formula/1?language=sv))
+
+* Rapid Shallow Breathing Index (RSBI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rapid_Shallow_Breathing_Index_RSBI/1?language=en))
 
 * Richmond Agitation Sedation Scale (RASS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Richmond_Agitation_Sedation_Scale/1?language=en))
 
