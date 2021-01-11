@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 486*
+### *Published Apps: 487*
 
 ----------
 
 ### Latest added
 
-1. Oakland Score for Safe Discharge After Lower GI Bleed - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Oakland_Score_for_Safe_Discharge_After_Lower_GI_Bleed/1?language=en)
-2. Rapid Shallow Breathing Index (RSBI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rapid_Shallow_Breathing_Index_RSBI/1?language=en))
-3. Subaxial Injury Classification and Severity Scale (SLICS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Subaxial_Injury_Classification_and_Severity_Scale_SLICS/1?language=en))
-4. Local Anesthetic Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Local_Anesthetic_Dosing_Calculator_guideline/1?language=en))
-5. PECARN Rule for Low Risk Febrile Infants 29-60 Days Old - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PECARN_Rule_for_Low_Risk_Febrile_Infants_29-60_Days_Old/1?language=en))
-6. Maternal-Fetal Hemorrhage Rh(D) Immune Globulin Dosage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Maternal_Fetal_Hemorrhage_RhD_Immune_Globulin_Dosage/1?language=en))
-7. R Factor for Liver Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R_factor_for_liver_injury/1?language=en))
-8. OESIL Score for Syncope - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OESIL_Score_guideline/1?language=en))
-9. Ocular Hypertension Treatment Study (OHTS) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ocular_Hypertension_Treatment_Study_OHTS_Calculator/1?language=en))
-10. Maximum Allowable Blood Loss (ABL) Without Transfusion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABL_Without_Transfusion_guideline/1?language=en))
+1. HIV Needle Stick Risk Assessment Stratification Protocol (RASP) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HIV_Needle_Stick_Risk_Assessment_Stratification_Protocol_guideline/1?language=en))
+2. Oakland Score for Safe Discharge After Lower GI Bleed - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Oakland_Score_for_Safe_Discharge_After_Lower_GI_Bleed/1?language=en)
+3. Rapid Shallow Breathing Index (RSBI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rapid_Shallow_Breathing_Index_RSBI/1?language=en))
+4. Subaxial Injury Classification and Severity Scale (SLICS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Subaxial_Injury_Classification_and_Severity_Scale_SLICS/1?language=en))
+5. Local Anesthetic Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Local_Anesthetic_Dosing_Calculator_guideline/1?language=en))
+6. PECARN Rule for Low Risk Febrile Infants 29-60 Days Old - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PECARN_Rule_for_Low_Risk_Febrile_Infants_29-60_Days_Old/1?language=en))
+7. Maternal-Fetal Hemorrhage Rh(D) Immune Globulin Dosage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Maternal_Fetal_Hemorrhage_RhD_Immune_Globulin_Dosage/1?language=en))
+8. R Factor for Liver Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R_factor_for_liver_injury/1?language=en))
+9. OESIL Score for Syncope - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OESIL_Score_guideline/1?language=en))
+10. Ocular Hypertension Treatment Study (OHTS) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ocular_Hypertension_Treatment_Study_OHTS_Calculator/1?language=en))
 
 ----------
 
@@ -894,6 +894,8 @@ _Select a medical specialty below to view the available apps._
 * Estimated PEF-value - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEFR_estimated/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEFR_estimated/1?language=sv))
 
 * FeverPAIN - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FeverPAIN_Strep/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FeverPAIN_Strep/1?language=sv))
+
+* HIV Needle Stick Risk Assessment Stratification Protocol (RASP) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HIV_Needle_Stick_Risk_Assessment_Stratification_Protocol_guideline/1?language=en))
 
 * Ideal Body Weight (IBW) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IBW/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/IBW/1?language=sv))
 
