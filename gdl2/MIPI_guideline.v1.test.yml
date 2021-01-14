@@ -11,7 +11,7 @@ test_cases:
       gt0011|White cell count: 10,10*9/l
   expected_output:
     1:
-      'gt0015|MIPI ': 5.6,1
+      gt0015|MIPI (Ki-67 not included): 5.6,1
       gt0027|Risk (MIPI): Low
       gt0028|Median overall survival (MIPI): Not reached
 - id: MIPI>5.7
@@ -24,7 +24,7 @@ test_cases:
       gt0011|White cell count: 10,10*9/l
   expected_output:
     1:
-      'gt0015|MIPI ': 5.8,1
+      gt0015|MIPI (Ki-67 not included): 5.8,1
       gt0027|Risk (MIPI): Intermediate
       gt0028|Median overall survival (MIPI): 51 months
 - id: MIPI=6.2
@@ -37,7 +37,7 @@ test_cases:
       gt0011|White cell count: 10,10*9/l
   expected_output:
     1:
-      'gt0015|MIPI ': 6.2,1
+      gt0015|MIPI (Ki-67 not included): 6.2,1
       gt0027|Risk (MIPI): High
       gt0028|Median overall survival (MIPI): 29 months
 - id: MIPI>6.2
@@ -50,7 +50,7 @@ test_cases:
       gt0011|White cell count: 10,10*9/l
   expected_output:
     1:
-      'gt0015|MIPI ': 6.4,1
+      gt0015|MIPI (Ki-67 not included): 6.4,1
       gt0027|Risk (MIPI): High
       gt0028|Median overall survival (MIPI): 29 months
 - id: MIPIb = 5.7
@@ -64,9 +64,12 @@ test_cases:
       gt0013|Ki-67: 10,%
   expected_output:
     1:
+      gt0015|MIPI (Ki-67 not included): 5.5,1
       gt0030|Median overall survival (MIPIb): 58 months
       gt0029|Risk (MIPIb): Intermediate
-      gt0016|MIPIb: 5.7,1
+      gt0027|Risk (MIPI): Low
+      gt0016|MIPIb (Ki-67 included): 5.7,1
+      gt0028|Median overall survival (MIPI): Not reached
 - id: MIPIb<5.7
   input:
     1:
@@ -79,8 +82,10 @@ test_cases:
   expected_output:
     1:
       gt0030|Median overall survival (MIPIb): Not reached
+      gt0015|MIPI (Ki-67 not included): 5.3,1
       gt0029|Risk (MIPIb): Low
-      gt0016|MIPIb: 5.5,1
+      gt0027|Risk (MIPI): Low
+      gt0028|Median overall survival (MIPI): Not reached
 - id: MIPIb= 6.5
   input:
     1:
@@ -93,8 +98,11 @@ test_cases:
   expected_output:
     1:
       gt0030|Median overall survival (MIPIb): 37 months
+      gt0015|MIPI (Ki-67 not included): 6.3,1
       gt0029|Risk (MIPIb): High
-      gt0016|MIPIb: 6.5,1
+      gt0027|Risk (MIPI): High
+      gt0028|Median overall survival (MIPI): 29 months
+      gt0016|MIPIb (Ki-67 included): 6.5,1
 - id: MIPIb>6.5
   input:
     1:
@@ -107,8 +115,11 @@ test_cases:
   expected_output:
     1:
       gt0030|Median overall survival (MIPIb): 37 months
+      gt0015|MIPI (Ki-67 not included): 6.4,1
       gt0029|Risk (MIPIb): High
-      gt0016|MIPIb: 6.6,1
+      gt0027|Risk (MIPI): High
+      gt0028|Median overall survival (MIPI): 29 months
+      gt0016|MIPIb (Ki-67 included): 6.6,1
 - id: Warning too low or very low
   input:
     1:
@@ -135,11 +146,14 @@ test_cases:
   expected_output:
     1:
       gt0030|Median overall survival (MIPIb): 37 months
+      gt0015|MIPI (Ki-67 not included): 6.8,1
       gt0029|Risk (MIPIb): High
+      gt0027|Risk (MIPI): High
       gt0032|Warning upper limit of normal for serum LDH: Very high; double-check.
-      gt0016|MIPIb: 7.0,1
       gt0033|Warning WBC: Very high; double-check.
       gt0031|Warning Serum LDH: Very high; double-check.
+      gt0028|Median overall survival (MIPI): 29 months
+      gt0016|MIPIb (Ki-67 included): 7.0,1
 - id: Warning Too high
   input:
     1:
@@ -166,8 +180,11 @@ test_cases:
   expected_output:
     1:
       gt0030|Median overall survival (MIPIb): 58 months
+      gt0015|MIPI (Ki-67 not included): 6.0,1
       gt0029|Risk (MIPIb): Intermediate
-      gt0016|MIPIb: 6.2,1
+      gt0027|Risk (MIPI): Intermediate
+      gt0028|Median overall survival (MIPI): 51 months
+      gt0016|MIPIb (Ki-67 included): 6.2,1
 - id: MIPI with ECOG 2-4
   input:
     1:
@@ -178,6 +195,6 @@ test_cases:
       gt0011|White cell count: 10,10*9/l
   expected_output:
     1:
-      'gt0015|MIPI ': 6.0,1
+      gt0015|MIPI (Ki-67 not included): 6.0,1
       gt0027|Risk (MIPI): Intermediate
       gt0028|Median overall survival (MIPI): 51 months
