@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 501*
+### *Published Apps: 503*
 
 ----------
 
 ### Latest added
 
-1. Wound Closure Classification - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wound_Closure_Classification/1?language=en))
-2. Pittsburgh Response to Endovascular therapy (PRE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PRE_Score_guideline/1?language=en))
-3. Serum Ascites Albumin Gradient (SAAG) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Ascites_Albumin_Gradient_SAAG_guideline/1?language=en))
-4. Mantle Cell Lymphoma International Prognostic Index (MIPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MIPI_guideline/1?language=en))
-5. Westley Croup Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Westley_Croup_Score_guideline/1?language=en))
-6. Mehran Score for Post-PCI Contrast Nephropathy - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mehran_Score_Contrast_induced_Nephropathy_guideline/1?language=en))
-7. Psoriasis Area and Severity Index (PASI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PASI_guideline/1?language=en))
-8. Modified Mallampati Classification - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Mallampati_Classification/1?language=en))
-9. Neonatal Partial Exchange for Polycythemia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neonatal_Partial_Exchange_for_Polycythemia/1?language=en))
-10. NINCDS-ADRDA Criteria for Alzheimer’s Disease - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NINCDS-ADRDA_Criteria_for_Alzheimers_Disease/1?language=en))
+1. Stanford Sleepiness Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stanford_Sleepiness_Scale_guideline/1?language=en))
+2. Rockall Score for Upper GI Bleeding (Complete) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rockall_Score_Upper_GI_Bleeding_guideline/1?language=en))
+3. Wound Closure Classification - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wound_Closure_Classification/1?language=en))
+4. Pittsburgh Response to Endovascular therapy (PRE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PRE_Score_guideline/1?language=en))
+5. Serum Ascites Albumin Gradient (SAAG) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Ascites_Albumin_Gradient_SAAG_guideline/1?language=en))
+6. Mantle Cell Lymphoma International Prognostic Index (MIPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MIPI_guideline/1?language=en))
+7. Westley Croup Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Westley_Croup_Score_guideline/1?language=en))
+8. Mehran Score for Post-PCI Contrast Nephropathy - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mehran_Score_Contrast_induced_Nephropathy_guideline/1?language=en))
+9. Psoriasis Area and Severity Index (PASI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PASI_guideline/1?language=en))
+10. Modified Mallampati Classification - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Mallampati_Classification/1?language=en))
 
 ----------
 
@@ -429,6 +429,8 @@ _Select a medical specialty below to view the available apps._
 * Ranson's Criteria for Pancreatitis Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality/1?language=sv))
 
 * R Factor for Liver Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R_factor_for_liver_injury/1?language=en))
+
+* Rockall Score for Upper GI Bleeding (Complete) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rockall_Score_Upper_GI_Bleeding_guideline/1?language=en))
 
 * Serum Ascites Albumin Gradient (SAAG) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Ascites_Albumin_Gradient_SAAG_guideline/1?language=en))
 
@@ -1030,6 +1032,8 @@ _Select a medical specialty below to view the available apps._
 * Ritvo Autism and Asperger Diagnostic Scale 14 (RAADS-14) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAADS-14/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RAADS-14/1?language=sv))
 
 * Social Phobia Inventory (SPIN) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPIN/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPIN/1?language=sv))
+
+* Stanford Sleepiness Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stanford_Sleepiness_Scale_guideline/1?language=en))
 
 * V-Risk (Violence-Risk) 10 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/V-RISK_10/1?language=en))
 
