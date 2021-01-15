@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 496*
+### *Published Apps: 500*
 
 ----------
 
 ### Latest added
 
-1. Mehran Score for Post-PCI Contrast Nephropathy - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mehran_Score_Contrast_induced_Nephropathy_guideline/1?language=en))
-2. Psoriasis Area and Severity Index (PASI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PASI_guideline/1?language=en))
-3. Modified Mallampati Classification - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Mallampati_Classification/1?language=en))
-4. Neonatal Partial Exchange for Polycythemia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neonatal_Partial_Exchange_for_Polycythemia/1?language=en))
-5. NINCDS-ADRDA Criteria for Alzheimer’s Disease - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NINCDS-ADRDA_Criteria_for_Alzheimers_Disease/1?language=en))
-6. Los Angeles (LA) Grading of Esophagitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Los_Angeles_LA_Grading_of_Esophagitis/1?language=en))
-7. Los Angeles Motor Scale (LAMS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Los_Angeles_Motor_Scale_LAMS/1?language=en))
-8. Peripheral Blood Stem Cell Collection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Peripheral_Blood_Stem_Cell_Collection/1?language=en))
-9. RENAL Nephrometry Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RENAL_Nephrometry_Score/1?language=en))
-10. HIV Needle Stick Risk Assessment Stratification Protocol (RASP) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HIV_Needle_Stick_Risk_Assessment_Stratification_Protocol_guideline/1?language=en))
+1. Pittsburgh Response to Endovascular therapy (PRE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PRE_Score_guideline/1?language=en))
+2. Serum Ascites Albumin Gradient (SAAG) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Ascites_Albumin_Gradient_SAAG_guideline/1?language=en))
+3. Mantle Cell Lymphoma International Prognostic Index (MIPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MIPI_guideline/1?language=en))
+4. Westley Croup Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Westley_Croup_Score_guideline/1?language=en))
+5. Mehran Score for Post-PCI Contrast Nephropathy - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mehran_Score_Contrast_induced_Nephropathy_guideline/1?language=en))
+6. Psoriasis Area and Severity Index (PASI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PASI_guideline/1?language=en))
+7. Modified Mallampati Classification - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Mallampati_Classification/1?language=en))
+8. Neonatal Partial Exchange for Polycythemia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neonatal_Partial_Exchange_for_Polycythemia/1?language=en))
+9. NINCDS-ADRDA Criteria for Alzheimer’s Disease - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NINCDS-ADRDA_Criteria_for_Alzheimers_Disease/1?language=en))
+10. Los Angeles (LA) Grading of Esophagitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Los_Angeles_LA_Grading_of_Esophagitis/1?language=en))
 
 ----------
 
@@ -430,6 +430,8 @@ _Select a medical specialty below to view the available apps._
 
 * R Factor for Liver Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R_factor_for_liver_injury/1?language=en))
 
+* Serum Ascites Albumin Gradient (SAAG) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Ascites_Albumin_Gradient_SAAG_guideline/1?language=en))
+
 * Simplified Autoimmune Hepatitis (AIH) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_Autoimmune_Hepatitis_AIH_Score_guideline/1?language=en))
 ----------
 
@@ -679,6 +681,8 @@ _Select a medical specialty below to view the available apps._
 
 * Ottawa Subarachnoid Hemorrhage (SAH) Rule for Headache Evaluation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ottawa_Subarachnoid_Hemorrhage_Rule_for_Headache_Evaluation/1?language=en))
 
+* Pittsburgh Response to Endovascular therapy (PRE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PRE_Score_guideline/1?language=en))
+
 * SEDAN Score for Post-tPA Hemorrhage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SEDAN_Score_for_Post-tPA_Hemorrhage_guideline/1?language=en))
 
 * STONE Score for Uncomplicated Ureteral Stone - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stone_score_for_uncomplicated_ureteral_stone_guideline/1?language=en))
@@ -756,6 +760,8 @@ _Select a medical specialty below to view the available apps._
 * Karnofsky Performance Status Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Karnofsky_performance_status/1?language=en))
 
 * Khorana Risk Score for Venous Thromboembolism in Cancer Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Khorana_Risk_Score_Venous_Thromboembolism_Cancer_Patients/0?language=en))
+
+* Mantle Cell Lymphoma International Prognostic Index (MIPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MIPI_guideline/1?language=en))
 
 * Modified Glasgow Prognostic Score (mGPS) for Cancer Outcomes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Glasgow_Prognostic_Score/1?language=en))
 
@@ -861,6 +867,8 @@ _Select a medical specialty below to view the available apps._
 * Shock Index Pediatric Age-Adjusted (SIPA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SIPA/1?language=en))
 
 * STRONGkids Nutritional Risk Screening - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/STRONGkids/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/STRONGkids/1?language=sv))
+
+* Westley Croup Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Westley_Croup_Score_guideline/1?language=en))
 ----------
 
 ### Pharmacology
