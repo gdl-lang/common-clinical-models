@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 487*
+### *Published Apps: 492*
 
 ----------
 
 ### Latest added
 
-1. HIV Needle Stick Risk Assessment Stratification Protocol (RASP) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HIV_Needle_Stick_Risk_Assessment_Stratification_Protocol_guideline/1?language=en))
-2. Oakland Score for Safe Discharge After Lower GI Bleed - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Oakland_Score_for_Safe_Discharge_After_Lower_GI_Bleed/1?language=en)
-3. Rapid Shallow Breathing Index (RSBI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rapid_Shallow_Breathing_Index_RSBI/1?language=en))
-4. Subaxial Injury Classification and Severity Scale (SLICS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Subaxial_Injury_Classification_and_Severity_Scale_SLICS/1?language=en))
-5. Local Anesthetic Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Local_Anesthetic_Dosing_Calculator_guideline/1?language=en))
-6. PECARN Rule for Low Risk Febrile Infants 29-60 Days Old - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PECARN_Rule_for_Low_Risk_Febrile_Infants_29-60_Days_Old/1?language=en))
-7. Maternal-Fetal Hemorrhage Rh(D) Immune Globulin Dosage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Maternal_Fetal_Hemorrhage_RhD_Immune_Globulin_Dosage/1?language=en))
-8. R Factor for Liver Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R_factor_for_liver_injury/1?language=en))
-9. OESIL Score for Syncope - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OESIL_Score_guideline/1?language=en))
-10. Ocular Hypertension Treatment Study (OHTS) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ocular_Hypertension_Treatment_Study_OHTS_Calculator/1?language=en))
+1. NINCDS-ADRDA Criteria for Alzheimer’s Disease - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NINCDS-ADRDA_Criteria_for_Alzheimers_Disease/1?language=en))
+2. Los Angeles (LA) Grading of Esophagitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Los_Angeles_LA_Grading_of_Esophagitis/1?language=en))
+3. Los Angeles Motor Scale (LAMS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Los_Angeles_Motor_Scale_LAMS/1?language=en))
+4. Peripheral Blood Stem Cell Collection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Peripheral_Blood_Stem_Cell_Collection/1?language=en))
+5. RENAL Nephrometry Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RENAL_Nephrometry_Score/1?language=en))
+6. HIV Needle Stick Risk Assessment Stratification Protocol (RASP) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HIV_Needle_Stick_Risk_Assessment_Stratification_Protocol_guideline/1?language=en))
+7. Oakland Score for Safe Discharge After Lower GI Bleed - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Oakland_Score_for_Safe_Discharge_After_Lower_GI_Bleed/1?language=en)
+8. Rapid Shallow Breathing Index (RSBI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rapid_Shallow_Breathing_Index_RSBI/1?language=en))
+9. Subaxial Injury Classification and Severity Scale (SLICS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Subaxial_Injury_Classification_and_Severity_Scale_SLICS/1?language=en))
+10. Local Anesthetic Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Local_Anesthetic_Dosing_Calculator_guideline/1?language=en))
 
 ----------
 
@@ -404,6 +404,8 @@ _Select a medical specialty below to view the available apps._
 
 * Liver Decompensation Risk after Hepatectomy for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Liver_Decompensation_Risk_after_Hepatectomy_for_Hepatocellular_Carcinoma_HCC/1?language=en))
 
+* Los Angeles (LA) Grading of Esophagitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Los_Angeles_LA_Grading_of_Esophagitis/1?language=en))
+
 * Maddrey's Discriminant Function for Alcoholic Hepatitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Maddrey_Score_guideline/1?language=en))
 
 * Model For End-Stage Liver Disease Score (MELD) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MELD_score/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MELD_score/1?language=sv))
@@ -484,6 +486,8 @@ _Select a medical specialty below to view the available apps._
 * Intrauterine RBC Transfusion Dosage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Intrauterine_RBC_Transfusion_Dosage_guideline/1?language=en))
 
 * Neutrophil-Lymphocyte Ratio (NLR) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neutrophil_Lymphocyte_Ratio_NLR_Calculator/1?language=en))
+
+* Peripheral Blood Stem Cell Collection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Peripheral_Blood_Stem_Cell_Collection/1?language=en))
 
 * Plasma Dosage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Plasma_Dosage_guideline/1?language=en))
 
@@ -577,9 +581,11 @@ _Select a medical specialty below to view the available apps._
 
 * MDRD GFR Equation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MDRD_GFR_equation/1?language=en))
 
-* STONE Nephrolithometry Score for Renal Calculi - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/STONE_Nephrolithometry_Score_for_Renal_Calculi_guideline/1?language=en))
+* RENAL Nephrometry Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RENAL_Nephrometry_Score/1?language=en))
 
 * Revised Lund-Malmö eGFR - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LM_Revised_eGFR/0?language=en))
+
+* STONE Nephrolithometry Score for Renal Calculi - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/STONE_Nephrolithometry_Score_for_Renal_Calculi_guideline/1?language=en))
 
 ----------
 
@@ -630,6 +636,8 @@ _Select a medical specialty below to view the available apps._
 
 * Intracerebral Haemorrhage Risk Tool (ICH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ICH/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ICH/1?language=sv))
 
+* Los Angeles Motor Scale (LAMS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Los_Angeles_Motor_Scale_LAMS/1?language=en))
+
 * Modified Fatigue Impact Scale (MFIS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS/1?language=sv))
 
 * Modified Fatigue Impact Scale - shortened (MFIS-s) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS_shortened/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS_shortened/1?language=sv))
@@ -645,6 +653,8 @@ _Select a medical specialty below to view the available apps._
 * National Institutes of Health Stroke Scale (NIHSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NIHSS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NIHSS/1?language=sv))
 
 * Neuropathy Pain Scale (NPS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neuropathy_pain_scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neuropathy_pain_scale/1?language=sv))
+
+* NINCDS-ADRDA Criteria for Alzheimer’s Disease - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NINCDS-ADRDA_Criteria_for_Alzheimers_Disease/1?language=en))
 
 * OESIL Score for Syncope - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OESIL_Score_guideline/1?language=en))
 
