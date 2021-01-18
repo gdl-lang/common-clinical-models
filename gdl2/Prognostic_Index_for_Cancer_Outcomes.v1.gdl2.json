@@ -24,7 +24,7 @@
           "white blood cells",
           "CRP"
         ],
-        "use": "Use Prognostic Index for Cancer Outcomes for patients with known cancer. Use with archetype openEHR-EHR-EVALUATION.prognostic_index_for_cancer_outcomes_assessment.v0.",
+        "use": "Use Prognostic Index for Cancer Outcomes for patients with known cancer. \n\nInterpretation: \nCRP:                  WBC:                 Prognosis: \n≤10 mg/L            ≤ 11 x 10⁹/L       Good prognosis\n>10 mg/L            > 11 x 10⁹/L       Poor prognosis\n>10 mg/L            ≤ 11 x 10⁹/L       Intermediate prognosis\n≤10 mg/L            > 11 x 10⁹/L       Intermediate prognosis",
         "copyright": "@CambioCDS"
       }
     },
@@ -68,25 +68,17 @@
             "id": "gt0007",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
           },
+          "gt0008": {
+            "id": "gt0008",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0011]"
+          },
           "gt0009": {
             "id": "gt0009",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
           },
-          "gt0008": {
-            "id": "gt0008",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0011]"
-          }
-        }
-      },
-      "gt0010": {
-        "id": "gt0010",
-        "model_id": "openEHR-EHR-EVALUATION.prognostic_index_for_cancer_outcomes_assessment.v0",
-        "template_id": "openEHR-EHR-EVALUATION.prognostic_index_for_cancer_outcomes_assessment.v0",
-        "type": "OUTPUT",
-        "elements": {
-          "gt0011": {
-            "id": "gt0011",
-            "path": "/data[at0001]/items[at0002]"
+          "gt0020": {
+            "id": "gt0020",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
           }
         }
       }
@@ -150,7 +142,7 @@
           "$gt0009|Prognostic index|==0"
         ],
         "then": [
-          "$gt0011|Prognostic index interpretation|=local::at0003|Good prognosis|"
+          "$gt0020|Prognostic index interpretation|=local::at0015|Good prognosis|"
         ]
       },
       "gt0018": {
@@ -160,7 +152,7 @@
           "$gt0009|Prognostic index|==1"
         ],
         "then": [
-          "$gt0011|Prognostic index interpretation|=local::at0004|Intermediate prognosis|"
+          "$gt0020|Prognostic index interpretation|=local::at0016|Intermediate prognosis|"
         ]
       },
       "gt0019": {
@@ -170,7 +162,7 @@
           "$gt0009|Prognostic index|==2"
         ],
         "then": [
-          "$gt0011|Prognostic index interpretation|=local::at0005|Poor prognosis|"
+          "$gt0020|Prognostic index interpretation|=local::at0017|Poor prognosis|"
         ]
       }
     }
@@ -210,11 +202,6 @@
             "text": "Prognostic index",
             "description": "*"
           },
-          "gt0011": {
-            "id": "gt0011",
-            "text": "Prognostic index interpretation",
-            "description": "*"
-          },
           "gt0012": {
             "id": "gt0012",
             "text": "Set Prognostic index"
@@ -246,6 +233,11 @@
           "gt0019": {
             "id": "gt0019",
             "text": "Prognostic index = 2"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Prognostic index interpretation",
+            "description": "*"
           }
         }
       }
