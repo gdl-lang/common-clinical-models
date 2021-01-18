@@ -24,10 +24,13 @@
           "creatinine",
           "Urine output"
         ],
+        "use": " RIFLE Criteria             Serum creatinine                   GFR                                                   Urine output\n- Risk, RIFLE-R:          1.5-2x above baseline,       >25% decrease below baseline,    <0.5 mL/kg/hr x 6 hr\n\n- Injury, RIFLE-I:        >2–3x above baseline,         >50% decrease below baseline,   <0.5 mL/kg/hr x 12 hr\n\n- Failure, RIFLE-F:     >3x above baseline,              >75% decrease below baseline,   <0.3 mL/kg/hr x 24 hr (oliguria),                                     \n                           ≥4 mg/dL (350 µmol/L),                                                                        or anuria x 12 hrs\n                             or acute rise ≥0.5 mg/dL (44 µmol/L)\n\n- Loss, RIFLE-L: Persistent AKI (on renal replacement therapy for >4 weeks)\n- ESRD, RIFLE-E: End stage renal disease (on dialysis for >3 months)\n",
         "copyright": "@CambioCDS"
       }
     },
-    "other_details": {}
+    "other_details": {
+      "references": "1. Bellomo R, Ronco C, Kellum JA, Mehta RL, Palevsky P. Acute renal failure - definition, outcome measures, animal models, fluid therapy and information technology needs: the Second International Consensus Conference of the Acute Dialysis Quality Initiative (ADQI) Group. Crit Care. 2004;8(4):R204-12.\n2. Van Biesen W, Vanholder R, Lameire N. Defining acute renal failure: RIFLE and beyond. Clin J Am Soc Nephrol. 2006;1(6):1314-9.\n3. Lopes JA, Jorge S. The RIFLE and AKIN classifications for acute kidney injury: a critical and comprehensive review. Clinical Kidney Journal. 2013;6(1):8-14. doi:10.1093/ckj/sfs160.\n4. Xiong J, Tang X, Hu Z, Nie L, Wang Y, Zhao J. The RIFLE versus AKIN classification for incidence and mortality of acute kidney injury in critical ill patients: A meta-analysis. Sci Rep. 2015;5:17917."
+    }
   },
   "definition": {
     "data_bindings": {
@@ -73,8 +76,8 @@
       }
     },
     "rules": {
-      "gt0010": {
-        "id": "gt0010",
+      "gt0026": {
+        "id": "gt0026",
         "priority": 5,
         "when": [
           "$gt0003|End stage renal disease|==local::at0005|Yes|"
@@ -83,8 +86,8 @@
           "$gt0009| Level of renal dysfunction|=local::at0034|ESRD, RIFLE-E|"
         ]
       },
-      "gt0011": {
-        "id": "gt0011",
+      "gt0027": {
+        "id": "gt0027",
         "priority": 4,
         "when": [
           "$gt0003|End stage renal disease|==local::at0006|No|",
@@ -94,40 +97,40 @@
           "$gt0009| Level of renal dysfunction|=local::at0033|Loss of kidney function, RIFLE-L|"
         ]
       },
-      "gt0012": {
-        "id": "gt0012",
+      "gt0033": {
+        "id": "gt0033",
         "priority": 3,
         "when": [
           "$gt0003|End stage renal disease|==local::at0006|No|",
           "$gt0004|Persistent acute kidney injury|==local::at0015|No|",
-          "($gt0005|Serum creatinine|==local::at0019|>3x above baseline, ≥4 mg/dL (350 µmol/L), or acute rise ≥0.5 mg/dL (44 µmol/L)|)||($gt0006|GFR|==local::at0023|>75% decrease below baseline|)",
-          "$gt0007|Urine output|==local::at0027|<0.3 mL/kg/hr x 24 hr (oliguria), or anuria x 12 hr|"
+          "($gt0005|Serum creatinine|==3|local::at0037|>3x above baseline, ≥4 mg/dL or acute rise ≥0.5 mg/dL|)||(($gt0006|GFR|==3|local::at0040|>75% decrease below baseline|)||($gt0007|Urine output|==3|local::at0043|<0.3 mL/kg/hr x 24 hr (oliguria), or anuria x 12 hrs|))"
         ],
         "then": [
           "$gt0009| Level of renal dysfunction|=local::at0031|Failure of kidney function, RIFLE-F (RIFLE-FO if oliguria)|"
         ]
       },
-      "gt0013": {
-        "id": "gt0013",
+      "gt0031": {
+        "id": "gt0031",
         "priority": 2,
         "when": [
           "$gt0003|End stage renal disease|==local::at0006|No|",
           "$gt0004|Persistent acute kidney injury|==local::at0015|No|",
-          "($gt0005|Serum creatinine|==local::at0018|>2-3x above baseline|)||($gt0006|GFR|==local::at0022|>50% decrease below baseline|)",
-          "$gt0007|Urine output|==local::at0026|<0.5 mL/kg/hr x 12 hr|"
+          "!fired($gt0033)",
+          "($gt0005|Serum creatinine|==2|local::at0036|>2–3x above baseline|)||(($gt0006|GFR|==2|local::at0039|>50% decrease below baseline|)||($gt0007|Urine output|==2|local::at0042|<0.5 mL/kg/hr x 12 hr|))"
         ],
         "then": [
           "$gt0009| Level of renal dysfunction|=local::at0030|Injury to the kidney, RIFLE-I|"
         ]
       },
-      "gt0014": {
-        "id": "gt0014",
+      "gt0032": {
+        "id": "gt0032",
         "priority": 1,
         "when": [
           "$gt0003|End stage renal disease|==local::at0006|No|",
           "$gt0004|Persistent acute kidney injury|==local::at0015|No|",
-          "($gt0005|Serum creatinine|==local::at0017|1.5-2x above baseline|)||($gt0006|GFR|==local::at0021|>25% decrease below baseline|)",
-          "$gt0007|Urine output|==local::at0025|<0.5 mL/kg/hr x 6 hr|"
+          "!fired($gt0033)",
+          "!fired($gt0031)",
+          "($gt0005|Serum creatinine|==1|local::at0035|1.5-2x above baseline|)||(($gt0006|GFR|==1|local::at0038|>25% decrease below baseline|)||($gt0007|Urine output|==1|local::at0041|<0.5 mL/kg/hr x 6 hr|))"
         ],
         "then": [
           "$gt0009| Level of renal dysfunction|=local::at0029|Risk of renal dysfunction, RIFLE-R|"
@@ -175,25 +178,25 @@
             "text": " Level of renal dysfunction",
             "description": "*"
           },
-          "gt0010": {
-            "id": "gt0010",
+          "gt0026": {
+            "id": "gt0026",
             "text": "ESRD, RIFLE-E"
           },
-          "gt0011": {
-            "id": "gt0011",
+          "gt0027": {
+            "id": "gt0027",
             "text": "Loss, RIFLE-L"
           },
-          "gt0012": {
-            "id": "gt0012",
-            "text": "Failure, RIFLE-F (RIFLE-FO if oliguria)"
-          },
-          "gt0013": {
-            "id": "gt0013",
+          "gt0031": {
+            "id": "gt0031",
             "text": "Injury, RIFLE-I"
           },
-          "gt0014": {
-            "id": "gt0014",
+          "gt0032": {
+            "id": "gt0032",
             "text": "Risk, RIFLE-R"
+          },
+          "gt0033": {
+            "id": "gt0033",
+            "text": "Failure, RIFLE-F"
           }
         }
       }

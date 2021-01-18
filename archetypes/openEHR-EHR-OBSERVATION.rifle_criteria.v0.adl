@@ -19,7 +19,17 @@ description
 			use = <"Use to record variables regarding the RIFLE Criteria and its interpretations.
 RIFLE Criteria: 
 
-RIFLE Criteria
+ RIFLE Criteria             Serum creatinine                   GFR                                                   Urine output
+- Risk, RIFLE-R:          1.5-2x above baseline,       >25% decrease below baseline,    <0.5 mL/kg/hr x 6 hr
+
+- Injury, RIFLE-I:        >2–3x above baseline,         >50% decrease below baseline,   <0.5 mL/kg/hr x 12 hr
+
+- Failure, RIFLE-F:     >3x above baseline,              >75% decrease below baseline,   <0.3 mL/kg/hr x 24 hr (oliguria),                                     ≥4 mg/dL (350 µmol/L),                                                                 or anuria x 12 hrs
+                             or acute rise ≥0.5 mg/dL (44 µmol/L)
+
+- Loss, RIFLE-L: Persistent AKI (on renal replacement therapy for >4 weeks)
+- ESRD, RIFLE-E: End stage renal disease (on dialysis for >3 months)
+
 ">
 			keywords = <"Acute Kidney Injury (AKI)", "Kidney", "renal failure", "GFR", "creatinine", "Urine output">
 			misuse = <"">
@@ -29,11 +39,11 @@ RIFLE Criteria
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["MD5-CAM-1.0.1"] = <"0EE77EDB9275693F778F7C49E139D09C">
 		["references"] = <"1. Bellomo R, Ronco C, Kellum JA, Mehta RL, Palevsky P. Acute renal failure - definition, outcome measures, animal models, fluid therapy and information technology needs: the Second International Consensus Conference of the Acute Dialysis Quality Initiative (ADQI) Group. Crit Care. 2004;8(4):R204-12.
 2. Van Biesen W, Vanholder R, Lameire N. Defining acute renal failure: RIFLE and beyond. Clin J Am Soc Nephrol. 2006;1(6):1314-9.
 3. Lopes JA, Jorge S. The RIFLE and AKIN classifications for acute kidney injury: a critical and comprehensive review. Clinical Kidney Journal. 2013;6(1):8-14. doi:10.1093/ckj/sfs160.
 4. Xiong J, Tang X, Hu Z, Nie L, Wang Y, Zhao J. The RIFLE versus AKIN classification for incidence and mortality of acute kidney injury in critical ill patients: A meta-analysis. Sci Rep. 2015;5:17917.">
+		["MD5-CAM-1.0.1"] = <"7EC39270B0E3CCFF1B0BEF942C5E29CA">
 	>
 
 definition
@@ -69,38 +79,23 @@ definition
 									}
 									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Serum creatinine
 										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0017, 	-- 1.5-2x above baseline
-													at0018, 	-- >2-3x above baseline
-													at0019]	-- >3x above baseline, ≥4 mg/dL (350 µmol/L), or acute rise ≥0.5 mg/dL (44 µmol/L)
-												}
-											}
+											1|[local::at0035], 	-- 1.5-2x above baseline
+											2|[local::at0036], 	-- >2–3x above baseline
+											3|[local::at0037]  	-- >3x above baseline, ≥4 mg/dL or acute rise ≥0.5 mg/dL
 										}
 									}
 									ELEMENT[at0020] occurrences matches {0..1} matches {	-- GFR
 										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0021, 	-- >25% decrease below baseline
-													at0022, 	-- >50% decrease below baseline
-													at0023]	-- >75% decrease below baseline
-												}
-											}
+											1|[local::at0038], 	-- >25% decrease below baseline
+											2|[local::at0039], 	-- >50% decrease below baseline
+											3|[local::at0040]  	-- >75% decrease below baseline
 										}
 									}
 									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Urine output
 										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0025, 	-- <0.5 mL/kg/hr x 6 hr
-													at0026, 	-- <0.5 mL/kg/hr x 12 hr
-													at0027]	-- <0.3 mL/kg/hr x 24 hr (oliguria), or anuria x 12 hr
-												}
-											}
+											1|[local::at0041], 	-- <0.5 mL/kg/hr x 6 hr
+											2|[local::at0042], 	-- <0.5 mL/kg/hr x 12 hr
+											3|[local::at0043]  	-- <0.3 mL/kg/hr x 24 hr (oliguria), or anuria x 12 hrs
 										}
 									}
 									ELEMENT[at0028] occurrences matches {0..1} matches {	--  Level of renal dysfunction
@@ -174,48 +169,12 @@ ontology
 					text = <"Serum creatinine">
 					description = <"*">
 				>
-				["at0017"] = <
-					text = <"1.5-2x above baseline">
-					description = <"*">
-				>
-				["at0018"] = <
-					text = <">2-3x above baseline">
-					description = <"*">
-				>
-				["at0019"] = <
-					text = <">3x above baseline, ≥4 mg/dL (350 µmol/L), or acute rise ≥0.5 mg/dL (44 µmol/L)">
-					description = <"*">
-				>
 				["at0020"] = <
 					text = <"GFR">
 					description = <"*">
 				>
-				["at0021"] = <
-					text = <">25% decrease below baseline">
-					description = <"*">
-				>
-				["at0022"] = <
-					text = <">50% decrease below baseline">
-					description = <"*">
-				>
-				["at0023"] = <
-					text = <">75% decrease below baseline">
-					description = <"*">
-				>
 				["at0024"] = <
 					text = <"Urine output">
-					description = <"*">
-				>
-				["at0025"] = <
-					text = <"<0.5 mL/kg/hr x 6 hr">
-					description = <"*">
-				>
-				["at0026"] = <
-					text = <"<0.5 mL/kg/hr x 12 hr">
-					description = <"*">
-				>
-				["at0027"] = <
-					text = <"<0.3 mL/kg/hr x 24 hr (oliguria), or anuria x 12 hr">
 					description = <"*">
 				>
 				["at0028"] = <
@@ -241,6 +200,42 @@ ontology
 				["at0034"] = <
 					text = <"ESRD, RIFLE-E">
 					description = <"End stage renal disease">
+				>
+				["at0035"] = <
+					text = <"1.5-2x above baseline">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <">2–3x above baseline">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <">3x above baseline, ≥4 mg/dL or acute rise ≥0.5 mg/dL">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <">25% decrease below baseline">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <">50% decrease below baseline">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <">75% decrease below baseline">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"<0.5 mL/kg/hr x 6 hr">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"<0.5 mL/kg/hr x 12 hr">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"<0.3 mL/kg/hr x 24 hr (oliguria), or anuria x 12 hrs">
+					description = <"*">
 				>
 			>
 		>
