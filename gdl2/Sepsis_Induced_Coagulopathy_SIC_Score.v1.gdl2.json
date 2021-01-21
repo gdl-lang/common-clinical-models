@@ -115,7 +115,7 @@
     "rules": {
       "gt0014": {
         "id": "gt0014",
-        "priority": 15,
+        "priority": 16,
         "when": [
           "$gt0007|INR|<=1.2,1"
         ],
@@ -125,7 +125,7 @@
       },
       "gt0015": {
         "id": "gt0015",
-        "priority": 14,
+        "priority": 15,
         "when": [
           "$gt0007|INR|>1.2,1",
           "$gt0007|INR|<=1.4,1"
@@ -136,7 +136,7 @@
       },
       "gt0016": {
         "id": "gt0016",
-        "priority": 13,
+        "priority": 14,
         "when": [
           "$gt0007|INR|>1.4,1"
         ],
@@ -146,7 +146,7 @@
       },
       "gt0017": {
         "id": "gt0017",
-        "priority": 12,
+        "priority": 13,
         "when": [
           "$gt0005|Platelet count, cells x 10^9/L|>=150,10*9/l"
         ],
@@ -156,7 +156,7 @@
       },
       "gt0018": {
         "id": "gt0018",
-        "priority": 11,
+        "priority": 12,
         "when": [
           "$gt0005|Platelet count, cells x 10^9/L|>=100,10*9/l",
           "$gt0005|Platelet count, cells x 10^9/L|<150,10*9/l"
@@ -167,7 +167,7 @@
       },
       "gt0019": {
         "id": "gt0019",
-        "priority": 10,
+        "priority": 11,
         "when": [
           "$gt0005|Platelet count, cells x 10^9/L|<100,10*9/l"
         ],
@@ -177,7 +177,7 @@
       },
       "gt0022": {
         "id": "gt0022",
-        "priority": 9,
+        "priority": 10,
         "when": [
           "$gt0005|Platelet count, cells x 10^9/L|!=null",
           "$gt0007|INR|!=null",
@@ -189,7 +189,7 @@
       },
       "gt0023": {
         "id": "gt0023",
-        "priority": 8,
+        "priority": 9,
         "when": [
           "$gt0012|SIC Score|>=0",
           "$gt0012|SIC Score|<2"
@@ -200,7 +200,7 @@
       },
       "gt0024": {
         "id": "gt0024",
-        "priority": 7,
+        "priority": 8,
         "when": [
           "$gt0012|SIC Score|==2"
         ],
@@ -210,7 +210,7 @@
       },
       "gt0025": {
         "id": "gt0025",
-        "priority": 6,
+        "priority": 7,
         "when": [
           "$gt0012|SIC Score|==3"
         ],
@@ -220,7 +220,7 @@
       },
       "gt0026": {
         "id": "gt0026",
-        "priority": 5,
+        "priority": 6,
         "when": [
           "$gt0012|SIC Score|==4"
         ],
@@ -230,7 +230,7 @@
       },
       "gt0027": {
         "id": "gt0027",
-        "priority": 4,
+        "priority": 5,
         "when": [
           "$gt0012|SIC Score|==5"
         ],
@@ -240,7 +240,7 @@
       },
       "gt0028": {
         "id": "gt0028",
-        "priority": 3,
+        "priority": 4,
         "when": [
           "$gt0012|SIC Score|==6"
         ],
@@ -250,7 +250,7 @@
       },
       "gt0030": {
         "id": "gt0030",
-        "priority": 2,
+        "priority": 3,
         "when": [
           "$gt0012|SIC Score|>=4"
         ],
@@ -258,11 +258,23 @@
           "$gt0029|Diagnosis of SIC|=local::at0027|SIC likely|"
         ]
       },
+      "gt0032": {
+        "id": "gt0032",
+        "priority": 2,
+        "when": [
+          "$gt0012|SIC Score|==4",
+          "$gt0021|Total SOFA score. (Sum the full SOFA Score’s Respiratory, Cardiovascular, Hepatic, and Renal components)|==2|local::at0016|≥2|"
+        ],
+        "then": [
+          "$gt0029|Diagnosis of SIC|=local::at0026|SIC not likely|"
+        ]
+      },
       "gt0031": {
         "id": "gt0031",
         "priority": 1,
         "when": [
-          "$gt0012|SIC Score|<4"
+          "$gt0012|SIC Score|<4",
+          "!fired($gt0032)"
         ],
         "then": [
           "$gt0029|Diagnosis of SIC|=local::at0026|SIC not likely|"
@@ -384,6 +396,10 @@
           "gt0031": {
             "id": "gt0031",
             "text": "SIC not likely"
+          },
+          "gt0032": {
+            "id": "gt0032",
+            "text": "SIC not likely exception "
           }
         }
       }
