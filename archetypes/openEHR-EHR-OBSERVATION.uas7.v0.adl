@@ -1,0 +1,213 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.uas7.v0
+
+concept
+	[at0000]	-- Uas7
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Maryam Razavi">
+		["email"] = <"maryam.razavi@cambio.se">
+		["organisation"] = <"CambioCDS">
+		["date"] = <"2021-01-21">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the values of the UAS7 and the variables used for it's calculation. ">
+			use = <"Used to record the values of the UAS7 and the variables used for it's calculation. 
+
+To calculate UAS7, sum daily UAS scores over 7 consecutive days.
+
+UAS = addition of the selected points for Wheals and Pruritus.
+
+Interpretation: 
+UAS<=6: mild urticaria 
+UAS7 7-27: Moderate urticaria 
+UAS7 >=28: Severe urticaria ">
+			keywords = <"Urticaria ", "Disease activity">
+			misuse = <"">
+			copyright = <"@CambioCDS">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Hawro T, Ohanyan T, Schoepke N, et al. The Urticaria Activity Score-Validity, Reliability, and Responsiveness. J Allergy Clin Immunol Pract. 2018;6(4):1185-1190.e1.
+">
+		["MD5-CAM-1.0.1"] = <"A243349F5FBADEC71A009D903CA941E9">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Uas7
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- UAS day 1
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- UAS day 2
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- UAS day 3
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- UAS day 4
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- UAS day 5
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- UAS day 6
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- UAS day 7
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- UAS7
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Interpretation
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Uas7">
+					description = <"Sum daily UAS scores over 7 consecutive days.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"UAS day 1">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"UAS day 2">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"UAS day 3">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"UAS day 4">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"UAS day 5">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"UAS day 6">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"UAS day 7">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"UAS7">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Interpretation">
+					description = <"*">
+				>
+			>
+		>
+	>
