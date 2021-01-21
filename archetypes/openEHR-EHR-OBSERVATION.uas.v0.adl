@@ -1,0 +1,146 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.uas.v0
+
+concept
+	[at0000]	-- Uas
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Maryam Razavi">
+		["email"] = <"maryam.razavi@cambio.se">
+		["organisation"] = <"CambioCDS">
+		["date"] = <"2021-01-21">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the Urticaria Activity Score and the variables used for it's calculation.
+">
+			use = <"Use to record the Urticaria Activity Score and the variables used for it's calculation.
+Variables:
+1. Wheals: None=0, Mild (<20 wheals/24 hrs)=1, Moderate (20-50 wheals/24 hrs)=2, Intense (>50 wheals/24 hrs or large confluent areas of wheals)=3
+
+2. Pruritus: None=0, Mild (present but not annoying or troublesome)=1, Moderate (troublesome but does not interfere with normal daily activity or sleep)=2, Intense (severe, interferes with normal daily activity or sleep)=3
+
+Formula:
+UAS = addition of the selected points. ">
+			keywords = <"Chronic urticaria", "disease activity">
+			misuse = <"">
+			copyright = <"@CambioCDS">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Młynek A, Zalewska-janowska A, Martus P, Staubach P, Zuberbier T, Maurer M. How to assess disease activity in patients with chronic urticaria?. Allergy. 2008;63(6):777-80.
+">
+		["MD5-CAM-1.0.1"] = <"BF6FBCCEFC2338A6BA5EAD38A0359922">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Uas
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Wheals
+										value matches {
+											0|[local::at0005], 	-- None
+											1|[local::at0006], 	-- Mild (<20 wheals/24 hrs)
+											2|[local::at0007], 	-- Moderate (20-50 wheals/24 hrs)
+											3|[local::at0008]  	-- Intense (>50 wheals/24 hrs or large confluent areas of wheals)
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Pruritus
+										value matches {
+											0|[local::at0010], 	-- None
+											1|[local::at0011], 	-- Mild (present but not annoying or troublesome)
+											2|[local::at0012], 	-- Moderate (troublesome but does not interfere with normal daily activity or sleep)
+											3|[local::at0013]  	-- Intense (severe, interferes with normal daily activity or sleep)
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- UAS
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Uas">
+					description = <"Urticaria Activity Score (UAS)">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Wheals">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"None">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Mild (<20 wheals/24 hrs)">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Moderate (20-50 wheals/24 hrs)">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Intense (>50 wheals/24 hrs or large confluent areas of wheals)">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Pruritus">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"None">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Mild (present but not annoying or troublesome)">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Moderate (troublesome but does not interfere with normal daily activity or sleep)">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Intense (severe, interferes with normal daily activity or sleep)">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"UAS">
+					description = <"*">
+				>
+			>
+		>
+	>

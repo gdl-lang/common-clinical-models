@@ -1,0 +1,111 @@
+{
+  "id": "UAS_guideline.v1",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2021-01-21",
+      "name": "Maryam Razavi",
+      "organisation": "CambioCDS",
+      "email": "maryam.razavi@cambio.se"
+    },
+    "lifecycle_state": "Author draft",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "To Stratify severity of urticaria.",
+        "keywords": [
+          "urticaria",
+          "Disease activity",
+          "severity "
+        ],
+        "use": "Variables:\n1. Wheals: None=0, Mild (<20 wheals/24 hrs)=1, Moderate (20-50 wheals/24 hrs)=2, Intense (>50 wheals/24 hrs or large confluent areas of wheals)=3\n\n2. Pruritus: None=0, Mild (present but not annoying or troublesome)=1, Moderate (troublesome but does not interfere with normal daily activity or sleep)=2, Intense (severe, interferes with normal daily activity or sleep)=3\n\nFormula:\nUAS = addition of the selected points. ",
+        "copyright": "@CambioCDS"
+      }
+    },
+    "other_details": {
+      "references": "Młynek A, Zalewska-janowska A, Martus P, Staubach P, Zuberbier T, Maurer M. How to assess disease activity in patients with chronic urticaria?. Allergy. 2008;63(6):777-80.\n"
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0003": {
+        "id": "gt0003",
+        "model_id": "openEHR-EHR-OBSERVATION.uas.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.uas.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
+          }
+        }
+      },
+      "gt0006": {
+        "id": "gt0006",
+        "model_id": "openEHR-EHR-OBSERVATION.uas.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.uas.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0007": {
+            "id": "gt0007",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0002": {
+        "id": "gt0002",
+        "priority": 1,
+        "when": [
+          "$gt0004|Wheals|!=null",
+          "$gt0005|Pruritus|!=null"
+        ],
+        "then": [
+          "$gt0007|UAS|.magnitude=$gt0004.value+$gt0005.value"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "UAS",
+            "description": "Urticaria Activity Score (UAS)"
+          },
+          "gt0002": {
+            "id": "gt0002",
+            "text": "UAS"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "Wheals",
+            "description": "*"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "Pruritus",
+            "description": "*"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "text": "UAS",
+            "description": "*"
+          }
+        }
+      }
+    }
+  }
+}
