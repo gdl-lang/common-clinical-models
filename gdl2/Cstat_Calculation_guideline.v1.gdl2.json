@@ -73,10 +73,13 @@
         }
       }
     },
+    "default_actions": [
+      "$gt0008|Comment|='Normal static lung compliance is 50-100 mL/cm H2O.'"
+    ],
     "rules": {
       "gt0010": {
         "id": "gt0010",
-        "priority": 2,
+        "priority": 1,
         "when": [
           "$gt0003|Corrected/delivered tidal volume (ΔV)|!=null",
           "$gt0004|Plateau pressure (Pplat)|!=null",
@@ -86,18 +89,6 @@
           "$gt0007|Static lung compliance (Cstat)|.magnitude=$gt0003.magnitude/($gt0004.magnitude-$gt0005.magnitude)",
           "$gt0007|Static lung compliance (Cstat)|.precision=1",
           "$gt0007|Static lung compliance (Cstat)|.unit='mL/cm H2O'"
-        ]
-      },
-      "gt0012": {
-        "id": "gt0012",
-        "priority": 1,
-        "when": [
-          "$gt0007|Static lung compliance (Cstat)|.magnitude>=50",
-          "$gt0007|Static lung compliance (Cstat)|.magnitude<=100",
-          "$gt0007|Static lung compliance (Cstat)|.unit=='mL/cm H2O'"
-        ],
-        "then": [
-          "$gt0008|Interpretation|='Normal static lung compliance'"
         ]
       }
     }
@@ -134,7 +125,7 @@
           },
           "gt0008": {
             "id": "gt0008",
-            "text": "Interpretation",
+            "text": "Comment",
             "description": "*"
           },
           "gt0009": {
@@ -145,10 +136,6 @@
           "gt0010": {
             "id": "gt0010",
             "text": "Static lung compliance (Cstat)"
-          },
-          "gt0012": {
-            "id": "gt0012",
-            "text": "Interpretation to Normal static lung compliance"
           }
         }
       }
