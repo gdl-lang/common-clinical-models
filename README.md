@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 504*
+### *Published Apps: 508*
 
 ----------
 
 ### Latest added
 
-1. Thoracolumbar Injury Classification and Severity Scale (TLICS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Thoracolumbar_Injury_Classification_and_Severity_Scale_TLICS/1?language=en))
-2. Stanford Sleepiness Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stanford_Sleepiness_Scale_guideline/1?language=en))
-3. Rockall Score for Upper GI Bleeding (Complete) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rockall_Score_Upper_GI_Bleeding_guideline/1?language=en))
-4. Wound Closure Classification - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wound_Closure_Classification/1?language=en))
-5. Pittsburgh Response to Endovascular therapy (PRE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PRE_Score_guideline/1?language=en))
-6. Serum Ascites Albumin Gradient (SAAG) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Ascites_Albumin_Gradient_SAAG_guideline/1?language=en))
-7. Mantle Cell Lymphoma International Prognostic Index (MIPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MIPI_guideline/1?language=en))
-8. Westley Croup Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Westley_Croup_Score_guideline/1?language=en))
-9. Mehran Score for Post-PCI Contrast Nephropathy - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mehran_Score_Contrast_induced_Nephropathy_guideline/1?language=en))
-10. Psoriasis Area and Severity Index (PASI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PASI_guideline/1?language=en))
+1. READMITS Score for Readmissions in Acute MI - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/READMITS_Score_guideline/1?language=en))
+2. Tokyo Guidelines for Acute Cholangitis 2018 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tokyo_Guidelines_2018_guideline/1?language=en))
+3. New Orleans/Charity Head Trauma/Injury Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/New_Orleans_Charity_Head_Trauma_Injury_Rule/1?language=en))
+4. Mekhail Extension of the Motzer Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mekhail_Extension_of_the_Motzer_Score/1?language=en))
+5. Thoracolumbar Injury Classification and Severity Scale (TLICS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Thoracolumbar_Injury_Classification_and_Severity_Scale_TLICS/1?language=en))
+6. Stanford Sleepiness Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stanford_Sleepiness_Scale_guideline/1?language=en))
+7. Rockall Score for Upper GI Bleeding (Complete) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rockall_Score_Upper_GI_Bleeding_guideline/1?language=en))
+8. Wound Closure Classification - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wound_Closure_Classification/1?language=en))
+9. Pittsburgh Response to Endovascular therapy (PRE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PRE_Score_guideline/1?language=en))
+10. Serum Ascites Albumin Gradient (SAAG) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Ascites_Albumin_Gradient_SAAG_guideline/1?language=en))
 
 ----------
 
@@ -207,6 +207,8 @@ _Select a medical specialty below to view the available apps._
 * Rapid Arterial oCclusion Evaluation Scale for Stroke (RACE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RACE/1?language=en))
 
 * Rated Perceived Exertion Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rated_perceived_exertion_scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rated_perceived_exertion_scale/1?language=sv))
+
+* READMITS Score for Readmissions in Acute MI - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/READMITS_Score_guideline/1?language=en))
 
 * Revised Cardiac Risk Index (RCRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RCRI/1?language=en))
 
@@ -435,6 +437,8 @@ _Select a medical specialty below to view the available apps._
 * Serum Ascites Albumin Gradient (SAAG) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Ascites_Albumin_Gradient_SAAG_guideline/1?language=en))
 
 * Simplified Autoimmune Hepatitis (AIH) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_Autoimmune_Hepatitis_AIH_Score_guideline/1?language=en))
+
+* Tokyo Guidelines for Acute Cholangitis 2018 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tokyo_Guidelines_2018_guideline/1?language=en))
 ----------
 
 ### Geriatrics
@@ -766,6 +770,8 @@ _Select a medical specialty below to view the available apps._
 * Mantle Cell Lymphoma International Prognostic Index (MIPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MIPI_guideline/1?language=en))
 
 * Modified Glasgow Prognostic Score (mGPS) for Cancer Outcomes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Glasgow_Prognostic_Score/1?language=en))
+
+* Mekhail Extension of the Motzer Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mekhail_Extension_of_the_Motzer_Score/1?language=en))
 
 * Prostate Tumor Volume & Density - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prostate_Tumor_Volume_Density/1?language=en))
 
@@ -1181,6 +1187,8 @@ _Select a medical specialty below to view the available apps._
 * Injury Severity Score (ISS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ISS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ISS/1?language=sv))
 
 * Mangled Extremity Severity Score (MESS Score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MESS_Score/1?language=en))
+
+* New Orleans/Charity Head Trauma/Injury Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/New_Orleans_Charity_Head_Trauma_Injury_Rule/1?language=en))
 
 * NEXUS Chest CT Decision Instrument for CT Imaging - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEXUS_Chest_CT_Decision_Instrument_for_CT_Imaging/1?language=en))
 
