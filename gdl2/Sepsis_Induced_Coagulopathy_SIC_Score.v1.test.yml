@@ -90,3 +90,19 @@ test_cases:
       gt0029|Diagnosis of SIC: local::at0027|SIC likely|
       gt0012|SIC Score: 6
       gt0010|Platelet count, cells x 109/L: 2|local::at0012|<100|
+
+- id: Approximate 28-day mortality 30% - SIC not likely exception rule
+  input:
+    1:
+      gt0003|Is this a COVID-19 patient?: local::at0031|Unlikely|
+      gt0005|Platelet count, cells x 10^9/L: 120,10*9/l
+      gt0007|INR: 1.3,1
+      gt0021|Total SOFA score. (Sum the full SOFA Score’s Respiratory, Cardiovascular, Hepatic, and Renal components): 2|local::at0016|≥2|
+  expected_output:
+    1:
+      gt0009|INR: 1|local::at0007|>1.2 to 1.4|
+      gt0013|Approximate 28-day mortality: local::at0022|30%|
+      gt0029|Diagnosis of SIC: local::at0026|SIC not likely|
+      gt0012|SIC Score: 4
+      gt0010|Platelet count, cells x 109/L: 1|local::at0011|100 to <150|
+
