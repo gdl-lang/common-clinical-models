@@ -1,0 +1,67 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-CLUSTER.hemoglobin_concentration.v0
+
+concept
+	[at0000]	-- Hemoglobin concentration
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Jorge Gatica">
+		["email"] = <"jorge.gatica@stud.ki.se">
+		["organisation"] = <"Karolinska Institutet">
+		["date"] = <"2020-03-18">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To be used with lab result archetype for recording of the Hemoglobin concentration in mg/dL
+To measure of the concentration of haemoglobin in a given volume of packed red blood cell.">
+			use = <"This cluster type archetype is thought to be used with the Laboratory test result archetype.
+To reveal hemoglobin levels in blood. May indicate anemia when low or other Polycythemia vera when to high.">
+			keywords = <"hemoglobin", "concentration">
+			misuse = <"Should not be used for any other tests than for haemoglobin count in blood.">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <"Henrik Tötterman", ...>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"A7DB4FC82507C1FC4FC51D10B54A6867">
+		["references"] = <"Mayo Clinic Staff. Hemoglobin test [Internet]. Mayo Foundation for Medical Education and Research (MFMER). [cited 18.3.2020] Available from https://www.mayoclinic.org/tests-procedures/hemoglobin-test/about/pac-20385075
+Shiel W.C. Jr. Medical Definition of Mean cell hemoglobin concentration [Internet]. MedicineNet; 2018. [cited 18.3.2020] Available from https://www.medicinenet.com/script/main/art.asp?articlekey=9995">
+	>
+
+definition
+	CLUSTER[at0000] matches {	-- Hemoglobin concentration
+		items cardinality matches {1..*; unordered} matches {
+			ELEMENT[at0001] occurrences matches {0..1} matches {	-- Hemoglobin concentration
+				value matches {
+					C_DV_QUANTITY <
+						property = <[openehr::119]>
+						list = <
+							["1"] = <
+								units = <"mg/dl">
+							>
+						>
+					>
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Hemoglobin concentration">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Hemoglobin concentration">
+					description = <"Concentration of hemoglobin in blood (mg/dL)">
+				>
+			>
+		>
+	>
