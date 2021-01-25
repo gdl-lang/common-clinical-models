@@ -1,0 +1,47 @@
+guidelines:
+  1: PSS-3_guideline.v1
+test_cases:
+- id: Not positive with refused to answer
+  input:
+    1:
+      gt0003|1. Over the past two weeks, have you felt down, depressed, or hopeless?: local::at0007|Refused to answer|
+      gt0004|2. In your lifetime, have you ever attempted to kill yourself?: local::at0011|Refused to answer|
+      gt0005|3. In your lifetime, have you ever attempted to kill yourself?: local::at0015|Refused to answer|
+  expected_output:
+    1:
+      'gt0027|Suicide Risk ': local::at0006|Not positive for suicidality by ED-SAFE PSS-3|
+- id: Not positive with No
+  input:
+    1:
+      gt0003|1. Over the past two weeks, have you felt down, depressed, or hopeless?: local::at0005|No|
+      gt0004|2. In your lifetime, have you ever attempted to kill yourself?: local::at0010|No|
+      gt0005|3. In your lifetime, have you ever attempted to kill yourself?: local::at0013|No|
+  expected_output:
+    1:
+      'gt0027|Suicide Risk ': local::at0006|Not positive for suicidality by ED-SAFE PSS-3|
+- id: Positive risk and yes to Q1, Q2, Q3 with Recent suicide attempt
+  input:
+    1:
+      gt0003|1. Over the past two weeks, have you felt down, depressed, or hopeless?: local::at0006|Yes|
+      gt0004|2. In your lifetime, have you ever attempted to kill yourself?: local::at0009|Yes|
+      gt0005|3. In your lifetime, have you ever attempted to kill yourself?: local::at0014|Yes|
+      gt0006|3.1. When did your last attempt occur?: 1|local::at0027|Today|
+  expected_output:
+    1:
+      'gt0027|Suicide Risk ': local::at0007|Positive for suicidality by ED-SAFE PSS-3|
+      gt0028|Interpretation Q1: local::at0008|Depressed mood|
+      gt0030|Interpretation Q3: local::at0010|Recent suicide attempt|
+      gt0029|Interpretation Q2: local::at0012|Active suicidal ideation|
+- id: Positive risk and yes to Q1, Q2, Q3 with Lifetime suicide attempt
+  input:
+    1:
+      gt0003|1. Over the past two weeks, have you felt down, depressed, or hopeless?: local::at0006|Yes|
+      gt0004|2. In your lifetime, have you ever attempted to kill yourself?: local::at0009|Yes|
+      gt0005|3. In your lifetime, have you ever attempted to kill yourself?: local::at0014|Yes|
+      gt0006|3.1. When did your last attempt occur?: 4|local::at0030|>6 months|
+  expected_output:
+    1:
+      'gt0027|Suicide Risk ': local::at0007|Positive for suicidality by ED-SAFE PSS-3|
+      gt0028|Interpretation Q1: local::at0008|Depressed mood|
+      gt0030|Interpretation Q3: local::at0011|Lifetime suicide attempt|
+      gt0029|Interpretation Q2: local::at0012|Active suicidal ideation|

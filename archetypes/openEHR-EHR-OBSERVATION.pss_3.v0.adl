@@ -1,0 +1,181 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.pss_3.v0
+
+concept
+	[at0000]	-- Patient Safety Screener 3
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Maryam Razavi">
+		["email"] = <"maryam.razavi@cambio.se">
+		["organisation"] = <"CambioCDS">
+		["date"] = <"2021-01-22">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the results of the Patient Safety Screener 3 risk assessment.
+">
+			use = <"Use to record the results of the Patient Safety Screener 3 risk assessment.">
+			keywords = <"Patient Safety", "Screener ", "suicidality ", "Emergency department", "Suicide">
+			misuse = <"Not to be used">
+			copyright = <"@CambioCDS">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"1. Boudreaux ED, Miller I, Goldstein AB, Sullivan AF, Allen MH, Manton AP, Arias SA, Camargo CA Jr. The Emergency Department Safety Assessment and Follow-up Evaluation (ED-SAFE): method and design considerations. Contemp Clin Trials. 2013 Sep;36(1):14-24. doi: 10.1016/j.cct.2013.05.008. Epub 2013 May 22. PMID: 23707435; PMCID: PMC3979300.
+2. Boudreaux ED, Jaques ML, Brady KM, Matson A, Allen MH. The patient safety screener: validation of a brief suicide risk screener for emergency department settings. Arch Suicide Res. 2015;19(2):151-60. doi: 10.1080/13811118.2015.1034604. PMID: 25826715.
+3. Boudreaux ED, Camargo CA Jr, Arias SA, Sullivan AF, Allen MH, Goldstein AB, Manton AP, Espinola JA, Miller IW. Improving Suicide Risk Screening and Detection in the Emergency Department. Am J Prev Med. 2016 Apr;50(4):445-453. doi: 10.1016/j.amepre.2015.09.029. Epub 2015 Dec 4. PMID: 26654691; PMCID: PMC4801719.
+4. Miller IW, Camargo CA Jr, Arias SA, Sullivan AF, Allen MH, Goldstein AB, Manton AP, Espinola JA, Jones R, Hasegawa K, Boudreaux ED; ED-SAFE Investigators. Suicide Prevention in an Emergency Department Population: The ED-SAFE Study. JAMA Psychiatry. 2017 Jun 1;74(6):563-570. doi: 10.1001/jamapsychiatry.2017.0678. PMID: 28456130; PMCID: PMC5539839.">
+		["MD5-CAM-1.0.1"] = <"86BA6B76B7A57AD0320BD7690245D87E">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Patient Safety Screener 3
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Over the past two weeks, have you felt down, depressed, or hopeless?
+										value matches {
+											DV_TEXT matches {
+												value matches {"at0005", "at0006", "at0007"}
+											}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- In your lifetime, have you ever attempted to kill yourself?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0009, 	-- Yes
+													at0010, 	-- No
+													at0011]	-- Refused to answer
+												}
+											}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- In your lifetime, have you ever attempted to kill yourself?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0013, 	-- No
+													at0014, 	-- Yes
+													at0015]	-- Refused to answer
+												}
+											}
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- When did your last attempt occur?
+										value matches {
+											1|[local::at0027], 	-- Today
+											2|[local::at0028], 	-- Within 30 days
+											3|[local::at0029], 	-- Within 1-6 months
+											4|[local::at0030], 	-- >6 months
+											5|[local::at0031], 	-- Does not know
+											6|[local::at0032]  	-- Refused to answer
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Patient Safety Screener 3">
+					description = <"A risk assessment toll used to screen  for suicidality in emergency patients.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Over the past two weeks, have you felt down, depressed, or hopeless?">
+					description = <"Depressed mood">
+				>
+				["at0008"] = <
+					text = <"In your lifetime, have you ever attempted to kill yourself?">
+					description = <"Active suicidal ideation">
+				>
+				["at0009"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Refused to answer">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"In your lifetime, have you ever attempted to kill yourself?">
+					description = <" Lifetime suicide attempt">
+				>
+				["at0013"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Refused to answer">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"When did your last attempt occur?">
+					description = <"only ask if yes to question 3. ">
+				>
+				["at0027"] = <
+					text = <"Today">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Within 30 days">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Within 1-6 months">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <">6 months">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Does not know">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Refused to answer">
+					description = <"*">
+				>
+			>
+		>
+	>
