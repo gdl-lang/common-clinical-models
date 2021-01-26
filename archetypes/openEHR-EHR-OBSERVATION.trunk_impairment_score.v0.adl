@@ -1,0 +1,201 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.trunk_impairment_score.v0
+
+concept
+	[at0000]	-- Trunk impairment score
+language
+	original_language = <[ISO_639-1::sv]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"529CB55187F256F47BDAE2971E483FBE">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Trunk impairment score
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0026] occurrences matches {0..1} matches {	-- vilken händelse som helst
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Träd
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0004] occurrences matches {0..1} matches {	-- Static sitting balance
+										items cardinality matches {3..*; unordered} matches {
+											ELEMENT[at0006] matches {	-- Starting Position
+												value matches {
+													0|[local::at0009], 	-- Fail
+													2|[local::at0010]  	-- Pass
+												}
+											}
+											ELEMENT[at0015] matches {	-- Cross Hemiplegic Leg
+												value matches {
+													0|[local::at0018], 	-- Fail
+													1|[local::at0019], 	-- Cannot cross legs without arm support
+													2|[local::at0020], 	-- Crosses legs but displaces trunk
+													3|[local::at0021]  	-- Crosses legs without trunk displacement
+												}
+											}
+											ELEMENT[at0014] matches {	-- Cross Unaffected Leg
+												value matches {
+													0|[local::at0016], 	-- Fail
+													2|[local::at0017]  	-- Pass
+												}
+											}
+										}
+									}
+									CLUSTER[at0005] occurrences matches {0..1} matches {	-- Dynamic sitting balance
+										items cardinality matches {5..*; unordered} matches {
+											ELEMENT[at0008] occurrences matches {3} matches {	-- Shorten Hemiplegic Side
+												value matches {
+													0|[local::at0011], 	-- Fail
+													1|[local::at0012]  	-- Pass
+												}
+											}
+											ELEMENT[at0022] occurrences matches {2} matches {	-- Shorten Unaffected Side
+												value matches {
+													0|[local::at0023], 	-- Fail
+													1|[local::at0024]  	-- Pass
+												}
+											}
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- DateTime
+										value matches {
+											DV_DATE_TIME matches {*}
+										}
+									}
+									ELEMENT[at0027] occurrences matches {0..1} matches {	-- Total Score
+										value matches {
+											DV_COUNT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Trunk impairment score">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"Träd">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Static sitting balance">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Dynamic sitting balance">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Starting Position">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Shorten Hemiplegic Side">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Fail">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Pass">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Fail">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Pass">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"DateTime">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Cross Unaffected Leg">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Cross Hemiplegic Leg">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Fail">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Pass">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Fail">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Cannot cross legs without arm support">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Crosses legs but displaces trunk">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Crosses legs without trunk displacement">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Shorten Unaffected Side">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Fail">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Pass">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"vilken händelse som helst">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Total Score">
+					description = <"*">
+				>
+			>
+		>
+	>
