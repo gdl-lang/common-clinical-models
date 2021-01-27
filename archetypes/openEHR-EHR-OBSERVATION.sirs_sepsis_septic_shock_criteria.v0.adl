@@ -1,0 +1,301 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.sirs_sepsis_septic_shock_criteria.v0
+
+concept
+	[at0000]	-- Sirs sepsis septic shock criteria
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Maryam Razavi">
+		["email"] = <"maryam.razavi@cambio.se">
+		["organisation"] = <"CambioCDS">
+		["date"] = <"2021-01-27">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record information relevant to the SIRS, Sepsis, and Septic Shock Criteria assessment.">
+			use = <"Use to record information relevant to the SIRS, Sepsis, and Septic Shock Criteria assessment.
+
+">
+			keywords = <"Septic Shock", "Sepsis", "SIRS", "Multiple Organ Dysfunction Syndrome Criteria">
+			misuse = <"Not to be used for patients under 18 years old.  Use the Pediatric SIRS, Sepsis, and Septic Shock Criteria for patients under 18. ">
+			copyright = <"@CambioCDS">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"1. Dellinger RP, Levy MM, Rhodes A, Annane D, Gerlach H, Opal SM, Sevransky JE, Sprung CL, Douglas IS, Jaeschke R, Osborn TM, Nunnally ME, Townsend SR, Reinhart K, Kleinpell RM, Angus DC, Deutschman CS, Machado FR, Rubenfeld GD, Webb S, Beale RJ, Vincent JL, Moreno R; Surviving Sepsis Campaign Guidelines Committee including The Pediatric Subgroup. Surviving Sepsis Campaign: international guidelines for management of severe sepsis and septic shock, 2012. Intensive Care Med. 2013 Feb;39(2):165-228. doi: 10.1007/s00134-012-2769-8. Epub 2013 Jan 30. PMID: 23361625; PMCID: PMC7095153.
+2. Bone RC, Balk RA, Cerra FB, Dellinger RP, Fein AM, Knaus WA, Schein RM, Sibbald WJ. Definitions for sepsis and organ failure and guidelines for the use of innovative therapies in sepsis. The ACCP/SCCM Consensus Conference Committee. American College of Chest Physicians/Society of Critical Care Medicine. Chest. 1992 Jun;101(6):1644-55. doi: 10.1378/chest.101.6.1644. PMID: 1303622.">
+		["MD5-CAM-1.0.1"] = <"3428110DE07D414931F33AAB42D439AA">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Sirs sepsis septic shock criteria
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0004] occurrences matches {0..1} matches {	-- SIRS Criteria
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Temp >38°C (100.4°F) or < 36°C (96.8°F)
+												value matches {
+													0|[local::at0006], 	-- No
+													1|[local::at0007]  	-- Yes
+												}
+											}
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Heart rate > 90
+												value matches {
+													0|[local::at0009], 	-- No
+													1|[local::at0010]  	-- Yes
+												}
+											}
+											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Respiratory rate > 20 or PaCO₂ < 32 mm Hg
+												value matches {
+													0|[local::at0012], 	-- No
+													1|[local::at0013]  	-- Yes
+												}
+											}
+											ELEMENT[at0014] occurrences matches {0..1} matches {	-- WBC > 12,000/mm³, < 4,000/mm³, or > 10% bands
+												value matches {
+													0|[local::at0015], 	-- No
+													1|[local::at0016]  	-- Yes
+												}
+											}
+											ELEMENT[at0017] occurrences matches {0..1} matches {	-- SIRS Criteria
+												value matches {
+													DV_COUNT matches {*}
+												}
+											}
+										}
+									}
+									CLUSTER[at0018] occurrences matches {0..1} matches {	-- Sepsis Criteria
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0019] occurrences matches {0..1} matches {	-- Suspected or present source of infection
+												value matches {
+													0|[local::at0020], 	-- No
+													1|[local::at0021]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0022] occurrences matches {0..1} matches {	-- Severe Sepsis Criteria
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0023] occurrences matches {0..1} matches {	-- Lactic acidosis, SBP <90 or SBP drop ≥ 40 mm Hg of normal
+												value matches {
+													0|[local::at0024], 	-- No
+													1|[local::at0025]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0026] occurrences matches {0..1} matches {	-- Septic Shock Criteria
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0027] occurrences matches {0..1} matches {	-- Severe sepsis with hypotension, despite adequate fluid resuscitation
+												value matches {
+													0|[local::at0028], 	-- No
+													1|[local::at0029]  	-- Yes
+												}
+											}
+										}
+									}
+									CLUSTER[at0030] occurrences matches {0..1} matches {	-- Multiple Organ Dysfunction Syndrome Criteria
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0031] occurrences matches {0..1} matches {	-- Evidence of ≥ 2 organs failing
+												value matches {
+													0|[local::at0032], 	-- No
+													1|[local::at0033]  	-- Yes
+												}
+											}
+										}
+									}
+									ELEMENT[at0034] occurrences matches {0..1} matches {	-- Is this a COVID-19 patient?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0035, 	-- Confirmed positive
+													at0036, 	-- Suspected
+													at0037, 	-- Unlikely
+													at0038]	-- Confirmed negative
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Sirs sepsis septic shock criteria">
+					description = <"SIRS, Sepsis, and Septic Shock Criteria defines the severity of sepsis and septic shock.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"SIRS Criteria">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Temp >38°C (100.4°F) or < 36°C (96.8°F)">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Heart rate > 90">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Respiratory rate > 20 or PaCO₂ < 32 mm Hg">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"WBC > 12,000/mm³, < 4,000/mm³, or > 10% bands">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"SIRS Criteria">
+					description = <"SIRS Criteria (≥ 2 meets SIRS definition).">
+				>
+				["at0018"] = <
+					text = <"Sepsis Criteria">
+					description = <"Sepsis Criteria (SIRS + Source of Infection).">
+				>
+				["at0019"] = <
+					text = <"Suspected or present source of infection">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Severe Sepsis Criteria">
+					description = <"Severe Sepsis Criteria (Organ Dysfunction, Hypotension, or Hypoperfusion)">
+				>
+				["at0023"] = <
+					text = <"Lactic acidosis, SBP <90 or SBP drop ≥ 40 mm Hg of normal">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Septic Shock Criteria">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Severe sepsis with hypotension, despite adequate fluid resuscitation">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Multiple Organ Dysfunction Syndrome Criteria">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Evidence of ≥ 2 organs failing">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"Is this a COVID-19 patient?">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Confirmed positive">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Suspected">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Unlikely">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"Confirmed negative">
+					description = <"*">
+				>
+			>
+		>
+	>
