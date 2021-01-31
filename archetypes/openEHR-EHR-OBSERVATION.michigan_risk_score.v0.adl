@@ -15,7 +15,7 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To register information regarding the assessment of the Michigan Risk Score as well as the interpretation of the assessment.
+			purpose = <"To register information regarding the assessment of the Michigan Risk Score as well as the interpretation of the score.
 
 ">
 			use = <"Use to record the value for each component for the Michigan Risk Score,  their total sum, interpretations in patients ≥18 years old admitted to a medical service (i.e., not surgical).
@@ -39,16 +39,16 @@ Michigan Risk Score        Risk Class              Probability of VTE
 
 ">
 			keywords = <"Thrombosis", "peripherally inserted central catheter (PICC)", "DVT ">
-			misuse = <"Cannot be used in pregnant patients.">
+			misuse = <"">
 			copyright = <"@CambioCDS">
 		>
 	>
-	lifecycle_state = <"AuthorDraft">
+	lifecycle_state = <"0">
 	other_contributors = <>
 	other_details = <
 		["references"] = <"1. Chopra V, Kaatz S, Conlon A, et al. The Michigan Risk Score to predict peripherally inserted central catheter-associated thrombosis. J Thromb Haemost. 2017;15(10):1951-1962.
 2. Chopra V, Smith S, Swaminathan L, et al. Variations in Peripherally Inserted Central Catheter Use and Outcomes in Michigan Hospitals. JAMA Intern Med. 2016;176(4):548-51.">
-		["MD5-CAM-1.0.1"] = <"845C6D594C42A7BC6DCA00A378DA0BA7">
+		["MD5-CAM-1.0.1"] = <"3F351CC531ABD6D4216B36F62FE343AA">
 	>
 
 definition
@@ -92,9 +92,11 @@ definition
 											3|[local::at0020]  	-- Yes
 										}
 									}
-									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Michigan risk score
+									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Total score
 										value matches {
-											DV_COUNT matches {*}
+											DV_COUNT matches {
+												magnitude matches {|0..10|}
+											}
 										}
 									}
 									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Risk Class
@@ -205,7 +207,7 @@ ontology
 					description = <"*">
 				>
 				["at0021"] = <
-					text = <"Michigan risk score">
+					text = <"Total score">
 					description = <"*">
 				>
 				["at0022"] = <
