@@ -1,0 +1,32 @@
+guidelines:
+  1: Recognition_of_stroke_in_the_emergency_room_ROSIER_scale.v1
+test_cases:
+- id: Stroke unlikely
+  input:
+    1:
+      gt0004|Loss of consciousness or syncope: 0|local::at0003|No|
+      gt0005|Seizure activity: 0|local::at0006|No|
+      gt0006|Asymmetric facial weakness: 0|local::at0009|No|
+      gt0007|Asymmetric arm weakness: 0|local::at0012|No|
+      gt0008|Asymmetric leg weakness: 0|local::at0015|No|
+      gt0009|Speech disturbance: 0|local::at0018|No|
+      gt0010|Visual field defect: 0|local::at0021|No|
+  expected_output:
+    1:
+      gt0013|Likelihood of stroke: local::at0025|Stroke unlikely|
+      gt0012|ROSIER score: 0
+
+- id: Stroke possible
+  input:
+    1:
+      gt0004|Loss of consciousness or syncope: 0|local::at0003|No|
+      gt0005|Seizure activity: 0|local::at0006|No|
+      gt0006|Asymmetric facial weakness: 0|local::at0009|No|
+      gt0007|Asymmetric arm weakness: 1|local::at0013|Yes|
+      gt0008|Asymmetric leg weakness: 0|local::at0015|No|
+      gt0009|Speech disturbance: 1|local::at0019|Yes|
+      gt0010|Visual field defect: 0|local::at0021|No|
+  expected_output:
+    1:
+      gt0013|Likelihood of stroke: local::at0026|Stroke possible|
+      gt0012|ROSIER score: 2
