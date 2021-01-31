@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 517*
+### *Published Apps: 518*
 
 ----------
 
 ### Latest added
 
-1. Michigan Risk Score for PICC-Related Thrombosis -  ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Michigan_Risk_Score_guideline/1?language=en))
-2. Recurrent Instability of the Patella (RIP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Recurrent_Instability_of_the_patella_RIP_score/1?language=en))
-3. Milan Criteria for Liver Transplantation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Milan_Criteria_for_Liver_Transplantation/1?language=en))
-4. Sepsis-Induced Coagulopathy (SIC) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sepsis_Induced_Coagulopathy_SIC_Score/1?language=en))
-5. Static Lung Compliance (Cstat) Calculation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cstat_Calculation_guideline/1?language=en))
-6. Prognostic Index for Cancer Outcomes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prognostic_Index_for_Cancer_Outcomes51?language=en))
-7. Rochester Criteria for Febrile Infants - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rochester_Criteria_guideline/1?language=en))
-8. Rockall Score for Upper GI Bleeding (Pre-Endoscopy) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rockall_Score_preEndoscopy_guideline/1?language=en))
-9. RADS (Radiologist’s Score) for Smoke Inhalation Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RADS_guideline/1?language=en))
-10. READMITS Score for Readmissions in Acute MI - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/READMITS_Score_guideline/1?language=en))
+1. RIPASA Score for Acute Appendicitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIPASA_score_guideline/1?language=en))
+2. Michigan Risk Score for PICC-Related Thrombosis -  ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Michigan_Risk_Score_guideline/1?language=en))
+3. Recurrent Instability of the Patella (RIP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Recurrent_Instability_of_the_patella_RIP_score/1?language=en))
+4. Milan Criteria for Liver Transplantation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Milan_Criteria_for_Liver_Transplantation/1?language=en))
+5. Sepsis-Induced Coagulopathy (SIC) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sepsis_Induced_Coagulopathy_SIC_Score/1?language=en))
+6. Static Lung Compliance (Cstat) Calculation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cstat_Calculation_guideline/1?language=en))
+7. Prognostic Index for Cancer Outcomes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prognostic_Index_for_Cancer_Outcomes51?language=en))
+8. Rochester Criteria for Febrile Infants - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rochester_Criteria_guideline/1?language=en))
+9. Rockall Score for Upper GI Bleeding (Pre-Endoscopy) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rockall_Score_preEndoscopy_guideline/1?language=en))
+10. RADS (Radiologist’s Score) for Smoke Inhalation Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RADS_guideline/1?language=en))
 
 ----------
 
@@ -327,6 +327,8 @@ _Select a medical specialty below to view the available apps._
 * Revised Geneva Score (rGeneva) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rGeneva/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rGeneva/1?language=sv))
 
 * Rapid emergency medicine score (REMS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/REMS/1?language=en))
+
+* RIPASA Score for Acute Appendicitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIPASA_score_guideline/1?language=en))
 
 * Risk Score for Asthma Exacerbation (RSE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Risk_Score_Asthma_Exacerbation/1?language=en))
 
