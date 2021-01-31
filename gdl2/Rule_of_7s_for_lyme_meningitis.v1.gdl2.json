@@ -1,0 +1,161 @@
+{
+  "id": "Rule_of_7s_for_lyme_meningitis.v1",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2021-01-30",
+      "name": "Therese Lindberg",
+      "organisation": "Cambio CDS",
+      "email": "therese.lindberg@cambio.se"
+    },
+    "lifecycle_state": "Initial",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "To record the risk of Lyme meningitis from aseptic meningitis.",
+        "keywords": [
+          "lyme meningitis",
+          "risk",
+          "CSF",
+          "cerebrospinal fluid",
+          "headache"
+        ],
+        "use": "Use to record the risk of Lyme meningitis from aseptic meningitis.\n\nThe reule of 7s is calculated based on three parameters: number of days of headache, CSF mononuclear cells and  7th (or other) cranial nerve palsy.\n\nRule of 7s            Risk\n0 points               Low risk for Lyme meningitis\n1–3 points           Not low risk for Lyme meningitis",
+        "copyright": "@CambioCDS"
+      }
+    },
+    "other_details": {
+      "references": "1. Garro AC, Rutman M, Simonsen K, Jaeger JL, Chapin K, Lockhart G. Prospective validation of a clinical prediction model for Lyme meningitis in children. Pediatrics. 2009;123(5):e829-34."
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0002": {
+        "id": "gt0002",
+        "model_id": "openEHR-EHR-EVALUATION.rule_of_7s_for_lyme_meningitis.v0",
+        "template_id": "openEHR-EHR-EVALUATION.rule_of_7s_for_lyme_meningitis.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0003": {
+            "id": "gt0003",
+            "path": "/data[at0001]/items[at0002]"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/items[at0005]"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "path": "/data[at0001]/items[at0006]"
+          }
+        }
+      },
+      "gt0006": {
+        "id": "gt0006",
+        "model_id": "openEHR-EHR-EVALUATION.rule_of_7s_for_lyme_meningitis.v0",
+        "template_id": "openEHR-EHR-EVALUATION.rule_of_7s_for_lyme_meningitis.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0007": {
+            "id": "gt0007",
+            "path": "/data[at0001]/items[at0011]"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "path": "/data[at0001]/items[at0012]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0009": {
+        "id": "gt0009",
+        "priority": 3,
+        "when": [
+          "$gt0003|Number of days of headache|!=null",
+          "$gt0004|CSF (cerebrospinal fluid) mononuclear cells (Lymphocytes and monocytes)|!=null",
+          "$gt0005|7th (or other) cranial nerve palsy|!=null"
+        ],
+        "then": [
+          "$gt0007|Rule of 7s|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value"
+        ]
+      },
+      "gt0011": {
+        "id": "gt0011",
+        "priority": 2,
+        "when": [
+          "$gt0007|Rule of 7s|>0",
+          "$gt0007|Rule of 7s|<=3"
+        ],
+        "then": [
+          "$gt0008|Risk|=local::at0014|Not low risk for Lyme meningitis|"
+        ]
+      },
+      "gt0010": {
+        "id": "gt0010",
+        "priority": 1,
+        "when": [
+          "$gt0007|Rule of 7s|==0"
+        ],
+        "then": [
+          "$gt0008|Risk|=local::at0013|Low risk for Lyme meningitis|"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "Rule of 7s for Lyme Meningitis",
+            "description": "Rule of 7s for Lyme meningitis distinguishes Lyme meningitis from aseptic meningitis."
+          },
+          "gt0003": {
+            "id": "gt0003",
+            "text": "Number of days of headache",
+            "description": "*"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "CSF (cerebrospinal fluid) mononuclear cells (Lymphocytes and monocytes)",
+            "description": "*"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "7th (or other) cranial nerve palsy",
+            "description": "*"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "text": "Rule of 7s",
+            "description": "*"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "Risk",
+            "description": "*"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "text": "Calculate rule of 7s"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "Low risk for Lyme meningitis"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "Not low risk for Lyme meningitis"
+          }
+        }
+      }
+    }
+  }
+}
