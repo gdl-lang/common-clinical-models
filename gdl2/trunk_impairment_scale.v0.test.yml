@@ -1,0 +1,47 @@
+guidelines:
+  1: trunk_impairment_scale.v0
+test_cases:
+- id: should_calculate_total_static
+  input:
+    1:
+      gt0003|Maintains starting position: 2|local::at0009|Yes|
+      gt0008|Patient Crosses unaffected leg: 3|local::at0044|Crosses legs without displacement or assistance|
+      gt0009|Therapist Crosses unaffected leg: 2|local::at0011|Maintains sitting position|
+  expected_output:
+    1:
+      gt0014|Total dynamic sitting balance: 0
+      gt0041|Total coordination: 0
+      gt0043|Total: 7.0
+      gt0006|Total static sitting balance: 7.0
+- id: should_calculate_full_dynamic_balance
+  input:
+    1:
+      gt0011|Shortens hemiplegic side: local::at0021|Succeeds without help|
+      gt0012|Shortens hemiplegic side repitition 1: local::at0030|Moves without compensation|
+      gt0013|Shortens hemiplegic side repitition 2: local::at0030|Moves without compensation|
+      gt0015|Shortens unaffected side: local::at0021|Succeeds without help|
+      gt0016|Lifts pelvis at hemiplegic side: local::at0026|Appropriate shortening/lengthening|
+      gt0017|Shortens unaffected side repitition 1: local::at0026|Appropriate shortening/lengthening|
+      gt0018|Shortens unaffected side repitition 2: local::at0030|Moves without compensation|
+      gt0019|Lifts pelvis at hemiplegic side repitition 1: local::at0030|Moves without compensation|
+      gt0020|Lifts pelvis at unaffected side: local::at0026|Appropriate shortening/lengthening|
+      gt0021|Lifts pelvis at unaffected side repitition 1: local::at0030|Moves without compensation|
+  expected_output:
+    1:
+      gt0014|Total dynamic sitting balance: 10.0
+      gt0041|Total coordination: 0
+      gt0043|Total: 10.0
+      gt0006|Total static sitting balance: 0
+- id: should_calculate_full_coordination
+  input:
+    1:
+      gt0022|Rotates upper trunk 6x: local::at0040|Symmetrical rotation|
+      gt0023|Rotates upper trunk repitition 1: local::at0040|Symmetrical rotation|
+      gt0024|Rotate lower trunk 6x: local::at0040|Symmetrical rotation|
+      gt0025|Rotate lower trunk repitition 1: local::at0040|Symmetrical rotation|
+  expected_output:
+    1:
+      gt0014|Total dynamic sitting balance: 0
+      gt0041|Total coordination: 6.0
+      gt0043|Total: 6.0
+      gt0006|Total static sitting balance: 0
