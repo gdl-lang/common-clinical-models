@@ -1,0 +1,129 @@
+guidelines:
+  1: RoPE_Score_guideline.v1
+test_cases:
+- id: score 0
+  input:
+    1:
+      gt0003|Age in years: 0|local::at0005|≥70|
+      gt0004|History of hypertension: 0|local::at0012|Yes|
+      gt0005|History of diabetes: 0|local::at0015|Yes|
+      gt0006|History of stroke or TIA: 0|local::at0019|Yes|
+      gt0007|Smoker: 0|local::at0021|Yes|
+      gt0008|Cortical infarct on imaging: 0|local::at0024|No|
+  expected_output:
+    1:
+      gt0010|RoPE Score: 0
+      gt0013|Estimated stroke/TIA recurrence at 2 years: local::at0011|20% (12–28)|
+      gt0012|PFO-attributable fraction (95% CI): local::at0004|0% (0–4)|
+- id: score 3
+  input:
+    1:
+      gt0003|Age in years: 3|local::at0008|40-49|
+      gt0004|History of hypertension: 0|local::at0012|Yes|
+      gt0005|History of diabetes: 0|local::at0015|Yes|
+      gt0006|History of stroke or TIA: 0|local::at0019|Yes|
+      gt0007|Smoker: 0|local::at0021|Yes|
+      gt0008|Cortical infarct on imaging: 0|local::at0024|No|
+  expected_output:
+    1:
+      gt0010|RoPE Score: 3
+      gt0013|Estimated stroke/TIA recurrence at 2 years: local::at0011|20% (12–28)|
+      gt0012|PFO-attributable fraction (95% CI): local::at0004|0% (0–4)|
+- id: score 4
+  input:
+    1:
+      gt0003|Age in years: 4|local::at0009|30-39|
+      gt0004|History of hypertension: 0|local::at0012|Yes|
+      gt0005|History of diabetes: 0|local::at0015|Yes|
+      gt0006|History of stroke or TIA: 0|local::at0019|Yes|
+      gt0007|Smoker: 0|local::at0021|Yes|
+      gt0008|Cortical infarct on imaging: 0|local::at0024|No|
+  expected_output:
+    1:
+      gt0010|RoPE Score: 4
+      gt0013|Estimated stroke/TIA recurrence at 2 years: local::at0012|12% (6–18)|
+      gt0012|PFO-attributable fraction (95% CI): local::at0005|38% (25–48)|
+- id: score 5
+  input:
+    1:
+      gt0003|Age in years: 4|local::at0009|30-39|
+      gt0004|History of hypertension: 1|local::at0013|No|
+      gt0005|History of diabetes: 0|local::at0015|Yes|
+      gt0006|History of stroke or TIA: 0|local::at0019|Yes|
+      gt0007|Smoker: 0|local::at0021|Yes|
+      gt0008|Cortical infarct on imaging: 0|local::at0024|No|
+  expected_output:
+    1:
+      gt0010|RoPE Score: 5
+      gt0013|Estimated stroke/TIA recurrence at 2 years: local::at0013|7% (3–11)|
+      gt0012|PFO-attributable fraction (95% CI): local::at0006|34% (21–45)|
+- id: score 6
+  input:
+    1:
+      gt0003|Age in years: 4|local::at0009|30-39|
+      gt0004|History of hypertension: 1|local::at0013|No|
+      gt0005|History of diabetes: 1|local::at0016|No|
+      gt0006|History of stroke or TIA: 0|local::at0019|Yes|
+      gt0007|Smoker: 0|local::at0021|Yes|
+      gt0008|Cortical infarct on imaging: 0|local::at0024|No|
+  expected_output:
+    1:
+      gt0010|RoPE Score: 6
+      gt0013|Estimated stroke/TIA recurrence at 2 years: local::at0014|8% (4–12)|
+      gt0012|PFO-attributable fraction (95% CI): local::at0007|62% (54–68)|
+- id: score 7
+  input:
+    1:
+      gt0003|Age in years: 4|local::at0009|30-39|
+      gt0004|History of hypertension: 1|local::at0013|No|
+      gt0005|History of diabetes: 1|local::at0016|No|
+      gt0006|History of stroke or TIA: 1|local::at0018|No|
+      gt0007|Smoker: 0|local::at0021|Yes|
+      gt0008|Cortical infarct on imaging: 0|local::at0024|No|
+  expected_output:
+    1:
+      gt0010|RoPE Score: 7
+      gt0013|Estimated stroke/TIA recurrence at 2 years: local::at0015|6% (2–10)|
+      gt0012|PFO-attributable fraction (95% CI): local::at0008|72% (66–76)|
+- id: score 8
+  input:
+    1:
+      gt0003|Age in years: 4|local::at0009|30-39|
+      gt0004|History of hypertension: 1|local::at0013|No|
+      gt0005|History of diabetes: 1|local::at0016|No|
+      gt0006|History of stroke or TIA: 1|local::at0018|No|
+      gt0007|Smoker: 1|local::at0022|No|
+      gt0008|Cortical infarct on imaging: 0|local::at0024|No|
+  expected_output:
+    1:
+      gt0010|RoPE Score: 8
+      gt0013|Estimated stroke/TIA recurrence at 2 years: local::at0015|6% (2–10)|
+      gt0012|PFO-attributable fraction (95% CI): local::at0009|84% (79–87)|
+- id: score 9
+  input:
+    1:
+      gt0003|Age in years: 4|local::at0009|30-39|
+      gt0004|History of hypertension: 1|local::at0013|No|
+      gt0005|History of diabetes: 1|local::at0016|No|
+      gt0006|History of stroke or TIA: 1|local::at0018|No|
+      gt0007|Smoker: 1|local::at0022|No|
+      gt0008|Cortical infarct on imaging: 1|local::at0025|Yes|
+  expected_output:
+    1:
+      gt0010|RoPE Score: 9
+      gt0013|Estimated stroke/TIA recurrence at 2 years: local::at0017|2% (0–4)|
+      gt0012|PFO-attributable fraction (95% CI): local::at0010|88% (83–91)|
+- id: score 10
+  input:
+    1:
+      gt0003|Age in years: 5|local::at0010|18-29|
+      gt0004|History of hypertension: 1|local::at0013|No|
+      gt0005|History of diabetes: 1|local::at0016|No|
+      gt0006|History of stroke or TIA: 1|local::at0018|No|
+      gt0007|Smoker: 1|local::at0022|No|
+      gt0008|Cortical infarct on imaging: 1|local::at0025|Yes|
+  expected_output:
+    1:
+      gt0010|RoPE Score: 10
+      gt0013|Estimated stroke/TIA recurrence at 2 years: local::at0017|2% (0–4)|
+      gt0012|PFO-attributable fraction (95% CI): local::at0010|88% (83–91)|
