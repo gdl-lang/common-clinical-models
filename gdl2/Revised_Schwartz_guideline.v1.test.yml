@@ -1,0 +1,112 @@
+guidelines:
+  1: Revised_Schwartz_guideline.v1
+test_cases:
+- id: GFR>90
+  input:
+    1:
+      gt0003|Height, cm: 500,cm
+      gt0005|Serum creatinine, mg/dL: 2,mg/dl
+  expected_output:
+    1:
+      gt0008|Estimated GFR: 103,mL/min/1.73 m2
+      gt0011|Severity: Normal
+      gt0010|CKD stage: 1
+- id: GFR 90
+  input:
+    1:
+      gt0003|Height, cm: 438,cm
+      gt0005|Serum creatinine, mg/dL: 2,mg/dl
+  expected_output:
+    1:
+      gt0008|Estimated GFR: 90,mL/min/1.73 m2
+      gt0011|Severity: Normal
+      gt0010|CKD stage: 1
+- id: GFR 89
+  input:
+    1:
+      gt0003|Height, cm: 430,cm
+      gt0005|Serum creatinine, mg/dL: 2,mg/dl
+  expected_output:
+    1:
+      gt0008|Estimated GFR: 89,mL/min/1.73 m2
+      gt0011|Severity: Mild
+      gt0010|CKD stage: 2
+- id: GFR 60
+  input:
+    1:
+      gt0003|Height, cm: 290,cm
+      gt0005|Serum creatinine, mg/dL: 2,mg/dl
+  expected_output:
+    1:
+      gt0008|Estimated GFR: 60,mL/min/1.73 m2
+      gt0011|Severity: Mild
+      gt0010|CKD stage: 2
+- id: GFR 59
+  input:
+    1:
+      gt0003|Height, cm: 285,cm
+      gt0005|Serum creatinine, mg/dL: 2,mg/dl
+  expected_output:
+    1:
+      gt0008|Estimated GFR: 59,mL/min/1.73 m2
+      gt0011|Severity: Mild-moderate
+      gt0010|CKD stage: 3a
+- id: GFR 45
+  input:
+    1:
+      gt0003|Height, cm: 220,cm
+      gt0005|Serum creatinine, mg/dL: 2,mg/dl
+  expected_output:
+    1:
+      gt0008|Estimated GFR: 45,mL/min/1.73 m2
+      gt0011|Severity: Mild-moderate
+      gt0010|CKD stage: 3a
+- id: GFR 44
+  input:
+    1:
+      gt0003|Height, cm: 214,cm
+      gt0005|Serum creatinine, mg/dL: 2,mg/dl
+  expected_output:
+    1:
+      gt0008|Estimated GFR: 44,mL/min/1.73 m2
+      gt0011|Severity: Mild-severe
+      gt0010|CKD stage: 3b
+- id: Warning Too Low
+  input:
+    1:
+      gt0003|Height, cm: 25,cm
+      gt0005|Serum creatinine, mg/dL: 0,mg/dl
+  expected_output:
+    1:
+      gt0020|Warning to Height: Too low, please change to proceed.
+      gt0021|Warning to Creatinine: Too low, please change to proceed.
+- id: Too high
+  input:
+    1:
+      gt0003|Height, cm: 509,cm
+      gt0005|Serum creatinine, mg/dL: 41,mg/dl
+  expected_output:
+    1:
+      gt0020|Warning to Height: Too high, please change to proceed.
+      gt0021|Warning to Creatinine: Too high, please change to proceed.
+- id: Warning very high
+  input:
+    1:
+      gt0003|Height, cm: 200,cm
+      gt0005|Serum creatinine, mg/dL: 40,mg/dl
+  expected_output:
+    1:
+      gt0008|Estimated GFR: 2,mL/min/1.73 m2
+      gt0021|Warning to Creatinine: Very high, double-check.
+      gt0011|Severity: End-stage renal disease
+      gt0010|CKD stage: 5
+- id: GFR 15
+  input:
+    1:
+      gt0003|Height, cm: 150,cm
+      gt0005|Serum creatinine, mg/dL: 4,mg/dl
+  expected_output:
+    1:
+      gt0008|Estimated GFR: 15,mL/min/1.73 m2
+      gt0011|Severity: Severe
+      gt0010|CKD stage: 4
