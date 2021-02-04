@@ -1,35 +1,7 @@
 guidelines:
-  1: Fast_Tracking_Outpatient_After_Ambulatory_Surgery.v0
+  1: Fast_Tracking_Scale_For_Ambulatory_Surgery.v0
 test_cases:
-- id: Emetic Case
-  input:
-    1:
-      gt0023|Level of consciousness: 2|local::at0032|Awake and Oriented|
-      gt0024|Physical activity: 2|local::at0038|Able to move all extremities on command|
-      gt0025|Hemodynamic stability: 2|local::at0040|Blood pressure ± 15% of baseline|
-      gt0026|Respiratory stability: 2|local::at0045|Respiratory rate 10 to 20 breaths/min, able to breathe deeply|
-      gt0027|Oxygen saturation status: 2|local::at0052|maintains value >90% while breathing room air|
-      gt0028|Postoperative pain assessment: 2|local::at0056|No or mild discomfort|
-      gt0029|Postoperative emetic symptoms: 0|local::at0058|Persistent moderate-to-severe nausea or vomiting|
-  expected_output:
-    1:
-      gt0066|Fast-track Index Score: 12
-      'gt0076|Score Interpretation: ': local::at0084|Patient is not elegible to be discharged|
-- id: Semiemetic Case
-  input:
-    1:
-      gt0023|Level of consciousness: 2|local::at0032|Awake and Oriented|
-      gt0024|Physical activity: 2|local::at0038|Able to move all extremities on command|
-      gt0025|Hemodynamic stability: 2|local::at0040|Blood pressure ± 15% of baseline|
-      gt0026|Respiratory stability: 2|local::at0045|Respiratory rate 10 to 20 breaths/min, able to breathe deeply|
-      gt0027|Oxygen saturation status: 2|local::at0052|maintains value >90% while breathing room air|
-      gt0028|Postoperative pain assessment: 2|local::at0056|No or mild discomfort|
-      gt0029|Postoperative emetic symptoms: 1|local::at0059|Transient vomiting or retching controlled with intravenous antiemetics|
-  expected_output:
-    1:
-      gt0066|Fast-track Index Score: 13
-      'gt0076|Score Interpretation: ': local::at0083|Patient is elegible to be discharged|
-- id: Normal Case
+- id: case_1
   input:
     1:
       gt0023|Level of consciousness: 2|local::at0032|Awake and Oriented|
@@ -43,7 +15,35 @@ test_cases:
     1:
       gt0066|Fast-track Index Score: 14
       'gt0076|Score Interpretation: ': local::at0083|Patient is elegible to be discharged|
-- id: All 0 case
+- id: case_1
+  input:
+    1:
+      gt0023|Level of consciousness: 2|local::at0032|Awake and Oriented|
+      gt0024|Physical activity: 2|local::at0038|Able to move all extremities on command|
+      gt0025|Hemodynamic stability: 0|local::at0043|Blood pressure ± 50% of baseline|
+      gt0026|Respiratory stability: 2|local::at0045|Respiratory rate 10 to 20 breaths/min, able to breathe deeply|
+      gt0027|Oxygen saturation status: 2|local::at0052|maintains value >90% while breathing room air|
+      gt0028|Postoperative pain assessment: 2|local::at0056|No or mild discomfort|
+      gt0029|Postoperative emetic symptoms: 2|local::at0060|No or mild nausea with no active vomiting|
+  expected_output:
+    1:
+      gt0066|Fast-track Index Score: 12
+      'gt0076|Score Interpretation: ': local::at0084|Patient is not elegible to be discharged|
+- id: case_1
+  input:
+    1:
+      gt0023|Level of consciousness: 2|local::at0032|Awake and Oriented|
+      gt0024|Physical activity: 2|local::at0038|Able to move all extremities on command|
+      gt0025|Hemodynamic stability: 1|local::at0041|Blood pressure ± 30 % of baseline|
+      gt0026|Respiratory stability: 2|local::at0045|Respiratory rate 10 to 20 breaths/min, able to breathe deeply|
+      gt0027|Oxygen saturation status: 2|local::at0052|maintains value >90% while breathing room air|
+      gt0028|Postoperative pain assessment: 2|local::at0056|No or mild discomfort|
+      gt0029|Postoperative emetic symptoms: 2|local::at0060|No or mild nausea with no active vomiting|
+  expected_output:
+    1:
+      gt0066|Fast-track Index Score: 13
+      'gt0076|Score Interpretation: ': local::at0083|Patient is elegible to be discharged|
+- id: case_1
   input:
     1:
       gt0023|Level of consciousness: 0|local::at0034|Responsive only to tactile stimulation|
@@ -57,7 +57,7 @@ test_cases:
     1:
       gt0066|Fast-track Index Score: 0
       'gt0076|Score Interpretation: ': local::at0084|Patient is not elegible to be discharged|
-- id: All 1 Case
+- id: case_1
   input:
     1:
       gt0023|Level of consciousness: 1|local::at0033|Arousable with minimal stimulation|
