@@ -27,7 +27,7 @@ description
 	other_details = <
 		["references"] = <"1. Alvarez F, Berg PA, Bianchi FB, Bianchi L, Burroughs AK, Cancado EL, Chapman RW, Cooksley WG, Czaja AJ, Desmet VJ, Donaldson PT, Eddleston AL, Fainboim L, Heathcote J, Homberg JC, Hoofnagle JH, Kakumu S, Krawitt EL, Mackay IR, MacSween RN, Maddrey WC, Manns MP, McFarlane IG, Meyer zum Büschenfelde KH, Zeniya M, et al. International Autoimmune Hepatitis Group Report: review of criteria for diagnosis of autoimmune hepatitis. J Hepatol. 1999 Nov;31(5):929-38. doi: 10.1016/s0168-8278(99)80297-9. PMID: 10580593.
 2. Czaja AJ. Performance parameters of the diagnostic scoring systems for autoimmune hepatitis. Hepatology. 2008 Nov;48(5):1540-8. doi: 10.1002/hep.22513. PMID: 18924244.">
-		["MD5-CAM-1.0.1"] = <"575BCA6A4D6371A211A71826A0C32173">
+		["MD5-CAM-1.0.1"] = <"8680FB9856255DB09BF843E8B3C767A5">
 	>
 
 definition
@@ -41,15 +41,15 @@ definition
 								items cardinality matches {0..*; unordered} matches {
 									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Sex
 										value matches {
-											0|[local::at0005], 	-- Male
+											0|[local::at0005], 	-- Male 
 											2|[local::at0006]  	-- Female
 										}
 									}
 									ELEMENT[at0007] occurrences matches {0..1} matches {	-- ALP:AST or ALP:ALT ratio
 										value matches {
-                      2|[local::at0008], 	-- <1.5
+											-2|[local::at0010], 	-- >3.0
 											0|[local::at0009], 	-- 1.5-3.0
-											-2|[local::at0010]  	-- >3.0
+											2|[local::at0008]  	-- <1.5
 										}
 									}
 									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Serum globulins or IgG
@@ -68,29 +68,36 @@ definition
 											3|[local::at0020]  	-- >1:80
 										}
 									}
+									ELEMENT[at0056] occurrences matches {0..1} matches {	-- Optional additional parameters
+										value matches {
+											0|[local::at0057], 	-- None of the above
+											1|[local::at0058], 	-- HLA-DR3 or HLA-DR4
+											2|[local::at0059]  	-- Seropositivity for other defined autoantibodies
+										}
+									}
 									ELEMENT[at0021] occurrences matches {0..1} matches {	-- AMA
 										value matches {
-											0|[local::at0022], 	-- Negative
-											-4|[local::at0023]  	-- Positive
+											-4|[local::at0023], 	-- Positive
+											0|[local::at0022]  	-- Negative
 										}
 									}
 									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Hepatitis viral markers
 										value matches {
-											3|[local::at0025], 	-- Negative
-											-3|[local::at0026]  	-- Positive
+											-3|[local::at0026], 	-- Positive
+											3|[local::at0025]  	-- Negative
 										}
 									}
 									ELEMENT[at0027] occurrences matches {0..1} matches {	-- Recent or current use of hepatotoxic drugs
 										value matches {
-											1|[local::at0028], 	-- No
-											-4|[local::at0029]  	-- Yes
+											-4|[local::at0029], 	-- Yes
+											1|[local::at0028]  	-- No
 										}
 									}
 									ELEMENT[at0030] occurrences matches {0..1} matches {	-- Average alcohol intake
 										value matches {
-											2|[local::at0031], 	-- <25 g/day
+											-2|[local::at0033], 	-- >60 g/day
 											0|[local::at0032], 	-- 25-60 g/day
-											-2|[local::at0033]  	-- >60 g/day
+											2|[local::at0031]  	-- <25 g/day
 										}
 									}
 									ELEMENT[at0034] occurrences matches {0..1} matches {	-- Liver histology: interface hepatitis
@@ -113,14 +120,14 @@ definition
 									}
 									ELEMENT[at0043] occurrences matches {0..1} matches {	-- Liver histology: biliary changes
 										value matches {
-											0|[local::at0044], 	-- No
-											-3|[local::at0045]  	-- Yes
+											-3|[local::at0045], 	-- Yes
+											0|[local::at0044]  	-- No
 										}
 									}
 									ELEMENT[at0046] occurrences matches {0..1} matches {	-- Liver histology: other changes
 										value matches {
-											0|[local::at0047], 	-- No
-											-3|[local::at0048]  	-- Yes
+											-3|[local::at0048], 	-- Yes
+											0|[local::at0047]  	-- No
 										}
 									}
 									ELEMENT[at0049] occurrences matches {0..1} matches {	-- Other autoimmune disease(s)
@@ -382,6 +389,22 @@ ontology
 				>
 				["at0055"] = <
 					text = <"Total score">
+					description = <"*">
+				>
+				["at0056"] = <
+					text = <"Optional additional parameters">
+					description = <"If ANA, SMA, LKM-1 are negative">
+				>
+				["at0057"] = <
+					text = <"None of the above">
+					description = <"*">
+				>
+				["at0058"] = <
+					text = <"HLA-DR3 or HLA-DR4">
+					description = <"*">
+				>
+				["at0059"] = <
+					text = <"Seropositivity for other defined autoantibodies">
 					description = <"*">
 				>
 			>
