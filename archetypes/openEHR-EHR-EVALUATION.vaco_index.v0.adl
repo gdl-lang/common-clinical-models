@@ -1,0 +1,254 @@
+﻿archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.vaco_index.v0
+
+concept
+	[at0000]	-- (VACO) Index for COVID-19 mortality
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Imad Mohamed Boutebbane">
+		["email"] = <"i.med.boutebbane@gmail.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2020-12-10">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"Assessment of the (VACO) Index for COVID-19 Mortality. ">
+			use = <"To be used for assessment of the (VACO) Index for COVID-19 Mortality. 
+
+FORMULA:
+Coefficientsum = Agecoefficient + Sexcoeffient + CCI_Agecoefficient + MI_PVDcoefficient +Constantcoefficient
+
+ORcalc = exp(coefficientsum)
+
+Riskpred  = ORcalc / (1 + ORcalc)
+
+Where:
+
+VARIABLE   ->  COEFFICIENT
+---------------------------------
+Age: 20-49 -> -2.228678713
+
+        50-54 ->  0
+                     
+        55-59  ->  0.400599289
+  
+        60-64  ->  0.941322019 
+                  
+       65-69  ->  1.295007128 
+ 
+       70-74  ->  1.629533438  
+
+       75-79   -> 1.763345763 
+ 
+       80-89   ->  1.927443543 
+ 
+       ≥90   ->     2.018752269  
+-----------------------------------
+Sex: Female   ->  0 
+                    
+        Male      ->  0.322291449  
+-----------------------------------------
+History of MI:   No ->  0
+or PVD                     
+                      Yes -> 0.267265312  
+-----------------------------------------
+Constant       -4.216058062 
+
+-CCI AND AGE INTERACTION TERM 
+--------------------------------------------
+               CCI      |     COEFFICIENT    
+--------------------------------------------
+ Age<85   1-3             0.612122574
+    
+                4-5             0.825072847
+    
+                6-9             0.956099733
+    
+                ≥10            1.395164653
+--------------------------------------------    
+ Age≥85   Any CCI       1.529325519    
+--------------------------------------------
+
+-CHARLSON COMORBIDITY INDEX                                              
+-Addition of the selected points:                                                   
+
+VARIABLE                                                               POINTS   
+-----------------------------------------------------------------
+-History of Diabetes    None                                       0               
+                                                          
+                                 Diabetes                                 1               
+                                                          
+                                Diabetes, with complications      2               
+                               ( e.g., eyes, kidneys, 
+                                ketoacidosis)                      
+-----------------------------------------------------------------
+-Chronic pulmonary     No                              0
+disease (e.g .,                                                                                                
+COPD, emphysema)     Yes                             1                                                                                             
+-----------------------------------------------------------------                                                                                                                                                                                                
+-Renal disease (e.g.,   No                               0
+dialysis,                         
+glomerulonephritis,     Yes                              2
+nephritic syndrome)                                      
+-----------------------------------------------------------------                                                                                                                                        
+-Peripheral vascular    No                               0
+disease                                                                                       
+                                 Yes                              1                                                                                                                                       
+-----------------------------------------------------------------
+-Congestive heart       No                               0 
+failure                                 
+                                 Yes                              1                                                          
+-----------------------------------------------------------------                                                                            
+-Dementia                 No                               0               
+                                                          
+                                Yes                              1               
+-----------------------------------------------------------------
+-History of Cancer      None                                      0               
+                                                          
+                                Cancer (except skin cancer)      2               
+                                                          
+                                Cancer, metastatic (cancer       6               
+                                spreading  to another part                                           
+                                of the body)                                                 
+------------------------------------------------------------------
+-Cerebrovascular        No                               0 
+accident (i.e.                      
+        , stroke)             Yes                              1                                                                                                              
+------------------------------------------------------------------                                                          
+-History of liver       None                                        0  
+disease                                                                                       
+                             Liver disease, mild (e.g.,            1
+                             viral hepatitis B or C, 
+                             alcoholic hepatitis)                                                               
+                                                          
+                              Liver disease, moderate or        3
+                              severe (e.g., esophageal 
+                              varices, , fatty liver, 
+                             liver failure)                                                  
+-------------------------------------------------------------------
+-Myocardial infarction  No                               0                
+                                                          
+                                 Yes                              1                
+-------------------------------------------------------------------
+-Peptic ulcer disease   No                               0                
+                                                          
+                                 Yes                              1                
+-------------------------------------------------------------------
+-Paralysis of arm(s)    No                               0
+or leg(s)                               
+                                 Yes                              1     
+-------------------------------------------------------------------
+-AIDS                   No                               0               
+                                                          
+                           Yes                              6               
+-------------------------------------------------------------------
+-Rheumatologic disease  No                               0 
+(e.g., lupus, 
+rheumatoid arthritis)       Yes                              1                                                                                   
+-------------------------------------------------------------------                                                          
+                                                                 
+
+
+
+-INTERPRETATION:                                                         
+--------------------------------------------------------
+RISK             RISK CATEGORY                            
+--------------------------------------------------------
+0-8.7%           Lower risk (lower 50% of scores)         
+
+8.8-16.0%       Moderate risk (4th sextile of scores)   
+
+16.1-21.2%      High risk (5th sextile of scores)           
+
+>21.3%           Extreme risk (upper sextile of scores)
+--------------------------------------------------------- 
+                                                                                        ">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"King JT, Jr., Yoon JS, Rentsch CT, Tate JP, Park LS, Kidwai-Khan F, et al. (2020) Development and validation of a 30-day mortality index based on pre-existing medical administrative data from 13,323 COVID-19 patients: The Veterans Health Administration COVID-19 (VACO) Index. PLoS ONE 15(11): e0241825. https://doi.org/10.1371/journal.pone.0241825">
+		["MD5-CAM-1.0.1"] = <"30458E439670CB8160BB6FA5F6E0BC52">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- (VACO) Index for COVID-19 mortality
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- VACO_Assessement
+						value matches {
+							0|[local::at0003], 	-- Lower risk (lower 50% of scores)
+							1|[local::at0004], 	-- Moderate risk (4th sextile of scores)
+							2|[local::at0005], 	-- High risk (5th sextile of scores)
+							3|[local::at0006]  	-- Extreme risk (upper sextile of scores)
+						}
+					}
+					ELEMENT[at0007] occurrences matches {0..1} matches {	-- Age>20years
+						value matches {0|[local::at0008]}		-- Age too low; please change to proceed.
+					}
+					ELEMENT[at0009] occurrences matches {0..1} matches {	-- Note
+						value matches {0|[local::at0010]}		-- Note: Mortality estimates are based on testing patterns and treatment outcomes early in the pandemic. Changes in access to testing and in the management of COVID-19 may affect current mortality rates.
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"(VACO) Index for COVID-19 mortality">
+					description = <"Assessment of score generated in accordance with (VACO) Index for COVID-19 Mortality. ">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"VACO_Assessement">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Lower risk (lower 50% of scores)">
+					description = <"Risk: (0-8.7%)">
+				>
+				["at0004"] = <
+					text = <"Moderate risk (4th sextile of scores)">
+					description = <"Risk: (8.8-16.0%)">
+				>
+				["at0005"] = <
+					text = <"High risk (5th sextile of scores)">
+					description = <"Risk: (16.1-21.2%)">
+				>
+				["at0006"] = <
+					text = <"Extreme risk (upper sextile of scores)">
+					description = <"Risk: >21.3%">
+				>
+				["at0007"] = <
+					text = <"Age>20years">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Age too low; please change to proceed.">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Note">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Note: Mortality estimates are based on testing patterns and treatment outcomes early in the pandemic. Changes in access to testing and in the management of COVID-19 may affect current mortality rates.">
+					description = <"*">
+				>
+			>
+		>
+	>

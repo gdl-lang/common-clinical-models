@@ -1,0 +1,516 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.vaco_index.v0
+
+concept
+	[at0000]	-- Veterans Health Administration COVID-19 (VACO) Index for COVID-19 Mortality
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Imad Mohamed Boutebbane">
+		["email"] = <"i.med.boutebbane@gmail.com">
+		["organisation"] = <"Cambio Healthcare Systems">
+		["date"] = <"2020-12-10">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"The VACO Index estimates 30-day all cause mortality after COVID-19 infection, incorporating demographic data and pre-existing conditions.
+The VACO Index can be used to screen uninfected patients to identify those at a higher risk of dying should they develop COVID-19.
+While not specifically studied, infected individuals at higher risk of death have more severe disease that is more likely to require hospitalization and intubation.">
+			use = <"The VACO Index uses demographic and preexisting condition data available in electronic health record and billing data to predict 30-day mortality, and does not require current clinical data. This makes the Index very useful to target high-risk patients within a health system's population.
+The VACO Index has been validated in two internal cohorts and in one external cohort, a significant advantage over many other COVID-19 risk scores.">
+			keywords = <"Covid-19", "mortality", "Charlson Comorbidity Index", "hospitalization", "intubation", "health system">
+			misuse = <"">
+			copyright = <"Cambio Healthcare Systems">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"King JT, Jr., Yoon JS, Rentsch CT, Tate JP, Park LS, Kidwai-Khan F, et al. (2020) Development and validation of a 30-day mortality index based on pre-existing medical administrative data from 13,323 COVID-19 patients: The Veterans Health Administration COVID-19 (VACO) Index. PLoS ONE 15(11): e0241825. https://doi.org/10.1371/journal.pone.0241825">
+		["MD5-CAM-1.0.1"] = <"BB13E90D03F45C5EA97348AD55F7E861">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Veterans Health Administration COVID-19 (VACO) Index for COVID-19 Mortality
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {20..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {20..*} matches {	-- Age(years)
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|>=20|}
+											}
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Age_Coefficient
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Sex
+										value matches {
+											0|[local::at0061], 	-- Female
+											1|[local::at0062]  	-- Male
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Sex_Coefficient
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									CLUSTER[at0006] occurrences matches {0..1} matches {	-- Past Medical History for Charlson Comorbidity Index
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- History of Diabetes
+												value matches {
+													0|[local::at0027], 	-- None
+													1|[local::at0028], 	-- Diabetes without complications
+													2|[local::at0029]  	-- Diabetes, with complications (e.g., eyes, kidneys, ketoacidosis)
+												}
+											}
+											ELEMENT[at0010] occurrences matches {0..1} matches {	-- Chronic pulmonary disease (e.g., COPD, emphysema)
+												value matches {
+													0|[local::at0030], 	-- No
+													1|[local::at0031]  	-- Yes
+												}
+											}
+											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Renal disease (e.g., dialysis, glomerulonephritis, nephritic syndrome)
+												value matches {
+													0|[local::at0041], 	-- No
+													2|[local::at0042]  	-- Yes
+												}
+											}
+											ELEMENT[at0012] occurrences matches {0..1} matches {	-- Peripheral vascular disease
+												value matches {
+													0|[local::at0032], 	-- No
+													1|[local::at0033]  	-- Yes
+												}
+											}
+											ELEMENT[at0013] occurrences matches {0..1} matches {	-- Congestive heart failure
+												value matches {
+													0|[local::at0034], 	-- No
+													1|[local::at0035]  	-- Yes
+												}
+											}
+											ELEMENT[at0014] occurrences matches {0..1} matches {	-- Dementia (e.g., Alzheimer’s, vascular dementia, Lewy body dementia)
+												value matches {
+													0|[local::at0036], 	-- No
+													1|[local::at0037]  	-- Yes
+												}
+											}
+											ELEMENT[at0015] occurrences matches {0..1} matches {	-- History of Cancer
+												value matches {
+													0|[local::at0038], 	-- None
+													2|[local::at0039], 	-- Cancer (except skin cancer)
+													6|[local::at0040]  	-- Cancer, metastatic (cancer spreading to another part of the body)
+												}
+											}
+											ELEMENT[at0016] occurrences matches {0..1} matches {	-- Cerebrovascular accident (i.e., stroke)
+												value matches {
+													0|[local::at0043], 	-- No
+													1|[local::at0044]  	-- Yes
+												}
+											}
+											ELEMENT[at0017] occurrences matches {0..1} matches {	-- History of liver disease
+												value matches {
+													0|[local::at0045], 	-- None
+													1|[local::at0046], 	-- Liver disease, mild (e.g., viral hepatitis B or C, alcoholic hepatitis)
+													3|[local::at0047]  	-- Liver disease, moderate or severe (e.g., esophageal varices, fatty liver, liver failure)+
+												}
+											}
+											ELEMENT[at0018] occurrences matches {0..1} matches {	-- Myocardial infarction (heart attack)
+												value matches {
+													0|[local::at0048], 	-- No
+													1|[local::at0049]  	-- Yes
+												}
+											}
+											ELEMENT[at0019] occurrences matches {0..1} matches {	-- Peptic ulcer disease
+												value matches {
+													0|[local::at0050], 	-- No
+													1|[local::at0051]  	-- Yes
+												}
+											}
+											ELEMENT[at0020] occurrences matches {0..1} matches {	-- Paralysis of arm(s) or leg(s)
+												value matches {
+													0|[local::at0052], 	-- No
+													1|[local::at0053]  	-- Yes
+												}
+											}
+											ELEMENT[at0021] occurrences matches {0..1} matches {	--  AIDS (Not simply HIV diagnosis)
+												value matches {
+													0|[local::at0059], 	-- No
+													6|[local::at0060]  	-- Yes
+												}
+											}
+											ELEMENT[at0022] occurrences matches {0..1} matches {	-- Rheumatologic disease (e.g., lupus, rheumatoid arthritis)
+												value matches {
+													0|[local::at0057], 	-- No
+													1|[local::at0058]  	-- Yes
+												}
+											}
+											ELEMENT[at0023] occurrences matches {0..1} matches {	-- CCI_Total
+												value matches {
+													DV_COUNT matches {*}
+												}
+											}
+											ELEMENT[at0025] occurrences matches {0..1} matches {	-- MI_PVD_Coefficient
+												value matches {
+													C_DV_QUANTITY <
+														property = <[openehr::380]>
+														list = <
+															["1"] = <
+																units = <"1">
+															>
+														>
+													>
+												}
+											}
+											ELEMENT[at0024] occurrences matches {0..1} matches {	-- CCI_Age_Coefficient
+												value matches {
+													C_DV_QUANTITY <
+														property = <[openehr::380]>
+														list = <
+															["1"] = <
+																units = <"1">
+															>
+														>
+													>
+												}
+											}
+										}
+									}
+									ELEMENT[at0026] occurrences matches {0..1} matches {	-- Coefficient_sum
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0066] occurrences matches {0..1} matches {	-- exp(Coefficient_sum)
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0064] occurrences matches {0..1} matches {	-- OR_calc
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0065] occurrences matches {0..1} matches {	-- Risk_pred
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Veterans Health Administration COVID-19 (VACO) Index for COVID-19 Mortality">
+					description = <"The VACO Index Estimates risk of 30-day mortality after COVID-19 infection using pre-COVID health status.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Age(years)">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Sex">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Past Medical History for Charlson Comorbidity Index">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"History of Diabetes">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Age_Coefficient">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Sex_Coefficient">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Chronic pulmonary disease (e.g., COPD, emphysema)">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Renal disease (e.g., dialysis, glomerulonephritis, nephritic syndrome)">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Peripheral vascular disease">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Congestive heart failure">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Dementia (e.g., Alzheimer’s, vascular dementia, Lewy body dementia)">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"History of Cancer">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Cerebrovascular accident (i.e., stroke)">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"History of liver disease">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Myocardial infarction (heart attack)">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Peptic ulcer disease">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Paralysis of arm(s) or leg(s)">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <" AIDS (Not simply HIV diagnosis)">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Rheumatologic disease (e.g., lupus, rheumatoid arthritis)">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"CCI_Total">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"CCI_Age_Coefficient">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"MI_PVD_Coefficient">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Coefficient_sum">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"None">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Diabetes without complications">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Diabetes, with complications (e.g., eyes, kidneys, ketoacidosis)">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"None">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Cancer (except skin cancer)">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"Cancer, metastatic (cancer spreading to another part of the body)">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"None">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"Liver disease, mild (e.g., viral hepatitis B or C, alcoholic hepatitis)">
+					description = <"*">
+				>
+				["at0047"] = <
+					text = <"Liver disease, moderate or severe (e.g., esophageal varices, fatty liver, liver failure)+">
+					description = <"*">
+				>
+				["at0048"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0049"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0050"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0051"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0052"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0053"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0057"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0058"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0059"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0060"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0061"] = <
+					text = <"Female">
+					description = <"*">
+				>
+				["at0062"] = <
+					text = <"Male">
+					description = <"*">
+				>
+				["at0064"] = <
+					text = <"OR_calc">
+					description = <"*">
+				>
+				["at0065"] = <
+					text = <"Risk_pred">
+					description = <"*">
+				>
+				["at0066"] = <
+					text = <"exp(Coefficient_sum)">
+					description = <"*">
+				>
+			>
+		>
+	>
