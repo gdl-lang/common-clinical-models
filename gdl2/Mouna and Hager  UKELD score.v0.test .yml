@@ -1,0 +1,81 @@
+guidelines:
+  1: Group 2 UKELD score.v0
+test_cases:
+- id: case_1
+  input:
+    1:
+      gt0004|INR: 1,1
+      gt0005|Bilirubin: 1,umol/l
+      'gt0006|Sodium ': 135,mmol/l
+      gt0007|Serum Creatinine: 90,umol/l
+      'gt0011|End stage liver disease ': 1|local::at0004|present |
+  expected_output:
+    1:
+      gt0009|Eligibility: local::at0009|Not eligible|
+      gt0008|UKELD score: 42,1
+      'gt0035|Sodium ': 135,mmol/l
+      gt0036|Serum Creatinine: 90,umol/l
+      gt0034|Bilirubin: 1,umol/l
+- id: case_2
+  input:
+    1:
+      gt0004|INR: 5,1
+      gt0005|Bilirubin: 1,umol/l
+      'gt0006|Sodium ': 135,mmol/l
+      gt0007|Serum Creatinine: 200,umol/l
+      'gt0011|End stage liver disease ': 1|local::at0004|present |
+  expected_output:
+    1:
+      gt0009|Eligibility: local::at0008|Eligible|
+      gt0008|UKELD score: 51,1
+      'gt0035|Sodium ': 135,mmol/l
+      gt0036|Serum Creatinine: 200,umol/l
+      gt0034|Bilirubin: 1,umol/l
+- id: case_3
+  input:
+    1:
+      gt0004|INR: 5,1
+      gt0005|Bilirubin: 1,mg/dl
+      'gt0006|Sodium ': 135,mEq/l
+      gt0007|Serum Creatinine: 2,mg/dl
+      'gt0011|End stage liver disease ': 1|local::at0004|present |
+  expected_output:
+    1:
+      gt0009|Eligibility: local::at0008|Eligible|
+      gt0008|UKELD score: 60,1
+      'gt0035|Sodium ': 135,mmol/l
+      gt0036|Serum Creatinine: 176.80,umol/l
+      gt0034|Bilirubin: 17.10,umol/l
+
+- id: case_4
+  input:
+    1:
+      gt0004|INR: 1,1
+      gt0005|Bilirubin: 0.5,mg/dl
+      'gt0006|Sodium ': 135,mEq/l
+      gt0007|Serum Creatinine: 0.5,mg/dl
+      'gt0011|End stage liver disease ': 1|local::at0004|present |
+  expected_output:
+    1:
+      gt0009|Eligibility: local::at0009|Not eligible|
+      gt0008|UKELD score: 47,1
+      'gt0035|Sodium ': 135,mmol/l
+      gt0036|Serum Creatinine: 44.20,umol/l
+      gt0034|Bilirubin: 8.55,umol/l
+
+- id: case_5
+  input:
+    1:
+      gt0004|INR: 1,1
+      gt0005|Bilirubin: 0.5,mg/dl
+      'gt0006|Sodium ': 135,mmol/l
+      gt0007|Serum Creatinine: 80,umol/l
+      'gt0011|End stage liver disease ': 1|local::at0004|present |
+  expected_output:
+    1:
+      gt0009|Eligibility: local::at0009|Not eligible|
+      gt0008|UKELD score: 48,1
+      'gt0035|Sodium ': 135,mmol/l
+      gt0036|Serum Creatinine: 80,umol/l
+      gt0034|Bilirubin: 8.55,umol/l
+

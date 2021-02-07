@@ -1,0 +1,281 @@
+{
+  "id": "Group 2 UKELD score",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2020-03-13",
+      "name": "Group 2 ",
+      "organisation": "Karolinska Institutet"
+    },
+    "lifecycle_state": "Initial",
+    "details": {
+      "ar": {
+        "id": "ar",
+        "purpose": "To calculate UKELD score in patients with End-stage liver disease and find out if they are eligible for liver transplantation or no.",
+        "keywords": [
+          "UKELD",
+          "United kingdom",
+          "End Stage Liver Disease",
+          "Eligibility",
+          "Liver Transplantation"
+        ],
+        "use": "This Formula is used in the united kingdom for patient diagnosed with End-stage liver disease.",
+        "misuse": "it shall not be used to find out eligibility for liver transplantation for reasons other than chronic liver diseases.",
+        "copyright": "Group 2 "
+      },
+      "en": {
+        "id": "en",
+        "purpose": "To calculate the UKELD score for patients with End-stage liver disease to find out if they are eligible for liver transplantation or no.",
+        "keywords": [
+          "UKELD score",
+          "United Kingdom",
+          " End-Stage Liver Disease ",
+          "Eligibility",
+          "Liver Transplantation"
+        ],
+        "use": "The formula is used in the United Kingdom for patients diagnosed with End-stage liver disease.",
+        "misuse": "This formula shall not be used to determine if the patient may be eligible for transplantation for reasons other than chronic liver disease."
+      }
+    },
+    "other_details": {
+      "references": "[1] Barber KM, Pioli SE, Blackwell JE, Collett D, Neuberger JM, Gimson AE. Development of a UK Score for patients with end-stage liver disease. Hepatology. 2007;46:611A.\n[2] MDCalc. United Kingdom Model for End-Stage Liver Disease (UKELD) - MDCalc [Internet]. 2020 [cited 2020 Mar 15]. Available from: https://www.mdcalc.com/united-kingdom-model-end-stage-liver-disease-ukeld#next-steps\n"
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0002": {
+        "id": "gt0002",
+        "model_id": "openEHR-EHR-OBSERVATION.laboratory_test_result.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.laboratory_test_result.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0003": {
+            "id": "gt0003",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.inr.v0]/items[at0001]"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.bilirubin.v0]/items[at0001]"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.sodium.v0]/items[at0001]"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.serum_creatinine.v0]/items[at0001]"
+          }
+        }
+      },
+      "gt0007": {
+        "id": "gt0007",
+        "model_id": "openEHR-EHR-EVALUATION.interpretation_of_ukeld.v0",
+        "template_id": "openEHR-EHR-EVALUATION.interpretation_of_ukeld.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0008": {
+            "id": "gt0008",
+            "path": "/data[at0001]/items[at0007]"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "path": "/data[at0001]/items[at0010]"
+          }
+        }
+      },
+      "gt0016": {
+        "id": "gt0016",
+        "model_id": "openEHR-EHR-EVALUATION.diagnosis.v0",
+        "template_id": "openEHR-EHR-EVALUATION.diagnosis.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0018": {
+            "id": "gt0018",
+            "path": "/data[at0001]/items[at0002]"
+          }
+        }
+      }
+    },
+    "pre_conditions": [
+      "$gt0018|End stage liver disease |==1|local::at0004|present |"
+    ],
+    "rules": {
+      "gt0010": {
+        "id": "gt0010",
+        "priority": 3,
+        "when": [
+          "$gt0004|Bilirubin|.unit=='umol/l'",
+          "$gt0005|Sodium |.unit=='mmol/l'",
+          "$gt0006|Serum Creatinine|.unit=='umol/l'"
+        ],
+        "then": [
+          "$gt0009|UKELD score|.magnitude=(5.395*log($gt0003.magnitude))+(1.485*log($gt0006.magnitude))+(3.13*log($gt0004.magnitude))-(81.565*log($gt0005.magnitude))+435"
+        ]
+      },
+      "gt0011": {
+        "id": "gt0011",
+        "priority": 2,
+        "when": [
+          "$gt0009|UKELD score|>=49,1"
+        ],
+        "then": [
+          "$gt0008|Eligibility|=local::at0008|Eligible|"
+        ]
+      },
+      "gt0013": {
+        "id": "gt0013",
+        "priority": 1,
+        "when": [
+          "$gt0009|UKELD score|<49,1"
+        ],
+        "then": [
+          "$gt0008|Eligibility|=local::at0009|Not eligible|"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "United Kingdom Model for End-Stage Liver Disease (UKELD)",
+            "description": "United Kingdom Model for End-Stage Liver Disease (UKELD) score makes the use of different laboratory tests which are: INR, Bilirubin, Sodium, and serum creatinine in order to categorize End-stage liver disease patient into eligible or non-eligible for liver transplantation, this system is used in the united kingdom.\n"
+          },
+          "gt0003": {
+            "id": "gt0003",
+            "text": "INR",
+            "description": "*"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "Bilirubin",
+            "description": "*"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "Sodium ",
+            "description": "*"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Serum Creatinine",
+            "description": "*"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "Eligibility",
+            "description": "*"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "text": "UKELD score",
+            "description": "*"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "UKELD SCORE calculation"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "Eligibility"
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "text": "non"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "Non Eligibility"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "Problem/Diagnosis name",
+            "description": "Problem/Diagnosis name"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "End stage liver disease ",
+            "description": "End stage liver disease "
+          }
+        }
+      },
+      "ar": {
+        "id": "ar",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": " United Kingdom Model for End-Stage Liver Disease (UKELD)",
+            "description": "The United Kingdom Model for End-Stage Liver Disease (UKELD) make use of INR, Bilirubin, Serum Creatinine, and Sodium laboratory test results, to calculate a score that defines if the patient who is diagnosed with End-stage liver disease is eligible for liver transplantation or no. This scoring system is used for patients in the united kingdom."
+          },
+          "gt0003": {
+            "id": "gt0003",
+            "text": "*(en) INR",
+            "description": "*(en) *"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "*(en) Bilirubin",
+            "description": "*(en) *"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "*(en) Sodium ",
+            "description": "*(en) *"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "*(en) Serum Creatinine",
+            "description": "*(en) *"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "*(en) Eligibility",
+            "description": "*(en) *"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "text": "*(en) UKELD score",
+            "description": "*(en) *"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "*(en) UKELD SCORE calculation",
+            "description": ""
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "*(en) Eligibility",
+            "description": ""
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "text": "*(en) non",
+            "description": ""
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "*(en) Non Eligibility",
+            "description": ""
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "*(en) Problem/Diagnosis name",
+            "description": "*(en) Problem/Diagnosis name"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "*(en) End stage liver disease ",
+            "description": "*(en) End stage liver disease "
+          }
+        }
+      }
+    }
+  }
+}

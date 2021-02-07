@@ -1,0 +1,82 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-EVALUATION.diagnosis.v0
+
+concept
+	[at0000]	-- Diagnosis
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record information about the necessary diagnosis which will be a precondition for the calculation of the UKELD score.">
+			use = <"The UKELD score is used to define the eligibility for liver transplantion for patients with End-stage Liver disease, in patients who needs liver transplantion for other reasons this score won't be used">
+			keywords = <"End-stage liver disease", ...>
+			misuse = <"">
+			copyright = <"Mouna Ghannam and Hager Saleh">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"1/Barber KM, Pioli SE, Blackwell JE, Collett D, Neuberger JM, Gimson AE. Development of a UK
+Score for patients with end-stage liver disease. Hepatology. 2007;46:611A.
+2/https://browser.ihtsdotools.org/?perspective=full&conceptId1=708248004&edition=MAIN/2020-03-09&release=&languages=en
+3/https://www.mdcalc.com/united-kingdom-model-end-stage-liver-disease-ukeld#evidence">
+		["MD5-CAM-1.0.1"] = <"053D5D4188FB14FC2AC860A181AE239A">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- Diagnosis
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- End stage liver disease 
+						value matches {
+							0|[local::at0003], 	-- not present 
+							1|[local::at0004]  	-- present 
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	terminologies_available = <"SNMI98", ...>
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Diagnosis">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"End stage liver disease ">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"not present ">
+					description = <"*">
+				>
+				["at0004"] = <
+					text = <"present ">
+					description = <"*">
+				>
+			>
+		>
+	>
+	term_bindings = <
+		["SNMI98"] = <
+			items = <
+				["at0002"] = <[SNMI98(2020-03-09)::708248004]>
+			>
+		>
+	>
