@@ -12,11 +12,11 @@
       "organisation": "CambioCDS",
       "email": "maryam.razavi@cambio.se"
     },
-    "lifecycle_state": "Not set",
+    "lifecycle_state": "Author draft",
     "details": {
       "en": {
         "id": "en",
-        "purpose": "To predict need for head CT after pediatric blunt head injury.",
+        "purpose": "To assist clinicians to predict need for head CT after pediatric blunt head injury.",
         "keywords": [
           "CT",
           "Blunt Trauma",
@@ -29,7 +29,7 @@
       }
     },
     "other_details": {
-      "references": "1. Mower WR, Hoffman JR, Herbert M, et al. Developing a decision instrument to guide computed tomographic imaging of blunt head injury patients. J Trauma. 2005;59(4):954-9.\n2. Oman JA, Cooper RJ, Holmes JF, et al. Performance of a decision rule to predict need for computed tomography among children with blunt head trauma. Pediatrics. 2006;117(2):e238-46.\n"
+      "references": "1. Mower WR, Hoffman JR, Herbert M, Wolfson AB, Pollack CV Jr, Zucker MI; NEXUS II Investigators. Developing a decision instrument to guide computed tomographic imaging of blunt head injury patients. J Trauma. 2005 Oct;59(4):954-9. doi: 10.1097/01.ta.0000187813.79047.42. PMID: 16374287.\n2. Oman JA, Cooper RJ, Holmes JF, Viccellio P, Nyce A, Ross SE, Hoffman JR, Mower WR; NEXUS II Investigators. Performance of a decision rule to predict need for computed tomography among children with blunt head trauma. Pediatrics. 2006 Feb;117(2):e238-46. doi: 10.1542/peds.2005-1063. Epub 2006 Jan 17. PMID: 16418311.\n3. Gupta M, Mower WR, Rodriguez RM, Hendey GW. Validation of the Pediatric NEXUS II Head Computed Tomography Decision Instrument for Selective Imaging of Pediatric Patients with Blunt Head Trauma. Acad Emerg Med. 2018 Jul;25(7):729-737. doi: 10.1111/acem.13431. Epub 2018 Jun 8. PMID: 29665151.\n"
     }
   },
   "definition": {
@@ -79,14 +79,6 @@
           "gt0011": {
             "id": "gt0011",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0025]"
-          },
-          "gt0012": {
-            "id": "gt0012",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0026]"
-          },
-          "gt0013": {
-            "id": "gt0013",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0029]"
           }
         }
       },
@@ -101,14 +93,30 @@
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
           }
         }
+      },
+      "gt0018": {
+        "id": "gt0018",
+        "model_id": "openEHR-EHR-EVALUATION.pediatric_nexus_ii_head_ct_decision.v0",
+        "template_id": "openEHR-EHR-EVALUATION.pediatric_nexus_ii_head_ct_decision.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0019": {
+            "id": "gt0019",
+            "path": "/data[at0001]/items[at0002]"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "path": "/data[at0001]/items[at0005]"
+          }
+        }
       }
     },
     "pre_conditions": [
       "$gt0016|Age|<18,a"
     ],
     "default_actions": [
-      "$gt0012|Risk of significant intracranial injuries|=local::at0028|High|",
-      "$gt0013|Recommendation|=local::at0031|Consider CT|"
+      "$gt0019|Risk of significant intracranial injuries|=local::at0004|High|",
+      "$gt0020|Recommendation|=local::at0007|Consider CT|"
     ],
     "rules": {
       "gt0014": {
@@ -134,8 +142,8 @@
           "$gt0011|NEXUS II score|==0"
         ],
         "then": [
-          "$gt0012|Risk of significant intracranial injuries|=local::at0027|Low|",
-          "$gt0013|Recommendation|=local::at0030|CT not necessary (100% sensitive for findings requiring neurosurgical intervention)|"
+          "$gt0019|Risk of significant intracranial injuries|=local::at0003|Low|",
+          "$gt0020|Recommendation|=local::at0006|CT not necessary (100% sensitive for findings requiring neurosurgical intervention)|"
         ]
       }
     }
@@ -148,7 +156,7 @@
           "gt0001": {
             "id": "gt0001",
             "text": "Pediatric NEXUS II Head CT Decision",
-            "description": "Pediatric NEXUS II Head CT Decision Instrument for Blunt Trauma"
+            "description": "Pediatric NEXUS II Head CT Decision Instrument for Blunt Trauma predicts need for head CT after pediatric blunt head injury."
           },
           "gt0003": {
             "id": "gt0003",
@@ -190,16 +198,6 @@
             "text": "NEXUS II score",
             "description": "*"
           },
-          "gt0012": {
-            "id": "gt0012",
-            "text": "Risk of significant intracranial injuries",
-            "description": "*"
-          },
-          "gt0013": {
-            "id": "gt0013",
-            "text": "Recommendation",
-            "description": "*"
-          },
           "gt0014": {
             "id": "gt0014",
             "text": "NEXUS II score"
@@ -212,6 +210,16 @@
           "gt0017": {
             "id": "gt0017",
             "text": "interpretation for score 0"
+          },
+          "gt0019": {
+            "id": "gt0019",
+            "text": "Risk of significant intracranial injuries",
+            "description": "Risk of significant intracranial injuries"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Recommendation",
+            "description": "Recommendation"
           }
         }
       }
