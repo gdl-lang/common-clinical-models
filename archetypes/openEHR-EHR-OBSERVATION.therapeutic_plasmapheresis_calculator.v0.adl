@@ -1,0 +1,105 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.therapeutic_plasmapheresis_calculator.v0
+
+concept
+	[at0000]	-- Therapeutic plasmapheresis calculator
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Therese Lindberg">
+		["email"] = <"therese.lindberg@cambio.se">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2021-02-08">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record residual relative concentration.">
+			use = <"Use to record residual relative concentration.">
+			keywords = <"blood volume", "residual relative concentration", "therapeutic plasmapheresis">
+			misuse = <"">
+			copyright = <"@CambioCDS">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"1. Reverberi R, Reverberi L. Removal kinetics of therapeutic apheresis. Blood Transfus. 2007;5(3):164-74.">
+		["current_contact"] = <"Therese Lindberg, Cambio CDS<therese.lindberg@cambio.se>">
+		["MD5-CAM-1.0.1"] = <"BDEB171C2C2BABCC5AC5DA39103B1B6F">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Therapeutic plasmapheresis calculator
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Number of plasma volumes to be exchanged
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Residual relative concentration
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::507]>
+												list = <
+													["1"] = <
+														units = <"%">
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Therapeutic plasmapheresis calculator">
+					description = <"Therapeutic Plasmapheresis Calculator estimates amount of a substance (e.g. antibody) remaining in the intravascular space after a given number of plasma volume exchanges.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0005"] = <
+					text = <"Number of plasma volumes to be exchanged">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Residual relative concentration">
+					description = <"*">
+				>
+			>
+		>
+	>
