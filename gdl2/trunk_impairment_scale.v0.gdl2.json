@@ -126,20 +126,50 @@
       "$gt0023|Coordination Score|=0"
     ],
     "rules": {
+      "gt0044": {
+        "id": "gt0044",
+        "priority": 13,
+        "when": [
+          "$gt0004|Maintains starting position|==0|local::at0008|No|"
+        ],
+        "then": [
+          "$gt0021|Static Balance Score|.count=0",
+          "$gt0022|Dynamic Balance Score|.magnitude=0",
+          "$gt0023|Coordination Score|.magnitude=0",
+          "$gt0024|Total Score|.magnitude=0"
+        ]
+      },
+      "gt0039": {
+        "id": "gt0039",
+        "priority": 12,
+        "when": [
+          "$gt0004|Maintains starting position|==2|local::at0009|Yes|",
+          "$gt0005|Therapist Crosses unaffected leg|!=null",
+          "$gt0006|Patient Crosses unaffected leg|!=null"
+        ],
+        "then": [
+          "$gt0021|Static Balance Score|.magnitude=$gt0004.value+$gt0005.value+$gt0006.value"
+        ]
+      },
+      "gt0035": {
+        "id": "gt0035",
+        "priority": 11,
+        "when": [
+          "$gt0004|Maintains starting position|==2|local::at0009|Yes|",
+          "$gt0007|Shortens hemiplegic side|!=null",
+          "$gt0010|Shortens unaffected side|!=null",
+          "$gt0013|Lifts pelvis hemiplegic side|!=null",
+          "$gt0015|Lifts pelvis unaffected side|!=null"
+        ],
+        "then": [
+          "$gt0022|Dynamic Balance Score|.magnitude=$gt0007.value+$gt0013.value+$gt0010.value+$gt0015.value"
+        ]
+      },
       "gt0025": {
         "id": "gt0025",
         "priority": 10,
         "when": [
-          "$gt0007|Shortens hemiplegic side|!=null"
-        ],
-        "then": [
-          "$gt0022|Dynamic Balance Score|.magnitude=$gt0022+$gt0007.value"
-        ]
-      },
-      "gt0026": {
-        "id": "gt0026",
-        "priority": 9,
-        "when": [
+          "$gt0004|Maintains starting position|==2|local::at0009|Yes|",
           "$gt0007|Shortens hemiplegic side|==1|local::at0020|Succeeds without help|",
           "$gt0008|Shortens hemiplegic side repitition 1|!=null"
         ],
@@ -147,10 +177,11 @@
           "$gt0022|Dynamic Balance Score|.magnitude=$gt0022+$gt0008.value"
         ]
       },
-      "gt0027": {
-        "id": "gt0027",
-        "priority": 8,
+      "gt0036": {
+        "id": "gt0036",
+        "priority": 9,
         "when": [
+          "$gt0004|Maintains starting position|==2|local::at0009|Yes|",
           "$gt0007|Shortens hemiplegic side|==1|local::at0020|Succeeds without help|",
           "$gt0008|Shortens hemiplegic side repitition 1|==1|local::at0023|Appropriate shortening/lengthening|",
           "$gt0009|Shortens hemiplegic side repitition 2|!=null"
@@ -159,20 +190,11 @@
           "$gt0022|Dynamic Balance Score|.magnitude=$gt0022+$gt0009.value"
         ]
       },
-      "gt0028": {
-        "id": "gt0028",
-        "priority": 7,
+      "gt0037": {
+        "id": "gt0037",
+        "priority": 8,
         "when": [
-          "$gt0010|Shortens unaffected side|!=null"
-        ],
-        "then": [
-          "$gt0022|Dynamic Balance Score|.magnitude=$gt0022+$gt0010.value"
-        ]
-      },
-      "gt0029": {
-        "id": "gt0029",
-        "priority": 6,
-        "when": [
+          "$gt0004|Maintains starting position|==2|local::at0009|Yes|",
           "$gt0010|Shortens unaffected side|==1|local::at0020|Succeeds without help|",
           "$gt0011|Shortens unaffected side repitition 1|!=null"
         ],
@@ -180,10 +202,11 @@
           "$gt0022|Dynamic Balance Score|.magnitude=$gt0022+$gt0011.value"
         ]
       },
-      "gt0030": {
-        "id": "gt0030",
-        "priority": 5,
+      "gt0038": {
+        "id": "gt0038",
+        "priority": 7,
         "when": [
+          "$gt0004|Maintains starting position|==2|local::at0009|Yes|",
           "$gt0010|Shortens unaffected side|==1|local::at0020|Succeeds without help|",
           "$gt0011|Shortens unaffected side repitition 1|==1|local::at0023|Appropriate shortening/lengthening|",
           "$gt0012|Shorten unaffected side repitition 2|!=null"
@@ -192,20 +215,23 @@
           "$gt0022|Dynamic Balance Score|.magnitude=$gt0022+$gt0012.value"
         ]
       },
-      "gt0031": {
-        "id": "gt0031",
-        "priority": 4,
+      "gt0034": {
+        "id": "gt0034",
+        "priority": 6,
         "when": [
-          "$gt0013|Lifts pelvis hemiplegic side|!=null"
+          "$gt0004|Maintains starting position|==2|local::at0009|Yes|",
+          "$gt0015|Lifts pelvis unaffected side|==1|local::at0023|Appropriate shortening/lengthening|",
+          "$gt0016|Lifts pelvis unaffected side repitition 1|!=null"
         ],
         "then": [
-          "$gt0022|Dynamic Balance Score|.magnitude=$gt0022+$gt0013.value"
+          "$gt0022|Dynamic Balance Score|.magnitude=$gt0022+$gt0016.value"
         ]
       },
       "gt0032": {
         "id": "gt0032",
-        "priority": 3,
+        "priority": 5,
         "when": [
+          "$gt0004|Maintains starting position|==2|local::at0009|Yes|",
           "$gt0013|Lifts pelvis hemiplegic side|==1|local::at0023|Appropriate shortening/lengthening|",
           "$gt0014|Lifts pelvis hemiplegic side repitition 1|!=null"
         ],
@@ -213,25 +239,53 @@
           "$gt0022|Dynamic Balance Score|.magnitude=$gt0022+$gt0014.value"
         ]
       },
-      "gt0033": {
-        "id": "gt0033",
-        "priority": 2,
+      "gt0040": {
+        "id": "gt0040",
+        "priority": 4,
         "when": [
-          "$gt0015|Lifts pelvis unaffected side|!=null"
+          "$gt0004|Maintains starting position|==2|local::at0009|Yes|",
+          "$gt0017|Rotates upper trunk|!=null",
+          "$gt0019|Rotates lower trunk|!=null"
         ],
         "then": [
-          "$gt0022|Dynamic Balance Score|.magnitude=$gt0022+$gt0015.value"
+          "$gt0023|Coordination Score|.magnitude=$gt0017.value+$gt0019.value"
         ]
       },
-      "gt0034": {
-        "id": "gt0034",
-        "priority": 1,
+      "gt0041": {
+        "id": "gt0041",
+        "priority": 3,
         "when": [
-          "$gt0015|Lifts pelvis unaffected side|==1|local::at0023|Appropriate shortening/lengthening|",
-          "$gt0016|Lifts pelvis unaffected side repitition 1|!=null"
+          "$gt0004|Maintains starting position|==2|local::at0009|Yes|",
+          "$gt0018|Rotates upper trunk repitition 1|!=null",
+          "($gt0017|Rotates upper trunk|==1|local::at0045|Assymetrical rotation|)||($gt0017|Rotates upper trunk|==2|local::at0046|Symmetrical rotation|)"
         ],
         "then": [
-          "$gt0022|Dynamic Balance Score|.magnitude=$gt0022+$gt0016.value"
+          "$gt0023|Coordination Score|.magnitude=$gt0023+$gt0018.value"
+        ]
+      },
+      "gt0042": {
+        "id": "gt0042",
+        "priority": 2,
+        "when": [
+          "$gt0004|Maintains starting position|==2|local::at0009|Yes|",
+          "$gt0020|Rotates lower trunk repitition 1|!=null",
+          "($gt0019|Rotates lower trunk|==1|local::at0045|Assymetrical rotation|)||($gt0019|Rotates lower trunk|==2|local::at0046|Symmetrical rotation|)"
+        ],
+        "then": [
+          "$gt0023|Coordination Score|.magnitude=$gt0023+$gt0020.value"
+        ]
+      },
+      "gt0043": {
+        "id": "gt0043",
+        "priority": 1,
+        "when": [
+          "$gt0004|Maintains starting position|==2|local::at0009|Yes|",
+          "$gt0021|Static Balance Score|!=null",
+          "$gt0022|Dynamic Balance Score|!=null",
+          "$gt0023|Coordination Score|!=null"
+        ],
+        "then": [
+          "$gt0024|Total Score|.magnitude=$gt0021+$gt0022+$gt0023"
         ]
       }
     }
@@ -351,43 +405,55 @@
           },
           "gt0025": {
             "id": "gt0025",
-            "text": "Dynamic shorten hemiplegic"
-          },
-          "gt0026": {
-            "id": "gt0026",
-            "text": "Dynamic shorten hemiplegic 1"
-          },
-          "gt0027": {
-            "id": "gt0027",
-            "text": "Dynamic shorten hemiplegic 2"
-          },
-          "gt0028": {
-            "id": "gt0028",
-            "text": "Dynamic shorten unaffected"
-          },
-          "gt0029": {
-            "id": "gt0029",
-            "text": "Dynamic shorten unaffected 1"
-          },
-          "gt0030": {
-            "id": "gt0030",
-            "text": "Dynamic shorten unaffected 2"
-          },
-          "gt0031": {
-            "id": "gt0031",
-            "text": "Dynamic pelvis hemiplegic"
+            "text": "Add Shorten Hemiplegic Repitition 1"
           },
           "gt0032": {
             "id": "gt0032",
-            "text": "Dynamic pelvis hemiplegic 1"
-          },
-          "gt0033": {
-            "id": "gt0033",
-            "text": "Dynamic pelvis unaffected"
+            "text": "Add Pelvis Hemiplegic Repitition 1"
           },
           "gt0034": {
             "id": "gt0034",
-            "text": "Dynamic pelvis unaffected 1"
+            "text": "Add Pelvis Unaffected Repitition 1"
+          },
+          "gt0035": {
+            "id": "gt0035",
+            "text": "Calculate Dynamic Base Excercises"
+          },
+          "gt0036": {
+            "id": "gt0036",
+            "text": "Add Shorten Hemiplegic Repitition 2"
+          },
+          "gt0037": {
+            "id": "gt0037",
+            "text": "Add Shorten Unaffected Repitition 1"
+          },
+          "gt0038": {
+            "id": "gt0038",
+            "text": "Add Shorten Unaffected Repitition 2"
+          },
+          "gt0039": {
+            "id": "gt0039",
+            "text": "Calculate Static Balance"
+          },
+          "gt0040": {
+            "id": "gt0040",
+            "text": "Calculate Coordination Base Excercises"
+          },
+          "gt0041": {
+            "id": "gt0041",
+            "text": "Add Upper Trunk Rotation Repitition 1"
+          },
+          "gt0042": {
+            "id": "gt0042",
+            "text": "Add Lower Trunk Rotation Repitition 1"
+          },
+          "gt0043": {
+            "id": "gt0043",
+            "text": "Calculate Total Score"
+          },
+          "gt0044": {
+            "id": "gt0044",
+            "text": "Fails Starting Position"
           }
         }
       }
