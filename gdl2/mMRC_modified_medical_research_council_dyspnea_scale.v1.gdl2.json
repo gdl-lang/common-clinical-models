@@ -1,0 +1,173 @@
+{
+  "id": "mMRC_modified_medical_research_council_dyspnea_scale.v1",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2021-02-10",
+      "name": "Therese Lindberg",
+      "organisation": "Cambio CDS",
+      "email": "therese.lindberg@cambio.se"
+    },
+    "lifecycle_state": "Initial",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "Stratify severity of dyspnea in respiratory diseases, particularly COPD.",
+        "keywords": [
+          "dyspnea",
+          "grade",
+          "symptom",
+          "severity",
+          "mMRC"
+        ],
+        "use": "Use to stratify severity of dyspnea in respiratory diseases, particularly COPD.\n\nSelection of the appropriate grade:\nGrade          Symptom severity\n0                  Dyspnea only with strenuous exercise\n1                  Dyspnea when hurrying on level ground or walking up a slight hill\n2                  Walks slower than people of the same age because of dyspnea, or has to stop for breath when walking at own pace on level ground\n3                  Stops for breath after walking 100 yards (91 m) or after a few minutes on level ground\n4                  Too dyspneic to leave house or breathless when dressing\n\nInterpretation:\nHigher grade indicates higher severity.",
+        "copyright": "@CambioCDS"
+      }
+    },
+    "other_details": {
+      "references": "1. Mahler DA, Wells CK. Evaluation of clinical methods for rating dyspnea. Chest. 1988;93(3):580-6."
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0002": {
+        "id": "gt0002",
+        "model_id": "openEHR-EHR-EVALUATION.mmrc_modified_medical_research_council_dyspnea_scale.v0",
+        "template_id": "openEHR-EHR-EVALUATION.mmrc_modified_medical_research_council_dyspnea_scale.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0003": {
+            "id": "gt0003",
+            "path": "/data[at0001]/items[at0002]"
+          }
+        }
+      },
+      "gt0004": {
+        "id": "gt0004",
+        "model_id": "openEHR-EHR-EVALUATION.mmrc_modified_medical_research_council_dyspnea_scale.v0",
+        "template_id": "openEHR-EHR-EVALUATION.mmrc_modified_medical_research_council_dyspnea_scale.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0005": {
+            "id": "gt0005",
+            "path": "/data[at0001]/items[at0008]"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/items[at0014]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0007": {
+        "id": "gt0007",
+        "priority": 5,
+        "when": [
+          "$gt0003|Symptom severity. Walking should be assessed on level ground.|==0|local::at0003|Dyspnea only with strenuous exercise|"
+        ],
+        "then": [
+          "$gt0005|Grade|=local::at0009|0|",
+          "$gt0006|Comment|=local::at0015|Higher grade indicates higher severity.|"
+        ]
+      },
+      "gt0008": {
+        "id": "gt0008",
+        "priority": 4,
+        "when": [
+          "$gt0003|Symptom severity. Walking should be assessed on level ground.|==1|local::at0004|Dyspnea when hurrying or walking up a slight hill|"
+        ],
+        "then": [
+          "$gt0005|Grade|=local::at0010|1|",
+          "$gt0006|Comment|=local::at0015|Higher grade indicates higher severity.|"
+        ]
+      },
+      "gt0009": {
+        "id": "gt0009",
+        "priority": 3,
+        "when": [
+          "$gt0003|Symptom severity. Walking should be assessed on level ground.|==2|local::at0005|Walks slower than people of the same age because of dyspnea or has to stop for breath when walking at own pace|"
+        ],
+        "then": [
+          "$gt0005|Grade|=local::at0011|2|",
+          "$gt0006|Comment|=local::at0015|Higher grade indicates higher severity.|"
+        ]
+      },
+      "gt0010": {
+        "id": "gt0010",
+        "priority": 2,
+        "when": [
+          "$gt0003|Symptom severity. Walking should be assessed on level ground.|==3|local::at0006|Stops for breath after walking 100 yards (91 m) or after a few minutes|"
+        ],
+        "then": [
+          "$gt0005|Grade|=local::at0012|3|",
+          "$gt0006|Comment|=local::at0015|Higher grade indicates higher severity.|"
+        ]
+      },
+      "gt0011": {
+        "id": "gt0011",
+        "priority": 1,
+        "when": [
+          "$gt0003|Symptom severity. Walking should be assessed on level ground.|==4|local::at0007|Too dyspneic to leave house or breathless when dressing|"
+        ],
+        "then": [
+          "$gt0005|Grade|=local::at0013|4|",
+          "$gt0006|Comment|=local::at0015|Higher grade indicates higher severity.|"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "mMRC (Modified Medical Research Council) Dyspnea Scale",
+            "description": "mMRC (Modified Medical Research Council) Dyspnea Scale stratifies severity of dyspnea in respiratory diseases, particularly COPD."
+          },
+          "gt0003": {
+            "id": "gt0003",
+            "text": "Symptom severity. Walking should be assessed on level ground.",
+            "description": "*"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "Grade",
+            "description": "*"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Comment",
+            "description": "*"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "text": "Grade 0"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "Grade 1"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "text": "Grade 2"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "Grade 3"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "Grade 4"
+          }
+        }
+      }
+    }
+  }
+}
