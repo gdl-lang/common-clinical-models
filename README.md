@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 518*
+### *Published Apps: 521*
 
 ----------
 
 ### Latest added
 
-1. RIPASA Score for Acute Appendicitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIPASA_score_guideline/1?language=en))
-2. Michigan Risk Score for PICC-Related Thrombosis -  ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Michigan_Risk_Score_guideline/1?language=en))
-3. Recurrent Instability of the Patella (RIP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Recurrent_Instability_of_the_patella_RIP_score/1?language=en))
-4. Milan Criteria for Liver Transplantation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Milan_Criteria_for_Liver_Transplantation/1?language=en))
-5. Sepsis-Induced Coagulopathy (SIC) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sepsis_Induced_Coagulopathy_SIC_Score/1?language=en))
-6. Static Lung Compliance (Cstat) Calculation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cstat_Calculation_guideline/1?language=en))
-7. Prognostic Index for Cancer Outcomes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prognostic_Index_for_Cancer_Outcomes51?language=en))
-8. Rochester Criteria for Febrile Infants - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rochester_Criteria_guideline/1?language=en))
-9. Rockall Score for Upper GI Bleeding (Pre-Endoscopy) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rockall_Score_preEndoscopy_guideline/1?language=en))
-10. RADS (Radiologist’s Score) for Smoke Inhalation Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RADS_guideline/1?language=en))
+1. tPA (Tissue Plasminogen Activator) Dosing for Stroke Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/tPA_dosing_for_stroke_calculator/1?language=en))
+2. UCLA Integrated Staging System (UISS) for Renal Cell Carcinoma (RCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UCLA_Integrated_Staging_System_UISS_for_Renal_Cell_Carcinoma_RCC_guideline/1?language=en))
+3. Clinical Fraility Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_frailty_scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_frailty_scale/1?language=sv))
+4. RIPASA Score for Acute Appendicitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIPASA_score_guideline/1?language=en))
+5. Michigan Risk Score for PICC-Related Thrombosis -  ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Michigan_Risk_Score_guideline/1?language=en))
+6. Recurrent Instability of the Patella (RIP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Recurrent_Instability_of_the_patella_RIP_score/1?language=en))
+7. Milan Criteria for Liver Transplantation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Milan_Criteria_for_Liver_Transplantation/1?language=en))
+8. Sepsis-Induced Coagulopathy (SIC) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sepsis_Induced_Coagulopathy_SIC_Score/1?language=en))
+7. Static Lung Compliance (Cstat) Calculation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cstat_Calculation_guideline/1?language=en))
+10. Prognostic Index for Cancer Outcomes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prognostic_Index_for_Cancer_Outcomes51?language=en))
 
 ----------
 
@@ -462,6 +462,8 @@ _Select a medical specialty below to view the available apps._
 
 * Clinical Dementia Rating (CDR) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_Dementia_Rating/1?language=en))
 
+* Clinical Fraility Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_frailty_scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_frailty_scale/1?language=sv))
+
 * Cumulative Illness Rating Scale-Geriatric (CIRS-G) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cumulative_Illness_Rating_Scale_Geriatric_CIRS_G/1?language=en))
 
 * Downton Fall Risk Index (DFRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DFRI/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DFRI/1?language=sv))
@@ -795,6 +797,8 @@ _Select a medical specialty below to view the available apps._
 
 * TNM for Renal Cell Carcinoma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_RCC/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_RCC/1?language=sv))
 
+* UCLA Integrated Staging System (UISS) for Renal Cell Carcinoma (RCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UCLA_Integrated_Staging_System_UISS_for_Renal_Cell_Carcinoma_RCC_guideline/1?language=en))
+
 * UCSF-CAPRA Score for Prostate Cancer Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UCSF_CAPRA_prostate_cancer_risk/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UCSF_CAPRA_prostate_cancer_risk/1?language=sv))
 
 ----------
@@ -919,6 +923,8 @@ _Select a medical specialty below to view the available apps._
 * Naloxone Drip Dosing - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Naloxone_Drip_Dosing_guideline/1?language=en))
 
 * Phenytoin (Dilantin) Correction for Albumin / Renal Failure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Phenytoin_correction_for_albumin_renal_failure/1?language=en))
+
+* tPA (Tissue Plasminogen Activator) Dosing for Stroke Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/tPA_dosing_for_stroke_calculator/1?language=en))
 
 * Vitamin-D Doses Range Recommendation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Vitamin_D_Doses_Range_Recommendation/0?language=en))
 ----------
