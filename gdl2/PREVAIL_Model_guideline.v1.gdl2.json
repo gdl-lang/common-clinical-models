@@ -121,6 +121,55 @@
           }
         }
       }
+    },
+    "default_actions": [
+      "$gt0041|Albumin conversion factor|=1",
+      "$gt0042|Hemoglobin conversion factor |=1"
+    ],
+    "rules": {
+      "gt0043": {
+        "id": "gt0043",
+        "priority": 3,
+        "when": [
+          "$gt0009|Serum Albumin|.unit=='gm/l'"
+        ],
+        "then": [
+          "$gt0043|Albumin conversion factor|=0.1"
+        ]
+      },
+      "gt0045": {
+        "id": "gt0045",
+        "priority": 2,
+        "when": [
+          "$gt0011|Hemoglobin|.unit=='gm/l'"
+        ],
+        "then": [
+          "$gt0042|Hemoglobin conversion factor |=0.1"
+        ]
+      },
+      "gt0046": {
+        "id": "gt0046",
+        "priority": 1,
+        "when": [
+          "$gt0005|PSA value|!=null",
+          "$gt0009|Serum Albumin|!=null",
+          "$gt0011|Hemoglobin|!=null",
+          "$gt0033|Treatment with enzalutamide planned|!=null",
+          "$gt0034|Time since diagnosis|!=null",
+          "$gt0034|Time since diagnosis|.unit=='mo'",
+          "$gt0035|Neutrophil to lymphocyte ratio <2.5|!=null",
+          "$gt0036|LDH below upper limit of normal|!=null",
+          "$gt0037|Pain 0-1|!=null",
+          "$gt0038|<10 bone metastases on bone scan|!=null",
+          "$gt0039|Alkaline phosphatase less than upper limit of normal|!=null",
+          "$gt0040|Pattern of spread|!=null"
+        ],
+        "then": [
+          "$gt0020|Total score|.magnitude=log($gt0009.magnitude)",
+          "$gt0020|Total score|.unit='1'",
+          "$gt0020|Total score|.precision=2"
+        ]
+      }
     }
   },
   "ontology": {
@@ -192,6 +241,28 @@
             "id": "gt0040",
             "text": "Pattern of spread",
             "description": "Pattern of spread"
+          },
+          "gt0041": {
+            "id": "gt0041",
+            "text": "Albumin conversion factor",
+            "description": ""
+          },
+          "gt0042": {
+            "id": "gt0042",
+            "text": "Hemoglobin conversion factor ",
+            "description": ""
+          },
+          "gt0043": {
+            "id": "gt0043",
+            "text": "Albumin conversion factor"
+          },
+          "gt0045": {
+            "id": "gt0045",
+            "text": "Hemoglobin conversion factor"
+          },
+          "gt0046": {
+            "id": "gt0046",
+            "text": "Total score"
           }
         }
       }
