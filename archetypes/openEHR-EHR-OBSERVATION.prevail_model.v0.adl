@@ -2,14 +2,14 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.prevail_model.v0
 
 concept
-	[at0000]	-- Prevail model
+	[at0000]	-- PREVAIL Model for Prostate Cancer Survival
 language
 	original_language = <[ISO_639-1::en]>
 description
 	original_author = <
 		["name"] = <"Maryam Razavi">
 		["email"] = <"maryam.razavi@cambio.se">
-		["organisation"] = <"CambioCDS">
+		["organisation"] = <"Cambio CDS">
 		["date"] = <"2020-11-24">
 	>
 	details = <
@@ -18,39 +18,23 @@ description
 			purpose = <"To record information relevant to the PREVAIL Model for Prostate Cancer Survival assessment. ">
 			use = <"Use to record the value for each component for the PREVAIL Model for Prostate Cancer, and their total sum.
 
-Variables and points are as follows: 
-- Treatment with enzalutamide planned: Yes=0, No=1
-- Current PSA value, ng/mL: Continuous
-- Time since diagnosis, months: Continuous
-- Albumin, g/dL: Continuous
-- Hemoglobin, g/dL: Continuous
-- Neutrophil to lymphocyte ratio (neutrophil number divided by lymphocyte number) <2.5: Yes=0, No=1
-- LDH below upper limit of normal: Yes=0, No=1
-- Pain 0-1 (on a scale of 0-10, 10 being the worst pain imaginable, highest pain rating in last 24 hrs): Yes=0, No=1
-- <10 bone metastases on bone scan: Yes=0, No=1
-- Alkaline phosphatase less than upper limit of normal: Yes=0, No=1
-- Pattern of spread: No visceral liver metastases=0, Any visceral liver metastases=1
-
-Formula: 
-Total score = (treatment x 18.1376) + [(ln(PSA) + 2.3026) x 9.52244917] + [(275.9 - time) x 0.1543483] + [(4.9 - albumin) x 16.0447656796] + [(16.8 - hemoglobin) x 7.7519235] + (neutrophil x 17.613) + (LDH x 19.00635) + (pain x 12.2248) + (bone x 17.7533) + (alkaline x 10.9685) + (spread x 32.991)
 
 ">
-			keywords = <"Prostate ", "Cancer", "chemotherapy", "castration-resistant">
+			keywords = <"chemotherapy", "castration-resistant", "prostate ", "cancer">
 			misuse = <"">
-			copyright = <"CambioCDS">
+			copyright = <"Cambio CDS">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
 		["references"] = <"1. Armstrong AJ, Lin P, Higano CS, Sternberg CN, Sonpavde G, Tombal B, Templeton AJ, Fizazi K, Phung D, Wong EK, Krivoshik A, Beer TM. Development and validation of a prognostic model for overall survival in chemotherapy-naïve men with metastatic castration-resistant prostate cancer. Ann Oncol. 2018 Nov 1;29(11):2200-2207. doi: 10.1093/annonc/mdy406. PMID: 30202945; PMCID: PMC6888025.
-2. Armstrong AJ, Lin P, Higano CS, Sternberg CN, Sonpavde G, Tombal B, Templeton AJ, Fizazi K, Phung D, Wong EK, Krivoshik A, Beer TM. Development and validation of a prognostic model for overall survival in chemotherapy-naïve men with metastatic castration-resistant prostate cancer. Ann Oncol. 2018 Nov 1;29(11):2200-2207. doi: 10.1093/annonc/mdy406. PMID: 30202945; PMCID: PMC6888025.
-">
-		["MD5-CAM-1.0.1"] = <"8E4DB031A183FA0CA34EC7431E7B9FFF">
+2. Armstrong AJ, Lin P, Tombal B, Saad F, Higano CS, Joshua AM, Parli T, Rosbrook B, van Os S, Beer TM. Five-year Survival Prediction and Safety Outcomes with Enzalutamide in Men with Chemotherapy-naïve Metastatic Castration-resistant Prostate Cancer from the PREVAIL Trial. Eur Urol. 2020 Sep;78(3):347-357. doi: 10.1016/j.eururo.2020.04.061. Epub 2020 Jun 9. PMID: 32527692.">
+		["MD5-CAM-1.0.1"] = <"AC9AA4B9F053AD0226DEED50953B1DE9">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Prevail model
+	OBSERVATION[at0000] matches {	-- PREVAIL Model for Prostate Cancer Survival
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
@@ -124,16 +108,6 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0027] occurrences matches {0..1} matches {	-- Warning Albumin
-										value matches {
-											DV_TEXT matches {*}
-										}
-									}
-									ELEMENT[at0028] occurrences matches {0..1} matches {	-- Warning Hemoglobin
-										value matches {
-											DV_TEXT matches {*}
-										}
-									}
 								}
 							}
 						}
@@ -148,8 +122,8 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Prevail model">
-					description = <"PREVAIL Model for Prostate Cancer Survival">
+					text = <"PREVAIL Model for Prostate Cancer Survival">
+					description = <"PREVAIL Model for Prostate Cancer Survival predicts overall survival in chemotherapy-naive patients with metastatic castration-resistant prostate cancer.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -181,7 +155,7 @@ ontology
 				>
 				["at0008"] = <
 					text = <"Neutrophil to lymphocyte ratio <2.5">
-					description = <"Neutrophil number divided by lymphocyte number">
+					description = <"Neutrophil number divided by lymphocyte number.">
 				>
 				["at0009"] = <
 					text = <"Yes">
@@ -205,7 +179,7 @@ ontology
 				>
 				["at0014"] = <
 					text = <"Pain 0-1">
-					description = <"On a scale of 0-10, 10 being the worst pain imaginable, highest pain rating in last 24 hrs">
+					description = <"On a scale of 0-10, 10 being the worst pain imaginable, highest pain rating in last 24 hrs.">
 				>
 				["at0015"] = <
 					text = <"Yes">
@@ -253,14 +227,6 @@ ontology
 				>
 				["at0026"] = <
 					text = <"Total score">
-					description = <"*">
-				>
-				["at0027"] = <
-					text = <"Warning Albumin">
-					description = <"*">
-				>
-				["at0028"] = <
-					text = <"Warning Hemoglobin">
 					description = <"*">
 				>
 			>
