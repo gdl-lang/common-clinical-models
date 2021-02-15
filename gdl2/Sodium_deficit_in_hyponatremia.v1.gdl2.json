@@ -26,11 +26,11 @@
           "watson equation"
         ],
         "use": "Use to calculate the sodium deficit in order to note the quantity missing in hyponatremia patients.\n\nFormula:\nSodium deficit = total body water × (desired Na - pt's Na)\n\nFor adults, total body water (TBW) is calculated using the Watson equation:\n1. Men: TBW, liters = 2.447 – 0.09516 × age, years + 0.1074 × height, cm + 0.3362 × weight, kg\n2. Women: TBW, liters = -2.097 + 0.1069 × height, cm + 0.2466 × weight, kg\n\nFor children, TBW = 0.6 × weight, kg",
-        "copyright": "@CambioCDS"
+        "copyright": "Cambio CDS"
       }
     },
     "other_details": {
-      "references": "1. Adrogué HJ, Madias NE. Hyponatremia. N Engl J Med 2000; 342:1581."
+      "references": "1. Adrogué HJ, Madias NE. Hyponatremia. N Engl J Med [Internet]. 2000 May [cited 2021 Feb 15]. 25;342(21):1581-9. Available from: https://pubmed.ncbi.nlm.nih.gov/10824078/"
     }
   },
   "definition": {
@@ -65,32 +65,32 @@
       },
       "gt0006": {
         "id": "gt0006",
-        "model_id": "openEHR-EHR-OBSERVATION.sodium_deficit_in_hyponatremia.v0",
-        "template_id": "openEHR-EHR-OBSERVATION.sodium_deficit_in_hyponatremia.v0",
+        "model_id": "openEHR-EHR-OBSERVATION.sodium_deficit.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.sodium_deficit.v0",
         "type": "INPUT",
         "elements": {
-          "gt0007": {
-            "id": "gt0007",
+          "gt0027": {
+            "id": "gt0027",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
           },
-          "gt0016": {
-            "id": "gt0016",
+          "gt0028": {
+            "id": "gt0028",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
           }
         }
       },
       "gt0009": {
         "id": "gt0009",
-        "model_id": "openEHR-EHR-OBSERVATION.sodium_deficit_in_hyponatremia.v0",
-        "template_id": "openEHR-EHR-OBSERVATION.sodium_deficit_in_hyponatremia.v0",
+        "model_id": "openEHR-EHR-OBSERVATION.sodium_deficit.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.sodium_deficit.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0010": {
-            "id": "gt0010",
+          "gt0029": {
+            "id": "gt0029",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
           },
-          "gt0011": {
-            "id": "gt0011",
+          "gt0030": {
+            "id": "gt0030",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
           }
         }
@@ -152,13 +152,13 @@
           "$gt0017|Age|!=null",
           "$gt0008|Height|!=null",
           "$gt0019|Weight|!=null",
-          "$gt0007|Age range|==local::at0007|Adult|",
+          "$gt0027|Age range|==local::at0007|Adult|",
           "$gt0003|Sex|==local::at0005|Male|"
         ],
         "then": [
-          "$gt0011|Total body water|.magnitude=2.447-(0.09516*$gt0017.magnitude)+(0.1074*$gt0008.magnitude*$gt0024)+(0.3362*$gt0019.magnitude*$gt0023)",
-          "$gt0011|Total body water|.unit='l'",
-          "$gt0011|Total body water|.precision=3"
+          "$gt0030|Total body water|.magnitude=2.447-(0.09516*$gt0017.magnitude)+(0.1074*$gt0008.magnitude*$gt0024)+(0.3362*$gt0019.magnitude*$gt0023)",
+          "$gt0030|Total body water|.unit='l'",
+          "$gt0030|Total body water|.precision=3"
         ]
       },
       "gt0021": {
@@ -167,13 +167,13 @@
         "when": [
           "$gt0008|Height|!=null",
           "$gt0019|Weight|!=null",
-          "$gt0007|Age range|==local::at0007|Adult|",
+          "$gt0027|Age range|==local::at0007|Adult|",
           "$gt0003|Sex|==local::at0006|Female|"
         ],
         "then": [
-          "$gt0011|Total body water|.magnitude=(0.1069*$gt0008.magnitude*$gt0024)+(0.2466*$gt0019.magnitude*$gt0023)-2.097",
-          "$gt0011|Total body water|.unit='l'",
-          "$gt0011|Total body water|.precision=3"
+          "$gt0030|Total body water|.magnitude=(0.1069*$gt0008.magnitude*$gt0024)+(0.2466*$gt0019.magnitude*$gt0023)-2.097",
+          "$gt0030|Total body water|.unit='l'",
+          "$gt0030|Total body water|.precision=3"
         ]
       },
       "gt0015": {
@@ -181,29 +181,29 @@
         "priority": 2,
         "when": [
           "$gt0019|Weight|!=null",
-          "$gt0007|Age range|==local::at0006|Child|",
+          "$gt0027|Age range|==local::at0006|Child|",
           "$gt0017|Age|==null",
           "$gt0008|Height|==null",
           "$gt0003|Sex|!=null"
         ],
         "then": [
-          "$gt0011|Total body water|.magnitude=0.6*$gt0019.magnitude*$gt0023",
-          "$gt0011|Total body water|.unit='l'",
-          "$gt0011|Total body water|.precision=3"
+          "$gt0030|Total body water|.magnitude=0.6*$gt0019.magnitude*$gt0023",
+          "$gt0030|Total body water|.unit='l'",
+          "$gt0030|Total body water|.precision=3"
         ]
       },
       "gt0022": {
         "id": "gt0022",
         "priority": 1,
         "when": [
-          "$gt0011|Total body water|!=null",
-          "$gt0016|Desired sodium (Norm 136-145 mmol/L)|!=null",
+          "$gt0030|Total body water|!=null",
+          "$gt0028|Desired sodium (Norm 136-145 mml/L)|!=null",
           "$gt0005|Sodium (Norm 136-145 mmol/L)|!=null"
         ],
         "then": [
-          "$gt0010|Sodium deficit|.magnitude=$gt0011.magnitude*($gt0016.magnitude-$gt0005.magnitude)",
-          "$gt0010|Sodium deficit|.unit='mEq'",
-          "$gt0010|Sodium deficit|.precision=1"
+          "$gt0029|Sodium deficit|.magnitude=$gt0030.magnitude*($gt0028.magnitude-$gt0005.magnitude)",
+          "$gt0029|Sodium deficit|.unit='mEq'",
+          "$gt0029|Sodium deficit|.precision=1"
         ]
       }
     }
@@ -296,6 +296,26 @@
           "gt0026": {
             "id": "gt0026",
             "text": "Set Height conversion factor"
+          },
+          "gt0027": {
+            "id": "gt0027",
+            "text": "Age range",
+            "description": "*"
+          },
+          "gt0028": {
+            "id": "gt0028",
+            "text": "Desired sodium (Norm 136-145 mml/L)",
+            "description": "Norm 136-145 mmol/L"
+          },
+          "gt0029": {
+            "id": "gt0029",
+            "text": "Sodium deficit",
+            "description": "*"
+          },
+          "gt0030": {
+            "id": "gt0030",
+            "text": "Total body water",
+            "description": "*"
           }
         }
       }
