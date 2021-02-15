@@ -9,26 +9,28 @@
     "original_author": {
       "date": "2020-12-10",
       "name": "Maryam Razavi",
-      "organisation": "CambioCDS",
+      "organisation": "Cambio CDS",
       "email": "maryam.razavi@cambio.se"
     },
-    "lifecycle_state": "Not set",
+    "lifecycle_state": "Author draft",
     "details": {
       "en": {
         "id": "en",
         "purpose": "To calculate rate of PSA doubling in prostate cancer (correlates with survival).",
         "keywords": [
-          "PSA:prostate specific antigen",
+          "PSA",
           "prostate",
           "cancer",
-          "prostatectomy "
+          "prostatectomy ",
+          "antigen",
+          "specific"
         ],
         "use": "Used in patients with prostate cancer who have undergone radical prostatectomy or definitive radiation therapy and have biochemical recurrence, defined as confirmed PSA ≥0.2 ng/mL if radical prostatectomy or confirmed PSA rise of ≥2 ng/mL above the nadir PSA level if radiation therapy.\n\nVariables: \nPSA1 (First (earliest) available PSA result) ng/mL\nPSA2  (Second available PSA result) ng/mL\nTime between PSA1 and PSA2 measurement month\nFormula: \nPSA doubling time = ln (2) / PSA Slope\nPSA Slope = (ln (PSA level 2) – ln (PSA level 1)) / Time (no. of months)",
-        "copyright": "CambioCDS"
+        "copyright": "Cambio CDS"
       }
     },
     "other_details": {
-      "references": "1. Pound CR, Partin AW, Eisenberger MA, Chan DW, Pearson JD, Walsh PC. Natural history of progression after PSA elevation following radical prostatectomy. JAMA. 1999;281(17):1591-1597.\n2. Vickers AJ, Brewster SF. PSA Velocity and Doubling Time in Diagnosis and Prognosis of Prostate Cancer. Br J Med Surg Urol. 2012; 5(4):162-168.\n3. Ponholzer A, Popper N, Breitenecker F, et al. Proposal for a standardized PSA doubling-time calculation. Anticancer Res. 2010; 30(5):1633-1636."
+      "references": "1. Pound CR, Partin AW, Eisenberger MA, Chan DW, Pearson JD, Walsh PC. Natural history of progression after PSA elevation following radical prostatectomy. JAMA. 1999 May 5;281(17):1591-7. doi: 10.1001/jama.281.17.1591. PMID: 10235151.\n2. Patel A, Dorey F, Franklin J, deKernion JB. Recurrence patterns after radical retropubic prostatectomy: clinical usefulness of prostate specific antigen doubling times and log slope prostate specific antigen. J Urol. 1997 Oct;158(4):1441-5. doi: 10.1016/s0022-5347(01)64238-1. PMID: 9302139.\n"
     }
   },
   "definition": {
@@ -42,22 +44,10 @@
           "gt0003": {
             "id": "gt0003",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
-          }
-        }
-      },
-      "gt0006": {
-        "id": "gt0006",
-        "model_id": "openEHR-EHR-OBSERVATION.psa_doubling_time.v0",
-        "template_id": "openEHR-EHR-OBSERVATION.psa_doubling_time.v0",
-        "type": "INPUT",
-        "elements": {
-          "gt0013": {
-            "id": "gt0013",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0011]"
           },
-          "gt0014": {
-            "id": "gt0014",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
+          "gt0020": {
+            "id": "gt0020",
+            "path": "/data/events/time"
           }
         }
       },
@@ -78,46 +68,75 @@
           "gt0016": {
             "id": "gt0016",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0012]"
+          },
+          "gt0024": {
+            "id": "gt0024",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
+          }
+        }
+      },
+      "gt0018": {
+        "id": "gt0018",
+        "model_id": "openEHR-EHR-OBSERVATION.lab_test_psa.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.lab_test_psa.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0019": {
+            "id": "gt0019",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "path": "/data/events/time"
           }
         }
       }
     },
     "rules": {
-      "gt0017": {
-        "id": "gt0017",
-        "priority": 3,
+      "gt0025": {
+        "id": "gt0025",
+        "priority": 4,
         "when": [
-          "$gt0013|PSA2|.magnitude<=$gt0003.magnitude"
+          "($gt0019|PSA2|<=$gt0003|PSA1|)||($gt0021|PSA2 Event time|<$gt0020|PSA1 Event time|)"
         ],
         "then": [
-          "$gt0016|Warning|='PSA value should be increasing over time'"
+          "$gt0016|Comment|='PSA value should be increasing over time.'"
         ]
       },
-      "gt0012": {
-        "id": "gt0012",
-        "priority": 2,
+      "gt0026": {
+        "id": "gt0026",
+        "priority": 3,
         "when": [
-          "$gt0003|PSA1|!=null",
-          "$gt0013|PSA2|!=null",
-          "$gt0014|Time between PSA1 and PSA2 measurement|!=null",
-          "$gt0014|Time between PSA1 and PSA2 measurement|.unit=='mo'",
-          "!fired($gt0017)"
+          "$gt0021|PSA2 Event time|>$gt0020|PSA1 Event time|"
         ],
         "then": [
-          "$gt0010|Slope PSA|.magnitude=(log($gt0013.magnitude)-log($gt0003.magnitude))/$gt0014.magnitude",
-          "$gt0010|Slope PSA|.precision=1",
+          "$gt0024|Time between PSA1 and PSA2 measurement|.magnitude=$gt0021-$gt0020/1,mo",
+          "$gt0024|Time between PSA1 and PSA2 measurement|.precision=0",
+          "$gt0024|Time between PSA1 and PSA2 measurement|.unit='mo'"
+        ]
+      },
+      "gt0027": {
+        "id": "gt0027",
+        "priority": 2,
+        "when": [
+          "$gt0019|PSA2|>$gt0003|PSA1|",
+          "$gt0024|Time between PSA1 and PSA2 measurement|!=null"
+        ],
+        "then": [
+          "$gt0010|Slope PSA|.magnitude=(log($gt0019.magnitude)-log($gt0003.magnitude))/$gt0024.magnitude",
+          "$gt0010|Slope PSA|.precision=3",
           "$gt0010|Slope PSA|.unit='1'"
         ]
       },
-      "gt0015": {
-        "id": "gt0015",
+      "gt0029": {
+        "id": "gt0029",
         "priority": 1,
         "when": [
           "$gt0010|Slope PSA|!=null"
         ],
         "then": [
           "$gt0009|PSA doubling time |.magnitude=log(2)/$gt0010.magnitude",
-          "$gt0009|PSA doubling time |.precision=1",
+          "$gt0009|PSA doubling time |.precision=3",
           "$gt0009|PSA doubling time |.unit='mo'"
         ]
       }
@@ -148,32 +167,46 @@
             "text": "Slope PSA",
             "description": "*"
           },
-          "gt0012": {
-            "id": "gt0012",
-            "text": "PSA Slope, time in month"
-          },
-          "gt0013": {
-            "id": "gt0013",
-            "text": "PSA2",
+          "gt0016": {
+            "id": "gt0016",
+            "text": "Comment",
             "description": "*"
           },
-          "gt0014": {
-            "id": "gt0014",
+          "gt0019": {
+            "id": "gt0019",
+            "text": "PSA2",
+            "description": "Lab test result of prostate-specific antigen (PSA)"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "PSA1 Event time",
+            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "PSA2 Event time",
+            "description": "The exact time of a single timed event during the Observation. Can represent either a specific point-in-time or an interval event."
+          },
+          "gt0024": {
+            "id": "gt0024",
             "text": "Time between PSA1 and PSA2 measurement",
             "description": "*"
           },
-          "gt0015": {
-            "id": "gt0015",
-            "text": "PSA doubling time"
+          "gt0025": {
+            "id": "gt0025",
+            "text": "Warning to PSA value"
           },
-          "gt0016": {
-            "id": "gt0016",
-            "text": "Warning",
-            "description": "*"
+          "gt0026": {
+            "id": "gt0026",
+            "text": "Time between PSA1 and PSA2"
           },
-          "gt0017": {
-            "id": "gt0017",
-            "text": "Waring if PSA2<=PSA1"
+          "gt0027": {
+            "id": "gt0027",
+            "text": "PSA slope"
+          },
+          "gt0029": {
+            "id": "gt0029",
+            "text": "PSADT"
           }
         }
       }
