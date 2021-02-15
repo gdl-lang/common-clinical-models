@@ -25,47 +25,47 @@
           "headache"
         ],
         "use": "Use to calculate the risk of Lyme meningitis from aseptic meningitis.\n\nThe rule of 7s is calculated based on three parameters: number of days of headache, CSF mononuclear cells and  7th (or other) cranial nerve palsy.\n\nRule of 7s            Risk\n0 points               Low risk for Lyme meningitis\n1–3 points           Not low risk for Lyme meningitis",
-        "copyright": "@CambioCDS"
+        "copyright": "Cambio CDS"
       }
     },
     "other_details": {
-      "references": "1. Garro AC, Rutman M, Simonsen K, Jaeger JL, Chapin K, Lockhart G. Prospective validation of a clinical prediction model for Lyme meningitis in children. Pediatrics. 2009;123(5):e829-34."
+      "references": "1. Garro AC, Rutman M, Simonsen K, Jaeger JL, Chapin K, Lockhart G. Prospective validation of a clinical prediction model for Lyme meningitis in children. Pediatrics [Internet]. 2009 [cited 2021 Feb 15];123(5):e829-34. Available from: https://pubmed.ncbi.nlm.nih.gov/19403476/"
     }
   },
   "definition": {
     "data_bindings": {
       "gt0002": {
         "id": "gt0002",
-        "model_id": "openEHR-EHR-EVALUATION.rule_of_7s_for_lyme_meningitis.v0",
-        "template_id": "openEHR-EHR-EVALUATION.rule_of_7s_for_lyme_meningitis.v0",
+        "model_id": "openEHR-EHR-EVALUATION.rule_of_7s.v0",
+        "template_id": "openEHR-EHR-EVALUATION.rule_of_7s.v0",
         "type": "INPUT",
         "elements": {
-          "gt0003": {
-            "id": "gt0003",
+          "gt0012": {
+            "id": "gt0012",
             "path": "/data[at0001]/items[at0002]"
           },
-          "gt0004": {
-            "id": "gt0004",
+          "gt0013": {
+            "id": "gt0013",
             "path": "/data[at0001]/items[at0005]"
           },
-          "gt0005": {
-            "id": "gt0005",
+          "gt0014": {
+            "id": "gt0014",
             "path": "/data[at0001]/items[at0006]"
           }
         }
       },
       "gt0006": {
         "id": "gt0006",
-        "model_id": "openEHR-EHR-EVALUATION.rule_of_7s_for_lyme_meningitis.v0",
-        "template_id": "openEHR-EHR-EVALUATION.rule_of_7s_for_lyme_meningitis.v0",
+        "model_id": "openEHR-EHR-EVALUATION.rule_of_7s.v0",
+        "template_id": "openEHR-EHR-EVALUATION.rule_of_7s.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0007": {
-            "id": "gt0007",
+          "gt0015": {
+            "id": "gt0015",
             "path": "/data[at0001]/items[at0011]"
           },
-          "gt0008": {
-            "id": "gt0008",
+          "gt0016": {
+            "id": "gt0016",
             "path": "/data[at0001]/items[at0012]"
           }
         }
@@ -76,33 +76,33 @@
         "id": "gt0009",
         "priority": 3,
         "when": [
-          "$gt0003|Number of days of headache|!=null",
-          "$gt0004|CSF (cerebrospinal fluid) mononuclear cells (Lymphocytes and monocytes)|!=null",
-          "$gt0005|7th (or other) cranial nerve palsy|!=null"
+          "$gt0012|Number of days of headache|!=null",
+          "$gt0013|CSF mononuclear cells|!=null",
+          "$gt0014|7th (or other) cranial nerve palsy|!=null"
         ],
         "then": [
-          "$gt0007|Rule of 7s|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value"
+          "$gt0015|Rule of 7s|.magnitude=$gt0012.value+$gt0013.value+$gt0014.value"
         ]
       },
       "gt0011": {
         "id": "gt0011",
         "priority": 2,
         "when": [
-          "$gt0007|Rule of 7s|>0",
-          "$gt0007|Rule of 7s|<=3"
+          "$gt0015|Rule of 7s|>0",
+          "$gt0015|Rule of 7s|<=3"
         ],
         "then": [
-          "$gt0008|Risk|=local::at0014|Not low risk for Lyme meningitis|"
+          "$gt0016|Risk|=local::at0014|Not low risk for Lyme meningitis|"
         ]
       },
       "gt0010": {
         "id": "gt0010",
         "priority": 1,
         "when": [
-          "$gt0007|Rule of 7s|==0"
+          "$gt0015|Rule of 7s|==0"
         ],
         "then": [
-          "$gt0008|Risk|=local::at0013|Low risk for Lyme meningitis|"
+          "$gt0016|Risk|=local::at0013|Low risk for Lyme meningitis|"
         ]
       }
     }
@@ -153,6 +153,31 @@
           "gt0011": {
             "id": "gt0011",
             "text": "Not low risk for Lyme meningitis"
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "text": "Number of days of headache",
+            "description": "*"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "CSF mononuclear cells",
+            "description": "CSF (cerebrospinal fluid): Lymphocytes and monocytes"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "7th (or other) cranial nerve palsy",
+            "description": "*"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "Rule of 7s",
+            "description": "*"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "text": "Risk",
+            "description": "*"
           }
         }
       }
