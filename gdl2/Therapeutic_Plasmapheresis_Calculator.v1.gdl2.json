@@ -23,23 +23,23 @@
           "therapeutic plasmapheresis"
         ],
         "use": "Use to calculate residual relative concentration. \n\nFormula:\nResidual relative concentration, % = 100 * e-x\n\nWhere x = plasma volume, mL x number of plasma volumes to be exchanged / total blood volume, mL",
-        "copyright": "@CambioCDS"
+        "copyright": "Cambio CDS"
       }
     },
     "other_details": {
-      "references": "1. Reverberi R, Reverberi L. Removal kinetics of therapeutic apheresis. Blood Transfus. 2007;5(3):164-74."
+      "references": "1. Reverberi R, Reverberi L. Removal kinetics of therapeutic apheresis. Blood Transfus [Internet]. 2007 [cited Feb 16];5(3):164-74."
     }
   },
   "definition": {
     "data_bindings": {
       "gt0002": {
         "id": "gt0002",
-        "model_id": "openEHR-EHR-OBSERVATION.therapeutic_plasmapheresis_calculator.v0",
-        "template_id": "openEHR-EHR-OBSERVATION.therapeutic_plasmapheresis_calculator.v0",
+        "model_id": "openEHR-EHR-OBSERVATION.therapeutic_plasmapheresis.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.therapeutic_plasmapheresis.v0",
         "type": "INPUT",
         "elements": {
-          "gt0003": {
-            "id": "gt0003",
+          "gt0014": {
+            "id": "gt0014",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
           }
         }
@@ -62,12 +62,12 @@
       },
       "gt0007": {
         "id": "gt0007",
-        "model_id": "openEHR-EHR-OBSERVATION.therapeutic_plasmapheresis_calculator.v0",
-        "template_id": "openEHR-EHR-OBSERVATION.therapeutic_plasmapheresis_calculator.v0",
+        "model_id": "openEHR-EHR-OBSERVATION.therapeutic_plasmapheresis.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.therapeutic_plasmapheresis.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0008": {
-            "id": "gt0008",
+          "gt0015": {
+            "id": "gt0015",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
           }
         }
@@ -93,10 +93,10 @@
         "when": [
           "$gt0005|Total blood volume|!=null",
           "$gt0006|Plasma volume|!=null",
-          "$gt0003|Number of plasma volumes to be exchanged|!=null"
+          "$gt0014|Number of plasma volumes to be exchanged (Norm 1-3)|!=null"
         ],
         "then": [
-          "$gt0011|x|=$gt0006.magnitude*$gt0003.magnitude/($gt0005.magnitude*$gt0013)"
+          "$gt0011|x|=$gt0006.magnitude*$gt0014.magnitude/($gt0005.magnitude*$gt0013)"
         ]
       },
       "gt0009": {
@@ -106,9 +106,9 @@
           "fired($gt0010)"
         ],
         "then": [
-          "$gt0008|Residual relative concentration|.magnitude=100*e^((-1)*$gt0011)",
-          "$gt0008|Residual relative concentration|.unit='%'",
-          "$gt0008|Residual relative concentration|.precision=1"
+          "$gt0015|Residual relative concentration|.magnitude=100*e^((-1)*$gt0011)",
+          "$gt0015|Residual relative concentration|.unit='%'",
+          "$gt0015|Residual relative concentration|.precision=1"
         ]
       }
     }
@@ -164,6 +164,16 @@
             "id": "gt0013",
             "text": "Conversion factor Total blood volume",
             "description": ""
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "Number of plasma volumes to be exchanged (Norm 1-3)",
+            "description": "*"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "Residual relative concentration",
+            "description": "*"
           }
         }
       }
