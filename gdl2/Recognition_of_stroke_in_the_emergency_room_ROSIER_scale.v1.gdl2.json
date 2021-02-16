@@ -16,7 +16,7 @@
     "details": {
       "en": {
         "id": "en",
-        "purpose": "To calculate the ROSIER Score in order to distinguish between acute stroke and stroke mimics.",
+        "purpose": "To calculate the ROSIER Score.",
         "keywords": [
           "stroke",
           "ROSIER",
@@ -27,64 +27,64 @@
           "speech disturbance",
           "defect"
         ],
-        "use": "Use to calculate  ROSIER Score. The score is based on 7 parameters: Loss of consciousness or syncope, Seizure activity, Asymmetric facial weakness, Asymmetric arm weakness, Asymmetric leg weakness, Speech disturbance and Visual field defect.\n\nLikelihood of stroke:\nROSIER Score     Interpretation\n≤0                         Stroke unlikely\n>0                         Stroke possible",
-        "copyright": "@CambioCDS"
+        "use": "Use to calculate the ROSIER score in order to distinguish between acute stroke and stroke mimics. The score is based on 7 parameters: Loss of consciousness or syncope, Seizure activity, Asymmetric facial weakness, Asymmetric arm weakness, Asymmetric leg weakness, Speech disturbance and Visual field defect.\n\nLikelihood of stroke:\nROSIER Score     Interpretation\n≤0                         Stroke unlikely\n>0                         Stroke possible",
+        "copyright": "Cambio CDS"
       }
     },
     "other_details": {
-      "references": "1. Nor AM, Davis J, Sen B, et al. The Recognition of Stroke in the Emergency Room (ROSIER) scale: development and validation of a stroke recognition instrument. Lancet Neurol. 2005;4(11):727-34."
+      "references": "1. Nor AM, Davis J, Sen B, et al. The Recognition of Stroke in the Emergency Room (ROSIER) scale: development and validation of a stroke recognition instrument. Lancet Neurol [Internet]. 2005 [cited Feb 16];4(11):727-34."
     }
   },
   "definition": {
     "data_bindings": {
       "gt0003": {
         "id": "gt0003",
-        "model_id": "openEHR-EHR-EVALUATION.recognition_of_stroke_in_the_emergency_room_rosier_scale.v0",
-        "template_id": "openEHR-EHR-EVALUATION.recognition_of_stroke_in_the_emergency_room_rosier_scale.v0",
+        "model_id": "openEHR-EHR-EVALUATION.rosier_scale.v0",
+        "template_id": "openEHR-EHR-EVALUATION.rosier_scale.v0",
         "type": "INPUT",
         "elements": {
-          "gt0004": {
-            "id": "gt0004",
+          "gt0016": {
+            "id": "gt0016",
             "path": "/data[at0001]/items[at0002]"
           },
-          "gt0005": {
-            "id": "gt0005",
+          "gt0017": {
+            "id": "gt0017",
             "path": "/data[at0001]/items[at0005]"
           },
-          "gt0006": {
-            "id": "gt0006",
+          "gt0018": {
+            "id": "gt0018",
             "path": "/data[at0001]/items[at0008]"
           },
-          "gt0007": {
-            "id": "gt0007",
+          "gt0019": {
+            "id": "gt0019",
             "path": "/data[at0001]/items[at0011]"
           },
-          "gt0008": {
-            "id": "gt0008",
+          "gt0020": {
+            "id": "gt0020",
             "path": "/data[at0001]/items[at0014]"
           },
-          "gt0009": {
-            "id": "gt0009",
+          "gt0021": {
+            "id": "gt0021",
             "path": "/data[at0001]/items[at0017]"
           },
-          "gt0010": {
-            "id": "gt0010",
+          "gt0022": {
+            "id": "gt0022",
             "path": "/data[at0001]/items[at0020]"
           }
         }
       },
       "gt0011": {
         "id": "gt0011",
-        "model_id": "openEHR-EHR-EVALUATION.recognition_of_stroke_in_the_emergency_room_rosier_scale.v0",
-        "template_id": "openEHR-EHR-EVALUATION.recognition_of_stroke_in_the_emergency_room_rosier_scale.v0",
+        "model_id": "openEHR-EHR-EVALUATION.rosier_scale.v0",
+        "template_id": "openEHR-EHR-EVALUATION.rosier_scale.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0012": {
-            "id": "gt0012",
+          "gt0023": {
+            "id": "gt0023",
             "path": "/data[at0001]/items[at0023]"
           },
-          "gt0013": {
-            "id": "gt0013",
+          "gt0024": {
+            "id": "gt0024",
             "path": "/data[at0001]/items[at0024]"
           }
         }
@@ -95,36 +95,36 @@
         "id": "gt0002",
         "priority": 3,
         "when": [
-          "$gt0004|Loss of consciousness or syncope|!=null",
-          "$gt0005|Seizure activity|!=null",
-          "$gt0006|Asymmetric facial weakness|!=null",
-          "$gt0007|Asymmetric arm weakness|!=null",
-          "$gt0008|Asymmetric leg weakness|!=null",
-          "$gt0009|Speech disturbance|!=null",
-          "$gt0010|Visual field defect|!=null"
+          "$gt0016|Loss of consciousness or syncope|!=null",
+          "$gt0017|Seizure activity|!=null",
+          "$gt0018|Asymmetric facial weakness|!=null",
+          "$gt0019|Asymmetric arm weakness|!=null",
+          "$gt0020|Asymmetric leg weakness|!=null",
+          "$gt0021|Speech disturbance|!=null",
+          "$gt0022|Visual field defect|!=null"
         ],
         "then": [
-          "$gt0012|ROSIER score|.magnitude=$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value-$gt0004.value-$gt0005.value"
+          "$gt0023|ROSIER score|.magnitude=$gt0018.value+$gt0019.value+$gt0020.value+$gt0021.value+$gt0022.value-$gt0016.value-$gt0017.value"
         ]
       },
       "gt0015": {
         "id": "gt0015",
         "priority": 2,
         "when": [
-          "$gt0012|ROSIER score|>0"
+          "$gt0023|ROSIER score|>0"
         ],
         "then": [
-          "$gt0013|Likelihood of stroke|=local::at0026|Stroke possible|"
+          "$gt0024|Likelihood of stroke|=local::at0026|Stroke possible|"
         ]
       },
       "gt0014": {
         "id": "gt0014",
         "priority": 1,
         "when": [
-          "$gt0012|ROSIER score|<=0"
+          "$gt0023|ROSIER score|<=0"
         ],
         "then": [
-          "$gt0013|Likelihood of stroke|=local::at0025|Stroke unlikely|"
+          "$gt0024|Likelihood of stroke|=local::at0025|Stroke unlikely|"
         ]
       }
     }
@@ -137,7 +137,7 @@
           "gt0001": {
             "id": "gt0001",
             "text": "Recognition of Stroke in the Emergency Room ROSIER Scale",
-            "description": "Recognition of Stroke in the Emergency Room (ROSIER) Scale distinguishes between acute stroke and stroke mimics."
+            "description": "Recognition of Stroke in the Emergency Room (ROSIER) scale distinguishes between acute stroke and stroke mimics."
           },
           "gt0002": {
             "id": "gt0002",
@@ -195,6 +195,51 @@
           "gt0015": {
             "id": "gt0015",
             "text": "Stroke possible"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "text": "Loss of consciousness or syncope",
+            "description": "*"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "Seizure activity",
+            "description": "*"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "Asymmetric facial weakness",
+            "description": "*"
+          },
+          "gt0019": {
+            "id": "gt0019",
+            "text": "Asymmetric arm weakness",
+            "description": "*"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Asymmetric leg weakness",
+            "description": "*"
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "Speech disturbance",
+            "description": "*"
+          },
+          "gt0022": {
+            "id": "gt0022",
+            "text": "Visual field defect",
+            "description": "*"
+          },
+          "gt0023": {
+            "id": "gt0023",
+            "text": "ROSIER score",
+            "description": "*"
+          },
+          "gt0024": {
+            "id": "gt0024",
+            "text": "Likelihood of stroke",
+            "description": "*"
           }
         }
       }
