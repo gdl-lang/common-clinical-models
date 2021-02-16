@@ -1286,7 +1286,7 @@ _Select a medical specialty below to view the available apps._
 * VIA Screening - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/VIA_Screening/0?language=en))
 ----------
 
-### CDS App Challenge 2020 - Submissions
+### CDS App Challenge 2020 Submissions
 
 -----------
 *  Swift score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SWIFT_Score_guideline/0?language=en))/([_ES_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SWIFT_Score_guideline/0?language=es))
