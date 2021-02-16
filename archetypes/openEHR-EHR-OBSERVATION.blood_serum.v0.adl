@@ -9,21 +9,26 @@ language
 
 description
 	original_author = <
-		["date"] = <"2021-02-07">
+		["date"] = <"2021-02-16">
+		["name"] = <"Emma Malm">
+		["organisation"] = <"Cambio CDS">
+		["email"] = <"emmalm@kth.se">
 	>
-	lifecycle_state = <"unmanaged">
+	lifecycle_state = <"in_development">
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
+			purpose = <"To detect unmeasured compounds in the serum. Osmolal gaps (difference between measured and expected) of >10 can be caused by toxic alcohols. ">
+			keywords = <"serum osmolarity, osmolal gap, serum osmolality", ...>
+			copyright = <"Cambio CDS">
+			use = <"Purssell et al equation for calculating serum osmolality with US units: Serum osm [mOsm/kg] = (2 × Na + (BUN / 2.8) + (glucose / 18) + (ethanol / 3.7).
+For SI units, the values do not need to be divided by their molecular weight.">
 		>
 	>
 	other_details = <
-		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
-		["custodian_organisation"] = <"openEHR Foundation">
-		["original_namespace"] = <"org.openehr">
-		["original_publisher"] = <"openEHR Foundation">
-		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"9e06ec0475c76740bc5ecbbfb1b439df">
+		["references"] = <"1. Purssell RA, Pudek M, Brubacher J, Abu-Laban RB.Derivation and validation of a formula to calculate the contribution of ethanol to the osmolal gap.Ann Emerg Med 2001;38(6): 653-9.doi:10.1067/mem.2001.119455. PMID 1171974.">
+		["current_contact"] = <"Emma Malm, Cambio CDS, emmalm@kth.se">
+		["MD5-CAM-1.0.1"] = <"37643db3f2479cda4b97fe2995d1fbf8">
 		["build_uid"] = <"a3220333-c9ae-3b6c-9974-b820d3ac006f">
 	>
 
@@ -39,7 +44,7 @@ definition
 									ELEMENT[at0008] occurrences matches {0..1} matches {    -- Measured serum osmolality
 										value matches {
 											C_DV_QUANTITY <
-												property = <[openehr::347]>
+												property = <[openehr::119]>
 												list = <
 													["1"] = <
 														units = <"mmol/kg">
@@ -54,7 +59,7 @@ definition
 									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Calculated serum osmolality
 										value matches {
 											C_DV_QUANTITY <
-												property = <[openehr::347]>
+												property = <[openehr::119]>
 												list = <
 													["1"] = <
 														units = <"mOsm/kg">
@@ -66,10 +71,10 @@ definition
 									ELEMENT[at0006] occurrences matches {0..1} matches {    -- Osmolal gap
 										value matches {
 											C_DV_QUANTITY <
-												property = <[openehr::122]>
+												property = <[openehr::119]>
 												list = <
 													["1"] = <
-														units = <"mOsm/kg">
+														units = <"mg/L">
 													>
 												>
 											>
@@ -98,7 +103,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Blood serum">
-					description = <"Serum Osmolality">
+					description = <"Calculates expected serum osmolarity, for comparison to measured osmolarity to detect unmeasured compounds in the serum.">
 				>
 				["at0001"] = <
 					text = <"History">
