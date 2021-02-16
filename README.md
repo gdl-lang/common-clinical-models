@@ -102,7 +102,7 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 
-[CDS App Challenge 2020 - Submissions](https://github.com/gdl-lang/common-clinical-models#cds-app-challenge-2020-submissions)
+[CDS App Challenge 2020 Submissions](https://github.com/gdl-lang/common-clinical-models#cds-app-challenge-2020-submissions)
 
 -----------
 
