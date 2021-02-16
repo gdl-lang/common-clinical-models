@@ -102,6 +102,10 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 
+[CDS App Challenge 2020 - Submissions](https://github.com/gdl-lang/common-clinical-models#cds-app-challenge-2020-submissions)
+
+-----------
+
 ### Anesthesia
 
 ----------
@@ -1281,6 +1285,28 @@ _Select a medical specialty below to view the available apps._
 
 * VIA Screening - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/VIA_Screening/0?language=en))
 ----------
+
+### CDS App Challenge 2020 - Submissions
+
+-----------
+*  Swift score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SWIFT_Score_guideline/0?language=en))/([_ES_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SWIFT_Score_guideline/0?language=es))
+
+* Fast tracking scale for Ambulatory surgery - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fast_Tracking_Scale_For_Ambulatory_Surgery/0?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fast_Tracking_Scale_For_Ambulatory_Surgery/0?language=sv))/([_ES_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fast_Tracking_Scale_For_Ambulatory_Surgery/0?language=es))
+
+* Tisdale Risk Score for QT Prolongation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tisdale_risk_score_for_QT_prolongation/3?language=en))
+
+* IHI global trigger tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IHI_Global_Trigger_Tool/1?language=en))/([_ES_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IHI_Global_Trigger_Tool/1?language=es))
+
+* Oakland score for safe discharge after lower GI bleed - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Oakland_Score_guideline/1?language=en))
+
+* Corona anxiety index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Coronavirus_Anxiety_Scale/0?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Coronavirus_Anxiety_Scale/0?language=sv))/([_FR_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Coronavirus_Anxiety_Scale/0?language=fr))/([_AR_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Coronavirus_Anxiety_Scale/0?language=ar-dz))
+
+* Predictive criteria for covid-19 cytokine storm - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Predictive_criteria_for_COVID-19_cytokine_storm/0?language=en))
+
+* ROX index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rox_index_final/0?language=en))/([_GER_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rox_index_final/0?language=de))/([_RU_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rox_index_final/0?language=ru))
+
+* UKELD score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UKELD_score/0?language=en))
+-----------
 
 ### Disclaimer
 
