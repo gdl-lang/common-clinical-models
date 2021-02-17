@@ -9,54 +9,25 @@ description
 	original_author = <
 		["name"] = <"Maryam Razavi">
 		["email"] = <"maryam.razavi@cambio.se">
-		["organisation"] = <"CambioCDS">
+		["organisation"] = <"Cambio CDS">
 		["date"] = <"2020-12-11">
 	>
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record variables of the McDonald Criteria for Multiple Sclerosis as well as diagnostic results. ">
-			use = <"Use to record variables of the McDonald Criteria for Multiple Sclerosis as well as diagnostic results. 
-Variables: 
-- Clinical attacks: Must have ≥1 clinical attack
-   Number of clinical attacks: (“Clinical attack” = monophasic clinical episode with patient-reported symptoms and objective findings reflecting inflammatory demyelinating CNS event (focal or multifocal), subacute or acute, for ≥24 hrs, with or without recovery, and no fever or infection present; attack, relapse, exacerbation, and clinically isolated syndrome (first episode) are all synonymous)
-
-
-- Lesions: Must have ≥1 lesion: 
-   Number of lesions with objective clinical evidence: (“Objective clinical evidence” = abnormality on neurologic exam, imaging (MRI or optical coherence tomography), or visual evoked potentials, corresponding to anatomical location suggested by symptoms)
-
-
-- Historical evidence of a previous attack involving a lesion in a distinct anatomical location (Yes, No)
-
-
-Additional data: (Yes, No)
-- Dissemination in time demonstrated by additional clinical attack or MRI, or presence of CSF-specific oligoclonal bands
-
-- Dissemination in space demonstrated by an additional clinical attack implicating a different CNS site or by MRI
-
-Interpretation: 
-Clinical attacks        Number of lesions with objective clinical evidence        Additional data needed for diagnosis of MS
-≥2                              ≥2                                                                                            No additional tests required to demonstrate dissemination in space and time
-≥2                               1 (as well as clear-cut historical evidence of a                  No additional tests required to demonstrate dissemination in space and time
-                                    previous attack involving a lesion in a distinct 
-                                    anatomical location)
-≥2                                1                                                                                             Dissemination in space demonstrated by an additional clinical attack implicating a                                                                                                                                                                          different CNS site or by MRI
-
-
-1                                     ≥2                                                                                          Dissemination in time demonstrated by additional clinical attack or MRI, or presence of CSF-specific                                                                                                                                       oligoclonal bands
-
-
+			purpose = <"To record variables of the Mcdonald Criteria for multiple sclerosis as well as diagnostic results. ">
+			use = <"Use to record variables of the Mcdonald criteria for multiple sclerosis as well as diagnostic results. 
 ">
-			keywords = <"Multiple Sclerosis", "dissemination in space (DIS)", "Dissemination in time (DIT)">
-			misuse = <"Not to use to differentiate MS from other conditions.">
-			copyright = <"CambioCDS">
+			keywords = <"MS", "multiple", "sclerosis", "DIS", "DIT", "dissemination ", "space ", "time">
+			misuse = <"Not to be used to differentiate MS from other conditions.">
+			copyright = <"Cambio CDS">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Thompson AJ, Banwell BL, Barkhof F, et al. Diagnosis of multiple sclerosis: 2017 revisions of the McDonald criteria. Lancet Neurol. 2017.">
-		["MD5-CAM-1.0.1"] = <"CB2251C0D90D7265446DBAA087659A65">
+		["references"] = <"1. Thompson AJ, Banwell BL, Barkhof F, Carroll WM, Coetzee T, Comi G, Correale J, Fazekas F, Filippi M, Freedman MS, Fujihara K, Galetta SL, Hartung HP, Kappos L, Lublin FD, Marrie RA, Miller AE, Miller DH, Montalban X, Mowry EM, Sorensen PS, Tintoré M, Traboulsee AL, Trojano M, Uitdehaag BMJ, Vukusic S, Waubant E, Weinshenker BG, Reingold SC, Cohen JA. Diagnosis of multiple sclerosis: 2017 revisions of the McDonald criteria. Lancet Neurol. 2018 Feb;17(2):162-173. doi: 10.1016/S1474-4422(17)30470-2. Epub 2017 Dec 21. PMID: 29275977.">
+		["MD5-CAM-1.0.1"] = <"6ADD2BE9AB1E8C51177C947F53F60DCE">
 	>
 
 definition
@@ -68,30 +39,20 @@ definition
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Number of clinical attacks
-										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::380]>
-												list = <
-													["1"] = <
-														units = <"1">
-													>
-												>
-											>
+									CLUSTER[at0019] occurrences matches {0..1} matches {	-- Clinical attacks
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0004] occurrences matches {0..1} matches {	-- Number of clinical attacks
+												value matches {
+													DV_COUNT matches {*}
+												}
+											}
 										}
 									}
 									CLUSTER[at0005] occurrences matches {0..1} matches {	-- Lesions
 										items cardinality matches {1..*; unordered} matches {
 											ELEMENT[at0006] occurrences matches {0..1} matches {	-- Number of lesions with objective clinical evidence
 												value matches {
-													C_DV_QUANTITY <
-														property = <[openehr::380]>
-														list = <
-															["1"] = <
-																units = <"1">
-															>
-														>
-													>
+													DV_COUNT matches {*}
 												}
 											}
 											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Historical evidence of a previous attack involving a lesion in a distinct anatomical location
@@ -101,6 +62,21 @@ definition
 															[local::
 															at0008, 	-- No
 															at0009]	-- Yes
+														}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0020] occurrences matches {0..1} matches {	-- Additional data
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0014] occurrences matches {0..1} matches {	-- Dissemination in time demonstrated by additional clinical attack or MRI, or presence of CSF-specific oligoclonal bands
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0015, 	-- No
+															at0016]	-- Yes
 														}
 													}
 												}
@@ -116,22 +92,17 @@ definition
 													}
 												}
 											}
-											ELEMENT[at0014] occurrences matches {0..1} matches {	-- Dissemination in time demonstrated by additional clinical attack or MRI, or presence of CSF-specific oligoclonal bands
-												value matches {
-													DV_CODED_TEXT matches {
-														defining_code matches {
-															[local::
-															at0015, 	-- No
-															at0016]	-- Yes
-														}
-													}
-												}
-											}
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Diagnostic Result
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Result
 										value matches {
-											DV_TEXT matches {*}
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0017, 	-- Definite MS
+													at0018]	-- Not MS
+												}
+											}
 										}
 									}
 								}
@@ -149,7 +120,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Mcdonald criteria for ms">
-					description = <"McDonald Criteria for Multiple Sclerosis (2017 Revision)">
+					description = <"Mcdonald criteria for multiple sclerosis (2017 revision) diagnoses multiple sclerosis.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -200,7 +171,7 @@ ontology
 					description = <"*">
 				>
 				["at0013"] = <
-					text = <"Diagnostic Result">
+					text = <"Result">
 					description = <"*">
 				>
 				["at0014"] = <
@@ -213,6 +184,22 @@ ontology
 				>
 				["at0016"] = <
 					text = <"Yes">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Definite MS">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Not MS">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Clinical attacks">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Additional data">
 					description = <"*">
 				>
 			>
