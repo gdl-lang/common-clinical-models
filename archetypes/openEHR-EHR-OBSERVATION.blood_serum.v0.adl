@@ -2,74 +2,71 @@ archetype (adl_version=1.4; uid=a62f8289-1448-40b2-9005-9a79375e6732)
 	openEHR-EHR-OBSERVATION.blood_serum.v0
 
 concept
-	[at0000]
-
+	[at0000]	-- Blood serum
 language
 	original_language = <[ISO_639-1::en]>
-
 description
 	original_author = <
-		["date"] = <"2021-02-16">
 		["name"] = <"Emma Malm">
-		["organisation"] = <"Cambio CDS">
 		["email"] = <"emma.snygg@hotmail.com">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2021-02-16">
 	>
-	lifecycle_state = <"in_development">
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record information regarding the blood serum of an individual. ">
-			keywords = <"serum osmolarity,osmolal gap,serum osmolality", ...>
-			copyright = <"Cambio CDS">
 			use = <"Use to record the expected serum osmolarity based on information regarding the blood serum, and compare it with the measured serum osmolality in order to detect unmeasured compounds in the serum.">
+			keywords = <"serum", "osmolarity", "osmolal", "gap", "osmolality">
+			misuse = <"">
+			copyright = <"Cambio CDS">
 		>
 	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
 	other_details = <
 		["references"] = <"1. Purssell RA, Pudek M, Brubacher J, Abu-Laban RB.Derivation and validation of a formula to calculate the contribution of ethanol to the osmolal gap.Ann Emerg Med 2001;38(6): 653-9.doi:10.1067/mem.2001.119455. PMID 1171974.">
 		["current_contact"] = <"Emma Malm, Cambio CDS, emma.snygg@hotmail.com">
-		["MD5-CAM-1.0.1"] = <"d272d828b7f9c37e3bc07fae2235bd15">
+		["MD5-CAM-1.0.1"] = <"2CF3B62BC55B050604E0323AC52F91FB">
 		["build_uid"] = <"a3220333-c9ae-3b6c-9974-b820d3ac006f">
 	>
 
 definition
-	OBSERVATION[at0000] matches {    -- Blood serum
+	OBSERVATION[at0000] matches {	-- Blood serum
 		data matches {
-			HISTORY[at0001] matches {    -- History
-				events cardinality matches {0..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
+			HISTORY[at0001] matches {	-- History
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {    -- Tree
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0008] occurrences matches {0..1} matches {    -- Measured serum osmolality
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Measured serum osmolality
 										value matches {
 											C_DV_QUANTITY <
-												
+                        property = <[openehr::119]>
 												list = <
 													["1"] = <
 														units = <"mmol/kg">
-														magnitude = <|>=0.0|>
-													>
-													["2"] = <
-														units = <"mOsm/kg">
+                            magnitude = <|>=0.0|>
 													>
 												>
 											>
 										}
 									}
-									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Calculated serum osmolality
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Calculated serum osmolality
 										value matches {
 											C_DV_QUANTITY <
-												
+                        property = <[openehr::119]>
 												list = <
 													["1"] = <
 														units = <"mOsm/kg">
-														magnitude = <|>=0.0|>
+                            magnitude = <|>=0.0|>
 													>
 												>
 											>
 										}
 									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {    -- Osmolal gap
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Osmolal gap
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -81,7 +78,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {    -- Comment
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -94,7 +91,7 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0005] matches {*}    -- Item tree
+			ITEM_TREE[at0005] matches {*}
 		}
 	}
 
@@ -112,7 +109,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"">
+					description = <"*">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -120,7 +117,7 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Calculated serum osmolality">
-					description = <"">
+					description = <"*">
 				>
 				["at0005"] = <
 					text = <"Item tree">
@@ -128,15 +125,15 @@ ontology
 				>
 				["at0006"] = <
 					text = <"Osmolal gap">
-					description = <"">
+					description = <"*">
 				>
 				["at0007"] = <
 					text = <"Comment">
-					description = <"">
+					description = <"*">
 				>
 				["at0008"] = <
 					text = <"Measured serum osmolality">
-					description = <"">
+					description = <"*">
 				>
 			>
 		>
