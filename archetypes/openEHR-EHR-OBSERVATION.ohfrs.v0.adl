@@ -2,82 +2,24 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.ohfrs.v0
 
 concept
-	[at0000]	-- Ohfrs
+	[at0000]	-- Ottawa heart failure risk scale
 language
 	original_language = <[ISO_639-1::en]>
 description
 	original_author = <
 		["name"] = <"Maryam Razavi">
 		["email"] = <"maryam.razavi@cambio.se">
-		["organisation"] = <"CambioCDS">
+		["organisation"] = <"Cambio CDS">
 		["date"] = <"2020-12-14">
 	>
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To register information regarding the assessment of the Ottawa Heart Failure Risk Scale (OHFRS) as well as the interpretation of the assessment.
+			purpose = <"To record information regarding the assessment of the Ottawa heart failure risk scale.
 ">
-			use = <"Use to record the value for each component for the the Ottawa Heart Failure Risk Scale (OHFRS), total sum, and interpretations. Use in patients presenting to the emergency department with acute dyspnea secondary to new-onset or chronic heart failure (HF), after initial intervention.  
-
-Formula: Addition of the selected points:
-Variables and assigned points: 
-History:                            No     Yes
-- Stroke or TIA                  0        +1
-
-- Intubation for                 0        +2
-respiratory distress
-
-Examination:
-
-- HR ≥110 on ED arrival    0          +2
-
-- SaO2 <90% on arrival     0          +1
-
-- Heart rate ≥110 during   0          +1
- 3-minutes walk test 
-(or too ill to perform walk test)
-
-Investigations: 
-
-- New ischemic changes   0            +2
-
- on EKG
-- Urea ≥12 mmol/L             0            +1
-
-- Serum CO2 ≥35                 0            +2
-mmol/L (mEq/L)
-
-- Troponin I or T elevated   0            +2
- to MI level
-
-- NT-proBNP ≥5,000            0            +1
-ng/L (pg/mL)
-
-Interpretation:
-Total Score 0 = 2.8% Risk of Serious Adverse Event (SAE)= Low Category
-Total Score 1 = 5.1% Risk of Serious Adverse Event (SAE)= Medium Category
-Total Score 2 = 9.2% Risk of Serious Adverse Event (SAE)= Medium Category
-Total Score 3 = 15.9% Risk of Serious Adverse Event (SAE)= High Category
-Total Score 4 = 26.1% Risk of Serious Adverse Event (SAE)= High Category
-Total Score 5 = 39.8% Risk of Serious Adverse Event (SAE)= Very high Category
-Total Score 6 = 55.3% Risk of Serious Adverse Event (SAE)= Very high Category
-Total Score 7 = 69.8% Risk of Serious Adverse Event (SAE)= Very high Category
-Total Score 8 = 81.2% Risk of Serious Adverse Event (SAE)= Very high Category
-Total Score 9 = 89.0% Risk of Serious Adverse Event (SAE)= Very high Category
-Total Score >9 = >89.0% Risk of Serious Adverse Event (SAE)= Very high Category
-
-
-
-
-
-
-
-
-
-
-  ">
-			keywords = <"heart failure (HF)", "dyspnea ", "emergency department ">
-			misuse = <"Not to use prior to ED intervention and in patients who are hemodynamically unstable. Full exclusion criteria are listed below: 
+			use = <"Use to record information regarding the assessment of the Ottawa heart failure risk scale.">
+			keywords = <"dyspnea ", "heart", "failure", "HF", "emergency">
+			misuse = <"Not to be used prior to ED intervention and in patients who are hemodynamically unstable. Full exclusion criteria are listed below: 
 - Resting O₂ sat <85% on room air on normal home O₂ for >20 minutes.
 - Heart rate >120 on arrival.
 - Systolic BP <85 mmHg on arrival.
@@ -87,19 +29,19 @@ Total Score >9 = >89.0% Risk of Serious Adverse Event (SAE)= Very high Category
 - Death expected within weeks from chronic illness.
 - Nursing home or chronic care facility resident.
 - On chronic hemodialysis.">
-			copyright = <"@CambioCDS">
+			copyright = <"Cambio CDS">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Stiell IG, Clement CM, Brison RJ, et al. A risk scoring system to identify emergency department patients with heart failure at high risk for serious adverse events. Acad Emerg Med. 2013;20(1):17-26.
-2. Stiell IG, Perry JJ, Clement CM, et al. Prospective and Explicit Clinical Validation of the Ottawa Heart Failure Risk Scale, With and Without Use of Quantitative NT-proBNP. Acad Emerg Med. 2017;24(3):316-327.">
-		["MD5-CAM-1.0.1"] = <"98FBFB7EE8D7295C4A35E802E44A8705">
+		["references"] = <"1.  Stiell IG, Clement CM, Brison RJ, Rowe BH, Borgundvaag B, Aaron SD, Lang E, Calder LA, Perry JJ, Forster AJ, Wells GA. A risk scoring system to identify emergency department patients with heart failure at high risk for serious adverse events. Acad Emerg Med. 2013 Jan;20(1):17-26. doi: 10.1111/acem.12056. PMID: 23570474.
+2. Stiell IG, Perry JJ, Clement CM, Brison RJ, Rowe BH, Aaron SD, McRae AD, Borgundvaag B, Calder LA, Forster AJ, Wells GA. Prospective and Explicit Clinical Validation of the Ottawa Heart Failure Risk Scale, With and Without Use of Quantitative NT-proBNP. Acad Emerg Med. 2017 Mar;24(3):316-327. doi: 10.1111/acem.13141. PMID: 27976497.">
+		["MD5-CAM-1.0.1"] = <"3E24B709A5EC32BFFC97ABF592FB7AE6">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Ohfrs
+	OBSERVATION[at0000] matches {	-- Ottawa heart failure risk scale
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
@@ -184,24 +126,6 @@ definition
 											DV_COUNT matches {*}
 										}
 									}
-									ELEMENT[at0038] occurrences matches {0..1} matches {	-- Risk of serious adverse event (death, MI, need for ICU/intubation)
-										value matches {
-											DV_TEXT matches {*}
-										}
-									}
-									ELEMENT[at0039] occurrences matches {0..1} matches {	-- Category
-										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0040, 	-- Low risk and consider discharge with close follow up and return precautions if no other concerning findings
-													at0041, 	-- Medium risk and may consider discharge based on patient factors
-													at0042, 	-- High risk and Not safe for discharge by OHFRS
-													at0043]	-- Very high risk and not safe for discharge by OHFRS
-												}
-											}
-										}
-									}
 								}
 							}
 						}
@@ -216,8 +140,8 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Ohfrs">
-					description = <"Ottawa Heart Failure Risk Scale (OHFRS)">
+					text = <"Ottawa heart failure risk scale">
+					description = <"Ottawa heart failure risk scale (OHFRS) identifies ED patients with heart failure at high risk for serious adverse events.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -365,30 +289,6 @@ ontology
 				>
 				["at0037"] = <
 					text = <"Total score">
-					description = <"*">
-				>
-				["at0038"] = <
-					text = <"Risk of serious adverse event (death, MI, need for ICU/intubation)">
-					description = <"*">
-				>
-				["at0039"] = <
-					text = <"Category">
-					description = <"*">
-				>
-				["at0040"] = <
-					text = <"Low risk and consider discharge with close follow up and return precautions if no other concerning findings">
-					description = <"*">
-				>
-				["at0041"] = <
-					text = <"Medium risk and may consider discharge based on patient factors">
-					description = <"*">
-				>
-				["at0042"] = <
-					text = <"High risk and Not safe for discharge by OHFRS">
-					description = <"*">
-				>
-				["at0043"] = <
-					text = <"Very high risk and not safe for discharge by OHFRS">
 					description = <"*">
 				>
 			>
