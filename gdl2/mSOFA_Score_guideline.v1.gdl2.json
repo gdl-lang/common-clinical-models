@@ -9,7 +9,7 @@
     "original_author": {
       "date": "2020-12-15",
       "name": "Maryam Razavi",
-      "organisation": "CambioCDS",
+      "organisation": "Cambio CDS",
       "email": "maryam.razavi@cambio.se"
     },
     "lifecycle_state": "Author draft",
@@ -17,8 +17,17 @@
       "en": {
         "id": "en",
         "purpose": "To determine level of organ dysfunction and mortality risk in ICU patients.\n",
+        "keywords": [
+          "ICU",
+          "intensive",
+          "care",
+          "unit",
+          "mortality",
+          "organ",
+          "failure"
+        ],
         "use": "Can be used on all patients admitted to an intensive care unit.\nmSOFA score formula: Addition of the selected points:\nVariables and assigned points:\nRespiratory:                                                                           Points\nSpO₂/FiO₂ (see table below for              >400                        0\n estimating FiO₂ from oxygen                >315 to ≤400          1\n flow/delivery rates)                                 >235 to ≤315          2\n                                                                    >150 to ≤235          3\n                                                                     ≤150                       4\n\nLiver: \nScleral icterus or jaundice present          No                           0\n                                                                     Yes                           3\n\nCardiovascular\n                                                                      No hypotension    0  \n \n                                                                      MAP <70 mmHg   1\n\nHypotension                                               DOPamine ≤5 or    2\n                                                                      DOBUTamine \n                                                                      (any dose)\n\n                                                                      DOPamine >5,        3\n                                                                      EPINEPHrine ≤0.1, \n                                                                      or norEPINEPHrine ≤0.1\n\n                                                                      DOPamine >15,       4\n                                                                      EPINEPHrine >0.1, \n                                                                      or norEPINEPHrine >0.1\nCNS\n\nGCS                                                               15                                 0\n                                                                       13-14                           1\n\t                                                    10-12                            2\n                                                                        6-9                               3\n\t\t                                   <6                                4\nRenal\n                                                                         <1.2                              0\n                                                                          1.2-1.9                         1\nCreatinine, mg/dL                                          2.0-3.4                         2\n                                                                           3.5-4.9                         3\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t>5.0                             4\nInterpretation:\nmSOFA Score 0-7= 4% 30-day mortality\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\nmSOFA Score 8-11= 31% 30-day mortality\t\nmSOFA Score >11= 58% 30-day mortality\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t   \n                                                                 ",
-        "copyright": "@CambioCDS"
+        "copyright": "Cambio CDS"
       }
     },
     "other_details": {
@@ -52,10 +61,6 @@
           "gt0007": {
             "id": "gt0007",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0029]/items[at0030]"
-          },
-          "gt0008": {
-            "id": "gt0008",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0036]"
           }
         }
       },
@@ -68,10 +73,18 @@
           "gt0010": {
             "id": "gt0010",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0041]"
-          },
-          "gt0011": {
-            "id": "gt0011",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0042]"
+          }
+        }
+      },
+      "gt0016": {
+        "id": "gt0016",
+        "model_id": "openEHR-EHR-EVALUATION.msofa_assessment.v0",
+        "template_id": "openEHR-EHR-EVALUATION.msofa_assessment.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0017": {
+            "id": "gt0017",
+            "path": "/data[at0001]/items[at0002]"
           }
         }
       }
@@ -85,42 +98,42 @@
           "$gt0004|Scleral icterus or jaundice present|!=null",
           "$gt0005|Hypotension|!=null",
           "$gt0006|Glasgow Coma Scale|!=null",
-          "$gt0007|Creatinine, mg/dL|!=null"
+          "$gt0007|Creatinine (mg/dL)|!=null"
         ],
         "then": [
-          "$gt0010|mSOFA Score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value"
+          "$gt0010|Total score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value"
         ]
       },
       "gt0013": {
         "id": "gt0013",
         "priority": 3,
         "when": [
-          "$gt0010|mSOFA Score|>=0",
-          "$gt0010|mSOFA Score|<8"
+          "$gt0010|Total score|>=0",
+          "$gt0010|Total score|<8"
         ],
         "then": [
-          "$gt0011|30-day mortality|=local::at0043|4%|"
+          "$gt0017|30-day mortality|=local::at0003|4%|"
         ]
       },
       "gt0014": {
         "id": "gt0014",
         "priority": 2,
         "when": [
-          "$gt0010|mSOFA Score|>=8",
-          "$gt0010|mSOFA Score|<=11"
+          "$gt0010|Total score|>=8",
+          "$gt0010|Total score|<=11"
         ],
         "then": [
-          "$gt0011|30-day mortality|=local::at0044|31%|"
+          "$gt0017|30-day mortality|=local::at0004|31%|"
         ]
       },
       "gt0015": {
         "id": "gt0015",
         "priority": 1,
         "when": [
-          "$gt0010|mSOFA Score|>11"
+          "$gt0010|Total score|>11"
         ],
         "then": [
-          "$gt0011|30-day mortality|=local::at0045|58%|"
+          "$gt0017|30-day mortality|=local::at0005|58%|"
         ]
       }
     }
@@ -157,22 +170,12 @@
           },
           "gt0007": {
             "id": "gt0007",
-            "text": "Creatinine, mg/dL",
+            "text": "Creatinine (mg/dL)",
             "description": "*"
-          },
-          "gt0008": {
-            "id": "gt0008",
-            "text": "Is this a COVID-19 patient?",
-            "description": "For research purposes only; answer does NOT impact results."
           },
           "gt0010": {
             "id": "gt0010",
-            "text": "mSOFA Score",
-            "description": "*"
-          },
-          "gt0011": {
-            "id": "gt0011",
-            "text": "30-day mortality",
+            "text": "Total score",
             "description": "*"
           },
           "gt0012": {
@@ -190,6 +193,11 @@
           "gt0015": {
             "id": "gt0015",
             "text": "Interpretation to score>11"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "30-day mortality",
+            "description": "*"
           }
         }
       }

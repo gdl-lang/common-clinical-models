@@ -9,75 +9,28 @@ description
 	original_author = <
 		["name"] = <"Maryam Razavi">
 		["email"] = <"maryam.razavi@cambio.se">
-		["organisation"] = <"CambioCDS">
+		["organisation"] = <"Cambio CDS">
 		["date"] = <"2020-12-15">
 	>
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record information regarding the assessment of the mSOFA Score as well as the interpretation of the assessment.
-
+			purpose = <"To record information regarding the assessment of the msofa score.
 ">
-			use = <"Use to record the value for each component for the mSOFA score, their total sum, and interpretations. 
-mSOFA score formula: Addition of the selected points:
-Variables and assigned points:
-Respiratory:                                                                           Points
-SpO₂/FiO₂ (see table below for              >400                        0
- estimating FiO₂ from oxygen                >315 to ≤400          1
- flow/delivery rates)                                 >235 to ≤315          2
-                                                                    >150 to ≤235          3
-                                                                     ≤150                       4
-
-Liver: 
-Scleral icterus or jaundice present          No                           0
-                                                                     Yes                           3
-
-Cardiovascular
-                                                                      No hypotension    0  
- 
-                                                                      MAP <70 mmHg   1
-
-Hypotension                                               DOPamine ≤5 or    2
-                                                                      DOBUTamine 
-                                                                      (any dose)
-
-                                                                      DOPamine >5,        3
-                                                                      EPINEPHrine ≤0.1, 
-                                                                      or norEPINEPHrine ≤0.1
-
-                                                                      DOPamine >15,       4
-                                                                      EPINEPHrine >0.1, 
-                                                                      or norEPINEPHrine >0.1
-CNS
-
-GCS                                                               15                                 0
-                                                                       13-14                           1
-	                                                    10-12                            2
-                                                                        6-9                               3
-		                                   <6                                4
-Renal
-                                                                         <1.2                              0
-                                                                          1.2-1.9                         1
-Creatinine, mg/dL                                          2.0-3.4                         2
-                                                                           3.5-4.9                         3
-																	>5.0                             4
-Interpretation:
-mSOFA Score 0-7= 4% 30-day mortality																	
-mSOFA Score 8-11= 31% 30-day mortality	
-mSOFA Score >11= 58% 30-day mortality	
-															   
-                                                                 ">
-			keywords = <"Organ Failure", "ICU", " mortality">
+			use = <"Use to record information regarding the assessment of the msofa score.
+">
+			keywords = <"ICU", "organ", "failure", "mortality", "intensive", "care", "unit">
 			misuse = <"">
-			copyright = <"@CambioCDS">
+			copyright = <"Cambio CDS">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Grissom CK, Brown SM, Kuttler KG, et al. A modified sequential organ failure assessment score for critical care triage. Disaster Med Public Health Prep. 2010;4(4):277-84.
-2. Rahmatinejad Z, Reihani H, Tohidinezhad F, et al. Predictive performance of the SOFA and mSOFA scoring systems for predicting in-hospital mortality in the emergency department. Am J Emerg Med. 2019;37(7):1237-1241.">
-		["MD5-CAM-1.0.1"] = <"577884E3B46B9DAE6AE959BF80B759F6">
+		["references"] = <"1. Grissom CK, Brown SM, Kuttler KG, Boltax JP, Jones J, Jephson AR, Orme JF Jr. A modified sequential organ failure assessment score for critical care triage. Disaster Med Public Health Prep. 2010 Dec;4(4):277-84. doi: 10.1001/dmp.2010.40. PMID: 21149228; PMCID: PMC3811929.
+2. Rahmatinejad Z, Reihani H, Tohidinezhad F, Rahmatinejad F, Peyravi S, Pourmand A, Abu-Hanna A, Eslami S. Predictive performance of the SOFA and mSOFA scoring systems for predicting in-hospital mortality in the emergency department. Am J Emerg Med. 2019 Jul;37(7):1237-1241. doi: 10.1016/j.ajem.2018.09.011. Epub 2018 Sep 5. PMID: 30213476.">
+		["MD5-CAM-1.0.1"] = <"99911DF1D8D4AA6FE598C7EE36508ADF">
+		["current_contact"] = <"maryam.razavi@cambio.se">
 	>
 
 definition
@@ -118,9 +71,9 @@ definition
 												value matches {
 													0|[local::at0017], 	-- No hypotension
 													1|[local::at0018], 	-- MAP <70 mmHg
-													2|[local::at0019], 	-- DOPamine ≤5 or DOBUTamine (any dose)
-													3|[local::at0020], 	-- DOPamine >5, EPINEPHrine ≤0.1, or norEPINEPHrine ≤0.1
-													4|[local::at0021]  	-- DOPamine >15, EPINEPHrine >0.1, or norEPINEPHrine >0.1
+													2|[local::at0019], 	-- Dopamine ≤5 or dobutamine (any dose)
+													3|[local::at0020], 	-- Dopamine >5, epnephrine ≤0.1, or norepinephrine ≤0.1
+													4|[local::at0021]  	-- Dopamine >15, epinephrine >0.1, or norepinephrine >0.1
 												}
 											}
 										}
@@ -140,7 +93,7 @@ definition
 									}
 									CLUSTER[at0029] occurrences matches {0..1} matches {	-- Renal
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0030] occurrences matches {0..1} matches {	-- Creatinine, mg/dL
+											ELEMENT[at0030] occurrences matches {0..1} matches {	-- Creatinine (mg/dL)
 												value matches {
 													0|[local::at0031], 	-- <1.2
 													1|[local::at0032], 	-- 1.2-1.9
@@ -151,33 +104,10 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0036] occurrences matches {0..1} matches {	-- Is this a COVID-19 patient?
+									ELEMENT[at0041] occurrences matches {0..1} matches {	--  Total score
 										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0037, 	-- Confirmed positive
-													at0038, 	-- Suspected
-													at0039, 	-- Unlikely
-													at0040]	-- Confirmed negative
-												}
-											}
-										}
-									}
-									ELEMENT[at0041] occurrences matches {0..1} matches {	-- mSOFA Score
-										value matches {
-											DV_COUNT matches {*}
-										}
-									}
-									ELEMENT[at0042] occurrences matches {0..1} matches {	-- 30-day mortality
-										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0043, 	-- 4%
-													at0044, 	-- 31%
-													at0045]	-- 58%
-												}
+											DV_COUNT matches {
+												magnitude matches {|<=0|}
 											}
 										}
 									}
@@ -196,7 +126,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Msofa score">
-					description = <"Modified Sequential Organ Failure Assessment (mSOFA) Score">
+					description = <"Modified sequential organ failure assessment (mSOFA) score predicts ICU mortality.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -271,15 +201,15 @@ ontology
 					description = <"*">
 				>
 				["at0019"] = <
-					text = <"DOPamine ≤5 or DOBUTamine (any dose)">
+					text = <"Dopamine ≤5 or dobutamine (any dose)">
 					description = <"*">
 				>
 				["at0020"] = <
-					text = <"DOPamine >5, EPINEPHrine ≤0.1, or norEPINEPHrine ≤0.1">
+					text = <"Dopamine >5, epnephrine ≤0.1, or norepinephrine ≤0.1">
 					description = <"*">
 				>
 				["at0021"] = <
-					text = <"DOPamine >15, EPINEPHrine >0.1, or norEPINEPHrine >0.1">
+					text = <"Dopamine >15, epinephrine >0.1, or norepinephrine >0.1">
 					description = <"*">
 				>
 				["at0022"] = <
@@ -315,7 +245,7 @@ ontology
 					description = <"*">
 				>
 				["at0030"] = <
-					text = <"Creatinine, mg/dL">
+					text = <"Creatinine (mg/dL)">
 					description = <"*">
 				>
 				["at0031"] = <
@@ -338,44 +268,8 @@ ontology
 					text = <">5.0">
 					description = <"*">
 				>
-				["at0036"] = <
-					text = <"Is this a COVID-19 patient?">
-					description = <"For research purposes only; answer does NOT impact results.">
-				>
-				["at0037"] = <
-					text = <"Confirmed positive">
-					description = <"*">
-				>
-				["at0038"] = <
-					text = <"Suspected">
-					description = <"*">
-				>
-				["at0039"] = <
-					text = <"Unlikely">
-					description = <"*">
-				>
-				["at0040"] = <
-					text = <"Confirmed negative">
-					description = <"*">
-				>
 				["at0041"] = <
-					text = <"mSOFA Score">
-					description = <"*">
-				>
-				["at0042"] = <
-					text = <"30-day mortality">
-					description = <"*">
-				>
-				["at0043"] = <
-					text = <"4%">
-					description = <"*">
-				>
-				["at0044"] = <
-					text = <"31%">
-					description = <"*">
-				>
-				["at0045"] = <
-					text = <"58%">
+					text = <" Total score">
 					description = <"*">
 				>
 			>
