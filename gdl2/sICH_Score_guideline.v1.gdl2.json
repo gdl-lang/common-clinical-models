@@ -9,7 +9,7 @@
     "original_author": {
       "date": "2020-12-15",
       "name": "Maryam Razavi",
-      "organisation": "CambioCDS",
+      "organisation": "Cambio CDS",
       "email": "maryam.razavi@cambio.se"
     },
     "lifecycle_state": "Author draft",
@@ -18,18 +18,20 @@
         "id": "en",
         "purpose": "To Quantify likelihood of underlying vascular etiology.",
         "keywords": [
-          "Intracerebral ",
-          "Hemorrhage ",
+          "intracerebral ",
+          "hemorrhage ",
           "hypertension ",
-          "coagulation"
+          "coagulation",
+          "ICH",
+          "vascular"
         ],
         "use": "Use in patients with ICH who have had non-contrast CT (NCCT).\nsICH score formula\n - Addition of the selected points:\n\nVariables and assigned points:\n \n- Probability by NCCT Categorization: Low=0, Indeterminate=1, High=2\n- Age: >71 years=0, 46-70 years=1, 18-45 years=2\n- Sex: Male=0, Female=1\n- Absence of both hypertension AND impaired coagulation: No=0, Yes=1\n\nInterpretation:\nsICH Score 0= 0% Positive CTA\nsICH Score 1= 1.5% Positive CTA\nsICH Score 2 = 4.4% Positive CTA\nsICH Score 3 = 20% Positive CTA\nsICH Score 4= 38.1% Positive CTA\nsICH Score 5= 80% Positive CTA\nsICH Score 6= 100% Positive CTA",
-        "misuse": "Should not be used for patients with any of the following:\n- Subarachnoid hemorrhage in the basal cisterns.\n- Clear-cut, pre-established acute ischemic infarct with secondary hemorrhage within the area of infarct.\n- Known intracranial vascular abnormality or mass lesion.\n- Known probable cerebral amyloid angiopathy per Boston criteria.",
-        "copyright": "@CambioCDS"
+        "misuse": "No to be used for patients with any of the following:\n- Subarachnoid hemorrhage in the basal cisterns.\n- Clear-cut, pre-established acute ischemic infarct with secondary hemorrhage within the area of infarct.\n- Known intracranial vascular abnormality or mass lesion.\n- Known probable cerebral amyloid angiopathy per Boston criteria.",
+        "copyright": "Cambio CDS"
       }
     },
     "other_details": {
-      "references": "1. Almandoz JED, Schaefer PW, Goldstein JN, et al. Practical Scoring System for the Identification of Patients with Intracerebral Hemorrhage at Highest Risk of Harboring an Underlying Vascular Etiology: The Secondary Intracerebral Hemorrhage Score. AJNR American journal of neuroradiology. 2010;31(9):1653-1660. doi:10.3174/ajnr.A2156.\n2. Delgado Almandoz JE, Jagadeesan BD, Moran CJ, Cross DT 3rd, Zipfel GJ, Lee JM, Romero JM, Derdeyn CP. Independent validation of the secondary intracerebral hemorrhage score with catheter angiography and findings of emergent hematoma evacuation. Neurosurgery. 2012 Jan;70(1):131-40; discussion 140. doi: 10.1227/NEU.0b013e31822fbf43.\n3. van Asch CJ, Velthuis BK, Greving JP, van Laar PJ, Rinkel GJ, Algra A, Klijn CJ. External validation of the secondary intracerebral hemorrhage score in The Netherlands. Stroke. 2013 Oct;44(10):2904-6. doi: 10.1161/STROKEAHA.113.002386. Epub 2013 Aug 6."
+      "references": "1. Delgado Almandoz JE, Schaefer PW, Goldstein JN, Rosand J, Lev MH, González RG, Romero JM. Practical scoring system for the identification of patients with intracerebral hemorrhage at highest risk of harboring an underlying vascular etiology: the Secondary Intracerebral Hemorrhage Score. AJNR Am J Neuroradiol. 2010 Oct;31(9):1653-60. doi: 10.3174/ajnr.A2156. Epub 2010 Jun 25. PMID: 20581068; PMCID: PMC3682824.\n2. Delgado Almandoz JE, Jagadeesan BD, Moran CJ, Cross DT 3rd, Zipfel GJ, Lee JM, Romero JM, Derdeyn CP. Independent validation of the secondary intracerebral hemorrhage score with catheter angiography and findings of emergent hematoma evacuation. Neurosurgery. 2012 Jan;70(1):131-40; discussion 140. doi: 10.1227/NEU.0b013e31822fbf43. PMID: 21808219.\n3. van Asch CJ, Velthuis BK, Greving JP, van Laar PJ, Rinkel GJ, Algra A, Klijn CJ. External validation of the secondary intracerebral hemorrhage score in The Netherlands. Stroke. 2013 Oct;44(10):2904-6. doi: 10.1161/STROKEAHA.113.002386. Epub 2013 Aug 6. PMID: 23920015."
     }
   },
   "definition": {
@@ -67,10 +69,18 @@
           "gt0008": {
             "id": "gt0008",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0018]"
-          },
-          "gt0009": {
-            "id": "gt0009",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0019]"
+          }
+        }
+      },
+      "gt0020": {
+        "id": "gt0020",
+        "model_id": "openEHR-EHR-EVALUATION.sich_assessment.v0",
+        "template_id": "openEHR-EHR-EVALUATION.sich_assessment.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0021": {
+            "id": "gt0021",
+            "path": "/data[at0001]/items[at0002]"
           }
         }
       }
@@ -96,7 +106,7 @@
           "$gt0008|sICH Score|==0"
         ],
         "then": [
-          "$gt0009|% Positive CTA|=local::at0020|0|"
+          "$gt0021|% Positive CTA|='0'"
         ]
       },
       "gt0012": {
@@ -106,7 +116,7 @@
           "$gt0008|sICH Score|==1"
         ],
         "then": [
-          "$gt0009|% Positive CTA|=local::at0021|1.5|"
+          "$gt0021|% Positive CTA|='1.5'"
         ]
       },
       "gt0013": {
@@ -116,7 +126,7 @@
           "$gt0008|sICH Score|==2"
         ],
         "then": [
-          "$gt0009|% Positive CTA|=local::at0022|4.4|"
+          "$gt0021|% Positive CTA|='4.4'"
         ]
       },
       "gt0014": {
@@ -126,7 +136,7 @@
           "$gt0008|sICH Score|==3"
         ],
         "then": [
-          "$gt0009|% Positive CTA|=local::at0023|20|"
+          "$gt0021|% Positive CTA|='20'"
         ]
       },
       "gt0015": {
@@ -136,7 +146,7 @@
           "$gt0008|sICH Score|==4"
         ],
         "then": [
-          "$gt0009|% Positive CTA|=local::at0024|38.1|"
+          "$gt0021|% Positive CTA|='38.1'"
         ]
       },
       "gt0016": {
@@ -146,7 +156,7 @@
           "$gt0008|sICH Score|==5"
         ],
         "then": [
-          "$gt0009|% Positive CTA|=local::at0025|80|"
+          "$gt0021|% Positive CTA|='80'"
         ]
       },
       "gt0017": {
@@ -156,7 +166,7 @@
           "$gt0008|sICH Score|==6"
         ],
         "then": [
-          "$gt0009|% Positive CTA|=local::at0026|100|"
+          "$gt0021|% Positive CTA|='100'"
         ]
       }
     }
@@ -196,11 +206,6 @@
             "text": "sICH Score",
             "description": "*"
           },
-          "gt0009": {
-            "id": "gt0009",
-            "text": "% Positive CTA",
-            "description": "*"
-          },
           "gt0010": {
             "id": "gt0010",
             "text": "sICH Score"
@@ -232,6 +237,11 @@
           "gt0017": {
             "id": "gt0017",
             "text": "6 sICH Score to % Positive CTA"
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "% Positive CTA",
+            "description": "% Positive CTA"
           }
         }
       }
