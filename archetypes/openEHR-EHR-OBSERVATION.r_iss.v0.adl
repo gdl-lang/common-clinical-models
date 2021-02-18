@@ -2,14 +2,14 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.r_iss.v0
 
 concept
-	[at0000]	-- R iss
+	[at0000]	-- Revised multiple myeloma international staging system (R-ISS)
 language
 	original_language = <[ISO_639-1::en]>
 description
 	original_author = <
 		["name"] = <"Maryam Razavi">
 		["email"] = <"maryam.razavi@cambio.se">
-		["organisation"] = <"CambioCDS">
+		["organisation"] = <"Cambio CDS">
 		["date"] = <"2020-12-22">
 	>
 	details = <
@@ -17,54 +17,23 @@ description
 			language = <[ISO_639-1::en]>
 			purpose = <"To record the stages of R-ISS and its variables. ">
 			use = <"Use to record the stages of R-ISS and its variables in patients recently diagnosed with multiple myeloma. 
-
-Formula: 
-1. Assign ISS stage:
-
-                                                                                                      Serum albumin, g/dL
-                                                                                                  ≥3.5                              <3.5
-Serum β2 microglobulin, mg/L  <3.5                                    ISS I                              ISS II
-                                                         3.5-5.4                                ISS II                             ISS II
-                                                         ≥5.5                                    ISS III                           ISS III
-
-
-2. Stage R-ISS according to iFISH and LDH:
-
-                                                                            High-risk cytogenetic abnormalities by iFISH*              LDH
-                                                                                No                                    Yes                                        Normal/High
-
-ISS I                                                                         R-ISS I                              R-ISS II                                   Normal
-                                                                                R-ISS II                             R-ISS II                                    High
-
-ISS II                                                                         R-ISS II                             R-ISS II                                    Normal
-                                                                                 R-ISS II                             R-ISS II                                    High
-
-ISS III                                                                        R-ISS II                             R-ISS III                                   Normal
-                                                                                 R-ISS III                            R-ISS III                                   High
-
-*High-risk = presence of del(17p) and/or translocation t(4;14) and/or translocation t(14;16).                                   
-R-ISS interpretation:
-R-ISS Stage               Median progression-free survival
-I                                  66 months
-II                                 42 months
-III                                29 months
-
 ">
-			keywords = <"Multiple Myeloma", "International Staging System", " revised International Staging System (R-ISS) ", "albumin", "iFISH", "LDH">
-			misuse = <"Not to use in patients with relapsed myeloma, smoldering myeloma or MGUS.">
+			keywords = <"albumin", "iFISH", "LDH", "multiple ", "myeloma ", "revised ", "staging", "system">
+			misuse = <"Not to be used in patients with relapsed myeloma, smoldering myeloma or MGUS.">
 			copyright = <"@CambioCDS">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Palumbo A, et. al. Revised International Staging System for Multiple Myeloma: a Report From International Myeloma Working Group. JCO 2015; 33: 2863-2869.
-">
-		["MD5-CAM-1.0.1"] = <"50C5ECEF65BAA1CF74F390F91C13B2D7">
+		["references"] = <"1. Palumbo A, Avet-Loiseau H, Oliva S, Lokhorst HM, Goldschmidt H, Rosinol L, Richardson P, Caltagirone S, Lahuerta JJ, Facon T, Bringhen S, Gay F, Attal M, Passera R, Spencer A, Offidani M, Kumar S, Musto P, Lonial S, Petrucci MT, Orlowski RZ, Zamagni E, Morgan G, Dimopoulos MA, Durie BG, Anderson KC, Sonneveld P, San Miguel J, Cavo M, Rajkumar SV, Moreau P. Revised International Staging System for Multiple Myeloma: A Report From International Myeloma Working Group. J Clin Oncol. 2015 Sep 10;33(26):2863-9. doi: 10.1200/JCO.2015.61.2267. Epub 2015 Aug 3. PMID: 26240224; PMCID: PMC4846284.
+2. Greipp PR, San Miguel J, Durie BG, Crowley JJ, Barlogie B, Bladé J, Boccadoro M, Child JA, Avet-Loiseau H, Kyle RA, Lahuerta JJ, Ludwig H, Morgan G, Powles R, Shimizu K, Shustik C, Sonneveld P, Tosi P, Turesson I, Westin J. International staging system for multiple myeloma. J Clin Oncol. 2005 May 20;23(15):3412-20. doi: 10.1200/JCO.2005.04.242. Epub 2005 Apr 4. Erratum in: J Clin Oncol. 2005 Sep 1;23(25):6281. Harousseau, Jean-Luc [corrected to Avet-Loiseau, Herve]. PMID: 15809451.">
+		["MD5-CAM-1.0.1"] = <"364F32ABB001CBEC25A2CA75E27565EC">
+		["current_contact"] = <"maryam.razavi@cambio.se">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- R iss
+	OBSERVATION[at0000] matches {	-- Revised multiple myeloma international staging system (R-ISS)
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
@@ -143,14 +112,7 @@ definition
 									}
 									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Median progression-free survival
 										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0022, 	-- 29 months median progression-free survival
-													at0023, 	-- 42 months median progression-free survival
-													at0024]	-- 66 months median progression-free survival
-												}
-											}
+											DV_TEXT matches {*}
 										}
 									}
 								}
@@ -167,8 +129,8 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"R iss">
-					description = <"Revised Multiple Myeloma International Staging System (R-ISS) prognostication tool for myeloma patients based on the genetics and other routinely used lab values in conjunction with the original ISS Staging System.">
+					text = <"Revised multiple myeloma international staging system (R-ISS)">
+					description = <"Revised multiple myeloma international staging system (R-ISS) prognostication tool for myeloma patients based on the genetics and other routinely used lab values in conjunction with the original ISS Staging System.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -204,18 +166,6 @@ ontology
 				>
 				["at0021"] = <
 					text = <"Median progression-free survival">
-					description = <"*">
-				>
-				["at0022"] = <
-					text = <"29 months median progression-free survival">
-					description = <"*">
-				>
-				["at0023"] = <
-					text = <"42 months median progression-free survival">
-					description = <"*">
-				>
-				["at0024"] = <
-					text = <"66 months median progression-free survival">
 					description = <"*">
 				>
 				["at0028"] = <
