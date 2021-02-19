@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.msofa_score.v0
 
 concept
-	[at0000]	-- Msofa score
+	[at0000]	-- Modified Sequential Organ Failure Assessment [mSOFA] score
 language
 	original_language = <[ISO_639-1::en]>
 description
@@ -15,10 +15,8 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record information regarding the assessment of the msofa score.
-">
-			use = <"Use to record information regarding the assessment of the msofa score.
-">
+			purpose = <"To record the results for each component parameter and their total sum for the mSOFA score.">
+			use = <"Use to record the results for each component parameter and their total sum for the mSOFA score.">
 			keywords = <"ICU", "organ", "failure", "mortality", "intensive", "care", "unit">
 			misuse = <"">
 			copyright = <"Cambio CDS">
@@ -29,12 +27,12 @@ description
 	other_details = <
 		["references"] = <"1. Grissom CK, Brown SM, Kuttler KG, Boltax JP, Jones J, Jephson AR, Orme JF Jr. A modified sequential organ failure assessment score for critical care triage. Disaster Med Public Health Prep. 2010 Dec;4(4):277-84. doi: 10.1001/dmp.2010.40. PMID: 21149228; PMCID: PMC3811929.
 2. Rahmatinejad Z, Reihani H, Tohidinezhad F, Rahmatinejad F, Peyravi S, Pourmand A, Abu-Hanna A, Eslami S. Predictive performance of the SOFA and mSOFA scoring systems for predicting in-hospital mortality in the emergency department. Am J Emerg Med. 2019 Jul;37(7):1237-1241. doi: 10.1016/j.ajem.2018.09.011. Epub 2018 Sep 5. PMID: 30213476.">
-		["MD5-CAM-1.0.1"] = <"99911DF1D8D4AA6FE598C7EE36508ADF">
 		["current_contact"] = <"maryam.razavi@cambio.se">
+		["MD5-CAM-1.0.1"] = <"84C204497C32D10CB7BF381B115AFF4E">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Msofa score
+	OBSERVATION[at0000] matches {	-- Modified Sequential Organ Failure Assessment [mSOFA] score
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
@@ -107,7 +105,7 @@ definition
 									ELEMENT[at0041] occurrences matches {0..1} matches {	--  Total score
 										value matches {
 											DV_COUNT matches {
-												magnitude matches {|<=0|}
+												magnitude matches {|0..19|}
 											}
 										}
 									}
@@ -125,8 +123,8 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Msofa score">
-					description = <"Modified sequential organ failure assessment (mSOFA) score predicts ICU mortality.">
+					text = <"Modified Sequential Organ Failure Assessment [mSOFA] score">
+					description = <"An assessment score used to predict ICU mortality.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
