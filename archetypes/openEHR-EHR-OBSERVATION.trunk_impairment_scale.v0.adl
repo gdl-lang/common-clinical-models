@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.trunk_impairment_scale.v0
 
 concept
-	[at0000]	-- Trunk impairment scale
+	[at0000]	-- Trunk Impairment Scale
 language
 	original_language = <[ISO_639-1::en]>
 description
@@ -15,8 +15,8 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To evaluate trunk stability in patients with neurological deficits.">
-			use = <"Use to evaluate trunk stability in patients with neurological deficits.
+			purpose = <"To record the results for each component parameter and their total sum for the TIP score.">
+			use = <"Use to To record the results for each component parameter and their total sum for the TIP score.
 
 The Trunk Stability Score is calculated based on evaluation of 3 areas: static sitting balance, dynamic sitting balance and sitting coordination.
 
@@ -30,21 +30,23 @@ Healthy individuals should achieve a perfect score of 23.
 The Trunk Impairment Scale has been shown to exhibit sufficient reliability, internal consistency and validity for use in clinical practice and
 stroke research.
       ">
-			keywords = <"TIP", "trunk impairment scale", "stroke", "parkinson's disease">
+			keywords = <"TIP", "trunk", "impairment", "scale", "stroke", "parkinson's">
 			misuse = <"">
-			copyright = <"@CambioCDS">
+			copyright = <"CambioCDS">
 		>
 	>
-	lifecycle_state = <"0">
+	lifecycle_state = <"Initial">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Verheyden, G, Mertin, J, Preger, et al.  (2004). The Trunk Impairment Scale: A new tool to measure motor impairment of the trunk after stroke. Clinical Rehabilitation, 18, 326–334.">
+		["references"] = <"1. Verheyden G, Nieuwboer A, Mertin J, Preger R, Kiekens C, De Weerdt W. The Trunk Impairment Scale: a new tool to measure motor impairment of the trunk after stroke. Clin Rehabil. 2004 May;18(3):326-34.
+2. Verheyden G, Willems AM, Ooms L, Nieuwboer A. Validity of the trunk impairment scale as a measure of trunk performance in people with Parkinson's disease. Arch Phys Med Rehabil. 2007 Oct;88(10):1304-8.
+    ">
 		["current_contact"] = <"Gustaf Hultgren, Cambio CDS<gustaf.hultgren@cambio.se>">
-		["MD5-CAM-1.0.1"] = <"B53076FD037947555CF2E6E2242DACFF">
+		["MD5-CAM-1.0.1"] = <"7BFED7D316CC132ABCB7AE39708A4483">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Trunk impairment scale
+	OBSERVATION[at0000] matches {	-- Trunk Impairment Scale
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
@@ -172,22 +174,30 @@ definition
 									}
 									ELEMENT[at0028] occurrences matches {0..1} matches {	-- Static Balance Score
 										value matches {
-											DV_COUNT matches {*}
+											DV_COUNT matches {
+												magnitude matches {|0..7|}
+											}
 										}
 									}
 									ELEMENT[at0029] occurrences matches {0..1} matches {	-- Dynamic Balance Score
 										value matches {
-											DV_COUNT matches {*}
+											DV_COUNT matches {
+												magnitude matches {|0..10|}
+											}
 										}
 									}
 									ELEMENT[at0030] occurrences matches {0..1} matches {	-- Coordination Score
 										value matches {
-											DV_COUNT matches {*}
+											DV_COUNT matches {
+												magnitude matches {|0..6|}
+											}
 										}
 									}
 									ELEMENT[at0031] occurrences matches {0..1} matches {	-- Total Score
 										value matches {
-											DV_COUNT matches {*}
+											DV_COUNT matches {
+												magnitude matches {|0..23|}
+											}
 										}
 									}
 								}
@@ -204,7 +214,7 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Trunk impairment scale">
+					text = <"Trunk Impairment Scale">
 					description = <"Trunk Impairment Scale (TIP) evaluates trunk mobility and stability in patients with neurological deficits.">
 				>
 				["at0001"] = <
