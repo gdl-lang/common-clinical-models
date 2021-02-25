@@ -1,0 +1,121 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.pedocs.v0
+
+concept
+	[at0000]	-- Pediatric Emergency Department Overcrowding Scale (PEDOCS)
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Therese Lindberg">
+		["email"] = <"therese.lindberg@cambio.se">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2021-02-25">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the results for each component parameter and calculated PEDOCS.">
+			use = <"Use to record the results for each component parameter and calculated PEDOCS.">
+			keywords = <"PEDOCS", "overcrowding", "waiting room", "ED", "padiatric", "emergency", "department">
+			misuse = <"">
+			copyright = <"Cambio CDS">
+		>
+	>
+	lifecycle_state = <"Initial">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"1. Weiss SJ, Ernst AA, Sills MR, Quinn BJ, Johnson A, Nick TG. Development of a novel measure of overcrowding in a pediatric emergency department. Pediatr Emerg Care [Internet]. 2007 Sep [cited 2021 Feb 22];23(9):641-5. Available from: https://pubmed.ncbi.nlm.nih.gov/17876254/">
+		["current_contact"] = <"Therese Lindberg, Cambio CDS<therese.lindberg@cambio.se>">
+		["MD5-CAM-1.0.1"] = <"BA2DBD3CF67B273524BD3D3B154309D4">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Pediatric Emergency Department Overcrowding Scale (PEDOCS)
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Total patients registered
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"patients">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Number of patients in waiting room
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"patients">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- PEDOCS
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Pediatric Emergency Department Overcrowding Scale (PEDOCS)">
+					description = <"The calculated PEDOCS score for pediatric emergency department overcrowding.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Total patients registered">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Number of patients in waiting room">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"PEDOCS">
+					description = <"*">
+				>
+			>
+		>
+	>
