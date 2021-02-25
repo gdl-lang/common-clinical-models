@@ -9,8 +9,19 @@ test_cases:
       gt0005|In your lifetime, have you ever attempted to kill yourself?: local::at0014|No|
   expected_output:
     1:
-      gt0023|Suicide risk: Not positive for suicidality by ED-SAFE PSS-3
-- id: Positive for suicidality
+      gt0008|Suicide risk: Not positive for suicidality by ED-SAFE PSS-3
+      gt0011|Interpretation: Patient is presenting with
+- id: Not positive for suicidality but Depressed mood
+  input:
+    1:
+      gt0003|Over the past two weeks, have you felt down, depressed, or hopeless?: local::at0006|Yes|
+      gt0004|Over the past two weeks, have you had thoughts of killing yourself?: local::at0009|No|
+      gt0005|In your lifetime, have you ever attempted to kill yourself?: local::at0014|No|
+  expected_output:
+    1:
+      gt0008|Suicide risk: Not positive for suicidality by ED-SAFE PSS-3
+      gt0011|Interpretation: Patient is presenting with\nDepressed mood
+- id: Positive for suicidality, Active suicidal ideation
   input:
     1:
       gt0003|Over the past two weeks, have you felt down, depressed, or hopeless?: local::at0005|No|
@@ -18,29 +29,38 @@ test_cases:
       gt0005|In your lifetime, have you ever attempted to kill yourself?: local::at0014|No|
   expected_output:
     1:
-      gt0020|Suicidal ideation: Active suicidal ideation
-      gt0023|Suicide risk: Positive for suicidality by ED-SAFE PSS-3
-- id: Depressed, Active suicidal ideation, Lifetime suicide attempt
-  input:
-    1:
-      gt0003|Over the past two weeks, have you felt down, depressed, or hopeless?: local::at0006|Yes|
-      gt0004|Over the past two weeks, have you had thoughts of killing yourself?: local::at0010|Yes|
-      gt0005|In your lifetime, have you ever attempted to kill yourself?: local::at0015|Yes|
-      gt0006|When did your last attempt occur?: local::at0020|>6 months|
-  expected_output:
-    1:
-      gt0020|Suicidal ideation: Active suicidal ideation
-      gt0019|Mood: Depressed
-      gt0021|Suicide attempt: Lifetime suicide attempt
-      gt0023|Suicide risk: Positive for suicidality by ED-SAFE PSS-3
-- id: Recent suicide attempt
+      gt0008|Suicide risk: Positive for suicidality by ED-SAFE PSS-3
+      gt0011|Interpretation: Patient is presenting with\nActive suicidal ideation
+- id: Positive for suicidality, Lifetime suicide attempt
   input:
     1:
       gt0003|Over the past two weeks, have you felt down, depressed, or hopeless?: local::at0005|No|
       gt0004|Over the past two weeks, have you had thoughts of killing yourself?: local::at0009|No|
       gt0005|In your lifetime, have you ever attempted to kill yourself?: local::at0015|Yes|
-      gt0006|When did your last attempt occur?: local::at0019|Within 1-6 months|
+      gt0006|When did your last attempt occur?: local::at0020|>6 months|
   expected_output:
     1:
-      gt0021|Suicide attempt: Recent suicide attempt
-      gt0023|Suicide risk: Positive for suicidality by ED-SAFE PSS-3
+      gt0008|Suicide risk: Positive for suicidality by ED-SAFE PSS-3
+      gt0011|Interpretation: Patient is presenting with\nLifetime suicide attempt
+- id: Positive for suicidality, Recent suicide attempt
+  input:
+    1:
+      gt0003|Over the past two weeks, have you felt down, depressed, or hopeless?: local::at0005|No|
+      gt0004|Over the past two weeks, have you had thoughts of killing yourself?: local::at0009|No|
+      gt0005|In your lifetime, have you ever attempted to kill yourself?: local::at0015|Yes|
+      gt0006|When did your last attempt occur?: local::at0017|Today|
+  expected_output:
+    1:
+      gt0008|Suicide risk: Positive for suicidality by ED-SAFE PSS-3
+      gt0011|Interpretation: Patient is presenting with\nRecent suicide attempt
+- id: Depressed mood, Active suicidal ideation, Recent suicide attempt
+  input:
+    1:
+      gt0003|Over the past two weeks, have you felt down, depressed, or hopeless?: local::at0006|Yes|
+      gt0004|Over the past two weeks, have you had thoughts of killing yourself?: local::at0010|Yes|
+      gt0005|In your lifetime, have you ever attempted to kill yourself?: local::at0015|Yes|
+      gt0006|When did your last attempt occur?: local::at0017|Today|
+  expected_output:
+    1:
+      gt0008|Suicide risk: Positive for suicidality by ED-SAFE PSS-3
+      gt0011|Interpretation: Patient is presenting with\nDepressed mood\nActive suicidal ideation\nRecent suicide attempt
