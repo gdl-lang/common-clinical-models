@@ -35,63 +35,63 @@
   },
   "definition": {
     "data_bindings": {
-      "gt0002": {
-        "id": "gt0002",
-        "model_id": "openEHR-EHR-OBSERVATION.reach_b_score.v0",
-        "template_id": "openEHR-EHR-OBSERVATION.reach_b_score.v0",
-        "type": "INPUT",
-        "elements": {
-          "gt0003": {
-            "id": "gt0003",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
-          },
-          "gt0004": {
-            "id": "gt0004",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
-          },
-          "gt0005": {
-            "id": "gt0005",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0015]"
-          },
-          "gt0006": {
-            "id": "gt0006",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0019]"
-          },
-          "gt0007": {
-            "id": "gt0007",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0022]"
-          }
-        }
-      },
       "gt0008": {
         "id": "gt0008",
-        "model_id": "openEHR-EHR-OBSERVATION.reach_b_score.v0",
-        "template_id": "openEHR-EHR-OBSERVATION.reach_b_score.v0",
+        "model_id": "openEHR-EHR-OBSERVATION.reach_b.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.reach_b.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0009": {
-            "id": "gt0009",
+          "gt0045": {
+            "id": "gt0045",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0028]"
           }
         }
       },
-      "gt0031": {
-        "id": "gt0031",
-        "model_id": "openEHR-EHR-EVALUATION.reach_b_score_assessment.v0",
-        "template_id": "openEHR-EHR-EVALUATION.reach_b_score_assessment.v0",
+      "gt0035": {
+        "id": "gt0035",
+        "model_id": "openEHR-EHR-EVALUATION.reach_b_assessment.v0",
+        "template_id": "openEHR-EHR-EVALUATION.reach_b_assessment.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0032": {
-            "id": "gt0032",
+          "gt0036": {
+            "id": "gt0036",
             "path": "/data[at0001]/items[at0002]"
           },
-          "gt0033": {
-            "id": "gt0033",
+          "gt0037": {
+            "id": "gt0037",
             "path": "/data[at0001]/items[at0003]"
           },
-          "gt0034": {
-            "id": "gt0034",
+          "gt0038": {
+            "id": "gt0038",
             "path": "/data[at0001]/items[at0004]"
+          }
+        }
+      },
+      "gt0039": {
+        "id": "gt0039",
+        "model_id": "openEHR-EHR-OBSERVATION.reach_b.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.reach_b.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0040": {
+            "id": "gt0040",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          },
+          "gt0041": {
+            "id": "gt0041",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
+          },
+          "gt0042": {
+            "id": "gt0042",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0015]"
+          },
+          "gt0043": {
+            "id": "gt0043",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0019]"
+          },
+          "gt0044": {
+            "id": "gt0044",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0022]"
           }
         }
       }
@@ -101,219 +101,219 @@
         "id": "gt0013",
         "priority": 18,
         "when": [
-          "$gt0003|Sex|!=null",
-          "$gt0004|Age, years|!=null",
-          "$gt0005|ALT, U/L|!=null",
-          "$gt0006|HBeAg|!=null",
-          "$gt0007|Hepatitis B virus DNA level, copies/mL|!=null"
+          "$gt0040|Sex|!=null",
+          "$gt0041|Age (years)|!=null",
+          "$gt0042|ALT (U/L)|!=null",
+          "$gt0043|HBeAg|!=null",
+          "$gt0044|Hepatitis B virus DNA level, copies/mL|!=null"
         ],
         "then": [
-          "$gt0009|REACH-B Score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value"
+          "$gt0045|Total score|.magnitude=$gt0040.value+$gt0041.value+$gt0042.value+$gt0043.value+$gt0044.value"
         ]
       },
       "gt0014": {
         "id": "gt0014",
         "priority": 17,
         "when": [
-          "$gt0009|REACH-B Score|==0"
+          "$gt0045|Total score|==0"
         ],
         "then": [
-          "$gt0032|HCC risk 3-year|='0.0%'",
-          "$gt0033|HCC risk 5-year|='0.0%'",
-          "$gt0034|HCC risk 10-year|='0.0%'"
+          "$gt0036|HCC risk 3-year|='0.0%'",
+          "$gt0037|HCC risk 5-year|='0.0%'",
+          "$gt0038|HCC risk 10-year|='0.0%'"
         ]
       },
       "gt0015": {
         "id": "gt0015",
         "priority": 16,
         "when": [
-          "$gt0009|REACH-B Score|>=1",
-          "$gt0009|REACH-B Score|<=2"
+          "$gt0045|Total score|>=1",
+          "$gt0045|Total score|<=2"
         ],
         "then": [
-          "$gt0032|HCC risk 3-year|='0.0%'",
-          "$gt0033|HCC risk 5-year|='0.0%'",
-          "$gt0034|HCC risk 10-year|='0.1%'"
+          "$gt0036|HCC risk 3-year|='0.0%'",
+          "$gt0037|HCC risk 5-year|='0.0%'",
+          "$gt0038|HCC risk 10-year|='0.1%'"
         ]
       },
       "gt0016": {
         "id": "gt0016",
         "priority": 15,
         "when": [
-          "$gt0009|REACH-B Score|==3"
+          "$gt0045|Total score|==3"
         ],
         "then": [
-          "$gt0032|HCC risk 3-year|='0.0%'",
-          "$gt0033|HCC risk 5-year|='0.1%'",
-          "$gt0034|HCC risk 10-year|='0.2%'"
+          "$gt0036|HCC risk 3-year|='0.0%'",
+          "$gt0037|HCC risk 5-year|='0.1%'",
+          "$gt0038|HCC risk 10-year|='0.2%'"
         ]
       },
       "gt0017": {
         "id": "gt0017",
         "priority": 14,
         "when": [
-          "$gt0009|REACH-B Score|==4"
+          "$gt0045|Total score|==4"
         ],
         "then": [
-          "$gt0032|HCC risk 3-year|='0.0%'",
-          "$gt0033|HCC risk 5-year|='0.1%'",
-          "$gt0034|HCC risk 10-year|='0.3%'"
+          "$gt0036|HCC risk 3-year|='0.0%'",
+          "$gt0037|HCC risk 5-year|='0.1%'",
+          "$gt0038|HCC risk 10-year|='0.3%'"
         ]
       },
       "gt0018": {
         "id": "gt0018",
         "priority": 13,
         "when": [
-          "$gt0009|REACH-B Score|==5"
+          "$gt0045|Total score|==5"
         ],
         "then": [
-          "$gt0032|HCC risk 3-year|='0.1%'",
-          "$gt0033|HCC risk 5-year|='0.2%'",
-          "$gt0034|HCC risk 10-year|='0.5%'"
+          "$gt0036|HCC risk 3-year|='0.1%'",
+          "$gt0037|HCC risk 5-year|='0.2%'",
+          "$gt0038|HCC risk 10-year|='0.5%'"
         ]
       },
       "gt0019": {
         "id": "gt0019",
         "priority": 12,
         "when": [
-          "$gt0009|REACH-B Score|==6"
+          "$gt0045|Total score|==6"
         ],
         "then": [
-          "$gt0032|HCC risk 3-year|='0.1%'",
-          "$gt0033|HCC risk 5-year|='0.3%'",
-          "$gt0034|HCC risk 10-year|='0.7%'"
+          "$gt0036|HCC risk 3-year|='0.1%'",
+          "$gt0037|HCC risk 5-year|='0.3%'",
+          "$gt0038|HCC risk 10-year|='0.7%'"
         ]
       },
       "gt0020": {
         "id": "gt0020",
         "priority": 11,
         "when": [
-          "$gt0009|REACH-B Score|==7"
+          "$gt0045|Total score|==7"
         ],
         "then": [
-          "$gt0032|HCC risk 3-year|='0.2%'",
-          "$gt0033|HCC risk 5-year|='0.5%'",
-          "$gt0034|HCC risk 10-year|='1.2%'"
+          "$gt0036|HCC risk 3-year|='0.2%'",
+          "$gt0037|HCC risk 5-year|='0.5%'",
+          "$gt0038|HCC risk 10-year|='1.2%'"
         ]
       },
       "gt0021": {
         "id": "gt0021",
         "priority": 10,
         "when": [
-          "$gt0009|REACH-B Score|==8"
+          "$gt0045|Total score|==8"
         ],
         "then": [
-          "$gt0032|HCC risk 3-year|='0.3%'",
-          "$gt0033|HCC risk 5-year|='0.8%'",
-          "$gt0034|HCC risk 10-year|='2.0%'"
+          "$gt0036|HCC risk 3-year|='0.3%'",
+          "$gt0037|HCC risk 5-year|='0.8%'",
+          "$gt0038|HCC risk 10-year|='2.0%'"
         ]
       },
       "gt0022": {
         "id": "gt0022",
         "priority": 9,
         "when": [
-          "$gt0009|REACH-B Score|==9"
+          "$gt0045|Total score|==9"
         ],
         "then": [
-          "$gt0032|HCC risk 3-year|='0.5%'",
-          "$gt0033|HCC risk 5-year|='1.2%'",
-          "$gt0034|HCC risk 10-year|='3.2%'"
+          "$gt0036|HCC risk 3-year|='0.5%'",
+          "$gt0037|HCC risk 5-year|='1.2%'",
+          "$gt0038|HCC risk 10-year|='3.2%'"
         ]
       },
       "gt0023": {
         "id": "gt0023",
         "priority": 8,
         "when": [
-          "$gt0009|REACH-B Score|==10"
+          "$gt0045|Total score|==10"
         ],
         "then": [
-          "$gt0032|HCC risk 3-year|='0.9%'",
-          "$gt0033|HCC risk 5-year|='2.0%'",
-          "$gt0034|HCC risk 10-year|='5.2%'"
+          "$gt0036|HCC risk 3-year|='0.9%'",
+          "$gt0037|HCC risk 5-year|='2.0%'",
+          "$gt0038|HCC risk 10-year|='5.2%'"
         ]
       },
       "gt0024": {
         "id": "gt0024",
         "priority": 7,
         "when": [
-          "$gt0009|REACH-B Score|==11"
+          "$gt0045|Total score|==11"
         ],
         "then": [
-          "$gt0032|HCC risk 3-year|='1.4%'",
-          "$gt0033|HCC risk 5-year|='3.3%'",
-          "$gt0034|HCC risk 10-year|='8.4%'"
+          "$gt0036|HCC risk 3-year|='1.4%'",
+          "$gt0037|HCC risk 5-year|='3.3%'",
+          "$gt0038|HCC risk 10-year|='8.4%'"
         ]
       },
       "gt0025": {
         "id": "gt0025",
         "priority": 6,
         "when": [
-          "$gt0009|REACH-B Score|==12"
+          "$gt0045|Total score|==12"
         ],
         "then": [
-          "$gt0032|HCC risk 3-year|='2.3%'",
-          "$gt0033|HCC risk 5-year|='5.3%'",
-          "$gt0034|HCC risk 10-year|='13.4%'"
+          "$gt0036|HCC risk 3-year|='2.3%'",
+          "$gt0037|HCC risk 5-year|='5.3%'",
+          "$gt0038|HCC risk 10-year|='13.4%'"
         ]
       },
       "gt0026": {
         "id": "gt0026",
         "priority": 5,
         "when": [
-          "$gt0009|REACH-B Score|==13"
+          "$gt0045|Total score|==13"
         ],
         "then": [
-          "$gt0032|HCC risk 3-year|='3.7%'",
-          "$gt0033|HCC risk 5-year|='8.5%'",
-          "$gt0034|HCC risk 10-year|='21.0%'"
+          "$gt0036|HCC risk 3-year|='3.7%'",
+          "$gt0037|HCC risk 5-year|='8.5%'",
+          "$gt0038|HCC risk 10-year|='21.0%'"
         ]
       },
       "gt0027": {
         "id": "gt0027",
         "priority": 4,
         "when": [
-          "$gt0009|REACH-B Score|==14"
+          "$gt0045|Total score|==14"
         ],
         "then": [
-          "$gt0032|HCC risk 3-year|='6.0%'",
-          "$gt0033|HCC risk 5-year|='13.6%'",
-          "$gt0034|HCC risk 10-year|='32.0%'"
+          "$gt0036|HCC risk 3-year|='6.0%'",
+          "$gt0037|HCC risk 5-year|='13.6%'",
+          "$gt0038|HCC risk 10-year|='32.0%'"
         ]
       },
       "gt0028": {
         "id": "gt0028",
         "priority": 3,
         "when": [
-          "$gt0009|REACH-B Score|==15"
+          "$gt0045|Total score|==15"
         ],
         "then": [
-          "$gt0032|HCC risk 3-year|='9.6%'",
-          "$gt0033|HCC risk 5-year|='21.3%'",
-          "$gt0034|HCC risk 10-year|='46.8%'"
+          "$gt0036|HCC risk 3-year|='9.6%'",
+          "$gt0037|HCC risk 5-year|='21.3%'",
+          "$gt0038|HCC risk 10-year|='46.8%'"
         ]
       },
       "gt0029": {
         "id": "gt0029",
         "priority": 2,
         "when": [
-          "$gt0009|REACH-B Score|==16"
+          "$gt0045|Total score|==16"
         ],
         "then": [
-          "$gt0032|HCC risk 3-year|='15.2%'",
-          "$gt0033|HCC risk 5-year|='32.4%'",
-          "$gt0034|HCC risk 10-year|='64.4%'"
+          "$gt0036|HCC risk 3-year|='15.2%'",
+          "$gt0037|HCC risk 5-year|='32.4%'",
+          "$gt0038|HCC risk 10-year|='64.4%'"
         ]
       },
       "gt0030": {
         "id": "gt0030",
         "priority": 1,
         "when": [
-          "$gt0009|REACH-B Score|==17"
+          "$gt0045|Total score|==17"
         ],
         "then": [
-          "$gt0032|HCC risk 3-year|='23.6%'",
-          "$gt0033|HCC risk 5-year|='47.4%'",
-          "$gt0034|HCC risk 10-year|='81.6%'"
+          "$gt0036|HCC risk 3-year|='23.6%'",
+          "$gt0037|HCC risk 5-year|='47.4%'",
+          "$gt0038|HCC risk 10-year|='81.6%'"
         ]
       }
     }
@@ -327,31 +327,6 @@
             "id": "gt0001",
             "text": "REACH-B Score",
             "description": "REACH-B score for hepatocellular carcinoma (HCC) estimates the risk of hepatocellular carcinoma (HCC) in patients with chronic hepatitis B."
-          },
-          "gt0003": {
-            "id": "gt0003",
-            "text": "Sex",
-            "description": "*"
-          },
-          "gt0004": {
-            "id": "gt0004",
-            "text": "Age, years",
-            "description": "*"
-          },
-          "gt0005": {
-            "id": "gt0005",
-            "text": "ALT, U/L",
-            "description": "Alanine aminotransferase (ALT) "
-          },
-          "gt0006": {
-            "id": "gt0006",
-            "text": "HBeAg",
-            "description": "hepatitis B e-antigen"
-          },
-          "gt0007": {
-            "id": "gt0007",
-            "text": "Hepatitis B virus DNA level, copies/mL",
-            "description": "*"
           },
           "gt0009": {
             "id": "gt0009",
@@ -430,19 +405,49 @@
             "id": "gt0030",
             "text": "score 17 HCC risk"
           },
-          "gt0032": {
-            "id": "gt0032",
+          "gt0036": {
+            "id": "gt0036",
             "text": "HCC risk 3-year",
             "description": "*"
           },
-          "gt0033": {
-            "id": "gt0033",
+          "gt0037": {
+            "id": "gt0037",
             "text": "HCC risk 5-year",
             "description": "*"
           },
-          "gt0034": {
-            "id": "gt0034",
+          "gt0038": {
+            "id": "gt0038",
             "text": "HCC risk 10-year",
+            "description": "*"
+          },
+          "gt0040": {
+            "id": "gt0040",
+            "text": "Sex",
+            "description": "*"
+          },
+          "gt0041": {
+            "id": "gt0041",
+            "text": "Age (years)",
+            "description": "*"
+          },
+          "gt0042": {
+            "id": "gt0042",
+            "text": "ALT (U/L)",
+            "description": "Alanine aminotransferase (ALT) "
+          },
+          "gt0043": {
+            "id": "gt0043",
+            "text": "HBeAg",
+            "description": "hepatitis B e-antigen"
+          },
+          "gt0044": {
+            "id": "gt0044",
+            "text": "Hepatitis B virus DNA level (copies/mL)",
+            "description": "*"
+          },
+          "gt0045": {
+            "id": "gt0045",
+            "text": "Total score",
             "description": "*"
           }
         }
