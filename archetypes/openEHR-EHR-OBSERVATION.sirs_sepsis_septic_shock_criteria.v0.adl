@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.sirs_sepsis_septic_shock_criteria.v0
 
 concept
-	[at0000]	-- Sirs sepsis septic shock criteria
+	[at0000]	-- SIRS sepsis septic shock criteria
 language
 	original_language = <[ISO_639-1::en]>
 description
@@ -16,9 +16,7 @@ description
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record information relevant to the SIRS, Sepsis, and Septic Shock Criteria assessment.">
-			use = <"Use to record information relevant to the SIRS, Sepsis, and Septic Shock Criteria assessment.
-
-">
+			use = <"Use to record information relevant to the SIRS, Sepsis, and Septic Shock Criteria assessment.">
 			keywords = <"Septic Shock", "Sepsis", "SIRS", "Multiple Organ Dysfunction Syndrome Criteria">
 			misuse = <"Not to be used for patients under 18 years old.  Use the Pediatric SIRS, Sepsis, and Septic Shock Criteria for patients under 18. ">
 			copyright = <"@CambioCDS">
@@ -29,11 +27,11 @@ description
 	other_details = <
 		["references"] = <"1. Dellinger RP, Levy MM, Rhodes A, Annane D, Gerlach H, Opal SM, Sevransky JE, Sprung CL, Douglas IS, Jaeschke R, Osborn TM, Nunnally ME, Townsend SR, Reinhart K, Kleinpell RM, Angus DC, Deutschman CS, Machado FR, Rubenfeld GD, Webb S, Beale RJ, Vincent JL, Moreno R; Surviving Sepsis Campaign Guidelines Committee including The Pediatric Subgroup. Surviving Sepsis Campaign: international guidelines for management of severe sepsis and septic shock, 2012. Intensive Care Med. 2013 Feb;39(2):165-228. doi: 10.1007/s00134-012-2769-8. Epub 2013 Jan 30. PMID: 23361625; PMCID: PMC7095153.
 2. Bone RC, Balk RA, Cerra FB, Dellinger RP, Fein AM, Knaus WA, Schein RM, Sibbald WJ. Definitions for sepsis and organ failure and guidelines for the use of innovative therapies in sepsis. The ACCP/SCCM Consensus Conference Committee. American College of Chest Physicians/Society of Critical Care Medicine. Chest. 1992 Jun;101(6):1644-55. doi: 10.1378/chest.101.6.1644. PMID: 1303622.">
-		["MD5-CAM-1.0.1"] = <"3428110DE07D414931F33AAB42D439AA">
+		["MD5-CAM-1.0.1"] = <"B0B741CA72492AC912D55D3BF6B783F4">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Sirs sepsis septic shock criteria
+	OBSERVATION[at0000] matches {	-- SIRS sepsis septic shock criteria
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
@@ -67,9 +65,11 @@ definition
 													1|[local::at0016]  	-- Yes
 												}
 											}
-											ELEMENT[at0017] occurrences matches {0..1} matches {	-- SIRS Criteria
+											ELEMENT[at0017] occurrences matches {0..1} matches {	-- Total score
 												value matches {
-													DV_COUNT matches {*}
+													DV_COUNT matches {
+														magnitude matches {|0..4|}
+													}
 												}
 											}
 										}
@@ -114,15 +114,17 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0034] occurrences matches {0..1} matches {	-- Is this a COVID-19 patient?
+									ELEMENT[at0039] occurrences matches {0..1} matches {	-- Result
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0035, 	-- Confirmed positive
-													at0036, 	-- Suspected
-													at0037, 	-- Unlikely
-													at0038]	-- Confirmed negative
+													at0040, 	-- SIRS criteria are met.
+													at0041, 	-- Sepsis criteria are met. Follow your guidelines for sepsis, which typically include aggressive fluid resuscitation, early, broad-spectrum anbiotics, ICU consultation, CVP evaluation, and occasionally pressors and transfusion.
+													at0042, 	-- Severe sepsis criteria are met.
+													at0043, 	-- Septic shock criteria are met.
+													at0044, 	-- Multiple organ dysfunction syndrome is met.
+													at0045]	-- Not met SIRS criteria. Check for other causes of shock.
 												}
 											}
 										}
@@ -141,7 +143,7 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Sirs sepsis septic shock criteria">
+					text = <"SIRS sepsis septic shock criteria">
 					description = <"SIRS, Sepsis, and Septic Shock Criteria defines the severity of sepsis and septic shock.">
 				>
 				["at0001"] = <
@@ -209,8 +211,8 @@ ontology
 					description = <"*">
 				>
 				["at0017"] = <
-					text = <"SIRS Criteria">
-					description = <"SIRS Criteria (≥ 2 meets SIRS definition).">
+					text = <"Total score">
+					description = <"Total score for SIRS criteria (≥ 2 meets SIRS definition).">
 				>
 				["at0018"] = <
 					text = <"Sepsis Criteria">
@@ -276,24 +278,32 @@ ontology
 					text = <"Yes">
 					description = <"*">
 				>
-				["at0034"] = <
-					text = <"Is this a COVID-19 patient?">
+				["at0039"] = <
+					text = <"Result">
 					description = <"*">
 				>
-				["at0035"] = <
-					text = <"Confirmed positive">
+				["at0040"] = <
+					text = <"SIRS criteria are met.">
 					description = <"*">
 				>
-				["at0036"] = <
-					text = <"Suspected">
+				["at0041"] = <
+					text = <"Sepsis criteria are met. Follow your guidelines for sepsis, which typically include aggressive fluid resuscitation, early, broad-spectrum anbiotics, ICU consultation, CVP evaluation, and occasionally pressors and transfusion.">
 					description = <"*">
 				>
-				["at0037"] = <
-					text = <"Unlikely">
+				["at0042"] = <
+					text = <"Severe sepsis criteria are met.">
 					description = <"*">
 				>
-				["at0038"] = <
-					text = <"Confirmed negative">
+				["at0043"] = <
+					text = <"Septic shock criteria are met.">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Multiple organ dysfunction syndrome is met.">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"Not met SIRS criteria. Check for other causes of shock.">
 					description = <"*">
 				>
 			>
