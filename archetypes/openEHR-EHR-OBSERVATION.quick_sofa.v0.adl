@@ -2,27 +2,26 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.quick_sofa.v0
 
 concept
-	[at0000]	-- qSOFA (Quick SOFA) Score for Sepsis
+	[at0000]	-- Quick Sequential Organ Failure Assessment [qSOFA] score
 language
 	original_language = <[ISO_639-1::en]>
 description
 	original_author = <
 		["name"] = <"Maryam Razavi">
 		["email"] = <"maryam.razavi@cambio.se">
-		["organisation"] = <"CambioCDS">
+		["organisation"] = <"Cambio CDS">
 		["date"] = <"2021-01-25">
 	>
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record information relevant to the Quick SOFA assessment. ">
-			use = <"Use to record information relevant to the Quick SOFA assessment. 
+			purpose = <"To record the results for each component parameter and the Quick SOFA score assessment. ">
+			use = <"Use to record the results for each component parameter and the Quick SOFA score assessment. 
 
 ">
 			keywords = <"mortality ", "ICU", "infection ">
-			misuse = <"Not to be used to diagnose sepsis. 
-Not to be used in patients< 18 years old. ">
-			copyright = <"@CambioCDS">
+			misuse = <"">
+			copyright = <"Cambio CDS">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
@@ -32,11 +31,12 @@ Not to be used in patients< 18 years old. ">
 2. Shankar-Hari M, Phillips GS, Levy ML, Seymour CW, Liu VX, Deutschman CS, Angus DC, Rubenfeld GD, Singer M; Sepsis Definitions Task Force. Developing a New Definition and Assessing New Clinical Criteria for Septic Shock: For the Third International Consensus Definitions for Sepsis and Septic Shock (Sepsis-3). JAMA. 2016 Feb 23;315(8):775-87. doi: 10.1001/jama.2016.0289. PMID: 26903336; PMCID: PMC4910392.
 3. Freund Y, Lemachatti N, Krastinova E, Van Laer M, Claessens YE, Avondo A, Occelli C, Feral-Pierssens AL, Truchot J, Ortega M, Carneiro B, Pernet J, Claret PG, Dami F, Bloom B, Riou B, Beaune S; French Society of Emergency Medicine Collaborators Group. Prognostic Accuracy of Sepsis-3 Criteria for In-Hospital Mortality Among Patients With Suspected Infection Presenting to the Emergency Department. JAMA. 2017 Jan 17;317(3):301-308. doi: 10.1001/jama.2016.20329. PMID: 28114554.
 ">
-		["MD5-CAM-1.0.1"] = <"CA942E734DB8771156F2ED4F93A77A71">
+		["MD5-CAM-1.0.1"] = <"E464BDE171C46D664A8D516F93ECFAE4">
+		["current_contact"] = <"maryam.razavi@cambio.se">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- qSOFA (Quick SOFA) Score for Sepsis
+	OBSERVATION[at0000] matches {	-- Quick Sequential Organ Failure Assessment [qSOFA] score
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
@@ -62,21 +62,10 @@ definition
 											1|[local::at0012]  	-- Yes
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- qSOFA Score
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Total score
 										value matches {
-											DV_COUNT matches {*}
-										}
-									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Is this a COVID-19 patient?
-										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0015, 	-- Confirmed positive
-													at0016, 	-- Suspected
-													at0017, 	-- Unlikely
-													at0018]	-- Confirmed negative
-												}
+											DV_COUNT matches {
+												magnitude matches {|0..3|}
 											}
 										}
 									}
@@ -94,8 +83,8 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"qSOFA (Quick SOFA) Score for Sepsis">
-					description = <"qSOFA (Quick SOFA) Score for Sepsis identifies high-risk patients for in-hospital mortality with suspected infection outside the ICU.">
+					text = <"Quick Sequential Organ Failure Assessment [qSOFA] score">
+					description = <"An assessment score used to identify high-risk patients for in-hospital mortality with suspected infection outside the ICU.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -146,27 +135,7 @@ ontology
 					description = <"*">
 				>
 				["at0013"] = <
-					text = <"qSOFA Score">
-					description = <"*">
-				>
-				["at0014"] = <
-					text = <"Is this a COVID-19 patient?">
-					description = <"For research purposes only; answer does NOT impact results.">
-				>
-				["at0015"] = <
-					text = <"Confirmed positive">
-					description = <"*">
-				>
-				["at0016"] = <
-					text = <"Suspected">
-					description = <"*">
-				>
-				["at0017"] = <
-					text = <"Unlikely">
-					description = <"*">
-				>
-				["at0018"] = <
-					text = <"Confirmed negative">
+					text = <"Total score">
 					description = <"*">
 				>
 			>
