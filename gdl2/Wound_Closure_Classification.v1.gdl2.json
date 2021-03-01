@@ -1,0 +1,141 @@
+{
+  "id": "Wound_Closure_Classification.v1",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2021-01-05",
+      "name": "Therese Lindberg",
+      "organisation": "Cambio CDS",
+      "email": "therese.lindberg@cambio.se"
+    },
+    "lifecycle_state": "Initial",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "To classify types of wound closure.",
+        "keywords": [
+          "wound closure classification",
+          "surgical",
+          "trauma"
+        ],
+        "use": "Use in patients with open wounds, with a focus on wounds resulting from trauma.\n\nWound Features:                                                                                  Classification:\n1. Clean wound with minimal tissue loss, e.g. surgical                          Primary\n wounds, clean lacerations.\n2. Significant tissue loss precluding tension-free approximation            Secondary\nof edges, devitalized edges, ulcerations, or abscess cavities.\n3. Grossly contaminated wounds with or without significant tissue        Tertiary (Delayed Primary)\n loss, e.g. contaminated by soil or feces, animal bites, projectiles.",
+        "copyright": "@CambioCDS"
+      }
+    },
+    "other_details": {
+      "references": "1. Kumar S, Leaper DJ. Classification and management of acute wounds. Surgery (Oxford). 2005 Feb 1; 23(2):47-51.\n2. ACS TQIP. Best Practices in the Management of Orthopedic Trauma. ACS TQIP Best Practice Guidelines website. \n3. Bhangu A, Singh P, Lundy J, Bowley DM. Systemic Review and Meta-analysis of Randomized Clinical Trials Comparing Primary vs Delayed Primary Skin Closure in Contaminated and Dirty Abdominal Incisions. JAMA Surg. 2013;148(8):779-786.\n4. Halawi MJ, Morwood MP. Acute Management of Open Fractures: An Evidence-Based Review. Orthopedics. 2015;38(11):e1025-33."
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0002": {
+        "id": "gt0002",
+        "model_id": "openEHR-EHR-EVALUATION.wound_closure_classification.v0",
+        "template_id": "openEHR-EHR-EVALUATION.wound_closure_classification.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0003": {
+            "id": "gt0003",
+            "path": "/data[at0001]/items[at0003]"
+          }
+        }
+      },
+      "gt0004": {
+        "id": "gt0004",
+        "model_id": "openEHR-EHR-EVALUATION.wound_closure_classification.v0",
+        "template_id": "openEHR-EHR-EVALUATION.wound_closure_classification.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0005": {
+            "id": "gt0005",
+            "path": "/data[at0001]/items[at0007]"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/items[at0011]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0007": {
+        "id": "gt0007",
+        "priority": 3,
+        "when": [
+          "$gt0003|Wound Features|==local::at0004|Clean wounds with minimal tissue loss, e.g. surgical wounds, clean lacerations|"
+        ],
+        "then": [
+          "$gt0005|Classification|=local::at0008|Primary|",
+          "$gt0006|Management|=local::at0012|Closure ideally performed within 6-8 hours of trauma. If well-vascularized, may be closed up to 24 hours after trauma.|"
+        ]
+      },
+      "gt0008": {
+        "id": "gt0008",
+        "priority": 2,
+        "when": [
+          "$gt0003|Wound Features|==local::at0005|Significant tissue loss precluding tension-free approximation of edges, devitalized edges, ulcerations, or abscess cavities|"
+        ],
+        "then": [
+          "$gt0005|Classification|=local::at0009|Secondary|",
+          "$gt0006|Management|=local::at0013|No surgical closure. Daily dressing changes. Consider negative pressure vacuum therapy.|"
+        ]
+      },
+      "gt0009": {
+        "id": "gt0009",
+        "priority": 1,
+        "when": [
+          "$gt0003|Wound Features|==local::at0006|Grossly contaminated wounds with or without significant tissue loss|"
+        ],
+        "then": [
+          "$gt0005|Classification|=local::at0010|Tertiary (Delayed Primary)|",
+          "$gt0006|Management|=local::at0015|Thoroughly explore, irrigate, and debride. Observe for 3-7 days before surgical closure or skin grafting. May benefit from negative pressure vacuum therapy.|"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "Wound Closure Classification",
+            "description": "Wound Closure Classification classifies types of wound closure."
+          },
+          "gt0003": {
+            "id": "gt0003",
+            "text": "Wound Features",
+            "description": "*"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "Classification",
+            "description": "*"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Management",
+            "description": "*"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "text": "Primary Classification"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "Secondary Classification"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "text": "Tertiary Classification"
+          }
+        }
+      }
+    }
+  }
+}

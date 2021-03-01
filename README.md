@@ -11,22 +11,23 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 480*
+### *Published Apps: 527*
 
 ----------
 
 ### Latest added
 
-1. R Factor for Liver Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R_factor_for_liver_injury/1?language=en))
-2. OESIL Score for Syncope - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OESIL_Score_guideline/1?language=en))
-3. Ocular Hypertension Treatment Study (OHTS) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ocular_Hypertension_Treatment_Study_OHTS_Calculator/1?language=en))
-4. Maximum Allowable Blood Loss (ABL) Without Transfusion - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABL_Without_Transfusion_guideline/1?language=en))
-5. Phenytoin (Dilantin) Correction for Albumin / Renal Failure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Phenytoin_correction_for_albumin_renal_failure/1?language=en))
-6. Prostate Tumor Volume & Density - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prostate_Tumor_Volume_Density/1?language=en))
-7. Leiden Clinical Prediction Rule for Undifferentiated Arthritis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Leiden_Clinical_Prediction_Rule_guideline/1?language=en))
-8. Pack Years Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pack_Years_Calculator_guideline/1?language=en))
-9. Liver Decompensation Risk after Hepatectomy for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Liver_Decompensation_Risk_after_Hepatectomy_for_Hepatocellular_Carcinoma_HCC/1?language=en))
-10. NEXUS Criteria for C-Spine Imaging - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEXUS_Criteria_C-Spine_Imaging_guideline/1?language=en))
+1. Aldrete score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Aldrete_score/1?language=en))
+2. Trunk Impairment Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/trunk_impairment_scale/0?language=en))
+3. Serum Osmolality/Osmolarity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Osmolality/1?language=en))
+4. POSSUM for Operative Morbidity and Mortality Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/POSSUM_Score_guideline/1?language=en))
+5. Sodium Deficit in Hyponatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_deficit_in_hyponatremia/1?language=en))
+6. PREVAIL Model for Prostate Cancer Survival - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PREVAIL_Model_guideline/1?language=en))
+7. tPA (Tissue Plasminogen Activator) Dosing for Stroke Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/tPA_dosing_for_stroke_calculator/1?language=en))
+8. UCLA Integrated Staging System (UISS) for Renal Cell Carcinoma (RCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UCLA_Integrated_Staging_System_UISS_for_Renal_Cell_Carcinoma_RCC_guideline/1?language=en))
+9. Clinical Fraility Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_frailty_scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_frailty_scale/1?language=sv))
+10. RIPASA Score for Acute Appendicitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIPASA_score_guideline/1?language=en))
+11. Michigan Risk Score for PICC-Related Thrombosis -  ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Michigan_Risk_Score_guideline/1?language=en))
 
 ----------
 
@@ -39,6 +40,8 @@ _Select a medical specialty below to view the available apps._
 [Cardiology](https://github.com/gdl-lang/common-clinical-models#cardiology)
 
 [Clinical Chemistry](https://github.com/gdl-lang/common-clinical-models#clinical-chemistry)
+
+[Dermatology](https://github.com/gdl-lang/common-clinical-models#dermatology)
 
 [Emergency Medicine](https://github.com/gdl-lang/common-clinical-models#emergency-medicine)
 
@@ -100,9 +103,15 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 
+[CDS App Challenge 2020 Submissions](https://github.com/gdl-lang/common-clinical-models#cds-app-challenge-2020-submissions)
+
+-----------
+
 ### Anesthesia
 
 ----------
+* Aldrete score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Aldrete_score/1?language=en))
+
 * El-Ganzouri Risk Index for Difficult Airway (EGRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EGRI/1?language=en))
 
 * Endotracheal Tube (ETT) Depth and Tidal Volume Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ETT_depth_tidal_volume_calculator/1?language=en))
@@ -111,7 +120,11 @@ _Select a medical specialty below to view the available apps._
 
 * Intraoperative Fluid Dosing in Adult Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Intraoperative_Fluid_Dosing_Adult_Patients/1?language=en))
 
-----------
+* Local Anesthetic Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Local_Anesthetic_Dosing_Calculator_guideline/1?language=en))
+
+* Modified Mallampati Classification - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Mallampati_Classification/1?language=en))
+
+---------
 
 ### Cardiology
 
@@ -202,6 +215,8 @@ _Select a medical specialty below to view the available apps._
 
 * Rated Perceived Exertion Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rated_perceived_exertion_scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rated_perceived_exertion_scale/1?language=sv))
 
+* READMITS Score for Readmissions in Acute MI - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/READMITS_Score_guideline/1?language=en))
+
 * Revised Cardiac Risk Index (RCRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RCRI/1?language=en))
 
 * Reynolds Risk Score for Cardiovascular Risk in Women - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Reynolds_Risk_Score_for_CardiovascularRisk_in_Women_guideline/1?language=en))
@@ -233,9 +248,20 @@ _Select a medical specialty below to view the available apps._
 
 * Free Water Deficit in Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Free_water_deficit_hypernatremia/1?language=en))
 
+* Serum Osmolality/Osmolarity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Osmolality/1?language=en))
+
 * Sodium correction for Hyperglycemia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_for_Hyperglycemia/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_for_Hyperglycemia/1?language=sv))
 
+* Sodium Deficit in Hyponatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_deficit_in_hyponatremia/1?language=en))
+
 * Winter Formula - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Winters_Metabolic_Acidosis_Compensation/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Winters_Metabolic_Acidosis_Compensation/1?language=sv))
+
+----------
+
+### Dermatology
+
+----------
+* Psoriasis Area and Severity Index (PASI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PASI_guideline/1?language=en))
 
 ----------
 
@@ -312,6 +338,8 @@ _Select a medical specialty below to view the available apps._
 * Revised Geneva Score (rGeneva) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rGeneva/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rGeneva/1?language=sv))
 
 * Rapid emergency medicine score (REMS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/REMS/1?language=en))
+
+* RIPASA Score for Acute Appendicitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIPASA_score_guideline/1?language=en))
 
 * Risk Score for Asthma Exacerbation (RSE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Risk_Score_Asthma_Exacerbation/1?language=en))
 
@@ -403,17 +431,31 @@ _Select a medical specialty below to view the available apps._
 
 * Liver Decompensation Risk after Hepatectomy for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Liver_Decompensation_Risk_after_Hepatectomy_for_Hepatocellular_Carcinoma_HCC/1?language=en))
 
+* Los Angeles (LA) Grading of Esophagitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Los_Angeles_LA_Grading_of_Esophagitis/1?language=en))
+
 * Maddrey's Discriminant Function for Alcoholic Hepatitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Maddrey_Score_guideline/1?language=en))
+
+* Milan Criteria for Liver Transplantation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Milan_Criteria_for_Liver_Transplantation/1?language=en))
 
 * Model For End-Stage Liver Disease Score (MELD) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MELD_score/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MELD_score/1?language=sv))
 
 * NAFLD (Non-Alcoholic Fatty Liver Disease) Activity Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NAFLD_activity_score/1?language=en))
 
+* Oakland Score for Safe Discharge After Lower GI Bleed - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Oakland_Score_for_Safe_Discharge_After_Lower_GI_Bleed/1?language=en)
+
 * Ranson's Criteria for Pancreatitis Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality/1?language=sv))
 
 * R Factor for Liver Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R_factor_for_liver_injury/1?language=en))
 
+* Rockall Score for Upper GI Bleeding (Complete) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rockall_Score_Upper_GI_Bleeding_guideline/1?language=en))
+
+* Rockall Score for Upper GI Bleeding (Pre-Endoscopy) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rockall_Score_preEndoscopy_guideline/1?language=en))
+
+* Serum Ascites Albumin Gradient (SAAG) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Ascites_Albumin_Gradient_SAAG_guideline/1?language=en))
+
 * Simplified Autoimmune Hepatitis (AIH) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_Autoimmune_Hepatitis_AIH_Score_guideline/1?language=en))
+
+* Tokyo Guidelines for Acute Cholangitis 2018 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tokyo_Guidelines_2018_guideline/1?language=en))
 ----------
 
 ### Geriatrics
@@ -430,6 +472,8 @@ _Select a medical specialty below to view the available apps._
 * Braden Score for Pressure Ulcers - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/braden_score_pressure_ulcers/1?language=en))
 
 * Clinical Dementia Rating (CDR) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_Dementia_Rating/1?language=en))
+
+* Clinical Fraility Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_frailty_scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_frailty_scale/1?language=sv))
 
 * Cumulative Illness Rating Scale-Geriatric (CIRS-G) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cumulative_Illness_Rating_Scale_Geriatric_CIRS_G/1?language=en))
 
@@ -482,9 +526,13 @@ _Select a medical specialty below to view the available apps._
 
 * Neutrophil-Lymphocyte Ratio (NLR) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neutrophil_Lymphocyte_Ratio_NLR_Calculator/1?language=en))
 
+* Peripheral Blood Stem Cell Collection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Peripheral_Blood_Stem_Cell_Collection/1?language=en))
+
 * Plasma Dosage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Plasma_Dosage_guideline/1?language=en))
 
 * PLASMIC Score for TTP - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PLASMIC_Score_for_TTP/1?language=en))
+
+* Sepsis-Induced Coagulopathy (SIC) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sepsis_Induced_Coagulopathy_SIC_Score/1?language=en))
 
 ----------
 
@@ -515,6 +563,8 @@ _Select a medical specialty below to view the available apps._
 
 * IV Drip Rate Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IV_drip_rate_calculator/1?language=en))
 
+* Michigan Risk Score for PICC-Related Thrombosis -  ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Michigan_Risk_Score_guideline/1?language=en))
+
 * Modified Early Warning Score (MEWS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MEWS.v1/1.1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MEWS.v1/1.1?language=sv))
 
 * National Early Warning Score (NEWS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEWS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEWS/1?language=sv))
@@ -529,16 +579,23 @@ _Select a medical specialty below to view the available apps._
 
 * Parkland Formula for Burns - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Parkland_formula/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Parkland_formula/1?language=sv))
 
+* Rapid Shallow Breathing Index (RSBI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rapid_Shallow_Breathing_Index_RSBI/1?language=en))
+
 * Richmond Agitation Sedation Scale (RASS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Richmond_Agitation_Sedation_Scale/1?language=en))
 
 * Sequential Organ Failure Assessment (SOFA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SOFA/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SOFA/1?language=sv))
+
 ----------
 
 ### Neonatology
+
 ----------
 * Apgar Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Apgar/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Apgar/1?language=sv))
 
+* Neonatal Partial Exchange for Polycythemia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neonatal_Partial_Exchange_for_Polycythemia/1?language=en))
+
 ----------
+
 ### Nephrology
 
 ----------
@@ -572,9 +629,13 @@ _Select a medical specialty below to view the available apps._
 
 * MDRD GFR Equation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MDRD_GFR_equation/1?language=en))
 
-* STONE Nephrolithometry Score for Renal Calculi - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/STONE_Nephrolithometry_Score_for_Renal_Calculi_guideline/1?language=en))
+* Mehran Score for Post-PCI Contrast Nephropathy - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mehran_Score_Contrast_induced_Nephropathy_guideline/1?language=en))
+
+* RENAL Nephrometry Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RENAL_Nephrometry_Score/1?language=en))
 
 * Revised Lund-Malmö eGFR - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LM_Revised_eGFR/0?language=en))
+
+* STONE Nephrolithometry Score for Renal Calculi - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/STONE_Nephrolithometry_Score_for_Renal_Calculi_guideline/1?language=en))
 
 ----------
 
@@ -625,6 +686,8 @@ _Select a medical specialty below to view the available apps._
 
 * Intracerebral Haemorrhage Risk Tool (ICH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ICH/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ICH/1?language=sv))
 
+* Los Angeles Motor Scale (LAMS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Los_Angeles_Motor_Scale_LAMS/1?language=en))
+
 * Modified Fatigue Impact Scale (MFIS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS/1?language=sv))
 
 * Modified Fatigue Impact Scale - shortened (MFIS-s) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS_shortened/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MFIS_shortened/1?language=sv))
@@ -641,13 +704,19 @@ _Select a medical specialty below to view the available apps._
 
 * Neuropathy Pain Scale (NPS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neuropathy_pain_scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neuropathy_pain_scale/1?language=sv))
 
+* NINCDS-ADRDA Criteria for Alzheimer’s Disease - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NINCDS-ADRDA_Criteria_for_Alzheimers_Disease/1?language=en))
+
 * OESIL Score for Syncope - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/OESIL_Score_guideline/1?language=en))
 
 * Ottawa Subarachnoid Hemorrhage (SAH) Rule for Headache Evaluation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ottawa_Subarachnoid_Hemorrhage_Rule_for_Headache_Evaluation/1?language=en))
 
+* Pittsburgh Response to Endovascular therapy (PRE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PRE_Score_guideline/1?language=en))
+
 * SEDAN Score for Post-tPA Hemorrhage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SEDAN_Score_for_Post-tPA_Hemorrhage_guideline/1?language=en))
 
 * STONE Score for Uncomplicated Ureteral Stone - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stone_score_for_uncomplicated_ureteral_stone_guideline/1?language=en))
+
+* Trunk Impairment Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/trunk_impairment_scale/0?language=en))
 
 * Webster Rating Scale for Parkinson’s Disease - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Webster_Rating_Scale_for_Parkinsons_Disease_guideline/1?language=en))
 ----------
@@ -660,6 +729,8 @@ _Select a medical specialty below to view the available apps._
 * BWH Egg Freezing Counseling Tool (EFCT) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BWH_Egg_Freezing_Counseling_Tool_EFCT_guideline/1?language=en))
 
 * Fetal Biophysical Profile (BPP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fetal_Biophysical_Profile_BPP_Score/1?language=en))
+
+* Maternal-Fetal Hemorrhage Rh(D) Immune Globulin Dosage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Maternal_Fetal_Hemorrhage_RhD_Immune_Globulin_Dosage/1?language=en))
 
 * Pregnancy Due Date - ([_ENG_](https://common-clinical-models.cambiocds.com/km/views/execution/Pregnancy_due_date.v1.dsv?token=507265676e616e63795f6475655f646174652e7631:1549324800000:74476e995feb7c97dfe7f5e180491c4a&language=en))/([_SWE_](https://common-clinical-models.cambiocds.com/km/views/execution/Pregnancy_due_date.v1.dsv?token=507265676e616e63795f6475655f646174652e7631:1549324800000:74476e995feb7c97dfe7f5e180491c4a&language=sv))
 
@@ -721,7 +792,15 @@ _Select a medical specialty below to view the available apps._
 
 * Khorana Risk Score for Venous Thromboembolism in Cancer Patients - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Khorana_Risk_Score_Venous_Thromboembolism_Cancer_Patients/0?language=en))
 
+* Mantle Cell Lymphoma International Prognostic Index (MIPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MIPI_guideline/1?language=en))
+
 * Modified Glasgow Prognostic Score (mGPS) for Cancer Outcomes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Glasgow_Prognostic_Score/1?language=en))
+
+* Mekhail Extension of the Motzer Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mekhail_Extension_of_the_Motzer_Score/1?language=en))
+
+* PREVAIL Model for Prostate Cancer Survival - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PREVAIL_Model_guideline/1?language=en))
+
+* Prognostic Index for Cancer Outcomes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prognostic_Index_for_Cancer_Outcomes/1?language=en))
 
 * Prostate Tumor Volume & Density - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prostate_Tumor_Volume_Density/1?language=en))
 
@@ -732,6 +811,8 @@ _Select a medical specialty below to view the available apps._
 * TNM for Pancreatic Cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_Pancreas/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_Pancreas/1?language=sv))
 
 * TNM for Renal Cell Carcinoma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_RCC/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_RCC/1?language=sv))
+
+* UCLA Integrated Staging System (UISS) for Renal Cell Carcinoma (RCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UCLA_Integrated_Staging_System_UISS_for_Renal_Cell_Carcinoma_RCC_guideline/1?language=en))
 
 * UCSF-CAPRA Score for Prostate Cancer Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UCSF_CAPRA_prostate_cancer_risk/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UCSF_CAPRA_prostate_cancer_risk/1?language=sv))
 
@@ -757,6 +838,8 @@ _Select a medical specialty below to view the available apps._
 * Kocher Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kocher_Criteria/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kocher_Criteria/1?language=sv))
 
 * Patient Activity Scale (PAS) for RA - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Patient_Activity_Scale_PAS_for_RA_guideline/1?language=en))
+
+* Recurrent Instability of the Patella (RIP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Recurrent_Instability_of_the_patella_RIP_score/1?language=en))
 
 ----------
 
@@ -798,6 +881,8 @@ _Select a medical specialty below to view the available apps._
 
 * Paradise Criteria for Tonsillectomy in Children - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Paradise_Criteria_guideline/1?language=en))
 
+* PECARN Rule for Low Risk Febrile Infants 29-60 Days Old - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PECARN_Rule_for_Low_Risk_Febrile_Infants_29-60_Days_Old/1?language=en))
+
 * Pediatric Appendicitis Risk Calculator (pARC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Appendicitis_Risk_Calculator_pARC/1?language=en))
 
 * Pediatric Appendicitis Score (PAS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Appendicitis_Score_guideline/1?language=en))
@@ -820,9 +905,13 @@ _Select a medical specialty below to view the available apps._
 
 * Pediatric Trauma Score (PTS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Trauma_Score/1?language=en))
 
+* Rochester Criteria for Febrile Infants - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rochester_Criteria_guideline/1?language=en))
+
 * Shock Index Pediatric Age-Adjusted (SIPA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SIPA/1?language=en))
 
 * STRONGkids Nutritional Risk Screening - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/STRONGkids/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/STRONGkids/1?language=sv))
+
+* Westley Croup Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Westley_Croup_Score_guideline/1?language=en))
 ----------
 
 ### Pharmacology
@@ -849,6 +938,8 @@ _Select a medical specialty below to view the available apps._
 * Naloxone Drip Dosing - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Naloxone_Drip_Dosing_guideline/1?language=en))
 
 * Phenytoin (Dilantin) Correction for Albumin / Renal Failure - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Phenytoin_correction_for_albumin_renal_failure/1?language=en))
+
+* tPA (Tissue Plasminogen Activator) Dosing for Stroke Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/tPA_dosing_for_stroke_calculator/1?language=en))
 
 * Vitamin-D Doses Range Recommendation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Vitamin_D_Doses_Range_Recommendation/0?language=en))
 ----------
@@ -885,6 +976,8 @@ _Select a medical specialty below to view the available apps._
 * Estimated PEF-value - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEFR_estimated/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEFR_estimated/1?language=sv))
 
 * FeverPAIN - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FeverPAIN_Strep/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FeverPAIN_Strep/1?language=sv))
+
+* HIV Needle Stick Risk Assessment Stratification Protocol (RASP) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HIV_Needle_Stick_Risk_Assessment_Stratification_Protocol_guideline/1?language=en))
 
 * Ideal Body Weight (IBW) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IBW/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/IBW/1?language=sv))
 
@@ -983,6 +1076,8 @@ _Select a medical specialty below to view the available apps._
 
 * Social Phobia Inventory (SPIN) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPIN/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPIN/1?language=sv))
 
+* Stanford Sleepiness Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stanford_Sleepiness_Scale_guideline/1?language=en))
+
 * V-Risk (Violence-Risk) 10 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/V-RISK_10/1?language=en))
 
 * Yale-Brown Obsessive Compulsive Scale (Y-BOCS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/YBOCS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/YBOCS/1?language=sv))
@@ -1050,6 +1145,8 @@ _Select a medical specialty below to view the available apps._
 
 * PSI/PORT Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PSI-PORT_Pneumonia_Risk_Stratification/1?language=en))
 
+* RADS (Radiologist’s Score) for Smoke Inhalation Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RADS_guideline/1?language=en))
+
 * RAPID Score for Pleural Infection - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rapid_Score/0?language=en))
 
 * Respiratory ECMO Survival Prediction (RESP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RESP_score_respiratory_ecmo_survival_prediction/1?language=en))
@@ -1059,6 +1156,9 @@ _Select a medical specialty below to view the available apps._
 * RIETE Score for Risk of Hemorrhage in Pulmonary Embolism Treatment - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIETE_Score_Risk_Hemorrhage_Pulmonary_Embolism_Treatment/1?language=en))
 
 * SMART-COP Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SMART-COP_Score/1?language=en))
+
+* Static Lung Compliance (Cstat) Calculation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cstat_Calculation_guideline/1?language=en))
+
 ----------
 
 ### Rheumatology
@@ -1105,6 +1205,8 @@ _Select a medical specialty below to view the available apps._
 
 * Pancreatic Fistula Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pancreatic_Fistula_Risk_Score_guideline/1?language=en))
 
+* POSSUM for Operative Morbidity and Mortality Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/POSSUM_Score_guideline/1?language=en))
+
 * Preoperative Mortality Predictor Score (PMP) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Preoperative_Mortality_Predictor_PMP_Score_guideline/1?language=en))
 
 * Revised Cardiac Risk Index for Pre-Operative Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_cardiac_risk_index_for_pre_operative_risk/1?language=en))
@@ -1130,6 +1232,8 @@ _Select a medical specialty below to view the available apps._
 
 * Mangled Extremity Severity Score (MESS Score) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MESS_Score/1?language=en))
 
+* New Orleans/Charity Head Trauma/Injury Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/New_Orleans_Charity_Head_Trauma_Injury_Rule/1?language=en))
+
 * NEXUS Chest CT Decision Instrument for CT Imaging - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEXUS_Chest_CT_Decision_Instrument_for_CT_Imaging/1?language=en))
 
 * NEXUS Criteria for C-Spine Imaging - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEXUS_Criteria_C-Spine_Imaging_guideline/1?language=en))
@@ -1138,9 +1242,15 @@ _Select a medical specialty below to view the available apps._
 
 * Simplified Motor Score (SMS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SMS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SMS/1?language=sv))
 
+* Subaxial Injury Classification and Severity Scale (SLICS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Subaxial_Injury_Classification_and_Severity_Scale_SLICS/1?language=en))
+
+* Thoracolumbar Injury Classification and Severity Scale (TLICS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Thoracolumbar_Injury_Classification_and_Severity_Scale_TLICS/1?language=en))
+
 * Trauma Associated Severe Hemorrhage (TASH.v1) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TASH/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/TASH/1?language=sv))
 
 * Trauma Associated Severe Hemorrhage (TASH.v2) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TASh_Score/2?language=en))
+
+* Wound Closure Classification - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wound_Closure_Classification/1?language=en))
 
 ----------
 
@@ -1184,6 +1294,28 @@ _Select a medical specialty below to view the available apps._
 
 * VIA Screening - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/VIA_Screening/0?language=en))
 ----------
+
+### CDS App Challenge 2020 Submissions
+
+-----------
+*  Swift score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SWIFT_Score_guideline/0?language=en))/([_ES_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SWIFT_Score_guideline/0?language=es))
+
+* Fast tracking scale for Ambulatory surgery - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fast_Tracking_Scale_For_Ambulatory_Surgery/0?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fast_Tracking_Scale_For_Ambulatory_Surgery/0?language=sv))/([_ES_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fast_Tracking_Scale_For_Ambulatory_Surgery/0?language=es))
+
+* Tisdale Risk Score for QT Prolongation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tisdale_risk_score_for_QT_prolongation/3?language=en))
+
+* IHI global trigger tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IHI_Global_Trigger_Tool/1?language=en))/([_ES_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IHI_Global_Trigger_Tool/1?language=es))
+
+* Oakland score for safe discharge after lower GI bleed - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Oakland_Score_guideline/1?language=en))
+
+* Corona anxiety index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Coronavirus_Anxiety_Scale/0?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Coronavirus_Anxiety_Scale/0?language=sv))/([_FR_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Coronavirus_Anxiety_Scale/0?language=fr))/([_AR_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Coronavirus_Anxiety_Scale/0?language=ar-dz))
+
+* Predictive criteria for covid-19 cytokine storm - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Predictive_criteria_for_COVID-19_cytokine_storm/0?language=en))
+
+* ROX index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rox_index_final/0?language=en))/([_GER_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rox_index_final/0?language=de))/([_RU_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rox_index_final/0?language=ru))
+
+* UKELD score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UKELD_score/0?language=en))
+-----------
 
 ### Disclaimer
 
