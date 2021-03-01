@@ -11,24 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 527*
+### *Published Apps: 533*
 
 ----------
 
 ### Latest added
 
-1. Aldrete score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Aldrete_score/1?language=en))
-2. Trunk Impairment Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/trunk_impairment_scale/0?language=en))
-3. Serum Osmolality/Osmolarity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Osmolality/1?language=en))
-4. POSSUM for Operative Morbidity and Mortality Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/POSSUM_Score_guideline/1?language=en))
-5. Sodium Deficit in Hyponatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_deficit_in_hyponatremia/1?language=en))
-6. PREVAIL Model for Prostate Cancer Survival - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PREVAIL_Model_guideline/1?language=en))
-7. tPA (Tissue Plasminogen Activator) Dosing for Stroke Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/tPA_dosing_for_stroke_calculator/1?language=en))
-8. UCLA Integrated Staging System (UISS) for Renal Cell Carcinoma (RCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UCLA_Integrated_Staging_System_UISS_for_Renal_Cell_Carcinoma_RCC_guideline/1?language=en))
-9. Clinical Fraility Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_frailty_scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Clinical_frailty_scale/1?language=sv))
-10. RIPASA Score for Acute Appendicitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIPASA_score_guideline/1?language=en))
-11. Michigan Risk Score for PICC-Related Thrombosis -  ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Michigan_Risk_Score_guideline/1?language=en))
-
+1. SIRS, Sepsis, and Septic Shock Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SIRS_Sepsis_Septic_Shock_Criteria_guideline/1?language=en))
+2. Revised Amyotrophic Lateral Sclerosis Functional Rating Scale (ALSFRS-R) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ALSFRS-R_guideline/1?language=en))
+3. Memorial Sloan-Kettering Cancer Center (MSKCC/Motzer) Score for Metastatic Renal Cell Carcinoma (RCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MSKCC_Motzer_Score_guideline/1?language=en))
+4. Revised Multiple Myeloma International Staging System (R-ISS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R-ISS_guideline/1?language=en))
+5. REACH-B Score for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/REACH_B_Score_guideline/1?language=en))
+6. Aldrete score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Aldrete_score/1?language=en))
+7. Trunk Impairment Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/trunk_impairment_scale/0?language=en))
+8. Serum Osmolality/Osmolarity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Osmolality/1?language=en))
+9. POSSUM for Operative Morbidity and Mortality Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/POSSUM_Score_guideline/1?language=en))
+10. Sodium Deficit in Hyponatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_deficit_in_hyponatremia/1?language=en))
 ----------
 
 ### Categories by specialty
@@ -333,7 +331,7 @@ _Select a medical specialty below to view the available apps._
 
 * Quick COVID-19 Severity Index (qCSI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Quick_COVID-19_Severity_Index_qCSI_guideline/1?language=en))
 
-* quick Sepsis Related Organ Failure Assessment (qSOFA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/qSOFA/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/qSOFA/1?language=sv))
+* Quick Sepsis Related Organ Failure Assessment (qSOFA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/qSOFA/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/qSOFA/1?language=sv))
 
 * Revised Geneva Score (rGeneva) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rGeneva/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rGeneva/1?language=sv))
 
@@ -350,6 +348,8 @@ _Select a medical specialty below to view the available apps._
 * Shock Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Shock_Index/1?language=en))
 
 * Simplified Pulmonary Embolism Severity Index (sPESI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_PESI/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_PESI/1?language=sv))
+
+* SIRS, Sepsis, and Septic Shock Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SIRS_Sepsis_Septic_Shock_Criteria_guideline/1?language=en))
 
 * Vancouver Chest Pain Rule (VCPR) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Vancouver_CPR/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/Vancouver_CPR/1?language=sv))
 
@@ -712,6 +712,8 @@ _Select a medical specialty below to view the available apps._
 
 * Pittsburgh Response to Endovascular therapy (PRE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PRE_Score_guideline/1?language=en))
 
+* Revised Amyotrophic Lateral Sclerosis Functional Rating Scale (ALSFRS-R) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ALSFRS-R_guideline/1?language=en))
+
 * SEDAN Score for Post-tPA Hemorrhage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SEDAN_Score_for_Post-tPA_Hemorrhage_guideline/1?language=en))
 
 * STONE Score for Uncomplicated Ureteral Stone - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stone_score_for_uncomplicated_ureteral_stone_guideline/1?language=en))
@@ -798,11 +800,17 @@ _Select a medical specialty below to view the available apps._
 
 * Mekhail Extension of the Motzer Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mekhail_Extension_of_the_Motzer_Score/1?language=en))
 
+* Memorial Sloan-Kettering Cancer Center (MSKCC/Motzer) Score for Metastatic Renal Cell Carcinoma (RCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MSKCC_Motzer_Score_guideline/1?language=en))
+
 * PREVAIL Model for Prostate Cancer Survival - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PREVAIL_Model_guideline/1?language=en))
 
 * Prognostic Index for Cancer Outcomes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prognostic_Index_for_Cancer_Outcomes/1?language=en))
 
 * Prostate Tumor Volume & Density - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prostate_Tumor_Volume_Density/1?language=en))
+
+* REACH-B Score for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/REACH_B_Score_guideline/1?language=en))
+
+* Revised Multiple Myeloma International Staging System (R-ISS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R-ISS_guideline/1?language=en))
 
 * SSIGN Score for Clear Cell Renal Cell Carcinoma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SSIGN_ccRCC/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SSIGN_ccRCC/1?language=sv))
 
