@@ -18,15 +18,15 @@
         "id": "en",
         "purpose": "To predict the risk that an adnexal mass is malignant.",
         "keywords": [
-          "risk of malignancy index",
           "RMI",
           "ovarian cancer",
           "multiloculated cysts",
           "solid areas",
           "bilateral lesions",
           "ascites",
-          "intra-abdominal metastases",
-          "menopausal satus",
+          "intra-abdominal",
+          "metastases",
+          "malignancy",
           "serum ca-125"
         ],
         "use": "Use to predict the risk that an adnexal mass is malignant, the RMI.\n\nFormula:\nRMI = menopausal status x ultrasound score x serum CA-125, U/mL\n\nWhere menopausal status and ultrasound score are as follows:\nUltrasound features: 1 if 0-1 present and 3 if ≥2 present\nMenopausal status*: 1 if Premenopausal or perimenopausal and 3 if Postmenopausal\n\n*Postmenopausal status = >1 year of amenorrhea or age ≥50 years if patient is status post hysterectomy.\n\nInterpretation:\nRMI                Risk of malignancy\n≤200               Low\n>200               High*\n\n*71% sensitive and 92% specific for ovarian cancer.",
@@ -41,53 +41,45 @@
     "data_bindings": {
       "gt0002": {
         "id": "gt0002",
-        "model_id": "openEHR-EHR-EVALUATION.rmi.v0",
-        "template_id": "openEHR-EHR-EVALUATION.rmi.v0",
+        "model_id": "openEHR-EHR-OBSERVATION.rmi.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.rmi.v0",
         "type": "INPUT",
         "elements": {
-          "gt0033": {
-            "id": "gt0033",
-            "path": "/data[at0001]/items[at0002]/items[at0003]"
+          "gt0042": {
+            "id": "gt0042",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
           },
-          "gt0034": {
-            "id": "gt0034",
-            "path": "/data[at0001]/items[at0002]/items[at0006]"
+          "gt0043": {
+            "id": "gt0043",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
           },
-          "gt0035": {
-            "id": "gt0035",
-            "path": "/data[at0001]/items[at0002]/items[at0009]"
+          "gt0044": {
+            "id": "gt0044",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0011]"
           },
-          "gt0036": {
-            "id": "gt0036",
-            "path": "/data[at0001]/items[at0002]/items[at0012]"
+          "gt0045": {
+            "id": "gt0045",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
           },
-          "gt0037": {
-            "id": "gt0037",
-            "path": "/data[at0001]/items[at0002]/items[at0015]"
+          "gt0046": {
+            "id": "gt0046",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0017]"
           },
-          "gt0038": {
-            "id": "gt0038",
-            "path": "/data[at0001]/items[at0018]/items[at0019]"
+          "gt0047": {
+            "id": "gt0047",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0021]/items[at0022]"
           }
         }
       },
       "gt0009": {
         "id": "gt0009",
-        "model_id": "openEHR-EHR-EVALUATION.rmi.v0",
-        "template_id": "openEHR-EHR-EVALUATION.rmi.v0",
+        "model_id": "openEHR-EHR-EVALUATION.rmi_assessment.v0",
+        "template_id": "openEHR-EHR-EVALUATION.rmi_assessment.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0039": {
-            "id": "gt0039",
-            "path": "/data[at0001]/items[at0002]/items[at0026]"
-          },
-          "gt0040": {
-            "id": "gt0040",
+          "gt0051": {
+            "id": "gt0051",
             "path": "/data[at0001]/items[at0022]"
-          },
-          "gt0041": {
-            "id": "gt0041",
-            "path": "/data[at0001]/items[at0025]"
           }
         }
       },
@@ -102,6 +94,22 @@
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
           }
         }
+      },
+      "gt0048": {
+        "id": "gt0048",
+        "model_id": "openEHR-EHR-OBSERVATION.rmi.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.rmi.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0049": {
+            "id": "gt0049",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0020]"
+          },
+          "gt0050": {
+            "id": "gt0050",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0025]"
+          }
+        }
       }
     },
     "default_actions": [
@@ -112,21 +120,21 @@
         "id": "gt0015",
         "priority": 5,
         "when": [
-          "$gt0033|Multiloculated cysts|!=null",
-          "$gt0034|Solid areas|!=null",
-          "$gt0035|Bilateral lesions|!=null",
-          "$gt0036|Ascites|!=null",
-          "$gt0037|Intra-abdominal metastases|!=null"
+          "$gt0042|Multiloculated cysts|!=null",
+          "$gt0043|Solid areas|!=null",
+          "$gt0044|Bilateral lesions|!=null",
+          "$gt0045|Ascites|!=null",
+          "$gt0046|Intra-abdominal metastases|!=null"
         ],
         "then": [
-          "$gt0039|Ultrasound features score|.magnitude=$gt0033.value+$gt0034.value+$gt0035.value+$gt0036.value+$gt0037.value"
+          "$gt0049|Ultrasound features score|.magnitude=$gt0042.value+$gt0043.value+$gt0044.value+$gt0045.value+$gt0046.value"
         ]
       },
       "gt0022": {
         "id": "gt0022",
         "priority": 4,
         "when": [
-          "$gt0039|Ultrasound features score|>=2"
+          "$gt0049|Ultrasound features score|>=2"
         ],
         "then": [
           "$gt0016|Ultrasound score|=3"
@@ -140,27 +148,27 @@
           "$gt0013|Serum CA-125|!=null"
         ],
         "then": [
-          "$gt0041|RMI|.magnitude=$gt0016*$gt0013.magnitude*$gt0038.value"
+          "$gt0050|RMI|.magnitude=$gt0016*$gt0013.magnitude*$gt0047.value"
         ]
       },
       "gt0018": {
         "id": "gt0018",
         "priority": 2,
         "when": [
-          "$gt0041|RMI|<=200"
+          "$gt0050|RMI|<=200"
         ],
         "then": [
-          "$gt0040|Risk of malignancy|=local::at0023|Low|"
+          "$gt0051|Risk of malignancy|=local::at0023|Low|"
         ]
       },
       "gt0019": {
         "id": "gt0019",
         "priority": 1,
         "when": [
-          "$gt0041|RMI|>200"
+          "$gt0050|RMI|>200"
         ],
         "then": [
-          "$gt0040|Risk of malignancy|=local::at0024|High|"
+          "$gt0051|Risk of malignancy|=local::at0024|High|"
         ]
       }
     }
@@ -343,6 +351,51 @@
           "gt0041": {
             "id": "gt0041",
             "text": "RMI",
+            "description": "*"
+          },
+          "gt0042": {
+            "id": "gt0042",
+            "text": "Multiloculated cysts",
+            "description": "*"
+          },
+          "gt0043": {
+            "id": "gt0043",
+            "text": "Solid areas",
+            "description": "*"
+          },
+          "gt0044": {
+            "id": "gt0044",
+            "text": "Bilateral lesions",
+            "description": "*"
+          },
+          "gt0045": {
+            "id": "gt0045",
+            "text": "Ascites",
+            "description": "*"
+          },
+          "gt0046": {
+            "id": "gt0046",
+            "text": "Intra-abdominal metastases",
+            "description": "*"
+          },
+          "gt0047": {
+            "id": "gt0047",
+            "text": "Menopausal status",
+            "description": "Postmenopausal status = >1 year of amenorrhea or age ≥50 years if patient is status post hysterectomy."
+          },
+          "gt0049": {
+            "id": "gt0049",
+            "text": "Ultrasound features score",
+            "description": "*"
+          },
+          "gt0050": {
+            "id": "gt0050",
+            "text": "RMI",
+            "description": "*"
+          },
+          "gt0051": {
+            "id": "gt0051",
+            "text": "Risk of malignancy",
             "description": "*"
           }
         }
