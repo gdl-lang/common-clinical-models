@@ -16,7 +16,7 @@
     "details": {
       "en": {
         "id": "en",
-        "purpose": "To calculate the risk of Lyme meningitis from aseptic meningitis.",
+        "purpose": "To calculate the Rule of 7s score and the risk of Lyme meningitis from aseptic meningitis.",
         "keywords": [
           "lyme meningitis",
           "risk",
@@ -24,7 +24,7 @@
           "cerebrospinal fluid",
           "headache"
         ],
-        "use": "Use to calculate the risk of Lyme meningitis from aseptic meningitis.\n\nThe rule of 7s is calculated based on three parameters: number of days of headache, CSF mononuclear cells and  7th (or other) cranial nerve palsy.\n\nRule of 7s            Risk\n0 points               Low risk for Lyme meningitis\n1–3 points           Not low risk for Lyme meningitis",
+        "use": "Use to calculate the Rule of 7s score and the risk of Lyme meningitis from aseptic meningitis.\n\nThe rule of 7s is calculated based on three parameters: number of days of headache, CSF mononuclear cells and  7th (or other) cranial nerve palsy.\n\nRule of 7s            Risk\n0 points               Low risk for Lyme meningitis\n1–3 points           Not low risk for Lyme meningitis",
         "misuse": "Not to be used in other patients than in pediatric patients (2-18 years).",
         "copyright": "Cambio CDS"
       }
@@ -37,37 +37,45 @@
     "data_bindings": {
       "gt0002": {
         "id": "gt0002",
-        "model_id": "openEHR-EHR-EVALUATION.rule_of_7s.v0",
-        "template_id": "openEHR-EHR-EVALUATION.rule_of_7s.v0",
+        "model_id": "openEHR-EHR-OBSERVATION.rule_of_7s.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.rule_of_7s.v0",
         "type": "INPUT",
         "elements": {
-          "gt0012": {
-            "id": "gt0012",
-            "path": "/data[at0001]/items[at0002]"
+          "gt0017": {
+            "id": "gt0017",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
           },
-          "gt0013": {
-            "id": "gt0013",
-            "path": "/data[at0001]/items[at0005]"
+          "gt0018": {
+            "id": "gt0018",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
           },
-          "gt0014": {
-            "id": "gt0014",
-            "path": "/data[at0001]/items[at0006]"
+          "gt0019": {
+            "id": "gt0019",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
           }
         }
       },
       "gt0006": {
         "id": "gt0006",
-        "model_id": "openEHR-EHR-EVALUATION.rule_of_7s.v0",
-        "template_id": "openEHR-EHR-EVALUATION.rule_of_7s.v0",
+        "model_id": "openEHR-EHR-EVALUATION.rule_of_7s_assessment.v0",
+        "template_id": "openEHR-EHR-EVALUATION.rule_of_7s_assessment.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0015": {
-            "id": "gt0015",
-            "path": "/data[at0001]/items[at0011]"
-          },
-          "gt0016": {
-            "id": "gt0016",
+          "gt0023": {
+            "id": "gt0023",
             "path": "/data[at0001]/items[at0012]"
+          }
+        }
+      },
+      "gt0021": {
+        "id": "gt0021",
+        "model_id": "openEHR-EHR-OBSERVATION.rule_of_7s.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.rule_of_7s.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0022": {
+            "id": "gt0022",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
           }
         }
       }
@@ -77,33 +85,33 @@
         "id": "gt0009",
         "priority": 3,
         "when": [
-          "$gt0012|Number of days of headache|!=null",
-          "$gt0013|CSF mononuclear cells|!=null",
-          "$gt0014|7th (or other) cranial nerve palsy|!=null"
+          "$gt0017|Number of days of headache|!=null",
+          "$gt0018|CSF mononuclear cells|!=null",
+          "$gt0019|7th (or other) cranial nerve palsy|!=null"
         ],
         "then": [
-          "$gt0015|Rule of 7s|.magnitude=$gt0012.value+$gt0013.value+$gt0014.value"
+          "$gt0022|Total score|.magnitude=$gt0017.value+$gt0018.value+$gt0019.value"
         ]
       },
       "gt0011": {
         "id": "gt0011",
         "priority": 2,
         "when": [
-          "$gt0015|Rule of 7s|>0",
-          "$gt0015|Rule of 7s|<=3"
+          "$gt0022|Total score|>0",
+          "$gt0022|Total score|<=0"
         ],
         "then": [
-          "$gt0016|Risk|=local::at0014|Not low risk for Lyme meningitis|"
+          "$gt0023|Risk|=local::at0014|Not low risk for Lyme meningitis|"
         ]
       },
       "gt0010": {
         "id": "gt0010",
         "priority": 1,
         "when": [
-          "$gt0015|Rule of 7s|==0"
+          "$gt0022|Total score|==0"
         ],
         "then": [
-          "$gt0016|Risk|=local::at0013|Low risk for Lyme meningitis|"
+          "$gt0023|Risk|=local::at0013|Low risk for Lyme meningitis|"
         ]
       }
     }
@@ -177,6 +185,31 @@
           },
           "gt0016": {
             "id": "gt0016",
+            "text": "Risk",
+            "description": "*"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "Number of days of headache",
+            "description": "*"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "CSF mononuclear cells",
+            "description": "CSF (cerebrospinal fluid): Lymphocytes and monocytes."
+          },
+          "gt0019": {
+            "id": "gt0019",
+            "text": "7th (or other) cranial nerve palsy",
+            "description": "*"
+          },
+          "gt0022": {
+            "id": "gt0022",
+            "text": "Total score",
+            "description": "*"
+          },
+          "gt0023": {
+            "id": "gt0023",
             "text": "Risk",
             "description": "*"
           }
