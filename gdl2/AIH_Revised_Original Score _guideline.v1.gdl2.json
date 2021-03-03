@@ -9,7 +9,7 @@
     "original_author": {
       "date": "2021-02-03",
       "name": "Maryam Razavi",
-      "organisation": "CambioCDS ",
+      "organisation": "Cambio CDS ",
       "email": "maryam.razavi@cambio.se"
     },
     "lifecycle_state": "Author draft",
@@ -18,13 +18,13 @@
         "id": "en",
         "purpose": "To diagnose autoimmune hepatitis.",
         "keywords": [
-          "Autoimmune Hepatitis (AIH)",
+          "autoimmune",
           "hepatitis",
-          "autoimmune ",
-          "liver biopsy"
+          "biopsy",
+          "AIH"
         ],
         "use": "Use in patients with established hepatitis and available liver biopsy results, but unclear diagnosis.\nFormula:\nAddition of the selected points:\nVariable\t                                            Points\nSex\t  \n Male\t0\nFemale\t2\n\n\nALP:AST or ALP:ALT ratio\t\n<1.5\t        2\n1.5-3.0\t0\n>3.0\t        -2\n\n\nSerum globulins or IgG,                                                         >2.0                 3\ntimes above upper limit of normal\t                                      1.5-2.0              2\n\t                                                                                      1.0-1.5              1\n\t                                                                                      <1.0                  0\n\nAntinuclear antibody (ANA), smooth muscle antibody (SMA), \nor liver/kidney microsomal type 1 (LKM-1) antibody\n>1:80\t3\n1:80\t        2\n1:40\t        1\n<1:40\t0\n\nAnti-mitochondrial antibody (AMA)\nPositive\t-4\nNegative\t0\n\nHepatitis viral markers\nPositive\t-3\nNegative\t+3\n\nRecent or current use of hepatotoxic drugs\nYes\t-4\nNo\t1\n\nAverage alcohol intake\n<25 g/day\t2\n25-60 g/day\t0\n>60 g/day\t-2\n\nLiver histology: \nInterface hepatitis\t3\nPredominantly lymphoplasmacytic infiltrate\t1\nRosetting of liver cells\t1\nNo interface hepatitis, not predominantly lymphoplasmacytic infiltrate, and no rosetting of liver cells\t-5\nBiliary changes (bile duct changes typical of primary biliary cirrhosis or primary scleroisng cholangitis, and/or periportal ductal reaction with copper-associated protein accumulation)\t-3\nOther changes (any other prominent features suggesting different etiology)\t-3\n\nOther autoimmune disease(s) (in patient or 1st degree relatives): \nNo\t0\nYes\t2\n\nOptional additional parameters\nSeropositivity for other defined autoantibodies4\t2\nHLA-DR3 or HLA-DR4\t1\n\nResponse to therapy:\nComplete\t2\nRelapse\t3\n\nInterpretation:\nAIH Score\tPre- or post treatment\tDiagnosis\n>15\t                          Pre-treatment\tDefinite AIH\n10-15\t\t                                        Probable AIH\n>17\t                          Post-treatment\tDefinite AIH\n12-17\t\t                                        Probable AIH\n\n\n\n\n\n\n\n\n\n\n\t                                                                                       ",
-        "copyright": "@CambioCDS"
+        "copyright": "Cambio CDS"
       }
     },
     "other_details": {
@@ -35,8 +35,8 @@
     "data_bindings": {
       "gt0002": {
         "id": "gt0002",
-        "model_id": "openEHR-EHR-OBSERVATION.aih_revised_original_score.v0",
-        "template_id": "openEHR-EHR-OBSERVATION.aih_revised_original_score.v0",
+        "model_id": "openEHR-EHR-OBSERVATION.aih_revised_original.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.aih_revised_original.v0",
         "type": "INPUT",
         "elements": {
           "gt0004": {
@@ -107,8 +107,8 @@
       },
       "gt0003": {
         "id": "gt0003",
-        "model_id": "openEHR-EHR-OBSERVATION.aih_revised_original_score.v0",
-        "template_id": "openEHR-EHR-OBSERVATION.aih_revised_original_score.v0",
+        "model_id": "openEHR-EHR-OBSERVATION.aih_revised_original.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.aih_revised_original.v0",
         "type": "OUTPUT",
         "elements": {
           "gt0019": {
@@ -119,8 +119,8 @@
       },
       "gt0024": {
         "id": "gt0024",
-        "model_id": "openEHR-EHR-EVALUATION.aih_revised_original_score.v0",
-        "template_id": "openEHR-EHR-EVALUATION.aih_revised_original_score.v0",
+        "model_id": "openEHR-EHR-EVALUATION.aih_revised_original_score_assessment.v0",
+        "template_id": "openEHR-EHR-EVALUATION.aih_revised_original_score_assessment.v0",
         "type": "OUTPUT",
         "elements": {
           "gt0025": {
@@ -141,7 +141,7 @@
     "rules": {
       "gt0023": {
         "id": "gt0023",
-        "priority": 8,
+        "priority": 9,
         "when": [
           "$gt0004|Sex|!=null",
           "$gt0005|ALP:AST or ALP:ALT ratio|!=null",
@@ -157,23 +157,43 @@
           "$gt0016|Liver histology: other changes|!=null",
           "$gt0017|Other autoimmune disease(s)|!=null",
           "$gt0018|Response to therapy|!=null",
-          "$gt0007|ANA, SMA, or LKM-1 antibody|.value>0"
+          "$gt0007|ANA, SMA, or LKM-1 antibody|!=null"
         ],
         "then": [
           "$gt0019|AIH score|.magnitude=$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0011.value+$gt0012.value+$gt0013.value+$gt0014.value+$gt0015.value+$gt0016.value+$gt0017.value+$gt0018.value",
-          "$gt0019|AIH score|.unit='1'"
+          "$gt0019|AIH score|.unit='1'",
+          "$gt0019|AIH score|.precision=0"
+        ]
+      },
+      "gt0037": {
+        "id": "gt0037",
+        "priority": 8,
+        "when": [
+          "$gt0019|AIH score|!=null",
+          "$gt0012|Liver histology: interface hepatitis|==0|local::at0036|No|",
+          "$gt0013|Liver histology: predominantly lymphoplasmacytic infiltrate|==0|local::at0038|No|",
+          "$gt0014|Liver histology: rosetting of liver cells|==0|local::at0042|No|",
+          "$gt0015|Liver histology: biliary changes|==0|local::at0044|No|",
+          "$gt0016|Liver histology: other changes|==0|local::at0047|No|"
+        ],
+        "then": [
+          "$gt0019|AIH score|.magnitude=$gt0019.magnitude-5",
+          "$gt0019|AIH score|.unit='1'",
+          "$gt0019|AIH score|.precision=0"
         ]
       },
       "gt0034": {
         "id": "gt0034",
         "priority": 7,
         "when": [
+          "$gt0019|AIH score|!=null",
           "$gt0007|ANA, SMA, or LKM-1 antibody|==0|local::at0017|<1:40|",
           "$gt0033|Optional additional parameters|!=null"
         ],
         "then": [
-          "$gt0019|AIH score|.magnitude=$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0011.value+$gt0012.value+$gt0013.value+$gt0014.value+$gt0015.value+$gt0016.value+$gt0017.value+$gt0018.value+$gt0033.value",
-          "$gt0019|AIH score|.unit='1'"
+          "$gt0019|AIH score|.magnitude=$gt0033.value+$gt0019.magnitude",
+          "$gt0019|AIH score|.unit='1'",
+          "$gt0019|AIH score|.precision=0"
         ]
       },
       "gt0027": {
@@ -333,7 +353,7 @@
           },
           "gt0023": {
             "id": "gt0023",
-            "text": "AIH score"
+            "text": "AIH score without additional parameter"
           },
           "gt0025": {
             "id": "gt0025",
@@ -382,6 +402,10 @@
           "gt0036": {
             "id": "gt0036",
             "text": "General Diagnosis for Possible AIH"
+          },
+          "gt0037": {
+            "id": "gt0037",
+            "text": "AIH score No liver change"
           }
         }
       }
