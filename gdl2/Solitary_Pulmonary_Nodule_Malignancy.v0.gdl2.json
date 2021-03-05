@@ -18,7 +18,7 @@
         "id": "en",
         "purpose": "To calculate the probability of malignancy. ",
         "keywords": [
-          "SPN",
+          "spn",
           "solitary",
           "pulmonary",
           "malignancy",
@@ -26,8 +26,8 @@
           "lung",
           "risk"
         ],
-        "use": "Use to predict malignancy risk in solitary lung nodules on chest x-ray.. The risk score is calculated by using the formulas:\n\nProbability of malignancy: % = 100*e^x / (1 + e^x)\nProbability of malignancy with FDG-PET: % = 100 / (1 + e^-y)\n\nwhere...\nx = (0.0391 * age) + (0.1274 * nodule diameter) + (0.7917 * smoker) + (1.3388 * cancer) + (0.7838 * upper lobe) + (1.0407 * spiculation) - 6.8272\ny = -4.739 + (3.691 * probability of malignancy) + 2.322 (if faint uptake), or + 4.617 (if moderate uptake), or + 4.771 (if intense uptake)\n",
-        "misuse": "Do not use in patients with prior lung cancer diagnosis or with history of extrathoracic cancer diagnosed within 5 years of nodule presentation.",
+        "use": "Use to predict malignancy risk in solitary lung nodules on chest x-ray. The risk score is calculated by using the formulas:\n\nProbability of malignancy: % = 100*e^x / (1 + e^x)\nProbability of malignancy with FDG-PET: % = 100 / (1 + e^-y)\n\nwhere...\nx = (0.0391 * age) + (0.1274 * nodule diameter) + (0.7917 * smoker) + (1.3388 * cancer) + (0.7838 * upper lobe) + (1.0407 * spiculation) - 6.8272\ny = -4.739 + (3.691 * probability of malignancy) + 2.322 (if faint uptake), or + 4.617 (if moderate uptake), or + 4.771 (if intense uptake)\n",
+        "misuse": "Not to be used for patients with prior lung cancer diagnosis or with history of extrathoracic cancer diagnosed within 5 years of nodule presentation.",
         "copyright": "Cambio CDS"
       }
     },
@@ -73,27 +73,27 @@
           }
         }
       },
-      "gt0012": {
-        "id": "gt0012",
+      "gt0030": {
+        "id": "gt0030",
         "model_id": "openEHR-EHR-OBSERVATION.solitary_pulmonary_nodule_malignancy.v0",
         "template_id": "openEHR-EHR-OBSERVATION.solitary_pulmonary_nodule_malignancy.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0013": {
-            "id": "gt0013",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0019]"
+          "gt0031": {
+            "id": "gt0031",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0030]"
           },
-          "gt0014": {
-            "id": "gt0014",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0020]"
+          "gt0032": {
+            "id": "gt0032",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0031]"
           },
-          "gt0018": {
-            "id": "gt0018",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0028]"
+          "gt0033": {
+            "id": "gt0033",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0032]"
           },
-          "gt0019": {
-            "id": "gt0019",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0029]"
+          "gt0034": {
+            "id": "gt0034",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0033]"
           }
         }
       }
@@ -112,80 +112,80 @@
           "$gt0011|FDG-PET|!=null"
         ],
         "then": [
-          "$gt0018|x|.magnitude=(0.0391*$gt0003.magnitude)+(0.1274*$gt0028.magnitude)+(0.7917*$gt0006.value)+(1.3388*$gt0007.value)+(0.7838*$gt0008.value)+(1.0407*$gt0010.value)-6.8272",
-          "$gt0018|x|.precision=5"
+          "$gt0031|x|.magnitude=(0.0391*$gt0003.magnitude)+(0.1274*$gt0028.magnitude)+(0.7917*$gt0006.value)+(1.3388*$gt0007.value)+(0.7838*$gt0008.value)+(1.0407*$gt0010.value)-6.8272",
+          "$gt0031|x|.precision=5"
         ]
       },
       "gt0017": {
         "id": "gt0017",
         "priority": 6,
         "when": [
-          "$gt0018|x|!=null"
+          "$gt0031|x|!=null"
         ],
         "then": [
-          "$gt0013|Probability of malignancy|.magnitude=(100*e^$gt0018.magnitude)/(1+e^$gt0018.magnitude)",
-          "$gt0013|Probability of malignancy|.precision=1",
-          "$gt0013|Probability of malignancy|.unit='%'"
+          "$gt0033|Probability of malignancy|.magnitude=(100*e^$gt0031.magnitude)/(1+e^$gt0031.magnitude)",
+          "$gt0033|Probability of malignancy|.precision=1",
+          "$gt0033|Probability of malignancy|.unit='%'"
         ]
       },
       "gt0022": {
         "id": "gt0022",
         "priority": 5,
         "when": [
-          "$gt0013|Probability of malignancy|!=null",
-          "$gt0011|FDG-PET|==local::at0027|Intense uptake|"
+          "$gt0011|FDG-PET|==local::at0027|Intense uptake|",
+          "$gt0031|x|!=null"
         ],
         "then": [
-          "$gt0019|y|.magnitude=(3.691*($gt0013.magnitude/100))+4.771-4.739",
-          "$gt0019|y|.precision=5"
+          "$gt0032|y|.magnitude=(3.691*($gt0033.magnitude/100))+4.771-4.739",
+          "$gt0032|y|.precision=5"
         ]
       },
       "gt0021": {
         "id": "gt0021",
         "priority": 4,
         "when": [
-          "$gt0013|Probability of malignancy|!=null",
-          "$gt0011|FDG-PET|==local::at0026|Moderate uptake|"
+          "$gt0011|FDG-PET|==local::at0026|Moderate uptake|",
+          "$gt0031|x|!=null"
         ],
         "then": [
-          "$gt0019|y|.magnitude=(3.691*($gt0013.magnitude/100))+4.617-4.739",
-          "$gt0019|y|.precision=5"
+          "$gt0032|y|.magnitude=(3.691*($gt0033.magnitude/100))+4.617-4.739",
+          "$gt0032|y|.precision=5"
         ]
       },
       "gt0020": {
         "id": "gt0020",
         "priority": 3,
         "when": [
-          "$gt0013|Probability of malignancy|!=null",
-          "$gt0011|FDG-PET|==local::at0025|Faint uptake|"
+          "$gt0011|FDG-PET|==local::at0025|Faint uptake|",
+          "$gt0031|x|!=null"
         ],
         "then": [
-          "$gt0019|y|.magnitude=(3.691*($gt0013.magnitude/100))+2.322-4.739",
-          "$gt0019|y|.precision=5"
+          "$gt0032|y|.magnitude=(3.691*($gt0033.magnitude/100))+2.322-4.739",
+          "$gt0032|y|.precision=5"
         ]
       },
       "gt0024": {
         "id": "gt0024",
         "priority": 2,
         "when": [
-          "$gt0013|Probability of malignancy|!=null",
-          "$gt0011|FDG-PET|==local::at0024|No uptake|"
+          "$gt0011|FDG-PET|==local::at0024|No uptake|",
+          "$gt0031|x|!=null"
         ],
         "then": [
-          "$gt0019|y|.magnitude=(3.691*($gt0013.magnitude/100))-4.739",
-          "$gt0019|y|.precision=5"
+          "$gt0032|y|.magnitude=(3.691*($gt0033.magnitude/100))-4.739",
+          "$gt0032|y|.precision=5"
         ]
       },
       "gt0023": {
         "id": "gt0023",
         "priority": 1,
         "when": [
-          "$gt0019|y|!=null"
+          "$gt0032|y|!=null"
         ],
         "then": [
-          "$gt0014|Probability of malignancy with FDG-PET|.magnitude=100/(1+e^(0-$gt0019.magnitude))",
-          "$gt0014|Probability of malignancy with FDG-PET|.precision=1",
-          "$gt0014|Probability of malignancy with FDG-PET|.unit='%'"
+          "$gt0034|Probability of malignancy with FDG-PET|.magnitude=100/(1+e^(0-$gt0032.magnitude))",
+          "$gt0034|Probability of malignancy with FDG-PET|.precision=1",
+          "$gt0034|Probability of malignancy with FDG-PET|.unit='%'"
         ]
       }
     }
@@ -230,16 +230,6 @@
             "text": "FDG-PET",
             "description": "Optional, if performed"
           },
-          "gt0013": {
-            "id": "gt0013",
-            "text": "Probability of malignancy",
-            "description": ""
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "text": "Probability of malignancy with FDG-PET",
-            "description": ""
-          },
           "gt0016": {
             "id": "gt0016",
             "text": "x",
@@ -248,16 +238,6 @@
           "gt0017": {
             "id": "gt0017",
             "text": "Calculate Probability of malignancy"
-          },
-          "gt0018": {
-            "id": "gt0018",
-            "text": "x",
-            "description": ""
-          },
-          "gt0019": {
-            "id": "gt0019",
-            "text": "y",
-            "description": ""
           },
           "gt0020": {
             "id": "gt0020",
@@ -287,6 +267,26 @@
           "gt0029": {
             "id": "gt0029",
             "text": "Calculate x"
+          },
+          "gt0031": {
+            "id": "gt0031",
+            "text": "x",
+            "description": ""
+          },
+          "gt0032": {
+            "id": "gt0032",
+            "text": "y",
+            "description": ""
+          },
+          "gt0033": {
+            "id": "gt0033",
+            "text": "Probability of malignancy",
+            "description": ""
+          },
+          "gt0034": {
+            "id": "gt0034",
+            "text": "Probability of malignancy with FDG-PET",
+            "description": ""
           }
         }
       }
