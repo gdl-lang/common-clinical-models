@@ -1,0 +1,168 @@
+guidelines:
+  1: HE_MACS.v0
+test_cases:
+- id: Test no input
+  input:
+    1: {}
+  expected_output:
+    1: {}
+- id: Age missing (negative test)
+  input:
+    1:
+      gt0004|Sex: 1|local::at0011|Male|
+      gt0005|Sweating observed: 0|local::at0018|No|
+      gt0006|Acute EKG ischemia: 0|local::at0020|No|
+      gt0007|Pain radiating to the right arm or shoulder: 0|local::at0022|No|
+      gt0008|Vomiting associated with pain: 0|local::at0024|No|
+      gt0009|Systolic BP <100 mmHg: 0|local::at0026|No|
+      gt0010|Current tobacco smoker: 0|local::at0028|No|
+  expected_output:
+    1: {}
+- id: Sex missing (negative test)
+  input:
+    1:
+      gt0003|Age: 40,a
+      gt0005|Sweating observed: 0|local::at0018|No|
+      gt0006|Acute EKG ischemia: 0|local::at0020|No|
+      gt0007|Pain radiating to the right arm or shoulder: 0|local::at0022|No|
+      gt0008|Vomiting associated with pain: 0|local::at0024|No|
+      gt0009|Systolic BP <100 mmHg: 0|local::at0026|No|
+      gt0010|Current tobacco smoker: 0|local::at0028|No|
+  expected_output:
+    1: {}
+- id: Sweating missing (negative test)
+  input:
+    1:
+      gt0003|Age: 40,a
+      gt0004|Sex: 1|local::at0011|Male|
+      gt0006|Acute EKG ischemia: 0|local::at0020|No|
+      gt0007|Pain radiating to the right arm or shoulder: 0|local::at0022|No|
+      gt0008|Vomiting associated with pain: 0|local::at0024|No|
+      gt0009|Systolic BP <100 mmHg: 0|local::at0026|No|
+      gt0010|Current tobacco smoker: 0|local::at0028|No|
+  expected_output:
+    1: {}
+- id: EKG missing (negative test)
+  input:
+    1:
+      gt0003|Age: 40,a
+      gt0004|Sex: 1|local::at0011|Male|
+      gt0005|Sweating observed: 0|local::at0018|No|
+      gt0007|Pain radiating to the right arm or shoulder: 0|local::at0022|No|
+      gt0008|Vomiting associated with pain: 0|local::at0024|No|
+      gt0009|Systolic BP <100 mmHg: 0|local::at0026|No|
+      gt0010|Current tobacco smoker: 0|local::at0028|No|
+  expected_output:
+    1: {}
+- id: Pain missing (negative test)
+  input:
+    1:
+      gt0003|Age: 40,a
+      gt0004|Sex: 1|local::at0011|Male|
+      gt0005|Sweating observed: 0|local::at0018|No|
+      gt0006|Acute EKG ischemia: 0|local::at0020|No|
+      gt0008|Vomiting associated with pain: 0|local::at0024|No|
+      gt0009|Systolic BP <100 mmHg: 0|local::at0026|No|
+      gt0010|Current tobacco smoker: 0|local::at0028|No|
+  expected_output:
+    1: {}
+- id: Vomiting missing (negative test)
+  input:
+    1:
+      gt0003|Age: 40,a
+      gt0004|Sex: 1|local::at0011|Male|
+      gt0005|Sweating observed: 0|local::at0018|No|
+      gt0006|Acute EKG ischemia: 0|local::at0020|No|
+      gt0007|Pain radiating to the right arm or shoulder: 0|local::at0022|No|
+      gt0009|Systolic BP <100 mmHg: 0|local::at0026|No|
+      gt0010|Current tobacco smoker: 0|local::at0028|No|
+  expected_output:
+    1: {}
+- id: Systolic BP missing (negative test)
+  input:
+    1:
+      gt0003|Age: 40,a
+      gt0004|Sex: 1|local::at0011|Male|
+      gt0005|Sweating observed: 0|local::at0018|No|
+      gt0006|Acute EKG ischemia: 0|local::at0020|No|
+      gt0007|Pain radiating to the right arm or shoulder: 0|local::at0022|No|
+      gt0008|Vomiting associated with pain: 0|local::at0024|No|
+      gt0010|Current tobacco smoker: 0|local::at0028|No|
+  expected_output:
+    1: {}
+- id: Tobacco missing (negative test)
+  input:
+    1:
+      gt0003|Age: 40,a
+      gt0004|Sex: 1|local::at0011|Male|
+      gt0005|Sweating observed: 0|local::at0018|No|
+      gt0006|Acute EKG ischemia: 0|local::at0020|No|
+      gt0007|Pain radiating to the right arm or shoulder: 0|local::at0022|No|
+      gt0008|Vomiting associated with pain: 0|local::at0024|No|
+      gt0009|Systolic BP <100 mmHg: 0|local::at0026|No|
+  expected_output:
+    1: {}
+- id: ACS <4.0% returns 'Very low'
+  input:
+    1:
+      gt0003|Age: 20,a
+      gt0004|Sex: 0|local::at0010|Female|
+      gt0005|Sweating observed: 0|local::at0018|No|
+      gt0006|Acute EKG ischemia: 0|local::at0020|No|
+      gt0007|Pain radiating to the right arm or shoulder: 0|local::at0022|No|
+      gt0008|Vomiting associated with pain: 0|local::at0024|No|
+      gt0009|Systolic BP <100 mmHg: 0|local::at0026|No|
+      gt0010|Current tobacco smoker: 0|local::at0028|No|
+  expected_output:
+    1:
+      gt0013|x: 3.936
+      gt0012|Probability of ACS: 1.9,%
+      gt0015|Risk group: Very low
+- id: ACS 4.0-6.9% returns 'Low'
+  input:
+    1:
+      gt0003|Age: 30,a
+      gt0004|Sex: 0|local::at0010|Female|
+      gt0005|Sweating observed: 0|local::at0018|No|
+      gt0006|Acute EKG ischemia: 0|local::at0020|No|
+      gt0007|Pain radiating to the right arm or shoulder: 0|local::at0022|No|
+      gt0008|Vomiting associated with pain: 0|local::at0024|No|
+      gt0009|Systolic BP <100 mmHg: 0|local::at0026|No|
+      gt0010|Current tobacco smoker: 1|local::at0029|Yes|
+  expected_output:
+    1:
+      gt0013|x: 3.021
+      gt0012|Probability of ACS: 4.6,%
+      gt0015|Risk group: Low
+- id: ACS 7.0-49.9% returns 'Moderate'
+  input:
+    1:
+      gt0003|Age: 30,a
+      gt0004|Sex: 0|local::at0010|Female|
+      gt0005|Sweating observed: 0|local::at0018|No|
+      gt0006|Acute EKG ischemia: 1|local::at0021|Yes|
+      gt0007|Pain radiating to the right arm or shoulder: 0|local::at0022|No|
+      gt0008|Vomiting associated with pain: 0|local::at0024|No|
+      gt0009|Systolic BP <100 mmHg: 0|local::at0026|No|
+      gt0010|Current tobacco smoker: 1|local::at0029|Yes|
+  expected_output:
+    1:
+      gt0013|x: 1.183
+      gt0012|Probability of ACS: 23.5,%
+      gt0015|Risk group: Moderate
+- id: ACS ≥50.0% returns 'High'
+  input:
+    1:
+      gt0003|Age: 70,a
+      gt0004|Sex: 0|local::at0010|Female|
+      gt0005|Sweating observed: 0|local::at0018|No|
+      gt0006|Acute EKG ischemia: 1|local::at0021|Yes|
+      gt0007|Pain radiating to the right arm or shoulder: 1|local::at0023|Yes|
+      gt0008|Vomiting associated with pain: 1|local::at0025|Yes|
+      gt0009|Systolic BP <100 mmHg: 0|local::at0026|No|
+      gt0010|Current tobacco smoker: 1|local::at0029|Yes|
+  expected_output:
+    1:
+      gt0013|x: -1.507
+      gt0012|Probability of ACS: 81.9,%
+      gt0015|Risk group: High
