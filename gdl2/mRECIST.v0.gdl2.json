@@ -16,7 +16,7 @@
     "details": {
       "en": {
         "id": "en",
-        "purpose": "To calculate the mRECIST. ",
+        "purpose": "To measure the treatment response based on the tumor size variations in comparison to the baseline tumor size.",
         "keywords": [
           "mRECIST",
           "treatment",
@@ -28,12 +28,12 @@
           "carcinoma ",
           "HCC"
         ],
-        "use": "Use to measure the treatment response based on tumor shrinkage for patients with hepatocellular carcinoma (HCC) who have undergone treatment. The mRECIST is achieved by using the tumor size at baseline and tumor current size for 1 to 5 repeated measurements. \n\nInterpretation: \n-Complete response: Disappearance of any intratumoral arterial enhancement in all target lesions.\n-Partial response:  At least a 30% decrease in the sum of diameters of viable (enhancement in the arterial phase) target lesions, taking as reference the baseline sum of the diameters of target lesions. \n-Stable disease: Any cases that do not qualify for either partial response or progressive disease. \n-Progressive disease - An increase of at least 20% in the sum of the diameters of viable (enhancing) target lesions, taking as reference the smallest sum of the diameters of viable (enhancing) target lesions recorded since treatment started. \n",
+        "use": "Use to measure the treatment response based on tumor shrinkage for patients with hepatocellular carcinoma (HCC) who have undergone treatment. The mRECIST is achieved by using the tumor size at baseline and tumor current size for 1 to 5 repeated measurements. \n\nInterpretation: \n-Complete response: Disappearance of any intratumoral arterial enhancement in all target lesions.\n-Partial response:  At least a 30% decrease in the sum of diameters of viable (enhancement in the arterial phase) target lesions, taking as reference the baseline sum of the diameters of target lesions. \n-Stable disease: Any cases that do not qualify for either partial response or progressive disease. \n-Progressive disease - An increase of at least 20% in the sum of the diameters of viable (enhancing) target lesions, taking as reference the smallest sum of the diameters of viable (enhancing) target lesions recorded since treatment started (assumed to be the sum of tumor size at baseline). ",
         "copyright": "Cambio CDS"
       }
     },
     "other_details": {
-      "references": "Josep M. Llovet, Adrian M. Di Bisceglie, Jordi Bruix, Barnett S. Kramer, Riccardo Lencioni, Andrew X. Zhu, Morris Sherman, Myron Schwartz, Michael Lotze, Jayant Talwalkar, Gregory J. Gores, for the Panel of Experts in HCC-Design Clinical Trials, Design and Endpoints of Clinical Trials in Hepatocellular Carcinoma, JNCI: Journal of the National Cancer Institute, Volume 100, Issue 10, 21 May 2008, Pages 698–711, https://doi.org/10.1093/jnci/djn134"
+      "references": "1. Josep M. Llovet, Adrian M. Di Bisceglie, Jordi Bruix, Barnett S. Kramer, Riccardo Lencioni, Andrew X. Zhu, Morris Sherman, Myron Schwartz, Michael Lotze, Jayant Talwalkar, Gregory J. Gores, for the Panel of Experts in HCC-Design Clinical Trials, Design and Endpoints of Clinical Trials in Hepatocellular Carcinoma, JNCI: Journal of the National Cancer Institute, Volume 100, Issue 10, 21 May 2008, Pages 698–711, https://doi.org/10.1093/jnci/djn134\n\n2. Therasse P, Arbuck SG, Eisenhauer EA, Wanders J, Kaplan RS, Rubinstein L, Verweij J, Van Glabbeke M, van Oosterom AT, Christian MC, Gwyther SG. New guidelines to evaluate the response to treatment in solid tumors. European Organization for Research and Treatment of Cancer, National Cancer Institute of the United States, National Cancer Institute of Canada. J Natl Cancer Inst. 2000 Feb 2;92(3):205-16. doi: 10.1093/jnci/92.3.205. PMID: 10655437."
     }
   },
   "definition": {
@@ -115,22 +115,27 @@
         }
       }
     },
+    "default_actions": [
+      "$gt0014|Interpretation|='Stable disease'"
+    ],
     "rules": {
       "gt0033": {
         "id": "gt0033",
-        "priority": 9,
+        "priority": 8,
         "when": [
           "$gt0003|Tumor 1 size at baseline|!=null",
           "$gt0004|Tumor 1 current size|!=null"
         ],
         "then": [
           "$gt0024|Total size at baseline|.magnitude=$gt0003.magnitude",
-          "$gt0025|Total current size|.magnitude=$gt0004.magnitude"
+          "$gt0025|Total current size|.magnitude=$gt0004.magnitude",
+          "$gt0024|Total size at baseline|.unit='mm'",
+          "$gt0025|Total current size|.unit='mm'"
         ]
       },
       "gt0032": {
         "id": "gt0032",
-        "priority": 8,
+        "priority": 7,
         "when": [
           "$gt0003|Tumor 1 size at baseline|!=null",
           "$gt0004|Tumor 1 current size|!=null",
@@ -139,12 +144,14 @@
         ],
         "then": [
           "$gt0024|Total size at baseline|.magnitude=$gt0003.magnitude+$gt0005.magnitude",
-          "$gt0025|Total current size|.magnitude=$gt0004.magnitude+$gt0006.magnitude"
+          "$gt0025|Total current size|.magnitude=$gt0004.magnitude+$gt0006.magnitude",
+          "$gt0024|Total size at baseline|.unit='mm'",
+          "$gt0025|Total current size|.unit='mm'"
         ]
       },
       "gt0031": {
         "id": "gt0031",
-        "priority": 7,
+        "priority": 6,
         "when": [
           "$gt0003|Tumor 1 size at baseline|!=null",
           "$gt0004|Tumor 1 current size|!=null",
@@ -155,12 +162,14 @@
         ],
         "then": [
           "$gt0024|Total size at baseline|.magnitude=$gt0003.magnitude+$gt0005.magnitude+$gt0007.magnitude",
-          "$gt0025|Total current size|.magnitude=$gt0004.magnitude+$gt0006.magnitude+$gt0008.magnitude"
+          "$gt0025|Total current size|.magnitude=$gt0004.magnitude+$gt0006.magnitude+$gt0008.magnitude",
+          "$gt0024|Total size at baseline|.unit='mm'",
+          "$gt0025|Total current size|.unit='mm'"
         ]
       },
       "gt0030": {
         "id": "gt0030",
-        "priority": 6,
+        "priority": 5,
         "when": [
           "$gt0003|Tumor 1 size at baseline|!=null",
           "$gt0004|Tumor 1 current size|!=null",
@@ -173,12 +182,14 @@
         ],
         "then": [
           "$gt0024|Total size at baseline|.magnitude=$gt0003.magnitude+$gt0005.magnitude+$gt0007.magnitude+$gt0009.magnitude",
-          "$gt0025|Total current size|.magnitude=$gt0004.magnitude+$gt0006.magnitude+$gt0008.magnitude+$gt0010.magnitude"
+          "$gt0025|Total current size|.magnitude=$gt0004.magnitude+$gt0006.magnitude+$gt0008.magnitude+$gt0010.magnitude",
+          "$gt0024|Total size at baseline|.unit='mm'",
+          "$gt0025|Total current size|.unit='mm'"
         ]
       },
       "gt0018": {
         "id": "gt0018",
-        "priority": 5,
+        "priority": 4,
         "when": [
           "$gt0003|Tumor 1 size at baseline|!=null",
           "$gt0004|Tumor 1 current size|!=null",
@@ -193,28 +204,20 @@
         ],
         "then": [
           "$gt0024|Total size at baseline|.magnitude=$gt0003.magnitude+$gt0005.magnitude+$gt0007.magnitude+$gt0009.magnitude+$gt0011.magnitude",
-          "$gt0025|Total current size|.magnitude=$gt0004.magnitude+$gt0006.magnitude+$gt0008.magnitude+$gt0010.magnitude+$gt0012.magnitude"
+          "$gt0025|Total current size|.magnitude=$gt0004.magnitude+$gt0006.magnitude+$gt0008.magnitude+$gt0010.magnitude+$gt0012.magnitude",
+          "$gt0024|Total size at baseline|.unit='mm'",
+          "$gt0025|Total current size|.unit='mm'"
         ]
       },
       "gt0022": {
         "id": "gt0022",
-        "priority": 4,
+        "priority": 3,
         "when": [
-          "$gt0025|Total current size|.magnitude>=($gt0024.magnitude*1.2)"
+          "$gt0025|Total current size|.magnitude>=($gt0024.magnitude*1.2)",
+          "$gt0025|Total current size|.magnitude>=$gt0024.magnitude+5"
         ],
         "then": [
           "$gt0014|Interpretation|='Progressive disease'"
-        ]
-      },
-      "gt0028": {
-        "id": "gt0028",
-        "priority": 3,
-        "when": [
-          "$gt0025|Total current size|.magnitude>($gt0024.magnitude*0.7)",
-          "$gt0025|Total current size|.magnitude<($gt0024.magnitude*1.2)"
-        ],
-        "then": [
-          "$gt0014|Interpretation|='Stable disease'"
         ]
       },
       "gt0027": {
@@ -231,7 +234,7 @@
         "id": "gt0029",
         "priority": 1,
         "when": [
-          "$gt0024|Total size at baseline|=='0'",
+          "$gt0024|Total size at baseline|>'0'",
           "$gt0025|Total current size|=='0'"
         ],
         "then": [
@@ -326,10 +329,6 @@
           "gt0027": {
             "id": "gt0027",
             "text": "Partial response"
-          },
-          "gt0028": {
-            "id": "gt0028",
-            "text": "Stable disease"
           },
           "gt0029": {
             "id": "gt0029",
