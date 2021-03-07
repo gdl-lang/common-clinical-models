@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 533*
+### *Published Apps: 534*
 
 ----------
 
 ### Latest added
 
-1. Wexner Score for Obstructed Defecation Syndrome (ODS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wexner_score_ODS/1?language=en))
-2. SIRS, Sepsis, and Septic Shock Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SIRS_Sepsis_Septic_Shock_Criteria_guideline/1?language=en))
-3. Revised Amyotrophic Lateral Sclerosis Functional Rating Scale (ALSFRS-R) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ALSFRS-R_guideline/1?language=en))
-4. Memorial Sloan-Kettering Cancer Center (MSKCC/Motzer) Score for Metastatic Renal Cell Carcinoma (RCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MSKCC_Motzer_Score_guideline/1?language=en))
-5. Revised Multiple Myeloma International Staging System (R-ISS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R-ISS_guideline/1?language=en))
-6. REACH-B Score for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/REACH_B_Score_guideline/1?language=en))
-7. Aldrete score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Aldrete_score/1?language=en))
-8. Trunk Impairment Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/trunk_impairment_scale/0?language=en))
-9. Serum Osmolality/Osmolarity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Osmolality/1?language=en))
-10. POSSUM for Operative Morbidity and Mortality Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/POSSUM_Score_guideline/1?language=en))
+1. Recognition of Stroke in the Emergency Room (ROSIER) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Recognition_of_stroke_in_the_emergency_room_ROSIER_scale/1?language=en))
+2. Wexner Score for Obstructed Defecation Syndrome (ODS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wexner_score_ODS/1?language=en))
+3. SIRS, Sepsis, and Septic Shock Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SIRS_Sepsis_Septic_Shock_Criteria_guideline/1?language=en))
+4. Revised Amyotrophic Lateral Sclerosis Functional Rating Scale (ALSFRS-R) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ALSFRS-R_guideline/1?language=en))
+5. Memorial Sloan-Kettering Cancer Center (MSKCC/Motzer) Score for Metastatic Renal Cell Carcinoma (RCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MSKCC_Motzer_Score_guideline/1?language=en))
+6. Revised Multiple Myeloma International Staging System (R-ISS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R-ISS_guideline/1?language=en))
+7. REACH-B Score for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/REACH_B_Score_guideline/1?language=en))
+8. Aldrete score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Aldrete_score/1?language=en))
+9. Trunk Impairment Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/trunk_impairment_scale/0?language=en))
+10. Serum Osmolality/Osmolarity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Osmolality/1?language=en))
 
 ----------
 
@@ -333,6 +333,8 @@ _Select a medical specialty below to view the available apps._
 * Quick COVID-19 Severity Index (qCSI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Quick_COVID-19_Severity_Index_qCSI_guideline/1?language=en))
 
 * Quick Sepsis Related Organ Failure Assessment (qSOFA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/qSOFA/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/qSOFA/1?language=sv))
+
+* Recognition of Stroke in the Emergency Room (ROSIER) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Recognition_of_stroke_in_the_emergency_room_ROSIER_scale/1?language=en))
 
 * Revised Geneva Score (rGeneva) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rGeneva/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rGeneva/1?language=sv))
 
