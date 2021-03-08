@@ -1,0 +1,68 @@
+guidelines:
+  1: new_guideline.v0
+test_cases:
+- id: 1 low_risk_normal
+  input:
+    1:
+      gt0003|SpO2: 99,%
+      gt0004|FiO2: 20,%
+      gt0005|Respiratory_rate: 15,breaths/min
+  expected_output:
+    1:
+      gt0007|Result: 33.0
+      gt0009|Rox_Index_Result: 0|local::at0003|Low risk for intubation|
+
+- id: 2 low_risk_edge
+  input:
+    1:
+      gt0003|SpO2: 40,%
+      gt0004|FiO2: 54,%
+      gt0005|Respiratory_rate: 15,breaths/min
+  expected_output:
+    1:
+      gt0007|Result: 4.938271604938271
+      gt0009|Rox_Index_Result: 0|local::at0003|Low risk for intubation|
+
+- id: 3 further_evaluate_edge
+  input:
+    1:
+      gt0003|SpO2: 40,%
+      gt0004|FiO2: 55,%
+      gt0005|Respiratory_rate: 15,breaths/min
+  expected_output:
+    1:
+      gt0007|Result: 4.848484848484849
+      gt0009|Rox_Index_Result: 1|local::at0005|Further evaluation necessary|
+
+- id: 4 further_evaluate 
+  input:
+    1:
+      gt0003|SpO2: 30,%
+      gt0004|FiO2: 38,%
+      gt0005|Respiratory_rate: 18,breaths/min
+  expected_output:
+    1:
+      gt0007|Result: 4.385964912280701
+      gt0009|Rox_Index_Result: 1|local::at0005|Further evaluation necessary|
+
+- id: 5 high_risk_edge
+  input:
+    1:
+      gt0003|SpO2: 30,%
+      gt0004|FiO2: 60,%
+      gt0005|Respiratory_rate: 13,breaths/min
+  expected_output:
+    1:
+      gt0007|Result: 3.8461538461538463
+      gt0009|Rox_Index_Result: 2|local::at0004|High risk of HFNC failure|
+
+- id: 6 high_risk
+  input:
+    1:
+      gt0003|SpO2: 30,%
+      gt0004|FiO2: 70,%
+      gt0005|Respiratory_rate: 18,breaths/min
+  expected_output:
+    1:
+      gt0007|Result: 2.380952380952381
+      gt0009|Rox_Index_Result: 2|local::at0004|High risk of HFNC failure|
