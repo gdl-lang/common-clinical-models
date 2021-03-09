@@ -1,0 +1,143 @@
+{
+  "id": "new_guideline.v0",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2021-03-09",
+      "name": "Emma Malm",
+      "organisation": "Cambio CDS",
+      "email": "emma.snygg@hotmail.com"
+    },
+    "lifecycle_state": "Initial",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "To prognosticate the severity of multiple myeloma based on serum β2 microglobulin and albumin levels. ",
+        "keywords": [
+          "myeloma",
+          "serum",
+          "albumin",
+          "microglobulin",
+          "β2",
+          "ISS"
+        ],
+        "use": "Use to prognosticate the severity of multiple myeloma based on serum β2 microglobulin and albumin levels. The ISS differentiates patients into 3 separate prognostic groups: \n\nStage\tCriteria\nI\t        Serum β2 microglobulin <3.5 mg/L AND serum albumin ≥ 3.5 g/dL\nII\t        Either: serum β2 microglobulin <3.5 mg/L, but serum albumin <3.5 g/dL\n                OR\n                serum β2 microglobulin 3.5 – 5.4 mg/L irrespective of the serum albumin\nIII\t        Serum β2 microglobulin ≥5.5 mg/L",
+        "misuse": "Not to be used in patients with relapsed myeloma, smoldering myeloma or MGUS.",
+        "copyright": "Cambio CDS"
+      }
+    },
+    "other_details": {
+      "references": "1. Durie BG, Salmon SE. A clinical staging system for multiple myeloma. Correlation of measured myeloma cell mass with presenting clinical features, response to treatment, and survival. Cancer. 1975 Sep;36(3):842-54. doi: 10.1002/1097-0142(197509)36:3<842::aid-cncr2820360303>3.0.co;2-u. PMID: 1182674.\n\n2. Greipp PR, San Miguel J, Durie BG, Crowley JJ, Barlogie B, Bladé J, Boccadoro M, Child JA, Avet-Loiseau H, Kyle RA, Lahuerta JJ, Ludwig H, Morgan G, Powles R, Shimizu K, Shustik C, Sonneveld P, Tosi P, Turesson I, Westin J. International staging system for multiple myeloma. J Clin Oncol. 2005 May 20;23(15):3412-20. doi: 10.1200/JCO.2005.04.242. Epub 2005 Apr 4. Erratum in: J Clin Oncol. 2005 Sep 1;23(25):6281. Harousseau, Jean-Luc [corrected to Avet-Loiseau, Herve]. PMID: 15809451."
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0002": {
+        "id": "gt0002",
+        "model_id": "openEHR-EHR-OBSERVATION.multiple_myeloma.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.multiple_myeloma.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0003": {
+            "id": "gt0003",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0006]"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0010]"
+          }
+        }
+      },
+      "gt0005": {
+        "id": "gt0005",
+        "model_id": "openEHR-EHR-EVALUATION.multiple_myeloma_assessment.v0",
+        "template_id": "openEHR-EHR-EVALUATION.multiple_myeloma_assessment.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/items[at0002]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0009": {
+        "id": "gt0009",
+        "priority": 3,
+        "when": [
+          "$gt0003|Serum β2 microglobulin|==local::at0009|>5.4 mg/L|"
+        ],
+        "then": [
+          "$gt0006|Interpretation|='Stage III'"
+        ]
+      },
+      "gt0008": {
+        "id": "gt0008",
+        "priority": 2,
+        "when": [
+          "(($gt0003|Serum β2 microglobulin|==local::at0007|<3.5 mg/L|)&&($gt0004|Serum Albumin|==local::at0011|<3.5 g/dL|))||($gt0003|Serum β2 microglobulin|==local::at0008|3.5 - 5.4 mg/L|)"
+        ],
+        "then": [
+          "$gt0006|Interpretation|='Stage II'"
+        ]
+      },
+      "gt0007": {
+        "id": "gt0007",
+        "priority": 1,
+        "when": [
+          "$gt0003|Serum β2 microglobulin|==local::at0007|<3.5 mg/L|",
+          "$gt0004|Serum Albumin|==local::at0012|≥3.5 g/dL|"
+        ],
+        "then": [
+          "$gt0006|Interpretation|='Stage I'"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "Multiple Myeloma ISS",
+            "description": "Multiple Myeloma International Staging System (ISS) prognosticates the severity of multiple myeloma based on routinely obtained lab values."
+          },
+          "gt0003": {
+            "id": "gt0003",
+            "text": "Serum β2 microglobulin",
+            "description": ""
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "Serum Albumin",
+            "description": ""
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Interpretation",
+            "description": ""
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "text": "Set Stage I"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "Set Stage II"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "text": "Set Stage III"
+          }
+        }
+      }
+    }
+  }
+}
