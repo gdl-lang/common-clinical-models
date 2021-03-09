@@ -1,0 +1,267 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.ems.v0
+
+concept
+	[at0000]	-- Ems
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"">
+			use = <"">
+			misuse = <"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"18AFB08C2BEF77687FA9D5C02F2BE391">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Ems
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0011] occurrences matches {0..1} matches {	-- Assessment
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0004] occurrences matches {0..1} matches {	-- Lying To Sitting
+												value matches {
+													0|[local::at0019], 	-- Needs help of 2+ people
+													1|[local::at0018], 	-- Needs help of 1 person
+													2|[local::at0017]  	-- Independent
+												}
+											}
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Sitting to Lying
+												value matches {
+													0|[local::at0015], 	-- Needs help of 2+ people
+													1|[local::at0014], 	-- Needs help of 1 person
+													2|[local::at0013]  	-- Independent
+												}
+											}
+											ELEMENT[at0006] occurrences matches {0..1} matches {	-- Sitting to Standing
+												value matches {
+													0|[local::at0020], 	-- Needs help of 2+ people
+													1|[local::at0021], 	-- Needs help of 1 person
+													2|[local::at0022], 	-- Independent in over 3 seconds
+													3|[local::at0023]  	-- Independent in under 3 seconds
+												}
+											}
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Standing
+												value matches {
+													0|[local::at0024], 	-- Stands only with physical support of another person
+													1|[local::at0025], 	-- Stands but needs support
+													2|[local::at0026], 	-- Stands without support but needs support to reach
+													3|[local::at0027]  	-- Stands without support and able to reach
+												}
+											}
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Gait
+												value matches {
+													0|[local::at0028], 	-- Needs physical help to walk or constant supervision
+													1|[local::at0029], 	-- Mobile with walking aid but erratic/unsafe
+													2|[local::at0030], 	-- Independent with frame
+													3|[local::at0031]  	-- Independent (+/- stick)
+												}
+											}
+											ELEMENT[at0009] occurrences matches {0..1} matches {	-- Timed Walk (6 meters)
+												value matches {
+													0|[local::at0032], 	-- Unable to cover 6 meters
+													1|[local::at0033], 	-- Over 30 seconds
+													2|[local::at0034], 	-- 16-30 seconds
+													3|[local::at0035]  	-- Under 15 seconds
+												}
+											}
+											ELEMENT[at0010] occurrences matches {0..1} matches {	-- Functional Reach
+												value matches {
+													0|[local::at0039], 	-- Under 10 cm
+													2|[local::at0038], 	-- 10-20 cm
+													4|[local::at0037]  	-- Over 20 cm
+												}
+											}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Total Score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..20|}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Ems">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Lying To Sitting">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Sitting to Lying">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Sitting to Standing">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Standing">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Gait">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Timed Walk (6 meters)">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Functional Reach">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Assessment">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Total Score">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Independent">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Needs help of 1 person">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Needs help of 2+ people">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Independent">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Needs help of 1 person">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Needs help of 2+ people">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Needs help of 2+ people">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Needs help of 1 person">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Independent in over 3 seconds">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Independent in under 3 seconds">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Stands only with physical support of another person">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Stands but needs support">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Stands without support but needs support to reach">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Stands without support and able to reach">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Needs physical help to walk or constant supervision">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"Mobile with walking aid but erratic/unsafe">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Independent with frame">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Independent (+/- stick)">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Unable to cover 6 meters">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Over 30 seconds">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"16-30 seconds">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"Under 15 seconds">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"Over 20 cm">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"10-20 cm">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Under 10 cm">
+					description = <"*">
+				>
+			>
+		>
+	>
