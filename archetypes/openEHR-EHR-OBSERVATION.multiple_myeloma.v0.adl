@@ -1,0 +1,135 @@
+archetype (adl_version=1.4; uid=fb43659c-fe81-4733-ae38-4de696d82a1f)
+	openEHR-EHR-OBSERVATION.multiple_myeloma.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2021-03-09">
+		["name"] = <"Emma Malm">
+		["organisation"] = <"Cambio CDS">
+		["email"] = <"emma.snygg@hotmail.com">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the result for each component parameter. ">
+			keywords = <"myeloma, ISS, serum, β2, microglobulin, albumin", ...>
+			copyright = <"Cambio CDS">
+			use = <"Use to record the result for each component parameter. ">
+			misuse = <"Not to be used in patients with relapsed myeloma, smoldering myeloma or MGUS.">
+		>
+	>
+	other_details = <
+		["current_contact"] = <"Emma Malm, Cambio CDS, emma.snygg@hotmail.com">
+		["references"] = <"1. Durie BG, Salmon SE. A clinical staging system for multiple myeloma. Correlation of measured myeloma cell mass with presenting clinical features, response to treatment, and survival. Cancer. 1975 Sep;36(3):842-54. doi: 10.1002/1097-0142(197509)36:3<842::aid-cncr2820360303>3.0.co;2-u. PMID: 1182674.
+
+2. Greipp PR, San Miguel J, Durie BG, Crowley JJ, Barlogie B, Bladé J, Boccadoro M, Child JA, Avet-Loiseau H, Kyle RA, Lahuerta JJ, Ludwig H, Morgan G, Powles R, Shimizu K, Shustik C, Sonneveld P, Tosi P, Turesson I, Westin J. International staging system for multiple myeloma. J Clin Oncol. 2005 May 20;23(15):3412-20. doi: 10.1200/JCO.2005.04.242. Epub 2005 Apr 4. Erratum in: J Clin Oncol. 2005 Sep 1;23(25):6281. Harousseau, Jean-Luc [corrected to Avet-Loiseau, Herve]. PMID: 15809451.">
+		["build_uid"] = <"7df7a40b-9cfb-3f6e-b5e4-9e3ed96bfe22">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Multiple Myeloma International Staging System (ISS)
+		data matches {
+			HISTORY[at0001] matches {    -- History
+				events cardinality matches {0..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0004] occurrences matches {0..1} matches {    -- Assessment
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0006] occurrences matches {0..1} matches {    -- Serum β2 microglobulin
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0007,    -- <3.5 mg/L
+															at0008,    -- 3.5 - 5.4 mg/L
+															at0009]    -- >5.4 mg/L
+														}
+													}
+												}
+											}
+											ELEMENT[at0010] occurrences matches {0..1} matches {    -- Serum Albumin
+												value matches {
+													DV_CODED_TEXT matches {
+														defining_code matches {
+															[local::
+															at0011,    -- <3.5 g/dL
+															at0012]    -- ≥3.5 g/dL
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Multiple Myeloma International Staging System (ISS)">
+					description = <"An assessment tool used to prognosticate the severity of multiple myeloma based on routinely obtained lab values.">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Assessment">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Serum β2 microglobulin">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"<3.5 mg/L">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"3.5 - 5.4 mg/L">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <">5.4 mg/L">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Serum Albumin">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"<3.5 g/dL">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"≥3.5 g/dL">
+					description = <"">
+				>
+			>
+		>
+	>
