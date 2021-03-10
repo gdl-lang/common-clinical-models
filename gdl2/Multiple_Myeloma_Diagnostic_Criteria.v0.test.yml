@@ -1,0 +1,63 @@
+guidelines:
+  1: Multiple_Myeloma_Diagnostic_Criteria.v0
+test_cases:
+- id: Test no input
+  input:
+    1: {}
+  expected_output:
+    1: {}
+- id: Test Criteria A or B score
+  input:
+    1:
+      gt0003|A. Clonal bone marrow plasma cells ≥10%: 0|local::at0024|No|
+      gt0004|B. Biopsy-proven bony or extramedullary plasmacytoma: 1|local::at0028|Yes|
+  expected_output:
+    1:
+      gt0013|Criteria A or B score: 1
+- id: Test Criteria C1 or C2 score
+  input:
+    1:
+      gt0005|C1. Hypercalcemia: 1|local::at0033|Yes|
+      gt0006|C1. Renal insufficiency: 1|local::at0036|Yes|
+      gt0007|C1. Anemia: 1|local::at0039|Yes|
+      gt0008|C1. Bone lesions: 1|local::at0042|Yes|
+      gt0009|C2. Clonal bone marrow plasma cells ≥60%: 1|local::at0045|Yes|
+      gt0010|C2. Involved:uninvolved sFLC ratio ≥100: 1|local::at0048|Yes|
+      gt0011|C2. >1 focal lesion on MRI: 1|local::at0051|Yes|
+  expected_output:
+    1:
+      gt0014|Criteria C1 or C2 score: 7
+- id: Score under criteria returns 'Negative for multiple myeloma'
+  input:
+    1:
+      gt0003|A. Clonal bone marrow plasma cells ≥10%: 1|local::at0025|Yes|
+      gt0004|B. Biopsy-proven bony or extramedullary plasmacytoma: 0|local::at0027|No|
+      gt0005|C1. Hypercalcemia: 0|local::at0032|No|
+      gt0006|C1. Renal insufficiency: 0|local::at0035|No|
+      gt0007|C1. Anemia: 0|local::at0038|No|
+      gt0008|C1. Bone lesions: 0|local::at0041|No|
+      gt0009|C2. Clonal bone marrow plasma cells ≥60%: 0|local::at0044|No|
+      gt0010|C2. Involved:uninvolved sFLC ratio ≥100: 0|local::at0047|No|
+      gt0011|C2. >1 focal lesion on MRI: 0|local::at0050|No|
+  expected_output:
+    1:
+      gt0015|Diagnostic result: Negative for multiple myeloma
+      gt0014|Criteria C1 or C2 score: 0
+      gt0013|Criteria A or B score: 1
+- id: Score above criteria returns 'Positive for multiple myeloma'
+  input:
+    1:
+      gt0003|A. Clonal bone marrow plasma cells ≥10%: 1|local::at0025|Yes|
+      gt0004|B. Biopsy-proven bony or extramedullary plasmacytoma: 0|local::at0027|No|
+      gt0005|C1. Hypercalcemia: 0|local::at0032|No|
+      gt0006|C1. Renal insufficiency: 0|local::at0035|No|
+      gt0007|C1. Anemia: 0|local::at0038|No|
+      gt0008|C1. Bone lesions: 1|local::at0042|Yes|
+      gt0009|C2. Clonal bone marrow plasma cells ≥60%: 0|local::at0044|No|
+      gt0010|C2. Involved:uninvolved sFLC ratio ≥100: 1|local::at0048|Yes|
+      gt0011|C2. >1 focal lesion on MRI: 0|local::at0050|No|
+  expected_output:
+    1:
+      gt0015|Diagnostic result: Positive for multiple myeloma
+      gt0014|Criteria C1 or C2 score: 2
+      gt0013|Criteria A or B score: 1
