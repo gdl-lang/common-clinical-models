@@ -44,14 +44,6 @@
         "template_id": "openEHR-EHR-OBSERVATION.he_macs.v0",
         "type": "INPUT",
         "elements": {
-          "gt0003": {
-            "id": "gt0003",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0005]"
-          },
-          "gt0004": {
-            "id": "gt0004",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0009]"
-          },
           "gt0005": {
             "id": "gt0005",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0012]"
@@ -91,6 +83,10 @@
           "gt0013": {
             "id": "gt0013",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0032]"
+          },
+          "gt0028": {
+            "id": "gt0028",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0033]"
           }
         }
       },
@@ -105,24 +101,60 @@
             "path": "/data[at0001]/items[at0002]"
           }
         }
+      },
+      "gt0022": {
+        "id": "gt0022",
+        "model_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0023": {
+            "id": "gt0023",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          },
+          "gt0024": {
+            "id": "gt0024",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
+          }
+        }
       }
     },
     "rules": {
+      "gt0029": {
+        "id": "gt0029",
+        "priority": 8,
+        "when": [
+          "$gt0023|Gender|==local::at0005|Male|"
+        ],
+        "then": [
+          "$gt0028|Sex|=1|local::at0035|Male|"
+        ]
+      },
+      "gt0026": {
+        "id": "gt0026",
+        "priority": 7,
+        "when": [
+          "$gt0023|Gender|==local::at0006|Female|"
+        ],
+        "then": [
+          "$gt0028|Sex|=0|local::at0034|Female|"
+        ]
+      },
       "gt0016": {
         "id": "gt0016",
         "priority": 6,
         "when": [
-          "$gt0003|Age|!=null",
-          "$gt0004|Sex|!=null",
           "$gt0005|Sweating observed|!=null",
           "$gt0006|Acute EKG ischemia|!=null",
           "$gt0007|Pain radiating to the right arm or shoulder|!=null",
           "$gt0008|Vomiting associated with pain|!=null",
           "$gt0009|Systolic BP <100 mmHg|!=null",
-          "$gt0010|Current tobacco smoker|!=null"
+          "$gt0010|Current tobacco smoker|!=null",
+          "$gt0024|Age|!=null",
+          "$gt0028|Sex|!=null"
         ],
         "then": [
-          "$gt0013|x|.magnitude=((1.426*$gt0005.value)+(1.838*$gt0006.value)+(0.734*$gt0007.value)+(0.996*$gt0008.value)+(1.353*$gt0009.value)+(0.675*$gt0010.value)+(0.024*$gt0003.magnitude)+(0.462*$gt0004.value)-4.416)*(0-1)",
+          "$gt0013|x|.magnitude=((1.426*$gt0005.value)+(1.838*$gt0006.value)+(0.734*$gt0007.value)+(0.996*$gt0008.value)+(1.353*$gt0009.value)+(0.675*$gt0010.value)+(0.024*$gt0024.magnitude)+(0.462*$gt0028.value)-4.416)*(0-1)",
           "$gt0013|x|.precision=3"
         ]
       },
@@ -192,16 +224,6 @@
             "text": "HE-MACS",
             "description": "History and Electrocardiogram-only Manchester Acute Coronary Syndromes (HE-MACS) stratifies ACS risk with history and EKG only (not yet externally validated)."
           },
-          "gt0003": {
-            "id": "gt0003",
-            "text": "Age",
-            "description": ""
-          },
-          "gt0004": {
-            "id": "gt0004",
-            "text": "Sex",
-            "description": ""
-          },
           "gt0005": {
             "id": "gt0005",
             "text": "Sweating observed",
@@ -270,6 +292,29 @@
           "gt0021": {
             "id": "gt0021",
             "text": "Set interpretation for ACS >= 50"
+          },
+          "gt0023": {
+            "id": "gt0023",
+            "text": "Sex",
+            "description": "*"
+          },
+          "gt0024": {
+            "id": "gt0024",
+            "text": "Age",
+            "description": "Age in years, and for babies: months, weeks or days"
+          },
+          "gt0026": {
+            "id": "gt0026",
+            "text": "Set points for Gender = female"
+          },
+          "gt0028": {
+            "id": "gt0028",
+            "text": "Sex",
+            "description": ""
+          },
+          "gt0029": {
+            "id": "gt0029",
+            "text": "Set points for Gender = male"
           }
         }
       }
