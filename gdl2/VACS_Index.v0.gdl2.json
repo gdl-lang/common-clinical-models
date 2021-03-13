@@ -26,13 +26,13 @@
           "aging",
           "cohort"
         ],
-        "use": "Use to estimate the risk of 5-year all-cause mortality in patients with HIV and/or HCV. The score is calculated by addition of the selected risk factors. \n",
+        "use": "Use to estimate the risk of 5-year all-cause mortality in patients with HIV and/or HCV. The score is calculated by adding the selected risk factors. \n",
         "misuse": "",
         "copyright": "Cambio CDS"
       }
     },
     "other_details": {
-      "references": "Tate JP, Justice AC, Hughes MD, Bonnet F, Reiss P, Mocroft A, Nattermann J, Lampe FC, Bucher HC, Sterling TR, Crane HM, Kitahata MM, May M, Sterne JA. An internationally generalizable risk index for mortality after one year of antiretroviral therapy. AIDS. 2013 Feb 20;27(4):563-72. doi: 10.1097/QAD.0b013e32835b8c7f. PMID: 23095314; PMCID: PMC4283204."
+      "references": "1. Tate JP, Justice AC, Hughes MD, Bonnet F, Reiss P, Mocroft A, Nattermann J, Lampe FC, Bucher HC, Sterling TR, Crane HM, Kitahata MM, May M, Sterne JA. An internationally generalizable risk index for mortality after one year of antiretroviral therapy. AIDS. 2013 Feb 20;27(4):563-72. doi: 10.1097/QAD.0b013e32835b8c7f. PMID: 23095314; PMCID: PMC4283204."
     }
   },
   "definition": {
@@ -43,10 +43,6 @@
         "template_id": "openEHR-EHR-OBSERVATION.vacs_index.v0",
         "type": "INPUT",
         "elements": {
-          "gt0003": {
-            "id": "gt0003",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0005]"
-          },
           "gt0004": {
             "id": "gt0004",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0009]"
@@ -82,16 +78,63 @@
           "gt0011": {
             "id": "gt0011",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0037]"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0005]"
+          }
+        }
+      },
+      "gt0013": {
+        "id": "gt0013",
+        "model_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0014": {
+            "id": "gt0014",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
           }
         }
       }
     },
     "rules": {
+      "gt0018": {
+        "id": "gt0018",
+        "priority": 4,
+        "when": [
+          "$gt0014|Age|>=65,a"
+        ],
+        "then": [
+          "$gt0015|Age2|=27|local::at0008|>= 65 years|"
+        ]
+      },
+      "gt0017": {
+        "id": "gt0017",
+        "priority": 3,
+        "when": [
+          "$gt0014|Age|>=50,a",
+          "$gt0014|Age|<=64,a"
+        ],
+        "then": [
+          "$gt0015|Age2|=12|local::at0007|50 - 64 years|"
+        ]
+      },
+      "gt0016": {
+        "id": "gt0016",
+        "priority": 2,
+        "when": [
+          "$gt0014|Age|<50,a"
+        ],
+        "then": [
+          "$gt0015|Age2|=0|local::at0006|< 50 years|"
+        ]
+      },
       "gt0012": {
         "id": "gt0012",
         "priority": 1,
         "when": [
-          "$gt0003|Age|!=null",
+          "$gt0015|Age2|!=null",
           "$gt0004|CD4 count|!=null",
           "$gt0005|HIV-1 RNA|!=null",
           "$gt0006|Hemoglobin|!=null",
@@ -100,7 +143,7 @@
           "$gt0009|Hepatitis C co-infection|!=null"
         ],
         "then": [
-          "$gt0011|Total score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value"
+          "$gt0011|Total score|.magnitude=$gt0015.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value"
         ]
       }
     }
@@ -114,11 +157,6 @@
             "id": "gt0001",
             "text": "VACS Index",
             "description": "The Veterans Aging Cohort Study (VACS) Index estimates risk of 5-year all-cause mortality in patients with HIV and/or HCV."
-          },
-          "gt0003": {
-            "id": "gt0003",
-            "text": "Age",
-            "description": ""
           },
           "gt0004": {
             "id": "gt0004",
@@ -158,6 +196,28 @@
           "gt0012": {
             "id": "gt0012",
             "text": "Calculate VACS index"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "Age",
+            "description": "Age in years, and for babies: months, weeks or days"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "Age",
+            "description": ""
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "text": "Set Age range < 50"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "Set Age range 50-64"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "Set Age range >= 65"
           }
         }
       }
