@@ -43,10 +43,6 @@
         "template_id": "openEHR-EHR-OBSERVATION.solitary_pulmonary_nodule_malignancy.v0",
         "type": "INPUT",
         "elements": {
-          "gt0003": {
-            "id": "gt0003",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0005]"
-          },
           "gt0006": {
             "id": "gt0006",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0007]"
@@ -96,6 +92,18 @@
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0033]"
           }
         }
+      },
+      "gt0035": {
+        "id": "gt0035",
+        "model_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0036": {
+            "id": "gt0036",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
+          }
+        }
       }
     },
     "rules": {
@@ -103,7 +111,7 @@
         "id": "gt0029",
         "priority": 7,
         "when": [
-          "$gt0003|Age|!=null",
+          "$gt0036|Age|!=null",
           "$gt0006|Current or former smoker|!=null",
           "$gt0007|Extrathoracic cancer diagnosis ≥5 years prior|!=null",
           "$gt0008|Upper lobe location of tumor|!=null",
@@ -112,7 +120,7 @@
           "$gt0011|FDG-PET|!=null"
         ],
         "then": [
-          "$gt0031|x|.magnitude=(0.0391*$gt0003.magnitude)+(0.1274*$gt0028.magnitude)+(0.7917*$gt0006.value)+(1.3388*$gt0007.value)+(0.7838*$gt0008.value)+(1.0407*$gt0010.value)-6.8272",
+          "$gt0031|x|.magnitude=(0.0391*$gt0036.magnitude)+(0.1274*$gt0028.magnitude)+(0.7917*$gt0006.value)+(1.3388*$gt0007.value)+(0.7838*$gt0008.value)+(1.0407*$gt0010.value)-6.8272",
           "$gt0031|x|.precision=5"
         ]
       },
@@ -200,11 +208,6 @@
             "text": "Solitary Pulmonary Nodule Malignancy ",
             "description": "Solitary Pulmonary Nodule (SPN) Malignancy Risk Score (Mayo Clinic Model) predicts malignancy risk in solitary lung nodules on chest x-ray."
           },
-          "gt0003": {
-            "id": "gt0003",
-            "text": "Age",
-            "description": ""
-          },
           "gt0006": {
             "id": "gt0006",
             "text": "Current or former smoker",
@@ -287,6 +290,11 @@
             "id": "gt0034",
             "text": "Probability of malignancy with FDG-PET",
             "description": ""
+          },
+          "gt0036": {
+            "id": "gt0036",
+            "text": "Age",
+            "description": "Age in years, and for babies: months, weeks or days"
           }
         }
       }
