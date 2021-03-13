@@ -41,10 +41,6 @@
         "template_id": "openEHR-EHR-OBSERVATION.sokal_index_cml.v0",
         "type": "INPUT",
         "elements": {
-          "gt0003": {
-            "id": "gt0003",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0009]"
-          },
           "gt0004": {
             "id": "gt0004",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]/items[at0010]"
@@ -98,6 +94,18 @@
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
           }
         }
+      },
+      "gt0023": {
+        "id": "gt0023",
+        "model_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0024": {
+            "id": "gt0024",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
+          }
+        }
       }
     },
     "default_actions": [
@@ -118,13 +126,13 @@
         "id": "gt0015",
         "priority": 4,
         "when": [
-          "$gt0003|Age|!=null",
+          "$gt0024|Age1|!=null",
           "$gt0004|Spleen size |!=null",
           "$gt0005|% myeloblasts|!=null",
           "$gt0007|Platelet count|!=null"
         ],
         "then": [
-          "$gt0020|Sokal score|.magnitude=e^((0.0116*($gt0003.magnitude-43.4))+(0.0345*($gt0004.magnitude*$gt0016-7.51))+(0.188*(($gt0007.magnitude/700)^2-0.563))+(0.0887*($gt0005.magnitude-2.1)))",
+          "$gt0020|Sokal score|.magnitude=e^((0.0116*($gt0024.magnitude-43.4))+(0.0345*($gt0004.magnitude*$gt0016-7.51))+(0.188*(($gt0007.magnitude/700)^2-0.563))+(0.0887*($gt0005.magnitude-2.1)))",
           "$gt0020|Sokal score|.precision=1"
         ]
       },
@@ -176,11 +184,6 @@
             "id": "gt0001",
             "text": "Sokal Index for CML",
             "description": "Sokal Index for Chronic Myelogenous Leukemia (CML) predicts survival of CML based on clinical and lab information. "
-          },
-          "gt0003": {
-            "id": "gt0003",
-            "text": "Age",
-            "description": ""
           },
           "gt0004": {
             "id": "gt0004",
@@ -241,6 +244,11 @@
           "gt0022": {
             "id": "gt0022",
             "text": "Risk Group: Intermediate"
+          },
+          "gt0024": {
+            "id": "gt0024",
+            "text": "Age",
+            "description": "Age in years, and for babies: months, weeks or days"
           }
         }
       }
