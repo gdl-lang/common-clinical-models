@@ -102,6 +102,10 @@
           "gt0053": {
             "id": "gt0053",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0022]"
+          },
+          "gt0058": {
+            "id": "gt0058",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0043]"
           }
         }
       },
@@ -129,7 +133,7 @@
     "rules": {
       "gt0021": {
         "id": "gt0021",
-        "priority": 10,
+        "priority": 14,
         "when": [
           "$gt0018|Total Cholesterol|.unit=='mmol/l'"
         ],
@@ -139,7 +143,7 @@
       },
       "gt0022": {
         "id": "gt0022",
-        "priority": 9,
+        "priority": 13,
         "when": [
           "$gt0017|HDL Cholesterol|.unit=='mmol/l'"
         ],
@@ -149,7 +153,7 @@
       },
       "gt0023": {
         "id": "gt0023",
-        "priority": 8,
+        "priority": 12,
         "when": [
           "$gt0027|Treatment for hypertension|==local::at0033|Yes|",
           "$gt0056|Sex|==local::at0006|Female|",
@@ -171,7 +175,7 @@
       },
       "gt0037": {
         "id": "gt0037",
-        "priority": 7,
+        "priority": 11,
         "when": [
           "$gt0027|Treatment for hypertension|==local::at0032|No|",
           "$gt0056|Sex|==local::at0006|Female|",
@@ -193,7 +197,7 @@
       },
       "gt0041": {
         "id": "gt0041",
-        "priority": 6,
+        "priority": 10,
         "when": [
           "$gt0027|Treatment for hypertension|==local::at0033|Yes|",
           "$gt0026|Race|==local::at0012|African American|",
@@ -215,7 +219,7 @@
       },
       "gt0042": {
         "id": "gt0042",
-        "priority": 5,
+        "priority": 9,
         "when": [
           "$gt0027|Treatment for hypertension|==local::at0032|No|",
           "$gt0026|Race|==local::at0012|African American|",
@@ -237,7 +241,7 @@
       },
       "gt0043": {
         "id": "gt0043",
-        "priority": 4,
+        "priority": 8,
         "when": [
           "$gt0027|Treatment for hypertension|==local::at0033|Yes|",
           "$gt0026|Race|==local::at0012|African American|",
@@ -259,7 +263,7 @@
       },
       "gt0044": {
         "id": "gt0044",
-        "priority": 3,
+        "priority": 7,
         "when": [
           "$gt0027|Treatment for hypertension|==local::at0032|No|",
           "$gt0026|Race|==local::at0012|African American|",
@@ -281,7 +285,7 @@
       },
       "gt0046": {
         "id": "gt0046",
-        "priority": 2,
+        "priority": 6,
         "when": [
           "$gt0027|Treatment for hypertension|==local::at0033|Yes|",
           "$gt0056|Sex|==local::at0005|Male|",
@@ -303,7 +307,7 @@
       },
       "gt0047": {
         "id": "gt0047",
-        "priority": 1,
+        "priority": 5,
         "when": [
           "$gt0027|Treatment for hypertension|==local::at0032|No|",
           "$gt0056|Sex|==local::at0005|Male|",
@@ -321,6 +325,47 @@
           "$gt0053|Estimated 10-y risk|.magnitude=abs((1-(0.9144^($gt0052.magnitude-61.18)))*100)",
           "$gt0053|Estimated 10-y risk|.precision=1",
           "$gt0053|Estimated 10-y risk|.unit='%'"
+        ]
+      },
+      "gt0057": {
+        "id": "gt0057",
+        "priority": 4,
+        "when": [
+          "$gt0053|Estimated 10-y risk|>=7.5,%",
+          "$gt0029|Diabetes|==1|local::at0039|Yes|"
+        ],
+        "then": [
+          "$gt0058|Comment|='High-intensity statin recommended.'"
+        ]
+      },
+      "gt0059": {
+        "id": "gt0059",
+        "priority": 3,
+        "when": [
+          "$gt0053|Estimated 10-y risk|>7.5,%"
+        ],
+        "then": [
+          "$gt0058|Comment|='Moderate- to high-intensity statin recommended.'"
+        ]
+      },
+      "gt0060": {
+        "id": "gt0060",
+        "priority": 2,
+        "when": [
+          "(($gt0053|Estimated 10-y risk|>=5,%)&&($gt0053|Estimated 10-y risk|<=7.5,%))||(($gt0053|Estimated 10-y risk|<7.5,%)&&($gt0029|Diabetes|==1|local::at0039|Yes|))"
+        ],
+        "then": [
+          "$gt0058|Comment|='Moderate-intensity statin recommended.'"
+        ]
+      },
+      "gt0061": {
+        "id": "gt0061",
+        "priority": 1,
+        "when": [
+          "$gt0053|Estimated 10-y risk|<5,%"
+        ],
+        "then": [
+          "$gt0058|Comment|='No statin recommended.'"
         ]
       }
     }
@@ -439,6 +484,27 @@
             "id": "gt0056",
             "text": "Sex",
             "description": "*"
+          },
+          "gt0057": {
+            "id": "gt0057",
+            "text": "Set High-intensity statin recommendation"
+          },
+          "gt0058": {
+            "id": "gt0058",
+            "text": "Comment",
+            "description": ""
+          },
+          "gt0059": {
+            "id": "gt0059",
+            "text": "Set Moderate- to high-intensity statin recommendation"
+          },
+          "gt0060": {
+            "id": "gt0060",
+            "text": "Set Moderate-intensity statin recommendation"
+          },
+          "gt0061": {
+            "id": "gt0061",
+            "text": "Set no statin recommendation"
           }
         }
       }
