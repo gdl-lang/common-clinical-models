@@ -1,0 +1,124 @@
+archetype (adl_version=1.4; uid=ec9a5e81-2c18-4ed6-ac02-86e7999f427b)
+	openEHR-EHR-OBSERVATION.ascvd_statin_recommendation.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2021-03-13">
+		["name"] = <"Emma Malm">
+		["organisation"] = <"Cambio CDS">
+		["email"] = <"emma.snygg@hotmail.com">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the results for the high-risk criterion for the statin recommendation. ">
+			keywords = <"ascvd, estimate, heart, stroke, atherosclerotic, cardiovascular, risk", ...>
+			copyright = <"Cambio CDS">
+			use = <"Use to record the results for the high-risk criterion for the statin recommendation. ">
+		>
+	>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"e9827bbf412cb4e4c0e7f17a5ae85974">
+		["build_uid"] = <"65c8a67f-13c8-3ba6-88d6-39e388f02905">
+		["current_contact"] = <"Emma Malm, Cambio CDS, emma.snygg@hotmail.com">
+		["references"] = <"1. Goff DC Jr, Lloyd-Jones DM, Bennett G, Coady S, D’Agostino RB Sr, Gibbons R, Greenland P, Lackland DT, Levy D, O’Donnell CJ, Robinson JG, Schwartz JS, Shero ST, Smith SC Jr, Sorlie P, Stone NJ, Wilson PWF. 2013 ACC/AHA guideline on the assessment of cardiovascular risk: a report of the American College of Cardiology/American Heart Association Task Force on Practice Guidelines. Circulation. 2014;129(suppl 2):S49-S73.
+
+2. Stone NJ, Robinson JG, Lichtenstein AH, Bairey Merz CN, Blum CB, Eckel RH, Goldberg AC, Gordon D, Levy D, Lloyd-Jones DM, McBride P, Schwartz JS, Shero ST, Smith SC Jr, Watson K, Wilson PWF. 2013 ACC/AHA guideline on the treatment of blood cholesterol to reduce atherosclerotic cardiovascular risk in adults: a report of the American College of Cardiology/American Heart Association Task Force on Practice Guidelines. Circulation. 2014;129(suppl 2):S1–S45.">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- ASCVD (Atherosclerotic Cardiovascular Disease) risk algorithm including known ASCVD from AHA/ACC
+		data matches {
+			HISTORY[at0001] matches {    -- History
+				events cardinality matches {0..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- History of ASCVD
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0005,    -- No
+													at0006]    -- Yes
+												}
+											}
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {    -- LDL Cholesterol ≥190mg/dL (4.92 mmol/L)
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0008,    -- No
+													at0009]    -- Yes
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"ASCVD (Atherosclerotic Cardiovascular Disease) risk algorithm including known ASCVD from AHA/ACC">
+					description = <"Risk criterion used to provide statin recommendations. ">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"History of ASCVD">
+					description = <"Step 1: High-Risk Criteria: History of ASCVD. 
+
+History of acute coronary syndrome (ACS), myocardial infarction (MI), stable angina, coronary/other arterial revascularization, stroke, transient ischemic attack, or Peripheral Arterial Disease (PAD) from atherosclerosis. ">
+				>
+				["at0005"] = <
+					text = <"No">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Yes">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"LDL Cholesterol ≥190mg/dL (4.92 mmol/L)">
+					description = <"Step 2: High-Risk Criteria: Extreme LDL">
+				>
+				["at0008"] = <
+					text = <"No">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Yes">
+					description = <"">
+				>
+			>
+		>
+	>
