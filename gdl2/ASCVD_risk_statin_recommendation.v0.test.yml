@@ -1,0 +1,25 @@
+guidelines:
+  1: ASCVD_risk_statin_recommendation.v0
+test_cases:
+- id: Step 1=No and Step 2=Yes returns 'High-intensity statin recommended'
+  input:
+    1:
+      gt0064|History of ASCVD: local::at0005|No|
+      gt0065|LDL Cholesterol ≥190mg/dL (4.92 mmol/L): local::at0009|Yes|
+  expected_output:
+    1:
+      gt0058|Comment: High-intensity statin recommended.
+- id: Step 1=Yes returns no interpretation
+  input:
+    1:
+      gt0064|History of ASCVD: local::at0006|Yes|
+      gt0065|LDL Cholesterol ≥190mg/dL (4.92 mmol/L): local::at0009|Yes|
+  expected_output:
+    1: {}
+- id: Step 1=No and Step 2=No returns no interpretation
+  input:
+    1:
+      gt0064|History of ASCVD: local::at0005|No|
+      gt0065|LDL Cholesterol ≥190mg/dL (4.92 mmol/L): local::at0008|No|
+  expected_output:
+    1: {}
