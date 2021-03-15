@@ -2,55 +2,36 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.sickle_cell_rbc_exchange_volume.v0
 
 concept
-	[at0000]	-- Sickle cell rbc exchange volume
+	[at0000]	-- Sickle cell RBC exchange volume
 language
 	original_language = <[ISO_639-1::en]>
 description
 	original_author = <
 		["name"] = <"Maryam Razavi">
 		["email"] = <"maryam.razavi@cambio.se">
-		["organisation"] = <"CambioCDS">
+		["organisation"] = <"Cambio CDS">
 		["date"] = <"2021-01-20">
 	>
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record the values of the Sickle Cell RBC Exchange Volume and and the variables used for it's calculation. 
-">
-			use = <"Use to record the value for each component for the Sickle Cell RBC Exchange Volume in patients with sickle cell disease complications requiring RBC exchange.
-Variables: 
-- Patient sex: Feamle, Male
-- Patient height, cm
-- Patient weight, kg
-- Patient hematocrit, %
-- Patient's initial HgbS, %
-- Goal HgbS, %
-- Hematocrit of transfused RBCs, %
-
-Formula: 
-
-Total blood volume:
-- Male = [ 0.3669 × (height, m)3 + 0.03219 × (weight, kg) + 0.6041 ] 
-- Female = [ 0.3561 × (height, m)3 + 0.03308 × (weight, kg) + 0.1833 ]
-
-RBC replacement volume = RBC volume × ln (HbS, initial / HbS, goal) / donor Hct
-Where  RBC volume, mL = total blood volume, mL × hematocrit / 100
-
-Note: HbS and Hct are in whole % (i.e., 30%, not 0.3). RBC units assume 350 mL per unit and are rounded up to the nearest whole unit.">
-			keywords = <"RBC ", "Sickle Cell", "Exchange ", "donor ">
+			purpose = <"To record the results for each component parameter as well as RBC exchange replacement volume and approximate the number of RBC units.">
+			use = <"Use to record the results for each component parameter as well as RBC exchange replacement volume and approximate the number of RBC units.">
+			keywords = <"RBC ", "donor ", "sickle", "cell", "exchange">
 			misuse = <"">
-			copyright = <"@CambioCDS">
+			copyright = <"Cambio CDS">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Brecher ME, Shaz BH, Schwartz J. Look This Up, Too! A Quick Reference in Apheresis. 3rd Ed. AABB Press, Bethesda MD 2013.">
-		["MD5-CAM-1.0.1"] = <"D0C3FD6214CFE7F1B414C229ED136D91">
+		["references"] = <"Brecher ME, Shaz BH, Schwartz J. Look This Up, Too! A Quick Reference in Apheresis. 3rd Ed. United States: AABB Press, Bethesda MD; 2013.">
+		["MD5-CAM-1.0.1"] = <"B58ED24836C837AE5F22BF0AD60E166B">
+		["current_contact"] = <"maryam.razavi@cambio.se">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Sickle cell rbc exchange volume
+	OBSERVATION[at0000] matches {	-- Sickle cell RBC exchange volume
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
@@ -106,31 +87,6 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Warning Patient height
-										value matches {
-											DV_TEXT matches {*}
-										}
-									}
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Warning Patient hematocrit
-										value matches {
-											DV_TEXT matches {*}
-										}
-									}
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Warning Patient's initial HgbS
-										value matches {
-											DV_TEXT matches {*}
-										}
-									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Warning Goal HgbS
-										value matches {
-											DV_TEXT matches {*}
-										}
-									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Warning Hematocrit of transfused RBCs
-										value matches {
-											DV_TEXT matches {*}
-										}
-									}
 									ELEMENT[at0012] occurrences matches {0..1} matches {	-- RBC replacement volume
 										value matches {
 											C_DV_QUANTITY <
@@ -143,7 +99,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Approximate number of units, assuming 350 mL RBCs per unit
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Approximate number of units
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::380]>
@@ -169,8 +125,8 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Sickle cell rbc exchange volume">
-					description = <"Sickle Cell RBC Exchange Volume estimates the volume of donor RBCs needed for RBC exchange in patients with sickle cell disease.">
+					text = <"Sickle cell RBC exchange volume">
+					description = <"A calculated volume used to estimate the volume of donor RBCs needed for RBC exchange in patients with sickle cell disease.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -183,26 +139,6 @@ ontology
 				["at0003"] = <
 					text = <"Tree">
 					description = <"@ internal @">
-				>
-				["at0004"] = <
-					text = <"Warning Patient height">
-					description = <"*">
-				>
-				["at0005"] = <
-					text = <"Warning Patient hematocrit">
-					description = <"*">
-				>
-				["at0006"] = <
-					text = <"Warning Patient's initial HgbS">
-					description = <"*">
-				>
-				["at0007"] = <
-					text = <"Warning Goal HgbS">
-					description = <"*">
-				>
-				["at0008"] = <
-					text = <"Warning Hematocrit of transfused RBCs">
-					description = <"*">
 				>
 				["at0009"] = <
 					text = <"Goal HgbS">
@@ -225,8 +161,8 @@ ontology
 					description = <"If exchange is required for acute complication and pre-exchange HgbS % is unknown, can presume 100% HgbS">
 				>
 				["at0016"] = <
-					text = <"Approximate number of units, assuming 350 mL RBCs per unit">
-					description = <"*">
+					text = <"Approximate number of units">
+					description = <"Assuming 350 mL RBCs per unit.">
 				>
 			>
 		>

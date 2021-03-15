@@ -9,7 +9,7 @@
     "original_author": {
       "date": "2021-01-20",
       "name": "Maryam Razavi",
-      "organisation": "CambioCDS",
+      "organisation": "Cambio CDS",
       "email": "maryam.razavi@cambio.se"
     },
     "lifecycle_state": "Author draft",
@@ -19,16 +19,17 @@
         "purpose": "To estimate the volume of donor RBCs needed for RBC exchange in patients with sickle cell disease.",
         "keywords": [
           "RBC",
-          "Sickle Cell",
-          "Exchange",
-          "donor"
+          "sickle ",
+          "exchange",
+          "donor",
+          "cell"
         ],
         "use": "Use in patients with sickle cell disease complications requiring RBC exchange.\nVariables: \n- Patient sex: Feamle, Male\n- Patient height, cm\n- Patient weight, kg\n- Patient hematocrit, %\n- Patient's initial HgbS, %\n- Goal HgbS, %\n- Hematocrit of transfused RBCs, %\n\nFormula: \n\nTotal blood volume:\n- Male = [ 0.3669 × (height, m)3 + 0.03219 × (weight, kg) + 0.6041 ] \n- Female = [ 0.3561 × (height, m)3 + 0.03308 × (weight, kg) + 0.1833 ]\n\nRBC replacement volume = RBC volume × ln (HbS, initial / HbS, goal) / donor Hct\nWhere  RBC volume, mL = total blood volume, mL × hematocrit / 100\n\nNote: HbS and Hct are in whole % (i.e., 30%, not 0.3). RBC units assume 350 mL per unit and are rounded up to the nearest whole unit.",
-        "copyright": "@CambioCDS"
+        "copyright": "Cambio CDS"
       }
     },
     "other_details": {
-      "references": "1. Brecher ME, Shaz BH, Schwartz J. Look This Up, Too! A Quick Reference in Apheresis. 3rd Ed. AABB Press, Bethesda MD 2013."
+      "references": "1. Brecher ME, Shaz BH, Schwartz J. Look This Up, Too! A Quick Reference in Apheresis. 3rd Ed. United States: AABB Press, Bethesda MD; 2013."
     }
   },
   "definition": {
@@ -99,26 +100,6 @@
         "template_id": "openEHR-EHR-OBSERVATION.sickle_cell_rbc_exchange_volume.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0018": {
-            "id": "gt0018",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
-          },
-          "gt0019": {
-            "id": "gt0019",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
-          },
-          "gt0020": {
-            "id": "gt0020",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
-          },
-          "gt0021": {
-            "id": "gt0021",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
-          },
-          "gt0022": {
-            "id": "gt0022",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
-          },
           "gt0024": {
             "id": "gt0024",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0012]"
@@ -146,138 +127,29 @@
         }
       }
     },
+    "default_actions": [
+      "$gt0039|Height conversion factor|=1",
+      "$gt0041|Weight conversion factor|=1"
+    ],
     "rules": {
       "gt0038": {
         "id": "gt0038",
-        "priority": 18,
+        "priority": 7,
         "when": [
-          "$gt0005|Patient height|<=12,cm"
+          "$gt0005|Patient height|.unit=='in'"
         ],
         "then": [
-          "$gt0018|Warning Patient height|='Very low double-check.'"
-        ]
-      },
-      "gt0039": {
-        "id": "gt0039",
-        "priority": 17,
-        "when": [
-          "$gt0005|Patient height|>203,cm",
-          "$gt0005|Patient height|<229,cm"
-        ],
-        "then": [
-          "$gt0018|Warning Patient height|='Very high double-check.'"
+          "$gt0039|Height conversion factor|=2.54"
         ]
       },
       "gt0040": {
         "id": "gt0040",
-        "priority": 16,
-        "when": [
-          "$gt0005|Patient height|>=229,cm"
-        ],
-        "then": [
-          "$gt0018|Warning Patient height|='Too high please change to proceed.'"
-        ]
-      },
-      "gt0041": {
-        "id": "gt0041",
-        "priority": 15,
-        "when": [
-          "$gt0026|Patient hematocrit|<10,%"
-        ],
-        "then": [
-          "$gt0019|Warning Patient hematocrit|='Very low double-check.'"
-        ]
-      },
-      "gt0042": {
-        "id": "gt0042",
-        "priority": 14,
-        "when": [
-          "$gt0026|Patient hematocrit|>40,%",
-          "$gt0026|Patient hematocrit|<101,%"
-        ],
-        "then": [
-          "$gt0019|Warning Patient hematocrit|='Very high double-check.'"
-        ]
-      },
-      "gt0043": {
-        "id": "gt0043",
-        "priority": 13,
-        "when": [
-          "$gt0026|Patient hematocrit|>=101,%"
-        ],
-        "then": [
-          "$gt0019|Warning Patient hematocrit|='Too high please change to proceed.'"
-        ]
-      },
-      "gt0044": {
-        "id": "gt0044",
-        "priority": 12,
-        "when": [
-          "$gt0027|Patient's initial HgbS|<20,%"
-        ],
-        "then": [
-          "$gt0021|Warning Goal HgbS|='Very low double-check.'"
-        ]
-      },
-      "gt0045": {
-        "id": "gt0045",
-        "priority": 11,
-        "when": [
-          "$gt0027|Patient's initial HgbS|>100,%"
-        ],
-        "then": [
-          "$gt0020|Warning Patient's initial HgbS|='Too high please change to proceed.'"
-        ]
-      },
-      "gt0046": {
-        "id": "gt0046",
-        "priority": 10,
-        "when": [
-          "$gt0028|Goal HgbS|<1,%"
-        ],
-        "then": [
-          "$gt0021|Warning Goal HgbS|='Too low please change to proceed.'"
-        ]
-      },
-      "gt0047": {
-        "id": "gt0047",
-        "priority": 9,
-        "when": [
-          "$gt0028|Goal HgbS|>30,%"
-        ],
-        "then": [
-          "$gt0021|Warning Goal HgbS|='Too high please change to proceed.'"
-        ]
-      },
-      "gt0048": {
-        "id": "gt0048",
-        "priority": 8,
-        "when": [
-          "$gt0029|Hematocrit of transfused RBCs|<55,%"
-        ],
-        "then": [
-          "$gt0022|Warning Hematocrit of transfused RBCs|='Very low double-check.'"
-        ]
-      },
-      "gt0049": {
-        "id": "gt0049",
-        "priority": 7,
-        "when": [
-          "$gt0029|Hematocrit of transfused RBCs|>85,%",
-          "$gt0029|Hematocrit of transfused RBCs|<=100,%"
-        ],
-        "then": [
-          "$gt0022|Warning Hematocrit of transfused RBCs|='Very high double-check.'"
-        ]
-      },
-      "gt0050": {
-        "id": "gt0050",
         "priority": 6,
         "when": [
-          "$gt0029|Hematocrit of transfused RBCs|>100,%"
+          "$gt0007|Patient weight|.unit=='lb'"
         ],
         "then": [
-          "$gt0022|Warning Hematocrit of transfused RBCs|='Too high please change to proceed.'"
+          "$gt0041|Weight conversion factor|=0.45359237"
         ]
       },
       "gt0025": {
@@ -286,14 +158,11 @@
         "when": [
           "$gt0003|Patient sex|==local::at0005|Male|",
           "$gt0005|Patient height|!=null",
-          "$gt0007|Patient weight|!=null",
-          "$gt0005|Patient height|.unit=='cm'",
-          "$gt0007|Patient weight|.unit=='kg'",
-          "!fired($gt0040)"
+          "$gt0007|Patient weight|!=null"
         ],
         "then": [
-          "$gt0031|Total blood volume|.magnitude=0.3669*($gt0005.magnitude/100)^3+0.03219*$gt0007.magnitude+0.6041",
-          "$gt0031|Total blood volume|.precision=1",
+          "$gt0031|Total blood volume|.magnitude=0.3669*($gt0005.magnitude*$gt0039/100)^3+0.03219*($gt0007.magnitude*$gt0041)+0.6041",
+          "$gt0031|Total blood volume|.precision=3",
           "$gt0031|Total blood volume|.unit='l'"
         ]
       },
@@ -303,14 +172,11 @@
         "when": [
           "$gt0003|Patient sex|==local::at0006|Female|",
           "$gt0005|Patient height|!=null",
-          "$gt0007|Patient weight|!=null",
-          "$gt0005|Patient height|.unit=='cm'",
-          "$gt0007|Patient weight|.unit=='kg'",
-          "!fired($gt0040)"
+          "$gt0007|Patient weight|!=null"
         ],
         "then": [
-          "$gt0031|Total blood volume|.magnitude=0.3561*($gt0005.magnitude/100)^3+0.03308*$gt0007.magnitude+0.1833",
-          "$gt0031|Total blood volume|.precision=1",
+          "$gt0031|Total blood volume|.magnitude=0.3561*($gt0005.magnitude*$gt0039/100)^3+0.03308*($gt0007.magnitude*$gt0041)+0.1833",
+          "$gt0031|Total blood volume|.precision=3",
           "$gt0031|Total blood volume|.unit='l'"
         ]
       },
@@ -319,8 +185,7 @@
         "priority": 3,
         "when": [
           "$gt0031|Total blood volume|!=null",
-          "$gt0026|Patient hematocrit|!=null",
-          "!fired($gt0043)"
+          "$gt0026|Patient hematocrit|!=null"
         ],
         "then": [
           "$gt0034|RBC volume|.magnitude=($gt0031.magnitude*1000)*$gt0026.magnitude/100",
@@ -334,11 +199,7 @@
           "$gt0034|RBC volume|!=null",
           "$gt0027|Patient's initial HgbS|!=null",
           "$gt0028|Goal HgbS|!=null",
-          "$gt0029|Hematocrit of transfused RBCs|!=null",
-          "!fired($gt0045)",
-          "!fired($gt0046)",
-          "!fired($gt0047)",
-          "!fired($gt0050)"
+          "$gt0029|Hematocrit of transfused RBCs|!=null"
         ],
         "then": [
           "$gt0024|RBC replacement volume|.magnitude=($gt0034.magnitude*log($gt0027.magnitude/$gt0028.magnitude)/$gt0029.magnitude)*100",
@@ -387,31 +248,6 @@
           "gt0010": {
             "id": "gt0010",
             "text": "Patient hematocrit",
-            "description": "*"
-          },
-          "gt0018": {
-            "id": "gt0018",
-            "text": "Warning Patient height",
-            "description": "*"
-          },
-          "gt0019": {
-            "id": "gt0019",
-            "text": "Warning Patient hematocrit",
-            "description": "*"
-          },
-          "gt0020": {
-            "id": "gt0020",
-            "text": "Warning Patient's initial HgbS",
-            "description": "*"
-          },
-          "gt0021": {
-            "id": "gt0021",
-            "text": "Warning Goal HgbS",
-            "description": "*"
-          },
-          "gt0022": {
-            "id": "gt0022",
-            "text": "Warning Hematocrit of transfused RBCs",
             "description": "*"
           },
           "gt0024": {
@@ -476,55 +312,21 @@
           },
           "gt0038": {
             "id": "gt0038",
-            "text": "Warning very low to height"
+            "text": "Height conversion rule"
           },
           "gt0039": {
             "id": "gt0039",
-            "text": "Warning very high to height"
+            "text": "Height conversion factor",
+            "description": ""
           },
           "gt0040": {
             "id": "gt0040",
-            "text": "Warning too high to height"
+            "text": "Weight conversion rule"
           },
           "gt0041": {
             "id": "gt0041",
-            "text": "Warning very low to Patient hematocrit"
-          },
-          "gt0042": {
-            "id": "gt0042",
-            "text": "Warning very high to Patient hematocrit"
-          },
-          "gt0043": {
-            "id": "gt0043",
-            "text": "Warning too high to Patient hematocrit"
-          },
-          "gt0044": {
-            "id": "gt0044",
-            "text": "Wraning very low to initial HgbS"
-          },
-          "gt0045": {
-            "id": "gt0045",
-            "text": "Warning too high to initial HgbS"
-          },
-          "gt0046": {
-            "id": "gt0046",
-            "text": "Warning too low to Goal HgbS"
-          },
-          "gt0047": {
-            "id": "gt0047",
-            "text": "Warning too high to Goal HgbS"
-          },
-          "gt0048": {
-            "id": "gt0048",
-            "text": "Warning very low to Htc of transfused RBCs"
-          },
-          "gt0049": {
-            "id": "gt0049",
-            "text": "Warning very high to Htc of transfused RBCs"
-          },
-          "gt0050": {
-            "id": "gt0050",
-            "text": "Warning too high to Htc of transfused RBCs"
+            "text": "Weight conversion factor",
+            "description": ""
           }
         }
       }
