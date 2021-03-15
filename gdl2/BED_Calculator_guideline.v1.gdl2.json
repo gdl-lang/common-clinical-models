@@ -9,7 +9,7 @@
     "original_author": {
       "date": "2021-02-05",
       "name": "Maryam Razavi",
-      "organisation": "CambioCDS",
+      "organisation": "Cambio CDS",
       "email": "maryam.razavi@cambio.se"
     },
     "lifecycle_state": "Author draft",
@@ -18,12 +18,16 @@
         "id": "en",
         "purpose": "To calculate biologically effective dose (BED) and equivalent dose (EQD2) for cancer radiotherapy.",
         "keywords": [
-          "biologically effective dose (BED)",
-          "equivalent dose (EQD2)",
-          "radiotherapy"
+          "biologically",
+          "equivalent",
+          "radiotherapy",
+          "effective",
+          "dose",
+          "BED",
+          "EQD2"
         ],
         "use": "Use for patients undergoing radiation (to compare different fractionation regimens).\nFormula:\nBED = D x (1 + [d / (α/β)])\n\nEQD2 = D x ([d + (α/β)] / [2 Gy + (α/β)])  \nWhere variables are as follows:\n\nVariable                            Description\nBED                                  Biologically effective dose, in Gy\n\nEQD2                                Equivalent dose in 2-Gy fractions, in Gy\n\nd                                        Dose per fraction, in Gy\n\nD                                       Total dose (number of fractions x dose per fraction), in Gy\n\nα/β ratio                             Property of irradiated tissue",
-        "copyright": "@CambioCDS"
+        "copyright": "Cambio CDS"
       }
     },
     "other_details": {
@@ -58,18 +62,6 @@
         "template_id": "openEHR-EHR-OBSERVATION.bed_calculator.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0007": {
-            "id": "gt0007",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
-          },
-          "gt0008": {
-            "id": "gt0008",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
-          },
-          "gt0009": {
-            "id": "gt0009",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
-          },
           "gt0010": {
             "id": "gt0010",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
@@ -82,57 +74,13 @@
       }
     },
     "rules": {
-      "gt0013": {
-        "id": "gt0013",
-        "priority": 5,
-        "when": [
-          "$gt0003|Dose per fraction|>100,Gy"
-        ],
-        "then": [
-          "$gt0007|Warning to Dose per fraction|='Too high, please change to proceed.'"
-        ]
-      },
-      "gt0014": {
-        "id": "gt0014",
-        "priority": 4,
-        "when": [
-          "$gt0004|Total dose|>100,Gy"
-        ],
-        "then": [
-          "$gt0008|Warning to Total dose|='Too high, please change to proceed.'"
-        ]
-      },
-      "gt0015": {
-        "id": "gt0015",
-        "priority": 3,
-        "when": [
-          "$gt0005|α/β ratio|>100,Gy",
-          "$gt0005|α/β ratio|<=10000000,Gy"
-        ],
-        "then": [
-          "$gt0009|Warning to α/β ratio|='Very high, double-check.'"
-        ]
-      },
-      "gt0016": {
-        "id": "gt0016",
-        "priority": 2,
-        "when": [
-          "$gt0005|α/β ratio|>10000000,Gy"
-        ],
-        "then": [
-          "$gt0009|Warning to α/β ratio|='Too high, please change to proceed.'"
-        ]
-      },
       "gt0012": {
         "id": "gt0012",
         "priority": 1,
         "when": [
           "$gt0004|Total dose|!=null",
           "$gt0003|Dose per fraction|!=null",
-          "$gt0005|α/β ratio|!=null",
-          "!fired($gt0013)",
-          "!fired($gt0014)",
-          "!fired($gt0016)"
+          "$gt0005|α/β ratio|!=null"
         ],
         "then": [
           "$gt0010|BED|.magnitude=$gt0004.magnitude*(1+($gt0003.magnitude/$gt0005.magnitude))",
@@ -170,21 +118,6 @@
             "text": "α/β ratio",
             "description": "Property of irradiated tissue. Typically 10 for early-responding tissues and tumors, 3 for late-responding tissues (normal tissue). \r\n10\r\n"
           },
-          "gt0007": {
-            "id": "gt0007",
-            "text": "Warning to Dose per fraction",
-            "description": "*"
-          },
-          "gt0008": {
-            "id": "gt0008",
-            "text": "Warning to Total dose",
-            "description": "*"
-          },
-          "gt0009": {
-            "id": "gt0009",
-            "text": "Warning to α/β ratio",
-            "description": "*"
-          },
           "gt0010": {
             "id": "gt0010",
             "text": "BED",
@@ -198,22 +131,6 @@
           "gt0012": {
             "id": "gt0012",
             "text": "BED & EQD2"
-          },
-          "gt0013": {
-            "id": "gt0013",
-            "text": "Warning Too high to Dose per fraction"
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "text": "Warning Too high to Total dose"
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "text": "Warning very high to α/β ratio"
-          },
-          "gt0016": {
-            "id": "gt0016",
-            "text": "Warning too high to α/β ratio"
           }
         }
       }

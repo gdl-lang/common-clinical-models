@@ -2,27 +2,24 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.bed_calculator.v0
 
 concept
-	[at0000]	-- Radiation Biologically Effective Dose (BED) Calculator
+	[at0000]	-- Radiation Biologically Effective Dose (BED) calculator
 language
 	original_language = <[ISO_639-1::en]>
 description
 	original_author = <
 		["name"] = <"Maryam Razavi">
 		["email"] = <"maryam.razavi@cambio.se">
-		["organisation"] = <"CambioCDS">
+		["organisation"] = <"Cambio CDS">
 		["date"] = <"2021-02-05">
 	>
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record the values of the BED, EQD2, and the variables (Dose per fraction, Total dose
-, α/β ratio ) used for it's calculation. 
-">
-			use = <"Used to record the values of the BED, EQD2, and the variables (Dose per fraction, Total dose
-, α/β ratio ) used for it's calculation in ptients undergoing radiation (to compare different fractionation regimens).">
-			keywords = <"equivalent dose (EQD2)", "biologically effective dose (BED)", "radiotherapy">
+			purpose = <"To record the results for each component parameter  used for calculation of  the BED and EQD2.">
+			use = <"Used to record the results for each component parameter  used for calculation of  the BED and EQD2.">
+			keywords = <"equivalent", "dose", "EQD2", "biologically", "effective", "BED", "radiotherapy">
 			misuse = <"">
-			copyright = <"@CambioCDS">
+			copyright = <"Cambio CDS">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
@@ -30,11 +27,12 @@ description
 	other_details = <
 		["references"] = <"1. Fowler JF. The linear-quadratic formula and progress in fractionated radiotherapy. Br J Radiol. 1989 Aug;62(740):679-94. doi: 10.1259/0007-1285-62-740-679. PMID: 2670032.
 2. Fowler JF. 21 years of biologically effective dose. Br J Radiol. 2010 Jul;83(991):554-68. doi: 10.1259/bjr/31372149. PMID: 20603408; PMCID: PMC3473681.">
-		["MD5-CAM-1.0.1"] = <"4AD8DF6DF7C59210248603B3BB61724C">
+		["current_contact"] = <"maryam.razavi@cambio.se">
+		["MD5-CAM-1.0.1"] = <"41CCADD89FA4B9D924CDBAD179CB5086">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Radiation Biologically Effective Dose (BED) Calculator
+	OBSERVATION[at0000] matches {	-- Radiation Biologically Effective Dose (BED) calculator
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
@@ -102,21 +100,6 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Warning to Dose per fraction
-										value matches {
-											DV_TEXT matches {*}
-										}
-									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Warning to Total dose
-										value matches {
-											DV_TEXT matches {*}
-										}
-									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Warning to α/β ratio
-										value matches {
-											DV_TEXT matches {*}
-										}
-									}
 								}
 							}
 						}
@@ -131,8 +114,8 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Radiation Biologically Effective Dose (BED) Calculator">
-					description = <"Radiation Biologically Effective Dose (BED) Calculator calculates biologically effective dose (BED) and equivalent dose (EQD2) for cancer radiotherapy.">
+					text = <"Radiation Biologically Effective Dose (BED) calculator">
+					description = <"A dose used to calculate biologically effective dose (BED) and equivalent dose (EQD2) for cancer radiotherapy.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -156,21 +139,9 @@ ontology
 				>
 				["at0006"] = <
 					text = <"α/β ratio">
-					description = <"Property of irradiated tissue. Typically 10 for early-responding tissues and tumors, 3 for late-responding tissues (normal tissue). 
+					description = <"Property of irradiated tissue. Typically 10 for early-responding tissues and tumors, 3 for late-responding tissues (normal tissue).
 10
 ">
-				>
-				["at0007"] = <
-					text = <"Warning to Dose per fraction">
-					description = <"*">
-				>
-				["at0008"] = <
-					text = <"Warning to Total dose">
-					description = <"*">
-				>
-				["at0009"] = <
-					text = <"Warning to α/β ratio">
-					description = <"*">
 				>
 				["at0010"] = <
 					text = <"BED">
