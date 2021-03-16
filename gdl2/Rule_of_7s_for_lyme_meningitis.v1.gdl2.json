@@ -16,7 +16,7 @@
     "details": {
       "en": {
         "id": "en",
-        "purpose": "To calculate the Rule of 7s score and the risk of Lyme meningitis from aseptic meningitis.",
+        "purpose": "To calculate the Rule of 7s score and assess the risk of Lyme meningitis.",
         "keywords": [
           "lyme meningitis",
           "risk",
@@ -24,13 +24,13 @@
           "cerebrospinal fluid",
           "headache"
         ],
-        "use": "Use to calculate the Rule of 7s score and the risk of Lyme meningitis from aseptic meningitis.\n\nThe rule of 7s is calculated based on three parameters: number of days of headache, CSF mononuclear cells and  7th (or other) cranial nerve palsy.\n\nRule of 7s            Risk\n0 points               Low risk for Lyme meningitis\n1–3 points           Not low risk for Lyme meningitis",
+        "use": "Use in pediatric patients in a Lyme endemic area to decide on starting the antibiotics.\n\nThe rule of 7s is calculated based on three parameters: number of days of headache, CSF mononuclear cells and  7th (or other) cranial nerve palsy.\n\nRule of 7s            Risk\n0 points               Low risk for Lyme meningitis\n1–3 points           Not low risk for Lyme meningitis",
         "misuse": "Not to be used in other patients than in pediatric patients (2-18 years).",
         "copyright": "Cambio CDS"
       }
     },
     "other_details": {
-      "references": "1. Garro AC, Rutman M, Simonsen K, Jaeger JL, Chapin K, Lockhart G. Prospective validation of a clinical prediction model for Lyme meningitis in children. Pediatrics [Internet]. 2009 [cited 2021 Feb 15];123(5):e829-34. Available from: https://pubmed.ncbi.nlm.nih.gov/19403476/"
+      "references": "1. Garro AC, Rutman M, Simonsen K, Jaeger JL, Chapin K, Lockhart G. Prospective validation of a clinical prediction model for Lyme meningitis in children. Pediatrics. 2009 May;123(5):e829-34. doi: 10.1542/peds.2008-2048. PMID: 19403476."
     }
   },
   "definition": {
@@ -80,10 +80,13 @@
         }
       }
     },
+    "default_actions": [
+      "$gt0023|Risk|=local::at0014|Not low risk for Lyme meningitis|"
+    ],
     "rules": {
       "gt0009": {
         "id": "gt0009",
-        "priority": 3,
+        "priority": 2,
         "when": [
           "$gt0017|Number of days of headache|!=null",
           "$gt0018|CSF mononuclear cells|!=null",
@@ -91,17 +94,6 @@
         ],
         "then": [
           "$gt0022|Rule of 7s|.magnitude=$gt0017.value+$gt0018.value+$gt0019.value"
-        ]
-      },
-      "gt0011": {
-        "id": "gt0011",
-        "priority": 2,
-        "when": [
-          "$gt0022|Rule of 7s|>0",
-          "$gt0022|Rule of 7s|<=3"
-        ],
-        "then": [
-          "$gt0023|Risk|=local::at0014|Not low risk for Lyme meningitis|"
         ]
       },
       "gt0010": {
@@ -158,10 +150,6 @@
           "gt0010": {
             "id": "gt0010",
             "text": "Low risk for Lyme meningitis"
-          },
-          "gt0011": {
-            "id": "gt0011",
-            "text": "Not low risk for Lyme meningitis"
           },
           "gt0012": {
             "id": "gt0012",
