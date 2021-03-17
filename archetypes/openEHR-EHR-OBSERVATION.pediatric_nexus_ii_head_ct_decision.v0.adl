@@ -2,31 +2,24 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.pediatric_nexus_ii_head_ct_decision.v0
 
 concept
-	[at0000]	-- Pediatric nexus ii head ct decision
+	[at0000]	-- Pediatric NEXUS II head CT decision
 language
 	original_language = <[ISO_639-1::en]>
 description
 	original_author = <
 		["name"] = <"Maryam Razavi">
 		["email"] = <"maryam.razavi@cambio.se">
-		["organisation"] = <"CambioCDS">
+		["organisation"] = <"Cambio CDS">
 		["date"] = <"2021-02-08">
 	>
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record information relevant to the Pediatric NEXUS II Head CT Decision Instrument for Blunt Trauma assessment.">
-			use = <"Use to record the value for each criterion for the Pediatric NEXUS II Head CT Decision Instrument for Blunt Trauma and their total sum. Use in patients <18 years old who have sustained blunt head trauma within the past 24 hours and in whom head CT is being considered.
-
-
-
-
-
-
-">
-			keywords = <"Pediatric ", "CT", "Blunt Trauma", "head trauma">
+			purpose = <"To record the results for each component parameter and number of present criteria.">
+			use = <"Use to record the results for each component parameter and number of present criteria.">
+			keywords = <"CT", "pediatric", "blunt", "trauma", "head">
 			misuse = <"">
-			copyright = <"@CambioCDS">
+			copyright = <"Cambio CDS">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
@@ -35,11 +28,12 @@ description
 		["references"] = <"1. Mower WR, Hoffman JR, Herbert M, Wolfson AB, Pollack CV Jr, Zucker MI; NEXUS II Investigators. Developing a decision instrument to guide computed tomographic imaging of blunt head injury patients. J Trauma. 2005 Oct;59(4):954-9. doi: 10.1097/01.ta.0000187813.79047.42. PMID: 16374287.
 2. Oman JA, Cooper RJ, Holmes JF, Viccellio P, Nyce A, Ross SE, Hoffman JR, Mower WR; NEXUS II Investigators. Performance of a decision rule to predict need for computed tomography among children with blunt head trauma. Pediatrics. 2006 Feb;117(2):e238-46. doi: 10.1542/peds.2005-1063. Epub 2006 Jan 17. PMID: 16418311.
 3. Gupta M, Mower WR, Rodriguez RM, Hendey GW. Validation of the Pediatric NEXUS II Head Computed Tomography Decision Instrument for Selective Imaging of Pediatric Patients with Blunt Head Trauma. Acad Emerg Med. 2018 Jul;25(7):729-737. doi: 10.1111/acem.13431. Epub 2018 Jun 8. PMID: 29665151.">
-		["MD5-CAM-1.0.1"] = <"79A7D4FCE9A435CD1ACD97AF8DCAB944">
+		["MD5-CAM-1.0.1"] = <"FFAB6CEDE8BED381C69366CB8FEEEF16">
+		["current_contact"] = <"maryam.razavi@cambio.se">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Pediatric nexus ii head ct decision
+	OBSERVATION[at0000] matches {	-- Pediatric NEXUS II head CT decision
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
@@ -89,30 +83,10 @@ definition
 											1|[local::at0024]  	-- Yes
 										}
 									}
-									ELEMENT[at0025] occurrences matches {0..1} matches {	-- NEXUS II score
+									ELEMENT[at0025] occurrences matches {0..1} matches {	-- Total score
 										value matches {
-											DV_COUNT matches {*}
-										}
-									}
-									ELEMENT[at0026] occurrences matches {0..1} matches {	-- Risk of significant intracranial injuries
-										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0027, 	-- Low
-													at0028]	-- High
-												}
-											}
-										}
-									}
-									ELEMENT[at0029] occurrences matches {0..1} matches {	-- Recommendation
-										value matches {
-											DV_CODED_TEXT matches {
-												defining_code matches {
-													[local::
-													at0030, 	-- CT not necessary (100% sensitive for findings requiring neurosurgical intervention)
-													at0031]	-- Consider CT
-												}
+											DV_COUNT matches {
+												magnitude matches {|0..7|}
 											}
 										}
 									}
@@ -130,8 +104,8 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Pediatric nexus ii head ct decision">
-					description = <"Pediatric NEXUS II Head CT Decision Instrument for Blunt Trauma predicts need for head CT after pediatric blunt head injury.">
+					text = <"Pediatric NEXUS II head CT decision">
+					description = <"An assessment score used to predict need for head computed tomography (CT) scan after pediatric blunt head injury.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -232,32 +206,8 @@ Depressed/diastatic: palpable step-off, stellate laceration from a point source,
 					description = <"*">
 				>
 				["at0025"] = <
-					text = <"NEXUS II score">
-					description = <"*">
-				>
-				["at0026"] = <
-					text = <"Risk of significant intracranial injuries">
-					description = <"*">
-				>
-				["at0027"] = <
-					text = <"Low">
-					description = <"*">
-				>
-				["at0028"] = <
-					text = <"High">
-					description = <"*">
-				>
-				["at0029"] = <
-					text = <"Recommendation">
-					description = <"*">
-				>
-				["at0030"] = <
-					text = <"CT not necessary (100% sensitive for findings requiring neurosurgical intervention)">
-					description = <"Death due to head injury, need for craniotomy, elevation of skull fracture, intubation related to head injury, or intracranial pressure monitoring, within 7 days of head injury.">
-				>
-				["at0031"] = <
-					text = <"Consider CT">
-					description = <"*">
+					text = <"Total score">
+					description = <"">
 				>
 			>
 		>

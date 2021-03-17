@@ -9,7 +9,7 @@
     "original_author": {
       "date": "2020-12-18",
       "name": "Maryam Razavi",
-      "organisation": "CambioCDS",
+      "organisation": "Cambio CDS",
       "email": "maryam.razavi@cambio.se"
     },
     "lifecycle_state": "Author draft",
@@ -19,13 +19,14 @@
         "purpose": "To assist clinicians to predict need for head CT after pediatric blunt head injury.",
         "keywords": [
           "CT",
-          "Blunt Trauma",
-          "head trauma",
-          "Pediatric "
+          "blunt",
+          "head",
+          "pediatric",
+          "trauma"
         ],
         "use": "Use in patients <18 years old who have sustained blunt head trauma within the past 24 hours and in whom head CT is being considered.\n\nFormula: Addition of selected points. \n\nCriteria and assigned points: \n- Evidence of skull fracture: No=0, Yes=1\n- Scalp hematoma: No=0, Yes=1\n- Neurologic deficit: No=0, Yes=1\n- Abnormal level of alertness: No=0, Yes=1\n- Abnormal behavior: No=0, Yes=1\n- Persistent vomiting: No=0, Yes=1\n- Coagulopathy: No=0, Yes=1\n\nInterpretation:\nscore 0= Low Risk of significant intracranial injuries= Recommendation: CT not necessary (100% sensitive for findings requiring neurosurgical intervention)\nscore>0= High Risk of significant intracranial injuries= Recommendation: Consider CT",
         "misuse": "",
-        "copyright": "@CambioCDS"
+        "copyright": "Cambio CDS"
       }
     },
     "other_details": {
@@ -94,18 +95,18 @@
           }
         }
       },
-      "gt0018": {
-        "id": "gt0018",
-        "model_id": "openEHR-EHR-EVALUATION.pediatric_nexus_ii_head_ct_decision.v0",
-        "template_id": "openEHR-EHR-EVALUATION.pediatric_nexus_ii_head_ct_decision.v0",
+      "gt0021": {
+        "id": "gt0021",
+        "model_id": "openEHR-EHR-EVALUATION.pediatric_nexus_ii_head_ct_decision_assessment.v0",
+        "template_id": "openEHR-EHR-EVALUATION.pediatric_nexus_ii_head_ct_decision_assessment.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0019": {
-            "id": "gt0019",
+          "gt0022": {
+            "id": "gt0022",
             "path": "/data[at0001]/items[at0002]"
           },
-          "gt0020": {
-            "id": "gt0020",
+          "gt0023": {
+            "id": "gt0023",
             "path": "/data[at0001]/items[at0005]"
           }
         }
@@ -115,8 +116,8 @@
       "$gt0016|Age|<18,a"
     ],
     "default_actions": [
-      "$gt0019|Risk of significant intracranial injuries|=local::at0004|High|",
-      "$gt0020|Recommendation|=local::at0007|Consider CT|"
+      "$gt0022|Risk of significant intracranial injuries|=local::at0004|High|",
+      "$gt0023|Recommendation|=local::at0007|Consider CT|"
     ],
     "rules": {
       "gt0014": {
@@ -132,18 +133,18 @@
           "$gt0009|Coagulopathy|!=null"
         ],
         "then": [
-          "$gt0011|NEXUS II score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value"
+          "$gt0011|Present criteria|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value"
         ]
       },
       "gt0017": {
         "id": "gt0017",
         "priority": 1,
         "when": [
-          "$gt0011|NEXUS II score|==0"
+          "$gt0011|Present criteria|==0"
         ],
         "then": [
-          "$gt0019|Risk of significant intracranial injuries|=local::at0003|Low|",
-          "$gt0020|Recommendation|=local::at0006|CT not necessary (100% sensitive for findings requiring neurosurgical intervention)|"
+          "$gt0022|Risk of significant intracranial injuries|=local::at0003|Low|",
+          "$gt0023|Recommendation|=local::at0006|CT not necessary (100% sensitive for findings requiring neurosurgical intervention)|"
         ]
       }
     }
@@ -195,7 +196,7 @@
           },
           "gt0011": {
             "id": "gt0011",
-            "text": "NEXUS II score",
+            "text": "Present criteria",
             "description": "*"
           },
           "gt0014": {
@@ -211,15 +212,15 @@
             "id": "gt0017",
             "text": "interpretation for score 0"
           },
-          "gt0019": {
-            "id": "gt0019",
+          "gt0022": {
+            "id": "gt0022",
             "text": "Risk of significant intracranial injuries",
-            "description": "Risk of significant intracranial injuries"
+            "description": "*"
           },
-          "gt0020": {
-            "id": "gt0020",
+          "gt0023": {
+            "id": "gt0023",
             "text": "Recommendation",
-            "description": "Recommendation"
+            "description": "*"
           }
         }
       }
