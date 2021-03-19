@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 534*
+### *Published Apps: 540*
 
 ----------
 
 ### Latest added
 
-1. Recognition of Stroke in the Emergency Room (ROSIER) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Recognition_of_stroke_in_the_emergency_room_ROSIER_scale/1?language=en))
-2. Wexner Score for Obstructed Defecation Syndrome (ODS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wexner_score_ODS/1?language=en))
-3. SIRS, Sepsis, and Septic Shock Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SIRS_Sepsis_Septic_Shock_Criteria_guideline/1?language=en))
-4. Revised Amyotrophic Lateral Sclerosis Functional Rating Scale (ALSFRS-R) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ALSFRS-R_guideline/1?language=en))
-5. Memorial Sloan-Kettering Cancer Center (MSKCC/Motzer) Score for Metastatic Renal Cell Carcinoma (RCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MSKCC_Motzer_Score_guideline/1?language=en))
-6. Revised Multiple Myeloma International Staging System (R-ISS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R-ISS_guideline/1?language=en))
-7. REACH-B Score for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/REACH_B_Score_guideline/1?language=en))
-8. Aldrete score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Aldrete_score/1?language=en))
-9. Trunk Impairment Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/trunk_impairment_scale/0?language=en))
-10. Serum Osmolality/Osmolarity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Osmolality/1?language=en))
+1. Pediatric NEXUS II Head CT Decision Instrument for Blunt Trauma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_NEXUS_II_Head_CT_Decision_guideline/1?language=en))
+2. Risk of Paradoxical Embolism (RoPE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RoPE_Score_guideline/1?language=en))
+3. Sodium Correction Rate in Hyponatremia and Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_rate_in_hyponatremia_and_hypernatremia/1?language=en))
+4. Rule of 7s for Lyme Meningitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rule_of_7s_for_lyme_meningitis/1?language=en))
+5. Modified Response Evaluation Criteria in Solid Tumors (mRECIST) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mRECIST/1?language=en))
+6. History and Electrocardiogram-only Manchester Acute Coronary Syndromes (HE-MACS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HE_MACS/1?language=en))
+7. Recognition of Stroke in the Emergency Room (ROSIER) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Recognition_of_stroke_in_the_emergency_room_ROSIER_scale/1?language=en))
+8. Wexner Score for Obstructed Defecation Syndrome (ODS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wexner_score_ODS/1?language=en))
+9. SIRS, Sepsis, and Septic Shock Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SIRS_Sepsis_Septic_Shock_Criteria_guideline/1?language=en))
+10. Revised Amyotrophic Lateral Sclerosis Functional Rating Scale (ALSFRS-R) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ALSFRS-R_guideline/1?language=en))
 
 ----------
 
@@ -194,6 +194,8 @@ _Select a medical specialty below to view the available apps._
 
 * Hemorrhage After Thrombolysis (HAT) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Hemorrhage_After_Thrombolysis/1?language=en))
 
+* History and Electrocardiogram-only Manchester Acute Coronary Syndromes (HE-MACS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HE_MACS/1?language=en))
+
 * Indian Takayasu Clinical Activity Score (ITAS2010) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Indian_Takayasu_Clinical_Activity_Score_ITAS2010_guideline/1?language=en))
 
 * Infective Endocarditis Mortality Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Infective_endocarditis_mortality_risk/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Infective_endocarditis_mortality_risk/1?language=sv))
@@ -250,6 +252,8 @@ _Select a medical specialty below to view the available apps._
 * Serum Osmolality/Osmolarity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Osmolality/1?language=en))
 
 * Sodium correction for Hyperglycemia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_for_Hyperglycemia/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_for_Hyperglycemia/1?language=sv))
+
+* Sodium Correction Rate in Hyponatremia and Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_rate_in_hyponatremia_and_hypernatremia/1?language=en))
 
 * Sodium Deficit in Hyponatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_deficit_in_hyponatremia/1?language=en))
 
@@ -719,6 +723,10 @@ _Select a medical specialty below to view the available apps._
 
 * Revised Amyotrophic Lateral Sclerosis Functional Rating Scale (ALSFRS-R) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ALSFRS-R_guideline/1?language=en))
 
+* Risk of Paradoxical Embolism (RoPE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RoPE_Score_guideline/1?language=en))
+
+* Rule of 7s for Lyme Meningitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rule_of_7s_for_lyme_meningitis/1?language=en))
+
 * SEDAN Score for Post-tPA Hemorrhage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SEDAN_Score_for_Post-tPA_Hemorrhage_guideline/1?language=en))
 
 * STONE Score for Uncomplicated Ureteral Stone - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stone_score_for_uncomplicated_ureteral_stone_guideline/1?language=en))
@@ -806,6 +814,8 @@ _Select a medical specialty below to view the available apps._
 * Mekhail Extension of the Motzer Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mekhail_Extension_of_the_Motzer_Score/1?language=en))
 
 * Memorial Sloan-Kettering Cancer Center (MSKCC/Motzer) Score for Metastatic Renal Cell Carcinoma (RCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MSKCC_Motzer_Score_guideline/1?language=en))
+
+* Modified Response Evaluation Criteria in Solid Tumors (mRECIST) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mRECIST/1?language=en))
 
 * PREVAIL Model for Prostate Cancer Survival - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PREVAIL_Model_guideline/1?language=en))
 
@@ -1250,6 +1260,8 @@ _Select a medical specialty below to view the available apps._
 * NEXUS Chest CT Decision Instrument for CT Imaging - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEXUS_Chest_CT_Decision_Instrument_for_CT_Imaging/1?language=en))
 
 * NEXUS Criteria for C-Spine Imaging - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEXUS_Criteria_C-Spine_Imaging_guideline/1?language=en))
+
+* Pediatric NEXUS II Head CT Decision Instrument for Blunt Trauma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_NEXUS_II_Head_CT_Decision_guideline/1?language=en))
 
 * Revised Trauma Score (RTS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RTS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RTS/1?language=sv))
 
