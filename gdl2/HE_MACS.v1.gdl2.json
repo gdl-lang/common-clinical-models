@@ -1,5 +1,5 @@
 {
-  "id": "HE_MACS.v0",
+  "id": "HE_MACS.v1",
   "gdl_version": "2.0",
   "concept": "gt0001",
   "language": {
@@ -76,10 +76,6 @@
             "id": "gt0012",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0031]"
           },
-          "gt0013": {
-            "id": "gt0013",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0032]"
-          },
           "gt0028": {
             "id": "gt0028",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0033]"
@@ -132,7 +128,7 @@
       }
     },
     "default_actions": [
-      "$gt0033|2 Systolic BP <100 mmHg|=0|local::at0026|No|"
+      "$gt0033|Systolic BP <100 mmHg|=0|local::at0026|No|"
     ],
     "rules": {
       "gt0026": {
@@ -162,7 +158,7 @@
           "$gt0031|Systolic BP|<100,mm[Hg]"
         ],
         "then": [
-          "$gt0033|2 Systolic BP <100 mmHg|=1|local::at0027|Yes|"
+          "$gt0033|Systolic BP <100 mmHg|=1|local::at0027|Yes|"
         ]
       },
       "gt0016": {
@@ -173,24 +169,25 @@
           "$gt0006|Acute EKG ischemia|!=null",
           "$gt0007|Pain radiating to the right arm or shoulder|!=null",
           "$gt0008|Vomiting associated with pain|!=null",
-          "$gt0033|2 Systolic BP <100 mmHg|!=null",
+          "$gt0033|Systolic BP <100 mmHg|!=null",
           "$gt0010|Current tobacco smoker|!=null",
           "$gt0024|Age|!=null",
           "$gt0028|Sex|!=null"
         ],
         "then": [
-          "$gt0013|x|.magnitude=((1.426*$gt0005.value)+(1.838*$gt0006.value)+(0.734*$gt0007.value)+(0.996*$gt0008.value)+(1.353*$gt0033.value)+(0.675*$gt0010.value)+(0.024*$gt0024.magnitude)+(0.462*$gt0028.value)-4.416)*(0-1)",
-          "$gt0013|x|.precision=3"
+          "$gt0034|x-variable|.magnitude=((1.426*$gt0005.value)+(1.838*$gt0006.value)+(0.734*$gt0007.value)+(0.996*$gt0008.value)+(1.353*$gt0033.value)+(0.675*$gt0010.value)+(0.024*$gt0024.magnitude)+(0.462*$gt0028.value)-4.416)*(0-1)",
+          "$gt0034|x-variable|.precision=1",
+          "$gt0034|x-variable|.unit='1'"
         ]
       },
       "gt0017": {
         "id": "gt0017",
         "priority": 5,
         "when": [
-          "$gt0013|x|!=null"
+          "fired($gt0016)"
         ],
         "then": [
-          "$gt0012|Probability of ACS|.magnitude=(1/(1+e^$gt0013.magnitude))*100",
+          "$gt0012|Probability of ACS|.magnitude=(1/(1+e^$gt0034.magnitude))*100",
           "$gt0012|Probability of ACS|.precision=1",
           "$gt0012|Probability of ACS|.unit='%'"
         ]
@@ -348,6 +345,11 @@
           "gt0033": {
             "id": "gt0033",
             "text": "Systolic BP <100 mmHg",
+            "description": ""
+          },
+          "gt0034": {
+            "id": "gt0034",
+            "text": "x-variable",
             "description": ""
           }
         }
