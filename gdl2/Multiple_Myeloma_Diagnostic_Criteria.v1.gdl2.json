@@ -83,14 +83,6 @@
         "template_id": "openEHR-EHR-OBSERVATION.multiple_myeloma_diagnostic_criteria.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0013": {
-            "id": "gt0013",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0022]/items[at0029]"
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0030]/items[at0052]"
-          },
           "gt0015": {
             "id": "gt0015",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0053]"
@@ -104,37 +96,46 @@
     "rules": {
       "gt0016": {
         "id": "gt0016",
-        "priority": 3,
+        "priority": 4,
         "when": [
           "$gt0003|A. Clonal bone marrow plasma cells ≥10%|!=null",
           "$gt0004|B. Biopsy-proven bony or extramedullary plasmacytoma|!=null"
         ],
         "then": [
-          "$gt0013|Criteria A or B score|.magnitude=$gt0003.value+$gt0004.value"
+          "$gt0022| Criteria A or B score|=$gt0003.value+$gt0004.value"
         ]
       },
       "gt0017": {
         "id": "gt0017",
-        "priority": 2,
+        "priority": 3,
         "when": [
           "$gt0005|C1. Hypercalcemia|!=null",
           "$gt0006|C1. Renal insufficiency|!=null",
           "$gt0007|C1. Anemia|!=null",
-          "$gt0008|C1. Bone lesions|!=null",
+          "$gt0008|C1. Bone lesions|!=null"
+        ],
+        "then": [
+          "$gt0020| Criteria C1 score|=$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value"
+        ]
+      },
+      "gt0019": {
+        "id": "gt0019",
+        "priority": 2,
+        "when": [
           "$gt0009|C2. Clonal bone marrow plasma cells ≥60%|!=null",
           "$gt0010|C2. Involved:uninvolved sFLC ratio ≥100|!=null",
           "$gt0011|C2. >1 focal lesion on MRI|!=null"
         ],
         "then": [
-          "$gt0014|Criteria C1 or C2 score|.magnitude=$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0011.value"
+          "$gt0021| Criteria C2 score|=$gt0009.value+$gt0010.value+$gt0011.value"
         ]
       },
       "gt0018": {
         "id": "gt0018",
         "priority": 1,
         "when": [
-          "$gt0013|Criteria A or B score|>=1",
-          "$gt0014|Criteria C1 or C2 score|>=1"
+          "($gt0020| Criteria C1 score|>=1)||(($gt0021| Criteria C2 score|>=1)&&null)",
+          "$gt0022| Criteria A or B score|>=1"
         ],
         "then": [
           "$gt0015|Diagnostic result|='Positive for multiple myeloma'"
@@ -197,16 +198,6 @@
             "text": "C2. >1 focal lesion on MRI",
             "description": ""
           },
-          "gt0013": {
-            "id": "gt0013",
-            "text": "Criteria A or B score",
-            "description": ""
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "text": "Criteria C1 or C2 score",
-            "description": ""
-          },
           "gt0015": {
             "id": "gt0015",
             "text": "Diagnostic result",
@@ -218,11 +209,30 @@
           },
           "gt0017": {
             "id": "gt0017",
-            "text": "Calculate Criteria C1 or C2 score"
+            "text": "Calculate Criteria C1 score"
           },
           "gt0018": {
             "id": "gt0018",
             "text": "Set positive diagnosis "
+          },
+          "gt0019": {
+            "id": "gt0019",
+            "text": "Calculate Criteria C2 score"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": " Criteria C1 score",
+            "description": ""
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": " Criteria C2 score",
+            "description": ""
+          },
+          "gt0022": {
+            "id": "gt0022",
+            "text": " Criteria A or B score",
+            "description": ""
           }
         }
       }
