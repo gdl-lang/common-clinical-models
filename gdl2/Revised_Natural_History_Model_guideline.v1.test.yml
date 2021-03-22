@@ -1,66 +1,25 @@
 guidelines:
-  1: new_guideline.v0
+  1: Revised_natural_history_model_guideline.v1
 test_cases:
-- id: Warning Too Low
+- id: Alb (gm/dl), Bili (mg/dl)
   input:
     1:
-      gt0005|Age: 100,a
-      gt0007|Bilirubin: 0,mg/dl
-      gt0009|Aspartate aminotransferase (AST): 0,U/l
-      gt0011|Variceal bleeding: 0|local::at0006|No|
-      gt0019|Serum Albumin: 35,gm/dl
+      gt0003|Age: 20,a
+      gt0005|Bilirubin: 2,mg/dl
+      gt0007|Aspartate aminotransferase (AST): 1,U/l
+      gt0009|Variceal bleeding: 1|local::at0005|Yes|
+      gt0011|Albumin: 1,gm/dl
   expected_output:
     1:
-      gt0021|Warning to AST: Too low, please change to proceed.
-      gt0020|Warning to Bilirubin: Too low, please change to proceed.
-- id: Warning Too high
+      gt0013|Risk Score: 1.37,1
+- id: Alb (gm/l), Bili (umol/l)
   input:
     1:
-      gt0005|Age: 100,a
-      gt0007|Bilirubin: 71,mg/dl
-      gt0009|Aspartate aminotransferase (AST): 10001,U/l
-      gt0011|Variceal bleeding: 0|local::at0006|No|
-      gt0019|Serum Albumin: 71,gm/dl
+      gt0003|Age: 20,a
+      gt0005|Bilirubin: 176.8,umol/l
+      gt0007|Aspartate aminotransferase (AST): 1,U/l
+      gt0009|Variceal bleeding: 1|local::at0005|Yes|
+      gt0011|Albumin: 10,gm/l
   expected_output:
     1:
-      gt0021|Warning to AST: Too high, please change to proceed.
-      gt0020|Warning to Bilirubin: Too high, please change to proceed.
-      gt0022|Warning to Albumin: Too high, please change to proceed.
-- id: Risk score
-  input:
-    1:
-      gt0005|Age: 100,a
-      gt0007|Bilirubin: 2,mg/dl
-      gt0009|Aspartate aminotransferase (AST): 15,U/l
-      gt0011|Variceal bleeding: 0|local::at0006|No|
-      gt0019|Serum Albumin: 35,gm/dl
-  expected_output:
-    1:
-      gt0013|Risk Score: -24.56,1
-- id: Warning Very high
-  input:
-    1:
-      gt0005|Age: 100,a
-      gt0007|Bilirubin: 21,mg/dl
-      gt0009|Aspartate aminotransferase (AST): 4001,U/l
-      gt0011|Variceal bleeding: 0|local::at0006|No|
-      gt0019|Serum Albumin: 61,gm/dl
-  expected_output:
-    1:
-      gt0013|Risk Score: -42.12,1
-      gt0021|Warning to AST: Very high, double-check.
-      gt0020|Warning to Bilirubin: Very high, double-check.
-      gt0022|Warning to Albumin: Very high, double-check.
-- id: Warning very low
-  input:
-    1:
-      gt0005|Age: 100,a
-      gt0007|Bilirubin: 3,mg/dl
-      gt0009|Aspartate aminotransferase (AST): 3,U/l
-      gt0011|Variceal bleeding: 0|local::at0006|No|
-      gt0019|Serum Albumin: 9,gm/dl
-  expected_output:
-    1:
-      gt0013|Risk Score: -3.37,1
-      gt0021|Warning to AST: Very low, double-check.
-      gt0022|Warning to Albumin: Very low, double-check.
+      gt0013|Risk Score: 1.37,1

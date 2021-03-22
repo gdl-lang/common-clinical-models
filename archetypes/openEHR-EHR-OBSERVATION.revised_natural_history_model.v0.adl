@@ -2,24 +2,26 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.revised_natural_history_model.v0
 
 concept
-	[at0000]	-- Revised Natural History Model for Primary Sclerosing Cholangitis
+	[at0000]	-- Revised natural history model for primary sclerosing cholangitis
 language
 	original_language = <[ISO_639-1::en]>
 description
 	original_author = <
 		["name"] = <"Maryam Razavi">
 		["email"] = <"maryam.razavi@cambio.se">
-		["organisation"] = <"CambioCDS">
+		["organisation"] = <"Cambio CDS">
 		["date"] = <"2021-02-09">
 	>
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record information relevant to the Revised Natural History Model for Primary Sclerosing Cholangitis assessment.">
-			use = <"Use to record information relevant to the Revised Natural History Model for Primary Sclerosing Cholangitis assessment.">
-			keywords = <"cholangitis", "Sclerosing ", "Primary ">
+			purpose = <"To record the results for each component parameter and risk score.
+">
+			use = <"Use to record the results for each component parameter and risk score.
+">
+			keywords = <"cholangitis", "sclerosing", "primary", "survival", "PSC">
 			misuse = <"">
-			copyright = <"@CambioCDS">
+			copyright = <"Cambio CDS">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
@@ -27,11 +29,12 @@ description
 	other_details = <
 		["references"] = <"1. Kim WR, Therneau TM, Wiesner RH, Poterucha JJ, Benson JT, Malinchoc M, LaRusso NF, Lindor KD, Dickson ER. A revised natural history model for primary sclerosing cholangitis. Mayo Clin Proc. 2000 Jul;75(7):688-94. doi: 10.4065/75.7.688. PMID: 10907383.
 2. Ponsioen CY, Vrouenraets SM, Prawirodirdjo W, Rajaram R, Rauws EA, Mulder CJ, Reitsma JB, Heisterkamp SH, Tytgat GN. Natural history of primary sclerosing cholangitis and prognostic value of cholangiography in a Dutch population. Gut. 2002 Oct;51(4):562-6. doi: 10.1136/gut.51.4.562. PMID: 12235081; PMCID: PMC1773389.">
-		["MD5-CAM-1.0.1"] = <"2B7376082376605471C6BF0F96E6A35D">
+		["MD5-CAM-1.0.1"] = <"C742A256C1022E4FDBCE835A86E3766D">
+		["current_contact"] = <"maryam.razavi@cambio.se">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Revised Natural History Model for Primary Sclerosing Cholangitis
+	OBSERVATION[at0000] matches {	-- Revised natural history model for primary sclerosing cholangitis
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
@@ -45,7 +48,7 @@ definition
 											1|[local::at0005]  	-- Yes
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Risk Score
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Score
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::380]>
@@ -55,21 +58,6 @@ definition
 													>
 												>
 											>
-										}
-									}
-									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Warning to Bilirubin
-										value matches {
-											DV_TEXT matches {*}
-										}
-									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Warning to AST
-										value matches {
-											DV_TEXT matches {*}
-										}
-									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Warning to Albumin
-										value matches {
-											DV_TEXT matches {*}
 										}
 									}
 								}
@@ -86,8 +74,8 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Revised Natural History Model for Primary Sclerosing Cholangitis">
-					description = <"Revised Natural History Model for Primary Sclerosing Cholangitis estimates survival from primary sclerosing cholangitis.">
+					text = <"Revised natural history model for primary sclerosing cholangitis">
+					description = <"A scoring system used to estimate survival from primary sclerosing cholangitis (PSC).">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -114,19 +102,7 @@ ontology
 					description = <"*">
 				>
 				["at0007"] = <
-					text = <"Risk Score">
-					description = <"*">
-				>
-				["at0008"] = <
-					text = <"Warning to Bilirubin">
-					description = <"*">
-				>
-				["at0009"] = <
-					text = <"Warning to AST">
-					description = <"*">
-				>
-				["at0010"] = <
-					text = <"Warning to Albumin">
+					text = <"Score">
 					description = <"*">
 				>
 			>
