@@ -19,7 +19,7 @@
         "purpose": "To predict the risk that an adnexal mass is malignant.",
         "keywords": [
           "RMI",
-          "ovarian cancer",
+          "ovarian",
           "multiloculated cysts",
           "solid areas",
           "bilateral lesions",
@@ -27,14 +27,16 @@
           "intra-abdominal",
           "metastases",
           "malignancy",
-          "serum ca-125"
+          "serum ca-125",
+          "cancer",
+          "cysts"
         ],
         "use": "Use to predict the risk that an adnexal mass is malignant, the RMI.\n\nFormula:\nRMI = menopausal status x ultrasound score x serum CA-125, U/mL\n\nWhere menopausal status and ultrasound score are as follows:\nUltrasound features: 1 if 0-1 present and 3 if ≥2 present\nMenopausal status*: 1 if Premenopausal or perimenopausal and 3 if Postmenopausal\n\n*Postmenopausal status = >1 year of amenorrhea or age ≥50 years if patient is status post hysterectomy.\n\nInterpretation:\nRMI                Risk of malignancy\n≤200               Low\n>200               High*\n\n*71% sensitive and 92% specific for ovarian cancer.",
         "copyright": "Cambio CDS"
       }
     },
     "other_details": {
-      "references": "1.Jacobs I, Oram D, Fairbanks J, Turner J, Frost C, Grudzinskas JG. A risk of malignancy index incorporating CA 125, ultrasound and menopausal status for the accurate preoperative diagnosis of ovarian cancer. Br J Obstet Gynaecol [Internet]. 1990 Oct [cited 2021 Feb 15];97(10):922-9. Available from: https://pubmed.ncbi.nlm.nih.gov/2223684/"
+      "references": "1.Jacobs I, Oram D, Fairbanks J, Turner J, Frost C, Grudzinskas JG. A risk of malignancy index incorporating CA 125, ultrasound and menopausal status for the accurate preoperative diagnosis of ovarian cancer. Br J Obstet Gynaecol. 1990 Oct;97(10):922-9. doi: 10.1111/j.1471-0528.1990.tb02448.x. PMID: 2223684."
     }
   },
   "definition": {
@@ -47,23 +49,23 @@
         "elements": {
           "gt0042": {
             "id": "gt0042",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0005]"
           },
           "gt0043": {
             "id": "gt0043",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0008]"
           },
           "gt0044": {
             "id": "gt0044",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0011]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0011]"
           },
           "gt0045": {
             "id": "gt0045",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0014]"
           },
           "gt0046": {
             "id": "gt0046",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0017]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0017]"
           },
           "gt0047": {
             "id": "gt0047",
@@ -103,7 +105,7 @@
         "elements": {
           "gt0049": {
             "id": "gt0049",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0020]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0020]"
           },
           "gt0050": {
             "id": "gt0050",
@@ -145,7 +147,8 @@
         "priority": 3,
         "when": [
           "fired($gt0015)",
-          "$gt0013|Serum CA-125|!=null"
+          "$gt0013|Serum CA-125|!=null",
+          "$gt0047|Menopausal status|!=null"
         ],
         "then": [
           "$gt0050|RMI|.magnitude=$gt0016*$gt0013.magnitude*$gt0047.value"
