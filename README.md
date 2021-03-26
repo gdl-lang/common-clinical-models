@@ -11,19 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 540*
+### *Published Apps: 543*
 
 ----------
 
 ### Latest added
 
-1. Pediatric NEXUS II Head CT Decision Instrument for Blunt Trauma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_NEXUS_II_Head_CT_Decision_guideline/1?language=en))
-2. Risk of Paradoxical Embolism (RoPE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RoPE_Score_guideline/1?language=en))
-3. Sodium Correction Rate in Hyponatremia and Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_rate_in_hyponatremia_and_hypernatremia/1?language=en))
-4. Rule of 7s for Lyme Meningitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rule_of_7s_for_lyme_meningitis/1?language=en))
-5. Modified Response Evaluation Criteria in Solid Tumors (mRECIST) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mRECIST/1?language=en))
-6. History and Electrocardiogram-only Manchester Acute Coronary Syndromes (HE-MACS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HE_MACS/1?language=en))
-7. Recognition of Stroke in the Emergency Room (ROSIER) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Recognition_of_stroke_in_the_emergency_room_ROSIER_scale/1?language=en))
+1. Risk of Malignancy Index (RMI) for Ovarian Cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Risk_of_malignancy_index_RMI_for_ovarian_cancer/1?language=en))
+2. Urine Anion Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urine_anion_gap/1?language=en))
+3. Mumtaz Score for Readmission in Cirrhosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mumtaz_score_for_readmission_in_cirrhosis/1?language=en))
+4. Pediatric NEXUS II Head CT Decision Instrument for Blunt Trauma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_NEXUS_II_Head_CT_Decision_guideline/1?language=en))
+5. Risk of Paradoxical Embolism (RoPE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RoPE_Score_guideline/1?language=en))
+6. Sodium Correction Rate in Hyponatremia and Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_rate_in_hyponatremia_and_hypernatremia/1?language=en))
+7. Rule of 7s for Lyme Meningitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rule_of_7s_for_lyme_meningitis/1?language=en))
+8. Modified Response Evaluation Criteria in Solid Tumors (mRECIST) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mRECIST1?language=en))
+9. History and Electrocardiogram-only Manchester Acute Coronary Syndromes (HE-MACS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HE_MACS/1?language=en))
+10. Recognition of Stroke in the Emergency Room (ROSIER) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Recognition_of_stroke_in_the_emergency_room_ROSIER_scale/1?language=en))
 8. Wexner Score for Obstructed Defecation Syndrome (ODS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wexner_score_ODS/1?language=en))
 9. SIRS, Sepsis, and Septic Shock Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SIRS_Sepsis_Septic_Shock_Criteria_guideline/1?language=en))
 10. Revised Amyotrophic Lateral Sclerosis Functional Rating Scale (ALSFRS-R) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ALSFRS-R_guideline/1?language=en))
@@ -257,6 +260,8 @@ _Select a medical specialty below to view the available apps._
 
 * Sodium Deficit in Hyponatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_deficit_in_hyponatremia/1?language=en))
 
+* Urine Anion Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urine_anion_gap/1?language=en))
+
 * Winter Formula - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Winters_Metabolic_Acidosis_Compensation/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Winters_Metabolic_Acidosis_Compensation/1?language=sv))
 
 ----------
@@ -445,6 +450,8 @@ _Select a medical specialty below to view the available apps._
 * Milan Criteria for Liver Transplantation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Milan_Criteria_for_Liver_Transplantation/1?language=en))
 
 * Model For End-Stage Liver Disease Score (MELD) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MELD_score/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MELD_score/1?language=sv))
+
+* Mumtaz Score for Readmission in Cirrhosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mumtaz_score_for_readmission_in_cirrhosis/1?language=en))
 
 * NAFLD (Non-Alcoholic Fatty Liver Disease) Activity Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NAFLD_activity_score/1?language=en))
 
@@ -826,6 +833,8 @@ _Select a medical specialty below to view the available apps._
 * REACH-B Score for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/REACH_B_Score_guideline/1?language=en))
 
 * Revised Multiple Myeloma International Staging System (R-ISS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R-ISS_guideline/1?language=en))
+
+* Risk of Malignancy Index (RMI) for Ovarian Cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Risk_of_malignancy_index_RMI_for_ovarian_cancer/1?language=en))
 
 * SSIGN Score for Clear Cell Renal Cell Carcinoma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SSIGN_ccRCC/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SSIGN_ccRCC/1?language=sv))
 
