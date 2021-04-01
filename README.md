@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 544*
+### *Published Apps: 546*
 
 ----------
 
 ### Latest added
 
-1.  Schwab and England Activities of Daily Living (ADL) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Schwab_and_England_activities_of_daily_living_ADL_scale/1?language=en))
-2. Risk of Malignancy Index (RMI) for Ovarian Cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Risk_of_malignancy_index_RMI_for_ovarian_cancer/1?language=en))
-3. Urine Anion Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urine_anion_gap/1?language=en))
-4. Mumtaz Score for Readmission in Cirrhosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mumtaz_score_for_readmission_in_cirrhosis/1?language=en))
-5. Pediatric NEXUS II Head CT Decision Instrument for Blunt Trauma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_NEXUS_II_Head_CT_Decision_guideline/1?language=en))
-6. Risk of Paradoxical Embolism (RoPE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RoPE_Score_guideline/1?language=en))
-7. Sodium Correction Rate in Hyponatremia and Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_rate_in_hyponatremia_and_hypernatremia/1?language=en))
-8. Rule of 7s for Lyme Meningitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rule_of_7s_for_lyme_meningitis/1?language=en))
-9. Modified Response Evaluation Criteria in Solid Tumors (mRECIST) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mRECIST1?language=en))
-10. History and Electrocardiogram-only Manchester Acute Coronary Syndromes (HE-MACS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HE_MACS/1?language=en))
+1. Steinhart Model for Acute Heart Failure (AHF) in Undifferentiated Dyspnea - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Steinhart_model_AHF_in_undifferentiated_dyspnea/1?language=en))
+2. Withdrawal Assessment Tool (WAT-1) for Pediatric Withdrawal - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Withdrawal_Assessment_Tool_for_pediatric_withdrawal/1?language=en))
+3. Schwab and England Activities of Daily Living (ADL) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Schwab_and_England_activities_of_daily_living_ADL_scale/1?language=en))
+4. Risk of Malignancy Index (RMI) for Ovarian Cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Risk_of_malignancy_index_RMI_for_ovarian_cancer/1?language=en))
+5. Urine Anion Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urine_anion_gap/1?language=en))
+6. Mumtaz Score for Readmission in Cirrhosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mumtaz_score_for_readmission_in_cirrhosis/1?language=en))
+7. Pediatric NEXUS II Head CT Decision Instrument for Blunt Trauma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_NEXUS_II_Head_CT_Decision_guideline/1?language=en))
+8. Risk of Paradoxical Embolism (RoPE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RoPE_Score_guideline/1?language=en))
+9. Sodium Correction Rate in Hyponatremia and Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_rate_in_hyponatremia_and_hypernatremia/1?language=en))
+10. Rule of 7s for Lyme Meningitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rule_of_7s_for_lyme_meningitis/1?language=en))
 
 ----------
 
@@ -256,6 +256,8 @@ _Select a medical specialty below to view the available apps._
 * Sodium Correction Rate in Hyponatremia and Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_rate_in_hyponatremia_and_hypernatremia/1?language=en))
 
 * Sodium Deficit in Hyponatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_deficit_in_hyponatremia/1?language=en))
+
+* Steinhart Model for Acute Heart Failure (AHF) in Undifferentiated Dyspnea - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Steinhart_model_AHF_in_undifferentiated_dyspnea/1?language=en))
 
 * Urine Anion Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urine_anion_gap/1?language=en))
 
@@ -943,6 +945,8 @@ _Select a medical specialty below to view the available apps._
 * STRONGkids Nutritional Risk Screening - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/STRONGkids/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/STRONGkids/1?language=sv))
 
 * Westley Croup Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Westley_Croup_Score_guideline/1?language=en))
+
+* Withdrawal Assessment Tool (WAT-1) for Pediatric Withdrawal - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Withdrawal_Assessment_Tool_for_pediatric_withdrawal/1?language=en))
 ----------
 
 ### Pharmacology
