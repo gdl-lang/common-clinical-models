@@ -11,25 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 543*
+### *Published Apps: 544*
 
 ----------
 
 ### Latest added
 
-1. Risk of Malignancy Index (RMI) for Ovarian Cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Risk_of_malignancy_index_RMI_for_ovarian_cancer/1?language=en))
-2. Urine Anion Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urine_anion_gap/1?language=en))
-3. Mumtaz Score for Readmission in Cirrhosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mumtaz_score_for_readmission_in_cirrhosis/1?language=en))
-4. Pediatric NEXUS II Head CT Decision Instrument for Blunt Trauma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_NEXUS_II_Head_CT_Decision_guideline/1?language=en))
-5. Risk of Paradoxical Embolism (RoPE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RoPE_Score_guideline/1?language=en))
-6. Sodium Correction Rate in Hyponatremia and Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_rate_in_hyponatremia_and_hypernatremia/1?language=en))
-7. Rule of 7s for Lyme Meningitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rule_of_7s_for_lyme_meningitis/1?language=en))
-8. Modified Response Evaluation Criteria in Solid Tumors (mRECIST) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mRECIST1?language=en))
-9. History and Electrocardiogram-only Manchester Acute Coronary Syndromes (HE-MACS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HE_MACS/1?language=en))
-10. Recognition of Stroke in the Emergency Room (ROSIER) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Recognition_of_stroke_in_the_emergency_room_ROSIER_scale/1?language=en))
-8. Wexner Score for Obstructed Defecation Syndrome (ODS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wexner_score_ODS/1?language=en))
-9. SIRS, Sepsis, and Septic Shock Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SIRS_Sepsis_Septic_Shock_Criteria_guideline/1?language=en))
-10. Revised Amyotrophic Lateral Sclerosis Functional Rating Scale (ALSFRS-R) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ALSFRS-R_guideline/1?language=en))
+1.  Schwab and England Activities of Daily Living (ADL) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Schwab_and_England_activities_of_daily_living_ADL_scale/1?language=en))
+2. Risk of Malignancy Index (RMI) for Ovarian Cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Risk_of_malignancy_index_RMI_for_ovarian_cancer/1?language=en))
+3. Urine Anion Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urine_anion_gap/1?language=en))
+4. Mumtaz Score for Readmission in Cirrhosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mumtaz_score_for_readmission_in_cirrhosis/1?language=en))
+5. Pediatric NEXUS II Head CT Decision Instrument for Blunt Trauma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_NEXUS_II_Head_CT_Decision_guideline/1?language=en))
+6. Risk of Paradoxical Embolism (RoPE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RoPE_Score_guideline/1?language=en))
+7. Sodium Correction Rate in Hyponatremia and Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_rate_in_hyponatremia_and_hypernatremia/1?language=en))
+8. Rule of 7s for Lyme Meningitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rule_of_7s_for_lyme_meningitis/1?language=en))
+9. Modified Response Evaluation Criteria in Solid Tumors (mRECIST) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mRECIST1?language=en))
+10. History and Electrocardiogram-only Manchester Acute Coronary Syndromes (HE-MACS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/HE_MACS/1?language=en))
 
 ----------
 
@@ -737,6 +734,8 @@ _Select a medical specialty below to view the available apps._
 * SEDAN Score for Post-tPA Hemorrhage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SEDAN_Score_for_Post-tPA_Hemorrhage_guideline/1?language=en))
 
 * STONE Score for Uncomplicated Ureteral Stone - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stone_score_for_uncomplicated_ureteral_stone_guideline/1?language=en))
+
+* Schwab and England Activities of Daily Living (ADL) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Schwab_and_England_activities_of_daily_living_ADL_scale/1?language=en))
 
 * Trunk Impairment Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/trunk_impairment_scale/0?language=en))
 
