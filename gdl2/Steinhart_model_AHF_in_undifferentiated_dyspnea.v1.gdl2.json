@@ -31,7 +31,7 @@
       }
     },
     "other_details": {
-      "references": "1. Steinhart B, Thorpe KE, Bayoumi AM, Moe G, Januzzi JL Jr, Mazer CD. Improving the diagnosis of acute heart failure using a validated prediction model. J Am Coll Cardiol [Internet]. 2009 Oct 13 [cited 2021 Feb 23];54(16):1515-21. Available from: https://pubmed.ncbi.nlm.nih.gov/19815122/"
+      "references": "1. Steinhart B, Thorpe KE, Bayoumi AM, Moe G, Januzzi JL Jr, Mazer CD. Improving the diagnosis of acute heart failure using a validated prediction model. J Am Coll Cardiol. 2009 Oct 13;54(16):1515-21. doi: 10.1016/j.jacc.2009.05.065. PMID: 19815122."
     }
   },
   "definition": {
@@ -81,10 +81,6 @@
           "gt0009": {
             "id": "gt0009",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
           }
         }
       }
@@ -112,9 +108,9 @@
           "$gt0005|NT-proBNP|!=null"
         ],
         "then": [
-          "$gt0015|y|.magnitude=8+(0.011*$gt0003.magnitude)-(5.9*$gt0007.magnitude/100)-(2.3*log10($gt0005.magnitude*$gt0011))+(0.82*($gt0007.magnitude/100)*log10($gt0005.magnitude*$gt0011))",
-          "$gt0015|y|.unit='1'",
-          "$gt0015|y|.precision=3"
+          "$gt0016|y|.magnitude=8+(0.011*$gt0003.magnitude)-(5.9*$gt0007.magnitude/100)-(2.3*log10($gt0005.magnitude*$gt0011))+(0.82*($gt0007.magnitude/100)*log10($gt0005.magnitude*$gt0011))",
+          "$gt0016|y|.unit='1'",
+          "$gt0016|y|.precision=3"
         ]
       },
       "gt0014": {
@@ -124,7 +120,7 @@
           "fired($gt0010)"
         ],
         "then": [
-          "$gt0009|Probability of clinical AHF diagnosis|.magnitude=100*(1/(1+e^$gt0015.magnitude))",
+          "$gt0009|Probability of clinical AHF diagnosis|.magnitude=100*(1/(1+e^$gt0016.magnitude))",
           "$gt0009|Probability of clinical AHF diagnosis|.unit='%'",
           "$gt0009|Probability of clinical AHF diagnosis|.precision=0"
         ]
@@ -174,19 +170,14 @@
             "id": "gt0012",
             "text": "Set NT-proBNP conversion factor [pmol/L] to [pg/mL]"
           },
-          "gt0013": {
-            "id": "gt0013",
-            "text": "y",
-            "description": ""
-          },
           "gt0014": {
             "id": "gt0014",
             "text": "Calculate Probability of clinical AHF diagnosis "
           },
-          "gt0015": {
-            "id": "gt0015",
+          "gt0016": {
+            "id": "gt0016",
             "text": "y",
-            "description": "*"
+            "description": ""
           }
         }
       }
