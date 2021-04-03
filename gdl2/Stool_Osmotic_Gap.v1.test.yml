@@ -1,0 +1,38 @@
+guidelines:
+  1: Stool_Osmotic_Gap.v1
+test_cases:
+- id: Test no input
+  input:
+    1: {}
+  expected_output:
+    1: {}
+- id: Stool osmolarity missing (negative test)
+  input:
+    1:
+      'gt0005|Stool sodium ': 40,mg/dl
+      'gt0006|Stool potassium ': 50,mg/dl
+  expected_output:
+    1: {}
+- id: Stool sodium missing (negative test)
+  input:
+    1:
+      gt0003|Stool osmolarity: 300,mmol/L
+      'gt0006|Stool potassium ': 50,mg/dl
+  expected_output:
+    1: {}
+- id: Stool potassium missing (negative test)
+  input:
+    1:
+      gt0003|Stool osmolarity: 300,mmol/L
+      'gt0005|Stool sodium ': 40,mg/dl
+  expected_output:
+    1: {}
+- id: Test calculation of stool osm gap
+  input:
+    1:
+      gt0003|Stool osmolarity: 290,mmol/L
+      'gt0005|Stool sodium ': 180,mmol/l
+      'gt0006|Stool potassium ': 200,mmol/l
+  expected_output:
+    1:
+      gt0008|Stool Osmolal Gap: -470,mOsm/kg
