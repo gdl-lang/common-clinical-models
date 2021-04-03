@@ -1,0 +1,163 @@
+guidelines:
+  1: Solitary_Pulmonary_Nodule_Malignancy_risk.v1
+test_cases:
+- id: Test no input
+  input:
+    1: {}
+  expected_output:
+    1: {}
+- id: Age missing (negative test)
+  input:
+    1:
+      gt0006|Current or former smoker: 0|local::at0008|No|
+      gt0007|Extrathoracic cancer diagnosis ≥5 years prior: 1|local::at0012|Yes|
+      gt0008|Upper lobe location of tumor: 0|local::at0014|No|
+      gt0010|Nodule spiculation: 1|local::at0018|Yes|
+      gt0011|FDG-PET: local::at0027|Intense uptake|
+      gt0028|Nodule diameter: 34,mm
+  expected_output:
+    1: {}
+- id: Current or former smoker missing (negative test)
+  input:
+    1:
+      gt0007|Extrathoracic cancer diagnosis ≥5 years prior: 1|local::at0012|Yes|
+      gt0008|Upper lobe location of tumor: 0|local::at0014|No|
+      gt0010|Nodule spiculation: 1|local::at0018|Yes|
+      gt0011|FDG-PET: local::at0027|Intense uptake|
+      gt0028|Nodule diameter: 34,mm
+      gt0036|Age: 50,a
+  expected_output:
+    1: {}
+- id: Extrathoracic cancer diagnosis ≥5 years prior missing (negative test)
+  input:
+    1:
+      gt0006|Current or former smoker: 1|local::at0009|Yes|
+      gt0008|Upper lobe location of tumor: 0|local::at0014|No|
+      gt0010|Nodule spiculation: 1|local::at0018|Yes|
+      gt0011|FDG-PET: local::at0027|Intense uptake|
+      gt0028|Nodule diameter: 34,mm
+      gt0036|Age: 50,a
+  expected_output:
+    1: {}
+- id: Upper lobe location of tumor missing (negative test)
+  input:
+    1:
+      gt0006|Current or former smoker: 1|local::at0009|Yes|
+      gt0007|Extrathoracic cancer diagnosis ≥5 years prior: 1|local::at0012|Yes|
+      gt0010|Nodule spiculation: 1|local::at0018|Yes|
+      gt0011|FDG-PET: local::at0027|Intense uptake|
+      gt0028|Nodule diameter: 34,mm
+      gt0036|Age: 50,a
+  expected_output:
+    1: {}
+- id: Nodule spiculation missing (negative test)
+  input:
+    1:
+      gt0006|Current or former smoker: 1|local::at0009|Yes|
+      gt0007|Extrathoracic cancer diagnosis ≥5 years prior: 1|local::at0012|Yes|
+      gt0008|Upper lobe location of tumor: 1|local::at0015|Yes|
+      gt0011|FDG-PET: local::at0027|Intense uptake|
+      gt0028|Nodule diameter: 34,mm
+      gt0036|Age: 50,a
+  expected_output:
+    1: {}
+- id: FDG-PET missing (negative test)
+  input:
+    1:
+      gt0006|Current or former smoker: 1|local::at0009|Yes|
+      gt0007|Extrathoracic cancer diagnosis ≥5 years prior: 1|local::at0012|Yes|
+      gt0008|Upper lobe location of tumor: 1|local::at0015|Yes|
+      gt0010|Nodule spiculation: 1|local::at0018|Yes|
+      gt0028|Nodule diameter: 34,mm
+      gt0036|Age: 50,a
+  expected_output:
+    1: {}
+- id: Nodule diameter missing (negative test)
+  input:
+    1:
+      gt0006|Current or former smoker: 1|local::at0009|Yes|
+      gt0007|Extrathoracic cancer diagnosis ≥5 years prior: 1|local::at0012|Yes|
+      gt0008|Upper lobe location of tumor: 1|local::at0015|Yes|
+      gt0010|Nodule spiculation: 1|local::at0018|Yes|
+      gt0011|FDG-PET: local::at0025|Faint uptake|
+      gt0036|Age: 50,a
+  expected_output:
+    1: {}
+- id: PET not performed returns 'Probability of malignancy:...'
+  input:
+    1:
+      gt0006|Current or former smoker: 1|local::at0009|Yes|
+      gt0007|Extrathoracic cancer diagnosis ≥5 years prior: 1|local::at0012|Yes|
+      gt0008|Upper lobe location of tumor: 1|local::at0015|Yes|
+      gt0010|Nodule spiculation: 1|local::at0018|Yes|
+      gt0011|FDG-PET: local::at0023|PET not performed|
+      gt0028|Nodule diameter: 43,mm
+      gt0036|Age: 50,a
+  expected_output:
+    1:
+      gt0031|x: 4.56100
+      gt0033|Probability of malignancy: 99.0,%
+- id: No uptake returns 'Probability of malignancy with FDG-PET:...'
+  input:
+    1:
+      gt0006|Current or former smoker: 1|local::at0009|Yes|
+      gt0007|Extrathoracic cancer diagnosis ≥5 years prior: 1|local::at0012|Yes|
+      gt0008|Upper lobe location of tumor: 1|local::at0015|Yes|
+      gt0010|Nodule spiculation: 1|local::at0018|Yes|
+      gt0011|FDG-PET: local::at0024|No uptake|
+      gt0028|Nodule diameter: 43,mm
+      gt0036|Age: 50,a
+  expected_output:
+    1:
+      gt0031|x: 4.56100
+      gt0033|Probability of malignancy: 99.0,%
+      gt0034|Probability of malignancy with FDG-PET: 25.3,%
+      gt0032|y: -1.08491
+- id: Intense uptake returns 'Probability of malignancy with FDG-PET:...'
+  input:
+    1:
+      gt0006|Current or former smoker: 1|local::at0009|Yes|
+      gt0007|Extrathoracic cancer diagnosis ≥5 years prior: 1|local::at0012|Yes|
+      gt0008|Upper lobe location of tumor: 1|local::at0015|Yes|
+      gt0010|Nodule spiculation: 1|local::at0018|Yes|
+      gt0011|FDG-PET: local::at0027|Intense uptake|
+      gt0028|Nodule diameter: 43,mm
+      gt0036|Age: 50,a
+  expected_output:
+    1:
+      gt0031|x: 4.56100
+      gt0033|Probability of malignancy: 99.0,%
+      gt0034|Probability of malignancy with FDG-PET: 97.6,%
+      gt0032|y: 3.68609
+- id: Faint uptake returns 'Probability of malignancy with FDG-PET:...'
+  input:
+    1:
+      gt0006|Current or former smoker: 1|local::at0009|Yes|
+      gt0007|Extrathoracic cancer diagnosis ≥5 years prior: 1|local::at0012|Yes|
+      gt0008|Upper lobe location of tumor: 1|local::at0015|Yes|
+      gt0010|Nodule spiculation: 1|local::at0018|Yes|
+      gt0011|FDG-PET: local::at0025|Faint uptake|
+      gt0028|Nodule diameter: 43,mm
+      gt0036|Age: 50,a
+  expected_output:
+    1:
+      gt0031|x: 4.56100
+      gt0033|Probability of malignancy: 99.0,%
+      gt0034|Probability of malignancy with FDG-PET: 77.5,%
+      gt0032|y: 1.23709
+- id: Moderate uptake returns 'Probability of malignancy with FDG-PET:...'
+  input:
+    1:
+      gt0006|Current or former smoker: 1|local::at0009|Yes|
+      gt0007|Extrathoracic cancer diagnosis ≥5 years prior: 1|local::at0012|Yes|
+      gt0008|Upper lobe location of tumor: 1|local::at0015|Yes|
+      gt0010|Nodule spiculation: 1|local::at0018|Yes|
+      gt0011|FDG-PET: local::at0026|Moderate uptake|
+      gt0028|Nodule diameter: 43,mm
+      gt0036|Age: 50,a
+  expected_output:
+    1:
+      gt0031|x: 4.56100
+      gt0033|Probability of malignancy: 99.0,%
+      gt0034|Probability of malignancy with FDG-PET: 97.2,%
+      gt0032|y: 3.53209
