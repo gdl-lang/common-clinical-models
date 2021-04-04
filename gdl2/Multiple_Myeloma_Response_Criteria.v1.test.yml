@@ -10,61 +10,80 @@ test_cases:
 - id: Test 'Stringent complete response'
   input:
     1:
-      gt0003|Negative immunofixation of serum and urine AND disappearance of any soft tissue plasmacytomas AND <5% plasma cells in bone marrow: local::at0006|No|
-      gt0004|Criteria above plus normal FLC ratio (0.26-1.65) AND absence of clonal cells in bone marrow by immunohistochemistry or immunofluorescence: local::at0008|Yes|
+      ? gt0003|Negative immunofixation of serum and urine AND disappearance of any soft tissue plasmacytomas AND <5% plasma cells in bone marrow
+      : local::at0006|No|
+      ? gt0004|Criteria above plus normal FLC ratio (0.26-1.65) AND absence of clonal cells in bone marrow by immunohistochemistry or immunofluorescence
+      : local::at0008|Yes|
   expected_output:
     1:
       gt0018|Diagnostic result: Stringent complete response
 - id: Test 'Very good partial response'
   input:
     1:
-      gt0003|Negative immunofixation of serum and urine AND disappearance of any soft tissue plasmacytomas AND <5% plasma cells in bone marrow: local::at0006|No|
-      gt0004|Criteria above plus normal FLC ratio (0.26-1.65) AND absence of clonal cells in bone marrow by immunohistochemistry or immunofluorescence: local::at0009|No|
-      gt0005|Serum and urine M component detectable by immunofixation but not on electrophoresis OR ≥90% reduction in serum M component plus urine M component <100 mg per 24 hrs: local::at0011|Yes|
+      ? gt0003|Negative immunofixation of serum and urine AND disappearance of any soft tissue plasmacytomas AND <5% plasma cells in bone marrow
+      : local::at0006|No|
+      ? gt0004|Criteria above plus normal FLC ratio (0.26-1.65) AND absence of clonal cells in bone marrow by immunohistochemistry or immunofluorescence
+      : local::at0009|No|
+      ? gt0005|Serum and urine M component detectable by immunofixation but not on electrophoresis OR ≥90% reduction in serum M component plus urine M component <100 mg per 24 hrs
+      : local::at0011|Yes|
   expected_output:
     1:
       gt0018|Diagnostic result: Very good partial response
 - id: Test 'Partial response'
   input:
     1:
-      gt0003|Negative immunofixation of serum and urine AND disappearance of any soft tissue plasmacytomas AND <5% plasma cells in bone marrow: local::at0006|No|
-      gt0004|Criteria above plus normal FLC ratio (0.26-1.65) AND absence of clonal cells in bone marrow by immunohistochemistry or immunofluorescence: local::at0009|No|
-      gt0005|Serum and urine M component detectable by immunofixation but not on electrophoresis OR ≥90% reduction in serum M component plus urine M component <100 mg per 24 hrs: local::at0012|No|
-      gt0006|≥50% reduction of serum M protein and reduction in 24 hr urinary M protein by ≥90% or to <200 mg per 24 hrs; if present at baseline, ≥50% reduction in the size of soft tissue plasmacytomas is also required: local::at0014|Yes|
+      ? gt0003|Negative immunofixation of serum and urine AND disappearance of any soft tissue plasmacytomas AND <5% plasma cells in bone marrow
+      : local::at0006|No|
+      ? gt0004|Criteria above plus normal FLC ratio (0.26-1.65) AND absence of clonal cells in bone marrow by immunohistochemistry or immunofluorescence
+      : local::at0009|No|
+      ? gt0005|Serum and urine M component detectable by immunofixation but not on electrophoresis OR ≥90% reduction in serum M component plus urine M component <100 mg per 24 hrs
+      : local::at0012|No|
+      ? gt0006|≥50% reduction of serum M protein and reduction in 24 hr urinary M protein by ≥90% or to <200 mg per 24 hrs; if present at baseline, ≥50% reduction in the size of soft tissue plasmacytomas is also required
+      : local::at0014|Yes|
   expected_output:
     1:
       gt0018|Diagnostic result: Partial response
 - id: Test 'Progressive disease'
   input:
     1:
-      gt0003|Negative immunofixation of serum and urine AND disappearance of any soft tissue plasmacytomas AND <5% plasma cells in bone marrow: local::at0006|No|
-      gt0004|Criteria above plus normal FLC ratio (0.26-1.65) AND absence of clonal cells in bone marrow by immunohistochemistry or immunofluorescence: local::at0009|No|
-      gt0005|Serum and urine M component detectable by immunofixation but not on electrophoresis OR ≥90% reduction in serum M component plus urine M component <100 mg per 24 hrs: local::at0012|No|
-      gt0006|≥50% reduction of serum M protein and reduction in 24 hr urinary M protein by ≥90% or to <200 mg per 24 hrs; if present at baseline, ≥50% reduction in the size of soft tissue plasmacytomas is also required: local::at0015|No|
+      ? gt0003|Negative immunofixation of serum and urine AND disappearance of any soft tissue plasmacytomas AND <5% plasma cells in bone marrow
+      : local::at0006|No|
+      ? gt0004|Criteria above plus normal FLC ratio (0.26-1.65) AND absence of clonal cells in bone marrow by immunohistochemistry or immunofluorescence
+      : local::at0009|No|
+      ? gt0005|Serum and urine M component detectable by immunofixation but not on electrophoresis OR ≥90% reduction in serum M component plus urine M component <100 mg per 24 hrs
+      : local::at0012|No|
+      ? gt0006|≥50% reduction of serum M protein and reduction in 24 hr urinary M protein by ≥90% or to <200 mg per 24 hrs; if present at baseline, ≥50% reduction in the size of soft tissue plasmacytomas is also required
+      : local::at0015|No|
       gt0007|Serum M component: 0|local::at0018|No|
       gt0008|Urine M component: 1|local::at0022|Yes|
-      'gt0009|Only in patients without measurable serum and urine M protein levels: difference between involved and uninvolved FLC levels': 1|local::at0025|Yes|
+      ? 'gt0009|Only in patients without measurable serum and urine M protein levels: difference between involved and uninvolved FLC levels'
+      : 1|local::at0025|Yes|
       gt0010|Bone marrow plasma cell percentage: 1|local::at0028|Yes|
-      gt0011|Definite development of new bone lesions or soft tissue plasmacytomas or definite increase in the size of existing bone lesions or soft tissue plasmacytomas: 1|local::at0031|Yes|
+      ? gt0011|Definite development of new bone lesions or soft tissue plasmacytomas or definite increase in the size of existing bone lesions or soft tissue plasmacytomas
+      : 1|local::at0031|Yes|
       gt0012|Development of hypercalcemia that can be attributed solely to the plasma cell proliferative disorder: 0|local::at0033|No|
   expected_output:
     1:
-      gt0014|Total score: 4
       gt0018|Diagnostic result: Progressive disease
 - id: Test 'Complete response'
   input:
     1:
-      gt0003|Negative immunofixation of serum and urine AND disappearance of any soft tissue plasmacytomas AND <5% plasma cells in bone marrow: local::at0005|Yes|
-      gt0004|Criteria above plus normal FLC ratio (0.26-1.65) AND absence of clonal cells in bone marrow by immunohistochemistry or immunofluorescence: local::at0009|No|
-      gt0005|Serum and urine M component detectable by immunofixation but not on electrophoresis OR ≥90% reduction in serum M component plus urine M component <100 mg per 24 hrs: local::at0012|No|
-      gt0006|≥50% reduction of serum M protein and reduction in 24 hr urinary M protein by ≥90% or to <200 mg per 24 hrs; if present at baseline, ≥50% reduction in the size of soft tissue plasmacytomas is also required: local::at0014|Yes|
+      ? gt0003|Negative immunofixation of serum and urine AND disappearance of any soft tissue plasmacytomas AND <5% plasma cells in bone marrow
+      : local::at0005|Yes|
+      ? gt0004|Criteria above plus normal FLC ratio (0.26-1.65) AND absence of clonal cells in bone marrow by immunohistochemistry or immunofluorescence
+      : local::at0009|No|
+      ? gt0005|Serum and urine M component detectable by immunofixation but not on electrophoresis OR ≥90% reduction in serum M component plus urine M component <100 mg per 24 hrs
+      : local::at0012|No|
+      ? gt0006|≥50% reduction of serum M protein and reduction in 24 hr urinary M protein by ≥90% or to <200 mg per 24 hrs; if present at baseline, ≥50% reduction in the size of soft tissue plasmacytomas is also required
+      : local::at0014|Yes|
       gt0007|Serum M component: 0|local::at0018|No|
       gt0008|Urine M component: 1|local::at0022|Yes|
-      'gt0009|Only in patients without measurable serum and urine M protein levels: difference between involved and uninvolved FLC levels': 1|local::at0025|Yes|
+      ? 'gt0009|Only in patients without measurable serum and urine M protein levels: difference between involved and uninvolved FLC levels'
+      : 1|local::at0025|Yes|
       gt0010|Bone marrow plasma cell percentage: 1|local::at0028|Yes|
-      gt0011|Definite development of new bone lesions or soft tissue plasmacytomas or definite increase in the size of existing bone lesions or soft tissue plasmacytomas: 1|local::at0031|Yes|
+      ? gt0011|Definite development of new bone lesions or soft tissue plasmacytomas or definite increase in the size of existing bone lesions or soft tissue plasmacytomas
+      : 1|local::at0031|Yes|
       gt0012|Development of hypercalcemia that can be attributed solely to the plasma cell proliferative disorder: 0|local::at0033|No|
   expected_output:
     1:
-      gt0014|Total score: 4
       gt0018|Diagnostic result: Complete response
