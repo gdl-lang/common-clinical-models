@@ -33,44 +33,44 @@
       }
     },
     "other_details": {
-      "references": "1. Sgarbossa EB, Pinski SL, Barbagelata A, Underwood DA, Gates KB, Topol EJ, Califf RM, Wagner GS. Electrocardiographic diagnosis of evolving acute myocardial infarction in the presence of left bundle-branch block. GUSTO-1 (Global Utilization of Streptokinase and Tissue Plasminogen Activator for Occluded Coronary Arteries) Investigators. N Engl J Med [Internet]. 1996 Feb 22[cited 2021 Feb 21];334(8):481-7. Available from: https://pubmed.ncbi.nlm.nih.gov/8559200/"
+      "references": "1. Sgarbossa EB, Pinski SL, Barbagelata A, Underwood DA, Gates KB, Topol EJ, Califf RM, Wagner GS. Electrocardiographic diagnosis of evolving acute myocardial infarction in the presence of left bundle-branch block. GUSTO-1 (Global Utilization of Streptokinase and Tissue Plasminogen Activator for Occluded Coronary Arteries) Investigators. N Engl J Med. 1996 Feb 22;334(8):481-7. doi: 10.1056/NEJM199602223340801. Erratum in: N Engl J Med 1996 Apr 4;334(14):931. PMID: 8559200."
     }
   },
   "definition": {
     "data_bindings": {
-      "gt0002": {
-        "id": "gt0002",
-        "model_id": "openEHR-EHR-EVALUATION.sgarbossa.v0",
-        "template_id": "openEHR-EHR-EVALUATION.sgarbossa.v0",
+      "gt0012": {
+        "id": "gt0012",
+        "model_id": "openEHR-EHR-OBSERVATION.sgarbossa.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.sgarbossa.v0",
         "type": "INPUT",
         "elements": {
-          "gt0003": {
-            "id": "gt0003",
-            "path": "/data[at0001]/items[at0002]"
+          "gt0013": {
+            "id": "gt0013",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
           },
-          "gt0004": {
-            "id": "gt0004",
-            "path": "/data[at0001]/items[at0005]"
+          "gt0014": {
+            "id": "gt0014",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
           },
-          "gt0005": {
-            "id": "gt0005",
-            "path": "/data[at0001]/items[at0008]"
+          "gt0015": {
+            "id": "gt0015",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
           }
         }
       },
-      "gt0006": {
-        "id": "gt0006",
-        "model_id": "openEHR-EHR-EVALUATION.sgarbossa.v0",
-        "template_id": "openEHR-EHR-EVALUATION.sgarbossa.v0",
+      "gt0016": {
+        "id": "gt0016",
+        "model_id": "openEHR-EHR-OBSERVATION.sgarbossa.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.sgarbossa.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0008": {
-            "id": "gt0008",
-            "path": "/data[at0001]/items[at0012]"
+          "gt0017": {
+            "id": "gt0017",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
           },
-          "gt0007": {
-            "id": "gt0007",
-            "path": "/data[at0001]/items[at0011]"
+          "gt0018": {
+            "id": "gt0018",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
           }
         }
       }
@@ -80,32 +80,32 @@
         "id": "gt0009",
         "priority": 3,
         "when": [
-          "$gt0003|Concordant ST elevation > 1mm in leads with a positive QRS complex|!=null",
-          "$gt0004|Concordant ST depression > 1 mm in V1-V3|!=null",
-          "$gt0005|Excessively discordant ST elevation (or depression) in leads with a negative QRS|!=null"
+          "$gt0013|Concordant ST elevation > 1mm in leads with a positive QRS complex|!=null",
+          "$gt0014|Concordant ST depression > 1 mm in V1-V3|!=null",
+          "$gt0015|Excessively discordant ST elevation (or depression) in leads with a negative QRS|!=null"
         ],
         "then": [
-          "$gt0007|Sgarbossa's score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value"
+          "$gt0017|Sgarbossa's score|.magnitude=$gt0013.value+$gt0014.value+$gt0015.value"
         ]
       },
       "gt0010": {
         "id": "gt0010",
         "priority": 2,
         "when": [
-          "$gt0007|Sgarbossa's score|<3"
+          "$gt0017|Sgarbossa's score|<3"
         ],
         "then": [
-          "$gt0008|Comment|='In the original Sgarbossa criteria, a score of <3 typically is not considered diagnostic of acute MI, but also does not rule out MI. In concerning patients, repeating EKGs and cardiac enzymes may be helpful, along with cardiology consultation. NOTE; the Modified Sgarbossa Criteria (which changes the third criteria) does not use the points system, it is positive if any criteria are met.'"
+          "$gt0018|Comment|='In the original Sgarbossa criteria, a score of <3 typically is not considered diagnostic of acute MI, but also does not rule out MI. In concerning patients, repeating EKGs and cardiac enzymes may be helpful, along with cardiology consultation. NOTE; the Modified Sgarbossa Criteria (which changes the third criteria) does not use the points system, it is positive if any criteria are met.'"
         ]
       },
       "gt0011": {
         "id": "gt0011",
         "priority": 1,
         "when": [
-          "$gt0007|Sgarbossa's score|>=3"
+          "$gt0017|Sgarbossa's score|>=3"
         ],
         "then": [
-          "$gt0008|Comment|='A score of ≥ 3 has a specificity of 90% for diagnosing acute MI. Also note; the Modified Sgarbossa Criteria (which changes the third criteria) does not use the points system, it is positive if any criteria are met.'"
+          "$gt0018|Comment|='A score of ≥ 3 has a specificity of 90% for diagnosing acute MI. Also note; the Modified Sgarbossa Criteria (which changes the third criteria) does not use the points system, it is positive if any criteria are met.'"
         ]
       }
     }
@@ -120,31 +120,6 @@
             "text": "Sgarbossa's criteria for MI in LBBB",
             "description": "The Sgarbossa's criteria is an assessment tool to diagnose acute MI."
           },
-          "gt0003": {
-            "id": "gt0003",
-            "text": "Concordant ST elevation > 1mm in leads with a positive QRS complex",
-            "description": "*"
-          },
-          "gt0004": {
-            "id": "gt0004",
-            "text": "Concordant ST depression > 1 mm in V1-V3",
-            "description": "*"
-          },
-          "gt0005": {
-            "id": "gt0005",
-            "text": "Excessively discordant ST elevation (or depression) in leads with a negative QRS",
-            "description": "In proportion to the preceding S-wave (or R-wave) as determined by 1) at least 1 mm of ST elevation (or depression) AND 2) an ST/S ratio ≤-0.25."
-          },
-          "gt0007": {
-            "id": "gt0007",
-            "text": "Sgarbossa's score",
-            "description": "*"
-          },
-          "gt0008": {
-            "id": "gt0008",
-            "text": "Comment",
-            "description": "*"
-          },
           "gt0009": {
             "id": "gt0009",
             "text": "Calculate Sgarbossa's score"
@@ -156,6 +131,31 @@
           "gt0011": {
             "id": "gt0011",
             "text": "Sgarbossa score ≥3"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "Concordant ST elevation > 1mm in leads with a positive QRS complex",
+            "description": "*"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "Concordant ST depression > 1 mm in V1-V3",
+            "description": "*"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "Excessively discordant ST elevation (or depression) in leads with a negative QRS",
+            "description": "In proportion to the preceding S-wave (or R-wave) as determined by 1) at least 1 mm of ST elevation (or depression) AND 2) an ST/S ratio ≤-0.25."
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "Sgarbossa's score",
+            "description": "*"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "Comment",
+            "description": "*"
           }
         }
       }
