@@ -28,13 +28,13 @@
           "patients",
           "waiting room"
         ],
-        "use": "Use to calculate the NEDOCS score and interpret the result in order to estimate severity of overcrowding in emergency departments.",
+        "use": "Use to calculate the NEDOCS score and interpret the result in order to estimate severity of overcrowding in emergency departments.\n\nFormula:\nTotal points= Points for patindex + Points for admit index + Points for admit time + Points for registration time + Points for patients on respirator\n\nwhere \nPatindex = Total patients in the ED/Number of ED beds*62.5, Admit index = Number of admits in the ED/Number of hospital beds*444, Admit time = Waiting time of longest admitted patient*0.681, Registration time = Waiting time of longest waiting room patient*4.1 and Points for patients on respirator = 9.6 (if patients on ventilators in the ED = 1) or 19.8 (if patients on ventilators in the ED ≥2).\n\nThen, set\nNEDOCS score to 0, when Total points is <14,\nNEDOCS score to (1.37*Total points)-19.18, when total points is 14-160,\nNEDOCS score to 200, when Total points is >160.\n\nScore interpretation:\nLevel:            Score:        Interpretation:\nLevel 1          1-20\t         Not busy\nLevel 2          21-60\t         Busy\nLevel 3          61-100\t Extremely busy but not overcrowded\nLevel 4          101-140\t Overcrowded\nLevel 5          141-180      Severely overcrowded\nLevel 6          181-200\t Dangerously overcrowded",
         "misuse": "Do not use to calculate any other score for emergency department overcrowding, for instance PEDOCS score or CEDOCS.",
         "copyright": "Cambio CDS"
       }
     },
     "other_details": {
-      "references": "Weiss SJ, Derlet R, Arndahl J, Ernst AA, Richards J, Fernández-Frackelton M, Schwab R, Stair TO, Vicellio P, Levy D, Brautigan M, Johnson A, Nick TG. Estimating the degree of emergency department overcrowding in academic medical centers: results of the National ED Overcrowding Study (NEDOCS). Acad Emerg Med [Internet]. 2004 Jan [cited 2021 March 9];11(1):38-50. Erratum in: Acad Emerg Med. 2004 Apr;11(4):408. Fernández-Frankelton M [corrected to Fernández-Frackelton M]. PMID: 14709427."
+      "references": "1. Weiss SJ, Derlet R, Arndahl J, Ernst AA, Richards J, Fernández-Frackelton M, Schwab R, Stair TO, Vicellio P, Levy D, Brautigan M, Johnson A, Nick TG. Estimating the degree of emergency department overcrowding in academic medical centers: results of the National ED Overcrowding Study (NEDOCS). Acad Emerg Med. 2004 Jan;11(1):38-50. doi: 10.1197/j.aem.2003.07.017. Erratum in: Acad Emerg Med. 2004 Apr;11(4):408. Fernández-Frankelton M [corrected to Fernández-Frackelton M]. PMID: 14709427."
     }
   },
   "definition": {
@@ -130,7 +130,7 @@
     "rules": {
       "gt0022": {
         "id": "gt0022",
-        "priority": 15,
+        "priority": 16,
         "when": [
           "$gt0003|Number of ED beds|!=null",
           "$gt0005|Total patients in the ED|!=null"
@@ -143,7 +143,7 @@
       },
       "gt0023": {
         "id": "gt0023",
-        "priority": 14,
+        "priority": 15,
         "when": [
           "$gt0007|Number of admits in the ED|!=null",
           "$gt0004|Number of hospital beds|!=null"
@@ -156,7 +156,7 @@
       },
       "gt0024": {
         "id": "gt0024",
-        "priority": 13,
+        "priority": 14,
         "when": [
           "$gt0006|Patients on ventilators in the ED|==1,1"
         ],
@@ -166,7 +166,7 @@
       },
       "gt0025": {
         "id": "gt0025",
-        "priority": 12,
+        "priority": 13,
         "when": [
           "$gt0006|Patients on ventilators in the ED|>=2,1"
         ],
@@ -176,7 +176,7 @@
       },
       "gt0026": {
         "id": "gt0026",
-        "priority": 11,
+        "priority": 12,
         "when": [
           "$gt0008|Waiting time of longest admitted patient|!=null"
         ],
@@ -188,7 +188,7 @@
       },
       "gt0027": {
         "id": "gt0027",
-        "priority": 10,
+        "priority": 11,
         "when": [
           "$gt0009|Waiting time of longest waiting room patient|!=null"
         ],
@@ -200,7 +200,7 @@
       },
       "gt0014": {
         "id": "gt0014",
-        "priority": 9,
+        "priority": 10,
         "when": [
           "$gt0017|Points for patindex|!=null",
           "$gt0018|Points for admit index|!=null",
@@ -209,31 +209,40 @@
           "$gt0021|Points for patients on respirator|!=null"
         ],
         "then": [
-          "$gt0016|NEDOCS score|.magnitude=$gt0017.magnitude+$gt0018.magnitude+$gt0019.magnitude+$gt0020.magnitude+$gt0021.magnitude",
-          "$gt0016|NEDOCS score|.precision=2",
-          "$gt0016|NEDOCS score|.unit='1'"
+          "$gt0038|Total points|=$gt0017.magnitude+$gt0018.magnitude+$gt0019.magnitude+$gt0020.magnitude+$gt0021.magnitude"
         ]
       },
       "gt0029": {
         "id": "gt0029",
-        "priority": 8,
+        "priority": 9,
         "when": [
-          "$gt0016|NEDOCS score|!=null"
+          "$gt0038|Total points|<=160",
+          "$gt0038|Total points|>=14"
         ],
         "then": [
-          "$gt0016|NEDOCS score|.magnitude=($gt0016.magnitude*1.37)-19.18",
+          "$gt0016|NEDOCS score|.magnitude=($gt0038.magnitude*1.37)-19.18",
           "$gt0016|NEDOCS score|.unit='1'",
           "$gt0016|NEDOCS score|.precision=0"
         ]
       },
       "gt0037": {
         "id": "gt0037",
-        "priority": 7,
+        "priority": 8,
         "when": [
-          "$gt0016|NEDOCS score|>=200,1"
+          "$gt0038|Total points|>160"
         ],
         "then": [
           "$gt0016|NEDOCS score|=200,1"
+        ]
+      },
+      "gt0039": {
+        "id": "gt0039",
+        "priority": 7,
+        "when": [
+          "$gt0038|Total points|<14"
+        ],
+        "then": [
+          "$gt0016|NEDOCS score|=0,1"
         ]
       },
       "gt0031": {
@@ -452,6 +461,15 @@
           "gt0037": {
             "id": "gt0037",
             "text": "Set NEDOCS score to 200"
+          },
+          "gt0038": {
+            "id": "gt0038",
+            "text": "Total points",
+            "description": ""
+          },
+          "gt0039": {
+            "id": "gt0039",
+            "text": "Set NEDOCS score to 0"
           }
         }
       }
