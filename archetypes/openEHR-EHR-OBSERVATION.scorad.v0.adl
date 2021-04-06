@@ -1,0 +1,404 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.scorad.v0
+
+concept
+	[at0000]	-- SCORing Atopic Dermatitis (SCORAD)
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Maryam Razavi">
+		["email"] = <"maryam.razavi@cambio.se">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2021-04-06">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the results for each component parameter and SCORing Atopic Dermatitis results.">
+			use = <"Use to record the results for each component parameter and SCORing Atopic Dermatitis results.">
+			keywords = <"atopic", "dermatitis", "lesions", "severity">
+			misuse = <"">
+			copyright = <"Cambio CDS">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Severity scoring of atopic dermatitis: the SCORAD index. Consensus Report of the European Task Force on Atopic Dermatitis. Dermatology. 1993;186(1):23-31. doi: 10.1159/000247298. PMID: 8435513.">
+		["current_contact"] = <"Maryam Razavi">
+		["MD5-CAM-1.0.1"] = <"821EC8C05D08B5E204937E82E3D935A9">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- SCORing Atopic Dermatitis (SCORAD)
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0004] occurrences matches {0..1} matches {	-- Affected Area
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Head and neck
+												value matches {
+													DV_COUNT matches {
+														magnitude matches {|0..9|}
+													}
+												}
+											}
+											ELEMENT[at0006] occurrences matches {0..1} matches {	-- Upper extremities
+												value matches {
+													DV_COUNT matches {
+														magnitude matches {|0..18|}
+													}
+												}
+											}
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Anterior trunk
+												value matches {
+													DV_COUNT matches {
+														magnitude matches {|0..18|}
+													}
+												}
+											}
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Back
+												value matches {
+													DV_COUNT matches {
+														magnitude matches {|0..18|}
+													}
+												}
+											}
+											ELEMENT[at0009] occurrences matches {0..1} matches {	-- Lower extremities
+												value matches {
+													DV_COUNT matches {
+														magnitude matches {|0..36|}
+													}
+												}
+											}
+											ELEMENT[at0010] occurrences matches {0..1} matches {	-- Genitals
+												value matches {
+													DV_COUNT matches {
+														magnitude matches {|0..1|}
+													}
+												}
+											}
+											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Total score
+												value matches {
+													DV_COUNT matches {
+														magnitude matches {|0..100|}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0012] occurrences matches {0..1} matches {	-- Intensity
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0013] occurrences matches {0..1} matches {	-- Redness
+												value matches {
+													0|[local::at0014], 	-- None
+													1|[local::at0015], 	-- Mild
+													2|[local::at0016], 	-- Moderate
+													3|[local::at0017]  	-- Severe 
+												}
+											}
+											ELEMENT[at0018] occurrences matches {0..1} matches {	-- Swelling
+												value matches {
+													0|[local::at0019], 	-- None
+													1|[local::at0020], 	-- Mild
+													2|[local::at0021], 	-- Moderate
+													3|[local::at0022]  	-- Severe
+												}
+											}
+											ELEMENT[at0023] occurrences matches {0..1} matches {	-- Oozing
+												value matches {
+													0|[local::at0024], 	-- None
+													1|[local::at0025], 	-- Mild
+													2|[local::at0026], 	-- Moderate
+													3|[local::at0027]  	-- Severe
+												}
+											}
+											ELEMENT[at0028] occurrences matches {0..1} matches {	-- Scratch marks
+												value matches {
+													0|[local::at0029], 	-- None
+													1|[local::at0030], 	-- Mild
+													2|[local::at0031], 	-- Moderate
+													3|[local::at0032]  	-- Severe
+												}
+											}
+											ELEMENT[at0040] occurrences matches {0..1} matches {	-- Skin thickening
+												value matches {
+													0|[local::at0041], 	-- None
+													1|[local::at0042], 	-- Mild
+													2|[local::at0043], 	-- Moderate
+													3|[local::at0044]  	-- Severe
+												}
+											}
+											ELEMENT[at0039] occurrences matches {0..1} matches {	-- Dryness
+												value matches {
+													0|[local::at0045], 	-- None
+													1|[local::at0046], 	-- Mild
+													2|[local::at0047], 	-- Moderate
+													3|[local::at0048]  	-- Severe
+												}
+											}
+											ELEMENT[at0033] occurrences matches {0..1} matches {	-- Total score
+												value matches {
+													DV_COUNT matches {
+														magnitude matches {|0..18|}
+													}
+												}
+											}
+										}
+									}
+									CLUSTER[at0034] occurrences matches {0..1} matches {	-- Subjective symptoms
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0035] occurrences matches {0..1} matches {	-- Prurit
+												value matches {
+													DV_COUNT matches {
+														magnitude matches {|0..10|}
+													}
+												}
+											}
+											ELEMENT[at0036] occurrences matches {0..1} matches {	-- Insomnia
+												value matches {
+													DV_COUNT matches {
+														magnitude matches {|0..10|}
+													}
+												}
+											}
+											ELEMENT[at0037] occurrences matches {0..1} matches {	-- Total score
+												value matches {
+													DV_COUNT matches {
+														magnitude matches {|0..20|}
+													}
+												}
+											}
+										}
+									}
+									ELEMENT[at0038] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+														magnitude = <|0.0..103.0|>
+														precision = <|3|>
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"SCORing Atopic Dermatitis (SCORAD)">
+					description = <"An assessment score used to provide a standardised model for assessing the severity of atopic dermatitis lesions.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Affected Area">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"Head and neck">
+					description = <"(up to 9%)">
+				>
+				["at0006"] = <
+					text = <"Upper extremities">
+					description = <"(up to 9% each)">
+				>
+				["at0007"] = <
+					text = <"Anterior trunk">
+					description = <"(up to 18%)">
+				>
+				["at0008"] = <
+					text = <"Back">
+					description = <"(up to 18%)">
+				>
+				["at0009"] = <
+					text = <"Lower extremities">
+					description = <"(up to 18% each)">
+				>
+				["at0010"] = <
+					text = <"Genitals">
+					description = <"(up to 1%)">
+				>
+				["at0011"] = <
+					text = <"Total score">
+					description = <"Affected area score ">
+				>
+				["at0012"] = <
+					text = <"Intensity">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Redness">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"None">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"Mild">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Moderate">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Severe ">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Swelling">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"None">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Mild">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Moderate">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Severe">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"Oozing">
+					description = <"or  Crusting">
+				>
+				["at0024"] = <
+					text = <"None">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Mild">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Moderate">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Severe">
+					description = <"*">
+				>
+				["at0028"] = <
+					text = <"Scratch marks">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"None">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"Mild">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"Moderate">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"Severe">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"Total score">
+					description = <"Intensity score">
+				>
+				["at0034"] = <
+					text = <"Subjective symptoms">
+					description = <"Prurit and insomnia will be evaluated (by patient or a relative) based on quality of life in the three days or nights before the evaluation.">
+				>
+				["at0035"] = <
+					text = <"Prurit">
+					description = <"On a scale from 0 (no symptoms) to 10 (maximum severity).">
+				>
+				["at0036"] = <
+					text = <"Insomnia">
+					description = <"On a scale from 0 (no symptoms) to 10 (maximum severity).">
+				>
+				["at0037"] = <
+					text = <"Total score">
+					description = <"Subjective symptoms score">
+				>
+				["at0038"] = <
+					text = <"Total score">
+					description = <"SCORAD">
+				>
+				["at0039"] = <
+					text = <"Dryness">
+					description = <"Dryness is evaluated on uninvolved areas.">
+				>
+				["at0040"] = <
+					text = <"Skin thickening">
+					description = <"*">
+				>
+				["at0041"] = <
+					text = <"None">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"Mild">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"Moderate">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Severe">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <"None">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"Mild">
+					description = <"*">
+				>
+				["at0047"] = <
+					text = <"Moderate">
+					description = <"*">
+				>
+				["at0048"] = <
+					text = <"Severe">
+					description = <"*">
+				>
+			>
+		>
+	>
