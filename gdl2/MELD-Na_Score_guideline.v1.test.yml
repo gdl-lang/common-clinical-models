@@ -1,65 +1,33 @@
 guidelines:
   1: MELD-Na_Score_guideline.v1
 test_cases:
-- id: Cr umol/l, Bili umol/l, Na mEq/l, Dialysis No
+- id: Cr mg/dl, Bili mg/dl, Na mmol/l, Dialysis No
   input:
     1:
       gt0003|Dialysis history (Or CVVHD for ≥24 hours in the past week): 0|local::at0007|No|
-      gt0008|Serum Creatinine: 88.4,µmol/l
-      gt0011|Total Bilirubin: 17.1,umol/l
+      gt0008|Serum Creatinine: 1,mg/dl
+      gt0011|Total Bilirubin: 1,mg/dl
       gt0017|INR: 1,1
-      gt0026|Serum Sodium: 145,mEq/l
+      gt0026|Serum Sodium: 130,mmol/l
+      gt0061|Age: 40,a
   expected_output:
     1:
       gt0005|Original MELD score: 6.4,1
       gt0030|Creatinine: 1.00,mg/dl
       gt0032|Bilirubin: 1.00,mg/dl
-      gt0039|Sodium: 140,mmol/l
+      gt0039|Sodium: 130,mmol/l
       gt0044|INR: 1,1
-      gt0050|MELD-Na score: 6.4,1
+      gt0050|MELD-Na score: 14.8,1
       gt0053|90-day mortality: <2%
-- id: Cr umol/l, Bili umol/l, Na mEq/l, Dialysis Yes
-  input:
-    1:
-      gt0003|Dialysis history (Or CVVHD for ≥24 hours in the past week): 1|local::at0008|Yes|
-      gt0008|Serum Creatinine: 88.4,µmol/l
-      gt0011|Total Bilirubin: 17.1,umol/l
-      gt0017|INR: 1,1
-      gt0026|Serum Sodium: 145,mEq/l
-  expected_output:
-    1:
-      gt0005|Original MELD score: 19.7,1
-      gt0030|Creatinine: 4,mg/dl
-      gt0032|Bilirubin: 1.00,mg/dl
-      gt0039|Sodium: 140,mmol/l
-      gt0044|INR: 1,1
-      gt0050|MELD-Na score: 19.7,1
-      gt0053|90-day mortality: 3-4%
-- id: Na<125
+- id: Cr, Bili and INR<1, Na<125
   input:
     1:
       gt0003|Dialysis history (Or CVVHD for ≥24 hours in the past week): 0|local::at0007|No|
-      gt0008|Serum Creatinine: 88.4,µmol/l
-      gt0011|Total Bilirubin: 17.1,umol/l
-      gt0017|INR: 1,1
-      gt0026|Serum Sodium: 120,mEq/l
-  expected_output:
-    1:
-      gt0005|Original MELD score: 6.4,1
-      gt0030|Creatinine: 1.00,mg/dl
-      gt0032|Bilirubin: 1.00,mg/dl
-      gt0039|Sodium: 125,mmol/l
-      gt0044|INR: 1,1
-      gt0050|MELD-Na score: 19.0,1
-      gt0053|90-day mortality: 3-4%
-- id: Cr and Bili and INR<1
-  input:
-    1:
-      gt0003|Dialysis history (Or CVVHD for ≥24 hours in the past week): 0|local::at0007|No|
-      gt0008|Serum Creatinine: 0.9,mg/dl
-      gt0011|Total Bilirubin: 0.9,mg/dl
-      gt0017|INR: 0.9,1
-      gt0026|Serum Sodium: 120,mEq/l
+      gt0008|Serum Creatinine: 0.5,mg/dl
+      gt0011|Total Bilirubin: 0.5,mg/dl
+      gt0017|INR: 0.5,1
+      gt0026|Serum Sodium: 120,mmol/l
+      gt0061|Age: 40,a
   expected_output:
     1:
       gt0005|Original MELD score: 6.4,1
@@ -69,88 +37,111 @@ test_cases:
       gt0044|INR: 1,1
       gt0050|MELD-Na score: 19.0,1
       gt0053|90-day mortality: 3-4%
-- id: score 19.8 or 20
+- id: Cr, Bili conversion umol/l to mg/dl
   input:
     1:
       gt0003|Dialysis history (Or CVVHD for ≥24 hours in the past week): 0|local::at0007|No|
-      gt0008|Serum Creatinine: 2,mg/dl
-      gt0011|Total Bilirubin: 1,mg/dl
+      gt0008|Serum Creatinine: 88.4,µmol/l
+      gt0011|Total Bilirubin: 17.1,umol/l
       gt0017|INR: 1,1
-      gt0026|Serum Sodium: 130,mEq/l
+      gt0026|Serum Sodium: 130,mmol/l
+      gt0061|Age: 40,a
   expected_output:
     1:
-      gt0005|Original MELD score: 13.1,1
-      gt0030|Creatinine: 2.00,mg/dl
+      gt0005|Original MELD score: 6.4,1
+      gt0030|Creatinine: 1.00,mg/dl
       gt0032|Bilirubin: 1.00,mg/dl
       gt0039|Sodium: 130,mmol/l
       gt0044|INR: 1,1
-      gt0050|MELD-Na score: 19.8,1
-      gt0053|90-day mortality: 3-4%
-- id: score 22.7
-  input:
-    1:
-      gt0003|Dialysis history (Or CVVHD for ≥24 hours in the past week): 0|local::at0007|No|
-      gt0008|Serum Creatinine: 3,mg/dl
-      gt0011|Total Bilirubin: 1,mg/dl
-      gt0017|INR: 1,1
-      gt0026|Serum Sodium: 130,mEq/l
-  expected_output:
-    1:
-      gt0005|Original MELD score: 16.9,1
-      gt0030|Creatinine: 3.00,mg/dl
-      gt0032|Bilirubin: 1.00,mg/dl
-      gt0039|Sodium: 130,mmol/l
-      gt0044|INR: 1,1
-      gt0050|MELD-Na score: 22.7,1
-      gt0053|90-day mortality: 7-10%
-- id: score 24
-  input:
-    1:
-      gt0003|Dialysis history (Or CVVHD for ≥24 hours in the past week): 0|local::at0007|No|
-      gt0008|Serum Creatinine: 3,mg/dl
-      gt0011|Total Bilirubin: 2,mg/dl
-      gt0017|INR: 1,1
-      gt0026|Serum Sodium: 130,mEq/l
-  expected_output:
-    1:
-      gt0005|Original MELD score: 19.6,1
-      gt0030|Creatinine: 3.00,mg/dl
-      gt0032|Bilirubin: 2.00,mg/dl
-      gt0039|Sodium: 130,mmol/l
-      gt0044|INR: 1,1
-      gt0050|MELD-Na score: 24.7,1
-      gt0053|90-day mortality: 14-15%
-- id: score 27
-  input:
-    1:
-      gt0003|Dialysis history (Or CVVHD for ≥24 hours in the past week): 0|local::at0007|No|
-      gt0008|Serum Creatinine: 3,mg/dl
-      gt0011|Total Bilirubin: 5,mg/dl
-      gt0017|INR: 1,1
-      gt0026|Serum Sodium: 130,mEq/l
-  expected_output:
-    1:
-      gt0005|Original MELD score: 23.0,1
-      gt0030|Creatinine: 3.00,mg/dl
-      gt0032|Bilirubin: 5.00,mg/dl
-      gt0039|Sodium: 130,mmol/l
-      gt0044|INR: 1,1
-      gt0050|MELD-Na score: 27.2,1
-      gt0053|90-day mortality: 27-32%
-- id: score 32
+      gt0050|MELD-Na score: 14.8,1
+      gt0053|90-day mortality: <2%
+- id: Cr>4 or dialysis yes
   input:
     1:
       gt0003|Dialysis history (Or CVVHD for ≥24 hours in the past week): 1|local::at0008|Yes|
-      gt0008|Serum Creatinine: 4,mg/dl
-      gt0011|Total Bilirubin: 13,mg/dl
+      gt0008|Serum Creatinine: 5,mg/dl
+      gt0011|Total Bilirubin: 17.1,umol/l
       gt0017|INR: 1,1
-      gt0026|Serum Sodium: 130,mEq/l
+      gt0026|Serum Sodium: 130,mmol/l
+      gt0061|Age: 40,a
   expected_output:
     1:
-      gt0005|Original MELD score: 29.4,1
+      gt0005|Original MELD score: 19.7,1
       gt0030|Creatinine: 4,mg/dl
-      gt0032|Bilirubin: 13.00,mg/dl
+      gt0032|Bilirubin: 1.00,mg/dl
       gt0039|Sodium: 130,mmol/l
       gt0044|INR: 1,1
-      gt0050|MELD-Na score: 32.0,1
+      gt0050|MELD-Na score: 24.8,1
+      gt0053|90-day mortality: 14-15%
+- id: Na>140
+  input:
+    1:
+      gt0003|Dialysis history (Or CVVHD for ≥24 hours in the past week): 1|local::at0008|Yes|
+      gt0008|Serum Creatinine: 5,mg/dl
+      gt0011|Total Bilirubin: 17.1,umol/l
+      gt0017|INR: 1,1
+      gt0026|Serum Sodium: 145,mmol/l
+      gt0061|Age: 40,a
+  expected_output:
+    1:
+      gt0005|Original MELD score: 19.7,1
+      gt0030|Creatinine: 4,mg/dl
+      gt0032|Bilirubin: 1.00,mg/dl
+      gt0039|Sodium: 140,mmol/l
+      gt0044|INR: 1,1
+      gt0050|MELD-Na score: 19.7,1
+      gt0053|90-day mortality: 3-4%
+- id: score 22
+  input:
+    1:
+      gt0003|Dialysis history (Or CVVHD for ≥24 hours in the past week): 1|local::at0008|Yes|
+      gt0008|Serum Creatinine: 3,mg/dl
+      gt0011|Total Bilirubin: 2,mg/dl
+      gt0017|INR: 1,1
+      gt0026|Serum Sodium: 145,mmol/l
+      gt0061|Age: 40,a
+  expected_output:
+    1:
+      gt0005|Original MELD score: 22.3,1
+      gt0030|Creatinine: 4,mg/dl
+      gt0032|Bilirubin: 2.00,mg/dl
+      gt0039|Sodium: 140,mmol/l
+      gt0044|INR: 1,1
+      gt0050|MELD-Na score: 22.3,1
+      gt0053|90-day mortality: 7-10%
+- id: score 28
+  input:
+    1:
+      gt0003|Dialysis history (Or CVVHD for ≥24 hours in the past week): 1|local::at0008|Yes|
+      gt0008|Serum Creatinine: 3,mg/dl
+      gt0011|Total Bilirubin: 9,mg/dl
+      gt0017|INR: 1,1
+      gt0026|Serum Sodium: 145,mmol/l
+      gt0061|Age: 40,a
+  expected_output:
+    1:
+      gt0005|Original MELD score: 28.0,1
+      gt0030|Creatinine: 4,mg/dl
+      gt0032|Bilirubin: 9.00,mg/dl
+      gt0039|Sodium: 140,mmol/l
+      gt0044|INR: 1,1
+      gt0050|MELD-Na score: 28.0,1
+      gt0053|90-day mortality: 27-32%
+- id: score 32.6
+  input:
+    1:
+      gt0003|Dialysis history (Or CVVHD for ≥24 hours in the past week): 1|local::at0008|Yes|
+      gt0008|Serum Creatinine: 1,mg/dl
+      gt0011|Total Bilirubin: 2,mg/dl
+      gt0017|INR: 2.5,1
+      gt0026|Serum Sodium: 145,mmol/l
+      gt0061|Age: 40,a
+  expected_output:
+    1:
+      gt0005|Original MELD score: 32.6,1
+      gt0030|Creatinine: 4,mg/dl
+      gt0032|Bilirubin: 2.00,mg/dl
+      gt0039|Sodium: 140,mmol/l
+      gt0044|INR: 2.5,1
+      gt0050|MELD-Na score: 32.6,1
       gt0053|90-day mortality: 65-66%
