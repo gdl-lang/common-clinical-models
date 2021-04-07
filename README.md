@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 546*
+### *Published Apps: 548*
 
 ----------
 
 ### Latest added
 
-1. Steinhart Model for Acute Heart Failure (AHF) in Undifferentiated Dyspnea - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Steinhart_model_AHF_in_undifferentiated_dyspnea/1?language=en))
-2. Withdrawal Assessment Tool (WAT-1) for Pediatric Withdrawal - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Withdrawal_Assessment_Tool_for_pediatric_withdrawal/1?language=en))
-3. Schwab and England Activities of Daily Living (ADL) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Schwab_and_England_activities_of_daily_living_ADL_scale/1?language=en))
-4. Risk of Malignancy Index (RMI) for Ovarian Cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Risk_of_malignancy_index_RMI_for_ovarian_cancer/1?language=en))
-5. Urine Anion Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urine_anion_gap/1?language=en))
-6. Mumtaz Score for Readmission in Cirrhosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mumtaz_score_for_readmission_in_cirrhosis/1?language=en))
-7. Pediatric NEXUS II Head CT Decision Instrument for Blunt Trauma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_NEXUS_II_Head_CT_Decision_guideline/1?language=en))
-8. Risk of Paradoxical Embolism (RoPE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RoPE_Score_guideline/1?language=en))
-9. Sodium Correction Rate in Hyponatremia and Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_rate_in_hyponatremia_and_hypernatremia/1?language=en))
-10. Rule of 7s for Lyme Meningitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rule_of_7s_for_lyme_meningitis/1?language=en))
+1. Secondary Intracerebral Hemorrhage (sICH) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/sICH_Score_guideline/1?language=en))
+2. Modified Sequential Organ Failure Assessment (mSOFA) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mSOFA_Score_guideline/1?language=en))
+3. Steinhart Model for Acute Heart Failure (AHF) in Undifferentiated Dyspnea - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Steinhart_model_AHF_in_undifferentiated_dyspnea/1?language=en))
+4. Withdrawal Assessment Tool (WAT-1) for Pediatric Withdrawal - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Withdrawal_Assessment_Tool_for_pediatric_withdrawal/1?language=en))
+5. Schwab and England Activities of Daily Living (ADL) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Schwab_and_England_activities_of_daily_living_ADL_scale/1?language=en))
+6. Risk of Malignancy Index (RMI) for Ovarian Cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Risk_of_malignancy_index_RMI_for_ovarian_cancer/1?language=en))
+7. Urine Anion Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urine_anion_gap/1?language=en))
+8. Mumtaz Score for Readmission in Cirrhosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mumtaz_score_for_readmission_in_cirrhosis/1?language=en))
+9. Pediatric NEXUS II Head CT Decision Instrument for Blunt Trauma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_NEXUS_II_Head_CT_Decision_guideline/1?language=en))
+10. Risk of Paradoxical Embolism (RoPE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RoPE_Score_guideline/1?language=en))
 
 ----------
 
@@ -321,6 +321,8 @@ _Select a medical specialty below to view the available apps._
 * High-dose Insulin Euglycemia Therapy (HIET) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/High-dose_Insulin_Euglycemia_Therapy_HIET_guideline/1?language=en))
 
 * mMRC (Modified Medical Research Council) Dyspnea Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mMRC_Dyspnea_Scale/1?language=en))
+
+* Modified Sequential Organ Failure Assessment (mSOFA) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mSOFA_Score_guideline/1?language=en))
 
 * Newsom Score for Non-traumatic Chest Pain - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Newsom_score_non-traumatic_chest_pain/1?language=en))
 
@@ -732,6 +734,8 @@ _Select a medical specialty below to view the available apps._
 * Risk of Paradoxical Embolism (RoPE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RoPE_Score_guideline/1?language=en))
 
 * Rule of 7s for Lyme Meningitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rule_of_7s_for_lyme_meningitis/1?language=en))
+
+* Secondary Intracerebral Hemorrhage (sICH) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/sICH_Score_guideline/1?language=en))
 
 * SEDAN Score for Post-tPA Hemorrhage - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SEDAN_Score_for_Post-tPA_Hemorrhage_guideline/1?language=en))
 
