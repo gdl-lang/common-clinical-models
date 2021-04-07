@@ -19,17 +19,19 @@ description
 			use = <"Use to record the results for each component parameter relevant to the sICH score assessment and the sICH score.">
 			keywords = <"hypertension ", "coagulation", "intracerebral ", "hemorrhage ", "vascular ", "ICH">
 			misuse = <"">
-			copyright = <"Cambio CDS">
+			copyright = <"© Cambio CDS">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Delgado Almandoz JE, Schaefer PW, Goldstein JN, Rosand J, Lev MH, González RG, Romero JM. Practical scoring system for the identification of patients with intracerebral hemorrhage at highest risk of harboring an underlying vascular etiology: the Secondary Intracerebral Hemorrhage Score. AJNR Am J Neuroradiol. 2010 Oct;31(9):1653-60. doi: 10.3174/ajnr.A2156. Epub 2010 Jun 25. PMID: 20581068; PMCID: PMC3682824.
-2. Delgado Almandoz JE, Jagadeesan BD, Moran CJ, Cross DT 3rd, Zipfel GJ, Lee JM, Romero JM, Derdeyn CP. Independent validation of the secondary intracerebral hemorrhage score with catheter angiography and findings of emergent hematoma evacuation. Neurosurgery. 2012 Jan;70(1):131-40; discussion 140. doi: 10.1227/NEU.0b013e31822fbf43. PMID: 21808219.
-3. van Asch CJ, Velthuis BK, Greving JP, van Laar PJ, Rinkel GJ, Algra A, Klijn CJ. External validation of the secondary intracerebral hemorrhage score in The Netherlands. Stroke. 2013 Oct;44(10):2904-6. doi: 10.1161/STROKEAHA.113.002386. Epub 2013 Aug 6. PMID: 23920015.">
+		["references"] = <"Delgado Almandoz JE, Schaefer PW, Goldstein JN, Rosand J, Lev MH, González RG, Romero JM. Practical scoring system for the identification of patients with intracerebral hemorrhage at highest risk of harboring an underlying vascular etiology: the Secondary Intracerebral Hemorrhage Score. AJNR Am J Neuroradiol. 2010 Oct;31(9):1653-60. doi: 10.3174/ajnr.A2156. Epub 2010 Jun 25. PMID: 20581068; PMCID: PMC3682824.
+
+Delgado Almandoz JE, Jagadeesan BD, Moran CJ, Cross DT 3rd, Zipfel GJ, Lee JM, Romero JM, Derdeyn CP. Independent validation of the secondary intracerebral hemorrhage score with catheter angiography and findings of emergent hematoma evacuation. Neurosurgery. 2012 Jan;70(1):131-40; discussion 140. doi: 10.1227/NEU.0b013e31822fbf43. PMID: 21808219.
+
+van Asch CJ, Velthuis BK, Greving JP, van Laar PJ, Rinkel GJ, Algra A, Klijn CJ. External validation of the secondary intracerebral hemorrhage score in The Netherlands. Stroke. 2013 Oct;44(10):2904-6. doi: 10.1161/STROKEAHA.113.002386. Epub 2013 Aug 6. PMID: 23920015.">
 		["current_contact"] = <"maryam.razavi@cambio.se">
-		["MD5-CAM-1.0.1"] = <"4D7F17B1B31CDB4DA4F7811D9AF0E39B">
+		["MD5-CAM-1.0.1"] = <"19FAB4FF3601B3721193EBD8C6149DCF">
 	>
 
 definition
@@ -37,7 +39,7 @@ definition
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
@@ -81,6 +83,16 @@ definition
 				}
 			}
 		}
+		protocol matches {
+			ITEM_TREE[at0019] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0020] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
 	}
 
 ontology
@@ -97,7 +109,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -105,47 +117,47 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Probability of vascular cause on non-contrast computed tomography (NCCT)">
-					description = <"*">
+					description = <"">
 				>
 				["at0005"] = <
 					text = <"Low">
-					description = <"*">
+					description = <"">
 				>
 				["at0006"] = <
 					text = <"Indeterminate">
-					description = <"*">
+					description = <"">
 				>
 				["at0007"] = <
 					text = <"High">
-					description = <"*">
+					description = <"">
 				>
 				["at0008"] = <
 					text = <"Age">
-					description = <"*">
+					description = <"">
 				>
 				["at0009"] = <
 					text = <">71">
-					description = <"*">
+					description = <"">
 				>
 				["at0010"] = <
 					text = <"46-70">
-					description = <"*">
+					description = <"">
 				>
 				["at0011"] = <
 					text = <"18-45">
-					description = <"*">
+					description = <"">
 				>
 				["at0012"] = <
 					text = <"Sex">
-					description = <"*">
+					description = <"">
 				>
 				["at0013"] = <
 					text = <"Male">
-					description = <"*">
+					description = <"">
 				>
 				["at0014"] = <
 					text = <"Female">
-					description = <"*">
+					description = <"">
 				>
 				["at0015"] = <
 					text = <"Absence of both hypertension AND impaired coagulation">
@@ -153,15 +165,24 @@ ontology
 				>
 				["at0016"] = <
 					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0017"] = <
 					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0018"] = <
 					text = <"Total score">
-					description = <"*">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0020"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
 				>
 			>
 		>
