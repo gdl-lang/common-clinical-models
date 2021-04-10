@@ -1,0 +1,266 @@
+archetype (adl_version=1.4; uid=befe7000-9c8b-4297-8bd2-35145d2bb647)
+	openEHR-EHR-OBSERVATION.elderly_mobility.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2021-04-06">
+	>
+	lifecycle_state = <"unmanaged">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the results for each component parameter and their total sum for the EMS score. ">
+			keywords = <"elderly, mobility, scale, EMS, frail", ...>
+			use = <"Use to record the results for each component parameter and their total sum for the EMS score. ">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["references"] = <"1. Smith, R., 2020. Validation and Reliability of the Elderly Mobility Scale. [online] Elsevier Inc, pp.744-747. Available at: <https://www.sciencedirect.com/science/article/abs/pii/S0031940610606128> [Accessed 6 April 2021].">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"7e5ab19d02ac9027fdc1c0839d5c7fe7">
+		["build_uid"] = <"49cc63ac-89c7-31c4-a783-f85f5eab1e3c">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Elderly Mobility Scale (EMS)
+		data matches {
+			HISTORY[at0001] matches {    -- History
+				events cardinality matches {0..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Lying To Sitting
+										value matches {
+											0|[local::at0005],
+											1|[local::at0006],
+											2|[local::at0007]
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {    -- Sitting To Lying
+										value matches {
+											0|[local::at0009],
+											1|[local::at0010],
+											2|[local::at0011]
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {    -- Sitting To Standing
+										value matches {
+											0|[local::at0013],
+											1|[local::at0014],
+											2|[local::at0015],
+											3|[local::at0016]
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {    -- Standing
+										value matches {
+											0|[local::at0018],
+											1|[local::at0019],
+											2|[local::at0020],
+											3|[local::at0021]
+										}
+									}
+									ELEMENT[at0022] occurrences matches {0..1} matches {    -- Gait
+										value matches {
+											0|[local::at0023],
+											1|[local::at0024],
+											2|[local::at0025],
+											3|[local::at0026]
+										}
+									}
+									ELEMENT[at0027] occurrences matches {0..1} matches {    -- Timed Walk (6 metres)
+										value matches {
+											0|[local::at0028],
+											1|[local::at0029],
+											2|[local::at0030],
+											3|[local::at0031]
+										}
+									}
+									ELEMENT[at0032] occurrences matches {0..1} matches {    -- Functional Reach
+										value matches {
+											0|[local::at0033],
+											2|[local::at0034],
+											4|[local::at0035]
+										}
+									}
+									ELEMENT[at0036] occurrences matches {0..1} matches {    -- Total score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..20|}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Elderly Mobility Scale (EMS)">
+					description = <"An assessment scale used to evaluate mobility in frail elderly patients.">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Lying To Sitting">
+					description = <"">
+				>
+				["at0005"] = <
+					text = <"Needs help of 2+ people">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Needs help of 1 person">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Independent">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Sitting To Lying">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Needs help of 2+ people">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Needs help of 1 person">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"Independent">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Sitting To Standing">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"Needs help of 2+ people">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"Needs help of 1 person">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"Independent in over 3 seconds">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"Independent in under 3 seconds">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Standing">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Stands only with physical support of another person">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Stands but needs support">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Stands without support but needs support to reach">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"Stands without support and able to reach">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"Gait">
+					description = <"">
+				>
+				["at0023"] = <
+					text = <"Needs physical help to walk or constant supervision">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"Mobile with walking aid but erratic / unsafe">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <"Independent with frame">
+					description = <"">
+				>
+				["at0026"] = <
+					text = <"Independent (+ / - stick)">
+					description = <"">
+				>
+				["at0027"] = <
+					text = <"Timed Walk (6 metres)">
+					description = <"">
+				>
+				["at0028"] = <
+					text = <"Unable to cover 6 metres">
+					description = <"">
+				>
+				["at0029"] = <
+					text = <"Over 30 seconds">
+					description = <"">
+				>
+				["at0030"] = <
+					text = <"16 - 30 seconds">
+					description = <"">
+				>
+				["at0031"] = <
+					text = <"Under 15 seconds">
+					description = <"">
+				>
+				["at0032"] = <
+					text = <"Functional Reach">
+					description = <"">
+				>
+				["at0033"] = <
+					text = <"Under 10 cm">
+					description = <"">
+				>
+				["at0034"] = <
+					text = <"10 - 20 cm">
+					description = <"">
+				>
+				["at0035"] = <
+					text = <"Over 20 cm">
+					description = <"">
+				>
+				["at0036"] = <
+					text = <"Total score">
+					description = <"">
+				>
+			>
+		>
+	>
