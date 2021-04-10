@@ -12,39 +12,77 @@ test_cases:
       gt0004|CD4 count: 0|local::at0010|>= 500 cells/mm^3|
       gt0005|HIV-1 RNA: 0|local::at0017|< 500 copies/mL|
       gt0006|Hemoglobin: 0|local::at0021|>= 14 g/dL|
-      gt0007|FIB-4 Index: 0|local::at0026|< 1.45|
-      gt0008|eGFR: 0|local::at0030|>= 60 mL/min|
       gt0009|Hepatitis C co-infection: 0|local::at0035|No|
-      gt0014|Age: 45,a
+      gt0014|Age: 35,a
+      gt0020|FIB-4 Score: 1,1
+      gt0026|Glomerular Filtration Rate by MDRD-GFR equation: 70,ml/min
   expected_output:
     1:
       gt0015|Age: 0|local::at0006|< 50 years|
+      gt0027|eGFR: 0|local::at0030|>= 60 mL/min|
       gt0011|Total score: 0
+      gt0021|FIB-4 Index: 0|local::at0026|< 1.45|
 - id: All inputs max point
   input:
     1:
       gt0004|CD4 count: 29|local::at0015|< 50 cells/mm^3|
       gt0005|HIV-1 RNA: 14|local::at0019|>= 100000 copies/mL|
       gt0006|Hemoglobin: 38|local::at0024|< 10 g/dL|
-      gt0007|FIB-4 Index: 25|local::at0028|> 3.25|
-      gt0008|eGFR: 26|local::at0033|< 30 mL/min|
       gt0009|Hepatitis C co-infection: 5|local::at0036|Yes|
-      gt0014|Age: 67,a
+      gt0014|Age: 75,a
+      gt0020|FIB-4 Score: 4,1
+      gt0026|Glomerular Filtration Rate by MDRD-GFR equation: 20,ml/min
   expected_output:
     1:
       gt0015|Age: 27|local::at0008|>= 65 years|
+      gt0027|eGFR: 26|local::at0033|< 30 mL/min|
       gt0011|Total score: 164
-- id: Test Age range 50-64
+      gt0021|FIB-4 Index: 25|local::at0028|> 3.25|
+- id: Test age, FIB and eGFR range
   input:
     1:
       gt0004|CD4 count: 29|local::at0015|< 50 cells/mm^3|
       gt0005|HIV-1 RNA: 14|local::at0019|>= 100000 copies/mL|
       gt0006|Hemoglobin: 38|local::at0024|< 10 g/dL|
-      gt0007|FIB-4 Index: 25|local::at0028|> 3.25|
-      gt0008|eGFR: 26|local::at0033|< 30 mL/min|
       gt0009|Hepatitis C co-infection: 5|local::at0036|Yes|
-      gt0014|Age: 55,a
+      gt0014|Age: 60,a
+      gt0020|FIB-4 Score: 4,1
+      gt0026|Glomerular Filtration Rate by MDRD-GFR equation: 48,ml/min
   expected_output:
     1:
       gt0015|Age: 12|local::at0007|50 - 64 years|
-      gt0011|Total score: 149
+      gt0027|eGFR: 6|local::at0031|45 - 59.9 mL/min|
+      gt0011|Total score: 129
+      gt0021|FIB-4 Index: 25|local::at0028|> 3.25|
+- id: Test eGFR range
+  input:
+    1:
+      gt0004|CD4 count: 29|local::at0015|< 50 cells/mm^3|
+      gt0005|HIV-1 RNA: 14|local::at0019|>= 100000 copies/mL|
+      gt0006|Hemoglobin: 38|local::at0024|< 10 g/dL|
+      gt0009|Hepatitis C co-infection: 5|local::at0036|Yes|
+      gt0014|Age: 60,a
+      gt0020|FIB-4 Score: 4,1
+      gt0026|Glomerular Filtration Rate by MDRD-GFR equation: 35,ml/min
+  expected_output:
+    1:
+      gt0015|Age: 12|local::at0007|50 - 64 years|
+      gt0027|eGFR: 8|local::at0032|30 - 44.9 mL/min|
+      gt0011|Total score: 131
+      gt0021|FIB-4 Index: 25|local::at0028|> 3.25|
+- id: Test FIB range
+  input:
+    1:
+      gt0004|CD4 count: 29|local::at0015|< 50 cells/mm^3|
+      gt0005|HIV-1 RNA: 14|local::at0019|>= 100000 copies/mL|
+      gt0006|Hemoglobin: 38|local::at0024|< 10 g/dL|
+      gt0009|Hepatitis C co-infection: 5|local::at0036|Yes|
+      gt0014|Age: 60,a
+      gt0020|FIB-4 Score: 2,1
+      gt0026|Glomerular Filtration Rate by MDRD-GFR equation: 35,ml/min
+  expected_output:
+    1:
+      gt0015|Age: 12|local::at0007|50 - 64 years|
+      gt0027|eGFR: 8|local::at0032|30 - 44.9 mL/min|
+      gt0011|Total score: 112
+      gt0021|FIB-4 Index: 6|local::at0027|1.45 - 3.25|
