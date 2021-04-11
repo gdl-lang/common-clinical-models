@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 548*
+### *Published Apps: 552*
 
 ----------
 
 ### Latest added
 
-1. Secondary Intracerebral Hemorrhage (sICH) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/sICH_Score_guideline/1?language=en))
-2. Modified Sequential Organ Failure Assessment (mSOFA) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mSOFA_Score_guideline/1?language=en))
-3. Steinhart Model for Acute Heart Failure (AHF) in Undifferentiated Dyspnea - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Steinhart_model_AHF_in_undifferentiated_dyspnea/1?language=en))
-4. Withdrawal Assessment Tool (WAT-1) for Pediatric Withdrawal - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Withdrawal_Assessment_Tool_for_pediatric_withdrawal/1?language=en))
-5. Schwab and England Activities of Daily Living (ADL) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Schwab_and_England_activities_of_daily_living_ADL_scale/1?language=en))
-6. Risk of Malignancy Index (RMI) for Ovarian Cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Risk_of_malignancy_index_RMI_for_ovarian_cancer/1?language=en))
-7. Urine Anion Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urine_anion_gap/1?language=en))
-8. Mumtaz Score for Readmission in Cirrhosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mumtaz_score_for_readmission_in_cirrhosis/1?language=en))
-9. Pediatric NEXUS II Head CT Decision Instrument for Blunt Trauma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_NEXUS_II_Head_CT_Decision_guideline/1?language=en))
-10. Risk of Paradoxical Embolism (RoPE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RoPE_Score_guideline/1?language=en))
+1. NEDOCS Score for Emergency Department Overcrowding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEDOCS_score_for_emergency_department_overcrowding/1?language=en))
+2. Multiple Myeloma Response Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_Response_Criteria/1?language=en))
+3. Sgarbossa's Criteria for MI in Left Bundle Branch Block - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sgarbossas_criteria_for_MI_in_LBBB/1?language=en))
+4. Visual Acuity Testing (Snellen Chart) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Visual_Acuity/1?language=en))
+5. Secondary Intracerebral Hemorrhage (sICH) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/sICH_Score_guideline/1?language=en))
+6. Modified Sequential Organ Failure Assessment (mSOFA) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mSOFA_Score_guideline/1?language=en))
+7. Steinhart Model for Acute Heart Failure (AHF) in Undifferentiated Dyspnea - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Steinhart_model_AHF_in_undifferentiated_dyspnea/1?language=en))
+8. Withdrawal Assessment Tool (WAT-1) for Pediatric Withdrawal - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Withdrawal_Assessment_Tool_for_pediatric_withdrawal/1?language=en))
+9. Schwab and England Activities of Daily Living (ADL) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Schwab_and_England_activities_of_daily_living_ADL_scale/1?language=en))
+10. Risk of Malignancy Index (RMI) for Ovarian Cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Risk_of_malignancy_index_RMI_for_ovarian_cancer/1?language=en))
 
 ----------
 
@@ -324,6 +324,8 @@ _Select a medical specialty below to view the available apps._
 
 * Modified Sequential Organ Failure Assessment (mSOFA) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mSOFA_Score_guideline/1?language=en))
 
+* NEDOCS Score for Emergency Department Overcrowding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEDOCS_score_for_emergency_department_overcrowding/1?language=en))
+
 * Newsom Score for Non-traumatic Chest Pain - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Newsom_score_non-traumatic_chest_pain/1?language=en))
 
 * Oxygenation Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Oxygenation_Index/1?language=en))
@@ -357,6 +359,8 @@ _Select a medical specialty below to view the available apps._
 * San Francisco Syncope Rule (SFSR) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SFSR/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SFSR/1?language=sv))
 
 * Severe Community-Acquired Pneumonia (SCAP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCAP_Score/1?language=en))
+
+* Sgarbossa's Criteria for MI in Left Bundle Branch Block - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sgarbossas_criteria_for_MI_in_LBBB/1?language=en))
 
 * Shock Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Shock_Index/1?language=en))
 
@@ -829,6 +833,8 @@ _Select a medical specialty below to view the available apps._
 
 * Modified Response Evaluation Criteria in Solid Tumors (mRECIST) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mRECIST/1?language=en))
 
+* Multiple Myeloma Response Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_Response_Criteria/1?language=en))
+
 * PREVAIL Model for Prostate Cancer Survival - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PREVAIL_Model_guideline/1?language=en))
 
 * Prognostic Index for Cancer Outcomes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prognostic_Index_for_Cancer_Outcomes/1?language=en))
@@ -858,6 +864,8 @@ _Select a medical specialty below to view the available apps._
 ### Ophthalmology
 
 * Ocular Hypertension Treatment Study (OHTS) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ocular_Hypertension_Treatment_Study_OHTS_Calculator/1?language=en))
+
+* Visual Acuity Testing (Snellen Chart) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Visual_Acuity/1?language=en))
 
 ----------
 
