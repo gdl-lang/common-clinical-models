@@ -9,7 +9,7 @@
     "original_author": {
       "date": "2021-02-03",
       "name": " Maryam Razavi",
-      "organisation": "CambioCDS",
+      "organisation": "Cambio CDS",
       "email": "maryam.razavi@cambio.se"
     },
     "lifecycle_state": "Author draft",
@@ -18,12 +18,15 @@
         "id": "en",
         "purpose": "To estimate Glomerular Filtration Rate (GFR).",
         "keywords": [
-          "Glomerular Filtration Rate (GFR)",
+          "glomerular ",
           "pediatric ",
-          "creatinine"
+          "creatinine",
+          "filtration",
+          "rate",
+          " GFR"
         ],
         "use": "Use in pediatric patients with or without chronic kidney disease (CKD).  \nFormula:Estimated GFR, mL/min/1.73 m2 = k × height, cm / serum creatinine, mg/dL\n- where k = 0.413\nInterpretation: \nGFR, mL/min/1.73 m²     CKD stage     Severity\n≥90                                     1                  Normal\n60-89                                  2                  Mild\n45-59                                  3a                Mild-moderate\n30-44                                  3b                Moderate-severe\n15-29                                   4                 Severe\n<15                                       5                 End-stage\n",
-        "copyright": "@CambioCDS"
+        "copyright": "Cambio CDS"
       }
     },
     "other_details": {
@@ -56,26 +59,6 @@
           }
         }
       },
-      "gt0007": {
-        "id": "gt0007",
-        "model_id": "openEHR-EHR-OBSERVATION.revised_schwartz_gfr.v0",
-        "template_id": "openEHR-EHR-OBSERVATION.revised_schwartz_gfr.v0",
-        "type": "OUTPUT",
-        "elements": {
-          "gt0008": {
-            "id": "gt0008",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
-          },
-          "gt0020": {
-            "id": "gt0020",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
-          },
-          "gt0021": {
-            "id": "gt0021",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
-          }
-        }
-      },
       "gt0009": {
         "id": "gt0009",
         "model_id": "openEHR-EHR-EVALUATION.revised_schwartz_gfr.v0",
@@ -91,58 +74,71 @@
             "path": "/data[at0001]/items[at0003]"
           }
         }
+      },
+      "gt0028": {
+        "id": "gt0028",
+        "model_id": "openEHR-EHR-OBSERVATION.estimated_glomerular_filtration_rate.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.estimated_glomerular_filtration_rate.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0040": {
+            "id": "gt0040",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0022]"
+          }
+        }
+      },
+      "gt0036": {
+        "id": "gt0036",
+        "model_id": "openEHR-EHR-OBSERVATION.estimated_glomerular_filtration_rate.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.estimated_glomerular_filtration_rate.v1",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0038": {
+            "id": "gt0038",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0020]"
+          }
+        }
+      },
+      "gt0041": {
+        "id": "gt0041",
+        "model_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0042": {
+            "id": "gt0042",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
+          }
+        }
       }
     },
+    "pre_conditions": [
+      "$gt0042|Age|>=1,a",
+      "$gt0042|Age|<=16,a"
+    ],
+    "default_actions": [
+      "$gt0031|H|=1",
+      "$gt0033|C|=1"
+    ],
     "rules": {
-      "gt0019": {
-        "id": "gt0019",
-        "priority": 12,
-        "when": [
-          "$gt0003|Height, cm|<=25,cm"
-        ],
-        "then": [
-          "$gt0020|Warning to Height|='Too low, please change to proceed.'"
-        ]
-      },
-      "gt0022": {
-        "id": "gt0022",
-        "priority": 11,
-        "when": [
-          "$gt0003|Height, cm|>=509,cm"
-        ],
-        "then": [
-          "$gt0020|Warning to Height|='Too high, please change to proceed.'"
-        ]
-      },
-      "gt0023": {
-        "id": "gt0023",
-        "priority": 10,
-        "when": [
-          "$gt0005|Serum creatinine, mg/dL|<=0,mg/dl"
-        ],
-        "then": [
-          "$gt0021|Warning to Creatinine|='Too low, please change to proceed.'"
-        ]
-      },
-      "gt0024": {
-        "id": "gt0024",
+      "gt0030": {
+        "id": "gt0030",
         "priority": 9,
         "when": [
-          "$gt0005|Serum creatinine, mg/dL|>10,mg/dl",
-          "$gt0005|Serum creatinine, mg/dL|<=40,mg/dl"
+          "$gt0003|Height, cm|.unit=='in'"
         ],
         "then": [
-          "$gt0021|Warning to Creatinine|='Very high, double-check.'"
+          "$gt0031|H|=2.54"
         ]
       },
-      "gt0025": {
-        "id": "gt0025",
+      "gt0032": {
+        "id": "gt0032",
         "priority": 8,
         "when": [
-          "$gt0005|Serum creatinine, mg/dL|>40,mg/dl"
+          "$gt0005|Serum creatinine, mg/dL|.unit=='µmol/l'"
         ],
         "then": [
-          "$gt0021|Warning to Creatinine|='Too high, please change to proceed.'"
+          "$gt0033|C|=0.0113"
         ]
       },
       "gt0012": {
@@ -150,25 +146,19 @@
         "priority": 7,
         "when": [
           "$gt0003|Height, cm|!=null",
-          "$gt0005|Serum creatinine, mg/dL|!=null",
-          "$gt0003|Height, cm|.unit=='cm'",
-          "$gt0005|Serum creatinine, mg/dL|.unit=='mg/dl'",
-          "!fired($gt0019)",
-          "!fired($gt0022)",
-          "!fired($gt0023)",
-          "!fired($gt0025)"
+          "$gt0005|Serum creatinine, mg/dL|!=null"
         ],
         "then": [
-          "$gt0008|Estimated GFR|.magnitude=0.413*$gt0003.magnitude/$gt0005.magnitude",
-          "$gt0008|Estimated GFR|.unit='mL/min/1.73 m2'"
+          "$gt0038|Estimated Glomerular Filtration Rate - Relative|.magnitude=0.413*(($gt0003.magnitude*$gt0031)/($gt0005.magnitude*$gt0033))",
+          "$gt0038|Estimated Glomerular Filtration Rate - Relative|.precision=3",
+          "$gt0038|Estimated Glomerular Filtration Rate - Relative|.unit='ml/min/1.73m2'"
         ]
       },
       "gt0013": {
         "id": "gt0013",
         "priority": 6,
         "when": [
-          "$gt0008|Estimated GFR|.magnitude>=90",
-          "$gt0008|Estimated GFR|.unit=='mL/min/1.73 m2'"
+          "$gt0038|Estimated Glomerular Filtration Rate - Relative|>=90,ml/min/1.73m2"
         ],
         "then": [
           "$gt0010|CKD stage|='1'",
@@ -179,9 +169,8 @@
         "id": "gt0014",
         "priority": 5,
         "when": [
-          "$gt0008|Estimated GFR|.magnitude<90",
-          "$gt0008|Estimated GFR|.magnitude>59",
-          "$gt0008|Estimated GFR|.unit=='mL/min/1.73 m2'"
+          "$gt0038|Estimated Glomerular Filtration Rate - Relative|<90,ml/min/1.73m2",
+          "$gt0038|Estimated Glomerular Filtration Rate - Relative|>59,ml/min/1.73m2"
         ],
         "then": [
           "$gt0010|CKD stage|='2'",
@@ -192,9 +181,8 @@
         "id": "gt0015",
         "priority": 4,
         "when": [
-          "$gt0008|Estimated GFR|.magnitude<=59",
-          "$gt0008|Estimated GFR|.magnitude>44",
-          "$gt0008|Estimated GFR|.unit=='mL/min/1.73 m2'"
+          "$gt0038|Estimated Glomerular Filtration Rate - Relative|<=59,ml/min/1.73m2",
+          "$gt0038|Estimated Glomerular Filtration Rate - Relative|>44,ml/min/1.73m2"
         ],
         "then": [
           "$gt0010|CKD stage|='3a'",
@@ -205,9 +193,8 @@
         "id": "gt0016",
         "priority": 3,
         "when": [
-          "$gt0008|Estimated GFR|.magnitude<=44",
-          "$gt0008|Estimated GFR|.magnitude>29",
-          "$gt0008|Estimated GFR|.unit=='mL/min/1.73 m2'"
+          "$gt0038|Estimated Glomerular Filtration Rate - Relative|<=44,ml/min/1.73m2",
+          "$gt0038|Estimated Glomerular Filtration Rate - Relative|>29,ml/min/1.73m2"
         ],
         "then": [
           "$gt0010|CKD stage|='3b'",
@@ -218,9 +205,8 @@
         "id": "gt0017",
         "priority": 2,
         "when": [
-          "$gt0008|Estimated GFR|.magnitude<=29",
-          "$gt0008|Estimated GFR|.magnitude>=15",
-          "$gt0008|Estimated GFR|.unit=='mL/min/1.73 m2'"
+          "$gt0038|Estimated Glomerular Filtration Rate - Relative|<=29,ml/min/1.73m2",
+          "$gt0038|Estimated Glomerular Filtration Rate - Relative|>=15,ml/min/1.73m2"
         ],
         "then": [
           "$gt0010|CKD stage|='4'",
@@ -231,8 +217,7 @@
         "id": "gt0018",
         "priority": 1,
         "when": [
-          "$gt0008|Estimated GFR|.magnitude<15",
-          "$gt0008|Estimated GFR|.unit=='mL/min/1.73 m2'"
+          "$gt0038|Estimated Glomerular Filtration Rate - Relative|<15,ml/min/1.73m2"
         ],
         "then": [
           "$gt0010|CKD stage|='5'",
@@ -260,11 +245,6 @@
             "id": "gt0005",
             "text": "Serum creatinine, mg/dL",
             "description": "Creatinine value"
-          },
-          "gt0008": {
-            "id": "gt0008",
-            "text": "Estimated GFR",
-            "description": "*"
           },
           "gt0010": {
             "id": "gt0010",
@@ -304,35 +284,38 @@
             "id": "gt0018",
             "text": "Interpretation to GFR <15"
           },
-          "gt0019": {
-            "id": "gt0019",
-            "text": "Warning Height  ≤ 25"
+          "gt0030": {
+            "id": "gt0030",
+            "text": "Height conversion formula"
           },
-          "gt0020": {
-            "id": "gt0020",
-            "text": "Warning to Height",
+          "gt0031": {
+            "id": "gt0031",
+            "text": "H",
+            "description": ""
+          },
+          "gt0032": {
+            "id": "gt0032",
+            "text": "Cr conversion formula"
+          },
+          "gt0033": {
+            "id": "gt0033",
+            "text": "C",
+            "description": ""
+          },
+          "gt0038": {
+            "id": "gt0038",
+            "text": "Estimated Glomerular Filtration Rate - Relative",
+            "description": "Value describing estimation of glomerular filtration rate independent of body-surface area (mL/min/1.73m²)."
+          },
+          "gt0040": {
+            "id": "gt0040",
+            "text": "Formula",
             "description": "*"
           },
-          "gt0021": {
-            "id": "gt0021",
-            "text": "Warning to Creatinine",
-            "description": "*"
-          },
-          "gt0022": {
-            "id": "gt0022",
-            "text": "Warning to Height ≥ 509"
-          },
-          "gt0023": {
-            "id": "gt0023",
-            "text": "Warning to Cr  ≤ 0"
-          },
-          "gt0024": {
-            "id": "gt0024",
-            "text": "Warning Cr10-40"
-          },
-          "gt0025": {
-            "id": "gt0025",
-            "text": "Warning Cr> 40"
+          "gt0042": {
+            "id": "gt0042",
+            "text": "Age",
+            "description": "Age in years, and for babies: months, weeks or days"
           }
         }
       }
