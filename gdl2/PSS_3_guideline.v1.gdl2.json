@@ -92,7 +92,7 @@
     "rules": {
       "gt0018": {
         "id": "gt0018",
-        "priority": 6,
+        "priority": 5,
         "when": [
           "$gt0003|Over the past two weeks, have you felt down, depressed, or hopeless?|==local::at0006|Yes|"
         ],
@@ -102,37 +102,42 @@
       },
       "gt0019": {
         "id": "gt0019",
-        "priority": 5,
+        "priority": 4,
         "when": [
           "$gt0004|Over the past two weeks, have you had thoughts of killing yourself?|==local::at0010|Yes|"
         ],
         "then": [
-          "$gt0017|X|=$gt0017+$gt0014.term"
+          "$gt0017|X|=$gt0017+$gt0014.term",
+          "$gt0008|Suicide risk|='Positive for suicidality by ED-SAFE PSS-3'"
         ]
       },
       "gt0022": {
         "id": "gt0022",
-        "priority": 4,
+        "priority": 3,
         "when": [
-          "(($gt0005|In your lifetime, have you ever attempted to kill yourself?|==local::at0015|Yes|)&&($gt0006|When did your last attempt occur?|==local::at0017|Today|))||((($gt0005|In your lifetime, have you ever attempted to kill yourself?|==local::at0015|Yes|)&&($gt0006|When did your last attempt occur?|==local::at0018|Within 30 days|))||(($gt0005|In your lifetime, have you ever attempted to kill yourself?|==local::at0015|Yes|)&&($gt0006|When did your last attempt occur?|==local::at0019|Within 1-6 months|)))"
+          "$gt0005|In your lifetime, have you ever attempted to kill yourself?|==local::at0015|Yes|",
+          "($gt0006|When did your last attempt occur?|==local::at0017|Today|)||(($gt0006|When did your last attempt occur?|==local::at0018|Within 30 days|)||($gt0006|When did your last attempt occur?|==local::at0019|Within 1-6 months|))"
         ],
         "then": [
-          "$gt0017|X|=$gt0017+$gt0016.term"
+          "$gt0017|X|=$gt0017+$gt0016.term",
+          "$gt0008|Suicide risk|='Positive for suicidality by ED-SAFE PSS-3'"
         ]
       },
       "gt0023": {
         "id": "gt0023",
-        "priority": 3,
+        "priority": 2,
         "when": [
-          "(($gt0005|In your lifetime, have you ever attempted to kill yourself?|==local::at0015|Yes|)&&($gt0006|When did your last attempt occur?|==local::at0020|>6 months|))||((($gt0005|In your lifetime, have you ever attempted to kill yourself?|==local::at0015|Yes|)&&($gt0006|When did your last attempt occur?|==local::at0022|Refused to answer|))||(($gt0005|In your lifetime, have you ever attempted to kill yourself?|==local::at0015|Yes|)&&($gt0006|When did your last attempt occur?|==local::at0021|Does not know|)))"
+          "$gt0005|In your lifetime, have you ever attempted to kill yourself?|==local::at0015|Yes|",
+          "($gt0006|When did your last attempt occur?|==local::at0020|>6 months|)||(($gt0006|When did your last attempt occur?|==local::at0022|Refused to answer|)||($gt0006|When did your last attempt occur?|==local::at0021|Does not know|))"
         ],
         "then": [
-          "$gt0017|testVar|=$gt0017+$gt0015.term"
+          "$gt0017|testVar|=$gt0017+$gt0015.term",
+          "$gt0008|Suicide risk|='Positive for suicidality by ED-SAFE PSS-3'"
         ]
       },
       "gt0020": {
         "id": "gt0020",
-        "priority": 2,
+        "priority": 1,
         "when": [
           "$gt0003|Over the past two weeks, have you felt down, depressed, or hopeless?|!=null",
           "$gt0004|Over the past two weeks, have you had thoughts of killing yourself?|!=null",
@@ -140,16 +145,6 @@
         ],
         "then": [
           "$gt0011|Interpretation|.value=$gt0017"
-        ]
-      },
-      "gt0024": {
-        "id": "gt0024",
-        "priority": 1,
-        "when": [
-          "($gt0004|Over the past two weeks, have you had thoughts of killing yourself?|==local::at0010|Yes|)||($gt0005|In your lifetime, have you ever attempted to kill yourself?|==local::at0015|Yes|)"
-        ],
-        "then": [
-          "$gt0008|Suicide risk|='Positive for suicidality by ED-SAFE PSS-3'"
         ]
       }
     }
@@ -238,10 +233,6 @@
           "gt0023": {
             "id": "gt0023",
             "text": "Lifetime suicide attempt"
-          },
-          "gt0024": {
-            "id": "gt0024",
-            "text": "Positive for suicidality"
           }
         }
       }
