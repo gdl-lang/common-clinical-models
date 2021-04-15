@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.psa_doubling_time.v0
 
 concept
-	[at0000]	-- Psa doubling time
+	[at0000]	-- PSA Doubling Time (PSADT) calculator
 language
 	original_language = <[ISO_639-1::en]>
 description
@@ -15,24 +15,11 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To register information regarding the values of PSADT and the variables (PSA quantity and test date) used for it's calculation.
+			purpose = <"To record the results for each component parameter and the Prostate-specific antigen doubling time (PSADT).
 
 
 ">
-			use = <"Use to record the information regarding the values of PSADT and the variables (PSA quantity and test date) used for it's calculation.
-
-Used in patients with prostate cancer who have undergone radical prostatectomy or definitive radiation therapy and have biochemical recurrence, defined as confirmed PSA ≥0.2 ng/mL if radical prostatectomy or confirmed PSA rise of ≥2 ng/mL above the nadir PSA level if radiation therapy.
-Note: PSA doubling time is considered to have a limited value in prostate cancer screening and diagnosis.
-
-Variables: 
-PSA1 (First (earliest) available PSA result) ng/mL
-PSA2  (Second available PSA result) ng/mL
-Time between PSA1 and PSA2 measurement month
-Formula: 
-PSA doubling time = ln (2) / PSA Slope
-PSA Slope = (ln (PSA level 2) – ln (PSA level 1)) / Time (no. of months)
-
-
+			use = <"Use to record the results for each component parameter and the Prostate-specific antigen doubling time (PSADT).
 
 
 
@@ -40,20 +27,22 @@ PSA Slope = (ln (PSA level 2) – ln (PSA level 1)) / Time (no. of months)
 ">
 			keywords = <"prostate", "cancer", "prostatectomy ", "PSA", "antigen ", "specific">
 			misuse = <"">
-			copyright = <"Cambio CDS">
+			copyright = <"© Cambio CDS">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Pound CR, Partin AW, Eisenberger MA, Chan DW, Pearson JD, Walsh PC. Natural history of progression after PSA elevation following radical prostatectomy. JAMA. 1999 May 5;281(17):1591-7. doi: 10.1001/jama.281.17.1591. PMID: 10235151.
-2. Patel A, Dorey F, Franklin J, deKernion JB. Recurrence patterns after radical retropubic prostatectomy: clinical usefulness of prostate specific antigen doubling times and log slope prostate specific antigen. J Urol. 1997 Oct;158(4):1441-5. doi: 10.1016/s0022-5347(01)64238-1. PMID: 9302139.
+		["references"] = <"Pound CR, Partin AW, Eisenberger MA, Chan DW, Pearson JD, Walsh PC. Natural history of progression after PSA elevation following radical prostatectomy. JAMA. 1999 May 5;281(17):1591-7. doi: 10.1001/jama.281.17.1591. PMID: 10235151.
+
+Patel A, Dorey F, Franklin J, deKernion JB. Recurrence patterns after radical retropubic prostatectomy: clinical usefulness of prostate specific antigen doubling times and log slope prostate specific antigen. J Urol. 1997 Oct;158(4):1441-5. doi: 10.1016/s0022-5347(01)64238-1. PMID: 9302139.
 ">
-		["MD5-CAM-1.0.1"] = <"A81B1F98D10D963B2FD8C98B42B09761">
+		["current_contact"] = <"maryam.razavi@cambio.se">
+		["MD5-CAM-1.0.1"] = <"1CFD824D2BF85E15D1E21AE4B6753B57">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Psa doubling time
+	OBSERVATION[at0000] matches {	-- PSA Doubling Time (PSADT) calculator
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
@@ -121,6 +110,16 @@ definition
 				}
 			}
 		}
+		protocol matches {
+			ITEM_TREE[at0013] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0014] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
 	}
 
 ontology
@@ -128,8 +127,9 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Psa doubling time">
-					description = <"PSA Doubling Time (PSADT) Calculator">
+					text = <"PSA Doubling Time (PSADT) calculator">
+					description = <"A tool used to calculate rate of PSA doubling in prostate cancer (correlates with survival).">
+					comment = <"Original version, c 2005">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -137,7 +137,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -162,6 +162,15 @@ ontology
 				["at0012"] = <
 					text = <"Comment">
 					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0014"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
 				>
 			>
 		>

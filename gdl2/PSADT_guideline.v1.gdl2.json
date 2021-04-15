@@ -49,7 +49,10 @@
             "id": "gt0020",
             "path": "/data/events/time"
           }
-        }
+        },
+        "predicates": [
+          "min(/data/events/time)"
+        ]
       },
       "gt0008": {
         "id": "gt0008",
@@ -89,7 +92,10 @@
             "id": "gt0021",
             "path": "/data/events/time"
           }
-        }
+        },
+        "predicates": [
+          "max(/data/events/time)"
+        ]
       }
     },
     "rules": {
@@ -100,7 +106,7 @@
           "($gt0019|PSA2|<=$gt0003|PSA1|)||($gt0021|PSA2 Event time|<$gt0020|PSA1 Event time|)"
         ],
         "then": [
-          "$gt0016|Comment|='PSA value should be increasing over time.'"
+          "$gt0016|Warning|='PSA value should be increasing over time.'"
         ]
       },
       "gt0026": {
@@ -110,7 +116,7 @@
           "$gt0021|PSA2 Event time|>$gt0020|PSA1 Event time|"
         ],
         "then": [
-          "$gt0024|Time between PSA1 and PSA2 measurement|.magnitude=$gt0021-$gt0020/1,mo",
+          "$gt0024|Time between PSA1 and PSA2 measurement|.magnitude=($gt0021-$gt0020)/1,mo",
           "$gt0024|Time between PSA1 and PSA2 measurement|.precision=0",
           "$gt0024|Time between PSA1 and PSA2 measurement|.unit='mo'"
         ]
@@ -169,7 +175,7 @@
           },
           "gt0016": {
             "id": "gt0016",
-            "text": "Comment",
+            "text": "Warning",
             "description": "*"
           },
           "gt0019": {
