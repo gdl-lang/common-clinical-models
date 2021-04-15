@@ -1,10 +1,11 @@
-﻿archetype (adl_version=1.4)
+archetype (adl_version=1.4; uid=2cafc316-450a-3c73-a406-5c15f8e5ae0c)
 	openEHR-EHR-OBSERVATION.lab_test-full_blood_count.v1
 specialize
 	openEHR-EHR-OBSERVATION.lab_test.v1
 
 concept
-	[at0000.1]	-- Blodstatus och celler
+	[at0000.1]
+
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -16,35 +17,36 @@ language
 			>
 		>
 	>
+
 description
 	original_author = <
-		["name"] = <"Dr Ian McNicoll">
-		["email"] = <"ian.mcnicoll@oceaninformatics.com">
-		["organisation"] = <"Ocean Informatics, United Kingdom">
 		["date"] = <"2009-11-07">
+		["name"] = <"Dr Ian McNicoll">
+		["organisation"] = <"Ocean Informatics, United Kingdom">
+		["email"] = <"ian.mcnicoll@oceaninformatics.com">
 	>
+	lifecycle_state = <"0">
+	other_contributors = <"Sam Heard, Ocean Informatics, Australia","Heather Leslie, Ocean Informatics, Australia","Heath Frankel, Ocean Informatics, Australia","Koray Atalag, University of Auckland, New Zealand">
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To record observations on a blood film including microscopic findings and cell counts.">
-			use = <"Will normally be reported back to the requesting clinician within the context of an overall Composition-based laboratory report.
-">
-			keywords = <"lab", "pathology", "haematology", "laboratory", "FBC">
-			misuse = <"This archetype is not a full laboratory report and requires diagnosis and other assessments to be recorded using other archetypes.">
-			copyright = <"© openEHR Foundation">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att registrera provresultat - blodstatus och celler inklusive fynd vid mikroskopi.">
+			keywords = <"lab","klinisk kemi","hematologi","patologi">
+			copyright = <"© openEHR Foundation">
 			use = <"Rapporteras vanligen tillbaka till beställande kliniker som del i övergripande rapport av provsvar.
 ">
-			keywords = <"lab", "klinisk kemi", "hematologi", "patologi">
 			misuse = <"Denna arketyp motsvarar ej en fullständig lab-rapport. Används med fördel i kombination med andra arketyper.">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record observations on a blood film including microscopic findings and cell counts.">
+			keywords = <"lab","pathology","haematology","laboratory","FBC">
 			copyright = <"© openEHR Foundation">
+			use = <"Will normally be reported back to the requesting clinician within the context of an overall Composition-based laboratory report.
+">
+			misuse = <"This archetype is not a full laboratory report and requires diagnosis and other assessments to be recorded using other archetypes.">
 		>
 	>
-	lifecycle_state = <"0">
-	other_contributors = <"Sam Heard, Ocean Informatics, Australia", "Heather Leslie, Ocean Informatics, Australia", "Heath Frankel, Ocean Informatics, Australia", "Koray Atalag, University of Auckland, New Zealand">
 	other_details = <
 		["references"] = <"NEHTA, Australia. Pathology Episode v1.0 - Data Group library [Internet]. 2009;[cited 2009 Dec 8 ] Available from: http://www.nehta.gov.au/data-group-library/data-specifications/dgl-pathology
 
@@ -54,50 +56,51 @@ IHE. IHE, Laboratory Technical Framework, Volume 3 Content [Internet]. 2008;Avai
 
 
 ">
-		["MD5-CAM-1.0.1"] = <"A0D47B3008DE13D0A8CFDB236CDE2C06">
+		["MD5-CAM-1.0.1"] = <"e147ac15e07ea432101fc261a7d94e7b">
+		["build_uid"] = <"1cc20a52-e26b-3deb-9e28-174e9816f2ea">
 	>
 
 definition
-	OBSERVATION[at0000.1] matches {	-- Blodstatus och celler
+	OBSERVATION[at0000.1] matches {    -- Full blood count
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {    -- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..1} matches {    -- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {    -- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0005] occurrences matches {0..1} matches {	-- *Test name(en)
+									ELEMENT[at0005] occurrences matches {0..1} matches {    -- Test name
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0077] occurrences matches {0..1} matches {	-- *Diagnostic service(en)
+									ELEMENT[at0077] occurrences matches {0..1} matches {    -- Diagnostic service
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0073] occurrences matches {0..1} matches {	-- *Test status(en)
+									ELEMENT[at0073] occurrences matches {0..1} matches {    -- Test status
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0037, 	-- *Interim(en)
-													at0038, 	-- *Final(en)
-													at0039, 	-- *Supplementary(en)
-													at0040, 	-- *Corrected (amended)(en)
-													at0074, 	-- *Aborted(en)
-													at0079]	-- *Never performed(en)
+													at0037,    -- Interim
+													at0038,    -- Final
+													at0039,    -- Supplementary
+													at0040,    -- Corrected (amended)
+													at0074,    -- Aborted
+													at0079]    -- Never performed
 												}
 											}
 										}
 									}
-									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- *Specimen detail(en)
+									allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {    -- Specimen detail
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.specimen\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
-									ELEMENT[at0078.4] occurrences matches {0..1} matches {	-- Hemoglobin
+									ELEMENT[at0078.4] occurrences matches {0..1} matches {    -- Hemoglobin
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -116,7 +119,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.5] occurrences matches {0..1} matches {	-- Erytrocyter
+									ELEMENT[at0078.5] occurrences matches {0..1} matches {    -- Red cell count (RCC)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -133,7 +136,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.6] occurrences matches {0..1} matches {	-- Erytrocytvolymfraktion (EVF)
+									ELEMENT[at0078.6] occurrences matches {0..1} matches {    -- Packed cell volume (PCV)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::507]>
@@ -145,7 +148,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.7] occurrences matches {0..1} matches {	-- Hemoglobinmassakoncentration (MCHC)
+									ELEMENT[at0078.7] occurrences matches {0..1} matches {    -- Mean cell haemaglobin concentration (MCHC)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -158,7 +161,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.8] occurrences matches {0..1} matches {	-- Medelcellvolym (MCV)
+									ELEMENT[at0078.8] occurrences matches {0..1} matches {    -- Mean cell volume (MCV)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::129]>
@@ -171,7 +174,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.9] occurrences matches {0..1} matches {	-- Hemoglobinmassa (MCH)
+									ELEMENT[at0078.9] occurrences matches {0..1} matches {    -- Mean cell haemaglobin (MCH)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::124]>
@@ -184,7 +187,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.10] occurrences matches {0..1} matches {	-- Red cell distribution width (RDW)
+									ELEMENT[at0078.10] occurrences matches {0..1} matches {    -- Red cell distribution width (RDW)
 										value matches {
 											DV_PROPORTION matches {
 												numerator matches {|0.0..100.0|}
@@ -192,7 +195,7 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0078.11] occurrences matches {0..1} matches {	-- Sänkningsreaktion (SR)
+									ELEMENT[at0078.11] occurrences matches {0..1} matches {    -- Erythrocyte sedimentation rate (ESR)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::338]>
@@ -205,7 +208,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.20] occurrences matches {0..1} matches {	-- Trombocyter medelcellvolym (MPV)
+									ELEMENT[at0078.20] occurrences matches {0..1} matches {    -- Mean platelet volume (MPV)
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::129]>
@@ -218,7 +221,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.21] occurrences matches {0..1} matches {	-- Trombocyter distributionsvidd (PDW)
+									ELEMENT[at0078.21] occurrences matches {0..1} matches {    -- Platelet distribution width
 										value matches {
 											DV_PROPORTION matches {
 												numerator matches {|0.0..100.0|}
@@ -226,7 +229,7 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0078.12] occurrences matches {0..1} matches {	-- Trombocyter (TPK)
+									ELEMENT[at0078.12] occurrences matches {0..1} matches {    -- Platelet count
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -245,16 +248,16 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0078.22] occurrences matches {0..1} matches {	-- Plateletcrit
+									ELEMENT[at0078.22] occurrences matches {0..1} matches {    -- Plateletcrit
 										value matches {
 											DV_PROPORTION matches {
 												numerator matches {|0.0..100.0|}
-												is_integral matches {True}
+												is_integral matches {true}
 												type matches {2}
 											}
 										}
 									}
-									ELEMENT[at0078.13] occurrences matches {0..1} matches {	-- Leukocyter (LPK)
+									ELEMENT[at0078.13] occurrences matches {0..1} matches {    -- White cell count
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::119]>
@@ -272,9 +275,21 @@ definition
 											>
 										}
 									}
-									CLUSTER[at0078.14] occurrences matches {0..1} matches {	-- B-celler
+									ELEMENT[at0.27] occurrences matches {0..1} matches {    -- Myeloblasts
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+													>
+												>
+											>
+										}
+									}
+									CLUSTER[at0078.14] occurrences matches {0..1} matches {    -- White cell differential
 										items cardinality matches {1..5; ordered} matches {
-											ELEMENT[at0078.15] occurrences matches {0..1} matches {	-- Neutrofila granulocyter
+											ELEMENT[at0078.15] occurrences matches {0..1} matches {    -- Neutrophils
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::119]>
@@ -295,7 +310,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0078.16] occurrences matches {0..1} matches {	-- Lymfocyter
+											ELEMENT[at0078.16] occurrences matches {0..1} matches {    -- Lymphocytes
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::119]>
@@ -314,7 +329,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0.25] occurrences matches {0..1} matches {	-- NLR
+											ELEMENT[at0.25] occurrences matches {0..1} matches {    -- NLR
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::380]>
@@ -327,7 +342,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0078.17] occurrences matches {0..1} matches {	-- Basofila granulocyter
+											ELEMENT[at0078.17] occurrences matches {0..1} matches {    -- Basophils
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::119]>
@@ -340,7 +355,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0078.18] occurrences matches {0..1} matches {	-- Monocyter
+											ELEMENT[at0078.18] occurrences matches {0..1} matches {    -- Monocytes
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::119]>
@@ -356,7 +371,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0078.19] occurrences matches {0..1} matches {	-- Eosinofila granulocyter
+											ELEMENT[at0078.19] occurrences matches {0..1} matches {    -- Eosinophils
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::119]>
@@ -370,15 +385,15 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0078.23] occurrences matches {0..1} matches {	-- Mikroskopi
+											ELEMENT[at0078.23] occurrences matches {0..1} matches {    -- Microscopic features
 												value matches {
 													DV_TEXT matches {*}
 												}
 											}
 										}
 									}
-									ELEMENT[at0078] occurrences matches {0..*} matches {*}
-									ELEMENT[at0.26] occurrences matches {0..1} matches {	-- Reticulocyter
+									ELEMENT[at0078] occurrences matches {0..*} matches {*}    -- Result
+									ELEMENT[at0.26] occurrences matches {0..1} matches {    -- Reticulocyte count
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::507]>
@@ -390,55 +405,53 @@ definition
 											>
 										}
 									}
-									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {	-- *Per-result annotation(en)
+									allow_archetype CLUSTER[at0089] occurrences matches {0..*} matches {    -- Per-result annotation
 										include
 											archetype_id/value matches {/openEHR-EHR-CLUSTER\.lab_result_annotation(-[a-zA-Z0-9_]+)*\.v1/}
 										exclude
 											archetype_id/value matches {/.*/}
 									}
-									ELEMENT[at0057] occurrences matches {0..1} matches {	-- *Overall interpretation(en)
+									ELEMENT[at0057] occurrences matches {0..1} matches {    -- Overall interpretation
 										value matches {
 											DV_TEXT matches {*}
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..*} matches {	-- *Multimedia representation(en)
+									ELEMENT[at0010] occurrences matches {0..*} matches {    -- Multimedia representation
 										value matches {
-											DV_MULTIMEDIA matches {
-												media_type matches {[openEHR::]}
-											}
+											DV_MULTIMEDIA matches {*}
 										}
 									}
 								}
 							}
 						}
 						state matches {
-							ITEM_TREE[at0.24] matches {*}
+							ITEM_TREE[at0.24] matches {*}    -- Tree
 						}
 					}
 				}
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0004] matches {	-- *Tree(en)
+			ITEM_TREE[at0004] matches {    -- Tree
 				items cardinality matches {0..*; unordered} matches {
-					CLUSTER[at0013] occurrences matches {0..1} matches {	-- *Test identification(en)
+					CLUSTER[at0013] occurrences matches {0..1} matches {    -- Test identification
 						items cardinality matches {0..*; unordered} matches {
-							ELEMENT[at0062] occurrences matches {0..1} matches {	-- *Placer order identifier(en)
+							ELEMENT[at0062] occurrences matches {0..1} matches {    -- Placer order identifier
 								value matches {
 									DV_TEXT matches {*}
 								}
 							}
-							ELEMENT[at0063] occurrences matches {0..1} matches {	-- *Filler order Identifier(en)
+							ELEMENT[at0063] occurrences matches {0..1} matches {    -- Filler order Identifier
 								value matches {
 									DV_TEXT matches {*}
 								}
 							}
-							ELEMENT[at0068] occurrences matches {0..1} matches {	-- *Laboratory test result identifier(en)
+							ELEMENT[at0068] occurrences matches {0..1} matches {    -- Laboratory test result identifier
 								value matches {
 									DV_TEXT matches {*}
 								}
 							}
-							allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- *Laboratory details  (en)
+							allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {    -- Laboratory details
 								include
 									archetype_id/value matches {/openEHR-EHR-CLUSTER\.organisation\.v1/}
 								exclude
@@ -446,7 +459,7 @@ definition
 							}
 						}
 					}
-					ELEMENT[at0075] occurrences matches {0..1} matches {	-- *Datetime result issued(en)
+					ELEMENT[at0075] occurrences matches {0..1} matches {    -- Datetime result issued
 						value matches {
 							DV_DATE_TIME matches {*}
 						}
@@ -510,7 +523,7 @@ This archetype also acts as the parent for specialisations appropriate for more 
 					description = <"Unique identifiers used in delivery of the care process.">
 				>
 				["at0017"] = <
-					text = <"Laboratory details  ">
+					text = <"Laboratory details">
 					description = <"Demographic details of the laboratory with responsibility for the test. Details of secondary laboratories may also be included.">
 				>
 				["at0037"] = <
@@ -660,6 +673,10 @@ useful for version control and cumulative results for the report.">
 				["at0089"] = <
 					text = <"Per-result annotation">
 					description = <"Slot to allow an annotation to be added to a particular test result at run-time.">
+				>
+				["at0.27"] = <
+					text = <"Myeloblasts">
+					description = <"The proportion of  immature white blood cells">
 				>
 			>
 		>
@@ -865,6 +882,10 @@ useful for version control and cumulative results for the report.(en)">
 				["at0089"] = <
 					text = <"*Per-result annotation(en)">
 					description = <"*Slot to allow an annotation to be added to a particular test result at run-time.(en)">
+				>
+				["at0.27"] = <
+					text = <"*Myeloblasts (en)">
+					description = <"*The proportion of  immature white blood cells (en)">
 				>
 			>
 		>
