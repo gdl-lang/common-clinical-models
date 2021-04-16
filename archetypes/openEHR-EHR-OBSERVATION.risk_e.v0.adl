@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.risk_e.v0
 
 concept
-	[at0000]	-- Risk-E score for cardiac surgery in active infective endocarditis
+	[at0000]	-- RISK-E score
 language
 	original_language = <[ISO_639-1::en]>
 description
@@ -17,9 +17,9 @@ description
 			language = <[ISO_639-1::en]>
 			purpose = <"To record the results for each component parameter, the Risk-E score, and risk of mortality.">
 			use = <"Use to record the results for each component parameter, the Risk-E score, and risk of mortality.">
-			keywords = <"endocarditis", "mortality ", "cardiac", "surgery">
+			keywords = <"endocarditis", "mortality ", "cardiac", "surgery", "RISK-E">
 			misuse = <"">
-			copyright = <"Cambio CDS">
+			copyright = <"© Cambio CDS">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
@@ -27,15 +27,15 @@ description
 	other_details = <
 		["references"] = <"Olmos C, Vilacosta I, Habib G, Maroto L, Fernández C, López J, Sarriá C, Salaun E, Di Stefano S, Carnero M, Hubert S, Ferrera C, Tirado G, Freitas-Ferraz A, Sáez C, Cobiella J, Bustamante-Munguira J, Sánchez-Enrique C, García-Granja PE, Lavoute C, Obadia B, Vivas D, Gutiérrez Á, San Román JA. Risk score for cardiac surgery in active left-sided infective endocarditis. Heart. 2017 Sep;103(18):1435-1442. doi: 10.1136/heartjnl-2016-311093. Epub 2017 Apr 21. PMID: 28432158.">
 		["current_contact"] = <"Maryam Razavi, Cambio CDS<maryam.razavi@cambio.se>">
-		["MD5-CAM-1.0.1"] = <"D165BDE3B08EC49318508EADDB625B5B">
+		["MD5-CAM-1.0.1"] = <"B97CF93696773C03C3607FA338A334B5">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Risk-E score for cardiac surgery in active infective endocarditis
+	OBSERVATION[at0000] matches {	-- RISK-E score
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
@@ -55,38 +55,38 @@ definition
 									}
 									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Virulent microorganism
 										value matches {
-											0|[local::at0013], 	-- No
-											9|[local::at0014]  	-- Yes
+											0|[local::at0010], 	-- No
+											9|[local::at0011]  	-- Yes
 										}
 									}
 									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Septic shock
 										value matches {
-											0|[local::at0016], 	-- No
-											7|[local::at0017]  	-- Yes
+											0|[local::at0010], 	-- No
+											7|[local::at0011]  	-- Yes
 										}
 									}
 									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Thrombocytopenia
 										value matches {
-											0|[local::at0019], 	-- No
-											7|[local::at0020]  	-- Yes
+											0|[local::at0010], 	-- No
+											7|[local::at0011]  	-- Yes
 										}
 									}
 									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Acute renal insufficiency
 										value matches {
-											0|[local::at0022], 	-- No
-											5|[local::at0023]  	-- Yes
+											0|[local::at0010], 	-- No
+											5|[local::at0011]  	-- Yes
 										}
 									}
 									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Cardiogenic shock
 										value matches {
-											0|[local::at0025], 	-- No
-											15|[local::at0026]  	-- Yes
+											0|[local::at0010], 	-- No
+											15|[local::at0011]  	-- Yes
 										}
 									}
 									ELEMENT[at0027] occurrences matches {0..1} matches {	-- Periannular complications
 										value matches {
-											0|[local::at0028], 	-- No
-											5|[local::at0029]  	-- Yes
+											0|[local::at0010], 	-- No
+											5|[local::at0011]  	-- Yes
 										}
 									}
 									ELEMENT[at0030] occurrences matches {0..1} matches {	-- Total score
@@ -103,6 +103,16 @@ definition
 				}
 			}
 		}
+		protocol matches {
+			ITEM_TREE[at0031] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0032] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
 	}
 
 ontology
@@ -110,8 +120,9 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Risk-E score for cardiac surgery in active infective endocarditis">
+					text = <"RISK-E score">
 					description = <"An assessment score used to predict perioperative mortality in patients with active left-sided endocarditis.">
+					comment = <"Original version, c 2017">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -119,7 +130,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -161,77 +172,38 @@ ontology
 					text = <"Virulent microorganism">
 					description = <"Staphylococcus aureus or fungi.">
 				>
-				["at0013"] = <
-					text = <"No">
-					description = <"">
-				>
-				["at0014"] = <
-					text = <"Yes">
-					description = <"">
-				>
 				["at0015"] = <
 					text = <"Septic shock">
-					description = <"">
-				>
-				["at0016"] = <
-					text = <"No">
-					description = <"">
-				>
-				["at0017"] = <
-					text = <"Yes">
 					description = <"">
 				>
 				["at0018"] = <
 					text = <"Thrombocytopenia">
 					description = <"<150,000 platelets/mm3.">
 				>
-				["at0019"] = <
-					text = <"No">
-					description = <"">
-				>
-				["at0020"] = <
-					text = <"Yes">
-					description = <"">
-				>
 				["at0021"] = <
 					text = <"Acute renal insufficiency">
-					description = <"">
-				>
-				["at0022"] = <
-					text = <"No">
-					description = <"">
-				>
-				["at0023"] = <
-					text = <"Yes">
 					description = <"">
 				>
 				["at0024"] = <
 					text = <"Cardiogenic shock">
 					description = <"">
 				>
-				["at0025"] = <
-					text = <"No">
-					description = <"">
-				>
-				["at0026"] = <
-					text = <"Yes">
-					description = <"">
-				>
 				["at0027"] = <
 					text = <"Periannular complications">
 					description = <"Abscess, pseudoaneurysm, fistula, or prosthetic dehiscence.">
 				>
-				["at0028"] = <
-					text = <"No">
-					description = <"">
-				>
-				["at0029"] = <
-					text = <"Yes">
-					description = <"">
-				>
 				["at0030"] = <
 					text = <"Total score">
 					description = <"The total sum for each component variable for the Risk-E Score.">
+				>
+				["at0031"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0032"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
 				>
 			>
 		>
