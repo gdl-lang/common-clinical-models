@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.rifle_criteria.v0
 
 concept
-	[at0000]	-- RIFLE criteria for Acute Kidney Injury [AKI]
+	[at0000]	-- RIFLE criteria for Acute Kidney Injury (AKI)
 language
 	original_language = <[ISO_639-1::en]>
 description
@@ -19,25 +19,25 @@ description
 			use = <"Use to record the results for each component parameter and AKI severity.">
 			keywords = <"GFR", "creatinine", "acute", "kidney", "injury ", "AKI", "failure", "urine", "output">
 			misuse = <"">
-			copyright = <"Cambio CDS">
+			copyright = <"© Cambio CDS">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Bellomo R, Ronco C, Kellum JA, Mehta RL, Palevsky P; Acute Dialysis Quality Initiative workgroup. Acute renal failure - definition, outcome measures, animal models, fluid therapy and information technology needs: the Second International Consensus Conference of the Acute Dialysis Quality Initiative (ADQI) Group. Crit Care. 2004 Aug;8(4):R204-12. doi: 10.1186/cc2872. Epub 2004 May 24. PMID: 15312219; PMCID: PMC522841.
-2. Van Biesen W, Vanholder R, Lameire N. Defining acute renal failure: RIFLE and beyond. Clin J Am Soc Nephrol. 2006 Nov;1(6):1314-9. doi: 10.2215/CJN.02070606. Epub 2006 Aug 30. PMID: 17699363.
-">
-		["MD5-CAM-1.0.1"] = <"CD15BC876F168CD92CF0EAC2A43523CA">
+		["references"] = <"Bellomo R, Ronco C, Kellum JA, Mehta RL, Palevsky P; Acute Dialysis Quality Initiative workgroup. Acute renal failure - definition, outcome measures, animal models, fluid therapy and information technology needs: the Second International Consensus Conference of the Acute Dialysis Quality Initiative (ADQI) Group. Crit Care. 2004 Aug;8(4):R204-12. doi: 10.1186/cc2872. Epub 2004 May 24. PMID: 15312219; PMCID: PMC522841.
+
+Van Biesen W, Vanholder R, Lameire N. Defining acute renal failure: RIFLE and beyond. Clin J Am Soc Nephrol. 2006 Nov;1(6):1314-9. doi: 10.2215/CJN.02070606. Epub 2006 Aug 30. PMID: 17699363.">
 		["current_contact"] = <"maryam.razavi@cambio.se">
+		["MD5-CAM-1.0.1"] = <"520B643D6DD6A767514C10E3DB390569">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- RIFLE criteria for Acute Kidney Injury [AKI]
+	OBSERVATION[at0000] matches {	-- RIFLE criteria for Acute Kidney Injury (AKI)
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
@@ -57,8 +57,8 @@ definition
 											DV_CODED_TEXT matches {
 												defining_code matches {
 													[local::
-													at0014, 	-- Yes
-													at0015]	-- No
+													at0005, 	-- Yes
+													at0006]	-- No
 												}
 											}
 										}
@@ -99,7 +99,7 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0028] occurrences matches {0..1} matches {	--  Level of renal dysfunction
+									ELEMENT[at0028] occurrences matches {0..1} matches {	-- Level of renal dysfunction
 										value matches {
 											DV_CODED_TEXT matches {
 												defining_code matches {
@@ -120,6 +120,16 @@ definition
 				}
 			}
 		}
+		protocol matches {
+			ITEM_TREE[at0053] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0054] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
 	}
 
 ontology
@@ -127,8 +137,9 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"RIFLE criteria for Acute Kidney Injury [AKI]">
+					text = <"RIFLE criteria for Acute Kidney Injury (AKI)">
 					description = <"A tool to used to classify severity of acute kidney injury (AKI).">
+					comment = <"Original version, c 2004">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -136,7 +147,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -158,14 +169,6 @@ ontology
 					text = <"Persistent acute kidney injury">
 					description = <"on renal replacement therapy for >4 weeks">
 				>
-				["at0014"] = <
-					text = <"Yes">
-					description = <"*">
-				>
-				["at0015"] = <
-					text = <"No">
-					description = <"*">
-				>
 				["at0016"] = <
 					text = <"Serum creatinine">
 					description = <"*">
@@ -179,7 +182,7 @@ ontology
 					description = <"*">
 				>
 				["at0028"] = <
-					text = <" Level of renal dysfunction">
+					text = <"Level of renal dysfunction">
 					description = <"*">
 				>
 				["at0029"] = <
@@ -237,6 +240,15 @@ ontology
 				["at0052"] = <
 					text = <"<0.3 mL/kg/hr x 24 hr (oliguria), or anuria x 12 hr">
 					description = <"*">
+				>
+				["at0053"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0054"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
 				>
 			>
 		>
