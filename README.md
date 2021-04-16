@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 552*
+### *Published Apps: 555*
 
 ----------
 
 ### Latest added
 
-1. NEDOCS Score for Emergency Department Overcrowding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEDOCS_score_for_emergency_department_overcrowding/1?language=en))
-2. Multiple Myeloma Response Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_Response_Criteria/1?language=en))
-3. Sgarbossa's Criteria for MI in Left Bundle Branch Block - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sgarbossas_criteria_for_MI_in_LBBB/1?language=en))
-4. Visual Acuity Testing (Snellen Chart) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Visual_Acuity/1?language=en))
-5. Secondary Intracerebral Hemorrhage (sICH) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/sICH_Score_guideline/1?language=en))
-6. Modified Sequential Organ Failure Assessment (mSOFA) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mSOFA_Score_guideline/1?language=en))
-7. Steinhart Model for Acute Heart Failure (AHF) in Undifferentiated Dyspnea - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Steinhart_model_AHF_in_undifferentiated_dyspnea/1?language=en))
-8. Withdrawal Assessment Tool (WAT-1) for Pediatric Withdrawal - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Withdrawal_Assessment_Tool_for_pediatric_withdrawal/1?language=en))
-9. Schwab and England Activities of Daily Living (ADL) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Schwab_and_England_activities_of_daily_living_ADL_scale/1?language=en))
-10. Risk of Malignancy Index (RMI) for Ovarian Cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Risk_of_malignancy_index_RMI_for_ovarian_cancer/1?language=en))
+1. RIFLE Criteria for Acute Kidney Injury (AKI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIFLE_Criteria_guideline/1?language=en))
+2. Urticaria Activity Score (UAS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UAS_guideline/1?language=en))
+3. Ottawa Heart Failure Risk Scale (OHFRS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ottawa_Heart_Failure_Risk_Scale_OHFRS_guideline/1?language=en))
+4. NEDOCS Score for Emergency Department Overcrowding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEDOCS_score_for_emergency_department_overcrowding/1?language=en))
+5. Multiple Myeloma Response Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_Response_Criteria/1?language=en))
+6. Sgarbossa's Criteria for MI in Left Bundle Branch Block - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sgarbossas_criteria_for_MI_in_LBBB/1?language=en))
+7. Visual Acuity Testing (Snellen Chart) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Visual_Acuity/1?language=en))
+8. Secondary Intracerebral Hemorrhage (sICH) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/sICH_Score_guideline/1?language=en))
+9. Modified Sequential Organ Failure Assessment (mSOFA) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mSOFA_Score_guideline/1?language=en))
+10. Steinhart Model for Acute Heart Failure (AHF) in Undifferentiated Dyspnea - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Steinhart_model_AHF_in_undifferentiated_dyspnea/1?language=en))
 
 ----------
 
@@ -210,6 +210,8 @@ _Select a medical specialty below to view the available apps._
 
 * ORBIT Bleeding Risk Score for Atrial Fibrillation  - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ORBIT_bleeding_risk_score/1?language=en))
 
+* Ottawa Heart Failure Risk Scale (OHFRS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ottawa_Heart_Failure_Risk_Scale_OHFRS_guideline/1?language=en))
+
 * Padua Prediction Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Padua_prediction/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Padua_prediction/1?language=sv))
 
 * Rapid Arterial oCclusion Evaluation Scale for Stroke (RACE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RACE/1?language=en))
@@ -269,6 +271,8 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 * Psoriasis Area and Severity Index (PASI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PASI_guideline/1?language=en))
+
+* Urticaria Activity Score (UAS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UAS_guideline/1?language=en))
 
 ----------
 
@@ -655,6 +659,8 @@ _Select a medical specialty below to view the available apps._
 * RENAL Nephrometry Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RENAL_Nephrometry_Score/1?language=en))
 
 * Revised Lund-Malmö eGFR - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LM_Revised_eGFR/0?language=en))
+
+* RIFLE Criteria for Acute Kidney Injury (AKI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIFLE_Criteria_guideline/1?language=en))
 
 * STONE Nephrolithometry Score for Renal Calculi - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/STONE_Nephrolithometry_Score_for_Renal_Calculi_guideline/1?language=en))
 
