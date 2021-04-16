@@ -17,18 +17,19 @@ description
 			language = <[ISO_639-1::en]>
 			purpose = <"To record the results for each component parameter and the Ottawa score.">
 			use = <"Use to record the results for each component parameter and the Ottawa score.">
-			keywords = <"dyspnea ", "heart", "failure", "HF", "emergency">
+			keywords = <"dyspnea ", "heart", "failure", "HF", "emergency", "OHFRS", "Ottawa", "risk", "scale">
 			misuse = <"">
-			copyright = <"Cambio CDS">
+			copyright = <"© Cambio CDS">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1.  Stiell IG, Clement CM, Brison RJ, Rowe BH, Borgundvaag B, Aaron SD, Lang E, Calder LA, Perry JJ, Forster AJ, Wells GA. A risk scoring system to identify emergency department patients with heart failure at high risk for serious adverse events. Acad Emerg Med. 2013 Jan;20(1):17-26. doi: 10.1111/acem.12056. PMID: 23570474.
-2. Stiell IG, Perry JJ, Clement CM, Brison RJ, Rowe BH, Aaron SD, McRae AD, Borgundvaag B, Calder LA, Forster AJ, Wells GA. Prospective and Explicit Clinical Validation of the Ottawa Heart Failure Risk Scale, With and Without Use of Quantitative NT-proBNP. Acad Emerg Med. 2017 Mar;24(3):316-327. doi: 10.1111/acem.13141. PMID: 27976497.">
+		["references"] = <"Stiell IG, Clement CM, Brison RJ, Rowe BH, Borgundvaag B, Aaron SD, Lang E, Calder LA, Perry JJ, Forster AJ, Wells GA. A risk scoring system to identify emergency department patients with heart failure at high risk for serious adverse events. Acad Emerg Med. 2013 Jan;20(1):17-26. doi: 10.1111/acem.12056. PMID: 23570474.
+
+Stiell IG, Perry JJ, Clement CM, Brison RJ, Rowe BH, Aaron SD, McRae AD, Borgundvaag B, Calder LA, Forster AJ, Wells GA. Prospective and Explicit Clinical Validation of the Ottawa Heart Failure Risk Scale, With and Without Use of Quantitative NT-proBNP. Acad Emerg Med. 2017 Mar;24(3):316-327. doi: 10.1111/acem.13141. PMID: 27976497.">
 		["current_contact"] = <"maryam.razavi@cambio.se">
-		["MD5-CAM-1.0.1"] = <"F3C65C9EB3C744EEABA8975B0554D0D8">
+		["MD5-CAM-1.0.1"] = <"20688356DE9651EC1D31C02F82AF8E2D">
 	>
 
 definition
@@ -36,7 +37,7 @@ definition
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
@@ -50,8 +51,8 @@ definition
 											}
 											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Intubation for respiratory distress
 												value matches {
-													0|[local::at0009], 	-- No
-													2|[local::at0010]  	-- Yes
+													0|[local::at0006], 	-- No
+													2|[local::at0007]  	-- Yes
 												}
 											}
 										}
@@ -60,20 +61,20 @@ definition
 										items cardinality matches {1..*; unordered} matches {
 											ELEMENT[at0012] occurrences matches {0..1} matches {	-- Heart rate on ED arrival ≥110
 												value matches {
-													0|[local::at0013], 	-- No
-													2|[local::at0014]  	-- Yes
+													0|[local::at0006], 	-- No
+													2|[local::at0007]  	-- Yes
 												}
 											}
 											ELEMENT[at0015] occurrences matches {0..1} matches {	-- SaO₂ <90% on arrival
 												value matches {
-													0|[local::at0016], 	-- No
-													1|[local::at0017]  	-- Yes
+													0|[local::at0006], 	-- No
+													1|[local::at0007]  	-- Yes
 												}
 											}
 											ELEMENT[at0018] occurrences matches {0..1} matches {	-- Heart rate ≥110 during 3-minutes walk test (or too ill to perform walk test)
 												value matches {
-													0|[local::at0019], 	-- No
-													1|[local::at0020]  	-- Yes
+													0|[local::at0006], 	-- No
+													1|[local::at0007]  	-- Yes
 												}
 											}
 										}
@@ -82,32 +83,32 @@ definition
 										items cardinality matches {1..*; unordered} matches {
 											ELEMENT[at0022] occurrences matches {0..1} matches {	-- New ischemic changes on EKG
 												value matches {
-													0|[local::at0023], 	-- No
-													2|[local::at0024]  	-- Yes
+													0|[local::at0006], 	-- No
+													2|[local::at0007]  	-- Yes
 												}
 											}
-											ELEMENT[at0025] occurrences matches {0..1} matches {	-- Urea ≥12 mmol/L (33 mg/dL)
+											ELEMENT[at0025] occurrences matches {0..1} matches {	-- Urea ≥12 mmol/L
 												value matches {
-													0|[local::at0026], 	-- No
-													1|[local::at0027]  	-- Yes
+													0|[local::at0006], 	-- No
+													1|[local::at0007]  	-- Yes
 												}
 											}
-											ELEMENT[at0028] occurrences matches {0..1} matches {	-- Serum CO₂ ≥35 mmol/L (mEq/L)
+											ELEMENT[at0028] occurrences matches {0..1} matches {	-- Serum CO₂ ≥35 mmol/L
 												value matches {
-													0|[local::at0029], 	-- No
-													2|[local::at0030]  	-- Yes
+													0|[local::at0006], 	-- No
+													2|[local::at0007]  	-- Yes
 												}
 											}
 											ELEMENT[at0031] occurrences matches {0..1} matches {	-- Troponin I or T elevated to MI level
 												value matches {
-													0|[local::at0032], 	-- No
-													2|[local::at0033]  	-- Yes
+													0|[local::at0006], 	-- No
+													2|[local::at0007]  	-- Yes
 												}
 											}
-											ELEMENT[at0034] occurrences matches {0..1} matches {	-- NT-proBNP ≥5,000 ng/L (pg/mL)
+											ELEMENT[at0034] occurrences matches {0..1} matches {	-- NT-proBNP ≥5,000 ng/L
 												value matches {
-													0|[local::at0035], 	-- No
-													1|[local::at0036]  	-- Yes
+													0|[local::at0006], 	-- No
+													1|[local::at0007]  	-- Yes
 												}
 											}
 										}
@@ -126,6 +127,16 @@ definition
 				}
 			}
 		}
+		protocol matches {
+			ITEM_TREE[at0038] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0039] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
 	}
 
 ontology
@@ -134,8 +145,7 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Ottawa Heart Failure Risk Scale (OHFRS)">
-					description = <"An assessment score used to identifiy emergency department patients with heart failure at high risk for serious adverse events.
-">
+					description = <"An assessment score used to identifiy emergency department patients with heart failure at high risk for serious adverse events.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -143,7 +153,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -151,139 +161,76 @@ ontology
 				>
 				["at0004"] = <
 					text = <"History">
-					description = <"*">
+					description = <"">
 				>
 				["at0005"] = <
 					text = <"Stroke or TIA">
-					description = <"*">
+					description = <"">
 				>
 				["at0006"] = <
 					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0007"] = <
 					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0008"] = <
 					text = <"Intubation for respiratory distress">
-					description = <"*">
-				>
-				["at0009"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0010"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0011"] = <
 					text = <"Examination">
-					description = <"*">
+					description = <"">
 				>
 				["at0012"] = <
 					text = <"Heart rate on ED arrival ≥110">
-					description = <"*">
-				>
-				["at0013"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0014"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0015"] = <
 					text = <"SaO₂ <90% on arrival">
-					description = <"*">
-				>
-				["at0016"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0017"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0018"] = <
 					text = <"Heart rate ≥110 during 3-minutes walk test (or too ill to perform walk test)">
-					description = <"*">
-				>
-				["at0019"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0020"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0021"] = <
 					text = <"Investigations">
-					description = <"*">
+					description = <"">
 				>
 				["at0022"] = <
 					text = <"New ischemic changes on EKG">
-					description = <"*">
-				>
-				["at0023"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0024"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0025"] = <
-					text = <"Urea ≥12 mmol/L (33 mg/dL)">
-					description = <"*">
-				>
-				["at0026"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0027"] = <
-					text = <"Yes">
-					description = <"*">
+					text = <"Urea ≥12 mmol/L">
+					description = <"≥ 33 mg/dL">
 				>
 				["at0028"] = <
-					text = <"Serum CO₂ ≥35 mmol/L (mEq/L)">
-					description = <"*">
-				>
-				["at0029"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0030"] = <
-					text = <"Yes">
-					description = <"*">
+					text = <"Serum CO₂ ≥35 mmol/L">
+					description = <"≥ mEq/L">
 				>
 				["at0031"] = <
 					text = <"Troponin I or T elevated to MI level">
-					description = <"*">
-				>
-				["at0032"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0033"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0034"] = <
-					text = <"NT-proBNP ≥5,000 ng/L (pg/mL)">
-					description = <"*">
-				>
-				["at0035"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0036"] = <
-					text = <"Yes">
-					description = <"*">
+					text = <"NT-proBNP ≥5,000 ng/L">
+					description = <"≥5,000 pg/mL">
 				>
 				["at0037"] = <
 					text = <"Total score">
-					description = <"*">
+					description = <"">
+				>
+				["at0038"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0039"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
 				>
 			>
 		>
