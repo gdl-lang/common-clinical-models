@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 558*
+### *Published Apps: 560*
 
 ----------
 
 ### Latest added
 
-1. McDonald Criteria for Multiple Sclerosis (2017 Revision) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mcdonald_ms_2017_guideline/1?language=en))
-2. Radiation Biologically Effective Dose (BED) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BED_Calculator_guideline/1?language=en))
-3. Risk-E Score for Cardiac Surgery in Active Infective Endocarditis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RiskE_Score_guideline/1?language=en))
-4. RIFLE Criteria for Acute Kidney Injury (AKI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIFLE_Criteria_guideline/1?language=en))
-5. Urticaria Activity Score (UAS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UAS_guideline/1?language=en))
-6. Ottawa Heart Failure Risk Scale (OHFRS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ottawa_Heart_Failure_Risk_Scale_OHFRS_guideline/1?language=en))
-7. NEDOCS Score for Emergency Department Overcrowding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEDOCS_score_for_emergency_department_overcrowding/1?language=en))
-8. Multiple Myeloma Response Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_Response_Criteria/1?language=en))
-9. Sgarbossa's Criteria for MI in Left Bundle Branch Block - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sgarbossas_criteria_for_MI_in_LBBB/1?language=en))
-10. Visual Acuity Testing (Snellen Chart) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Visual_Acuity/1?language=en))
+1. Multiple Myeloma Diagnostic Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_Diagnostic_Criteria/1?language=en))
+2. Color Vision Screening (Ishihara Test) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Color_Vision_Screening/1?language=en))
+3. McDonald Criteria for Multiple Sclerosis (2017 Revision) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mcdonald_ms_2017_guideline/1?language=en))
+4. Radiation Biologically Effective Dose (BED) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BED_Calculator_guideline/1?language=en))
+5. Risk-E Score for Cardiac Surgery in Active Infective Endocarditis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RiskE_Score_guideline/1?language=en))
+6. RIFLE Criteria for Acute Kidney Injury (AKI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIFLE_Criteria_guideline/1?language=en))
+7. Urticaria Activity Score (UAS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UAS_guideline/1?language=en))
+8. Ottawa Heart Failure Risk Scale (OHFRS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ottawa_Heart_Failure_Risk_Scale_OHFRS_guideline/1?language=en))
+9. NEDOCS Score for Emergency Department Overcrowding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEDOCS_score_for_emergency_department_overcrowding/1?language=en))
+10. Multiple Myeloma Response Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_Response_Criteria/1?language=en))
 
 ----------
 
@@ -841,6 +841,8 @@ _Select a medical specialty below to view the available apps._
 
 * Modified Response Evaluation Criteria in Solid Tumors (mRECIST) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mRECIST/1?language=en))
 
+* Multiple Myeloma Diagnostic Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_Diagnostic_Criteria/1?language=en))
+
 * Multiple Myeloma Response Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_Response_Criteria/1?language=en))
 
 * PREVAIL Model for Prostate Cancer Survival - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PREVAIL_Model_guideline/1?language=en))
@@ -872,6 +874,8 @@ _Select a medical specialty below to view the available apps._
 ----------
 
 ### Ophthalmology
+
+* Color Vision Screening (Ishihara Test) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Color_Vision_Screening/1?language=en))
 
 * Ocular Hypertension Treatment Study (OHTS) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ocular_Hypertension_Treatment_Study_OHTS_Calculator/1?language=en))
 
