@@ -1,0 +1,108 @@
+guidelines:
+  1: Strep_Pharyngitis_Centor_Score_guideline.v1
+test_cases:
+- id: score 5
+  input:
+    1:
+      gt0003|Age: 3,a
+      gt0005|Exudate or swelling on tonsils: 1|local::at0006|Yes|
+      gt0006|Tender/Swollen anterior cervical lymph nodes: 1|local::at0009|Yes|
+      gt0007|Cough present: 1|local::at0012|No|
+      gt0021|Temperature: 40,°C
+  expected_output:
+    1:
+      gt0011|Fever: 1|local::at0022|Yes|
+      gt0010|Total score: 5
+      gt0009|Age: 1|local::at0016|3 to 14 years|
+      gt0014|Recommendation: Rapid strep testing/culture
+      gt0013|Interpretation: Strep Pharyngitis Diagnosis Probability is  51 – 53%
+- id: score 4
+  input:
+    1:
+      gt0003|Age: 3,a
+      gt0005|Exudate or swelling on tonsils: 1|local::at0006|Yes|
+      gt0006|Tender/Swollen anterior cervical lymph nodes: 1|local::at0009|Yes|
+      gt0007|Cough present: 0|local::at0011|Yes|
+      gt0021|Temperature: 40,°C
+  expected_output:
+    1:
+      gt0011|Fever: 1|local::at0022|Yes|
+      gt0010|Total score: 4
+      gt0009|Age: 1|local::at0016|3 to 14 years|
+      gt0014|Recommendation: Rapid strep testing/culture
+      gt0013|Interpretation: Strep Pharyngitis Diagnosis Probability is  51 – 53%
+- id: score 3
+  input:
+    1:
+      gt0003|Age: 3,a
+      gt0005|Exudate or swelling on tonsils: 1|local::at0006|Yes|
+      gt0006|Tender/Swollen anterior cervical lymph nodes: 0|local::at0008|No|
+      gt0007|Cough present: 0|local::at0011|Yes|
+      gt0021|Temperature: 40,°C
+  expected_output:
+    1:
+      gt0011|Fever: 1|local::at0022|Yes|
+      gt0010|Total score: 3
+      gt0009|Age: 1|local::at0016|3 to 14 years|
+      gt0014|Recommendation: Consider strep testing/culture
+      gt0013|Interpretation: Strep Pharyngitis Diagnosis Probability is  28 – 35%
+- id: score 2
+  input:
+    1:
+      gt0003|Age: 3,a
+      gt0005|Exudate or swelling on tonsils: 0|local::at0005|No|
+      gt0006|Tender/Swollen anterior cervical lymph nodes: 0|local::at0008|No|
+      gt0007|Cough present: 1|local::at0012|No|
+      gt0021|Temperature: 37,°C
+  expected_output:
+    1:
+      gt0011|Fever: 0|local::at0021|No|
+      gt0010|Total score: 2
+      gt0009|Age: 1|local::at0016|3 to 14 years|
+      gt0014|Recommendation: Consider strep testing/culture
+      gt0013|Interpretation: Strep Pharyngitis Diagnosis Probability is  11 – 17%
+- id: score 1
+  input:
+    1:
+      gt0003|Age: 3,a
+      gt0005|Exudate or swelling on tonsils: 0|local::at0005|No|
+      gt0006|Tender/Swollen anterior cervical lymph nodes: 0|local::at0008|No|
+      gt0007|Cough present: 0|local::at0011|Yes|
+      gt0021|Temperature: 37,°C
+  expected_output:
+    1:
+      gt0011|Fever: 0|local::at0021|No|
+      gt0010|Total score: 1
+      gt0009|Age: 1|local::at0016|3 to 14 years|
+      gt0014|Recommendation: No further testing
+      gt0013|Interpretation: Strep Pharyngitis Diagnosis Probability is  5 – 10%
+- id: score 0
+  input:
+    1:
+      gt0003|Age: 15,a
+      gt0005|Exudate or swelling on tonsils: 0|local::at0005|No|
+      gt0006|Tender/Swollen anterior cervical lymph nodes: 0|local::at0008|No|
+      gt0007|Cough present: 0|local::at0011|Yes|
+      gt0021|Temperature: 37,°C
+  expected_output:
+    1:
+      gt0011|Fever: 0|local::at0021|No|
+      gt0010|Total score: 0
+      gt0009|Age: 0|local::at0017|15 to 44 years|
+      gt0014|Recommendation: No further testing
+      gt0013|Interpretation: Strep Pharyngitis Diagnosis Probability is  1 – 2.5%
+- id: score -1
+  input:
+    1:
+      gt0003|Age: 45,a
+      gt0005|Exudate or swelling on tonsils: 0|local::at0005|No|
+      gt0006|Tender/Swollen anterior cervical lymph nodes: 0|local::at0008|No|
+      gt0007|Cough present: 0|local::at0011|Yes|
+      gt0021|Temperature: 37,°C
+  expected_output:
+    1:
+      gt0011|Fever: 0|local::at0021|No|
+      gt0010|Total score: -1
+      gt0009|Age: -1|local::at0018|45 years and above|
+      gt0014|Recommendation: No further testing
+      gt0013|Interpretation: Strep Pharyngitis Diagnosis Probability is  1 – 2.5%
