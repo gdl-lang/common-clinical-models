@@ -35,8 +35,8 @@
     "data_bindings": {
       "gt0002": {
         "id": "gt0002",
-        "model_id": "openEHR-EHR-OBSERVATION.tokyo_guidelines_acute_cholecystitis_2018.v0",
-        "template_id": "openEHR-EHR-OBSERVATION.tokyo_guidelines_acute_cholecystitis_2018.v0",
+        "model_id": "openEHR-EHR-OBSERVATION.tg18.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.tg18.v0",
         "type": "OUTPUT",
         "elements": {
           "gt0039": {
@@ -47,8 +47,8 @@
       },
       "gt0024": {
         "id": "gt0024",
-        "model_id": "openEHR-EHR-EVALUATION.tokyo_guidelines_acute_cholecystitis_2018.v0",
-        "template_id": "openEHR-EHR-EVALUATION.tokyo_guidelines_acute_cholecystitis_2018.v0",
+        "model_id": "openEHR-EHR-EVALUATION.tg18_assessment.v0",
+        "template_id": "openEHR-EHR-EVALUATION.tg18_assessment.v0",
         "type": "OUTPUT",
         "elements": {
           "gt0025": {
@@ -67,8 +67,8 @@
       },
       "gt0042": {
         "id": "gt0042",
-        "model_id": "openEHR-EHR-OBSERVATION.tokyo_guidelines_acute_cholecystitis_2018.v0",
-        "template_id": "openEHR-EHR-OBSERVATION.tokyo_guidelines_acute_cholecystitis_2018.v0",
+        "model_id": "openEHR-EHR-OBSERVATION.tg18.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.tg18.v0",
         "type": "INPUT",
         "elements": {
           "gt0043": {
@@ -167,7 +167,7 @@
         "priority": 8,
         "when": [
           "$gt0040|Score A|>=1",
-          "($gt0041|Score B|>=1)||($gt0048|Imaging findings characteristic of acute cholecystitis|==1|local::at0026|Yes|)"
+          "($gt0041|Score B|>=1)||($gt0048|Imaging findings characteristic of acute cholecystitis|==1|local::at0007|Yes|)"
         ],
         "then": [
           "$gt0025|Diagnosis of acute cholecystitis|=local::at0004|Suspected|"
@@ -179,7 +179,7 @@
         "when": [
           "$gt0040|Score A|>=1",
           "$gt0041|Score B|>=1",
-          "$gt0048|Imaging findings characteristic of acute cholecystitis|==1|local::at0026|Yes|"
+          "$gt0048|Imaging findings characteristic of acute cholecystitis|==1|local::at0007|Yes|"
         ],
         "then": [
           "$gt0025|Diagnosis of acute cholecystitis|=local::at0003|Definite|"
@@ -189,7 +189,8 @@
         "id": "gt0063",
         "priority": 6,
         "when": [
-          "!(($gt0025|Diagnosis of acute cholecystitis|==local::at0004|Suspected|)||($gt0025|Diagnosis of acute cholecystitis|==local::at0003|Definite|))"
+          "$gt0025|Diagnosis of acute cholecystitis|!=local::at0004|Suspected|",
+          "$gt0025|Diagnosis of acute cholecystitis|!=local::at0003|Definite|"
         ],
         "then": [
           "$gt0025|Diagnosis of acute cholecystitis|=local::at0005|Entry criteria not met for acute cholecystitis diagnosis|"
