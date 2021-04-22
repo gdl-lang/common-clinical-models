@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 560*
+### *Published Apps: 561*
 
 ----------
 
 ### Latest added
 
-1. Multiple Myeloma Diagnostic Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_Diagnostic_Criteria/1?language=en))
-2. Color Vision Screening (Ishihara Test) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Color_Vision_Screening/1?language=en))
-3. McDonald Criteria for Multiple Sclerosis (2017 Revision) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mcdonald_ms_2017_guideline/1?language=en))
-4. Radiation Biologically Effective Dose (BED) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BED_Calculator_guideline/1?language=en))
-5. Risk-E Score for Cardiac Surgery in Active Infective Endocarditis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RiskE_Score_guideline/1?language=en))
-6. RIFLE Criteria for Acute Kidney Injury (AKI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIFLE_Criteria_guideline/1?language=en))
-7. Urticaria Activity Score (UAS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UAS_guideline/1?language=en))
-8. Ottawa Heart Failure Risk Scale (OHFRS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ottawa_Heart_Failure_Risk_Scale_OHFRS_guideline/1?language=en))
-9. NEDOCS Score for Emergency Department Overcrowding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEDOCS_score_for_emergency_department_overcrowding/1?language=en))
-10. Multiple Myeloma Response Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_Response_Criteria/1?language=en))
+1. Tokyo Guidelines for Acute Cholecystitis 2018 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tokyo_Guidelines_Acute_Cholecystitis_2018_guideline/1?language=en))
+2. Multiple Myeloma Diagnostic Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_Diagnostic_Criteria/1?language=en))
+3. Color Vision Screening (Ishihara Test) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Color_Vision_Screening/1?language=en))
+4. McDonald Criteria for Multiple Sclerosis (2017 Revision) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mcdonald_ms_2017_guideline/1?language=en))
+5. Radiation Biologically Effective Dose (BED) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BED_Calculator_guideline/1?language=en))
+6. Risk-E Score for Cardiac Surgery in Active Infective Endocarditis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RiskE_Score_guideline/1?language=en))
+7. RIFLE Criteria for Acute Kidney Injury (AKI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIFLE_Criteria_guideline/1?language=en))
+8. Urticaria Activity Score (UAS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UAS_guideline/1?language=en))
+9. Ottawa Heart Failure Risk Scale (OHFRS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ottawa_Heart_Failure_Risk_Scale_OHFRS_guideline/1?language=en))
+10. NEDOCS Score for Emergency Department Overcrowding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEDOCS_score_for_emergency_department_overcrowding/1?language=en))
 
 ----------
 
@@ -479,6 +479,8 @@ _Select a medical specialty below to view the available apps._
 * Simplified Autoimmune Hepatitis (AIH) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_Autoimmune_Hepatitis_AIH_Score_guideline/1?language=en))
 
 * Tokyo Guidelines for Acute Cholangitis 2018 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tokyo_Guidelines_2018_guideline/1?language=en))
+
+* Tokyo Guidelines for Acute Cholecystitis 2018 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tokyo_Guidelines_Acute_Cholecystitis_2018_guideline/1?language=en))
 
 * Wexner Score for Obstructed Defecation Syndrome (ODS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wexner_score_ODS/1?language=en))
 ----------
