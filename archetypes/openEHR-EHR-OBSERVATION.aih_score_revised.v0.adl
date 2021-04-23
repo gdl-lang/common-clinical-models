@@ -15,8 +15,8 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record the results for each component parameter and the revised original score for Autoimmune Hepatitis (AIH) assessment.">
-			use = <"Use to record the results for each component parameter and the revised original score for Autoimmune Hepatitis (AIH) assessment.">
+			purpose = <"To record the results for each component parameter and the revised original score for Autoimmune Hepatitis (AIH).">
+			use = <"Use to record the results for each component parameter and the revised original score for Autoimmune Hepatitis (AIH).">
 			keywords = <"autoimmune", "hepatitis", "AIH", "biopsy">
 			misuse = <"">
 			copyright = <"© Cambio CDS">
@@ -25,11 +25,11 @@ description
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["references"] = <" Alvarez F, Berg PA, Bianchi FB, Bianchi L, Burroughs AK, Cancado EL, Chapman RW, Cooksley WG, Czaja AJ, Desmet VJ, Donaldson PT, Eddleston AL, Fainboim L, Heathcote J, Homberg JC, Hoofnagle JH, Kakumu S, Krawitt EL, Mackay IR, MacSween RN, Maddrey WC, Manns MP, McFarlane IG, Meyer zum Büschenfelde KH, Zeniya M, et al. International Autoimmune Hepatitis Group Report: review of criteria for diagnosis of autoimmune hepatitis. J Hepatol. 1999 Nov;31(5):929-38. doi: 10.1016/s0168-8278(99)80297-9. PMID: 10580593.
+		["references"] = <"Alvarez F, Berg PA, Bianchi FB, Bianchi L, Burroughs AK, Cancado EL, Chapman RW, Cooksley WG, Czaja AJ, Desmet VJ, Donaldson PT, Eddleston AL, Fainboim L, Heathcote J, Homberg JC, Hoofnagle JH, Kakumu S, Krawitt EL, Mackay IR, MacSween RN, Maddrey WC, Manns MP, McFarlane IG, Meyer zum Büschenfelde KH, Zeniya M, et al. International Autoimmune Hepatitis Group Report: review of criteria for diagnosis of autoimmune hepatitis. J Hepatol. 1999 Nov;31(5):929-38. doi: 10.1016/s0168-8278(99)80297-9. PMID: 10580593.
 
 Czaja AJ. Performance parameters of the diagnostic scoring systems for autoimmune hepatitis. Hepatology. 2008 Nov;48(5):1540-8. doi: 10.1002/hep.22513. PMID: 18924244.">
 		["current_contact"] = <"maryam.razavi@cambio.se">
-		["MD5-CAM-1.0.1"] = <"797BC29CC3E249B4370CF0670216064D">
+		["MD5-CAM-1.0.1"] = <"1E808131842FE26CF2A3717D4EA4DB1F">
 	>
 
 definition
@@ -37,7 +37,7 @@ definition
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
@@ -85,8 +85,8 @@ definition
 									}
 									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Hepatitis viral markers
 										value matches {
-											-3|[local::at0026], 	-- Positive
-											3|[local::at0025]  	-- Negative
+											-3|[local::at0023], 	-- Positive
+											3|[local::at0022]  	-- Negative
 										}
 									}
 									ELEMENT[at0027] occurrences matches {0..1} matches {	-- Recent or current use of hepatotoxic drugs
@@ -104,38 +104,38 @@ definition
 									}
 									ELEMENT[at0034] occurrences matches {0..1} matches {	-- Liver histology: interface hepatitis
 										value matches {
-											0|[local::at0036], 	-- No
-											3|[local::at0035]  	-- Yes
+											0|[local::at0029], 	-- Yes
+											3|[local::at0028]  	-- No
 										}
 									}
 									ELEMENT[at0037] occurrences matches {0..1} matches {	-- Liver histology: predominantly lymphoplasmacytic infiltrate
 										value matches {
-											0|[local::at0038], 	-- No
-											1|[local::at0039]  	-- Yes
+											0|[local::at0029], 	-- Yes
+											1|[local::at0028]  	-- No
 										}
 									}
 									ELEMENT[at0040] occurrences matches {0..1} matches {	-- Liver histology: rosetting of liver cells
 										value matches {
-											0|[local::at0042], 	-- No
-											1|[local::at0041]  	-- Yes
+											0|[local::at0028], 	-- No
+											1|[local::at0029]  	-- Yes
 										}
 									}
 									ELEMENT[at0043] occurrences matches {0..1} matches {	-- Liver histology: biliary changes
 										value matches {
-											-3|[local::at0045], 	-- Yes
-											0|[local::at0044]  	-- No
+											-3|[local::at0029], 	-- Yes
+											0|[local::at0028]  	-- No
 										}
 									}
 									ELEMENT[at0046] occurrences matches {0..1} matches {	-- Liver histology: other changes
 										value matches {
-											-3|[local::at0048], 	-- Yes
-											0|[local::at0047]  	-- No
+											-3|[local::at0029], 	-- Yes
+											0|[local::at0028]  	-- No
 										}
 									}
 									ELEMENT[at0049] occurrences matches {0..1} matches {	-- Other autoimmune disease(s)
 										value matches {
-											0|[local::at0050], 	-- No
-											2|[local::at0051]  	-- Yes
+											0|[local::at0028], 	-- No
+											2|[local::at0029]  	-- Yes
 										}
 									}
 									ELEMENT[at0052] occurrences matches {0..1} matches {	-- Response to therapy
@@ -183,7 +183,7 @@ ontology
 				["at0000"] = <
 					text = <"Revised original score for Autoimmune Hepatitis (AIH)">
 					description = <"An assessment score used to diagnose autoimmune hepatitis.">
-					comment = <"Original version, c 2005">
+					comment = <"Original version, c 1999">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -199,7 +199,7 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Sex">
-					description = <"*">
+					description = <"">
 				>
 				["at0005"] = <
 					text = <"Male ">
@@ -286,14 +286,6 @@ LKM-1) are significant in children and should be scored at least
 					text = <"Hepatitis viral markers">
 					description = <"Hepatitis A, B and C viruses (i.e., positive/negative for IgM anti-HAV, HBsAg, IgM anti-HBc, anti-HCV and HCV-RNA); if all are negative and viral etiology is still suspected, CMV/EBV testing may be relevant.">
 				>
-				["at0025"] = <
-					text = <"Negative">
-					description = <"">
-				>
-				["at0026"] = <
-					text = <"Positive">
-					description = <"">
-				>
 				["at0027"] = <
 					text = <"Recent or current use of hepatotoxic drugs">
 					description = <"">
@@ -308,7 +300,7 @@ LKM-1) are significant in children and should be scored at least
 				>
 				["at0030"] = <
 					text = <"Average alcohol intake">
-					description = <"*">
+					description = <"">
 				>
 				["at0031"] = <
 					text = <"<25 g/day">
@@ -324,79 +316,31 @@ LKM-1) are significant in children and should be scored at least
 				>
 				["at0034"] = <
 					text = <"Liver histology: interface hepatitis">
-					description = <"*">
-				>
-				["at0035"] = <
-					text = <"Yes">
-					description = <"">
-				>
-				["at0036"] = <
-					text = <"No">
 					description = <"">
 				>
 				["at0037"] = <
 					text = <"Liver histology: predominantly lymphoplasmacytic infiltrate">
-					description = <"*">
-				>
-				["at0038"] = <
-					text = <"No">
-					description = <"">
-				>
-				["at0039"] = <
-					text = <"Yes">
 					description = <"">
 				>
 				["at0040"] = <
 					text = <"Liver histology: rosetting of liver cells">
 					description = <"If no interface hepatitis, not predominantly lymphoplasmacytic infiltrate, and no rosetting of liver cells, then subtract 5 points.">
 				>
-				["at0041"] = <
-					text = <"Yes">
-					description = <"">
-				>
-				["at0042"] = <
-					text = <"No">
-					description = <"">
-				>
 				["at0043"] = <
 					text = <"Liver histology: biliary changes">
 					description = <"Bile duct changes typical of primary biliary cirrhosis or primary scleroisng cholangitis, and/or periportal ductal reaction with copper-associated protein accumulation.">
-				>
-				["at0044"] = <
-					text = <"No">
-					description = <"">
-				>
-				["at0045"] = <
-					text = <"Yes">
-					description = <"">
 				>
 				["at0046"] = <
 					text = <"Liver histology: other changes">
 					description = <"Any other prominent features suggesting different etiology.">
 				>
-				["at0047"] = <
-					text = <"No">
-					description = <"">
-				>
-				["at0048"] = <
-					text = <"Yes">
-					description = <"">
-				>
 				["at0049"] = <
 					text = <"Other autoimmune disease(s)">
 					description = <"In patient or 1st degree relatives.">
 				>
-				["at0050"] = <
-					text = <"No">
-					description = <"">
-				>
-				["at0051"] = <
-					text = <"Yes">
-					description = <"">
-				>
 				["at0052"] = <
 					text = <"Response to therapy">
-					description = <"*">
+					description = <"">
 				>
 				["at0053"] = <
 					text = <"Complete">
@@ -408,7 +352,7 @@ LKM-1) are significant in children and should be scored at least
 				>
 				["at0055"] = <
 					text = <"Total score">
-					description = <"*">
+					description = <"">
 				>
 				["at0056"] = <
 					text = <"Optional additional parameters">
