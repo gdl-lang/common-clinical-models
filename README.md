@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 562*
+### *Published Apps: 563*
 
 ----------
 
 ### Latest added
 
-1. Multiple Myeloma International Staging System (ISS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_International_Staging_System/1?language=en))
-2. Tokyo Guidelines for Acute Cholecystitis 2018 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tokyo_Guidelines_Acute_Cholecystitis_2018_guideline/1?language=en))
-3. Multiple Myeloma Diagnostic Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_Diagnostic_Criteria/1?language=en))
-4. Color Vision Screening (Ishihara Test) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Color_Vision_Screening/1?language=en))
-5. McDonald Criteria for Multiple Sclerosis (2017 Revision) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mcdonald_ms_2017_guideline/1?language=en))
-6. Radiation Biologically Effective Dose (BED) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BED_Calculator_guideline/1?language=en))
-7. Risk-E Score for Cardiac Surgery in Active Infective Endocarditis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RiskE_Score_guideline/1?language=en))
-8. RIFLE Criteria for Acute Kidney Injury (AKI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIFLE_Criteria_guideline/1?language=en))
-9. Urticaria Activity Score (UAS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UAS_guideline/1?language=en))
-10. Ottawa Heart Failure Risk Scale (OHFRS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ottawa_Heart_Failure_Risk_Scale_OHFRS_guideline/1?language=en))
+1. Sokal Index for Chronic Myelogenous Leukemia (CML) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sokal_Index_for_CML/1?language=en))
+2. Multiple Myeloma International Staging System (ISS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_International_Staging_System/1?language=en))
+3. Tokyo Guidelines for Acute Cholecystitis 2018 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tokyo_Guidelines_Acute_Cholecystitis_2018_guideline/1?language=en))
+4. Multiple Myeloma Diagnostic Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_Diagnostic_Criteria/1?language=en))
+5. Color Vision Screening (Ishihara Test) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Color_Vision_Screening/1?language=en))
+6. McDonald Criteria for Multiple Sclerosis (2017 Revision) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mcdonald_ms_2017_guideline/1?language=en))
+7. Radiation Biologically Effective Dose (BED) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BED_Calculator_guideline/1?language=en))
+8. Risk-E Score for Cardiac Surgery in Active Infective Endocarditis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RiskE_Score_guideline/1?language=en))
+9. RIFLE Criteria for Acute Kidney Injury (AKI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIFLE_Criteria_guideline/1?language=en))
+10. Urticaria Activity Score (UAS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UAS_guideline/1?language=en))
 
 ----------
 
@@ -862,6 +862,8 @@ _Select a medical specialty below to view the available apps._
 * Radiation Biologically Effective Dose (BED) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BED_Calculator_guideline/1?language=en))
 
 * Risk of Malignancy Index (RMI) for Ovarian Cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Risk_of_malignancy_index_RMI_for_ovarian_cancer/1?language=en))
+
+* Sokal Index for Chronic Myelogenous Leukemia (CML) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sokal_Index_for_CML/1?language=en))
 
 * SSIGN Score for Clear Cell Renal Cell Carcinoma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SSIGN_ccRCC/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SSIGN_ccRCC/1?language=sv))
 
