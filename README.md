@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 563*
+### *Published Apps: 570*
 
 ----------
 
 ### Latest added
 
-1. Sokal Index for Chronic Myelogenous Leukemia (CML) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sokal_Index_for_CML/1?language=en))
-2. Multiple Myeloma International Staging System (ISS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_International_Staging_System/1?language=en))
-3. Tokyo Guidelines for Acute Cholecystitis 2018 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tokyo_Guidelines_Acute_Cholecystitis_2018_guideline/1?language=en))
-4. Multiple Myeloma Diagnostic Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_Diagnostic_Criteria/1?language=en))
-5. Color Vision Screening (Ishihara Test) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Color_Vision_Screening/1?language=en))
-6. McDonald Criteria for Multiple Sclerosis (2017 Revision) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mcdonald_ms_2017_guideline/1?language=en))
-7. Radiation Biologically Effective Dose (BED) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BED_Calculator_guideline/1?language=en))
-8. Risk-E Score for Cardiac Surgery in Active Infective Endocarditis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RiskE_Score_guideline/1?language=en))
-9. RIFLE Criteria for Acute Kidney Injury (AKI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIFLE_Criteria_guideline/1?language=en))
-10. Urticaria Activity Score (UAS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UAS_guideline/1?language=en))
+1. SAVE (Survival after Veno-Arterial ECMO) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SAVE_score/1?language=en))
+2. PSA Doubling Time (PSADT) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PSADT_guideline/1?language=en))
+3. Patient Safety Screener 3 (PSS-3) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PSS_3_guideline/1?language=en))
+4. Revised Schwartz Equation for Glomerular Filtration Rate (GFR) (2009) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_Schwartz_guideline/1?language=en))
+5. Montreal Cognitive Assessment (MoCA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MoCA_guideline/1?language=en))
+6. Revised Natural History Model for Primary Sclerosing Cholangitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_natural_history_model_guideline/1?language=en))
+7. Revised Original Score for Autoimmune Hepatitis (AIH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AIH_Revised_Original_Score_guideline/1?language=en))
+8. Sokal Index for Chronic Myelogenous Leukemia (CML) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sokal_Index_for_CML/1?language=en))
+9. Multiple Myeloma International Staging System (ISS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_International_Staging_System/1?language=en))
+10. Tokyo Guidelines for Acute Cholecystitis 2018 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tokyo_Guidelines_Acute_Cholecystitis_2018_guideline/1?language=en))
 
 ----------
 
@@ -224,6 +224,8 @@ _Select a medical specialty below to view the available apps._
 
 * Reynolds Risk Score for Cardiovascular Risk in Women - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Reynolds_Risk_Score_for_CardiovascularRisk_in_Women_guideline/1?language=en))
 
+* SAVE (Survival after Veno-Arterial ECMO) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SAVE_score/1?language=en))
+
 * THRIVE Score for Stroke Outcome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/THRIVE_for_Stroke/1?language=en))
 
 * TIMI Risk Index (TRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TRI/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TRI/1?language=sv))
@@ -333,6 +335,8 @@ _Select a medical specialty below to view the available apps._
 * Newsom Score for Non-traumatic Chest Pain - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Newsom_score_non-traumatic_chest_pain/1?language=en))
 
 * Oxygenation Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Oxygenation_Index/1?language=en))
+
+* Patient Safety Screener 3 (PSS-3) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PSS_3_guideline/1?language=en))
 
 * Pediatric Asthma Severity Score (PASS) for Asthma Exacerbation Severity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Asthma_Severity_Score_Asthma_Exacerbation_Severity/1?language=en))
 
@@ -466,9 +470,13 @@ _Select a medical specialty below to view the available apps._
 
 * Oakland Score for Safe Discharge After Lower GI Bleed - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Oakland_Score_for_Safe_Discharge_After_Lower_GI_Bleed/1?language=en)
 
+* R Factor for Liver Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R_factor_for_liver_injury/1?language=en))
+
 * Ranson's Criteria for Pancreatitis Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ransons_Criteria_Pancreatitis_Mortality/1?language=sv))
 
-* R Factor for Liver Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/R_factor_for_liver_injury/1?language=en))
+* Revised Natural History Model for Primary Sclerosing Cholangitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_natural_history_model_guideline/1?language=en))
+
+* Revised Original Score for Autoimmune Hepatitis (AIH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AIH_Revised_Original_Score_guideline/1?language=en))
 
 * Rockall Score for Upper GI Bleeding (Complete) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rockall_Score_Upper_GI_Bleeding_guideline/1?language=en))
 
@@ -662,6 +670,8 @@ _Select a medical specialty below to view the available apps._
 
 * Revised Lund-Malmö eGFR - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LM_Revised_eGFR/0?language=en))
 
+* Revised Schwartz Equation for Glomerular Filtration Rate (GFR) (2009) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_Schwartz_guideline/1?language=en))
+
 * RIFLE Criteria for Acute Kidney Injury (AKI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIFLE_Criteria_guideline/1?language=en))
 
 * STONE Nephrolithometry Score for Renal Calculi - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/STONE_Nephrolithometry_Score_for_Renal_Calculi_guideline/1?language=en))
@@ -730,6 +740,8 @@ _Select a medical specialty below to view the available apps._
 * Modified National Institutes of Health Stroke Scale (mNIHSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mNIHSS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mNIHSS/1?language=sv))
 
 * Modified Rankin Scale for Neurologic Disability  - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Rankin_Scale_for_Neurologic_Disability/1?language=en))
+
+* Montreal Cognitive Assessment (MoCA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MoCA_guideline/1?language=en))
 
 * National Institutes of Health Stroke Scale (NIHSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NIHSS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NIHSS/1?language=sv))
 
@@ -854,6 +866,8 @@ _Select a medical specialty below to view the available apps._
 * Prognostic Index for Cancer Outcomes - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prognostic_Index_for_Cancer_Outcomes/1?language=en))
 
 * Prostate Tumor Volume & Density - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Prostate_Tumor_Volume_Density/1?language=en))
+
+* PSA Doubling Time (PSADT) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PSADT_guideline/1?language=en))
 
 * REACH-B Score for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/REACH_B_Score_guideline/1?language=en))
 
