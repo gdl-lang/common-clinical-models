@@ -15,8 +15,8 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record the results for each component parameter and the Suicide risk.">
-			use = <"Use to record the results for each component parameter and the Suicide risk.">
+			purpose = <"To record the results for each component parameter and the PSS-3 suicide risk.">
+			use = <"Use to record the results for each component parameter and the PSS-3 suicide risk.">
 			keywords = <"patient", "suicide", "safety", "screener", "emergency", "suicidality">
 			misuse = <"">
 			copyright = <"© Cambio CDS">
@@ -33,7 +33,7 @@ Boudreaux ED, Camargo CA Jr, Arias SA, Sullivan AF, Allen MH, Goldstein AB, Mant
 
 Miller IW, Camargo CA Jr, Arias SA, Sullivan AF, Allen MH, Goldstein AB, Manton AP, Espinola JA, Jones R, Hasegawa K, Boudreaux ED; ED-SAFE Investigators. Suicide Prevention in an Emergency Department Population: The ED-SAFE Study. JAMA Psychiatry. 2017 Jun 1;74(6):563-570. doi: 10.1001/jamapsychiatry.2017.0678. PMID: 28456130; PMCID: PMC5539839.">
 		["current_contact"] = <"maryam.razavi@cambio.se">
-		["MD5-CAM-1.0.1"] = <"89BFDCDCD6934B172378D00949F870EB">
+		["MD5-CAM-1.0.1"] = <"10C9C6BFFF6D272A703568839CDE723B">
 	>
 
 definition
@@ -41,69 +41,57 @@ definition
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									CLUSTER[at0026] occurrences matches {0..1} matches {	-- Depressed mood
-										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0004] occurrences matches {0..1} matches {	-- Over the past two weeks, have you felt down, depressed, or hopeless?
-												value matches {
-													DV_CODED_TEXT matches {
-														defining_code matches {
-															[local::
-															at0005, 	-- No
-															at0006, 	-- Yes
-															at0007]	-- Refused to answer
-														}
-													}
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Over the past two weeks, have you felt down, depressed, or hopeless?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0005, 	-- No
+													at0006, 	-- Yes
+													at0007]	-- Refused to answer
 												}
 											}
 										}
 									}
-									CLUSTER[at0027] occurrences matches {0..1} matches {	-- Active suicidal ideation
-										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Over the past two weeks, have you had thoughts of killing yourself?
-												value matches {
-													DV_CODED_TEXT matches {
-														defining_code matches {
-															[local::
-															at0009, 	-- No
-															at0010, 	-- Yes
-															at0011]	-- Refused to answer
-														}
-													}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Over the past two weeks, have you had thoughts of killing yourself?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0005, 	-- No
+													at0006, 	-- Yes
+													at0007]	-- Refused to answer
 												}
 											}
 										}
 									}
-									CLUSTER[at0028] occurrences matches {0..1} matches {	-- Lifetime suicide attempt
-										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0012] occurrences matches {0..1} matches {	-- In your lifetime, have you ever attempted to kill yourself?
-												value matches {
-													DV_CODED_TEXT matches {
-														defining_code matches {
-															[local::
-															at0014, 	-- No
-															at0015, 	-- Yes
-															at0016]	-- Refused to answer
-														}
-													}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- In your lifetime, have you ever attempted to kill yourself?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0005, 	-- No
+													at0006, 	-- Yes
+													at0007]	-- Refused to answer
 												}
 											}
-											ELEMENT[at0013] occurrences matches {0..1} matches {	-- When did your last attempt occur?
-												value matches {
-													DV_CODED_TEXT matches {
-														defining_code matches {
-															[local::
-															at0017, 	-- Today
-															at0018, 	-- Within 30 days
-															at0019, 	-- Within 1-6 months
-															at0020, 	-- >6 months
-															at0021, 	-- Does not know
-															at0022]	-- Refused to answer
-														}
-													}
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- When did your last attempt occur?
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0017, 	-- Today
+													at0018, 	-- Within 30 days
+													at0019, 	-- Within 1-6 months
+													at0020, 	-- >6 months
+													at0021, 	-- Does not know
+													at0007]	-- Refused to answer
 												}
 											}
 										}
@@ -139,7 +127,7 @@ ontology
 				["at0000"] = <
 					text = <"Patient Safety Screener 3 (PSS-3)">
 					description = <"A tool used to screen for suicidality in emergency patients.">
-					comment = <"Original version, c 2005">
+					comment = <"Original version, c 2013">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -155,95 +143,55 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Over the past two weeks, have you felt down, depressed, or hopeless?">
-					description = <"*">
+					description = <"">
 				>
 				["at0005"] = <
 					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0006"] = <
 					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0007"] = <
 					text = <"Refused to answer">
-					description = <"*">
+					description = <"">
 				>
 				["at0008"] = <
 					text = <"Over the past two weeks, have you had thoughts of killing yourself?">
-					description = <"*">
-				>
-				["at0009"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0010"] = <
-					text = <"Yes">
-					description = <"*">
-				>
-				["at0011"] = <
-					text = <"Refused to answer">
-					description = <"*">
+					description = <"">
 				>
 				["at0012"] = <
 					text = <"In your lifetime, have you ever attempted to kill yourself?">
-					description = <"*">
+					description = <"">
 				>
 				["at0013"] = <
 					text = <"When did your last attempt occur?">
-					description = <"*">
-				>
-				["at0014"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0015"] = <
-					text = <"Yes">
-					description = <"*">
-				>
-				["at0016"] = <
-					text = <"Refused to answer">
-					description = <"*">
+					description = <"">
 				>
 				["at0017"] = <
 					text = <"Today">
-					description = <"*">
+					description = <"">
 				>
 				["at0018"] = <
 					text = <"Within 30 days">
-					description = <"*">
+					description = <"">
 				>
 				["at0019"] = <
 					text = <"Within 1-6 months">
-					description = <"*">
+					description = <"">
 				>
 				["at0020"] = <
 					text = <">6 months">
-					description = <"*">
+					description = <"">
 				>
 				["at0021"] = <
 					text = <"Does not know">
-					description = <"*">
-				>
-				["at0022"] = <
-					text = <"Refused to answer">
-					description = <"*">
-				>
-				["at0026"] = <
-					text = <"Depressed mood">
-					description = <"*">
-				>
-				["at0027"] = <
-					text = <"Active suicidal ideation">
-					description = <"*">
-				>
-				["at0028"] = <
-					text = <"Lifetime suicide attempt">
-					description = <"*">
+					description = <"">
 				>
 				["at0029"] = <
 					text = <"Suicide risk">
-					description = <"*">
+					description = <"">
 				>
 				["at0030"] = <
 					text = <"Tree">
