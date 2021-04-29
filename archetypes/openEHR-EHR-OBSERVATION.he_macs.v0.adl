@@ -17,17 +17,17 @@ description
 			language = <[ISO_639-1::en]>
 			purpose = <"To record the results for each component parameter for the probability of ACS.">
 			use = <"Use to record the results for each component parameter for the probability of ACS.">
-			keywords = <"he-macs, electrocardiogram, manchester, acute, coronary, syndrome, acs, risk, predict", ...>
+			keywords = <"HE-MACS", "electrocardiogram", "Manchester", "ACS", "acute", "coronary", "syndrome", "risk">
 			misuse = <"">
-			copyright = <"Cambio CDS">
+			copyright = <"© Cambio CDS">
 		>
 	>
 	lifecycle_state = <"Initial">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Alghamdi A, Howard L, Reynard C, Moss P, Jarman H, Mackway-Jones K, Carley S, Body R. Enhanced triage for patients with suspected cardiac chest pain: the History and Electrocardiogram-only Manchester Acute Coronary Syndromes decision aid. Eur J Emerg Med. 2019 Oct;26(5):356-361. doi: 10.1097/MEJ.0000000000000575. PMID: 30289775; PMCID: PMC6728057.">
+		["references"] = <"Alghamdi A, Howard L, Reynard C, Moss P, Jarman H, Mackway-Jones K, Carley S, Body R. Enhanced triage for patients with suspected cardiac chest pain: the History and Electrocardiogram-only Manchester Acute Coronary Syndromes decision aid. Eur J Emerg Med. 2019 Oct;26(5):356-361. doi: 10.1097/MEJ.0000000000000575. PMID: 30289775; PMCID: PMC6728057.">
 		["current_contact"] = <"Emma Malm, Cambio CDS, emma.snygg@hotmail.com">
-		["MD5-CAM-1.0.1"] = <"659581776F98124DA949992A85DF48C0">
+		["MD5-CAM-1.0.1"] = <"68316BBE08ACA93BEC4C743A00ADC0C0">
 		["build_uid"] = <"376d689d-df27-3d2b-9d5a-ad08eceba070">
 	>
 
@@ -40,50 +40,60 @@ definition
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									CLUSTER[at0004] occurrences matches {0..1} matches {	-- Assessment
-										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0012] occurrences matches {0..1} matches {	-- Sweating observed
-												value matches {
-													0|[local::at0018], 	-- No
-													1|[local::at0019]  	-- Yes
-												}
-											}
-											ELEMENT[at0013] occurrences matches {0..1} matches {	-- Acute EKG ischemia
-												value matches {
-													0|[local::at0020], 	-- No
-													1|[local::at0021]  	-- Yes
-												}
-											}
-											ELEMENT[at0014] occurrences matches {0..1} matches {	-- Pain radiating to the right arm or shoulder
-												value matches {
-													0|[local::at0022], 	-- No
-													1|[local::at0023]  	-- Yes
-												}
-											}
-											ELEMENT[at0015] occurrences matches {0..1} matches {	-- Vomiting associated with pain
-												value matches {
-													0|[local::at0024], 	-- No
-													1|[local::at0025]  	-- Yes
-												}
-											}
-											ELEMENT[at0016] occurrences matches {0..1} matches {	-- Systolic BP <100 mmHg
-												value matches {
-													0|[local::at0026], 	-- No
-													1|[local::at0027]  	-- Yes
-												}
-											}
-											ELEMENT[at0017] occurrences matches {0..1} matches {	-- Current tobacco smoker
-												value matches {
-													0|[local::at0028], 	-- No
-													1|[local::at0029]  	-- Yes
-												}
-											}
-											ELEMENT[at0033] occurrences matches {0..1} matches {	-- Sex
-												value matches {
-													0|[local::at0034], 	-- Female
-													1|[local::at0035]  	-- Male
-												}
-											}
+									ELEMENT[at0038] occurrences matches {0..1} matches {	-- Age
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::128]>
+												list = <
+													["1"] = <
+														units = <"a">
+														magnitude = <|>=0.0|>
+														precision = <|0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0033] occurrences matches {0..1} matches {	-- Sex
+										value matches {
+											0|[local::at0034], 	-- Female
+											1|[local::at0035]  	-- Male
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Sweating observed
+										value matches {
+											0|[local::at0018], 	-- No
+											1|[local::at0019]  	-- Yes
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Acute EKG ischemia
+										value matches {
+											0|[local::at0018], 	-- No
+											1|[local::at0019]  	-- Yes
+										}
+									}
+									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Pain radiating to the right arm or shoulder
+										value matches {
+											0|[local::at0018], 	-- No
+											1|[local::at0019]  	-- Yes
+										}
+									}
+									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Vomiting associated with pain
+										value matches {
+											0|[local::at0018], 	-- No
+											1|[local::at0019]  	-- Yes
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Systolic BP <100 mmHg
+										value matches {
+											0|[local::at0018], 	-- No
+											1|[local::at0019]  	-- Yes
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Current tobacco smoker
+										value matches {
+											0|[local::at0018], 	-- No
+											1|[local::at0019]  	-- Yes
 										}
 									}
 									ELEMENT[at0031] occurrences matches {0..1} matches {	-- ACS risk
@@ -93,6 +103,8 @@ definition
 												list = <
 													["1"] = <
 														units = <"%">
+														magnitude = <|>=0.0|>
+														precision = <|1|>
 													>
 												>
 											>
@@ -101,6 +113,16 @@ definition
 								}
 							}
 						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0036] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0037] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
 					}
 				}
 			}
@@ -114,6 +136,7 @@ ontology
 				["at0000"] = <
 					text = <"History and Electrocardiogram-only Manchester Acute Coronary Syndromes (HE-MACS)">
 					description = <"A prediction assessment used to stratify ACS risk with history and EKG only.">
+					comment = <"Original version, c 2019">
 				>
 				["at0001"] = <
 					text = <"History">
@@ -121,103 +144,72 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
 					description = <"@ internal @">
 				>
-				["at0004"] = <
-					text = <"Assessment">
-					description = <"*">
-				>
 				["at0012"] = <
 					text = <"Sweating observed">
-					description = <"*">
+					description = <"">
 				>
 				["at0013"] = <
 					text = <"Acute EKG ischemia">
-					description = <"*">
+					description = <"">
 				>
 				["at0014"] = <
 					text = <"Pain radiating to the right arm or shoulder">
-					description = <"*">
+					description = <"">
 				>
 				["at0015"] = <
 					text = <"Vomiting associated with pain">
-					description = <"*">
+					description = <"">
 				>
 				["at0016"] = <
 					text = <"Systolic BP <100 mmHg">
-					description = <"*">
+					description = <"">
 				>
 				["at0017"] = <
 					text = <"Current tobacco smoker">
-					description = <"*">
+					description = <"">
 				>
 				["at0018"] = <
 					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0019"] = <
 					text = <"Yes">
-					description = <"*">
-				>
-				["at0020"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0021"] = <
-					text = <"Yes">
-					description = <"*">
-				>
-				["at0022"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0023"] = <
-					text = <"Yes">
-					description = <"*">
-				>
-				["at0024"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0025"] = <
-					text = <"Yes">
-					description = <"*">
-				>
-				["at0026"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0027"] = <
-					text = <"Yes">
-					description = <"*">
-				>
-				["at0028"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0029"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0031"] = <
 					text = <"ACS risk">
-					description = <"*">
+					description = <"">
 				>
 				["at0033"] = <
 					text = <"Sex">
-					description = <"*">
+					description = <"">
 				>
 				["at0034"] = <
 					text = <"Female">
-					description = <"*">
+					description = <"">
 				>
 				["at0035"] = <
 					text = <"Male">
-					description = <"*">
+					description = <"">
+				>
+				["at0036"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0037"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
+				>
+				["at0038"] = <
+					text = <"Age">
+					description = <"">
 				>
 			>
 		>
