@@ -18,16 +18,16 @@ description
 			purpose = <"To record the results for each component parameter and the Rule of 7s score.">
 			use = <"Use to record  the results for each component parameter and the Rule of 7s score.">
 			keywords = <"lyme meningitis", "risk", "CSF", "cerebrospinal", "fluid", "headache">
-			misuse = <"Not to be used to record results for patients other than pediatric patients (2-18 years).">
-			copyright = <"Cambio CDS">
+			misuse = <"">
+			copyright = <"© Cambio CDS">
 		>
 	>
 	lifecycle_state = <"Initial">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Garro AC, Rutman M, Simonsen K, Jaeger JL, Chapin K, Lockhart G. Prospective validation of a clinical prediction model for Lyme meningitis in children. Pediatrics. 2009 May;123(5):e829-34. doi: 10.1542/peds.2008-2048. PMID: 19403476.">
+		["references"] = <"Garro AC, Rutman M, Simonsen K, Jaeger JL, Chapin K, Lockhart G. Prospective validation of a clinical prediction model for Lyme meningitis in children. Pediatrics. 2009 May;123(5):e829-34. doi: 10.1542/peds.2008-2048. PMID: 19403476.">
 		["current_contact"] = <"Therese Lindberg, Cambio CDS<therese.lindberg@cambio.se>">
-		["MD5-CAM-1.0.1"] = <"16F2FD1F727F381F4E069D3AB16902FC">
+		["MD5-CAM-1.0.1"] = <"F795626B17BCB1CEFA3539F6EF384E6C">
 	>
 
 definition
@@ -35,7 +35,7 @@ definition
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
@@ -71,6 +71,16 @@ definition
 				}
 			}
 		}
+		protocol matches {
+			ITEM_TREE[at0014] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0015] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
 	}
 
 ontology
@@ -79,7 +89,8 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Rule of 7s">
-					description = <"An assessment tool used for patients with risk factors for Lyme meningitis.">
+					description = <"An assessment tool used for distinguishing lyme meningitis from aseptic meningitis.">
+					comment = <"Original version, c 2009">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -87,7 +98,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -95,15 +106,15 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Number of days of headache">
-					description = <"*">
+					description = <"">
 				>
 				["at0005"] = <
 					text = <"<7">
-					description = <"*">
+					description = <"">
 				>
 				["at0006"] = <
 					text = <"≥7">
-					description = <"*">
+					description = <"">
 				>
 				["at0007"] = <
 					text = <"CSF mononuclear cells">
@@ -111,27 +122,36 @@ ontology
 				>
 				["at0008"] = <
 					text = <"<70%">
-					description = <"*">
+					description = <"">
 				>
 				["at0009"] = <
 					text = <"≥70%">
-					description = <"*">
+					description = <"">
 				>
 				["at0010"] = <
 					text = <"7th (or other) cranial nerve palsy">
-					description = <"*">
+					description = <"">
 				>
 				["at0011"] = <
 					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0012"] = <
 					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0013"] = <
 					text = <"Total score">
-					description = <"*">
+					description = <"The total sum of each component parameter for the rule of 7s score.">
+				>
+				["at0014"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0015"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
 				>
 			>
 		>
