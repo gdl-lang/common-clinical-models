@@ -15,21 +15,21 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record the results for each component parameter and total number of criteria present">
+			purpose = <"To record the results for each component parameter and total number of criteria present.">
 			use = <"Use to record the results for each component parameter and total number of criteria present.">
 			keywords = <"CT", "pediatric", "blunt", "trauma", "head">
 			misuse = <"">
-			copyright = <"Cambio CDS">
+			copyright = <"© Cambio CDS">
 		>
 	>
 	lifecycle_state = <"Initial">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Mower WR, Hoffman JR, Herbert M, Wolfson AB, Pollack CV Jr, Zucker MI; NEXUS II Investigators. Developing a decision instrument to guide computed tomographic imaging of blunt head injury patients. J Trauma. 2005 Oct;59(4):954-9. doi: 10.1097/01.ta.0000187813.79047.42. PMID: 16374287.
-2. Oman JA, Cooper RJ, Holmes JF, Viccellio P, Nyce A, Ross SE, Hoffman JR, Mower WR; NEXUS II Investigators. Performance of a decision rule to predict need for computed tomography among children with blunt head trauma. Pediatrics. 2006 Feb;117(2):e238-46. doi: 10.1542/peds.2005-1063. Epub 2006 Jan 17. PMID: 16418311.
-3. Gupta M, Mower WR, Rodriguez RM, Hendey GW. Validation of the Pediatric NEXUS II Head Computed Tomography Decision Instrument for Selective Imaging of Pediatric Patients with Blunt Head Trauma. Acad Emerg Med. 2018 Jul;25(7):729-737. doi: 10.1111/acem.13431. Epub 2018 Jun 8. PMID: 29665151.">
+		["references"] = <"Mower WR, Hoffman JR, Herbert M, Wolfson AB, Pollack CV Jr, Zucker MI; NEXUS II Investigators. Developing a decision instrument to guide computed tomographic imaging of blunt head injury patients. J Trauma. 2005 Oct;59(4):954-9. doi: 10.1097/01.ta.0000187813.79047.42. PMID: 16374287.
+
+Oman JA, Cooper RJ, Holmes JF, Viccellio P, Nyce A, Ross SE, Hoffman JR, Mower WR; NEXUS II Investigators. Performance of a decision rule to predict need for computed tomography among children with blunt head trauma. Pediatrics. 2006 Feb;117(2):e238-46. doi: 10.1542/peds.2005-1063. Epub 2006 Jan 17. PMID: 16418311.">
 		["current_contact"] = <"maryam.razavi@cambio.se">
-		["MD5-CAM-1.0.1"] = <"A4C5ADEDBA0D4CB300CAEB3520C8492C">
+		["MD5-CAM-1.0.1"] = <"E9F008E895D164EE63F326AEB5F7CD92">
 	>
 
 definition
@@ -37,7 +37,7 @@ definition
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
@@ -49,38 +49,38 @@ definition
 									}
 									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Scalp hematoma
 										value matches {
-											0|[local::at0008], 	-- No
-											1|[local::at0009]  	-- Yes
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
 										}
 									}
 									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Neurologic deficit
 										value matches {
-											0|[local::at0011], 	-- No
-											1|[local::at0012]  	-- Yes
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
 										}
 									}
 									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Abnormal level of alertness
 										value matches {
-											0|[local::at0014], 	-- No
-											1|[local::at0015]  	-- Yes
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
 										}
 									}
 									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Abnormal behavior
 										value matches {
-											0|[local::at0017], 	-- No
-											1|[local::at0018]  	-- Yes
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
 										}
 									}
 									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Persistent vomiting
 										value matches {
-											0|[local::at0020], 	-- No
-											1|[local::at0021]  	-- Yes
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
 										}
 									}
 									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Coagulopathy
 										value matches {
-											0|[local::at0023], 	-- No
-											1|[local::at0024]  	-- Yes
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
 										}
 									}
 									ELEMENT[at0025] occurrences matches {0..1} matches {	-- Total score
@@ -97,6 +97,16 @@ definition
 				}
 			}
 		}
+		protocol matches {
+			ITEM_TREE[at0026] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0027] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
 	}
 
 ontology
@@ -106,6 +116,7 @@ ontology
 				["at0000"] = <
 					text = <"Pediatric NEXUS II head CT decision">
 					description = <"An assessment criteria used to predict need for head computed tomography (CT) scan after pediatric blunt head injury.">
+					comment = <"Original version, c 2006">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -113,7 +124,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -127,87 +138,48 @@ Depressed/diastatic: palpable step-off, stellate laceration from a point source,
 				>
 				["at0005"] = <
 					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0006"] = <
 					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0007"] = <
 					text = <"Scalp hematoma">
 					description = <"Injuries not involving calvarium (e.g. hematomas limited to the face/neck) are not considered scalp hematomas">
 				>
-				["at0008"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0009"] = <
-					text = <"Yes">
-					description = <"*">
-				>
 				["at0010"] = <
 					text = <"Neurologic deficit">
 					description = <"Any abnormal neurologic finding revealed by detailed exam, e.g. motor or sensory deficits (abnormal weakness/sensation in ≥1 extremity; cranial nerve abnormality (particularly II through XII); cerebellar abnormality as manifested by ataxia, dysmetria, dysdiadokinesis, or other impairment of cerebellar function (as determined by systematic testing of cerebellar function, including tests of ataxia and finger-nose-finger, heel-to-shin, and rapid alternating movements); gait abnormality or inability to walk normally due to inadequate strength, loss of balance, or ataxia; perform systematic testing of gait, including tandem and heel-to-toe walking, and Romberg testing); or any other impairment of neurologic function">
-				>
-				["at0011"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0012"] = <
-					text = <"Yes">
-					description = <"*">
 				>
 				["at0013"] = <
 					text = <"Abnormal level of alertness">
 					description = <"e.g. GCS ≤14; delayed or inappropriate response to external stimuli; excessive somnolence; disorientation to person, place, time, or events; inability to remember three objects at 5 mins; perseverating speech">
 				>
-				["at0014"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0015"] = <
-					text = <"Yes">
-					description = <"*">
-				>
 				["at0016"] = <
 					text = <"Abnormal behavior">
 					description = <"Any inappropriate action, e.g. excessive agitation, inconsolability, refusal to cooperate, lack of affective response to questions or events, violent activity">
-				>
-				["at0017"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0018"] = <
-					text = <"Yes">
-					description = <"*">
 				>
 				["at0019"] = <
 					text = <"Persistent vomiting">
 					description = <"Recurrent projectile or forceful emesis (>1 episode), either observed or by history, after trauma">
 				>
-				["at0020"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0021"] = <
-					text = <"Yes">
-					description = <"*">
-				>
 				["at0022"] = <
 					text = <"Coagulopathy">
 					description = <"Any clotting impairment, e.g. hemophilia, secondary to medications (Coumadin, heparin, aspirin, etc), hepatic insufficiency">
 				>
-				["at0023"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0024"] = <
-					text = <"Yes">
-					description = <"*">
-				>
 				["at0025"] = <
 					text = <"Total score">
-					description = <"*">
+					description = <"The total sum of each present criteria.">
+				>
+				["at0026"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0027"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
 				>
 			>
 		>
