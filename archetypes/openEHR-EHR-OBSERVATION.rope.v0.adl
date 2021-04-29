@@ -19,17 +19,15 @@ description
 			use = <"Use to record the results for each component parameter and their total sum for the RoPE score.">
 			keywords = <"stroke", "PFO ", "stroke", "cryptogenic", "CS", "patent", "foramen", "ovale">
 			misuse = <"">
-			copyright = <"Cambio CDS">
+			copyright = <"© Cambio CDS">
 		>
 	>
 	lifecycle_state = <"Initial">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Kent DM, Ruthazer R, Weimar C, Mas JL, Serena J, Homma S, Di Angelantonio E, Di Tullio MR, Lutz JS, Elkind MS, Griffith J, Jaigobin C, Mattle HP, Michel P, Mono ML, Nedeltchev K, Papetti F, Thaler DE. An index to identify stroke-related vs incidental patent foramen ovale in cryptogenic stroke. Neurology. 2013 Aug 13;81(7):619-25. doi: 10.1212/WNL.0b013e3182a08d59. Epub 2013 Jul 17. PMID: 23864310; PMCID: PMC3775694.
-2. Prefasi D, Martínez-Sánchez P, Fuentes B, Díez-Tejedor E. The utility of the RoPE score in cryptogenic stroke patients ≤50 years in predicting a stroke-related patent foramen ovale. Int J Stroke. 2016 Jan;11(1):NP7-8. doi: 10.1177/1747493015607505. PMID: 26763040.
-3. Kent DM, Saver JL, Ruthazer R, Furlan AJ, Reisman M, Carroll JD, Smalling RW, Jüni P, Mattle HP, Meier B, Thaler DE. Risk of Paradoxical Embolism (RoPE)-Estimated Attributable Fraction Correlates With the Benefit of Patent Foramen Ovale Closure: An Analysis of 3 Trials. Stroke. 2020 Oct;51(10):3119-3123. doi: 10.1161/STROKEAHA.120.029350. Epub 2020 Sep 14. PMID: 32921262; PMCID: PMC7831886.">
+		["references"] = <"Kent DM, Ruthazer R, Weimar C, Mas JL, Serena J, Homma S, Di Angelantonio E, Di Tullio MR, Lutz JS, Elkind MS, Griffith J, Jaigobin C, Mattle HP, Michel P, Mono ML, Nedeltchev K, Papetti F, Thaler DE. An index to identify stroke-related vs incidental patent foramen ovale in cryptogenic stroke. Neurology. 2013 Aug 13;81(7):619-25. doi: 10.1212/WNL.0b013e3182a08d59. Epub 2013 Jul 17. PMID: 23864310; PMCID: PMC3775694.">
 		["current_contact"] = <"maryam.razavi@cambio.se">
-		["MD5-CAM-1.0.1"] = <"4D9B8822F1C05BEC0A3875AE73381BE6">
+		["MD5-CAM-1.0.1"] = <"DAE6C15E615466441922A5071292FC3D">
 	>
 
 definition
@@ -37,7 +35,7 @@ definition
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
@@ -59,26 +57,26 @@ definition
 									}
 									ELEMENT[at0014] occurrences matches {0..1} matches {	-- History of diabetes
 										value matches {
-											0|[local::at0015], 	-- Yes
-											1|[local::at0016]  	-- No
+											0|[local::at0012], 	-- Yes
+											1|[local::at0013]  	-- No
 										}
 									}
 									ELEMENT[at0017] occurrences matches {0..1} matches {	-- History of stroke or TIA
 										value matches {
-											0|[local::at0019], 	-- Yes
-											1|[local::at0018]  	-- No
+											0|[local::at0012], 	-- Yes
+											1|[local::at0013]  	-- No
 										}
 									}
 									ELEMENT[at0020] occurrences matches {0..1} matches {	-- Smoker
 										value matches {
-											0|[local::at0021], 	-- Yes
-											1|[local::at0022]  	-- No
+											0|[local::at0012], 	-- Yes
+											1|[local::at0013]  	-- No
 										}
 									}
 									ELEMENT[at0023] occurrences matches {0..1} matches {	-- Cortical infarct on imaging
 										value matches {
-											0|[local::at0024], 	-- No
-											1|[local::at0025]  	-- Yes
+											0|[local::at0012], 	-- Yes
+											1|[local::at0013]  	-- No
 										}
 									}
 									ELEMENT[at0026] occurrences matches {0..1} matches {	-- Total score
@@ -95,6 +93,16 @@ definition
 				}
 			}
 		}
+		protocol matches {
+			ITEM_TREE[at0027] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0028] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
 	}
 
 ontology
@@ -104,6 +112,7 @@ ontology
 				["at0000"] = <
 					text = <"Risk of Paradoxical Embolism (RoPE) score">
 					description = <"An assessment score used to identify stroke-related patent foramen ovale (PFO) in patients with cryptogenic stroke (CS).">
+					comment = <"Original version, c 2013">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -111,7 +120,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -119,95 +128,72 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Age">
-					description = <"*">
+					description = <"">
 				>
 				["at0005"] = <
 					text = <"≥70 years">
-					description = <"*">
+					description = <"">
 				>
 				["at0006"] = <
 					text = <"60-69 years">
-					description = <"*">
+					description = <"">
 				>
 				["at0007"] = <
 					text = <"50-59 years">
-					description = <"*">
+					description = <"">
 				>
 				["at0008"] = <
 					text = <"40-49 years">
-					description = <"*">
+					description = <"">
 				>
 				["at0009"] = <
 					text = <"30-39 years">
-					description = <"*">
+					description = <"">
 				>
 				["at0010"] = <
 					text = <"18-29 years">
-					description = <"*">
+					description = <"">
 				>
 				["at0011"] = <
 					text = <"History of hypertension">
-					description = <"*">
+					description = <"">
 				>
 				["at0012"] = <
 					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0013"] = <
 					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0014"] = <
 					text = <"History of diabetes">
-					description = <"*">
-				>
-				["at0015"] = <
-					text = <"Yes">
-					description = <"*">
-				>
-				["at0016"] = <
-					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0017"] = <
 					text = <"History of stroke or TIA">
-					description = <"*">
-				>
-				["at0018"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0019"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0020"] = <
 					text = <"Smoker">
-					description = <"*">
-				>
-				["at0021"] = <
-					text = <"Yes">
-					description = <"*">
-				>
-				["at0022"] = <
-					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0023"] = <
 					text = <"Cortical infarct on imaging">
-					description = <"*">
-				>
-				["at0024"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0025"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0026"] = <
 					text = <"Total score">
-					description = <"*">
+					description = <"The total sum of each component parameter for the RoPE score.">
+				>
+				["at0027"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0028"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
 				>
 			>
 		>
