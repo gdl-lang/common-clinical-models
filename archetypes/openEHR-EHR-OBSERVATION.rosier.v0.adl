@@ -19,15 +19,15 @@ description
 			use = <"Use to record the results for each component parameter and the calculated ROSIER score.">
 			keywords = <"stroke", "ROSIER", "scale", "seizure", "weakness", "speech disturbance", "defect", "recognition", "emergency room">
 			misuse = <"">
-			copyright = <"Cambio CDS">
+			copyright = <"© Cambio CDS">
 		>
 	>
 	lifecycle_state = <"Initial">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Nor AM, Davis J, Sen B, et al. The Recognition of Stroke in the Emergency Room (ROSIER) scale: development and validation of a stroke recognition instrument. Lancet Neurol [Internet]. 2005 [cited 2021 Feb 16];4(11):727-34. Available from: https://pubmed.ncbi.nlm.nih.gov/16239179/">
+		["references"] = <"Nor AM, Davis J, Sen B, Shipsey D, Louw SJ, Dyker AG, Davis M, Ford GA. The Recognition of Stroke in the Emergency Room (ROSIER) scale: development and validation of a stroke recognition instrument. Lancet Neurol. 2005 Nov;4(11):727-34. doi: 10.1016/S1474-4422(05)70201-5. PMID: 16239179.">
 		["current_contact"] = <"Therese Lindberg, Cambio CDS<therese.lindberg@cambio.se>">
-		["MD5-CAM-1.0.1"] = <"7E9F32C3FBD4EA2F96F547B0EF545436">
+		["MD5-CAM-1.0.1"] = <"0D1C91BECBEE866DD49938FA2C6A5B53">
 	>
 
 definition
@@ -35,62 +35,79 @@ definition
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
 									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Loss of consciousness or syncope
 										value matches {
-											0|[local::at0005], 	-- No
-											1|[local::at0006]  	-- Yes
+											-1|[local::at0006], 	-- Yes
+											0|[local::at0005]  	-- No
 										}
 									}
 									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Seizure activity
 										value matches {
-											0|[local::at0008], 	-- No
-											1|[local::at0009]  	-- Yes
+											-1|[local::at0006], 	-- Yes
+											0|[local::at0005]  	-- No
 										}
 									}
 									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Asymmetric facial weakness
 										value matches {
-											0|[local::at0011], 	-- No
-											1|[local::at0012]  	-- Yes
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
 										}
 									}
 									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Asymmetric arm weakness
 										value matches {
-											0|[local::at0014], 	-- No
-											1|[local::at0015]  	-- Yes
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
 										}
 									}
 									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Asymmetric leg weakness
 										value matches {
-											0|[local::at0024], 	-- No
-											1|[local::at0025]  	-- Yes
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
 										}
 									}
 									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Speech disturbance
 										value matches {
-											0|[local::at0018], 	-- No
-											1|[local::at0019]  	-- Yes
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
 										}
 									}
 									ELEMENT[at0020] occurrences matches {0..1} matches {	-- Visual field defect
 										value matches {
-											0|[local::at0021], 	-- No
-											1|[local::at0022]  	-- Yes
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
 										}
 									}
 									ELEMENT[at0023] occurrences matches {0..1} matches {	-- Total score
 										value matches {
-											DV_COUNT matches {
-												magnitude matches {|-2..5|}
-											}
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+														magnitude = <|-2.0..5.0|>
+														precision = <|0|>
+													>
+												>
+											>
 										}
 									}
 								}
 							}
 						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0026] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0027] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
 					}
 				}
 			}
@@ -104,6 +121,7 @@ ontology
 				["at0000"] = <
 					text = <"Recognition of stroke in the emergency room (ROSIER) ">
 					description = <"An assessment score used to predict the likelihood of stroke and distinguish between acute stroke and stroke mimics.">
+					comment = <"Original version, c 2005">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -111,7 +129,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -119,91 +137,52 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Loss of consciousness or syncope">
-					description = <"*">
+					description = <"">
 				>
 				["at0005"] = <
 					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0006"] = <
 					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0007"] = <
 					text = <"Seizure activity">
-					description = <"*">
-				>
-				["at0008"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0009"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0010"] = <
 					text = <"Asymmetric facial weakness">
-					description = <"*">
-				>
-				["at0011"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0012"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0013"] = <
 					text = <"Asymmetric arm weakness">
-					description = <"*">
-				>
-				["at0014"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0015"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0016"] = <
 					text = <"Asymmetric leg weakness">
-					description = <"*">
+					description = <"">
 				>
 				["at0017"] = <
 					text = <"Speech disturbance">
-					description = <"*">
-				>
-				["at0018"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0019"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0020"] = <
 					text = <"Visual field defect">
-					description = <"*">
-				>
-				["at0021"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0022"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0023"] = <
 					text = <"Total score">
-					description = <"*">
+					description = <"The total sum of each component parameter for the ROSIER score.">
 				>
-				["at0024"] = <
-					text = <"No">
-					description = <"*">
+				["at0026"] = <
+					text = <"Tree">
+					description = <"@ internal @">
 				>
-				["at0025"] = <
-					text = <"Yes">
-					description = <"*">
+				["at0027"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
 				>
 			>
 		>

@@ -19,15 +19,15 @@ description
 			use = <"Use to record the results for each component parameter and their total sum for the NEDOCS score.">
 			keywords = <"NEDOCS", "score", "emergency", "department", "overcrowding", "hospital", "beds", "patients", "waiting", "room">
 			misuse = <"">
-			copyright = <"Cambio CDS">
+			copyright = <"© Cambio CDS">
 		>
 	>
 	lifecycle_state = <"Initial">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Weiss SJ, Derlet R, Arndahl J, Ernst AA, Richards J, Fernández-Frackelton M, Schwab R, Stair TO, Vicellio P, Levy D, Brautigan M, Johnson A, Nick TG. Estimating the degree of emergency department overcrowding in academic medical centers: results of the National ED Overcrowding Study (NEDOCS). Acad Emerg Med [Internet]. 2004 Jan [cited 2021 March 9];11(1):38-50. Erratum in: Acad Emerg Med. 2004 Apr;11(4):408. Fernández-Frankelton M [corrected to Fernández-Frackelton M]. PMID: 14709427.">
+		["references"] = <"Weiss SJ, Derlet R, Arndahl J, Ernst AA, Richards J, Fernández-Frackelton M, Schwab R, Stair TO, Vicellio P, Levy D, Brautigan M, Johnson A, Nick TG. Estimating the degree of emergency department overcrowding in academic medical centers: results of the National ED Overcrowding Study (NEDOCS). Acad Emerg Med. 2004 Jan;11(1):38-50. doi: 10.1197/j.aem.2003.07.017. Erratum in: Acad Emerg Med. 2004 Apr;11(4):408. Fernández-Frankelton M [corrected to Fernández-Frackelton M]. PMID: 14709427.">
 		["current_contact"] = <"Therese Lindberg, Cambio CDS<therese.lindberg@cambio.se>">
-		["MD5-CAM-1.0.1"] = <"F3270FCCBB71148A4D37A484C8F215F0">
+		["MD5-CAM-1.0.1"] = <"1D45621E04CB409ABB55326AD88CE33F">
 	>
 
 definition
@@ -35,68 +35,43 @@ definition
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
 									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Number of ED beds
 										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::380]>
-												list = <
-													["1"] = <
-														units = <"1">
-													>
-												>
-											>
+											DV_COUNT matches {
+												magnitude matches {|>=0|}
+											}
 										}
 									}
 									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Number of hospital beds
 										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::380]>
-												list = <
-													["1"] = <
-														units = <"1">
-													>
-												>
-											>
+											DV_COUNT matches {
+												magnitude matches {|>=0|}
+											}
 										}
 									}
 									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Total patients in the ED
 										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::380]>
-												list = <
-													["1"] = <
-														units = <"1">
-													>
-												>
-											>
+											DV_COUNT matches {
+												magnitude matches {|>=0|}
+											}
 										}
 									}
 									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Patients on ventilators in the ED
 										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::380]>
-												list = <
-													["1"] = <
-														units = <"1">
-													>
-												>
-											>
+											DV_COUNT matches {
+												magnitude matches {|>=0|}
+											}
 										}
 									}
 									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Number of admits in the ED
 										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::380]>
-												list = <
-													["1"] = <
-														units = <"1">
-													>
-												>
-											>
+											DV_COUNT matches {
+												magnitude matches {|>=0|}
+											}
 										}
 									}
 									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Waiting time of longest admitted patient
@@ -132,6 +107,8 @@ definition
 												list = <
 													["1"] = <
 														units = <"1">
+														magnitude = <|>=0.0|>
+														precision = <|3|>
 													>
 												>
 											>
@@ -144,6 +121,8 @@ definition
 												list = <
 													["1"] = <
 														units = <"1">
+														magnitude = <|>=0.0|>
+														precision = <|3|>
 													>
 												>
 											>
@@ -156,6 +135,8 @@ definition
 												list = <
 													["1"] = <
 														units = <"1">
+														magnitude = <|>=0.0|>
+														precision = <|3|>
 													>
 												>
 											>
@@ -168,6 +149,8 @@ definition
 												list = <
 													["1"] = <
 														units = <"1">
+														magnitude = <|>=0.0|>
+														precision = <|3|>
 													>
 												>
 											>
@@ -180,6 +163,8 @@ definition
 												list = <
 													["1"] = <
 														units = <"1">
+														magnitude = <|>=0.0|>
+														precision = <|3|>
 													>
 												>
 											>
@@ -205,6 +190,16 @@ definition
 				}
 			}
 		}
+		protocol matches {
+			ITEM_TREE[at0017] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0018] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
 	}
 
 ontology
@@ -214,6 +209,7 @@ ontology
 				["at0000"] = <
 					text = <"NEDOCS score">
 					description = <"An assessment score for severity estimation of emergency department overcrowding.">
+					comment = <"Original version, c 2004">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -221,7 +217,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -233,7 +229,7 @@ ontology
 				>
 				["at0005"] = <
 					text = <"Number of hospital beds">
-					description = <"*">
+					description = <"">
 				>
 				["at0006"] = <
 					text = <"Total patients in the ED">
@@ -241,15 +237,15 @@ ontology
 				>
 				["at0007"] = <
 					text = <"Patients on ventilators in the ED">
-					description = <"*">
+					description = <"">
 				>
 				["at0008"] = <
 					text = <"Number of admits in the ED">
-					description = <"*">
+					description = <"">
 				>
 				["at0009"] = <
 					text = <"Waiting time of longest admitted patient">
-					description = <"*">
+					description = <"">
 				>
 				["at0010"] = <
 					text = <"Waiting time of longest waiting room patient">
@@ -257,27 +253,36 @@ ontology
 				>
 				["at0011"] = <
 					text = <"Total score">
-					description = <"*">
+					description = <"The total sum of each component parameter for the NEDOCS score.">
 				>
 				["at0012"] = <
 					text = <"Points for patindex">
-					description = <"*">
+					description = <"">
 				>
 				["at0013"] = <
 					text = <"Points for admit index">
-					description = <"*">
+					description = <"">
 				>
 				["at0014"] = <
 					text = <"Points for admit time">
-					description = <"*">
+					description = <"">
 				>
 				["at0015"] = <
 					text = <"Points for registration time">
-					description = <"*">
+					description = <"">
 				>
 				["at0016"] = <
 					text = <"Points for patients on respirator">
-					description = <"*">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0018"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
 				>
 			>
 		>

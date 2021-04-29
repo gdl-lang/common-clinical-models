@@ -15,19 +15,19 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record the results for each component parameter and the calculated RMI.">
-			use = <"Use to record the results for each component parameter and the calculated RMI.">
+			purpose = <"To record the results for each component parameter and the RMI score.">
+			use = <"Use to record the results for each component parameter and the RMI score.">
 			keywords = <"RMI", "ovarian cancer", "multilocated cysts", "solid areas", "bilateral lesions", "ascites", "intra-abdominal", "metastases", "malignancy", "serum ca-125", "cysts", "cancer">
 			misuse = <"">
-			copyright = <"Cambio CDS">
+			copyright = <"© Cambio CDS">
 		>
 	>
 	lifecycle_state = <"Initial">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Jacobs I, Oram D, Fairbanks J, Turner J, Frost C, Grudzinskas JG. A risk of malignancy index incorporating CA 125, ultrasound and menopausal status for the accurate preoperative diagnosis of ovarian cancer. Br J Obstet Gynaecol. 1990 Oct;97(10):922-9. doi: 10.1111/j.1471-0528.1990.tb02448.x. PMID: 2223684.">
+		["references"] = <"Jacobs I, Oram D, Fairbanks J, Turner J, Frost C, Grudzinskas JG. A risk of malignancy index incorporating CA 125, ultrasound and menopausal status for the accurate preoperative diagnosis of ovarian cancer. Br J Obstet Gynaecol. 1990 Oct;97(10):922-9. doi: 10.1111/j.1471-0528.1990.tb02448.x. PMID: 2223684.">
 		["current_contact"] = <"Therese Lindberg, Cambio CDS<therese.lindberg@cambio.se>">
-		["MD5-CAM-1.0.1"] = <"F425FAE43CA5764FD3E04FA57B3FF776">
+		["MD5-CAM-1.0.1"] = <"4183F127C38C09B24566DF405DC528EB">
 	>
 
 definition
@@ -35,7 +35,7 @@ definition
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
@@ -49,26 +49,26 @@ definition
 											}
 											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Solid areas
 												value matches {
-													0|[local::at0009], 	-- No
-													1|[local::at0010]  	-- Yes
+													0|[local::at0006], 	-- No
+													1|[local::at0007]  	-- Yes
 												}
 											}
 											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Bilateral lesions
 												value matches {
-													0|[local::at0012], 	-- No
-													1|[local::at0013]  	-- Yes
+													0|[local::at0006], 	-- No
+													1|[local::at0007]  	-- Yes
 												}
 											}
 											ELEMENT[at0014] occurrences matches {0..1} matches {	-- Ascites
 												value matches {
-													0|[local::at0015], 	-- No
-													1|[local::at0016]  	-- Yes
+													0|[local::at0006], 	-- No
+													1|[local::at0007]  	-- Yes
 												}
 											}
 											ELEMENT[at0017] occurrences matches {0..1} matches {	-- Intra-abdominal metastases
 												value matches {
-													0|[local::at0018], 	-- No
-													1|[local::at0019]  	-- Yes
+													0|[local::at0006], 	-- No
+													1|[local::at0007]  	-- Yes
 												}
 											}
 											ELEMENT[at0020] occurrences matches {0..1} matches {	-- Ultrasound features score
@@ -90,16 +90,33 @@ definition
 											}
 										}
 									}
-									ELEMENT[at0025] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0025] occurrences matches {0..1} matches {	-- RMI score
 										value matches {
-											DV_COUNT matches {
-												magnitude matches {|>=0|}
-											}
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+														magnitude = <|>=0.0|>
+														precision = <|1|>
+													>
+												>
+											>
 										}
 									}
 								}
 							}
 						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0026] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0027] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
 					}
 				}
 			}
@@ -112,7 +129,8 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Risk of malignancy index (RMI) for ovarian cancer">
-					description = <"An assessment score used for risk of malignancy index (RMI) to predict the risk if an adnexal mass is malignant.">
+					description = <"An assessment score used to predict risk that an adnexal mass is malignant.">
+					comment = <"Original version, c 1990">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -120,7 +138,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -128,75 +146,43 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Ultrasound features">
-					description = <"*">
+					description = <"">
 				>
 				["at0005"] = <
 					text = <"Multiloculated cysts">
-					description = <"*">
+					description = <"">
 				>
 				["at0006"] = <
 					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0007"] = <
 					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0008"] = <
 					text = <"Solid areas">
-					description = <"*">
-				>
-				["at0009"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0010"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0011"] = <
 					text = <"Bilateral lesions">
-					description = <"*">
-				>
-				["at0012"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0013"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0014"] = <
 					text = <"Ascites">
-					description = <"*">
-				>
-				["at0015"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0016"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0017"] = <
 					text = <"Intra-abdominal metastases">
-					description = <"*">
-				>
-				["at0018"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0019"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0020"] = <
 					text = <"Ultrasound features score">
-					description = <"*">
+					description = <"">
 				>
 				["at0021"] = <
 					text = <"Other features">
-					description = <"*">
+					description = <"">
 				>
 				["at0022"] = <
 					text = <"Menopausal status">
@@ -204,15 +190,24 @@ ontology
 				>
 				["at0023"] = <
 					text = <"Premenopausal or perimenopausal">
-					description = <"*">
+					description = <"">
 				>
 				["at0024"] = <
 					text = <"Postmenopausal">
-					description = <"*">
+					description = <"">
 				>
 				["at0025"] = <
-					text = <"Total score">
-					description = <"*">
+					text = <"RMI score">
+					description = <"">
+				>
+				["at0026"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0027"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
 				>
 			>
 		>

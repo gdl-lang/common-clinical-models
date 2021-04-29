@@ -18,12 +18,12 @@
         "id": "en",
         "purpose": "To calculate the probability of ACS or MACE.",
         "keywords": [
-          "he-macs",
+          "HE-MACS",
           "electrocardiogram",
           "coronary",
-          "acs",
+          "ACS",
           "risk",
-          "manchester",
+          "Manchester",
           "acute",
           "syndrome"
         ],
@@ -46,23 +46,35 @@
         "elements": {
           "gt0005": {
             "id": "gt0005",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0012]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0012]"
           },
           "gt0006": {
             "id": "gt0006",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0013]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
           },
           "gt0007": {
             "id": "gt0007",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0014]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
           },
           "gt0008": {
             "id": "gt0008",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0015]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0015]"
           },
           "gt0010": {
             "id": "gt0010",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0017]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0017]"
+          },
+          "gt0024": {
+            "id": "gt0024",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0038]"
+          },
+          "gt0028": {
+            "id": "gt0028",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0033]"
+          },
+          "gt0033": {
+            "id": "gt0033",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0016]"
           }
         }
       },
@@ -75,14 +87,6 @@
           "gt0012": {
             "id": "gt0012",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0031]"
-          },
-          "gt0028": {
-            "id": "gt0028",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0033]"
-          },
-          "gt0033": {
-            "id": "gt0033",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0016]"
           }
         }
       },
@@ -97,70 +101,9 @@
             "path": "/data[at0001]/items[at0002]"
           }
         }
-      },
-      "gt0022": {
-        "id": "gt0022",
-        "model_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
-        "template_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
-        "type": "INPUT",
-        "elements": {
-          "gt0023": {
-            "id": "gt0023",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
-          },
-          "gt0024": {
-            "id": "gt0024",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
-          }
-        }
-      },
-      "gt0030": {
-        "id": "gt0030",
-        "model_id": "openEHR-EHR-OBSERVATION.blood_pressure.v1",
-        "template_id": "openEHR-EHR-OBSERVATION.blood_pressure.v1",
-        "type": "INPUT",
-        "elements": {
-          "gt0031": {
-            "id": "gt0031",
-            "path": "/data[at0001]/events[at0006]/data[at0003]/items[at0004]"
-          }
-        }
       }
     },
-    "default_actions": [
-      "$gt0033|Systolic BP <100 mmHg|=0|local::at0026|No|"
-    ],
     "rules": {
-      "gt0026": {
-        "id": "gt0026",
-        "priority": 9,
-        "when": [
-          "$gt0023|Sex|==local::at0006|Female|"
-        ],
-        "then": [
-          "$gt0028|Sex|=0|local::at0034|Female|"
-        ]
-      },
-      "gt0029": {
-        "id": "gt0029",
-        "priority": 8,
-        "when": [
-          "$gt0023|Sex|==local::at0005|Male|"
-        ],
-        "then": [
-          "$gt0028|Sex|=1|local::at0035|Male|"
-        ]
-      },
-      "gt0032": {
-        "id": "gt0032",
-        "priority": 7,
-        "when": [
-          "$gt0031|Systolic BP|<100,mm[Hg]"
-        ],
-        "then": [
-          "$gt0033|Systolic BP <100 mmHg|=1|local::at0027|Yes|"
-        ]
-      },
       "gt0016": {
         "id": "gt0016",
         "priority": 6,
@@ -310,37 +253,15 @@
             "id": "gt0021",
             "text": "Set interpretation for ACS >= 50"
           },
-          "gt0023": {
-            "id": "gt0023",
-            "text": "Sex",
-            "description": "*"
-          },
           "gt0024": {
             "id": "gt0024",
             "text": "Age",
             "description": "Age in years, and for babies: months, weeks or days"
           },
-          "gt0026": {
-            "id": "gt0026",
-            "text": "Set points for Gender = female"
-          },
           "gt0028": {
             "id": "gt0028",
             "text": "Sex",
             "description": ""
-          },
-          "gt0029": {
-            "id": "gt0029",
-            "text": "Set points for Gender = male"
-          },
-          "gt0031": {
-            "id": "gt0031",
-            "text": "Systolic BP",
-            "description": "Peak systemic arterial blood pressure  - measured in systolic or contraction phase of the heart cycle."
-          },
-          "gt0032": {
-            "id": "gt0032",
-            "text": "Set Systolic BP <100 mmHg"
           },
           "gt0033": {
             "id": "gt0033",
