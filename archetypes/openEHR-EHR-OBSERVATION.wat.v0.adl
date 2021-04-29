@@ -15,20 +15,19 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record the results for each component parameter (withdrawal symptoms) and their total sum for the WAT-1 score. ">
-			use = <"To record the results for each component parameter (withdrawal symptoms) and their total sum for the WAT-1 score. ">
+			purpose = <"To record the results for each component parameter (withdrawal symptoms) and their total sum for the WAT-1 score.">
+			use = <"To record the results for each component parameter (withdrawal symptoms) and their total sum for the WAT-1 score.">
 			keywords = <"wat-1, withdrawal, opioid, benzodiazepine, pediatric", ...>
 			misuse = <"">
-			copyright = <"Cambio CDS">
+			copyright = <"© Cambio CDS">
 		>
 	>
 	lifecycle_state = <"Initial">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Franck LS, Harris SK, Soetenga DJ, Amling JK, Curley MA. The Withdrawal Assessment Tool-1 (WAT-1): an assessment instrument for monitoring opioid and benzodiazepine withdrawal symptoms in pediatric patients. Pediatr Crit Care Med. 2008 Nov;9(6):573-80. doi: 10.1097/PCC.0b013e31818c8328. PMID: 18838937; PMCID: PMC2775493.
-">
+		["references"] = <"Franck LS, Harris SK, Soetenga DJ, Amling JK, Curley MA. The Withdrawal Assessment Tool-1 (WAT-1): an assessment instrument for monitoring opioid and benzodiazepine withdrawal symptoms in pediatric patients. Pediatr Crit Care Med. 2008 Nov;9(6):573-80. doi: 10.1097/PCC.0b013e31818c8328. PMID: 18838937; PMCID: PMC2775493.">
 		["current_contact"] = <"Emma Malm, Cambio CDS, emma.snygg@hotmail.com">
-		["MD5-CAM-1.0.1"] = <"D86F318DF1E9D4BEF0A1496BA86CC5C1">
+		["MD5-CAM-1.0.1"] = <"B4F1C40197FED983D04C74C055F708AD">
 		["build_uid"] = <"ddc6323c-d6ae-35f8-b836-52773660c8c2">
 	>
 
@@ -41,7 +40,7 @@ definition
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									CLUSTER[at0004] occurrences matches {0..1} matches {	-- Assesment
+									CLUSTER[at0042] occurrences matches {0..1} matches {	-- Previous 12 hours
 										items cardinality matches {1..*; unordered} matches {
 											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Loose or watery stools
 												value matches {
@@ -51,17 +50,21 @@ definition
 											}
 											ELEMENT[at0006] occurrences matches {0..1} matches {	-- Vomiting, retching, or gagging
 												value matches {
-													0|[local::at0021], 	-- No
-													1|[local::at0022]  	-- Yes
+													0|[local::at0017], 	-- No
+													1|[local::at0018]  	-- Yes
 												}
 											}
-											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Temperature >100.0
+											ELEMENT[at0007] occurrences matches {0..1} matches {	-- Temperature >100.0 °F (37.8°C)
 												value matches {
-													0|[local::at0019], 	-- No
-													1|[local::at0020]  	-- Yes
+													0|[local::at0017], 	-- No
+													1|[local::at0018]  	-- Yes
 												}
 											}
-											ELEMENT[at0008] occurrences matches {0..1} matches {	-- State Behavioral Scale
+										}
+									}
+									CLUSTER[at0043] occurrences matches {0..1} matches {	-- Observe 2 mins before stimulus (e.g. routine care)
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- State Behavioral Scale (SBS)
 												value matches {
 													0|[local::at0023], 	-- ≤0 OR asleep or awake and calm
 													1|[local::at0024]  	-- ≥1 OR awake and distressed
@@ -75,14 +78,14 @@ definition
 											}
 											ELEMENT[at0010] occurrences matches {0..1} matches {	-- Sweating
 												value matches {
-													0|[local::at0027], 	-- No
-													1|[local::at0028]  	-- Yes
+													0|[local::at0017], 	-- No
+													1|[local::at0018]  	-- Yes
 												}
 											}
 											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Uncoordinated and/or repetitive movement
 												value matches {
-													0|[local::at0029], 	-- None or mild
-													1|[local::at0030]  	-- Moderate to severe
+													0|[local::at0025], 	-- None or mild
+													1|[local::at0026]  	-- Moderate to severe
 												}
 											}
 											ELEMENT[at0012] occurrences matches {0..1} matches {	-- Yawning or sneezing
@@ -91,10 +94,14 @@ definition
 													1|[local::at0032]  	-- ≥2 times
 												}
 											}
+										}
+									}
+									CLUSTER[at0044] occurrences matches {0..1} matches {	-- Observe during 1 min progressive stimulus
+										items cardinality matches {1..*; unordered} matches {
 											ELEMENT[at0013] occurrences matches {0..1} matches {	-- Startle to touch
 												value matches {
-													0|[local::at0033], 	-- None or mild
-													1|[local::at0034]  	-- Moderate to severe
+													0|[local::at0025], 	-- None or mild
+													1|[local::at0026]  	-- Moderate to severe
 												}
 											}
 											ELEMENT[at0014] occurrences matches {0..1} matches {	-- Muscle tone
@@ -103,7 +110,11 @@ definition
 													1|[local::at0036]  	-- Increased
 												}
 											}
-											ELEMENT[at0015] occurrences matches {0..1} matches {	-- Time to gain calm state
+										}
+									}
+									CLUSTER[at0045] occurrences matches {0..1} matches {	-- Post-stimulus recovery
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0015] occurrences matches {0..1} matches {	-- Time to gain calm state (SBS ≤0)
 												value matches {
 													0|[local::at0037], 	-- <2 min
 													1|[local::at0038], 	-- 2-5 min
@@ -126,6 +137,16 @@ definition
 				}
 			}
 		}
+		protocol matches {
+			ITEM_TREE[at0040] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0041] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
 	}
 
 ontology
@@ -135,6 +156,7 @@ ontology
 				["at0000"] = <
 					text = <"Withdrawal assessment tool (WAT-1) for pediatric withdrawal">
 					description = <"An assessment tool used to estimate severity of opioid and benzodiazepine withdrawal in children.">
+					comment = <"Original version, c 2008">
 				>
 				["at0001"] = <
 					text = <"History">
@@ -142,155 +164,136 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
 					description = <"@ internal @">
 				>
-				["at0004"] = <
-					text = <"Assesment">
-					description = <"*">
-				>
 				["at0005"] = <
 					text = <"Loose or watery stools">
-					description = <"Previous 12 hours">
+					description = <"">
 				>
 				["at0006"] = <
 					text = <"Vomiting, retching, or gagging">
-					description = <"Previous 12 hours">
+					description = <"">
 				>
 				["at0007"] = <
-					text = <"Temperature >100.0">
-					description = <"Previous 12 hours">
+					text = <"Temperature >100.0 °F (37.8°C)">
+					description = <"">
 				>
 				["at0008"] = <
-					text = <"State Behavioral Scale">
-					description = <"Observe 2 mins before stimulus (e.g. routine care)">
+					text = <"State Behavioral Scale (SBS)">
+					description = <"">
 				>
 				["at0009"] = <
 					text = <"Tremor">
-					description = <"Observe 2 mins before stimulus (e.g. routine care)">
+					description = <"">
 				>
 				["at0010"] = <
 					text = <"Sweating">
-					description = <"Observe 2 mins before stimulus (e.g. routine care)">
+					description = <"">
 				>
 				["at0011"] = <
 					text = <"Uncoordinated and/or repetitive movement">
-					description = <"Observe 2 mins before stimulus (e.g. routine care)">
+					description = <"">
 				>
 				["at0012"] = <
 					text = <"Yawning or sneezing">
-					description = <"Observe 2 mins before stimulus (e.g. routine care)">
+					description = <"">
 				>
 				["at0013"] = <
 					text = <"Startle to touch">
-					description = <"Observe during 1 min progressive stimulus">
+					description = <"">
 				>
 				["at0014"] = <
 					text = <"Muscle tone">
-					description = <"Observe during 1 min progressive stimulus">
+					description = <"">
 				>
 				["at0015"] = <
-					text = <"Time to gain calm state">
-					description = <"Post-stimulus recovery">
+					text = <"Time to gain calm state (SBS ≤0)">
+					description = <"">
 				>
 				["at0016"] = <
 					text = <"Total score">
-					description = <"*">
+					description = <"The total sum of each component parameter for the WAT-1 score.">
 				>
 				["at0017"] = <
 					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0018"] = <
 					text = <"Yes">
-					description = <"*">
-				>
-				["at0019"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0020"] = <
-					text = <"Yes">
-					description = <"*">
-				>
-				["at0021"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0022"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0023"] = <
 					text = <"≤0 OR asleep or awake and calm">
-					description = <"*">
+					description = <"">
 				>
 				["at0024"] = <
 					text = <"≥1 OR awake and distressed">
-					description = <"*">
+					description = <"">
 				>
 				["at0025"] = <
 					text = <"None or mild">
-					description = <"*">
+					description = <"">
 				>
 				["at0026"] = <
 					text = <"Moderate to severe">
-					description = <"*">
-				>
-				["at0027"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0028"] = <
-					text = <"Yes">
-					description = <"*">
-				>
-				["at0029"] = <
-					text = <"None or mild">
-					description = <"*">
-				>
-				["at0030"] = <
-					text = <"Moderate to severe">
-					description = <"*">
+					description = <"">
 				>
 				["at0031"] = <
 					text = <"0-1 time">
-					description = <"*">
+					description = <"">
 				>
 				["at0032"] = <
 					text = <"≥2 times">
-					description = <"*">
-				>
-				["at0033"] = <
-					text = <"None or mild">
-					description = <"*">
-				>
-				["at0034"] = <
-					text = <"Moderate to severe">
-					description = <"*">
+					description = <"">
 				>
 				["at0035"] = <
 					text = <"Normal">
-					description = <"*">
+					description = <"">
 				>
 				["at0036"] = <
 					text = <"Increased">
-					description = <"*">
+					description = <"">
 				>
 				["at0037"] = <
 					text = <"<2 min">
-					description = <"*">
+					description = <"">
 				>
 				["at0038"] = <
 					text = <"2-5 min">
-					description = <"*">
+					description = <"">
 				>
 				["at0039"] = <
 					text = <">5 min">
-					description = <"*">
+					description = <"">
+				>
+				["at0040"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0041"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
+				>
+				["at0042"] = <
+					text = <"Previous 12 hours">
+					description = <"">
+				>
+				["at0043"] = <
+					text = <"Observe 2 mins before stimulus (e.g. routine care)">
+					description = <"">
+				>
+				["at0044"] = <
+					text = <"Observe during 1 min progressive stimulus">
+					description = <"">
+				>
+				["at0045"] = <
+					text = <"Post-stimulus recovery">
+					description = <"">
 				>
 			>
 		>
