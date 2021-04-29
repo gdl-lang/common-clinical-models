@@ -17,17 +17,17 @@ description
 			language = <[ISO_639-1::en]>
 			purpose = <"To record the results for each component parameter and their total sum for the Mumtaz score.">
 			use = <"Use to record the results for each component parameter and their total sum for the Mumtaz score.">
-			keywords = <"mumtaz score", "readmission", "cirrhosis", "primary payer", "elixhauser comorbidity", "ascites", "heptocellular", "carcinoma", "paracentesis", "hemodialysis", "hepatic", "encephalopathy", "mumtaz">
-			misuse = <"Do not use in patients on mechanical ventilation, under palliative care consult, status post liver transplant, those admitted electively for any reason or patients <18 years old.">
-			copyright = <"Cambio CDS">
+			keywords = <"readmission", "cirrhosis", "primary payer", "elixhauser comorbidity", "ascites", "heptocellular", "carcinoma", "paracentesis", "hemodialysis", "hepatic", "encephalopathy", "mumtaz", "score">
+			misuse = <"">
+			copyright = <"© Cambio CDS">
 		>
 	>
 	lifecycle_state = <"Initial">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Mumtaz K, Issak A, Porter K, Kelly S, Hanje J, Michaels AJ, Conteh LF, El-Hinnawi A, Black SM, Abougergi MS. Validation of Risk Score in Predicting Early Readmissions in Decompensated Cirrhotic Patients: A Model Based on the Administrative Database. Hepatology. 2019 Aug;70(2):630-639. doi: 10.1002/hep.30274. Epub 2019 Feb 19. PMID: 30218583.">
+		["references"] = <"Mumtaz K, Issak A, Porter K, Kelly S, Hanje J, Michaels AJ, Conteh LF, El-Hinnawi A, Black SM, Abougergi MS. Validation of Risk Score in Predicting Early Readmissions in Decompensated Cirrhotic Patients: A Model Based on the Administrative Database. Hepatology. 2019 Aug;70(2):630-639. doi: 10.1002/hep.30274. Epub 2019 Feb 19. PMID: 30218583.">
 		["current_contact"] = <"Therese Lindberg, Cambio CDS<therese.lindberg@cambio.se>">
-		["MD5-CAM-1.0.1"] = <"C51FD9CEFCFC380D52B9FCDADD5949A3">
+		["MD5-CAM-1.0.1"] = <"9AF64DF670B1A3DEFE3C7FD89F593557">
 	>
 
 definition
@@ -35,11 +35,11 @@ definition
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Age, years
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Age
 										value matches {
 											0|[local::at0005], 	-- ≥65
 											4|[local::at0006], 	-- 40-65
@@ -69,38 +69,38 @@ definition
 									}
 									ELEMENT[at0020] occurrences matches {0..1} matches {	-- Ascites
 										value matches {
-											0|[local::at0021], 	-- No
-											5|[local::at0022]  	-- Yes
+											0|[local::at0018], 	-- No
+											5|[local::at0019]  	-- Yes
 										}
 									}
 									ELEMENT[at0023] occurrences matches {0..1} matches {	-- Hepatic encephalopathy
 										value matches {
-											0|[local::at0024], 	-- No
-											4|[local::at0025]  	-- Yes
+											0|[local::at0018], 	-- No
+											4|[local::at0019]  	-- Yes
 										}
 									}
 									ELEMENT[at0026] occurrences matches {0..1} matches {	-- Variceal bleeding
 										value matches {
-											-7|[local::at0028], 	-- Yes
-											0|[local::at0027]  	-- No
+											-7|[local::at0019], 	-- Yes
+											0|[local::at0018]  	-- No
 										}
 									}
 									ELEMENT[at0029] occurrences matches {0..1} matches {	-- Hepatocellular carcinoma
 										value matches {
-											0|[local::at0030], 	-- No
-											3|[local::at0031]  	-- Yes
+											0|[local::at0018], 	-- No
+											3|[local::at0019]  	-- Yes
 										}
 									}
 									ELEMENT[at0032] occurrences matches {0..1} matches {	-- Paracentesis during admission
 										value matches {
-											0|[local::at0033], 	-- No
-											4|[local::at0034]  	-- Yes
+											0|[local::at0018], 	-- No
+											4|[local::at0019]  	-- Yes
 										}
 									}
 									ELEMENT[at0035] occurrences matches {0..1} matches {	-- Hemodialysis during admission
 										value matches {
-											0|[local::at0036], 	-- No
-											7|[local::at0037]  	-- Yes
+											0|[local::at0018], 	-- No
+											7|[local::at0019]  	-- Yes
 										}
 									}
 									ELEMENT[at0038] occurrences matches {0..1} matches {	-- Disposition
@@ -119,6 +119,7 @@ definition
 													["1"] = <
 														units = <"1">
 														magnitude = <|-11.0..49.0|>
+														precision = <|0|>
 													>
 												>
 											>
@@ -127,6 +128,16 @@ definition
 								}
 							}
 						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0045] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0046] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
 					}
 				}
 			}
@@ -140,6 +151,7 @@ ontology
 				["at0000"] = <
 					text = <"Mumtaz score">
 					description = <"An assessment score used to predict the 30-day readmission risk in patients with cirrhosis.">
+					comment = <"Original version, c 2019">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -147,15 +159,15 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
 					description = <"@ internal @">
 				>
 				["at0004"] = <
-					text = <"Age, years">
-					description = <"*">
+					text = <"Age">
+					description = <"Age in years.">
 				>
 				["at0005"] = <
 					text = <"≥65">
@@ -313,6 +325,15 @@ ontology
 				["at0044"] = <
 					text = <"Total score">
 					description = <"The total sum of each component parameter for the Mumtaz score.">
+				>
+				["at0045"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0046"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
 				>
 			>
 		>
