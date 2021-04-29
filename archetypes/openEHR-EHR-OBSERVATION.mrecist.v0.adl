@@ -15,23 +15,19 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record the tumor size at baseline and current size for 1-5 repeated measurements and their total sum for the mRECIST. 
-">
-			use = <"Use to record the tumor size at baseline and current size for 1-5 repeated measurements and their total sum for the mRECIST. 
-">
-			keywords = <"mRECIST, response, evaluation, tumor, shrinkage, treatment", ...>
+			purpose = <"To record the tumor size at baseline and current size for 1-5 repeated measurements and their total sum for the mRECIST.">
+			use = <"Use to record the tumor size at baseline and current size for 1-5 repeated measurements and their total sum for the mRECIST.">
+			keywords = <"mRECIST", "response", "evaluation", "tumor", "shrinkage", "treatment">
 			misuse = <"">
-			copyright = <"Cambio CDS">
+			copyright = <"© Cambio CDS">
 		>
 	>
 	lifecycle_state = <"Initial">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Llovet JM, Di Bisceglie AM, Bruix J, Kramer BS, Lencioni R, Zhu AX, Sherman M, Schwartz M, Lotze M, Talwalkar J, Gores GJ; Panel of Experts in HCC-Design Clinical Trials. Design and endpoints of clinical trials in hepatocellular carcinoma. J Natl Cancer Inst. 2008 May 21;100(10):698-711. doi: 10.1093/jnci/djn134. Epub 2008 May 13. PMID: 18477802.
-
-2. Therasse P, Arbuck SG, Eisenhauer EA, Wanders J, Kaplan RS, Rubinstein L, Verweij J, Van Glabbeke M, van Oosterom AT, Christian MC, Gwyther SG. New guidelines to evaluate the response to treatment in solid tumors. European Organization for Research and Treatment of Cancer, National Cancer Institute of the United States, National Cancer Institute of Canada. J Natl Cancer Inst. 2000 Feb 2;92(3):205-16. doi: 10.1093/jnci/92.3.205. PMID: 10655437.">
+		["references"] = <"Llovet JM, Di Bisceglie AM, Bruix J, Kramer BS, Lencioni R, Zhu AX, Sherman M, Schwartz M, Lotze M, Talwalkar J, Gores GJ; Panel of Experts in HCC-Design Clinical Trials. Design and endpoints of clinical trials in hepatocellular carcinoma. J Natl Cancer Inst. 2008 May 21;100(10):698-711. doi: 10.1093/jnci/djn134. Epub 2008 May 13. PMID: 18477802.">
 		["current_contact"] = <"Emma Malm, Cambio CDS, emma.snygg@hotmail.com">
-		["MD5-CAM-1.0.1"] = <"DDFF1BFF9F05CD5B14A3359017163326">
+		["MD5-CAM-1.0.1"] = <"3F10D56A2ABB9312188C4723633AA85C">
 		["build_uid"] = <"4a37ea21-87f8-39d9-ab7b-e4a76fb3e93c">
 	>
 
@@ -51,6 +47,7 @@ definition
 												list = <
 													["1"] = <
 														units = <"mm">
+														magnitude = <|>=0.0|>
 													>
 												>
 											>
@@ -63,6 +60,7 @@ definition
 												list = <
 													["1"] = <
 														units = <"mm">
+														magnitude = <|>=0.0|>
 													>
 												>
 											>
@@ -75,6 +73,7 @@ definition
 												list = <
 													["1"] = <
 														units = <"mm">
+														magnitude = <|>=0.0|>
 													>
 												>
 											>
@@ -87,6 +86,7 @@ definition
 												list = <
 													["1"] = <
 														units = <"mm">
+														magnitude = <|>=0.0|>
 													>
 												>
 											>
@@ -99,6 +99,7 @@ definition
 												list = <
 													["1"] = <
 														units = <"mm">
+														magnitude = <|>=0.0|>
 													>
 												>
 											>
@@ -111,6 +112,7 @@ definition
 												list = <
 													["1"] = <
 														units = <"mm">
+														magnitude = <|>=0.0|>
 													>
 												>
 											>
@@ -123,6 +125,7 @@ definition
 												list = <
 													["1"] = <
 														units = <"mm">
+														magnitude = <|>=0.0|>
 													>
 												>
 											>
@@ -135,6 +138,7 @@ definition
 												list = <
 													["1"] = <
 														units = <"mm">
+														magnitude = <|>=0.0|>
 													>
 												>
 											>
@@ -147,6 +151,7 @@ definition
 												list = <
 													["1"] = <
 														units = <"mm">
+														magnitude = <|>=0.0|>
 													>
 												>
 											>
@@ -159,6 +164,7 @@ definition
 												list = <
 													["1"] = <
 														units = <"mm">
+														magnitude = <|>=0.0|>
 													>
 												>
 											>
@@ -171,6 +177,7 @@ definition
 												list = <
 													["1"] = <
 														units = <"mm">
+														magnitude = <|>=0.0|>
 													>
 												>
 											>
@@ -183,6 +190,7 @@ definition
 												list = <
 													["1"] = <
 														units = <"mm">
+														magnitude = <|>=0.0|>
 													>
 												>
 											>
@@ -196,7 +204,14 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0007] matches {*}
+			ITEM_TREE[at0007] matches {	-- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0020] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
 		}
 	}
 
@@ -206,7 +221,8 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Modified Response Evaluation Criteria in Solid Tumors (mRECIST)">
-					description = <"An assessment criteria used to evaluate the treatment response in solid tumors. ">
+					description = <"An assessment criteria used to evaluate the treatment response in solid tumors.">
+					comment = <"Original version, c 2008">
 				>
 				["at0001"] = <
 					text = <"History">
@@ -214,7 +230,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -226,51 +242,56 @@ ontology
 				>
 				["at0008"] = <
 					text = <"Tumor 1 size at baseline">
-					description = <"*">
+					description = <"">
 				>
 				["at0009"] = <
 					text = <"Tumor 1 current size">
-					description = <"*">
+					description = <"">
 				>
 				["at0010"] = <
 					text = <"Tumor 2 size at baseline">
-					description = <"*">
+					description = <"">
 				>
 				["at0011"] = <
 					text = <"Tumor 3 size at baseline">
-					description = <"*">
+					description = <"">
 				>
 				["at0012"] = <
 					text = <"Tumor 4 size at baseline">
-					description = <"*">
+					description = <"">
 				>
 				["at0013"] = <
 					text = <"Tumor 5 size at baseline">
-					description = <"*">
+					description = <"">
 				>
 				["at0014"] = <
 					text = <"Tumor 2 current size">
-					description = <"*">
+					description = <"">
 				>
 				["at0015"] = <
 					text = <"Tumor 3 current size">
-					description = <"*">
+					description = <"">
 				>
 				["at0016"] = <
 					text = <"Tumor 4 current size">
-					description = <"*">
+					description = <"">
 				>
 				["at0017"] = <
 					text = <"Tumor 5 current size">
-					description = <"*">
+					description = <"">
 				>
 				["at0018"] = <
 					text = <"Total size at baseline">
-					description = <"*">
+					description = <"">
 				>
 				["at0019"] = <
 					text = <"Total current size">
-					description = <"*">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
 				>
 			>
 		>
