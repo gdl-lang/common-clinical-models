@@ -1,5 +1,5 @@
 {
-  "id": "SPN_Malignancy.v1",
+  "id": "SPN_Malignancy_risk_score.v1",
   "gdl_version": "2.0",
   "concept": "gt0001",
   "language": {
@@ -45,31 +45,27 @@
         "elements": {
           "gt0006": {
             "id": "gt0006",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0007]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
           },
           "gt0007": {
             "id": "gt0007",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0010]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
           },
           "gt0008": {
             "id": "gt0008",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0013]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
           },
           "gt0010": {
             "id": "gt0010",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0016]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0016]"
           },
           "gt0011": {
             "id": "gt0011",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0022]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0022]"
           },
           "gt0028": {
             "id": "gt0028",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0006]"
-          },
-          "gt0039": {
-            "id": "gt0039",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]/items[at0034]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
           }
         }
       },
@@ -84,6 +80,18 @@
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0032]"
           }
         }
+      },
+      "gt0042": {
+        "id": "gt0042",
+        "model_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0043": {
+            "id": "gt0043",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
+          }
+        }
       }
     },
     "rules": {
@@ -91,7 +99,7 @@
         "id": "gt0029",
         "priority": 7,
         "when": [
-          "$gt0039|Age|!=null",
+          "$gt0043|Age|!=null",
           "$gt0006|Current or former smoker|!=null",
           "$gt0007|Extrathoracic cancer diagnosis ≥5 years prior|!=null",
           "$gt0008|Upper lobe location of tumor|!=null",
@@ -100,7 +108,7 @@
           "$gt0011|FDG-PET|!=null"
         ],
         "then": [
-          "$gt0037|x|.magnitude=(0.0391*$gt0039.magnitude)+(0.1274*$gt0028.magnitude)+(0.7917*$gt0006.value)+(1.3388*$gt0007.value)+(0.7838*$gt0008.value)+(1.0407*$gt0010.value)-6.8272",
+          "$gt0037|x|.magnitude=(0.0391*$gt0043.magnitude)+(0.1274*$gt0028.magnitude)+(0.7917*$gt0006.value)+(1.3388*$gt0007.value)+(0.7838*$gt0008.value)+(1.0407*$gt0010.value)-6.8272",
           "$gt0037|x|.precision=5",
           "$gt0037|x|.unit='1'",
           "$gt0041|Prob malign|=(100*e^$gt0037)/(1+e^$gt0037)"
@@ -175,7 +183,8 @@
         "priority": 1,
         "when": [
           "fired($gt0029)",
-          "!fired($gt0023)"
+          "!fired($gt0023)",
+          "$gt0011|FDG-PET|==local::at0023|PET not performed|"
         ],
         "then": [
           "$gt0033|Probability of malignancy|.magnitude=$gt0041",
@@ -264,11 +273,6 @@
             "text": "y",
             "description": ""
           },
-          "gt0039": {
-            "id": "gt0039",
-            "text": "Age",
-            "description": ""
-          },
           "gt0040": {
             "id": "gt0040",
             "text": "Calculate Probability of malignancy"
@@ -277,6 +281,11 @@
             "id": "gt0041",
             "text": "Prob malign",
             "description": ""
+          },
+          "gt0043": {
+            "id": "gt0043",
+            "text": "Age",
+            "description": "Age in years, and for babies: months, weeks or days"
           }
         }
       }
