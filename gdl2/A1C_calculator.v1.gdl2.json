@@ -48,13 +48,13 @@
       },
       "gt0004": {
         "id": "gt0004",
-        "model_id": "openEHR-EHR-OBSERVATION.blood_sugar.v0",
-        "template_id": "openEHR-EHR-OBSERVATION.blood_sugar.v0",
+        "model_id": "openEHR-EHR-OBSERVATION.lab_test_glucose.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.lab_test_glucose.v1",
         "type": "INPUT",
         "elements": {
           "gt0005": {
             "id": "gt0005",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0078]"
           }
         }
       },
@@ -100,9 +100,9 @@
           "$gt0007|Blood sugar level|.magnitude=($gt0003.magnitude*28.7)-46.7",
           "$gt0007|Blood sugar level|.unit='mg/dl'",
           "$gt0007|Blood sugar level|.precision=1",
-          "$gt0008|AIC value|.magnitude=$gt0003.magnitude",
-          "$gt0008|AIC value|.precision=2",
-          "$gt0008|AIC value|.unit='%'"
+          "$gt0008|A1C value|.magnitude=$gt0003.magnitude",
+          "$gt0008|A1C value|.precision=2",
+          "$gt0008|A1C value|.unit='%'"
         ]
       },
       "gt0011": {
@@ -114,16 +114,16 @@
           "$gt0005|Average blood sugar|<=300,mg/dl"
         ],
         "then": [
-          "$gt0008|AIC value|.magnitude=($gt0005.magnitude+46.7)/28.7",
-          "$gt0008|AIC value|.unit='%'",
-          "$gt0008|AIC value|.precision=1"
+          "$gt0008|A1C value|.magnitude=($gt0005.magnitude+46.7)/28.7",
+          "$gt0008|A1C value|.unit='%'",
+          "$gt0008|A1C value|.precision=1"
         ]
       },
       "gt0015": {
         "id": "gt0015",
         "priority": 3,
         "when": [
-          "$gt0008|AIC value|>8,%"
+          "$gt0008|A1C value|>8,%"
         ],
         "then": [
           "$gt0014|Interpretation|='Your A1C level is above 8% which is not normal. Medical science has shown that an A1C level above 8% indicates an increased risk for long-term complications. You should analyze the possibility of starting a self care plan designed to diminish and control your blood sugar. For any doubts you may need to discuss them with your doctor because this is only a rough estimation!'"
@@ -133,8 +133,8 @@
         "id": "gt0016",
         "priority": 2,
         "when": [
-          "$gt0008|AIC value|<=8,%",
-          "$gt0008|AIC value|>=7,%"
+          "$gt0008|A1C value|<=8,%",
+          "$gt0008|A1C value|>=7,%"
         ],
         "then": [
           "$gt0014|Interpretation|='You are quite close to a positive result which means you should continue working on your self-care plan designed to control your blood sugar! Your target should be to get below a 7% A1C level, so if you consider you may request help from a specialized medical professional for the steps to make. For any doubts you may need to discuss them with your doctor because this is only a rough estimation!'"
@@ -144,7 +144,7 @@
         "id": "gt0012",
         "priority": 1,
         "when": [
-          "$gt0008|AIC value|<7,%"
+          "$gt0008|A1C value|<7,%"
         ],
         "then": [
           "$gt0014|Interpretation|='Well done! Your A1C value is at an excellent level which means your blood sugar is maintained at a proper level. However for any doubts you may need to discuss them with your doctor because this is only a rough estimation and lower levels don`t necessarily assume there is no underline condition or that there are no frequent blood sugar lows that are suggesting this result!'"
@@ -179,7 +179,7 @@
           },
           "gt0008": {
             "id": "gt0008",
-            "text": "AIC value",
+            "text": "A1C value",
             "description": "*"
           },
           "gt0009": {
