@@ -11,22 +11,23 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 574*
+### *Published Apps: 576*
 
 ----------
 
 ### Latest added
 
-1. Warfarin Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/guideline/Warfarin_Dosing_Calculator_guideline?version=1&languageCode=en))
-2. Colloid Osmotic Pressure Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Colloid_osmotic_pressure_calculator/1?language=en))
-3. Solitary Pulmonary Nodule (SPN) Malignancy Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPN_Malignancy_risk_score/1?language=en))
-4. ASCVD (Atherosclerotic Cardiovascular Disease) 2013 Risk Calculator from AHA/ACC - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASCVD_risk_calculator/0?language=en))
-5. SAVE (Survival after Veno-Arterial ECMO) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SAVE_score/1?language=en))
-6. PSA Doubling Time (PSADT) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PSADT_guideline/1?language=en))
-7. Patient Safety Screener 3 (PSS-3) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PSS_3_guideline/1?language=en))
-8. Revised Schwartz Equation for Glomerular Filtration Rate (GFR) (2009) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_Schwartz_guideline/1?language=en))
-9. Montreal Cognitive Assessment (MoCA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MoCA_guideline/1?language=en))
-10. Revised Natural History Model for Primary Sclerosing Cholangitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_natural_history_model_guideline/1?language=en))
+1. Insulin Sensitivity QUICKI Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QUICKI_calculator/1?language=en))
+2. A1C Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/A1C_calculator/1?language=en))
+3. Warfarin Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/guideline/Warfarin_Dosing_Calculator_guideline?version=1&languageCode=en))
+4. Colloid Osmotic Pressure Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Colloid_osmotic_pressure_calculator/1?language=en))
+5. Solitary Pulmonary Nodule (SPN) Malignancy Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPN_Malignancy_risk_score/1?language=en))
+6. ASCVD (Atherosclerotic Cardiovascular Disease) 2013 Risk Calculator from AHA/ACC - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASCVD_risk_calculator/0?language=en))
+7. SAVE (Survival after Veno-Arterial ECMO) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SAVE_score/1?language=en))
+8. PSA Doubling Time (PSADT) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PSADT_guideline/1?language=en))
+8. Patient Safety Screener 3 (PSS-3) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PSS_3_guideline/1?language=en))
+9. Revised Schwartz Equation for Glomerular Filtration Rate (GFR) (2009) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_Schwartz_guideline/1?language=en))
+10. Montreal Cognitive Assessment (MoCA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MoCA_guideline/1?language=en))
 
 ----------
 
@@ -241,6 +242,8 @@ _Select a medical specialty below to view the available apps._
 ### Clinical Chemistry
 
 ----------
+* A1C Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/A1C_calculator/1?language=en))
+
 * Anion Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Anion_gap/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Anion_gap/1?language=sv))
 
 * Arterial Blood Gas Analyser (ABG) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABG/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABG/1?language=sv))
@@ -256,6 +259,8 @@ _Select a medical specialty below to view the available apps._
 * Estimated Average Glucose (eAG) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_Average_Glucose/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Estimated_Average_Glucose/1?language=sv))
 
 * Free Water Deficit in Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Free_water_deficit_hypernatremia/1?language=en))
+
+* Insulin Sensitivity QUICKI Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QUICKI_calculator/1?language=en))
 
 * Serum Osmolality/Osmolarity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Osmolality/1?language=en))
 
