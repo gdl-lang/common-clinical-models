@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 570*
+### *Published Apps: 574*
 
 ----------
 
 ### Latest added
 
-1. SAVE (Survival after Veno-Arterial ECMO) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SAVE_score/1?language=en))
-2. PSA Doubling Time (PSADT) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PSADT_guideline/1?language=en))
-3. Patient Safety Screener 3 (PSS-3) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PSS_3_guideline/1?language=en))
-4. Revised Schwartz Equation for Glomerular Filtration Rate (GFR) (2009) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_Schwartz_guideline/1?language=en))
-5. Montreal Cognitive Assessment (MoCA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MoCA_guideline/1?language=en))
-6. Revised Natural History Model for Primary Sclerosing Cholangitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_natural_history_model_guideline/1?language=en))
-7. Revised Original Score for Autoimmune Hepatitis (AIH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/AIH_Revised_Original_Score_guideline/1?language=en))
-8. Sokal Index for Chronic Myelogenous Leukemia (CML) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sokal_Index_for_CML/1?language=en))
-9. Multiple Myeloma International Staging System (ISS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Multiple_Myeloma_International_Staging_System/1?language=en))
-10. Tokyo Guidelines for Acute Cholecystitis 2018 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tokyo_Guidelines_Acute_Cholecystitis_2018_guideline/1?language=en))
+1. Warfarin Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/guideline/Warfarin_Dosing_Calculator_guideline?version=1&languageCode=en))
+2. Colloid Osmotic Pressure Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Colloid_osmotic_pressure_calculator/1?language=en))
+3. Solitary Pulmonary Nodule (SPN) Malignancy Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPN_Malignancy_risk_score/1?language=en))
+4. ASCVD (Atherosclerotic Cardiovascular Disease) 2013 Risk Calculator from AHA/ACC - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASCVD_risk_calculator/0?language=en))
+5. SAVE (Survival after Veno-Arterial ECMO) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SAVE_score/1?language=en))
+6. PSA Doubling Time (PSADT) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PSADT_guideline/1?language=en))
+7. Patient Safety Screener 3 (PSS-3) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PSS_3_guideline/1?language=en))
+8. Revised Schwartz Equation for Glomerular Filtration Rate (GFR) (2009) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_Schwartz_guideline/1?language=en))
+9. Montreal Cognitive Assessment (MoCA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MoCA_guideline/1?language=en))
+10. Revised Natural History Model for Primary Sclerosing Cholangitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Revised_natural_history_model_guideline/1?language=en))
 
 ----------
 
@@ -138,6 +138,8 @@ _Select a medical specialty below to view the available apps._
 
 * Aortic Dissection Detection Risk Score (ADD-RS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Aortic_Dissection_Detection_Risk_Score_guideline/1?language=en))
 
+* ASCVD (Atherosclerotic Cardiovascular Disease) 2013 Risk Calculator from AHA/ACC - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASCVD_risk_calculator/0?language=en))
+
 * ATRIA Bleeding Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_bleeding_risk_score/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_bleeding_risk_score/1?language=sv))
 
 * ATRIA Stroke Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_stroke_risk_score/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_stroke_risk_score/1?language=sv))
@@ -244,6 +246,8 @@ _Select a medical specialty below to view the available apps._
 * Arterial Blood Gas Analyser (ABG) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABG/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABG/1?language=sv))
 
 * Bicarbonate Deficit Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bicarbonate_Deficit/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bicarbonate_Deficit/1?language=sv))
+
+* Colloid Osmotic Pressure Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Colloid_osmotic_pressure_calculator/1?language=en))
 
 * Corrected Calcium - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Calcium_corrected/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Calcium_corrected/1?language=sv))
 
@@ -879,6 +883,8 @@ _Select a medical specialty below to view the available apps._
 
 * Sokal Index for Chronic Myelogenous Leukemia (CML) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sokal_Index_for_CML/1?language=en))
 
+* Solitary Pulmonary Nodule (SPN) Malignancy Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPN_Malignancy_risk_score/1?language=en))
+
 * SSIGN Score for Clear Cell Renal Cell Carcinoma - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SSIGN_ccRCC/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SSIGN_ccRCC/1?language=sv))
 
 * TNM for Breast Cancer - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_Breast/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TNM_Breast/1?language=sv))
@@ -1023,6 +1029,8 @@ _Select a medical specialty below to view the available apps._
 * tPA (Tissue Plasminogen Activator) Dosing for Stroke Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/tPA_dosing_for_stroke_calculator/1?language=en))
 
 * Vitamin-D Doses Range Recommendation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Vitamin_D_Doses_Range_Recommendation/0?language=en))
+
+* Warfarin Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/guideline/Warfarin_Dosing_Calculator_guideline?version=1&languageCode=en))
 ----------
 
 ### Primary care
