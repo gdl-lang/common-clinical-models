@@ -15,20 +15,22 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record the results for each component parameter and information relevant to the Pediatric SIRS, Sepsis, and Septic Shock Criteria assessment.">
+			purpose = <"To record the results for each component parameter and the the Pediatric SIRS, Sepsis, and Septic Shock Criteria assessment.">
 			use = <"Use to record the results for each component parameter and information relevant to the Pediatric SIRS, Sepsis, and Septic Shock Criteria assessment.">
 			keywords = <"septic", "shock", "sepsis", "pediatric">
 			misuse = <"">
-			copyright = <"Cambio CDS">
+			copyright = <"© Cambio CDS">
 		>
 	>
 	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Pound CR, Partin AW, Eisenberger MA, Chan DW, Pearson JD, Walsh PC. Natural history of progression after PSA elevation following radical prostatectomy. JAMA. 1999 May 5;281(17):1591-7. doi: 10.1001/jama.281.17.1591. PMID: 10235151.
-2. Patel A, Dorey F, Franklin J, deKernion JB. Recurrence patterns after radical retropubic prostatectomy: clinical usefulness of prostate specific antigen doubling times and log slope prostate specific antigen. J Urol. 1997 Oct;158(4):1441-5. doi: 10.1016/s0022-5347(01)64238-1. PMID: 9302139.
+		["references"] = <"Pound CR, Partin AW, Eisenberger MA, Chan DW, Pearson JD, Walsh PC. Natural history of progression after PSA elevation following radical prostatectomy. JAMA. 1999 May 5;281(17):1591-7. doi: 10.1001/jama.281.17.1591. PMID: 10235151.
+
+Patel A, Dorey F, Franklin J, deKernion JB. Recurrence patterns after radical retropubic prostatectomy: clinical usefulness of prostate specific antigen doubling times and log slope prostate specific antigen. J Urol. 1997 Oct;158(4):1441-5. doi: 10.1016/s0022-5347(01)64238-1. PMID: 9302139.
 ">
-		["MD5-CAM-1.0.1"] = <"4AAB0E5DFA5EF0B3218A67E04117DDDC">
+		["MD5-CAM-1.0.1"] = <"D9BBAA5D89743F9F796B3BF2C4B9CEE9">
+		["current_contact"] = <"Maryam Razavi, Cambio CDS<maryam.razavi2009@gmail.com>">
 	>
 
 definition
@@ -42,38 +44,38 @@ definition
 								items cardinality matches {0..*; unordered} matches {
 									CLUSTER[at0004] occurrences matches {0..1} matches {	-- SIRS Criteria
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Temp >38.5°C (101.3°F) or < 36°C (96.8°F)
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Temp >38.5°C
 												value matches {
 													0|[local::at0007], 	-- No
 													1|[local::at0006]  	-- Yes
 												}
 											}
-											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Tachycardia or bradycardia (if <1 year)
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Tachycardia or bradycardia
 												value matches {
-													0|[local::at0009], 	-- No
-													1|[local::at0010]  	-- Yes
+													0|[local::at0007], 	-- No
+													1|[local::at0006]  	-- Yes
 												}
 											}
-											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Tachypnea or mechanical ventilation (related to an acute process)
+											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Tachypnea or mechanical ventilation
 												value matches {
-													0|[local::at0012], 	-- No
-													1|[local::at0013]  	-- Yes
+													0|[local::at0007], 	-- No
+													1|[local::at0006]  	-- Yes
 												}
 											}
 											ELEMENT[at0014] occurrences matches {0..1} matches {	-- Abnormal leukocyte count or >10% bands
 												value matches {
-													0|[local::at0015], 	-- No
-													1|[local::at0016]  	-- Yes
+													0|[local::at0007], 	-- No
+													1|[local::at0006]  	-- Yes
 												}
 											}
 										}
 									}
-									CLUSTER[at0018] occurrences matches {0..1} matches {	-- Sepsis Criteria 
+									CLUSTER[at0018] occurrences matches {0..1} matches {	-- Sepsis Criteria
 										items cardinality matches {1..*; unordered} matches {
 											ELEMENT[at0019] occurrences matches {0..1} matches {	-- Suspected or present source of infection
 												value matches {
-													0|[local::at0020], 	-- No
-													1|[local::at0021]  	-- Yes
+													0|[local::at0007], 	-- No
+													1|[local::at0006]  	-- Yes
 												}
 											}
 										}
@@ -82,8 +84,8 @@ definition
 										items cardinality matches {1..*; unordered} matches {
 											ELEMENT[at0023] occurrences matches {0..1} matches {	-- Cardiovascular dysfunction OR ARDS OR ≥ 2 other organ dysfunction
 												value matches {
-													0|[local::at0024], 	-- No
-													1|[local::at0025]  	-- Yes
+													0|[local::at0007], 	-- No
+													1|[local::at0006]  	-- Yes
 												}
 											}
 										}
@@ -92,8 +94,8 @@ definition
 										items cardinality matches {1..*; unordered} matches {
 											ELEMENT[at0027] occurrences matches {0..1} matches {	-- Cardiovascular dysfunction despite adequate fluid resuscitation
 												value matches {
-													0|[local::at0028], 	-- No
-													1|[local::at0029]  	-- Yes
+													0|[local::at0007], 	-- No
+													1|[local::at0006]  	-- Yes
 												}
 											}
 										}
@@ -129,6 +131,7 @@ ontology
 				["at0000"] = <
 					text = <"Pediatric SIRS, sepsis, and septic shock criteria">
 					description = <"An assessment criteria used to define the severity of sepsis and septic shock for pediatric patients.">
+					comment = <"Original version, c 1999.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -147,8 +150,8 @@ ontology
 					description = <"*">
 				>
 				["at0005"] = <
-					text = <"Temp >38.5°C (101.3°F) or < 36°C (96.8°F)">
-					description = <"*">
+					text = <"Temp >38.5°C ">
+					description = <"(101.3°F) or < 36°C (96.8°F).">
 				>
 				["at0006"] = <
 					text = <"Yes">
@@ -159,26 +162,26 @@ ontology
 					description = <"*">
 				>
 				["at0008"] = <
-					text = <"Tachycardia or bradycardia (if <1 year)">
-					description = <"*">
+					text = <"Tachycardia or bradycardia ">
+					description = <"If <1 year.">
 				>
-				["at0009"] = <
+				["at0007"] = <
 					text = <"No">
 					description = <"*">
 				>
-				["at0010"] = <
+				["at0006"] = <
 					text = <"Yes">
 					description = <"*">
 				>
 				["at0011"] = <
-					text = <"Tachypnea or mechanical ventilation (related to an acute process)">
-					description = <"*">
+					text = <"Tachypnea or mechanical ventilation ">
+					description = <"Related to an acute process.">
 				>
-				["at0012"] = <
+				["at0007"] = <
 					text = <"No">
 					description = <"*">
 				>
-				["at0013"] = <
+				["at0006"] = <
 					text = <"Yes">
 					description = <"*">
 				>
@@ -186,11 +189,11 @@ ontology
 					text = <"Abnormal leukocyte count or >10% bands">
 					description = <"*">
 				>
-				["at0015"] = <
+				["at0007"] = <
 					text = <"No">
 					description = <"*">
 				>
-				["at0016"] = <
+				["at0006"] = <
 					text = <"Yes">
 					description = <"*">
 				>
@@ -202,11 +205,11 @@ ontology
 					text = <"Suspected or present source of infection">
 					description = <"*">
 				>
-				["at0020"] = <
+				["at0007"] = <
 					text = <"No">
 					description = <"*">
 				>
-				["at0021"] = <
+				["at0006"] = <
 					text = <"Yes">
 					description = <"*">
 				>
@@ -218,11 +221,11 @@ ontology
 					text = <"Cardiovascular dysfunction OR ARDS OR ≥ 2 other organ dysfunction">
 					description = <"*">
 				>
-				["at0024"] = <
+				["at0007"] = <
 					text = <"No">
 					description = <"*">
 				>
-				["at0025"] = <
+				["at0006"] = <
 					text = <"Yes">
 					description = <"*">
 				>
@@ -234,11 +237,11 @@ ontology
 					text = <"Cardiovascular dysfunction despite adequate fluid resuscitation">
 					description = <"*">
 				>
-				["at0028"] = <
+				["at0007"] = <
 					text = <"No">
 					description = <"*">
 				>
-				["at0029"] = <
+				["at0006"] = <
 					text = <"Yes">
 					description = <"*">
 				>
