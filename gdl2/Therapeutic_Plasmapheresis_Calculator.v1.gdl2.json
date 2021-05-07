@@ -18,9 +18,13 @@
         "id": "en",
         "purpose": "To estimate amount of a substance (e.g. antibody) remaining in the intravascular space after a given number of plasma volume exchanges.",
         "keywords": [
-          "blood volume",
-          "residual relative concentration",
-          "therapeutic plasmapheresis"
+          "blood",
+          "volume",
+          "residual",
+          "relative",
+          "concentration",
+          "therapeutic",
+          "plasmapheresis"
         ],
         "use": "Use to calculate residual relative concentration. \n\nFormula:\nResidual relative concentration, % = 100 * e-x\n\nWhere x = plasma volume, mL x number of plasma volumes to be exchanged / total blood volume, mL",
         "copyright": "Cambio CDS"
@@ -96,7 +100,9 @@
           "$gt0014|Number of plasma volumes to be exchanged (Norm 1-3)|!=null"
         ],
         "then": [
-          "$gt0011|x|=$gt0006.magnitude*$gt0014.magnitude/($gt0005.magnitude*$gt0013)"
+          "$gt0011|x|.magnitude=$gt0006.magnitude*$gt0014.magnitude/($gt0005.magnitude*$gt0013)",
+          "$gt0011|x|.unit='1'",
+          "$gt0011|x|.precision=3"
         ]
       },
       "gt0009": {
@@ -106,7 +112,7 @@
           "fired($gt0010)"
         ],
         "then": [
-          "$gt0015|Residual relative concentration|.magnitude=100*e^((-1)*$gt0011)",
+          "$gt0015|Residual relative concentration|.magnitude=100*e^((-1)*$gt0011.magnitude)",
           "$gt0015|Residual relative concentration|.unit='%'",
           "$gt0015|Residual relative concentration|.precision=1"
         ]
