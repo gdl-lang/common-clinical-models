@@ -156,7 +156,7 @@ _Select a medical specialty below to view the available apps._
 
 * CHADS2 Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHADS2/1?language=en))
 
-* CHA2DS2-VASc Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CHA2DS2-VASc/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CHA2DS2-VASc/1?language=sv))
+* CHA2DS2-VASc Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHA2DS2-VASc/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHA2DS2-VASc/1?language=sv))
 
 * Corrected QT Interval (QTc) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QTc_Calculation/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QTc_Calculation/1?language=sv))
 
