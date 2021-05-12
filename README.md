@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 578*
+### *Published Apps: 581*
 
 ----------
 
 ### Latest added
 
-1. Transferrin Saturation Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Transferrin_Saturation_Calculator/1?language=en))
-2. Therapeutic Plasmapheresis Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/guideline/Therapeutic_Plasmapheresis_Calculator?version=1&languageCode=en))
-3. Insulin Sensitivity QUICKI Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QUICKI_calculator/1?language=en))
-4. A1C Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/A1C_calculator/1?language=en))
-5. Warfarin Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/guideline/Warfarin_Dosing_Calculator_guideline?version=1&languageCode=en))
-6. Colloid Osmotic Pressure Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Colloid_osmotic_pressure_calculator/1?language=en))
-7. Solitary Pulmonary Nodule (SPN) Malignancy Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPN_Malignancy_risk_score/1?language=en))
-8. ASCVD (Atherosclerotic Cardiovascular Disease) 2013 Risk Calculator from AHA/ACC - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASCVD_risk_calculator/0?language=en))
-9. SAVE (Survival after Veno-Arterial ECMO) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SAVE_score/1?language=en))
-10. PSA Doubling Time (PSADT) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PSADT_guideline/1?language=en))
+1. Insulin To Carb Ratio Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Insulin_to_carb_ratio_calculator/1?language=en))
+2. US (MEDPED) Diagnostic Criteria for Familial Hypercholesterolemia (FH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Diagnostic_Criteria_FH/1?language=en))
+3. Stool Osmolar/Osmotic Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stool_Osmotic_Gap/1?language=en))
+4. Transferrin Saturation Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Transferrin_Saturation_Calculator/1?language=en))
+5. Therapeutic Plasmapheresis Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/guideline/Therapeutic_Plasmapheresis_Calculator?version=1&languageCode=en))
+6. Insulin Sensitivity QUICKI Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QUICKI_calculator/1?language=en))
+7. A1C Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/A1C_calculator/1?language=en))
+8. Warfarin Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/guideline/Warfarin_Dosing_Calculator_guideline?version=1&languageCode=en))
+9. Colloid Osmotic Pressure Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Colloid_osmotic_pressure_calculator/1?language=en))
+10. Solitary Pulmonary Nodule (SPN) Malignancy Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPN_Malignancy_risk_score/1?language=en))
 
 ----------
 
@@ -236,6 +236,8 @@ _Select a medical specialty below to view the available apps._
 
 * TIMI Score for STEMI - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TIMI_STEMI/1?language=en))
 
+* US (MEDPED) Diagnostic Criteria for Familial Hypercholesterolemia (FH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Diagnostic_Criteria_FH/1?language=en))
+
 ----------
 
 ### Clinical Chemistry
@@ -260,6 +262,8 @@ _Select a medical specialty below to view the available apps._
 * Free Water Deficit in Hypernatremia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Free_water_deficit_hypernatremia/1?language=en))
 
 * Insulin Sensitivity QUICKI Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QUICKI_calculator/1?language=en))
+
+* Insulin To Carb Ratio Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Insulin_to_carb_ratio_calculator/1?language=en))
 
 * Serum Osmolality/Osmolarity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Osmolality/1?language=en))
 
@@ -493,6 +497,8 @@ _Select a medical specialty below to view the available apps._
 * Serum Ascites Albumin Gradient (SAAG) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Ascites_Albumin_Gradient_SAAG_guideline/1?language=en))
 
 * Simplified Autoimmune Hepatitis (AIH) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simplified_Autoimmune_Hepatitis_AIH_Score_guideline/1?language=en))
+
+* Stool Osmolar/Osmotic Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stool_Osmotic_Gap/1?language=en))
 
 * Tokyo Guidelines for Acute Cholangitis 2018 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Tokyo_Guidelines_2018_guideline/1?language=en))
 
