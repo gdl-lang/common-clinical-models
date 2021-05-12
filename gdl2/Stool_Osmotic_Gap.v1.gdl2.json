@@ -25,9 +25,9 @@
           "osmolal ",
           "gap"
         ],
-        "use": "Use to determine if chronic diarrhea is osmotic or secretory in nature.\n\nFormula: Stool Osmolal Gap = Stool Osm - (2 * (Na + K))",
-        "misuse": "",
-        "copyright": "Cambio CDS"
+        "use": "Use with persistent (>4 weeks) watery diarrhea (>3 episodes/day) to guide diagnosis and treatment.\n\nThe calculation relies on the assumption that stool osmolarity is fairly constant and similar to serum osmolarity (290-300 mmol/L).\n\nFormula: Stool Osmolal Gap = Stool Osm - (2 * (Na + K))",
+        "misuse": "Not to be used in the evaluation of acute diarrhea.",
+        "copyright": "© Cambio CDS"
       }
     },
     "other_details": {
@@ -73,6 +73,10 @@
           "gt0008": {
             "id": "gt0008",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
           }
         }
       }
@@ -89,7 +93,8 @@
         "then": [
           "$gt0008|Stool Osmolal Gap|.magnitude=$gt0003.magnitude-(2*($gt0005.magnitude+$gt0006.magnitude))",
           "$gt0008|Stool Osmolal Gap|.unit='mOsm/kg'",
-          "$gt0008|Stool Osmolal Gap|.precision=0"
+          "$gt0008|Stool Osmolal Gap|.precision=0",
+          "$gt0010|Comment|='While definitions vary, some sources suggest a Stool Osmolar Gap > 100 as being a predominantly osmotic diarrhea.'"
         ]
       }
     }
@@ -127,6 +132,11 @@
           "gt0009": {
             "id": "gt0009",
             "text": "Calculate stool osm gap"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "Comment",
+            "description": ""
           }
         }
       }
