@@ -761,7 +761,7 @@ _Select a medical specialty below to view the available apps._
 
 * Montreal Cognitive Assessment (MoCA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MoCA_guideline/1?language=en))
 
-* National Institutes of Health Stroke Scale (NIHSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NIHSS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NIHSS/1?language=sv))
+* National Institutes of Health Stroke Scale (NIHSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NIHSS_calculator.v1.0/1.0.0?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NIHSS_calculator.v1.0/1.0.0?language=sv))
 
 * Neuropathy Pain Scale (NPS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neuropathy_pain_scale/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neuropathy_pain_scale/1?language=sv))
 
