@@ -592,7 +592,7 @@ _Select a medical specialty below to view the available apps._
 ### Intensive Care
 
 ----------
-* APACHE II Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/APACHE_II/1?language=en))
+* APACHE II Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/APACHE_II_calculator.v1.0/1.0.0?language=en))
 
 * Apfel Score for Postoperative Nausea and Vomiting - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Apfel_Score_for_Postoperative_Nausea_and_Vomiting/1?language=en))
 
