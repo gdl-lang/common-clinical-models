@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 583*
+### *Published Apps: 584*
 
 ----------
 
 ### Latest added
 
-1. Urinary Protein Excretion Estimation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urinary_Protein_Excretion_Estimation/1?language=en))
-2. Progesterone to Estrogen Ratio (Pg/E2) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Progesterone_to_Estrogen_Ratio/1?language=en))
-3. Insulin To Carb Ratio Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Insulin_to_carb_ratio_calculator/1?language=en))
-4. US (MEDPED) Diagnostic Criteria for Familial Hypercholesterolemia (FH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Diagnostic_Criteria_FH/1?language=en))
-5. Stool Osmolar/Osmotic Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stool_Osmotic_Gap/1?language=en))
-6. Transferrin Saturation Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Transferrin_Saturation_Calculator/1?language=en))
-7. Therapeutic Plasmapheresis Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/guideline/Therapeutic_Plasmapheresis_Calculator?version=1&languageCode=en))
-8. Insulin Sensitivity QUICKI Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QUICKI_calculator/1?language=en))
-9. A1C Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/A1C_calculator/1?language=en))
-10. Warfarin Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/guideline/Warfarin_Dosing_Calculator_guideline?version=1&languageCode=en))
+1. Absolute Eosinophil Count Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Absolute_Eosinophil_Count_guideline/1?language=en))
+2. Urinary Protein Excretion Estimation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urinary_Protein_Excretion_Estimation/1?language=en))
+3. Progesterone to Estrogen Ratio (Pg/E2) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Progesterone_to_Estrogen_Ratio/1?language=en))
+4. Insulin To Carb Ratio Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Insulin_to_carb_ratio_calculator/1?language=en))
+5. US (MEDPED) Diagnostic Criteria for Familial Hypercholesterolemia (FH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Diagnostic_Criteria_FH/1?language=en))
+6. Stool Osmolar/Osmotic Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stool_Osmotic_Gap/1?language=en))
+7. Transferrin Saturation Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Transferrin_Saturation_Calculator/1?language=en))
+8. Therapeutic Plasmapheresis Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/guideline/Therapeutic_Plasmapheresis_Calculator?version=1&languageCode=en))
+9. Insulin Sensitivity QUICKI Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QUICKI_calculator/1?language=en))
+10. A1C Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/A1C_calculator/1?language=en))
 
 ----------
 
@@ -263,8 +263,6 @@ _Select a medical specialty below to view the available apps._
 
 * Insulin Sensitivity QUICKI Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QUICKI_calculator/1?language=en))
 
-* Insulin To Carb Ratio Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Insulin_to_carb_ratio_calculator/1?language=en))
-
 * Serum Osmolality/Osmolarity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Osmolality/1?language=en))
 
 * Sodium correction for Hyperglycemia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_for_Hyperglycemia/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_for_Hyperglycemia/1?language=sv))
@@ -423,6 +421,8 @@ _Select a medical specialty below to view the available apps._
 
 * Ideal Body Weight and Adjusted Body Weight - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ideal_Body_Weight_Adjusted_Body_Weight/0?language=en))
 
+* Insulin To Carb Ratio Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Insulin_to_carb_ratio_calculator/1?language=en))
+
 * PEDIS Score for Diabetic Foot Ulcers - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEDIS_Score/0?language=en))
 
 * Progesterone to Estrogen Ratio (Pg/E2) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Progesterone_to_Estrogen_Ratio/1?language=en))
@@ -552,6 +552,8 @@ _Select a medical specialty below to view the available apps._
 * Absolute Reticulocyte Count & Reticulocyte Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Absolute_Reticulocyte_Count_Index/1?language=en))
 
 * 4Ts for Heparin Induced Thrombocytopenia (4Ts for HIT) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/4TS_HIT/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/4TS_HIT/1?language=sv))
+
+* Absolute Eosinophil Count Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Absolute_Eosinophil_Count_guideline/1?language=en))
 
 * Absolute Lymphocyte Count (ALC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Absolute_Lymphocyte_Count/1?language=en))
 
