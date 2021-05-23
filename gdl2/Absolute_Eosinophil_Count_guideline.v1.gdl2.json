@@ -57,18 +57,24 @@
           "gt0006": {
             "id": "gt0006",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
           }
         }
       }
     },
+    "default_actions": [
+      "$gt0010|Normal range|='0.041 - 0.654 x10*3/μL '"
+    ],
     "rules": {
       "gt0007": {
         "id": "gt0007",
         "priority": 3,
         "when": [
-          "$gt0003|White cell count|!=null",
-          "$gt0004|Eosinophils|!=null",
-          "$gt0003|White cell count|.unit=='10^3/uL'"
+          "$gt0003|White cell count|.unit=='10^3/uL'",
+          "$gt0004|Eosinophils, %|.unit=='%'"
         ],
         "then": [
           "$gt0006|Absolute Eosinophil Count|.magnitude=($gt0003.magnitude*$gt0004.magnitude)/100",
@@ -80,9 +86,8 @@
         "id": "gt0008",
         "priority": 2,
         "when": [
-          "$gt0003|White cell count|!=null",
-          "$gt0004|Eosinophils|!=null",
-          "$gt0003|White cell count|.unit=='cells/microL'"
+          "$gt0003|White cell count|.unit=='cells/microL'",
+          "$gt0004|Eosinophils, %|.unit=='%'"
         ],
         "then": [
           "$gt0006|Absolute Eosinophil Count|.magnitude=($gt0003.magnitude*$gt0004.magnitude)/100",
@@ -94,9 +99,8 @@
         "id": "gt0009",
         "priority": 1,
         "when": [
-          "$gt0003|White cell count|!=null",
-          "$gt0004|Eosinophils|!=null",
-          "$gt0003|White cell count|.unit=='10*9/l'"
+          "$gt0003|White cell count|.unit=='10*9/l'",
+          "$gt0004|Eosinophils, %|.unit=='%'"
         ],
         "then": [
           "$gt0006|Absolute Eosinophil Count|.magnitude=($gt0003.magnitude*$gt0004.magnitude)/100",
@@ -123,7 +127,7 @@
           },
           "gt0004": {
             "id": "gt0004",
-            "text": "Eosinophils",
+            "text": "Eosinophils, %",
             "description": "The number of eosinophils per litre"
           },
           "gt0006": {
@@ -142,6 +146,11 @@
           "gt0009": {
             "id": "gt0009",
             "text": "AEC calculation "
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "Normal range",
+            "description": "*"
           }
         }
       }
