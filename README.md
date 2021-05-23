@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 581*
+### *Published Apps: 583*
 
 ----------
 
 ### Latest added
 
-1. Insulin To Carb Ratio Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Insulin_to_carb_ratio_calculator/1?language=en))
-2. US (MEDPED) Diagnostic Criteria for Familial Hypercholesterolemia (FH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Diagnostic_Criteria_FH/1?language=en))
-3. Stool Osmolar/Osmotic Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stool_Osmotic_Gap/1?language=en))
-4. Transferrin Saturation Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Transferrin_Saturation_Calculator/1?language=en))
-5. Therapeutic Plasmapheresis Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/guideline/Therapeutic_Plasmapheresis_Calculator?version=1&languageCode=en))
-6. Insulin Sensitivity QUICKI Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QUICKI_calculator/1?language=en))
-7. A1C Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/A1C_calculator/1?language=en))
-8. Warfarin Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/guideline/Warfarin_Dosing_Calculator_guideline?version=1&languageCode=en))
-9. Colloid Osmotic Pressure Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Colloid_osmotic_pressure_calculator/1?language=en))
-10. Solitary Pulmonary Nodule (SPN) Malignancy Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPN_Malignancy_risk_score/1?language=en))
+1. Urinary Protein Excretion Estimation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urinary_Protein_Excretion_Estimation/1?language=en))
+2. Progesterone to Estrogen Ratio (Pg/E2) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Progesterone_to_Estrogen_Ratio/1?language=en))
+3. Insulin To Carb Ratio Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Insulin_to_carb_ratio_calculator/1?language=en))
+4. US (MEDPED) Diagnostic Criteria for Familial Hypercholesterolemia (FH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Diagnostic_Criteria_FH/1?language=en))
+5. Stool Osmolar/Osmotic Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stool_Osmotic_Gap/1?language=en))
+6. Transferrin Saturation Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Transferrin_Saturation_Calculator/1?language=en))
+7. Therapeutic Plasmapheresis Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/guideline/Therapeutic_Plasmapheresis_Calculator?version=1&languageCode=en))
+8. Insulin Sensitivity QUICKI Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QUICKI_calculator/1?language=en))
+9. A1C Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/A1C_calculator/1?language=en))
+10. Warfarin Dosing Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/guideline/Warfarin_Dosing_Calculator_guideline?version=1&languageCode=en))
 
 ----------
 
@@ -424,6 +424,8 @@ _Select a medical specialty below to view the available apps._
 * Ideal Body Weight and Adjusted Body Weight - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ideal_Body_Weight_Adjusted_Body_Weight/0?language=en))
 
 * PEDIS Score for Diabetic Foot Ulcers - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PEDIS_Score/0?language=en))
+
+* Progesterone to Estrogen Ratio (Pg/E2) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Progesterone_to_Estrogen_Ratio/1?language=en))
 ----------
 
 ### Gastroenterology
@@ -693,6 +695,8 @@ _Select a medical specialty below to view the available apps._
 * RIFLE Criteria for Acute Kidney Injury (AKI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RIFLE_Criteria_guideline/1?language=en))
 
 * STONE Nephrolithometry Score for Renal Calculi - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/STONE_Nephrolithometry_Score_for_Renal_Calculi_guideline/1?language=en))
+
+* Urinary Protein Excretion Estimation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urinary_Protein_Excretion_Estimation/1?language=en))
 
 ----------
 
