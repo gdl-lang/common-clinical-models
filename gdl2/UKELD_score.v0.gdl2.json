@@ -85,22 +85,108 @@
             "path": "/data[at0001]/items[at0002]"
           }
         }
+      },
+      "gt0017": {
+        "id": "gt0017",
+        "model_id": "openEHR-EHR-OBSERVATION.laboratory_test_result.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.laboratory_test_result.v1",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0019": {
+            "id": "gt0019",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.bilirubin.v0]/items[at0001]"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.sodium.v0]/items[at0001]"
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.serum_creatinine.v0]/items[at0001]"
+          }
+        }
       }
     },
     "pre_conditions": [
       "$gt0018|End stage liver disease |==1|local::at0004|present |"
     ],
     "rules": {
+      "gt0018": {
+        "id": "gt0018",
+        "priority": 9,
+        "when": [
+          "$gt0004|Bilirubin|.unit=='mg/dl'"
+        ],
+        "then": [
+          "$gt0019|S.Bilirubin|.magnitude=$gt0004.magnitude*17.1",
+          "$gt0019|S.Bilirubin|.precision=2",
+          "$gt0019|S.Bilirubin|.unit='umol/l'"
+        ]
+      },
+      "gt0022": {
+        "id": "gt0022",
+        "priority": 8,
+        "when": [
+          "$gt0004|Bilirubin|.unit=='umol/l'"
+        ],
+        "then": [
+          "$gt0019|S.Bilirubin|=$gt0004|Bilirubin|"
+        ]
+      },
+      "gt0023": {
+        "id": "gt0023",
+        "priority": 7,
+        "when": [
+          "$gt0006|Serum Creatinine|.unit=='mg/dl'"
+        ],
+        "then": [
+          "$gt0021|S.Creatinine|.magnitude=$gt0006.magnitude*88.4",
+          "$gt0021|S.Creatinine|.precision=2",
+          "$gt0021|S.Creatinine|.unit='umol/l'"
+        ]
+      },
+      "gt0026": {
+        "id": "gt0026",
+        "priority": 6,
+        "when": [
+          "$gt0006|Serum Creatinine|.unit=='umol/l'"
+        ],
+        "then": [
+          "$gt0021|S.Creatinine|=$gt0006|Serum Creatinine|"
+        ]
+      },
+      "gt0027": {
+        "id": "gt0027",
+        "priority": 5,
+        "when": [
+          "$gt0005|Sodium|.unit=='mEq/l'"
+        ],
+        "then": [
+          "$gt0020|S.Sodium|.magnitude=$gt0005.magnitude*1",
+          "$gt0020|S.Sodium|.unit='mmol/l'"
+        ]
+      },
+      "gt0031": {
+        "id": "gt0031",
+        "priority": 4,
+        "when": [
+          "$gt0005|Sodium|.unit=='mmol/l'"
+        ],
+        "then": [
+          "$gt0020|S.Sodium|=$gt0005|Sodium|"
+        ]
+      },
       "gt0010": {
         "id": "gt0010",
         "priority": 3,
         "when": [
-          "$gt0004|Bilirubin|.unit=='umol/l'",
-          "$gt0005|Sodium |.unit=='mmol/l'",
-          "$gt0006|Serum Creatinine|.unit=='umol/l'"
+          "$gt0019|S.Bilirubin|!=null",
+          "$gt0021|S.Creatinine|!=null",
+          "$gt0020|S.Sodium|!=null",
+          "$gt0004|INR|!=null"
         ],
         "then": [
-          "$gt0009|UKELD score|.magnitude=(5.395*log($gt0003.magnitude))+(1.485*log($gt0006.magnitude))+(3.13*log($gt0004.magnitude))-(81.565*log($gt0005.magnitude))+435"
+          "$gt0009|UKELD score|.magnitude=(5.395*log($gt0003.magnitude))+(1.485*log($gt0021.magnitude))+(3.13*log($gt0019.magnitude))-(81.565*log($gt0020.magnitude))+435"
         ]
       },
       "gt0011": {
@@ -190,6 +276,21 @@
             "id": "gt0018",
             "text": "End stage liver disease ",
             "description": "End stage liver disease "
+          },
+          "gt0019": {
+            "id": "gt0019",
+            "text": "S.Bilirubin",
+            "description": ""
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "S.Sodium",
+            "description": ""
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "S.Creatinine",
+            "description": ""
           }
         }
       }
