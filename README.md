@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 586*
+### *Published Apps: 587*
 
 ----------
 
 ### Latest added
 
-1. Modified Aldrete Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Aldrete_Score_guideline/1?language=en))
-2. Norton Score For Pressure Ulcer Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Norton_Score/1?language=en))
-3. Absolute Eosinophil Count Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Absolute_Eosinophil_Count_guideline/1?language=en))
-4. Urinary Protein Excretion Estimation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urinary_Protein_Excretion_Estimation/1?language=en))
-5. Progesterone to Estrogen Ratio (Pg/E2) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Progesterone_to_Estrogen_Ratio/1?language=en))
-6. Insulin To Carb Ratio Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Insulin_to_carb_ratio_calculator/1?language=en))
-7. US (MEDPED) Diagnostic Criteria for Familial Hypercholesterolemia (FH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Diagnostic_Criteria_FH/1?language=en))
-8. Stool Osmolar/Osmotic Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stool_Osmotic_Gap/1?language=en))
-9. Transferrin Saturation Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Transferrin_Saturation_Calculator/1?language=en))
-10. Therapeutic Plasmapheresis Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/guideline/Therapeutic_Plasmapheresis_Calculator?version=1&languageCode=en))
+1. Acute Pancreatitis Balthazar Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Balthazar_score_guideline/1?language=en))
+2. Modified Aldrete Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Aldrete_Score_guideline/1?language=en))
+3. Norton Score For Pressure Ulcer Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Norton_Score/1?language=en))
+4. Absolute Eosinophil Count Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Absolute_Eosinophil_Count_guideline/1?language=en))
+5. Urinary Protein Excretion Estimation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urinary_Protein_Excretion_Estimation/1?language=en))
+6. Progesterone to Estrogen Ratio (Pg/E2) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Progesterone_to_Estrogen_Ratio/1?language=en))
+7. Insulin To Carb Ratio Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Insulin_to_carb_ratio_calculator/1?language=en))
+8. US (MEDPED) Diagnostic Criteria for Familial Hypercholesterolemia (FH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Diagnostic_Criteria_FH/1?language=en))
+9. Stool Osmolar/Osmotic Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stool_Osmotic_Gap/1?language=en))
+10. Transferrin Saturation Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Transferrin_Saturation_Calculator/1?language=en))
 
 ----------
 
@@ -433,6 +433,8 @@ _Select a medical specialty below to view the available apps._
 ### Gastroenterology
 ----------
 * ABIC Score for Alcoholic Hepatitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABIC/1?language=en))
+
+* Acute Pancreatitis Balthazar Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Balthazar_score_guideline/1?language=en))
 
 * AIMS65 Score for Upper GI Bleeding Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Aims65_score_for_upper_gi_bleeding_mortality/0?language=en))
 
