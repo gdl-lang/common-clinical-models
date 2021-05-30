@@ -20,9 +20,11 @@
         "keywords": [
           "computed tomography",
           "CT",
-          "severity "
+          "severity ",
+          "Balthazar",
+          "score"
         ],
-        "use": "Variables: \nThe Balthazar Grade component of the score is:\n- Grade A – Normal CT;\n- Grade B – Focal or diffuse enlargement of the pancreas (Edematous Pancreas);\n- Grade C – Pancreatic gland abnormalities and peripancreatic inflammation;\n- Grade D – Fluid collection in a single location;\n- Grade E – Multiple or extensive fluid collections and / or gas bubbles in or adjacent to pancreas.\nThe Necrosis score component of the model is:\n- No necrosis;\n- 0 to 30% necrosis;\n- 30 to 50% necrosis;\n- Over 50% necrosis\nCT severity index/ Balthazar Score = CT grade points + Necrosis points\nThe results are correlated with the three degrees of acute pancreatitis severity:\n- 0 – 3 points indicate mild AP;\n- 4 – 6 points indicate moderate AP;\n- 7 – 10 points indicate severe AP.",
+        "use": "Variables: \nThe Balthazar Grade component of the score is:\n- Grade A – Normal CT;\n- Grade B – Focal or diffuse enlargement of the pancreas (Edematous Pancreas);\n- Grade C – Pancreatic gland abnormalities and peripancreatic inflammation;\n- Grade D – Fluid collection in a single location;\n- Grade E – Multiple or extensive fluid collections and / or gas bubbles in or adjacent to pancreas.\nThe Necrosis score component of the model is:\n- No necrosis;\n- 0 to 30% necrosis;\n- 30 to 50% necrosis;\n- Over 50% necrosis\n\nFormula:\nCT severity index/ Balthazar Score = CT grade points + Necrosis points\n\nThe results are correlated with the three degrees of acute pancreatitis severity:\n- 0 – 3 points indicate mild AP\n- 4 – 6 points indicate moderate AP\n- 7 – 10 points indicate severe AP.",
         "copyright": "© Cambio CDS"
       }
     },
@@ -82,15 +84,15 @@
           "$gt0004|Necrosis score|!=null"
         ],
         "then": [
-          "$gt0007|Total score|.magnitude=$gt0003.value+$gt0004.value"
+          "$gt0007|Balthazar score|.magnitude=$gt0003.value+$gt0004.value"
         ]
       },
       "gt0011": {
         "id": "gt0011",
         "priority": 3,
         "when": [
-          "$gt0007|Total score|>=0",
-          "$gt0007|Total score|<4"
+          "$gt0007|Balthazar score|>=0",
+          "$gt0007|Balthazar score|<4"
         ],
         "then": [
           "$gt0009|Interpretation|='This score is consistent with mild acute pancreatitis.'"
@@ -100,8 +102,8 @@
         "id": "gt0012",
         "priority": 2,
         "when": [
-          "$gt0007|Total score|>=4",
-          "$gt0007|Total score|<7"
+          "$gt0007|Balthazar score|>=4",
+          "$gt0007|Balthazar score|<7"
         ],
         "then": [
           "$gt0009|Interpretation|='This score is consistent with moderate acute pancreatitis.'"
@@ -111,8 +113,8 @@
         "id": "gt0013",
         "priority": 1,
         "when": [
-          "$gt0007|Total score|>=7",
-          "$gt0007|Total score|<=10"
+          "$gt0007|Balthazar score|>=7",
+          "$gt0007|Balthazar score|<=10"
         ],
         "then": [
           "$gt0009|Interpretation|='This score is consistent with severe acute pancreatitis.'"
@@ -142,7 +144,7 @@
           },
           "gt0007": {
             "id": "gt0007",
-            "text": "Total score",
+            "text": "Balthazar score",
             "description": "Total score"
           },
           "gt0009": {
