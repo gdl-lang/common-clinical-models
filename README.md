@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 588*
+### *Published Apps: 591*
 
 ----------
 
 ### Latest added
 
-1. SCORing Atopic Dermatitis (SCORAD) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCORAD_guideline/1?language=en))
-2. Acute Pancreatitis Balthazar Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Balthazar_score_guideline/1?language=en))
-3. Modified Aldrete Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Aldrete_Score_guideline/1?language=en))
-4. Norton Score For Pressure Ulcer Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Norton_Score/1?language=en))
-5. Absolute Eosinophil Count Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Absolute_Eosinophil_Count_guideline/1?language=en))
-6. Urinary Protein Excretion Estimation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urinary_Protein_Excretion_Estimation/1?language=en))
-7. Progesterone to Estrogen Ratio (Pg/E2) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Progesterone_to_Estrogen_Ratio/1?language=en))
-8. Insulin To Carb Ratio Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Insulin_to_carb_ratio_calculator/1?language=en))
-9. US (MEDPED) Diagnostic Criteria for Familial Hypercholesterolemia (FH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Diagnostic_Criteria_FH/1?language=en))
-10. Stool Osmolar/Osmotic Gap - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Stool_Osmotic_Gap/1?language=en))
+1. Pediatric SIRS, Sepsis, and Septic Shock Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_SIRS_Sepsis_Septic_Shock_Criteria_guideline/1?language=en))
+2. Harris Hip Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Harris_hip_score/1?language=en))
+3. Open Fracture Gustilo Classification - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Open_fracture_Gustilo_classification/1?language=en))
+4. SCORing Atopic Dermatitis (SCORAD) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCORAD_guideline/1?language=en))
+5. Acute Pancreatitis Balthazar Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Balthazar_score_guideline/1?language=en))
+6. Modified Aldrete Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Aldrete_Score_guideline/1?language=en))
+7. Norton Score For Pressure Ulcer Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Norton_Score/1?language=en))
+8. Absolute Eosinophil Count Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Absolute_Eosinophil_Count_guideline/1?language=en))
+9. Urinary Protein Excretion Estimation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urinary_Protein_Excretion_Estimation/1?language=en))
+10. Progesterone to Estrogen Ratio (Pg/E2) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Progesterone_to_Estrogen_Ratio/1?language=en))
 
 ----------
 
@@ -948,7 +948,11 @@ _Select a medical specialty below to view the available apps._
 
 * ASAS Criteria for Peripheral SpondyloArthritis (SpA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASAS_criteria_for_Peripherial_SpA/1?language=en))
 
+* Harris Hip Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Harris_hip_score/1?language=en))
+
 * Kocher Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kocher_Criteria/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Kocher_Criteria/1?language=sv))
+
+* Open Fracture Gustilo Classification - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Open_fracture_Gustilo_classification/1?language=en))
 
 * Patient Activity Scale (PAS) for RA - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Patient_Activity_Scale_PAS_for_RA_guideline/1?language=en))
 
@@ -1015,6 +1019,8 @@ _Select a medical specialty below to view the available apps._
 * Pediatric Respiratory Assessment Measure (PRAM) for Asthma Exacerbation Severity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Respiratory_Assessment_Measure_PRAM_for_Asthma_Exacerbation_Severity_guideline/1?language=en))
 
 * Pediatric SIRS2 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatrics_Sirs2/1?language=en))
+
+* Pediatric SIRS, Sepsis, and Septic Shock Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_SIRS_Sepsis_Septic_Shock_Criteria_guideline/1?language=en))
 
 * Pediatric Trauma Score (PTS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Trauma_Score/1?language=en))
 
