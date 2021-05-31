@@ -15,8 +15,8 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record the results for each component parameter and the the Pediatric SIRS, Sepsis, and Septic Shock Criteria assessment.">
-			use = <"Use to record the results for each component parameter and information relevant to the Pediatric SIRS, Sepsis, and Septic Shock Criteria assessment.">
+			purpose = <"To record the results for each component parameter and the Pediatric SIRS, Sepsis, and Septic Shock Criteria assessment.">
+			use = <"Use to record the results for each component parameter and the Pediatric SIRS, Sepsis, and Septic Shock Criteria assessment.">
 			keywords = <"septic", "shock", "sepsis", "pediatric">
 			misuse = <"">
 			copyright = <"© Cambio CDS">
@@ -29,8 +29,8 @@ description
 
 Patel A, Dorey F, Franklin J, deKernion JB. Recurrence patterns after radical retropubic prostatectomy: clinical usefulness of prostate specific antigen doubling times and log slope prostate specific antigen. J Urol. 1997 Oct;158(4):1441-5. doi: 10.1016/s0022-5347(01)64238-1. PMID: 9302139.
 ">
-		["MD5-CAM-1.0.1"] = <"D9BBAA5D89743F9F796B3BF2C4B9CEE9">
 		["current_contact"] = <"Maryam Razavi, Cambio CDS<maryam.razavi2009@gmail.com>">
+		["MD5-CAM-1.0.1"] = <"AA7C9DA0667C016786A1435A46B09501">
 	>
 
 definition
@@ -38,25 +38,25 @@ definition
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
 									CLUSTER[at0004] occurrences matches {0..1} matches {	-- SIRS Criteria
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Temp >38.5°C
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- Temperature >38.5°C 
 												value matches {
 													0|[local::at0007], 	-- No
 													1|[local::at0006]  	-- Yes
 												}
 											}
-											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Tachycardia or bradycardia
+											ELEMENT[at0008] occurrences matches {0..1} matches {	-- Tachycardia or bradycardia 
 												value matches {
 													0|[local::at0007], 	-- No
 													1|[local::at0006]  	-- Yes
 												}
 											}
-											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Tachypnea or mechanical ventilation
+											ELEMENT[at0011] occurrences matches {0..1} matches {	-- Tachypnea or mechanical ventilation 
 												value matches {
 													0|[local::at0007], 	-- No
 													1|[local::at0006]  	-- Yes
@@ -70,7 +70,7 @@ definition
 											}
 										}
 									}
-									CLUSTER[at0018] occurrences matches {0..1} matches {	-- Sepsis Criteria
+									CLUSTER[at0018] occurrences matches {0..1} matches {	-- Sepsis Criteria 
 										items cardinality matches {1..*; unordered} matches {
 											ELEMENT[at0019] occurrences matches {0..1} matches {	-- Suspected or present source of infection
 												value matches {
@@ -122,6 +122,16 @@ definition
 				}
 			}
 		}
+		protocol matches {
+			ITEM_TREE[at0034] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0035] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
 	}
 
 ontology
@@ -139,7 +149,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -147,115 +157,75 @@ ontology
 				>
 				["at0004"] = <
 					text = <"SIRS Criteria">
-					description = <"*">
+					description = <"">
 				>
 				["at0005"] = <
-					text = <"Temp >38.5°C ">
-					description = <"(101.3°F) or < 36°C (96.8°F).">
+					text = <"Temperature >38.5°C ">
+					description = <">38.5°C (101.3°F) or < 36°C (96.8°F).">
 				>
 				["at0006"] = <
 					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0007"] = <
 					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0008"] = <
 					text = <"Tachycardia or bradycardia ">
 					description = <"If <1 year.">
 				>
-				["at0007"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0006"] = <
-					text = <"Yes">
-					description = <"*">
-				>
 				["at0011"] = <
 					text = <"Tachypnea or mechanical ventilation ">
 					description = <"Related to an acute process.">
 				>
-				["at0007"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0006"] = <
-					text = <"Yes">
-					description = <"*">
-				>
 				["at0014"] = <
 					text = <"Abnormal leukocyte count or >10% bands">
-					description = <"*">
-				>
-				["at0007"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0006"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0018"] = <
 					text = <"Sepsis Criteria ">
-					description = <"*">
+					description = <"">
 				>
 				["at0019"] = <
 					text = <"Suspected or present source of infection">
-					description = <"*">
-				>
-				["at0007"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0006"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0022"] = <
 					text = <"Severe Sepsis Criteria">
-					description = <"*">
+					description = <"">
 				>
 				["at0023"] = <
 					text = <"Cardiovascular dysfunction OR ARDS OR ≥ 2 other organ dysfunction">
-					description = <"*">
-				>
-				["at0007"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0006"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0026"] = <
 					text = <"Septic Shock Criteria">
-					description = <"*">
+					description = <"">
 				>
 				["at0027"] = <
 					text = <"Cardiovascular dysfunction despite adequate fluid resuscitation">
-					description = <"*">
-				>
-				["at0007"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0006"] = <
-					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0030"] = <
 					text = <"Diagnosis">
-					description = <"*">
+					description = <"">
 				>
 				["at0031"] = <
 					text = <"Management">
-					description = <"*">
+					description = <"">
 				>
 				["at0033"] = <
 					text = <"Comment">
-					description = <"*">
+					description = <"">
+				>
+				["at0034"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0035"] = <
+					text = <"Extension">
+					description = <"">
 				>
 			>
 		>
