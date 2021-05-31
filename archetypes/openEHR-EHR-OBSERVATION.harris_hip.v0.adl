@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-OBSERVATION.harris_hip.v0
 
 concept
-	[at0000]	-- Harris hip
+	[at0000]	-- Harris hip score
 language
 	original_language = <[ISO_639-1::en]>
 description
@@ -17,25 +17,25 @@ description
 			language = <[ISO_639-1::en]>
 			purpose = <"To record the results for each component parameter and the calculated Harris Hip score.">
 			use = <"Use to record the results for each component parameter and the calculated Harris Hip score.">
-			keywords = <"harris", "hip", "score", "pain", "limp", "support", "walk", "sitting", "distance", "transportation", "stairs", "deformity", "motion">
+			keywords = <"hip", "score", "pain", "limp", "support", "walk", "sitting", "distance", "transportation", "stairs", "deformity", "motion", "Harris">
 			misuse = <"">
-			copyright = <"Cambio CDS">
+			copyright = <"© Cambio CDS">
 		>
 	>
-	lifecycle_state = <"Initial">
+	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Harris WH. Traumatic arthritis of the hip after dislocation and acetabular fractures: treatment by mold arthroplasty. An end-result study using a new method of result evaluation. J Bone Joint Surg Am. 1969 Jun;51(4):737-55. PMID: 5783851.">
+		["references"] = <"Harris WH. Traumatic arthritis of the hip after dislocation and acetabular fractures: treatment by mold arthroplasty. An end-result study using a new method of result evaluation. J Bone Joint Surg Am. 1969 Jun;51(4):737-55. PMID: 5783851.">
 		["current_contact"] = <"Therese Lindberg, Cambio CDS<therese.lindberg@cambio.se>">
-		["MD5-CAM-1.0.1"] = <"EEB5125EC448686925103A60F535BC41">
+		["MD5-CAM-1.0.1"] = <"4CBDEF84EE292375F6C52F2B15D65E34">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Harris hip
+	OBSERVATION[at0000] matches {	-- Harris hip score
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
@@ -160,6 +160,16 @@ definition
 				}
 			}
 		}
+		protocol matches {
+			ITEM_TREE[at0064] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0065] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
 	}
 
 ontology
@@ -167,8 +177,9 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Harris hip">
+					text = <"Harris hip score">
 					description = <"An assessment score used to evaluate hip function, pain, mobility and daily activity impairment after hip replacement surgery.">
+					comment = <"Original version, c 1969.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -176,7 +187,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -184,219 +195,228 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Pain">
-					description = <"*">
+					description = <"">
 				>
 				["at0005"] = <
 					text = <"None or ignores it">
-					description = <"*">
+					description = <"">
 				>
 				["at0006"] = <
 					text = <"Slight, occasional, no compromise in activities">
-					description = <"*">
+					description = <"">
 				>
 				["at0007"] = <
 					text = <"Mild pain, no effect on average activities, rarely moderate pain with unusual activity; may take aspirin">
-					description = <"*">
+					description = <"">
 				>
 				["at0008"] = <
 					text = <"Moderate Pain, tolerable but makes concession to pain. Some limitation of ordinary activity or work. May require occasional pain medication stronger than aspirin">
-					description = <"*">
+					description = <"">
 				>
 				["at0009"] = <
 					text = <"Marked pain, serious limitation of activities">
-					description = <"*">
+					description = <"">
 				>
 				["at0010"] = <
 					text = <"Totally disabled, crippled, pain in bed, bedridden">
-					description = <"*">
+					description = <"">
 				>
 				["at0011"] = <
 					text = <"Limp">
-					description = <"*">
+					description = <"">
 				>
 				["at0012"] = <
 					text = <"Severe">
-					description = <"*">
+					description = <"">
 				>
 				["at0013"] = <
 					text = <"Moderate">
-					description = <"*">
+					description = <"">
 				>
 				["at0014"] = <
 					text = <"Slight">
-					description = <"*">
+					description = <"">
 				>
 				["at0015"] = <
 					text = <"None">
-					description = <"*">
+					description = <"">
 				>
 				["at0016"] = <
 					text = <"Support">
-					description = <"*">
+					description = <"">
 				>
 				["at0017"] = <
 					text = <"Two crutches or not able to walk">
-					description = <"*">
+					description = <"">
 				>
 				["at0018"] = <
 					text = <"Two canes">
-					description = <"*">
+					description = <"">
 				>
 				["at0019"] = <
 					text = <"One crutch">
-					description = <"*">
+					description = <"">
 				>
 				["at0020"] = <
 					text = <"Cane most of time">
-					description = <"*">
+					description = <"">
 				>
 				["at0021"] = <
 					text = <"Cane for long walks">
-					description = <"*">
+					description = <"">
 				>
 				["at0022"] = <
 					text = <"None">
-					description = <"*">
+					description = <"">
 				>
 				["at0023"] = <
 					text = <"Distance walked">
-					description = <"*">
+					description = <"">
 				>
 				["at0024"] = <
 					text = <"Bed and chair only">
-					description = <"*">
+					description = <"">
 				>
 				["at0025"] = <
 					text = <"Indoors only">
-					description = <"*">
+					description = <"">
 				>
 				["at0026"] = <
 					text = <"Two or three blocks">
-					description = <"*">
+					description = <"">
 				>
 				["at0027"] = <
 					text = <"Six blocks">
-					description = <"*">
+					description = <"">
 				>
 				["at0028"] = <
 					text = <"Unlimited">
-					description = <"*">
+					description = <"">
 				>
 				["at0029"] = <
 					text = <"Sitting">
-					description = <"*">
+					description = <"">
 				>
 				["at0030"] = <
 					text = <"Unable to sit comfortably in any chair">
-					description = <"*">
+					description = <"">
 				>
 				["at0031"] = <
 					text = <"On a high chair for 30 minutes">
-					description = <"*">
+					description = <"">
 				>
 				["at0032"] = <
 					text = <"Comfortably in ordinary chair for one hour">
-					description = <"*">
+					description = <"">
 				>
 				["at0033"] = <
 					text = <"Enter public transportation">
-					description = <"*">
+					description = <"">
 				>
 				["at0034"] = <
 					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0035"] = <
 					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0036"] = <
 					text = <"Stairs">
-					description = <"*">
+					description = <"">
 				>
 				["at0037"] = <
 					text = <"Unable to do stairs">
-					description = <"*">
+					description = <"">
 				>
 				["at0038"] = <
 					text = <"In any manner">
-					description = <"*">
+					description = <"">
 				>
 				["at0039"] = <
 					text = <"Normally using a railing">
-					description = <"*">
+					description = <"">
 				>
 				["at0040"] = <
 					text = <"Normally without using a railing">
-					description = <"*">
+					description = <"">
 				>
 				["at0041"] = <
 					text = <"Put on shoes and socks">
-					description = <"*">
+					description = <"">
 				>
 				["at0042"] = <
 					text = <"Unable">
-					description = <"*">
+					description = <"">
 				>
 				["at0043"] = <
 					text = <"With difficulty">
-					description = <"*">
+					description = <"">
 				>
 				["at0044"] = <
 					text = <"With ease">
-					description = <"*">
+					description = <"">
 				>
 				["at0045"] = <
 					text = <"Range of motion scale">
-					description = <"*">
+					description = <"">
 				>
 				["at0051"] = <
 					text = <"0 - 30 degrees">
-					description = <"*">
+					description = <"">
 				>
 				["at0052"] = <
 					text = <"31 - 60 degrees">
-					description = <"*">
+					description = <"">
 				>
 				["at0053"] = <
 					text = <"61 - 100 degrees">
-					description = <"*">
+					description = <"">
 				>
 				["at0054"] = <
 					text = <"101 - 160 degrees">
-					description = <"*">
+					description = <"">
 				>
 				["at0055"] = <
 					text = <"161 - 210 degrees">
-					description = <"*">
+					description = <"">
 				>
 				["at0056"] = <
 					text = <"211 - 300 degrees">
-					description = <"*">
+					description = <"">
 				>
 				["at0057"] = <
 					text = <"Total score">
-					description = <"*">
+					description = <"">
 				>
 				["at0059"] = <
 					text = <"Less than 30 degrees fixed flexion contracture">
-					description = <"*">
+					description = <"">
 				>
 				["at0060"] = <
 					text = <"Absence of deformity">
-					description = <"*">
+					description = <"">
 				>
 				["at0061"] = <
 					text = <"Less than 10 degrees fixed abduction">
-					description = <"*">
+					description = <"">
 				>
 				["at0062"] = <
 					text = <"Less than 10 degrees fixed internal rotation in extension">
-					description = <"*">
+					description = <"">
 				>
 				["at0063"] = <
 					text = <"Limb length discrepancy less than 3.2cm">
-					description = <"*">
+					description = <"">
+				>
+				["at0064"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0065"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
 				>
 			>
 		>
