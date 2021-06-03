@@ -801,7 +801,7 @@ _Select a medical specialty below to view the available apps._
 
 * Schwab and England Activities of Daily Living (ADL) Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Schwab_and_England_activities_of_daily_living_ADL_scale/1?language=en))
 
-* Trunk Impairment Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/trunk_impairment_scale/0?language=en))
+* Trunk Impairment Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TIS_calculator/1?language=en))
 
 * Webster Rating Scale for Parkinson’s Disease - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Webster_Rating_Scale_for_Parkinsons_Disease_guideline/1?language=en))
 ----------
