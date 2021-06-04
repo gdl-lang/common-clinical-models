@@ -24,11 +24,11 @@
           "colitis"
         ],
         "use": "Use to stratify the severity of ulcerative colitis.\n\nInterpretation: The higher the score (highest possible is 12), the more severe the case of ulcerative colitis.",
-        "copyright": "Cambio CDS"
+        "copyright": "© Cambio CDS"
       }
     },
     "other_details": {
-      "references": "1. Schroeder KW, Tremaine WJ, Ilstrup DM. Coated oral 5-aminosalicylic acid therapy for mildly to moderately active ulcerative colitis. A randomized study. N Engl J Med. 1987 Dec 24;317(26):1625-9. doi: 10.1056/NEJM198712243172603. PMID: 3317057."
+      "references": "Schroeder KW, Tremaine WJ, Ilstrup DM. Coated oral 5-aminosalicylic acid therapy for mildly to moderately active ulcerative colitis. A randomized study. N Engl J Med. 1987 Dec 24;317(26):1625-9. doi: 10.1056/NEJM198712243172603. PMID: 3317057."
     }
   },
   "definition": {
@@ -68,6 +68,18 @@
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0024]"
           }
         }
+      },
+      "gt0010": {
+        "id": "gt0010",
+        "model_id": "openEHR-EHR-EVALUATION.mayo_score_assessment.v0",
+        "template_id": "openEHR-EHR-EVALUATION.mayo_score_assessment.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0011": {
+            "id": "gt0011",
+            "path": "/data[at0001]/items[at0002]"
+          }
+        }
       }
     },
     "rules": {
@@ -81,7 +93,8 @@
           "$gt0006|Physician rating of disease activity|!=null"
         ],
         "then": [
-          "$gt0008|Mayo score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value"
+          "$gt0008|Mayo score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value",
+          "$gt0011|Interpretation|='The higher the score (maximum 12 points), the more severe the ulcerative colitis.'"
         ]
       }
     }
@@ -124,6 +137,10 @@
           "gt0009": {
             "id": "gt0009",
             "text": "Calculate Mayo score"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "Interpretation"
           }
         }
       }
