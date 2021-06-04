@@ -12,7 +12,7 @@
       "organisation": "Cambio CDS",
       "email": "therese.lindberg@cambio.se"
     },
-    "lifecycle_state": "Initial",
+    "lifecycle_state": "Author draft",
     "details": {
       "en": {
         "id": "en",
@@ -27,11 +27,11 @@
           "department"
         ],
         "use": "Use to calculate the PEDOCS score in order to estimate severity of overcrowding in pediatrics emergency departments.\n\nScore interpretation:\nLevel:\tScore:\tInterpretation:\nLevel 1\t1-20\t        Not busy\nLevel 2\t21-60\tBusy\nLevel 3\t61-100\tExtremely busy but not overcrowded\nLevel 4\t101-140\tOvercrowded\nLevel 5\t141-180\tSeverely overcrowded\nLevel 6\t181-200\tDangerously overcrowded",
-        "copyright": "Cambio CDS"
+        "copyright": "@ Cambio CDS"
       }
     },
     "other_details": {
-      "references": "1. Weiss SJ, Ernst AA, Sills MR, Quinn BJ, Johnson A, Nick TG. Development of a novel measure of overcrowding in a pediatric emergency department. Pediatr Emerg Care [Internet]. 2007 Sep [cited 2021 Feb 22];23(9):641-5. Available from: https://pubmed.ncbi.nlm.nih.gov/17876254/"
+      "references": "Weiss SJ, Ernst AA, Sills MR, Quinn BJ, Johnson A, Nick TG. Development of a novel measure of overcrowding in a pediatric emergency department. Pediatr Emerg Care. 2007 Sep;23(9):641-5. doi: 10.1097/PEC.0b013e31814a69e2. PMID: 17876254."
     }
   },
   "definition": {
@@ -90,17 +90,17 @@
           "$gt0019|Number of patients in waiting room|!=null"
         ],
         "then": [
-          "$gt0021|PEDOCS|.magnitude=33.3*(0.11+0.07*$gt0019.magnitude+0.04*$gt0018.magnitude)",
-          "$gt0021|PEDOCS|.precision=0",
-          "$gt0021|PEDOCS|.unit='1'"
+          "$gt0021|PEDOCS score|.magnitude=33.3*(0.11+0.07*$gt0019.magnitude+0.04*$gt0018.magnitude)",
+          "$gt0021|PEDOCS score|.precision=0",
+          "$gt0021|PEDOCS score|.unit='1'"
         ]
       },
       "gt0017": {
         "id": "gt0017",
         "priority": 6,
         "when": [
-          "$gt0021|PEDOCS|>=181,1",
-          "$gt0021|PEDOCS|<=200,1"
+          "$gt0021|PEDOCS score|>=181,1",
+          "$gt0021|PEDOCS score|<=200,1"
         ],
         "then": [
           "$gt0023|Level|=local::at0009|Level 6|",
@@ -111,8 +111,8 @@
         "id": "gt0016",
         "priority": 5,
         "when": [
-          "$gt0021|PEDOCS|>=141,1",
-          "$gt0021|PEDOCS|<181,1"
+          "$gt0021|PEDOCS score|>=141,1",
+          "$gt0021|PEDOCS score|<181,1"
         ],
         "then": [
           "$gt0023|Level|=local::at0008|Level 5|",
@@ -123,8 +123,8 @@
         "id": "gt0015",
         "priority": 4,
         "when": [
-          "$gt0021|PEDOCS|>=101,1",
-          "$gt0021|PEDOCS|<141,1"
+          "$gt0021|PEDOCS score|>=101,1",
+          "$gt0021|PEDOCS score|<141,1"
         ],
         "then": [
           "$gt0023|Level|=local::at0007|Level 4|",
@@ -135,8 +135,8 @@
         "id": "gt0014",
         "priority": 3,
         "when": [
-          "$gt0021|PEDOCS|>=61,1",
-          "$gt0021|PEDOCS|<101,1"
+          "$gt0021|PEDOCS score|>=61,1",
+          "$gt0021|PEDOCS score|<101,1"
         ],
         "then": [
           "$gt0023|Level|=local::at0006|Level 3|",
@@ -147,8 +147,8 @@
         "id": "gt0013",
         "priority": 2,
         "when": [
-          "$gt0021|PEDOCS|>=21,1",
-          "$gt0021|PEDOCS|<61,1"
+          "$gt0021|PEDOCS score|>=21,1",
+          "$gt0021|PEDOCS score|<61,1"
         ],
         "then": [
           "$gt0023|Level|=local::at0005|Level 2|",
@@ -159,8 +159,8 @@
         "id": "gt0012",
         "priority": 1,
         "when": [
-          "$gt0021|PEDOCS|>=1,1",
-          "$gt0021|PEDOCS|<21,1"
+          "$gt0021|PEDOCS score|>=1,1",
+          "$gt0021|PEDOCS score|<21,1"
         ],
         "then": [
           "$gt0023|Level|=local::at0004|Level 1|",

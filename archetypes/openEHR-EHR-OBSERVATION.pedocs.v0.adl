@@ -19,15 +19,15 @@ description
 			use = <"Use to record the results for each component parameter and calculated PEDOCS.">
 			keywords = <"PEDOCS", "overcrowding", "waiting room", "ED", "padiatric", "emergency", "department">
 			misuse = <"">
-			copyright = <"Cambio CDS">
+			copyright = <"© Cambio CDS">
 		>
 	>
-	lifecycle_state = <"Initial">
+	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Weiss SJ, Ernst AA, Sills MR, Quinn BJ, Johnson A, Nick TG. Development of a novel measure of overcrowding in a pediatric emergency department. Pediatr Emerg Care [Internet]. 2007 Sep [cited 2021 Feb 22];23(9):641-5. Available from: https://pubmed.ncbi.nlm.nih.gov/17876254/">
+		["references"] = <"Weiss SJ, Ernst AA, Sills MR, Quinn BJ, Johnson A, Nick TG. Development of a novel measure of overcrowding in a pediatric emergency department. Pediatr Emerg Care. 2007 Sep;23(9):641-5. doi: 10.1097/PEC.0b013e31814a69e2. PMID: 17876254.">
 		["current_contact"] = <"Therese Lindberg, Cambio CDS<therese.lindberg@cambio.se>">
-		["MD5-CAM-1.0.1"] = <"0C5537631DFBA49921C649020C5A07EA">
+		["MD5-CAM-1.0.1"] = <"8BE28835C2C4192B7F1DB1E02265C9CE">
 	>
 
 definition
@@ -35,7 +35,7 @@ definition
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
@@ -46,6 +46,7 @@ definition
 												list = <
 													["1"] = <
 														units = <"patients">
+														magnitude = <|>=0.0|>
 													>
 												>
 											>
@@ -58,6 +59,7 @@ definition
 												list = <
 													["1"] = <
 														units = <"patients">
+														magnitude = <|>=0.0|>
 													>
 												>
 											>
@@ -82,6 +84,16 @@ definition
 				}
 			}
 		}
+		protocol matches {
+			ITEM_TREE[at0007] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0008] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
 	}
 
 ontology
@@ -90,7 +102,8 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"Pediatric Emergency Department Overcrowding Scale (PEDOCS)">
-					description = <"An assessment score used for pediatric emergency department overcrowding.">
+					description = <"An assessment score used for assessing the pediatric emergency department overcrowding.">
+					comment = <"Original version, c 2007.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -98,7 +111,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -106,15 +119,24 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Total patients registered">
-					description = <"*">
+					description = <"">
 				>
 				["at0005"] = <
 					text = <"Number of patients in waiting room">
-					description = <"*">
+					description = <"">
 				>
 				["at0006"] = <
 					text = <"Total score">
-					description = <"*">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0008"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
 				>
 			>
 		>
