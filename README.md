@@ -1351,7 +1351,7 @@ _Select a medical specialty below to view the available apps._
 
 * Canadian CT head injury rule (CCHR) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Canadian_CT_head_injury_rule/1?language=en))
 
-* Focused Assessment with Sonography for Trauma (FAST) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FAST/1?language=en))
+* Focused Assessment with Sonography for Trauma (FAST) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FAST_calculator/1?language=en))
 
 * Injury Severity Score (ISS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ISS/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ISS/1?language=sv))
 
