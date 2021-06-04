@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 591*
+### *Published Apps: 597*
 
 ----------
 
 ### Latest added
 
-1. Pediatric SIRS, Sepsis, and Septic Shock Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_SIRS_Sepsis_Septic_Shock_Criteria_guideline/1?language=en))
-2. Harris Hip Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Harris_hip_score/1?language=en))
-3. Open Fracture Gustilo Classification - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Open_fracture_Gustilo_classification/1?language=en))
-4. SCORing Atopic Dermatitis (SCORAD) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCORAD_guideline/1?language=en))
-5. Acute Pancreatitis Balthazar Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Balthazar_score_guideline/1?language=en))
-6. Modified Aldrete Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Aldrete_Score_guideline/1?language=en))
-7. Norton Score For Pressure Ulcer Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Norton_Score/1?language=en))
-8. Absolute Eosinophil Count Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Absolute_Eosinophil_Count_guideline/1?language=en))
-9. Urinary Protein Excretion Estimation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Urinary_Protein_Excretion_Estimation/1?language=en))
-10. Progesterone to Estrogen Ratio (Pg/E2) Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Progesterone_to_Estrogen_Ratio/1?language=en))
+1. Step-by-Step Approach to Febrile Infants - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IBI_risk_Febrile_Infants/1?language=en))
+2. Cornell Assessment of Pediatric Delirium (CAPD) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cornell_Assessment_of_Pediatric_Delirium/1?language=en))
+3. Mayo Score / Disease Activity Index (DAI) for Ulcerative Colitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mayo_score_ulcerative_colitis/1?language=en))
+4. Simon Broome Diagnostic Criteria for Familial Hypercholesterolemia (FH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simon_broome_diagnostic_criteria_for_familial_hypercholesterolemia_FH/1?language=en))
+5. PEDOCS Score for Pediatric Emergency Department Overcrowding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_emergency_department_overcrowding_scale_PEDOCS/1?language=en))
+6. MELDNa/MELD-Na Score for Liver Cirrhosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MELD-Na_Score_guideline/1?language=en))
+7. Pediatric SIRS, Sepsis, and Septic Shock Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_SIRS_Sepsis_Septic_Shock_Criteria_guideline/1?language=en))
+8. Harris Hip Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Harris_hip_score/1?language=en))
+9. Open Fracture Gustilo Classification - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Open_fracture_Gustilo_classification/1?language=en))
+10. SCORing Atopic Dermatitis (SCORAD) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCORAD_guideline/1?language=en))
 
 ----------
 
@@ -230,6 +230,8 @@ _Select a medical specialty below to view the available apps._
 
 * SAVE (Survival after Veno-Arterial ECMO) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SAVE_score/1?language=en))
 
+* Simon Broome Diagnostic Criteria for Familial Hypercholesterolemia (FH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Simon_broome_diagnostic_criteria_for_familial_hypercholesterolemia_FH/1?language=en))
+
 * THRIVE Score for Stroke Outcome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/THRIVE_for_Stroke/1?language=en))
 
 * TIMI Risk Index (TRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TRI/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TRI/1?language=sv))
@@ -313,6 +315,8 @@ _Select a medical specialty below to view the available apps._
 
 * CEDOCS Score for Emergency Department Overcrowding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CEDOCS_Score_Emergency_Department_Overcrowding/1?language=en))
 
+* Cornell Assessment of Pediatric Delirium (CAPD) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Cornell_Assessment_of_Pediatric_Delirium/1?language=en))
+
 * CRB-65 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CRB-65/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CRB-65/1?language=sv))
 
 * CURB-65 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CURB-65/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CURB-65/1?language=sv))
@@ -357,6 +361,8 @@ _Select a medical specialty below to view the available apps._
 * Pediatric Endotracheal Tube (ETT) Size - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_Endotracheal_Tube_Size_guideline/1?language=en))
 
 * Pediatric NIH Stroke Scale (NIHSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_NIHSS_guideline/1?language=en))
+
+* PEDOCS Score for Pediatric Emergency Department Overcrowding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pediatric_emergency_department_overcrowding_scale_PEDOCS/1?language=en))
 
 * Pittsburgh Knee Rules - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pittsburgh_knee_rules/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Pittsburgh_knee_rules/1?language=sv))
 
@@ -479,6 +485,10 @@ _Select a medical specialty below to view the available apps._
 * Los Angeles (LA) Grading of Esophagitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Los_Angeles_LA_Grading_of_Esophagitis/1?language=en))
 
 * Maddrey's Discriminant Function for Alcoholic Hepatitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Maddrey_Score_guideline/1?language=en))
+
+* Mayo Score / Disease Activity Index (DAI) for Ulcerative Colitis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Mayo_score_ulcerative_colitis/1?language=en))
+
+* MELDNa/MELD-Na Score for Liver Cirrhosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MELD-Na_Score_guideline/1?language=en))
 
 * Milan Criteria for Liver Transplantation - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Milan_Criteria_for_Liver_Transplantation/1?language=en))
 
@@ -1027,6 +1037,8 @@ _Select a medical specialty below to view the available apps._
 * Rochester Criteria for Febrile Infants - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rochester_Criteria_guideline/1?language=en))
 
 * Shock Index Pediatric Age-Adjusted (SIPA) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SIPA/1?language=en))
+
+* Step-by-Step Approach to Febrile Infants - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IBI_risk_Febrile_Infants/1?language=en))
 
 * STRONGkids Nutritional Risk Screening - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/STRONGkids/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/STRONGkids/1?language=sv))
 
