@@ -18,17 +18,21 @@
         "id": "en",
         "purpose": "Use to assess the Simon Broome diagnostic criteria in order to diagnose familial hypercholesterolemia (FH).",
         "keywords": [
-          "simon broome diagnostic criteria",
+          "diagnostic",
           "FH",
-          "familial hypercholesterolemia",
-          "cholesterol"
+          "familial",
+          "hypercholesterolemia",
+          "cholesterol",
+          "criteria",
+          "Simon",
+          "Broome"
         ],
         "use": "Use to assess the Simon Broome diagnostic criteria in order to diagnose familial hypercholesterolemia (FH).\n\nSimon Broome Diagnosis Criteria for Familial Hypercholesterolemia:\nDiagnosis:\t                Criteria:\nDefinite FH\t                Cholesterol >7.5 mmol/L or LDL-cholesterol >4.9 mmol/L in adult\n                                        Cholesterol >6.7 mmol/L or LDL-cholesterol >4.0 mmol/L in a child under 16 years of age\n                                        PLUS\n                                        Tendon xanthomas in patient or a 1st degree relative (parent, sibling, child),\n                                        or in a 2nd degree relative (grand parent, uncle, aunt)\n                                        OR\n                                        DNA based evidence of a functional LDLR, PCSK9 and APOB mutation\n\nProbable FH\t                Cholesterol >7.5 mmol/L or LDL-cholesterol >4.9 mmol/L in adult\n                                        Cholesterol >6.7 mmol/L or LDL-cholesterol >4.0 mmol/L in a child under 16 years of age\n                                        PLUS\n                                        Family History of myocardial infarction (MI) before 50 years of age in a 2nd degree relative\n                                        or below age 60 in a 1st degree relative\n                                        OR\n                                        Family history of raised total cholesterol - >7.5 mmol/L in adult 1st or 2nd degree relative\n                                        or >6.7 mmol/L in a child or sibling aged <16 years",
-        "copyright": "Cambio CDS"
+        "copyright": "@ Cambio CDS"
       }
     },
     "other_details": {
-      "references": "1. Risk of fatal coronary heart disease in familial hypercholesterolaemia. Scientific Steering Committee on behalf of the Simon Broome Register Group. BMJ [Internet]. 1991 [cited Feb 16];303(6807):893-896. Available from: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1671226/"
+      "references": "Risk of fatal coronary heart disease in familial hypercholesterolaemia. Scientific Steering Committee on behalf of the Simon Broome Register Group. BMJ. 1991 Oct 12;303(6807):893-6. doi: 10.1136/bmj.303.6807.893. PMID: 1933004; PMCID: PMC1671226."
     }
   },
   "definition": {
@@ -39,6 +43,10 @@
         "template_id": "openEHR-EHR-EVALUATION.simon_broome_diagnostic.v0",
         "type": "INPUT",
         "elements": {
+          "gt0014": {
+            "id": "gt0014",
+            "path": "/data[at0001]/items[at0030]"
+          },
           "gt0003": {
             "id": "gt0003",
             "path": "/data[at0001]/items[at0018]"
@@ -66,38 +74,22 @@
           "gt0008": {
             "id": "gt0008",
             "path": "/data[at0001]/items[at0014]"
-          },
-          "gt0014": {
-            "id": "gt0014",
-            "path": "/data[at0001]/items[at0030]"
-          }
-        }
-      },
-      "gt0009": {
-        "id": "gt0009",
-        "model_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
-        "template_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
-        "type": "INPUT",
-        "elements": {
-          "gt0010": {
-            "id": "gt0010",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
           }
         }
       },
       "gt0011": {
         "id": "gt0011",
-        "model_id": "openEHR-EHR-OBSERVATION.lab_test_cholesterol.v0",
-        "template_id": "openEHR-EHR-OBSERVATION.lab_test_cholesterol.v0",
+        "model_id": "openEHR-EHR-OBSERVATION.lab_test-lipids.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.lab_test-lipids.v1",
         "type": "INPUT",
         "elements": {
           "gt0012": {
             "id": "gt0012",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0078.2]"
           },
           "gt0013": {
             "id": "gt0013",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0078.5]"
           }
         }
       }
@@ -106,26 +98,6 @@
       "$gt0008|Familial Hypercholesterolemia|=local::at0017|Unlikely|"
     ],
     "rules": {
-      "gt0015": {
-        "id": "gt0015",
-        "priority": 6,
-        "when": [
-          "$gt0010|Age|<16,a"
-        ],
-        "then": [
-          "$gt0014|Age (years)|=local::at0031|<16|"
-        ]
-      },
-      "gt0016": {
-        "id": "gt0016",
-        "priority": 5,
-        "when": [
-          "$gt0010|Age|>=16,a"
-        ],
-        "then": [
-          "$gt0014|Age (years)|=local::at0032|≥16|"
-        ]
-      },
       "gt0017": {
         "id": "gt0017",
         "priority": 4,
@@ -230,14 +202,6 @@
             "id": "gt0014",
             "text": "Age (years)",
             "description": "*"
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "text": "Set Age <16 years"
-          },
-          "gt0016": {
-            "id": "gt0016",
-            "text": "Set Age ≥16 years"
           },
           "gt0017": {
             "id": "gt0017",
