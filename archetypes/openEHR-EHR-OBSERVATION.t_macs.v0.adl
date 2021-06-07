@@ -1,4 +1,4 @@
-archetype (adl_version=1.4)
+archetype (adl_version=1.4; uid=ffabbc56-74ad-3583-9b8d-2b9836597222)
 	openEHR-EHR-OBSERVATION.t_macs.v0
 
 concept
@@ -18,16 +18,17 @@ description
 			purpose = <"To record the result for each component parameter and the probability of T-MACS.">
 			use = <"Use to record the result for each component parameter and the probability of T-MACS.">
 			keywords = <"T-MACS", "EKG", "ischemia", "angina", "pain", "vomiting", "sweating", "hypotension", "troponin", "only", "machester", "acute", "coronary", "syndromes", "decision", "aid">
-			misuse = <"">
-			copyright = <"Cambio CDS">
+			misuse = <"Not to be used for recording information related to HE-MACS. Use instead openEHR-EHR-OBSERVATION.he_macs.v0">
+			copyright = <"© Cambio CDS">
 		>
 	>
-	lifecycle_state = <"Initial">
+	lifecycle_state = <"AuthorDraft">
 	other_contributors = <>
 	other_details = <
-		["references"] = <"1. Body R, Carlton E, Sperrin M, Lewis PS, Burrows G, Carley S, McDowell G, Buchan I, Greaves K, Mackway-Jones K. Troponin-only Manchester Acute Coronary Syndromes (T-MACS) decision aid: single biomarker re-derivation and external validation in three cohorts. Emerg Med J [Internet]. 2017 Jun [cited 2021 Feb 24];34(6):349-356. Available from: https://pubmed.ncbi.nlm.nih.gov/27565197/">
+		["references"] = <"Body R, Carlton E, Sperrin M, Lewis PS, Burrows G, Carley S, McDowell G, Buchan I, Greaves K, Mackway-Jones K. Troponin-only Manchester Acute Coronary Syndromes (T-MACS) decision aid: single biomarker re-derivation and external validation in three cohorts. Emerg Med J. 2017 Jun;34(6):349-356. doi: 10.1136/emermed-2016-205983. Epub 2016 Aug 26. PMID: 27565197; PMCID: PMC5502241.">
 		["current_contact"] = <"Therese Lindberg, Cambio CDS<therese.lindberg@cambio.se>">
-		["MD5-CAM-1.0.1"] = <"9F457A00DC84803E03014D2EDC326D3F">
+		["MD5-CAM-1.0.1"] = <"F87A74E47AC0F0BE7FC4B8E2F2F28A3F">
+		["build_uid"] = <"676429e8-3f1a-3d54-a239-ff6902100d32">
 	>
 
 definition
@@ -47,32 +48,49 @@ definition
 									}
 									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Worsening or crescendo angina
 										value matches {
-											0|[local::at0008], 	-- No
-											1|[local::at0009]  	-- Yes
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
 										}
 									}
 									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Pain radiating to right arm or shoulder
 										value matches {
-											0|[local::at0011], 	-- No
-											1|[local::at0012]  	-- Yes
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
 										}
 									}
 									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Pain associated with vomiting
 										value matches {
-											0|[local::at0014], 	-- No
-											1|[local::at0015]  	-- Yes
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
 										}
 									}
 									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Sweating observed
 										value matches {
-											0|[local::at0017], 	-- No
-											1|[local::at0018]  	-- Yes
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
 										}
 									}
 									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Hypotension
 										value matches {
-											0|[local::at0020], 	-- No
-											1|[local::at0021]  	-- Yes
+											0|[local::at0005], 	-- No
+											1|[local::at0006]  	-- Yes
+										}
+									}
+									ELEMENT[at0024] occurrences matches {0..1} matches {	-- hs-cTnT concentration on arrival
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::119]>
+												list = <
+													["1"] = <
+														units = <"nanogm/l">
+														magnitude = <|>=0.0|>
+													>
+													["2"] = <
+														units = <"ug/l">
+														magnitude = <|>=0.0|>
+													>
+												>
+											>
 										}
 									}
 									ELEMENT[at0023] occurrences matches {0..1} matches {	-- Probability of ACS
@@ -95,6 +113,16 @@ definition
 				}
 			}
 		}
+		protocol matches {
+			ITEM_TREE[at0025] matches {	-- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0026] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
 	}
 
 ontology
@@ -111,7 +139,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -133,65 +161,38 @@ ontology
 					text = <"Worsening or crescendo angina">
 					description = <"*">
 				>
-				["at0008"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0009"] = <
-					text = <"Yes">
-					description = <"*">
-				>
 				["at0010"] = <
 					text = <"Pain radiating to right arm or shoulder">
-					description = <"*">
-				>
-				["at0011"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0012"] = <
-					text = <"Yes">
 					description = <"*">
 				>
 				["at0013"] = <
 					text = <"Pain associated with vomiting">
 					description = <"*">
 				>
-				["at0014"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0015"] = <
-					text = <"Yes">
-					description = <"*">
-				>
 				["at0016"] = <
 					text = <"Sweating observed">
 					description = <"As observed by treating clinician.">
-				>
-				["at0017"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0018"] = <
-					text = <"Yes">
-					description = <"*">
 				>
 				["at0019"] = <
 					text = <"Hypotension">
 					description = <"sBP <100 mmHg on arrival to ED.">
 				>
-				["at0020"] = <
-					text = <"No">
-					description = <"*">
-				>
-				["at0021"] = <
-					text = <"Yes">
-					description = <"*">
-				>
 				["at0023"] = <
 					text = <"Probability of ACS">
 					description = <"*">
+				>
+				["at0024"] = <
+					text = <"hs-cTnT concentration on arrival">
+					description = <"High sensitivity cardiac troponin T (hs-cTnT). Norm 0-14 ng/L.">
+				>
+				["at0025"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0026"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example local information requirements or additional metadata to allign with FHIR.">
 				>
 			>
 		>
