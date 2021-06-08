@@ -95,10 +95,6 @@
         "template_id": "openEHR-EHR-OBSERVATION.ascvd_risk_calculator.v0",
         "type": "OUTPUT",
         "elements": {
-          "gt0052": {
-            "id": "gt0052",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0018]"
-          },
           "gt0053": {
             "id": "gt0053",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0022]"
@@ -110,6 +106,10 @@
           "gt0062": {
             "id": "gt0062",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0044]"
+          },
+          "gt0064": {
+            "id": "gt0064",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0046]"
           }
         }
       },
@@ -137,7 +137,7 @@
     "rules": {
       "gt0021": {
         "id": "gt0021",
-        "priority": 14,
+        "priority": 16,
         "when": [
           "$gt0018|Total Cholesterol|.unit=='mmol/l'"
         ],
@@ -147,12 +147,32 @@
       },
       "gt0022": {
         "id": "gt0022",
-        "priority": 13,
+        "priority": 15,
         "when": [
           "$gt0017|HDL Cholesterol|.unit=='mmol/l'"
         ],
         "then": [
           "$gt0020|HDL cholesterol conversion factor|=38.6685"
+        ]
+      },
+      "gt0065": {
+        "id": "gt0065",
+        "priority": 14,
+        "when": [
+          "$gt0055|Age|<40,a"
+        ],
+        "then": [
+          "$gt0064|Comment|='Age too low; please change to proceed.'"
+        ]
+      },
+      "gt0066": {
+        "id": "gt0066",
+        "priority": 13,
+        "when": [
+          "$gt0055|Age|>75,a"
+        ],
+        "then": [
+          "$gt0064|Comment|='Age too high; please change to proceed.'"
         ]
       },
       "gt0023": {
@@ -161,18 +181,20 @@
         "when": [
           "$gt0027|Treatment for hypertension|==local::at0033|Yes|",
           "$gt0056|Sex|==local::at0006|Female|",
-          "$gt0055|Age|!=null",
           "$gt0029|Diabetes|!=null",
           "$gt0030|Smoker|!=null",
           "$gt0017|HDL Cholesterol|!=null",
           "$gt0018|Total Cholesterol|!=null",
           "$gt0015|Systolic blood pressure|!=null",
-          "($gt0026|Race|==local::at0011|White|)||($gt0026|Race|==local::at0013|Other|)"
+          "($gt0026|Race|==local::at0011|White|)||($gt0026|Race|==local::at0013|Other|)",
+          "!fired($gt0065)",
+          "!fired($gt0066)"
         ],
         "then": [
-          "$gt0052|Individual sum|.magnitude=((0-29.799)*log($gt0055.magnitude))+(4.884*log($gt0055.magnitude)^2)+(log($gt0018.magnitude*$gt0019)*13.54)+(log($gt0018.magnitude*$gt0019)*log($gt0055.magnitude)*(0-3.114))+(log($gt0017.magnitude*$gt0020)*(0-13.578))+(log($gt0055.magnitude)*log($gt0017.magnitude*$gt0020)*3.149)+(log($gt0015.magnitude)*2.019)+(7.574*$gt0030.value)+(log($gt0055.magnitude)*$gt0030.value*(0-1.665))+(0.661*$gt0029.value)",
-          "$gt0052|Individual sum|.precision=3",
-          "$gt0053|Estimated 10-y risk|.magnitude=abs((1-(0.9665^(e^($gt0052.magnitude+29.18))))*100)",
+          "$gt0063|Individual sum|.magnitude=((0-29.799)*log($gt0055.magnitude))+(4.884*log($gt0055.magnitude)^2)+(log($gt0018.magnitude*$gt0019)*13.54)+(log($gt0018.magnitude*$gt0019)*log($gt0055.magnitude)*(0-3.114))+(log($gt0017.magnitude*$gt0020)*(0-13.578))+(log($gt0055.magnitude)*log($gt0017.magnitude*$gt0020)*3.149)+(log($gt0015.magnitude)*2.019)+(7.574*$gt0030.value)+(log($gt0055.magnitude)*$gt0030.value*(0-1.665))+(0.661*$gt0029.value)",
+          "$gt0063|Individual sum|.precision=3",
+          "$gt0063|Individual sum|.unit='1'",
+          "$gt0053|Estimated 10-y risk|.magnitude=abs((1-(0.9665^(e^($gt0063.magnitude+29.18))))*100)",
           "$gt0053|Estimated 10-y risk|.precision=2",
           "$gt0053|Estimated 10-y risk|.unit='%'",
           "$gt0062|10-year cardiovascular risk if risk factors were optimal|='1.4%'"
@@ -184,18 +206,20 @@
         "when": [
           "$gt0027|Treatment for hypertension|==local::at0032|No|",
           "$gt0056|Sex|==local::at0006|Female|",
-          "$gt0055|Age|!=null",
           "$gt0029|Diabetes|!=null",
           "$gt0030|Smoker|!=null",
           "$gt0017|HDL Cholesterol|!=null",
           "$gt0018|Total Cholesterol|!=null",
           "$gt0015|Systolic blood pressure|!=null",
-          "($gt0026|Race|==local::at0011|White|)||($gt0026|Race|==local::at0013|Other|)"
+          "($gt0026|Race|==local::at0011|White|)||($gt0026|Race|==local::at0013|Other|)",
+          "!fired($gt0065)",
+          "!fired($gt0066)"
         ],
         "then": [
-          "$gt0052|Individual sum|.magnitude=((0-29.799)*log($gt0055.magnitude))+(4.884*log($gt0055.magnitude)^2)+(log($gt0018.magnitude*$gt0019)*13.54)+(log($gt0018.magnitude*$gt0019)*log($gt0055.magnitude)*(0-3.114))+(log($gt0017.magnitude*$gt0020)*(0-13.578))+(log($gt0055.magnitude)*log($gt0017.magnitude*$gt0020)*3.149)+(log($gt0015.magnitude)*1.957)+(7.574*$gt0030.value)+(log($gt0055.magnitude)*$gt0030.value*(0-1.665))+(0.661*$gt0029.value)",
-          "$gt0052|Individual sum|.precision=3",
-          "$gt0053|Estimated 10-y risk|.magnitude=abs((1-(0.9665^(e^($gt0052.magnitude+29.2))))*100)",
+          "$gt0063|Individual sum|.magnitude=((0-29.799)*log($gt0055.magnitude))+(4.884*log($gt0055.magnitude)^2)+(log($gt0018.magnitude*$gt0019)*13.54)+(log($gt0018.magnitude*$gt0019)*log($gt0055.magnitude)*(0-3.114))+(log($gt0017.magnitude*$gt0020)*(0-13.578))+(log($gt0055.magnitude)*log($gt0017.magnitude*$gt0020)*3.149)+(log($gt0015.magnitude)*1.957)+(7.574*$gt0030.value)+(log($gt0055.magnitude)*$gt0030.value*(0-1.665))+(0.661*$gt0029.value)",
+          "$gt0063|Individual sum|.precision=3",
+          "$gt0063|Individual sum|.unit='1'",
+          "$gt0053|Estimated 10-y risk|.magnitude=abs((1-(0.9665^(e^($gt0063.magnitude+29.2))))*100)",
           "$gt0053|Estimated 10-y risk|.precision=1",
           "$gt0053|Estimated 10-y risk|.unit='%'",
           "$gt0062|10-year cardiovascular risk if risk factors were optimal|='1.4%'"
@@ -208,17 +232,19 @@
           "$gt0027|Treatment for hypertension|==local::at0033|Yes|",
           "$gt0026|Race|==local::at0012|African American|",
           "$gt0056|Sex|==local::at0006|Female|",
-          "$gt0055|Age|!=null",
           "$gt0029|Diabetes|!=null",
           "$gt0030|Smoker|!=null",
           "$gt0017|HDL Cholesterol|!=null",
           "$gt0018|Total Cholesterol|!=null",
-          "$gt0015|Systolic blood pressure|!=null"
+          "$gt0015|Systolic blood pressure|!=null",
+          "!fired($gt0065)",
+          "!fired($gt0066)"
         ],
         "then": [
-          "$gt0052|Individual sum|.magnitude=(log($gt0055.magnitude)*17.114)+(log($gt0018.magnitude*$gt0019)*0.94)+(log($gt0017.magnitude*$gt0020)*(0-18.92))+(log($gt0055.magnitude)*log($gt0017.magnitude)*4.475)+(log($gt0015.magnitude)*29.291)+(log($gt0055.magnitude)*log($gt0015.magnitude)*(0-6.432))+(0.691*$gt0030.value)+(0.874*$gt0029.value)",
-          "$gt0052|Individual sum|.precision=3",
-          "$gt0053|Estimated 10-y risk|.magnitude=abs((1-(0.9533^(e^($gt0052.magnitude-86.61))))*100)",
+          "$gt0063|Individual sum|.magnitude=(log($gt0055.magnitude)*17.114)+(log($gt0018.magnitude*$gt0019)*0.94)+(log($gt0017.magnitude*$gt0020)*(0-18.92))+(log($gt0055.magnitude)*log($gt0017.magnitude)*4.475)+(log($gt0015.magnitude)*29.291)+(log($gt0055.magnitude)*log($gt0015.magnitude)*(0-6.432))+(0.691*$gt0030.value)+(0.874*$gt0029.value)",
+          "$gt0063|Individual sum|.precision=3",
+          "$gt0063|Individual sum|.unit='1'",
+          "$gt0053|Estimated 10-y risk|.magnitude=abs((1-(0.9533^(e^($gt0063.magnitude-86.61))))*100)",
           "$gt0053|Estimated 10-y risk|.precision=1",
           "$gt0053|Estimated 10-y risk|.unit='%'",
           "$gt0062|10-year cardiovascular risk if risk factors were optimal|='1.8%'"
@@ -231,17 +257,19 @@
           "$gt0027|Treatment for hypertension|==local::at0032|No|",
           "$gt0026|Race|==local::at0012|African American|",
           "$gt0056|Sex|==local::at0006|Female|",
-          "$gt0055|Age|!=null",
           "$gt0029|Diabetes|!=null",
           "$gt0030|Smoker|!=null",
           "$gt0017|HDL Cholesterol|!=null",
           "$gt0018|Total Cholesterol|!=null",
-          "$gt0015|Systolic blood pressure|!=null"
+          "$gt0015|Systolic blood pressure|!=null",
+          "!fired($gt0065)",
+          "!fired($gt0066)"
         ],
         "then": [
-          "$gt0052|Individual sum|.magnitude=(log($gt0055.magnitude)*17.114)+(log($gt0018.magnitude*$gt0019)*0.94)+(log($gt0017.magnitude*$gt0020)*(0-18.92))+(log($gt0055.magnitude)*log($gt0017.magnitude)*4.475)+(log($gt0015.magnitude)*27.82)+(log($gt0055.magnitude)*log($gt0015.magnitude)*(0-6.087))+(0.691*$gt0030.value)+(0.874*$gt0029.value)",
-          "$gt0052|Individual sum|.precision=3",
-          "$gt0053|Estimated 10-y risk|.magnitude=abs((1-(0.9533^(e^($gt0052.magnitude-86.61))))*100)",
+          "$gt0063|Individual sum|.magnitude=(log($gt0055.magnitude)*17.114)+(log($gt0018.magnitude*$gt0019)*0.94)+(log($gt0017.magnitude*$gt0020)*(0-18.92))+(log($gt0055.magnitude)*log($gt0017.magnitude)*4.475)+(log($gt0015.magnitude)*27.82)+(log($gt0055.magnitude)*log($gt0015.magnitude)*(0-6.087))+(0.691*$gt0030.value)+(0.874*$gt0029.value)",
+          "$gt0063|Individual sum|.precision=3",
+          "$gt0063|Individual sum|.unit='1'",
+          "$gt0053|Estimated 10-y risk|.magnitude=abs((1-(0.9533^(e^($gt0063.magnitude-86.61))))*100)",
           "$gt0053|Estimated 10-y risk|.precision=1",
           "$gt0053|Estimated 10-y risk|.unit='%'",
           "$gt0062|10-year cardiovascular risk if risk factors were optimal|='1.8%'"
@@ -254,17 +282,19 @@
           "$gt0027|Treatment for hypertension|==local::at0033|Yes|",
           "$gt0026|Race|==local::at0012|African American|",
           "$gt0056|Sex|==local::at0005|Male|",
-          "$gt0055|Age|!=null",
           "$gt0029|Diabetes|!=null",
           "$gt0030|Smoker|!=null",
           "$gt0017|HDL Cholesterol|!=null",
           "$gt0018|Total Cholesterol|!=null",
-          "$gt0015|Systolic blood pressure|!=null"
+          "$gt0015|Systolic blood pressure|!=null",
+          "!fired($gt0065)",
+          "!fired($gt0066)"
         ],
         "then": [
-          "$gt0052|Individual sum|.magnitude=(log($gt0055.magnitude)*2.469)+(log($gt0018.magnitude*$gt0019)*0.302)+(log($gt0017.magnitude*$gt0020)*(0-0.307))+(log($gt0015.magnitude)*1.916)+(0.549*$gt0030.value)+(0.645*$gt0029.value)",
-          "$gt0052|Individual sum|.precision=3",
-          "$gt0053|Estimated 10-y risk|.magnitude=abs((1-(0.8954^(e^($gt0052.magnitude-19.54))))*100)",
+          "$gt0063|Individual sum|.magnitude=(log($gt0055.magnitude)*2.469)+(log($gt0018.magnitude*$gt0019)*0.302)+(log($gt0017.magnitude*$gt0020)*(0-0.307))+(log($gt0015.magnitude)*1.916)+(0.549*$gt0030.value)+(0.645*$gt0029.value)",
+          "$gt0063|Individual sum|.precision=3",
+          "$gt0063|Individual sum|.unit='1'",
+          "$gt0053|Estimated 10-y risk|.magnitude=abs((1-(0.8954^(e^($gt0063.magnitude-19.54))))*100)",
           "$gt0053|Estimated 10-y risk|.precision=1",
           "$gt0053|Estimated 10-y risk|.unit='%'",
           "$gt0062|10-year cardiovascular risk if risk factors were optimal|='4.9%'"
@@ -277,17 +307,19 @@
           "$gt0027|Treatment for hypertension|==local::at0032|No|",
           "$gt0026|Race|==local::at0012|African American|",
           "$gt0056|Sex|==local::at0005|Male|",
-          "$gt0055|Age|!=null",
           "$gt0029|Diabetes|!=null",
           "$gt0030|Smoker|!=null",
           "$gt0017|HDL Cholesterol|!=null",
           "$gt0018|Total Cholesterol|!=null",
-          "$gt0015|Systolic blood pressure|!=null"
+          "$gt0015|Systolic blood pressure|!=null",
+          "!fired($gt0065)",
+          "!fired($gt0066)"
         ],
         "then": [
-          "$gt0052|Individual sum|.magnitude=(log($gt0055.magnitude)*2.469)+(log($gt0018.magnitude*$gt0019)*0.302)+(log($gt0017.magnitude*$gt0020)*(0-0.307))+(log($gt0015.magnitude)*1.809)+(0.549*$gt0030.value)+(0.645*$gt0029.value)",
-          "$gt0052|Individual sum|.precision=3",
-          "$gt0053|Estimated 10-y risk|.magnitude=abs((1-(0.8954^(e^($gt0052.magnitude-19.54))))*100)",
+          "$gt0063|Individual sum|.magnitude=(log($gt0055.magnitude)*2.469)+(log($gt0018.magnitude*$gt0019)*0.302)+(log($gt0017.magnitude*$gt0020)*(0-0.307))+(log($gt0015.magnitude)*1.809)+(0.549*$gt0030.value)+(0.645*$gt0029.value)",
+          "$gt0063|Individual sum|.precision=3",
+          "$gt0063|Individual sum|.unit='1'",
+          "$gt0053|Estimated 10-y risk|.magnitude=abs((1-(0.8954^(e^($gt0063.magnitude-19.54))))*100)",
           "$gt0053|Estimated 10-y risk|.unit='%'",
           "$gt0053|Estimated 10-y risk|.precision=1",
           "$gt0062|10-year cardiovascular risk if risk factors were optimal|='4.9%'"
@@ -299,18 +331,20 @@
         "when": [
           "$gt0027|Treatment for hypertension|==local::at0033|Yes|",
           "$gt0056|Sex|==local::at0005|Male|",
-          "$gt0055|Age|!=null",
           "$gt0029|Diabetes|!=null",
           "$gt0030|Smoker|!=null",
           "$gt0017|HDL Cholesterol|!=null",
           "$gt0018|Total Cholesterol|!=null",
           "$gt0015|Systolic blood pressure|!=null",
-          "($gt0026|Race|==local::at0011|White|)||($gt0026|Race|==local::at0013|Other|)"
+          "($gt0026|Race|==local::at0011|White|)||($gt0026|Race|==local::at0013|Other|)",
+          "!fired($gt0065)",
+          "!fired($gt0066)"
         ],
         "then": [
-          "$gt0052|Individual sum|.magnitude=(log($gt0055.magnitude)*12.344)+(log($gt0018.magnitude*$gt0019)*11.853)+(log($gt0055.magnitude)*log($gt0018.magnitude*$gt0019)*(0-2.664))+(log($gt0017.magnitude*$gt0020)*(0-7.99))+(log($gt0055.magnitude)*log($gt0017.magnitude*$gt0020)*1.769)+(log($gt0015.magnitude)*1.797)+(7.837*$gt0030.value)+(log($gt0055.magnitude)*$gt0030.value*(0-1.795))+(0.658*$gt0029.value)",
-          "$gt0052|Individual sum|.precision=3",
-          "$gt0053|Estimated 10-y risk|.magnitude=abs((1-(0.9144^(e^($gt0052.magnitude-61.18))))*100)",
+          "$gt0063|Individual sum|.magnitude=(log($gt0055.magnitude)*12.344)+(log($gt0018.magnitude*$gt0019)*11.853)+(log($gt0055.magnitude)*log($gt0018.magnitude*$gt0019)*(0-2.664))+(log($gt0017.magnitude*$gt0020)*(0-7.99))+(log($gt0055.magnitude)*log($gt0017.magnitude*$gt0020)*1.769)+(log($gt0015.magnitude)*1.797)+(7.837*$gt0030.value)+(log($gt0055.magnitude)*$gt0030.value*(0-1.795))+(0.658*$gt0029.value)",
+          "$gt0063|Individual sum|.precision=3",
+          "$gt0063|Individual sum|.unit='1'",
+          "$gt0053|Estimated 10-y risk|.magnitude=abs((1-(0.9144^(e^($gt0063.magnitude-61.18))))*100)",
           "$gt0053|Estimated 10-y risk|.precision=1",
           "$gt0053|Estimated 10-y risk|.unit='%'",
           "$gt0062|10-year cardiovascular risk if risk factors were optimal|='3.6%'"
@@ -322,18 +356,20 @@
         "when": [
           "$gt0027|Treatment for hypertension|==local::at0032|No|",
           "$gt0056|Sex|==local::at0005|Male|",
-          "$gt0055|Age|!=null",
           "$gt0029|Diabetes|!=null",
           "$gt0030|Smoker|!=null",
           "$gt0017|HDL Cholesterol|!=null",
           "$gt0018|Total Cholesterol|!=null",
           "$gt0015|Systolic blood pressure|!=null",
-          "($gt0026|Race|==local::at0011|White|)||($gt0026|Race|==local::at0013|Other|)"
+          "($gt0026|Race|==local::at0011|White|)||($gt0026|Race|==local::at0013|Other|)",
+          "!fired($gt0065)",
+          "!fired($gt0066)"
         ],
         "then": [
-          "$gt0052|Individual sum|.magnitude=(log($gt0055.magnitude)*12.344)+(log($gt0018.magnitude*$gt0019)*11.853)+(log($gt0055.magnitude)*log($gt0018.magnitude*$gt0019)*(0-2.664))+(log($gt0017.magnitude*$gt0020)*(0-7.99))+(log($gt0055.magnitude)*log($gt0017.magnitude*$gt0020)*1.769)+(log($gt0015.magnitude)*1.764)+(7.837*$gt0030.value)+(log($gt0055.magnitude)*$gt0030.value*(0-1.795))+(0.658*$gt0029.value)",
-          "$gt0052|Individual sum|.precision=2",
-          "$gt0053|Estimated 10-y risk|.magnitude=abs((1-(0.9144^(e^($gt0052.magnitude-61.18))))*100)",
+          "$gt0063|Individual sum|.magnitude=(log($gt0055.magnitude)*12.344)+(log($gt0018.magnitude*$gt0019)*11.853)+(log($gt0055.magnitude)*log($gt0018.magnitude*$gt0019)*(0-2.664))+(log($gt0017.magnitude*$gt0020)*(0-7.99))+(log($gt0055.magnitude)*log($gt0017.magnitude*$gt0020)*1.769)+(log($gt0015.magnitude)*1.764)+(7.837*$gt0030.value)+(log($gt0055.magnitude)*$gt0030.value*(0-1.795))+(0.658*$gt0029.value)",
+          "$gt0063|Individual sum|.precision=2",
+          "$gt0063|Individual sum|.unit='1'",
+          "$gt0053|Estimated 10-y risk|.magnitude=abs((1-(0.9144^(e^($gt0063.magnitude-61.18))))*100)",
           "$gt0053|Estimated 10-y risk|.precision=1",
           "$gt0053|Estimated 10-y risk|.unit='%'",
           "$gt0062|10-year cardiovascular risk if risk factors were optimal|='3.6%'"
@@ -354,10 +390,11 @@
         "id": "gt0059",
         "priority": 3,
         "when": [
-          "$gt0053|Estimated 10-y risk|>7.5,%"
+          "$gt0053|Estimated 10-y risk|>7.5,%",
+          "$gt0029|Diabetes|==0|local::at0038|No|"
         ],
         "then": [
-          "$gt0058|Recommendation|='Moderate- to high-intensity statin recommended.'"
+          "$gt0058|Recommendation|='Moderate to high-intensity statin recommended.'"
         ]
       },
       "gt0060": {
@@ -477,11 +514,6 @@
             "id": "gt0047",
             "text": "Estimated risk for white man, no treatment"
           },
-          "gt0052": {
-            "id": "gt0052",
-            "text": "Individual sum",
-            "description": ""
-          },
           "gt0053": {
             "id": "gt0053",
             "text": "Estimated 10-y risk",
@@ -522,6 +554,24 @@
             "id": "gt0062",
             "text": "10-year cardiovascular risk if risk factors were optimal",
             "description": "description gt0062"
+          },
+          "gt0063": {
+            "id": "gt0063",
+            "text": "Individual sum",
+            "description": ""
+          },
+          "gt0064": {
+            "id": "gt0064",
+            "text": "Comment",
+            "description": "*"
+          },
+          "gt0065": {
+            "id": "gt0065",
+            "text": "Age too low warning"
+          },
+          "gt0066": {
+            "id": "gt0066",
+            "text": "Age too high warning"
           }
         }
       }
