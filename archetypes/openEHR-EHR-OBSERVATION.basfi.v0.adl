@@ -17,7 +17,7 @@ description
 			language = <[ISO_639-1::en]>
 			purpose = <"To record the results for each component parameter and the BASFI score.">
 			use = <"Use to record the results for each component parameter and the BASFI score.">
-			keywords = <"ankylosing spondylitis", "AS", "ADL">
+			keywords = <"AS", "ADL", "ankylosing", "spondylitis">
 			misuse = <"">
 			copyright = <"© Cambio CDS">
 		>
@@ -29,7 +29,7 @@ description
 
 Mori K, Hukuda S, Katsuura A, Saruhashi Y, Matsusue Y. Bath ankylosing spondylitis functional index (BASFI) evaluation of postoperative patients with OPLL. J Orthop Sci. 2004;9(1):16-21. doi: 10.1007/s00776-003-0746-3. PMID: 14767700.">
 		["current_contact"] = <"Maryam Razavi, Cambio CDS<maryam.razavi2009@gmail.com>">
-		["MD5-CAM-1.0.1"] = <"C9D5FA3F2AD18843A2DE71393FF732DF">
+		["MD5-CAM-1.0.1"] = <"F3F23D23F01157C8561E26AC4E06F41B">
 	>
 
 definition
@@ -37,7 +37,7 @@ definition
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
@@ -252,6 +252,9 @@ definition
 				}
 			}
 		}
+		protocol matches {
+			ITEM_TREE[at0015] matches {*}
+		}
 	}
 
 ontology
@@ -269,7 +272,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -309,15 +312,19 @@ ontology
 				>
 				["at0012"] = <
 					text = <"Doing physically demanding activities?">
-					description = <"*e.g. physiotherapy exercises, gardening or sports. 0 is equal to easy and 10 is equal to impossible. ">
+					description = <"E.g. physiotherapy exercises, gardening or sports. 0 is equal to easy and 10 is equal to impossible. ">
 				>
 				["at0013"] = <
 					text = <"Doing a full day activities whether it be at home or work?">
-					description = <"*">
+					description = <"">
 				>
 				["at0014"] = <
 					text = <"Total score">
 					description = <"The average of the total sum of each component parameter for the BASFI  score.">
+				>
+				["at0015"] = <
+					text = <"Tree">
+					description = <"@ internal @">
 				>
 			>
 		>
