@@ -16,7 +16,6 @@ test_cases:
   expected_output:
     1:
       gt0062|10-year cardiovascular risk if risk factors were optimal: 1.4%
-      gt0052|Individual sum: -29.677
       gt0053|Estimated 10-y risk: 2.1,%
       gt0058|Recommendation: No statin recommended.
 - id: 2. Female, others, treated for HTN
@@ -34,7 +33,6 @@ test_cases:
   expected_output:
     1:
       gt0062|10-year cardiovascular risk if risk factors were optimal: 1.4%
-      gt0052|Individual sum: -29.069
       gt0053|Estimated 10-y risk: 3.74,%
       gt0058|Recommendation: No statin recommended.
 - id: 3. Female, white, treated for HTN, high intensity statin
@@ -52,7 +50,6 @@ test_cases:
   expected_output:
     1:
       gt0062|10-year cardiovascular risk if risk factors were optimal: 1.4%
-      gt0052|Individual sum: -27.122
       gt0053|Estimated 10-y risk: 23.42,%
       gt0058|Recommendation: High-intensity statin recommended.
 - id: 4. Female, African American, treated for HTN, high intensity statin
@@ -70,7 +67,6 @@ test_cases:
   expected_output:
     1:
       gt0062|10-year cardiovascular risk if risk factors were optimal: 1.8%
-      gt0052|Individual sum: 89.069
       gt0053|Estimated 10-y risk: 42.8,%
       gt0058|Recommendation: High-intensity statin recommended.
 - id: 5. Female, African American, not treated for HTN, no statin
@@ -88,7 +84,6 @@ test_cases:
   expected_output:
     1:
       gt0062|10-year cardiovascular risk if risk factors were optimal: 1.8%
-      gt0052|Individual sum: 85.878
       gt0053|Estimated 10-y risk: 2.3,%
       gt0058|Recommendation: No statin recommended.
 - id: 6. Male, white, not treated for HTN, no statin
@@ -106,7 +101,6 @@ test_cases:
   expected_output:
     1:
       gt0062|10-year cardiovascular risk if risk factors were optimal: 3.6%
-      gt0052|Individual sum: 60.56
       gt0053|Estimated 10-y risk: 4.7,%
       gt0058|Recommendation: No statin recommended.
 - id: 7. Male, white, treated for HTN, moderate to high intensity statin
@@ -124,9 +118,8 @@ test_cases:
   expected_output:
     1:
       gt0062|10-year cardiovascular risk if risk factors were optimal: 3.6%
-      gt0052|Individual sum: 61.364
       gt0053|Estimated 10-y risk: 10.2,%
-      gt0058|Recommendation: Moderate- to high-intensity statin recommended.
+      gt0058|Recommendation: Moderate to high-intensity statin recommended.
 - id: 8. Male, African American, not treated for HTN, moderate to high intensity statin
   input:
     1:
@@ -142,9 +135,8 @@ test_cases:
   expected_output:
     1:
       gt0062|10-year cardiovascular risk if risk factors were optimal: 4.9%
-      gt0052|Individual sum: 19.503
       gt0053|Estimated 10-y risk: 10.1,%
-      gt0058|Recommendation: Moderate- to high-intensity statin recommended.
+      gt0058|Recommendation: Moderate to high-intensity statin recommended.
 - id: 9. Male, African American, treated for HTN, moderate to high intensity statin
   input:
     1:
@@ -160,9 +152,8 @@ test_cases:
   expected_output:
     1:
       gt0062|10-year cardiovascular risk if risk factors were optimal: 4.9%
-      gt0052|Individual sum: 19.639
       gt0053|Estimated 10-y risk: 11.5,%
-      gt0058|Recommendation: Moderate- to high-intensity statin recommended.
+      gt0058|Recommendation: Moderate to high-intensity statin recommended.
 - id: 11. Female, others, moderate intensity statins
   input:
     1:
@@ -178,7 +169,6 @@ test_cases:
   expected_output:
     1:
       gt0062|10-year cardiovascular risk if risk factors were optimal: 1.4%
-      gt0052|Individual sum: -28.772
       gt0053|Estimated 10-y risk: 5.1,%
       gt0058|Recommendation: Moderate-intensity statin recommended.
 - id: 12. Male, others, high intensity statin
@@ -196,6 +186,35 @@ test_cases:
   expected_output:
     1:
       gt0062|10-year cardiovascular risk if risk factors were optimal: 3.6%
-      gt0052|Individual sum: 63.560
       gt0053|Estimated 10-y risk: 62.0,%
       gt0058|Recommendation: High-intensity statin recommended.
+- id: 13. Age too low warning
+  input:
+    1:
+      gt0015|Systolic blood pressure: 120,mm[Hg]
+      gt0017|HDL Cholesterol: 2,mmol/l
+      gt0018|Total Cholesterol: 5,mmol/l
+      gt0026|Race: local::at0011|White|
+      gt0027|Treatment for hypertension: local::at0032|No|
+      gt0029|Diabetes: 0|local::at0038|No|
+      gt0030|Smoker: 0|local::at0041|No|
+      gt0055|Age: 34,a
+      gt0056|Sex: local::at0005|Male|
+  expected_output:
+    1:
+      gt0064|Comment: Age too low; please change to proceed.
+- id: 14. Age too high warning
+  input:
+    1:
+      gt0015|Systolic blood pressure: 120,mm[Hg]
+      gt0017|HDL Cholesterol: 2,mmol/l
+      gt0018|Total Cholesterol: 5,mmol/l
+      gt0026|Race: local::at0011|White|
+      gt0027|Treatment for hypertension: local::at0032|No|
+      gt0029|Diabetes: 0|local::at0038|No|
+      gt0030|Smoker: 0|local::at0041|No|
+      gt0055|Age: 89,a
+      gt0056|Sex: local::at0005|Male|
+  expected_output:
+    1:
+      gt0064|Comment: Age too high; please change to proceed.
