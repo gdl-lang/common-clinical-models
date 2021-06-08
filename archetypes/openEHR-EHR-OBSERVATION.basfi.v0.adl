@@ -29,7 +29,7 @@ description
 
 Mori K, Hukuda S, Katsuura A, Saruhashi Y, Matsusue Y. Bath ankylosing spondylitis functional index (BASFI) evaluation of postoperative patients with OPLL. J Orthop Sci. 2004;9(1):16-21. doi: 10.1007/s00776-003-0746-3. PMID: 14767700.">
 		["current_contact"] = <"Maryam Razavi, Cambio CDS<maryam.razavi2009@gmail.com>">
-		["MD5-CAM-1.0.1"] = <"F3F23D23F01157C8561E26AC4E06F41B">
+		["MD5-CAM-1.0.1"] = <"8137F0EC64920E356402B9432A159931">
 	>
 
 definition
@@ -253,7 +253,14 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0015] matches {*}
+			ITEM_TREE[at0015] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0017] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
 		}
 	}
 
@@ -272,7 +279,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -325,6 +332,11 @@ ontology
 				["at0015"] = <
 					text = <"Tree">
 					description = <"@ internal @">
+				>
+				["at0017"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
 				>
 			>
 		>
