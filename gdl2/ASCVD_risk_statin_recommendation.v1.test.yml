@@ -6,7 +6,31 @@ test_cases:
     1: {}
   expected_output:
     1: {}
-- id: Step 1=No and Step 2=Yes returns 'High-intensity statin recommended'
+- id: Age too high
+  input:
+    1:
+      gt0055|Age: 80,a
+      gt0064|History of ASCVD: local::at0006|Yes|
+  expected_output:
+    1:
+      gt0091|Comment: Age too high; please change to proceed.
+- id: Age too low
+  input:
+    1:
+      gt0055|Age: 30,a
+      gt0064|History of ASCVD: local::at0006|Yes|
+  expected_output:
+    1:
+      gt0091|Comment: Age too low; please change to proceed.
+- id: Age 40-75 yrs, h/o ASCVD, High-intensity statins
+  input:
+    1:
+      gt0055|Age: 56,a
+      gt0064|History of ASCVD: local::at0006|Yes|
+  expected_output:
+    1:
+      gt0074|Recommendation: High-intensity statin recommended.
+- id: No h/o ASCVD, LDL >= 190mg/dl, High-intensity statins
   input:
     1:
       gt0064|History of ASCVD: local::at0005|No|
@@ -14,29 +38,16 @@ test_cases:
   expected_output:
     1:
       gt0074|Recommendation: High-intensity statin recommended.
-- id: Step 1=Yes returns no interpretation
-  input:
-    1:
-      gt0064|History of ASCVD: local::at0006|Yes|
-  expected_output:
-    1: {}
-- id: Step 1=No and Step 2=No returns no interpretation
-  input:
-    1:
-      gt0064|History of ASCVD: local::at0005|No|
-      gt0065|LDL Cholesterol ≥190mg/dL (4.92 mmol/L): local::at0008|No|
-  expected_output:
-    1: {}
 - id: Female, white, not treated for HTN
   input:
     1:
       gt0015|Systolic blood pressure: 120,mm[Hg]
       gt0017|HDL Cholesterol: 50,mg/dl
-      gt0018|Total Cholesterol: 213,mg/dl
+      gt0018|Total Cholesterol: 214,mg/dl
       gt0055|Age: 55,a
       gt0056|Sex: local::at0006|Female|
-      gt0064|History of ASCVD: local::at0006|Yes|
-      gt0065|LDL Cholesterol ≥190mg/dL (4.92 mmol/L): local::at0009|Yes|
+      gt0064|History of ASCVD: local::at0005|No|
+      gt0065|LDL Cholesterol ≥190mg/dL (4.92 mmol/L): local::at0008|No|
       gt0067|Race: local::at0011|White|
       gt0068|Treatment for hypertension: local::at0032|No|
       gt0069|Diabetes: 0|local::at0038|No|
@@ -45,17 +56,17 @@ test_cases:
     1:
       gt0074|Recommendation: No statin recommended.
       gt0073|Estimated 10-y risk: 2.1,%
-      gt0072|Individual sum: -29.677
+      gt0072|Individual sum: -29.672
       gt0075|10-year cardiovascular risk if risk factors were optimal: 1.4%
 - id: Female, others, treated for HTN
   input:
     1:
       gt0015|Systolic blood pressure: 140,mm[Hg]
       gt0017|HDL Cholesterol: 50,mg/dl
-      gt0018|Total Cholesterol: 213,mg/dl
+      gt0018|Total Cholesterol: 214,mg/dl
       gt0055|Age: 55,a
       gt0056|Sex: local::at0006|Female|
-      gt0064|History of ASCVD: local::at0006|Yes|
+      gt0064|History of ASCVD: local::at0005|No|
       gt0065|LDL Cholesterol ≥190mg/dL (4.92 mmol/L): local::at0008|No|
       gt0067|Race: local::at0013|Other|
       gt0068|Treatment for hypertension: local::at0033|Yes|
@@ -64,8 +75,8 @@ test_cases:
   expected_output:
     1:
       gt0074|Recommendation: No statin recommended.
-      gt0073|Estimated 10-y risk: 3.81,%
-      gt0072|Individual sum: -29.069
+      gt0073|Estimated 10-y risk: 3.83,%
+      gt0072|Individual sum: -29.064
       gt0075|10-year cardiovascular risk if risk factors were optimal: 1.4%
 - id: Female, white, treated for HTN, high intensity statin
   input:
@@ -75,7 +86,7 @@ test_cases:
       gt0018|Total Cholesterol: 250,mg/dl
       gt0055|Age: 55,a
       gt0056|Sex: local::at0006|Female|
-      gt0064|History of ASCVD: local::at0006|Yes|
+      gt0064|History of ASCVD: local::at0005|No|
       gt0065|LDL Cholesterol ≥190mg/dL (4.92 mmol/L): local::at0008|No|
       gt0067|Race: local::at0011|White|
       gt0068|Treatment for hypertension: local::at0033|Yes|
@@ -84,7 +95,7 @@ test_cases:
   expected_output:
     1:
       gt0074|Recommendation: High-intensity statin recommended.
-      gt0073|Estimated 10-y risk: 23.42,%
+      gt0073|Estimated 10-y risk: 23.83,%
       gt0072|Individual sum: -27.122
       gt0075|10-year cardiovascular risk if risk factors were optimal: 1.4%
 - id: Female, African American, treated for HTN, high intensity statin
@@ -95,7 +106,7 @@ test_cases:
       gt0018|Total Cholesterol: 250,mg/dl
       gt0055|Age: 55,a
       gt0056|Sex: local::at0006|Female|
-      gt0064|History of ASCVD: local::at0006|Yes|
+      gt0064|History of ASCVD: local::at0005|No|
       gt0065|LDL Cholesterol ≥190mg/dL (4.92 mmol/L): local::at0008|No|
       gt0067|Race: local::at0012|African American|
       gt0068|Treatment for hypertension: local::at0033|Yes|
@@ -115,7 +126,7 @@ test_cases:
       gt0018|Total Cholesterol: 215,mg/dl
       gt0055|Age: 55,a
       gt0056|Sex: local::at0006|Female|
-      gt0064|History of ASCVD: local::at0006|Yes|
+      gt0064|History of ASCVD: local::at0005|No|
       gt0065|LDL Cholesterol ≥190mg/dL (4.92 mmol/L): local::at0008|No|
       gt0067|Race: local::at0012|African American|
       gt0068|Treatment for hypertension: local::at0032|No|
@@ -135,7 +146,7 @@ test_cases:
       gt0018|Total Cholesterol: 215,mg/dl
       gt0055|Age: 55,a
       gt0056|Sex: local::at0005|Male|
-      gt0064|History of ASCVD: local::at0006|Yes|
+      gt0064|History of ASCVD: local::at0005|No|
       gt0065|LDL Cholesterol ≥190mg/dL (4.92 mmol/L): local::at0008|No|
       gt0067|Race: local::at0011|White|
       gt0068|Treatment for hypertension: local::at0032|No|
@@ -155,7 +166,7 @@ test_cases:
       gt0018|Total Cholesterol: 215,mg/dl
       gt0055|Age: 55,a
       gt0056|Sex: local::at0005|Male|
-      gt0064|History of ASCVD: local::at0006|Yes|
+      gt0064|History of ASCVD: local::at0005|No|
       gt0065|LDL Cholesterol ≥190mg/dL (4.92 mmol/L): local::at0008|No|
       gt0067|Race: local::at0011|White|
       gt0068|Treatment for hypertension: local::at0033|Yes|
@@ -175,7 +186,7 @@ test_cases:
       gt0018|Total Cholesterol: 200,mg/dl
       gt0055|Age: 55,a
       gt0056|Sex: local::at0005|Male|
-      gt0064|History of ASCVD: local::at0006|Yes|
+      gt0064|History of ASCVD: local::at0005|No|
       gt0065|LDL Cholesterol ≥190mg/dL (4.92 mmol/L): local::at0008|No|
       gt0067|Race: local::at0012|African American|
       gt0068|Treatment for hypertension: local::at0032|No|
@@ -195,7 +206,7 @@ test_cases:
       gt0018|Total Cholesterol: 5.51,mmol/l
       gt0055|Age: 55,a
       gt0056|Sex: local::at0005|Male|
-      gt0064|History of ASCVD: local::at0006|Yes|
+      gt0064|History of ASCVD: local::at0005|No|
       gt0065|LDL Cholesterol ≥190mg/dL (4.92 mmol/L): local::at0008|No|
       gt0067|Race: local::at0012|African American|
       gt0068|Treatment for hypertension: local::at0033|Yes|
@@ -215,7 +226,7 @@ test_cases:
       gt0018|Total Cholesterol: 5.51,mmol/l
       gt0055|Age: 55,a
       gt0056|Sex: local::at0006|Female|
-      gt0064|History of ASCVD: local::at0006|Yes|
+      gt0064|History of ASCVD: local::at0005|No|
       gt0065|LDL Cholesterol ≥190mg/dL (4.92 mmol/L): local::at0008|No|
       gt0067|Race: local::at0013|Other|
       gt0068|Treatment for hypertension: local::at0032|No|
@@ -224,18 +235,18 @@ test_cases:
   expected_output:
     1:
       gt0074|Recommendation: Moderate-intensity statin recommended.
-      gt0073|Estimated 10-y risk: 5.0,%
+      gt0073|Estimated 10-y risk: 5.1,%
       gt0072|Individual sum: -28.772
       gt0075|10-year cardiovascular risk if risk factors were optimal: 1.4%
 - id: Male, others, high intensity statin
   input:
     1:
       gt0015|Systolic blood pressure: 140,mm[Hg]
-      gt0017|HDL Cholesterol: 50,mmol/l
-      gt0018|Total Cholesterol: 260,mmol/l
+      gt0017|HDL Cholesterol: 50,mg/dl
+      gt0018|Total Cholesterol: 260,mg/dl
       gt0055|Age: 67,a
       gt0056|Sex: local::at0005|Male|
-      gt0064|History of ASCVD: local::at0006|Yes|
+      gt0064|History of ASCVD: local::at0005|No|
       gt0065|LDL Cholesterol ≥190mg/dL (4.92 mmol/L): local::at0008|No|
       gt0067|Race: local::at0013|Other|
       gt0068|Treatment for hypertension: local::at0033|Yes|
@@ -244,6 +255,6 @@ test_cases:
   expected_output:
     1:
       gt0074|Recommendation: High-intensity statin recommended.
-      gt0073|Estimated 10-y risk: 62.0,%
-      gt0072|Individual sum: 63.560
+      gt0073|Estimated 10-y risk: 48.9,%
+      gt0072|Individual sum: 63.195
       gt0075|10-year cardiovascular risk if risk factors were optimal: 3.6%
