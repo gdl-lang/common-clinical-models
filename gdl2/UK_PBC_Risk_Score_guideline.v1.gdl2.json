@@ -18,9 +18,9 @@
         "id": "en",
         "purpose": "To predict the risk of liver failure (with transplant need within 5 to 15 years of diagnosis) in patients who suffer from primary biliary cirrhosis (cholangitis) and who are in treatment with the election therapy: Ursodeoxycholic acid (UDCA).",
         "keywords": [
-          "liver ",
-          "failure ",
-          "cholangitis "
+          "liver disease",
+          "end stage",
+          "primary biliary cholangitis"
         ],
         "use": "The variables used in the PBC-UK model are:\n- 12 month: bilirubin, AST (aspartate aminotransferase) or ALT (alanine aminotransferase) and alkaline phosphatase (considered with upper limit of normal);\n- Baseline: albumin and platelets (considered with lower limit of normal).\nThe UK-PBC score predicts risk of liver failure at 5, 10 respectively 15 years via:\n\nUK-PBC = 1-baseline survival function ^ exp(0.0287854 * (alp12-xuln-1.722136304) - 0.0422873 * (((altast12xuln/10) ^-1) - 8.675729006) + 1.4199 * (ln (bil12xuln/10) + 2.709607778) - 1.960303 * (albxlln-1.17673001) - 0.4161954 * (pltxlln - 1.873564875))\n\nWhere:\n\nBaseline survivor function is:\n\n- 0.982 (at 5 years);\n\n- 0.941 (at 10 years);\n\n- 0.893 (at 15 years).\n\nAnd:\n\n- alp12-xuln is ratio of Alkalin phosphatase measurement at 12 month and its upper limit of normal;\n\n- altast12xuln is ratio of either ALT or AST measurement at 12 month and its upper limit of normal;\n\n- bil12xuln is ratio of bilirubin measurement at 12 month and its upper limit of normal;\n\n- albxlln is ratio of baseline albumin measurement and its lower limit of normal;\n\n- pltxlln is ratio of baseline platelet measurement and its lower limit of normal.",
         "copyright": "© Cambio CDS"
@@ -125,6 +125,14 @@
           "gt0023": {
             "id": "gt0023",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
+          },
+          "gt0035": {
+            "id": "gt0035",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
+          },
+          "gt0036": {
+            "id": "gt0036",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0011]"
           }
         }
       },
@@ -168,7 +176,7 @@
     "rules": {
       "gt0024": {
         "id": "gt0024",
-        "priority": 1,
+        "priority": 3,
         "when": [
           "$gt0004|Bilirubin 12 Month|!=null",
           "$gt0006|ULN of Bilirubin 12 month|!=null",
@@ -184,7 +192,49 @@
         "then": [
           "$gt0023|Risk of event of up to 5 years|.magnitude=(1-0.982^exp(0.0287854*(($gt0012.magnitude/$gt0014.magnitude)-1.722136304)-0.0422873*((($gt0008.magnitude/$gt0010.magnitude/10)^(0-1))-8.675729006)+1.4199*(log($gt0004.magnitude/$gt0006.magnitude/10)+2.709607778)-1.960303*(($gt0017.magnitude/$gt0029.magnitude)-1.17673001)-0.4161954*(($gt0031.magnitude/$gt0033.magnitude)-1.873564875)))*100",
           "$gt0023|Risk of event of up to 5 years|.precision=2",
-          "$gt0023|Risk of event of up to 5 years|.unit='1'"
+          "$gt0023|Risk of event of up to 5 years|.unit='%'"
+        ]
+      },
+      "gt0034": {
+        "id": "gt0034",
+        "priority": 2,
+        "when": [
+          "$gt0004|Bilirubin 12 Month|!=null",
+          "$gt0006|ULN of Bilirubin 12 month|!=null",
+          "$gt0008|AST or ALT 12 Month|!=null",
+          "$gt0010|ULN of AST/ALT 12 month|!=null",
+          "$gt0012|Alk Phos 12 Month|!=null",
+          "$gt0014|ULN of Alk Phos 12 month|!=null",
+          "$gt0017|Baseline Albumin|!=null",
+          "$gt0029|LLN of baseline Albumin|!=null",
+          "$gt0031|Platelet count|!=null",
+          "$gt0033|LLN of baseline Platelets|!=null"
+        ],
+        "then": [
+          "$gt0035|Risk of event of up to 10 years|.magnitude=(1-0.941^exp(0.0287854*(($gt0012.magnitude/$gt0014.magnitude)-1.722136304)-0.0422873*((($gt0008.magnitude/$gt0010.magnitude/10)^(0-1))-8.675729006)+1.4199*(log($gt0004.magnitude/$gt0006.magnitude/10)+2.709607778)-1.960303*(($gt0017.magnitude/$gt0029.magnitude)-1.17673001)-0.4161954*(($gt0031.magnitude/$gt0033.magnitude)-1.873564875)))*100",
+          "$gt0035|Risk of event of up to 10 years|.precision=2",
+          "$gt0035|Risk of event of up to 10 years|.unit='%'"
+        ]
+      },
+      "gt0037": {
+        "id": "gt0037",
+        "priority": 1,
+        "when": [
+          "$gt0004|Bilirubin 12 Month|!=null",
+          "$gt0006|ULN of Bilirubin 12 month|!=null",
+          "$gt0008|AST or ALT 12 Month|!=null",
+          "$gt0010|ULN of AST/ALT 12 month|!=null",
+          "$gt0012|Alk Phos 12 Month|!=null",
+          "$gt0014|ULN of Alk Phos 12 month|!=null",
+          "$gt0017|Baseline Albumin|!=null",
+          "$gt0029|LLN of baseline Albumin|!=null",
+          "$gt0031|Platelet count|!=null",
+          "$gt0033|LLN of baseline Platelets|!=null"
+        ],
+        "then": [
+          "$gt0036|Risk of event of up to 15 years|.magnitude=(1-0.893^exp(0.0287854*(($gt0012.magnitude/$gt0014.magnitude)-1.722136304)-0.0422873*((($gt0008.magnitude/$gt0010.magnitude/10)^(0-1))-8.675729006)+1.4199*(log($gt0004.magnitude/$gt0006.magnitude/10)+2.709607778)-1.960303*(($gt0017.magnitude/$gt0029.magnitude)-1.17673001)-0.4161954*(($gt0031.magnitude/$gt0033.magnitude)-1.873564875)))*100",
+          "$gt0036|Risk of event of up to 15 years|.precision=2",
+          "$gt0036|Risk of event of up to 15 years|.unit='%'"
         ]
       }
     }
@@ -257,6 +307,24 @@
             "id": "gt0033",
             "text": "LLN of baseline Platelets",
             "description": "LLN of baseline Platelets"
+          },
+          "gt0034": {
+            "id": "gt0034",
+            "text": "UK-PBC calculation survival 10 years"
+          },
+          "gt0035": {
+            "id": "gt0035",
+            "text": "Risk of event of up to 10 years",
+            "description": "Risk of event of up to 10 years "
+          },
+          "gt0036": {
+            "id": "gt0036",
+            "text": "Risk of event of up to 15 years",
+            "description": "Risk of event of up to 15 years "
+          },
+          "gt0037": {
+            "id": "gt0037",
+            "text": "UK-PBC calculation survival 15 years"
           }
         }
       }
