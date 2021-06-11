@@ -1,0 +1,154 @@
+guidelines:
+  1: FFMI_score.v1
+test_cases:
+- id: Test no input
+  input:
+    1: {}
+  expected_output:
+    1: {}
+- id: Body fat missing (negative test)
+  input:
+    1:
+      gt0003|Unit system: local::at0005|English|
+      gt0016|Height (feet): 5,[ft_i]
+      gt0006|Height: 5,cm
+      gt0008|Weight: 80,kg
+  expected_output:
+    1: {}
+- id: Height in feet missing when unit system=eng (negative test)
+  input:
+    1:
+      gt0003|Unit system: local::at0005|English|
+      gt0004|Body fat: 30,%
+      gt0006|Height: 5,cm
+      gt0008|Weight: 80,kg
+  expected_output:
+    1: {}
+- id: Height missing (negative test)
+  input:
+    1:
+      gt0003|Unit system: local::at0005|English|
+      gt0004|Body fat: 30,%
+      gt0016|Height (feet): 5,[ft_i]
+      gt0008|Weight: 80,kg
+  expected_output:
+    1: {}
+- id: Weight missing (negative test)
+  input:
+    1:
+      gt0003|Unit system: local::at0005|English|
+      gt0004|Body fat: 30,%
+      gt0016|Height (feet): 5,[ft_i]
+      gt0006|Height: 9,[in_i]
+  expected_output:
+    1: {}
+- id: Score range 16-17 returns interpretation 'Below average'
+  input:
+    1:
+      gt0003|Unit system: local::at0005|English|
+      gt0004|Body fat: 0.4,%
+      gt0016|Height (feet): 8,[ft_i]
+      gt0006|Height: 2,[in_i]
+      gt0008|Weight: 220,[lb_av]
+  expected_output:
+    1:
+      gt0011|FFMI: 16.04,1
+      gt0012|Adjusted FFMI: 11.84,1
+      gt0010|Lean: 219.12,[lbs]
+      gt0014|Interpretation: Below average
+- id: Score range 18-19 returns interpretation 'Average'
+  input:
+    1:
+      gt0003|Unit system: local::at0005|English|
+      gt0004|Body fat: 25,%
+      gt0016|Height (feet): 6,[ft_i]
+      gt0006|Height: 8,[in_i]
+      gt0008|Weight: 230,[lb_av]
+  expected_output:
+    1:
+      gt0011|FFMI: 18.95,1
+      gt0012|Adjusted FFMI: 17.53,1
+      gt0010|Lean: 172.50,[lbs]
+      gt0014|Interpretation: Average
+- id: Score range 20-21 returns interpretation 'Above average'
+  input:
+    1:
+      gt0003|Unit system: local::at0005|English|
+      gt0004|Body fat: 19,%
+      gt0016|Height (feet): 6,[ft_i]
+      gt0006|Height: 8,[in_i]
+      gt0008|Weight: 230,[lb_av]
+  expected_output:
+    1:
+      gt0011|FFMI: 20.47,1
+      gt0012|Adjusted FFMI: 19.05,1
+      gt0010|Lean: 186.30,[lbs]
+      gt0014|Interpretation: Above average
+- id: Score range 23-25 returns interpretation 'Superior'
+  input:
+    1:
+      gt0003|Unit system: local::at0005|English|
+      gt0004|Body fat: 17,%
+      gt0016|Height (feet): 6,[ft_i]
+      gt0006|Height: 4,[in_i]
+      gt0008|Weight: 230,[lb_av]
+  expected_output:
+    1:
+      gt0011|FFMI: 23.24,1
+      gt0012|Adjusted FFMI: 22.44,1
+      gt0010|Lean: 190.90,[lbs]
+      gt0014|Interpretation: Superior
+- id: Score range 26-27 returns interpretation 'Suspicion of steroid use'
+  input:
+    1:
+      gt0003|Unit system: local::at0005|English|
+      gt0004|Body fat: 12,%
+      gt0016|Height (feet): 6,[ft_i]
+      gt0006|Height: 1,[in_i]
+      gt0008|Weight: 230,[lb_av]
+  expected_output:
+    1:
+      gt0011|FFMI: 26.70,1
+      gt0012|Adjusted FFMI: 26.37,1
+      gt0010|Lean: 202.40,[lbs]
+      gt0014|Interpretation: Suspicion of steroid use
+- id: Score range 28-30 returns interpretation 'Steroid usage likely'
+  input:
+    1:
+      gt0003|Unit system: local::at0005|English|
+      gt0004|Body fat: 5,%
+      gt0016|Height (feet): 6,[ft_i]
+      gt0006|Height: 1,[in_i]
+      gt0008|Weight: 230,[lb_av]
+  expected_output:
+    1:
+      gt0011|FFMI: 28.83,1
+      gt0012|Adjusted FFMI: 28.50,1
+      gt0010|Lean: 218.50,[lbs]
+      gt0014|Interpretation: Steroid usage likely
+- id: Test metic unit system
+  input:
+    1:
+      gt0003|Unit system: local::at0006|Metric|
+      gt0004|Body fat: 5,%
+      gt0006|Height: 180,cm
+      gt0008|Weight: 90,kg
+  expected_output:
+    1:
+      gt0011|FFMI: 26.39,1
+      gt0012|Adjusted FFMI: 26.39,1
+      gt0010|Lean: 85.50,kg
+      gt0014|Interpretation: Suspicion of steroid use
+- id: Score 22 returns interpretation 'Excellent'
+  input:
+    1:
+      gt0003|Unit system: local::at0006|Metric|
+      gt0004|Body fat: 19,%
+      gt0006|Height: 180,cm
+      gt0008|Weight: 88,kg
+  expected_output:
+    1:
+      gt0011|FFMI: 22.00,1
+      gt0012|Adjusted FFMI: 22.00,1
+      gt0010|Lean: 71.28,kg
+      gt0014|Interpretation: Excellent
