@@ -90,6 +90,10 @@
           "gt0014": {
             "id": "gt0014",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0012]/items[at0015]"
+          },
+          "gt0038": {
+            "id": "gt0038",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0022]"
           }
         }
       },
@@ -159,12 +163,13 @@
         "id": "gt0036",
         "priority": 6,
         "when": [
-          "$gt0035|Weight, kg|!=null"
+          "$gt0035|Weight, kg|!=null",
+          "$gt0035|Weight, kg|.unit=='kg'"
         ],
         "then": [
-          "$gt0015|Total Daily Insulin Dose (TDID)|.magnitude=$gt0035.magnitude*0.55",
-          "$gt0015|Total Daily Insulin Dose (TDID)|.precision=1",
-          "$gt0015|Total Daily Insulin Dose (TDID)|.unit='U'"
+          "$gt0015|Estimated TDID (based body weight)|.magnitude=$gt0035.magnitude*0.55",
+          "$gt0015|Estimated TDID (based body weight)|.precision=1",
+          "$gt0015|Estimated TDID (based body weight)|.unit='U'"
         ]
       },
       "gt0027": {
@@ -187,10 +192,10 @@
         "when": [
           "$gt0003|Meal carbohydrate content|!=null",
           "$gt0004|Is the Insulin to Carb Ratio known?|==local::at0008|No|",
-          "$gt0015|Total Daily Insulin Dose (TDID)|!=null"
+          "$gt0038|Total Daily Insulin Dose (TDID)|!=null"
         ],
         "then": [
-          "$gt0017|Carbohydrate Coverage Insulin Dose|.magnitude=$gt0003.magnitude/(500/$gt0015.magnitude)",
+          "$gt0017|Carbohydrate Coverage Insulin Dose|.magnitude=$gt0003.count",
           "$gt0017|Carbohydrate Coverage Insulin Dose|.precision=1",
           "$gt0017|Carbohydrate Coverage Insulin Dose|.unit='U'"
         ]
@@ -217,10 +222,10 @@
           "$gt0008|Current blood glucose|!=null",
           "$gt0011|Target blood glucose|!=null",
           "$gt0013|Is the Insulin sensitivity (correction) factor known?|==local::at0008|No|",
-          "$gt0015|Total Daily Insulin Dose (TDID)|!=null"
+          "$gt0038|Total Daily Insulin Dose (TDID)|!=null"
         ],
         "then": [
-          "$gt0018|Insulin Dose to Correct High Blood Sugar |.magnitude=($gt0008.magnitude-$gt0011.magnitude)/(1800/$gt0015.magnitude)",
+          "$gt0018|Insulin Dose to Correct High Blood Sugar |.magnitude=($gt0008.magnitude-$gt0011.magnitude)/(1800/$gt0038.magnitude)",
           "$gt0018|Insulin Dose to Correct High Blood Sugar |.precision=1",
           "$gt0018|Insulin Dose to Correct High Blood Sugar |.unit='U'"
         ]
@@ -287,7 +292,7 @@
           },
           "gt0015": {
             "id": "gt0015",
-            "text": "Total Daily Insulin Dose (TDID)",
+            "text": "Estimated TDID (based body weight)",
             "description": "Total Daily Insulin Dose (TDID)"
           },
           "gt0017": {
@@ -356,6 +361,11 @@
             "id": "gt0037",
             "text": "Weight, kg",
             "description": "The weight of the individual."
+          },
+          "gt0038": {
+            "id": "gt0038",
+            "text": "Total Daily Insulin Dose (TDID)",
+            "description": "*"
           }
         }
       }
