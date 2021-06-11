@@ -12,11 +12,11 @@
       "organisation": "Cambio CDS",
       "email": "therese.lindberg@cambio.se"
     },
-    "lifecycle_state": "Initial",
+    "lifecycle_state": "Author draft",
     "details": {
       "en": {
         "id": "en",
-        "purpose": "To calculate each component parameter and their total sum for the LEFS result.",
+        "purpose": "To calculate LEFS.",
         "keywords": [
           "LEFS",
           "functional",
@@ -33,8 +33,8 @@
           "disability",
           "disorder"
         ],
-        "use": "Use to calculate each component parameter and their total sum for the LEFS result. It is a 20 item questionnaire referring to the patient’s ability to perform several daily activities, also known as functional status. The main instruction in using the questionnaire is that the subject needs to rate any difficulties they might encounter on a normal day during the specified activities, difficulties that are linked to the lower limb problem. The activities considered are: \nAny of usual work, housework or school activities, usual hobbies - recreational or sporting activities, getting into or out of the bath, walking between rooms, putting on your shoes or socks, squatting, lifting an object from the floor, performing light activities around home, performing heavy activities around home, getting into or out of a car, walking 2 blocks, walking a mile, going up or down 10 stairs, standing for 1 hour, sitting for 1 hour, running on even ground, running on uneven ground, making sharp turns while running fast, hopping and rolling over in bed. \n\nEach activity should be rated on the following scale:\nNo difficulty (+4)\nA little bit of difficulty (+3)\nModerate difficulty (+2)\nQuite a bit of difficulty (+1)\nExtreme difficulty or unable to perform activity (+0)",
-        "copyright": "Cambio CDS"
+        "use": "Use to calculate the LEFS based on different activities. It is a 20 item questionnaire referring to the patient’s ability to perform several daily activities, also known as functional status. The main instruction in using the questionnaire is that the subject needs to rate any difficulties they might encounter on a normal day during the specified activities, difficulties that are linked to the lower limb problem. \nThe activities considered are: \nAny of usual work, housework or school activities, usual hobbies - recreational or sporting activities, getting into or out of the bath, walking between rooms, putting on your shoes or socks, squatting, lifting an object from the floor, performing light activities around home, performing heavy activities around home, getting into or out of a car, walking 2 blocks, walking a mile, going up or down 10 stairs, standing for 1 hour, sitting for 1 hour, running on even ground, running on uneven ground, making sharp turns while running fast, hopping and rolling over in bed. \n\nEach activity should be rated on the following scale:\nNo difficulty (+4)\nA little bit of difficulty (+3)\nModerate difficulty (+2)\nQuite a bit of difficulty (+1)\nExtreme difficulty or unable to perform activity (+0)",
+        "copyright": "@ Cambio CDS"
       }
     },
     "other_details": {
@@ -159,7 +159,7 @@
     "rules": {
       "gt0027": {
         "id": "gt0027",
-        "priority": 2,
+        "priority": 1,
         "when": [
           "$gt0003|Any of usual work, housework or school activities|!=null",
           "$gt0004|Usual hobbies, recreational or sporting activities|!=null",
@@ -183,16 +183,7 @@
           "$gt0022|Rolling over in bed|!=null"
         ],
         "then": [
-          "$gt0024|LEFS|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0011.value+$gt0012.value+$gt0013.value+$gt0014.value+$gt0015.value+$gt0016.value+$gt0017.value+$gt0018.value+$gt0019.value+$gt0020.value+$gt0021.value+$gt0022.value"
-        ]
-      },
-      "gt0028": {
-        "id": "gt0028",
-        "priority": 1,
-        "when": [
-          "$gt0024|LEFS|!=null"
-        ],
-        "then": [
+          "$gt0024|LEFS|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0011.value+$gt0012.value+$gt0013.value+$gt0014.value+$gt0015.value+$gt0016.value+$gt0017.value+$gt0018.value+$gt0019.value+$gt0020.value+$gt0021.value+$gt0022.value",
           "$gt0026|Interpretation|='The maximum score obtainable is 80 points which signifies complete function and the lowest score is 0 which indicates very low function.  The lower the score, the higher the degree of impairment caused by the lower extremity problem.'"
         ]
       }
@@ -321,10 +312,6 @@
           "gt0027": {
             "id": "gt0027",
             "text": "Calculate LEFS"
-          },
-          "gt0028": {
-            "id": "gt0028",
-            "text": "Interpretation"
           }
         }
       }
