@@ -1,0 +1,85 @@
+archetype (adl_version=1.4; uid=2bba6a91-601e-41ac-ac70-cefb1a523ddd)
+	openEHR-EHR-EVALUATION.ffmi_assessment.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2021-06-09">
+		["name"] = <"Emma Malm">
+		["organisation"] = <"Cambio CDS">
+		["email"] = <"emma.malm@cambio.se">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the interpretation of the calculated FFMI range. ">
+			keywords = <"FFMI, fat, bodybuilder, fitness, muscle, mass", ...>
+			copyright = <"© Cambio CDS">
+			use = <"Use to record the interpretation of the calculated FFMI range in terms of muscle mass.">
+		>
+	>
+	other_details = <
+		["current_contact"] = <"Emma Malm, Cambio CDS, emma.malm@cambio.se">
+		["references"] = <"Kouri EM, Pope HG Jr, Katz DL, Oliva P. Fat-free mass index in users and nonusers of anabolic-androgenic steroids. Clin J Sport Med. 1995 Oct;5(4):223-8. doi: 10.1097/00042752-199510000-00003. PMID: 7496846.">
+		["build_uid"] = <"addd8199-4ce2-3407-a1db-d1fdf30e5ae8">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Fat Free Mass Index (FFMI) calculator
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Interpretation
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0003] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0004] occurrences matches {0..*} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Fat Free Mass Index (FFMI) calculator">
+					description = <"An assessment score used to determine the muscle mass index for bodybuilders and fitness enthusiasts. ">
+				>
+				["at0001"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Interpretation">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
+				>
+			>
+		>
+	>
