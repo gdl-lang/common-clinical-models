@@ -50,10 +50,6 @@
           "gt0005": {
             "id": "gt0005",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]/items[at0010]"
-          },
-          "gt0006": {
-            "id": "gt0006",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]/items[at0011]"
           }
         }
       },
@@ -94,10 +90,6 @@
           "gt0014": {
             "id": "gt0014",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0012]/items[at0015]"
-          },
-          "gt0015": {
-            "id": "gt0015",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0012]/items[at0016]"
           }
         }
       },
@@ -107,6 +99,10 @@
         "template_id": "openEHR-EHR-OBSERVATION.insulin_dosage.v0",
         "type": "OUTPUT",
         "elements": {
+          "gt0015": {
+            "id": "gt0015",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0016]"
+          },
           "gt0017": {
             "id": "gt0017",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0017]"
@@ -120,6 +116,18 @@
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0019]"
           }
         }
+      },
+      "gt0034": {
+        "id": "gt0034",
+        "model_id": "openEHR-EHR-OBSERVATION.body_weight.v2",
+        "template_id": "openEHR-EHR-OBSERVATION.body_weight.v2",
+        "type": "INPUT",
+        "elements": {
+          "gt0035": {
+            "id": "gt0035",
+            "path": "/data[at0002]/events[at0003]/data[at0001]/items[at0004]"
+          }
+        }
       }
     },
     "default_actions": [
@@ -129,7 +137,7 @@
     "rules": {
       "gt0025": {
         "id": "gt0025",
-        "priority": 7,
+        "priority": 8,
         "when": [
           "$gt0008|Current blood glucose|.unit=='mmol/l'"
         ],
@@ -139,12 +147,24 @@
       },
       "gt0026": {
         "id": "gt0026",
-        "priority": 6,
+        "priority": 7,
         "when": [
           "$gt0011|Target blood glucose|.unit=='mmol/l'"
         ],
         "then": [
           "$gt0023|Target glucose conversion factor|=18.0182"
+        ]
+      },
+      "gt0036": {
+        "id": "gt0036",
+        "priority": 6,
+        "when": [
+          "$gt0035|Weight, kg|!=null"
+        ],
+        "then": [
+          "$gt0015|Total Daily Insulin Dose (TDID)|.magnitude=$gt0035.magnitude*0.55",
+          "$gt0015|Total Daily Insulin Dose (TDID)|.precision=1",
+          "$gt0015|Total Daily Insulin Dose (TDID)|.unit='U'"
         ]
       },
       "gt0027": {
@@ -167,10 +187,10 @@
         "when": [
           "$gt0003|Meal carbohydrate content|!=null",
           "$gt0004|Is the Insulin to Carb Ratio known?|==local::at0008|No|",
-          "$gt0006|Total Daily Insulin Dose (TDID)|!=null"
+          "$gt0015|Total Daily Insulin Dose (TDID)|!=null"
         ],
         "then": [
-          "$gt0017|Carbohydrate Coverage Insulin Dose|.magnitude=$gt0003.magnitude/(500/$gt0006.magnitude)",
+          "$gt0017|Carbohydrate Coverage Insulin Dose|.magnitude=$gt0003.magnitude/(500/$gt0015.magnitude)",
           "$gt0017|Carbohydrate Coverage Insulin Dose|.precision=1",
           "$gt0017|Carbohydrate Coverage Insulin Dose|.unit='U'"
         ]
@@ -243,11 +263,6 @@
           "gt0005": {
             "id": "gt0005",
             "text": "Insulin to Carb Ratio (I:C) 1:X where X is",
-            "description": "*"
-          },
-          "gt0006": {
-            "id": "gt0006",
-            "text": "Total Daily Insulin Dose (TDID)",
             "description": "*"
           },
           "gt0008": {
@@ -327,6 +342,20 @@
           "gt0033": {
             "id": "gt0033",
             "text": "Total Mealtime Insulin Dose Calculation"
+          },
+          "gt0035": {
+            "id": "gt0035",
+            "text": "Weight, kg",
+            "description": "The weight of the individual."
+          },
+          "gt0036": {
+            "id": "gt0036",
+            "text": "Calculate TDID"
+          },
+          "gt0037": {
+            "id": "gt0037",
+            "text": "Weight, kg",
+            "description": "The weight of the individual."
           }
         }
       }

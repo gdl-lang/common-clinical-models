@@ -1,88 +1,50 @@
 guidelines:
   1: Insulin_Dosage_Calculator_guideline.v1
 test_cases:
-- id: Carb Ratio known, sensitivity factor known
+- id: 1. Carb Ratio known, sensitivity factor known
   input:
     1:
       gt0003|Meal carbohydrate content: 10,gm
       gt0004|Is the Insulin to Carb Ratio known?: local::at0007|Yes|
       gt0005|Insulin to Carb Ratio (I:C) 1:X where X is: 1.5,1
-      gt0006|Total Daily Insulin Dose (TDID): 10,U
-      gt0008|Current blood glucose: 100,mmol/l
-      gt0011|Target blood glucose: 70,mmol/l
+      gt0008|Current blood glucose: 150,mg/dl
+      gt0011|Target blood glucose: 100,mmol/l
       gt0013|Is the Insulin sensitivity (correction) factor known?: local::at0007|Yes|
       gt0014|Insulin sensitivity (correction) factor: 2,mg/dl
-      gt0015|Total Daily Insulin Dose (TDID): 5,U
+      gt0035|Weight, kg: 60,kg
   expected_output:
     1:
-      gt0019|Total Mealtime Insulin Dose: 21.7,U
-      gt0018|Insulin Dose to Correct High Blood Sugar: 15.0,U
+      gt0019|Total Mealtime Insulin Dose: 31.7,U
+      'gt0018|Insulin Dose to Correct High Blood Sugar ': 25.0,U
+      gt0015|Total Daily Insulin Dose (TDID): 33.0,U
       gt0017|Carbohydrate Coverage Insulin Dose: 6.7,U
-- id: Carb Ratio unknown, Insulin sensitivity unknown
+- id: 2. Carb Ratio unknown, Insulin sensitivity unknown
   input:
     1:
       gt0003|Meal carbohydrate content: 10,gm
       gt0004|Is the Insulin to Carb Ratio known?: local::at0008|No|
-      gt0005|Insulin to Carb Ratio (I:C) 1:X where X is: 1.5,1
-      gt0006|Total Daily Insulin Dose (TDID): 10,U
-      gt0008|Current blood glucose: 100,mmol/l
-      gt0011|Target blood glucose: 70,mmol/l
+      gt0008|Current blood glucose: 150,mg/dl
+      gt0011|Target blood glucose: 100,mmol/l
       gt0013|Is the Insulin sensitivity (correction) factor known?: local::at0008|No|
-      gt0014|Insulin sensitivity (correction) factor: 2,mg/dl
-      gt0015|Total Daily Insulin Dose (TDID): 5,U
+      gt0035|Weight, kg: 40,kg
   expected_output:
     1:
-      gt0019|Total Mealtime Insulin Dose: 0.3,U
-      gt0018|Insulin Dose to Correct High Blood Sugar: 0.1,U
-      gt0017|Carbohydrate Coverage Insulin Dose: 0.2,U
-- id: Carb Ratio known, Insulin sensitivity unknown
+      gt0019|Total Mealtime Insulin Dose: 1.0,U
+      'gt0018|Insulin Dose to Correct High Blood Sugar ': 0.6,U
+      gt0015|Total Daily Insulin Dose (TDID): 22.0,U
+      gt0017|Carbohydrate Coverage Insulin Dose: 0.4,U
+- id: Glucose in mmol/L
   input:
     1:
       gt0003|Meal carbohydrate content: 10,gm
-      gt0004|Is the Insulin to Carb Ratio known?: local::at0007|Yes|
-      gt0005|Insulin to Carb Ratio (I:C) 1:X where X is: 1.5,1
-      gt0006|Total Daily Insulin Dose (TDID): 10,U
-      gt0008|Current blood glucose: 100,mmol/l
-      gt0011|Target blood glucose: 70,mmol/l
+      gt0004|Is the Insulin to Carb Ratio known?: local::at0008|No|
+      gt0008|Current blood glucose: 10,mmol/l
+      gt0011|Target blood glucose: 6,mmol/l
       gt0013|Is the Insulin sensitivity (correction) factor known?: local::at0008|No|
-      gt0014|Insulin sensitivity (correction) factor: 2,mg/dl
-      gt0015|Total Daily Insulin Dose (TDID): 5,U
+      gt0035|Weight, kg: 40,kg
   expected_output:
     1:
-      gt0019|Total Mealtime Insulin Dose: 6.8,U
-      'gt0018|Insulin Dose to Correct High Blood Sugar ': 0.1,U
-      gt0017|Carbohydrate Coverage Insulin Dose: 6.7,U
-- id: Carb Ratio unknown, Insulin sensitivity known
-  input:
-    1:
-      gt0003|Meal carbohydrate content: 10,gm
-      gt0004|Is the Insulin to Carb Ratio known?: local::at0008|No|
-      gt0005|Insulin to Carb Ratio (I:C) 1:X where X is: 1.5,1
-      gt0006|Total Daily Insulin Dose (TDID): 10,U
-      gt0008|Current blood glucose: 100,mmol/l
-      gt0011|Target blood glucose: 70,mmol/l
-      gt0013|Is the Insulin sensitivity (correction) factor known?: local::at0007|Yes|
-      gt0014|Insulin sensitivity (correction) factor: 2,mg/dl
-      gt0015|Total Daily Insulin Dose (TDID): 5,U
-  expected_output:
-    1:
-      gt0019|Total Mealtime Insulin Dose: 15.2,U
-      'gt0018|Insulin Dose to Correct High Blood Sugar ': 15.0,U
-      gt0017|Carbohydrate Coverage Insulin Dose: 0.2,U
-- id: glucose mg/dl
-  input:
-    1:
-      gt0003|Meal carbohydrate content: 10,gm
-      gt0004|Is the Insulin to Carb Ratio known?: local::at0008|No|
-      gt0005|Insulin to Carb Ratio (I:C) 1:X where X is: 1.5,1
-      gt0006|Total Daily Insulin Dose (TDID): 10,U
-      gt0008|Current blood glucose: 100,mg/dl
-      gt0011|Target blood glucose: 70,mg/dl
-      gt0013|Is the Insulin sensitivity (correction) factor known?: local::at0007|Yes|
-      gt0014|Insulin sensitivity (correction) factor: 2,mg/dl
-      gt0015|Total Daily Insulin Dose (TDID): 5,U
-  expected_output:
-    1:
-      gt0019|Total Mealtime Insulin Dose: 15.2,U
-      'gt0018|Insulin Dose to Correct High Blood Sugar ': 15.0,U
-      gt0017|Carbohydrate Coverage Insulin Dose: 0.2,U
+      gt0019|Total Mealtime Insulin Dose: 0.4,U
+      'gt0018|Insulin Dose to Correct High Blood Sugar ': 0.0,U
+      gt0015|Total Daily Insulin Dose (TDID): 22.0,U
+      gt0017|Carbohydrate Coverage Insulin Dose: 0.4,U
