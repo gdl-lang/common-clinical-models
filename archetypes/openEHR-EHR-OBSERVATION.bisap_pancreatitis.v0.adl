@@ -1,0 +1,200 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.bisap_pancreatitis.v0
+
+concept
+	[at0000]	-- BISAP score for pancreatitis mortality
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Maryam Razavi">
+		["email"] = <"maryam.razavi@cambio.se">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2021-06-14">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the results for each component parameter and the BISAP score. ">
+			use = <"Use to record the results for each component parameter and the BISAP score.">
+			keywords = <"pancreatitis", "acute", "mortality">
+			misuse = <"">
+			copyright = <"© Cambio CDS">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Wu BU, Johannes RS, Sun X, Tabak Y, Conwell DL, Banks PA. The early prediction of mortality in acute pancreatitis: a large population-based study. Gut. 2008 Dec;57(12):1698-703. doi: 10.1136/gut.2008.152702. Epub 2008 Jun 2. PMID: 18519429.
+
+Papachristou GI, Muddana V, Yadav D, O'Connell M, Sanders MK, Slivka A, Whitcomb DC. Comparison of BISAP, Ranson's, APACHE-II, and CTSI scores in predicting organ failure, complications, and mortality in acute pancreatitis. Am J Gastroenterol. 2010 Feb;105(2):435-41; quiz 442. doi: 10.1038/ajg.2009.622. Epub 2009 Oct 27. PMID: 19861954.
+
+Gao W, Yang HX, Ma CE. The Value of BISAP Score for Predicting Mortality and Severity in Acute Pancreatitis: A Systematic Review and Meta-Analysis. PLoS One. 2015 Jun 19;10(6):e0130412. doi: 10.1371/journal.pone.0130412. Erratum in: PLoS One. 2015;10(10):e0142025. PMID: 26091293; PMCID: PMC4474919.">
+		["current_contact"] = <"Maryam Razavi, Cambio CDS<maryam.razavi2009@gmail.com>">
+		["MD5-CAM-1.0.1"] = <"11BDCDB15A24258DE92AAB3E532153F8">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- BISAP score for pancreatitis mortality
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- BUN
+										value matches {
+											0|[local::at0005], 	-- <25 25 mg/dL or 8.92 mmol/L
+											1|[local::at0006]  	-- >= 25 mg/dL or 8.92 mmol/L
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Impaired mental status
+										value matches {
+											0|[local::at0008], 	-- Absent
+											1|[local::at0009]  	-- Present
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {	-- SIRS
+										value matches {
+											0|[local::at0011], 	-- <2 SIRS criteria
+											1|[local::at0012]  	-- >=2  SIRS criteria
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Age
+										value matches {
+											0|[local::at0014], 	-- <=60 years
+											1|[local::at0015]  	-- >60 years
+										}
+									}
+									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Pleural effusion
+										value matches {
+											0|[local::at0008], 	-- Absent
+											1|[local::at0009]  	-- Present
+										}
+									}
+									ELEMENT[at0020] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..5|}
+											}
+										}
+									}
+									ELEMENT[at0028] occurrences matches {0..1} matches {	-- In hospital mortality risk
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0026] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0027] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"BISAP score for pancreatitis mortality">
+					description = <" An assessment score used to assess the risk of in-hospital mortality of patients with acute pancreatitis.
+">
+					comment = <"Original version, c 2008.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"BUN">
+					description = <"Blood urea nitrogen (BUN) increase higher than 25 mg/dL (8.92 mmol/L)?">
+				>
+				["at0005"] = <
+					text = <"<25 25 mg/dL or 8.92 mmol/L">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <">= 25 mg/dL or 8.92 mmol/L">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"Impaired mental status">
+					description = <"Defined as disorientation, lethargy, somnolence, coma or stupor.">
+				>
+				["at0008"] = <
+					text = <"Absent">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Present">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"SIRS">
+					description = <"Systemic Inflammatory Response Syndrome. ">
+				>
+				["at0011"] = <
+					text = <"<2 SIRS criteria">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <">=2  SIRS criteria">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Age">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"<=60 years">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <">60 years">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"Pleural effusion">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Total score">
+					description = <"The total sum of each component variable for the BISAP Score.">
+				>
+				["at0026"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0027"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
+				>
+				["at0028"] = <
+					text = <"In hospital mortality risk">
+					description = <"*">
+				>
+			>
+		>
+	>
