@@ -1,0 +1,179 @@
+archetype (adl_version=1.4; uid=709d522b-4785-472c-aca5-b09c96827064)
+	openEHR-EHR-OBSERVATION.ffmi.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2021-06-09">
+		["name"] = <"Emma Malm">
+		["organisation"] = <"Cambio CDS">
+		["email"] = <"emma.malm@cambio.se">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the results for each component parameter for the FFMI.">
+			keywords = <"FFMI, fat, bodybuilder, fitness, muscle, mass", ...>
+			copyright = <"© Cambio CDS">
+			use = <"Use to record the results for each component parameter for the FFMI.">
+		>
+	>
+	other_details = <
+		["references"] = <"Kouri EM, Pope HG Jr, Katz DL, Oliva P. Fat-free mass index in users and nonusers of anabolic-androgenic steroids. Clin J Sport Med. 1995 Oct;5(4):223-8. doi: 10.1097/00042752-199510000-00003. PMID: 7496846.">
+		["current_contact"] = <"Emma Malm, Cambio CDS, emma.malm@cambio.se">
+		["MD5-CAM-1.0.1"] = <"d0f94ba7e98de873f3ee08608a7622d7">
+		["build_uid"] = <"d4482d21-a558-36f7-85b7-d4eb9e3e0d34">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Fat Free Mass Index (FFMI) calculator
+		data matches {
+			HISTORY[at0001] matches {    -- History
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0007] occurrences matches {0..1} matches {    -- Body fat
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"%">
+														magnitude = <|0.0..100.0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {    -- Height (feet)
+										value matches {
+											C_DV_QUANTITY <
+												
+												list = <
+													["1"] = <
+														units = <"[ft_i]">
+														magnitude = <|>0.0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {    -- Lean
+										value matches {
+											C_DV_QUANTITY <
+												
+												list = <
+													["1"] = <
+														units = <"[lbs]">
+													>
+													["2"] = <
+														units = <"kg">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {    -- FFMI
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::507]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {    -- Adjusted FFMI
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::507]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0011] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0012] occurrences matches {0..*} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Fat Free Mass Index (FFMI) calculator">
+					description = <"An assessment score used to determine the muscle mass index for bodybuilders and fitness enthusiasts. ">
+					comment = <"Original version, c 1995">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0007"] = <
+					text = <"Body fat">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Lean">
+					description = <"The lean body mass. ">
+				>
+				["at0009"] = <
+					text = <"FFMI">
+					description = <"Accounts for the amount of muscle mass one person has, correlated to their weight and height.">
+				>
+				["at0010"] = <
+					text = <"Adjusted FFMI">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0012"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
+				>
+				["at0013"] = <
+					text = <"Height (feet)">
+					description = <"">
+				>
+			>
+		>
+	>

@@ -1,0 +1,366 @@
+{
+  "id": "FFMI.v1",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2021-06-09",
+      "name": "Emma Malm",
+      "organisation": "Cambio CDS",
+      "email": "emma.malm@cambio.se"
+    },
+    "lifecycle_state": "Initial",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "To calculate the sum for the FFMI score. ",
+        "keywords": [
+          "FFMI",
+          "bodybuilder",
+          "fat",
+          "mass",
+          "muscle"
+        ],
+        "use": "Use to determine the muscle mass index. The index result provides the lean body mass, the FFMI and the adjusted FFMI.\n\nLean = Weight in kg x (1.0 - (Body fat %/ 100.0))\nFFMI = Lean * (Height in m)^-2 \nAdjusted FFMI = FFMI + (6.1 x (1.8 - Height in m))\n\nInterpretation: \nFFMI score:    Muscle mass:       \n16-17              Below average\n18-19              Average\n20-21              Above average\n22                   Excellent\n23-25              Superior\n26-27              Suspicion of steroid use\n28-30              Steroid usage likely",
+        "copyright": "Cambio CDS"
+      }
+    },
+    "other_details": {
+      "references": "Kouri EM, Pope HG Jr, Katz DL, Oliva P. Fat-free mass index in users and nonusers of anabolic-androgenic steroids. Clin J Sport Med. 1995 Oct;5(4):223-8. doi: 10.1097/00042752-199510000-00003. PMID: 7496846."
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0002": {
+        "id": "gt0002",
+        "model_id": "openEHR-EHR-OBSERVATION.ffmi.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.ffmi.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
+          }
+        }
+      },
+      "gt0005": {
+        "id": "gt0005",
+        "model_id": "openEHR-EHR-OBSERVATION.height.v2",
+        "template_id": "openEHR-EHR-OBSERVATION.height.v2",
+        "type": "INPUT",
+        "elements": {
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          }
+        }
+      },
+      "gt0007": {
+        "id": "gt0007",
+        "model_id": "openEHR-EHR-OBSERVATION.body_weight.v2",
+        "template_id": "openEHR-EHR-OBSERVATION.body_weight.v2",
+        "type": "INPUT",
+        "elements": {
+          "gt0008": {
+            "id": "gt0008",
+            "path": "/data[at0002]/events[at0003]/data[at0001]/items[at0004]"
+          }
+        }
+      },
+      "gt0009": {
+        "id": "gt0009",
+        "model_id": "openEHR-EHR-OBSERVATION.ffmi.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.ffmi.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0010": {
+            "id": "gt0010",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
+          }
+        }
+      },
+      "gt0013": {
+        "id": "gt0013",
+        "model_id": "openEHR-EHR-EVALUATION.ffmi_assessment.v0",
+        "template_id": "openEHR-EHR-EVALUATION.ffmi_assessment.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0014": {
+            "id": "gt0014",
+            "path": "/data[at0001]/items[at0002]"
+          }
+        }
+      },
+      "gt0029": {
+        "id": "gt0029",
+        "model_id": "openEHR-EHR-OBSERVATION.height_vitd.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.height_vitd.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0030": {
+            "id": "gt0030",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          }
+        }
+      }
+    },
+    "default_actions": [
+      "$gt0027|Weight conversion factor |=1",
+      "$gt0028|Height (in) conversion factor|=1",
+      "$gt0034|Height (ft) conversion factor|=1"
+    ],
+    "rules": {
+      "gt0031": {
+        "id": "gt0031",
+        "priority": 11,
+        "when": [
+          "$gt0008|Weight|.unit=='[lb_av]'"
+        ],
+        "then": [
+          "$gt0027|Weight conversion factor |=0.45359237"
+        ]
+      },
+      "gt0035": {
+        "id": "gt0035",
+        "priority": 10,
+        "when": [
+          "$gt0030|Height|.unit=='[ft_i]'"
+        ],
+        "then": [
+          "$gt0034|Height (ft) conversion factor|=30.48"
+        ]
+      },
+      "gt0032": {
+        "id": "gt0032",
+        "priority": 9,
+        "when": [
+          "$gt0006|Height|.unit=='[in_i]'"
+        ],
+        "then": [
+          "$gt0028|Height (in) conversion factor|=2.54"
+        ]
+      },
+      "gt0033": {
+        "id": "gt0033",
+        "priority": 8,
+        "when": [
+          "$gt0004|Body fat|!=null",
+          "$gt0006|Height|!=null",
+          "$gt0008|Weight|!=null",
+          "$gt0030|Height|!=null"
+        ],
+        "then": [
+          "$gt0010|Lean|.magnitude=($gt0008.magnitude*$gt0027)*(1-($gt0004.magnitude/100))",
+          "$gt0010|Lean|.precision=2",
+          "$gt0010|Lean|.unit='kg'",
+          "$gt0011|FFMI|.magnitude=$gt0010.magnitude*(((($gt0006.magnitude*$gt0028)+($gt0030.magnitude*$gt0034))*0.01)^(0-2))",
+          "$gt0011|FFMI|.precision=2",
+          "$gt0011|FFMI|.unit='1'",
+          "$gt0012|Adjusted FFMI|.magnitude=$gt0011.magnitude+6.1*(1.8-(($gt0006.magnitude*$gt0028)+($gt0030.magnitude*$gt0034))*0.01)",
+          "$gt0012|Adjusted FFMI|.precision=2",
+          "$gt0012|Adjusted FFMI|.unit='1'"
+        ]
+      },
+      "gt0020": {
+        "id": "gt0020",
+        "priority": 7,
+        "when": [
+          "$gt0011|FFMI|>=16,1",
+          "$gt0011|FFMI|<=17,1"
+        ],
+        "then": [
+          "$gt0014|Interpretation|='Below average'"
+        ]
+      },
+      "gt0021": {
+        "id": "gt0021",
+        "priority": 6,
+        "when": [
+          "$gt0011|FFMI|>=18,1",
+          "$gt0011|FFMI|<=19,1"
+        ],
+        "then": [
+          "$gt0014|Interpretation|='Average'"
+        ]
+      },
+      "gt0022": {
+        "id": "gt0022",
+        "priority": 5,
+        "when": [
+          "$gt0011|FFMI|>=20,1",
+          "$gt0011|FFMI|<=21,1"
+        ],
+        "then": [
+          "$gt0014|Interpretation|='Above average'"
+        ]
+      },
+      "gt0023": {
+        "id": "gt0023",
+        "priority": 4,
+        "when": [
+          "$gt0011|FFMI|==22,1"
+        ],
+        "then": [
+          "$gt0014|Interpretation|='Excellent'"
+        ]
+      },
+      "gt0024": {
+        "id": "gt0024",
+        "priority": 3,
+        "when": [
+          "$gt0011|FFMI|>=23,1",
+          "$gt0011|FFMI|<=25,1"
+        ],
+        "then": [
+          "$gt0014|Interpretation|='Superior'"
+        ]
+      },
+      "gt0025": {
+        "id": "gt0025",
+        "priority": 2,
+        "when": [
+          "$gt0011|FFMI|>=26,1",
+          "$gt0011|FFMI|<=27,1"
+        ],
+        "then": [
+          "$gt0014|Interpretation|='Suspicion of steroid use'"
+        ]
+      },
+      "gt0026": {
+        "id": "gt0026",
+        "priority": 1,
+        "when": [
+          "$gt0011|FFMI|>=28,1",
+          "$gt0011|FFMI|<=30,1"
+        ],
+        "then": [
+          "$gt0014|Interpretation|='Steroid usage likely'"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "FFMI score",
+            "description": "Fat Free Mass Index (FFMI) calculator determines the muscle mass index for bodybuilders and fitness enthusiasts by considering the body fat, weight and height."
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "Body fat",
+            "description": ""
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Height",
+            "description": "The length of the body from crown of head to sole of foot."
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "Weight",
+            "description": "The weight of the individual."
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "Lean",
+            "description": "The lean body mass. "
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "FFMI",
+            "description": "Accounts for the amount of muscle mass one person has, correlated to their weight and height."
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "text": "Adjusted FFMI",
+            "description": ""
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "Interpretation",
+            "description": ""
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Set interpretation for FFMI in range 16-17"
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "Set interpretation for FFMI in range 18-19"
+          },
+          "gt0022": {
+            "id": "gt0022",
+            "text": "Set interpretation for FFMI in range 20-21"
+          },
+          "gt0023": {
+            "id": "gt0023",
+            "text": "Set interpretation for FFMI=22"
+          },
+          "gt0024": {
+            "id": "gt0024",
+            "text": "Set interpretation for FFMI in range 23-25"
+          },
+          "gt0025": {
+            "id": "gt0025",
+            "text": "Set interpretation for FFMI in range 26-27"
+          },
+          "gt0026": {
+            "id": "gt0026",
+            "text": "Set interpretation for FFMI in range 28-30"
+          },
+          "gt0027": {
+            "id": "gt0027",
+            "text": "Weight conversion factor ",
+            "description": ""
+          },
+          "gt0028": {
+            "id": "gt0028",
+            "text": "Height (in) conversion factor",
+            "description": ""
+          },
+          "gt0030": {
+            "id": "gt0030",
+            "text": "Height",
+            "description": "The length of the body from crown of head to sole of foot."
+          },
+          "gt0031": {
+            "id": "gt0031",
+            "text": "Set weight conversion factor "
+          },
+          "gt0032": {
+            "id": "gt0032",
+            "text": "Set height (in) conversion factor "
+          },
+          "gt0033": {
+            "id": "gt0033",
+            "text": "Calculate FFMI"
+          },
+          "gt0034": {
+            "id": "gt0034",
+            "text": "Height (ft) conversion factor",
+            "description": ""
+          },
+          "gt0035": {
+            "id": "gt0035",
+            "text": "Set height (ft) conversion factor"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,106 @@
+guidelines:
+  1: FFMI.v1
+test_cases:
+- id: Score range 16-17 returns interpretation 'Below average'
+  input:
+    1:
+      gt0004|Body fat: 0.04,%
+      gt0006|Height: 2,[in_i]
+      gt0008|Weight: 220,[lb_av]
+      gt0030|Height: 8,[ft_i]
+  expected_output:
+    1:
+      gt0011|FFMI: 16.10,1
+      gt0012|Adjusted FFMI: 11.90,1
+      gt0010|Lean: 99.75,kg
+      gt0014|Interpretation: Below average
+- id: Score range 18-19 returns interpretation 'Average'
+  input:
+    1:
+      gt0004|Body fat: 25,%
+      gt0006|Height: 8,[in_i]
+      gt0008|Weight: 230,[lb_av]
+      gt0030|Height: 6,[ft_i]
+  expected_output:
+    1:
+      gt0011|FFMI: 18.95,1
+      gt0012|Adjusted FFMI: 17.53,1
+      gt0010|Lean: 78.24,kg
+      gt0014|Interpretation: Average
+- id: Score range 20-21 returns interpretation 'Above average'
+  input:
+    1:
+      gt0004|Body fat: 19,%
+      gt0006|Height: 8,[in_i]
+      gt0008|Weight: 230,[lb_av]
+      gt0030|Height: 6,[ft_i]
+  expected_output:
+    1:
+      gt0011|FFMI: 20.46,1
+      gt0012|Adjusted FFMI: 19.04,1
+      gt0010|Lean: 84.50,kg
+      gt0014|Interpretation: Above average
+- id: Score range 23-25 returns interpretation 'Superior'
+  input:
+    1:
+      gt0004|Body fat: 17,%
+      gt0006|Height: 4,[in_i]
+      gt0008|Weight: 230,[lb_av]
+      gt0030|Height: 6,[ft_i]
+  expected_output:
+    1:
+      gt0011|FFMI: 23.24,1
+      gt0012|Adjusted FFMI: 22.44,1
+      gt0010|Lean: 86.59,kg
+      gt0014|Interpretation: Superior
+- id: Score range 26-27 returns interpretation 'Suspicion of steroid use'
+  input:
+    1:
+      gt0004|Body fat: 12,%
+      gt0006|Height: 1,[in_i]
+      gt0008|Weight: 230,[lb_av]
+      gt0030|Height: 6,[ft_i]
+  expected_output:
+    1:
+      gt0011|FFMI: 26.70,1
+      gt0012|Adjusted FFMI: 26.37,1
+      gt0010|Lean: 91.81,kg
+      gt0014|Interpretation: Suspicion of steroid use
+- id: Score range 28-30 returns interpretation 'Steroid usage likely'
+  input:
+    1:
+      gt0004|Body fat: 5,%
+      gt0006|Height: 1,[in_i]
+      gt0008|Weight: 230,[lb_av]
+      gt0030|Height: 6,[ft_i]
+  expected_output:
+    1:
+      gt0011|FFMI: 28.83,1
+      gt0012|Adjusted FFMI: 28.50,1
+      gt0010|Lean: 99.11,kg
+      gt0014|Interpretation: Steroid usage likely
+- id: Score 22 returns interpretation 'Excellent'
+  input:
+    1:
+      gt0004|Body fat: 19.3,%
+      gt0006|Height: 5.01,[in_i]
+      gt0008|Weight: 230,[lb_av]
+      gt0030|Height: 6,[ft_i]
+  expected_output:
+    1:
+      gt0011|FFMI: 22.00,1
+      gt0012|Adjusted FFMI: 21.05,1
+      gt0010|Lean: 84.19,kg
+- id: Score 22 returns interpretation 'Excellent'
+  input:
+    1:
+      gt0004|Body fat: 19,%
+      gt0006|Height: 180,cm
+      gt0008|Weight: 88,kg
+      gt0030|Height: 0,[ft_i]
+  expected_output:
+    1:
+      gt0011|FFMI: 22.00,1
+      gt0012|Adjusted FFMI: 22.00,1
+      gt0010|Lean: 71.28,kg
+      gt0014|Interpretation: Excellent
