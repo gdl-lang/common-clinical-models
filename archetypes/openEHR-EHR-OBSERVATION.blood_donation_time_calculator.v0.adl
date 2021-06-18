@@ -1,0 +1,97 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.blood_donation_time_calculator.v0
+
+concept
+	[at0000]	-- Blood donation calculator
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Maryam Razavi">
+		["email"] = <"maryam.razavi@cambio.se">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2021-06-16">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the date of previous blood donation as well as the date of next blood donation.">
+			use = <"Use to record the date of previous blood donation as well as the date of next blood donation.">
+			keywords = <"blood", "donation", "time">
+			misuse = <"">
+			copyright = <"© Cambio CDS">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"547D84FB098C5FC91645756CE7D03C49">
+		["references"] = <"Blood Donor Selection: Guidelines on Assessing Donor Suitability for Blood Donation. Geneva: World Health Organization; 2012. 4, General donor assessment. Available from: https://www.ncbi.nlm.nih.gov/books/NBK138219/">
+		["current_contact"] = <"Maryam Razavi, Cambio CDS<maryam.razavi2009@gmail.com>">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Blood donation calculator
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Latest donation
+										value matches {
+											DV_DATE matches {
+												value matches {yyyy-mm-dd}
+											}
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Next donation
+										value matches {
+											DV_DATE matches {
+												value matches {yyyy-mm-dd}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Blood donation calculator">
+					description = <"Blood donation calculator computes the next recommended donation date.">
+					comment = <"Original version, c 2014
+">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0005"] = <
+					text = <"Latest donation">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"Next donation">
+					description = <"*">
+				>
+			>
+		>
+	>
