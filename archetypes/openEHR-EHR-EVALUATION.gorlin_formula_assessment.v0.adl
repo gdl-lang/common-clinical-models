@@ -1,0 +1,86 @@
+archetype (adl_version=1.4; uid=541401ba-7c35-41df-abf0-268e45ee7bc9)
+	openEHR-EHR-EVALUATION.gorlin_formula_assessment.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2021-06-22">
+		["name"] = <"Emma Malm">
+		["organisation"] = <"Cambio CDS">
+		["email"] = <"emma.malm@cambio.se">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the interpretation of the calculated AVA. ">
+			keywords = <"Gorlin,aortic,valve,area,AVA,stenosis", ...>
+			copyright = <"© Cambio CDS">
+			use = <"Use to record the interpretation of the calculated AVA. ">
+		>
+	>
+	other_details = <
+		["references"] = <"GORLIN R, GORLIN SG. Hydraulic formula for calculation of the area of the stenotic mitral valve, other cardiac valves, and central circulatory shunts. I. Am Heart J. 1951 Jan;41(1):1-29. doi: 10.1016/0002-8703(51)90002-6. PMID: 14799435.">
+		["current_contact"] = <"Emma Malm, Cambio CDS, emma.malm@cambio.se">
+		["MD5-CAM-1.0.1"] = <"ccc794d0dbfba605c8bec40e9915bc89">
+		["build_uid"] = <"a6f0766b-dcde-34b9-8e7b-7bf6a4214709">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Gorlin formula calculator
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Comment
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0003] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0004] occurrences matches {0..*} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Gorlin formula calculator">
+					description = <"An indirect method of determining aortic valve area (AVA) to check for potential aortic stenosis.">
+				>
+				["at0001"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Comment">
+					description = <"">
+				>
+				["at0003"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
+				>
+			>
+		>
+	>
