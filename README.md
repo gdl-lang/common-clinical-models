@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 607*
+### *Published Apps: 609*
 
 ----------
 
 ### Latest added
 
-1. Myocardial Performance Index (Tei Index) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Myocardial_Performance_Index_guideline/1?language=en))
-2. Glasgow Pancreatitis Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Glasgow_Pancreatitis_score/1?language=en))
-3. Insulin Dosage Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Insulin_Dosage_Calculator_guideline/1?language=en))
-4. UK-PBC Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UK_PBC_Risk_Score_guideline/1?language=en))
-5. Coronary Perfusion Pressure Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Coronary_Perfusion_Pressure_guideline/1?language=en))
-6. Bath Ankylosing Spondylitis Functional Index (BASFI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BASFI_score_guideline/1?language=en))
-7. Lower Extremity Functional Scale (LEFS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LEFS/1?language=en))
-8. Troponin-only Manchester Acute Coronary Syndromes (T-MACS) Decision Aid - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/T_MACS/1?language=en))
-9. Febrile Neutropenia MASCC Score - [_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/MASCC_risk_index/1?language=en))
-10. ASCVD (Atherosclerotic Cardiovascular Disease) Risk Algorithm including Known ASCVD from AHA/ACC - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASCVD_risk_statin_recommendation/1?language=en))
+1. Systemic Lupus Erythematosus Disease Activity Index 2000 (SLEDAI-2K) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SLICC_Criteria_for_Systemic_Lupus_Erythematosus_2012_guideline/1?language=en))
+2. CHIP (CT in Head Injury Patients) Prediction Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHIP_prediction_rule/1?language=en))
+3. Myocardial Performance Index (Tei Index) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Myocardial_Performance_Index_guideline/1?language=en))
+4. Glasgow Pancreatitis Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Glasgow_Pancreatitis_score/1?language=en))
+5. Insulin Dosage Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Insulin_Dosage_Calculator_guideline/1?language=en))
+6. UK-PBC Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UK_PBC_Risk_Score_guideline/1?language=en))
+7. Coronary Perfusion Pressure Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Coronary_Perfusion_Pressure_guideline/1?language=en))
+8. Bath Ankylosing Spondylitis Functional Index (BASFI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BASFI_score_guideline/1?language=en))
+9. Lower Extremity Functional Scale (LEFS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/LEFS/1?language=en))
+10. Troponin-only Manchester Acute Coronary Syndromes (T-MACS) Decision Aid - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/T_MACS/1?language=en))
 
 ----------
 
@@ -1341,6 +1341,8 @@ _Select a medical specialty below to view the available apps._
 
 * SLICC Criteria for Systemic Lupus Erythematosus (SLE) 2012 - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SLICC_Criteria_for_Systemic_Lupus_Erythematosus_2012_guideline/1?language=en))
 
+* Systemic Lupus Erythematosus Disease Activity Index 2000 (SLEDAI-2K) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SLICC_Criteria_for_Systemic_Lupus_Erythematosus_2012_guideline/1?language=en))
+
 ----------
 
 ### Surgery
@@ -1382,6 +1384,8 @@ _Select a medical specialty below to view the available apps._
 * Canadian C-Spine Rule (CCR) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CCR/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/CCR/1?language=sv))
 
 * Canadian CT head injury rule (CCHR) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Canadian_CT_head_injury_rule/1?language=en))
+
+* CHIP (CT in Head Injury Patients) Prediction Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHIP_prediction_rule/1?language=en))
 
 * Focused Assessment with Sonography for Trauma (FAST) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FAST_calculator/1?language=en))
 
