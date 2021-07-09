@@ -1,5 +1,5 @@
 {
-  "id": "new_guideline.v0",
+  "id": "rcvs2_guideline.v1",
   "gdl_version": "2.0",
   "concept": "gt0001",
   "language": {
@@ -23,7 +23,7 @@
           "diagnosis",
           "intracranial"
         ],
-        "use": "Use in patients 18-55 years old. RCVS2 score variables and assigned points: Recurrent or single TCH (Present = 5, Absent = 0); Carotid artery (Affected = -2, Not affected = 0); Vasoconstrictive trigger (Present = 3, Absent = 0); Sex (Female = 1, Male = 0); Subarachnoid hemorrhage (Present = 1, Absent = 0). Scores ≥ 5 = Positive; score 3-4 = Equivocal, scores ≤ 2 = Negative.",
+        "use": "Use in patients 18-55 years old. RCVS2 score variables and assigned points: Recurrent or single TCH (Present = 5, Absent = 0); Carotid artery (Affected = -2, Not affected = 0); Vasoconstrictive trigger (Present = 3, Absent = 0); Sex (Female = 1, Male = 0); Subarachnoid hemorrhage (Present = 1, Absent = 0). Interpretation: score >= 5 = Positive (for RCVS); score 3-4 = Equivocal, score <= 2 = Negative. ",
         "misuse": "Not to be used for adults with cerebral arteriopathies already identified and outside the age range. ",
         "copyright": "@ Cambio CDS"
       }
@@ -106,7 +106,7 @@
     "rules": {
       "gt0014": {
         "id": "gt0014",
-        "priority": 4,
+        "priority": 5,
         "when": [
           "$gt0003|Recurrent or single TCH|!=null",
           "$gt0004|Carotid artery|!=null",
@@ -116,37 +116,47 @@
           "$gt0022|Age|!=null"
         ],
         "then": [
-          "$gt0009|Total score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value"
+          "$gt0009|RCVS2 score|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value"
         ]
       },
       "gt0015": {
         "id": "gt0015",
-        "priority": 3,
+        "priority": 4,
         "when": [
-          "$gt0009|Total score|<=2"
+          "$gt0009|RCVS2 score|<=2"
         ],
         "then": [
-          "$gt0011|Diagnosis|.value=$gt0018.term"
+          "$gt0023|Interpretation text|=$gt0018.term"
         ]
       },
       "gt0016": {
         "id": "gt0016",
-        "priority": 2,
+        "priority": 3,
         "when": [
-          "($gt0009|Total score|==3)||($gt0009|Total score|==4)"
+          "($gt0009|RCVS2 score|==3)||($gt0009|RCVS2 score|==4)"
         ],
         "then": [
-          "$gt0011|Diagnosis|.value=$gt0019.term"
+          "$gt0023|Interpretation text|=$gt0019.term"
         ]
       },
       "gt0017": {
         "id": "gt0017",
-        "priority": 1,
+        "priority": 2,
         "when": [
-          "$gt0009|Total score|>=5"
+          "$gt0009|RCVS2 score|>=5"
         ],
         "then": [
-          "$gt0011|Diagnosis|.value=$gt0020.term"
+          "$gt0023|Interpretation text|=$gt0020.term"
+        ]
+      },
+      "gt0024": {
+        "id": "gt0024",
+        "priority": 1,
+        "when": [
+          "(fired($gt0015))||((fired($gt0016))||(fired($gt0017)))"
+        ],
+        "then": [
+          "$gt0011|Diagnosis|.value=$gt0023"
         ]
       }
     }
@@ -164,77 +174,87 @@
           "gt0003": {
             "id": "gt0003",
             "text": "Recurrent or single TCH",
-            "description": "TCH = thunderclap headache"
+            "description": "TCH = thunderclap headache."
           },
           "gt0004": {
             "id": "gt0004",
             "text": "Carotid artery",
-            "description": "Carotid artery intracranial"
+            "description": "Carotid artery intracranial."
           },
           "gt0005": {
             "id": "gt0005",
             "text": "Vasoconstrictive trigger",
-            "description": "Vasoconstrictive trigger identified"
+            "description": "Vasoconstrictive trigger identified."
           },
           "gt0006": {
             "id": "gt0006",
             "text": "Sex",
-            "description": "Sex"
+            "description": "Sex."
           },
           "gt0007": {
             "id": "gt0007",
             "text": "Subarachnoid hemorrhage",
-            "description": "Subarachnoid hemorrhage present on imaging"
+            "description": "Subarachnoid hemorrhage present on imaging."
           },
           "gt0009": {
             "id": "gt0009",
-            "text": "Total score",
+            "text": "RCVS2 score",
             "description": "The total sum of each component parameter for the RCVS2 score."
           },
           "gt0011": {
             "id": "gt0011",
             "text": "Diagnosis",
-            "description": "Interpretation"
+            "description": "Interpretation."
           },
           "gt0014": {
             "id": "gt0014",
             "text": "Total",
-            "description": "Rule"
+            "description": "Rule."
           },
           "gt0015": {
             "id": "gt0015",
             "text": "InterpretNeg",
-            "description": "Rule"
+            "description": "Rule."
           },
           "gt0016": {
             "id": "gt0016",
             "text": "InterpretEqu",
-            "description": "Rule"
+            "description": "Rule."
           },
           "gt0017": {
             "id": "gt0017",
             "text": "InterpretPos",
-            "description": "Rule"
+            "description": "Rule."
           },
           "gt0018": {
             "id": "gt0018",
             "text": "Negative",
-            "description": "Output interpretation"
+            "description": "Output interpretation."
           },
           "gt0019": {
             "id": "gt0019",
             "text": "Equivocal",
-            "description": "Output interpretation"
+            "description": "Output interpretation."
           },
           "gt0020": {
             "id": "gt0020",
             "text": "Positive",
-            "description": "Output interpretation"
+            "description": "Output interpretation."
           },
           "gt0022": {
             "id": "gt0022",
             "text": "Age",
-            "description": "Age"
+            "description": "Age."
+          },
+          "gt0023": {
+            "id": "gt0023",
+            "text": "Interpretation text",
+            "description": "Local term."
+          },
+          "gt0024": {
+            "id": "gt0024",
+            "text": "Output",
+            "description": "Rule."
           }
         }
       }
