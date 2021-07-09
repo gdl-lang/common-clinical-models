@@ -2,79 +2,80 @@ archetype (adl_version=1.4; uid=56a83efd-32c4-4497-8efe-8b597e22b828)
 	openEHR-EHR-OBSERVATION.rcvs2.v0
 
 concept
-	[at0000]	-- RCVS2 score
+	[at0000]
+
 language
 	original_language = <[ISO_639-1::en]>
+
 description
 	original_author = <
-		["name"] = <"Núria Rodríguez Ruiz">
-		["email"] = <"nuria.rguez.ruiz@gmail.com">
-		["organisation"] = <"Cambio CDS">
 		["date"] = <"2021-07-02">
+		["name"] = <"Núria Rodríguez Ruiz">
+		["organisation"] = <"Cambio CDS">
+		["email"] = <"nuria.rguez.ruiz@gmail.com">
 	>
+	lifecycle_state = <"NotSet">
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record the results for each component parameter and their total sum for the RCVS2 score. ">
-			use = <"Use to record the results for each component parameter and their total sum for the RCVS2 score.">
 			keywords = <"rcvs2, intracranial, arteriopathy, angiitis", ...>
-			misuse = <"Not to be used for adults with cerebral arteriopathies already identified.">
 			copyright = <"© Cambio CDS">
+			use = <"Use to record the results for each component parameter and their total sum for the RCVS2 score.">
+			misuse = <"Not to be used for adults with cerebral arteriopathies already identified.">
 		>
 	>
-	lifecycle_state = <"NotSet">
-	other_contributors = <>
 	other_details = <
-		["original_publisher"] = <"openEHR Foundation">
-		["build_uid"] = <"739c5f0d-fa03-39b2-bb4c-abb0cf065957">
-		["original_namespace"] = <"org.openehr">
 		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
-		["references"] = <"Rocha EA, Topcuoglu MA, Silva GS, Singhal AB. RCVS2 score and diagnostic approach for reversible cerebral vasoconstriction syndrome. Neurology. 2019 Feb 12;92(7):e639-e647. doi: 10.1212/WNL.0000000000006917. Epub 2019 Jan 11. PMID: 30635475.">
-		["MD5-CAM-1.0.1"] = <"FB806A4913505345C14C908B0D28B1D4">
-		["custodian_namespace"] = <"org.openehr">
 		["custodian_organisation"] = <"openEHR Foundation">
+		["references"] = <"Rocha EA, Topcuoglu MA, Silva GS, Singhal AB. RCVS2 score and diagnostic approach for reversible cerebral vasoconstriction syndrome. Neurology. 2019 Feb 12;92(7):e639-e647. doi: 10.1212/WNL.0000000000006917. Epub 2019 Jan 11. PMID: 30635475.">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"FB806A4913505345C14C908B0D28B1D4">
+		["build_uid"] = <"739c5f0d-fa03-39b2-bb4c-abb0cf065957">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- RCVS2 score
+	OBSERVATION[at0000] matches {    -- RCVS2 score
 		data matches {
-			HISTORY[at0001] matches {	-- History
+			HISTORY[at0001] matches {    -- History
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {    -- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Recurrent or single TCH
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Recurrent or single TCH
 										value matches {
-											0|[local::at0006], 	-- Absent
-											5|[local::at0005]  	-- Present
+											0|[local::at0006],
+											5|[local::at0005]
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Carotid artery
+									ELEMENT[at0007] occurrences matches {0..1} matches {    -- Carotid artery
 										value matches {
-											-2|[local::at0008], 	-- Affected
-											0|[local::at0009]  	-- Not affected
+											-2|[local::at0008],
+											0|[local::at0009]
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Vasoconstrictive trigger
+									ELEMENT[at0010] occurrences matches {0..1} matches {    -- Vasoconstrictive trigger
 										value matches {
-											0|[local::at0012], 	-- Absent
-											3|[local::at0011]  	-- Present
+											0|[local::at0012],
+											3|[local::at0011]
 										}
 									}
-									ELEMENT[at0013] occurrences matches {0..1} matches {	-- Sex
+									ELEMENT[at0013] occurrences matches {0..1} matches {    -- Sex
 										value matches {
-											0|[local::at0015], 	-- Male
-											1|[local::at0014]  	-- Female
+											0|[local::at0015],
+											1|[local::at0014]
 										}
 									}
-									ELEMENT[at0016] occurrences matches {0..1} matches {	-- Subarachnoid hemorrhage
+									ELEMENT[at0016] occurrences matches {0..1} matches {    -- Subarachnoid hemorrhage
 										value matches {
-											0|[local::at0018], 	-- Absent
-											1|[local::at0017]  	-- Present
+											0|[local::at0018],
+											1|[local::at0017]
 										}
 									}
-									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0019] occurrences matches {0..1} matches {    -- Total score
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..10|}
@@ -89,9 +90,9 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0020] matches {	-- Item tree
+			ITEM_TREE[at0020] matches {    -- Item tree
 				items cardinality matches {0..*; unordered} matches {
-					allow_archetype CLUSTER[at0022] occurrences matches {0..*} matches {	-- Extension
+					allow_archetype CLUSTER[at0022] occurrences matches {0..*} matches {    -- Extension
 						include
 							archetype_id/value matches {/.*/}
 					}
@@ -106,8 +107,9 @@ ontology
 			items = <
 				["at0000"] = <
 					text = <"RCVS2 score">
-					description = <"RCVS2 score to distinguish reversible cerebral vasoconstriction syndrome (RCVS) from other large/medium-vessel intracranial arteriopathies. ">
-					comment = <"Original version, c 2019">
+					description = <"An assessment score to distinguish reversible cerebral vasoconstriction syndrome (RCVS) from other large/medium-vessel intracranial arteriopathies. ">
+					comment = <"Original version, c 2019.
+">
 				>
 				["at0001"] = <
 					text = <"History">
@@ -139,47 +141,47 @@ ontology
 				>
 				["at0008"] = <
 					text = <"Affected">
-					description = <"*">
+					description = <"">
 				>
 				["at0009"] = <
 					text = <"Not affected">
-					description = <"*">
+					description = <"">
 				>
 				["at0010"] = <
 					text = <"Vasoconstrictive trigger">
-					description = <"*">
+					description = <"">
 				>
 				["at0011"] = <
 					text = <"Present">
-					description = <"*">
+					description = <"">
 				>
 				["at0012"] = <
 					text = <"Absent">
-					description = <"*">
+					description = <"">
 				>
 				["at0013"] = <
 					text = <"Sex">
-					description = <"*">
+					description = <"">
 				>
 				["at0014"] = <
 					text = <"Female">
-					description = <"*">
+					description = <"">
 				>
 				["at0015"] = <
 					text = <"Male">
-					description = <"*">
+					description = <"">
 				>
 				["at0016"] = <
 					text = <"Subarachnoid hemorrhage">
-					description = <"*">
+					description = <"">
 				>
 				["at0017"] = <
 					text = <"Present">
-					description = <"*">
+					description = <"">
 				>
 				["at0018"] = <
 					text = <"Absent">
-					description = <"*">
+					description = <"">
 				>
 				["at0019"] = <
 					text = <"Total score">
