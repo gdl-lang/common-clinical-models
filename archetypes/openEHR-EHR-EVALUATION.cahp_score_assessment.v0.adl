@@ -1,0 +1,115 @@
+archetype (adl_version=1.4; uid=2e38f8f0-95b5-44b0-836e-5d6b4bff37d0)
+	openEHR-EHR-EVALUATION.cahp_score_assessment.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2021-07-12">
+		["name"] = <"Núria Rodríguez Ruiz">
+		["organisation"] = <"Cambio CDS">
+		["email"] = <"nuria.rguez.ruiz@gmail.com">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record risk factors after out-of-hospital cardiac arrest.">
+			keywords = <"cardiac, arrest, risk, survival, evaluation", ...>
+			copyright = <"© Cambio CDS">
+			use = <"Use to record risk factors after out-of-hospital cardiac arrest.">
+			misuse = <"Not to use for other causes of arrest than cardiac arrest. ">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["references"] = <"Maupain C, Bougouin W, Lamhaut L, Deye N, Diehl JL, Geri G, Perier MC, Beganton F, Marijon E, Jouven X, Cariou A, Dumas F. The CAHP (Cardiac Arrest Hospital Prognosis) score: a tool for risk stratification after out-of-hospital cardiac arrest. Eur Heart J. 2016 Nov 7;37(42):3222-3228. doi: 10.1093/eurheartj/ehv556. Epub 2015 Oct 24. PMID: 26497161.">
+		["build_uid"] = <"12141480-3c30-36f9-9f9b-78a2763ad36e">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- CAHP score assessment
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0006] occurrences matches {0..1} matches {    -- Risk of poor outcome
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0007,    -- Low
+									at0008,    -- Moderate
+									at0009]    -- High
+								}
+							}
+						}
+					}
+					ELEMENT[at0010] occurrences matches {0..1} matches {    -- Risk of poor neurological outcome
+						value matches {
+							C_DV_QUANTITY <
+								property = <[openehr::380]>
+								list = <
+									["1"] = <
+										units = <"%">
+										magnitude = <|0.0..100.0|>
+									>
+								>
+							>
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0004] matches {*}    -- Item tree
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"CAHP score assessment">
+					description = <"An assessment score used to predict risk stratification after out-of-hospital cardiac arrest.">
+					comment = <"Original version, c 2016">
+				>
+				["at0001"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0006"] = <
+					text = <"Risk of poor outcome">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Low">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Moderate">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"High">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Risk of poor neurological outcome">
+					description = <"">
+				>
+			>
+		>
+	>
