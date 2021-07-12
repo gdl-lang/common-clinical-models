@@ -1,0 +1,130 @@
+guidelines:
+  1: cahp_guideline.v1
+test_cases:
+- id: 1. No input
+  input:
+    1: {}
+  expected_output:
+    1: {}
+- id: 2. No Age (negative test)
+  input:
+    1:
+      gt0005|Arrest Setting: 0|local::at0007|Public Setting|
+      gt0006|Initial Shockable Rhythm: 27|local::at0011|No|
+      gt0007|Collapse-BLS Duration: 30,min
+      gt0008|BLS-ROSC Duration: 20,min
+      gt0009|Admission pH: 6
+      gt0010|Epinephrine: 27|local::at0020|1-2|
+  expected_output:
+    1: {}
+- id: 3. No arrest setting (negative test)
+  input:
+    1:
+      gt0003|Age: 24,a
+      gt0006|Initial Shockable Rhythm: 27|local::at0011|No|
+      gt0007|Collapse-BLS Duration: 30,min
+      gt0008|BLS-ROSC Duration: 20,min
+      gt0009|Admission pH: 6
+      gt0010|Epinephrine: 27|local::at0020|1-2|
+  expected_output:
+    1: {}
+- id: 4. No initial shockable rhythm (negative test)
+  input:
+    1:
+      gt0003|Age: 24,a
+      gt0005|Arrest Setting: 0|local::at0007|Public Setting|
+      gt0007|Collapse-BLS Duration: 30,min
+      gt0008|BLS-ROSC Duration: 20,min
+      gt0009|Admission pH: 6
+      gt0010|Epinephrine: 27|local::at0020|1-2|
+  expected_output:
+    1: {}
+- id: 5. No collapse-BLS duration
+  input:
+    1:
+      gt0003|Age: 24,a
+      gt0005|Arrest Setting: 0|local::at0007|Public Setting|
+      gt0006|Initial Shockable Rhythm: 0|local::at0010|Yes|
+      gt0008|BLS-ROSC Duration: 20,min
+      gt0009|Admission pH: 6
+      gt0010|Epinephrine: 27|local::at0020|1-2|
+  expected_output:
+    1: {}
+- id: 6. No BLS-ROSC duration (negative test)
+  input:
+    1:
+      gt0003|Age: 24,a
+      gt0005|Arrest Setting: 0|local::at0007|Public Setting|
+      gt0006|Initial Shockable Rhythm: 0|local::at0010|Yes|
+      gt0007|Collapse-BLS Duration: 33,min
+      gt0009|Admission pH: 6
+      gt0010|Epinephrine: 27|local::at0020|1-2|
+  expected_output:
+    1: {}
+- id: 7. No admission ph (negative test)
+  input:
+    1:
+      gt0003|Age: 24,a
+      gt0005|Arrest Setting: 0|local::at0007|Public Setting|
+      gt0006|Initial Shockable Rhythm: 0|local::at0010|Yes|
+      gt0007|Collapse-BLS Duration: 33,min
+      gt0008|BLS-ROSC Duration: 43,min
+      gt0010|Epinephrine: 27|local::at0020|1-2|
+  expected_output:
+    1: {}
+- id: 8. No epinephrine (negative test)
+  input:
+    1:
+      gt0003|Age: 24,a
+      gt0005|Arrest Setting: 0|local::at0007|Public Setting|
+      gt0006|Initial Shockable Rhythm: 0|local::at0010|Yes|
+      gt0007|Collapse-BLS Duration: 33,min
+      gt0008|BLS-ROSC Duration: 43,min
+      gt0009|Admission pH: 7
+  expected_output:
+    1: {}
+- id: 9. Interpretation Low
+  input:
+    1:
+      gt0003|Age: 24,a
+      gt0005|Arrest Setting: 0|local::at0007|Public Setting|
+      gt0006|Initial Shockable Rhythm: 0|local::at0010|Yes|
+      gt0007|Collapse-BLS Duration: 15,min
+      gt0008|BLS-ROSC Duration: 21,min
+      gt0009|Admission pH: 7
+      gt0010|Epinephrine: 0|local::at0019|0|
+  expected_output:
+    1:
+      gt0012|CAHP score: 120
+      gt0015|Risk of poor outcome: local::at0007|Low|
+      gt0016|Risk of poor neurological outcome: 39,%
+- id: 10. Interpretation Moderate
+  input:
+    1:
+      gt0003|Age: 24,a
+      gt0005|Arrest Setting: 0|local::at0007|Public Setting|
+      gt0006|Initial Shockable Rhythm: 0|local::at0010|Yes|
+      gt0007|Collapse-BLS Duration: 35,min
+      gt0008|BLS-ROSC Duration: 21,min
+      gt0009|Admission pH: 7
+      gt0010|Epinephrine: 0|local::at0019|0|
+  expected_output:
+    1:
+      gt0012|CAHP score: 176
+      gt0015|Risk of poor outcome: local::at0008|Moderate|
+      gt0016|Risk of poor neurological outcome: 81,%
+- id: 11. Interpretation High
+  input:
+    1:
+      gt0003|Age: 60,a
+      gt0005|Arrest Setting: 0|local::at0007|Public Setting|
+      gt0006|Initial Shockable Rhythm: 0|local::at0010|Yes|
+      gt0007|Collapse-BLS Duration: 40,min
+      gt0008|BLS-ROSC Duration: 21,min
+      gt0009|Admission pH: 6
+      gt0010|Epinephrine: 0|local::at0019|0|
+  expected_output:
+    1:
+      gt0012|CAHP score: 306
+      gt0015|Risk of poor outcome: local::at0009|High|
+      gt0016|Risk of poor neurological outcome: 100,%
