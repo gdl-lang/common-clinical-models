@@ -87,7 +87,31 @@
         }
       }
     },
+    "default_actions": [
+      "$gt0020|Triglyceride conversion number|=1",
+      "$gt0022|Glucose conversion number|=1"
+    ],
     "rules": {
+      "gt0019": {
+        "id": "gt0019",
+        "priority": 7,
+        "when": [
+          "$gt0004|Triglycerides (mg / dl)|.unit=='mmol/l'"
+        ],
+        "then": [
+          "$gt0020|Triglyceride conversion number|=18"
+        ]
+      },
+      "gt0021": {
+        "id": "gt0021",
+        "priority": 6,
+        "when": [
+          "$gt0006|Glucose (mg / dl)|.unit=='mmol/l'"
+        ],
+        "then": [
+          "$gt0022|Glucose conversion number|=18"
+        ]
+      },
       "gt0002": {
         "id": "gt0002",
         "priority": 5,
@@ -96,7 +120,7 @@
           "$gt0006|Glucose result|!=null"
         ],
         "then": [
-          "$gt0008|Total score|.magnitude=log($gt0004.magnitude*$gt0006.magnitude)/2",
+          "$gt0008|Total score|.magnitude=log(($gt0004.magnitude*$gt0020)*($gt0006.magnitude*$gt0022))/2",
           "$gt0008|Total score|.precision=2",
           "$gt0008|Total score|.unit='1'"
         ]
@@ -159,17 +183,17 @@
           },
           "gt0004": {
             "id": "gt0004",
-            "text": "Triglycerides (mg / dl)",
+            "text": "Triglycerides",
             "description": "The triglyceride concentration in the sample."
           },
           "gt0006": {
             "id": "gt0006",
-            "text": "Glucose (mg / dl)",
+            "text": "Glucose",
             "description": "The result of the test."
           },
           "gt0008": {
             "id": "gt0008",
-            "text": "Total score",
+            "text": "TyG Index",
             "description": "TyG = ln [Fasting triglyceride (mg / dl) x Fasting glucose (mg / dl)] / 2"
           },
           "gt0010": {
@@ -207,6 +231,24 @@
           "gt0018": {
             "id": "gt0018",
             "text": "Interpretation rule for TyG>=4.5"
+          },
+          "gt0019": {
+            "id": "gt0019",
+            "text": "Triglyceride conversion formula"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Triglyceride conversion number",
+            "description": ""
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "Glucose conversion formula"
+          },
+          "gt0022": {
+            "id": "gt0022",
+            "text": "Glucose conversion number",
+            "description": ""
           }
         }
       }
