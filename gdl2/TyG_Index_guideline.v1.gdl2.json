@@ -1,0 +1,215 @@
+{
+  "id": "TyG_Index_guideline.v1",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2021-07-13",
+      "name": "Maryam Razavi",
+      "organisation": "Cambio CDS",
+      "email": "maryam.razavi@cambio.se"
+    },
+    "lifecycle_state": "Author draft",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "To calculate TyG Index.",
+        "keywords": [
+          "triglyceride",
+          "glucose",
+          "index",
+          "nonalcoholic",
+          "fatty",
+          "liver",
+          "disease",
+          "insulin",
+          "resistance"
+        ],
+        "use": "The TyG equation is:\nTyG = ln [Fasting triglyceride (mg / dl) x Fasting glucose (mg / dl)] / 2\nInterpretation:\nThe cutoff point is 4.49, this TyG index value is NOT suggestive of insulin resistance.\nand indicates NAFLD diagnosis is unlikely.\nTyGI≥4.5 is suggestive of insulin resistance and indicates a high likelihood of NAFLD.",
+        "copyright": "© Cambio CDS"
+      }
+    },
+    "other_details": {
+      "references": "Zhang S, Du T, Zhang J, Lu H, Lin X, Xie J, Yang Y, Yu X. The triglyceride and glucose index (TyG) is an effective biomarker to identify nonalcoholic fatty liver disease. Lipids Health Dis. 2017 Jan 19;16(1):15. doi: 10.1186/s12944-017-0409-6. PMID: 28103934; PMCID: PMC5248473.\n\nSalazar, J., Bermúdez, V., Calvo, M., Olivar, L. C., Luzardo, E., Navarro, C., ... & Rojas, J. (2017). Optimal cutoff for the evaluation of insulin resistance through triglyceride-glucose index: A cross-sectional study in a Venezuelan population. F1000Research, 6.\n\nSimental-Mendía LE, Rodríguez-Morán M, Guerrero-Romero F. The product of fasting glucose and triglycerides as surrogate for identifying insulin resistance in apparently healthy subjects. Metab Syndr Relat Disord. 2008 Dec;6(4):299-304. doi: 10.1089/met.2008.0034. PMID: 19067533.\n\nFedchuk L, Nascimbeni F, Pais R, Charlotte F, Housset C, Ratziu V; LIDO Study Group. Performance and limitations of steatosis biomarkers in patients with nonalcoholic fatty liver disease. Aliment Pharmacol Ther. 2014 Nov;40(10):1209-22. doi: 10.1111/apt.12963. Epub 2014 Sep 29. PMID: 25267215.\n\nGuerrero-Romero F, Simental-Mendía LE, González-Ortiz M, Martínez-Abundis E, Ramos-Zavala MG, Hernández-González SO, Jacques-Camarena O, Rodríguez-Morán M. The product of triglycerides and glucose, a simple measure of insulin sensitivity. Comparison with the euglycemic-hyperinsulinemic clamp. J Clin Endocrinol Metab. 2010 Jul;95(7):3347-51. doi: 10.1210/jc.2010-0288. Epub 2010 May 19. PMID: 20484475."
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0003": {
+        "id": "gt0003",
+        "model_id": "openEHR-EHR-OBSERVATION.lab_test-lipids.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.lab_test-lipids.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0078.4]"
+          }
+        }
+      },
+      "gt0005": {
+        "id": "gt0005",
+        "model_id": "openEHR-EHR-OBSERVATION.lab_test_glucose.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.lab_test_glucose.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0078]"
+          }
+        }
+      },
+      "gt0007": {
+        "id": "gt0007",
+        "model_id": "openEHR-EHR-OBSERVATION.tyg_index.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.tyg_index.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0008": {
+            "id": "gt0008",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          }
+        }
+      },
+      "gt0009": {
+        "id": "gt0009",
+        "model_id": "openEHR-EHR-EVALUATION.tyg_index.v0",
+        "template_id": "openEHR-EHR-EVALUATION.tyg_index.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0010": {
+            "id": "gt0010",
+            "path": "/data[at0001]/items[at0002]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0002": {
+        "id": "gt0002",
+        "priority": 5,
+        "when": [
+          "$gt0004|Triglycerides|!=null",
+          "$gt0006|Glucose result|!=null"
+        ],
+        "then": [
+          "$gt0008|Total score|.magnitude=log($gt0004.magnitude*$gt0006.magnitude)/2",
+          "$gt0008|Total score|.precision=2",
+          "$gt0008|Total score|.unit='1'"
+        ]
+      },
+      "gt0013": {
+        "id": "gt0013",
+        "priority": 4,
+        "when": [
+          "$gt0008|Total score|<4.5,1"
+        ],
+        "then": [
+          "$gt0014|Interpretation text|=$gt0012.term"
+        ]
+      },
+      "gt0017": {
+        "id": "gt0017",
+        "priority": 3,
+        "when": [
+          "$gt0008|Total score|>=4.5,1"
+        ],
+        "then": [
+          "$gt0014|Interpretation text|=$gt0011.term"
+        ]
+      },
+      "gt0015": {
+        "id": "gt0015",
+        "priority": 2,
+        "when": [
+          "fired($gt0013)"
+        ],
+        "then": [
+          "$gt0010|Interpretation|.value=$gt0014"
+        ]
+      },
+      "gt0018": {
+        "id": "gt0018",
+        "priority": 1,
+        "when": [
+          "fired($gt0017)"
+        ],
+        "then": [
+          "$gt0010|Interpretation|.value=$gt0014"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "TyG Index",
+            "description": "TyG Index determines insulin resistance and can also identify individuals at risk for Non-alcohol related fatty liver disease (NAFLD)."
+          },
+          "gt0002": {
+            "id": "gt0002",
+            "text": "TyGI Calculation"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "Triglycerides (mg / dl)",
+            "description": "The triglyceride concentration in the sample."
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Glucose (mg / dl)",
+            "description": "The result of the test."
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "Total score",
+            "description": "TyG = ln [Fasting triglyceride (mg / dl) x Fasting glucose (mg / dl)] / 2"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "Interpretation",
+            "description": "*"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "This TyG index value is suggestive of insulin resistance and indicates a high likelihood of NAFLD.",
+            "description": ""
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "text": "This TyG index value is NOT suggestive of insulin resistance and indicates NAFLD diagnosis is unlikely.",
+            "description": ""
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "TyGI<4.5"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "Interpretation text",
+            "description": ""
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "Interpretation rule for TyG<4.5"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "TyG>=4.5"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "Interpretation rule for TyG>=4.5"
+          }
+        }
+      }
+    }
+  }
+}
