@@ -1,0 +1,41 @@
+guidelines:
+  1: modified_Sgarbossa_s_criteria.v0
+test_cases:
+- id: 1. Missing input parameters
+  input:
+    1: {}
+  expected_output:
+    1: {}
+- id: 2. All absent
+  input:
+    1:
+      gt0005|ST-segment elevation >=1mm and concordant with QRS complex: local::at0009|Absent|
+      gt0006|ST-segment depression <=1mm in lead V1, V2 or V3: local::at0009|Absent|
+      ? gt0007|ST elevation at the J-point, relative to QRS onset, is at least 1 mm and has an amplitude at least 25% of the preceding S-wave
+      : local::at0009|Absent|
+  expected_output:
+    1:
+      gt0025|Criteria met: local::at0004|No|
+- id: 3. One parameter present, two missing
+  input:
+    1:
+      gt0005|ST-segment elevation >=1mm and concordant with QRS complex: local::at0008|Present|
+  expected_output:
+    1:
+      gt0025|Criteria met: local::at0003|Yes|
+- id: 4. All present
+  input:
+    1:
+      gt0005|ST-segment elevation >=1mm and concordant with QRS complex: local::at0008|Present|
+      gt0006|ST-segment depression <=1mm in lead V1, V2 or V3: local::at0008|Present|
+      ? gt0007|ST elevation at the J-point, relative to QRS onset, is at least 1 mm and has an amplitude at least 25% of the preceding S-wave
+      : local::at0008|Present|
+  expected_output:
+    1:
+      gt0025|Criteria met: local::at0003|Yes|
+- id: 5. One parameter absent, two missing
+  input:
+    1:
+      gt0005|ST-segment elevation >=1mm and concordant with QRS complex: local::at0009|Absent|
+  expected_output:
+    1: {}
