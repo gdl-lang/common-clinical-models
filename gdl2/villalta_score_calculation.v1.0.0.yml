@@ -1,0 +1,144 @@
+guidelines:
+  1: villalta_score_calculation.v1.0.0
+test_cases:
+- id: 1. Missing input parameters
+  input:
+    1: {}
+  expected_output:
+    1: {}
+- id: 2.Missing venous ulcer
+  input:
+    1:
+      gt0003|Pain: 0|local::at0018|None|
+      gt0004|Cramps: 0|local::at0018|None|
+      gt0005|Heaviness: 1|local::at0019|Mild|
+      gt0006|Paresthesia: 1|local::at0019|Mild|
+      gt0007|Pruritus: 0|local::at0018|None|
+      gt0008|Pretibial edema: 0|local::at0018|None|
+      gt0009|Skin induration: 0|local::at0018|None|
+      gt0010|Hyperpigmentation: 1|local::at0019|Mild|
+      gt0011|Redness: 0|local::at0018|None|
+      gt0012|Venous ectasia: 0|local::at0018|None|
+      gt0013|Pain on calf compression: 0|local::at0018|None|
+  expected_output:
+    1: {}
+- id: 3. Total score 0-4
+  input:
+    1:
+      gt0003|Pain: 0|local::at0018|None|
+      gt0004|Cramps: 0|local::at0018|None|
+      gt0005|Heaviness: 1|local::at0019|Mild|
+      gt0006|Paresthesia: 1|local::at0019|Mild|
+      gt0007|Pruritus: 0|local::at0018|None|
+      gt0008|Pretibial edema: 0|local::at0018|None|
+      gt0009|Skin induration: 0|local::at0018|None|
+      gt0010|Hyperpigmentation: 1|local::at0019|Mild|
+      gt0011|Redness: 0|local::at0018|None|
+      gt0012|Venous ectasia: 0|local::at0018|None|
+      gt0013|Pain on calf compression: 0|local::at0018|None|
+      gt0014|Venous ulcer: local::at0023|Absent|
+  expected_output:
+    1:
+      gt0016|Total score: 3
+      gt0019|PTS severity: None
+      gt0018|PTS diagnosis: Absent
+- id: 4. Total score 5-9
+  input:
+    1:
+      gt0003|Pain: 2|local::at0020|Moderate|
+      gt0004|Cramps: 0|local::at0018|None|
+      gt0005|Heaviness: 1|local::at0019|Mild|
+      gt0006|Paresthesia: 1|local::at0019|Mild|
+      gt0007|Pruritus: 0|local::at0018|None|
+      gt0008|Pretibial edema: 0|local::at0018|None|
+      gt0009|Skin induration: 0|local::at0018|None|
+      gt0010|Hyperpigmentation: 1|local::at0019|Mild|
+      gt0011|Redness: 0|local::at0018|None|
+      gt0012|Venous ectasia: 0|local::at0018|None|
+      gt0013|Pain on calf compression: 0|local::at0018|None|
+      gt0014|Venous ulcer: local::at0023|Absent|
+  expected_output:
+    1:
+      gt0016|Total score: 5
+      gt0019|PTS severity: Mild
+      gt0018|PTS diagnosis: Present
+- id: 5. Total score 10-14
+  input:
+    1:
+      gt0003|Pain: 2|local::at0020|Moderate|
+      gt0004|Cramps: 3|local::at0021|Severe|
+      gt0005|Heaviness: 1|local::at0019|Mild|
+      gt0006|Paresthesia: 3|local::at0021|Severe|
+      gt0007|Pruritus: 0|local::at0018|None|
+      gt0008|Pretibial edema: 3|local::at0021|Severe|
+      gt0009|Skin induration: 0|local::at0018|None|
+      gt0010|Hyperpigmentation: 1|local::at0019|Mild|
+      gt0011|Redness: 0|local::at0018|None|
+      gt0012|Venous ectasia: 0|local::at0018|None|
+      gt0013|Pain on calf compression: 0|local::at0018|None|
+      gt0014|Venous ulcer: local::at0023|Absent|
+  expected_output:
+    1:
+      gt0016|Total score: 13
+      gt0019|PTS severity: Moderate
+      gt0018|PTS diagnosis: Present
+- id: 5. Total score 15-33
+  input:
+    1:
+      gt0003|Pain: 2|local::at0020|Moderate|
+      gt0004|Cramps: 3|local::at0021|Severe|
+      gt0005|Heaviness: 1|local::at0019|Mild|
+      gt0006|Paresthesia: 3|local::at0021|Severe|
+      gt0007|Pruritus: 0|local::at0018|None|
+      gt0008|Pretibial edema: 3|local::at0021|Severe|
+      gt0009|Skin induration: 3|local::at0021|Severe|
+      gt0010|Hyperpigmentation: 1|local::at0019|Mild|
+      gt0011|Redness: 0|local::at0018|None|
+      gt0012|Venous ectasia: 0|local::at0018|None|
+      gt0013|Pain on calf compression: 0|local::at0018|None|
+      gt0014|Venous ulcer: local::at0023|Absent|
+  expected_output:
+    1:
+      gt0016|Total score: 16
+      gt0019|PTS severity: Severe
+      gt0018|PTS diagnosis: Present
+- id: 6. Venous ulcer present, >15
+  input:
+    1:
+      gt0003|Pain: 2|local::at0020|Moderate|
+      gt0004|Cramps: 3|local::at0021|Severe|
+      gt0005|Heaviness: 1|local::at0019|Mild|
+      gt0006|Paresthesia: 3|local::at0021|Severe|
+      gt0007|Pruritus: 0|local::at0018|None|
+      gt0008|Pretibial edema: 3|local::at0021|Severe|
+      gt0009|Skin induration: 3|local::at0021|Severe|
+      gt0010|Hyperpigmentation: 1|local::at0019|Mild|
+      gt0011|Redness: 0|local::at0018|None|
+      gt0012|Venous ectasia: 0|local::at0018|None|
+      gt0013|Pain on calf compression: 0|local::at0018|None|
+      gt0014|Venous ulcer: local::at0024|Present|
+  expected_output:
+    1:
+      gt0016|Total score: 16
+      gt0019|PTS severity: Severe
+      gt0018|PTS diagnosis: Present
+- id: 7. Venous ulcer present, <15
+  input:
+    1:
+      gt0003|Pain: 2|local::at0020|Moderate|
+      gt0004|Cramps: 0|local::at0018|None|
+      gt0005|Heaviness: 1|local::at0019|Mild|
+      gt0006|Paresthesia: 3|local::at0021|Severe|
+      gt0007|Pruritus: 0|local::at0018|None|
+      gt0008|Pretibial edema: 0|local::at0018|None|
+      gt0009|Skin induration: 0|local::at0018|None|
+      gt0010|Hyperpigmentation: 1|local::at0019|Mild|
+      gt0011|Redness: 0|local::at0018|None|
+      gt0012|Venous ectasia: 0|local::at0018|None|
+      gt0013|Pain on calf compression: 0|local::at0018|None|
+      gt0014|Venous ulcer: local::at0024|Present|
+  expected_output:
+    1:
+      gt0016|Total score: 15
+      gt0019|PTS severity: Severe
+      gt0018|PTS diagnosis: Present

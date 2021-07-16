@@ -1,0 +1,296 @@
+archetype (adl_version=1.4; uid=f267c59d-47ca-41bb-8b0c-03acf284c356)
+	openEHR-EHR-OBSERVATION.villalta.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2021-07-15">
+		["name"] = <"Caroline Jönson">
+		["organisation"] = <"Cambio CDS">
+		["email"] = <"caroline.jonson@cambio.se">
+	>
+	lifecycle_state = <"in_development">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the results for each component parameter and their total sum for the Villalta score.">
+			keywords = <"Villalta, score, PTS, post, thrombotic, syndrome, extremities, DVT, deep, vein, thrombosis", ...>
+			copyright = <"© Cambio CDS">
+			use = <"Use to record the results for each component parameter and their total sum for the Villalta score.">
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["references"] = <"Villalta S, Bagatella P, Piccioli A, Lensing AW, Prins MH, Prandoni P. Assessment of validity and reproducibility of a clinical scale for the post-thrombotic syndrome. Haemostasis. 1994;24(1 Suppl):158a.">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"43a70fbb77cb88a30d21002865c80e7b">
+		["build_uid"] = <"7cf99960-fe82-4adf-807a-b711b07f41c8">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Villalta Score for Post-thrombotic Syndrome (PTS)
+		data matches {
+			HISTORY[at0001] matches {    -- History
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									CLUSTER[at0005] occurrences matches {0..1} matches {    -- Symptoms
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0006] occurrences matches {0..1} matches {    -- Pain
+												value matches {
+													0|[local::at0018],
+													1|[local::at0019],
+													2|[local::at0020],
+													3|[local::at0021]
+												}
+											}
+											ELEMENT[at0007] occurrences matches {0..1} matches {    -- Cramps
+												value matches {
+													0|[local::at0018],
+													1|[local::at0019],
+													2|[local::at0020],
+													3|[local::at0021]
+												}
+											}
+											ELEMENT[at0008] occurrences matches {0..1} matches {    -- Heaviness
+												value matches {
+													0|[local::at0018],
+													1|[local::at0019],
+													2|[local::at0020],
+													3|[local::at0021]
+												}
+											}
+											ELEMENT[at0009] occurrences matches {0..1} matches {    -- Paresthesia
+												value matches {
+													0|[local::at0018],
+													1|[local::at0019],
+													2|[local::at0020],
+													3|[local::at0021]
+												}
+											}
+											ELEMENT[at0010] occurrences matches {0..1} matches {    -- Pruritus
+												value matches {
+													0|[local::at0018],
+													1|[local::at0019],
+													2|[local::at0020],
+													3|[local::at0021]
+												}
+											}
+										}
+									}
+									CLUSTER[at0011] occurrences matches {0..1} matches {    -- Clinical signs
+										items cardinality matches {1..*; unordered} matches {
+											ELEMENT[at0012] occurrences matches {0..1} matches {    -- Pretibial edema
+												value matches {
+													0|[local::at0018],
+													1|[local::at0019],
+													2|[local::at0020],
+													3|[local::at0021]
+												}
+											}
+											ELEMENT[at0013] occurrences matches {0..1} matches {    -- Skin induration
+												value matches {
+													0|[local::at0018],
+													1|[local::at0019],
+													2|[local::at0020],
+													3|[local::at0021]
+												}
+											}
+											ELEMENT[at0014] occurrences matches {0..1} matches {    -- Hyperpigmentation
+												value matches {
+													0|[local::at0018],
+													1|[local::at0019],
+													2|[local::at0020],
+													3|[local::at0021]
+												}
+											}
+											ELEMENT[at0015] occurrences matches {0..1} matches {    -- Redness
+												value matches {
+													0|[local::at0018],
+													1|[local::at0019],
+													2|[local::at0020],
+													3|[local::at0021]
+												}
+											}
+											ELEMENT[at0016] occurrences matches {0..1} matches {    -- Venous ectasia
+												value matches {
+													0|[local::at0018],
+													1|[local::at0019],
+													2|[local::at0020],
+													3|[local::at0021]
+												}
+											}
+											ELEMENT[at0017] occurrences matches {0..1} matches {    -- Pain on calf compression
+												value matches {
+													0|[local::at0018],
+													1|[local::at0019],
+													2|[local::at0020],
+													3|[local::at0021]
+												}
+											}
+										}
+									}
+									ELEMENT[at0022] occurrences matches {0..1} matches {    -- Venous ulcer
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0023,    -- Absent
+													at0024]    -- Present
+												}
+											}
+										}
+									}
+									ELEMENT[at0025] occurrences matches {0..1} matches {    -- Total score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..33|}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0004] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0026] occurrences matches {0..*} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Villalta Score for Post-thrombotic Syndrome (PTS)">
+					description = <"An assessment score used to stratify severity of post-thrombotic syndrome in lower extremity DVT.">
+					comment = <"Original version, c 1994">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0005"] = <
+					text = <"Symptoms">
+					description = <"">
+				>
+				["at0006"] = <
+					text = <"Pain">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Cramps">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Heaviness">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Paresthesia">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Pruritus">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"Clinical signs">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Pretibial edema">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"Skin induration">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"Hyperpigmentation">
+					description = <"">
+				>
+				["at0015"] = <
+					text = <"Redness">
+					description = <"">
+				>
+				["at0016"] = <
+					text = <"Venous ectasia">
+					description = <"">
+				>
+				["at0017"] = <
+					text = <"Pain on calf compression">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"None">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Mild">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Moderate">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"Severe">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"Venous ulcer">
+					description = <"Presence of venous ulcer automatically confers the highest severity (severe). For scores <15 before venous ulcer is accounted for, final score is 15.">
+				>
+				["at0023"] = <
+					text = <"Absent">
+					description = <"">
+				>
+				["at0024"] = <
+					text = <"Present">
+					description = <"">
+				>
+				["at0025"] = <
+					text = <"Total score">
+					description = <"The total sum of each component parameter for the Villalta score.">
+				>
+				["at0026"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
+				>
+			>
+		>
+	>
