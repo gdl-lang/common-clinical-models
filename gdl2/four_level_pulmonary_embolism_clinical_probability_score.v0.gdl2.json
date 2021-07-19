@@ -1,0 +1,304 @@
+{
+  "id": "four_level_pulmonary_embolism_clinical_probability_score.v0",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2021-07-16",
+      "name": "Mouna Ghannam",
+      "organisation": "Cambio",
+      "email": "munaghannam@me.com"
+    },
+    "lifecycle_state": "Author draft",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "rule out pulmonary embolism solely on clinical criteria and optimized D-dimer measurement to safely decrease imaging testing for suspected Pulmonary embolism cases.",
+        "keywords": [
+          "4PEPS",
+          "4-level",
+          "pulmonary",
+          "embolism",
+          "clinical",
+          "probability",
+          "score"
+        ],
+        "use": "It is intended to be used by Emergency physicians to rule out Pulmonary embolism without using unnecessary imaging\nInstructions:\nThe timing of vital sign values was not formally assessed by this study; using clinician judgment to assess which vital sign should be used for the 4PEPS score is recommended.",
+        "misuse": "Use in a setting out of the Emergency Department.",
+        "copyright": "Cambio CDS"
+      }
+    },
+    "other_details": {
+      "references": "Roy, P.M., Friou, E., Germeau, B., Douillet, D., Kline, J.A., Righini, M., Grégoire Le Gal, M.D., Moumneh, T. and Penaloza, A., 2021. Derivation and validation of a 4-level clinical pretest probability score for suspected pulmonary embolism to safely decrease imaging testing. JAMA cardiology, 6(6), pp.669-677."
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0002": {
+        "id": "gt0002",
+        "model_id": "openEHR-EHR-OBSERVATION.four_level_pulmonary_embolism_clinical_probability_score.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.four_level_pulmonary_embolism_clinical_probability_score.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0003": {
+            "id": "gt0003",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0015]"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0007]"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0008]"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0009]"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0010]"
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0011]"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0012]"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
+          }
+        }
+      },
+      "gt0016": {
+        "id": "gt0016",
+        "model_id": "openEHR-EHR-OBSERVATION.four_level_pulmonary_embolism_clinical_probability_score.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.four_level_pulmonary_embolism_clinical_probability_score.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0017": {
+            "id": "gt0017",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0016]"
+          }
+        }
+      },
+      "gt0018": {
+        "id": "gt0018",
+        "model_id": "openEHR-EHR-EVALUATION.four_level_pulmonary_embolism_clinical_probability_score.v0",
+        "template_id": "openEHR-EHR-EVALUATION.four_level_pulmonary_embolism_clinical_probability_score.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0019": {
+            "id": "gt0019",
+            "path": "/data[at0001]/items[at0018]"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "path": "/data[at0001]/items[at0023]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0021": {
+        "id": "gt0021",
+        "priority": 5,
+        "when": [
+          "$gt0003|Age|!=null",
+          "$gt0004|Sex|!=null",
+          "$gt0005|Chronic respiratory disease|!=null",
+          "$gt0006|Heart rate <80|!=null",
+          "$gt0007|Chest pain AND acute dyspnea|!=null",
+          "$gt0008|Current estrogen use|!=null",
+          "$gt0009|Prioir history of VTE|!=null",
+          "$gt0010|Syncope|!=null",
+          "$gt0011|Immobility within the last four weeks*|!=null",
+          "$gt0012|O2 saturation <95%|!=null",
+          "$gt0013|Calf pain and/or unilateral lower limb edema|!=null",
+          "$gt0014|PE is the most likely diagnosis|!=null"
+        ],
+        "then": [
+          "$gt0017|Total|.magnitude=$gt0003.value+$gt0004.value+$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0011.value+$gt0012.value+$gt0013.value+$gt0014.value"
+        ]
+      },
+      "gt0022": {
+        "id": "gt0022",
+        "priority": 4,
+        "when": [
+          "$gt0017|Total|<0"
+        ],
+        "then": [
+          "$gt0019|Clinical probabilty of PE|=1|local::at0019|Very low CPP (<2%)|",
+          "$gt0020|PE diagnosis|=1|local::at0024|PE can be ruled out|"
+        ]
+      },
+      "gt0023": {
+        "id": "gt0023",
+        "priority": 3,
+        "when": [
+          "$gt0017|Total|>=0",
+          "$gt0017|Total|<=5"
+        ],
+        "then": [
+          "$gt0019|Clinical probabilty of PE|=2|local::at0020|Low CPP (2-20%)|",
+          "$gt0020|PE diagnosis|=2|local::at0025|PE can be ruled out if D-dimer level <1.0 μg/mL|"
+        ]
+      },
+      "gt0024": {
+        "id": "gt0024",
+        "priority": 2,
+        "when": [
+          "$gt0017|Total|>=6",
+          "$gt0017|Total|<=12"
+        ],
+        "then": [
+          "$gt0019|Clinical probabilty of PE|=3|local::at0021|Moderate CPP (20-65%)|",
+          "$gt0020|PE diagnosis|=3|local::at0027|PE can be ruled out if D-dimer level <0.5 μg/mL OR <(age x 0.01) μg/mL|"
+        ]
+      },
+      "gt0025": {
+        "id": "gt0025",
+        "priority": 1,
+        "when": [
+          "$gt0017|Total|>=13"
+        ],
+        "then": [
+          "$gt0019|Clinical probabilty of PE|=4|local::at0022|High CPP (>65%)|",
+          "$gt0020|PE diagnosis|=4|local::at0028|PE cannot be ruled out without imaging testing|"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "4-level Pulmonary Embolism Clinical Probability Score",
+            "description": "The 4-level Pulmonary embolism clinical probability score is used to rules out Pulmonary embolism (PE) based on clinical criteria. it comprises 13 criteria,  each criterion has a score from -2 to +5. If the 4PEPS score <0: PE is ruled out, if 4PEPS score is from 0 to 5: PE can be ruled out if D-dimer level <1.0 mcg/ml, if 4PEPS score is from 6 to 12:PE can be ruled out if D-dimer level <0.5 mcg/ml OR <(age x 0.01) mcg/ml, and if 4PEPS score is 13 or more: PE cannot be ruled out without imaging testing."
+          },
+          "gt0003": {
+            "id": "gt0003",
+            "text": "Age",
+            "description": "*"
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "Sex",
+            "description": "*"
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "Chronic respiratory disease",
+            "description": "*"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Heart rate <80",
+            "description": "*"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "text": "Chest pain AND acute dyspnea",
+            "description": "*"
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "Current estrogen use",
+            "description": "*"
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "text": "Prioir history of VTE",
+            "description": "*"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "Syncope",
+            "description": "*"
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "Immobility within the last four weeks*",
+            "description": "*Surgery, lower limb plaster cast, or bedridden >3 days for acute medical condition within the last four weeks."
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "text": "O2 saturation <95%",
+            "description": "*"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "Calf pain and/or unilateral lower limb edema",
+            "description": "*"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "PE is the most likely diagnosis",
+            "description": "*"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "Total",
+            "description": "*"
+          },
+          "gt0019": {
+            "id": "gt0019",
+            "text": "Clinical probabilty of PE",
+            "description": "*"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "PE diagnosis",
+            "description": "*"
+          },
+          "gt0021": {
+            "id": "gt0021",
+            "text": "Total score"
+          },
+          "gt0022": {
+            "id": "gt0022",
+            "text": "Evaluation for score less than 0"
+          },
+          "gt0023": {
+            "id": "gt0023",
+            "text": "Evaluation for Score between 0 and 5"
+          },
+          "gt0024": {
+            "id": "gt0024",
+            "text": "Evaluation for Score between 6 and 12"
+          },
+          "gt0025": {
+            "id": "gt0025",
+            "text": "Evaluation for score more than 13"
+          }
+        }
+      }
+    }
+  }
+}
