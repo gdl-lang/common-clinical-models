@@ -1,5 +1,5 @@
 archetype (adl_version=1.4)
-	openEHR-EHR-EVALUATION.four_level_pulmonary_embolism_probabilit_score_interpretation.v0
+	openEHR-EHR-EVALUATION.four_level_pulmonary_embolism_clinical_probability_assessment.v0
 
 concept
 	[at0000]	-- 4-level pulmonary embolism clinical probability score (4-PEPS)
@@ -15,12 +15,8 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record the clinical interpretation of the 4-PEP total score .">
-			use = <"Use to record the clinical interpretation of the 4-PEP total score  
-- if the 4PEPS<0, PE is ruled out
-- if 4PEPS is from 0 to 5, PE can be ruled out if D-dimer level <1.0 mcg/ml
-- if 4PEPS is from 6 to 12, PE can be ruled out if D-dimer level <0.5 mcg/ml OR <(age x 0.01) mcg/ml
-- if 4PEPS score >or= 13, PE cannot be ruled out without imaging testing.">
+			purpose = <"To record the clinical assessment of the 4-PEP total score.">
+			use = <"Use to record the clinical assessment of the 4-PEP total score.">
 			keywords = <"4PEPS", "4-level", "pulmonary", "embolism", "clinical", "probability", "score">
 			misuse = <"">
 			copyright = <"©Cambio CDS">
@@ -30,7 +26,7 @@ description
 	other_contributors = <>
 	other_details = <
 		["references"] = <"Roy PM, Friou E, Germeau B, Douillet D, Kline JA, Righini M, Le Gal G, Moumneh T, Penaloza A. Derivation and Validation of a 4-Level Clinical Pretest Probability Score for Suspected Pulmonary Embolism to Safely Decrease Imaging Testing. JAMA Cardiol. 2021 Jun 1;6(6):669-677. doi: 10.1001/jamacardio.2021.0064. PMID: 33656522; PMCID: PMC7931139.">
-		["MD5-CAM-1.0.1"] = <"745D4DF228693EDD5DA3CFBA54231BD7">
+		["MD5-CAM-1.0.1"] = <"BF63387ACFC04BCB14BA972F9619E425">
 	>
 
 definition
@@ -38,7 +34,12 @@ definition
 		data matches {
 			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Interpretation
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Clinical probability of PE
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0005] occurrences matches {0..1} matches {	-- PE diagnosis
 						value matches {
 							DV_TEXT matches {*}
 						}
@@ -72,7 +73,7 @@ ontology
 					description = <"@ internal @">
 				>
 				["at0002"] = <
-					text = <"Interpretation">
+					text = <"Clinical probability of PE">
 					description = <"*">
 				>
 				["at0003"] = <
@@ -82,6 +83,11 @@ ontology
 				["at0004"] = <
 					text = <"Extension">
 					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
+				>
+				["at0005"] = <
+					text = <"PE diagnosis">
+					description = <"*">
 				>
 			>
 		>
