@@ -1,5 +1,5 @@
 {
-  "id": "UKPDS_coronary_risk_estimator.v1",
+  "id": "ukpds.v1",
   "gdl_version": "2.0",
   "concept": "gt0001",
   "language": {
@@ -39,58 +39,10 @@
   },
   "definition": {
     "data_bindings": {
-      "gt0002": {
-        "id": "gt0002",
-        "model_id": "openEHR-EHR-OBSERVATION.history_prior_medical_diagnosis.v1",
-        "template_id": "openEHR-EHR-OBSERVATION.history_prior_medical_diagnosis.v1",
-        "type": "INPUT",
-        "elements": {
-          "gt0003": {
-            "id": "gt0003",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0021]/items[at0004]"
-          }
-        }
-      },
-      "gt0004": {
-        "id": "gt0004",
-        "model_id": "openEHR-EHR-OBSERVATION.ukpds_estimator.v0",
-        "template_id": "openEHR-EHR-OBSERVATION.ukpds_estimator.v0",
-        "type": "INPUT",
-        "elements": {
-          "gt0005": {
-            "id": "gt0005",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
-          },
-          "gt0006": {
-            "id": "gt0006",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
-          },
-          "gt0007": {
-            "id": "gt0007",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0018]"
-          },
-          "gt0008": {
-            "id": "gt0008",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0022]"
-          },
-          "gt0009": {
-            "id": "gt0009",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0026]"
-          },
-          "gt0010": {
-            "id": "gt0010",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0030]"
-          },
-          "gt0011": {
-            "id": "gt0011",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0034]"
-          }
-        }
-      },
       "gt0012": {
         "id": "gt0012",
-        "model_id": "openEHR-EHR-OBSERVATION.ukpds_estimator.v0",
-        "template_id": "openEHR-EHR-OBSERVATION.ukpds_estimator.v0",
+        "model_id": "openEHR-EHR-OBSERVATION.ukpds.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.ukpds.v0",
         "type": "OUTPUT",
         "elements": {
           "gt0013": {
@@ -101,8 +53,8 @@
       },
       "gt0014": {
         "id": "gt0014",
-        "model_id": "openEHR-EHR-EVALUATION.ukpds_estimator_assessment.v0",
-        "template_id": "openEHR-EHR-EVALUATION.ukpds_estimator_assessment.v0",
+        "model_id": "openEHR-EHR-EVALUATION.ukpds_assessment.v0",
+        "template_id": "openEHR-EHR-EVALUATION.ukpds_assessment.v0",
         "type": "OUTPUT",
         "elements": {
           "gt0015": {
@@ -114,32 +66,100 @@
             "path": "/data[at0001]/items[at0003]"
           }
         }
+      },
+      "gt0067": {
+        "id": "gt0067",
+        "model_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.basic_demographic.v1",
+        "type": "INPUT",
+        "elements": {
+          "gt0068": {
+            "id": "gt0068",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0004]"
+          }
+        }
+      },
+      "gt0078": {
+        "id": "gt0078",
+        "model_id": "openEHR-EHR-OBSERVATION.ukpds.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.ukpds.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0079": {
+            "id": "gt0079",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
+          },
+          "gt0080": {
+            "id": "gt0080",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0041]"
+          },
+          "gt0081": {
+            "id": "gt0081",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
+          },
+          "gt0082": {
+            "id": "gt0082",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0018]"
+          },
+          "gt0083": {
+            "id": "gt0083",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0022]"
+          },
+          "gt0084": {
+            "id": "gt0084",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0026]"
+          },
+          "gt0085": {
+            "id": "gt0085",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0030]"
+          },
+          "gt0086": {
+            "id": "gt0086",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0034]"
+          }
+        }
       }
     },
-    "pre_conditions": [
-      "$gt0003|Diabetes Mellitus|==1|local::at0008|Yes|"
-    ],
     "rules": {
-      "gt0018": {
-        "id": "gt0018",
-        "priority": 5,
+      "gt0087": {
+        "id": "gt0087",
+        "priority": 6,
         "when": [
-          "$gt0005|Gender, Age|!=null",
-          "$gt0006|Diabetes duration|!=null",
-          "$gt0007|Smoking status|!=null",
-          "$gt0008|HbA1c|!=null",
-          "$gt0009|Systolic BP|!=null",
-          "$gt0010|Total cholesterol/HDL|!=null",
-          "$gt0011|Microalbumin|!=null"
+          "$gt0068|Gender|==local::at0006|Female|",
+          "$gt0079|Female, Age (years)|!=null",
+          "$gt0081|Diabetes duration (years)|!=null",
+          "$gt0082|Smoking status|!=null",
+          "$gt0083|Hemoglobin A1c (%)|!=null",
+          "$gt0084|Systolic Blood Pressure (mmHg)|!=null",
+          "$gt0085|Total cholesterol/HDL ratio|!=null",
+          "$gt0086|Microalbumin (µg/min) |!=null"
         ],
         "then": [
-          "$gt0013|UKPDS score|.magnitude=$gt0005.value+$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0011.value"
+          "$gt0013|UKPDS score|.magnitude=$gt0079.value+$gt0081.value+$gt0082.value+$gt0083.value+$gt0084.value+$gt0085.value+$gt0086.value"
+        ]
+      },
+      "gt0088": {
+        "id": "gt0088",
+        "priority": 5,
+        "when": [
+          "$gt0068|Gender|==local::at0005|Male|",
+          "$gt0080|Male, Age (years)|!=null",
+          "$gt0081|Diabetes duration (years)|!=null",
+          "$gt0082|Smoking status|!=null",
+          "$gt0083|Hemoglobin A1c (%)|!=null",
+          "$gt0084|Systolic Blood Pressure (mmHg)|!=null",
+          "$gt0085|Total cholesterol/HDL ratio|!=null",
+          "$gt0086|Microalbumin (µg/min) |!=null"
+        ],
+        "then": [
+          "$gt0013|UKPDS score|.magnitude=$gt0080.value+$gt0081.value+$gt0082.value+$gt0083.value+$gt0084.value+$gt0085.value+$gt0086.value"
         ]
       },
       "gt0019": {
         "id": "gt0019",
         "priority": 4,
         "when": [
+          "$gt0013|UKPDS score|>=0",
           "$gt0013|UKPDS score|<=17"
         ],
         "then": [
@@ -163,7 +183,8 @@
         "id": "gt0024",
         "priority": 2,
         "when": [
-          "$gt0013|UKPDS score|>=32"
+          "$gt0013|UKPDS score|>=32",
+          "$gt0013|UKPDS score|<=69"
         ],
         "then": [
           "$gt0020|Risk category text|=$gt0025.term",
@@ -193,46 +214,6 @@
             "text": "United Kingdom Prospective Diabetes Study (UKPDS) Coronary Risk Estimator",
             "description": "A risk score used to predict the probablity of developing Coronary Heart Disease in the next 10 years for patients with diagnosed type 2 Diabetes Mellitus."
           },
-          "gt0003": {
-            "id": "gt0003",
-            "text": "Diabetes Mellitus",
-            "description": "Has the individual ever been diagnosed with Diabetes Mellitus?"
-          },
-          "gt0005": {
-            "id": "gt0005",
-            "text": "Gender, Age",
-            "description": "In years."
-          },
-          "gt0006": {
-            "id": "gt0006",
-            "text": "Diabetes duration",
-            "description": "In years."
-          },
-          "gt0007": {
-            "id": "gt0007",
-            "text": "Smoking status",
-            "description": ""
-          },
-          "gt0008": {
-            "id": "gt0008",
-            "text": "HbA1c",
-            "description": "Hemoglobin A1c. Percentage."
-          },
-          "gt0009": {
-            "id": "gt0009",
-            "text": "Systolic BP",
-            "description": "Systolic Blood Pressure. Unit: mmHg."
-          },
-          "gt0010": {
-            "id": "gt0010",
-            "text": "Total cholesterol/HDL",
-            "description": "Total cholesterol to high-density lipoprotein cholesterol ratio."
-          },
-          "gt0011": {
-            "id": "gt0011",
-            "text": "Microalbumin",
-            "description": "Microalbumin in urine. Unit: µg/min."
-          },
           "gt0013": {
             "id": "gt0013",
             "text": "UKPDS score",
@@ -247,10 +228,6 @@
             "id": "gt0017",
             "text": "Probability of developing CHD in the next 10 years",
             "description": ""
-          },
-          "gt0018": {
-            "id": "gt0018",
-            "text": "Calculation rule"
           },
           "gt0019": {
             "id": "gt0019",
@@ -307,6 +284,64 @@
             "id": "gt0031",
             "text": "Greater than 30%",
             "description": ""
+          },
+          "gt0055": {
+            "id": "gt0055",
+            "text": "Age, gender value",
+            "description": ""
+          },
+          "gt0068": {
+            "id": "gt0068",
+            "text": "Gender",
+            "description": "*"
+          },
+          "gt0079": {
+            "id": "gt0079",
+            "text": "Female, Age (years)",
+            "description": "Years."
+          },
+          "gt0080": {
+            "id": "gt0080",
+            "text": "Male, Age (years)",
+            "description": ""
+          },
+          "gt0081": {
+            "id": "gt0081",
+            "text": "Diabetes duration (years)",
+            "description": "Years."
+          },
+          "gt0082": {
+            "id": "gt0082",
+            "text": "Smoking status",
+            "description": ""
+          },
+          "gt0083": {
+            "id": "gt0083",
+            "text": "Hemoglobin A1c (%)",
+            "description": "Hemoglobin A1c. Percentage."
+          },
+          "gt0084": {
+            "id": "gt0084",
+            "text": "Systolic Blood Pressure (mmHg)",
+            "description": "Systolic Blood Pressure. Unit: mmHg."
+          },
+          "gt0085": {
+            "id": "gt0085",
+            "text": "Total cholesterol/HDL ratio",
+            "description": "Total cholesterol to high-density lipoprotein cholesterol ratio."
+          },
+          "gt0086": {
+            "id": "gt0086",
+            "text": "Microalbumin (µg/min) ",
+            "description": "Microalbumin in urine. Unit: µg/min."
+          },
+          "gt0087": {
+            "id": "gt0087",
+            "text": "Female calculation rule"
+          },
+          "gt0088": {
+            "id": "gt0088",
+            "text": "Male calculation rule"
           }
         }
       }
