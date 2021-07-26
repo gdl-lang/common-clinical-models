@@ -1,0 +1,166 @@
+{
+  "id": "rome_iv_globus.v0",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2021-07-22",
+      "name": "Caroline Jönson",
+      "organisation": "Cambio CDS",
+      "email": "caroline.jonson@cambio.se"
+    },
+    "lifecycle_state": "Author draft",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "To assess if the Rome IV criteria for globus are fulfilled to diagnose globus as per Rome IV criteria.",
+        "keywords": [
+          "Rome IV",
+          "diagnostic",
+          "criteria",
+          "globus"
+        ],
+        "use": "Use to assess each component parameter for the Rome IV diagnostic criteria for globus to diagnose globus as per Rome IV criteria.\n\nThe following criteria are assessed:\n1. Persistent or intermittent, non-painful sensation of a lump or foreign body in the throat with no structural lesion identified on physical examination, laryngoscopy, or endoscopy\n2. Occurrence of the sensation between meals\n3. Absence of dysphagia or odynophagia\n4. Absence of a gastric inlet patch in the proximal esophagus\n5. Absence of evidence that gastroesophageal reflux or eosinophilic esophagitis is the cause of the symptom\n6. Absence of major esophageal motor disorders (achalasia/EGJ outflow obstruction, diffuse esophageal spasm, jackhammer esophagus, absent peristalsis\nAll of the criteria must be fulfilled for the last 3 months with symptom onset at least 6 months prior to diagnosis with a frequency of at least once a week.\nDiagnosis for globus as per Rome IV criteria is considered positive if all of the critera are fulfilled.",
+        "copyright": "© Cambio CDS"
+      }
+    },
+    "other_details": {
+      "references": "Aziz Q, Fass R, Gyawali CP, Miwa H, Pandolfino JE, Zerbib F. Functional Esophageal Disorders. Gastroenterology. 2016 Feb 15:S0016-5085(16)00178-5. doi: 10.1053/j.gastro.2016.02.012. Epub ahead of print. PMID: 27144625."
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0003": {
+        "id": "gt0003",
+        "model_id": "openEHR-EHR-EVALUATION.rome_iv_globus_assessment.v0",
+        "template_id": "openEHR-EHR-EVALUATION.rome_iv_globus_assessment.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0004": {
+            "id": "gt0004",
+            "path": "/data[at0001]/items[at0002]"
+          }
+        }
+      },
+      "gt0012": {
+        "id": "gt0012",
+        "model_id": "openEHR-EHR-OBSERVATION.rome_iv_globus.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.rome_iv_globus.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0013": {
+            "id": "gt0013",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0011]"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0012]"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0013]"
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0014]"
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0015]"
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0016]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0019": {
+        "id": "gt0019",
+        "priority": 2,
+        "when": [
+          "$gt0013|1. Persistent or intermittent, non-painful sensation of a lump or foreign body in the throat with no structural lesion identified on physical examination, laryngoscopy, or endoscopy|==true",
+          "$gt0014|2. Occurrence of the sensation between meals|==true",
+          "$gt0015|3. Absence of dysphagia or odynophagia|==true",
+          "$gt0016|4. Absence of a gastric inlet patch in the proximal esophagus|==true",
+          "$gt0017|5. Absence of evidence that gastroesophageal reflux or eosinophilic esophagitis is the cause of the symptom|==true",
+          "$gt0018|6. Absence of major esophageal motor disorders (achalasia/EGJ outflow obstruction, diffuse esophageal spasm, jackhammer esophagus, absent peristalsis)|==true"
+        ],
+        "then": [
+          "$gt0004|Diagnosis for globus as per Rome IV criteria|=local::at0003|Positive|"
+        ]
+      },
+      "gt0020": {
+        "id": "gt0020",
+        "priority": 1,
+        "when": [
+          "!fired($gt0019)"
+        ],
+        "then": [
+          "$gt0004|Diagnosis for globus as per Rome IV criteria|=local::at0004|Negative|"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "Rome IV diagnostic criteria for globus",
+            "description": "Rome IV criteria for the diagnosis of globus."
+          },
+          "gt0004": {
+            "id": "gt0004",
+            "text": "Diagnosis for globus as per Rome IV criteria",
+            "description": ""
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "1. Persistent or intermittent, non-painful sensation of a lump or foreign body in the throat with no structural lesion identified on physical examination, laryngoscopy, or endoscopy",
+            "description": ""
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "2. Occurrence of the sensation between meals",
+            "description": ""
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "3. Absence of dysphagia or odynophagia",
+            "description": ""
+          },
+          "gt0016": {
+            "id": "gt0016",
+            "text": "4. Absence of a gastric inlet patch in the proximal esophagus",
+            "description": ""
+          },
+          "gt0017": {
+            "id": "gt0017",
+            "text": "5. Absence of evidence that gastroesophageal reflux or eosinophilic esophagitis is the cause of the symptom",
+            "description": ""
+          },
+          "gt0018": {
+            "id": "gt0018",
+            "text": "6. Absence of major esophageal motor disorders (achalasia/EGJ outflow obstruction, diffuse esophageal spasm, jackhammer esophagus, absent peristalsis)",
+            "description": ""
+          },
+          "gt0019": {
+            "id": "gt0019",
+            "text": "Set diagnosis to positive"
+          },
+          "gt0020": {
+            "id": "gt0020",
+            "text": "Set diagnosis to negative"
+          }
+        }
+      }
+    }
+  }
+}
