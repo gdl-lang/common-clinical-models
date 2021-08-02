@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 611*
+### *Published Apps: 615*
 
 ----------
 
 ### Latest added
 
-1. Rome IV Diagnostic Criteria for Infant Colic - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_IV_infant_colic/1?language=en))
-2. Detsky Cardiac Risk Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Detsky_cardiac/1?language=en))
-3. Systemic Lupus Erythematosus Disease Activity Index 2000 (SLEDAI-2K) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SLICC_Criteria_for_Systemic_Lupus_Erythematosus_2012_guideline/1?language=en))
-4. CHIP (CT in Head Injury Patients) Prediction Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHIP_prediction_rule/1?language=en))
-5. Myocardial Performance Index (Tei Index) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Myocardial_Performance_Index_guideline/1?language=en))
-6. Glasgow Pancreatitis Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Glasgow_Pancreatitis_score/1?language=en))
-7. Insulin Dosage Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Insulin_Dosage_Calculator_guideline/1?language=en))
-8. UK-PBC Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UK_PBC_Risk_Score_guideline/1?language=en))
-9. Coronary Perfusion Pressure Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Coronary_Perfusion_Pressure_guideline/1?language=en))
-10. Bath Ankylosing Spondylitis Functional Index (BASFI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/BASFI_score_guideline/1?language=en))
+1. RCVS₂ Score for Reversible Cerebral Vasoconstriction Syndrome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rcvs2_guideline/1?language=en))
+2. Thompson Score for Hypoxic Ischaemic Encephalopathy (HIE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Thompson_score/1?language=en))
+3. SCORTEN Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCORTEN_scale_guideline/1?language=en))
+4. ACR TI-RADS Calculator for Thyroid Nodules - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_TI-RADS_calculator/1?language=en))
+5. Rome IV Diagnostic Criteria for Infant Colic - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_IV_infant_colic/1?language=en))
+6. Detsky Cardiac Risk Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Detsky_cardiac/1?language=en))
+7. Systemic Lupus Erythematosus Disease Activity Index 2000 (SLEDAI-2K) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SLICC_Criteria_for_Systemic_Lupus_Erythematosus_2012_guideline/1?language=en))
+8. CHIP (CT in Head Injury Patients) Prediction Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHIP_prediction_rule/1?language=en))
+9. Myocardial Performance Index (Tei Index) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Myocardial_Performance_Index_guideline/1?language=en))
+10. Glasgow Pancreatitis Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Glasgow_Pancreatitis_score/1?language=en))
 
 ----------
 
@@ -299,6 +299,8 @@ _Select a medical specialty below to view the available apps._
 * Psoriasis Area and Severity Index (PASI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PASI_guideline/1?language=en))
 
 * SCORing Atopic Dermatitis (SCORAD) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCORAD_guideline/1?language=en))
+
+* SCORTEN Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCORTEN_scale_guideline/1?language=en))
 
 * Urticaria Activity Score (UAS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UAS_guideline/1?language=en))
 
@@ -683,6 +685,8 @@ _Select a medical specialty below to view the available apps._
 
 * Neonatal Partial Exchange for Polycythemia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Neonatal_Partial_Exchange_for_Polycythemia/1?language=en))
 
+* Thompson Score for Hypoxic Ischaemic Encephalopathy (HIE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Thompson_score/1?language=en))
+
 ----------
 
 ### Nephrology
@@ -811,6 +815,8 @@ _Select a medical specialty below to view the available apps._
 
 * Pittsburgh Response to Endovascular therapy (PRE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PRE_Score_guideline/1?language=en))
 
+* RCVS₂ Score for Reversible Cerebral Vasoconstriction Syndrome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rcvs2_guideline/1?language=en))
+
 * Revised Amyotrophic Lateral Sclerosis Functional Rating Scale (ALSFRS-R) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ALSFRS-R_guideline/1?language=en))
 
 * Risk of Paradoxical Embolism (RoPE) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/RoPE_Score_guideline/1?language=en))
@@ -849,6 +855,8 @@ _Select a medical specialty below to view the available apps._
 ### Oncology
 
 ----------
+* ACR TI-RADS Calculator for Thyroid Nodules - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_TI-RADS_calculator/1?language=en))
+
 * ALBI (Albumin-Bilirubin) Grade for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ALBI_albumin_bilirubin_score/1?language=en))
 
 * Asymptomatic Myeloma Prognosis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Asymptomatic_Myeloma_Prognosis/1?language=en))
