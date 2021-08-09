@@ -1,0 +1,172 @@
+archetype (adl_version=1.4; uid=aad4f630-abd3-4ae8-a417-6d481ea69a92)
+	openEHR-EHR-EVALUATION.nyha_classification.v2
+
+concept
+	[at0000]	-- New York heart association (NYHA) functional classification for heart failure
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Mouna Ghannam">
+		["email"] = <"mouna.ghannam@cambio.se">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2021-08-08">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record patients' symptoms and objective assessment classification used to stratify severity of heart failure in patients with signs and symptoms of heart failure.">
+			use = <"Use to record patients' symptoms and objective assessment classification used to stratify severity of heart failure in patients with signs and symptoms of heart failure.
+
+Classes of patient symptoms are:
+
+Class I: No limitation of physical activity. Ordinary physical activity does not cause undue fatigue, palpitation, dyspnea (shortness of breath).
+
+Class II: Slight limitation of physical activity. Comfortable at rest. Ordinary physical activity results in fatigue, palpitation, dyspnea (shortness of breath).
+
+Class III: Marked limitation of physical activity. Comfortable at rest. Less than ordinary activity causes fatigue, palpitation, or dyspnea
+
+Class IV: Unable to carry on any physical activity without discomfort. Symptoms of heart failure at rest. If any physical activity is undertaken, discomfort increases.
+
+
+Classes of Objective Assessment are:
+
+Class A: No objective evidence of cardiovascular disease. No symptoms and no limitation in ordinary physical activity.
+
+Class B: Objective evidence of minimal cardiovascular disease. Mild symptoms and slight limitation during ordinary activity. Comfortable at rest.
+
+Class C: Objective evidence of moderately severe cardiovascular disease. Marked limitation in activity due to symptoms, even during less-than-ordinary activity. Comfortable only at rest.
+
+Class D: Objective evidence of severe cardiovascular disease. Severe limitations. Experiences symptoms even while at rest.
+">
+			keywords = <"NYHA", "New York", "heart", "association", "functional", "classification">
+			misuse = <"">
+			copyright = <"©Cambio CDS">
+		>
+	>
+	lifecycle_state = <"NotSet">
+	other_contributors = <"Syeeda S Farruque", ...>
+	other_details = <
+		["custodian_organisation"] = <"openEHR Foundation">
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_namespace"] = <"org.openehr">
+		["build_uid"] = <"1b0b5a8f-bdb1-39fd-9176-cb19055cd300">
+		["original_publisher"] = <"openEHR Foundation">
+		["MD5-CAM-1.0.1"] = <"925AA58F92097549EBE4C9FAB4BA5600">
+		["original_namespace"] = <"org.openehr">
+		["references"] = <"Adapted from Dolgin M, Association NYH, Fox AC, Gorlin R, Levin RI, New York Heart Association. Criteria Committee. Nomenclature and criteria for diagnosis of diseases of the heart and great vessels. 9th ed. Boston, MA: Lippincott Williams and Wilkins; March 1, 1994.
+
+Original source: Criteria Committee, New York Heart Association , Inc. Diseases of the Heart and Blood Vessels. Nomenclature and Criteria for diagnosis, 6th edition Boston, Little, Brown and Co. 1964, p 114.">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- New York heart association (NYHA) functional classification for heart failure
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Objective assessment class
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0013, 	-- A
+									at0014, 	-- B
+									at0015, 	-- C
+									at0016]	-- D
+								}
+							}
+						}
+					}
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Patient symptoms class
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0008, 	-- Class I
+									at0009, 	-- Class II
+									at0010, 	-- Class III
+									at0011]	-- Class IV
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0017] matches {	-- Träd
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0018] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"New York heart association (NYHA) functional classification for heart failure">
+					description = <"A classification system used to stratify severity of heart failure in patients with signs and symptoms of heart failure according to their physical symptoms and objective assessment.">
+					comment = <"Original version, c 1964.">
+				>
+				["at0001"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Objective assessment class">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Patient symptoms class">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"Class I">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"Class II">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"Class III">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Class IV">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"A">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"B">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"C">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"D">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Träd">
+					description = <"@ internal @">
+				>
+				["at0018"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
+				>
+			>
+		>
+	>
