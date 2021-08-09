@@ -1,0 +1,188 @@
+archetype (adl_version=1.4; uid=73f9f273-40c3-4b9f-b337-15696b9417fd)
+	openEHR-EHR-OBSERVATION.nyha.v2
+
+concept
+	[at0000]	-- New York heart association (NYHA) functional classification for heart failure
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Mouna Ghannam">
+		["email"] = <"mouna.ghannam@cambio.se">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2021-08-08">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the physical symptoms for each patient and their objective assessment to be used to stratify severity of heart failure in patients with signs and symptoms of heart failure.">
+			use = <"Use to record the physical symptoms for each patient and their objective assessment to be used to stratify severity of heart failure in patients with signs and symptoms of heart failure.
+
+Classes of patient symptoms are:
+
+Class I: No limitation of physical activity. Ordinary physical activity does not cause undue fatigue, palpitation, dyspnea (shortness of breath).
+
+Class II: Slight limitation of physical activity. Comfortable at rest. Ordinary physical activity results in fatigue, palpitation, dyspnea (shortness of breath).
+
+Class III: Marked limitation of physical activity. Comfortable at rest. Less than ordinary activity causes fatigue, palpitation, or dyspnea
+
+Class IV: Unable to carry on any physical activity without discomfort. Symptoms of heart failure at rest. If any physical activity is undertaken, discomfort increases.
+
+
+Classes of Objective Assessment are:
+
+Class A: No objective evidence of cardiovascular disease. No symptoms and no limitation in ordinary physical activity.
+
+Class B: Objective evidence of minimal cardiovascular disease. Mild symptoms and slight limitation during ordinary activity. Comfortable at rest.
+
+Class C: Objective evidence of moderately severe cardiovascular disease. Marked limitation in activity due to symptoms, even during less-than-ordinary activity. Comfortable only at rest.
+
+Class D: Objective evidence of severe cardiovascular disease. Severe limitations. Experiences symptoms even while at rest.
+">
+			keywords = <"NYHA", "New York", "heart", "association", "functional", "classification">
+			misuse = <"">
+			copyright = <"©Cambio CDS">
+		>
+	>
+	lifecycle_state = <"NotSet">
+	other_contributors = <"Syeeda S Farruque", ...>
+	other_details = <
+		["original_publisher"] = <"openEHR Foundation">
+		["build_uid"] = <"382cd94f-327d-3b3f-9f52-6562e33b3e19">
+		["original_namespace"] = <"org.openehr">
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["references"] = <"Adapted from Dolgin M, Association NYH, Fox AC, Gorlin R, Levin RI, New York Heart Association. Criteria Committee. Nomenclature and criteria for diagnosis of diseases of the heart and great vessels. 9th ed. Boston, MA: Lippincott Williams and Wilkins; March 1, 1994.
+
+Original source: Criteria Committee, New York Heart Association , Inc. Diseases of the Heart and Blood Vessels. Nomenclature and Criteria for diagnosis, 6th edition Boston, Little, Brown and Co. 1964, p 114.">
+		["MD5-CAM-1.0.1"] = <"6DBCFBACB4631064275154EBBEF14815">
+		["custodian_namespace"] = <"org.openehr">
+		["custodian_organisation"] = <"openEHR Foundation">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- New York heart association (NYHA) functional classification for heart failure
+		data matches {
+			HISTORY[at0001] matches {	-- History
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Patients' symptoms
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0005, 	-- No limitation of physical activity. Ordinary physical activity does not cause undue fatigue, palpitation, dyspnea (shortness of breath).
+													at0006, 	-- Slight limitation of physical activity. Comfortable at rest. Ordinary physical activity results in fatigue, palpitation, dyspnea (shortness of breath).
+													at0007, 	-- Marked limitation of physical activity. Comfortable at rest. Less than ordinary activity causes fatigue, palpitation, or dyspnea.
+													at0008]	-- Unable to carry on any physical activity without discomfort. Symptoms of heart failure at rest. If any physical activity is undertaken, discomfort increases.
+												}
+											}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Objective assessment
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0010, 	-- No objective evidence of cardiovascular disease. No symptoms and no limitation in ordinary physical activity.
+													at0011, 	-- Objective evidence of minimal cardiovascular disease. Mild symptoms and slight limitation during ordinary activity. Comfortable at rest.
+													at0012, 	-- Objective evidence of moderately severe cardiovascular disease. Marked limitation in activity due to symptoms, even during less-than-ordinary activity. Comfortable only at rest.
+													at0013]	-- Objective evidence of severe cardiovascular disease. Severe limitations. Experiences symptoms even while at rest.
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0014] matches {	-- Träd
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0015] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"New York heart association (NYHA) functional classification for heart failure">
+					description = <"A classification system used to stratify severity of heart failure in patients with signs and symptoms of heart failure according to their physical symptoms and objective assessment.">
+					comment = <"Original version, c 1964.">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Patients' symptoms">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"No limitation of physical activity. Ordinary physical activity does not cause undue fatigue, palpitation, dyspnea (shortness of breath).">
+					description = <"I">
+				>
+				["at0006"] = <
+					text = <"Slight limitation of physical activity. Comfortable at rest. Ordinary physical activity results in fatigue, palpitation, dyspnea (shortness of breath).">
+					description = <"II">
+				>
+				["at0007"] = <
+					text = <"Marked limitation of physical activity. Comfortable at rest. Less than ordinary activity causes fatigue, palpitation, or dyspnea.">
+					description = <"III">
+				>
+				["at0008"] = <
+					text = <"Unable to carry on any physical activity without discomfort. Symptoms of heart failure at rest. If any physical activity is undertaken, discomfort increases.">
+					description = <"IV">
+				>
+				["at0009"] = <
+					text = <"Objective assessment">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <"No objective evidence of cardiovascular disease. No symptoms and no limitation in ordinary physical activity.">
+					description = <"A">
+				>
+				["at0011"] = <
+					text = <"Objective evidence of minimal cardiovascular disease. Mild symptoms and slight limitation during ordinary activity. Comfortable at rest.">
+					description = <"B">
+				>
+				["at0012"] = <
+					text = <"Objective evidence of moderately severe cardiovascular disease. Marked limitation in activity due to symptoms, even during less-than-ordinary activity. Comfortable only at rest.">
+					description = <"C">
+				>
+				["at0013"] = <
+					text = <"Objective evidence of severe cardiovascular disease. Severe limitations. Experiences symptoms even while at rest.">
+					description = <"D">
+				>
+				["at0014"] = <
+					text = <"Träd">
+					description = <"@ internal @">
+				>
+				["at0015"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
+				>
+			>
+		>
+	>
