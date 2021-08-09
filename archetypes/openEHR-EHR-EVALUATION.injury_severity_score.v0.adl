@@ -1,0 +1,95 @@
+archetype (adl_version=1.4; uid=b7e81827-d0bb-4b29-bdaa-da5295d06b11)
+	openEHR-EHR-EVALUATION.injury_severity_score.v0
+
+concept
+	[at0000]	-- injury severity score (ISS)
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Mouna Ghannam">
+		["email"] = <"mouna.ghannam@cambio.se">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2021-08-03">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the assessment of the score of the severity of injury following trauma to mutiple body regions.">
+			use = <"Use to record the assessment of the score of the severity of injury following trauma to mutiple body regions.">
+			keywords = <"ISS", "injury", "severity", "score", "multiple", "trauma">
+			misuse = <"">
+			copyright = <"©Cambio CDS">
+		>
+	>
+	lifecycle_state = <"NotSet">
+	other_contributors = <>
+	other_details = <
+		["original_publisher"] = <"openEHR Foundation">
+		["build_uid"] = <"31f1195f-565a-37c6-a955-7ffc02bd829b">
+		["original_namespace"] = <"org.openehr">
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["references"] = <"Thomas A, Gennarelli EW. The Abbreviated Injury Scale 2005. Update 2008. American Association for Automotive Medicine (AAAM), Des Plaines, IL 2008.
+
+Copes WS, Champion HR, Sacco WJ, Lawnick MM, Keast SL, Bain LW. The injury severity score revisited. Journal of Trauma and Acute Care Surgery. 1988 Jan 1;28(1):69-77.
+
+Baker SP, o'Neill B, Haddon Jr W, Long WB. The injury severity score: a method for describing patients with multiple injuries and evaluating emergency care. Journal of Trauma and Acute Care Surgery. 1974 Mar 1;14(3):187-96.">
+		["MD5-CAM-1.0.1"] = <"08218D359E5B3DFCED5451A7C57606A0">
+		["custodian_namespace"] = <"org.openehr">
+		["custodian_organisation"] = <"openEHR Foundation">
+	>
+
+definition
+	EVALUATION[at0000] matches {	-- injury severity score (ISS)
+		data matches {
+			ITEM_TREE[at0001] matches {	-- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Assessment of most severe injury
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0003] matches {	-- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0004] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"injury severity score (ISS)">
+					description = <"Anatomical based scoring system for numerical description of the severity of injury following trauma to mutiple body regions.">
+					comment = <"Original version, c 1974">
+				>
+				["at0001"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Assessment of most severe injury">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
+				>
+			>
+		>
+	>

@@ -1,0 +1,58 @@
+guidelines:
+  1: ISS.v2
+test_cases:
+- id: score<75
+  input:
+    1:
+      gt0009|AIS score of most severely injured region: 1|local::at0010|Minor injury|
+      gt0010|AIS score of 2nd most severely injured region: 2|local::at0018|Moderate injury|
+      gt0011|AIS score of 3rd most severely injured region: 3|local::at0026|Serious injury|
+  expected_output:
+    1:
+      gt0004|Injury severity score: 14
+- id: score >= 75
+  input:
+    1:
+      gt0009|AIS score of most severely injured region: 6|local::at0015|Unsurvivable injury|
+      gt0010|AIS score of 2nd most severely injured region: 2|local::at0018|Moderate injury|
+      gt0011|AIS score of 3rd most severely injured region: 3|local::at0026|Serious injury|
+  expected_output:
+    1:
+      gt0004|Injury severity score: 75
+      gt0021|Assessment of most severe injury: Unsurvivable injury (AIS 6) detected.
+- id: missing input
+  input:
+    1:
+      gt0010|AIS score of 2nd most severely injured region: 2|local::at0018|Moderate injury|
+      gt0011|AIS score of 3rd most severely injured region: 3|local::at0026|Serious injury|
+  expected_output:
+    1: {}
+- id: No/Mild/Mild injury=ISS 2
+  input:
+    1:
+      gt0009|AIS score of most severely injured region: 0|local::at0009|No injury|
+      gt0010|AIS score of 2nd most severely injured region: 1|local::at0017|Mild injury|
+      gt0011|AIS score of 3rd most severely injured region: 1|local::at0024|Mild injury|
+  expected_output:
+    1:
+      gt0004|Injury severity score: 2
+- id: No/Unsurvivable/Mild injury ISS=75
+  input:
+    1:
+      gt0009|AIS score of most severely injured region: 0|local::at0009|No injury|
+      gt0010|AIS score of 2nd most severely injured region: 6|local::at0022|Unsurvivable injury|
+      gt0011|AIS score of 3rd most severely injured region: 1|local::at0024|Mild injury|
+  expected_output:
+    1:
+      gt0004|Injury severity score: 75
+      gt0021|Assessment of most severe injury: Unsurvivable injury (AIS 6) detected.
+- id: Serious/Unsurvivable/Unsurvivable injury =75
+  input:
+    1:
+      gt0009|AIS score of most severely injured region: 3|local::at0012|Serious injury|
+      gt0010|AIS score of 2nd most severely injured region: 6|local::at0022|Unsurvivable injury|
+      gt0011|AIS score of 3rd most severely injured region: 6|local::at0029|Unsurvivable injury|
+  expected_output:
+    1:
+      gt0004|Injury severity score: 75
+      gt0021|Assessment of most severe injury: Unsurvivable injury (AIS 6) detected.
