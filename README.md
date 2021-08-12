@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 615*
+### *Published Apps: 616*
 
 ----------
 
 ### Latest added
 
-1. RCVS₂ Score for Reversible Cerebral Vasoconstriction Syndrome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rcvs2_guideline/1?language=en))
-2. Thompson Score for Hypoxic Ischaemic Encephalopathy (HIE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Thompson_score/1?language=en))
-3. SCORTEN Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCORTEN_scale_guideline/1?language=en))
-4. ACR TI-RADS Calculator for Thyroid Nodules - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_TI-RADS_calculator/1?language=en))
-5. Rome IV Diagnostic Criteria for Infant Colic - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_IV_infant_colic/1?language=en))
-6. Detsky Cardiac Risk Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Detsky_cardiac/1?language=en))
-7. Systemic Lupus Erythematosus Disease Activity Index 2000 (SLEDAI-2K) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SLICC_Criteria_for_Systemic_Lupus_Erythematosus_2012_guideline/1?language=en))
-8. CHIP (CT in Head Injury Patients) Prediction Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHIP_prediction_rule/1?language=en))
-9. Myocardial Performance Index (Tei Index) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Myocardial_Performance_Index_guideline/1?language=en))
-10. Glasgow Pancreatitis Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Glasgow_Pancreatitis_score/1?language=en))
+1. 4-Level Pulmonary Embolism Clinical Probability Score (4PEPS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/four_level_pulmonary_embolism_clinical_probability_score/1?language=en))
+2. RCVS₂ Score for Reversible Cerebral Vasoconstriction Syndrome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rcvs2_guideline/1?language=en))
+3. Thompson Score for Hypoxic Ischaemic Encephalopathy (HIE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Thompson_score/1?language=en))
+4. SCORTEN Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCORTEN_scale_guideline/1?language=en))
+5. ACR TI-RADS Calculator for Thyroid Nodules - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_TI-RADS_calculator/1?language=en))
+6. Rome IV Diagnostic Criteria for Infant Colic - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_IV_infant_colic/1?language=en))
+7. Detsky Cardiac Risk Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Detsky_cardiac/1?language=en))
+8. Systemic Lupus Erythematosus Disease Activity Index 2000 (SLEDAI-2K) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SLICC_Criteria_for_Systemic_Lupus_Erythematosus_2012_guideline/1?language=en))
+9. CHIP (CT in Head Injury Patients) Prediction Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHIP_prediction_rule/1?language=en))
+10. Myocardial Performance Index (Tei Index) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Myocardial_Performance_Index_guideline/1?language=en)
 
 ----------
 
@@ -341,6 +341,8 @@ _Select a medical specialty below to view the available apps._
 ))
 
 * FOUR (Full Outline of UnResponsiveness) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FOUR_Full_Outline_of_UnResponsiveness_Score_guideline/1?language=en))
+
+* 4-Level Pulmonary Embolism Clinical Probability Score (4PEPS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/four_level_pulmonary_embolism_clinical_probability_score/1?language=en))
 
 * GCS-Pupils Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/gcs_pupils_score/1?language=en))
 
