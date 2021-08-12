@@ -84,8 +84,8 @@
       }
     },
     "default_actions": [
-      "$gt0003|Interpretation|=local::at0012|Negative FAST|",
-      "$gt0018|Local variable: recommendation text|=''"
+      "$gt0018|Local variable: recommendation text|=''",
+      "$gt0030|Interpretation text|=$gt0031.term"
     ],
     "rules": {
       "gt0019": {
@@ -95,7 +95,7 @@
           "($gt0006|Pericardial fluid|==local::at0009|Present|)||(($gt0007|Right upper quadrant (Morison’s pouch) fluid|==local::at0009|Present|)||(($gt0008|Left upper quadrant (splenorenal recess) fluid|==local::at0009|Present|)||($gt0009|Suprapubic fluid|==local::at0009|Present|)))"
         ],
         "then": [
-          "$gt0003|Interpretation|=local::at0013|Positive FAST|"
+          "$gt0030|Interpretation text|=$gt0032.term"
         ]
       },
       "gt0020": {
@@ -106,7 +106,7 @@
           "($gt0006|Pericardial fluid|==local::at0010|Equivocal|)||(($gt0007|Right upper quadrant (Morison’s pouch) fluid|==local::at0010|Equivocal|)||(($gt0008|Left upper quadrant (splenorenal recess) fluid|==local::at0010|Equivocal|)||($gt0009|Suprapubic fluid|==local::at0010|Equivocal|)))"
         ],
         "then": [
-          "$gt0003|Interpretation|=local::at0014|Equivocal FAST|"
+          "$gt0030|Interpretation text|=$gt0033.term"
         ]
       },
       "gt0021": {
@@ -116,7 +116,7 @@
           "$gt0006|Pericardial fluid|==local::at0009|Present|"
         ],
         "then": [
-          "$gt0018|Local variable: recommendation text|=$gt0018+$gt0011.term+'\n'"
+          "$gt0018|Local variable: recommendation text|=$gt0018+$gt0011.term+' '"
         ]
       },
       "gt0022": {
@@ -127,7 +127,7 @@
           "($gt0007|Right upper quadrant (Morison’s pouch) fluid|==local::at0009|Present|)||(($gt0008|Left upper quadrant (splenorenal recess) fluid|==local::at0009|Present|)||($gt0009|Suprapubic fluid|==local::at0009|Present|))"
         ],
         "then": [
-          "$gt0018|Local variable: recommendation text|=$gt0018+$gt0015.term+'\n'"
+          "$gt0018|Local variable: recommendation text|=$gt0018+$gt0015.term+' '"
         ]
       },
       "gt0023": {
@@ -138,7 +138,7 @@
           "($gt0007|Right upper quadrant (Morison’s pouch) fluid|==local::at0009|Present|)||(($gt0008|Left upper quadrant (splenorenal recess) fluid|==local::at0009|Present|)||($gt0009|Suprapubic fluid|==local::at0009|Present|))"
         ],
         "then": [
-          "$gt0018|Local variable: recommendation text|=$gt0018+$gt0014.term+'\n'"
+          "$gt0018|Local variable: recommendation text|=$gt0018+$gt0014.term+' '"
         ]
       },
       "gt0024": {
@@ -149,7 +149,7 @@
           "!fired($gt0023)"
         ],
         "then": [
-          "$gt0018|Local variable: recommendation text|=$gt0018+$gt0012.term+'\n'"
+          "$gt0018|Local variable: recommendation text|=$gt0018+$gt0012.term+' '"
         ]
       },
       "gt0025": {
@@ -160,7 +160,7 @@
           "fired($gt0023)"
         ],
         "then": [
-          "$gt0018|Local variable: recommendation text|=$gt0018+$gt0013.term+'\n'"
+          "$gt0018|Local variable: recommendation text|=$gt0018+$gt0013.term+' '"
         ]
       },
       "gt0026": {
@@ -172,14 +172,14 @@
           "($gt0007|Right upper quadrant (Morison’s pouch) fluid|==local::at0010|Equivocal|)||(($gt0008|Left upper quadrant (splenorenal recess) fluid|==local::at0010|Equivocal|)||($gt0009|Suprapubic fluid|==local::at0010|Equivocal|))"
         ],
         "then": [
-          "$gt0018|Local variable: recommendation text|=$gt0018+$gt0016.term+'\n'"
+          "$gt0018|Local variable: recommendation text|=$gt0018+$gt0016.term+' '"
         ]
       },
       "gt0027": {
         "id": "gt0027",
         "priority": 3,
         "when": [
-          "$gt0003|Interpretation|==local::at0012|Negative FAST|"
+          "$gt0030|Interpretation text|==$gt0031.term"
         ],
         "then": [
           "$gt0018|Local variable: recommendation text|=$gt0018+$gt0010.term"
@@ -188,9 +188,6 @@
       "gt0028": {
         "id": "gt0028",
         "priority": 2,
-        "when": [
-          "$gt0018|Local variable: recommendation text|!=null"
-        ],
         "then": [
           "$gt0018|Local variable: recommendation text|=$gt0018+$gt0017.term"
         ]
@@ -198,9 +195,9 @@
       "gt0029": {
         "id": "gt0029",
         "priority": 1,
-        "when": [],
         "then": [
-          "$gt0004|Recommendation|.value=$gt0018"
+          "$gt0004|Recommendation|.value=$gt0018",
+          "$gt0003|Interpretation|.value=$gt0030"
         ]
       }
     }
@@ -330,6 +327,26 @@
           "gt0029": {
             "id": "gt0029",
             "text": "Set recommendation to archetype"
+          },
+          "gt0030": {
+            "id": "gt0030",
+            "text": "Interpretation text",
+            "description": ""
+          },
+          "gt0031": {
+            "id": "gt0031",
+            "text": "Negative FAST",
+            "description": ""
+          },
+          "gt0032": {
+            "id": "gt0032",
+            "text": "Positive FAST",
+            "description": ""
+          },
+          "gt0033": {
+            "id": "gt0033",
+            "text": "Equivocal FAST",
+            "description": ""
           }
         }
       }
