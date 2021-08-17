@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 616*
+### *Published Apps: 618*
 
 ----------
 
 ### Latest added
 
-1. 4-Level Pulmonary Embolism Clinical Probability Score (4PEPS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/four_level_pulmonary_embolism_clinical_probability_score/1?language=en))
-2. RCVS₂ Score for Reversible Cerebral Vasoconstriction Syndrome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rcvs2_guideline/1?language=en))
-3. Thompson Score for Hypoxic Ischaemic Encephalopathy (HIE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Thompson_score/1?language=en))
-4. SCORTEN Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCORTEN_scale_guideline/1?language=en))
-5. ACR TI-RADS Calculator for Thyroid Nodules - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_TI-RADS_calculator/1?language=en))
-6. Rome IV Diagnostic Criteria for Infant Colic - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_IV_infant_colic/1?language=en))
-7. Detsky Cardiac Risk Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Detsky_cardiac/1?language=en))
-8. Systemic Lupus Erythematosus Disease Activity Index 2000 (SLEDAI-2K) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SLICC_Criteria_for_Systemic_Lupus_Erythematosus_2012_guideline/1?language=en))
-9. CHIP (CT in Head Injury Patients) Prediction Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CHIP_prediction_rule/1?language=en))
-10. Myocardial Performance Index (Tei Index) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Myocardial_Performance_Index_guideline/1?language=en)
+1. UKPDS Cardiac Risk Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ukpds/1?language=en))
+2. CAHP (Cardiac Arrest Hospital Prognosis) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/cahp_guideline/1?language=en))
+3. 4-Level Pulmonary Embolism Clinical Probability Score (4PEPS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/four_level_pulmonary_embolism_clinical_probability_score/1?language=en))
+4. RCVS₂ Score for Reversible Cerebral Vasoconstriction Syndrome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rcvs2_guideline/1?language=en))
+5. Thompson Score for Hypoxic Ischaemic Encephalopathy (HIE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Thompson_score/1?language=en))
+6. SCORTEN Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SCORTEN_scale_guideline/1?language=en))
+7. ACR TI-RADS Calculator for Thyroid Nodules - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_TI-RADS_calculator/1?language=en))
+8. Rome IV Diagnostic Criteria for Infant Colic - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Rome_IV_infant_colic/1?language=en))
+9. Detsky Cardiac Risk Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Detsky_cardiac/1?language=en))
+10. Systemic Lupus Erythematosus Disease Activity Index 2000 (SLEDAI-2K) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SLICC_Criteria_for_Systemic_Lupus_Erythematosus_2012_guideline/1?language=en))
 
 ----------
 
@@ -150,6 +150,8 @@ _Select a medical specialty below to view the available apps._
 
 * Brugada Criteria for Ventricular Tachycardia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Brugada_Criteria_for_Ventricular_Tachycardia_guideline/1?language=en))
 
+* CAHP (Cardiac Arrest Hospital Prognosis) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/cahp_guideline/1?language=en))
+
 * Canadian Cardiovascular Society (CCS) Angina Grade - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Canadian_Cardiovascular_Society_CCS_Angina_Grade_guideline/1?language=en))
 
 * Canadian Syncope Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/canadian_syncope_risk_score/1?language=en))
@@ -249,6 +251,8 @@ _Select a medical specialty below to view the available apps._
 * TIMI Score for STEMI - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TIMI_STEMI/1?language=en))
 
 * Troponin-only Manchester Acute Coronary Syndromes (T-MACS) Decision Aid - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/T_MACS/1?language=en))
+
+* UKPDS Cardiac Risk Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ukpds/1?language=en))
 
 * US (MEDPED) Diagnostic Criteria for Familial Hypercholesterolemia (FH) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Diagnostic_Criteria_FH/1?language=en))
 
