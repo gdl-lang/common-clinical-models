@@ -2,7 +2,7 @@ archetype (adl_version=1.4)
 	openEHR-EHR-EVALUATION.pews_assessment.v1
 
 concept
-	[at0000]	-- Pediatric Early Warning Score utvärdering
+	[at0000]	-- Pediatric Early Warning Score assessment
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -23,26 +23,6 @@ description
 		["date"] = <"2017-12-03">
 	>
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"To provide an objective method for early identification of pediatric patients at risk of clinical deterioration. ">
-			use = <"Use to provide an objective method for early identification of pediatric patients at risk of clinical deterioration. 
-
-The instrument is based on five parameters:
-- Behavior (0-3p)
-- Cardiovascular (0-3p)
-- Respiratory (0-3p)
-Presence of at least one of the following adds two points:
-- Use of nebulizer every 15 minutes 
-- Persisting vomiting following surgery
-
-The score is interpreted as: 
-2p or less - low risk; reassess as needed
-3-4p - intermediate risk; alert charge nurse and staff MD
-5p or more - high risk; initiate rapid response team">
-			misuse = <"">
-			copyright = <"Cambio Healthcare Systems">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			purpose = <"Att registrera resultat baserat på fysiologiska och kliniska observationer, i syfte att understödja objektiv bedömning av vitala funktioner hos patient under 18 års ålder.">
@@ -63,6 +43,26 @@ Resultatet tolkas enligt:
 			misuse = <"">
 			copyright = <"Cambio Healthcare Systems">
 		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To provide an objective method for early identification of pediatric patients at risk of clinical deterioration. ">
+			use = <"Use to provide an objective method for early identification of pediatric patients at risk of clinical deterioration. 
+
+The instrument is based on five parameters:
+- Behavior (0-3p)
+- Cardiovascular (0-3p)
+- Respiratory (0-3p)
+Presence of at least one of the following adds two points:
+- Use of nebulizer every 15 minutes 
+- Persisting vomiting following surgery
+
+The score is interpreted as: 
+2p or less - low risk; reassess as needed
+3-4p - intermediate risk; alert charge nurse and staff MD
+5p or more - high risk; initiate rapid response team">
+			misuse = <"">
+			copyright = <"Cambio Healthcare Systems">
+		>
 	>
 	lifecycle_state = <"0">
 	other_contributors = <>
@@ -74,26 +74,22 @@ Resultatet tolkas enligt:
 3) Gold DL, Mihalov LK, Cohen DM. Evaluating the Pediatric Early Warning Score (PEWS) system for admitted patients in the pediatric emergency department. Acad Emerg Med. 2014 Nov;21(11):1249-56.
 
 4) Region Jönköpings län. Informationsblad om PEWS och TUB-B-trappan för barn (pdf). Område 1. Tidigt upptäcka svårt sjuk - och agera - Barn. Updated: 2015-05-27. Available from: http://plus.rjl.se/infopage.jsf?childId=20770&nodeId=35495">
-		["MD5-CAM-1.0.1"] = <"0B3FBD1A23660401F2B4A69A50446005">
+		["MD5-CAM-1.0.1"] = <"4BE83696F706B4B908368919F5CC1E39">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Pediatric Early Warning Score utvärdering
+	EVALUATION[at0000] matches {	-- Pediatric Early Warning Score assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- *Tree(en)
+			ITEM_TREE[at0001] matches {	-- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Risknivå
+					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Risk level
 						value matches {
-							0|[local::at0004], 	-- Låg risk
-							1|[local::at0005], 	-- Mellanrisk
-							2|[local::at0006]  	-- Hög risk
+							DV_TEXT matches {*}
 						}
 					}
-					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Rekommendation
+					ELEMENT[at0003] occurrences matches {0..1} matches {	-- Recommendation
 						value matches {
-							0|[local::at0007], 	-- Fortsatta kontroller enligt rutin eller ordination
-							1|[local::at0008], 	-- Meddela ansvarig sjuksköterska och kontakta ansvarig läkare som ska bedöma barnet inom 30 min (OBS om enskild parameter =3p ska bedömning ske inom 10 min)
-							2|[local::at0009]  	-- Kontakta ansvarig läkare och BIVA/IVA-konsult - båda ska bedöma barnet inom 10 min. Detta barn kräver kontinuerlig övervakning och får inte lämnas ensam.
+							DV_TEXT matches {*}
 						}
 					}
 				}
@@ -121,30 +117,6 @@ ontology
 					text = <"Recommendation">
 					description = <"Recommendation based on risk level.">
 				>
-				["at0004"] = <
-					text = <"Low risk">
-					description = <"2p or less">
-				>
-				["at0005"] = <
-					text = <"Intermediate risk">
-					description = <"3-4p">
-				>
-				["at0006"] = <
-					text = <"High risk">
-					description = <"5p or more">
-				>
-				["at0007"] = <
-					text = <"Reassess as needed">
-					description = <"Low risk">
-				>
-				["at0008"] = <
-					text = <"Alert charge nurse and staff MD">
-					description = <"Intermediate risk">
-				>
-				["at0009"] = <
-					text = <"Initiate rapid response team">
-					description = <"High risk">
-				>
 			>
 		>
 		["sv"] = <
@@ -165,30 +137,6 @@ ontology
 				["at0003"] = <
 					text = <"Rekommendation">
 					description = <"Rekommendation baserad på risknivå, se referens 4.">
-				>
-				["at0004"] = <
-					text = <"Låg risk">
-					description = <"2p eller mindre">
-				>
-				["at0005"] = <
-					text = <"Mellanrisk">
-					description = <"3-4p">
-				>
-				["at0006"] = <
-					text = <"Hög risk">
-					description = <"5p eller mer">
-				>
-				["at0007"] = <
-					text = <"Fortsatta kontroller enligt rutin eller ordination">
-					description = <"Låg risk">
-				>
-				["at0008"] = <
-					text = <"Meddela ansvarig sjuksköterska och kontakta ansvarig läkare som ska bedöma barnet inom 30 min (OBS om enskild parameter =3p ska bedömning ske inom 10 min)">
-					description = <"Mellanrisk">
-				>
-				["at0009"] = <
-					text = <"Kontakta ansvarig läkare och BIVA/IVA-konsult - båda ska bedöma barnet inom 10 min. Detta barn kräver kontinuerlig övervakning och får inte lämnas ensam.">
-					description = <"Hög risk">
 				>
 			>
 		>

@@ -107,7 +107,7 @@
     "rules": {
       "gt0021": {
         "id": "gt0021",
-        "priority": 4,
+        "priority": 5,
         "when": [
           "$gt0004|Behaviour|!=null",
           "$gt0005|Cardiovascular|!=null",
@@ -121,35 +121,46 @@
       },
       "gt0025": {
         "id": "gt0025",
-        "priority": 3,
+        "priority": 4,
         "when": [
           "$gt0014|Total score|<=2"
         ],
         "then": [
-          "$gt0023|Risk level|=0|local::at0004|Low risk|",
-          "$gt0024|Recommendation|=0|local::at0007|Reassess as needed|"
+          "$gt0028|Risk interpretation text|=$gt0029.term",
+          "$gt0032|Recommend interpretation text|=$gt0033.term"
         ]
       },
       "gt0026": {
         "id": "gt0026",
-        "priority": 2,
+        "priority": 3,
         "when": [
           "($gt0014|Total score|==3)||($gt0014|Total score|==4)"
         ],
         "then": [
-          "$gt0023|Risk level|=1|local::at0005|Intermediate risk|",
-          "$gt0024|Recommendation|=1|local::at0008|Alert charge nurse and staff MD|"
+          "$gt0028|Risk interpretation text|=$gt0030.term",
+          "$gt0032|Recommend interpretation text|=$gt0034.term"
         ]
       },
       "gt0027": {
         "id": "gt0027",
-        "priority": 1,
+        "priority": 2,
         "when": [
           "$gt0014|Total score|>=5"
         ],
         "then": [
-          "$gt0023|Risk level|=2|local::at0006|High risk|",
-          "$gt0024|Recommendation|=2|local::at0009|Initiate rapid response team|"
+          "$gt0028|Risk interpretation text|=$gt0031.term",
+          "$gt0032|Recommend interpretation text|=$gt0035.term"
+        ]
+      },
+      "gt0036": {
+        "id": "gt0036",
+        "priority": 1,
+        "when": [
+          "(fired($gt0025))||((fired($gt0026))||(fired($gt0027)))"
+        ],
+        "then": [
+          "$gt0023|Risk level|.value=$gt0028",
+          "$gt0024|Recommendation|.value=$gt0032"
         ]
       }
     }
@@ -222,6 +233,51 @@
             "id": "gt0027",
             "text": "CDS hög risk",
             "description": ""
+          },
+          "gt0028": {
+            "id": "gt0028",
+            "text": "*(en) Risk interpretation text",
+            "description": ""
+          },
+          "gt0029": {
+            "id": "gt0029",
+            "text": "*(en) Low risk",
+            "description": "*(en) Local term."
+          },
+          "gt0030": {
+            "id": "gt0030",
+            "text": "*(en) Intermediate risk",
+            "description": "*(en) Local term."
+          },
+          "gt0031": {
+            "id": "gt0031",
+            "text": "*(en) High risk",
+            "description": "*(en) Local term."
+          },
+          "gt0032": {
+            "id": "gt0032",
+            "text": "*(en) Recommend interpretation text",
+            "description": ""
+          },
+          "gt0033": {
+            "id": "gt0033",
+            "text": "*(en) Reassess as needed",
+            "description": "*(en) Local term."
+          },
+          "gt0034": {
+            "id": "gt0034",
+            "text": "*(en) Alert charge nurse and staff MD",
+            "description": "*(en) Local term."
+          },
+          "gt0035": {
+            "id": "gt0035",
+            "text": "*(en) Initiate rapid response team",
+            "description": "*(en) Local term."
+          },
+          "gt0036": {
+            "id": "gt0036",
+            "text": "*(en) Output text",
+            "description": ""
           }
         }
       },
@@ -288,6 +344,50 @@
           "gt0027": {
             "id": "gt0027",
             "text": "CDS high risk"
+          },
+          "gt0028": {
+            "id": "gt0028",
+            "text": "Risk interpretation text",
+            "description": ""
+          },
+          "gt0029": {
+            "id": "gt0029",
+            "text": "Low risk",
+            "description": "Local term."
+          },
+          "gt0030": {
+            "id": "gt0030",
+            "text": "Intermediate risk",
+            "description": "Local term."
+          },
+          "gt0031": {
+            "id": "gt0031",
+            "text": "High risk",
+            "description": "Local term."
+          },
+          "gt0032": {
+            "id": "gt0032",
+            "text": "Recommend interpretation text",
+            "description": ""
+          },
+          "gt0033": {
+            "id": "gt0033",
+            "text": "Reassess as needed",
+            "description": "Local term."
+          },
+          "gt0034": {
+            "id": "gt0034",
+            "text": "Alert charge nurse and staff MD",
+            "description": "Local term."
+          },
+          "gt0035": {
+            "id": "gt0035",
+            "text": "Initiate rapid response team",
+            "description": "Local term."
+          },
+          "gt0036": {
+            "id": "gt0036",
+            "text": "Output text"
           }
         }
       }
