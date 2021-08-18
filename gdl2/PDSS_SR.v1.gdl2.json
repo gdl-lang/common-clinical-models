@@ -122,7 +122,7 @@
     "rules": {
       "gt0028": {
         "id": "gt0028",
-        "priority": 11,
+        "priority": 12,
         "when": [
           "$gt0003|Q1. No of attacks|!=null",
           "$gt0004|Q2. Degree of distress|!=null",
@@ -138,7 +138,7 @@
       },
       "gt0029": {
         "id": "gt0029",
-        "priority": 10,
+        "priority": 11,
         "when": [
           "$gt0003|Q1. No of attacks|!=null",
           "$gt0004|Q2. Degree of distress|!=null",
@@ -154,109 +154,120 @@
       },
       "gt0037": {
         "id": "gt0037",
-        "priority": 9,
+        "priority": 10,
         "when": [
           "$gt0033|Total raw score|<=1",
           "$gt0033|Total raw score|>=0"
         ],
         "then": [
-          "$gt0036|Raw score interpretation - without Agoraphobia|=0|local::at0004|Normal|",
-          "$gt0035|Raw score interpretation - with Agoraphobia|=0|local::at0012|Normal|"
+          "$gt0046|Interpretation text without|=$gt0047.term",
+          "$gt0052|Interpretation text with|=$gt0047.term"
         ]
       },
       "gt0038": {
         "id": "gt0038",
-        "priority": 8,
+        "priority": 9,
         "when": [
           "$gt0033|Total raw score|>1",
           "$gt0033|Total raw score|<=2"
         ],
         "then": [
-          "$gt0036|Raw score interpretation - without Agoraphobia|=1|local::at0005|Borderline|",
-          "$gt0035|Raw score interpretation - with Agoraphobia|=0|local::at0012|Normal|"
+          "$gt0046|Interpretation text without|=$gt0048.term",
+          "$gt0052|Interpretation text with|=$gt0047.term"
         ]
       },
       "gt0039": {
         "id": "gt0039",
-        "priority": 7,
+        "priority": 8,
         "when": [
           "$gt0033|Total raw score|<=5",
           "$gt0033|Total raw score|>=3"
         ],
         "then": [
-          "$gt0035|Raw score interpretation - with Agoraphobia|=1|local::at0013|Borderline|",
-          "$gt0036|Raw score interpretation - without Agoraphobia|=1|local::at0005|Borderline|"
+          "$gt0046|Interpretation text without|=$gt0048.term",
+          "$gt0052|Interpretation text with|=$gt0048.term"
         ]
       },
       "gt0040": {
         "id": "gt0040",
-        "priority": 6,
+        "priority": 7,
         "when": [
           "$gt0033|Total raw score|<=7",
           "$gt0033|Total raw score|>=6"
         ],
         "then": [
-          "$gt0036|Raw score interpretation - without Agoraphobia|=2|local::at0017|Slightly ill|",
-          "$gt0035|Raw score interpretation - with Agoraphobia|=1|local::at0013|Borderline|"
+          "$gt0046|Interpretation text without|=$gt0049.term",
+          "$gt0052|Interpretation text with|=$gt0048.term"
         ]
       },
       "gt0041": {
         "id": "gt0041",
-        "priority": 5,
+        "priority": 6,
         "when": [
           "$gt0033|Total raw score|<=9",
           "$gt0033|Total raw score|>=8"
         ],
         "then": [
-          "$gt0036|Raw score interpretation - without Agoraphobia|=2|local::at0017|Slightly ill|",
-          "$gt0035|Raw score interpretation - with Agoraphobia|=2|local::at0014|Slightly ill|"
+          "$gt0046|Interpretation text without|=$gt0049.term",
+          "$gt0052|Interpretation text with|=$gt0049.term"
         ]
       },
       "gt0042": {
         "id": "gt0042",
-        "priority": 4,
+        "priority": 5,
         "when": [
           "$gt0033|Total raw score|>9",
           "$gt0033|Total raw score|<=10"
         ],
         "then": [
-          "$gt0036|Raw score interpretation - without Agoraphobia|=3|local::at0018|Moderately ill|",
-          "$gt0035|Raw score interpretation - with Agoraphobia|=2|local::at0014|Slightly ill|"
+          "$gt0046|Interpretation text without|=$gt0050.term",
+          "$gt0052|Interpretation text with|=$gt0049.term"
         ]
       },
       "gt0043": {
         "id": "gt0043",
-        "priority": 3,
+        "priority": 4,
         "when": [
           "$gt0033|Total raw score|<=13",
           "$gt0033|Total raw score|>=11"
         ],
         "then": [
-          "$gt0035|Raw score interpretation - with Agoraphobia|=3|local::at0015|Moderately ill|",
-          "$gt0036|Raw score interpretation - without Agoraphobia|=3|local::at0018|Moderately ill|"
+          "$gt0052|Interpretation text with|=$gt0050.term",
+          "$gt0046|Interpretation text without|=$gt0050.term"
         ]
       },
       "gt0044": {
         "id": "gt0044",
-        "priority": 2,
+        "priority": 3,
         "when": [
           "$gt0033|Total raw score|<=15",
           "$gt0033|Total raw score|>=14"
         ],
         "then": [
-          "$gt0035|Raw score interpretation - with Agoraphobia|=3|local::at0015|Moderately ill|",
-          "$gt0036|Raw score interpretation - without Agoraphobia|=4|local::at0019|Markedly ill|"
+          "$gt0052|Interpretation text with|=$gt0050.term",
+          "$gt0046|Interpretation text without|=$gt0051.term"
         ]
       },
       "gt0045": {
         "id": "gt0045",
-        "priority": 1,
+        "priority": 2,
         "when": [
           "$gt0033|Total raw score|>=16"
         ],
         "then": [
-          "$gt0035|Raw score interpretation - with Agoraphobia|=4|local::at0016|Markedly ill|",
-          "$gt0036|Raw score interpretation - without Agoraphobia|=4|local::at0019|Markedly ill|"
+          "$gt0052|Interpretation text with|=$gt0051.term",
+          "$gt0046|Interpretation text without|=$gt0051.term"
+        ]
+      },
+      "gt0053": {
+        "id": "gt0053",
+        "priority": 1,
+        "when": [
+          "(fired($gt0037))||((fired($gt0038))||((fired($gt0039))||((fired($gt0040))||((fired($gt0041))||((fired($gt0042))||((fired($gt0043))||((fired($gt0044))||(fired($gt0045)))))))))"
+        ],
+        "then": [
+          "$gt0035|Raw score interpretation - with Agoraphobia|.value=$gt0052",
+          "$gt0036|Raw score interpretation - without Agoraphobia|.value=$gt0046"
         ]
       }
     }
@@ -378,6 +389,46 @@
             "id": "gt0045",
             "text": "CDS med/utan agorafobi - svårt paniksyndrom",
             "description": ""
+          },
+          "gt0046": {
+            "id": "gt0046",
+            "text": "*(en) Interpretation text",
+            "description": ""
+          },
+          "gt0047": {
+            "id": "gt0047",
+            "text": "*(en) Normal",
+            "description": ""
+          },
+          "gt0048": {
+            "id": "gt0048",
+            "text": "*(en) Borderline",
+            "description": ""
+          },
+          "gt0049": {
+            "id": "gt0049",
+            "text": "*(en) Slightly ill",
+            "description": ""
+          },
+          "gt0050": {
+            "id": "gt0050",
+            "text": "*(en) Moderately ill",
+            "description": ""
+          },
+          "gt0051": {
+            "id": "gt0051",
+            "text": "*(en) Markedly ill",
+            "description": ""
+          },
+          "gt0052": {
+            "id": "gt0052",
+            "text": "*(en) Interpretation text 2",
+            "description": ""
+          },
+          "gt0053": {
+            "id": "gt0053",
+            "text": "*(en) Set output terms",
+            "description": ""
           }
         }
       },
@@ -487,6 +538,45 @@
           "gt0045": {
             "id": "gt0045",
             "text": "Set Raw score with/without Agoraphobia: Markedly ill"
+          },
+          "gt0046": {
+            "id": "gt0046",
+            "text": "Interpretation text without",
+            "description": ""
+          },
+          "gt0047": {
+            "id": "gt0047",
+            "text": "Normal",
+            "description": ""
+          },
+          "gt0048": {
+            "id": "gt0048",
+            "text": "Borderline",
+            "description": ""
+          },
+          "gt0049": {
+            "id": "gt0049",
+            "text": "Slightly ill",
+            "description": ""
+          },
+          "gt0050": {
+            "id": "gt0050",
+            "text": "Moderately ill",
+            "description": ""
+          },
+          "gt0051": {
+            "id": "gt0051",
+            "text": "Markedly ill",
+            "description": ""
+          },
+          "gt0052": {
+            "id": "gt0052",
+            "text": "Interpretation text with",
+            "description": ""
+          },
+          "gt0053": {
+            "id": "gt0053",
+            "text": "Set output terms"
           }
         }
       }
