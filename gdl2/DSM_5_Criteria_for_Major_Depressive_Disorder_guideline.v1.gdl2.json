@@ -122,12 +122,12 @@
       }
     },
     "default_actions": [
-      "$gt0023|Diagnostic Result|=local::at0006|Not positive Diagnosis of MDD by DSM-5 Criteria|"
+      "$gt0025|Interpretation text|=$gt0026.term"
     ],
     "rules": {
       "gt0019": {
         "id": "gt0019",
-        "priority": 3,
+        "priority": 4,
         "when": [
           "$gt0003|Depressed mood|!=null",
           "$gt0004|Loss of interest/pleasure|!=null",
@@ -145,7 +145,7 @@
       },
       "gt0020": {
         "id": "gt0020",
-        "priority": 2,
+        "priority": 3,
         "when": [
           "$gt0012|Symptoms cause clinically significant distress or impairment in social, occupational, or other important areas of functioning|!=null",
           "$gt0013|Episode not attributable to physiological effects of a substance or another medical condition|!=null",
@@ -158,14 +158,24 @@
       },
       "gt0021": {
         "id": "gt0021",
-        "priority": 1,
+        "priority": 2,
         "when": [
           "$gt0017|Depressive symtoms score|>=5",
           "$gt0018|Additional required criteria Score|==4",
           "($gt0003|Depressed mood|==1|local::at0007|Yes|)||($gt0004|Loss of interest/pleasure|==1|local::at0010|Yes|)"
         ],
         "then": [
-          "$gt0023|Diagnostic Result|=local::at0005|Positive Diagnosis of MDD by DSM-5 Criteria|"
+          "$gt0025|Interpretation text|=$gt0027.term"
+        ]
+      },
+      "gt0028": {
+        "id": "gt0028",
+        "priority": 1,
+        "when": [
+          "($gt0025|Interpretation text|==$gt0026.term)||(fired($gt0021))"
+        ],
+        "then": [
+          "$gt0023|Diagnostic Result|.value=$gt0025"
         ]
       }
     }
@@ -275,6 +285,25 @@
           "gt0024": {
             "id": "gt0024",
             "text": "Not positive"
+          },
+          "gt0025": {
+            "id": "gt0025",
+            "text": "Interpretation text",
+            "description": ""
+          },
+          "gt0026": {
+            "id": "gt0026",
+            "text": "Not positive Diagnosis of MDD by DSM-5 Criteria",
+            "description": ""
+          },
+          "gt0027": {
+            "id": "gt0027",
+            "text": "Positive Diagnosis of MDD by DSM-5 Criteria",
+            "description": ""
+          },
+          "gt0028": {
+            "id": "gt0028",
+            "text": "Output text"
           }
         }
       }
