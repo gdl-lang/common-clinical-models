@@ -33,8 +33,8 @@ Barili F, Pacini D, Rosato F, Roberto M, Battisti A, Grossi C, Alamanni F, Di Ba
 
 Borracci RA, Rubio M, Baldi J Jr, Ingino CA, Barisani JL. Validation of age, creatinine and ejection fraction (ACEF) and Cockcroft-Gault ACEF scores in elective cardiac surgery. Medicina (B Aires). 2017;77(4):297-303. English. PMID: 28825573.
 ">
-		["MD5-CAM-1.0.1"] = <"0A06A3768E0E04B6CCD7CBA832DD579D">
 		["current_contact"] = <"Maryam Razavi, Cambio CDS<maryam.razavi2009@gmail.com>">
+		["MD5-CAM-1.0.1"] = <"AC9E8180AE191B0F3DB2A8A4F16073FE">
 	>
 
 definition
@@ -42,7 +42,7 @@ definition
 		data matches {
 			HISTORY[at0001] matches {	-- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
 							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
@@ -104,7 +104,14 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0004] matches {*}
+			ITEM_TREE[at0004] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0022] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
 		}
 	}
 
@@ -123,7 +130,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -168,6 +175,11 @@ ontology
 				["at0021"] = <
 					text = <"Ejection Fraction">
 					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
 				>
 			>
 		>
