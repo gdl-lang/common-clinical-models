@@ -72,8 +72,8 @@
       },
       "gt0008": {
         "id": "gt0008",
-        "model_id": "openEHR-EHR-OBSERVATION.acef_ii_risk_score_for_cardiac_surgery.v1",
-        "template_id": "openEHR-EHR-OBSERVATION.acef_ii_risk_score_for_cardiac_surgery.v1",
+        "model_id": "openEHR-EHR-OBSERVATION.acef_ii_risk_cardiac_surgery.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.acef_ii_risk_cardiac_surgery.v1",
         "type": "INPUT",
         "elements": {
           "gt0009": {
@@ -88,8 +88,8 @@
       },
       "gt0017": {
         "id": "gt0017",
-        "model_id": "openEHR-EHR-OBSERVATION.acef_ii_risk_score_for_cardiac_surgery.v1",
-        "template_id": "openEHR-EHR-OBSERVATION.acef_ii_risk_score_for_cardiac_surgery.v1",
+        "model_id": "openEHR-EHR-OBSERVATION.acef_ii_cardiac_surgery.v1",
+        "template_id": "openEHR-EHR-OBSERVATION.acef_ii_risk_cardiac_surgery.v1",
         "type": "OUTPUT",
         "elements": {
           "gt0018": {
@@ -191,16 +191,16 @@
           "$gt0007|Hematocrit|!=null"
         ],
         "then": [
-          "$gt0021|ACEF II Score|.magnitude=($gt0003.magnitude/$gt0009.magnitude)+$gt0010.value+$gt0018.value+$gt0028",
-          "$gt0021|ACEF II Score|.precision=1",
-          "$gt0021|ACEF II Score|.unit='1'"
+          "$gt0021|Total score|.magnitude=($gt0003.magnitude/$gt0009.magnitude)+$gt0010.value+$gt0018.value+$gt0028",
+          "$gt0021|Total score|.precision=1",
+          "$gt0021|Total score|.unit='1'"
         ]
       },
       "gt0031": {
         "id": "gt0031",
         "priority": 2,
         "when": [
-          "$gt0021|ACEF II Score|!=null"
+          "$gt0021|Total score|!=null"
         ],
         "then": [
           "$gt0032|x|=0.75*$gt0021.magnitude-4.86"
@@ -210,7 +210,7 @@
         "id": "gt0033",
         "priority": 1,
         "when": [
-          "$gt0021|ACEF II Score|!=null"
+          "$gt0021|Total score|!=null"
         ],
         "then": [
           "$gt0022|Predicted 30-day operative mortality|.magnitude=(2.71828^$gt0032/(1+2.71828^$gt0032))*100",
@@ -287,7 +287,7 @@
           },
           "gt0021": {
             "id": "gt0021",
-            "text": "ACEF II Score",
+            "text": "Total score",
             "description": "*"
           },
           "gt0022": {

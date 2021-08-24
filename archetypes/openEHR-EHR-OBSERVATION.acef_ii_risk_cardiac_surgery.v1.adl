@@ -1,0 +1,174 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.acef_ii_risk_cardiac_surgery.v1
+
+concept
+	[at0000]	-- ACEF II risk score for cardiac surgery
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Maryam Razavi">
+		["email"] = <"maryam.razavi@cambio.se">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2021-08-24">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the results for each component parameter and the  ACEF II Risk Score.">
+			use = <"Use to record the results for each component parameter and the  ACEF II Risk Score.
+">
+			keywords = <"cardiac", "surgery", "EF", "ejection", "fraction", "creatinine">
+			misuse = <"">
+			copyright = <"© Cambio CDS">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["licence"] = <"Cambio CDS">
+		["references"] = <"Ranucci M, Pistuddi V, Scolletta S, de Vincentiis C, Menicanti L. The ACEF II Risk Score for cardiac surgery: updated but still parsimonious. Eur Heart J. 2018 Jun 14;39(23):2183-2189. doi: 10.1093/eurheartj/ehx228. PMID: 28498904.
+
+Barili F, Pacini D, Rosato F, Roberto M, Battisti A, Grossi C, Alamanni F, Di Bartolomeo R, Parolari A. In-hospital mortality risk assessment in elective and non-elective cardiac surgery: a comparison between EuroSCORE II and age, creatinine, ejection fraction score. Eur J Cardiothorac Surg. 2014 Jul;46(1):44-8. doi: 10.1093/ejcts/ezt581. Epub 2014 Jan 8. PMID: 24401691.
+
+Borracci RA, Rubio M, Baldi J Jr, Ingino CA, Barisani JL. Validation of age, creatinine and ejection fraction (ACEF) and Cockcroft-Gault ACEF scores in elective cardiac surgery. Medicina (B Aires). 2017;77(4):297-303. English. PMID: 28825573.
+">
+		["MD5-CAM-1.0.1"] = <"0A06A3768E0E04B6CCD7CBA832DD579D">
+		["current_contact"] = <"Maryam Razavi, Cambio CDS<maryam.razavi2009@gmail.com>">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- ACEF II risk score for cardiac surgery
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Serum creatinine
+										value matches {
+											0|[local::at0006], 	-- <=2.0 mg/dL (177 µmol/L)
+											2|[local::at0007]  	-- >2mg/dl (177 µmol/L)
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- Emergency surgery
+										value matches {
+											0|[local::at0009], 	-- No
+											3|[local::at0010]  	-- Yes
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Predicted 30 day operative mortality
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::507]>
+												list = <
+													["1"] = <
+														units = <"%">
+														precision = <|3|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Ejection Fraction
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::507]>
+												list = <
+													["1"] = <
+														units = <"%">
+														precision = <|3|>
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0004] matches {*}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"ACEF II risk score for cardiac surgery">
+					description = <"An assessment score used to predict 30-day mortality after elective or emergency cardiac surgery.
+">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0005"] = <
+					text = <"Serum creatinine">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"<=2.0 mg/dL (177 µmol/L)">
+					description = <"Normal creatinine levels">
+				>
+				["at0007"] = <
+					text = <">2mg/dl (177 µmol/L)">
+					description = <"Increased levels of creatinine levels">
+				>
+				["at0008"] = <
+					text = <"Emergency surgery">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"No">
+					description = <"No emergency surgery required">
+				>
+				["at0010"] = <
+					text = <"Yes">
+					description = <"Emergency surgery required">
+				>
+				["at0017"] = <
+					text = <"Total score">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Predicted 30 day operative mortality">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Ejection Fraction">
+					description = <"*">
+				>
+			>
+		>
+	>
