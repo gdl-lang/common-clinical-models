@@ -1,0 +1,350 @@
+guidelines:
+  1: acep_ED_covid19_managment_tool.v1
+test_cases:
+- id: Pre-condition fulfilled
+  input:
+    1:
+      gt0003|Age: 18,a
+      gt0005|NIH severity classification: local::at0102|Critical|
+  expected_output:
+    1:
+      gt0036|NIH severity classification: local::at0045|Critical|
+      gt0037|Patient's management plan: Workup-CXR, U/S, CT?, EKG, CBC, CMP (CRP, D-Dimer, Ferritin). Tx-Dexamethasone +/- Remdesivir; Oxygen Support; Intubate if Severe Resp Distress; Conservative Fluid Strategy. Admit to ICU with proph a/c (unless preg).
+- id: pre-condition not fulfilled
+  input:
+    1:
+      gt0003|Age: 15,a
+      gt0005|NIH severity classification: local::at0102|Critical|
+  expected_output:
+    1: {}
+- id: Critical disease severity
+  input:
+    1:
+      gt0003|Age: 45,a
+      gt0005|NIH severity classification: local::at0102|Critical|
+  expected_output:
+    1:
+      gt0036|NIH severity classification: local::at0045|Critical|
+      gt0037|Patient's management plan: Workup-CXR, U/S, CT?, EKG, CBC, CMP (CRP, D-Dimer, Ferritin). Tx-Dexamethasone +/- Remdesivir; Oxygen Support; Intubate if Severe Resp Distress; Conservative Fluid Strategy. Admit to ICU with proph a/c (unless preg).
+- id: Severe disease severity
+  input:
+    1:
+      gt0003|Age: 45,a
+      gt0005|NIH severity classification: local::at0101|Severe|
+  expected_output:
+    1:
+      gt0036|NIH severity classification: local::at0044|Severe|
+      gt0037|Patient's management plan: Workup-CXR, U/S, CT?, EKG, CBC, CMP (CRP, D-Dimer, Ferritin). Tx-Dexamethasone +/- Remdesivir, Oxygen Support. Admit -> Clinical Decision Floor vs ICU with proph a/c (unless preg).
+- id: Mild without PRIEST score and risk factors results
+  input:
+    1:
+      gt0003|Age: 45,a
+      gt0005|NIH severity classification: local::at0099|Mild|
+  expected_output:
+    1: {}
+- id: Moderate disease severity + PRIEST score = 0 + risk factors 0
+  input:
+    1:
+      gt0003|Age: 45,a
+      gt0005|NIH severity classification: local::at0100|Moderate|
+      gt0006|Sex: 0|local::at0005|Female|
+      gt0007|Age, years: 0|local::at0008|16-49|
+      gt0008|Respiratory rate, breaths per min: 0|local::at0013|12-20|
+      gt0009|Oxygen saturation: 0|local::at0018|>95%|
+      gt0010|Heart rate, beats per min: 0|local::at0023|51-90|
+      gt0011|Systolic BP, mmHg: 0|local::at0031|111-219|
+      gt0012|Temperature: 0|local::at0037|36.1-38.0°C (>96.8 - 100.4°F)|
+      gt0013|Alertness: 0|local::at0043|Alert|
+      gt0014|Inspired oxygen: 0|local::at0046|Air|
+      gt0015|Performance status: 0|local::at0049|Unrestricted normal activity|
+      gt0016|Cancer: 0|local::at0104|No|
+      gt0017|Cardiovascular disease: 0|local::at0106|No|
+      gt0018|Chronic respiratory disease: 0|local::at0108|No|
+      gt0019|Diabetes type II: 0|local::at0110|No|
+      gt0020|Down's Syndrome: 0|local::at0112|No|
+      gt0021|Hypertension: 0|local::at0114|No|
+      gt0022|Immunosuppression: 0|local::at0116|No|
+      gt0023|Neurologic disease: 0|local::at0118|No|
+      gt0024|Obesity: 0|local::at0120|No|
+      gt0025|Obstructive sleep apnea: 0|local::at0122|No|
+      gt0026|Pregnancy: 0|local::at0124|No|
+      gt0027|Renal disease: 0|local::at0126|No|
+      gt0028|Steroid usage: 0|local::at0128|No|
+  expected_output:
+    1:
+      gt0030|PRIEST total score: 0
+      gt0031|COVID-19 additional risk factors: 0
+      gt0036|NIH severity classification: local::at0043|Moderate|
+      gt0037|Patient's management plan: Workup-CXR, U/S, CT?, EKG, CBC, CMP (CRP, D-Dimer, Ferritin). Tx-Monoclonal Abx? (Avoid steroids if not hypoxic) No concerning imaging/labs? Consider D/C home with CDC Patient Materials + Home PulseOx. If Admit -> Obs/floor with proph a/c (unless preg).
+- id: Moderate disease severity + PRIEST score = 4 + risk factors 1
+  input:
+    1:
+      gt0003|Age: 45,a
+      gt0005|NIH severity classification: local::at0100|Moderate|
+      gt0006|Sex: 0|local::at0005|Female|
+      gt0007|Age, years: 4|local::at0011|>80|
+      gt0008|Respiratory rate, breaths per min: 0|local::at0013|12-20|
+      gt0009|Oxygen saturation: 0|local::at0018|>95%|
+      gt0010|Heart rate, beats per min: 0|local::at0023|51-90|
+      gt0011|Systolic BP, mmHg: 0|local::at0031|111-219|
+      gt0012|Temperature: 0|local::at0037|36.1-38.0°C (>96.8 - 100.4°F)|
+      gt0013|Alertness: 0|local::at0043|Alert|
+      gt0014|Inspired oxygen: 0|local::at0046|Air|
+      gt0015|Performance status: 0|local::at0049|Unrestricted normal activity|
+      gt0016|Cancer: 0|local::at0104|No|
+      gt0017|Cardiovascular disease: 0|local::at0106|No|
+      gt0018|Chronic respiratory disease: 0|local::at0108|No|
+      gt0019|Diabetes type II: 0|local::at0110|No|
+      gt0020|Down's Syndrome: 1|local::at0113|Yes|
+      gt0021|Hypertension: 0|local::at0114|No|
+      gt0022|Immunosuppression: 0|local::at0116|No|
+      gt0023|Neurologic disease: 0|local::at0118|No|
+      gt0024|Obesity: 0|local::at0120|No|
+      gt0025|Obstructive sleep apnea: 0|local::at0122|No|
+      gt0026|Pregnancy: 0|local::at0124|No|
+      gt0027|Renal disease: 0|local::at0126|No|
+      gt0028|Steroid usage: 0|local::at0128|No|
+  expected_output:
+    1:
+      gt0030|PRIEST total score: 4
+      gt0031|COVID-19 additional risk factors: 1
+      gt0036|NIH severity classification: local::at0043|Moderate|
+      gt0037|Patient's management plan: Workup-CXR, U/S, CT?, EKG, CBC, CMP (CRP, D-Dimer, Ferritin). Tx-Monoclonal Abx? (Avoid steroids if not hypoxic) No concerning imaging/labs? Consider D/C home with CDC Patient Materials + Home PulseOx. If Admit -> Obs/floor with proph a/c (unless preg).
+- id: Moderate disease severity + PRIEST score = 4 + risk factors 2
+  input:
+    1:
+      gt0003|Age: 45,a
+      gt0005|NIH severity classification: local::at0100|Moderate|
+      gt0006|Sex: 0|local::at0005|Female|
+      gt0007|Age, years: 4|local::at0011|>80|
+      gt0008|Respiratory rate, breaths per min: 0|local::at0013|12-20|
+      gt0009|Oxygen saturation: 0|local::at0018|>95%|
+      gt0010|Heart rate, beats per min: 0|local::at0023|51-90|
+      gt0011|Systolic BP, mmHg: 0|local::at0031|111-219|
+      gt0012|Temperature: 0|local::at0037|36.1-38.0°C (>96.8 - 100.4°F)|
+      gt0013|Alertness: 0|local::at0043|Alert|
+      gt0014|Inspired oxygen: 0|local::at0046|Air|
+      gt0015|Performance status: 0|local::at0049|Unrestricted normal activity|
+      gt0016|Cancer: 0|local::at0104|No|
+      gt0017|Cardiovascular disease: 0|local::at0106|No|
+      gt0018|Chronic respiratory disease: 0|local::at0108|No|
+      gt0019|Diabetes type II: 0|local::at0110|No|
+      gt0020|Down's Syndrome: 1|local::at0113|Yes|
+      gt0021|Hypertension: 1|local::at0115|Yes|
+      gt0022|Immunosuppression: 0|local::at0116|No|
+      gt0023|Neurologic disease: 0|local::at0118|No|
+      gt0024|Obesity: 0|local::at0120|No|
+      gt0025|Obstructive sleep apnea: 0|local::at0122|No|
+      gt0026|Pregnancy: 0|local::at0124|No|
+      gt0027|Renal disease: 0|local::at0126|No|
+      gt0028|Steroid usage: 0|local::at0128|No|
+  expected_output:
+    1:
+      gt0030|PRIEST total score: 4
+      gt0031|COVID-19 additional risk factors: 2
+      gt0036|NIH severity classification: local::at0043|Moderate|
+      gt0037|Patient's management plan: Workup-CXR, U/S, CT?, EKG, CBC, CMP (CRP, D-Dimer, Ferritin). Tx-Monoclonal Abx? (Avoid steroids if not hypoxic). Admit -> Obs/floor with proph a/c (unless preg).
+- id: Moderate disease severity + PRIEST score = 7 + risk factors 0
+  input:
+    1:
+      gt0003|Age: 45,a
+      gt0005|NIH severity classification: local::at0100|Moderate|
+      gt0006|Sex: 0|local::at0005|Female|
+      gt0007|Age, years: 4|local::at0011|>80|
+      gt0008|Respiratory rate, breaths per min: 3|local::at0016|<9|
+      gt0009|Oxygen saturation: 0|local::at0018|>95%|
+      gt0010|Heart rate, beats per min: 0|local::at0023|51-90|
+      gt0011|Systolic BP, mmHg: 0|local::at0031|111-219|
+      gt0012|Temperature: 0|local::at0037|36.1-38.0°C (>96.8 - 100.4°F)|
+      gt0013|Alertness: 0|local::at0043|Alert|
+      gt0014|Inspired oxygen: 0|local::at0046|Air|
+      gt0015|Performance status: 0|local::at0049|Unrestricted normal activity|
+      gt0016|Cancer: 0|local::at0104|No|
+      gt0017|Cardiovascular disease: 0|local::at0106|No|
+      gt0018|Chronic respiratory disease: 0|local::at0108|No|
+      gt0019|Diabetes type II: 0|local::at0110|No|
+      gt0020|Down's Syndrome: 0|local::at0112|No|
+      gt0021|Hypertension: 0|local::at0114|No|
+      gt0022|Immunosuppression: 0|local::at0116|No|
+      gt0023|Neurologic disease: 0|local::at0118|No|
+      gt0024|Obesity: 0|local::at0120|No|
+      gt0025|Obstructive sleep apnea: 0|local::at0122|No|
+      gt0026|Pregnancy: 0|local::at0124|No|
+      gt0027|Renal disease: 0|local::at0126|No|
+      gt0028|Steroid usage: 0|local::at0128|No|
+  expected_output:
+    1:
+      gt0030|PRIEST total score: 7
+      gt0031|COVID-19 additional risk factors: 0
+      gt0036|NIH severity classification: local::at0043|Moderate|
+      gt0037|Patient's management plan: Workup-CXR, U/S, CT?, EKG, CBC, CMP (CRP, D-Dimer, Ferritin). Tx-Monoclonal Abx? (Avoid steroids if not hypoxic). Admit -> Obs/floor with proph a/c (unless preg).
+- id: Mild disease severity + PRIEST score = 0 + risk factors 0
+  input:
+    1:
+      gt0003|Age: 45,a
+      gt0005|NIH severity classification: local::at0099|Mild|
+      gt0006|Sex: 0|local::at0005|Female|
+      gt0007|Age, years: 0|local::at0008|16-49|
+      gt0008|Respiratory rate, breaths per min: 0|local::at0013|12-20|
+      gt0009|Oxygen saturation: 0|local::at0018|>95%|
+      gt0010|Heart rate, beats per min: 0|local::at0023|51-90|
+      gt0011|Systolic BP, mmHg: 0|local::at0031|111-219|
+      gt0012|Temperature: 0|local::at0037|36.1-38.0°C (>96.8 - 100.4°F)|
+      gt0013|Alertness: 0|local::at0043|Alert|
+      gt0014|Inspired oxygen: 0|local::at0046|Air|
+      gt0015|Performance status: 0|local::at0049|Unrestricted normal activity|
+      gt0016|Cancer: 0|local::at0104|No|
+      gt0017|Cardiovascular disease: 0|local::at0106|No|
+      gt0018|Chronic respiratory disease: 0|local::at0108|No|
+      gt0019|Diabetes type II: 0|local::at0110|No|
+      gt0020|Down's Syndrome: 0|local::at0112|No|
+      gt0021|Hypertension: 0|local::at0114|No|
+      gt0022|Immunosuppression: 0|local::at0116|No|
+      gt0023|Neurologic disease: 0|local::at0118|No|
+      gt0024|Obesity: 0|local::at0120|No|
+      gt0025|Obstructive sleep apnea: 0|local::at0122|No|
+      gt0026|Pregnancy: 0|local::at0124|No|
+      gt0027|Renal disease: 0|local::at0126|No|
+      gt0028|Steroid usage: 0|local::at0128|No|
+  expected_output:
+    1:
+      gt0030|PRIEST total score: 0
+      gt0031|COVID-19 additional risk factors: 0
+      gt0036|NIH severity classification: local::at0042|Mild|
+      gt0037|Patient's management plan: Tx-Monoclonal Abx? (Avoid steroids if not hypoxic). Consider D/C home with CDC Patient Materials + Home PulseOx.
+- id: Mild disease severity + PRIEST score = 4 + risk factors 1
+  input:
+    1:
+      gt0003|Age: 55,a
+      gt0005|NIH severity classification: local::at0099|Mild|
+      gt0006|Sex: 1|local::at0006|Male|
+      gt0007|Age, years: 3|local::at0010|66-80|
+      gt0008|Respiratory rate, breaths per min: 0|local::at0013|12-20|
+      gt0009|Oxygen saturation: 0|local::at0018|>95%|
+      gt0010|Heart rate, beats per min: 0|local::at0023|51-90|
+      gt0011|Systolic BP, mmHg: 0|local::at0031|111-219|
+      gt0012|Temperature: 0|local::at0037|36.1-38.0°C (>96.8 - 100.4°F)|
+      gt0013|Alertness: 0|local::at0043|Alert|
+      gt0014|Inspired oxygen: 0|local::at0046|Air|
+      gt0015|Performance status: 0|local::at0049|Unrestricted normal activity|
+      gt0016|Cancer: 0|local::at0104|No|
+      gt0017|Cardiovascular disease: 0|local::at0106|No|
+      gt0018|Chronic respiratory disease: 1|local::at0109|Yes|
+      gt0019|Diabetes type II: 0|local::at0110|No|
+      gt0020|Down's Syndrome: 0|local::at0112|No|
+      gt0021|Hypertension: 0|local::at0114|No|
+      gt0022|Immunosuppression: 0|local::at0116|No|
+      gt0023|Neurologic disease: 0|local::at0118|No|
+      gt0024|Obesity: 0|local::at0120|No|
+      gt0025|Obstructive sleep apnea: 0|local::at0122|No|
+      gt0026|Pregnancy: 0|local::at0124|No|
+      gt0027|Renal disease: 0|local::at0126|No|
+      gt0028|Steroid usage: 0|local::at0128|No|
+  expected_output:
+    1:
+      gt0030|PRIEST total score: 4
+      gt0031|COVID-19 additional risk factors: 1
+      gt0036|NIH severity classification: local::at0042|Mild|
+      gt0037|Patient's management plan: Tx-Monoclonal Abx? (Avoid steroids if not hypoxic). Consider D/C home with CDC Patient Materials + Home PulseOx.
+- id: Mild disease severity + PRIEST score = 4 + risk factors 2
+  input:
+    1:
+      gt0003|Age: 55,a
+      gt0005|NIH severity classification: local::at0099|Mild|
+      gt0006|Sex: 1|local::at0006|Male|
+      gt0007|Age, years: 3|local::at0010|66-80|
+      gt0008|Respiratory rate, breaths per min: 0|local::at0013|12-20|
+      gt0009|Oxygen saturation: 0|local::at0018|>95%|
+      gt0010|Heart rate, beats per min: 0|local::at0023|51-90|
+      gt0011|Systolic BP, mmHg: 0|local::at0031|111-219|
+      gt0012|Temperature: 0|local::at0037|36.1-38.0°C (>96.8 - 100.4°F)|
+      gt0013|Alertness: 0|local::at0043|Alert|
+      gt0014|Inspired oxygen: 0|local::at0046|Air|
+      gt0015|Performance status: 0|local::at0049|Unrestricted normal activity|
+      gt0016|Cancer: 0|local::at0104|No|
+      gt0017|Cardiovascular disease: 0|local::at0106|No|
+      gt0018|Chronic respiratory disease: 1|local::at0109|Yes|
+      gt0019|Diabetes type II: 0|local::at0110|No|
+      gt0020|Down's Syndrome: 0|local::at0112|No|
+      gt0021|Hypertension: 0|local::at0114|No|
+      gt0022|Immunosuppression: 0|local::at0116|No|
+      gt0023|Neurologic disease: 0|local::at0118|No|
+      gt0024|Obesity: 0|local::at0120|No|
+      gt0025|Obstructive sleep apnea: 0|local::at0122|No|
+      gt0026|Pregnancy: 1|local::at0125|Yes|
+      gt0027|Renal disease: 0|local::at0126|No|
+      gt0028|Steroid usage: 0|local::at0128|No|
+  expected_output:
+    1:
+      gt0030|PRIEST total score: 4
+      gt0031|COVID-19 additional risk factors: 2
+      gt0036|NIH severity classification: local::at0042|Mild|
+      gt0037|Patient's management plan: Tx-Monoclonal Abx? (Avoid steroids if not hypoxic). Consider D/C home with CDC Patient Materials, Close f/u to PMD + Home PulseOx
+- id: Mild disease severity + PRIEST score = 7 + risk factors 0
+  input:
+    1:
+      gt0003|Age: 55,a
+      gt0005|NIH severity classification: local::at0099|Mild|
+      gt0006|Sex: 1|local::at0006|Male|
+      gt0007|Age, years: 3|local::at0010|66-80|
+      gt0008|Respiratory rate, breaths per min: 0|local::at0013|12-20|
+      gt0009|Oxygen saturation: 0|local::at0018|>95%|
+      gt0010|Heart rate, beats per min: 3|local::at0028|>130|
+      gt0011|Systolic BP, mmHg: 0|local::at0031|111-219|
+      gt0012|Temperature: 0|local::at0037|36.1-38.0°C (>96.8 - 100.4°F)|
+      gt0013|Alertness: 0|local::at0043|Alert|
+      gt0014|Inspired oxygen: 0|local::at0046|Air|
+      gt0015|Performance status: 0|local::at0049|Unrestricted normal activity|
+      gt0016|Cancer: 0|local::at0104|No|
+      gt0017|Cardiovascular disease: 0|local::at0106|No|
+      gt0018|Chronic respiratory disease: 0|local::at0108|No|
+      gt0019|Diabetes type II: 0|local::at0110|No|
+      gt0020|Down's Syndrome: 0|local::at0112|No|
+      gt0021|Hypertension: 0|local::at0114|No|
+      gt0022|Immunosuppression: 0|local::at0116|No|
+      gt0023|Neurologic disease: 0|local::at0118|No|
+      gt0024|Obesity: 0|local::at0120|No|
+      gt0025|Obstructive sleep apnea: 0|local::at0122|No|
+      gt0026|Pregnancy: 0|local::at0124|No|
+      gt0027|Renal disease: 0|local::at0126|No|
+      gt0028|Steroid usage: 0|local::at0128|No|
+  expected_output:
+    1:
+      gt0030|PRIEST total score: 7
+      gt0031|COVID-19 additional risk factors: 0
+      gt0036|NIH severity classification: local::at0042|Mild|
+      gt0037|Patient's management plan: Tx-Monoclonal Abx? (Avoid steroids if not hypoxic). Consider D/C home with CDC Patient Materials, Close f/u to PMD + Home PulseOx
+- id: maximum PRIEST score+ maximum number of risk factors
+  input:
+    1:
+      gt0003|Age: 56,a
+      gt0005|NIH severity classification: local::at0099|Mild|
+      gt0006|Sex: 1|local::at0006|Male|
+      gt0007|Age, years: 4|local::at0011|>80|
+      gt0008|Respiratory rate, breaths per min: 3|local::at0029|>24|
+      gt0009|Oxygen saturation: 3|local::at0021|<92%|
+      gt0010|Heart rate, beats per min: 3|local::at0028|>130|
+      gt0011|Systolic BP, mmHg: 3|local::at0035|>219|
+      gt0012|Temperature: 3|local::at0041|<35.1°C (<95.18°F)|
+      gt0013|Alertness: 3|local::at0044|Confused or not alert|
+      gt0014|Inspired oxygen: 2|local::at0047|Supplemental oxygen|
+      gt0015|Performance status: 4|local::at0053|Bed/chair bound, no self-care|
+      gt0016|Cancer: 1|local::at0105|Yes|
+      gt0017|Cardiovascular disease: 1|local::at0107|Yes|
+      gt0018|Chronic respiratory disease: 1|local::at0109|Yes|
+      gt0019|Diabetes type II: 1|local::at0111|Yes|
+      gt0020|Down's Syndrome: 1|local::at0113|Yes|
+      gt0021|Hypertension: 1|local::at0115|Yes|
+      gt0022|Immunosuppression: 1|local::at0117|Yes|
+      gt0023|Neurologic disease: 1|local::at0119|Yes|
+      gt0024|Obesity: 1|local::at0121|Yes|
+      gt0025|Obstructive sleep apnea: 1|local::at0123|Yes|
+      gt0026|Pregnancy: 1|local::at0125|Yes|
+      gt0027|Renal disease: 1|local::at0127|Yes|
+      gt0028|Steroid usage: 1|local::at0129|Yes|
+  expected_output:
+    1:
+      gt0030|PRIEST total score: 29
+      gt0031|COVID-19 additional risk factors: 13
+      gt0036|NIH severity classification: local::at0042|Mild|
+      gt0037|Patient's management plan: Tx-Monoclonal Abx? (Avoid steroids if not hypoxic). Consider D/C home with CDC Patient Materials, Close f/u to PMD + Home PulseOx
