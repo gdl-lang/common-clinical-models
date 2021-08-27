@@ -46,25 +46,17 @@
           }
         }
       },
-      "gt0004": {
-        "id": "gt0004",
-        "model_id": "openEHR-EHR-OBSERVATION.lab_test-full_blood_count.v1",
-        "template_id": "openEHR-EHR-OBSERVATION.lab_test-full_blood_count.v1",
-        "type": "INPUT",
-        "elements": {
-          "gt0005": {
-            "id": "gt0005",
-            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0078.13]"
-          }
-        }
-      },
       "gt0006": {
         "id": "gt0006",
         "model_id": "openEHR-EHR-OBSERVATION.clif_c_aclf.v0",
         "template_id": "openEHR-EHR-OBSERVATION.clif_c_aclf.v0",
         "type": "INPUT",
         "elements": {
-          "gt0007": {
+          "gt0030": {
+            "id": "gt0030",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0047]"
+          },
+		  "gt0007": {
             "id": "gt0007",
             "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
           },
@@ -127,9 +119,6 @@
         }
       }
     },
-    "pre_conditions": [
-      "$gt0005|White cell count|.unit=='10*9/l'"
-    ],
     "rules": {
       "gt0024": {
         "id": "gt0024",
@@ -137,18 +126,17 @@
         "when": [
           "$gt0003|Age|!=null",
           "$gt0003|Age|.unit=='a'",
-          "$gt0005|White cell count|!=null",
-          "$gt0005|White cell count|.unit=='10*9/l'",
           "$gt0007|Bilirubin|!=null",
           "$gt0008|Creatinine|!=null",
           "$gt0009|West-Haven Grade for Hepatic Encephalopathy|!=null",
           "$gt0010|INR|!=null",
           "$gt0011|MAP|!=null",
           "$gt0013|PaO2/FiO2 ratio|!=null",
-          "$gt0012|Information available|==local::at0030|PaO2/FiO2 ratio|"
+          "$gt0012|Information available|==local::at0030|PaO2/FiO2 ratio|",
+          "$gt0030|White cell count|!=null"
         ],
         "then": [
-          "$gt0016|Total score|.magnitude=round(10*((0.33*($gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0011.value+$gt0013.value))+(0.04*$gt0003.magnitude)+(0.63*log($gt0005.magnitude))-2))",
+          "$gt0016|Total score|.magnitude=round(10*((0.33*($gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0011.value+$gt0013.value))+(0.04*$gt0003.magnitude)+(0.63*log($gt0030.magnitude))-2))",
           "$gt0016|Total score|.unit='1'"
         ]
       },
@@ -158,8 +146,7 @@
         "when": [
           "$gt0003|Age|!=null",
           "$gt0003|Age|.unit=='a'",
-          "$gt0005|White cell count|!=null",
-          "$gt0005|White cell count|.unit=='10*9/l'",
+          "$gt0030|White cell count|!=null",
           "$gt0007|Bilirubin|!=null",
           "$gt0008|Creatinine|!=null",
           "$gt0009|West-Haven Grade for Hepatic Encephalopathy|!=null",
@@ -169,7 +156,7 @@
           "$gt0012|Information available|==local::at0029|SpO2/FiO2 ratio|"
         ],
         "then": [
-          "$gt0016|Total score|.magnitude=round(10*((0.33*($gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0011.value+$gt0014.value))+(0.04*$gt0003.magnitude)+(0.63*log($gt0005.magnitude))-2))",
+          "$gt0016|Total score|.magnitude=round(10*((0.33*($gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0011.value+$gt0014.value))+(0.04*$gt0003.magnitude)+(0.63*log($gt0030.magnitude))-2))",
           "$gt0016|Total score|.unit='1'"
         ]
       },
@@ -180,7 +167,7 @@
           "(fired($gt0024))||(fired($gt0025))"
         ],
         "then": [
-          "$gt0017|Probability of dying at 1 month|.magnitude=100*(1-e^(0.0022*(-1)*e^(0.0995*$gt0016.magnitude)))",
+		  "$gt0017|Probability of dying at 1 month|.magnitude=100*(1-e^(0.0022*(-1)*e^(0.0995*$gt0016.magnitude)))",
           "$gt0017|Probability of dying at 1 month|.unit='%'",
           "$gt0017|Probability of dying at 1 month|.precision=1"
         ]
@@ -192,7 +179,7 @@
           "(fired($gt0024))||(fired($gt0025))"
         ],
         "then": [
-          "$gt0018|Probability of dying at 3 months|.magnitude=100*(1-e^(0.0079*(-1)*e^(0.0869*$gt0016.magnitude)))",
+		  "$gt0018|Probability of dying at 3 months|.magnitude=100*(1-e^(0.0079*(-1)*e^(0.0869*$gt0016.magnitude)))",
           "$gt0018|Probability of dying at 3 months|.unit='%'",
           "$gt0018|Probability of dying at 3 months|.precision=1"
         ]
@@ -204,7 +191,7 @@
           "(fired($gt0024))||(fired($gt0025))"
         ],
         "then": [
-          "$gt0019|Probability of dying at 6 months|.magnitude=100*(1-e^(0.0115*(-1)*e^(0.0824*$gt0016.magnitude)))",
+		  "$gt0019|Probability of dying at 6 months|.magnitude=100*(1-e^(0.0115*(-1)*e^(0.0824*$gt0016.magnitude)))",
           "$gt0019|Probability of dying at 6 months|.unit='%'",
           "$gt0019|Probability of dying at 6 months|.precision=1"
         ]
@@ -216,7 +203,7 @@
           "(fired($gt0024))||(fired($gt0025))"
         ],
         "then": [
-          "$gt0020|Probability of dying at 1 year|.magnitude=100*(1-e^(0.0231*(-1)*e^(0.0731*$gt0016.magnitude)))",
+		  "$gt0020|Probability of dying at 1 year|.magnitude=100*(1-e^(0.0231*(-1)*e^(0.0731*$gt0016.magnitude)))",
           "$gt0020|Probability of dying at 1 year|.unit='%'",
           "$gt0020|Probability of dying at 1 year|.precision=1"
         ]
@@ -237,11 +224,6 @@
             "id": "gt0003",
             "text": "Age",
             "description": "Age in years, and for babies: months, weeks or days"
-          },
-          "gt0005": {
-            "id": "gt0005",
-            "text": "White cell count",
-            "description": "The number of white cells per litre"
           },
           "gt0007": {
             "id": "gt0007",
@@ -331,6 +313,11 @@
           "gt0029": {
             "id": "gt0029",
             "text": "Calculate risk of death at 12 months"
+          },
+          "gt0030": {
+            "id": "gt0030",
+            "text": "White cell count",
+            "description": "*"
           }
         }
       }
