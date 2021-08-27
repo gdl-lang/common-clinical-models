@@ -1,0 +1,182 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.abc_stroke_risk.v1
+
+concept
+	[at0000]	-- ABC stroke risk score
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Maryam Razavi">
+		["email"] = <"maryam.razavi@cambio.se">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2021-08-27">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the results for each component parameter and the ABC stroke risk score.">
+			use = <"Use to record the results for each component parameter and the ABC stroke risk score.">
+			keywords = <"atrial", "fibrillation", "stroke", "risk", "systemic", "embolism">
+			misuse = <"">
+			copyright = <"© Cambio CDS">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <"Eneimi Allwell-Brown", ...>
+	other_details = <
+		["references"] = <"Hijazi Z, Lindbäck J, Alexander JH, Hanna M, Held C, Hylek EM, Lopes RD, Oldgren J, Siegbahn A, Stewart RA, White HD, Granger CB, Wallentin L; ARISTOTLE and STABILITY Investigators. The ABC (age, biomarkers, clinical history) stroke risk score: a biomarker-based risk score for predicting stroke in atrial fibrillation. Eur Heart J. 2016 May 21;37(20):1582-90. doi: 10.1093/eurheartj/ehw054. Epub 2016 Feb 25. PMID: 26920728; PMCID: PMC4875560.">
+		["MD5-CAM-1.0.1"] = <"3FCA0E975E9356A5B65B6644F697B565">
+		["current_contact"] = <"Maryam Razavi, Cambio CDS<maryam.razavi2009@gmail.com>">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- ABC stroke risk score
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Age points
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {	-- Prior stroke or transient ischaemic attack points
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {	-- cTnT hs points
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {	-- NT proBNP points
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Total score
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {	-- Comment
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0013] matches {	-- Tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0014] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"ABC stroke risk score">
+					description = <"An assessment score used to predicte stroke in individuals with atrial fibrillation.">
+					comment = <"Original version, c 2007">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0005"] = <
+					text = <"Prior stroke or transient ischaemic attack points">
+					description = <"Points assigned based on the presence or absence of a prior history of stroke or TIA in the individual.">
+				>
+				["at0006"] = <
+					text = <"Age points">
+					description = <"Points assigned based on the individual's age.">
+				>
+				["at0007"] = <
+					text = <"cTnT hs points">
+					description = <"Points assigned based on the individual's plasma concentration of cardiac troponin-T high-sensitivity (or cardiac troponin-I high sensitivity).">
+				>
+				["at0008"] = <
+					text = <"NT proBNP points">
+					description = <"Points assigned based on the individual's plasma concentration of N-terminal fragment B-type natriuretic peptide.">
+				>
+				["at0009"] = <
+					text = <"Total score">
+					description = <"Sum total of points assigned based on the 4 (four) ABC stroke risk criteria.">
+				>
+				["at0012"] = <
+					text = <"Comment">
+					description = <"Additional information about this score and/or any of its components.">
+				>
+				["at0013"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0014"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
+				>
+			>
+		>
+	>
