@@ -2,152 +2,151 @@ archetype (adl_version=1.4; uid=1a9225d3-eff9-42db-8fca-9d88b8e9e749)
 	openEHR-EHR-OBSERVATION.vaco_mortality_index.v0
 
 concept
-	[at0000]
-
+	[at0000]	-- Veterans Health Administration COVID-19 (VACO) Index for COVID-19 Mortality
 language
 	original_language = <[ISO_639-1::en]>
-
 description
 	original_author = <
-		["date"] = <"2021-08-20">
 		["name"] = <"Rosario Silva Sepulveda">
-		["organisation"] = <"Cambio CDS">
 		["email"] = <"rosario.silva.s@outlook.com">
+		["organisation"] = <"Cambio CDS">
+		["date"] = <"2021-08-20">
 	>
-	lifecycle_state = <"in_development">
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record the results for each component parameter for the VACO Index for COVID-19 Mortality.">
-			keywords = <"COVID-19","coronavirus","mortality","index","Veterans","Health","Administration">
-			copyright = <"© Cambio CDS">
 			use = <"Use to record the results for each component parameter and their total sum for the VACO Index for COVID-19 Mortality.">
+			keywords = <"COVID-19", "coronavirus", "mortality", "index", "Veterans", "Health", "Administration">
 			misuse = <"Not to be used to record information related to past personal medical history. Use instead openEHR-EHR-EVALUATION.problem_diagnosis.v1.
 
 Not to be used to record information related to basic demographics. Use instead openEHR-EHR-EVALUATION.basic_demographic.v1.">
+			copyright = <"© Cambio CDS">
 		>
 	>
+	lifecycle_state = <"NotSet">
+	other_contributors = <>
 	other_details = <
-		["custodian_organisation"] = <"openEHR Foundation">
+		["original_publisher"] = <"openEHR Foundation">
+		["current_contact"] = <"rosario.silva.s@outlook.com">
+		["build_uid"] = <"cc33828b-9e52-324a-915d-576e08280479">
+		["original_namespace"] = <"org.openehr">
 		["references"] = <"King JT Jr, Yoon JS, Rentsch CT, Tate JP, Park LS, Kidwai-Khan F, Skanderson M, Hauser RG, Jacobson DA, Erdos J, Cho K, Ramoni R, Gagnon DR, Justice AC. Development and validation of a 30-day mortality index based on pre-existing medical administrative data from 13,323 COVID-19 patients: The Veterans Health Administration COVID-19 (VACO) Index. PLoS One. 2020 Nov 11;15(11):e0241825. doi: 10.1371/journal.pone.0241825. PMID: 33175863; PMCID: PMC7657526.
 
 King JT Jr, Yoon JS, Bredl ZM, Habboushe JP, Walker GA, Rentsch CT, Tate JP, Kashyap NM, Hintz RC II, Chopra AP, Justice AC. Accuracy of the Veterans Health Administration COVID-19 (VACO) Index for predicting short-term mortality among 1,307 Yale New Haven Hospital inpatients and 427,224 Medicare patients. medRxiv. 2021 Jan 01:e20219069. doi: https://doi.org/10.1101/2021.01.01.20249069.">
-		["current_contact"] = <"rosario.silva.s@outlook.com">
-		["original_namespace"] = <"org.openehr">
-		["original_publisher"] = <"openEHR Foundation">
+		["MD5-CAM-1.0.1"] = <"4AE6AF984EE78141013B733E1633DC9F">
 		["custodian_namespace"] = <"org.openehr">
-		["MD5-CAM-1.0.1"] = <"7ebb58e5572fdb339a5db57cd7afc069">
-		["build_uid"] = <"cc33828b-9e52-324a-915d-576e08280479">
+		["custodian_organisation"] = <"openEHR Foundation">
 	>
 
 definition
-	OBSERVATION[at0000] matches {    -- Veterans Health Administration COVID-19 (VACO) Index for COVID-19 Mortality
+	OBSERVATION[at0000] matches {	-- Veterans Health Administration COVID-19 (VACO) Index for COVID-19 Mortality
 		data matches {
-			HISTORY[at0001] matches {    -- History
+			HISTORY[at0001] matches {	-- History
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {    -- Tree
+							ITEM_TREE[at0003] matches {	-- Tree
 								items cardinality matches {0..*; unordered} matches {
-									CLUSTER[at0063] occurrences matches {0..1} matches {    -- Past Medical History for CCI
+									CLUSTER[at0063] occurrences matches {0..1} matches {	-- Past Medical History for CCI
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0045] occurrences matches {0..1} matches {    -- AIDS
+											ELEMENT[at0045] occurrences matches {0..1} matches {	-- AIDS
 												value matches {
-													0|[local::at0011],
-													6|[local::at0047]
+													0|[local::at0011], 	-- No
+													6|[local::at0047]  	-- Yes
 												}
 											}
-											ELEMENT[at0025] occurrences matches {0..1} matches {    -- History of Cancer
+											ELEMENT[at0025] occurrences matches {0..1} matches {	-- History of Cancer
 												value matches {
-													0|[local::at0026],
-													2|[local::at0027],
-													6|[local::at0028]
+													0|[local::at0026], 	-- None
+													2|[local::at0027], 	-- Cancer (except skin cancer)
+													6|[local::at0028]  	-- Cancer, metastatic (cancer spreading to another part of the body)
 												}
 											}
-											ELEMENT[at0029] occurrences matches {0..1} matches {    -- Cerebrovascular disease
+											ELEMENT[at0029] occurrences matches {0..1} matches {	-- Cerebrovascular disease
 												value matches {
-													0|[local::at0011],
-													1|[local::at0012]
+													0|[local::at0011], 	-- No
+													1|[local::at0012]  	-- Yes
 												}
 											}
-											ELEMENT[at0010] occurrences matches {0..1} matches {    -- Chronic pulmonary disease
+											ELEMENT[at0010] occurrences matches {0..1} matches {	-- Chronic pulmonary disease
 												value matches {
-													0|[local::at0011],
-													1|[local::at0012]
+													0|[local::at0011], 	-- No
+													1|[local::at0012]  	-- Yes
 												}
 											}
-											ELEMENT[at0019] occurrences matches {0..1} matches {    -- Congestive Heart Failure
+											ELEMENT[at0019] occurrences matches {0..1} matches {	-- Congestive Heart Failure
 												value matches {
-													0|[local::at0011],
-													1|[local::at0012]
+													0|[local::at0011], 	-- No
+													1|[local::at0012]  	-- Yes
 												}
 											}
-											ELEMENT[at0022] occurrences matches {0..1} matches {    -- Dementia
+											ELEMENT[at0022] occurrences matches {0..1} matches {	-- Dementia
 												value matches {
-													0|[local::at0011],
-													1|[local::at0012]
+													0|[local::at0011], 	-- No
+													1|[local::at0012]  	-- Yes
 												}
 											}
-											ELEMENT[at0005] occurrences matches {0..1} matches {    -- History of Diabetes
+											ELEMENT[at0005] occurrences matches {0..1} matches {	-- History of Diabetes
 												value matches {
-													0|[local::at0026],
-													1|[local::at0008],
-													2|[local::at0009]
+													0|[local::at0026], 	-- None
+													1|[local::at0008], 	-- Diabetes
+													2|[local::at0009]  	-- Diabetes, with complications (e.g., eyes, kidneys, ketoacidosis)
 												}
 											}
-											ELEMENT[at0032] occurrences matches {0..1} matches {    -- History of Liver disease
+											ELEMENT[at0032] occurrences matches {0..1} matches {	-- History of Liver disease
 												value matches {
-													0|[local::at0026],
-													1|[local::at0034],
-													3|[local::at0035]
+													0|[local::at0026], 	-- None
+													1|[local::at0034], 	-- Liver disease, mild (e.g., viral hepatitis B or C, alcoholic hepatitis)
+													3|[local::at0035]  	-- Liver disease, moderate or severe (e.g., esophageal varices, fatty liver, liver failure)
 												}
 											}
-											ELEMENT[at0036] occurrences matches {0..1} matches {    -- Myocardial Infarction
+											ELEMENT[at0036] occurrences matches {0..1} matches {	-- Myocardial Infarction
 												value matches {
-													0|[local::at0011],
-													1|[local::at0012]
+													0|[local::at0011], 	-- No
+													1|[local::at0012]  	-- Yes
 												}
 											}
-											ELEMENT[at0039] occurrences matches {0..1} matches {    -- Peptic Ulcer Disease
+											ELEMENT[at0039] occurrences matches {0..1} matches {	-- Peptic Ulcer Disease
 												value matches {
-													0|[local::at0011],
-													1|[local::at0012]
+													0|[local::at0011], 	-- No
+													1|[local::at0012]  	-- Yes
 												}
 											}
-											ELEMENT[at0016] occurrences matches {0..1} matches {    -- Peripheral Vascular Disease
+											ELEMENT[at0016] occurrences matches {0..1} matches {	-- Peripheral Vascular Disease
 												value matches {
-													0|[local::at0011],
-													1|[local::at0012]
+													0|[local::at0011], 	-- No
+													1|[local::at0012]  	-- Yes
 												}
 											}
-											ELEMENT[at0042] occurrences matches {0..1} matches {    -- Plegia
+											ELEMENT[at0042] occurrences matches {0..1} matches {	-- Plegia
 												value matches {
-													0|[local::at0011],
-													2|[local::at0015]
+													0|[local::at0011], 	-- No
+													2|[local::at0015]  	-- Yes
 												}
 											}
-											ELEMENT[at0013] occurrences matches {0..1} matches {    -- Renal disease
+											ELEMENT[at0013] occurrences matches {0..1} matches {	-- Renal disease
 												value matches {
-													0|[local::at0011],
-													2|[local::at0015]
+													0|[local::at0011], 	-- No
+													2|[local::at0015]  	-- Yes
 												}
 											}
-											ELEMENT[at0048] occurrences matches {0..1} matches {    -- Rheumatic disease
+											ELEMENT[at0048] occurrences matches {0..1} matches {	-- Rheumatic disease
 												value matches {
-													0|[local::at0011],
-													1|[local::at0012]
+													0|[local::at0011], 	-- No
+													1|[local::at0012]  	-- Yes
 												}
 											}
-											ELEMENT[at0051] occurrences matches {0..1} matches {    -- Total score
+											ELEMENT[at0051] occurrences matches {0..1} matches {	-- Total score
 												value matches {
 													DV_COUNT matches {*}
 												}
 											}
 										}
 									}
-									CLUSTER[at0065] occurrences matches {0..1} matches {    -- Coefficient calculations
+									CLUSTER[at0065] occurrences matches {0..1} matches {	-- Coefficient calculations
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0066] occurrences matches {0..1} matches {    -- Age coefficient
+											ELEMENT[at0066] occurrences matches {0..1} matches {	-- Age coefficient
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::380]>
@@ -160,7 +159,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0067] occurrences matches {0..1} matches {    -- Sex coefficient
+											ELEMENT[at0067] occurrences matches {0..1} matches {	-- Sex coefficient
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::380]>
@@ -173,7 +172,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0068] occurrences matches {0..1} matches {    -- CCI_Age coefficient
+											ELEMENT[at0068] occurrences matches {0..1} matches {	-- CCI_Age coefficient
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::380]>
@@ -186,7 +185,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0069] occurrences matches {0..1} matches {    -- MI_PVD coefficient
+											ELEMENT[at0069] occurrences matches {0..1} matches {	-- MI_PVD coefficient
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::380]>
@@ -197,18 +196,13 @@ definition
 															>
 														>
 													>
-												}
-											}
-											ELEMENT[at0070] occurrences matches {0..1} matches {    -- Constant coefficient
-												value matches {
-													DV_QUANTITY matches {*}
 												}
 											}
 										}
 									}
-									CLUSTER[at0071] occurrences matches {0..1} matches {    -- Total Risk calculation
+									CLUSTER[at0071] occurrences matches {0..1} matches {	-- Total Risk calculation
 										items cardinality matches {1..*; unordered} matches {
-											ELEMENT[at0072] occurrences matches {0..1} matches {    -- Coefficient sum
+											ELEMENT[at0072] occurrences matches {0..1} matches {	-- Coefficient sum
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::380]>
@@ -221,7 +215,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0073] occurrences matches {0..1} matches {    -- ORcalc
+											ELEMENT[at0073] occurrences matches {0..1} matches {	-- ORcalc
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::380]>
@@ -234,7 +228,7 @@ definition
 													>
 												}
 											}
-											ELEMENT[at0074] occurrences matches {0..1} matches {    -- RISKpred
+											ELEMENT[at0074] occurrences matches {0..1} matches {	-- RISKpred
 												value matches {
 													C_DV_QUANTITY <
 														property = <[openehr::507]>
@@ -257,9 +251,9 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0006] matches {    -- Item tree
+			ITEM_TREE[at0006] matches {	-- Item tree
 				items cardinality matches {0..*; unordered} matches {
-					allow_archetype CLUSTER[at0062] occurrences matches {0..*} matches {    -- Extension
+					allow_archetype CLUSTER[at0062] occurrences matches {0..*} matches {	-- Extension
 						include
 							archetype_id/value matches {/.*/}
 					}
@@ -451,10 +445,6 @@ Age ≥85 = 1.529325519.">
 					description = <"Coefficient according to history of Myocardial Infarction (MI) or Peripheral Vascular Disease (PVD):
 - No = 0,
 - Yes = 0.267265312.">
-				>
-				["at0070"] = <
-					text = <"Constant coefficient">
-					description = <"Constant coefficient = -4.216058062.">
 				>
 				["at0071"] = <
 					text = <"Total Risk calculation">
