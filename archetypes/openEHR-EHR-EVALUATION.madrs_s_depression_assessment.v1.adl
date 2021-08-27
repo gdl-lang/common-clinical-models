@@ -1,60 +1,72 @@
-archetype (adl_version=1.4)
+archetype (adl_version=1.4; uid=a5288b34-6df3-38d4-a33c-b1010a32d56d)
 	openEHR-EHR-EVALUATION.madrs_s_depression_assessment.v1
 
 concept
-	[at0000]	-- MADRS Depression Assessment
+	[at0000]
+
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
 			author = <
-				["name"] = <"?">
 			>
 		>
 	>
+
 description
 	original_author = <
-		["name"] = <"">
+		["name"] = <"Rosario Silva Sepulveda">
+		["organisation"] = <"Cambio CDS">
+		["email"] = <"rosario.silva.s@outlook.com">
 	>
+	lifecycle_state = <"in_development">
 	details = <
-		["en"] = <
-			language = <[ISO_639-1::en]>
-			purpose = <"Archetype to be used to effectively evaluate grade of depression using the MADRS or MADRS-S archetype.">
-			use = <"Used to evaluate the patient's grade of depression. To be used with MADRS or MADRS-S.">
-			misuse = <"">
-		>
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
-			purpose = <"Ärketypen kan med fördel användas för bedömning av depression eller depressiva symtom samt för att följa förloppet vid depression.">
-			use = <"Används för att bedöma en patients grad av depression enligt fyra nivåer. ">
-			misuse = <"">
+			purpose = <"*To record the clinical interpretation of the MADRS or MADRS-S. (en)">
+			keywords = <"*Montgomery (en)","*Åsberg (en)","*Depression (en)","*Rating (en)","*Scale (en)","*MADRS (en)">
+			copyright = <"*© Cambio CDS (en)">
+			use = <"*Use to record the clinical interpretation of the total sum for the MADRS or MADRS-S. (en)">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the clinical interpretation of the MADRS or MADRS-S.">
+			keywords = <"Montgomery","Åsberg","Depression","Rating","Scale","MADRS">
+			copyright = <"© Cambio CDS">
+			use = <"Use to record the clinical interpretation of the total sum for the MADRS or MADRS-S.">
 		>
 	>
-	lifecycle_state = <"0">
-	other_contributors = <>
 	other_details = <
-		["references"] = <"">
+		["references"] = <"Montgomery SA, Asberg M. (1979). \"A new depression scale designed to be sensitive to change\". British Journal of Psychiatry 134 (4): 382–89.
+
+Cunningham, JL et al. (2011). \"Agreement between physicians' and patients' ratings on the Montgomery Åsberg Depression Rating Scale\". J. Affective Disorders 135 (1-3): 148–53.
+
+Williams JBW, Kobak KA. Development and reliability of a structured interview guide for the Montgomery–Åsberg Depression Rating Scale (SIGMA). Br J Psychiatry (2008) 192:52–8.10.1192/bjp.bp.106.032532.">
 		["MD5-CAM-1.0.1"] = <"C57757AF0BE83A85D7B0AE3D07048D81">
+		["build_uid"] = <"7d567a90-50b7-3115-be35-046e5fe78372">
+		["current_contact"] = <"rosario.silva.s@outlook.com">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- MADRS Depression Assessment
+	EVALUATION[at0000] matches {    -- Montgomery Åsberg Depression Rating Scale (MADRS)
 		data matches {
-			ITEM_TREE[at0001] matches {	-- Tree
+			ITEM_TREE[at0001] matches {    -- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0006] occurrences matches {0..1} matches {	-- Grade of depression
+					ELEMENT[at0012] occurrences matches {0..1} matches {    -- Interpretation
 						value matches {
-							DV_CODED_TEXT matches {
-								defining_code matches {
-									[local::
-									at0007, 	-- None or very mild depression
-									at0008, 	-- Mild depression
-									at0009, 	-- Moderate depression
-									at0011]	-- Severe depression
-								}
-							}
+							DV_TEXT matches {*}
 						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0013] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0014] occurrences matches {0..*} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
 					}
 				}
 			}
@@ -66,64 +78,50 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"MADRS Depression Assessment">
-					description = <"Archetype to be used to effectively evaluate grade of depression using the MADRS or MADRS-S archetype.">
+					text = <"Montgomery Åsberg Depression Rating Scale (MADRS)">
+					description = <"An assessment score that assists the diagnosis of Depresison using the Montgomery Åsberg Depression Rating Scale (MADRS) or the MADRS Self-Assessment version (MADRS-S).">
 				>
 				["at0001"] = <
 					text = <"Tree">
 					description = <"@ internal @">
 				>
-				["at0006"] = <
-					text = <"Grade of depression">
-					description = <"*">
+				["at0012"] = <
+					text = <"Interpretation">
+					description = <"">
 				>
-				["at0007"] = <
-					text = <"None or very mild depression">
-					description = <"*">
+				["at0013"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
 				>
-				["at0008"] = <
-					text = <"Mild depression">
-					description = <"*">
-				>
-				["at0009"] = <
-					text = <"Moderate depression">
-					description = <"*">
-				>
-				["at0011"] = <
-					text = <"Severe depression">
-					description = <"*">
+				["at0014"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
 				>
 			>
 		>
 		["sv"] = <
 			items = <
 				["at0000"] = <
-					text = <"MADRS Utvärdering för depression">
-					description = <"Ärketypen kan med fördel användas för bedömning av depression eller depressiva symtom samt för att följa förloppet vid depression.">
+					text = <"*Montgomery Åsberg Depression Rating Scale (MADRS) (en)">
+					description = <"*An assessment score that assists the diagnosis of Depresison using the Montgomery Åsberg Depression Rating Scale (MADRS) or the MADRS Self-Assessment version (MADRS-S). (en)">
 				>
 				["at0001"] = <
 					text = <"*Tree(en)">
 					description = <"*@ internal @(en)">
 				>
-				["at0006"] = <
-					text = <"Nivå av depression">
-					description = <"*">
+				["at0012"] = <
+					text = <"*Interpretation (en)">
+					description = <"">
 				>
-				["at0007"] = <
-					text = <"Ingen eller mycket lätt depression">
-					description = <"*">
+				["at0013"] = <
+					text = <"*Item tree (en)">
+					description = <"@ internal @">
 				>
-				["at0008"] = <
-					text = <"Lätt depression">
-					description = <"*">
-				>
-				["at0009"] = <
-					text = <"Måttlig depression">
-					description = <"*">
-				>
-				["at0011"] = <
-					text = <"Svår depression">
-					description = <"*">
+				["at0014"] = <
+					text = <"*Extension (en)">
+					description = <"*Additional information required to extend the model with local content or to align with other reference models or formalisms. (en)">
+					comment = <"*For example: local information requirements; or additional metadata to align with FHIR. (en)">
 				>
 			>
 		>
