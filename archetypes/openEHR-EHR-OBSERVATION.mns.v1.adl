@@ -1,8 +1,9 @@
-archetype (adl_version=1.4)
+archetype (adl_version=1.4; uid=4a19b94d-f36f-37e0-b0a1-18ce7091ddec)
 	openEHR-EHR-OBSERVATION.mns.v1
 
 concept
-	[at0000]	-- Modified norton scale
+	[at0000]
+
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -14,123 +15,114 @@ language
 			>
 		>
 	>
+
 description
 	original_author = <
-		["name"] = <"Konstantinos Kalliamvakos">
-		["email"] = <"models@cambiocds.com">
-		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2015-01-15">
+		["name"] = <"Rosario Silva Sepulveda">
+		["organisation"] = <"Cambio CDS">
+		["email"] = <"rosario.silva.s@outlook.com">
 	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Syeeda S Farruque","Konstantinos Kalliamvakos">
 	details = <
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
-			purpose = <"Ett specialinstrument för riskbedömning för att utvärdera om en person löper risk att utveckla trycksår.">
-			use = <"Den modifierade Nortonskalan bör användas som ett komplement till den kliniska bedömningen.">
-			keywords = <"Modified Norton Scale", "mNs", "Trycksår">
-			misuse = <"*">
-			copyright = <"*">
+			purpose = <"*To record the results for each component parameter for the MNS. (en)">
+			keywords = <"*Modified Norton Scale (en)","*MNS (en)","*ulcer (en)","*pressure (en)","*wound (en)","*sore (en)","*Senior Alert (en)">
+			copyright = <"*© Cambio CDS (en)">
+			use = <"*Use to record the results for each component parameter for the MNS. (en)">
+			misuse = <"*Not to be used to record information related to symptoms. Use instead openEHR-EHR-CLUSTER.symptom_sign.v1. (en)">
 		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"The Norton scale was devised in 1960 as an additive scale to facilitate the prediction and prevention of pressure sore development. It is used in both normal and modified form.">
-			use = <"Whenever an assessment of risks of acquiring pressure ulcers among new inpatients, especially those who are elderly and/or infirm.
-
-There are 7 questions answered on a range of 1 to 4. These relate to the following 7 aspects:
-
-Mental condition
-Physical activity
-Food intake
-Fluid intake
-Incontinence
-Physical condition
-
-The individual score ranges from 1 to 4 with a higher score relating to a lower risk and visa versa so the maximum score of 28 indicates a healthy patient whilst a minimum of 7 indicates a seriously poor score.
-[Scores below 7 are not valid as this indicates that one or more of the questions were not answered thus getting a score = 0 relating to N/A]">
-			keywords = <"Modified Norton Scale", "mNs", "ulcer", "pressure", "wound", "sore", "Senior Alert">
-			misuse = <"Should be used as a risk identificaiton tool only. Not diagnostic on its own.">
-			copyright = <"© Cambio Healthcare Systems">
+			purpose = <"To record the results for each component parameter for the MNS.">
+			keywords = <"Modified Norton Scale","MNS","ulcer","pressure","wound","sore","Senior Alert">
+			copyright = <"© Cambio CDS">
+			use = <"Use to record the results for each component parameter for the MNS.">
+			misuse = <"Not to be used to record information related to symptoms. Use instead openEHR-EHR-CLUSTER.symptom_sign.v1.">
 		>
 	>
-	lifecycle_state = <"AuthorDraft">
-	other_contributors = <"Syeeda S Farruque", ...>
 	other_details = <
-		["references"] = <"Ref.1: Ek AC, Unosson M, Bjurulf P. The modified Norton scale and the nutritional state. Scandinavian Journal of Caring Sciences. 1989 Dec 1;3(4):183-7.">
-		["MD5-CAM-1.0.1"] = <"637E59F76CE8C646008AD4A823482DAF">
+		["references"] = <"Ek AC, Unosson M, Bjurulf P. The modified Norton scale and the nutritional state. Scandinavian Journal of Caring Sciences. 1989 Dec 1;3(4):183-7.">
+		["current_contact"] = <"rosario.silva.s@outlook.com">
+		["MD5-CAM-1.0.1"] = <"f15ef3f3147164f5022620f84578ea5c">
+		["build_uid"] = <"9641855f-6381-3465-ad5e-d2de5449a5ec">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Modified norton scale
+	OBSERVATION[at0000] matches {    -- Modified Norton Scale (MNS)
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {    -- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..1} matches {    -- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {    -- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Mental condition
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- Mental condition
 										value matches {
-											0|[local::at0040], 	-- N/A
-											1|[local::at0005], 	-- No contact
-											2|[local::at0006], 	-- Cannot answer adequately
-											3|[local::at0007], 	-- Occasionaly confused
-											4|[local::at0008]  	-- Fully oriented
+											0|[local::at0040],
+											1|[local::at0005],
+											2|[local::at0006],
+											3|[local::at0007],
+											4|[local::at0008]
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Physical activity
+									ELEMENT[at0009] occurrences matches {0..1} matches {    -- Physical activity
 										value matches {
-											0|[local::at0041], 	-- N/A
-											1|[local::at0010], 	-- Bedridden
-											2|[local::at0011], 	-- Chair bound
-											3|[local::at0012], 	-- Walks with help
-											4|[local::at0013]  	-- Ambulant
+											0|[local::at0041],
+											1|[local::at0010],
+											2|[local::at0011],
+											3|[local::at0012],
+											4|[local::at0013]
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Mobility
+									ELEMENT[at0014] occurrences matches {0..1} matches {    -- Mobility
 										value matches {
-											0|[local::at0042], 	-- N/A
-											1|[local::at0015], 	-- Immobile
-											2|[local::at0016], 	-- Very limited
-											3|[local::at0017], 	-- Slightly limited
-											4|[local::at0018]  	-- Full
+											0|[local::at0042],
+											1|[local::at0015],
+											2|[local::at0016],
+											3|[local::at0017],
+											4|[local::at0018]
 										}
 									}
-									ELEMENT[at0019] occurrences matches {0..1} matches {	-- Food intake
+									ELEMENT[at0019] occurrences matches {0..1} matches {    -- Food intake
 										value matches {
-											0|[local::at0043], 	-- N/A
-											1|[local::at0020], 	-- < 1/2 portion
-											2|[local::at0021], 	-- 1/2 portion and/or equivalent
-											3|[local::at0022], 	-- 3/4 portion and/or equivalent
-											4|[local::at0023]  	-- 1 portion and/or equivalent
+											0|[local::at0043],
+											1|[local::at0020],
+											2|[local::at0021],
+											3|[local::at0022],
+											4|[local::at0023]
 										}
 									}
-									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Fluid intake
+									ELEMENT[at0024] occurrences matches {0..1} matches {    -- Fluid intake
 										value matches {
-											0|[local::at0044], 	-- N/A
-											1|[local::at0025], 	-- < 500 ml/24hr
-											2|[local::at0026], 	-- 500-700 ml/24hr
-											3|[local::at0027], 	-- 700 - 1000 ml/24hr
-											4|[local::at0028]  	-- > 1000 ml/24hr
+											0|[local::at0044],
+											1|[local::at0025],
+											2|[local::at0026],
+											3|[local::at0027],
+											4|[local::at0028]
 										}
 									}
-									ELEMENT[at0029] occurrences matches {0..1} matches {	-- Incontinence
+									ELEMENT[at0029] occurrences matches {0..1} matches {    -- Incontinence
 										value matches {
-											0|[local::at0045], 	-- N/A
-											1|[local::at0030], 	-- Urine and feces
-											2|[local::at0031], 	-- Usually urine (catheter)
-											3|[local::at0032], 	-- Occasional
-											4|[local::at0033]  	-- None
+											0|[local::at0045],
+											1|[local::at0030],
+											2|[local::at0031],
+											3|[local::at0032],
+											4|[local::at0033]
 										}
 									}
-									ELEMENT[at0034] occurrences matches {0..1} matches {	-- Physical condition
+									ELEMENT[at0034] occurrences matches {0..1} matches {    -- Physical condition
 										value matches {
-											0|[local::at0046], 	-- N/A
-											1|[local::at0035], 	-- Very poor
-											2|[local::at0036], 	-- Poor
-											3|[local::at0037], 	-- Fair
-											4|[local::at0038]  	-- Good
+											0|[local::at0046],
+											1|[local::at0035],
+											2|[local::at0036],
+											3|[local::at0037],
+											4|[local::at0038]
 										}
 									}
-									ELEMENT[at0039] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0039] occurrences matches {0..1} matches {    -- Total score
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..28|}
@@ -144,6 +136,16 @@ definition
 				}
 			}
 		}
+		protocol matches {
+			ITEM_TREE[at0047] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0048] occurrences matches {0..*} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
 	}
 
 ontology
@@ -151,8 +153,9 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Modified norton scale">
-					description = <"Modified norton scale (MNS): is a special instrument designed for risk assessment in order to evaluate if a person is at risk for developing pressure ulcers. The maximum total score is 28 and the minimum is 7, where lower scores mean a greater risk for developing pressure ulcers. Note that the modified Norton scale should be used as a complement to clinical judgment.">
+					text = <"Modified Norton Scale (MNS)">
+					description = <"An assessment score that evaluates a patient's risk of developing a pressure ulcer. The Modified Norton Scale (MNS) should be used as a complement to clinical judgment.">
+					comment = <"Original version, c 1989.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -160,7 +163,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -308,7 +311,7 @@ ontology
 				>
 				["at0039"] = <
 					text = <"Total score">
-					description = <"Sum of the scores: range from 0 to 28 where 0 relates to Not Available N/A">
+					description = <"The total sum of each component parameter for the MNS. Range from 0 to 28 where 0 relates to Not Available N/A.">
 				>
 				["at0040"] = <
 					text = <"N/A">
@@ -338,13 +341,22 @@ ontology
 					text = <"N/A">
 					description = <"*">
 				>
+				["at0047"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0048"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
+				>
 			>
 		>
 		["sv"] = <
 			items = <
 				["at0000"] = <
-					text = <"*Modified norton scale(en)">
-					description = <"*Modified norton scale (MNS): is a special instrument designed for risk assessment in order to evaluate if a person is at risk for developing pressure ulcers. The maximum total score is 28 and the minimum is 7, where lower scores mean a greater risk for developing pressure ulcers. Note that the modified Norton scale should be used as a complement to clinical judgment.(en)">
+					text = <"*Modified Norton Scale (MNS) (en)">
+					description = <"*An assessment score that evaluates a patient's risk of developing a pressure ulcer. The Modified Norton Scale (MNS) should be used as a complement to clinical judgment. (en)">
 				>
 				["at0001"] = <
 					text = <"*Event Series(en)">
@@ -352,7 +364,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"*Any event(en)">
-					description = <"*">
+					description = <"*Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time. (en)">
 				>
 				["at0003"] = <
 					text = <"Träd">
@@ -501,7 +513,7 @@ ontology
 				>
 				["at0039"] = <
 					text = <"*Total score(en)">
-					description = <"*Sum of the scores: range from 0 to 28 where 0 relates to Not Available N/A(en)">
+					description = <"*The total sum of each component parameter for the MNS. Range from 0 to 28 where 0 relates to Not Available N/A. (en)">
 				>
 				["at0040"] = <
 					text = <"*N/A(en)">
@@ -530,6 +542,15 @@ ontology
 				["at0046"] = <
 					text = <"*N/A(en)">
 					description = <"**(en)">
+				>
+				["at0047"] = <
+					text = <"*Item tree (en)">
+					description = <"@ internal @">
+				>
+				["at0048"] = <
+					text = <"*Extension (en)">
+					description = <"*Additional information required to extend the model with local content or to align with other reference models or formalisms. (en)">
+					comment = <"*For example: local information requirements; or additional metadata to align with FHIR. (en)">
 				>
 			>
 		>
