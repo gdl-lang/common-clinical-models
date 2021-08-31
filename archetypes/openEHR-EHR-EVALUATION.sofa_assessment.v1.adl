@@ -1,0 +1,133 @@
+archetype (adl_version=1.4; uid=3933cb79-a1fa-33e8-8d36-81aefddf7677)
+	openEHR-EHR-EVALUATION.sofa_assessment.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2017-03-05">
+		["name"] = <"Rosario Silva Sepulveda">
+		["organisation"] = <"Cambio CDS">
+		["email"] = <"rosario.silva.s@outlook.com">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Syeeda S Farruque", ...>
+	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"*To record the clinical interpretation of the total sum for the Sequential Organ Failure Assessment (SOFA) score. (en)">
+			keywords = <"SOFA","mortalitet","organsvikt","Sequential Organ Failure Assessment ","intensivvård","IVA">
+			copyright = <"© Cambio Healthcare Systems">
+			use = <"*Use to record the clinical interpretation of the total sum for the SOFA score. (en)">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the clinical interpretation of the total sum for the Sequential Organ Failure Assessment (SOFA) score.">
+			keywords = <"ICU","SOFA","Sequential organ failure assessment","mortality">
+			copyright = <"© Cambio Healthcare Systems">
+			use = <"Use to record the clinical interpretation of the total sum for the SOFA score.">
+		>
+	>
+	other_details = <
+		["references"] = <"Vincent JL, Moreno R, Takala J, et al. The SOFA (Sepsis-related Organ Failure Assessment) score to describe organ dysfunction/failure. On behalf of the Working Group on Sepsis-Related Problems of the European Society of Intensive Care Medicine. In: Vol 22. 1996:707–710.
+
+Vincent JL, de Mendonça A, Cantraine F, et al. Use of the SOFA score to assess the incidence of organ dysfunction/failure in intensive care units: results of a multicenter, prospective study. Working group on \"sepsis-related problems\" of the European Society of Intensive Care Medicine. Crit Care Med. 1998;26(11):1793–1800.
+
+Kratz A, Ferraro M, Sluss PM, et al: Case records of the Massachusetts General Hospital: laboratory values. N Engl J Med 2004; 351(15):1549-1563.">
+		["MD5-CAM-1.0.1"] = <"646b45f8adf3a742a18c01e1e126c6fd">
+		["build_uid"] = <"c88aee95-ac74-34eb-bda7-f8bc15193fc6">
+		["current_contact"] = <"rosario.silva.s@outlook.com">
+	>
+
+definition
+	EVALUATION[at0000] matches {    -- Sequential Organ Failure Assessment (SOFA) Assessment
+		data matches {
+			ITEM_TREE[at0001] matches {    -- Tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0009] occurrences matches {0..1} matches {    -- Interpretation
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0010] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0011] occurrences matches {0..*} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Sequential Organ Failure Assessment (SOFA) Assessment">
+					description = <"An assessment score developed by the European Society of Intensive Care Medicine that provides an indicator of mortality and morbidity prognosis among ICU patients.">
+					comment = <"Original version, c 1996.">
+				>
+				["at0001"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0009"] = <
+					text = <"Interpretation">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0011"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"*Sequential Organ Failure Assessment (SOFA) Assessment (en)">
+					description = <"*An assessment score developed by the European Society of Intensive Care Medicine that provides an indicator of mortality and morbidity prognosis among ICU patients. (en)">
+				>
+				["at0001"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0009"] = <
+					text = <"*Interpretation (en)">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"*Item tree (en)">
+					description = <"@ internal @">
+				>
+				["at0011"] = <
+					text = <"*Extension (en)">
+					description = <"*Additional information required to extend the model with local content or to align with other reference models or formalisms. (en)">
+					comment = <"*For example: local information requirements; or additional metadata to align with FHIR. (en)">
+				>
+			>
+		>
+	>

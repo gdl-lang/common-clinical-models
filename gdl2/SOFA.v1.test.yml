@@ -1,288 +1,151 @@
 guidelines:
   1: SOFA.v1
 test_cases:
-- id: Default
+- id: 1. No selection (negative test)
   input:
     1: {}
   expected_output:
-    1:
-      gt0029|GCS score: 0|local::at0031|N/A|
-      gt0034|PF ratio/carrico index score: 0|local::at0041|N/A|
-      gt0033|Total score: 0
-      gt0031|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
-      gt0030|BR score: 0|local::at0026|N/A|
-      gt0028|Platlets score: 0|local::at0036|N/A|
-      gt0032|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
-      gt0082|Mortality percentage: 0|local::at0003|<10 % mortality|
-
-- id: Normal PF
+    1: {}
+- id: 2. Total score 0 - Less than 10% mortality rule
   input:
     1:
-      gt0012|PaO2 (mmHg): 100,mm[Hg]
-      gt0013|FiO2: 21,%
+      gt0091|PaO FiO ratio: 0|local::at0041|N/A|
+      gt0092|Platelets: 0|local::at0036|N/A|
+      gt0093|Glasgow Coma Score: 0|local::at0031|N/A|
+      gt0094|Bilirubin: 0|local::at0026|N/A|
+      gt0095|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
+      gt0096|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
   expected_output:
     1:
-      gt0029|GCS score: 0|local::at0031|N/A|
-      gt0034|PF ratio/carrico index score: 0|local::at0041|N/A|
-      gt0033|Total score: 0
-      gt0031|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
-      gt0038|Carrico/PF: 476,mm[Hg]
-      gt0030|BR score: 0|local::at0026|N/A|
-      gt0028|Platlets score: 0|local::at0036|N/A|
-      gt0032|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
-      gt0082|Mortality percentage: 0|local::at0003|<10 % mortality|
-
-- id: score 2
+      gt0100|Total score: 0
+      gt0102|Interpretation: Less than 10% mortality
+- id: 3. Total score 6 - Less than 10% mortality rule
   input:
     1:
-      gt0007|GCS Total score: 14
-      gt0010|Total Bilirubin (mg/dL): 1,mg/dl
-      gt0012|PaO2 (mmHg): 100,mm[Hg]
-      gt0013|FiO2: 21,%
-      gt0017|Platelet count (10*9/L): 140,10*9/l
+      gt0091|PaO FiO ratio: 4|local::at0015|< 100 and mechanically ventilated|
+      gt0092|Platelets: 2|local::at0038|< 100|
+      gt0093|Glasgow Coma Score: 0|local::at0031|N/A|
+      gt0094|Bilirubin: 0|local::at0026|N/A|
+      gt0095|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
+      gt0096|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
   expected_output:
     1:
-      gt0029|GCS score: 1|local::at0032|13-14|
-      gt0034|PF ratio/carrico index score: 0|local::at0041|N/A|
-      gt0033|Total score: 2
-      gt0031|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
-      gt0038|Carrico/PF: 476,mm[Hg]
-      gt0030|BR score: 0|local::at0026|N/A|
-      gt0028|Platlets score: 1|local::at0037|<150|
-      gt0032|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
-      gt0082|Mortality percentage: 0|local::at0003|<10 % mortality|
-
-- id: score 5 platelets, gcs, bilirubin
+      gt0100|Total score: 6
+      gt0102|Interpretation: Less than 10% mortality
+- id: 4. Total score 7 - 15-20% mortality rule
   input:
     1:
-      gt0007|GCS Total score: 12
-      gt0010|Total Bilirubin (mg/dL): 1.3,mg/dl
-      gt0012|PaO2 (mmHg): 100,mm[Hg]
-      gt0013|FiO2: 21,%
-      gt0017|Platelet count (10*9/L): 90,10*9/l
+      gt0091|PaO FiO ratio: 4|local::at0015|< 100 and mechanically ventilated|
+      gt0092|Platelets: 3|local::at0039|< 50|
+      gt0093|Glasgow Coma Score: 0|local::at0031|N/A|
+      gt0094|Bilirubin: 0|local::at0026|N/A|
+      gt0095|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
+      gt0096|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
   expected_output:
     1:
-      gt0029|GCS score: 2|local::at0033|10-12|
-      gt0034|PF ratio/carrico index score: 0|local::at0041|N/A|
-      gt0033|Total score: 5
-      gt0031|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
-      gt0038|Carrico/PF: 476,mm[Hg]
-      gt0030|BR score: 1|local::at0027|1.2–1.9 [>20-32]|
-      gt0028|Platlets score: 2|local::at0038|<100|
-      gt0032|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
-      gt0082|Mortality percentage: 0|local::at0003|<10 % mortality|
-
-- id:  score 8 platelets, gcs, bilirubin
+      gt0100|Total score: 7
+      gt0102|Interpretation: 15-20% mortality
+- id: 5. Total score 9 - 15-20% mortality rule
   input:
     1:
-      gt0007|GCS Total score: 9
-      gt0010|Total Bilirubin (mg/dL): 2,mg/dl
-      gt0012|PaO2 (mmHg): 100,mm[Hg]
-      gt0013|FiO2: 21,%
-      gt0017|Platelet count (10*9/L): 45,10*9/l
+      gt0091|PaO FiO ratio: 4|local::at0015|< 100 and mechanically ventilated|
+      gt0092|Platelets: 3|local::at0039|< 50|
+      gt0093|Glasgow Coma Score: 2|local::at0033|10-12|
+      gt0094|Bilirubin: 0|local::at0026|N/A|
+      gt0095|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
+      gt0096|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
   expected_output:
     1:
-      gt0029|GCS score: 3|local::at0034|6-9|
-      gt0034|PF ratio/carrico index score: 0|local::at0041|N/A|
-      gt0033|Total score: 8
-      gt0031|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
-      gt0038|Carrico/PF: 476,mm[Hg]
-      gt0030|BR score: 2|local::at0028|2.0–5.9 [33-101]|
-      gt0028|Platlets score: 3|local::at0039|<50|
-      gt0032|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
-      gt0082|Mortality percentage: 1|local::at0004|15-20% mortality|
-
-- id:  score 11 platelets, gcs, bilirubin
+      gt0100|Total score: 9
+      gt0102|Interpretation: 15-20% mortality
+- id: 6. Total score 10 - 40-50% mortality rule
   input:
     1:
-      gt0007|GCS Total score: 5
-      gt0010|Total Bilirubin (mg/dL): 6,mg/dl
-      gt0012|PaO2 (mmHg): 100,mm[Hg]
-      gt0013|FiO2: 21,%
-      gt0017|Platelet count (10*9/L): 15,10*9/l
+      gt0091|PaO FiO ratio: 4|local::at0015|< 100 and mechanically ventilated|
+      gt0092|Platelets: 3|local::at0039|< 50|
+      gt0093|Glasgow Coma Score: 3|local::at0034|6-9|
+      gt0094|Bilirubin: 0|local::at0026|N/A|
+      gt0095|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
+      gt0096|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
   expected_output:
     1:
-      gt0029|GCS score: 4|local::at0035|<6|
-      gt0034|PF ratio/carrico index score: 0|local::at0041|N/A|
-      gt0033|Total score: 11
-      gt0031|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
-      gt0038|Carrico/PF: 476,mm[Hg]
-      gt0030|BR score: 3|local::at0029|6.0–11.9 [102-204]|
-      gt0028|Platlets score: 4|local::at0040|<20|
-      gt0032|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
-      gt0082|Mortality percentage: 2|local::at0005|40-50% mortality|
-
-- id: platelets>150
+      gt0100|Total score: 10
+      gt0102|Interpretation: 40-50% mortality
+- id: 7. Total score 12 - 40-50% mortality rule
   input:
     1:
-      gt0012|PaO2 (mmHg): 100,mm[Hg]
-      gt0013|FiO2: 21,%
-      gt0017|Platelet count (10*9/L): 160,10*9/l
+      gt0091|PaO FiO ratio: 4|local::at0015|< 100 and mechanically ventilated|
+      gt0092|Platelets: 4|local::at0040|< 20|
+      gt0093|Glasgow Coma Score: 4|local::at0035|< 6|
+      gt0094|Bilirubin: 0|local::at0026|N/A|
+      gt0095|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
+      gt0096|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
   expected_output:
     1:
-      gt0029|GCS score: 0|local::at0031|N/A|
-      gt0034|PF ratio/carrico index score: 0|local::at0041|N/A|
-      gt0033|Total score: 0
-      gt0031|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
-      gt0038|Carrico/PF: 476,mm[Hg]
-      gt0030|BR score: 0|local::at0026|N/A|
-      gt0028|Platlets score: 0|local::at0036|N/A|
-      gt0032|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
-      gt0082|Mortality percentage: 0|local::at0003|<10 % mortality|
-
-- id: pf<=400
+      gt0100|Total score: 12
+      gt0102|Interpretation: 40-50% mortality
+- id: 8. Total score 13 - 50-60% mortality rule
   input:
     1:
-      gt0012|PaO2 (mmHg): 100,mm[Hg]
-      gt0013|FiO2: 33,%
+      gt0091|PaO FiO ratio: 4|local::at0015|< 100 and mechanically ventilated|
+      gt0092|Platelets: 4|local::at0040|< 20|
+      gt0093|Glasgow Coma Score: 4|local::at0035|< 6|
+      gt0094|Bilirubin: 1|local::at0027|1.2-1.9 [20-32]|
+      gt0095|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
+      gt0096|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
   expected_output:
     1:
-      gt0029|GCS score: 0|local::at0031|N/A|
-      gt0034|PF ratio/carrico index score: 1|local::at0012|<400|
-      gt0033|Total score: 1
-      gt0031|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
-      gt0038|Carrico/PF: 303,mm[Hg]
-      gt0030|BR score: 0|local::at0026|N/A|
-      gt0028|Platlets score: 0|local::at0036|N/A|
-      gt0032|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
-      gt0082|Mortality percentage: 0|local::at0003|<10 % mortality|
-
-- id: pf <=300
+      gt0100|Total score: 13
+      gt0102|Interpretation: 50-60% mortality
+- id: 9. Total score 14 - 50-60% mortality rule
   input:
     1:
-      gt0012|PaO2 (mmHg): 95,mm[Hg]
-      gt0013|FiO2: 33,%
+      gt0091|PaO FiO ratio: 4|local::at0015|< 100 and mechanically ventilated|
+      gt0092|Platelets: 4|local::at0040|< 20|
+      gt0093|Glasgow Coma Score: 4|local::at0035|< 6|
+      gt0094|Bilirubin: 2|local::at0028|2.0-5.9 [33-101]|
+      gt0095|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
+      gt0096|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
   expected_output:
     1:
-      gt0029|GCS score: 0|local::at0031|N/A|
-      gt0034|PF ratio/carrico index score: 2|local::at0013|<300|
-      gt0033|Total score: 2
-      gt0031|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
-      gt0038|Carrico/PF: 288,mm[Hg]
-      gt0030|BR score: 0|local::at0026|N/A|
-      gt0028|Platlets score: 0|local::at0036|N/A|
-      gt0032|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
-      gt0082|Mortality percentage: 0|local::at0003|<10 % mortality|
-
-- id: pf<=200
+      gt0100|Total score: 14
+      gt0102|Interpretation: 50-60% mortality
+- id: 10. Total score 15 - More than 80% mortality rule
   input:
     1:
-      gt0012|PaO2 (mmHg): 75,mm[Hg]
-      gt0013|FiO2: 38,%
+      gt0091|PaO FiO ratio: 4|local::at0015|< 100 and mechanically ventilated|
+      gt0092|Platelets: 4|local::at0040|< 20|
+      gt0093|Glasgow Coma Score: 4|local::at0035|< 6|
+      gt0094|Bilirubin: 3|local::at0029|6.0-11.9 [102-204]|
+      gt0095|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
+      gt0096|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
   expected_output:
     1:
-      gt0029|GCS score: 0|local::at0031|N/A|
-      gt0034|PF ratio/carrico index score: 3|local::at0014|<200 and mechanically ventilated|
-      gt0033|Total score: 3
-      gt0031|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
-      gt0038|Carrico/PF: 197,mm[Hg]
-      gt0030|BR score: 0|local::at0026|N/A|
-      gt0028|Platlets score: 0|local::at0036|N/A|
-      gt0032|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
-      gt0082|Mortality percentage: 0|local::at0003|<10 % mortality|
-
-- id: pf<=100
+      gt0100|Total score: 15
+      gt0102|Interpretation: More than 80% mortality
+- id: 11. Total score 16 - More than 90% mortality rule
   input:
     1:
-      gt0012|PaO2 (mmHg): 50,mm[Hg]
-      gt0013|FiO2: 50,%
+      gt0091|PaO FiO ratio: 4|local::at0015|< 100 and mechanically ventilated|
+      gt0092|Platelets: 4|local::at0040|< 20|
+      gt0093|Glasgow Coma Score: 4|local::at0035|< 6|
+      gt0094|Bilirubin: 4|local::at0030|>12.0 [>204]|
+      gt0095|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
+      gt0096|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
   expected_output:
     1:
-      gt0029|GCS score: 0|local::at0031|N/A|
-      gt0034|PF ratio/carrico index score: 4|local::at0015|<100 and mechanically ventilated|
-      gt0033|Total score: 4
-      gt0031|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
-      gt0038|Carrico/PF: 100,mm[Hg]
-      gt0030|BR score: 0|local::at0026|N/A|
-      gt0028|Platlets score: 0|local::at0036|N/A|
-      gt0032|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
-      gt0082|Mortality percentage: 0|local::at0003|<10 % mortality|
-
-- id: BR high, urine<500ml
+      gt0100|Total score: 16
+      gt0102|Interpretation: More than 90% mortality rule
+- id: 12. Total score 24 - More than 90% mortality rule
   input:
     1:
-      gt0005|Total urine output/24 hr: 490,ml/24hr
-      gt0007|GCS Total score: 16
-      gt0010|Total Bilirubin (mg/dL): 12,mg/dl
-      gt0012|PaO2 (mmHg): 100,mm[Hg]
-      gt0013|FiO2: 21,%
-      gt0017|Platelet count (10*9/L): 15,10*9/l
+      gt0091|PaO FiO ratio: 4|local::at0015|< 100 and mechanically ventilated|
+      gt0092|Platelets: 4|local::at0040|< 20|
+      gt0093|Glasgow Coma Score: 4|local::at0035|< 6|
+      gt0094|Bilirubin: 4|local::at0030|>12.0 [>204]|
+      gt0095|MAP or admin of vasopressors required: 4|local::at0020|DOP >15 or EPI >0.1 or NOR >0.1|
+      gt0096|Creatinine or urine output: 4|local::at0025|>5.0 [>433] or urine output <200 ml/d|
   expected_output:
     1:
-      gt0029|GCS score: 0|local::at0031|N/A|
-      gt0034|PF ratio/carrico index score: 0|local::at0041|N/A|
-      gt0033|Total score: 11
-      gt0031|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
-      gt0038|Carrico/PF: 476,mm[Hg]
-      gt0030|BR score: 4|local::at0030|>12.0 [>204]|
-      gt0028|Platlets score: 4|local::at0040|<20|
-      gt0032|Creatinine or urine output: 3|local::at0024|3.5–4.9 [302-433] (or < 500 ml/d)|
-      gt0082|Mortality percentage: 2|local::at0005|40-50% mortality|
-
-- id: Normal creatinine
-  input:
-    1:
-      gt0005|Total urine output/24 hr: 510,ml/24hr
-      gt0007|GCS Total score: 16
-      gt0010|Total Bilirubin (mg/dL): 12,mg/dl
-      gt0012|PaO2 (mmHg): 100,mm[Hg]
-      gt0013|FiO2: 21,%
-      gt0015|Creatinine Result: 100,µmol/l
-      gt0017|Platelet count (10*9/L): 15,10*9/l
-  expected_output:
-    1:
-      gt0029|GCS score: 0|local::at0031|N/A|
-      gt0034|PF ratio/carrico index score: 0|local::at0041|N/A|
-      gt0033|Total score: 8
-      gt0031|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
-      gt0038|Carrico/PF: 476,mm[Hg]
-      gt0030|BR score: 4|local::at0030|>12.0 [>204]|
-      gt0028|Platlets score: 4|local::at0040|<20|
-      gt0032|Creatinine or urine output: 0|local::at0021|<1.2 [<106]|
-      gt0082|Mortality percentage: 1|local::at0004|15-20% mortality|
-
-- id: MAP, vp
-  input:
-    1:
-      gt0003|Mean arterial pressure: 60,mm[Hg]
-      gt0005|Total urine output/24 hr: 510,ml/24hr
-      gt0007|GCS Total score: 16
-      gt0010|Total Bilirubin (mg/dL): 12,mg/dl
-      gt0012|PaO2 (mmHg): 100,mm[Hg]
-      gt0013|FiO2: 21,%
-      gt0015|Creatinine Result: 168,µmol/l
-      gt0017|Platelet count (10*9/L): 15,10*9/l
-      gt0023|MAP or admin of vasopressors required: 2|local::at0018|dop =< 5 or dob (any dose)|
-  expected_output:
-    1:
-      gt0029|GCS score: 0|local::at0031|N/A|
-      gt0034|PF ratio/carrico index score: 0|local::at0041|N/A|
-      gt0033|Total score: 11
-      gt0031|MAP or admin of vasopressors required: 2|local::at0018|dop =< 5 or dob (any dose)|
-      gt0038|Carrico/PF: 476,mm[Hg]
-      gt0030|BR score: 4|local::at0030|>12.0 [>204]|
-      gt0028|Platlets score: 4|local::at0040|<20|
-      gt0032|Creatinine or urine output: 1|local::at0022|1.2–1.9 [106-168]|
-      gt0082|Mortality percentage: 2|local::at0005|40-50% mortality|
-
-- id: creatinie at the threshold
-  input:
-    1:
-      gt0005|Total urine output/24 hr: 510,ml/24hr
-      gt0007|GCS Total score: 16
-      gt0010|Total Bilirubin (mg/dL): 12,mg/dl
-      gt0012|PaO2 (mmHg): 100,mm[Hg]
-      gt0013|FiO2: 21,%
-      gt0015|Creatinine Result: 168,µmol/l
-      gt0017|Platelet count (10*9/L): 15,10*9/l
-  expected_output:
-    1:
-      gt0029|GCS score: 0|local::at0031|N/A|
-      gt0034|PF ratio/carrico index score: 0|local::at0041|N/A|
-      gt0033|Total score: 9
-      gt0031|MAP or admin of vasopressors required: 0|local::at0016|No hypotension|
-      gt0038|Carrico/PF: 476,mm[Hg]
-      gt0030|BR score: 4|local::at0030|>12.0 [>204]|
-      gt0028|Platlets score: 4|local::at0040|<20|
-      gt0032|Creatinine or urine output: 1|local::at0022|1.2–1.9 [106-168]|
-      gt0082|Mortality percentage: 1|local::at0004|15-20% mortality|
+      gt0100|Total score: 24
+      gt0102|Interpretation: More than 90% mortality rule

@@ -1,0 +1,503 @@
+archetype (adl_version=1.4; uid=3559a13a-f8cf-386b-9f0d-16500272648a)
+	openEHR-EHR-OBSERVATION.sofa.v1
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+	translations = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			author = <
+				["name"] = <"Dennis Forslund">
+				["organisation"] = <"Cambio Healthcare Systems">
+			>
+		>
+	>
+
+description
+	original_author = <
+		["date"] = <"2017-01-03">
+		["name"] = <"Rosario Silva Sepulveda">
+		["organisation"] = <"Cambio CDS">
+		["email"] = <"rosario.silva.s@outlook.com">
+	>
+	lifecycle_state = <"in_development">
+	other_contributors = <"Syeeda S Farruque", ...>
+	details = <
+		["sv"] = <
+			language = <[ISO_639-1::sv]>
+			purpose = <"*To record the results for each component parameter and their total sum for the Sequential Organ Failure Assessment (SOFA) score. (en)">
+			keywords = <"SOFA","mortalitet","organsvikt","Sequential Organ Failure Assessment","intensivvård","IVA">
+			copyright = <"*© Cambio CDS (en)">
+			use = <"*Use to record the results for each component parameter and their total sum for the SOFA score. (en)">
+			misuse = <"*Not to be used for recording information related to laboratory results. Use instead openEHR-EHR-OBSERVATION.laboratory_test_result.v1. (en)">
+		>
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record the results for each component parameter and their total sum for the Sequential Organ Failure Assessment (SOFA) score.">
+			keywords = <"ICU","SOFA","Sequential organ failure assessment","mortality","organ failure">
+			copyright = <"© Cambio CDS">
+			use = <"Use to record the results for each component parameter and their total sum for the SOFA score.">
+			misuse = <"Not to be used for recording information related to laboratory results. Use instead openEHR-EHR-OBSERVATION.laboratory_test_result.v1.">
+		>
+	>
+	other_details = <
+		["references"] = <"Vincent JL, Moreno R, Takala J, et al. The SOFA (Sepsis-related Organ Failure Assessment) score to describe organ dysfunction/failure. On behalf of the Working Group on Sepsis-Related Problems of the European Society of Intensive Care Medicine. In: Vol 22. 1996:707–710.
+
+Vincent JL, de Mendonça A, Cantraine F, et al. Use of the SOFA score to assess the incidence of organ dysfunction/failure in intensive care units: results of a multicenter, prospective study. Working group on \"sepsis-related problems\" of the European Society of Intensive Care Medicine. Crit Care Med. 1998;26(11):1793–1800.
+
+Kratz A, Ferraro M, Sluss PM, et al: Case records of the Massachusetts General Hospital: laboratory values. N Engl J Med 2004; 351(15):1549-1563.">
+		["MD5-CAM-1.0.1"] = <"5e50084950be32e81ff46ffd1d93c2d2">
+		["build_uid"] = <"675e8b85-aa98-32b5-b719-2fca2f86936e">
+		["current_contact"] = <"rosario.silva.s@outlook.com">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Sequential Organ Failure Assessment (SOFA)
+		data matches {
+			HISTORY[at0001] matches {    -- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {    -- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- PaO FiO ratio
+										value matches {
+											0|[local::at0041],
+											1|[local::at0012],
+											2|[local::at0013],
+											3|[local::at0014],
+											4|[local::at0015]
+										}
+									}
+									ELEMENT[at0005] occurrences matches {0..1} matches {    -- Platelets
+										value matches {
+											0|[local::at0036],
+											1|[local::at0037],
+											2|[local::at0038],
+											3|[local::at0039],
+											4|[local::at0040]
+										}
+									}
+									ELEMENT[at0006] occurrences matches {0..1} matches {    -- Glasgow Coma Score
+										value matches {
+											0|[local::at0031],
+											1|[local::at0032],
+											2|[local::at0033],
+											3|[local::at0034],
+											4|[local::at0035]
+										}
+									}
+									ELEMENT[at0007] occurrences matches {0..1} matches {    -- Bilirubin
+										value matches {
+											0|[local::at0026],
+											1|[local::at0027],
+											2|[local::at0028],
+											3|[local::at0029],
+											4|[local::at0030]
+										}
+									}
+									ELEMENT[at0008] occurrences matches {0..1} matches {    -- MAP or admin of vasopressors required
+										value matches {
+											0|[local::at0016],
+											1|[local::at0017],
+											2|[local::at0018],
+											3|[local::at0019],
+											4|[local::at0020]
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {    -- Creatinine or urine output
+										value matches {
+											0|[local::at0021],
+											1|[local::at0022],
+											2|[local::at0023],
+											3|[local::at0024],
+											4|[local::at0025]
+										}
+									}
+									ELEMENT[at0010] occurrences matches {0..1} matches {    -- Total score
+										value matches {
+											DV_COUNT matches {
+												magnitude matches {|0..24|}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0042] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0043] occurrences matches {0..*} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Sequential Organ Failure Assessment (SOFA)">
+					description = <"An assessment score developed by the European Society of Intensive Care Medicine that provides an indicator of mortality and morbidity prognosis among ICU patients.">
+					comment = <"Original version, c 1996.">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"PaO FiO ratio">
+					description = <"PaO 2/FiO2 ratio (mmHg). It is the ratio of arterial partial pressure of O2 to the fractional inspired O2 (O2 concentration in air delivered as a percentage). At sea level this is above 400mmHg (some say over 500mmHg but we shall use the lower threshold value).">
+				>
+				["at0005"] = <
+					text = <"Platelets">
+					description = <"Platelets x 10^3/mm^3.">
+				>
+				["at0006"] = <
+					text = <"Glasgow Coma Score">
+					description = <"Glasgow Coma Scale score">
+				>
+				["at0007"] = <
+					text = <"Bilirubin">
+					description = <"Total Bilirubin score - (mg/dl) [μmol/L]">
+				>
+				["at0008"] = <
+					text = <"MAP or admin of vasopressors required">
+					description = <"Mean Arterial Pressure or administration of vasopressors required">
+				>
+				["at0009"] = <
+					text = <"Creatinine or urine output">
+					description = <"Creatinine (mg/dl) [μmol/L] (or urine output - mL/day). As the ranges in micromols/L have holes, the ranges have been stretched to cover the holes">
+				>
+				["at0010"] = <
+					text = <"Total score">
+					description = <"Total score">
+				>
+				["at0012"] = <
+					text = <"< 400">
+					description = <"mmHg">
+				>
+				["at0013"] = <
+					text = <"< 300">
+					description = <"mmHg">
+				>
+				["at0014"] = <
+					text = <"< 200 and mechanically ventilated">
+					description = <"mmHg">
+				>
+				["at0015"] = <
+					text = <"< 100 and mechanically ventilated">
+					description = <"mmHg">
+				>
+				["at0016"] = <
+					text = <"No hypotension">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"MAP <70 mmHg">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"DOP <=5 or DOB (any dose)">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"DOP >5 or EPI <=0.1 or NOR <=0.1">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"DOP >15 or EPI >0.1 or NOR >0.1">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"<1.2 [<106]">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"1.2–1.9 [106-168]">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"2.0–3.4 [169-301]">
+					description = <"was [177-301]">
+				>
+				["at0024"] = <
+					text = <"3.5–4.9 [302-433] or urine output < 500 ml/d">
+					description = <"was [309-433]">
+				>
+				["at0025"] = <
+					text = <">5.0 [>433] or urine output <200 ml/d">
+					description = <"was >442">
+				>
+				["at0026"] = <
+					text = <"N/A">
+					description = <"(mg/dl) [μmol/L]">
+				>
+				["at0027"] = <
+					text = <"1.2-1.9 [20-32]">
+					description = <"(mg/dl) [μmol/L]">
+				>
+				["at0028"] = <
+					text = <"2.0-5.9 [33-101]">
+					description = <"(mg/dl) [μmol/L]">
+				>
+				["at0029"] = <
+					text = <"6.0-11.9 [102-204]">
+					description = <"(mg/dl) [μmol/L]">
+				>
+				["at0030"] = <
+					text = <">12.0 [>204]">
+					description = <"(mg/dl) [μmol/L]">
+				>
+				["at0031"] = <
+					text = <"N/A">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"13-14">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"10-12">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"6-9">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"< 6">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"N/A">
+					description = <"x10^3/muL">
+				>
+				["at0037"] = <
+					text = <"< 150">
+					description = <"x10^3/muL">
+				>
+				["at0038"] = <
+					text = <"< 100">
+					description = <"x10^3/muL">
+				>
+				["at0039"] = <
+					text = <"< 50">
+					description = <"x10^3/muL">
+				>
+				["at0040"] = <
+					text = <"< 20">
+					description = <"x10^3/muL">
+				>
+				["at0041"] = <
+					text = <"N/A">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0043"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
+				>
+			>
+		>
+		["sv"] = <
+			items = <
+				["at0000"] = <
+					text = <"*Sequential Organ Failure Assessment (SOFA) (en)">
+					description = <"*An assessment score developed by the European Society of Intensive Care Medicine that provides an indicator of mortality and morbidity prognosis among ICU patients. (en)">
+				>
+				["at0001"] = <
+					text = <"*Event Series(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0002"] = <
+					text = <"*Any event(en)">
+					description = <"*Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time. (en)">
+				>
+				["at0003"] = <
+					text = <"*Tree(en)">
+					description = <"*@ internal @(en)">
+				>
+				["at0004"] = <
+					text = <"*PaO FiO ratio (en)">
+					description = <"*PaO 2/FiO2 ratio (mmHg). It is the ratio of arterial partial pressure of O2 to the fractional inspired O2 (O2 concentration in air delivered as a percentage). At sea level this is above 400mmHg (some say over 500mmHg but we shall use the lower threshold value). (en)">
+				>
+				["at0005"] = <
+					text = <"*Platelets (en)">
+					description = <"*Platelets x 10^3/mm^3. (en)">
+				>
+				["at0006"] = <
+					text = <"*Glasgow Coma Score (en)">
+					description = <"Glasgow Coma Scale">
+				>
+				["at0007"] = <
+					text = <"*Bilirubin (en)">
+					description = <"Totalt Bilirubin angett i mg/dl [μmol/L]">
+				>
+				["at0008"] = <
+					text = <"Medelartärtryck (MAP) alt behov av vasopressor">
+					description = <"Medelartärtryck (MAP) alt behov av vasopressor">
+				>
+				["at0009"] = <
+					text = <"Kreatinin eller dygnsdiures">
+					description = <"Kreatinin angett i mg/dl [μmol/L] (eller dygnsdiures angett i mL/dag. ">
+				>
+				["at0010"] = <
+					text = <"Total poäng">
+					description = <"Summan av samtliga faktorer">
+				>
+				["at0012"] = <
+					text = <"<400">
+					description = <"mmHg">
+				>
+				["at0013"] = <
+					text = <"<300">
+					description = <"mmHg">
+				>
+				["at0014"] = <
+					text = <"<200 och intuberad">
+					description = <"mmHg">
+				>
+				["at0015"] = <
+					text = <"<100 och intuberad">
+					description = <"mmHg">
+				>
+				["at0016"] = <
+					text = <"Ej hypotension">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"MAP< 70 mmHg">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Dopamin < 5 eller  dobutamin">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"Dopamin > 5 eller  noradrenalin < 0,1 eller adrenalin < 0,1">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"Dopamin > 15 eller noradrenalin  >0,1 eller adrenalin >0,1">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"<1.2 [<106]">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"1.2–1.9 [106-168]">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"2.0–3.4 [169-301]">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"3.5–4.9 [302-433] (eller dygnsdiures < 500 ml/dygn)">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <">5.0 [>433] (eller dygnsdiures <200 ml/dag)">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"Ej tillämpbar">
+					description = <"(mg/dl) [μmol/L]">
+				>
+				["at0027"] = <
+					text = <"1.2–1.9 [>20-32]">
+					description = <"(mg/dl) [μmol/L]">
+				>
+				["at0028"] = <
+					text = <"2.0–5.9 [33-101]">
+					description = <"(mg/dl) [μmol/L]">
+				>
+				["at0029"] = <
+					text = <"6.0–11.9 [102-204]">
+					description = <"(mg/dl) [μmol/L]">
+				>
+				["at0030"] = <
+					text = <">12.0 [>204]">
+					description = <"(mg/dl) [μmol/L]">
+				>
+				["at0031"] = <
+					text = <"Ej tillämpbar">
+					description = <"*">
+				>
+				["at0032"] = <
+					text = <"13-14">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"10-12">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"6-9">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"<6">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Ej tillämpbar">
+					description = <"x10^3/muL">
+				>
+				["at0037"] = <
+					text = <"<150">
+					description = <"x10^3/muL">
+				>
+				["at0038"] = <
+					text = <"<100">
+					description = <"x10^3/muL">
+				>
+				["at0039"] = <
+					text = <"<50">
+					description = <"x10^3/muL">
+				>
+				["at0040"] = <
+					text = <"<20">
+					description = <"x10^3/muL">
+				>
+				["at0041"] = <
+					text = <"Ej tillämpbar">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"*Item tree (en)">
+					description = <"@ internal @">
+				>
+				["at0043"] = <
+					text = <"*Extension (en)">
+					description = <"*Additional information required to extend the model with local content or to align with other reference models or formalisms. (en)">
+					comment = <"*For example: local information requirements; or additional metadata to align with FHIR. (en)">
+				>
+			>
+		>
+	>
