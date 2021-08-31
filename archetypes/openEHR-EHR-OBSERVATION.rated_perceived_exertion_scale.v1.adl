@@ -1,8 +1,9 @@
-archetype (adl_version=1.4)
+archetype (adl_version=1.4; uid=ab8a56f7-0075-3729-8a8b-fa3c52c6ebb9)
 	openEHR-EHR-OBSERVATION.rated_perceived_exertion_scale.v1
 
 concept
-	[at0000]	-- Rated Percieved Exertion Scale
+	[at0000]
+
 language
 	original_language = <[ISO_639-1::en]>
 	translations = <
@@ -10,106 +11,76 @@ language
 			language = <[ISO_639-1::sv]>
 			author = <
 				["name"] = <"Dennis Forslund">
-				["email"] = <"models@cambiocds.com">
 				["organisation"] = <"Cambio Healthcare Systems">
+				["email"] = <"models@cambiocds.com">
 			>
 		>
 	>
+
 description
 	original_author = <
-		["name"] = <"Syeeda S Farruque">
-		["email"] = <"models@cambiocds.com">
-		["organisation"] = <"Cambio Healthcare Systems">
 		["date"] = <"2017-08-12">
+		["name"] = <"Syeeda S Farruque">
+		["organisation"] = <"Cambio CDS">
+		["email"] = <"models@cambiocds.com">
 	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <"Hager Saleh, hagerasaleh@yahoo.com", ...>
 	details = <
 		["sv"] = <
 			language = <[ISO_639-1::sv]>
-			purpose = <"Rated Perceived Exertion (RPE) Scale används för att subjektivt skatta fysisk ansträngningsgrad.">
-			use = <"Rated Perceived Exertion (RPE) Scale:
-
-Score       Ansträngningsgrad
-
-0              Ingen ansträngning alls
-0.5           Extremt lätt
-1              Mycket lätt
-2              Lätt
-3              Något ansträngande
-4              Ansträngande
-5-6          Mycket ansträngande
-7-9          Extremt ansträngande
-10            Maximal ansträngning
-
-Rekommenderad nivå: 3-4
-
-Individen ska skatta den allmänna fysiska ansträngningen, det vill säga ansträngningskänsla i muskler och känsla av andfåddhet. 
-">
-			keywords = <"*rated perceived exercise scale(en)", "*exercise(en)", "rated perceived exercise scale", "fysisk ansträngning", "RPE-skala">
+			purpose = <"*Use to record the results of each component parameter for Rated Perceived Exertion (RPE) Scale. 
+ (en)">
+			keywords = <"*rated perceived exertion, RPE, exercise, scale, activity (en)", ...>
+			copyright = <"*© Cambio CDS (en)">
+			use = <"*Use to record the results of each component parameter for Rated Perceived Exertion (RPE) Scale. 
+ (en)">
 			misuse = <"Instrumentet bör endast användas för skattning av fysisk ansträngning. Om mer allvarliga symtom än snabbt övergående trötthet och andfåddhet uppkommer, bör individen söka vård.">
-			copyright = <"© Cambio Healthcare Systems">
 		>
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"Rated Perceived Exertion (RPE) Scale helps to assess exercise intensity.">
-			use = <"Rated Perceived Exertion (RPE) Scale has a range of 0 to 10 according to the perceived difficulty of the activity.
-
-Score       Level of difficulty 
-
-0              Nothing at all
-0.5           Just noticable
-1              Very light
-2              Light
-3              Moderate
-4              Somewhat heavy
-5-6          Heavy
-7-9          Very heavy
-10            Very, very heavy
-
-Recommended level of exercise: 3-4
-
-The user should take into account feeling heavy, amount of tirednes in legs and overall and whether they are short of breath.
-
+			purpose = <"Use to record the results of each component parameter for Rated Perceived Exertion (RPE) Scale. 
 ">
-			keywords = <"rated perceived exercise scale", "exercise">
+			keywords = <"rated perceived exertion, RPE, exercise, scale, activity", ...>
+			copyright = <"© Cambio CDS">
+			use = <"Use to record the results of each component parameter for Rated Perceived Exertion (RPE) Scale. 
+">
 			misuse = <"This tool should only be used as a guide to exercise exertion. If symptoms seem more serious than tiredness or shortness of breath which recovers in a short space of time, the user should seek professional help from a clinician.">
-			copyright = <"© Cambio Healthcare Systems">
 		>
 	>
-	lifecycle_state = <"AuthorDraft">
-	other_contributors = <>
 	other_details = <
-		["references"] = <"Ref. 1: Rated Perceived Exertion Scale taken from the Cleveland Clinic website, published 3rd March 2017. Accessed at:
-
+		["references"] = <"1: Rated Perceived Exertion Scale, the Cleveland Clinic website, published 3rd March 2017. Accessed at:
 https://my.clevelandclinic.org/health/articles/rpe-scale-heart-health?view=print">
 		["MD5-CAM-1.0.1"] = <"8523EFEB27694CA3F17F3D54BA9C42E7">
+		["build_uid"] = <"bcedb41a-c979-3c0a-98ab-378a2e658b4f">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Rated Percieved Exertion Scale
+	OBSERVATION[at0000] matches {    -- Rated Perceived Exertion (RPE) Scale.
 		data matches {
-			HISTORY[at0001] matches {	-- *Event Series(en)
+			HISTORY[at0001] matches {    -- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..1} matches {	-- *Any event(en)
+					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- *Tree(en)
+							ITEM_TREE[at0003] matches {    -- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- RPE-nivå
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- RPE scale level
 										value matches {
-											0|[local::at0005], 	-- Ingen ansträngning alls
-											1|[local::at0006], 	-- Extremt lätt
-											2|[local::at0016], 	-- Mycket lätt
-											4|[local::at0007], 	-- Lätt
-											6|[local::at0008], 	-- Något ansträngande
-											8|[local::at0009], 	-- Ansträngande
-											10|[local::at0010], 	-- Mycket ansträngande
-											12|[local::at0011], 	-- Mycket ansträngande
-											14|[local::at0012], 	-- Extremt ansträngande
-											16|[local::at0013], 	-- Extremt ansträngande
-											18|[local::at0014], 	-- Extremt ansträngande
-											20|[local::at0015]  	-- Maximal ansträngning
+											0|[local::at0005],
+											1|[local::at0006],
+											2|[local::at0016],
+											4|[local::at0007],
+											6|[local::at0008],
+											8|[local::at0009],
+											10|[local::at0010],
+											12|[local::at0011],
+											14|[local::at0012],
+											16|[local::at0013],
+											18|[local::at0014],
+											20|[local::at0015]
 										}
 									}
-									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Resultat
+									ELEMENT[at0017] occurrences matches {0..1} matches {    -- Final score
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::380]>
@@ -123,7 +94,7 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Kommentar
+									ELEMENT[at0018] occurrences matches {0..1} matches {    -- Comment
 										value matches {
 											DV_TEXT matches {*}
 										}
@@ -135,6 +106,16 @@ definition
 				}
 			}
 		}
+		protocol matches {
+			ITEM_TREE[at0020] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0021] occurrences matches {0..*} matches {    -- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
+		}
 	}
 
 ontology
@@ -142,8 +123,9 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"Rated percieved exertion scale">
-					description = <"Rated Perceived Exertion (RPE) Scale helps to assess exercise intensity">
+					text = <"Rated Perceived Exertion (RPE) Scale.">
+					description = <"A scale to measure exercise intensity. The RPE scale runs from 0 – 10 according to the perceived difficulty of the activity. The user should take into account feeling heavy, the amount of tiredness in legs and overall, and whether they are short of breath.">
+					comment = <"Original version c 2017.">
 				>
 				["at0001"] = <
 					text = <"Event Series">
@@ -151,7 +133,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"Any event">
-					description = <"*">
+					description = <"Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time.">
 				>
 				["at0003"] = <
 					text = <"Tree">
@@ -217,13 +199,22 @@ ontology
 					text = <"Comment">
 					description = <"Any comments regarding the tool">
 				>
+				["at0020"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0021"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"local information requirements; or additional metadata to align with FHIR.">
+				>
 			>
 		>
 		["sv"] = <
 			items = <
 				["at0000"] = <
-					text = <"Rated Percieved Exertion Scale">
-					description = <"Rated Perceived Exertion (RPE) Scale används för att subjektivt skatta fysisk ansträngningsgrad.">
+					text = <"*Rated Perceived Exertion (RPE) Scale. (en)">
+					description = <"*A scale to measure exercise intensity. The RPE scale runs from 0 – 10 according to the perceived difficulty of the activity. The user should take into account feeling heavy, the amount of tiredness in legs and overall, and whether they are short of breath. (en)">
 				>
 				["at0001"] = <
 					text = <"*Event Series(en)">
@@ -231,7 +222,7 @@ ontology
 				>
 				["at0002"] = <
 					text = <"*Any event(en)">
-					description = <"**(en)">
+					description = <"*Default, unspecified point in time or interval event which may be explicitly defined in a template or at run-time. (en)">
 				>
 				["at0003"] = <
 					text = <"*Tree(en)">
@@ -296,6 +287,15 @@ ontology
 				["at0018"] = <
 					text = <"Kommentar">
 					description = <"Ev. kommentar kring instrumentet.">
+				>
+				["at0020"] = <
+					text = <"*Item tree (en)">
+					description = <"@ internal @">
+				>
+				["at0021"] = <
+					text = <"*Extension (en)">
+					description = <"*Additional information required to extend the model with local content or to align with other reference models or formalisms. (en)">
+					comment = <"*local information requirements; or additional metadata to align with FHIR. (en)">
 				>
 			>
 		>
