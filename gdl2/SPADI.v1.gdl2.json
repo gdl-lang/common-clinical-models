@@ -137,9 +137,9 @@
       }
     },
     "rules": {
-      "gt0023": {
-        "id": "gt0023",
-        "priority": 3,
+      "gt0027": {
+        "id": "gt0027",
+        "priority": 4,
         "when": [
           "$gt0003|1. At its worst?|>=0,1",
           "$gt0003|1. At its worst?|<=10,1",
@@ -150,7 +150,18 @@
           "$gt0006|4. Touching the back of your neck?|>=0,1",
           "$gt0006|4. Touching the back of your neck?|<=10,1",
           "$gt0007|5. Pushing with the involved arm?|>=0,1",
-          "$gt0007|5. Pushing with the involved arm?|<=10,1",
+          "$gt0007|5. Pushing with the involved arm?|<=10,1"
+        ],
+        "then": [
+          "$gt0018|Pain score|.magnitude=($gt0003.magnitude+$gt0004.magnitude+$gt0005.magnitude+$gt0006.magnitude+$gt0007.magnitude)/50*100",
+          "$gt0018|Pain score|.precision=2",
+          "$gt0018|Pain score|.unit='1'"
+        ]
+      },
+      "gt0023": {
+        "id": "gt0023",
+        "priority": 3,
+        "when": [
           "$gt0009|1. Washing your hair?|>=0,1",
           "$gt0009|1. Washing your hair?|<=10,1",
           "$gt0010|2. Washing your back?|>=0,1",
@@ -169,8 +180,9 @@
           "$gt0016|8. Removing something from your back pocket?|<=10,1"
         ],
         "then": [
-          "$gt0018|Pain score|.magnitude=($gt0003.magnitude+$gt0004.magnitude+$gt0005.magnitude+$gt0006.magnitude+$gt0007.magnitude)/50*100",
-          "$gt0019|Disability score|.magnitude=($gt0009.magnitude+$gt0010.magnitude+$gt0011.magnitude+$gt0012.magnitude+$gt0013.magnitude+$gt0014.magnitude+$gt0015.magnitude+$gt0016.magnitude)/80*100"
+          "$gt0019|Disability score|.magnitude=($gt0009.magnitude+$gt0010.magnitude+$gt0011.magnitude+$gt0012.magnitude+$gt0013.magnitude+$gt0014.magnitude+$gt0015.magnitude+$gt0016.magnitude)/80*100",
+          "$gt0019|Disability score|.precision=2",
+          "$gt0019|Disability score|.unit='1'"
         ]
       },
       "gt0025": {
@@ -181,7 +193,9 @@
           "$gt0019|Disability score|!=null"
         ],
         "then": [
-          "$gt0020|Total score|.magnitude=($gt0003.magnitude+$gt0004.magnitude+$gt0005.magnitude+$gt0006.magnitude+$gt0007.magnitude+$gt0009.magnitude+$gt0010.magnitude+$gt0011.magnitude+$gt0012.magnitude+$gt0013.magnitude+$gt0014.magnitude+$gt0015.magnitude+$gt0016.magnitude)/130*100"
+          "$gt0020|Total SPADI score|.magnitude=($gt0003.magnitude+$gt0004.magnitude+$gt0005.magnitude+$gt0006.magnitude+$gt0007.magnitude+$gt0009.magnitude+$gt0010.magnitude+$gt0011.magnitude+$gt0012.magnitude+$gt0013.magnitude+$gt0014.magnitude+$gt0015.magnitude+$gt0016.magnitude)/130*100",
+          "$gt0020|Total SPADI score|.unit='1'",
+          "$gt0020|Total SPADI score|.precision=2"
         ]
       },
       "gt0026": {
@@ -295,7 +309,7 @@
           },
           "gt0023": {
             "id": "gt0023",
-            "text": "Subscales calculation"
+            "text": "Disability subscale rule"
           },
           "gt0025": {
             "id": "gt0025",
@@ -304,6 +318,10 @@
           "gt0026": {
             "id": "gt0026",
             "text": "Interpretation rule"
+          },
+          "gt0027": {
+            "id": "gt0027",
+            "text": "Pain subscale rule"
           }
         }
       }
