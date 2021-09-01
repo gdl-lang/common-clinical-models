@@ -1,5 +1,5 @@
 {
-  "id": "Falls Efficacy Scale.v1",
+  "id": "Falls_Efficacy_Scale.v1",
   "gdl_version": "2.0",
   "concept": "gt0001",
   "language": {
@@ -24,7 +24,8 @@
           "elderly"
         ],
         "use": "On a scale from 1 to 10, with 1 being very confident and 10 being not confident at all. The scale can be self-administered and consists of 10 items:\n1. Take a bath or shower\n2. Reach into cabinets or closets\n3. Walk around the house\n4. Prepare meals not requiring carrying heavy or hot objects\n5. Get in and out of bed\n6. Answer the door or telephone\n7. Get in and out of a chair\n8. Getting dressed and undressed\n9. Personal grooming (i.e. washing your face)\n10. Getting on and off of the toilet\nFES results range from 0 to 100, where the higher the score, the lower the perceived self-efficacy at avoiding falls during non-hazardous, essential activities of daily living.\n\n\n",
-        "misuse": "This tool should not be considered as a substitute for any professional medical service, nor as a substitute for clinical judgement."
+        "misuse": "This tool should not be considered as a substitute for any professional medical service, nor as a substitute for clinical judgement.",
+        "copyright": "@ Cambio CDS"
       }
     },
     "other_details": {
@@ -83,8 +84,8 @@
       },
       "gt0013": {
         "id": "gt0013",
-        "model_id": "openEHR-EHR-OBSERVATION.fes_.v0",
-        "template_id": "openEHR-EHR-OBSERVATION.fes_.v0",
+        "model_id": "openEHR-EHR-OBSERVATION.fes.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.fes.v0",
         "type": "OUTPUT",
         "elements": {
           "gt0014": {
@@ -109,7 +110,7 @@
     "rules": {
       "gt0017": {
         "id": "gt0017",
-        "priority": 2,
+        "priority": 3,
         "when": [
           "$gt0020|Take a bath or shower|!=null",
           "$gt0021|Reach into cabinets or closets|!=null",
@@ -123,18 +124,29 @@
           "$gt0029|Getting on and off of the toilet|!=null"
         ],
         "then": [
-          "$gt0014|Total Score|.magnitude=$gt0020.magnitude+$gt0021.magnitude+$gt0022.magnitude+$gt0023.magnitude+$gt0024.magnitude+$gt0025.magnitude+$gt0026.magnitude+$gt0027.magnitude+$gt0028.magnitude+$gt0029.magnitude"
+          "$gt0014|Total Score|.magnitude=$gt0020.magnitude+$gt0021.magnitude+$gt0022.magnitude+$gt0023.magnitude+$gt0024.magnitude+$gt0025.magnitude+$gt0026.magnitude+$gt0027.magnitude+$gt0028.magnitude+$gt0029.magnitude",
+          "$gt0014|Total Score|.unit='1'"
         ]
       },
       "gt0018": {
         "id": "gt0018",
-        "priority": 1,
+        "priority": 2,
         "when": [
           "$gt0014|Total Score|>=0",
           "$gt0014|Total Score|<=100"
         ],
         "then": [
-          "$gt0016|Score interpretation|=local::at0016|FES results range from 0 to 100, where the higher the score, the lower the perceived self-efficacy at avoiding falls during non-hazardous, essential activities of daily living.|"
+          "$gt0031|Interpretation text|=$gt0030.term"
+        ]
+      },
+      "gt0032": {
+        "id": "gt0032",
+        "priority": 1,
+        "when": [
+          "fired($gt0018)"
+        ],
+        "then": [
+          "$gt0016|Score interpretation|.value=$gt0031"
         ]
       }
     }
@@ -221,6 +233,20 @@
             "id": "gt0029",
             "text": "Getting on and off of the toilet",
             "description": "On a scale from 1 to 10, with 1 being very confident and 10 being not confident at all."
+          },
+          "gt0030": {
+            "id": "gt0030",
+            "text": "FES results range from 0 to 100, where the higher the score, the lower the perceived self-efficacy at avoiding falls during non-hazardous, essential activities of daily living.",
+            "description": ""
+          },
+          "gt0031": {
+            "id": "gt0031",
+            "text": "Interpretation text",
+            "description": ""
+          },
+          "gt0032": {
+            "id": "gt0032",
+            "text": "Set interpretation"
           }
         }
       }
