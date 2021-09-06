@@ -1,5 +1,5 @@
 {
-  "id": "Falls Efficacy Scale International.v1",
+  "id": "Falls_Efficacy_Scale_International.v1",
   "gdl_version": "2.0",
   "concept": "gt0001",
   "language": {
@@ -133,7 +133,7 @@
     "rules": {
       "gt0054": {
         "id": "gt0054",
-        "priority": 2,
+        "priority": 3,
         "when": [
           "$gt0032|Cleaning the house (e.g. sweep, vacuum or dust)|!=null",
           "$gt0033|Getting dressed or undressed|!=null",
@@ -158,13 +158,23 @@
       },
       "gt0055": {
         "id": "gt0055",
-        "priority": 1,
+        "priority": 2,
         "when": [
           "$gt0050|Total score|>=16",
           "$gt0050|Total score|<=64"
         ],
         "then": [
-          "$gt0052|Score interpretation|=local::at0016|FES-I results range from 16 (no concern about falling) to 64 (severe concern about falling).|"
+          "$gt0056|Interpretation text|=$gt0057.term"
+        ]
+      },
+      "gt0058": {
+        "id": "gt0058",
+        "priority": 1,
+        "when": [
+          "fired($gt0055)"
+        ],
+        "then": [
+          "$gt0052|Score interpretation|.value=$gt0056"
         ]
       }
     }
@@ -275,7 +285,21 @@
           },
           "gt0055": {
             "id": "gt0055",
-            "text": "Score interpretation "
+            "text": "Score interpretation text"
+          },
+          "gt0056": {
+            "id": "gt0056",
+            "text": "Interpretation text",
+            "description": ""
+          },
+          "gt0057": {
+            "id": "gt0057",
+            "text": "FES-I results range from 16 (no concern about falling) to 64 (severe concern about falling).",
+            "description": ""
+          },
+          "gt0058": {
+            "id": "gt0058",
+            "text": "Interpretation"
           }
         }
       }
