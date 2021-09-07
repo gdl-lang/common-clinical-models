@@ -199,9 +199,31 @@
       "$gt0003|Age|>=18,a"
     ],
     "rules": {
+      "gt0034": {
+        "id": "gt0034",
+        "priority": 9,
+        "when": [
+          "$gt0005|NIH severity classification|==local::at0102|Critical|"
+        ],
+        "then": [
+          "$gt0043|Patient's management text|=$gt0044.term",
+          "$gt0058|NIH severity|=$gt0054.term"
+        ]
+      },
+      "gt0038": {
+        "id": "gt0038",
+        "priority": 8,
+        "when": [
+          "$gt0005|NIH severity classification|==local::at0101|Severe|"
+        ],
+        "then": [
+          "$gt0043|Patient's management text|=$gt0045.term",
+          "$gt0058|NIH severity|=$gt0055.term"
+        ]
+      },
       "gt0032": {
         "id": "gt0032",
-        "priority": 9,
+        "priority": 7,
         "when": [
           "$gt0006|Sex|!=null",
           "$gt0007|Age, years|!=null",
@@ -212,7 +234,8 @@
           "$gt0012|Temperature|!=null",
           "$gt0013|Alertness|!=null",
           "$gt0014|Inspired oxygen|!=null",
-          "$gt0015|Performance status|!=null"
+          "$gt0015|Performance status|!=null",
+          "($gt0005|NIH severity classification|==local::at0099|Mild|)||($gt0005|NIH severity classification|==local::at0100|Moderate|)"
         ],
         "then": [
           "$gt0030|PRIEST score|.magnitude=$gt0006.value+$gt0007.value+$gt0008.value+$gt0009.value+$gt0010.value+$gt0011.value+$gt0012.value+$gt0013.value+$gt0014.value+$gt0015.value"
@@ -220,7 +243,7 @@
       },
       "gt0033": {
         "id": "gt0033",
-        "priority": 8,
+        "priority": 6,
         "when": [
           "$gt0016|Cancer|!=null",
           "$gt0017|Cardiovascular disease|!=null",
@@ -234,32 +257,11 @@
           "$gt0025|Obstructive sleep apnea|!=null",
           "$gt0026|Pregnancy|!=null",
           "$gt0027|Renal disease|!=null",
-          "$gt0028|Steroid usage|!=null"
+          "$gt0028|Steroid usage|!=null",
+          "($gt0005|NIH severity classification|==local::at0099|Mild|)||($gt0005|NIH severity classification|==local::at0100|Moderate|)"
         ],
         "then": [
           "$gt0031|COVID-19 additional risk factors|.magnitude=$gt0016.value+$gt0017.value+$gt0018.value+$gt0019.value+$gt0020.value+$gt0021.value+$gt0022.value+$gt0023.value+$gt0024.value+$gt0025.value+$gt0026.value+$gt0027.value+$gt0028.value"
-        ]
-      },
-      "gt0034": {
-        "id": "gt0034",
-        "priority": 7,
-        "when": [
-          "$gt0005|NIH severity classification|==local::at0102|Critical|"
-        ],
-        "then": [
-          "$gt0036|NIH severity classification|=local::at0045|Critical|",
-          "$gt0043|Patient's management text|=$gt0044.term"
-        ]
-      },
-      "gt0038": {
-        "id": "gt0038",
-        "priority": 6,
-        "when": [
-          "$gt0005|NIH severity classification|==local::at0101|Severe|"
-        ],
-        "then": [
-          "$gt0036|NIH severity classification|=local::at0044|Severe|",
-          "$gt0043|Patient's management text|=$gt0045.term"
         ]
       },
       "gt0039": {
@@ -267,11 +269,13 @@
         "priority": 5,
         "when": [
           "$gt0005|NIH severity classification|==local::at0100|Moderate|",
-          "($gt0030|PRIEST score|<=4)||($gt0031|COVID-19 additional risk factors|<=1)"
+          "($gt0030|PRIEST score|<=4)||($gt0031|COVID-19 additional risk factors|<=1)",
+          "$gt0030|PRIEST score|!=null",
+          "$gt0031|COVID-19 additional risk factors|!=null"
         ],
         "then": [
-          "$gt0036|NIH severity classification|=local::at0043|Moderate|",
-          "$gt0043|Patient's management text|=$gt0046.term"
+          "$gt0043|Patient's management text|=$gt0046.term",
+          "$gt0058|NIH severity|=$gt0056.term"
         ]
       },
       "gt0040": {
@@ -279,11 +283,13 @@
         "priority": 4,
         "when": [
           "$gt0005|NIH severity classification|==local::at0100|Moderate|",
-          "($gt0030|PRIEST score|>4)||($gt0031|COVID-19 additional risk factors|>1)"
+          "($gt0030|PRIEST score|>4)||($gt0031|COVID-19 additional risk factors|>1)",
+          "$gt0030|PRIEST score|!=null",
+          "$gt0031|COVID-19 additional risk factors|!=null"
         ],
         "then": [
-          "$gt0036|NIH severity classification|=local::at0043|Moderate|",
-          "$gt0043|Patient's management text|=$gt0047.term"
+          "$gt0043|Patient's management text|=$gt0047.term",
+          "$gt0058|NIH severity|=$gt0056.term"
         ]
       },
       "gt0041": {
@@ -291,11 +297,13 @@
         "priority": 3,
         "when": [
           "$gt0005|NIH severity classification|==local::at0099|Mild|",
-          "($gt0030|PRIEST score|<=4)||($gt0031|COVID-19 additional risk factors|<=1)"
+          "($gt0030|PRIEST score|<=4)||($gt0031|COVID-19 additional risk factors|<=1)",
+          "$gt0030|PRIEST score|!=null",
+          "$gt0031|COVID-19 additional risk factors|!=null"
         ],
         "then": [
-          "$gt0036|NIH severity classification|=local::at0042|Mild|",
-          "$gt0043|Patient's management text|=$gt0048.term"
+          "$gt0043|Patient's management text|=$gt0048.term",
+          "$gt0058|NIH severity|=$gt0057.term"
         ]
       },
       "gt0052": {
@@ -303,11 +311,13 @@
         "priority": 2,
         "when": [
           "$gt0005|NIH severity classification|==local::at0099|Mild|",
-          "($gt0030|PRIEST score|>4)||($gt0031|COVID-19 additional risk factors|>1)"
+          "($gt0030|PRIEST score|>4)||($gt0031|COVID-19 additional risk factors|>1)",
+          "$gt0030|PRIEST score|!=null",
+          "$gt0031|COVID-19 additional risk factors|!=null"
         ],
         "then": [
-          "$gt0036|NIH severity classification|=local::at0042|Mild|",
-          "$gt0043|Patient's management text|=$gt0049.term"
+          "$gt0043|Patient's management text|=$gt0049.term",
+          "$gt0058|NIH severity|=$gt0057.term"
         ]
       },
       "gt0053": {
@@ -317,7 +327,8 @@
           "(fired($gt0034))||((fired($gt0038))||((fired($gt0039))||((fired($gt0040))||((fired($gt0041))||(fired($gt0052))))))"
         ],
         "then": [
-          "$gt0037|Patient's management plan|.value=$gt0043"
+          "$gt0037|Patient's management plan|.value=$gt0043",
+          "$gt0036|NIH severity classification|.value=$gt0058"
         ]
       }
     }
@@ -512,32 +523,32 @@
           },
           "gt0044": {
             "id": "gt0044",
-            "text": "Workup-CXR, U/S, CT?, EKG, CBC, CMP (CRP, D-Dimer, Ferritin). Tx-Dexamethasone +/- Remdesivir; Oxygen Support; Intubate if Severe Resp Distress; Conservative Fluid Strategy. Admit to ICU with proph a/c (unless preg).",
+            "text": "Workup-CXR, U/S, CT?, EKG, CBC, CMP (CRP, D-Dimer, Ferritin). Tx-Dexamethasone +/- Remdesivir; Oxygen Support; Intubate if Severe Resp Distress; Conservative Fluid Strategy. Admit to ICU with prophylactic Anticoagulants (unless pregnant).",
             "description": "patient's management interpretation text"
           },
           "gt0045": {
             "id": "gt0045",
-            "text": "Workup-CXR, U/S, CT?, EKG, CBC, CMP (CRP, D-Dimer, Ferritin). Tx-Dexamethasone +/- Remdesivir, Oxygen Support. Admit -> Clinical Decision Floor vs ICU with proph a/c (unless preg).",
+            "text": "Workup-CXR, U/S, CT?, EKG, CBC, CMP (CRP, D-Dimer, Ferritin). Tx-Dexamethasone +/- Remdesivir, Oxygen Support. Admit -> Clinical Decision Floor vs ICU with prophylactic Anticoagulants (unless pregnant).",
             "description": "patients' management interpretation text"
           },
           "gt0046": {
             "id": "gt0046",
-            "text": "Workup-CXR, U/S, CT?, EKG, CBC, CMP (CRP, D-Dimer, Ferritin). Tx-Monoclonal Abx? (Avoid steroids if not hypoxic) No concerning imaging/labs? Consider D/C home with CDC Patient Materials + Home PulseOx. If Admit -> Obs/floor with proph a/c (unless preg).",
+            "text": "Workup-CXR, U/S, CT?, EKG, CBC, CMP (CRP, D-Dimer, Ferritin). Tx-Monoclonal Abx? (Avoid steroids if not hypoxic) No concerning imaging/labs? Consider Discharging home with CDC Patient Materials + Home PulseOx. If Admit -> Obs/floor with prophylactic Anticoagulants (unless pregnant).",
             "description": "patient's management interpretation text"
           },
           "gt0047": {
             "id": "gt0047",
-            "text": "Workup-CXR, U/S, CT?, EKG, CBC, CMP (CRP, D-Dimer, Ferritin). Tx-Monoclonal Abx? (Avoid steroids if not hypoxic). Admit -> Obs/floor with proph a/c (unless preg).",
+            "text": "Workup-CXR, U/S, CT?, EKG, CBC, CMP (CRP, D-Dimer, Ferritin). Tx-Monoclonal Abx? (Avoid steroids if not hypoxic). Admit -> Obs/floor with prophylactic Anticoagulants (unless pregnant).",
             "description": "patient's management interpretation text"
           },
           "gt0048": {
             "id": "gt0048",
-            "text": "Tx-Monoclonal Abx? (Avoid steroids if not hypoxic). Consider D/C home with CDC Patient Materials + Home PulseOx.",
+            "text": "Tx-Monoclonal Abx? (Avoid steroids if not hypoxic). Consider Discharging home with CDC Patient Materials + Home PulseOx.",
             "description": "patient's management interpretation text"
           },
           "gt0049": {
             "id": "gt0049",
-            "text": "Tx-Monoclonal Abx? (Avoid steroids if not hypoxic). Consider D/C home with CDC Patient Materials, Close f/u to PMD + Home PulseOx",
+            "text": "Tx-Monoclonal Abx? (Avoid steroids if not hypoxic). Consider Discharging home with CDC Patient Materials, Close follow-up to PMD + Home PulseOx",
             "description": "patient's management interpretation text"
           },
           "gt0052": {
@@ -547,6 +558,31 @@
           "gt0053": {
             "id": "gt0053",
             "text": "patient's management text rule"
+          },
+          "gt0054": {
+            "id": "gt0054",
+            "text": "Critical",
+            "description": ""
+          },
+          "gt0055": {
+            "id": "gt0055",
+            "text": "Severe",
+            "description": ""
+          },
+          "gt0056": {
+            "id": "gt0056",
+            "text": "Moderate",
+            "description": ""
+          },
+          "gt0057": {
+            "id": "gt0057",
+            "text": "Mild",
+            "description": ""
+          },
+          "gt0058": {
+            "id": "gt0058",
+            "text": "NIH severity",
+            "description": ""
           }
         }
       }
