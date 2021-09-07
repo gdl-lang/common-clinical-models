@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 623*
+### *Published Apps: 628*
 
 ----------
 
 ### Latest added
 
-1. IMPROVEDD Risk Score for Venous Thromboembolism (VTE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IMPROVEDD_risk_score/1?language=en))
-2. Veterans Health Administration COVID-19 (VACO) Index for COVID-19 Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/VACO_mortality_index/1?language=en))
-3. Montreal Classification for Inflammatory Bowel Disease (IBD) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/montreal_classification_ibd/1?language=en))
-4. Transtubular Potassium Gradient (TTKG) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/transtubular_potassium_gradient_guideline/1?language=en))
-5. Altitude-Adjusted PERC Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/altitude_adjusted_perc_guideline/1?language=en))
-6. UKPDS Cardiac Risk Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ukpds/1?language=en))
-7. CAHP (Cardiac Arrest Hospital Prognosis) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/cahp_guideline/1?language=en))
-8. 4-Level Pulmonary Embolism Clinical Probability Score (4PEPS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/four_level_pulmonary_embolism_clinical_probability_score/1?language=en))
-9. RCVS₂ Score for Reversible Cerebral Vasoconstriction Syndrome - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/rcvs2_guideline/1?language=en))
-10. Thompson Score for Hypoxic Ischaemic Encephalopathy (HIE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Thompson_score/1?language=en))
+1. ACEP ED COVID-19 Management Tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/acep_ED_covid19_managment_tool/1?language=en))
+2. PECARN Pediatric Intra-Abdominal Injury (IAI) Algorithm - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PECARN_pediatric_intra_abdominal_injury_rule_guideline/1?language=en))
+3. Falls Efficacy Scale (FES) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FES/1?language=en))
+4. Falls Efficacy Scale-International (FES-I) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Falls_Efficacy_Scale_International/1?language=en)
+5. Shoulder Pain And Disability Index (SPADI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPADI/1?language=en))
+6. IMPROVEDD Risk Score for Venous Thromboembolism (VTE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IMPROVEDD_risk_score/1?language=en))
+7. Veterans Health Administration COVID-19 (VACO) Index for COVID-19 Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/VACO_mortality_index/1?language=en))
+8. Montreal Classification for Inflammatory Bowel Disease (IBD) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/montreal_classification_ibd/1?language=en))
+9. Transtubular Potassium Gradient (TTKG) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/transtubular_potassium_gradient_guideline/1?language=en))
+10. Altitude-Adjusted PERC Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/altitude_adjusted_perc_guideline/1?language=en))
 
 ----------
 
@@ -319,6 +319,8 @@ _Select a medical specialty below to view the available apps._
 ----------
 * Abbreviated Injury Score (AIS) for Inhalation Injury - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Abbreviated_Injury_Score_for_Inhalation_Injury/1?language=en))
 
+* ACEP ED COVID-19 Management Tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/acep_ED_covid19_managment_tool/1?language=en))
+
 * ACTION ICU Score for Intensive Care in NSTEMI - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACTION_ICU_score/1?language=en))
 
 * Age-Adjusted D-dimer for Venous Thromboembolism (VTE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Age_adjusted_d_dimer_for_venous_thromboembolism_vte/0?language=en))
@@ -575,6 +577,10 @@ _Select a medical specialty below to view the available apps._
 * Downton Fall Risk Index (DFRI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DFRI/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DFRI/1?language=sv))
 
 * Elixhauser Comorbidity Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Elixhauser-Comorbidity-Index-guideline/1?language=en))
+
+* Falls Efficacy Scale (FES) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FES/1?language=en))
+
+* Falls Efficacy Scale-International (FES-I) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Falls_Efficacy_Scale_International/1?language=en))
 
 * FRESH (Frail elderly support research group) screening for fragility  - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Frail_elderly_support_research_group_FRESH/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Frail_elderly_support_research_group_FRESH/1?language=sv))
 
@@ -1004,6 +1010,8 @@ _Select a medical specialty below to view the available apps._
 
 * Recurrent Instability of the Patella (RIP) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Recurrent_Instability_of_the_patella_RIP_score/1?language=en))
 
+* Shoulder Pain And Disability Index (SPADI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPADI/1?language=en))
+
 ----------
 
 ### Osteoporosis
@@ -1043,6 +1051,8 @@ _Select a medical specialty below to view the available apps._
 * Modified Asthma Predictive Index (mAPI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Modified_Asthma_Predictive_Index_mAPI/1?language=en))
 
 * Paradise Criteria for Tonsillectomy in Children - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Paradise_Criteria_guideline/1?language=en))
+
+* PECARN Pediatric Intra-Abdominal Injury (IAI) Algorithm - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PECARN_pediatric_intra_abdominal_injury_rule_guideline/1?language=en))
 
 * PECARN Rule for Low Risk Febrile Infants 29-60 Days Old - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PECARN_Rule_for_Low_Risk_Febrile_Infants_29-60_Days_Old/1?language=en))
 
