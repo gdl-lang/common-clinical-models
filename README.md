@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 628*
+### *Published Apps: 629*
 
 ----------
 
 ### Latest added
 
-1. ACEP ED COVID-19 Management Tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/acep_ED_covid19_managment_tool/1?language=en))
-2. PECARN Pediatric Intra-Abdominal Injury (IAI) Algorithm - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PECARN_pediatric_intra_abdominal_injury_rule_guideline/1?language=en))
-3. Falls Efficacy Scale (FES) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FES/1?language=en))
-4. Falls Efficacy Scale-International (FES-I) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Falls_Efficacy_Scale_International/1?language=en)
-5. Shoulder Pain And Disability Index (SPADI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPADI/1?language=en))
-6. IMPROVEDD Risk Score for Venous Thromboembolism (VTE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IMPROVEDD_risk_score/1?language=en))
-7. Veterans Health Administration COVID-19 (VACO) Index for COVID-19 Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/VACO_mortality_index/1?language=en))
-8. Montreal Classification for Inflammatory Bowel Disease (IBD) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/montreal_classification_ibd/1?language=en))
-9. Transtubular Potassium Gradient (TTKG) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/transtubular_potassium_gradient_guideline/1?language=en))
-10. Altitude-Adjusted PERC Rule - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/altitude_adjusted_perc_guideline/1?language=en))
+1. CLIF-C ACLF (Acute-on-Chronic Liver Failure) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CLIF_C_ACLF_guideline/1?language=en))
+2. ACEP ED COVID-19 Management Tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/acep_ED_covid19_managment_tool/1?language=en))
+3. PECARN Pediatric Intra-Abdominal Injury (IAI) Algorithm - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PECARN_pediatric_intra_abdominal_injury_rule_guideline/1?language=en))
+4. Falls Efficacy Scale (FES) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FES/1?language=en))
+5. Falls Efficacy Scale-International (FES-I) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Falls_Efficacy_Scale_International/1?language=en)
+6. Shoulder Pain And Disability Index (SPADI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPADI/1?language=en))
+7. IMPROVEDD Risk Score for Venous Thromboembolism (VTE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IMPROVEDD_risk_score/1?language=en))
+8. Veterans Health Administration COVID-19 (VACO) Index for COVID-19 Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/VACO_mortality_index/1?language=en))
+9. Montreal Classification for Inflammatory Bowel Disease (IBD) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/montreal_classification_ibd/1?language=en))
+10. Transtubular Potassium Gradient (TTKG) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/transtubular_potassium_gradient_guideline/1?language=en))
 
 ----------
 
@@ -479,6 +479,8 @@ _Select a medical specialty below to view the available apps._
 * Bristol Stool Form Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Bristol_stool_form_scale/1?language=en))
 
 * Child Pugh Score for Cirrhosis Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Child_pugh_score_for_cirrhosis/1?language=en))
+
+* CLIF-C ACLF (Acute-on-Chronic Liver Failure) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CLIF_C_ACLF_guideline/1?language=en))
 
 * Crohn's Disease Activity Index (CDAI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Crohns_Disease_Activity_Index_CDAI/1?language=en)) 
 
