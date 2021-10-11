@@ -1,88 +1,89 @@
-archetype (adl_version=1.4)
+archetype (adl_version=1.4; uid=44f462bf-f295-3a8f-b6ac-6ed3ef2576cb)
 	openEHR-EHR-EVALUATION.abi_assessment.v0
 
 concept
-	[at0000]	-- Ankle Brachial Index (ABI) assessment
+	[at0000]
+
 language
 	original_language = <[ISO_639-1::en]>
+
 description
 	original_author = <
-		["name"] = <"Therese Lindberg">
-		["email"] = <"therese.lindberg@cambio.se">
-		["organisation"] = <"Cambio CDS">
 		["date"] = <"2021-06-23">
+		["name"] = <"Therese Lindberg">
+		["organisation"] = <"Cambio CDS">
+		["email"] = <"therese.lindberg@cambio.se">
 	>
+	lifecycle_state = <"AuthorDraft">
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record the interpretation of the ABI result for PAD risk.">
-			use = <"Use to record the interpretation of the ABI result for PAD risk.">
-			keywords = <"ankle", "brachial", "index", "ABI", "PAD", "risk", "assessment", "interpretation", "vessel", "structure", "recommendation", "arterial">
-			misuse = <"">
+			keywords = <"ankle","brachial","index","ABI","PAD","risk","assessment","interpretation","vessel","structure","recommendation","arterial">
 			copyright = <"© Cambio CDS">
+			use = <"Use to record the interpretation of the ABI result for PAD risk.">
 		>
 	>
-	lifecycle_state = <"AuthorDraft">
-	other_contributors = <>
 	other_details = <
 		["references"] = <"Aboyans V, Criqui MH, Abraham P, Allison MA, Creager MA, Diehm C, Fowkes FG, Hiatt WR, Jönsson B, Lacroix P, Marin B, McDermott MM, Norgren L, Pande RL, Preux PM, Stoffers HE, Treat-Jacobson D; American Heart Association Council on Peripheral Vascular Disease; Council on Epidemiology and Prevention; Council on Clinical Cardiology; Council on Cardiovascular Nursing; Council on Cardiovascular Radiology and Intervention, and Council on Cardiovascular Surgery and Anesthesia. Measurement and interpretation of the ankle-brachial index: a scientific statement from the American Heart Association. Circulation. 2012 Dec 11;126(24):2890-909. doi: 10.1161/CIR.0b013e318276fbcb. Epub 2012 Nov 16. Erratum in: Circulation. 2013 Jan 1;127(1):e264. PMID: 23159553.">
 		["current_contact"] = <"Therese Lindberg, Cambio CDS<therese.lindberg@cambio.se>">
 		["MD5-CAM-1.0.1"] = <"1E5795C30447CA7BFBF8629AA70D8EA6">
+		["build_uid"] = <"f80d4896-0561-3a66-b752-552ad6f477fc">
 	>
 
 definition
-	EVALUATION[at0000] matches {	-- Ankle Brachial Index (ABI) assessment
+	EVALUATION[at0000] matches {    -- Ankle Brachial Index (ABI) assessment
 		data matches {
-			ITEM_TREE[at0001] matches {	-- Tree
+			ITEM_TREE[at0001] matches {    -- Tree
 				items cardinality matches {0..*; unordered} matches {
-					ELEMENT[at0002] occurrences matches {0..1} matches {	-- Vessel structure interpretation - Right
+					ELEMENT[at0002] occurrences matches {0..1} matches {    -- Vessel structure interpretation - Right
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
-									at0003, 	-- Normal
-									at0004, 	-- Acceptable
-									at0005, 	-- Some Arterial Disease
-									at0006, 	-- Moderate Arterial Disease
-									at0007]	-- Severe Arterial Disease
+									at0003,    -- Normal
+									at0004,    -- Acceptable
+									at0005,    -- Some Arterial Disease
+									at0006,    -- Moderate Arterial Disease
+									at0007]    -- Severe Arterial Disease
 								}
 							}
 						}
 					}
-					ELEMENT[at0015] occurrences matches {0..1} matches {	-- Vessel structure interpretation - Left
+					ELEMENT[at0015] occurrences matches {0..1} matches {    -- Vessel structure interpretation - Left
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
-									at0017, 	-- Normal
-									at0018, 	-- Acceptable
-									at0019, 	-- Some Arterial Disease
-									at0020, 	-- Moderate Arterial Disease
-									at0021]	-- Severe Arterial Disease
+									at0003,    -- Normal
+									at0004,    -- Acceptable
+									at0005,    -- Some Arterial Disease
+									at0006,    -- Moderate Arterial Disease
+									at0007]    -- Severe Arterial Disease
 								}
 							}
 						}
 					}
-					ELEMENT[at0008] occurrences matches {0..1} matches {	-- Recommendation - Right
+					ELEMENT[at0008] occurrences matches {0..1} matches {    -- Recommendation - Right
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
-									at0009, 	-- None
-									at0010, 	-- Treat risk factors
-									at0011]	-- Refer to vascular specialist
+									at0009,    -- None
+									at0010,    -- Treat risk factors
+									at0011]    -- Refer to vascular specialist
 								}
 							}
 						}
 					}
-					ELEMENT[at0016] occurrences matches {0..1} matches {	-- Recommendation - Left
+					ELEMENT[at0016] occurrences matches {0..1} matches {    -- Recommendation - Left
 						value matches {
 							DV_CODED_TEXT matches {
 								defining_code matches {
 									[local::
-									at0022, 	-- None
-									at0023, 	-- Treat risk factors
-									at0024]	-- Refer to vascular specialist
+									at0009,    -- None
+									at0010,    -- Treat risk factors
+									at0011]    -- Refer to vascular specialist
 								}
 							}
 						}
@@ -91,9 +92,9 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0013] matches {	-- Tree
+			ITEM_TREE[at0013] matches {    -- Tree
 				items cardinality matches {0..*; unordered} matches {
-					allow_archetype CLUSTER[at0014] occurrences matches {0..*} matches {	-- Extension
+					allow_archetype CLUSTER[at0014] occurrences matches {0..*} matches {    -- Extension
 						include
 							archetype_id/value matches {/.*/}
 					}
