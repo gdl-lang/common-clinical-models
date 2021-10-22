@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 631*
+### *Published Apps: 636*
 
 ----------
 
 ### Latest added
 
-1. Ankle Brachial Index (ABI) For PAD Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABI/1?language=en))
-2. Oswestry Disability Index (ODI) For Low Back Pain - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ODI/1?language=en))
-3. CLIF-C ACLF (Acute-on-Chronic Liver Failure) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CLIF_C_ACLF_guideline/1?language=en))
-4. ACEP ED COVID-19 Management Tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/acep_ED_covid19_managment_tool/1?language=en))
-5. PECARN Pediatric Intra-Abdominal Injury (IAI) Algorithm - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PECARN_pediatric_intra_abdominal_injury_rule_guideline/1?language=en))
-6. Falls Efficacy Scale (FES) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/FES/1?language=en))
-7. Falls Efficacy Scale-International (FES-I) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Falls_Efficacy_Scale_International/1?language=en)
-8. Shoulder Pain And Disability Index (SPADI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/SPADI/1?language=en))
-9. IMPROVEDD Risk Score for Venous Thromboembolism (VTE) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IMPROVEDD_risk_score/1?language=en))
-10. Veterans Health Administration COVID-19 (VACO) Index for COVID-19 Mortality - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/VACO_mortality_index/1?language=en))
+1. Adrenal Nodule MRI Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Adrenal_nodule/1?language=en))
+2. Adrenal Washout Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Adrenal_washout/1?language=en))
+3. Intracranial Hemorrhage From Thrombolytic Therapy Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Intracranial_hemorrhage_risk_from_thrombolytic_therapy/1?language=en))
+4. Ireton Jones Equation Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ireton_jones_equation/1?language=en))
+5. Clostridium Difficile Infection Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CDI_calculator/1?language=en))
+6. Ankle Brachial Index (ABI) For PAD Risk - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ABI/1?language=en))
+7. Oswestry Disability Index (ODI) For Low Back Pain - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ODI/1?language=en))
+8. CLIF-C ACLF (Acute-on-Chronic Liver Failure) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CLIF_C_ACLF_guideline/1?language=en))
+9. ACEP ED COVID-19 Management Tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/acep_ED_covid19_managment_tool/1?language=en))
+10. PECARN Pediatric Intra-Abdominal Injury (IAI) Algorithm - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PECARN_pediatric_intra_abdominal_injury_rule_guideline/1?language=en))
 
 ----------
 
@@ -285,6 +285,8 @@ _Select a medical specialty below to view the available apps._
 
 * Insulin Sensitivity QUICKI Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/QUICKI_calculator/1?language=en))
 
+* Intracranial Hemorrhage From Thrombolytic Therapy Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Intracranial_hemorrhage_risk_from_thrombolytic_therapy/1?language=en))
+
 * Serum Osmolality/Osmolarity - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Serum_Osmolality/1?language=en))
 
 * Sodium correction for Hyperglycemia - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_for_Hyperglycemia/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sodium_correction_for_Hyperglycemia/1?language=sv))
@@ -484,6 +486,8 @@ _Select a medical specialty below to view the available apps._
 
 * CLIF-C ACLF (Acute-on-Chronic Liver Failure) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CLIF_C_ACLF_guideline/1?language=en))
 
+* Clostridium Difficile Infection Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/CDI_calculator/1?language=en))
+
 * Crohn's Disease Activity Index (CDAI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Crohns_Disease_Activity_Index_CDAI/1?language=en)) 
 
 * Fatty Liver Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fatty_Liver_Index/1?language=en))
@@ -673,6 +677,8 @@ _Select a medical specialty below to view the available apps._
 * Geneva Risk Score for Venous Thromboembolism (VTE) Prophylaxis - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Geneva_risk_score_venous_thromboembolism_prohylaxis/1?language=en))
 
 * Infusion Factors - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Infusion_factors/1?language=en))
+
+* Ireton Jones Equation Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Ireton_jones_equation/1?language=en))
 
 * IV Drip Rate Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/IV_drip_rate_calculator/1?language=en))
 
@@ -878,6 +884,10 @@ _Select a medical specialty below to view the available apps._
 
 ----------
 * ACR TI-RADS Calculator for Thyroid Nodules - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ACR_TI-RADS_calculator/1?language=en))
+
+* Adrenal Nodule MRI Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Adrenal_nodule/1?language=en))
+
+* Adrenal Washout Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Adrenal_washout/1?language=en))
 
 * ALBI (Albumin-Bilirubin) Grade for Hepatocellular Carcinoma (HCC) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ALBI_albumin_bilirubin_score/1?language=en))
 
