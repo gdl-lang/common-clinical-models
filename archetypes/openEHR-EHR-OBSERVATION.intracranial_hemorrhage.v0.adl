@@ -2,7 +2,7 @@ archetype (adl_version=1.4; uid=c8467dae-184d-4f5d-b236-5e0664b09df2)
 	openEHR-EHR-OBSERVATION.intracranial_hemorrhage.v0
 
 concept
-	[at0000]	-- intracranial_hemorrhage
+	[at0000]	-- intracranial_hemorrhage from thrombolytic therapy
 language
 	original_language = <[ISO_639-1::en]>
 description
@@ -15,8 +15,8 @@ description
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record the results for each component parameter and their total sum for the intracranial hemorrhage result.">
-			use = <"Use to record the results for each component parameter and their total sum for the intracranial hemorrhage result.">
+			purpose = <"To record the results for each component parameter and their total sum for the intracranial hemorrhage risk score.">
+			use = <"Use to record the results for each component parameter and their total sum for the intracranial hemorrhage risk score.">
 			keywords = <"intracranial, hemorrhage,thrombolytic,therapy,age,gender,race,stroke,systolic,blood,pressure,weight,INR,TPA,risk,bleeding", ...>
 			misuse = <"Not to be used for recording information related to intracerebral hemorrhage volume or risk of symptomatic intracerebral hemorrhage (sICH) after tPA. Use instead openEHR-EHR-OBSERVATION.abc2_for_intracerebral_hemorrhage_volume.v0.adl or openEHR-EHR-OBSERVATION.sedan_score_for_post_tpa_hemorrhage.v0.adl.">
 			copyright = <"© Cambio CDS">
@@ -30,13 +30,13 @@ description
 		["original_namespace"] = <"org.openehr">
 		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
 		["references"] = <"Brass LM, Lichtman JH, Wang Y, Gurwitz JH, Radford MJ, Krumholz HM. Intracranial hemorrhage associated with thrombolytic therapy for elderly patients with acute myocardial infarction: results from the Cooperative Cardiovascular Project. Stroke. 2000 Aug;31(8):1802-11. doi: 10.1161/01.str.31.8.1802. PMID: 10926938.">
-		["MD5-CAM-1.0.1"] = <"08BFF6A5AA875A8A7234DB5150E7797A">
+		["MD5-CAM-1.0.1"] = <"2CAA49A24766CCA49127DDFF0BC65A1A">
 		["custodian_namespace"] = <"org.openehr">
 		["custodian_organisation"] = <"openEHR Foundation">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- intracranial_hemorrhage
+	OBSERVATION[at0000] matches {	-- intracranial_hemorrhage from thrombolytic therapy
 		data matches {
 			HISTORY[at0001] matches {	-- History
 				events cardinality matches {1..*; unordered} matches {
@@ -80,7 +80,7 @@ definition
 											1|[local::at0021]  	-- ≤65 kg (female), ≤80 kg (male)
 										}
 									}
-									ELEMENT[at0022] occurrences matches {0..1} matches {	-- INR >4 OR prothrombin time >24 seconds
+									ELEMENT[at0022] occurrences matches {0..1} matches {	-- INR >4 or prothrombin time >24 seconds
 										value matches {
 											0|[local::at0023], 	-- No
 											1|[local::at0024]  	-- Yes
@@ -94,7 +94,9 @@ definition
 									}
 									ELEMENT[at0028] occurrences matches {0..1} matches {	-- Total score
 										value matches {
-											DV_COUNT matches {*}
+											DV_COUNT matches {
+												magnitude matches {|0..8|}
+											}
 										}
 									}
 								}
@@ -105,7 +107,14 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0029] matches {*}
+			ITEM_TREE[at0029] matches {	-- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					allow_archetype CLUSTER[at0030] occurrences matches {0..*} matches {	-- Extension
+						include
+							archetype_id/value matches {/.*/}
+					}
+				}
+			}
 		}
 	}
 
@@ -114,8 +123,8 @@ ontology
 		["en"] = <
 			items = <
 				["at0000"] = <
-					text = <"intracranial_hemorrhage">
-					description = <"An assessment scale from the thrombolytic therapy calculator used to evaluate risk of cerebral bleeding in patients treated for myocardial infarction with anticoagulation therapy.">
+					text = <"intracranial_hemorrhage from thrombolytic therapy">
+					description = <"An assessment tool to evaluate risk of cerebral bleeding in patients treated for myocardial infarction with anticoagulation therapy.">
 					comment = <"Original version, c 2000">
 				>
 				["at0001"] = <
@@ -132,107 +141,112 @@ ontology
 				>
 				["at0004"] = <
 					text = <"Age">
-					description = <"*">
+					description = <"">
 				>
 				["at0005"] = <
 					text = <"75 or older">
-					description = <"*">
+					description = <"">
 				>
 				["at0006"] = <
 					text = <"Below 75">
-					description = <"*">
+					description = <"">
 				>
 				["at0007"] = <
 					text = <"Gender">
-					description = <"*">
+					description = <"">
 				>
 				["at0008"] = <
 					text = <"Male">
-					description = <"*">
+					description = <"">
 				>
 				["at0009"] = <
 					text = <"Female">
-					description = <"*">
+					description = <"">
 				>
 				["at0010"] = <
 					text = <"Race">
-					description = <"*">
+					description = <"">
 				>
 				["at0011"] = <
 					text = <"Other">
-					description = <"*">
+					description = <"">
 				>
 				["at0012"] = <
 					text = <"Black">
-					description = <"*">
+					description = <"">
 				>
 				["at0013"] = <
 					text = <"Prior history of stroke">
-					description = <"*">
+					description = <"">
 				>
 				["at0014"] = <
 					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0015"] = <
 					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0016"] = <
 					text = <"Systolic blood pressure">
-					description = <"*">
+					description = <"">
 				>
 				["at0017"] = <
 					text = <"<160 mmHg">
-					description = <"*">
+					description = <"">
 				>
 				["at0018"] = <
 					text = <"≥160 mmHg">
-					description = <"*">
+					description = <"">
 				>
 				["at0019"] = <
 					text = <"Body weight">
-					description = <"*">
+					description = <"">
 				>
 				["at0020"] = <
 					text = <">65 kg (female), >80 kg (male)">
-					description = <"*">
+					description = <"">
 				>
 				["at0021"] = <
 					text = <"≤65 kg (female), ≤80 kg (male)">
-					description = <"*">
+					description = <"">
 				>
 				["at0022"] = <
-					text = <"INR >4 OR prothrombin time >24 seconds">
-					description = <"*">
+					text = <"INR >4 or prothrombin time >24 seconds">
+					description = <"">
 				>
 				["at0023"] = <
 					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0024"] = <
 					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0025"] = <
 					text = <"TPA as thrombolytic therapy">
-					description = <"*">
+					description = <"">
 				>
 				["at0026"] = <
 					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0027"] = <
 					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0028"] = <
 					text = <"Total score">
-					description = <"*">
+					description = <"">
 				>
 				["at0029"] = <
 					text = <"Item tree">
 					description = <"@ internal @">
+				>
+				["at0030"] = <
+					text = <"Extension">
+					description = <"Additional information required to extend the model with local content or to align with other reference models or formalisms.">
+					comment = <"For example: local information requirements; or additional metadata to align with FHIR.">
 				>
 			>
 		>
