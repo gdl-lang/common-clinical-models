@@ -1,85 +1,86 @@
-archetype (adl_version=1.4)
+archetype (adl_version=1.4; uid=907b790f-6452-3ad6-98f6-501749734040)
 	openEHR-EHR-OBSERVATION.morse_fall.v0
 
 concept
-	[at0000]	-- Morse Fall Scale
+	[at0000]
+
 language
 	original_language = <[ISO_639-1::en]>
+
 description
 	original_author = <
-		["name"] = <"Maryam Razavi">
-		["email"] = <"maryam.razavi@cambio.se">
-		["organisation"] = <"Cambio CDS">
 		["date"] = <"2021-06-24">
+		["name"] = <"Maryam Razavi">
+		["organisation"] = <"Cambio CDS">
+		["email"] = <"maryam.razavi@cambio.se">
 	>
+	lifecycle_state = <"AuthorDraft">
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
-			purpose = <"To record the results for each component parameter and the MORSE fall score.">
-			use = <"Use to record the results for each component parameter and the MORSE fall score.">
-			keywords = <"fall", "risk", "mental", "status", "prevention", "gait">
-			misuse = <"">
+			purpose = <"To record the results for each component parameter and the Morse fall score.">
+			keywords = <"fall","risk","mental","status","prevention","gait">
 			copyright = <"© Cambio CDS">
+			use = <"Use to record the results for each component parameter and the Morse fall score.">
 		>
 	>
-	lifecycle_state = <"AuthorDraft">
-	other_contributors = <>
 	other_details = <
 		["references"] = <"Morse, Janice M., Robert M. Morse, and Suzanne J. Tylko. Development of a scale to identify the fall-prone patient. Canadian Journal on Aging/La Revue canadienne du vieillissement 8.4 (1989): 366-377.
 
 O'Connell B, Myers H. The sensitivity and specificity of the Morse Fall Scale in an acute care setting. J Clin Nurs. 2002 Jan;11(1):134-6. doi: 10.1046/j.1365-2702.2002.00578.x. PMID: 11845750.">
 		["current_contact"] = <"Maryam Razavi, Cambio CDS<maryam.razavi2009@gmail.com>">
 		["MD5-CAM-1.0.1"] = <"D531EA5D3283D204C7FE11D3A02712EC">
+		["build_uid"] = <"2c7ef31d-55e1-338b-8465-09e9ea88b5e2">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- Morse Fall Scale
+	OBSERVATION[at0000] matches {    -- Morse Fall Scale
 		data matches {
-			HISTORY[at0001] matches {	-- Event Series
+			HISTORY[at0001] matches {    -- Event Series
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {    -- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0004] occurrences matches {0..1} matches {	-- History of falling
+									ELEMENT[at0004] occurrences matches {0..1} matches {    -- History of falling
 										value matches {
-											0|[local::at0005], 	-- No
-											25|[local::at0006]  	-- Yes
+											0|[local::at0005],
+											25|[local::at0006]
 										}
 									}
-									ELEMENT[at0007] occurrences matches {0..1} matches {	-- Secondary diagnosis
+									ELEMENT[at0007] occurrences matches {0..1} matches {    -- Secondary diagnosis
 										value matches {
-											0|[local::at0008], 	-- Yes
-											15|[local::at0009]  	-- No
+											0|[local::at0008],
+											15|[local::at0009]
 										}
 									}
-									ELEMENT[at0010] occurrences matches {0..1} matches {	-- Ambulatory aid
+									ELEMENT[at0010] occurrences matches {0..1} matches {    -- Ambulatory aid
 										value matches {
-											0|[local::at0011], 	-- None/ bed rest/ nurse assist 
-											15|[local::at0012], 	-- Crutches/ cane/ walker
-											30|[local::at0013]  	-- Furniture
+											0|[local::at0011],
+											15|[local::at0012],
+											30|[local::at0013]
 										}
 									}
-									ELEMENT[at0014] occurrences matches {0..1} matches {	-- Intravenous therapy or heparin lock
+									ELEMENT[at0014] occurrences matches {0..1} matches {    -- Intravenous therapy or heparin lock
 										value matches {
-											0|[local::at0008], 	-- Yes
-											20|[local::at0016]  	-- No
+											0|[local::at0008],
+											20|[local::at0016]
 										}
 									}
-									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Gait
+									ELEMENT[at0017] occurrences matches {0..1} matches {    -- Gait
 										value matches {
-											0|[local::at0018], 	-- Normal/ bed rest/ wheelchair 
-											10|[local::at0019], 	-- Weak
-											20|[local::at0020]  	-- Impaired
+											0|[local::at0018],
+											10|[local::at0019],
+											20|[local::at0020]
 										}
 									}
-									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Mental status
+									ELEMENT[at0021] occurrences matches {0..1} matches {    -- Mental status
 										value matches {
-											0|[local::at0022], 	-- Oriented to own ability
-											15|[local::at0023]  	-- Overestimates/ forgets limitations
+											0|[local::at0022],
+											15|[local::at0023]
 										}
 									}
-									ELEMENT[at0024] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0024] occurrences matches {0..1} matches {    -- Total score
 										value matches {
 											DV_COUNT matches {
 												magnitude matches {|0..125|}
@@ -94,9 +95,9 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0025] matches {	-- Tree
+			ITEM_TREE[at0025] matches {    -- Tree
 				items cardinality matches {0..*; unordered} matches {
-					allow_archetype CLUSTER[at0026] occurrences matches {0..*} matches {	-- Extension
+					allow_archetype CLUSTER[at0026] occurrences matches {0..*} matches {    -- Extension
 						include
 							archetype_id/value matches {/.*/}
 					}
@@ -132,11 +133,11 @@ ontology
 				>
 				["at0005"] = <
 					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0006"] = <
 					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0007"] = <
 					text = <"Secondary diagnosis">
@@ -144,43 +145,43 @@ ontology
 				>
 				["at0008"] = <
 					text = <"Yes">
-					description = <"*">
+					description = <"">
 				>
 				["at0009"] = <
 					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0010"] = <
 					text = <"Ambulatory aid">
 					description = <"Refers to the patient making use of walking aid (cane, crutches or wheelchair).">
 				>
 				["at0011"] = <
-					text = <"None/ bed rest/ nurse assist ">
-					description = <"*">
+					text = <"None/ bed rest/ nurse assist">
+					description = <"">
 				>
 				["at0012"] = <
 					text = <"Crutches/ cane/ walker">
-					description = <"*">
+					description = <"">
 				>
 				["at0013"] = <
 					text = <"Furniture">
-					description = <"*">
+					description = <"">
 				>
 				["at0014"] = <
 					text = <"Intravenous therapy or heparin lock">
-					description = <"*">
+					description = <"">
 				>
 				["at0016"] = <
 					text = <"No">
-					description = <"*">
+					description = <"">
 				>
 				["at0017"] = <
 					text = <"Gait">
 					description = <"This item valuates the patient’s balance status.">
 				>
 				["at0018"] = <
-					text = <"Normal/ bed rest/ wheelchair ">
-					description = <"*">
+					text = <"Normal/ bed rest/ wheelchair">
+					description = <"">
 				>
 				["at0019"] = <
 					text = <"Weak">
@@ -196,11 +197,11 @@ ontology
 				>
 				["at0022"] = <
 					text = <"Oriented to own ability">
-					description = <"*">
+					description = <"">
 				>
 				["at0023"] = <
 					text = <"Overestimates/ forgets limitations">
-					description = <"*">
+					description = <"">
 				>
 				["at0024"] = <
 					text = <"Total score">
