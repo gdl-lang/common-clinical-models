@@ -8,14 +8,15 @@
   "description": {
     "original_author": {
       "date": "2016-07-03",
-      "name": "Oskar Nielsen",
-      "organisation": "Cambio Healthcare Systems",
-      "email": "models@cambiocds.com"
+      "name": "Maryam Razavi",
+      "organisation": "Cambio CDS",
+      "email": "maryam.razavi@cambio.se"
     },
     "other_contributors": [
       "Jimmy Axelsson",
       "Dennis Forslund",
-      "Linda Guttormsdottir"
+      "Linda Guttormsdottir",
+      "Oskar Nielsen"
     ],
     "lifecycle_state": "Author draft",
     "details": {
@@ -34,18 +35,19 @@
       },
       "en": {
         "id": "en",
-        "purpose": "To evaluate the physical condition of newborn infants.",
+        "purpose": "To evaluate the physical condition of neonates 1 and 5 minutes after birth.",
         "keywords": [
           "APGAR",
           "Neonate",
           "Assessment",
           "Score"
         ],
-        "use": "Allows the assessment of the state of a neonate immediately after birth.\r\n\r\n"
+        "use": "Allows the assessment of the state of a neonate immediately after birth.\nFORMULA\nAddition of assigned points.\n5 independent items, each scored 0 (Absent), 1 (Intermediate), or 2 (Present)\nMinimum score = 0; maximum = 10\nInitial testing for “Reflex Irritability” was nasal and oropharyngeal suctioning with rubber catheter meant to elicit grimace, sneeze, or cough.\nLater, a rapid, tangential slap of the sole of the foot was found to be an easier and more effective stimulus.\nScore interpretation:\nScores ≥7; generally normal\nScore of 4 to 6; fairly low\nScores ≤3; critically low, needs intervention",
+        "copyright": " © Cambio CDS"
       }
     },
     "other_details": {
-      "references": "Apgar V.  A proposal of a New Method of Evaluation of the Newborn Infant. Curr Res Anesth Analg.  1953 Jul-Aug;32(4):260-7.\r\n\r\nApgar V, Holaday DA, James LS, Weisbrod IM, and Berrien C.  Evaluation of the newborn infant; second report.  J Am Med Assoc.  1958 Dec 13;168(15):1985-8.\r\n\r\nApgar V.  The newborn (Apgar) scoring system.  Pediatr Clin North Am. 1966 Aug;13(3):645-50.\r\n\r\nWhaley LF, Wong DL (1979).  Nursing Care of Infants and Children.  St. Louis, Toronto, London, The C.V. Mosby Company.\r"
+      "references": "APGAR V. A proposal for a new method of evaluation of the newborn infant. Curr Res Anesth Analg. 1953 Jul-Aug;32(4):260-7. PMID: 13083014.\n\nFinster M, Wood M. The Apgar score has survived the test of time. Anesthesiology. 2005 Apr;102(4):855-7. doi: 10.1097/00000542-200504000-00022. PMID: 15791116.\n\nAPGAR V, HOLADAY DA, JAMES LS, WEISBROT IM, BERRIEN C. Evaluation of the newborn infant; second report. J Am Med Assoc. 1958 Dec 13;168(15):1985-8. doi: 10.1001/jama.1958.03000150027007. PMID: 13598635.\n\n"
     }
   },
   "definition": {
@@ -106,7 +108,7 @@
     "rules": {
       "gt0025": {
         "id": "gt0025",
-        "priority": 4,
+        "priority": 5,
         "when": [
           "$gt0003|Respiratory effort|!=null",
           "$gt0004|Heart Rate|!=null",
@@ -120,33 +122,43 @@
       },
       "gt0029": {
         "id": "gt0029",
-        "priority": 3,
+        "priority": 4,
         "when": [
           "$gt0026|Total score|>=7"
         ],
         "then": [
-          "$gt0028|Apgar assessment|=0|local::at0003|Normal|"
+          "$gt0032|Interpretation text|=$gt0033.term"
         ]
       },
       "gt0030": {
         "id": "gt0030",
-        "priority": 2,
+        "priority": 3,
         "when": [
-          "$gt0026|Total score|>=4",
-          "$gt0026|Total score|<=6"
+          "$gt0026|Total score|>3",
+          "$gt0026|Total score|<7"
         ],
         "then": [
-          "$gt0028|Apgar assessment|=1|local::at0004|Moderately abnormal|"
+          "$gt0032|Interpretation text|=$gt0034.term"
         ]
       },
       "gt0031": {
         "id": "gt0031",
-        "priority": 1,
+        "priority": 2,
         "when": [
           "$gt0026|Total score|<=3"
         ],
         "then": [
-          "$gt0028|Apgar assessment|=2|local::at0005|Critically low, intervention required|"
+          "$gt0032|Interpretation text|=$gt0035.term"
+        ]
+      },
+      "gt0037": {
+        "id": "gt0037",
+        "priority": 1,
+        "when": [
+          "(fired($gt0029))||((fired($gt0030))||(fired($gt0031)))"
+        ],
+        "then": [
+          "$gt0028|Apgar assessment|=$gt0032"
         ]
       }
     }
@@ -214,6 +226,31 @@
             "id": "gt0031",
             "text": "CDS kritiskt",
             "description": ""
+          },
+          "gt0032": {
+            "id": "gt0032",
+            "text": "*(en) Interpretation text",
+            "description": ""
+          },
+          "gt0033": {
+            "id": "gt0033",
+            "text": "*(en) Normal",
+            "description": ""
+          },
+          "gt0034": {
+            "id": "gt0034",
+            "text": "*(en) Moderately abnormal",
+            "description": ""
+          },
+          "gt0035": {
+            "id": "gt0035",
+            "text": "*(en) Critically low, intervention required",
+            "description": ""
+          },
+          "gt0037": {
+            "id": "gt0037",
+            "text": "*(en) Result",
+            "description": ""
           }
         }
       },
@@ -223,7 +260,7 @@
           "gt0001": {
             "id": "gt0001",
             "text": "Apgar Score",
-            "description": "Apgar is an acronym for Appearance, Pulse, Grimace, Activity, Respiration. The Apgar score is used as a simple, repeatable method to document the state of the newborn infant immediately after birth. The clinical score is derived from assessment of respiratory effort, heart rate, reflex irritability, muscle tone and skin colour."
+            "description": "Apgar is an acronym for Appearance, Pulse, Grimace, Activity, Respiration. The Apgar score is used as a simple, repeatable method to document the state of the newborn infant immediately after birth. The clinical score is derived from assessment of respiratory effort, heart rate, reflex irritability, muscle tone and skin color."
           },
           "gt0003": {
             "id": "gt0003",
@@ -275,6 +312,30 @@
           "gt0031": {
             "id": "gt0031",
             "text": "CDS critical"
+          },
+          "gt0032": {
+            "id": "gt0032",
+            "text": "Interpretation text",
+            "description": ""
+          },
+          "gt0033": {
+            "id": "gt0033",
+            "text": "Normal",
+            "description": ""
+          },
+          "gt0034": {
+            "id": "gt0034",
+            "text": "Moderately abnormal",
+            "description": ""
+          },
+          "gt0035": {
+            "id": "gt0035",
+            "text": "Critically low, intervention required",
+            "description": ""
+          },
+          "gt0037": {
+            "id": "gt0037",
+            "text": "Interpretation result"
           }
         }
       }
