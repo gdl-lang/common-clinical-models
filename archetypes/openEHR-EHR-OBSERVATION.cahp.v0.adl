@@ -2,76 +2,64 @@ archetype (adl_version=1.4; uid=dc0394cc-bf30-47bb-b21a-b4fbe79bdc43)
 	openEHR-EHR-OBSERVATION.cahp.v0
 
 concept
-	[at0000]	-- CAHP (Cardiac Arrest Hospital Prognosis) score
+	[at0000]
+
 language
 	original_language = <[ISO_639-1::en]>
+
 description
 	original_author = <
-		["name"] = <"Núria Rodríguez Ruiz">
-		["email"] = <"nuria.rguez.ruiz@gmail.com">
-		["organisation"] = <"Cambio CDS">
 		["date"] = <"2021-07-09">
+		["name"] = <"Núria Rodríguez Ruiz">
+		["organisation"] = <"Cambio CDS">
+		["email"] = <"nuria.rguez.ruiz@gmail.com">
 	>
+	lifecycle_state = <"NotSet">
 	details = <
 		["en"] = <
 			language = <[ISO_639-1::en]>
 			purpose = <"To record the results for each component parameter and their total sum for the CAHP risk score. ">
+			keywords = <"cardiac","arrest","risk","survival">
+			copyright = <"© Cambio CDS">
 			use = <"Use to record the results for each component parameter and their total sum for the CAHP risk score.">
-			keywords = <"cardiac", "arrest", "risk", "survival">
 			misuse = <"Not to be used to record lab test instead use appropriate archetype: openEHR-EHR-OBSERVATION.laboratory_test_result.v1.
 ">
-			copyright = <"© Cambio CDS">
 		>
 	>
-	lifecycle_state = <"NotSet">
-	other_contributors = <>
 	other_details = <
 		["custodian_organisation"] = <"openEHR Foundation">
-		["custodian_namespace"] = <"org.openehr">
 		["references"] = <"Maupain C, Bougouin W, Lamhaut L, Deye N, Diehl JL, Geri G, Perier MC, Beganton F, Marijon E, Jouven X, Cariou A, Dumas F. The CAHP (Cardiac Arrest Hospital Prognosis) score: a tool for risk stratification after out-of-hospital cardiac arrest. Eur Heart J. 2016 Nov 7;37(42):3222-3228. doi: 10.1093/eurheartj/ehv556. Epub 2015 Oct 24. PMID: 26497161.
 
 Bougouin W, Dumas F, Karam N, Maupain C, Marijon E, Lamhaut L, Jost D, Geri G, Beganton F, Varenne O, Spaulding C, Jouven X, Cariou A; Sudden Death Expertise Center. Should We Perform an Immediate Coronary Angiogram in All Patients After Cardiac Arrest?: Insights From a Large French Registry. JACC Cardiovasc Interv. 2018 Feb 12;11(3):249-256. doi: 10.1016/j.jcin.2017.09.011. PMID: 29413238.">
+		["original_namespace"] = <"org.openehr">
+		["custodian_namespace"] = <"org.openehr">
 		["original_publisher"] = <"openEHR Foundation">
 		["MD5-CAM-1.0.1"] = <"C22E17ACE092279FF1B51CB38387365E">
 		["build_uid"] = <"797c7084-857c-3e6b-a5e9-dd8325cfdb17">
-		["original_namespace"] = <"org.openehr">
 	>
 
 definition
-	OBSERVATION[at0000] matches {	-- CAHP (Cardiac Arrest Hospital Prognosis) score
+	OBSERVATION[at0000] matches {    -- CAHP (Cardiac Arrest Hospital Prognosis) score
 		data matches {
-			HISTORY[at0001] matches {	-- History
+			HISTORY[at0001] matches {    -- History
 				events cardinality matches {1..*; unordered} matches {
-					EVENT[at0002] occurrences matches {0..*} matches {	-- Any event
+					EVENT[at0002] occurrences matches {0..*} matches {    -- Any event
 						data matches {
-							ITEM_TREE[at0003] matches {	-- Tree
+							ITEM_TREE[at0003] matches {    -- Tree
 								items cardinality matches {0..*; unordered} matches {
-									ELEMENT[at0006] occurrences matches {0..1} matches {	-- Arrest setting
+									ELEMENT[at0006] occurrences matches {0..1} matches {    -- Arrest setting
 										value matches {
-											0|[local::at0007], 	-- Public Setting
-											24|[local::at0008]  	-- Home
+											0|[local::at0007],
+											24|[local::at0008]
 										}
 									}
-									ELEMENT[at0009] occurrences matches {0..1} matches {	-- Shockable rhythm
+									ELEMENT[at0009] occurrences matches {0..1} matches {    -- Shockable rhythm
 										value matches {
-											0|[local::at0010], 	-- Yes
-											27|[local::at0011]  	-- No
+											0|[local::at0010],
+											27|[local::at0011]
 										}
 									}
-									ELEMENT[at0015] occurrences matches {0..1} matches {	-- Collapse-BLS duration
-										value matches {
-											C_DV_QUANTITY <
-												property = <[openehr::128]>
-												list = <
-													["1"] = <
-														units = <"min">
-														magnitude = <|>=0.0|>
-													>
-												>
-											>
-										}
-									}
-									ELEMENT[at0016] occurrences matches {0..1} matches {	-- BLS-ROSC duration
+									ELEMENT[at0015] occurrences matches {0..1} matches {    -- Collapse-BLS duration
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::128]>
@@ -84,7 +72,20 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0017] occurrences matches {0..1} matches {	-- pH
+									ELEMENT[at0016] occurrences matches {0..1} matches {    -- BLS-ROSC duration
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::128]>
+												list = <
+													["1"] = <
+														units = <"min">
+														magnitude = <|>=0.0|>
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {    -- pH
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::380]>
@@ -97,14 +98,14 @@ definition
 											>
 										}
 									}
-									ELEMENT[at0018] occurrences matches {0..1} matches {	-- Epinephrine
+									ELEMENT[at0018] occurrences matches {0..1} matches {    -- Epinephrine
 										value matches {
-											0|[local::at0019], 	-- 0
-											27|[local::at0020], 	-- 1-2
-											43|[local::at0021]  	-- ≥3
+											0|[local::at0019],
+											27|[local::at0020],
+											43|[local::at0021]
 										}
 									}
-									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Total score
+									ELEMENT[at0022] occurrences matches {0..1} matches {    -- Total score
 										value matches {
 											C_DV_QUANTITY <
 												property = <[openehr::380]>
@@ -124,9 +125,9 @@ definition
 			}
 		}
 		protocol matches {
-			ITEM_TREE[at0004] matches {	-- Item tree
+			ITEM_TREE[at0004] matches {    -- Item tree
 				items cardinality matches {0..*; unordered} matches {
-					allow_archetype CLUSTER[at0025] occurrences matches {0..*} matches {	-- Extension[cluster]
+					allow_archetype CLUSTER[at0025] occurrences matches {0..*} matches {    -- Extension[cluster]
 						include
 							archetype_id/value matches {/.*/}
 					}
@@ -142,7 +143,7 @@ ontology
 				["at0000"] = <
 					text = <"CAHP (Cardiac Arrest Hospital Prognosis) score">
 					description = <"An assessment score used to predict poor prognosis after out-of-hospital cardiac arrest and guides utility of cardiac catheterization. ">
-					comment = <"Original version, c 2016">
+					comment = <"Original version, c 2016.">
 				>
 				["at0001"] = <
 					text = <"History">
