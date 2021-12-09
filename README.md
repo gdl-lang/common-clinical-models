@@ -11,22 +11,22 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 654*
+### *Published Apps: 655*
 
 ----------
 
 ### Latest added
 
-1. Cardiovascular Risk PROCAM Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PROCAM_score_guideline/1?language=en))
-2. Spleen Injury Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Spleen_Injury_Scale_guideline/1?language=en))
-3. EMTALA Emergency Medical Care - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EMTALA_guideline/1?language=en))
-4. Fatigue Severity Scale (FSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fatigue_Severity_Scale_FSS_guideline/1?language=en))
-5. Blood Type Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Blood_Type_Calculator_guideline/1?language=en))
-6. Albumin Globulin Ratio Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Albumin_Globulin_Ratio_guideline/1?language=en))
-7. Metabolic Syndrome Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Metabolic_Syndrome_Criteria_guideline/1?language=en))
-8. Morse Fall Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Morse_Fall_Scale_guideline/1?language=en))
-9. Warfarin Bleeding Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Warfarin_Bleeding_Risk_Score_guideline/1?language=en))
-10. Upper Extremity Functional Index (UEFI) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UEFI_guideline/1?language=en))
+1. Modified Sgarbossa's Criteria for MI in Left Bundle Branch Block - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/modified_Sgarbossa_s_criteria/1?language=en))
+2. Cardiovascular Risk PROCAM Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PROCAM_score_guideline/1?language=en))
+3. Spleen Injury Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Spleen_Injury_Scale_guideline/1?language=en))
+4. EMTALA Emergency Medical Care - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/EMTALA_guideline/1?language=en))
+5. Fatigue Severity Scale (FSS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Fatigue_Severity_Scale_FSS_guideline/1?language=en))
+6. Blood Type Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Blood_Type_Calculator_guideline/1?language=en))
+7. Albumin Globulin Ratio Calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Albumin_Globulin_Ratio_guideline/1?language=en))
+8. Metabolic Syndrome Criteria - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Metabolic_Syndrome_Criteria_guideline/1?language=en))
+9. Morse Fall Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Morse_Fall_Scale_guideline/1?language=en))
+10. Warfarin Bleeding Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Warfarin_Bleeding_Risk_Score_guideline/1?language=en))
 
 ----------
 
@@ -383,6 +383,8 @@ _Select a medical specialty below to view the available apps._
 * mMRC (Modified Medical Research Council) Dyspnea Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mMRC_Dyspnea_Scale/1?language=en))
 
 * Modified Sequential Organ Failure Assessment (mSOFA) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/mSOFA_Score_guideline/1?language=en))
+
+* Modified Sgarbossa's Criteria for MI in Left Bundle Branch Block - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/modified_Sgarbossa_s_criteria/1?language=en))
 
 * NEDOCS Score for Emergency Department Overcrowding - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/NEDOCS_score_for_emergency_department_overcrowding/1?language=en))
 
