@@ -176,7 +176,7 @@ _Select a medical specialty below to view the available apps._
 
 * DASH Prediction Score for Recurrent VTE - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DASH_for_recurrent_VTE/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DASH_for_recurrent_VTE/1?language=sv))
 
-* Detsky Cardiac Risk Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Detsky_cardiac/1?language=en))
+* Detsky Cardiac Risk Index - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Detsky_cardiac_risk_index/1?language=en))
 
 * Dual Antiplatelet Therapy (DAPT) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/DAPT_score/1?language=en))
 
