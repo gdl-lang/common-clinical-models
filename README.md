@@ -144,7 +144,7 @@ _Select a medical specialty below to view the available apps._
 
 * ASCVD (Atherosclerotic Cardiovascular Disease) Risk Algorithm including Known ASCVD from AHA/ACC - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASCVD_risk_statin_recommendation/1?language=en))
 
-* ASCVD (Atherosclerotic Cardiovascular Disease) 2013 Risk Calculator from AHA/ACC - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASCVD_risk_calculator/0?language=en))
+* ASCVD (Atherosclerotic Cardiovascular Disease) 2013 Risk Calculator from AHA/ACC - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASCVD_risk_calculator/1?language=en))
 
 * ATRIA Bleeding Risk Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_bleeding_risk_score/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ATRIA_bleeding_risk_score/1?language=sv))
 
