@@ -1,0 +1,194 @@
+{
+  "id": "MUST_guideline.v0",
+  "gdl_version": "2.0",
+  "concept": "gt0001",
+  "language": {
+    "original_language": "ISO_639-1::en"
+  },
+  "description": {
+    "original_author": {
+      "date": "2022-03-14",
+      "name": "Frank Ogiemwonyi",
+      "email": "franknero98@yahoo.co.uk"
+    },
+    "lifecycle_state": "Not set",
+    "details": {
+      "en": {
+        "id": "en",
+        "purpose": "If untreated, malnutrition can lead to poorer health outcomes with increased morbidity and significantly reduced quality of life.\n\nStudies have shown that patients who are malnourished access health services more often in both acute hospital and primary care settings (Murphy 2018).\n\nWhen admitted, patients who are malnourished have more complications, longer inpatient stays, and higher mortality rates (NICE 2006).\n\nRoutine use of this screening tool can objectively identify patients who are at risk of malnutrition or suffering from malnourishment. Subsequent intervention can mitigate poorer health outcome",
+        "use": "Patients at risk for malnutrition.\n\nPer BAPEN guidelines, patients should be screened at the following intervals:\n\nHospital inpatients: weekly.\n\nPatients in community care homes: monthly.\n\nOutpatients: annually if low risk, monthly to every 3 months depending on clinical status if not low risk.",
+        "misuse": "Use in patients ≥18 years old. May be applied in either a hospital or community setting."
+      }
+    },
+    "other_details": {
+      "references": "1.Stratton RJ, Hackston A, Longmore D, Dixon R, Price S, Stroud M, King C, Elia M. Malnutrition in hospital outpatients and inpatients: prevalence, concurrent validity and ease of use of the 'malnutrition universal screening tool' ('MUST') for adults. Br J Nutr. 2004 Nov;92(5):799-808. doi: 10.1079/bjn20041258. PMID: 15533269.\n2.Boléo-Tomé C, Monteiro-Grillo I, Camilo M, Ravasco P. Validation of the Malnutrition Universal Screening Tool (MUST) in cancer. Br J Nutr. 2012 Jul;108(2):343-8. doi: 10.1017/S000711451100571X. Epub 2011 Dec 6. PMID: 22142968.\n3.Sharma Y, Thompson C, Kaambwa B, Shahi R, Miller M. Validity of the Malnutrition Universal Screening Tool (MUST) in Australian hospitalized acutely unwell elderly patients. Asia Pac J Clin Nutr. 2017;26(6):994-1000. doi: 10.6133/apjcn.022017.15. PMID: 28917223.\n4.Murphy J, Mayor A, Forde E. Identifying and treating older patients with malnutrition in primary care: the MUST screening tool. Br J Gen Pract. 2018 Jul;68(672):344-345. doi: 10.3399/bjgp18X697853. PMID: 29954811; PMCID: PMC6014405.\n"
+    }
+  },
+  "definition": {
+    "data_bindings": {
+      "gt0002": {
+        "id": "gt0002",
+        "model_id": "openEHR-EHR-OBSERVATION.must-group_17.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.must-group_17.v0",
+        "type": "INPUT",
+        "elements": {
+          "gt0005": {
+            "id": "gt0005",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0021]"
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0005]"
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0006]"
+          }
+        }
+      },
+      "gt0003": {
+        "id": "gt0003",
+        "model_id": "openEHR-EHR-OBSERVATION.must-group_17.v0",
+        "template_id": "openEHR-EHR-OBSERVATION.must-group_17.v0",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0008": {
+            "id": "gt0008",
+            "path": "/data[at0001]/events[at0002]/data[at0003]/items[at0020]"
+          }
+        }
+      },
+      "gt0004": {
+        "id": "gt0004",
+        "model_id": "openEHR-EHR-EVALUATION.health_risk.v1",
+        "template_id": "openEHR-EHR-EVALUATION.health_risk.v1",
+        "type": "OUTPUT",
+        "elements": {
+          "gt0009": {
+            "id": "gt0009",
+            "path": "/data[at0001]/items[at0003]"
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "path": "/data[at0001]/items[at0015]"
+          }
+        }
+      }
+    },
+    "rules": {
+      "gt0011": {
+        "id": "gt0011",
+        "priority": 4,
+        "when": [
+          "$gt0005|BMI|!=null",
+          "$gt0006|Weight loss Score|!=null",
+          "$gt0007|Acute disease effect Score|!=null"
+        ],
+        "then": [
+          "$gt0008|Total score|.magnitude=$gt0005.value+$gt0006.value+$gt0007.value"
+        ]
+      },
+      "gt0012": {
+        "id": "gt0012",
+        "priority": 3,
+        "when": [
+          "$gt0008|Total score|!=null",
+          "$gt0008|Total score|==0"
+        ],
+        "then": [
+          "$gt0009|Risk assessment|=local::at0031|Low|",
+          "$gt0010|Risk Recommendation|='Routine clinical care'"
+        ]
+      },
+      "gt0013": {
+        "id": "gt0013",
+        "priority": 2,
+        "when": [
+          "$gt0008|Total score|!=null",
+          "$gt0008|Total score|==1"
+        ],
+        "then": [
+          "$gt0009|Risk assessment|=local::at0032|medium|",
+          "$gt0010|Risk Recommendation|='Observe; document dietary intake and if adequate/little concern, continue screening; if inadequate, improve and increase overall intake according to local policy'"
+        ]
+      },
+      "gt0014": {
+        "id": "gt0014",
+        "priority": 1,
+        "when": [
+          "$gt0008|Total score|!=null",
+          "$gt0008|Total score|>=2"
+        ],
+        "then": [
+          "$gt0009|Risk assessment|=local::at0033|High|",
+          "$gt0010|Risk Recommendation|='Treat*; refer to dietitian, improve and increase overall intake, increase frequency of monitoring according to local policy  *Unless detrimental or no benefit is expected from nutritional support, e.g. imminent death.'"
+        ]
+      }
+    }
+  },
+  "ontology": {
+    "term_definitions": {
+      "en": {
+        "id": "en",
+        "terms": {
+          "gt0001": {
+            "id": "gt0001",
+            "text": "Malnutrition Universal Screening Tool (MUST)",
+            "description": "Malnutrition Universal Screening Tool (MUST)\nIdentifies patients who are malnourished or at risk of malnutrition."
+          },
+          "gt0005": {
+            "id": "gt0005",
+            "text": "BMI",
+            "description": ""
+          },
+          "gt0006": {
+            "id": "gt0006",
+            "text": "Weight loss Score",
+            "description": ""
+          },
+          "gt0007": {
+            "id": "gt0007",
+            "text": "Acute disease effect Score",
+            "description": ""
+          },
+          "gt0008": {
+            "id": "gt0008",
+            "text": "Total score",
+            "description": ""
+          },
+          "gt0009": {
+            "id": "gt0009",
+            "text": "Risk assessment",
+            "description": "Evaluation of the health risk."
+          },
+          "gt0010": {
+            "id": "gt0010",
+            "text": "Risk Recommendation",
+            "description": "Additional narrative about the risk assessment not captured in other fields."
+          },
+          "gt0011": {
+            "id": "gt0011",
+            "text": "MUST SCORE"
+          },
+          "gt0012": {
+            "id": "gt0012",
+            "text": "Low risk Over malnutrition"
+          },
+          "gt0013": {
+            "id": "gt0013",
+            "text": "Medium risk Over malnutrition"
+          },
+          "gt0014": {
+            "id": "gt0014",
+            "text": "High risk Over malnutrition"
+          },
+          "gt0015": {
+            "id": "gt0015",
+            "text": "AGE",
+            "description": " patients must be ≥18 years old"
+          }
+        }
+      }
+    }
+  }
+}
