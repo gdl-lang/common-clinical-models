@@ -106,6 +106,10 @@ _Select a medical specialty below to view the available apps._
 
 -----------
 
+[CDS App Challenge 2021 Submissions](https://github.com/openEHR/gdl-guideline-models#cds-app-challenge-2021-submissions)
+
+-----------
+
 ### Anesthesia
 
 ----------
@@ -1570,6 +1574,38 @@ _Select a medical specialty below to view the available apps._
 
 * UKELD score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/UKELD_score/0?language=en))
 -----------
+
+### CDS App Challenge 2021 Submissions
+
+-----------
+* Humpty Dumpty Falls Scale (HDFS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/humpty_dumpty/0?language=en))
+
+* Pediatric Mobility Risk Assessment Scoring - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/pediatric_mobility_risk_assessment_scoring_tool/0?language=en))
+
+* CHEMO-RADIAT Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/chemo_radiat_score/0?language=en))
+
+* STOP-BANG score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/STOP-BANG-Score/0?language=en))/([_ES_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/STOP-BANG-Score/0?language=es))
+
+* PECARN pediatric head injury/trauma algorithm - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/PECARN/0?language=en))
+
+* Migraine - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/migraine/0?language=en))
+
+* MUST tool - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/must_guideline/0?language=en))
+
+* tPA Contraindications for Ischemic Stroke - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/tPA_Contraindications_for_Ischemic_Stroke_guideline/0?language=en))
+
+* Sickle Cell RBC Exchange Volume calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sickle_Cell_RBC_Exchange_Volume_guideline/0?language=en))
+
+* Revised ASRS V1.1 for ADHD - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASRS_ADHD/1?language=en))
+
+* AHA Antibiotic Prophylaxis AP Guidelines for dental procedures - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/aha_ap_dental_procedures/0?language=en))/([_ES-AR_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/aha_ap_dental_procedures/0?language=es-ar))
+
+* Simplified Finnegan Neonatal Abstinence Scoring Tool (sFNAS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/simplified_fnas/0?language=en))/([_ES-AR_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/simplified_fnas/0?language=es-ar))
+
+* ETDRS (Early Treatment Diabetic Retinopathy Study) Severity Scale - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ETDRS_Diabetic_Retinopathy_SeverityRating_MacEdema/0?language=en))
+
+* Simplified Functional Movement Disorder Rating Scale (S-FMDRS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/S-FMDRS_guideline/0?language=en))
+
 
 ### Disclaimer
 
