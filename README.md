@@ -1596,7 +1596,7 @@ _Select a medical specialty below to view the available apps._
 
 * Sickle Cell RBC Exchange Volume calculator - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Sickle_Cell_RBC_Exchange_Volume_guideline/0?language=en))
 
-* Revised ASRS V1.1 for ADHD - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASRS_ADHD/1?language=en))
+* Revised ASRS V1.1 for ADHD - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/ASRSv1.1_guideline/0?language=en))
 
 * AHA Antibiotic Prophylaxis AP Guidelines for dental procedures - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/aha_ap_dental_procedures/0?language=en))/([_ES-AR_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/aha_ap_dental_procedures/0?language=es-ar))
 
