@@ -205,8 +205,8 @@
           "$gt0044|Abnormal troponin|!=null",
           "$gt0045|Ischemic changes on the ECG|!=null",
           "$gt0022|TIMI score|==0",
-          "$gt0044|Abnormal troponin|==0|local::at0009|No|",
-          "$gt0045|Ischemic changes on the ECG|==0|local::at0012|No|"
+          "$gt0044|Abnormal troponin|.code=='at0009'",
+          "$gt0045|Ischemic changes on the ECG|.code=='at0012'"
         ],
         "then": [
           "$gt0038|Risk group|=0|local::at0004|Low|",
@@ -221,8 +221,8 @@
           "$gt0044|Abnormal troponin|!=null",
           "$gt0045|Ischemic changes on the ECG|!=null",
           "$gt0022|TIMI score|>0",
-          "$gt0044|Abnormal troponin|==0|local::at0009|No|",
-          "$gt0045|Ischemic changes on the ECG|==0|local::at0012|No|"
+          "$gt0044|Abnormal troponin|.code=='at0009'",
+          "$gt0045|Ischemic changes on the ECG|.code=='at0012'"
         ],
         "then": [
           "$gt0038|Risk group|=1|local::at0005|Intermediate|",
@@ -233,7 +233,7 @@
         "id": "gt0048",
         "priority": 1,
         "when": [
-          "(($gt0044|Abnormal troponin|!=null)&&($gt0044|Abnormal troponin|==1|local::at0010|Yes|))||(($gt0045|Ischemic changes on the ECG|!=null)&&($gt0045|Ischemic changes on the ECG|==1|local::at0013|Yes|))"
+          "(($gt0044|Abnormal troponin|!=null)&&($gt0044|Abnormal troponin|.code=='at0010'))||(($gt0045|Ischemic changes on the ECG|!=null)&&($gt0045|Ischemic changes on the ECG|.code=='at0013'))"
         ],
         "then": [
           "$gt0038|Risk group|=2|local::at0006|High|",
@@ -255,52 +255,52 @@
           "gt0004": {
             "id": "gt0004",
             "text": "Ålder",
-            "description": "*(en) Age in years, and for babies: months, weeks or days"
+            "description": ""
           },
           "gt0005": {
             "id": "gt0005",
             "text": "Födelsedatum",
-            "description": "*(en) *"
+            "description": ""
           },
           "gt0008": {
             "id": "gt0008",
             "text": "≥ 3 riskfaktorer för kranskärlssjukdom",
-            "description": "*(en) *Risk factors for CAD: Family history of CAD, Hypertension, Hypercholesterolemia, Diabetes, or Current Smoker"
+            "description": ""
           },
           "gt0009": {
             "id": "gt0009",
             "text": "Ålder ≥ 65",
-            "description": "*(en) *"
+            "description": ""
           },
           "gt0010": {
             "id": "gt0010",
             "text": "Känd kranskärlssjukdom (Stenos ≥ 50%)",
-            "description": "*(en) *"
+            "description": ""
           },
           "gt0012": {
             "id": "gt0012",
             "text": "ASA-bruk senaste sju dagarna",
-            "description": "*(en) *"
+            "description": ""
           },
           "gt0015": {
             "id": "gt0015",
             "text": "Svår angina (≥ 2 episoder per dygn)",
-            "description": "*(en) *"
+            "description": ""
           },
           "gt0016": {
             "id": "gt0016",
             "text": "EKG: ST-förändringar ≥ 0.5mm",
-            "description": "*(en) *"
+            "description": ""
           },
           "gt0017": {
             "id": "gt0017",
             "text": "Förhöjda hjärtmarkörer",
-            "description": "*(en) *"
+            "description": ""
           },
           "gt0022": {
             "id": "gt0022",
             "text": "Total poäng",
-            "description": "*(en) Sum of individual scores: range 0-7"
+            "description": ""
           },
           "gt0024": {
             "id": "gt0024",
@@ -318,64 +318,54 @@
             "id": "gt0033",
             "text": "Beräkna resultat"
           },
-          "gt0035": {
-            "id": "gt0035",
-            "text": "*(en) Ischemic changes on the ECG",
-            "description": "*(en) ST-segment depression of at least 0.05 mV in ≥2 contiguous leads (including reciprocal changes), T-wave inversion of at least 0.1 mV, or Q waves ≥30 ms in width and ≥0.1 mV in depth in at least 2 contiguous leads."
-          },
-          "gt0036": {
-            "id": "gt0036",
-            "text": "*(en) Abnormal troponin",
-            "description": "*(en) cTnI level at 0 and 2 hours above institutional cutoff for elevated troponin."
-          },
           "gt0038": {
             "id": "gt0038",
-            "text": "*(en) Risk group",
+            "text": "Riskgrupp",
             "description": "*(en) *"
           },
           "gt0039": {
             "id": "gt0039",
-            "text": "*(en) Risk of major adverse cardiac event in 30 days",
+            "text": "Risk för allvarlig hjärthändelse inom 30 dagar",
             "description": "*(en) *"
           },
           "gt0040": {
             "id": "gt0040",
-            "text": "*(en) Low Risk",
+            "text": "Låg risk*",
             "description": ""
           },
           "gt0041": {
             "id": "gt0041",
-            "text": "*(en) Copy of Low Risk",
+            "text": "Mellanrisk",
             "description": ""
           },
           "gt0042": {
             "id": "gt0042",
-            "text": "*(en) Copy of Intermediate Risk",
+            "text": "Hög risk",
             "description": ""
           },
           "gt0044": {
             "id": "gt0044",
-            "text": "*(en) Abnormal troponin",
+            "text": "Onormalt troponin",
             "description": "*(en) cTnI level at 0 and 2 hours above institutional cutoff for elevated troponin."
           },
           "gt0045": {
             "id": "gt0045",
-            "text": "*(en) Ischemic changes on the ECG",
+            "text": "Ischemiska förändringar på EKG",
             "description": "*(en) ST-segment depression of at least 0.05 mV in ≥2 contiguous leads (including reciprocal changes), T-wave inversion of at least 0.1 mV, or Q waves ≥30 ms in width and ≥0.1 mV in depth in at least 2 contiguous leads."
           },
           "gt0046": {
             "id": "gt0046",
-            "text": "*(en) Low Risk",
+            "text": "Ställ in låg risk",
             "description": ""
           },
           "gt0047": {
             "id": "gt0047",
-            "text": "*(en) Copy of Low Risk",
+            "text": "Ställ in mellanrisk",
             "description": ""
           },
           "gt0048": {
             "id": "gt0048",
-            "text": "*(en) Copy of Intermediate Risk",
+            "text": "Ställ in hög risk",
             "description": ""
           }
         }
@@ -454,16 +444,6 @@
             "id": "gt0033",
             "text": "Calculate TIMI"
           },
-          "gt0035": {
-            "id": "gt0035",
-            "text": "Ischemic changes on the ECG",
-            "description": "ST-segment depression of at least 0.05 mV in ≥2 contiguous leads (including reciprocal changes), T-wave inversion of at least 0.1 mV, or Q waves ≥30 ms in width and ≥0.1 mV in depth in at least 2 contiguous leads."
-          },
-          "gt0036": {
-            "id": "gt0036",
-            "text": "Abnormal troponin",
-            "description": "cTnI level at 0 and 2 hours above institutional cutoff for elevated troponin."
-          },
           "gt0038": {
             "id": "gt0038",
             "text": "Risk group",
@@ -498,15 +478,15 @@
           },
           "gt0046": {
             "id": "gt0046",
-            "text": "Low Risk"
+            "text": "Set Low Risk"
           },
           "gt0047": {
             "id": "gt0047",
-            "text": "Intermediate Risk"
+            "text": "Set Intermediate Risk"
           },
           "gt0048": {
             "id": "gt0048",
-            "text": "High Risk"
+            "text": "Set High Risk"
           }
         }
       }
