@@ -11,7 +11,7 @@ We've gathered all of the available applications in one place and organized them
 
 If you would like to test an app, simply click on "ENG" to access the English version, and "SWE" for the Swedish version. To view a detailed description of the app and its components, click on the application name.
 
-### *Published Apps: 656*
+### *Published Apps: 655*
 
 ----------
 
@@ -1503,9 +1503,7 @@ _Select a medical specialty below to view the available apps._
 
 * Thoracolumbar Injury Classification and Severity Scale (TLICS) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Thoracolumbar_Injury_Classification_and_Severity_Scale_TLICS/1?language=en))
 
-* Trauma Associated Severe Hemorrhage (TASH.v1) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TASH/1?language=en))/([_SWE_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/latest/view/TASH/1?language=sv))
-
-* Trauma Associated Severe Hemorrhage (TASH.v2) - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/TASh_Score/2?language=en))
+* Trauma Associated Severe Hemorrhage (TASH) Score - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/tash_score/1?language=en))
 
 * Wound Closure Classification - ([_ENG_](https://development.cds-platform.com/ckm/clinical-knowledge-manager/demo/view/Wound_Closure_Classification/1?language=en))
 
