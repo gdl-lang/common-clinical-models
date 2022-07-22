@@ -1,0 +1,593 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-OBSERVATION.impact_score_for_outcomes_in_head_injury.v0
+
+concept
+	[at0000]	-- Impact score for outcomes in head injury
+language
+	original_language = <[ISO_639-1::en]>
+description
+	original_author = <
+		["name"] = <"Maryam Razavi">
+		["email"] = <"maryam.razavi2009@gmail.com">
+		["organisation"] = <"CambioCDS">
+		["date"] = <"2020-06-23">
+	>
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+			purpose = <"To record information relevant to the IMPACT score assessment">
+			use = <"IMPACT score is predicting 6 month outcome in adult patients with moderate to severe traumatic brain injury (Glasgow Coma Scale <=12) on admission.
+
+IMPACT score consists of three models (Core, Extended, and Lab ) each with its own characteristics, values and scores as following: 
+Core Model:
+Age (Years): <=30=0, 30-39= 1, 40-49=2, 50-59=3, 60-69=4, >=70=5;
+Motor score: None/extension=6, Abnormal flexion=4, Normal flexion=2, Localized/obeys=0, Untestable/missing=3;
+Pupillary reactivity: Both pupils reacted=0, One pupil reacted=2, No pupil reacted=4;
+Extended Model:
+Hypoxia: Yes or suspected=1, No=0;
+Hypotension: Yes or suspected=2, No=0;
+CT classification: I=-2, II=0, III/IV=2,V/VI=2;
+tSAH on CT: Yes=2, No=0;
+Epidural mass on CT: Yes=-2, No=0;
+Lab Model: 
+Glucose (mmol/l): <6=0, 6-8.9=1, 9-11.9=2, 12-14.9=3, >=15=4;
+Hb (g/dl): <9= 3, 9-11.9=2, 12-14.9=1, >=15=0.
+
+Formula:
+Sum scores can be calculated for the core model (age, motor score, pupillary reactivity), the extended model (core+hypoxia, hypotension+CT+glucose+Hb). The probability of 6 mo outcome is defined as 1/(1+ e^(-LP)), where LP refered to the linear predictor in a logistic regression model. Sic LPs were defined as follows: 
+LP core, mortality= 2.55+0.275*sum core score 
+LP core, unfavorable outcome= -1.62+ 0.299* sum core score
+LP extended, mortality= -2.98+0.256*(core score+ CT score)
+LP extended, unfavorable outcome=-2.10+0.276*(core score+ CT score)
+LP lab,mortality=-3.42+0.216*(core score+CT score+lab core)
+LP lab,unfavorable outcome=-2.82+0.257*(core score+CT score+lab score)
+
+
+
+">
+			keywords = <"Traumatic Brain Injury (TBI)", "IMPACT", "GCS", "Head Injury", "Traumatic Brain Injury (TBI)">
+			misuse = <"IMPACT score cannot be used in patients with Glasgow Coma Scale more than 12. ">
+			copyright = <"@CambioCDS">
+		>
+	>
+	lifecycle_state = <"AuthorDraft">
+	other_contributors = <>
+	other_details = <
+		["references"] = <"Steyerberg EW, Mushkudiani N, Perel P, Butcher I, Lu J, McHugh GS, Murray GD, Marmarou A, Roberts I, Habbema JD, Maas AI. Predicting outcome after traumatic brain injury: development and international validation of prognostic scores based on admission characteristics. PLoS Med. 2008 Aug 5;5(8):e165.
+
+Roozenbeek B, Lingsma HF, Lecky FE, Lu J, Weir J, Butcher I, McHugh GS, Murray GD, Perel P, Maas AI, Steyerberg EW. Prediction of outcome after moderate and severe traumatic brain injury: external validation of the IMPACT and CRASH prognostic models. Critical care medicine. 2012 May;40(5):1609.
+
+Harrison DA, Griggs KA, Prabhu G, Gomes M, Lecky FE, Hutchinson PJ, Menon DK, Rowan KM, Risk Adjustment In Neurocritical care (RAIN) Study Investigators. External validation and recalibration of risk prediction models for acute traumatic brain injury among critically ill adult patients in the United Kingdom. Journal of neurotrauma. 2015 Oct 1;32(19):1522-37.">
+		["MD5-CAM-1.0.1"] = <"744E67576BDA8CC2F9FD1D34DB8803E4">
+	>
+
+definition
+	OBSERVATION[at0000] matches {	-- Impact score for outcomes in head injury
+		data matches {
+			HISTORY[at0001] matches {	-- Event Series
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..1} matches {	-- Any event
+						data matches {
+							ITEM_TREE[at0003] matches {	-- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0004] occurrences matches {0..1} matches {	-- Age (Years)
+										value matches {
+											0|[local::at0005], 	-- <=30
+											1|[local::at0006], 	-- 30-39
+											2|[local::at0007], 	-- 40-49
+											3|[local::at0008], 	-- 50-59
+											4|[local::at0009], 	-- 60-69
+											5|[local::at0010]  	-- >=70
+										}
+									}
+									ELEMENT[at0011] occurrences matches {0..1} matches {	-- Motor Score
+										value matches {
+											0|[local::at0012], 	-- Localized/ obeys
+											2|[local::at0013], 	-- Normal flexion
+											3|[local::at0014], 	-- Untestable/ missing
+											4|[local::at0015], 	-- Abnormal flexion
+											6|[local::at0016]  	-- None/ extension
+										}
+									}
+									ELEMENT[at0017] occurrences matches {0..1} matches {	-- Pupillary reactivity
+										value matches {
+											0|[local::at0018], 	-- Both pupils reacted
+											2|[local::at0019], 	-- One pupil reacted
+											4|[local::at0020]  	-- No pupil reacted
+										}
+									}
+									ELEMENT[at0021] occurrences matches {0..1} matches {	-- Core score 
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0022] occurrences matches {0..1} matches {	-- Hypoxia
+										value matches {
+											0|[local::at0023], 	-- No
+											1|[local::at0024]  	-- Yes or suspected
+										}
+									}
+									ELEMENT[at0025] occurrences matches {0..1} matches {	-- Hypotension
+										value matches {
+											0|[local::at0026], 	-- No
+											2|[local::at0027]  	-- Yes or suspected
+										}
+									}
+									ELEMENT[at0029] occurrences matches {0..1} matches {	-- CT classification
+										value matches {
+											0|[local::at0030], 	-- II
+											-2|[local::at0031], 	-- I
+											2|[local::at0033], 	-- III/IV
+											2|[local::at0034]  	-- V/VI
+										}
+									}
+									ELEMENT[at0035] occurrences matches {0..1} matches {	-- tSAH on CT
+										value matches {
+											0|[local::at0037], 	-- No
+											2|[local::at0036]  	-- Yes
+										}
+									}
+									ELEMENT[at0038] occurrences matches {0..1} matches {	-- Epidural mass on CT
+										value matches {
+											0|[local::at0040], 	-- No
+											-2|[local::at0039]  	-- Yes
+										}
+									}
+									ELEMENT[at0042] occurrences matches {0..1} matches {	-- CT score
+										value matches {
+											C_DV_QUANTITY <
+											>
+										}
+									}
+									ELEMENT[at0043] occurrences matches {0..1} matches {	-- Glucose (mmol/l)
+										value matches {
+											0|[local::at0049], 	-- <6
+											1|[local::at0050], 	-- 6-8.9
+											2|[local::at0051], 	-- 9-11.9
+											3|[local::at0052], 	-- 12-14.9
+											4|[local::at0053]  	-- >=15
+										}
+									}
+									ELEMENT[at0044] occurrences matches {0..1} matches {	-- Hb (g/dl)
+										value matches {
+											0|[local::at0045], 	-- >=15
+											1|[local::at0046], 	-- 12-14.9
+											2|[local::at0047], 	-- 9-11.9
+											3|[local::at0048]  	-- <9
+										}
+									}
+									ELEMENT[at0055] occurrences matches {0..1} matches {	-- Lab score
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0054] occurrences matches {0..1} matches {	-- LP Core Mortality
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0057] occurrences matches {0..1} matches {	-- LP Core Unfavorable outcome
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0056] occurrences matches {0..1} matches {	-- Unfavorable outcome Core
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0058] occurrences matches {0..1} matches {	-- Mortality Core
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0059] occurrences matches {0..1} matches {	-- LP Extended  Mortality
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0060] occurrences matches {0..1} matches {	-- LP Extended Unfavorable outcome
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0061] occurrences matches {0..1} matches {	-- Unfavorable outcome CT
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0062] occurrences matches {0..1} matches {	-- Mortality CT
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0063] occurrences matches {0..1} matches {	-- LP Lab Mortality
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0064] occurrences matches {0..1} matches {	-- LP Lab Unfavorable outcome
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0065] occurrences matches {0..1} matches {	-- Unfavorable outcome Lab
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+									ELEMENT[at0066] occurrences matches {0..1} matches {	-- Mortality Lab
+										value matches {
+											C_DV_QUANTITY <
+												property = <[openehr::380]>
+												list = <
+													["1"] = <
+														units = <"1">
+													>
+												>
+											>
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Impact score for outcomes in head injury">
+					description = <"unknown">
+				>
+				["at0001"] = <
+					text = <"Event Series">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Any event">
+					description = <"*">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0004"] = <
+					text = <"Age (Years)">
+					description = <"*">
+				>
+				["at0005"] = <
+					text = <"<=30">
+					description = <"*">
+				>
+				["at0006"] = <
+					text = <"30-39">
+					description = <"*">
+				>
+				["at0007"] = <
+					text = <"40-49">
+					description = <"*">
+				>
+				["at0008"] = <
+					text = <"50-59">
+					description = <"*">
+				>
+				["at0009"] = <
+					text = <"60-69">
+					description = <"*">
+				>
+				["at0010"] = <
+					text = <">=70">
+					description = <"*">
+				>
+				["at0011"] = <
+					text = <"Motor Score">
+					description = <"*">
+				>
+				["at0012"] = <
+					text = <"Localized/ obeys">
+					description = <"*">
+				>
+				["at0013"] = <
+					text = <"Normal flexion">
+					description = <"*">
+				>
+				["at0014"] = <
+					text = <"Untestable/ missing">
+					description = <"*">
+				>
+				["at0015"] = <
+					text = <"Abnormal flexion">
+					description = <"*">
+				>
+				["at0016"] = <
+					text = <"None/ extension">
+					description = <"*">
+				>
+				["at0017"] = <
+					text = <"Pupillary reactivity">
+					description = <"*">
+				>
+				["at0018"] = <
+					text = <"Both pupils reacted">
+					description = <"*">
+				>
+				["at0019"] = <
+					text = <"One pupil reacted">
+					description = <"*">
+				>
+				["at0020"] = <
+					text = <"No pupil reacted">
+					description = <"*">
+				>
+				["at0021"] = <
+					text = <"Core score ">
+					description = <"*">
+				>
+				["at0022"] = <
+					text = <"Hypoxia">
+					description = <"*">
+				>
+				["at0023"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0024"] = <
+					text = <"Yes or suspected">
+					description = <"*">
+				>
+				["at0025"] = <
+					text = <"Hypotension">
+					description = <"*">
+				>
+				["at0026"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0027"] = <
+					text = <"Yes or suspected">
+					description = <"*">
+				>
+				["at0029"] = <
+					text = <"CT classification">
+					description = <"*">
+				>
+				["at0030"] = <
+					text = <"II">
+					description = <"*">
+				>
+				["at0031"] = <
+					text = <"I">
+					description = <"*">
+				>
+				["at0033"] = <
+					text = <"III/IV">
+					description = <"*">
+				>
+				["at0034"] = <
+					text = <"V/VI">
+					description = <"*">
+				>
+				["at0035"] = <
+					text = <"tSAH on CT">
+					description = <"*">
+				>
+				["at0036"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0037"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0038"] = <
+					text = <"Epidural mass on CT">
+					description = <"*">
+				>
+				["at0039"] = <
+					text = <"Yes">
+					description = <"*">
+				>
+				["at0040"] = <
+					text = <"No">
+					description = <"*">
+				>
+				["at0042"] = <
+					text = <"CT score">
+					description = <"*">
+				>
+				["at0043"] = <
+					text = <"Glucose (mmol/l)">
+					description = <"*">
+				>
+				["at0044"] = <
+					text = <"Hb (g/dl)">
+					description = <"*">
+				>
+				["at0045"] = <
+					text = <">=15">
+					description = <"*">
+				>
+				["at0046"] = <
+					text = <"12-14.9">
+					description = <"*">
+				>
+				["at0047"] = <
+					text = <"9-11.9">
+					description = <"*">
+				>
+				["at0048"] = <
+					text = <"<9">
+					description = <"*">
+				>
+				["at0049"] = <
+					text = <"<6">
+					description = <"*">
+				>
+				["at0050"] = <
+					text = <"6-8.9">
+					description = <"*">
+				>
+				["at0051"] = <
+					text = <"9-11.9">
+					description = <"*">
+				>
+				["at0052"] = <
+					text = <"12-14.9">
+					description = <"*">
+				>
+				["at0053"] = <
+					text = <">=15">
+					description = <"*">
+				>
+				["at0054"] = <
+					text = <"LP Core Mortality">
+					description = <"*">
+				>
+				["at0055"] = <
+					text = <"Lab score">
+					description = <"*">
+				>
+				["at0056"] = <
+					text = <"Unfavorable outcome Core">
+					description = <"*">
+				>
+				["at0057"] = <
+					text = <"LP Core Unfavorable outcome">
+					description = <"*">
+				>
+				["at0058"] = <
+					text = <"Mortality Core">
+					description = <"*">
+				>
+				["at0059"] = <
+					text = <"LP CT  Mortality">
+					description = <"*">
+				>
+				["at0060"] = <
+					text = <"LP CT Unfavorable outcome">
+					description = <"*">
+				>
+				["at0061"] = <
+					text = <"Unfavorable outcome CT">
+					description = <"*">
+				>
+				["at0062"] = <
+					text = <"Mortality CT">
+					description = <"*">
+				>
+				["at0063"] = <
+					text = <"LP Lab Mortality">
+					description = <"*">
+				>
+				["at0064"] = <
+					text = <"LP Lab Unfavorable outcome">
+					description = <"*">
+				>
+				["at0065"] = <
+					text = <"Unfavorable outcome Lab">
+					description = <"*">
+				>
+				["at0066"] = <
+					text = <"Mortality Lab">
+					description = <"*">
+				>
+			>
+		>
+	>
