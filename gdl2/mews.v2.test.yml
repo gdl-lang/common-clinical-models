@@ -1,0 +1,38 @@
+guidelines:
+  1: new_guideline.v0
+test_cases:
+- id: score >= 5
+  input:
+    1:
+      gt0003|Respiratory Rate: 0|local::at0005|9 - 14 bpm|
+      gt0004|Heart Rate: 0|local::at0010|51 - 100 bpm|
+      gt0005|Systolic Blood Pressure: 1|local::at0016|81 - 100 mmHg|
+      gt0006|Temperature: 2|local::at0022|< 35 or ≥ 38.5 °C|
+      gt0007|Level of consciousness: 1|local::at0025|New confusion or Voice|
+      gt0008|Urine output/24 hr: 2|local::at0031|Approx. 500 ml|
+  expected_output:
+    1:
+      gt0036|Interpretation of total score: Increased likelihood of death or admission to an intensive care unit
+      gt0012|MEW score: 6
+- id: score < 5
+  input:
+    1:
+      gt0003|Respiratory Rate: 0|local::at0005|9 - 14 bpm|
+      gt0004|Heart Rate: 0|local::at0010|51 - 100 bpm|
+      gt0005|Systolic Blood Pressure: 1|local::at0016|81 - 100 mmHg|
+      gt0006|Temperature: 2|local::at0022|< 35 or ≥ 38.5 °C|
+      gt0007|Level of consciousness: 0|local::at0024|Alert|
+      gt0008|Urine output/24 hr: 0|local::at0029|Approx. 1 500 ml|
+  expected_output:
+    1:
+      gt0012|MEW score: 3
+- id: missing input
+  input:
+    1:
+      gt0004|Heart Rate: 0|local::at0010|51 - 100 bpm|
+      gt0005|Systolic Blood Pressure: 1|local::at0016|81 - 100 mmHg|
+      gt0006|Temperature: 2|local::at0022|< 35 or ≥ 38.5 °C|
+      gt0007|Level of consciousness: 0|local::at0024|Alert|
+      gt0008|Urine output/24 hr: 0|local::at0029|Approx. 1 500 ml|
+  expected_output:
+    1: {}
